@@ -1,0 +1,38 @@
+I think entries are based on the two checksums, plus the ASCII value for "J" "U" or "E".
+
+C:45 = E (USA)
+C:4A = J (Japan)
+C:50 = P (PAL)
+
+[DEE596AB-AF3B7AE7-C:45]
+Name=WCW / nWo  REVENGE (U)
+
+[68E8A875-0CE7A486-C:50]
+Name=WCW / nWo  REVENGE (E)
+
+[90A59003-31089864-C:45]
+Name=WWF WrestleMania 2000 (U)
+
+[12737DA5-23969159-C:4A]
+Name=WWF Wrestlemania 2000 (J)
+
+[C71353BE-AA09A6EE-C:50]
+Name=WWF WrestleMania 2000 (E)
+
+[4E4B0640-1B49BCFB-C:45]
+Name=WWF No Mercy (U) (V1.0)
+
+[4E4B0640-1B49BCFB-C:45]
+Name=WWF No Mercy (U) (V1.1)
+
+[6D8DF08E-D008C3CF-C:50]
+Name=WWF No Mercy (E) (V1.?)
+
+================================================================================
+Cheat{#}="Name",code1(,code2,etc...)
+
+Codes can have ?? as the value, meaning the option is read from Cheat#_O...
+
+Cheat{#}_O=$VV name,$VX name2...
+
+Cheat{#}_N=Notes about a code

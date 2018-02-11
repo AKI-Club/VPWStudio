@@ -1,0 +1,21 @@
+notes on Zoinkity's VPW2 offsetter
+==================================
+
+--------------------------------------------------------------------------------
+def offset(rom, index, data, force_raw=False, compress=-1):
+
+"""This only changes offsets to files in the filetable!
+Offsets the filetable values starting at index by difference.
+Also alters the hardcoded pointers to the soundtable.
+
+Set force_raw to True to retain the compression flag despite not doing compression.
+This is used to insert 'raw', possibly pre-compressed files."""
+
+# If compress = -1, this will select the smaller of the two filesizes.
+# 1 and 0 force compressed or uncompressed, respectively.
+
+
+--------------------------------------------------------------------------------
+class LZSS:
+
+

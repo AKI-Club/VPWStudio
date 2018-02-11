@@ -1,0 +1,26 @@
+"Locations" refers to multiple places:
+* ROM locations (in which case we assume Z64 format)
+* RAM locations (used with GameShark codes)
+
+Each game has different locations for the same items.
+It would be much better to allow the program to load these locations from
+external files, instead of being hardcoded.
+
+Thus, I need to come up with a parsable format for this bullshit.
+
+type:location,data width,comment
+
+RAM:8006966A,4;pointer to X
+ROM:209270,2;Beginning of ID2 values for AJPW2
+
+RAM type = GameShark codes
+ROM type = ROM hacks
+
+All locations are read as hex.
+RAM addresses must be 8 digits, and start with 8.
+ROM locations are assumed for Z64 format, as mentioned above.
+
+valid data widths: 1,2,4. everything else is invalid.
+
+comments go to the end of the line, \n terminated.
+this way, they should work on all platforms that matter?

@@ -1,0 +1,35 @@
+VPW Studio
+==========
+Essentially a tool made for dealing with the Virtual Pro Wrestling games.
+Also known as "AKI Studio" when I forget what the proper name is.
+
+The primary targets are the N64 games:
+* WCW vs. nWo World Tour
+* Virtual Pro-Wrestling 64
+* WCW/nWo Revenge
+* WWF WrestleMania 2000
+* Virtual Pro-Wrestling 2
+* WWF No Mercy
+
+Things to deal with... there are a lot.
+* "Toki1"
+* "Toki2"
+* Arena Editor
+* Costume Part Editor
+* Filesystem stuff ("Toki3" is related)
+ * equivalent of Zoinkity's "offsetter" (filetable rebuilder)
+ * re-compressing files
+* Move Editor
+* Model/Animation Editor
+* Texture Conversion (to game formats, not from)
+* Weapon Editor
+* Wrestler Editor
+
+[Project Format]
+* Settings
+ * Project Name
+ * Base Game and Region
+ * Author(s)
+ * General Notes
+* Various game data changes idk
+
