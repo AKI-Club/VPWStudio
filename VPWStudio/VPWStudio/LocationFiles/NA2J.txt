@@ -1,0 +1,4 @@
+﻿# Virtual Pro-Wrestling 2 [NA2J]
+ROM:46CC4,1;AKI Hall arena data begins
+RAM:800707C0,4;Toki2 Pointer
+RAM:800707C4,4;Toki1 Pointer
