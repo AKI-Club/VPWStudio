@@ -37,7 +37,15 @@ namespace VPWStudio
 		/// </summary>
 		public static string CurLocationFilePath = String.Empty;
 
-		// todo: cur gamesharkcodefile, gamesharkcodefile path
+		/// <summary>
+		/// Currently loaded GameSharkCodeFile.
+		/// </summary>
+		public static GameSharkCodeFile CurrentGSCodeFile = null;
+
+		/// <summary>
+		/// Path to currently loaded GameSharkCodeFile.
+		/// </summary>
+		public static string CurGSCFPath = String.Empty;
 		#endregion
 
 		#endregion
