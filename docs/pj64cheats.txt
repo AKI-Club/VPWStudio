@@ -4,6 +4,18 @@ C:45 = E (USA)
 C:4A = J (Japan)
 C:50 = P (PAL)
 
+[2C3E19BD-5113EE5E-C:45]
+Name=WCW vs. nWo - World Tour (U) (V1.0)
+
+[71BE60B9-1DDBFB3C-C:45]
+Name=WCW vs. nWo - World Tour (U) (V1.1)
+
+[8BDBAF68-345B4B36-C:50]
+Name=WCW vs. nWo - World Tour (E)
+
+[045C08C4-4AFD798B-C:4A]
+Name=Virtual Pro-Wrestling 64 (J)
+
 [DEE596AB-AF3B7AE7-C:45]
 Name=WCW / nWo  REVENGE (U)
 
@@ -22,11 +34,14 @@ Name=WWF WrestleMania 2000 (E)
 [4E4B0640-1B49BCFB-C:45]
 Name=WWF No Mercy (U) (V1.0)
 
-[4E4B0640-1B49BCFB-C:45]
+[6C80F13B-427EDEAA-C:45]
 Name=WWF No Mercy (U) (V1.1)
 
 [6D8DF08E-D008C3CF-C:50]
-Name=WWF No Mercy (E) (V1.?)
+Name=WWF No Mercy (E) (V1.0)
+
+[8CDB94C2-CB46C6F0-C:50]
+Name=WWF No Mercy (E) (V1.1)
 
 ================================================================================
 Cheat{#}="Name",code1(,code2,etc...)
