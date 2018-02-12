@@ -32,10 +32,12 @@ namespace VPWStudio
 		/// </summary>
 		public static LocationFile CurLocationFile = null;
 
-		// todo: location file path
+		/// <summary>
+		/// Path to Current Location File.
+		/// </summary>
+		public static string CurLocationFilePath = String.Empty;
 
-		// todo: cur gamesharkcodefile
-		// todo: gamesharkcodefile path
+		// todo: cur gamesharkcodefile, gamesharkcodefile path
 		#endregion
 
 		#endregion
