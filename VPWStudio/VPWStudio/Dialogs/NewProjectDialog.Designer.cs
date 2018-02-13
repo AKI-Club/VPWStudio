@@ -312,6 +312,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 300);
 			this.Name = "NewProjectDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "New Project";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();

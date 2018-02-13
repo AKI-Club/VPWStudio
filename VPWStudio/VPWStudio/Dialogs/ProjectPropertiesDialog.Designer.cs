@@ -364,6 +364,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 300);
 			this.Name = "ProjectPropertiesDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Project Properties";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
