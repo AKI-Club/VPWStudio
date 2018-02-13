@@ -15,9 +15,6 @@ namespace VPWStudio
 {
 	public partial class GameSharkTool : Form
 	{
-		// todo: should this be program-wide?
-		public GameSharkCodeFile CurGSCF = new GameSharkCodeFile();
-
 		/// <summary>
 		/// Current active CodeSet.
 		/// </summary>
@@ -26,13 +23,64 @@ namespace VPWStudio
 		public GameSharkTool()
 		{
 			InitializeComponent();
+			if (Program.CurrentGSCodeFile == null)
+			{
+				Program.CurrentGSCodeFile = new GameSharkCodeFile();
+				Program.CurrentGSCodeFile.AllCodes.Add(new GameSharkCodeSet("New Code"));
+				tbCodeFilePath.Text = "(new code file)";
+			}
+			else
+			{
+				// populate everything
+				tbCodeFilePath.Text = Program.CurGSCFPath;
+			}
+			UpdateCodeSetComboBox();
+			cboxCodeSets.SelectedIndex = 0;
+			UpdateCodeListBox();
 		}
 
-		#region Load/Save Buttons
 		/// <summary>
-		/// Save GameSharkCodeFile
+		/// Get the currently selected code as a GameShark code.
 		/// </summary>
-		private void buttonSave_Click(object sender, EventArgs e)
+		/// <returns>Current code value as a string in the format "XXXXXXXX YYYY"</returns>
+		private string GetCurrentCodeString()
+		{
+			return String.Format("{0} {1}", tbCodeAddress.Text, tbCodeValue.Text);
+		}
+
+		#region Code File Menu
+		private void newCodeFileToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Program.CurGSCFPath = String.Empty;
+			Program.CurrentGSCodeFile = new GameSharkCodeFile();
+			Program.CurrentGSCodeFile.AllCodes.Add(new GameSharkCodeSet("New Code"));
+			tbCodeFilePath.Text = "(new code file)";
+		}
+
+		private void openCodeFileToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Open GameShark Code File";
+			ofd.Filter = SharedStrings.FileFilter_GameSharkCodes;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
+				XmlReader xr = XmlReader.Create(fs);
+				Program.CurrentGSCodeFile = new GameSharkCodeFile();
+				Program.CurrentGSCodeFile.LoadFile(xr);
+				xr.Close();
+				fs.Close();
+				Program.CurGSCFPath = ofd.FileName;
+				tbCodeFilePath.Text = ofd.FileName;
+				this.CurrentCodeSet = Program.CurrentGSCodeFile.AllCodes[0];
+
+				UpdateCodeSetComboBox();
+				cboxCodeSets.SelectedIndex = 0;
+				UpdateCodeListBox();
+			}
+		}
+
+		private void saveCodeFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Title = "Save GameShark Code File";
@@ -46,48 +94,67 @@ namespace VPWStudio
 				xws.Encoding = Encoding.UTF8;
 
 				XmlWriter xw = XmlWriter.Create(fs, xws);
-				this.CurGSCF.SaveFile(xw);
+				Program.CurrentGSCodeFile.SaveFile(xw);
 
 				xw.Flush();
 				xw.Close();
 				fs.Close();
-			}
-		}
 
-		/// <summary>
-		/// Load GameSharkCodeFile
-		/// </summary>
-		private void buttonLoad_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Open GameShark Code File";
-			ofd.Filter = SharedStrings.FileFilter_GameSharkCodes;
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
-				XmlReader xr = XmlReader.Create(fs);
-				this.CurGSCF = new GameSharkCodeFile();
-				this.CurGSCF.LoadFile(xr);
-				xr.Close();
-				fs.Close();
-				this.CurrentCodeSet = this.CurGSCF.AllCodes[0];
-				tbCodeFilePath.Text = ofd.FileName;
-
-				UpdateCodeSetComboBox();
-				cboxCodeSets.SelectedIndex = 0;
-				UpdateCodeListBox();
+				if (Program.CurGSCFPath == String.Empty)
+				{
+					Program.CurGSCFPath = sfd.FileName;
+					tbCodeFilePath.Text = Program.CurGSCFPath;
+				}
 			}
 		}
 		#endregion;
 
+		#region CodeSet Menu
 		/// <summary>
-		/// Get the currently selected code as a GameShark code.
+		/// Add a new CodeSet to the current CodeFile.
 		/// </summary>
-		/// <returns>Current code value as a string in the format "XXXXXXXX YYYY"</returns>
-		private string GetCurrentCodeString()
+		private void addNewCodeSetToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			return String.Format("{0} {1}", tbCodeAddress.Text, tbCodeValue.Text);
+			Program.CurrentGSCodeFile.AllCodes.Add(new GameSharkCodeSet("New Code"));
+			UpdateCodeSetComboBox();
+			cboxCodeSets.SelectedIndex = cboxCodeSets.Items.Count - 1;
 		}
+
+		/// <summary>
+		/// Delete the currently selected CodeSet.
+		/// </summary>
+		private void deleteCurrentCodeSetToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (cboxCodeSets.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			Program.CurrentGSCodeFile.AllCodes.RemoveAt(cboxCodeSets.SelectedIndex);
+			UpdateCodeSetComboBox();
+			if (Program.CurrentGSCodeFile.AllCodes.Count > 0)
+			{
+				cboxCodeSets.SelectedIndex = 0;
+			}
+		}
+
+		/// <summary>
+		/// Clone the currently selected CodeSet.
+		/// </summary>
+		private void cloneCurrentCodesetToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (cboxCodeSets.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			GameSharkCodeSet clone = this.CurrentCodeSet;
+			Program.CurrentGSCodeFile.AllCodes.Add(clone);
+			int curCode = cboxCodeSets.SelectedIndex;
+			UpdateCodeSetComboBox();
+			cboxCodeSets.SelectedIndex = curCode;
+		}
+		#endregion
 
 		#region CodeSet ComboBox
 		private void cboxCodeSets_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,34 +163,9 @@ namespace VPWStudio
 			{
 				return;
 			}
-			this.CurrentCodeSet = this.CurGSCF.AllCodes[cboxCodeSets.SelectedIndex];
+			this.CurrentCodeSet = Program.CurrentGSCodeFile.AllCodes[cboxCodeSets.SelectedIndex];
 			UpdateCodeListBox();
 			tbCodeSetName.Text = this.CurrentCodeSet.Name;
-		}
-
-		/// <summary>
-		/// Add a new CodeSet to the current CodeFile.
-		/// </summary>
-		private void buttonNewCodeSet_Click(object sender, EventArgs e)
-		{
-			this.CurGSCF.AllCodes.Add(new GameSharkCodeSet("New Code"));
-			UpdateCodeSetComboBox();
-			cboxCodeSets.SelectedIndex = cboxCodeSets.Items.Count - 1;
-		}
-
-		/// <summary>
-		/// Delete the currently selected CodeSet.
-		/// </summary>
-		private void buttonDelCodeSet_Click(object sender, EventArgs e)
-		{
-			if (cboxCodeSets.SelectedIndex < 0)
-			{
-				return;
-			}
-
-			this.CurGSCF.AllCodes.RemoveAt(cboxCodeSets.SelectedIndex);
-			UpdateCodeSetComboBox();
-			cboxCodeSets.SelectedIndex = 0;
 		}
 
 		/// <summary>
@@ -133,9 +175,9 @@ namespace VPWStudio
 		{
 			cboxCodeSets.Items.Clear();
 			cboxCodeSets.BeginUpdate();
-			for (int i = 0; i < this.CurGSCF.AllCodes.Count; i++)
+			for (int i = 0; i < Program.CurrentGSCodeFile.AllCodes.Count; i++)
 			{
-				cboxCodeSets.Items.Add(this.CurGSCF.AllCodes[i].Name);
+				cboxCodeSets.Items.Add(Program.CurrentGSCodeFile.AllCodes[i].Name);
 			}
 			cboxCodeSets.EndUpdate();
 		}
@@ -168,6 +210,9 @@ namespace VPWStudio
 			tbCodeValue.Text = this.CurrentCodeSet.Codes[lbCodes.SelectedIndex].ToString().Substring(9);
 		}
 
+		/// <summary>
+		/// Delete currently selected Code from the active CodeSet.
+		/// </summary>
 		private void buttonDeleteCode_Click(object sender, EventArgs e)
 		{
 			if (lbCodes.SelectedIndex < 0)
@@ -175,10 +220,13 @@ namespace VPWStudio
 				return;
 			}
 
-			CurrentCodeSet.RemoveCodeAt(lbCodes.SelectedIndex);
+			this.CurrentCodeSet.RemoveCodeAt(lbCodes.SelectedIndex);
 			UpdateCodeListBox();
 		}
 
+		/// <summary>
+		/// Move currently selected code Up.
+		/// </summary>
 		private void buttonMoveCodeUp_Click(object sender, EventArgs e)
 		{
 			if (lbCodes.SelectedIndex <= 0)
@@ -213,6 +261,9 @@ namespace VPWStudio
 			lbCodes.SelectedIndex = destIndex;
 		}
 
+		/// <summary>
+		/// Move currently selected code Down.
+		/// </summary>
 		private void buttonMoveCodeDown_Click(object sender, EventArgs e)
 		{
 			if (lbCodes.SelectedIndex < 0 || lbCodes.SelectedIndex >= lbCodes.Items.Count)
@@ -272,8 +323,6 @@ namespace VPWStudio
 			CurrentCodeSet.Codes[lbCodes.SelectedIndex].SetFromCode(GetCurrentCodeString());
 			UpdateCodeListBox();
 		}
-
-
 		#endregion
 
 		private void buttonRenameCodeSet_Click(object sender, EventArgs e)
@@ -289,16 +338,9 @@ namespace VPWStudio
 			cboxCodeSets.SelectedIndex = curIndex;
 		}
 
-		#region Project64 code format Import/Export
-		private void buttonImport_Click(object sender, EventArgs e)
-		{
-			// import from PJ64 cheats
-		}
 
-		private void buttonExport_Click(object sender, EventArgs e)
-		{
-			// export to PJ64 cheats
-		}
+		#region Project64 code format Import/Export
+		// todo
 		#endregion
 	}
 }

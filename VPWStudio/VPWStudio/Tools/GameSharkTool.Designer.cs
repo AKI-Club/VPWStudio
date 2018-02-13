@@ -30,8 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameSharkTool));
-			this.buttonSave = new System.Windows.Forms.Button();
-			this.buttonLoad = new System.Windows.Forms.Button();
 			this.lbCodes = new System.Windows.Forms.ListBox();
 			this.gbNewCode = new System.Windows.Forms.GroupBox();
 			this.buttonModifyCode = new System.Windows.Forms.Button();
@@ -43,10 +41,8 @@
 			this.buttonMoveCodeUp = new System.Windows.Forms.Button();
 			this.buttonDeleteCode = new System.Windows.Forms.Button();
 			this.buttonMoveCodeDown = new System.Windows.Forms.Button();
-			this.buttonImport = new System.Windows.Forms.Button();
 			this.tvCodeExaminer = new System.Windows.Forms.TreeView();
 			this.cboxCodeSets = new System.Windows.Forms.ComboBox();
-			this.buttonNewCodeSet = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tbCodeFilePath = new System.Windows.Forms.TextBox();
 			this.buttonRenameCodeSet = new System.Windows.Forms.Button();
@@ -55,39 +51,30 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCodeSetName = new System.Windows.Forms.TextBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.buttonDelCodeSet = new System.Windows.Forms.Button();
-			this.buttonExport = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.codeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.newCodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openCodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveCodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.importPJ64CodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportPJ64CodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.codeSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.addNewCodeSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteCurrentCodeSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cloneCurrentCodesetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbNewCode.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// buttonSave
-			// 
-			this.buttonSave.Location = new System.Drawing.Point(367, 10);
-			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(56, 23);
-			this.buttonSave.TabIndex = 0;
-			this.buttonSave.Text = "&Save";
-			this.buttonSave.UseVisualStyleBackColor = true;
-			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-			// 
-			// buttonLoad
-			// 
-			this.buttonLoad.Location = new System.Drawing.Point(305, 10);
-			this.buttonLoad.Name = "buttonLoad";
-			this.buttonLoad.Size = new System.Drawing.Size(56, 23);
-			this.buttonLoad.TabIndex = 1;
-			this.buttonLoad.Text = "&Load";
-			this.buttonLoad.UseVisualStyleBackColor = true;
-			this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
 			// 
 			// lbCodes
 			// 
 			this.lbCodes.FormattingEnabled = true;
 			this.lbCodes.Location = new System.Drawing.Point(6, 19);
 			this.lbCodes.Name = "lbCodes";
-			this.lbCodes.Size = new System.Drawing.Size(188, 316);
+			this.lbCodes.Size = new System.Drawing.Size(188, 329);
 			this.lbCodes.TabIndex = 3;
 			this.lbCodes.SelectedIndexChanged += new System.EventHandler(this.lbCodes_SelectedIndexChanged);
 			// 
@@ -99,7 +86,7 @@
 			this.gbNewCode.Controls.Add(this.labelValue);
 			this.gbNewCode.Controls.Add(this.labelAddress);
 			this.gbNewCode.Controls.Add(this.tbCodeAddress);
-			this.gbNewCode.Location = new System.Drawing.Point(218, 90);
+			this.gbNewCode.Location = new System.Drawing.Point(218, 104);
 			this.gbNewCode.Name = "gbNewCode";
 			this.gbNewCode.Size = new System.Drawing.Size(217, 104);
 			this.gbNewCode.TabIndex = 4;
@@ -162,7 +149,7 @@
 			// 
 			// buttonMoveCodeUp
 			// 
-			this.buttonMoveCodeUp.Location = new System.Drawing.Point(6, 345);
+			this.buttonMoveCodeUp.Location = new System.Drawing.Point(6, 362);
 			this.buttonMoveCodeUp.Name = "buttonMoveCodeUp";
 			this.buttonMoveCodeUp.Size = new System.Drawing.Size(48, 23);
 			this.buttonMoveCodeUp.TabIndex = 5;
@@ -173,7 +160,7 @@
 			// 
 			// buttonDeleteCode
 			// 
-			this.buttonDeleteCode.Location = new System.Drawing.Point(60, 345);
+			this.buttonDeleteCode.Location = new System.Drawing.Point(60, 362);
 			this.buttonDeleteCode.Name = "buttonDeleteCode";
 			this.buttonDeleteCode.Size = new System.Drawing.Size(80, 23);
 			this.buttonDeleteCode.TabIndex = 6;
@@ -184,7 +171,7 @@
 			// 
 			// buttonMoveCodeDown
 			// 
-			this.buttonMoveCodeDown.Location = new System.Drawing.Point(146, 345);
+			this.buttonMoveCodeDown.Location = new System.Drawing.Point(146, 362);
 			this.buttonMoveCodeDown.Name = "buttonMoveCodeDown";
 			this.buttonMoveCodeDown.Size = new System.Drawing.Size(48, 23);
 			this.buttonMoveCodeDown.TabIndex = 7;
@@ -193,58 +180,38 @@
 			this.buttonMoveCodeDown.UseVisualStyleBackColor = true;
 			this.buttonMoveCodeDown.Click += new System.EventHandler(this.buttonMoveCodeDown_Click);
 			// 
-			// buttonImport
-			// 
-			this.buttonImport.Location = new System.Drawing.Point(429, 10);
-			this.buttonImport.Name = "buttonImport";
-			this.buttonImport.Size = new System.Drawing.Size(70, 23);
-			this.buttonImport.TabIndex = 8;
-			this.buttonImport.Text = "&Import...";
-			this.buttonImport.UseVisualStyleBackColor = true;
-			this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
-			// 
 			// tvCodeExaminer
 			// 
-			this.tvCodeExaminer.Location = new System.Drawing.Point(217, 200);
+			this.tvCodeExaminer.Location = new System.Drawing.Point(218, 214);
 			this.tvCodeExaminer.Name = "tvCodeExaminer";
-			this.tvCodeExaminer.Size = new System.Drawing.Size(363, 241);
+			this.tvCodeExaminer.Size = new System.Drawing.Size(362, 259);
 			this.tvCodeExaminer.TabIndex = 9;
 			// 
 			// cboxCodeSets
 			// 
 			this.cboxCodeSets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboxCodeSets.FormattingEnabled = true;
-			this.cboxCodeSets.Location = new System.Drawing.Point(12, 38);
+			this.cboxCodeSets.Location = new System.Drawing.Point(12, 53);
 			this.cboxCodeSets.Name = "cboxCodeSets";
-			this.cboxCodeSets.Size = new System.Drawing.Size(131, 21);
+			this.cboxCodeSets.Size = new System.Drawing.Size(200, 21);
 			this.cboxCodeSets.TabIndex = 10;
 			this.cboxCodeSets.SelectedIndexChanged += new System.EventHandler(this.cboxCodeSets_SelectedIndexChanged);
-			// 
-			// buttonNewCodeSet
-			// 
-			this.buttonNewCodeSet.Location = new System.Drawing.Point(149, 38);
-			this.buttonNewCodeSet.Name = "buttonNewCodeSet";
-			this.buttonNewCodeSet.Size = new System.Drawing.Size(29, 23);
-			this.buttonNewCodeSet.TabIndex = 11;
-			this.buttonNewCodeSet.Text = "+";
-			this.buttonNewCodeSet.UseVisualStyleBackColor = true;
-			this.buttonNewCodeSet.Click += new System.EventHandler(this.buttonNewCodeSet_Click);
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 15);
+			this.label1.Location = new System.Drawing.Point(12, 30);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(51, 13);
+			this.label1.Size = new System.Drawing.Size(88, 13);
 			this.label1.TabIndex = 12;
-			this.label1.Text = "Code &File";
+			this.label1.Text = "Current Code File";
 			// 
 			// tbCodeFilePath
 			// 
-			this.tbCodeFilePath.Location = new System.Drawing.Point(67, 12);
+			this.tbCodeFilePath.Location = new System.Drawing.Point(106, 27);
 			this.tbCodeFilePath.Name = "tbCodeFilePath";
 			this.tbCodeFilePath.ReadOnly = true;
-			this.tbCodeFilePath.Size = new System.Drawing.Size(232, 20);
+			this.tbCodeFilePath.Size = new System.Drawing.Size(474, 20);
 			this.tbCodeFilePath.TabIndex = 13;
 			// 
 			// buttonRenameCodeSet
@@ -274,9 +241,9 @@
 			this.groupBox1.Controls.Add(this.buttonDeleteCode);
 			this.groupBox1.Controls.Add(this.buttonMoveCodeDown);
 			this.groupBox1.Controls.Add(this.lbCodes);
-			this.groupBox1.Location = new System.Drawing.Point(12, 67);
+			this.groupBox1.Location = new System.Drawing.Point(12, 82);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(200, 374);
+			this.groupBox1.Size = new System.Drawing.Size(200, 391);
 			this.groupBox1.TabIndex = 16;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "CodeSet Codes";
@@ -290,7 +257,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.buttonRenameCodeSet, 2, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelCodeSetName, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tbCodeSetName, 1, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(218, 39);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(218, 53);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -305,46 +272,117 @@
 			this.tbCodeSetName.Size = new System.Drawing.Size(183, 20);
 			this.tbCodeSetName.TabIndex = 16;
 			// 
-			// buttonDelCodeSet
+			// menuStrip1
 			// 
-			this.buttonDelCodeSet.Location = new System.Drawing.Point(184, 38);
-			this.buttonDelCodeSet.Name = "buttonDelCodeSet";
-			this.buttonDelCodeSet.Size = new System.Drawing.Size(29, 23);
-			this.buttonDelCodeSet.TabIndex = 18;
-			this.buttonDelCodeSet.Text = "X";
-			this.buttonDelCodeSet.UseVisualStyleBackColor = true;
-			this.buttonDelCodeSet.Click += new System.EventHandler(this.buttonDelCodeSet_Click);
+			this.menuStrip1.AllowMerge = false;
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.codeFileToolStripMenuItem,
+            this.codeSetToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(592, 24);
+			this.menuStrip1.TabIndex = 19;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// buttonExport
+			// codeFileToolStripMenuItem
 			// 
-			this.buttonExport.Location = new System.Drawing.Point(505, 9);
-			this.buttonExport.Name = "buttonExport";
-			this.buttonExport.Size = new System.Drawing.Size(75, 23);
-			this.buttonExport.TabIndex = 19;
-			this.buttonExport.Text = "&Export...";
-			this.buttonExport.UseVisualStyleBackColor = true;
-			this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+			this.codeFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCodeFileToolStripMenuItem,
+            this.openCodeFileToolStripMenuItem,
+            this.saveCodeFileToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.importPJ64CodesToolStripMenuItem,
+            this.exportPJ64CodesToolStripMenuItem});
+			this.codeFileToolStripMenuItem.Name = "codeFileToolStripMenuItem";
+			this.codeFileToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+			this.codeFileToolStripMenuItem.Text = "Code &File";
+			// 
+			// newCodeFileToolStripMenuItem
+			// 
+			this.newCodeFileToolStripMenuItem.Name = "newCodeFileToolStripMenuItem";
+			this.newCodeFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.newCodeFileToolStripMenuItem.Text = "&New Code File";
+			this.newCodeFileToolStripMenuItem.Click += new System.EventHandler(this.newCodeFileToolStripMenuItem_Click);
+			// 
+			// openCodeFileToolStripMenuItem
+			// 
+			this.openCodeFileToolStripMenuItem.Name = "openCodeFileToolStripMenuItem";
+			this.openCodeFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.openCodeFileToolStripMenuItem.Text = "&Open Code File...";
+			this.openCodeFileToolStripMenuItem.Click += new System.EventHandler(this.openCodeFileToolStripMenuItem_Click);
+			// 
+			// saveCodeFileToolStripMenuItem
+			// 
+			this.saveCodeFileToolStripMenuItem.Name = "saveCodeFileToolStripMenuItem";
+			this.saveCodeFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.saveCodeFileToolStripMenuItem.Text = "&Save Code File";
+			this.saveCodeFileToolStripMenuItem.Click += new System.EventHandler(this.saveCodeFileToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+			// 
+			// importPJ64CodesToolStripMenuItem
+			// 
+			this.importPJ64CodesToolStripMenuItem.Name = "importPJ64CodesToolStripMenuItem";
+			this.importPJ64CodesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.importPJ64CodesToolStripMenuItem.Text = "&Import PJ64 Codes...";
+			// 
+			// exportPJ64CodesToolStripMenuItem
+			// 
+			this.exportPJ64CodesToolStripMenuItem.Name = "exportPJ64CodesToolStripMenuItem";
+			this.exportPJ64CodesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.exportPJ64CodesToolStripMenuItem.Text = "&Export PJ64 Codes...";
+			// 
+			// codeSetToolStripMenuItem
+			// 
+			this.codeSetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewCodeSetToolStripMenuItem,
+            this.deleteCurrentCodeSetToolStripMenuItem,
+            this.cloneCurrentCodesetToolStripMenuItem});
+			this.codeSetToolStripMenuItem.Name = "codeSetToolStripMenuItem";
+			this.codeSetToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+			this.codeSetToolStripMenuItem.Text = "Code&Set";
+			// 
+			// addNewCodeSetToolStripMenuItem
+			// 
+			this.addNewCodeSetToolStripMenuItem.Name = "addNewCodeSetToolStripMenuItem";
+			this.addNewCodeSetToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.addNewCodeSetToolStripMenuItem.Text = "&Add New CodeSet";
+			this.addNewCodeSetToolStripMenuItem.Click += new System.EventHandler(this.addNewCodeSetToolStripMenuItem_Click);
+			// 
+			// deleteCurrentCodeSetToolStripMenuItem
+			// 
+			this.deleteCurrentCodeSetToolStripMenuItem.Name = "deleteCurrentCodeSetToolStripMenuItem";
+			this.deleteCurrentCodeSetToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.deleteCurrentCodeSetToolStripMenuItem.Text = "&Delete Current CodeSet";
+			this.deleteCurrentCodeSetToolStripMenuItem.Click += new System.EventHandler(this.deleteCurrentCodeSetToolStripMenuItem_Click);
+			// 
+			// cloneCurrentCodesetToolStripMenuItem
+			// 
+			this.cloneCurrentCodesetToolStripMenuItem.Name = "cloneCurrentCodesetToolStripMenuItem";
+			this.cloneCurrentCodesetToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.cloneCurrentCodesetToolStripMenuItem.Text = "&Clone Current Codeset";
+			this.cloneCurrentCodesetToolStripMenuItem.Click += new System.EventHandler(this.cloneCurrentCodesetToolStripMenuItem_Click);
 			// 
 			// GameSharkTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(592, 453);
-			this.Controls.Add(this.buttonExport);
-			this.Controls.Add(this.buttonDelCodeSet);
+			this.ClientSize = new System.Drawing.Size(592, 485);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.tbCodeFilePath);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.buttonNewCodeSet);
 			this.Controls.Add(this.cboxCodeSets);
 			this.Controls.Add(this.tvCodeExaminer);
-			this.Controls.Add(this.buttonImport);
 			this.Controls.Add(this.gbNewCode);
-			this.Controls.Add(this.buttonLoad);
-			this.Controls.Add(this.buttonSave);
+			this.Controls.Add(this.menuStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(600, 512);
 			this.Name = "GameSharkTool";
 			this.Text = "GameShark Tool";
 			this.gbNewCode.ResumeLayout(false);
@@ -352,15 +390,14 @@
 			this.groupBox1.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Button buttonSave;
-		private System.Windows.Forms.Button buttonLoad;
 		private System.Windows.Forms.ListBox lbCodes;
 		private System.Windows.Forms.GroupBox gbNewCode;
 		private System.Windows.Forms.Button buttonAddCode;
@@ -372,10 +409,8 @@
 		private System.Windows.Forms.Button buttonDeleteCode;
 		private System.Windows.Forms.Button buttonMoveCodeDown;
 		private System.Windows.Forms.Button buttonModifyCode;
-		private System.Windows.Forms.Button buttonImport;
 		private System.Windows.Forms.TreeView tvCodeExaminer;
 		private System.Windows.Forms.ComboBox cboxCodeSets;
-		private System.Windows.Forms.Button buttonNewCodeSet;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox tbCodeFilePath;
 		private System.Windows.Forms.Button buttonRenameCodeSet;
@@ -384,7 +419,17 @@
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TextBox tbCodeSetName;
-		private System.Windows.Forms.Button buttonDelCodeSet;
-		private System.Windows.Forms.Button buttonExport;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem codeFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem codeSetToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem newCodeFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem openCodeFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveCodeFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem importPJ64CodesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportPJ64CodesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem addNewCodeSetToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteCurrentCodeSetToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem cloneCurrentCodesetToolStripMenuItem;
 	}
 }
