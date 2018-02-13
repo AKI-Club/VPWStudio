@@ -64,6 +64,7 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -160,7 +161,8 @@
             this.movesToolStripMenuItem,
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
-            this.buildROMToolStripMenuItem});
+            this.buildROMToolStripMenuItem,
+            this.playROMToolStripMenuItem});
 			this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
 			resources.ApplyResources(this.projectToolStripMenuItem, "projectToolStripMenuItem");
 			// 
@@ -319,6 +321,13 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// playROMToolStripMenuItem
+			// 
+			this.playROMToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_PlayROM;
+			this.playROMToolStripMenuItem.Name = "playROMToolStripMenuItem";
+			resources.ApplyResources(this.playROMToolStripMenuItem, "playROMToolStripMenuItem");
+			this.playROMToolStripMenuItem.Click += new System.EventHandler(this.playROMToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -375,6 +384,7 @@
 		private System.Windows.Forms.ToolStripMenuItem nothingToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelGameType;
+		private System.Windows.Forms.ToolStripMenuItem playROMToolStripMenuItem;
 	}
 }
 

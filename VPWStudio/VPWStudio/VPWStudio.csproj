@@ -53,6 +53,12 @@
     <Compile Include="DataStructures\GameSharkCodeFile.cs" />
     <Compile Include="DataStructures\GameSharkCodeSet.cs" />
     <Compile Include="DataStructures\PackedFile.cs" />
+    <Compile Include="Dialogs\ProgramOptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ProgramOptionsDialog.Designer.cs">
+      <DependentUpon>ProgramOptionsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ProjectPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="Dialogs\NewProjectDialog.resx">
       <DependentUpon>NewProjectDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ProgramOptionsDialog.resx">
+      <DependentUpon>ProgramOptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ProjectPropertiesDialog.resx">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>

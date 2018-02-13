@@ -189,52 +189,64 @@
     <value>&amp;File</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Properties</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>199, 6</value>
   </data>
   <data name="arenasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="arenasToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Arenas</value>
   </data>
   <data name="costumesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="costumesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Costumes</value>
   </data>
   <data name="fileTableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="fileTableToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File Table</value>
   </data>
   <data name="movesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="movesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Moves</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Wrestlers</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>199, 6</value>
+  </data>
+  <data name="buildROMToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+B</value>
   </data>
   <data name="buildROMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="buildROMToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Build ROM...</value>
+  </data>
+  <data name="playROMToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F5</value>
+  </data>
+  <data name="playROMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="playROMToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pla&amp;y ROM</value>
   </data>
   <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -279,7 +291,7 @@
     <value>&amp;Tools</value>
   </data>
   <data name="nothingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>110, 22</value>
   </data>
   <data name="nothingToolStripMenuItem.Text" xml:space="preserve">
     <value>nothing</value>
@@ -1403,6 +1415,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playROMToolStripMenuItem.Name" xml:space="preserve">
+    <value>playROMToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;playROMToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

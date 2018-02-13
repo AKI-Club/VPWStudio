@@ -33,6 +33,11 @@ namespace VPWStudio
 		/// GameShark Tool form
 		/// </summary>
 		public GameSharkTool GSTool = null;
+
+		/// <summary>
+		/// Program options dialog
+		/// </summary>
+		public ProgramOptionsDialog ProgOptionsDialog = null;
 		#endregion
 
 		public MainForm(string[] args)
@@ -345,12 +350,48 @@ namespace VPWStudio
 		{
 			// build rom dialog? not yet designed
 		}
+
+		private void playROMToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				// no rom to play
+				return;
+			}
+
+			// playing ROM depends on program options
+			if (VPWStudio.Properties.Settings.Default.EmulatorPath.Equals(String.Empty))
+			{
+				// must set emulator path
+				return;
+			}
+
+			if (!File.Exists(VPWStudio.Properties.Settings.Default.EmulatorPath))
+			{
+				// invalid emulator path
+				return;
+			}
+
+			System.Diagnostics.Process.Start(
+				VPWStudio.Properties.Settings.Default.EmulatorPath,
+				Program.CurrentProject.Settings.InputRomPath
+			);
+		}
 		#endregion
 
 		#region Tool Menu Items
 		private void programOptionsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// program options dialog not yet designed
+			if (this.ProgOptionsDialog == null)
+			{
+				this.ProgOptionsDialog = new ProgramOptionsDialog();
+			}
+
+			if (this.ProgOptionsDialog.ShowDialog() == DialogResult.OK)
+			{
+				VPWStudio.Properties.Settings.Default.EmulatorPath = this.ProgOptionsDialog.EmulatorPath;
+				VPWStudio.Properties.Settings.Default.Save();
+			}
 		}
 
 		/// <summary>
