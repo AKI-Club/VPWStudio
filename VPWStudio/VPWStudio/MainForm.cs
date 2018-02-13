@@ -372,6 +372,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Packed File
+		/// </summary>
 		private void packedFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (this.PackFileTool == null)

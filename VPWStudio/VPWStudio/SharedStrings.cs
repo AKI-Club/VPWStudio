@@ -8,6 +8,7 @@ namespace VPWStudio
 	/// </summary>
 	public static class SharedStrings
 	{
+		// [ja] バープロスタジオ
 		public static string MainForm_Title = "VPW Studio";
 
 		#region Save/Load Dialog Filter Strings
@@ -16,6 +17,9 @@ namespace VPWStudio
 		public static string FileFilter_N64Rom = "Z64 format N64 ROMs (*.z64)|*.z64|All Files (*.*)|*.*";
 		public static string FileFilter_Project = "VPW Studio Project File (*.vpwsproj)|*.vpwsproj|All Files (*.*)|*.*";
 		public static string FileFilter_GameSharkCodes = "GameShark Code File (*.gscodes)|*.gscodes|All Files (*.*)|*.*";
+		#endregion
+
+		#region Error Message Content
 		#endregion
 	}
 }

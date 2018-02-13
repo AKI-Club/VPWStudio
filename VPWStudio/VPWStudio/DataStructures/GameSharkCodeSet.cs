@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -209,6 +209,24 @@ namespace VPWStudio
 
 		#region Project64 Code Format Read/Write Routines
 
+		/// <summary>
+		/// Convert a GameSharkCodeSet to a Project64 cheat.
+		/// </summary>
+		/// <param name="codeNum">Number of code in PJ64 cheat file.</param>
+		/// <param name="sw">StreamWriter instance</param>
+		public void WriteCode_PJ64(int codeNum, StreamWriter sw)
+		{
+			string cheat = String.Empty;
+			for (int i = 0; i < this.Codes.Count; i++)
+			{
+				cheat += this.Codes[i].ToString();
+				if (i < this.Codes.Count - 1)
+				{
+					cheat += ",";
+				}
+			}
+			sw.WriteLine(String.Format("Cheat{0}=\"{1}\",{2}", codeNum, this.Name, cheat));
+		}
 		#endregion
 	}
 }
