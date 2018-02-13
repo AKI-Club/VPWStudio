@@ -413,14 +413,23 @@ namespace VPWStudio
 			if (this.ModelToolForm == null)
 			{
 				this.ModelToolForm = new ModelTool();
+				this.ModelToolForm.MdiParent = this;
+				this.ModelToolForm.Show();
 			}
-			this.ModelToolForm.MdiParent = this;
-			this.ModelToolForm.Show();
-
-			// if it was minimized, show it again.
-			if (this.ModelToolForm.WindowState == FormWindowState.Minimized)
+			else
 			{
-				this.ModelToolForm.WindowState = FormWindowState.Normal;
+				if (this.ModelToolForm.IsDisposed)
+				{
+					this.ModelToolForm = new ModelTool();
+				}
+
+				// if it was minimized, show it again.
+				if (this.ModelToolForm.WindowState == FormWindowState.Minimized)
+				{
+					this.ModelToolForm.WindowState = FormWindowState.Normal;
+				}
+				this.ModelToolForm.MdiParent = this;
+				this.ModelToolForm.Show();
 			}
 		}
 
@@ -432,14 +441,52 @@ namespace VPWStudio
 			if (this.PackFileTool == null)
 			{
 				this.PackFileTool = new PackedFileTool();
+				this.PackFileTool.MdiParent = this;
+				this.PackFileTool.Show();
 			}
-			this.PackFileTool.MdiParent = this;
-			this.PackFileTool.Show();
-
-			// if it was minimized, show it again.
-			if (this.PackFileTool.WindowState == FormWindowState.Minimized)
+			else
 			{
-				this.PackFileTool.WindowState = FormWindowState.Normal;
+				if (this.PackFileTool.IsDisposed)
+				{
+					this.PackFileTool = new PackedFileTool();
+				}
+
+				// if it was minimized, show it again.
+				if (this.PackFileTool.WindowState == FormWindowState.Minimized)
+				{
+					this.PackFileTool.WindowState = FormWindowState.Normal;
+				}
+				this.ModelToolForm.MdiParent = this;
+				this.ModelToolForm.Show();
+			}
+		}
+
+		/// <summary>
+		/// GameShark Code Tool
+		/// </summary>
+		/// currently a little broken, but not the form's fault...?
+		private void sharkTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (this.GSTool == null)
+			{
+				this.GSTool = new GameSharkTool();
+				this.GSTool.MdiParent = this;
+				this.GSTool.Show();
+			}
+			else
+			{
+				if (this.GSTool.IsDisposed)
+				{
+					this.GSTool = new GameSharkTool();
+				}
+
+				// if it was minimized, show it again.
+				if (this.GSTool.WindowState == FormWindowState.Minimized)
+				{
+					this.GSTool.WindowState = FormWindowState.Normal;
+				}
+				this.GSTool.MdiParent = this;
+				this.GSTool.Show();
 			}
 		}
 		#endregion
@@ -525,13 +572,6 @@ namespace VPWStudio
 		}
 		#endregion
 
-		// currently a little broken, but not the form's fault...
-		private void sharkTestToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			GameSharkTool gst = new GameSharkTool();
-			gst.MdiParent = this;
-			gst.Show();
-		}
 
 		/// <summary>
 		/// 
