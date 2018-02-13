@@ -31,6 +31,9 @@
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpCustomLoc = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetCustomLocFile = new System.Windows.Forms.Button();
+			this.tbCustomLocationFile = new System.Windows.Forms.TextBox();
 			this.labelOutROM = new System.Windows.Forms.Label();
 			this.labelProjectName = new System.Windows.Forms.Label();
 			this.tbProjectName = new System.Windows.Forms.TextBox();
@@ -46,13 +49,10 @@
 			this.buttonSetOutROM = new System.Windows.Forms.Button();
 			this.tbOutROMPath = new System.Windows.Forms.TextBox();
 			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
-			this.tlpCustomLoc = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetCustomLocFile = new System.Windows.Forms.Button();
-			this.tbCustomLocationFile = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpCustomLoc.SuspendLayout();
 			this.tlpRomFile.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
-			this.tlpCustomLoc.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -104,6 +104,42 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 220);
 			this.tableLayoutPanel1.TabIndex = 2;
+			// 
+			// tlpCustomLoc
+			// 
+			this.tlpCustomLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCustomLoc.ColumnCount = 2;
+			this.tlpCustomLoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tlpCustomLoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpCustomLoc.Controls.Add(this.buttonSetCustomLocFile, 1, 0);
+			this.tlpCustomLoc.Controls.Add(this.tbCustomLocationFile, 0, 0);
+			this.tlpCustomLoc.Location = new System.Drawing.Point(134, 185);
+			this.tlpCustomLoc.Name = "tlpCustomLoc";
+			this.tlpCustomLoc.RowCount = 1;
+			this.tlpCustomLoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCustomLoc.Size = new System.Drawing.Size(333, 30);
+			this.tlpCustomLoc.TabIndex = 9;
+			// 
+			// buttonSetCustomLocFile
+			// 
+			this.buttonSetCustomLocFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetCustomLocFile.Enabled = false;
+			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(302, 3);
+			this.buttonSetCustomLocFile.Name = "buttonSetCustomLocFile";
+			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(28, 23);
+			this.buttonSetCustomLocFile.TabIndex = 1;
+			this.buttonSetCustomLocFile.Text = "...";
+			this.buttonSetCustomLocFile.UseVisualStyleBackColor = true;
+			this.buttonSetCustomLocFile.Click += new System.EventHandler(this.buttonSetCustomLocFile_Click);
+			// 
+			// tbCustomLocationFile
+			// 
+			this.tbCustomLocationFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCustomLocationFile.Enabled = false;
+			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 5);
+			this.tbCustomLocationFile.Name = "tbCustomLocationFile";
+			this.tbCustomLocationFile.Size = new System.Drawing.Size(293, 20);
+			this.tbCustomLocationFile.TabIndex = 2;
 			// 
 			// labelOutROM
 			// 
@@ -261,42 +297,6 @@
 			this.chbCustomLocation.UseVisualStyleBackColor = true;
 			this.chbCustomLocation.Click += new System.EventHandler(this.chbCustomLocation_Click);
 			// 
-			// tlpCustomLoc
-			// 
-			this.tlpCustomLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpCustomLoc.ColumnCount = 2;
-			this.tlpCustomLoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tlpCustomLoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tlpCustomLoc.Controls.Add(this.buttonSetCustomLocFile, 1, 0);
-			this.tlpCustomLoc.Controls.Add(this.tbCustomLocationFile, 0, 0);
-			this.tlpCustomLoc.Location = new System.Drawing.Point(134, 185);
-			this.tlpCustomLoc.Name = "tlpCustomLoc";
-			this.tlpCustomLoc.RowCount = 1;
-			this.tlpCustomLoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpCustomLoc.Size = new System.Drawing.Size(333, 30);
-			this.tlpCustomLoc.TabIndex = 9;
-			// 
-			// buttonSetCustomLocFile
-			// 
-			this.buttonSetCustomLocFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetCustomLocFile.Enabled = false;
-			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(302, 3);
-			this.buttonSetCustomLocFile.Name = "buttonSetCustomLocFile";
-			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(28, 23);
-			this.buttonSetCustomLocFile.TabIndex = 1;
-			this.buttonSetCustomLocFile.Text = "...";
-			this.buttonSetCustomLocFile.UseVisualStyleBackColor = true;
-			this.buttonSetCustomLocFile.Click += new System.EventHandler(this.buttonSetCustomLocFile_Click);
-			// 
-			// tbCustomLocationFile
-			// 
-			this.tbCustomLocationFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCustomLocationFile.Enabled = false;
-			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 5);
-			this.tbCustomLocationFile.Name = "tbCustomLocationFile";
-			this.tbCustomLocationFile.Size = new System.Drawing.Size(293, 20);
-			this.tbCustomLocationFile.TabIndex = 2;
-			// 
 			// NewProjectDialog
 			// 
 			this.AcceptButton = this.buttonOK;
@@ -310,16 +310,17 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(500, 300);
 			this.Name = "NewProjectDialog";
 			this.Text = "New Project";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tlpCustomLoc.ResumeLayout(false);
+			this.tlpCustomLoc.PerformLayout();
 			this.tlpRomFile.ResumeLayout(false);
 			this.tlpRomFile.PerformLayout();
 			this.tlpOutROM.ResumeLayout(false);
 			this.tlpOutROM.PerformLayout();
-			this.tlpCustomLoc.ResumeLayout(false);
-			this.tlpCustomLoc.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

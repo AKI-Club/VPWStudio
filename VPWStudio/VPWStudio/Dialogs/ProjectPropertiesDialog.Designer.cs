@@ -31,7 +31,9 @@
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
+			this.tlpGameSharkCodeFile = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetGSCodefile = new System.Windows.Forms.Button();
+			this.tbGSCodeFile = new System.Windows.Forms.TextBox();
 			this.labelProjectName = new System.Windows.Forms.Label();
 			this.labelAuthors = new System.Windows.Forms.Label();
 			this.labelGameType = new System.Windows.Forms.Label();
@@ -49,15 +51,13 @@
 			this.tlpCustomLoc = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetCustomLocFile = new System.Windows.Forms.Button();
 			this.tbCustomLocationFile = new System.Windows.Forms.TextBox();
+			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
 			this.labelGSCodeFile = new System.Windows.Forms.Label();
-			this.tlpGameSharkCodeFile = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetGSCodefile = new System.Windows.Forms.Button();
-			this.tbGSCodeFile = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.tlpBaseROM.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
-			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -113,17 +113,39 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 220);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
-			// chbCustomLocation
+			// tlpGameSharkCodeFile
 			// 
-			this.chbCustomLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.chbCustomLocation.AutoSize = true;
-			this.chbCustomLocation.Location = new System.Drawing.Point(3, 194);
-			this.chbCustomLocation.Name = "chbCustomLocation";
-			this.chbCustomLocation.Size = new System.Drawing.Size(125, 17);
-			this.chbCustomLocation.TabIndex = 10;
-			this.chbCustomLocation.Text = "Custom &Location File";
-			this.chbCustomLocation.UseVisualStyleBackColor = true;
-			this.chbCustomLocation.Click += new System.EventHandler(this.chbCustomLocation_Click);
+			this.tlpGameSharkCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpGameSharkCodeFile.ColumnCount = 2;
+			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpGameSharkCodeFile.Controls.Add(this.buttonSetGSCodefile, 1, 0);
+			this.tlpGameSharkCodeFile.Controls.Add(this.tbGSCodeFile, 0, 0);
+			this.tlpGameSharkCodeFile.Location = new System.Drawing.Point(134, 158);
+			this.tlpGameSharkCodeFile.Name = "tlpGameSharkCodeFile";
+			this.tlpGameSharkCodeFile.RowCount = 1;
+			this.tlpGameSharkCodeFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpGameSharkCodeFile.Size = new System.Drawing.Size(333, 25);
+			this.tlpGameSharkCodeFile.TabIndex = 13;
+			// 
+			// buttonSetGSCodefile
+			// 
+			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetGSCodefile.Location = new System.Drawing.Point(302, 3);
+			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
+			this.buttonSetGSCodefile.Size = new System.Drawing.Size(28, 19);
+			this.buttonSetGSCodefile.TabIndex = 1;
+			this.buttonSetGSCodefile.Text = "...";
+			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
+			this.buttonSetGSCodefile.Click += new System.EventHandler(this.buttonSetGSCodefile_Click);
+			// 
+			// tbGSCodeFile
+			// 
+			this.tbGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbGSCodeFile.Location = new System.Drawing.Point(3, 3);
+			this.tbGSCodeFile.Name = "tbGSCodeFile";
+			this.tbGSCodeFile.Size = new System.Drawing.Size(293, 20);
+			this.tbGSCodeFile.TabIndex = 2;
 			// 
 			// labelProjectName
 			// 
@@ -305,6 +327,18 @@
 			this.tbCustomLocationFile.Size = new System.Drawing.Size(293, 20);
 			this.tbCustomLocationFile.TabIndex = 2;
 			// 
+			// chbCustomLocation
+			// 
+			this.chbCustomLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.chbCustomLocation.AutoSize = true;
+			this.chbCustomLocation.Location = new System.Drawing.Point(3, 194);
+			this.chbCustomLocation.Name = "chbCustomLocation";
+			this.chbCustomLocation.Size = new System.Drawing.Size(125, 17);
+			this.chbCustomLocation.TabIndex = 10;
+			this.chbCustomLocation.Text = "Custom &Location File";
+			this.chbCustomLocation.UseVisualStyleBackColor = true;
+			this.chbCustomLocation.Click += new System.EventHandler(this.chbCustomLocation_Click);
+			// 
 			// labelGSCodeFile
 			// 
 			this.labelGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -314,40 +348,6 @@
 			this.labelGSCodeFile.Size = new System.Drawing.Size(125, 13);
 			this.labelGSCodeFile.TabIndex = 12;
 			this.labelGSCodeFile.Text = "GameShark &Code File";
-			// 
-			// tlpGameSharkCodeFile
-			// 
-			this.tlpGameSharkCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpGameSharkCodeFile.ColumnCount = 2;
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tlpGameSharkCodeFile.Controls.Add(this.buttonSetGSCodefile, 1, 0);
-			this.tlpGameSharkCodeFile.Controls.Add(this.tbGSCodeFile, 0, 0);
-			this.tlpGameSharkCodeFile.Location = new System.Drawing.Point(134, 158);
-			this.tlpGameSharkCodeFile.Name = "tlpGameSharkCodeFile";
-			this.tlpGameSharkCodeFile.RowCount = 1;
-			this.tlpGameSharkCodeFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpGameSharkCodeFile.Size = new System.Drawing.Size(333, 25);
-			this.tlpGameSharkCodeFile.TabIndex = 13;
-			// 
-			// buttonSetGSCodefile
-			// 
-			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetGSCodefile.Location = new System.Drawing.Point(302, 3);
-			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
-			this.buttonSetGSCodefile.Size = new System.Drawing.Size(28, 19);
-			this.buttonSetGSCodefile.TabIndex = 1;
-			this.buttonSetGSCodefile.Text = "...";
-			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
-			this.buttonSetGSCodefile.Click += new System.EventHandler(this.buttonSetGSCodefile_Click);
-			// 
-			// tbGSCodeFile
-			// 
-			this.tbGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbGSCodeFile.Location = new System.Drawing.Point(3, 3);
-			this.tbGSCodeFile.Name = "tbGSCodeFile";
-			this.tbGSCodeFile.Size = new System.Drawing.Size(293, 20);
-			this.tbGSCodeFile.TabIndex = 2;
 			// 
 			// ProjectPropertiesDialog
 			// 
@@ -362,18 +362,19 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(500, 300);
 			this.Name = "ProjectPropertiesDialog";
 			this.Text = "Project Properties";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tlpGameSharkCodeFile.ResumeLayout(false);
+			this.tlpGameSharkCodeFile.PerformLayout();
 			this.tlpBaseROM.ResumeLayout(false);
 			this.tlpBaseROM.PerformLayout();
 			this.tlpOutROM.ResumeLayout(false);
 			this.tlpOutROM.PerformLayout();
 			this.tlpCustomLoc.ResumeLayout(false);
 			this.tlpCustomLoc.PerformLayout();
-			this.tlpGameSharkCodeFile.ResumeLayout(false);
-			this.tlpGameSharkCodeFile.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
