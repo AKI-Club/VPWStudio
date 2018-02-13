@@ -40,35 +40,35 @@ namespace VPWStudio
 			// project name must not be empty
 			if (tbProjectName.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide a project name.","New Project Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+				MessageBox.Show("Must provide a project name.", SharedStrings.MainForm_Title, MessageBoxButtons.OK,MessageBoxIcon.Error);
 				return;
 			}
 
 			// input ROM path must not be empty
 			if (tbRomFile.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide path to a ROM.", "New Project Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Must provide path to a ROM.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
 			// input ROM must exist
 			if (!File.Exists(tbRomFile.Text))
 			{
-				MessageBox.Show(String.Format("ROM file not found at\n{0}",Path.GetFullPath(tbRomFile.Text)), "New Project Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(String.Format("ROM file not found at\n{0}",Path.GetFullPath(tbRomFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
 			// if using custom location file, path to custom location must not be empty
 			if (chbCustomLocation.Checked && tbCustomLocationFile.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide custom location path if using custom location file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Must provide custom location path if using custom location file.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
 			// custom location file must exist
 			if (chbCustomLocation.Checked && !File.Exists(tbCustomLocationFile.Text))
 			{
-				MessageBox.Show(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			#endregion
