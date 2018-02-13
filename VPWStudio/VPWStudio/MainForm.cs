@@ -15,9 +15,9 @@ namespace VPWStudio
 	{
 		#region Children Forms
 		/// <summary>
-		/// Polygon/Model Tool form
+		/// Model Tool form
 		/// </summary>
-		public ModelTool PolyTool = null;
+		public ModelTool ModelToolForm = null;
 
 		/// <summary>
 		/// Project Properties form
@@ -28,6 +28,11 @@ namespace VPWStudio
 		/// Packed File Tool form
 		/// </summary>
 		public PackedFileTool PackFileTool = null;
+
+		/// <summary>
+		/// GameShark Tool form
+		/// </summary>
+		public GameSharkTool GSTool = null;
 		#endregion
 
 		public MainForm(string[] args)
@@ -56,7 +61,7 @@ namespace VPWStudio
 				// is it "exit without saving?" "save changes before exiting?"
 
 				// omg do you want to save the changes first
-				if (MessageBox.Show("There are unsaved project changes.\n\nDo you want to discard the changes and exit?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+				if (MessageBox.Show("There are unsaved project changes.\n\nDo you want to discard the changes and exit?", SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
 				{
 					e.Cancel = true;
 				}
@@ -65,6 +70,9 @@ namespace VPWStudio
 		#endregion
 
 		#region File Menu Items
+		/// <summary>
+		/// New Project
+		/// </summary>
 		private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
@@ -92,17 +100,23 @@ namespace VPWStudio
 					// load custom location file
 					Program.CurLocationFile = new LocationFile();
 					Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
+					Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
 				}
 				else
 				{
 					// load location file based on game name
 					Program.CurLocationFile = new LocationFile();
 					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
-					Program.CurLocationFile.LoadFile(Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn);
+					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
+					Program.CurLocationFile.LoadFile(locPath);
+					Program.CurLocationFilePath = locPath;
 				}
 			}
 		}
 
+		/// <summary>
+		/// Open Project
+		/// </summary>
 		private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
@@ -123,22 +137,46 @@ namespace VPWStudio
 				UpdateStatusBar();
 				UpdateTitleBar();
 
+				// load input ROM if it exists.
+				if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
+				{
+					Program.CurrentInputROM = new Z64Rom();
+					Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+				}
+				else
+				{
+					// unable to find input ROM, please see project settings.
+					MessageBox.Show(
+						String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
+						SharedStrings.MainForm_Title,
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Error
+					);
+					Program.CurrentInputROM = null;
+				}
+
 				// load location file
 				Program.CurLocationFile = new LocationFile();
 				if (Program.CurrentProject.Settings.UseCustomLocationFile)
 				{
 					// custom locations
 					Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
+					Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
 				}
 				else
 				{
 					// default location file
 					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
-					Program.CurLocationFile.LoadFile(Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn);
+					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
+					Program.CurLocationFile.LoadFile(locPath);
+					Program.CurLocationFilePath = locPath;
 				}
 			}
 		}
 
+		/// <summary>
+		/// Save Project
+		/// </summary>
 		private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -166,6 +204,9 @@ namespace VPWStudio
 			UpdateTitleBar();
 		}
 
+		/// <summary>
+		/// Save Project As
+		/// </summary>
 		private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -179,11 +220,29 @@ namespace VPWStudio
 			sfd.Filter = SharedStrings.FileFilter_Project;
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
+				// in case someone decides to do "Save As" first...
+				if (Program.CurProjectPath.Equals(String.Empty))
+				{
+					Program.CurProjectPath = sfd.FileName;
+				}
+
+				// hack to unset UnsavedChanges if saving over the existing file.
+				if (Path.GetFullPath(sfd.FileName).Equals(Program.CurProjectPath))
+				{
+					Program.UnsavedChanges = false;
+					UpdateTitleBar();
+				}
+
 				// write to specified file
 				Program.CurrentProject.SaveFile(sfd.FileName);
 			}
 		}
 
+		/// <summary>
+		/// Close current project.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void closeProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			// can't close something that isn't there...
@@ -201,9 +260,13 @@ namespace VPWStudio
 			Program.CurProjectPath = String.Empty;
 			Program.UnsavedChanges = false;
 			Program.CurLocationFile = null;
+			Program.CurLocationFilePath = String.Empty;
+			Program.CurrentInputROM = null;
+			Program.CurrentOutputROM = null;
+
+			UpdateTitleBar();
 			UpdateValidMenus();
 			UpdateStatusBar();
-			UpdateTitleBar();
 		}
 		#endregion
 
@@ -225,8 +288,34 @@ namespace VPWStudio
 
 			if (this.ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
+				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
+
 				Program.CurrentProject.Settings.DeepCopy(this.ProjPropDialog.NewSettings);
 				Program.UnsavedChanges = true;
+
+				// check to see if Input ROM was changed
+				if (Program.CurrentInputROM == null)
+				{
+					if (Program.CurrentProject.Settings.InputRomPath != oldInRomPath)
+					{
+						// attempt to load
+						if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
+						{
+							Program.CurrentInputROM = new Z64Rom();
+							Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+						}
+						else
+						{
+							MessageBox.Show(
+								String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
+								SharedStrings.MainForm_Title,
+								MessageBoxButtons.OK,
+								MessageBoxIcon.Error
+							);
+						}
+					}
+				}
+
 				UpdateTitleBar();
 				UpdateStatusBar();
 			}
@@ -265,21 +354,21 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Polygon Data
+		/// Model Data
 		/// </summary>
-		private void polygonDataToolStripMenuItem_Click(object sender, EventArgs e)
+		private void modelDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (this.PolyTool == null)
+			if (this.ModelToolForm == null)
 			{
-				this.PolyTool = new ModelTool();
+				this.ModelToolForm = new ModelTool();
 			}
-			this.PolyTool.MdiParent = this;
-			this.PolyTool.Show();
+			this.ModelToolForm.MdiParent = this;
+			this.ModelToolForm.Show();
 
 			// if it was minimized, show it again.
-			if (this.PolyTool.WindowState == FormWindowState.Minimized)
+			if (this.ModelToolForm.WindowState == FormWindowState.Minimized)
 			{
-				this.PolyTool.WindowState = FormWindowState.Normal;
+				this.ModelToolForm.WindowState = FormWindowState.Normal;
 			}
 		}
 
@@ -306,7 +395,7 @@ namespace VPWStudio
 			// temporary thing
 			MessageBox.Show(
 				String.Format("VPW Studio (indev version {0}) by freem", Application.ProductVersion),
-				"About VPW Studio",
+				SharedStrings.MainForm_Title,
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
 			);
@@ -387,6 +476,10 @@ namespace VPWStudio
 			gst.Show();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		private Bitmap GetGameIcon_16px()
 		{
 			if (Program.CurrentProject == null)

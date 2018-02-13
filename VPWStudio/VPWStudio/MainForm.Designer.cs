@@ -51,7 +51,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.polygonDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.packedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,7 +214,7 @@
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.polygonDataToolStripMenuItem,
+            this.modelDataToolStripMenuItem,
             this.packedFileToolStripMenuItem,
             this.toolStripSeparator7,
             this.sharkTestToolStripMenuItem,
@@ -223,11 +223,11 @@
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
 			// 
-			// polygonDataToolStripMenuItem
+			// modelDataToolStripMenuItem
 			// 
-			this.polygonDataToolStripMenuItem.Name = "polygonDataToolStripMenuItem";
-			resources.ApplyResources(this.polygonDataToolStripMenuItem, "polygonDataToolStripMenuItem");
-			this.polygonDataToolStripMenuItem.Click += new System.EventHandler(this.polygonDataToolStripMenuItem_Click);
+			this.modelDataToolStripMenuItem.Name = "modelDataToolStripMenuItem";
+			resources.ApplyResources(this.modelDataToolStripMenuItem, "modelDataToolStripMenuItem");
+			this.modelDataToolStripMenuItem.Click += new System.EventHandler(this.modelDataToolStripMenuItem_Click);
 			// 
 			// packedFileToolStripMenuItem
 			// 
@@ -342,7 +342,7 @@
 		private System.Windows.Forms.ToolStripMenuItem aboutVPWStudioToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem polygonDataToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem modelDataToolStripMenuItem;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelCurFile;
 		private System.Windows.Forms.ToolStripMenuItem projectPropertiesToolStripMenuItem;
