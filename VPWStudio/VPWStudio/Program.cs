@@ -24,6 +24,16 @@ namespace VPWStudio
 		/// Are there unsaved changes to the current project?
 		/// </summary>
 		public static bool UnsavedChanges = false;
+
+		/// <summary>
+		/// Current input ROM file.
+		/// </summary>
+		public static Z64Rom CurrentInputROM = null;
+
+		/// <summary>
+		/// Current output ROM file.
+		/// </summary>
+		public static Z64Rom CurrentOutputROM = null;
 		#endregion
 
 		#region Project Sub-Files
@@ -56,6 +66,8 @@ namespace VPWStudio
 		[STAThread]
 		static void Main(string[] args)
 		{
+			Crc32.GenerateTable();
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm(args));
