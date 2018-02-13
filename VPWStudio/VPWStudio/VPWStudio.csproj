@@ -192,6 +192,8 @@
     <None Include="Resources\Flag_Japan.png" />
     <None Include="Resources\Flag_USA.png" />
     <None Include="Resources\Flag_PAL.png" />
+    <None Include="Resources\icon_16px.png" />
+    <None Include="Resources\shark_16px.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

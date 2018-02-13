@@ -242,6 +242,7 @@
 			// 
 			// sharkTestToolStripMenuItem
 			// 
+			this.sharkTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_GameShark;
 			this.sharkTestToolStripMenuItem.Name = "sharkTestToolStripMenuItem";
 			resources.ApplyResources(this.sharkTestToolStripMenuItem, "sharkTestToolStripMenuItem");
 			this.sharkTestToolStripMenuItem.Click += new System.EventHandler(this.sharkTestToolStripMenuItem_Click);
@@ -278,6 +279,7 @@
 			// 
 			// aboutVPWStudioToolStripMenuItem
 			// 
+			this.aboutVPWStudioToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_VPWStudio;
 			this.aboutVPWStudioToolStripMenuItem.Name = "aboutVPWStudioToolStripMenuItem";
 			resources.ApplyResources(this.aboutVPWStudioToolStripMenuItem, "aboutVPWStudioToolStripMenuItem");
 			this.aboutVPWStudioToolStripMenuItem.Click += new System.EventHandler(this.aboutVPWStudioToolStripMenuItem_Click);
