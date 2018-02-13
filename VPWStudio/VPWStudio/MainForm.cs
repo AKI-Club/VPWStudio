@@ -348,7 +348,15 @@ namespace VPWStudio
 
 		private void buildROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// build rom dialog? not yet designed
+			if (Program.CurrentProject == null)
+			{
+				// no project loaded to build ROM for
+				return;
+			}
+
+			// todo: check if output rom path is a valid one
+
+			// perform "build" process
 		}
 
 		private void playROMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -372,6 +380,8 @@ namespace VPWStudio
 				// invalid emulator path
 				return;
 			}
+
+			// todo: rebuild before loading?
 
 			System.Diagnostics.Process.Start(
 				VPWStudio.Properties.Settings.Default.EmulatorPath,
@@ -478,10 +488,12 @@ namespace VPWStudio
 			// Project menu
 			projectPropertiesToolStripMenuItem.Enabled = projFileOpen;
 			arenasToolStripMenuItem.Enabled = projFileOpen;
+			costumesToolStripMenuItem.Enabled = projFileOpen;
 			fileTableToolStripMenuItem.Enabled = projFileOpen;
 			movesToolStripMenuItem.Enabled = projFileOpen;
 			wrestlersToolStripMenuItem.Enabled = projFileOpen;
 			buildROMToolStripMenuItem.Enabled = projFileOpen;
+			playROMToolStripMenuItem.Enabled = projFileOpen;
 		}
 
 		/// <summary>
