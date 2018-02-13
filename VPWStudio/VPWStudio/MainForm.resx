@@ -189,49 +189,49 @@
     <value>&amp;File</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Properties</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="arenasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="arenasToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Arenas</value>
   </data>
   <data name="costumesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="costumesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Costumes</value>
   </data>
   <data name="fileTableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="fileTableToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File Table</value>
   </data>
   <data name="movesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="movesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Moves</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Wrestlers</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="buildROMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="buildROMToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Build ROM...</value>
@@ -279,7 +279,7 @@
     <value>&amp;Tools</value>
   </data>
   <data name="nothingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="nothingToolStripMenuItem.Text" xml:space="preserve">
     <value>nothing</value>

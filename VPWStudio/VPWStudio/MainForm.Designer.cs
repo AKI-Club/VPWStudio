@@ -96,12 +96,14 @@
 			// 
 			// newProjectToolStripMenuItem
 			// 
+			this.newProjectToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_New;
 			this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
 			resources.ApplyResources(this.newProjectToolStripMenuItem, "newProjectToolStripMenuItem");
 			this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
 			// 
 			// openProjectToolStripMenuItem
 			// 
+			this.openProjectToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Open;
 			this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
 			resources.ApplyResources(this.openProjectToolStripMenuItem, "openProjectToolStripMenuItem");
 			this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
@@ -113,12 +115,14 @@
 			// 
 			// saveProjectToolStripMenuItem
 			// 
+			this.saveProjectToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
 			resources.ApplyResources(this.saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
 			this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
 			// 
 			// saveProjectAsToolStripMenuItem
 			// 
+			this.saveProjectAsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_SaveAs;
 			this.saveProjectAsToolStripMenuItem.Name = "saveProjectAsToolStripMenuItem";
 			resources.ApplyResources(this.saveProjectAsToolStripMenuItem, "saveProjectAsToolStripMenuItem");
 			this.saveProjectAsToolStripMenuItem.Click += new System.EventHandler(this.saveProjectAsToolStripMenuItem_Click);
@@ -179,11 +183,13 @@
 			// 
 			// costumesToolStripMenuItem
 			// 
+			this.costumesToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Costumes;
 			this.costumesToolStripMenuItem.Name = "costumesToolStripMenuItem";
 			resources.ApplyResources(this.costumesToolStripMenuItem, "costumesToolStripMenuItem");
 			// 
 			// fileTableToolStripMenuItem
 			// 
+			this.fileTableToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_FileTable;
 			this.fileTableToolStripMenuItem.Name = "fileTableToolStripMenuItem";
 			resources.ApplyResources(this.fileTableToolStripMenuItem, "fileTableToolStripMenuItem");
 			this.fileTableToolStripMenuItem.Click += new System.EventHandler(this.fileTableToolStripMenuItem_Click);
@@ -207,6 +213,7 @@
 			// 
 			// buildROMToolStripMenuItem
 			// 
+			this.buildROMToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_BuildROM;
 			this.buildROMToolStripMenuItem.Name = "buildROMToolStripMenuItem";
 			resources.ApplyResources(this.buildROMToolStripMenuItem, "buildROMToolStripMenuItem");
 			this.buildROMToolStripMenuItem.Click += new System.EventHandler(this.buildROMToolStripMenuItem_Click);
@@ -254,6 +261,7 @@
 			// 
 			// programOptionsToolStripMenuItem
 			// 
+			this.programOptionsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_ProgramOptions;
 			this.programOptionsToolStripMenuItem.Name = "programOptionsToolStripMenuItem";
 			resources.ApplyResources(this.programOptionsToolStripMenuItem, "programOptionsToolStripMenuItem");
 			this.programOptionsToolStripMenuItem.Click += new System.EventHandler(this.programOptionsToolStripMenuItem_Click);

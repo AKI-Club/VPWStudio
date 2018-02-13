@@ -194,6 +194,17 @@
     <None Include="Resources\Flag_PAL.png" />
     <None Include="Resources\icon_16px.png" />
     <None Include="Resources\shark_16px.png" />
+    <None Include="Resources\buildrom.png" />
+    <None Include="Resources\costumes.png" />
+    <None Include="Resources\extractrom.png" />
+    <None Include="Resources\filetable.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\playrom.png" />
+    <None Include="Resources\programoptions.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\saveas.png" />
+    <None Include="Resources\stables.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
