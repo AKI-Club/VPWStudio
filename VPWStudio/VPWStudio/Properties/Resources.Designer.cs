@@ -223,6 +223,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_ProjectProperties {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_ProjectProperties", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuIcon16_Save {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_Save", resourceCulture);

@@ -69,7 +69,7 @@
     <Compile Include="ProgStructures\GameDefinition.cs" />
     <Compile Include="ProgStructures\GenericEnums.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
-    <Compile Include="ProgStructures\ProjectFile.cs" />
+    <Compile Include="ProgStructures\Project\ProjectFile.cs" />
     <Compile Include="Dialogs\NewProjectDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +83,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgStructures\Project\ProjectSettings.cs" />
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedStrings.cs" />
@@ -214,7 +215,11 @@
     <None Include="Resources\save.png" />
     <None Include="Resources\saveas.png" />
     <None Include="Resources\stables.png" />
+    <None Include="Resources\projectproperties.png" />
     <Content Include="VPWStudio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Editors\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

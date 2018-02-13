@@ -355,7 +355,8 @@ namespace VPWStudio
 		{
 			if (Program.CurrentProject == null)
 			{
-				// no rom to play
+				// no project loaded to play ROM of
+				// todo: allow launching the emulator (alone) anyways?
 				return;
 			}
 
