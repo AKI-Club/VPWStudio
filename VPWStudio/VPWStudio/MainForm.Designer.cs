@@ -146,6 +146,7 @@
 			// 
 			// exitToolStripMenuItem
 			// 
+			this.exitToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Exit;
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -205,6 +206,7 @@
 			// 
 			// wrestlersToolStripMenuItem
 			// 
+			this.wrestlersToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Wrestlers;
 			this.wrestlersToolStripMenuItem.Name = "wrestlersToolStripMenuItem";
 			resources.ApplyResources(this.wrestlersToolStripMenuItem, "wrestlersToolStripMenuItem");
 			this.wrestlersToolStripMenuItem.Click += new System.EventHandler(this.wrestlersToolStripMenuItem_Click);
@@ -242,6 +244,7 @@
 			// 
 			// modelDataToolStripMenuItem
 			// 
+			this.modelDataToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_ModelTool;
 			this.modelDataToolStripMenuItem.Name = "modelDataToolStripMenuItem";
 			resources.ApplyResources(this.modelDataToolStripMenuItem, "modelDataToolStripMenuItem");
 			this.modelDataToolStripMenuItem.Click += new System.EventHandler(this.modelDataToolStripMenuItem_Click);
