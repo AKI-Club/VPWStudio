@@ -6,6 +6,15 @@ using System.Text;
 
 namespace VPWStudio
 {
+	// quick note on UV values:
+	// 0 = 0.0
+	// 31 = 1.0
+	// 32 = (closest negative value to 0)
+	// 63 = -1.0
+	// scale accordingly, I suppose.
+
+	// if UV > 31 then UV = (UV - 32) * -1;
+
 	/// <summary>
 	/// Vertex Data
 	/// </summary>
@@ -111,6 +120,7 @@ namespace VPWStudio
 			this.X = (SByte)br.ReadByte();
 			this.Y = (SByte)br.ReadByte();
 			this.Z = (SByte)br.ReadByte();
+			// todo: convert UV values (63,0,31) -> (-1.0, 0.0, 1.0)
 			this.U = (SByte)br.ReadByte();
 			this.V = (SByte)br.ReadByte();
 			int red = br.ReadByte();
@@ -128,11 +138,46 @@ namespace VPWStudio
 			bw.Write((byte)this.X);
 			bw.Write((byte)this.Y);
 			bw.Write((byte)this.Z);
-			bw.Write((byte)this.U);
-			bw.Write((byte)this.V);
+			// todo: convert UV values (-1.0, 0.0, 1.0) -> (63,0,31)
+			bw.Write((SByte)this.U);
+			bw.Write((SByte)this.V);
 			bw.Write((byte)this.VertexColor.R);
 			bw.Write((byte)this.VertexColor.G);
 			bw.Write((byte)this.VertexColor.B);
+		}
+
+		public float[] UVToFloat()
+		{
+			float[] values = new float[2];
+
+			if (this.U > 31)
+			{
+				// negative
+				values[0] = ((this.U - 32) / 31) * -1;
+			}
+			else
+			{
+				// positive
+				values[0] = (this.U / 31);
+			}
+
+			if (this.V > 31)
+			{
+				// negative
+				values[1] = ((this.V - 32) / 31) * -1;
+			}
+			else
+			{
+				// positive
+				values[1] = (this.V / 31);
+			}
+
+			return values;
+		}
+
+		public void FloatToUV(float _u, float _v)
+		{
+			// todo.
 		}
 	}
 
@@ -346,25 +391,13 @@ namespace VPWStudio
 			sw.WriteLine();
 
 			sw.WriteLine("# Texture/UV");
-			// determine maximum values... this may not be the right thing to do.
-			int maxU = 0;
-			int maxV = 0;
-			foreach (AkiVertex v in this.Vertices) {
-				if (v.U > maxU)
-				{
-					maxU = v.U;
-				}
-				if (v.V > maxV)
-				{
-					maxV = v.V;
-				}
-			}
-
 			foreach (AkiVertex v in this.Vertices)
 			{
+				float[] fUV = v.UVToFloat();
+
 				sw.WriteLine(String.Format("vt {0} {1}",
-					(float)(v.U/(float)maxU),
-					(float)(v.V/(float)maxV)
+					fUV[0],
+					fUV[1]
 					)
 				);
 			}
@@ -373,7 +406,8 @@ namespace VPWStudio
 			sw.WriteLine(String.Format("# Faces: {0}", this.Faces.Count));
 			foreach (AkiFace f in this.Faces)
 			{
-				sw.WriteLine(String.Format("f {0} {1} {2}", f.Vertex1+1, f.Vertex2+1, f.Vertex3+1));
+				//sw.WriteLine(String.Format("f {0} {1} {2}", f.Vertex1+1, f.Vertex2+1, f.Vertex3+1));
+				sw.WriteLine(String.Format("f {0}/{0} {1}/{1} {2}/{2}", f.Vertex1 + 1, f.Vertex2 + 1, f.Vertex3 + 1));
 			}
 			sw.WriteLine();
 			sw.Flush();
