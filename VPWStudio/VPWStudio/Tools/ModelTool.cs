@@ -51,6 +51,7 @@ namespace VPWStudio
 				for (int v = 0; v < this.CurModel.Vertices.Count; v++)
 				{
 					AkiVertex temp = this.CurModel.Vertices[v];
+
 					tbInfoDump.Text += String.Format(
 						"Vertex {0}: xyz {{{1},{2},{3}}} uv{{{4},{5}}} color:{{{6},{7},{8}}}\r\n",
 						v,

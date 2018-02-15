@@ -115,7 +115,7 @@
 			this.gbVertices.Controls.Add(this.dgvVertices);
 			this.gbVertices.Location = new System.Drawing.Point(12, 149);
 			this.gbVertices.Name = "gbVertices";
-			this.gbVertices.Size = new System.Drawing.Size(399, 124);
+			this.gbVertices.Size = new System.Drawing.Size(399, 167);
 			this.gbVertices.TabIndex = 5;
 			this.gbVertices.TabStop = false;
 			this.gbVertices.Text = "&Vertices";
@@ -136,7 +136,7 @@
 			this.dgvVertices.Name = "dgvVertices";
 			this.dgvVertices.ReadOnly = true;
 			this.dgvVertices.RowHeadersWidth = 24;
-			this.dgvVertices.Size = new System.Drawing.Size(393, 105);
+			this.dgvVertices.Size = new System.Drawing.Size(393, 148);
 			this.dgvVertices.TabIndex = 0;
 			// 
 			// Number
@@ -200,7 +200,7 @@
 			this.gbFaces.Controls.Add(this.dgvFaces);
 			this.gbFaces.Location = new System.Drawing.Point(420, 149);
 			this.gbFaces.Name = "gbFaces";
-			this.gbFaces.Size = new System.Drawing.Size(200, 124);
+			this.gbFaces.Size = new System.Drawing.Size(200, 167);
 			this.gbFaces.TabIndex = 6;
 			this.gbFaces.TabStop = false;
 			this.gbFaces.Text = "&Faces";
@@ -218,7 +218,7 @@
 			this.dgvFaces.Name = "dgvFaces";
 			this.dgvFaces.ReadOnly = true;
 			this.dgvFaces.RowHeadersWidth = 24;
-			this.dgvFaces.Size = new System.Drawing.Size(194, 105);
+			this.dgvFaces.Size = new System.Drawing.Size(194, 148);
 			this.dgvFaces.TabIndex = 0;
 			// 
 			// FaceNum
@@ -344,7 +344,7 @@
 			this.buttonExportOBJ.UseVisualStyleBackColor = true;
 			this.buttonExportOBJ.Click += new System.EventHandler(this.buttonExportOBJ_Click);
 			// 
-			// PolygonTool
+			// ModelTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -359,8 +359,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.tbInfoDump);
 			this.MaximizeBox = false;
-			this.Name = "PolygonTool";
-			this.Text = "Polygon Tool";
+			this.Name = "ModelTool";
+			this.Text = "Model Tool";
 			this.gbVertices.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvVertices)).EndInit();
 			this.gbFaces.ResumeLayout(false);
