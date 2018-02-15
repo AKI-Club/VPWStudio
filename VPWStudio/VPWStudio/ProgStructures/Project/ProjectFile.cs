@@ -11,15 +11,28 @@ namespace VPWStudio
 	public class ProjectFile
 	{
 		/// <summary>
+		/// Current Project File version
+		/// </summary>
+		public const uint CUR_PROJECTFILE_VER = 0;
+
+		#region Class Members
+		/// <summary>
+		/// Project File Version
+		/// </summary>
+		public uint ProjectFileVersion;
+
+		/// <summary>
 		/// Settings for this ProjectFile.
 		/// </summary>
 		public ProjectSettings Settings;
+		#endregion
 
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
 		public ProjectFile()
 		{
+			this.ProjectFileVersion = CUR_PROJECTFILE_VER;
 			this.Settings = new ProjectSettings();
 		}
 
@@ -29,6 +42,7 @@ namespace VPWStudio
 		/// <param name="_src">Source ProjectFile to copy.</param>
 		public void DeepCopy(ProjectFile _src)
 		{
+			this.ProjectFileVersion = _src.ProjectFileVersion;
 			this.Settings.DeepCopy(_src.Settings);
 		}
 
