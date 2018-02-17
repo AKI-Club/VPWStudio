@@ -221,6 +221,12 @@
   <data name="movesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Moves</value>
   </data>
+  <data name="stablesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="stablesToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Stables</value>
+  </data>
   <data name="wrestlersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -255,34 +261,46 @@
     <value>&amp;Project</value>
   </data>
   <data name="modelDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="modelDataToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Model Data</value>
   </data>
   <data name="packedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="packedFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Packed &amp;File</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="sharkTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="sharkTestToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;GameShark Tool</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="programOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="programOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>Program &amp;Options</value>
+  </data>
+  <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>lzss compress test</value>
+  </data>
+  <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>lzss decompress test</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -313,6 +331,18 @@
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Help</value>
+  </data>
+  <data name="deadweightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="deadweightToolStripMenuItem.Text" xml:space="preserve">
+    <value>deadweight</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Danger Zone</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1320,6 +1350,12 @@
   <data name="&gt;&gt;movesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;stablesToolStripMenuItem.Name" xml:space="preserve">
+    <value>stablesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stablesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;wrestlersToolStripMenuItem.Name" xml:space="preserve">
     <value>wrestlersToolStripMenuItem</value>
   </data>
@@ -1386,6 +1422,18 @@
   <data name="&gt;&gt;programOptionsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;asmikLzssTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>asmikLzssTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;asmikLzssTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lzssDecompressTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>lzssDecompressTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;lzssDecompressTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;windowToolStripMenuItem.Name" xml:space="preserve">
     <value>windowToolStripMenuItem</value>
   </data>
@@ -1410,6 +1458,12 @@
   <data name="&gt;&gt;aboutVPWStudioToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;dangerZoneToolStripMenuItem.Name" xml:space="preserve">
+    <value>dangerZoneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;dangerZoneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -1421,6 +1475,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deadweightToolStripMenuItem.Name" xml:space="preserve">
+    <value>deadweightToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;deadweightToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

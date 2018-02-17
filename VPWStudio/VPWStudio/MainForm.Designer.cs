@@ -47,6 +47,7 @@
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.movesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +59,13 @@
 			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.nothingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutVPWStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.dangerZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,7 +80,8 @@
             this.projectToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.windowToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.dangerZoneToolStripMenuItem});
 			resources.ApplyResources(this.menuStrip1, "menuStrip1");
 			this.menuStrip1.Name = "menuStrip1";
 			// 
@@ -160,6 +165,7 @@
             this.costumesToolStripMenuItem,
             this.fileTableToolStripMenuItem,
             this.movesToolStripMenuItem,
+            this.stablesToolStripMenuItem,
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
             this.buildROMToolStripMenuItem,
@@ -203,6 +209,13 @@
 			this.movesToolStripMenuItem.Name = "movesToolStripMenuItem";
 			resources.ApplyResources(this.movesToolStripMenuItem, "movesToolStripMenuItem");
 			this.movesToolStripMenuItem.Click += new System.EventHandler(this.movesToolStripMenuItem_Click);
+			// 
+			// stablesToolStripMenuItem
+			// 
+			this.stablesToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Stables;
+			this.stablesToolStripMenuItem.Name = "stablesToolStripMenuItem";
+			resources.ApplyResources(this.stablesToolStripMenuItem, "stablesToolStripMenuItem");
+			this.stablesToolStripMenuItem.Click += new System.EventHandler(this.stablesToolStripMenuItem_Click);
 			// 
 			// wrestlersToolStripMenuItem
 			// 
@@ -279,6 +292,18 @@
 			resources.ApplyResources(this.programOptionsToolStripMenuItem, "programOptionsToolStripMenuItem");
 			this.programOptionsToolStripMenuItem.Click += new System.EventHandler(this.programOptionsToolStripMenuItem_Click);
 			// 
+			// asmikLzssTestToolStripMenuItem
+			// 
+			this.asmikLzssTestToolStripMenuItem.Name = "asmikLzssTestToolStripMenuItem";
+			resources.ApplyResources(this.asmikLzssTestToolStripMenuItem, "asmikLzssTestToolStripMenuItem");
+			this.asmikLzssTestToolStripMenuItem.Click += new System.EventHandler(this.asmikLzssTestToolStripMenuItem_Click);
+			// 
+			// lzssDecompressTestToolStripMenuItem
+			// 
+			this.lzssDecompressTestToolStripMenuItem.Name = "lzssDecompressTestToolStripMenuItem";
+			resources.ApplyResources(this.lzssDecompressTestToolStripMenuItem, "lzssDecompressTestToolStripMenuItem");
+			this.lzssDecompressTestToolStripMenuItem.Click += new System.EventHandler(this.lzssDecompressTestToolStripMenuItem_Click);
+			// 
 			// windowToolStripMenuItem
 			// 
 			this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -304,6 +329,14 @@
 			this.aboutVPWStudioToolStripMenuItem.Name = "aboutVPWStudioToolStripMenuItem";
 			resources.ApplyResources(this.aboutVPWStudioToolStripMenuItem, "aboutVPWStudioToolStripMenuItem");
 			this.aboutVPWStudioToolStripMenuItem.Click += new System.EventHandler(this.aboutVPWStudioToolStripMenuItem_Click);
+			// 
+			// dangerZoneToolStripMenuItem
+			// 
+			this.dangerZoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.asmikLzssTestToolStripMenuItem,
+			this.lzssDecompressTestToolStripMenuItem});
+			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
+			resources.ApplyResources(this.dangerZoneToolStripMenuItem, "dangerZoneToolStripMenuItem");
 			// 
 			// statusStrip1
 			// 
@@ -389,6 +422,10 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelGameType;
 		private System.Windows.Forms.ToolStripMenuItem playROMToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem asmikLzssTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem lzssDecompressTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stablesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem dangerZoneToolStripMenuItem;
 	}
 }
 

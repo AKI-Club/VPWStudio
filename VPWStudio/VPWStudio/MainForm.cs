@@ -14,15 +14,24 @@ namespace VPWStudio
 	public partial class MainForm : Form
 	{
 		#region Children Forms
-		/// <summary>
-		/// Model Tool form
-		/// </summary>
-		public ModelTool ModelToolForm = null;
 
+		#region Project Forms
 		/// <summary>
 		/// Project Properties form
 		/// </summary>
 		public ProjectPropertiesDialog ProjPropDialog = null;
+
+		/// <summary>
+		/// Wrestler Edit dialog
+		/// </summary>
+		public WrestlerEditMain WresEditDialog = null;
+		#endregion
+
+		#region Tool Forms
+		/// <summary>
+		/// Model Tool form
+		/// </summary>
+		public ModelTool ModelToolForm = null;
 
 		/// <summary>
 		/// Packed File Tool form
@@ -33,6 +42,7 @@ namespace VPWStudio
 		/// GameShark Tool form
 		/// </summary>
 		public GameSharkTool GSTool = null;
+		#endregion
 
 		/// <summary>
 		/// Program options dialog
@@ -99,6 +109,10 @@ namespace VPWStudio
 				UpdateValidMenus();
 				UpdateStatusBar();
 				UpdateTitleBar();
+
+				// load ROM
+				Program.CurrentInputROM = new Z64Rom();
+				Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
 
 				if (Program.CurrentProject.Settings.UseCustomLocationFile)
 				{
@@ -341,11 +355,42 @@ namespace VPWStudio
 			// moves dialog not yet designed
 		}
 
-		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
+		private void stablesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// wrestlers dialog not yet designed
+			// stables dialog not yet designed
 		}
 
+		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			if (this.WresEditDialog == null)
+			{
+				this.WresEditDialog = new WrestlerEditMain();
+				this.WresEditDialog.MdiParent = this;
+				this.WresEditDialog.Show();
+			}
+			else
+			{
+				if (this.WresEditDialog.IsDisposed)
+				{
+					this.WresEditDialog = new WrestlerEditMain();
+				}
+				// if it was minimized, show it again.
+				if (this.WresEditDialog.WindowState == FormWindowState.Minimized)
+				{
+					this.WresEditDialog.WindowState = FormWindowState.Normal;
+				}
+				this.WresEditDialog.MdiParent = this;
+				this.WresEditDialog.Show();
+			}
+			
+		}
+
+		#region Project build section
 		private void buildROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -365,6 +410,12 @@ namespace VPWStudio
 			{
 				// no project loaded to play ROM of
 				// todo: allow launching the emulator (alone) anyways?
+				MessageBox.Show(
+					SharedStrings.PlayRomError_NoProjectLoaded,
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 				return;
 			}
 
@@ -372,12 +423,24 @@ namespace VPWStudio
 			if (VPWStudio.Properties.Settings.Default.EmulatorPath.Equals(String.Empty))
 			{
 				// must set emulator path
+				MessageBox.Show(
+					SharedStrings.PlayRomError_EmuPathNotSet,
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 				return;
 			}
 
 			if (!File.Exists(VPWStudio.Properties.Settings.Default.EmulatorPath))
 			{
 				// invalid emulator path
+				MessageBox.Show(
+					SharedStrings.PlayRomError_EmuPathNotExist,
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 				return;
 			}
 
@@ -388,6 +451,8 @@ namespace VPWStudio
 				Program.CurrentProject.Settings.InputRomPath
 			);
 		}
+		#endregion
+
 		#endregion
 
 		#region Tool Menu Items
@@ -538,6 +603,7 @@ namespace VPWStudio
 			costumesToolStripMenuItem.Enabled = projFileOpen;
 			fileTableToolStripMenuItem.Enabled = projFileOpen;
 			movesToolStripMenuItem.Enabled = projFileOpen;
+			stablesToolStripMenuItem.Enabled = projFileOpen;
 			wrestlersToolStripMenuItem.Enabled = projFileOpen;
 			buildROMToolStripMenuItem.Enabled = projFileOpen;
 			playROMToolStripMenuItem.Enabled = projFileOpen;
@@ -596,5 +662,44 @@ namespace VPWStudio
 					return null;
 			}
 		}
+
+		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select file to LZSS";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream inStr = new FileStream(ofd.FileName, FileMode.Open);
+				BinaryReader br = new BinaryReader(inStr);
+				FileStream outStr = new FileStream("comp.lzss", FileMode.Create);
+				BinaryWriter bw = new BinaryWriter(outStr);
+
+				TestLzss.Compress(br, bw);
+
+				bw.Flush();
+				bw.Close();
+				br.Close();
+			}
+		}
+
+		private void lzssDecompressTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select LZSS file to decompress";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream inStr = new FileStream(ofd.FileName, FileMode.Open);
+				BinaryReader br = new BinaryReader(inStr);
+				FileStream outStr = new FileStream("decomp.bin", FileMode.Create);
+				BinaryWriter bw = new BinaryWriter(outStr);
+
+				AsmikLzss.Decode(br, bw);
+
+				bw.Flush();
+				bw.Close();
+				br.Close();
+			}
+		}
+
 	}
 }
