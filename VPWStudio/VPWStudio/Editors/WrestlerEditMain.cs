@@ -15,6 +15,8 @@ namespace VPWStudio
 	{
 		private SortedList<int, GameSpecific.IWrestlerDefinition> WrestlerDefs = new SortedList<int, GameSpecific.IWrestlerDefinition>();
 
+		private UserControl WrestlerEditControl;
+
 		public WrestlerEditMain()
 		{
 			InitializeComponent();
@@ -36,6 +38,7 @@ namespace VPWStudio
 					case VPWGames.VPW2:
 						LoadDefs_VPW2();
 						InfoDump_VPW2();
+						Setup_VPW2();
 						break;
 					case VPWGames.NoMercy:
 						LoadDefs_NoMercy();
@@ -307,5 +310,45 @@ namespace VPWStudio
 			tbTempInfoDump.Text = sb.ToString();
 		}
 		#endregion
+
+		#region Control Setup
+		private void Setup_VPW2()
+		{
+			this.WrestlerEditControl = editControl_VPW2;
+			editControl_VPW2.Enabled = true;
+			editControl_VPW2.Visible = true;
+
+			lbWrestlerEntries.Items.Clear();
+			lbWrestlerEntries.BeginUpdate();
+			for (int i = 0; i < this.WrestlerDefs.Count; i++)
+			{
+				GameSpecific.VPW2.WrestlerDefinition def = (GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[i];
+				lbWrestlerEntries.Items.Add(String.Format("{0:X4}", def.WrestlerID4));
+			}
+			lbWrestlerEntries.EndUpdate();
+		}
+		#endregion
+
+		#region Game-Specific: VPW2
+		private void SelectWrestler_VPW2()
+		{
+			editControl_VPW2.LoadData((GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[lbWrestlerEntries.SelectedIndex]);
+		}
+		#endregion
+
+		private void lbWrestlerEntries_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlerEntries.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.VPW2:
+					SelectWrestler_VPW2();
+					break;
+			}
+		}
 	}
 }
