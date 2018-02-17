@@ -84,11 +84,7 @@ namespace VPWStudio
 	public class LocationFile
 	{
 		#region Special Constants
-		private static List<String> SpecialTypes = new List<string>()
-		{
-			"$FILETABLE",
-			"$WRESTLERDEFS",
-		};
+		
 		#endregion
 
 		#region Class Members
@@ -99,18 +95,42 @@ namespace VPWStudio
 		#endregion
 
 		#region Special Class Members
+		/// <summary>
+		/// Location of the filetable in ROM.
+		/// </summary>
 		public LocationFileEntry FileTable = null;
-		public LocationFileEntry WrestlerDefs = null;
-		#endregion
 
 		/// <summary>
-		/// String to LocationType mapping
+		/// Location of the first valid wrestler definition in ROM.
+		/// </summary>
+		public LocationFileEntry WrestlerDefs = null;
+
+		/// <summary>
+		/// Location of the first "file" in the ROM.
+		/// </summary>
+		public LocationFileEntry FirstFile = null;
+		#endregion
+
+		#region Parsing Tables
+		/// <summary>
+		/// String to LocationType mapping.
 		/// </summary>
 		private static Dictionary<String, LocationType> LocationTypes = new Dictionary<string, LocationType>()
 		{
 			{ "ROM", LocationType.ROM },
 			{ "RAM", LocationType.RAM },
 		};
+
+		/// <summary>
+		/// Special Class Member tokens
+		/// </summary>
+		private static List<String> SpecialTypes = new List<string>()
+		{
+			"$FILETABLE", // this.FileTable
+			"$WRESTLERDEFS", // this.WrestlerDefs
+			"$FIRSTFILE", // this.FirstFile
+		};
+		#endregion
 
 		/// <summary>
 		/// Default constructor.
@@ -165,6 +185,11 @@ namespace VPWStudio
 					if (tokens[3].Contains("WRESTLERDEFS"))
 					{
 						this.WrestlerDefs = entry;
+					}
+
+					if (tokens[3].Contains("FIRSTFILE"))
+					{
+						this.FirstFile = entry;
 					}
 				}
 
