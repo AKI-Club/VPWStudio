@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\WrestlerEdit_VPW2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WrestlerEdit_VPW2.Designer.cs">
+      <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataStructures\AkiModel.cs" />
     <Compile Include="DataStructures\FileTable.cs" />
     <Compile Include="DataStructures\GameSharkCode.cs" />
@@ -125,6 +131,9 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\WrestlerEdit_VPW2.resx">
+      <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\NewProjectDialog.resx">
       <DependentUpon>NewProjectDialog.cs</DependentUpon>
     </EmbeddedResource>
