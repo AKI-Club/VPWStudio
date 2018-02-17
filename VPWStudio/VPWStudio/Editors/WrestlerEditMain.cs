@@ -279,6 +279,7 @@ namespace VPWStudio
 				sb.AppendLine(String.Format("Params File Index: {0:X4}", wrestlerDef.ParamsFileIndex));
 				sb.AppendLine(String.Format("Appearance Index: {0:X4}", wrestlerDef.AppearanceIndex));
 				sb.AppendLine(String.Format("Profile Index: {0:X4}", wrestlerDef.ProfileIndex));
+				sb.AppendLine();
 			}
 			tbTempInfoDump.Text = sb.ToString();
 		}
