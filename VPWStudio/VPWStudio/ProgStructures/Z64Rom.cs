@@ -262,12 +262,11 @@ namespace VPWStudio
 		public void FixChecksums()
 		{
 			UInt32[] calculated = CalculateChecksums();
-			MemoryStream ms = new MemoryStream(this.Data);
-			BinaryWriter bw = new BinaryWriter(ms);
-
 			this.Checksum1 = calculated[0];
 			this.Checksum2 = calculated[1];
 
+			MemoryStream ms = new MemoryStream(this.Data);
+			BinaryWriter bw = new BinaryWriter(ms);
 			bw.BaseStream.Seek(0x10, SeekOrigin.Begin);
 
 			byte[] calc1 = BitConverter.GetBytes(this.Checksum1);
