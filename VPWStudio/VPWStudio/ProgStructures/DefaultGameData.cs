@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+// xxx: I'm not sure if this is a good way of going about it
 namespace VPWStudio
 {
 	/*
