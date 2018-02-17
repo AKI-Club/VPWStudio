@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VPWStudio
 {
+	// todo: does the compression routine belong in here?
+	// figure that out once you've actually finished porting it.
+
 	public static class AsmikLzss
 	{
 		// "default filesize is 3-bytes, skipping first which is compression indicator"
@@ -13,12 +16,12 @@ namespace VPWStudio
 		// 0x01 | 3 bytes | filesize, big-endian
 
 		/// <summary>
-		/// Decompress data using "Asmik" LZSS variant.
+		/// Decode/decompress data using "Asmik" LZSS variant.
 		/// </summary>
 		/// <param name="inData">BinaryReader with the data to decompress.</param>
 		/// <param name="outData">BinaryWriter pointing to an output stream.</param>
 		/// Based off of Zoinkity's code from Midwaydec.
-		public static void Decompress(BinaryReader inData, BinaryWriter outData)
+		public static void Decode(BinaryReader inData, BinaryWriter outData)
 		{
 			byte[] header = inData.ReadBytes(4);
 			// check if this file is really compressed

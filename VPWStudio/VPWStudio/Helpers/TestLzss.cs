@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 namespace VPWStudio
 {
 	// generic LZSS test code; not particularly used in the program
+	// todo: this shit is O-L-D old!
 
-	/*
-	 * todo:
-	 * it would seem that runs of 0 values are encoded using 0xL0,
-	 * where L is the number of 0 bytes to output...
-	 */
-	
 	public class TestLzss
 	{
 		#region Constants
