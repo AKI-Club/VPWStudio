@@ -22,6 +22,11 @@ namespace VPWStudio
 		public ProjectPropertiesDialog ProjPropDialog = null;
 
 		/// <summary>
+		/// File Table dialog
+		/// </summary>
+		public FileTableDialog FileTableEditor = null;
+
+		/// <summary>
 		/// Wrestler Edit dialog
 		/// </summary>
 		public WrestlerEditMain WresEditDialog = null;
@@ -347,7 +352,31 @@ namespace VPWStudio
 
 		private void fileTableToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// filetable dialog not yet designed
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			if (this.FileTableEditor == null)
+			{
+				this.FileTableEditor = new FileTableDialog();
+				this.FileTableEditor.MdiParent = this;
+				this.FileTableEditor.Show();
+			}
+			else
+			{
+				if (this.FileTableEditor.IsDisposed)
+				{
+					this.FileTableEditor = new FileTableDialog();
+				}
+				// if it was minimized, show it again.
+				if (this.FileTableEditor.WindowState == FormWindowState.Minimized)
+				{
+					this.FileTableEditor.WindowState = FormWindowState.Normal;
+				}
+				this.FileTableEditor.MdiParent = this;
+				this.FileTableEditor.Show();
+			}
 		}
 
 		private void movesToolStripMenuItem_Click(object sender, EventArgs e)
