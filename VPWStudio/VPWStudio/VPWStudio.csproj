@@ -65,7 +65,20 @@
     <Compile Include="Dialogs\ProjectPropertiesDialog.Designer.cs">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WrestlerEditMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WrestlerEditMain.Designer.cs">
+      <DependentUpon>WrestlerEditMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameSpecific\IWrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
+    <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\Crc32.cs" />
+    <Compile Include="Helpers\LzssOriginal.cs" />
+    <Compile Include="Helpers\TestLzss.cs" />
+    <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
     <Compile Include="ProgStructures\GenericEnums.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
@@ -113,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ProjectPropertiesDialog.resx">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WrestlerEditMain.resx">
+      <DependentUpon>WrestlerEditMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -216,10 +232,16 @@
     <None Include="Resources\saveas.png" />
     <None Include="Resources\stables.png" />
     <None Include="Resources\projectproperties.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\modeltool.png" />
+    <None Include="Resources\wrestlers.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Editors\" />
+    <Folder Include="GameSpecific\Revenge\" />
+    <Folder Include="GameSpecific\VPW64\" />
+    <Folder Include="GameSpecific\WM2K\" />
+    <Folder Include="GameSpecific\WorldTour\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
