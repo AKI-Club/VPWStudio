@@ -83,10 +83,25 @@ namespace VPWStudio
 	/// </summary>
 	public class LocationFile
 	{
+		#region Special Constants
+		private static List<String> SpecialTypes = new List<string>()
+		{
+			"$FILETABLE",
+			"$WRESTLERDEFS",
+		};
+		#endregion
+
+		#region Class Members
 		/// <summary>
 		/// List of locations
 		/// </summary>
 		public List<LocationFileEntry> Locations;
+		#endregion
+
+		#region Special Class Members
+		public LocationFileEntry FileTable = null;
+		public LocationFileEntry WrestlerDefs = null;
+		#endregion
 
 		/// <summary>
 		/// String to LocationType mapping
@@ -137,6 +152,20 @@ namespace VPWStudio
 				if (LocationTypes.ContainsKey(tokens[0]))
 				{
 					entry.Type = LocationTypes[tokens[0]];
+				}
+
+				// handle special entry possibilities
+				if (SpecialTypes.Contains(tokens[3]))
+				{
+					if (tokens[3].Contains("FILETABLE"))
+					{
+						this.FileTable = entry;
+					}
+
+					if (tokens[3].Contains("WRESTLERDEFS"))
+					{
+						this.WrestlerDefs = entry;
+					}
 				}
 
 				this.Locations.Add(entry);
