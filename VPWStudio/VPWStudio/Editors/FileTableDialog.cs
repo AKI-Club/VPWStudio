@@ -55,7 +55,7 @@ namespace VPWStudio
 			{
 				// fallback to hardedcoded offset
 				MessageBox.Show(
-					"File Table location not found; using hardcoded offset instead.",
+					"File Table location not found; using hardcoded offset and length instead.",
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Information
