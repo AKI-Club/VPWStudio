@@ -106,7 +106,7 @@ namespace VPWStudio
 		public LocationFileEntry WrestlerDefs = null;
 
 		/// <summary>
-		/// Location of the first "file" in the ROM.
+		/// Location of the first "file" (entry 0x0001) in the ROM.
 		/// </summary>
 		public LocationFileEntry FirstFile = null;
 		#endregion
