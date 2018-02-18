@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\WrestlerEdit_NoMercy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WrestlerEdit_NoMercy.Designer.cs">
+      <DependentUpon>WrestlerEdit_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WrestlerEdit_VPW2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -55,6 +61,7 @@
       <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
     </Compile>
     <Compile Include="DataStructures\AkiModel.cs" />
+    <Compile Include="DataStructures\AkiText.cs" />
     <Compile Include="DataStructures\FileTable.cs" />
     <Compile Include="DataStructures\GameSharkCode.cs" />
     <Compile Include="DataStructures\GameSharkCodeFile.cs" />
@@ -110,9 +117,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgStructures\Project\ProjectSettings.cs" />
+    <Compile Include="ProgStructures\Project\ProjectWrestlerDefs.cs" />
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedStrings.cs" />
+    <Compile Include="Tools\AkiTextTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\AkiTextTool.Designer.cs">
+      <DependentUpon>AkiTextTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\GameSharkTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +145,9 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\WrestlerEdit_NoMercy.resx">
+      <DependentUpon>WrestlerEdit_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\WrestlerEdit_VPW2.resx">
       <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +179,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tools\AkiTextTool.resx">
+      <DependentUpon>AkiTextTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\GameSharkTool.resx">
       <DependentUpon>GameSharkTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +277,12 @@
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Editors\NoMercy\" />
+    <Folder Include="Editors\Revenge\" />
+    <Folder Include="Editors\VPW2\" />
+    <Folder Include="Editors\VPW64\" />
+    <Folder Include="Editors\WM2K\" />
+    <Folder Include="Editors\WorldTour\" />
     <Folder Include="GameSpecific\Revenge\" />
     <Folder Include="GameSpecific\VPW64\" />
     <Folder Include="GameSpecific\WM2K\" />
