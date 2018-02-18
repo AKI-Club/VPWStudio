@@ -1,1 +1,2 @@
 # Virtual Pro-Wrestling 64 (NTSC-J) [NVPJ]
+ROM:C7B578,37432;$FILETABLE

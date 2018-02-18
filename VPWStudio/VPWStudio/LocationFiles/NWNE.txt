@@ -1,1 +1,2 @@
 # WCW vs. nWo World Tour (NTSC-U v1.0) [NWNE]
+ROM:7C1A78,21996;$FILETABLE

@@ -1,1 +1,2 @@
 # WCW vs. nWo World Tour (PAL) [NWNP]
+ROM:7C1C00,21996;$FILETABLE
