@@ -140,12 +140,12 @@ namespace VPWStudio
 				switch (Program.CurrentProject.Settings.GameType)
 				{
 					case SpecificGame.WorldTour_NTSC_U_10:
+					case SpecificGame.WorldTour_PAL:
 						offset = 0x39490;
 						break;
 					case SpecificGame.WorldTour_NTSC_U_11:
 						offset = 0x39500;
 						break;
-					// world tour pal
 					case SpecificGame.VPW64_NTSC_J:
 						offset = 0x4AD00;
 						break;
