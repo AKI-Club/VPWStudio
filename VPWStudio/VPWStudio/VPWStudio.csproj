@@ -85,12 +85,6 @@
     <Compile Include="Editors\FileTableDialog.Designer.cs">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editors\WrestlerEditMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Editors\WrestlerEditMain.Designer.cs">
-      <DependentUpon>WrestlerEditMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="GameSpecific\IWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
@@ -117,7 +111,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgStructures\Project\ProjectSettings.cs" />
-    <Compile Include="ProgStructures\Project\ProjectWrestlerDefs.cs" />
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedStrings.cs" />
@@ -162,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Editors\WrestlerEditMain.resx">
-      <DependentUpon>WrestlerEditMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

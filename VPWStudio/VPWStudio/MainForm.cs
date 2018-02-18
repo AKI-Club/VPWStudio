@@ -26,10 +26,6 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableDialog FileTableEditor = null;
 
-		/// <summary>
-		/// Wrestler Edit dialog
-		/// </summary>
-		public WrestlerEditMain WresEditDialog = null;
 		#endregion
 
 		#region Tool Forms
@@ -396,27 +392,7 @@ namespace VPWStudio
 				return;
 			}
 
-			if (this.WresEditDialog == null)
-			{
-				this.WresEditDialog = new WrestlerEditMain();
-				this.WresEditDialog.MdiParent = this;
-				this.WresEditDialog.Show();
-			}
-			else
-			{
-				if (this.WresEditDialog.IsDisposed)
-				{
-					this.WresEditDialog = new WrestlerEditMain();
-				}
-				// if it was minimized, show it again.
-				if (this.WresEditDialog.WindowState == FormWindowState.Minimized)
-				{
-					this.WresEditDialog.WindowState = FormWindowState.Normal;
-				}
-				this.WresEditDialog.MdiParent = this;
-				this.WresEditDialog.Show();
-			}
-			
+			// todo: multiple forms based on game
 		}
 
 		#region Project build section
