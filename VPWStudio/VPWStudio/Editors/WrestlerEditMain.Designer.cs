@@ -31,6 +31,7 @@
 			this.tbTempInfoDump = new System.Windows.Forms.TextBox();
 			this.lbWrestlerEntries = new System.Windows.Forms.ListBox();
 			this.editControl_VPW2 = new VPWStudio.Controls.WrestlerEdit_VPW2();
+			this.editControl_NoMercy = new VPWStudio.Controls.WrestlerEdit_NoMercy();
 			this.SuspendLayout();
 			// 
 			// tbTempInfoDump
@@ -60,11 +61,19 @@
 			this.editControl_VPW2.Size = new System.Drawing.Size(450, 300);
 			this.editControl_VPW2.TabIndex = 1;
 			// 
+			// editControl_NoMercy
+			// 
+			this.editControl_NoMercy.Location = new System.Drawing.Point(292, 12);
+			this.editControl_NoMercy.Name = "editControl_NoMercy";
+			this.editControl_NoMercy.Size = new System.Drawing.Size(450, 300);
+			this.editControl_NoMercy.TabIndex = 3;
+			// 
 			// WrestlerEditMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(754, 318);
+			this.Controls.Add(this.editControl_NoMercy);
 			this.Controls.Add(this.lbWrestlerEntries);
 			this.Controls.Add(this.editControl_VPW2);
 			this.Controls.Add(this.tbTempInfoDump);
@@ -81,5 +90,6 @@
 		private System.Windows.Forms.TextBox tbTempInfoDump;
 		private Controls.WrestlerEdit_VPW2 editControl_VPW2;
 		private System.Windows.Forms.ListBox lbWrestlerEntries;
+		private Controls.WrestlerEdit_NoMercy editControl_NoMercy;
 	}
 }

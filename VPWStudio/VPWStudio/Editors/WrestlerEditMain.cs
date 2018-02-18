@@ -27,12 +27,16 @@ namespace VPWStudio
 				{
 					/*
 					case VPWGames.WorldTour:
+						LoadDefs_WorldTour();
 						break;
 					case VPWGames.VPW64:
+						LoadDefs_VPW64();
 						break;
 					case VPWGames.Revenge:
+						LoadDefs_Revenge();
 						break;
 					case VPWGames.WM2K:
+						LoadDefs_WM2K();
 						break;
 					*/
 					case VPWGames.VPW2:
@@ -43,15 +47,17 @@ namespace VPWStudio
 					case VPWGames.NoMercy:
 						LoadDefs_NoMercy();
 						InfoDump_NoMercy();
+						Setup_NoMercy();
 						break;
 					default:
 						MessageBox.Show(String.Format("Wrestler Definition loading for {0} not yet implemented.", Program.CurrentProject.Settings.BaseGame));
 						break;
 				}
+				SetControlStatus();
 			}
 		}
 
-		#region Game-Specific Loading
+		#region WCW vs. nWo World Tour
 		/// <summary>
 		/// Load WrestlerDefinition data from WCW vs. nWo World Tour
 		/// </summary>
@@ -84,7 +90,9 @@ namespace VPWStudio
 
 			br.Close();
 		}
+		#endregion
 
+		#region Virtual Pro-Wrestling 64
 		/// <summary>
 		/// Load WrestlerDefinition data from Virtual Pro-Wrestling 64.
 		/// </summary>
@@ -109,7 +117,9 @@ namespace VPWStudio
 
 			br.Close();
 		}
+		#endregion
 
+		#region WCW/nWo Revenge
 		/// <summary>
 		/// Load WrestlerDefinition data from WCW/nWo Revenge.
 		/// </summary>
@@ -140,7 +150,9 @@ namespace VPWStudio
 
 			br.Close();
 		}
+		#endregion
 
+		#region WWF WrestleMania 2000
 		/// <summary>
 		/// Load WrestlerDefinition data from WWF WrestleMania 2000.
 		/// </summary>
@@ -173,12 +185,16 @@ namespace VPWStudio
 
 			br.Close();
 		}
+		#endregion
 
+		#region Virtual Pro-Wrestling 2
 		/// <summary>
 		/// Load WrestlerDefinition data from Virtual Pro-Wrestling 2.
 		/// </summary>
 		private void LoadDefs_VPW2()
 		{
+			// todo: if the project has valid WrestlerDefs, use those instead of grabbing from ROM
+
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
@@ -203,14 +219,39 @@ namespace VPWStudio
 				br.BaseStream.Seek(0x3FBE4, SeekOrigin.Begin);
 			}
 
+			// xxx: this shouldn't really clobber the wrestlerdefs
+			//Program.CurrentProject.WrestlerDefs.Entries.Clear();
 			for (int i = 0; i < 0x82; i++)
 			{
-				WrestlerDefs.Add(i, new GameSpecific.VPW2.WrestlerDefinition(br));
+				GameSpecific.VPW2.WrestlerDefinition wdef = new GameSpecific.VPW2.WrestlerDefinition(br);
+				WrestlerDefs.Add(i, wdef);
+				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
 
 			br.Close();
 		}
 
+		private void Setup_VPW2()
+		{
+			this.WrestlerEditControl = editControl_VPW2;
+
+			lbWrestlerEntries.Items.Clear();
+			lbWrestlerEntries.BeginUpdate();
+			for (int i = 0; i < this.WrestlerDefs.Count; i++)
+			{
+				GameSpecific.VPW2.WrestlerDefinition def = (GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[i];
+				lbWrestlerEntries.Items.Add(String.Format("{0:X4}", def.WrestlerID4));
+			}
+			lbWrestlerEntries.EndUpdate();
+		}
+
+		private void SelectWrestler_VPW2()
+		{
+			editControl_VPW2.LoadData((GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[lbWrestlerEntries.SelectedIndex]);
+		}
+		#endregion
+
+		#region WWF No Mercy
 		/// <summary>
 		/// Load WrestlerDefinition data from WWF No Mercy.
 		/// </summary>
@@ -260,7 +301,35 @@ namespace VPWStudio
 
 			br.Close();
 		}
+
+		private void Setup_NoMercy()
+		{
+			this.WrestlerEditControl = editControl_NoMercy;
+
+			lbWrestlerEntries.Items.Clear();
+			lbWrestlerEntries.BeginUpdate();
+			for (int i = 0; i < this.WrestlerDefs.Count; i++)
+			{
+				GameSpecific.NoMercy.WrestlerDefinition def = (GameSpecific.NoMercy.WrestlerDefinition)this.WrestlerDefs[i];
+				if (def.WrestlerID2 <= 0x40)
+				{
+					int costume = i % 4;
+					lbWrestlerEntries.Items.Add(String.Format("{0:X4}-{1}", def.WrestlerID4, costume));
+				}
+				else
+				{
+					lbWrestlerEntries.Items.Add(String.Format("{0:X4}", def.WrestlerID4));
+				}
+			}
+			lbWrestlerEntries.EndUpdate();
+		}
+
+		private void SelectWrestler_NoMercy()
+		{
+			editControl_NoMercy.LoadData((GameSpecific.NoMercy.WrestlerDefinition)this.WrestlerDefs[lbWrestlerEntries.SelectedIndex]);
+		}
 		#endregion
+
 
 		#region Temporary Info Dumps
 		private void InfoDump_VPW2()
@@ -311,30 +380,19 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region Control Setup
-		private void Setup_VPW2()
+		private void SetControlStatus()
 		{
-			this.WrestlerEditControl = editControl_VPW2;
-			editControl_VPW2.Enabled = true;
-			editControl_VPW2.Visible = true;
+			// world tour
+			// vpw64
+			// revenge
+			// wm2k
 
-			lbWrestlerEntries.Items.Clear();
-			lbWrestlerEntries.BeginUpdate();
-			for (int i = 0; i < this.WrestlerDefs.Count; i++)
-			{
-				GameSpecific.VPW2.WrestlerDefinition def = (GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[i];
-				lbWrestlerEntries.Items.Add(String.Format("{0:X4}", def.WrestlerID4));
-			}
-			lbWrestlerEntries.EndUpdate();
-		}
-		#endregion
+			editControl_VPW2.Enabled = (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2);
+			editControl_VPW2.Visible = (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2);
 
-		#region Game-Specific: VPW2
-		private void SelectWrestler_VPW2()
-		{
-			editControl_VPW2.LoadData((GameSpecific.VPW2.WrestlerDefinition)this.WrestlerDefs[lbWrestlerEntries.SelectedIndex]);
+			editControl_NoMercy.Enabled = (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy);
+			editControl_NoMercy.Visible = (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy);
 		}
-		#endregion
 
 		private void lbWrestlerEntries_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -347,6 +405,9 @@ namespace VPWStudio
 			{
 				case VPWGames.VPW2:
 					SelectWrestler_VPW2();
+					break;
+				case VPWGames.NoMercy:
+					SelectWrestler_NoMercy();
 					break;
 			}
 		}
