@@ -99,12 +99,20 @@ namespace VPWStudio
 						length = 52364;
 						break;
 					case SpecificGame.NoMercy_NTSC_U_10:
+						offset = 0x16C3238;
+						length = 77848;
 						break;
 					case SpecificGame.NoMercy_NTSC_U_11:
+						offset = 0x16C31D8;
+						length = 77848;
 						break;
 					case SpecificGame.NoMercy_PAL_10:
+						offset = 0x16C32A8;
+						length = 77848;
 						break;
 					case SpecificGame.NoMercy_PAL_11:
+						offset = 0x16C3148;
+						length = 77848;
 						break;
 				}
 				if (offset != 0 && length != 0)
@@ -167,7 +175,18 @@ namespace VPWStudio
 					case SpecificGame.VPW2_NTSC_J:
 						offset = 0x152DF0;
 						break;
-					// all wwf no mercy
+					case SpecificGame.NoMercy_NTSC_U_10:
+						offset = 0x1BD1B0;
+						break;
+					case SpecificGame.NoMercy_NTSC_U_11:
+						offset = 0x1BD150;
+						break;
+					case SpecificGame.NoMercy_PAL_10:
+						offset = 0x1BD220;
+						break;
+					case SpecificGame.NoMercy_PAL_11:
+						offset = 0x1BD0C0;
+						break;
 				}
 			}
 
