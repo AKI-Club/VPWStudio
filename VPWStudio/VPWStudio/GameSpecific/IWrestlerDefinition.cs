@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific
 {
-	interface IWrestlerDefinition
+	public interface IWrestlerDefinition : /*ISerializable,*/ IXmlSerializable
 	{		
 		#region I/O
 		/// <summary>

@@ -1,11 +1,17 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Globalization;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.VPW2
 {
 	/// <summary>
 	/// Virtual Pro-Wrestling 2 Wrestler Definition.
 	/// </summary>
+	[Serializable]
 	public class WrestlerDefinition : IWrestlerDefinition
 	{
 		#region Class Members
@@ -155,6 +161,54 @@ namespace VPWStudio.GameSpecific.VPW2
 
 			// prepare for another possible read
 			br.ReadBytes(2);
+		}
+
+		public XmlSchema GetSchema()
+		{
+			return null;
+		}
+
+		public void ReadXml(XmlReader xr)
+		{
+			System.Windows.Forms.MessageBox.Show(xr.Name);
+
+			string id4 = xr.ReadElementContentAsString();
+			this.WrestlerID4 = ushort.Parse(id4, NumberStyles.HexNumber);
+
+			string id2 = xr.ReadElementContentAsString();
+			this.WrestlerID2 = ushort.Parse(id2, NumberStyles.HexNumber);
+
+			this.ThemeSong = (byte)xr.ReadContentAsInt();
+			this.NameCall = (byte)xr.ReadContentAsInt();
+			this.Height = (byte)xr.ReadContentAsInt();
+			this.Weight = (byte)xr.ReadContentAsInt();
+			this.Voice1 = (byte)xr.ReadContentAsInt();
+			this.Voice2 = (byte)xr.ReadContentAsInt();
+
+			string moveIndex = xr.ReadElementContentAsString();
+			string paramIndex = xr.ReadElementContentAsString();
+			string costumeIndex = xr.ReadElementContentAsString();
+			string profileIndex = xr.ReadElementContentAsString();
+		}
+
+		public void WriteXml(XmlWriter xr)
+		{
+			xr.WriteStartElement("WrestlerDefinition");
+
+			xr.WriteElementString("WrestlerID4", String.Format("{0:X4}", this.WrestlerID4));
+			xr.WriteElementString("WrestlerID2", String.Format("{0:X2}", this.WrestlerID2));
+			xr.WriteElementString("ThemeSong", this.ThemeSong.ToString());
+			xr.WriteElementString("NameCall", this.NameCall.ToString());
+			xr.WriteElementString("Height", this.Height.ToString());
+			xr.WriteElementString("Weight", this.Weight.ToString());
+			xr.WriteElementString("Voice1", this.Voice1.ToString());
+			xr.WriteElementString("Voice2", this.Voice2.ToString());
+			xr.WriteElementString("MovesetFileIndex", String.Format("{0:X4}", this.MovesetFileIndex));
+			xr.WriteElementString("ParamsFileIndex", String.Format("{0:X4}", this.ParamsFileIndex));
+			xr.WriteElementString("AppearanceIndex", String.Format("{0:X4}", this.AppearanceIndex));
+			xr.WriteElementString("ProfileIndex", String.Format("{0:X4}", this.ProfileIndex));
+
+			xr.WriteEndElement();
 		}
 	}
 }

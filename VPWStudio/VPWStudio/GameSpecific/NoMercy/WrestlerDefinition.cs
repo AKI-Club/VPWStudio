@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.NoMercy
 {
 	/// <summary>
 	/// WWF No Mercy Wrestler Definition.
 	/// </summary>
+	[Serializable]
 	public class WrestlerDefinition : IWrestlerDefinition
 	{
 		#region Class Members
@@ -153,6 +155,19 @@ namespace VPWStudio.GameSpecific.NoMercy
 
 			// prepare for another possible read
 			br.ReadBytes(2);
+		}
+
+		public XmlSchema GetSchema()
+		{
+			return null;
+		}
+
+		public void ReadXml(XmlReader xr)
+		{
+		}
+
+		public void WriteXml(XmlWriter xr)
+		{
 		}
 	}
 }
