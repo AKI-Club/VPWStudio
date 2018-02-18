@@ -6,44 +6,92 @@ using System.Threading.Tasks;
 
 namespace VPWStudio
 {
-	/*
-	 * from offsetter by Zoinkity (python code):
-	 
-		def VPW2toCSV(data, *args):
-			from array import array
+	/// <summary>
+	/// A single entry in an AkiText archive.
+	/// </summary>
+	public class AkiTextEntry
+	{
+		public UInt16 Location;
+		public string Text;
 
-			# Expects binary data as output, so encode position strings.
-			n = int.from_bytes(data[0:2], byteorder='big', signed=False)
-			a = array("H", data[0:n])
-			a.byteswap()
+		public AkiTextEntry(UInt16 _l, string _s)
+		{
+			this.Location = _l;
+			this.Text = _s;
+		}
+	}
 
-			out = bytearray()
-			for c, i in enumerate(a):
-				if i:
-					try:
-						p = data.index(0, i)
-						s = data[i:p]
-					except ValueError:
-						s = data[i:]
-				else:
-					s = b''
-			##out.extend("{:d}\t".format(c).encode(encoding="shift_jis"))
-			##out.extend(b''.join((s, b'\n')))
-			out.extend(b''.join(((str(c).encode(encoding='shift_jis'), b'\t', s, b'\n'))))
-
-	 */
-
-	// ok so freem let's talk about this. the files go something like this:
-	// first there's a table of two byte pointers into the file, ending with 0x0000.
-	// each string is Shift-JIS; I know how much you love that.
-
-	// the first entry doubles as the size of the table.
+	/// <summary>
+	/// AkiText archive.
+	/// </summary>
 	public class AkiText
 	{
-		public SortedList<uint, string> Strings = new SortedList<uint, string>();
+		/// <summary>
+		/// Entries in this AkiText archive.
+		/// </summary>
+		public SortedList<int, AkiTextEntry> Entries;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public AkiText()
+		{
+			this.Entries = new SortedList<int, AkiTextEntry>();
+		}
+
+		/// <summary>
+		/// Create from a BinaryReader instance.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public AkiText(BinaryReader br)
+		{
+			this.Entries = new SortedList<int, AkiTextEntry>();
+			this.Decode(br);
+		}
+
+		#region Encode/Decode
+		/// <summary>
+		/// Encode AkiText binary format.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void Encode(BinaryWriter bw)
+		{
+			// the pointers themselves need to be calculated based on the string lengths.
+			int startLoc = (this.Entries.Count * 2) + 2;
+			int curLoc = startLoc;
+			for (int i = 0; i < this.Entries.Count; i++)
+			{
+				this.Entries[i].Location = (UInt16)curLoc;
+				curLoc += (Encoding.GetEncoding("shift_jis").GetBytes(this.Entries[i].Text).Length + 1);
+			}
+
+			// write out the pointer table
+			for (int i = 0; i < this.Entries.Count; i++)
+			{
+				byte[] l = BitConverter.GetBytes(this.Entries[i].Location);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(l);
+				}
+				bw.Write(l);
+			}
+			bw.Write((UInt16)0); // terminator
+
+			// then write out the strings
+			for (int i = 0; i < this.Entries.Count; i++)
+			{
+				bw.Write(Encoding.GetEncoding("shift_jis").GetBytes(this.Entries[i].Text));
+				bw.Write((byte)0);
+			}
+		}
+
+		/// <summary>
+		/// Decode AkiText binary format.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void Decode(BinaryReader br)
 		{
+			// Figure out table size
 			byte[] tsb = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
@@ -53,9 +101,9 @@ namespace VPWStudio
 			// rewind
 			br.BaseStream.Seek(-2, SeekOrigin.Current);
 
-			List<uint> Locations = new List<uint>();
-
-			UInt16 entryPointer = 1;
+			// grab list of locations
+			List<UInt16> Locations = new List<UInt16>();
+			UInt16 entryPointer = 0;
 			do
 			{
 				byte[] epb = br.ReadBytes(2);
@@ -72,7 +120,9 @@ namespace VPWStudio
 
 			} while (entryPointer != 0);
 
-			foreach (uint l in Locations)
+			// add entries
+			int i = 0;
+			foreach (UInt16 l in Locations)
 			{
 				br.BaseStream.Seek(l, SeekOrigin.Begin);
 
@@ -83,9 +133,11 @@ namespace VPWStudio
 				}
 				br.BaseStream.Seek(l, SeekOrigin.Begin);
 				byte[] strBytes = br.ReadBytes(strLen);
-
-				this.Strings.Add(l, Encoding.GetEncoding("shift_jis").GetString(strBytes, 0, strLen).Normalize(NormalizationForm.FormKC));
+				this.Entries.Add(i, new AkiTextEntry(l, Encoding.GetEncoding("shift_jis").GetString(strBytes, 0, strLen)));
+				i++;
 			}
 		}
+
+		#endregion
 	}
 }
