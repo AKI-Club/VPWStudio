@@ -644,8 +644,9 @@ namespace VPWStudio
 		#endregion
 
 
+		#region Various Helpers
 		/// <summary>
-		/// 
+		/// Get the 16px game icon for the current project's base game.
 		/// </summary>
 		/// <returns></returns>
 		private Bitmap GetGameIcon_16px()
@@ -667,7 +668,9 @@ namespace VPWStudio
 					return null;
 			}
 		}
+		#endregion
 
+		#region Danger Zone items
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -711,5 +714,6 @@ namespace VPWStudio
 			AkiTextTool att = new AkiTextTool();
 			att.ShowDialog();
 		}
+		#endregion
 	}
 }
