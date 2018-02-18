@@ -24,11 +24,11 @@ namespace VPWStudio
 				{
 					case VPWGames.Revenge:
 						LoadFileTable_Revenge();
-						UpdateInfo_Revenge();
+						UpdateInfoDump();
 						break;
 					case VPWGames.VPW2:
 						LoadFileTable_VPW2();
-						UpdateInfo_VPW2();
+						UpdateInfoDump();
 						break;
 					default:
 						MessageBox.Show(String.Format("not implemented for {0}", Program.CurrentProject.Settings.BaseGame));
@@ -37,6 +37,7 @@ namespace VPWStudio
 			}
 		}
 
+		// todo: load could be genericized
 		#region Game-Specific Loading
 		private void LoadFileTable_Revenge()
 		{
@@ -73,7 +74,7 @@ namespace VPWStudio
 						br.BaseStream.Seek(0xCDFCE2, SeekOrigin.Begin);
 						break;
 				}
-				this.CurrentFileTable.Load(br, 52364);
+				this.CurrentFileTable.Load(br, 30632);
 			}
 			br.Close();
 		}
@@ -113,19 +114,34 @@ namespace VPWStudio
 		#endregion
 
 		#region temp info dump
-		private void UpdateInfo_Revenge()
+		private void UpdateInfoDump()
 		{
 			StringBuilder sb = new StringBuilder();
 
 			uint offset = 0;
-			switch (Program.CurrentProject.Settings.GameType)
+			bool hasOffset = false;
+			if (Program.CurLocationFile != null)
 			{
-				case SpecificGame.Revenge_NTSC_U:
-					offset = 0xDAC50;
-					break;
-				case SpecificGame.Revenge_PAL:
-					offset = 0xD81E0;
-					break;
+				if (Program.CurLocationFile.FirstFile != null)
+				{
+					offset = Program.CurLocationFile.FirstFile.Address;
+					hasOffset = true;
+				}
+			}
+			if (!hasOffset)
+			{
+				switch (Program.CurrentProject.Settings.GameType)
+				{
+					case SpecificGame.Revenge_NTSC_U:
+						offset = 0xDAC50;
+						break;
+					case SpecificGame.Revenge_PAL:
+						offset = 0xD81E0;
+						break;
+					case SpecificGame.VPW2_NTSC_J:
+						offset = 0x152DF0;
+						break;
+				}
 			}
 
 			for (int i = 1; i < this.CurrentFileTable.Entries.Count; i++)
@@ -138,27 +154,6 @@ namespace VPWStudio
 						fte.IsEncoded ? "*" : " ",
 						fte.Location,
 						fte.Location + offset
-					)
-				);
-			}
-
-			tbInfoDump.Text = sb.ToString();
-		}
-
-		private void UpdateInfo_VPW2()
-		{
-			StringBuilder sb = new StringBuilder();
-
-			for (int i = 1; i < this.CurrentFileTable.Entries.Count; i++)
-			{
-				FileTableEntry fte = this.CurrentFileTable.Entries[i];
-				sb.AppendLine(
-					String.Format(
-						"[{0:X4}]{1} {2:X8} (ROM addr: {3:X8})",
-						i,
-						fte.IsEncoded ? "*" : " ",
-						fte.Location,
-						fte.Location + 0x152DF0
 					)
 				);
 			}
