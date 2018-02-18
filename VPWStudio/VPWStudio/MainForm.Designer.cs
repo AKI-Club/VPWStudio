@@ -59,16 +59,17 @@
 			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.nothingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutVPWStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.dangerZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -292,18 +293,6 @@
 			resources.ApplyResources(this.programOptionsToolStripMenuItem, "programOptionsToolStripMenuItem");
 			this.programOptionsToolStripMenuItem.Click += new System.EventHandler(this.programOptionsToolStripMenuItem_Click);
 			// 
-			// asmikLzssTestToolStripMenuItem
-			// 
-			this.asmikLzssTestToolStripMenuItem.Name = "asmikLzssTestToolStripMenuItem";
-			resources.ApplyResources(this.asmikLzssTestToolStripMenuItem, "asmikLzssTestToolStripMenuItem");
-			this.asmikLzssTestToolStripMenuItem.Click += new System.EventHandler(this.asmikLzssTestToolStripMenuItem_Click);
-			// 
-			// lzssDecompressTestToolStripMenuItem
-			// 
-			this.lzssDecompressTestToolStripMenuItem.Name = "lzssDecompressTestToolStripMenuItem";
-			resources.ApplyResources(this.lzssDecompressTestToolStripMenuItem, "lzssDecompressTestToolStripMenuItem");
-			this.lzssDecompressTestToolStripMenuItem.Click += new System.EventHandler(this.lzssDecompressTestToolStripMenuItem_Click);
-			// 
 			// windowToolStripMenuItem
 			// 
 			this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -333,10 +322,23 @@
 			// dangerZoneToolStripMenuItem
 			// 
 			this.dangerZoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.asmikLzssTestToolStripMenuItem,
-			this.lzssDecompressTestToolStripMenuItem});
+            this.asmikLzssTestToolStripMenuItem,
+            this.lzssDecompressTestToolStripMenuItem,
+            this.akiTextToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			resources.ApplyResources(this.dangerZoneToolStripMenuItem, "dangerZoneToolStripMenuItem");
+			// 
+			// asmikLzssTestToolStripMenuItem
+			// 
+			this.asmikLzssTestToolStripMenuItem.Name = "asmikLzssTestToolStripMenuItem";
+			resources.ApplyResources(this.asmikLzssTestToolStripMenuItem, "asmikLzssTestToolStripMenuItem");
+			this.asmikLzssTestToolStripMenuItem.Click += new System.EventHandler(this.asmikLzssTestToolStripMenuItem_Click);
+			// 
+			// lzssDecompressTestToolStripMenuItem
+			// 
+			this.lzssDecompressTestToolStripMenuItem.Name = "lzssDecompressTestToolStripMenuItem";
+			resources.ApplyResources(this.lzssDecompressTestToolStripMenuItem, "lzssDecompressTestToolStripMenuItem");
+			this.lzssDecompressTestToolStripMenuItem.Click += new System.EventHandler(this.lzssDecompressTestToolStripMenuItem_Click);
 			// 
 			// statusStrip1
 			// 
@@ -364,6 +366,12 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
+			// 
+			// akiTextToolStripMenuItem
+			// 
+			this.akiTextToolStripMenuItem.Name = "akiTextToolStripMenuItem";
+			resources.ApplyResources(this.akiTextToolStripMenuItem, "akiTextToolStripMenuItem");
+			this.akiTextToolStripMenuItem.Click += new System.EventHandler(this.akiTextToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -426,6 +434,7 @@
 		private System.Windows.Forms.ToolStripMenuItem lzssDecompressTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem stablesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem dangerZoneToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem akiTextToolStripMenuItem;
 	}
 }
 

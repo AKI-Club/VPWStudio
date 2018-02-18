@@ -730,5 +730,10 @@ namespace VPWStudio
 			}
 		}
 
+		private void akiTextToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AkiTextTool att = new AkiTextTool();
+			att.ShowDialog();
+		}
 	}
 }
