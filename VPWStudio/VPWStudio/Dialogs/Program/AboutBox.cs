@@ -41,12 +41,22 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 			this.Text = String.Format("About {0}", AssemblyTitle);
-			this.labelVersion.Text = String.Format("{0} (indev) v{1} by freem", AssemblyProduct, AssemblyVersion);
 
-			Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio." + "githash.txt");
+			Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.githash.txt");
 			StreamReader reader = new StreamReader(stream);
-			this.labelGitHash.Text = String.Format("Git revision {0}", reader.ReadToEnd());
+			string gitHash = reader.ReadToEnd();
+			stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.builddate.txt");
+			reader = new StreamReader(stream);
+			string buildDate = reader.ReadToEnd().Substring(0, 19);
 			reader.Close();
+
+			this.labelVersion.Text = String.Format(
+				"{0} (indev) v{1} by freem\nbuilt on {2}; Git hash: {3}",
+				AssemblyProduct,
+				AssemblyVersion,
+				buildDate,
+				gitHash
+			);
 
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("This is an in-development version of VPW Studio.");

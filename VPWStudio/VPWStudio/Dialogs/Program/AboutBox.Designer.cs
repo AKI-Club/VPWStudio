@@ -33,13 +33,10 @@
 			this.tlpBottomSection = new System.Windows.Forms.TableLayoutPanel();
 			this.okButton = new System.Windows.Forms.Button();
 			this.llWebsite = new System.Windows.Forms.LinkLabel();
-			this.tlpVersionInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.labelVersion = new System.Windows.Forms.Label();
-			this.labelGitHash = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tlpMain.SuspendLayout();
 			this.tlpBottomSection.SuspendLayout();
-			this.tlpVersionInfo.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tbInformation
@@ -70,10 +67,10 @@
 			// 
 			this.tlpMain.ColumnCount = 1;
 			this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpMain.Controls.Add(this.labelVersion, 0, 1);
 			this.tlpMain.Controls.Add(this.pictureBox1, 0, 0);
 			this.tlpMain.Controls.Add(this.tbInformation, 0, 2);
 			this.tlpMain.Controls.Add(this.tlpBottomSection, 0, 3);
-			this.tlpMain.Controls.Add(this.tlpVersionInfo, 0, 1);
 			this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlpMain.Location = new System.Drawing.Point(0, 0);
 			this.tlpMain.Margin = new System.Windows.Forms.Padding(0);
@@ -124,42 +121,17 @@
 			this.llWebsite.Text = "http://vpw.ajworld.net/";
 			this.llWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llWebsite_LinkClicked);
 			// 
-			// tlpVersionInfo
-			// 
-			this.tlpVersionInfo.ColumnCount = 2;
-			this.tlpVersionInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpVersionInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpVersionInfo.Controls.Add(this.labelVersion, 0, 0);
-			this.tlpVersionInfo.Controls.Add(this.labelGitHash, 1, 0);
-			this.tlpVersionInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpVersionInfo.Location = new System.Drawing.Point(3, 83);
-			this.tlpVersionInfo.Name = "tlpVersionInfo";
-			this.tlpVersionInfo.RowCount = 1;
-			this.tlpVersionInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpVersionInfo.Size = new System.Drawing.Size(500, 26);
-			this.tlpVersionInfo.TabIndex = 31;
-			// 
 			// labelVersion
 			// 
 			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labelVersion.Location = new System.Drawing.Point(4, 4);
-			this.labelVersion.Margin = new System.Windows.Forms.Padding(4);
+			this.labelVersion.Location = new System.Drawing.Point(3, 82);
+			this.labelVersion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.labelVersion.Name = "labelVersion";
-			this.labelVersion.Size = new System.Drawing.Size(242, 18);
-			this.labelVersion.TabIndex = 1;
+			this.labelVersion.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+			this.labelVersion.Size = new System.Drawing.Size(500, 28);
+			this.labelVersion.TabIndex = 31;
 			this.labelVersion.Text = "(version string)";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// labelGitHash
-			// 
-			this.labelGitHash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelGitHash.AutoSize = true;
-			this.labelGitHash.Location = new System.Drawing.Point(253, 6);
-			this.labelGitHash.Name = "labelGitHash";
-			this.labelGitHash.Size = new System.Drawing.Size(244, 13);
-			this.labelGitHash.TabIndex = 2;
-			this.labelGitHash.Text = "(git hash)";
-			this.labelGitHash.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// AboutBox
 			// 
@@ -182,8 +154,6 @@
 			this.tlpMain.PerformLayout();
 			this.tlpBottomSection.ResumeLayout(false);
 			this.tlpBottomSection.PerformLayout();
-			this.tlpVersionInfo.ResumeLayout(false);
-			this.tlpVersionInfo.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -195,8 +165,6 @@
 		private System.Windows.Forms.TableLayoutPanel tlpBottomSection;
 		private System.Windows.Forms.Button okButton;
 		private System.Windows.Forms.LinkLabel llWebsite;
-		private System.Windows.Forms.TableLayoutPanel tlpVersionInfo;
 		private System.Windows.Forms.Label labelVersion;
-		private System.Windows.Forms.Label labelGitHash;
 	}
 }

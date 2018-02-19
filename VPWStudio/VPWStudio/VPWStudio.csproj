@@ -204,6 +204,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="builddate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="GameShark.ico" />
     <EmbeddedResource Include="githash.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -296,6 +299,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>git rev-parse --short HEAD &gt; ""$(ProjectDir)\githash.txt""</PreBuildEvent>
+    <PreBuildEvent>echo %25date%25 %25time%25 &gt; "$(ProjectDir)\builddate.txt"
+git rev-parse --short HEAD &gt; "$(ProjectDir)\githash.txt"</PreBuildEvent>
   </PropertyGroup>
 </Project>
