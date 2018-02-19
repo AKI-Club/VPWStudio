@@ -63,6 +63,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AboutBox_Banner {
+            get {
+                object obj = ResourceManager.GetObject("AboutBox_Banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GameIcon16_NoMercy {
             get {
                 object obj = ResourceManager.GetObject("GameIcon16_NoMercy", resourceCulture);
@@ -136,6 +146,16 @@ namespace VPWStudio.Properties {
         internal static System.Drawing.Bitmap MenuIcon16_BuildROM {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_BuildROM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_Championship {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_Championship", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

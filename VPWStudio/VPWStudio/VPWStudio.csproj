@@ -48,18 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\WrestlerEdit_NoMercy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\WrestlerEdit_NoMercy.Designer.cs">
-      <DependentUpon>WrestlerEdit_NoMercy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\WrestlerEdit_VPW2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\WrestlerEdit_VPW2.Designer.cs">
-      <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
-    </Compile>
     <Compile Include="DataStructures\AkiModel.cs" />
     <Compile Include="DataStructures\AkiText.cs" />
     <Compile Include="DataStructures\FileTable.cs" />
@@ -67,16 +55,28 @@
     <Compile Include="DataStructures\GameSharkCodeFile.cs" />
     <Compile Include="DataStructures\GameSharkCodeSet.cs" />
     <Compile Include="DataStructures\PackedFile.cs" />
-    <Compile Include="Dialogs\ProgramOptionsDialog.cs">
+    <Compile Include="Dialogs\FileTableEditCommentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\ProgramOptionsDialog.Designer.cs">
+    <Compile Include="Dialogs\FileTableEditCommentDialog.Designer.cs">
+      <DependentUpon>FileTableEditCommentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Program\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Program\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Program\ProgramOptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Program\ProgramOptionsDialog.Designer.cs">
       <DependentUpon>ProgramOptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ProjectPropertiesDialog.cs">
+    <Compile Include="Dialogs\Project\ProjectPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\ProjectPropertiesDialog.Designer.cs">
+    <Compile Include="Dialogs\Project\ProjectPropertiesDialog.Designer.cs">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\FileTableDialog.cs">
@@ -97,10 +97,10 @@
     <Compile Include="ProgStructures\GenericEnums.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
     <Compile Include="ProgStructures\Project\ProjectFile.cs" />
-    <Compile Include="Dialogs\NewProjectDialog.cs">
+    <Compile Include="Dialogs\Project\NewProjectDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\NewProjectDialog.Designer.cs">
+    <Compile Include="Dialogs\Project\NewProjectDialog.Designer.cs">
       <DependentUpon>NewProjectDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -114,6 +114,12 @@
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedStrings.cs" />
+    <Compile Include="temporary\FtXmlTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="temporary\FtXmlTest.Designer.cs">
+      <DependentUpon>FtXmlTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\AkiTextTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,19 +144,19 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\WrestlerEdit_NoMercy.resx">
-      <DependentUpon>WrestlerEdit_NoMercy.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FileTableEditCommentDialog.resx">
+      <DependentUpon>FileTableEditCommentDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WrestlerEdit_VPW2.resx">
-      <DependentUpon>WrestlerEdit_VPW2.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\Program\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\NewProjectDialog.resx">
+    <EmbeddedResource Include="Dialogs\Project\NewProjectDialog.resx">
       <DependentUpon>NewProjectDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\ProgramOptionsDialog.resx">
+    <EmbeddedResource Include="Dialogs\Program\ProgramOptionsDialog.resx">
       <DependentUpon>ProgramOptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\ProjectPropertiesDialog.resx">
+    <EmbeddedResource Include="Dialogs\Project\ProjectPropertiesDialog.resx">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
@@ -169,6 +175,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="temporary\FtXmlTest.resx">
+      <DependentUpon>FtXmlTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\AkiTextTool.resx">
       <DependentUpon>AkiTextTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,9 +273,12 @@
     <None Include="Resources\exit.png" />
     <None Include="Resources\modeltool.png" />
     <None Include="Resources\wrestlers.png" />
+    <None Include="Resources\championship.png" />
+    <None Include="Resources\about_banner.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\" />
     <Folder Include="Editors\NoMercy\" />
     <Folder Include="Editors\Revenge\" />
     <Folder Include="Editors\VPW2\" />
