@@ -275,6 +275,7 @@
     <None Include="Resources\wrestlers.png" />
     <None Include="Resources\championship.png" />
     <None Include="Resources\about_banner.png" />
+    <None Include="Resources\danger_zone.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
