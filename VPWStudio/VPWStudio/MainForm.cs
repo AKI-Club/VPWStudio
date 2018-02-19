@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,11 +44,19 @@ namespace VPWStudio
 		public GameSharkTool GSTool = null;
 		#endregion
 
+		#region Program-related Forms
 		/// <summary>
 		/// Program options dialog
 		/// </summary>
 		public ProgramOptionsDialog ProgOptionsDialog = null;
+
+		/// <summary>
+		/// About box
+		/// </summary>
+		public AboutBox AboutVPWStudio = null;
 		#endregion
+
+		#endregion // children forms
 
 		public MainForm(string[] args)
 		{
@@ -343,9 +350,37 @@ namespace VPWStudio
 
 		private void arenasToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
 			// arena dialog not yet designed
 		}
 
+		private void championshipsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// championships dialog not yet designed
+		}
+
+		private void costumesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// costumes dialog not yet designed
+		}
+
+		/// <summary>
+		/// File table editor
+		/// </summary>
 		private void fileTableToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -377,11 +412,21 @@ namespace VPWStudio
 
 		private void movesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
 			// moves dialog not yet designed
 		}
 
 		private void stablesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
 			// stables dialog not yet designed
 		}
 
@@ -564,13 +609,20 @@ namespace VPWStudio
 		#region Help Menu Items
 		private void aboutVPWStudioToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// temporary thing
-			MessageBox.Show(
-				String.Format("VPW Studio (indev version {0}) by freem", Application.ProductVersion),
-				SharedStrings.MainForm_Title,
-				MessageBoxButtons.OK,
-				MessageBoxIcon.Information
-			);
+			//AboutVPWStudio
+			if (this.AboutVPWStudio == null)
+			{
+				this.AboutVPWStudio = new AboutBox();
+				this.AboutVPWStudio.ShowDialog();
+			}
+			else
+			{
+				if (this.AboutVPWStudio.IsDisposed)
+				{
+					this.AboutVPWStudio = new AboutBox();
+				}
+				this.AboutVPWStudio.ShowDialog();
+			}
 		}
 		#endregion
 
@@ -578,7 +630,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Update the title bar caption based on the current project status.
 		/// </summary>
-		private void UpdateTitleBar()
+		public void UpdateTitleBar()
 		{
 			string titleBar = String.Format("{0}", SharedStrings.MainForm_Title);
 
@@ -605,6 +657,7 @@ namespace VPWStudio
 			// Project menu
 			projectPropertiesToolStripMenuItem.Enabled = projFileOpen;
 			arenasToolStripMenuItem.Enabled = projFileOpen;
+			championshipsToolStripMenuItem.Enabled = projFileOpen;
 			costumesToolStripMenuItem.Enabled = projFileOpen;
 			fileTableToolStripMenuItem.Enabled = projFileOpen;
 			movesToolStripMenuItem.Enabled = projFileOpen;
@@ -715,5 +768,6 @@ namespace VPWStudio
 			att.ShowDialog();
 		}
 		#endregion
+
 	}
 }

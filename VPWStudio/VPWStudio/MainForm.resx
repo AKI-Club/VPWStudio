@@ -120,90 +120,11 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="projectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Project</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
-  <data name="windowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="windowToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Window</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
-  </data>
-  <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>lzss compress test</value>
-  </data>
-  <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
-  </data>
-  <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>lzss decompress test</value>
-  </data>
-  <data name="akiTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
-  </data>
-  <data name="akiTextToolStripMenuItem.Text" xml:space="preserve">
-    <value>aki text</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Danger Zone</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 24</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="newProjectToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 22</value>
   </data>
@@ -261,6 +182,12 @@
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
   <data name="projectPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -275,6 +202,12 @@
   </data>
   <data name="arenasToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Arenas</value>
+  </data>
+  <data name="championshipsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="championshipsToolStripMenuItem.Text" xml:space="preserve">
+    <value>C&amp;hampionships</value>
   </data>
   <data name="costumesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
@@ -327,6 +260,12 @@
   <data name="playROMToolStripMenuItem.Text" xml:space="preserve">
     <value>Pla&amp;y ROM</value>
   </data>
+  <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="projectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Project</value>
+  </data>
   <data name="modelDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 22</value>
   </data>
@@ -357,11 +296,23 @@
   <data name="programOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>Program &amp;Options</value>
   </data>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
   <data name="nothingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
   </data>
   <data name="nothingToolStripMenuItem.Text" xml:space="preserve">
     <value>nothing</value>
+  </data>
+  <data name="windowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="windowToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Window</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
@@ -369,9 +320,85 @@
   <data name="aboutVPWStudioToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About VPW Studio</value>
   </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>lzss compress test</value>
+  </data>
+  <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>lzss decompress test</value>
+  </data>
+  <data name="akiTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="akiTextToolStripMenuItem.Text" xml:space="preserve">
+    <value>aki text</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Danger Zone</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 17</value>
   </metadata>
+  <data name="tssLabelCurFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 18</value>
+  </data>
+  <data name="tssLabelCurFile.Text" xml:space="preserve">
+    <value>No project file opened.</value>
+  </data>
+  <data name="tssLabelCurFile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="tssLabelGameType.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tssLabelGameType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 17</value>
+  </data>
+  <data name="tssLabelGameType.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tssLabelGameType.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 591</value>
   </data>
@@ -395,27 +422,6 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="tssLabelCurFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>777, 18</value>
-  </data>
-  <data name="tssLabelCurFile.Text" xml:space="preserve">
-    <value>No project file opened.</value>
-  </data>
-  <data name="tssLabelCurFile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="tssLabelGameType.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tssLabelGameType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 17</value>
-  </data>
-  <data name="tssLabelGameType.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="tssLabelGameType.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1332,6 +1338,12 @@
   <data name="&gt;&gt;arenasToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;championshipsToolStripMenuItem.Name" xml:space="preserve">
+    <value>championshipsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;championshipsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;costumesToolStripMenuItem.Name" xml:space="preserve">
     <value>costumesToolStripMenuItem</value>
   </data>
@@ -1464,6 +1476,12 @@
   <data name="&gt;&gt;lzssDecompressTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;akiTextToolStripMenuItem.Name" xml:space="preserve">
+    <value>akiTextToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;akiTextToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -1475,12 +1493,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;akiTextToolStripMenuItem.Name" xml:space="preserve">
-    <value>akiTextToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;akiTextToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

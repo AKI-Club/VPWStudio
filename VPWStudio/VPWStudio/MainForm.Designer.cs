@@ -44,6 +44,7 @@
 			this.projectPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.arenasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.championshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.movesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,10 +67,10 @@
 			this.dangerZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -163,6 +164,7 @@
             this.projectPropertiesToolStripMenuItem,
             this.toolStripSeparator2,
             this.arenasToolStripMenuItem,
+            this.championshipsToolStripMenuItem,
             this.costumesToolStripMenuItem,
             this.fileTableToolStripMenuItem,
             this.movesToolStripMenuItem,
@@ -192,11 +194,19 @@
 			resources.ApplyResources(this.arenasToolStripMenuItem, "arenasToolStripMenuItem");
 			this.arenasToolStripMenuItem.Click += new System.EventHandler(this.arenasToolStripMenuItem_Click);
 			// 
+			// championshipsToolStripMenuItem
+			// 
+			this.championshipsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Championship;
+			this.championshipsToolStripMenuItem.Name = "championshipsToolStripMenuItem";
+			resources.ApplyResources(this.championshipsToolStripMenuItem, "championshipsToolStripMenuItem");
+			this.championshipsToolStripMenuItem.Click += new System.EventHandler(this.championshipsToolStripMenuItem_Click);
+			// 
 			// costumesToolStripMenuItem
 			// 
 			this.costumesToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Costumes;
 			this.costumesToolStripMenuItem.Name = "costumesToolStripMenuItem";
 			resources.ApplyResources(this.costumesToolStripMenuItem, "costumesToolStripMenuItem");
+			this.costumesToolStripMenuItem.Click += new System.EventHandler(this.costumesToolStripMenuItem_Click);
 			// 
 			// fileTableToolStripMenuItem
 			// 
@@ -340,6 +350,12 @@
 			resources.ApplyResources(this.lzssDecompressTestToolStripMenuItem, "lzssDecompressTestToolStripMenuItem");
 			this.lzssDecompressTestToolStripMenuItem.Click += new System.EventHandler(this.lzssDecompressTestToolStripMenuItem_Click);
 			// 
+			// akiTextToolStripMenuItem
+			// 
+			this.akiTextToolStripMenuItem.Name = "akiTextToolStripMenuItem";
+			resources.ApplyResources(this.akiTextToolStripMenuItem, "akiTextToolStripMenuItem");
+			this.akiTextToolStripMenuItem.Click += new System.EventHandler(this.akiTextToolStripMenuItem_Click);
+			// 
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -366,12 +382,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// akiTextToolStripMenuItem
-			// 
-			this.akiTextToolStripMenuItem.Name = "akiTextToolStripMenuItem";
-			resources.ApplyResources(this.akiTextToolStripMenuItem, "akiTextToolStripMenuItem");
-			this.akiTextToolStripMenuItem.Click += new System.EventHandler(this.akiTextToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -435,6 +445,7 @@
 		private System.Windows.Forms.ToolStripMenuItem stablesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem dangerZoneToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem akiTextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem championshipsToolStripMenuItem;
 	}
 }
 
