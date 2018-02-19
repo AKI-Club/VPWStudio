@@ -71,6 +71,8 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -318,6 +320,8 @@
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manualToolStripMenuItem,
+            this.toolStripSeparator8,
             this.aboutVPWStudioToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
@@ -383,6 +387,17 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// manualToolStripMenuItem
+			// 
+			this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
+			resources.ApplyResources(this.manualToolStripMenuItem, "manualToolStripMenuItem");
+			this.manualToolStripMenuItem.Click += new System.EventHandler(this.manualToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator8
+			// 
+			this.toolStripSeparator8.Name = "toolStripSeparator8";
+			resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -446,6 +461,8 @@
 		private System.Windows.Forms.ToolStripMenuItem dangerZoneToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem akiTextToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem championshipsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 	}
 }
 

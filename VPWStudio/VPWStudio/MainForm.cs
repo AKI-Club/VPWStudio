@@ -356,6 +356,7 @@ namespace VPWStudio
 			}
 
 			// arena dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
 		}
 
 		private void championshipsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -366,6 +367,7 @@ namespace VPWStudio
 			}
 
 			// championships dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
 		}
 
 		private void costumesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -376,6 +378,7 @@ namespace VPWStudio
 			}
 
 			// costumes dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
 		}
 
 		/// <summary>
@@ -418,6 +421,7 @@ namespace VPWStudio
 			}
 
 			// moves dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
 		}
 
 		private void stablesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -428,6 +432,7 @@ namespace VPWStudio
 			}
 
 			// stables dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
 		}
 
 		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -438,9 +443,13 @@ namespace VPWStudio
 			}
 
 			// todo: multiple forms based on game
+			MessageBox.Show("hey I need to re-think how this works; give me a bit and i'll get back to you");
 		}
 
 		#region Project build section
+		/// <summary>
+		/// Build ROM
+		/// </summary>
 		private void buildROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -449,13 +458,20 @@ namespace VPWStudio
 				return;
 			}
 
+			MessageBox.Show("doesn't do anything yet");
+
 			// todo: check if output rom path is a valid one
 
 			// perform "build" process
 		}
 
+		/// <summary>
+		/// Play ROM
+		/// </summary>
 		private void playROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			// todo: use the output rom instead of input
+
 			if (Program.CurrentProject == null)
 			{
 				// no project loaded to play ROM of
@@ -494,7 +510,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// todo: rebuild before loading?
+			// todo: rebuild output rom if needed
 
 			System.Diagnostics.Process.Start(
 				VPWStudio.Properties.Settings.Default.EmulatorPath,
@@ -607,6 +623,18 @@ namespace VPWStudio
 		#endregion
 
 		#region Help Menu Items
+		/// <summary>
+		/// eventually this will launch the manual.
+		/// but there is none right now.
+		/// </summary>
+		private void manualToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("I can't yell at you to read the manual because it doesn't exist yet. it also won't exist for a while because this program is THAT early into development.");
+		}
+
+		/// <summary>
+		/// About
+		/// </summary>
 		private void aboutVPWStudioToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			//AboutVPWStudio
@@ -655,16 +683,13 @@ namespace VPWStudio
 			closeProjectToolStripMenuItem.Enabled = projFileOpen;
 
 			// Project menu
-			projectPropertiesToolStripMenuItem.Enabled = projFileOpen;
-			arenasToolStripMenuItem.Enabled = projFileOpen;
-			championshipsToolStripMenuItem.Enabled = projFileOpen;
-			costumesToolStripMenuItem.Enabled = projFileOpen;
-			fileTableToolStripMenuItem.Enabled = projFileOpen;
-			movesToolStripMenuItem.Enabled = projFileOpen;
-			stablesToolStripMenuItem.Enabled = projFileOpen;
-			wrestlersToolStripMenuItem.Enabled = projFileOpen;
-			buildROMToolStripMenuItem.Enabled = projFileOpen;
-			playROMToolStripMenuItem.Enabled = projFileOpen;
+			foreach (ToolStripItem tsi in projectToolStripMenuItem.DropDownItems)
+			{
+				if (tsi.GetType() == typeof(ToolStripMenuItem))
+				{
+					tsi.Enabled = projFileOpen;
+				}
+			}
 		}
 
 		/// <summary>
