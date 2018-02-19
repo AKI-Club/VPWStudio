@@ -673,6 +673,9 @@ namespace VPWStudio
 			this.Text = titleBar;
 		}
 
+		/// <summary>
+		/// Update valid menus based on the current project status.
+		/// </summary>
 		private void UpdateValidMenus()
 		{
 			bool projFileOpen = (Program.CurrentProject != null);
@@ -749,6 +752,9 @@ namespace VPWStudio
 		#endregion
 
 		#region Danger Zone items
+		// items in this section are short lived.
+		// I just wanted a better place to put them.
+
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();

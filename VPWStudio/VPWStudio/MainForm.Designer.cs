@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.MainMenu = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,24 +70,24 @@
 			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.menuStrip1.SuspendLayout();
-			this.statusStrip1.SuspendLayout();
+			this.MainMenu.SuspendLayout();
+			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// MainMenu
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.projectToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.windowToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.dangerZoneToolStripMenuItem});
-			resources.ApplyResources(this.menuStrip1, "menuStrip1");
-			this.menuStrip1.Name = "menuStrip1";
+			resources.ApplyResources(this.MainMenu, "MainMenu");
+			this.MainMenu.Name = "MainMenu";
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -346,13 +346,16 @@
 			// 
 			// dangerZoneToolStripMenuItem
 			// 
+			resources.ApplyResources(this.dangerZoneToolStripMenuItem, "dangerZoneToolStripMenuItem");
+			this.dangerZoneToolStripMenuItem.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuItem;
+			this.dangerZoneToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.dangerZoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asmikLzssTestToolStripMenuItem,
             this.lzssDecompressTestToolStripMenuItem,
             this.akiTextToolStripMenuItem});
-			resources.ApplyResources(this.dangerZoneToolStripMenuItem, "dangerZoneToolStripMenuItem");
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
+			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
 			// 
 			// asmikLzssTestToolStripMenuItem
 			// 
@@ -372,13 +375,13 @@
 			resources.ApplyResources(this.akiTextToolStripMenuItem, "akiTextToolStripMenuItem");
 			this.akiTextToolStripMenuItem.Click += new System.EventHandler(this.akiTextToolStripMenuItem_Click);
 			// 
-			// statusStrip1
+			// StatusBar
 			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssLabelCurFile,
             this.tssLabelGameType});
-			resources.ApplyResources(this.statusStrip1, "statusStrip1");
-			this.statusStrip1.Name = "statusStrip1";
+			resources.ApplyResources(this.StatusBar, "StatusBar");
+			this.StatusBar.Name = "StatusBar";
 			// 
 			// tssLabelCurFile
 			// 
@@ -403,16 +406,16 @@
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.statusStrip1);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.StatusBar);
+			this.Controls.Add(this.MainMenu);
 			this.IsMdiContainer = true;
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.MainMenu;
 			this.Name = "MainForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
+			this.MainMenu.ResumeLayout(false);
+			this.MainMenu.PerformLayout();
+			this.StatusBar.ResumeLayout(false);
+			this.StatusBar.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -420,7 +423,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.MenuStrip MainMenu;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
@@ -433,7 +436,7 @@
 		private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem modelDataToolStripMenuItem;
-		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.StatusStrip StatusBar;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelCurFile;
 		private System.Windows.Forms.ToolStripMenuItem projectPropertiesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem closeProjectToolStripMenuItem;

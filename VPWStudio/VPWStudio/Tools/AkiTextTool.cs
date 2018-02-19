@@ -35,6 +35,10 @@ namespace VPWStudio
 				}
 				tbInfoDump.Text = sb.ToString();
 			}
+			else
+			{
+				MessageBox.Show("this is awkward, but I won't really need this dialog in the future...");
+			}
 
 			// now i don't need the immediate re-encoding step
 			/*
