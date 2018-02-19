@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,25 +13,39 @@ namespace VPWStudio
 {
 	public partial class FileTableDialog : Form
 	{
-		protected FileTable CurrentFileTable;
-
 		public FileTableDialog()
 		{
 			InitializeComponent();
 
 			if (Program.CurrentProject != null)
 			{
-				LoadFileTable();
+				if (Program.CurrentProject.ProjectFileTable.Entries.Count == 0)
+				{
+					MessageBox.Show(
+						"Project FileTable not found. Attempting to create from ROM.",
+						SharedStrings.MainForm_Title,
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Information
+					);
+					MakeFileTableFromRom();
+
+					Program.UnsavedChanges = true;
+					(Application.OpenForms["MainForm"] as MainForm).UpdateTitleBar();
+				}
 				UpdateInfoDump();
 			}
 		}
 
-		private void LoadFileTable()
+		/// <summary>
+		/// Load FileTable from current input ROM and assign the result to the ProjectFile.
+		/// </summary>
+		private void MakeFileTableFromRom()
 		{
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
-			this.CurrentFileTable = new FileTable();
+			// load from input rom, then put in project filetable
+			Program.CurrentProject.ProjectFileTable = new FileTable();
 
 			bool hasLocation = false;
 			bool hasLength = false;
@@ -39,7 +54,7 @@ namespace VPWStudio
 				if (Program.CurLocationFile.FileTable != null)
 				{
 					br.BaseStream.Seek(Program.CurLocationFile.FileTable.Address, SeekOrigin.Begin);
-					this.CurrentFileTable.Load(br, Program.CurLocationFile.FileTable.Width);
+					Program.CurrentProject.ProjectFileTable.Read(br, Program.CurLocationFile.FileTable.Width);
 					hasLocation = true;
 					hasLength = true;
 				}
@@ -118,21 +133,14 @@ namespace VPWStudio
 				if (offset != 0 && length != 0)
 				{
 					br.BaseStream.Seek(offset, SeekOrigin.Begin);
-					this.CurrentFileTable.Load(br, length);
-				}
-				else
-				{
-					MessageBox.Show(String.Format("Well I guess I didn't implement {0} yet...", Program.CurrentProject.Settings.GameType));
+					Program.CurrentProject.ProjectFileTable.Read(br, length);
 				}
 			}
 			br.Close();
 		}
 
-		#region temp info dump
 		private void UpdateInfoDump()
 		{
-			StringBuilder sb = new StringBuilder();
-
 			uint offset = 0;
 			bool hasOffset = false;
 			if (Program.CurLocationFile != null)
@@ -190,22 +198,65 @@ namespace VPWStudio
 				}
 			}
 
-			for (int i = 1; i < this.CurrentFileTable.Entries.Count; i++)
+			lvFileList.Items.Clear();
+			lvFileList.BeginUpdate();
+			int i = 0;
+			foreach (KeyValuePair<int, FileTableEntry> fte in Program.CurrentProject.ProjectFileTable.Entries)
 			{
-				FileTableEntry fte = this.CurrentFileTable.Entries[i];
-				sb.AppendLine(
-					String.Format(
-						"[{0:X4}]{1} {2:X8} (ROM addr: {3:X8})",
-						i,
-						fte.IsEncoded ? "*" : " ",
-						fte.Location,
-						fte.Location + offset
-					)
-				);
+				ListViewItem lvi = new ListViewItem(new string[] {
+					String.Format("{0:X4}",fte.Value.FileID),
+					String.Format("{0:X8}",fte.Value.Location),
+					String.Format("{0:X8}",fte.Value.Location + offset),
+					fte.Value.IsEncoded.ToString(),
+					fte.Value.Comment
+				});
+				lvi.UseItemStyleForSubItems = false;
+				Color rowColor = (i % 2 == 0) ? Color.White : Color.FromArgb(240, 240, 240);
+				lvi.SubItems[0].BackColor = rowColor;
+				lvi.SubItems[1].BackColor = rowColor;
+				lvi.SubItems[2].BackColor = rowColor;
+				lvi.SubItems[3].BackColor = rowColor;
+				lvi.SubItems[4].BackColor = rowColor;
+
+				Font regular = new Font(FontFamily.GenericSansSerif, 8.25f);
+				Font mono = new Font(FontFamily.GenericMonospace, 10.0f);
+				lvi.SubItems[0].Font = mono;
+				lvi.SubItems[1].Font = mono;
+				lvi.SubItems[2].Font = mono;
+				lvi.SubItems[3].Font = regular;
+				lvi.SubItems[4].Font = regular;
+				lvFileList.Items.Add(lvi);
+
+				i++;
+			}
+			lvFileList.EndUpdate();
+		}
+
+		/// <summary>
+		/// Set the comment of the selected FileTable entry.
+		/// </summary>
+		private void setCommentToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count == 0)
+			{
+				return;
 			}
 
-			tbInfoDump.Text = sb.ToString();
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				// ugh this blows dick, should really be a separate dialog
+				MessageBox.Show("I haven't implemented multiple rename yet, ugh");
+			}
+			else
+			{
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+				FileTableEditCommentDialog ftecd = new FileTableEditCommentDialog(key, Program.CurrentProject.ProjectFileTable.Entries[key].Comment);
+				if (ftecd.ShowDialog() == DialogResult.OK)
+				{
+					Program.CurrentProject.ProjectFileTable.Entries[key].Comment = ftecd.NewComment;
+					lvFileList.SelectedItems[0].SubItems[4].Text = ftecd.NewComment;
+				}
+			}
 		}
-		#endregion
 	}
 }
