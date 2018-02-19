@@ -143,6 +143,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon_DangerZone {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon_DangerZone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuIcon16_BuildROM {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_BuildROM", resourceCulture);
