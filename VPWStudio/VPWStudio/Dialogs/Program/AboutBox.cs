@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -41,6 +42,11 @@ namespace VPWStudio
 			InitializeComponent();
 			this.Text = String.Format("About {0}", AssemblyTitle);
 			this.labelVersion.Text = String.Format("{0} (indev) v{1} by freem", AssemblyProduct, AssemblyVersion);
+
+			Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio." + "githash.txt");
+			StreamReader reader = new StreamReader(stream);
+			this.labelGitHash.Text = String.Format("Git revision {0}", reader.ReadToEnd());
+			reader.Close();
 
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("This is an in-development version of VPW Studio.");
