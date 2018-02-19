@@ -25,6 +25,11 @@ namespace VPWStudio
 		/// Settings for this ProjectFile.
 		/// </summary>
 		public ProjectSettings Settings;
+
+		/// <summary>
+		/// FileTable for this project.
+		/// </summary>
+		public FileTable ProjectFileTable;
 		#endregion
 
 		/// <summary>
@@ -34,6 +39,7 @@ namespace VPWStudio
 		{
 			this.ProjectFileVersion = CUR_PROJECTFILE_VER;
 			this.Settings = new ProjectSettings();
+			this.ProjectFileTable = new FileTable();
 		}
 
 		/// <summary>
@@ -44,6 +50,7 @@ namespace VPWStudio
 		{
 			this.ProjectFileVersion = _src.ProjectFileVersion;
 			this.Settings.DeepCopy(_src.Settings);
+			this.ProjectFileTable.DeepCopy(_src.ProjectFileTable);
 		}
 
 		#region Project File Load/Save
