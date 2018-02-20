@@ -221,6 +221,12 @@
   <data name="fileTableToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File Table</value>
   </data>
+  <data name="menusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="menusToolStripMenuItem.Text" xml:space="preserve">
+    <value>Men&amp;us</value>
+  </data>
   <data name="movesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -232,6 +238,16 @@
   </data>
   <data name="stablesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Stables</value>
+  </data>
+  <data name="storyModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="storyModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Stor&amp;y Mode</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="storyModeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
@@ -374,7 +390,6 @@
   <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>792, 24</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -1368,6 +1383,12 @@
   <data name="&gt;&gt;fileTableToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menusToolStripMenuItem.Name" xml:space="preserve">
+    <value>menusToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;menusToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;movesToolStripMenuItem.Name" xml:space="preserve">
     <value>movesToolStripMenuItem</value>
   </data>
@@ -1378,6 +1399,12 @@
     <value>stablesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;stablesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;storyModeToolStripMenuItem.Name" xml:space="preserve">
+    <value>storyModeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;storyModeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;wrestlersToolStripMenuItem.Name" xml:space="preserve">

@@ -47,8 +47,10 @@
 			this.championshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.movesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.storyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,8 +171,10 @@
             this.championshipsToolStripMenuItem,
             this.costumesToolStripMenuItem,
             this.fileTableToolStripMenuItem,
+            this.menusToolStripMenuItem,
             this.movesToolStripMenuItem,
             this.stablesToolStripMenuItem,
+            this.storyModeToolStripMenuItem,
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
             this.buildROMToolStripMenuItem,
@@ -217,6 +221,13 @@
 			resources.ApplyResources(this.fileTableToolStripMenuItem, "fileTableToolStripMenuItem");
 			this.fileTableToolStripMenuItem.Click += new System.EventHandler(this.fileTableToolStripMenuItem_Click);
 			// 
+			// menusToolStripMenuItem
+			// 
+			this.menusToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Menus;
+			this.menusToolStripMenuItem.Name = "menusToolStripMenuItem";
+			resources.ApplyResources(this.menusToolStripMenuItem, "menusToolStripMenuItem");
+			this.menusToolStripMenuItem.Click += new System.EventHandler(this.menusToolStripMenuItem_Click);
+			// 
 			// movesToolStripMenuItem
 			// 
 			this.movesToolStripMenuItem.Name = "movesToolStripMenuItem";
@@ -229,6 +240,12 @@
 			this.stablesToolStripMenuItem.Name = "stablesToolStripMenuItem";
 			resources.ApplyResources(this.stablesToolStripMenuItem, "stablesToolStripMenuItem");
 			this.stablesToolStripMenuItem.Click += new System.EventHandler(this.stablesToolStripMenuItem_Click);
+			// 
+			// storyModeToolStripMenuItem
+			// 
+			this.storyModeToolStripMenuItem.Name = "storyModeToolStripMenuItem";
+			resources.ApplyResources(this.storyModeToolStripMenuItem, "storyModeToolStripMenuItem");
+			this.storyModeToolStripMenuItem.Click += new System.EventHandler(this.storyModeToolStripMenuItem_Click);
 			// 
 			// wrestlersToolStripMenuItem
 			// 
@@ -467,6 +484,8 @@
 		private System.Windows.Forms.ToolStripMenuItem championshipsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+		private System.Windows.Forms.ToolStripMenuItem menusToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem storyModeToolStripMenuItem;
 	}
 }
 

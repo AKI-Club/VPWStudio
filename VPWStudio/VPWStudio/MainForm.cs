@@ -65,10 +65,26 @@ namespace VPWStudio
 			if (args.Length > 0)
 			{
 				// passed in command line arguments... probably a project file.
+				LoadProject(args[0]);
 			}
 
+			UpdateTitleBar();
 			UpdateValidMenus();
+			UpdateStatusBar();
 		}
+
+		#region Project Load/Save
+		/// <summary>
+		/// Load the project file from the specified path.
+		/// </summary>
+		/// <param name="_path"></param>
+		public void LoadProject(string _path)
+		{
+			Program.CurrentProject = new ProjectFile();
+			Program.CurrentProject.LoadFile(_path);
+			Program.CurProjectPath = _path;
+		}
+		#endregion
 
 		#region Program Exit Routines
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,9 +125,6 @@ namespace VPWStudio
 				// set up new project based on data given
 				Program.CurrentProject = new ProjectFile();
 				Program.CurrentProject.Settings.DeepCopy(npd.NewSettings);
-				// todo: set base game in the dialogs instead of here
-				Program.CurrentProject.Settings.BaseGame = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].BaseGame;
-
 				Program.CurProjectPath = String.Empty; // unsaved file
 				Program.UnsavedChanges = true;
 				UpdateValidMenus();
@@ -156,9 +169,7 @@ namespace VPWStudio
 			ofd.Filter = SharedStrings.FileFilter_Project;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				Program.CurrentProject = new ProjectFile();
-				Program.CurrentProject.LoadFile(ofd.FileName);
-				Program.CurProjectPath = ofd.FileName;
+				LoadProject(ofd.FileName);
 				Program.UnsavedChanges = false;
 				UpdateValidMenus();
 				UpdateStatusBar();
@@ -268,8 +279,6 @@ namespace VPWStudio
 		/// <summary>
 		/// Close current project.
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void closeProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			// can't close something that isn't there...
@@ -315,6 +324,13 @@ namespace VPWStudio
 
 			if (this.ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
+				// check to see if project game type was changed
+				if (Program.CurrentProject.Settings.GameType != this.ProjPropDialog.NewSettings.GameType)
+				{
+					// invalidate project data
+					Program.CurrentProject.ProjectFileTable = new FileTable();
+				}
+
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
 
 				Program.CurrentProject.Settings.DeepCopy(this.ProjPropDialog.NewSettings);
@@ -348,6 +364,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Arena editor
+		/// </summary>
 		private void arenasToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -359,6 +378,16 @@ namespace VPWStudio
 			MessageBox.Show("doesn't do anything yet");
 		}
 
+		/// <summary>
+		/// Championship editor
+		/// </summary>
+		/// This is also the Story Mode editor for:
+		/// * WCW vs. nWo World Tour
+		/// * Virtual Pro-Wrestling 64
+		/// * WCW/nWo Revenge
+		/// 
+		/// In WM2K and VPW2, it allows you to edit the possible belt choices.
+		/// In No Mercy, it allows you to edit the belts themselves.
 		private void championshipsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -370,6 +399,9 @@ namespace VPWStudio
 			MessageBox.Show("doesn't do anything yet");
 		}
 
+		/// <summary>
+		/// Costume editor
+		/// </summary>
 		private void costumesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -413,6 +445,23 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Menu editor
+		/// </summary>
+		private void menusToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// menu dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
+		}
+
+		/// <summary>
+		/// Move editor
+		/// </summary>
 		private void movesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -424,6 +473,9 @@ namespace VPWStudio
 			MessageBox.Show("doesn't do anything yet");
 		}
 
+		/// <summary>
+		/// Stables editor
+		/// </summary>
 		private void stablesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -435,6 +487,23 @@ namespace VPWStudio
 			MessageBox.Show("doesn't do anything yet");
 		}
 
+		/// <summary>
+		/// Story Mode editor (WM2K, VPW2, and No Mercy only)
+		/// </summary>
+		private void storyModeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// story mode dialogs not yet designed
+			MessageBox.Show("doesn't do anything yet");
+		}
+
+		/// <summary>
+		/// Wrestler editor
+		/// </summary>
 		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -691,6 +760,28 @@ namespace VPWStudio
 				if (tsi.GetType() == typeof(ToolStripMenuItem))
 				{
 					tsi.Enabled = projFileOpen;
+				}
+			}
+
+			// special case for Story Mode
+			if (Program.CurrentProject != null)
+			{
+				VPWGames bg = Program.CurrentProject.Settings.BaseGame;
+				bool showStoryMode = (bg == VPWGames.WM2K || bg == VPWGames.VPW2 || bg == VPWGames.NoMercy);
+				storyModeToolStripMenuItem.Enabled = showStoryMode;
+				storyModeToolStripMenuItem.Visible = showStoryMode;
+				switch (bg)
+				{
+					case VPWGames.WM2K:
+					case VPWGames.VPW2:
+						storyModeToolStripMenuItem.Image = VPWStudio.Properties.Resources.MenuIcon16_Story_WM2K_VPW2;
+						break;
+					case VPWGames.NoMercy:
+						storyModeToolStripMenuItem.Image = VPWStudio.Properties.Resources.MenuIcon16_Story_NoMercy;
+						break;
+					default:
+						storyModeToolStripMenuItem.Image = null;
+						break;
 				}
 			}
 		}
