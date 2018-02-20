@@ -13,7 +13,7 @@ namespace VPWStudio
 {
 	public partial class PackedFileTool : Form
 	{
-		public PackedArchiveFile pf = new PackedArchiveFile();
+		public AkiArchive pf = new AkiArchive();
 
 		public PackedFileTool()
 		{
@@ -27,7 +27,7 @@ namespace VPWStudio
 			ofd.Filter = SharedStrings.FileFilter_None;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				this.pf = new PackedArchiveFile();
+				this.pf = new AkiArchive();
 				this.pf.ReadFile(ofd.FileName);
 				tbCurFile.Text = ofd.FileName;
 
@@ -61,7 +61,7 @@ namespace VPWStudio
 				return;
 			}
 
-			PackedArchiveEntry pae = this.pf.FileEntries[lbFileEntries.SelectedIndex];
+			AkiArchiveEntry pae = this.pf.FileEntries[lbFileEntries.SelectedIndex];
 
 			tbSelectedFileInfo.Text = String.Format(
 				"File Index {0}:\r\nStart Offset: 0x{1:X8}\r\nFile Size: 0x{2:X8}\r\n\r\n",
