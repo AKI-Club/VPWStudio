@@ -70,10 +70,10 @@
     <Compile Include="DataStructures\GameSharkCodeFile.cs" />
     <Compile Include="DataStructures\GameSharkCodeSet.cs" />
     <Compile Include="DataStructures\AkiArchive.cs" />
-    <Compile Include="Dialogs\FileTableEditEntryInfoDialog.cs">
+    <Compile Include="Dialogs\FileTable\FileTableEditEntryInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTableEditEntryInfoDialog.Designer.cs">
+    <Compile Include="Dialogs\FileTable\FileTableEditEntryInfoDialog.Designer.cs">
       <DependentUpon>FileTableEditEntryInfoDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Program\AboutBox.cs">
@@ -130,12 +130,6 @@
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedStrings.cs" />
-    <Compile Include="temporary\FtXmlTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="temporary\FtXmlTest.Designer.cs">
-      <DependentUpon>FtXmlTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tools\AkiTextTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,7 +154,7 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dialogs\FileTableEditEntryInfoDialog.resx">
+    <EmbeddedResource Include="Dialogs\FileTable\FileTableEditEntryInfoDialog.resx">
       <DependentUpon>FileTableEditEntryInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Program\AboutBox.resx">
@@ -191,9 +185,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="temporary\FtXmlTest.resx">
-      <DependentUpon>FtXmlTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tools\AkiTextTool.resx">
       <DependentUpon>AkiTextTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,9 +211,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="builddate.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="builddate.txt" />
     <Content Include="FileTableDB\NoMercy.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -242,9 +231,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="GameShark.ico" />
-    <EmbeddedResource Include="githash.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="githash.txt" />
     <Content Include="LocationFiles\NA2J.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -316,6 +303,9 @@
     <None Include="Resources\championship.png" />
     <None Include="Resources\about_banner.png" />
     <None Include="Resources\danger_zone.png" />
+    <None Include="Resources\story_nomercy.png" />
+    <None Include="Resources\story_wm2k-vpw2.png" />
+    <None Include="Resources\menus.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>

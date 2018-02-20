@@ -1105,6 +1105,9 @@
   <data name="MenuIcon16_GameShark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shark_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MenuIcon16_Menus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MenuIcon16_ModelTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\modeltool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1131,6 +1134,12 @@
   </data>
   <data name="MenuIcon16_Stables" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stables.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuIcon16_Story_NoMercy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\story_nomercy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuIcon16_Story_WM2K_VPW2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\story_wm2k-vpw2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MenuIcon16_VPWStudio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

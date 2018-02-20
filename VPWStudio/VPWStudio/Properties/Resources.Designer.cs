@@ -223,6 +223,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_Menus {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_Menus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuIcon16_ModelTool {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_ModelTool", resourceCulture);
@@ -306,6 +316,26 @@ namespace VPWStudio.Properties {
         internal static System.Drawing.Bitmap MenuIcon16_Stables {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_Stables", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_Story_NoMercy {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_Story_NoMercy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_Story_WM2K_VPW2 {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_Story_WM2K_VPW2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
