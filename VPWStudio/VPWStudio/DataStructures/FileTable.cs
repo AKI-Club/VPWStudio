@@ -27,6 +27,11 @@ namespace VPWStudio
 		public UInt32 Location;
 
 		/// <summary>
+		/// FileType for this item.
+		/// </summary>
+		public FileTypes FileType;
+
+		/// <summary>
 		/// Is this file encoded?
 		/// </summary>
 		public bool IsEncoded;
@@ -45,6 +50,7 @@ namespace VPWStudio
 		{
 			this.FileID = 0;
 			this.Location = 0;
+			this.FileType = FileTypes.Binary;
 			this.IsEncoded = false;
 			this.Comment = String.Empty;
 		}
@@ -58,6 +64,7 @@ namespace VPWStudio
 		{
 			this.FileID = _id;
 			this.Location = _loc;
+			this.FileType = FileTypes.Binary;
 			this.IsEncoded = _enc;
 			this.Comment = String.Empty;
 		}
@@ -71,6 +78,7 @@ namespace VPWStudio
 		{
 			this.FileID = _id;
 			this.Location = _loc;
+			this.FileType = FileTypes.Binary;
 			this.IsEncoded = _enc;
 			this.Comment = _comment;
 		}
@@ -85,10 +93,15 @@ namespace VPWStudio
 		}
 		#endregion
 
+		/// <summary>
+		/// Deep copy an existing FileTableEntry.
+		/// </summary>
+		/// <param name="_src"></param>
 		public void DeepCopy(FileTableEntry _src)
 		{
 			this.FileID = _src.FileID;
 			this.Location = _src.Location;
+			this.FileType = _src.FileType;
 			this.IsEncoded = _src.IsEncoded;
 			this.Comment = _src.Comment;
 		}
@@ -136,15 +149,12 @@ namespace VPWStudio
 			return null;
 		}
 
-		// Format: <Entry id={id} loc={loc}>{comment}</Entry>
-
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="xr"></param>
 		public void ReadXml(XmlReader xr)
 		{
-			//xr.ReadToFollowing("Entry");
 			if (!xr.IsEmptyElement)
 			{
 				this.Comment = xr.Value;
@@ -158,6 +168,7 @@ namespace VPWStudio
 			{
 				this.FileID = UInt16.Parse(xr.GetAttribute("id"), NumberStyles.HexNumber);
 				this.Location = UInt32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
+				this.FileType = (FileTypes)Enum.Parse(typeof(FileTypes), xr.GetAttribute("type"));
 				this.IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
 			}
 		}
@@ -171,6 +182,7 @@ namespace VPWStudio
 			xw.WriteStartElement("Entry");
 			xw.WriteAttributeString("id", String.Format("{0:X4}", this.FileID));
 			xw.WriteAttributeString("loc", String.Format("{0:X8}", this.Location));
+			xw.WriteAttributeString("type", this.FileType.ToString());
 			xw.WriteAttributeString("lzss", this.IsEncoded.ToString());
 			xw.WriteString(this.Comment);
 			xw.WriteEndElement();
