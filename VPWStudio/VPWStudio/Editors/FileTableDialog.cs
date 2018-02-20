@@ -23,6 +23,62 @@ namespace VPWStudio
 		private const int COMMENT_COLUMN = 5;
 		#endregion
 
+		#region Default File Table Data
+		// todo: this possibly belongs in another file,
+		// maybe ProgStructures/DefaultGameData.cs
+		private class DefaultFileTableData
+		{
+			public Int32 FileTableOffset; // filetable offset
+			public Int32 FileTableLength; // filetable length
+			public UInt32 FirstFileOffset; // first file offset
+
+			/// <summary>
+			/// Default constructor
+			/// </summary>
+			public DefaultFileTableData()
+			{
+				this.FileTableOffset = 0;
+				this.FileTableLength = 0;
+				this.FirstFileOffset = 0;
+			}
+
+			/// <summary>
+			/// Specific constructor
+			/// </summary>
+			/// <param name="_fto"></param>
+			/// <param name="_ftl"></param>
+			/// <param name="_firstFile"></param>
+			public DefaultFileTableData(Int32 _fto, Int32 _ftl, UInt32 _firstFile)
+			{
+				this.FileTableOffset = _fto;
+				this.FileTableLength = _ftl;
+				this.FirstFileOffset = _firstFile;
+			}
+		}
+
+		/// <summary>
+		/// Default FileTable data for each game.
+		/// </summary>
+		/// this probably also belongs in ProgStructures/DefaultGameData.cs
+		private Dictionary<SpecificGame, DefaultFileTableData> DefaultFileTables = new Dictionary<SpecificGame, DefaultFileTableData>()
+		{
+			{ SpecificGame.WorldTour_NTSC_U_10, new DefaultFileTableData(0x7C1A78, 21996, 0x39490) },
+			{ SpecificGame.WorldTour_NTSC_U_11, new DefaultFileTableData(0x7C1C70, 21996, 0x39500) },
+			{ SpecificGame.WorldTour_PAL, new DefaultFileTableData(0x7C1C00, 21996, 0x39490) },
+			{ SpecificGame.VPW64_NTSC_J, new DefaultFileTableData(0xC7B578, 37432, 0x4AD00) },
+			{ SpecificGame.Revenge_NTSC_U, new DefaultFileTableData(0xCE2752, 30632, 0xDAC50) },
+			{ SpecificGame.Revenge_PAL, new DefaultFileTableData(0xCDFCE2, 30632, 0xD81E0) },
+			{ SpecificGame.WM2K_NTSC_U, new DefaultFileTableData(0x11778BE, 41248, 0x144AA0) },
+			{ SpecificGame.WM2K_NTSC_J, new DefaultFileTableData(0x116F3C2, 41480, 0x12C070) },
+			{ SpecificGame.WM2K_PAL, new DefaultFileTableData(0x11778BE, 41248, 0x144AC0) },
+			{ SpecificGame.VPW2_NTSC_J, new DefaultFileTableData(0x1310F40, 52364, 0x152DF0) },
+			{ SpecificGame.NoMercy_NTSC_U_10, new DefaultFileTableData(0x16C3238, 77848, 0x1BD1B0) },
+			{ SpecificGame.NoMercy_NTSC_U_11, new DefaultFileTableData(0x16C31D8, 77848, 0x1BD150) },
+			{ SpecificGame.NoMercy_PAL_10, new DefaultFileTableData(0x16C32A8, 77848, 0x1BD220) },
+			{ SpecificGame.NoMercy_PAL_11, new DefaultFileTableData(0x16C3148, 77848, 0x1BD0C0) },
+		};
+		#endregion
+
 		public FileTableDialog()
 		{
 			InitializeComponent();
@@ -79,67 +135,9 @@ namespace VPWStudio
 					MessageBoxIcon.Information
 				);
 
-				int offset = 0;
-				int length = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-						offset = 0x7C1A78;
-						length = 21996;
-						break;
-					case SpecificGame.WorldTour_NTSC_U_11:
-						offset = 0x7C1C70;
-						length = 21996;
-						break;
-					case SpecificGame.WorldTour_PAL:
-						offset = 0x7C1C00;
-						length = 21996;
-						break;
-					case SpecificGame.VPW64_NTSC_J:
-						offset = 0xC7B578;
-						length = 37432;
-						break;
-					case SpecificGame.Revenge_NTSC_U:
-						offset = 0xCE2752;
-						length = 30632;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0xCDFCE2;
-						length = 30632;
-						break;
-					case SpecificGame.WM2K_NTSC_U:
-						offset = 0x11778BE;
-						length = 41248;
-						break;
-					case SpecificGame.WM2K_NTSC_J:
-						offset = 0x116F3C2;
-						length = 41480;
-						break;
-					case SpecificGame.WM2K_PAL:
-						offset = 0x11778BE;
-						length = 41248;
-						break;
-					case SpecificGame.VPW2_NTSC_J:
-						offset = 0x1310F40;
-						length = 52364;
-						break;
-					case SpecificGame.NoMercy_NTSC_U_10:
-						offset = 0x16C3238;
-						length = 77848;
-						break;
-					case SpecificGame.NoMercy_NTSC_U_11:
-						offset = 0x16C31D8;
-						length = 77848;
-						break;
-					case SpecificGame.NoMercy_PAL_10:
-						offset = 0x16C32A8;
-						length = 77848;
-						break;
-					case SpecificGame.NoMercy_PAL_11:
-						offset = 0x16C3148;
-						length = 77848;
-						break;
-				}
+				int offset = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
+				int length = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
+
 				if (offset != 0 && length != 0)
 				{
 					br.BaseStream.Seek(offset, SeekOrigin.Begin);
@@ -196,49 +194,7 @@ namespace VPWStudio
 			}
 			if (!hasOffset)
 			{
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-					case SpecificGame.WorldTour_PAL:
-						offset = 0x39490;
-						break;
-					case SpecificGame.WorldTour_NTSC_U_11:
-						offset = 0x39500;
-						break;
-					case SpecificGame.VPW64_NTSC_J:
-						offset = 0x4AD00;
-						break;
-					case SpecificGame.Revenge_NTSC_U:
-						offset = 0xDAC50;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0xD81E0;
-						break;
-					case SpecificGame.WM2K_NTSC_U:
-						offset = 0x144AA0;
-						break;
-					case SpecificGame.WM2K_NTSC_J:
-						offset = 0x12C070;
-						break;
-					case SpecificGame.WM2K_PAL:
-						offset = 0x144AC0;
-						break;
-					case SpecificGame.VPW2_NTSC_J:
-						offset = 0x152DF0;
-						break;
-					case SpecificGame.NoMercy_NTSC_U_10:
-						offset = 0x1BD1B0;
-						break;
-					case SpecificGame.NoMercy_NTSC_U_11:
-						offset = 0x1BD150;
-						break;
-					case SpecificGame.NoMercy_PAL_10:
-						offset = 0x1BD220;
-						break;
-					case SpecificGame.NoMercy_PAL_11:
-						offset = 0x1BD0C0;
-						break;
-				}
+				offset = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
 			}
 
 			lvFileList.Items.Clear();
@@ -278,6 +234,25 @@ namespace VPWStudio
 			lvFileList.EndUpdate();
 		}
 
+		#region Context Menu
+		/// <summary>
+		/// Modify the context menu
+		/// </summary>
+		private void cmsFileEntry_Opening(object sender, CancelEventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				extractFileToolStripMenuItem.Text = SharedStrings.FileTableDialog_ExtractFiles;
+			}
+			else if (lvFileList.SelectedItems.Count == 1)
+			{
+				extractFileToolStripMenuItem.Text = SharedStrings.FileTableDialog_ExtractFile;
+			}
+		}
+
+		/// <summary>
+		/// Edit the information of the selected FileTable entry/entries.
+		/// </summary>
 		private void editInformationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (lvFileList.SelectedItems.Count == 0)
@@ -291,6 +266,28 @@ namespace VPWStudio
 				return;
 			}
 
+			LoadEditInfoDialog();
+		}
+
+		/// <summary>
+		/// Extract the selected FileTable entry/entries.
+		/// </summary>
+		private void extractFileToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count == 0)
+			{
+				return;
+			}
+
+			MessageBox.Show("haven't implemented it yet.");
+		}
+		#endregion
+
+		/// <summary>
+		/// Load the Edit Information dialog for a single FileTable entry.
+		/// </summary>
+		private void LoadEditInfoDialog()
+		{
 			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
 			FileTableEditEntryInfoDialog editInfoDialog = new FileTableEditEntryInfoDialog(Program.CurrentProject.ProjectFileTable.Entries[key]);
 			if (editInfoDialog.ShowDialog() == DialogResult.OK)
@@ -301,14 +298,25 @@ namespace VPWStudio
 			}
 		}
 
-		private void extractFileToolStripMenuItem_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Double clicking on an item
+		/// </summary>
+		private void lvFileList_DoubleClick(object sender, EventArgs e)
 		{
 			if (lvFileList.SelectedItems.Count == 0)
 			{
 				return;
 			}
 
-			MessageBox.Show("haven't implemented it yet.");
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				MessageBox.Show("i have no idea how to handle multiple item double clicking yet, sorry.");
+				return;
+			}
+
+			LoadEditInfoDialog();
 		}
+
+		
 	}
 }

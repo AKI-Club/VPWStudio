@@ -33,13 +33,13 @@
 			this.chFileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chRomAddr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chLzss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -66,6 +66,7 @@
 			this.lvFileList.TabIndex = 1;
 			this.lvFileList.UseCompatibleStateImageBehavior = false;
 			this.lvFileList.View = System.Windows.Forms.View.Details;
+			this.lvFileList.DoubleClick += new System.EventHandler(this.lvFileList_DoubleClick);
 			// 
 			// chFileID
 			// 
@@ -81,6 +82,11 @@
 			// 
 			this.chRomAddr.Text = "ROM Address";
 			this.chRomAddr.Width = 85;
+			// 
+			// chFileType
+			// 
+			this.chFileType.Text = "File Type";
+			this.chFileType.Width = 64;
 			// 
 			// chLzss
 			// 
@@ -99,19 +105,8 @@
             this.toolStripSeparator1,
             this.extractFileToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(164, 76);
-			// 
-			// extractFileToolStripMenuItem
-			// 
-			this.extractFileToolStripMenuItem.Name = "extractFileToolStripMenuItem";
-			this.extractFileToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-			this.extractFileToolStripMenuItem.Text = "&Extract File...";
-			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+			this.cmsFileEntry.Size = new System.Drawing.Size(164, 54);
+			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// editInformationToolStripMenuItem
 			// 
@@ -120,10 +115,18 @@
 			this.editInformationToolStripMenuItem.Text = "Edit &Information...";
 			this.editInformationToolStripMenuItem.Click += new System.EventHandler(this.editInformationToolStripMenuItem_Click);
 			// 
-			// chFileType
+			// toolStripSeparator1
 			// 
-			this.chFileType.Text = "File Type";
-			this.chFileType.Width = 64;
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+			// 
+			// extractFileToolStripMenuItem
+			// 
+			this.extractFileToolStripMenuItem.Name = "extractFileToolStripMenuItem";
+			this.extractFileToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.extractFileToolStripMenuItem.Tag = "ExtractFile";
+			this.extractFileToolStripMenuItem.Text = "&Extract File...";
+			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
