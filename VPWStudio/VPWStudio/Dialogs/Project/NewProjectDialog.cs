@@ -77,7 +77,7 @@ namespace VPWStudio
 			this.NewSettings.ProjectName = tbProjectName.Text;
 			this.NewSettings.Authors = tbAuthors.Text;
 			this.NewSettings.GameType = (SpecificGame)cbGameVersion.SelectedIndex;
-			// todo: set base game here
+			this.NewSettings.BaseGame = GameInformation.GetBaseGameFromSpecificGame((SpecificGame)cbGameVersion.SelectedIndex);
 			this.NewSettings.InputRomPath = tbRomFile.Text;
 			this.NewSettings.OutputRomPath = tbOutROMPath.Text;
 			this.NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
