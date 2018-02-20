@@ -36,9 +36,10 @@
 			this.chLzss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.setCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -51,6 +52,7 @@
             this.chFileID,
             this.chLocation,
             this.chRomAddr,
+            this.chFileType,
             this.chLzss,
             this.chComments});
 			this.lvFileList.ContextMenuStrip = this.cmsFileEntry;
@@ -88,34 +90,40 @@
 			// chComments
 			// 
 			this.chComments.Text = "Comments";
-			this.chComments.Width = 256;
+			this.chComments.Width = 224;
 			// 
 			// cmsFileEntry
 			// 
 			this.cmsFileEntry.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.extractRawToolStripMenuItem,
+            this.editInformationToolStripMenuItem,
             this.toolStripSeparator1,
-            this.setCommentToolStripMenuItem});
+            this.extractFileToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(151, 54);
+			this.cmsFileEntry.Size = new System.Drawing.Size(164, 76);
 			// 
-			// extractRawToolStripMenuItem
+			// extractFileToolStripMenuItem
 			// 
-			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
-			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-			this.extractRawToolStripMenuItem.Text = "&Extract Raw...";
+			this.extractFileToolStripMenuItem.Name = "extractFileToolStripMenuItem";
+			this.extractFileToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.extractFileToolStripMenuItem.Text = "&Extract File...";
+			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
 			// 
-			// setCommentToolStripMenuItem
+			// editInformationToolStripMenuItem
 			// 
-			this.setCommentToolStripMenuItem.Name = "setCommentToolStripMenuItem";
-			this.setCommentToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-			this.setCommentToolStripMenuItem.Text = "Set &Comment...";
-			this.setCommentToolStripMenuItem.Click += new System.EventHandler(this.setCommentToolStripMenuItem_Click);
+			this.editInformationToolStripMenuItem.Name = "editInformationToolStripMenuItem";
+			this.editInformationToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.editInformationToolStripMenuItem.Text = "Edit &Information...";
+			this.editInformationToolStripMenuItem.Click += new System.EventHandler(this.editInformationToolStripMenuItem_Click);
+			// 
+			// chFileType
+			// 
+			this.chFileType.Text = "File Type";
+			this.chFileType.Width = 64;
 			// 
 			// FileTableDialog
 			// 
@@ -138,8 +146,9 @@
 		private System.Windows.Forms.ColumnHeader chComments;
 		private System.Windows.Forms.ColumnHeader chRomAddr;
 		private System.Windows.Forms.ContextMenuStrip cmsFileEntry;
-		private System.Windows.Forms.ToolStripMenuItem extractRawToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem extractFileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripMenuItem setCommentToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editInformationToolStripMenuItem;
+		private System.Windows.Forms.ColumnHeader chFileType;
 	}
 }
