@@ -1,0 +1,27 @@
+# FileTable database for WCW/nWo Revenge
+0009=AkiTexture;Title Screen Logo
+000C=AkiArchive;[Credits] Background and TV static TEX files
+000D=DoubleTex;[Credits] Face 01
+000E=DoubleTex;[Credits] Face 02
+000F=DoubleTex;[Credits] Face 03
+0010=DoubleTex;[Credits] Face 04
+0011=DoubleTex;[Credits] Face 05
+0012=DoubleTex;[Credits] Face 06
+0013=DoubleTex;[Credits] Face 07
+0014=DoubleTex;[Credits] Face 08
+0015=DoubleTex;[Credits] Face 09
+0016=DoubleTex;[Credits] Face 10
+0017=DoubleTex;[Credits] Face 11
+0018=DoubleTex;[Credits] Face 12
+0019=DoubleTex;[Credits] Face 13
+001A=DoubleTex;[Credits] Face 14
+001B=DoubleTex;[Credits] Face 15
+001C=DoubleTex;[Credits] Face 16
+001D=DoubleTex;[Credits] Face 17
+001E=DoubleTex;[Credits] Face 18
+001F=DoubleTex;[Credits] Face 19
+0020=DoubleTex;[Credits] Face 20
+0021=DoubleTex;[Credits] Face 21
+0022=DoubleTex;[Credits] AKI logo
+0023=DoubleTex;[Credits] Asmik logo
+0024=DoubleTex;[Credits] THQ logo

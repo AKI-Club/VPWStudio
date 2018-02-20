@@ -1,0 +1,4 @@
+# FileTable database for Virtual Pro-Wrestling 2
+0001=AkiLargeFont;large font
+0002=AkiSmallFont;small font
+0015=AkiTexture;Title Screen Logo
