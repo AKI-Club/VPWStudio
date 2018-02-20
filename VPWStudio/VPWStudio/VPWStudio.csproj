@@ -11,6 +11,21 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,12 +69,12 @@
     <Compile Include="DataStructures\GameSharkCode.cs" />
     <Compile Include="DataStructures\GameSharkCodeFile.cs" />
     <Compile Include="DataStructures\GameSharkCodeSet.cs" />
-    <Compile Include="DataStructures\PackedFile.cs" />
-    <Compile Include="Dialogs\FileTableEditCommentDialog.cs">
+    <Compile Include="DataStructures\AkiArchive.cs" />
+    <Compile Include="Dialogs\FileTableEditEntryInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTableEditCommentDialog.Designer.cs">
-      <DependentUpon>FileTableEditCommentDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\FileTableEditEntryInfoDialog.Designer.cs">
+      <DependentUpon>FileTableEditEntryInfoDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Program\AboutBox.cs">
       <SubType>Form</SubType>
@@ -93,6 +108,7 @@
     <Compile Include="Helpers\LzssOriginal.cs" />
     <Compile Include="Helpers\TestLzss.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
+    <Compile Include="ProgStructures\FileTableDB.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
     <Compile Include="ProgStructures\GenericEnums.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
@@ -144,8 +160,8 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dialogs\FileTableEditCommentDialog.resx">
-      <DependentUpon>FileTableEditCommentDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FileTableEditEntryInfoDialog.resx">
+      <DependentUpon>FileTableEditEntryInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Program\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -207,6 +223,24 @@
     <EmbeddedResource Include="builddate.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="FileTableDB\NoMercy.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\Revenge.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\VPW2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\VPW64.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\WM2K.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\WorldTour.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GameShark.ico" />
     <EmbeddedResource Include="githash.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -296,6 +330,18 @@
     <Folder Include="GameSpecific\VPW64\" />
     <Folder Include="GameSpecific\WM2K\" />
     <Folder Include="GameSpecific\WorldTour\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
