@@ -136,6 +136,20 @@ namespace VPWStudio
 			}
 			#endregion
 
+			// check for project type change
+			if (Program.CurrentProject.Settings.GameType != (SpecificGame)cbGameType.SelectedIndex)
+			{
+				if (MessageBox.Show(
+					"Changing the project game type will reset all project data.\nDo you want to proceed?",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Exclamation
+					) == DialogResult.No)
+				{
+					return;
+				}
+			}
+
 			// transfer
 			this.NewSettings.ProjectName = tbProjectName.Text;
 			this.NewSettings.Authors = tbAuthors.Text;
