@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace VPWStudio
 {
-	public class PackedArchiveEntry
+	/// <summary>
+	/// An entry in an AKI archive.
+	/// </summary>
+	public class AkiArchiveEntry
 	{
 		/// <summary>
 		/// Start address in the archive.
@@ -21,7 +24,7 @@ namespace VPWStudio
 		/// </summary>
 		public byte[] Data;
 
-		public PackedArchiveEntry(Int32 _addr)
+		public AkiArchiveEntry(Int32 _addr)
 		{
 			this.StartAddr = _addr;
 			this.Size = -1;
@@ -31,7 +34,7 @@ namespace VPWStudio
 	/// <summary>
 	/// An archive of files.
 	/// </summary>
-	public class PackedArchiveFile
+	public class AkiArchive
 	{
 		// 0x00-0x03: number of entries
 		// 0x04: entries begin; "DW aligned with 0xFFs"
@@ -41,12 +44,12 @@ namespace VPWStudio
 		/// </summary>
 		public int NumFiles;
 
-		public Dictionary<int, PackedArchiveEntry> FileEntries;
+		public Dictionary<int, AkiArchiveEntry> FileEntries;
 
-		public PackedArchiveFile()
+		public AkiArchive()
 		{
 			this.NumFiles = 0;
-			this.FileEntries = new Dictionary<int, PackedArchiveEntry>();
+			this.FileEntries = new Dictionary<int, AkiArchiveEntry>();
 		}
 
 		/// <summary>
@@ -74,7 +77,7 @@ namespace VPWStudio
 				{
 					Array.Reverse(addr);
 				}
-				PackedArchiveEntry pae = new PackedArchiveEntry(BitConverter.ToInt32(addr, 0));
+				AkiArchiveEntry pae = new AkiArchiveEntry(BitConverter.ToInt32(addr, 0));
 				this.FileEntries.Add(i, pae);
 			}
 
