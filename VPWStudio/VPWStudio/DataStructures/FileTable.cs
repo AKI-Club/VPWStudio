@@ -289,6 +289,16 @@ namespace VPWStudio
 		/// Entries in this filetable.
 		/// </summary>
 		public SortedList<int, FileTableEntry> Entries;
+
+		/// <summary>
+		/// Location of the filetable in ROM.
+		/// </summary>
+		public UInt32 Location;
+
+		/// <summary>
+		/// ROM location of the first file in the FileTable.
+		/// </summary>
+		public UInt32 FirstFile;
 		#endregion
 
 		#region Constructors
@@ -298,6 +308,19 @@ namespace VPWStudio
 		public FileTable()
 		{
 			this.Entries = new SortedList<int, FileTableEntry>();
+			this.Location = 0;
+			this.FirstFile = 0;
+		}
+
+		/// <summary>
+		/// Specific constructor
+		/// </summary>
+		/// <param name="_loc">Location of FileTable in ROM.</param>
+		public FileTable(UInt32 _loc, UInt32 _firstFile)
+		{
+			this.Entries = new SortedList<int, FileTableEntry>();
+			this.Location = _loc;
+			this.FirstFile = _firstFile;
 		}
 		#endregion
 
@@ -307,10 +330,30 @@ namespace VPWStudio
 		/// <param name="_src">FileTable instance to copy.</param>
 		public void DeepCopy(FileTable _src)
 		{
+			this.Location = _src.Location;
+			this.FirstFile = _src.FirstFile;
 			this.Entries.Clear();
 			foreach (KeyValuePair<int, FileTableEntry> fte in _src.Entries)
 			{
 				this.Entries.Add(fte.Key, fte.Value);
+			}
+		}
+
+		/// <summary>
+		/// Get the file size of the specified entry.
+		/// </summary>
+		/// <param name="id">File ID to get size of.</param>
+		/// <returns></returns>
+		public uint GetEntrySize(int id)
+		{
+			if (id == this.Entries.Count)
+			{
+				// last entry needs different calculation
+				return (this.Location - this.Entries[id].Location) - this.FirstFile;
+			}
+			else
+			{
+				return (this.Entries[id + 1].Location - this.Entries[id].Location);
 			}
 		}
 
@@ -353,6 +396,16 @@ namespace VPWStudio
 		public void ReadXml(XmlReader xr)
 		{
 			xr.ReadToFollowing("FileTable");
+
+			xr.ReadToFollowing("Location");
+			xr.Read();
+			this.Location = UInt32.Parse(xr.Value, NumberStyles.HexNumber);
+
+			xr.ReadToFollowing("FirstFile");
+			xr.Read();
+			this.FirstFile = UInt32.Parse(xr.Value, NumberStyles.HexNumber);
+
+			xr.ReadToFollowing("Entries");
 			while (xr.ReadToFollowing("Entry"))
 			{
 				FileTableEntry fte = new FileTableEntry();
@@ -366,11 +419,16 @@ namespace VPWStudio
 			// start tag
 			xw.WriteStartElement("FileTable");
 
+			xw.WriteElementString("Location", String.Format("{0:X}", this.Location));
+			xw.WriteElementString("FirstFile", String.Format("{0:X}", this.FirstFile));
+
 			// entries
-			for (int i = 1; i < this.Entries.Count; i++)
+			xw.WriteStartElement("Entries");
+			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
 			{
-				this.Entries[i].WriteXml(xw);
+				fte.Value.WriteXml(xw);
 			}
+			xw.WriteEndElement();
 
 			// end tag
 			xw.WriteEndElement();
