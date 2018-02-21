@@ -138,6 +138,8 @@ namespace VPWStudio
 		}
 		#endregion
 
+
+
 		#region File Menu Items
 		/// <summary>
 		/// New Project
@@ -416,8 +418,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// arena dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("arena dialog not yet designed");
 		}
 
 		/// <summary>
@@ -437,8 +438,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// championships dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("championships dialog not yet designed");
 		}
 
 		/// <summary>
@@ -451,8 +451,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// costumes dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("costumes dialog not yet designed");
 		}
 
 		/// <summary>
@@ -499,8 +498,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// menu dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("menu dialog not yet designed");
 		}
 
 		/// <summary>
@@ -513,8 +511,20 @@ namespace VPWStudio
 				return;
 			}
 
-			// moves dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("moves dialog not yet designed");
+		}
+
+		/// <summary>
+		/// Sounds editor
+		/// </summary>
+		private void soundsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			MessageBox.Show("sounds dialog not yet designed");
 		}
 
 		/// <summary>
@@ -527,8 +537,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// stables dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("stables dialog not yet designed");
 		}
 
 		/// <summary>
@@ -541,8 +550,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// story mode dialogs not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("story mode dialogs not yet designed");
 		}
 
 		/// <summary>
@@ -555,8 +563,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// text archive dialog not yet designed
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("text archive dialog not yet designed");
 		}
 
 		/// <summary>
@@ -933,7 +940,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// 
+		/// Updates the Window menu.
 		/// </summary>
 		private void UpdateWindowMenus()
 		{
@@ -972,6 +979,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Update the main menu background.
+		/// </summary>
 		private void UpdateBackground()
 		{
 			this.BackgroundImage = GetMainMenuBG();
@@ -1004,6 +1014,10 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Get the background for the main form based on the current project's base game.
+		/// </summary>
+		/// <returns></returns>
 		private Bitmap GetMainMenuBG()
 		{
 			if (Program.CurrentProject == null)
@@ -1079,5 +1093,7 @@ namespace VPWStudio
 			nedTool.ShowDialog();
 		}
 		#endregion
+
+		
 	}
 }

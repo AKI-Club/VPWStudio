@@ -342,6 +342,7 @@
     <None Include="Resources\MainMenuBG\MainMenuBG_VPW64.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WM2K.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
+    <None Include="Resources\sounds.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>

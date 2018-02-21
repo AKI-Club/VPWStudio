@@ -77,10 +77,11 @@
 			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.nameEncoderdecoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.nameEncoderdecoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.soundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -180,6 +181,7 @@
             this.fileTableToolStripMenuItem,
             this.menusToolStripMenuItem,
             this.movesToolStripMenuItem,
+            this.soundsToolStripMenuItem,
             this.stablesToolStripMenuItem,
             this.storyModeToolStripMenuItem,
             this.textArchivesToolStripMenuItem,
@@ -436,6 +438,12 @@
 			resources.ApplyResources(this.akiTextToolStripMenuItem, "akiTextToolStripMenuItem");
 			this.akiTextToolStripMenuItem.Click += new System.EventHandler(this.akiTextToolStripMenuItem_Click);
 			// 
+			// nameEncoderdecoderToolStripMenuItem
+			// 
+			this.nameEncoderdecoderToolStripMenuItem.Name = "nameEncoderdecoderToolStripMenuItem";
+			resources.ApplyResources(this.nameEncoderdecoderToolStripMenuItem, "nameEncoderdecoderToolStripMenuItem");
+			this.nameEncoderdecoderToolStripMenuItem.Click += new System.EventHandler(this.nameEncoderdecoderToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -463,11 +471,12 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// nameEncoderdecoderToolStripMenuItem
+			// soundsToolStripMenuItem
 			// 
-			this.nameEncoderdecoderToolStripMenuItem.Name = "nameEncoderdecoderToolStripMenuItem";
-			resources.ApplyResources(this.nameEncoderdecoderToolStripMenuItem, "nameEncoderdecoderToolStripMenuItem");
-			this.nameEncoderdecoderToolStripMenuItem.Click += new System.EventHandler(this.nameEncoderdecoderToolStripMenuItem_Click);
+			this.soundsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Sounds;
+			this.soundsToolStripMenuItem.Name = "soundsToolStripMenuItem";
+			resources.ApplyResources(this.soundsToolStripMenuItem, "soundsToolStripMenuItem");
+			this.soundsToolStripMenuItem.Click += new System.EventHandler(this.soundsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -542,6 +551,7 @@
 		private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem textArchivesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem nameEncoderdecoderToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem soundsToolStripMenuItem;
 	}
 }
 
