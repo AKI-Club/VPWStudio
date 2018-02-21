@@ -11,7 +11,7 @@ namespace VPWStudio
 	public class ProjectFile
 	{
 		/// <summary>
-		/// Current Project File version
+		/// Current Project File version.
 		/// </summary>
 		public const uint CUR_PROJECTFILE_VER = 0;
 
