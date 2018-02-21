@@ -121,6 +121,7 @@ namespace VPWStudio
 				{
 					br.BaseStream.Seek(Program.CurLocationFile.FileTable.Address, SeekOrigin.Begin);
 					Program.CurrentProject.ProjectFileTable.Read(br, Program.CurLocationFile.FileTable.Width);
+					Program.CurrentProject.ProjectFileTable.Location = Program.CurLocationFile.FileTable.Address;
 					hasLocation = true;
 					hasLength = true;
 				}
@@ -142,6 +143,7 @@ namespace VPWStudio
 				{
 					br.BaseStream.Seek(offset, SeekOrigin.Begin);
 					Program.CurrentProject.ProjectFileTable.Read(br, length);
+					Program.CurrentProject.ProjectFileTable.Location = (UInt32)offset;
 				}
 			}
 			br.Close();
@@ -196,6 +198,7 @@ namespace VPWStudio
 			{
 				offset = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
 			}
+			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
 
 			lvFileList.Items.Clear();
 			lvFileList.BeginUpdate();
@@ -341,6 +344,39 @@ namespace VPWStudio
 
 				sw.Flush();
 				sw.Close();
+			}
+		}
+
+		private void lengthToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count == 0)
+			{
+				return;
+			}
+
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				return;
+			}
+
+			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+
+			if (Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded)
+			{
+				// todo: add decompressed size?
+				MessageBox.Show(
+					String.Format("*Compressed* size of ID {0:X4} is {1}",
+					key,
+					Program.CurrentProject.ProjectFileTable.GetEntrySize(key))
+				);
+			}
+			else
+			{
+				MessageBox.Show(
+					String.Format("Size of ID {0:X4} is {1}",
+					key,
+					Program.CurrentProject.ProjectFileTable.GetEntrySize(key))
+				);
 			}
 		}
 	}
