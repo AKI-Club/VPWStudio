@@ -339,6 +339,7 @@
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />
+    <None Include="Resources\MainMenuBG\MainMenuBG_VPW64.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WM2K.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
     <Content Include="VPWStudio.ico" />

@@ -1014,7 +1014,7 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WorldTour: return VPWStudio.Properties.Resources.MainMenuBG_WorldTour;
-				case VPWGames.VPW64: return null;
+				case VPWGames.VPW64: return VPWStudio.Properties.Resources.MainMenuBG_VPW64;
 				case VPWGames.Revenge: return VPWStudio.Properties.Resources.MainMenuBG_Revenge;
 				case VPWGames.WM2K: return VPWStudio.Properties.Resources.MainMenuBG_WM2K;
 				case VPWGames.VPW2: return VPWStudio.Properties.Resources.MainMenuBG_VPW2;
