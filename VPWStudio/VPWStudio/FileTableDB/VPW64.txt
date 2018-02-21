@@ -1,2 +1,3 @@
 # FileTable database for Virtual Pro-Wrestling 64
+0003=AkiTexture;[Main Menu] Elimination icon
 003D=AkiTexture;Title Screen Logo
