@@ -1,1 +1,2 @@
 # FileTable database for Virtual Pro-Wrestling 64
+003D=AkiTexture;Title Screen Logo
