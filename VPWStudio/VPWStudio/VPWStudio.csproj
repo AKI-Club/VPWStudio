@@ -159,6 +159,12 @@
     <Compile Include="Tools\GameSharkTool.Designer.cs">
       <DependentUpon>GameSharkTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\NameEncodeDecodeTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\NameEncodeDecodeTool.Designer.cs">
+      <DependentUpon>NameEncodeDecodeTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\PackedFileTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\GameSharkTool.resx">
       <DependentUpon>GameSharkTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\NameEncodeDecodeTool.resx">
+      <DependentUpon>NameEncodeDecodeTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\PackedFileTool.resx">
       <DependentUpon>PackedFileTool.cs</DependentUpon>

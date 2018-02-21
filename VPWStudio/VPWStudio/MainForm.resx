@@ -382,22 +382,28 @@
     <value>Danger Zone</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>185, 22</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss compress test</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>185, 22</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss decompress test</value>
   </data>
   <data name="akiTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>185, 22</value>
   </data>
   <data name="akiTextToolStripMenuItem.Text" xml:space="preserve">
     <value>aki text</value>
+  </data>
+  <data name="nameEncoderdecoderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="nameEncoderdecoderToolStripMenuItem.Text" xml:space="preserve">
+    <value>name encoder/decoder</value>
   </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -1604,6 +1610,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nameEncoderdecoderToolStripMenuItem.Name" xml:space="preserve">
+    <value>nameEncoderdecoderToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;nameEncoderdecoderToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

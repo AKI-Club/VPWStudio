@@ -1072,7 +1072,12 @@ namespace VPWStudio
 			AkiTextTool att = new AkiTextTool();
 			att.ShowDialog();
 		}
-		#endregion
 
+		private void nameEncoderdecoderToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			NameEncodeDecodeTool nedTool = new NameEncodeDecodeTool();
+			nedTool.ShowDialog();
+		}
+		#endregion
 	}
 }
