@@ -243,7 +243,7 @@
     <value>190, 22</value>
   </data>
   <data name="storyModeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Stor&amp;y Mode</value>
+    <value>S&amp;tory Mode</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="storyModeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">

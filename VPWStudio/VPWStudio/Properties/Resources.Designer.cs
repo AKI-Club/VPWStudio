@@ -173,6 +173,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_Close {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuIcon16_Costumes {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_Costumes", resourceCulture);
