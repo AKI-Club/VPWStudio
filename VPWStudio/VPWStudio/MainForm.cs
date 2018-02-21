@@ -56,6 +56,36 @@ namespace VPWStudio
 		public AboutBox AboutVPWStudio = null;
 		#endregion
 
+		#region Game-Specific Editors
+
+		#region World Tour
+		#endregion
+
+		#region VPW64
+		#endregion
+
+		#region Revenge
+		#endregion
+
+		#region WM2K
+		#endregion
+
+		#region VPW2
+		/// <summary>
+		/// VPW2 Wrestler Editor, main form
+		/// </summary>
+		public Editors.VPW2.WrestlerMain_VPW2 WrestlerMain_VPW2 = null;
+		#endregion
+
+		#region No Mercy
+		/// <summary>
+		/// No Mercy Wrestler Editor, main form
+		/// </summary>
+		public Editors.NoMercy.WrestlerMain_NoMercy WrestlerMain_NoMercy = null;
+		#endregion
+
+		#endregion
+
 		#endregion // children forms
 
 		public MainForm(string[] args)
@@ -130,6 +160,7 @@ namespace VPWStudio
 				UpdateValidMenus();
 				UpdateStatusBar();
 				UpdateTitleBar();
+				UpdateBackground();
 
 				// load ROM
 				Program.CurrentInputROM = new Z64Rom();
@@ -174,6 +205,7 @@ namespace VPWStudio
 				UpdateValidMenus();
 				UpdateStatusBar();
 				UpdateTitleBar();
+				UpdateBackground();
 
 				// load input ROM if it exists.
 				if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
@@ -300,9 +332,17 @@ namespace VPWStudio
 			Program.CurrentInputROM = null;
 			Program.CurrentOutputROM = null;
 
+			// todo: close any open dialogs
+			foreach (Form f in this.MdiChildren)
+			{
+				f.Close();
+			}
+
 			UpdateTitleBar();
 			UpdateValidMenus();
 			UpdateStatusBar();
+			UpdateWindowMenus();
+			UpdateBackground();
 		}
 		#endregion
 
@@ -329,6 +369,8 @@ namespace VPWStudio
 				{
 					// invalidate project data
 					Program.CurrentProject.ProjectFileTable = new FileTable();
+
+					UpdateBackground();
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
@@ -428,6 +470,7 @@ namespace VPWStudio
 				this.FileTableEditor = new FileTableDialog();
 				this.FileTableEditor.MdiParent = this;
 				this.FileTableEditor.Show();
+				UpdateWindowMenus();
 			}
 			else
 			{
@@ -442,6 +485,7 @@ namespace VPWStudio
 				}
 				this.FileTableEditor.MdiParent = this;
 				this.FileTableEditor.Show();
+				UpdateWindowMenus();
 			}
 		}
 
@@ -502,6 +546,20 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// AkiText editor (and maybe some in-ROM strings too.)
+		/// </summary>
+		private void textArchivesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// text archive dialog not yet designed
+			MessageBox.Show("doesn't do anything yet");
+		}
+
+		/// <summary>
 		/// Wrestler editor
 		/// </summary>
 		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -511,8 +569,62 @@ namespace VPWStudio
 				return;
 			}
 
-			// todo: multiple forms based on game
-			MessageBox.Show("hey I need to re-think how this works; give me a bit and i'll get back to you");
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.VPW2:
+					if (this.WrestlerMain_VPW2 == null)
+					{
+						this.WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
+						this.WrestlerMain_VPW2.MdiParent = this;
+						this.WrestlerMain_VPW2.Show();
+						UpdateWindowMenus();
+					}
+					else
+					{
+						if (this.WrestlerMain_VPW2.IsDisposed)
+						{
+							this.WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
+						}
+						// check for minimized
+						if (this.WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
+						{
+							this.WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
+						}
+						this.WrestlerMain_VPW2.MdiParent = this;
+						this.WrestlerMain_VPW2.Show();
+						UpdateWindowMenus();
+					}
+					break;
+
+				case VPWGames.NoMercy:
+					if (this.WrestlerMain_NoMercy == null)
+					{
+						this.WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
+						this.WrestlerMain_NoMercy.MdiParent = this;
+						this.WrestlerMain_NoMercy.Show();
+						UpdateWindowMenus();
+					}
+					else
+					{
+						if (this.WrestlerMain_NoMercy.IsDisposed)
+						{
+							this.WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
+						}
+						// check for minimized
+						if (this.WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
+						{
+							this.WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
+						}
+						this.WrestlerMain_NoMercy.MdiParent = this;
+						this.WrestlerMain_NoMercy.Show();
+						UpdateWindowMenus();
+					}
+					break;
+
+				default:
+					MessageBox.Show(String.Format("wrestler definition editor not implemented for {0} yet", Program.CurrentProject.Settings.BaseGame.ToString()));
+					break;
+			}
 		}
 
 		#region Project build section
@@ -615,6 +727,7 @@ namespace VPWStudio
 				this.ModelToolForm = new ModelTool();
 				this.ModelToolForm.MdiParent = this;
 				this.ModelToolForm.Show();
+				UpdateWindowMenus();
 			}
 			else
 			{
@@ -630,6 +743,7 @@ namespace VPWStudio
 				}
 				this.ModelToolForm.MdiParent = this;
 				this.ModelToolForm.Show();
+				UpdateWindowMenus();
 			}
 		}
 
@@ -643,6 +757,7 @@ namespace VPWStudio
 				this.PackFileTool = new PackedFileTool();
 				this.PackFileTool.MdiParent = this;
 				this.PackFileTool.Show();
+				UpdateWindowMenus();
 			}
 			else
 			{
@@ -656,8 +771,9 @@ namespace VPWStudio
 				{
 					this.PackFileTool.WindowState = FormWindowState.Normal;
 				}
-				this.ModelToolForm.MdiParent = this;
-				this.ModelToolForm.Show();
+				this.PackFileTool.MdiParent = this;
+				this.PackFileTool.Show();
+				UpdateWindowMenus();
 			}
 		}
 
@@ -672,6 +788,7 @@ namespace VPWStudio
 				this.GSTool = new GameSharkTool();
 				this.GSTool.MdiParent = this;
 				this.GSTool.Show();
+				UpdateWindowMenus();
 			}
 			else
 			{
@@ -687,7 +804,34 @@ namespace VPWStudio
 				}
 				this.GSTool.MdiParent = this;
 				this.GSTool.Show();
+				UpdateWindowMenus();
 			}
+		}
+		#endregion
+
+		#region Window Menu Items
+		private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.LayoutMdi(MdiLayout.Cascade);
+		}
+
+		private void tileHorizontallyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.LayoutMdi(MdiLayout.TileHorizontal);
+		}
+
+		private void tileVerticallyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.LayoutMdi(MdiLayout.TileVertical);
+		}
+
+		private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			foreach (Form f in this.MdiChildren)
+			{
+				f.Close();
+			}
+			UpdateWindowMenus();
 		}
 		#endregion
 
@@ -784,6 +928,20 @@ namespace VPWStudio
 						break;
 				}
 			}
+
+			UpdateWindowMenus();
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void UpdateWindowMenus()
+		{
+			bool anyWindowsOpen = this.MdiChildren.Length > 0;
+			cascadeToolStripMenuItem.Enabled = anyWindowsOpen;
+			tileHorizontallyToolStripMenuItem.Enabled = anyWindowsOpen;
+			tileVerticallyToolStripMenuItem.Enabled = anyWindowsOpen;
+			closeAllToolStripMenuItem.Enabled = anyWindowsOpen;
 		}
 
 		/// <summary>
@@ -813,6 +971,11 @@ namespace VPWStudio
 				tssLabelGameType.Image = GetGameIcon_16px();
 			}
 		}
+
+		private void UpdateBackground()
+		{
+			this.BackgroundImage = GetMainMenuBG();
+		}
 		#endregion
 
 
@@ -836,6 +999,26 @@ namespace VPWStudio
 				case VPWGames.WM2K: return VPWStudio.Properties.Resources.GameIcon16_WM2K;
 				case VPWGames.VPW2: return VPWStudio.Properties.Resources.GameIcon16_VPW2;
 				case VPWGames.NoMercy: return VPWStudio.Properties.Resources.GameIcon16_NoMercy;
+				default:
+					return null;
+			}
+		}
+
+		private Bitmap GetMainMenuBG()
+		{
+			if (Program.CurrentProject == null)
+			{
+				return null;
+			}
+
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.WorldTour: return VPWStudio.Properties.Resources.MainMenuBG_WorldTour;
+				case VPWGames.VPW64: return null;
+				case VPWGames.Revenge: return VPWStudio.Properties.Resources.MainMenuBG_Revenge;
+				case VPWGames.WM2K: return VPWStudio.Properties.Resources.MainMenuBG_WM2K;
+				case VPWGames.VPW2: return VPWStudio.Properties.Resources.MainMenuBG_VPW2;
+				case VPWGames.NoMercy: return VPWStudio.Properties.Resources.MainMenuBG_NoMercy;
 				default:
 					return null;
 			}
