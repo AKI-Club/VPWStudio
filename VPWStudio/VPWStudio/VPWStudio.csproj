@@ -118,6 +118,7 @@
     <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\Crc32.cs" />
     <Compile Include="Helpers\LzssOriginal.cs" />
+    <Compile Include="Helpers\NameHandler.cs" />
     <Compile Include="Helpers\TestLzss.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
