@@ -40,7 +40,11 @@
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStripFileTable = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportMidwaydecFilelistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
+			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lvFileList
@@ -59,10 +63,10 @@
 			this.lvFileList.FullRowSelect = true;
 			this.lvFileList.GridLines = true;
 			this.lvFileList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.lvFileList.Location = new System.Drawing.Point(12, 12);
+			this.lvFileList.Location = new System.Drawing.Point(12, 27);
 			this.lvFileList.Name = "lvFileList";
 			this.lvFileList.ShowGroups = false;
-			this.lvFileList.Size = new System.Drawing.Size(568, 390);
+			this.lvFileList.Size = new System.Drawing.Size(568, 393);
 			this.lvFileList.TabIndex = 1;
 			this.lvFileList.UseCompatibleStateImageBehavior = false;
 			this.lvFileList.View = System.Windows.Forms.View.Details;
@@ -128,16 +132,46 @@
 			this.extractFileToolStripMenuItem.Text = "&Extract File...";
 			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
 			// 
+			// menuStripFileTable
+			// 
+			this.menuStripFileTable.AllowMerge = false;
+			this.menuStripFileTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+			this.menuStripFileTable.Location = new System.Drawing.Point(0, 0);
+			this.menuStripFileTable.Name = "menuStripFileTable";
+			this.menuStripFileTable.Size = new System.Drawing.Size(592, 24);
+			this.menuStripFileTable.TabIndex = 2;
+			this.menuStripFileTable.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportMidwaydecFilelistToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+			this.fileToolStripMenuItem.Text = "&File";
+			// 
+			// exportMidwaydecFilelistToolStripMenuItem
+			// 
+			this.exportMidwaydecFilelistToolStripMenuItem.Name = "exportMidwaydecFilelistToolStripMenuItem";
+			this.exportMidwaydecFilelistToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+			this.exportMidwaydecFilelistToolStripMenuItem.Text = "Export Midwaydec Filelist...";
+			// 
 			// FileTableDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(592, 414);
+			this.ClientSize = new System.Drawing.Size(592, 432);
+			this.Controls.Add(this.menuStripFileTable);
 			this.Controls.Add(this.lvFileList);
+			this.MainMenuStrip = this.menuStripFileTable;
 			this.Name = "FileTableDialog";
 			this.Text = "File Table";
 			this.cmsFileEntry.ResumeLayout(false);
+			this.menuStripFileTable.ResumeLayout(false);
+			this.menuStripFileTable.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -153,5 +187,8 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem editInformationToolStripMenuItem;
 		private System.Windows.Forms.ColumnHeader chFileType;
+		private System.Windows.Forms.MenuStrip menuStripFileTable;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportMidwaydecFilelistToolStripMenuItem;
 	}
 }
