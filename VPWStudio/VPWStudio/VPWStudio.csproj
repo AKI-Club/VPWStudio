@@ -100,6 +100,18 @@
     <Compile Include="Editors\FileTableDialog.Designer.cs">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.Designer.cs">
+      <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\VPW2\WrestlerMain_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW2\WrestlerMain_VPW2.Designer.cs">
+      <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameSpecific\IWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
@@ -129,6 +141,11 @@
     <Compile Include="ProgStructures\Project\ProjectSettings.cs" />
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SharedStrings.cs" />
     <Compile Include="Tools\AkiTextTool.cs">
       <SubType>Form</SubType>
@@ -172,19 +189,20 @@
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
+      <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW2\WrestlerMain_VPW2.resx">
+      <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Tools\AkiTextTool.resx">
       <DependentUpon>AkiTextTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,13 +324,18 @@
     <None Include="Resources\story_nomercy.png" />
     <None Include="Resources\story_wm2k-vpw2.png" />
     <None Include="Resources\menus.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\textarchives.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_WM2K.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Editors\NoMercy\" />
     <Folder Include="Editors\Revenge\" />
-    <Folder Include="Editors\VPW2\" />
     <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WM2K\" />
     <Folder Include="Editors\WorldTour\" />
