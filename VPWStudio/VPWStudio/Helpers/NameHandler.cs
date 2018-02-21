@@ -24,11 +24,11 @@ namespace VPWStudio
 			/// <summary>
 			/// output between &lt;&gt; chars (short and long name)
 			/// </summary>
-			ShortLong, // <>
+			ShortLong,
 			/// <summary>
 			/// output between {} chars (short name only)
 			/// </summary>
-			ShortOnly  // {}
+			ShortOnly
 		}
 
 		/// <summary>
@@ -70,13 +70,13 @@ namespace VPWStudio
 				// sometimes, the short name is a hack of the long name
 				// * "<R>ick{.}< Steiner>"; long = "Rick Steiner", short = "R. Steiner"
 				// * "<S>tevie{.}< Ray>"; long = "Stevie Ray", short = "S. Ray"
-				// * "<M>aya <I>nca <B>oy"; long = "Maya Inca Boy", short = "MIB"
+				// * "<M>aya <I>nca <B>oy"; long = "Maya Inca Boy", short = "MIB" (human intervention version: "Maya Inca Boy{MIB}" uses one less byte)
 
 				// sometimes, the short and long names differ so much, they can't be reconciled.
 				// Some examples:
 				// * "Diamond Dallas Page{DDP}" (human intervention version: "<D>iamond <D>allas <P>age" uses more bytes)
 				// * "Konnan{K-Dawg}" (human intervention version: "<K>onnan{-Dawg}" uses more bytes)
-				// * "Juventud Guerrera{Juvi}" (human intervention version: "<Juv>entud Guerrera{i}" uses LESS bytes)
+				// * "Juventud Guerrera{Juvi}" (human intervention version: "<Juv>entud Guerrera{i}" uses one less byte)
 				result = String.Format("{0}{{{1}}}", _long, _short);
 			}
 
