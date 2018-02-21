@@ -317,6 +317,31 @@ namespace VPWStudio
 			LoadEditInfoDialog();
 		}
 
-		
+		/// <summary>
+		/// Export the FileTable as a Midwaydec File List.
+		/// </summary>
+		private void exportMidwaydecFileListToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export Midwaydec File List";
+			sfd.Filter = SharedStrings.FileFilter_Text;
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+				StreamWriter sw = new StreamWriter(fs);
+
+				// it's kind of cheating to pass these two variables,
+				// since they can change in an edited ROM.
+				// but we haven't thought that far ahead yet.
+				Program.CurrentProject.ProjectFileTable.WriteMidwaydec(
+					sw,
+					DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset,
+					DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset
+				);
+
+				sw.Flush();
+				sw.Close();
+			}
+		}
 	}
 }
