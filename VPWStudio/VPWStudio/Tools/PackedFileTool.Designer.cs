@@ -116,6 +116,7 @@
 			this.Controls.Add(this.tbCurFile);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.buttonOpen);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "PackedFileTool";
 			this.Text = "Packed File Tool";

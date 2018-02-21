@@ -280,7 +280,7 @@
             this.codeSetToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(592, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(594, 24);
 			this.menuStrip1.TabIndex = 19;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -379,6 +379,7 @@
 			this.Controls.Add(this.tvCodeExaminer);
 			this.Controls.Add(this.gbNewCode);
 			this.Controls.Add(this.menuStrip1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;

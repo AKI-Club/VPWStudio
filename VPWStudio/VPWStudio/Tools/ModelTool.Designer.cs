@@ -358,6 +358,7 @@
 			this.Controls.Add(this.buttonOpen);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.tbInfoDump);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "ModelTool";
 			this.Text = "Model Tool";
