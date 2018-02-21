@@ -143,6 +143,56 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MainMenuBG_NoMercy {
+            get {
+                object obj = ResourceManager.GetObject("MainMenuBG_NoMercy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainMenuBG_Revenge {
+            get {
+                object obj = ResourceManager.GetObject("MainMenuBG_Revenge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainMenuBG_VPW2 {
+            get {
+                object obj = ResourceManager.GetObject("MainMenuBG_VPW2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainMenuBG_WM2K {
+            get {
+                object obj = ResourceManager.GetObject("MainMenuBG_WM2K", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainMenuBG_WorldTour {
+            get {
+                object obj = ResourceManager.GetObject("MainMenuBG_WorldTour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuIcon_DangerZone {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon_DangerZone", resourceCulture);
@@ -346,6 +396,16 @@ namespace VPWStudio.Properties {
         internal static System.Drawing.Bitmap MenuIcon16_Story_WM2K_VPW2 {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_Story_WM2K_VPW2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuIcon16_TextArchives {
+            get {
+                object obj = ResourceManager.GetObject("MenuIcon16_TextArchives", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
