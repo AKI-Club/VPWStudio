@@ -155,21 +155,22 @@ namespace VPWStudio
 		/// <param name="xr"></param>
 		public void ReadXml(XmlReader xr)
 		{
-			if (!xr.IsEmptyElement)
-			{
-				this.Comment = xr.Value;
-			}
-			else
-			{
-				this.Comment = String.Empty;
-			}
-
 			if (xr.HasAttributes)
 			{
 				this.FileID = UInt16.Parse(xr.GetAttribute("id"), NumberStyles.HexNumber);
 				this.Location = UInt32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
 				this.FileType = (FileTypes)Enum.Parse(typeof(FileTypes), xr.GetAttribute("type"));
 				this.IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
+			}
+
+			if (!xr.IsEmptyElement)
+			{
+				xr.Read();
+				this.Comment = xr.Value;
+			}
+			else
+			{
+				this.Comment = String.Empty;
 			}
 		}
 
@@ -339,6 +340,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region FileTable Entry Routines
 		/// <summary>
 		/// Get the file size of the specified entry.
 		/// </summary>
@@ -356,6 +358,42 @@ namespace VPWStudio
 				return (this.Entries[id + 1].Location - this.Entries[id].Location);
 			}
 		}
+
+		/// <summary>
+		/// Get the ROM location of the specified file ID.
+		/// </summary>
+		/// <param name="id">File ID to get location for.</param>
+		/// <returns>ROM location of the specified file ID.</returns>
+		public uint GetRomLocation(int id)
+		{
+			return this.Entries[id].Location + this.FirstFile;
+		}
+
+		/// <summary>
+		/// Extract a file from the filetable.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="deLZSS"></param>
+		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool deLZSS = false)
+		{
+			uint loc = this.GetRomLocation(id);
+			uint size = this.GetEntrySize(id);
+
+			_in.BaseStream.Seek(loc, SeekOrigin.Begin);
+			byte[] data = _in.ReadBytes((int)size);
+
+			if (deLZSS)
+			{
+				MemoryStream ms = new MemoryStream(data);
+				BinaryReader br = new BinaryReader(ms);
+				AsmikLzss.Decode(br, _out);
+			}
+			else
+			{
+				_out.Write(data);
+			}
+		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
