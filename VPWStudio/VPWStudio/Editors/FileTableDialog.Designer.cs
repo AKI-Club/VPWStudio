@@ -43,7 +43,7 @@
 			this.menuStripFileTable = new System.Windows.Forms.MenuStrip();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lengthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -109,7 +109,7 @@
             this.editInformationToolStripMenuItem,
             this.toolStripSeparator1,
             this.extractFileToolStripMenuItem,
-            this.lengthToolStripMenuItem});
+            this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
 			this.cmsFileEntry.Size = new System.Drawing.Size(164, 98);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
@@ -160,12 +160,12 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
 			// 
-			// lengthToolStripMenuItem
+			// extractRawToolStripMenuItem
 			// 
-			this.lengthToolStripMenuItem.Name = "lengthToolStripMenuItem";
-			this.lengthToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-			this.lengthToolStripMenuItem.Text = "&Length";
-			this.lengthToolStripMenuItem.Click += new System.EventHandler(this.lengthToolStripMenuItem_Click);
+			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
+			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.extractRawToolStripMenuItem.Text = "Extract &Raw...";
+			this.extractRawToolStripMenuItem.Click += new System.EventHandler(this.extractRawToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -200,6 +200,6 @@
 		private System.Windows.Forms.MenuStrip menuStripFileTable;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportMidwaydecFileListToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem lengthToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem extractRawToolStripMenuItem;
 	}
 }

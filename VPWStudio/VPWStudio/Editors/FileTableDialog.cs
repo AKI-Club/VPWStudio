@@ -250,6 +250,9 @@ namespace VPWStudio
 			else if (lvFileList.SelectedItems.Count == 1)
 			{
 				extractFileToolStripMenuItem.Text = SharedStrings.FileTableDialog_ExtractFile;
+
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+				extractRawToolStripMenuItem.Enabled = Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded;
 			}
 		}
 
@@ -258,18 +261,20 @@ namespace VPWStudio
 		/// </summary>
 		private void editInformationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (lvFileList.SelectedItems.Count == 0)
+			if (lvFileList.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
-			if (lvFileList.SelectedItems.Count > 1)
+			if (lvFileList.SelectedItems.Count == 1)
+			{
+				LoadEditInfoDialog();
+			}
+			else
 			{
 				MessageBox.Show("multi select sucks, i haven't handled it yet");
 				return;
 			}
-
-			LoadEditInfoDialog();
 		}
 
 		/// <summary>
@@ -277,12 +282,75 @@ namespace VPWStudio
 		/// </summary>
 		private void extractFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (lvFileList.SelectedItems.Count == 0)
+			if (lvFileList.SelectedItems.Count <= 0)
 			{
+				MessageBox.Show("Please select at least one item to extract.");
 				return;
 			}
 
-			MessageBox.Show("haven't implemented it yet.");
+			if (lvFileList.SelectedItems.Count == 1)
+			{
+				// only one file; no need to go through rigmarole
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "Extract File";
+				if (sfd.ShowDialog() == DialogResult.OK)
+				{
+					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+					BinaryReader romReader = new BinaryReader(romStream);
+
+					FileStream outFile = new FileStream(sfd.FileName, FileMode.Create);
+					BinaryWriter outWriter = new BinaryWriter(outFile);
+
+					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+					bool lzss = Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded;
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key, lzss);
+
+					outWriter.Flush();
+					outWriter.Close();
+					romReader.Close();
+				}
+			}
+			else
+			{
+				// more than one file
+				MessageBox.Show("Haven't implemented it yet.");
+			}
+		}
+
+		private void extractRawToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count <= 0)
+			{
+				MessageBox.Show("Please select at least one item to extract.");
+				return;
+			}
+
+			if (lvFileList.SelectedItems.Count == 1)
+			{
+				// only one file; no need to go through rigmarole
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "Extract File (Raw)";
+				if (sfd.ShowDialog() == DialogResult.OK)
+				{
+					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+					BinaryReader romReader = new BinaryReader(romStream);
+
+					FileStream outFile = new FileStream(sfd.FileName, FileMode.Create);
+					BinaryWriter outWriter = new BinaryWriter(outFile);
+
+					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
+
+					outWriter.Flush();
+					outWriter.Close();
+					romReader.Close();
+				}
+			}
+			else
+			{
+				// more than one file
+				MessageBox.Show("Haven't implemented it yet.");
+			}
 		}
 		#endregion
 
@@ -332,51 +400,9 @@ namespace VPWStudio
 			{
 				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
 				StreamWriter sw = new StreamWriter(fs);
-
-				// it's kind of cheating to pass these two variables,
-				// since they can change in an edited ROM.
-				// but we haven't thought that far ahead yet.
-				Program.CurrentProject.ProjectFileTable.WriteMidwaydec(
-					sw,
-					DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset,
-					DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset
-				);
-
+				Program.CurrentProject.ProjectFileTable.WriteMidwaydec(sw);
 				sw.Flush();
 				sw.Close();
-			}
-		}
-
-		private void lengthToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (lvFileList.SelectedItems.Count == 0)
-			{
-				return;
-			}
-
-			if (lvFileList.SelectedItems.Count > 1)
-			{
-				return;
-			}
-
-			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
-
-			if (Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded)
-			{
-				// todo: add decompressed size?
-				MessageBox.Show(
-					String.Format("*Compressed* size of ID {0:X4} is {1}",
-					key,
-					Program.CurrentProject.ProjectFileTable.GetEntrySize(key))
-				);
-			}
-			else
-			{
-				MessageBox.Show(
-					String.Format("Size of ID {0:X4} is {1}",
-					key,
-					Program.CurrentProject.ProjectFileTable.GetEntrySize(key))
-				);
 			}
 		}
 	}
