@@ -403,30 +403,40 @@ namespace VPWStudio
 
 			if (lvFileList.SelectedItems.Count > 1)
 			{
-				MessageBox.Show("i have no idea how to handle multiple item double clicking yet, sorry.");
 				return;
 			}
 
 			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
 			switch (Program.CurrentProject.ProjectFileTable.Entries[key].FileType)
 			{
+				// "TEX" files
 				case FileTypes.AkiTexture:
 					FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
 					tpd.ShowDialog();
 					break;
 
+				// CI4/CI8 textures
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
-					FileTable_CiTexturePreviewDialog cid = new FileTable_CiTexturePreviewDialog(key);
-					cid.ShowDialog();
+					FileTable_CiTexturePreviewDialog citd = new FileTable_CiTexturePreviewDialog(key);
+					citd.ShowDialog();
 					break;
 
+				// CI4/CI8 palettes
+				case FileTypes.Ci4Palette:
+				case FileTypes.Ci8Palette:
+					FileTable_CiPalettePreviewDialog cipd = new FileTable_CiPalettePreviewDialog(key);
+					cipd.ShowDialog();
+					break;
+
+				// AkiText archive
 				case FileTypes.AkiText:
 					// temporary
 					AkiTextDialog atd = new AkiTextDialog(key);
 					atd.ShowDialog();
 					break;
 
+				// no default handler; show edit info dialog instead
 				default:
 					LoadEditInfoDialog();
 					break;
