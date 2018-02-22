@@ -63,13 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataStructures\AkiModel.cs" />
-    <Compile Include="DataStructures\AkiText.cs" />
-    <Compile Include="DataStructures\FileTable.cs" />
-    <Compile Include="DataStructures\GameSharkCode.cs" />
-    <Compile Include="DataStructures\GameSharkCodeFile.cs" />
-    <Compile Include="DataStructures\GameSharkCodeSet.cs" />
-    <Compile Include="DataStructures\AkiArchive.cs" />
+    <Compile Include="DataStructures\AKI\AkiModel.cs" />
+    <Compile Include="DataStructures\AKI\AkiText.cs" />
+    <Compile Include="DataStructures\AKI\AkiTexture.cs" />
+    <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="DataStructures\GameShark\GameSharkCode.cs" />
+    <Compile Include="DataStructures\GameShark\GameSharkCodeFile.cs" />
+    <Compile Include="DataStructures\GameShark\GameSharkCodeSet.cs" />
+    <Compile Include="DataStructures\AKI\AkiArchive.cs" />
     <Compile Include="Dialogs\FileTable\FileTableEditEntryInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>

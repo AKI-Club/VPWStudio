@@ -1092,8 +1092,30 @@ namespace VPWStudio
 			NameEncodeDecodeTool nedTool = new NameEncodeDecodeTool();
 			nedTool.ShowDialog();
 		}
+
 		#endregion
 
-		
+		private void tEXFileToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// fuck...
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Open TEX File";
+			ofd.Filter = "TEX file (*.tex)|*.tex|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
+				BinaryReader br = new BinaryReader(fs);
+				AkiTexture test = new AkiTexture(br);
+				br.Close();
+
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "I guess try exporting?";
+				sfd.Filter = "PNG file (*.png)|*.png|All Files (*.*)|*.*";
+				if (sfd.ShowDialog() == DialogResult.OK)
+				{
+					test.ToBitmap().Save(sfd.FileName);
+				}
+			}
+		}
 	}
 }
