@@ -32,12 +32,14 @@
 			this.pbPreview = new System.Windows.Forms.PictureBox();
 			this.cmsPreview = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.savePNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
 			this.cmsPreview.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pbPreview
 			// 
+			this.pbPreview.BackColor = System.Drawing.SystemColors.Control;
 			this.pbPreview.ContextMenuStrip = this.cmsPreview;
 			this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbPreview.Location = new System.Drawing.Point(0, 0);
@@ -52,17 +54,25 @@
 			// cmsPreview
 			// 
 			this.cmsPreview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.savePNGToolStripMenuItem});
+            this.savePNGToolStripMenuItem,
+            this.backgroundColorToolStripMenuItem});
 			this.cmsPreview.Name = "cmsPreview";
-			this.cmsPreview.Size = new System.Drawing.Size(134, 26);
+			this.cmsPreview.Size = new System.Drawing.Size(171, 48);
 			// 
 			// savePNGToolStripMenuItem
 			// 
 			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.savePNGToolStripMenuItem.Text = "Save &PNG...";
 			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
+			// 
+			// backgroundColorToolStripMenuItem
+			// 
+			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
+			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+			this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
+			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
 			// 
 			// FileTable_TexPreviewDialog
 			// 
@@ -91,5 +101,6 @@
 		private System.Windows.Forms.PictureBox pbPreview;
 		private System.Windows.Forms.ContextMenuStrip cmsPreview;
 		private System.Windows.Forms.ToolStripMenuItem savePNGToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem backgroundColorToolStripMenuItem;
 	}
 }

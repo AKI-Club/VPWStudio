@@ -67,5 +67,17 @@ namespace VPWStudio
 				this.CurrentBitmap.Save(sfd.FileName);
 			}
 		}
+
+		/// <summary>
+		/// Change background color.
+		/// </summary>
+		private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ColorDialog cd = new ColorDialog();
+			if (cd.ShowDialog() == DialogResult.OK)
+			{
+				pbPreview.BackColor = cd.Color;
+			}
+		}
 	}
 }
