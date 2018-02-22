@@ -1,19 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPWStudio
 {
 	public partial class FileTable_TexPreviewDialog : Form
 	{
+		#region Members
+		/// <summary>
+		/// Current TEX file
+		/// </summary>
 		private AkiTexture CurrentTEX;
+
+		/// <summary>
+		/// Current Bitmap
+		/// </summary>
 		private Bitmap CurrentBitmap;
+
+		/// <summary>
+		/// Default image size
+		/// </summary>
+		private Size DefaultImageSize;
+
+		/// <summary>
+		/// Current zoom level
+		/// </summary>
+		private int CurrentZoom = 1;
+		#endregion
+
+		#region Constants
+		/// <summary>
+		/// Minimum possible zoom level
+		/// </summary>
+		private const int MinZoom = 1;
+
+		/// <summary>
+		/// Maximum possible zoom level
+		/// </summary>
+		private const int MaxZoom = 3;
+		#endregion
 
 		public FileTable_TexPreviewDialog(int fileID)
 		{
@@ -36,6 +63,8 @@ namespace VPWStudio
 			this.CurrentTEX = new AkiTexture(outReader);
 			pbPreview.Width = this.CurrentTEX.Width;
 			pbPreview.Height = this.CurrentTEX.Height;
+			this.DefaultImageSize = new Size(this.CurrentTEX.Width, this.CurrentTEX.Height);
+
 			this.CurrentBitmap = this.CurrentTEX.ToBitmap();
 			pbPreview.Image = this.CurrentBitmap;
 
@@ -78,6 +107,52 @@ namespace VPWStudio
 			{
 				pbPreview.BackColor = cd.Color;
 			}
+		}
+
+		/// <summary>
+		/// Zoom image.
+		/// </summary>
+		private void pbPreview_MouseWheel(object sender, MouseEventArgs e)
+		{
+			// e.Delta * SystemInformation.MouseWheelScrollLines / 120
+
+			if (e.Delta == 120)
+			{
+				if (this.CurrentZoom < MaxZoom)
+				{
+					this.CurrentZoom++;
+				}
+				else
+				{
+					this.CurrentZoom = MaxZoom;
+				}
+			}
+			else if (e.Delta == -120)
+			{
+				if (this.CurrentZoom > MinZoom)
+				{
+					this.CurrentZoom--;
+				}
+				else
+				{
+					this.CurrentZoom = MinZoom;
+				}
+			}
+
+			Bitmap zoomed = new Bitmap(this.DefaultImageSize.Width * this.CurrentZoom, this.DefaultImageSize.Height * this.CurrentZoom);
+
+			Graphics g = Graphics.FromImage(zoomed);
+			g.InterpolationMode = InterpolationMode.NearestNeighbor;
+			g.Clear(pbPreview.BackColor);
+
+			g.DrawImage(
+				CurrentBitmap,
+				new Rectangle(0, 0, this.DefaultImageSize.Width * this.CurrentZoom, this.DefaultImageSize.Height * this.CurrentZoom),
+				new Rectangle(0, 0, this.DefaultImageSize.Width, this.DefaultImageSize.Height),
+				GraphicsUnit.Pixel
+			);
+			g.Dispose();
+			pbPreview.Image = zoomed;
 		}
 	}
 }

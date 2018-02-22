@@ -63,7 +63,7 @@
 			// 
 			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
 			this.savePNGToolStripMenuItem.Text = "Save &PNG...";
 			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
 			// 
@@ -83,12 +83,16 @@
 			this.ClientSize = new System.Drawing.Size(248, 229);
 			this.Controls.Add(this.pbPreview);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.MaximumSize = new System.Drawing.Size(800, 600);
-			this.MinimumSize = new System.Drawing.Size(32, 32);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "FileTable_TexPreviewDialog";
+			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Preview";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_TexPreviewDialog_KeyDown);
+			this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pbPreview_MouseWheel);
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
 			this.cmsPreview.ResumeLayout(false);
 			this.ResumeLayout(false);
