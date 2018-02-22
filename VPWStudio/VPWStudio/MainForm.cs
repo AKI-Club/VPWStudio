@@ -367,18 +367,23 @@ namespace VPWStudio
 			if (this.ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
 				// check to see if project game type was changed
+				bool updateBG = false;
 				if (Program.CurrentProject.Settings.GameType != this.ProjPropDialog.NewSettings.GameType)
 				{
+					updateBG = true;
 					// invalidate project data
 					Program.CurrentProject.ProjectFileTable = new FileTable();
-
-					UpdateBackground();
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
 
 				Program.CurrentProject.Settings.DeepCopy(this.ProjPropDialog.NewSettings);
 				Program.UnsavedChanges = true;
+
+				if (updateBG)
+				{
+					UpdateBackground();
+				}
 
 				// check to see if Input ROM was changed
 				if (Program.CurrentInputROM == null)
@@ -1095,5 +1100,10 @@ namespace VPWStudio
 			nedTool.ShowDialog();
 		}
 		#endregion
+
+		private void MainForm_Resize(object sender, EventArgs e)
+		{
+			UpdateBackground();
+		}
 	}
 }
