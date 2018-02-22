@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 
 namespace VPWStudio
 {
+	#region File Table Entry
 	/// <summary>
 	/// A single entry in the filetable.
 	/// </summary>
@@ -283,6 +284,7 @@ namespace VPWStudio
 		}
 		#endregion
 	}
+	#endregion
 
 	/// <summary>
 	/// FileTable representation
@@ -345,6 +347,26 @@ namespace VPWStudio
 		}
 
 		#region FileTable Entry Routines
+		/// <summary>
+		/// Find all files of a specified type in the FileTable.
+		/// </summary>
+		/// <param name="t">FileTypes enum value of file type to find.</param>
+		/// <returns>A list containing all the IDs of files matching the specified type.</returns>
+		public List<int> GetFilesOfType(FileTypes t)
+		{
+			List<int> files = new List<int>();
+
+			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
+			{
+				if (fte.Value.FileType == t)
+				{
+					files.Add(fte.Key);
+				}
+			}
+
+			return files;
+		}
+
 		/// <summary>
 		/// Get the file size of the specified entry.
 		/// </summary>
