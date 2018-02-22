@@ -75,6 +75,12 @@
     <Compile Include="DataStructures\N64TexPal\Ci4Palette.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Texture.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
+    <Compile Include="Dialogs\FileTable\FileTable_CiPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_CiPreviewDialog.Designer.cs">
+      <DependentUpon>FileTable_CiPreviewDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     </Compile>
     <Compile Include="Dialogs\Project\ProjectPropertiesDialog.Designer.cs">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AkiTextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\AkiTextDialog.Designer.cs">
+      <DependentUpon>AkiTextDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\FileTableDialog.cs">
       <SubType>Form</SubType>
@@ -190,6 +202,9 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiPreviewDialog.resx">
+      <DependentUpon>FileTable_CiPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.resx">
       <DependentUpon>FileTable_EditEntryInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Project\ProjectPropertiesDialog.resx">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AkiTextDialog.resx">
+      <DependentUpon>AkiTextDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
