@@ -385,7 +385,16 @@ namespace VPWStudio
 				return;
 			}
 
-			LoadEditInfoDialog();
+			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+			if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiTexture)
+			{
+				FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
+				tpd.ShowDialog();
+			}
+			else
+			{
+				LoadEditInfoDialog();
+			}
 		}
 
 		/// <summary>
