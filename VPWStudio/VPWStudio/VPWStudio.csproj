@@ -71,6 +71,10 @@
     <Compile Include="DataStructures\GameShark\GameSharkCodeFile.cs" />
     <Compile Include="DataStructures\GameShark\GameSharkCodeSet.cs" />
     <Compile Include="DataStructures\AKI\AkiArchive.cs" />
+    <Compile Include="DataStructures\N64TexPal\Ci4Image.cs" />
+    <Compile Include="DataStructures\N64TexPal\Ci4Palette.cs" />
+    <Compile Include="DataStructures\N64TexPal\Ci8Image.cs" />
+    <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
     <Compile Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +129,7 @@
     <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\Crc32.cs" />
     <Compile Include="Helpers\LzssOriginal.cs" />
+    <Compile Include="Helpers\N64Colors.cs" />
     <Compile Include="Helpers\NameHandler.cs" />
     <Compile Include="Helpers\TestLzss.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />

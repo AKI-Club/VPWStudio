@@ -232,27 +232,10 @@ namespace VPWStudio
 				for (int x = 0; x < this.Width; x++)
 				{
 					byte palIdx = this.Data[(y * this.Width) + x];
-					Color c = ValueToColor5551(this.Palette[palIdx]);
+					Color c = N64Colors.ValueToColor5551(this.Palette[palIdx]);
 					bOut.SetPixel(x, y, c);
 				}
 			}
 		}
-
-		#region Helpers
-		/// <summary>
-		/// Convert UInt16 to RGBA 5551
-		/// </summary>
-		/// <param name="cv"></param>
-		/// <returns></returns>
-		public Color ValueToColor5551(UInt16 cv)
-		{
-			return Color.FromArgb(
-				((cv & 0x0001) == 1) ? 0xFF : 0,
-				((cv & 0xF800) >> 11) * 8,
-				((cv & 0x07C0) >> 6) * 8,
-				((cv & 0x003E) >> 1) * 8
-			);
-		}
-		#endregion
 	}
 }
