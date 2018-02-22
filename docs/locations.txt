@@ -8,7 +8,7 @@ external files, instead of being hardcoded.
 
 Thus, I need to come up with a parsable format for this bullshit.
 
-type:location,data width,comment
+type:location,length,comment
 
 RAM:8006966A,4;pointer to X
 ROM:209270,2;Beginning of ID2 values for AJPW2
@@ -20,7 +20,7 @@ All locations are read as hex.
 RAM addresses must be 8 digits, and start with 8.
 ROM locations are assumed for Z64 format, as mentioned above.
 
-valid data widths: 1,2,4. everything else is invalid.
+valid lengths are anything greater than 0.
 
 comments go to the end of the line, \n terminated.
 this way, they should work on all platforms that matter?
