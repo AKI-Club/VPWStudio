@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
+	// xxx: this is the temporary one
 	public partial class AkiTextTool : Form
 	{
 		public AkiText CurAkiText = new AkiText();
