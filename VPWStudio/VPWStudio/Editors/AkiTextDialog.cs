@@ -24,6 +24,7 @@ namespace VPWStudio
 			if (fileID != 0)
 			{
 				LoadFromID(fileID);
+				cbAvailableAkiText.SelectedIndex = AkiTextIDs.IndexOf(fileID);
 			}
 		}
 
