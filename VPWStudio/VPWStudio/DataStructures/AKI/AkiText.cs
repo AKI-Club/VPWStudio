@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace VPWStudio
 {
@@ -57,7 +56,14 @@ namespace VPWStudio
 		public void Encode(BinaryWriter bw)
 		{
 			// the pointers themselves need to be calculated based on the string lengths.
-			int startLoc = (this.Entries.Count * 2) + 2;
+			int startLoc = (this.Entries.Count * 2);
+
+			// adjust for terminator if needed
+			if (this.Entries.Count % 2 != 0)
+			{
+				startLoc += 2;
+			}
+
 			int curLoc = startLoc;
 			for (int i = 0; i < this.Entries.Count; i++)
 			{
@@ -75,7 +81,12 @@ namespace VPWStudio
 				}
 				bw.Write(l);
 			}
-			bw.Write((UInt16)0); // terminator
+
+			// insert alignment/terminator as needed
+			if (this.Entries.Count % 2 != 0)
+			{
+				bw.Write((UInt16)0);
+			}
 
 			// then write out the strings
 			for (int i = 0; i < this.Entries.Count; i++)
