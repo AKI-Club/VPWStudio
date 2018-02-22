@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
-	public partial class FileTable_CiPreviewDialog : Form
+	public partial class FileTable_CiTexturePreviewDialog : Form
 	{
 		private Ci4Palette CurCI4Palette;
 		private Ci4Texture CurCI4Texture;
@@ -29,7 +29,7 @@ namespace VPWStudio
 		}
 		private CiViewerModes CurViewMode;
 
-		public FileTable_CiPreviewDialog(int fileID)
+		public FileTable_CiTexturePreviewDialog(int fileID)
 		{
 			InitializeComponent();
 			this.Text = String.Format("Preview [0x{0:X4}]", fileID);

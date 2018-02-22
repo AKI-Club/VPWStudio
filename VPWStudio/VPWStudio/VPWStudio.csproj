@@ -75,11 +75,11 @@
     <Compile Include="DataStructures\N64TexPal\Ci4Palette.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Texture.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
-    <Compile Include="Dialogs\FileTable\FileTable_CiPreviewDialog.cs">
+    <Compile Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_CiPreviewDialog.Designer.cs">
-      <DependentUpon>FileTable_CiPreviewDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.Designer.cs">
+      <DependentUpon>FileTable_CiTexturePreviewDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.cs">
       <SubType>Form</SubType>
@@ -202,8 +202,8 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiPreviewDialog.resx">
-      <DependentUpon>FileTable_CiPreviewDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.resx">
+      <DependentUpon>FileTable_CiTexturePreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.resx">
       <DependentUpon>FileTable_EditEntryInfoDialog.cs</DependentUpon>

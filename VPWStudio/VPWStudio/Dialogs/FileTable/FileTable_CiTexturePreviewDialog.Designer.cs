@@ -1,6 +1,6 @@
 ﻿namespace VPWStudio
 {
-	partial class FileTable_CiPreviewDialog
+	partial class FileTable_CiTexturePreviewDialog
 	{
 		/// <summary>
 		/// Required designer variable.

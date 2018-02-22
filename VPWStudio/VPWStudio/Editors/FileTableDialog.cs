@@ -417,7 +417,7 @@ namespace VPWStudio
 
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
-					FileTable_CiPreviewDialog cid = new FileTable_CiPreviewDialog(key);
+					FileTable_CiTexturePreviewDialog cid = new FileTable_CiTexturePreviewDialog(key);
 					cid.ShowDialog();
 					break;
 
