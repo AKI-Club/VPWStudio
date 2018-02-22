@@ -21,6 +21,7 @@ namespace VPWStudio
 		#endregion
 
 		#region Unsaved Project Strings
+		public static string UnsavedProject_NewProject = "";
 		public static string UnsavedProject_OpenProject = "";
 		public static string UnsavedProject_CloseProject = "";
 		public static string UnsavedProject_ExitProgram = "";
