@@ -104,6 +104,7 @@ namespace VPWStudio
 			// grab list of locations
 			List<UInt16> Locations = new List<UInt16>();
 			UInt16 entryPointer = 0;
+			int entry = 0;
 			do
 			{
 				byte[] epb = br.ReadBytes(2);
@@ -117,8 +118,9 @@ namespace VPWStudio
 				{
 					Locations.Add(entryPointer);
 				}
+				entry+=2;
 
-			} while (entryPointer != 0);
+			} while (entry < tableSize);
 
 			// add entries
 			int i = 0;
