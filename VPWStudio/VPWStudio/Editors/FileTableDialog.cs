@@ -408,14 +408,28 @@ namespace VPWStudio
 			}
 
 			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
-			if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiTexture)
+			switch (Program.CurrentProject.ProjectFileTable.Entries[key].FileType)
 			{
-				FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
-				tpd.ShowDialog();
-			}
-			else
-			{
-				LoadEditInfoDialog();
+				case FileTypes.AkiTexture:
+					FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
+					tpd.ShowDialog();
+					break;
+
+				case FileTypes.Ci4Texture:
+				case FileTypes.Ci8Texture:
+					FileTable_CiPreviewDialog cid = new FileTable_CiPreviewDialog(key);
+					cid.ShowDialog();
+					break;
+
+				case FileTypes.AkiText:
+					// temporary
+					AkiTextDialog atd = new AkiTextDialog(key);
+					atd.ShowDialog();
+					break;
+
+				default:
+					LoadEditInfoDialog();
+					break;
 			}
 		}
 

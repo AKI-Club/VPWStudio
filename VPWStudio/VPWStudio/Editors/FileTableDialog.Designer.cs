@@ -40,10 +40,10 @@
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStripFileTable = new System.Windows.Forms.MenuStrip();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -81,17 +81,17 @@
 			// chLocation
 			// 
 			this.chLocation.Text = "Location";
-			this.chLocation.Width = 85;
+			this.chLocation.Width = 80;
 			// 
 			// chRomAddr
 			// 
 			this.chRomAddr.Text = "ROM Address";
-			this.chRomAddr.Width = 85;
+			this.chRomAddr.Width = 80;
 			// 
 			// chFileType
 			// 
 			this.chFileType.Text = "File Type";
-			this.chFileType.Width = 64;
+			this.chFileType.Width = 80;
 			// 
 			// chLzss
 			// 
@@ -101,7 +101,7 @@
 			// chComments
 			// 
 			this.chComments.Text = "Comments";
-			this.chComments.Width = 224;
+			this.chComments.Width = 216;
 			// 
 			// cmsFileEntry
 			// 
@@ -111,7 +111,7 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(164, 98);
+			this.cmsFileEntry.Size = new System.Drawing.Size(164, 76);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// editInformationToolStripMenuItem
@@ -133,6 +133,13 @@
 			this.extractFileToolStripMenuItem.Tag = "ExtractFile";
 			this.extractFileToolStripMenuItem.Text = "&Extract File...";
 			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
+			// 
+			// extractRawToolStripMenuItem
+			// 
+			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
+			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.extractRawToolStripMenuItem.Text = "Extract &Raw...";
+			this.extractRawToolStripMenuItem.Click += new System.EventHandler(this.extractRawToolStripMenuItem_Click);
 			// 
 			// menuStripFileTable
 			// 
@@ -159,13 +166,6 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
-			// 
-			// extractRawToolStripMenuItem
-			// 
-			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
-			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-			this.extractRawToolStripMenuItem.Text = "Extract &Raw...";
-			this.extractRawToolStripMenuItem.Click += new System.EventHandler(this.extractRawToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
