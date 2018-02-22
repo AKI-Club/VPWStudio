@@ -147,9 +147,11 @@ namespace VPWStudio
 				}
 			}
 			br.Close();
+			LoadFileTableDB();
+		}
 
-			// read relevant file from FileTableDB
-			FileTableDB ftdb;
+		private string GetFileTableDBPath()
+		{
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
 			// special case WWF WrestleMania 2000 NTSC-J
@@ -162,6 +164,18 @@ namespace VPWStudio
 				dbFilePath += String.Format("{0}.txt", Program.CurrentProject.Settings.BaseGame.ToString());
 			}
 
+			return dbFilePath;
+		}
+
+		/// <summary>
+		/// Load the file table database.
+		/// </summary>
+		private void LoadFileTableDB()
+		{
+			// read relevant file from FileTableDB
+			FileTableDB ftdb;
+
+			string dbFilePath = GetFileTableDBPath();
 			// make sure it exists before we go and start adding things
 			if (!File.Exists(dbFilePath))
 			{
@@ -177,6 +191,14 @@ namespace VPWStudio
 					Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Update the entries in the list with information from the FileTableDB.
+		/// </summary>
+		private void UpdateFileTableDB()
+		{
+			// this one is tricky because we don't want to kill any comments that were entered in the program.
 		}
 
 		/// <summary>
