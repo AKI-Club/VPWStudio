@@ -5,9 +5,9 @@ using System.Drawing;
 namespace VPWStudio
 {
 	/// <summary>
-	/// CI4 (Color, Indexed 4bpp) Image
+	/// CI4 (Color, Indexed 4bpp) Texture
 	/// </summary>
-	public class Ci4Image
+	public class Ci4Texture
 	{
 		#region Class Members
 		/// <summary>
@@ -35,7 +35,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		public Ci4Image()
+		public Ci4Texture()
 		{
 			this.Width = 0;
 			this.Height = 0;
