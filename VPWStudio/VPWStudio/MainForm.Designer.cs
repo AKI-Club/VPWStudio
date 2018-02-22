@@ -382,6 +382,7 @@
 			// 
 			// closeAllToolStripMenuItem
 			// 
+			this.closeAllToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Exit;
 			this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
 			resources.ApplyResources(this.closeAllToolStripMenuItem, "closeAllToolStripMenuItem");
 			this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.closeAllToolStripMenuItem_Click);

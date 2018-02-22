@@ -25,6 +25,10 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableDialog FileTableEditor = null;
 
+		/// <summary>
+		/// AkiText dialog
+		/// </summary>
+		public AkiTextDialog AkiTextEditor = null;
 		#endregion
 
 		#region Tool Forms
@@ -137,7 +141,6 @@ namespace VPWStudio
 			}
 		}
 		#endregion
-
 
 
 		#region File Menu Items
@@ -359,12 +362,12 @@ namespace VPWStudio
 				return;
 			}
 
-			if (this.ProjPropDialog == null)
+			if (ProjPropDialog == null)
 			{
-				this.ProjPropDialog = new ProjectPropertiesDialog();
+				ProjPropDialog = new ProjectPropertiesDialog();
 			}
 
-			if (this.ProjPropDialog.ShowDialog() == DialogResult.OK)
+			if (ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
 				// check to see if project game type was changed
 				bool updateBG = false;
@@ -377,7 +380,7 @@ namespace VPWStudio
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
 
-				Program.CurrentProject.Settings.DeepCopy(this.ProjPropDialog.NewSettings);
+				Program.CurrentProject.Settings.DeepCopy(ProjPropDialog.NewSettings);
 				Program.UnsavedChanges = true;
 
 				if (updateBG)
@@ -469,26 +472,26 @@ namespace VPWStudio
 				return;
 			}
 
-			if (this.FileTableEditor == null)
+			if (FileTableEditor == null)
 			{
-				this.FileTableEditor = new FileTableDialog();
-				this.FileTableEditor.MdiParent = this;
-				this.FileTableEditor.Show();
+				FileTableEditor = new FileTableDialog();
+				FileTableEditor.MdiParent = this;
+				FileTableEditor.Show();
 				UpdateWindowMenus();
 			}
 			else
 			{
-				if (this.FileTableEditor.IsDisposed)
+				if (FileTableEditor.IsDisposed)
 				{
-					this.FileTableEditor = new FileTableDialog();
+					FileTableEditor = new FileTableDialog();
 				}
 				// if it was minimized, show it again.
-				if (this.FileTableEditor.WindowState == FormWindowState.Minimized)
+				if (FileTableEditor.WindowState == FormWindowState.Minimized)
 				{
-					this.FileTableEditor.WindowState = FormWindowState.Normal;
+					FileTableEditor.WindowState = FormWindowState.Normal;
 				}
-				this.FileTableEditor.MdiParent = this;
-				this.FileTableEditor.Show();
+				FileTableEditor.MdiParent = this;
+				FileTableEditor.Show();
 				UpdateWindowMenus();
 			}
 		}
@@ -568,7 +571,27 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("text archive dialog not yet designed");
+			// todo: world tour and vpw64 may need special handling?
+			if (AkiTextEditor == null)
+			{
+				AkiTextEditor = new AkiTextDialog();
+				AkiTextEditor.MdiParent = this;
+				AkiTextEditor.Show();
+			}
+			else
+			{
+				if (AkiTextEditor.IsDisposed)
+				{
+					AkiTextEditor = new AkiTextDialog();
+				}
+				if (AkiTextEditor.WindowState == FormWindowState.Minimized)
+				{
+					AkiTextEditor.WindowState = FormWindowState.Normal;
+				}
+				AkiTextEditor.MdiParent = this;
+				AkiTextEditor.Show();
+				UpdateWindowMenus();
+			}
 		}
 
 		/// <summary>
@@ -881,6 +904,14 @@ namespace VPWStudio
 
 		#region Interface Update Routines
 		/// <summary>
+		/// Prevent the background image from getting removed
+		/// </summary>
+		private void MainForm_Resize(object sender, EventArgs e)
+		{
+			UpdateBackground();
+		}
+
+		/// <summary>
 		/// Update the title bar caption based on the current project status.
 		/// </summary>
 		public void UpdateTitleBar()
@@ -1101,9 +1132,5 @@ namespace VPWStudio
 		}
 		#endregion
 
-		private void MainForm_Resize(object sender, EventArgs e)
-		{
-			UpdateBackground();
-		}
 	}
 }
