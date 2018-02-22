@@ -1045,6 +1045,8 @@ namespace VPWStudio
 
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			MessageBox.Show("this thing SUUUUUUUUUCKS, don't use it.\n\nwait until I finish the better lzss");
+
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select file to LZSS";
 			if (ofd.ShowDialog() == DialogResult.OK)
