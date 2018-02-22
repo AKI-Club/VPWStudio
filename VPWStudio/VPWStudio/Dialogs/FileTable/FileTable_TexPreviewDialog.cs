@@ -13,10 +13,12 @@ namespace VPWStudio
 	public partial class FileTable_TexPreviewDialog : Form
 	{
 		private AkiTexture CurrentTEX;
+		private Bitmap CurrentBitmap;
 
 		public FileTable_TexPreviewDialog(int fileID)
 		{
 			InitializeComponent();
+			this.Text = String.Format("Preview [0x{0:X4}]",fileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -34,12 +36,36 @@ namespace VPWStudio
 			this.CurrentTEX = new AkiTexture(outReader);
 			pbPreview.Width = this.CurrentTEX.Width;
 			pbPreview.Height = this.CurrentTEX.Height;
-			pbPreview.Image = this.CurrentTEX.ToBitmap();
-			this.Width = this.CurrentTEX.Width + 8;
-			this.Height = this.CurrentTEX.Height + 32;
+			this.CurrentBitmap = this.CurrentTEX.ToBitmap();
+			pbPreview.Image = this.CurrentBitmap;
 
 			outReader.Close();
 			outWriter.Close();
+		}
+
+		/// <summary>
+		/// allow escape to exit.
+		/// </summary>
+		private void FileTable_TexPreviewDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
+
+		/// <summary>
+		/// Save as PNG.
+		/// </summary>
+		private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Save PNG";
+			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				this.CurrentBitmap.Save(sfd.FileName);
+			}
 		}
 	}
 }
