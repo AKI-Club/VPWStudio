@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -196,6 +197,12 @@
     <Compile Include="Tools\GameSharkTool.Designer.cs">
       <DependentUpon>GameSharkTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\HexViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\HexViewer.Designer.cs">
+      <DependentUpon>HexViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\NameEncodeDecodeTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\GameSharkTool.resx">
       <DependentUpon>GameSharkTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\HexViewer.resx">
+      <DependentUpon>HexViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\NameEncodeDecodeTool.resx">
       <DependentUpon>NameEncodeDecodeTool.cs</DependentUpon>
