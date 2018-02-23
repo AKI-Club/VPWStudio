@@ -133,8 +133,7 @@ namespace VPWStudio
 				// todo: seriously what the fuck do I need to do here?
 				// is it "exit without saving?" "save changes before exiting?"
 
-				// omg do you want to save the changes first
-				if (MessageBox.Show("There are unsaved project changes.\n\nDo you want to discard the changes and exit?", SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+				if (MessageBox.Show(SharedStrings.UnsavedProject_ExitProgram, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
 				{
 					e.Cancel = true;
 				}
@@ -142,6 +141,9 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Form Handling
+		// this section exists so other forms can perform nightmarish tricks
+		#endregion
 
 		#region File Menu Items
 		/// <summary>
@@ -152,6 +154,10 @@ namespace VPWStudio
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
 			{
 				// ask if it's ok to make a new project without saving changes to the current one.
+				if (MessageBox.Show(SharedStrings.UnsavedProject_NewProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+				{
+					return;
+				}
 			}
 
 			NewProjectDialog npd = new NewProjectDialog();
@@ -198,6 +204,10 @@ namespace VPWStudio
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
 			{
 				// there are unsaved changes. discard and open new project file?
+				if (MessageBox.Show(SharedStrings.UnsavedProject_OpenProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+				{
+					return;
+				}
 			}
 
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -326,7 +336,10 @@ namespace VPWStudio
 
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
 			{
-				// omg do you want to save the changes first
+				if (MessageBox.Show(SharedStrings.UnsavedProject_CloseProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+				{
+					return;
+				}
 			}
 
 			Program.CurrentProject = null;

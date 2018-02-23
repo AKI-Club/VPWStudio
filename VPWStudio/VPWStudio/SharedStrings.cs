@@ -21,10 +21,11 @@ namespace VPWStudio
 		#endregion
 
 		#region Unsaved Project Strings
-		public static string UnsavedProject_NewProject = "";
-		public static string UnsavedProject_OpenProject = "";
-		public static string UnsavedProject_CloseProject = "";
-		public static string UnsavedProject_ExitProgram = "";
+		private static string UnsavedProjectChanges_SharedIntro = "There are unsaved project changes.";
+		public static string UnsavedProject_NewProject   = String.Format("{0}\n{1}", UnsavedProjectChanges_SharedIntro, "Do you want to discard the changes and start a new project?");
+		public static string UnsavedProject_OpenProject  = String.Format("{0}\n{1}", UnsavedProjectChanges_SharedIntro, "Do you want to discard the changes and open another project?");
+		public static string UnsavedProject_CloseProject = String.Format("{0}\n{1}", UnsavedProjectChanges_SharedIntro, "Do you want to discard the changes and close the project?");
+		public static string UnsavedProject_ExitProgram  = String.Format("{0}\n{1}", UnsavedProjectChanges_SharedIntro, "Do you want to discard the changes and exit?");
 		#endregion
 
 		#region Error Message Content
