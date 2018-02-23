@@ -37,11 +37,13 @@
 			this.byteViewer.ColumnCount = 1;
 			this.byteViewer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.byteViewer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.byteViewer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.byteViewer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.byteViewer.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.byteViewer.Location = new System.Drawing.Point(0, 0);
 			this.byteViewer.Name = "byteViewer";
 			this.byteViewer.RowCount = 1;
+			this.byteViewer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.byteViewer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.byteViewer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.byteViewer.Size = new System.Drawing.Size(634, 348);
@@ -51,13 +53,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(632, 346);
+			this.ClientSize = new System.Drawing.Size(634, 348);
 			this.Controls.Add(this.byteViewer);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(640, 373);
 			this.Name = "HexViewer";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
 			this.Text = "Hex Viewer";
 			this.ResumeLayout(false);
 
