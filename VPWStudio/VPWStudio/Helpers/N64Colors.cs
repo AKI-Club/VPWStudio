@@ -13,7 +13,7 @@ namespace VPWStudio
 		public static Color ValueToColor5551(UInt16 cv)
 		{
 			return Color.FromArgb(
-				((cv & 0x0001) == 1) ? 0xFF : 0,
+				((cv & 0x0001) > 0) ? 0xFF : 0,
 				((cv & 0xF800) >> 11) * 8,
 				((cv & 0x07C0) >> 6) * 8,
 				((cv & 0x003E) >> 1) * 8
