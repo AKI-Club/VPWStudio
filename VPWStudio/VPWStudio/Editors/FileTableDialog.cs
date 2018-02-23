@@ -462,9 +462,9 @@ namespace VPWStudio
 					atd.ShowDialog();
 					break;
 
-				// no default handler; show edit info dialog instead
+				// no default handler; show the hex viewer.
 				default:
-					LoadEditInfoDialog();
+					((VPWStudio.MainForm)this.MdiParent).RequestHexViewer(key);
 					break;
 			}
 		}

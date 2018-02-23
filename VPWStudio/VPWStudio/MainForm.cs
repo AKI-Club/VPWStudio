@@ -46,6 +46,11 @@ namespace VPWStudio
 		/// GameShark Tool form
 		/// </summary>
 		public GameSharkTool GSTool = null;
+
+		/// <summary>
+		/// Hex Viewer form
+		/// </summary>
+		public HexViewer HexViewerForm = null;
 		#endregion
 
 		#region Program-related Forms
@@ -143,6 +148,39 @@ namespace VPWStudio
 
 		#region Form Handling
 		// this section exists so other forms can perform nightmarish tricks
+
+		/// <summary>
+		/// Request the use of the HexViewerForm.
+		/// </summary>
+		/// <param name="fileID">File ID to load.</param>
+		public void RequestHexViewer(int fileID)
+		{
+			if (HexViewerForm == null)
+			{
+				HexViewerForm = new HexViewer(fileID);
+				HexViewerForm.MdiParent = this;
+				HexViewerForm.Show();
+			}
+			else
+			{
+				if (HexViewerForm.IsDisposed)
+				{
+					HexViewerForm = new HexViewer(fileID);
+				}
+				else
+				{
+					HexViewerForm.RequestLoad(fileID);
+					HexViewerForm.Focus();
+				}
+				HexViewerForm.MdiParent = this;
+				HexViewerForm.Show();
+				if (HexViewerForm.WindowState == FormWindowState.Minimized)
+				{
+					HexViewerForm.WindowState = FormWindowState.Normal;
+				}
+			}
+		}
+
 		#endregion
 
 		#region File Menu Items
