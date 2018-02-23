@@ -33,9 +33,33 @@ namespace VPWStudio
 		// it also includes (possible) one-off formats.
 
 		#region WCW/nWo Revenge
-		DoubleTex,  // WCW/nWo Revenge credits faces (two TEX files in one file entry)
+		DoubleTex,  // WCW/nWo Revenge credits faces (two TEX files, one after another, no headers or anything.)
 		#endregion
 
 		#endregion
 	}
+
+	public class FileTypeInfo
+	{
+		/// <summary>
+		/// Mapping of FileTypes enum values to extracted file extensions.
+		/// </summary>
+		public static Dictionary<FileTypes, string> DefaultFileTypeExtensions = new Dictionary<FileTypes, string>()
+		{
+			{ FileTypes.Binary, "bin" },
+			{ FileTypes.AkiArchive, "bin" }, // formerly "packed"; needs new name
+			{ FileTypes.AkiModel, "model" },
+			{ FileTypes.AkiTexture, "tex" },
+			{ FileTypes.AkiTextureArc, "texarc" },
+			{ FileTypes.AkiText, "akitext" },
+			{ FileTypes.AkiLargeFont, "bin" }, // todo: these aren't handled
+			{ FileTypes.AkiSmallFont, "bin" }, // todo: these aren't handled
+			{ FileTypes.Ci4Palette, "ci4.pal" },
+			{ FileTypes.Ci8Palette, "ci8.pal" },
+			{ FileTypes.Ci4Texture, "ci4.img" },
+			{ FileTypes.Ci8Texture, "ci8.img" },
+			{ FileTypes.DoubleTex, "tex" }, // note: exports as two files
+		};
+	}
+
 }

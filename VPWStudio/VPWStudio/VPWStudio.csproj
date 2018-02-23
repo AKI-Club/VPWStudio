@@ -159,7 +159,7 @@
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
-    <Compile Include="ProgStructures\GenericEnums.cs" />
+    <Compile Include="ProgStructures\FileTypes.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
     <Compile Include="ProgStructures\Project\ProjectFile.cs" />
     <Compile Include="Dialogs\Project\NewProjectDialog.cs">
