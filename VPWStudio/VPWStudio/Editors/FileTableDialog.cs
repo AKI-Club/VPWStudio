@@ -79,7 +79,7 @@ namespace VPWStudio
 		};
 		#endregion
 
-		public FileTableDialog()
+		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
 
@@ -99,6 +99,14 @@ namespace VPWStudio
 					(Application.OpenForms["MainForm"] as MainForm).UpdateTitleBar();
 				}
 				UpdateEntryList();
+
+				// check to see if a specific file was requested, and scroll to it if so.
+				if (focusEntry != 0)
+				{
+					ListViewItem requestedFile = lvFileList.FindItemWithText(String.Format("{0:X4}", focusEntry), true, 0);
+					lvFileList.FocusedItem = requestedFile;
+					lvFileList.EnsureVisible(requestedFile.Index);
+				}
 			}
 		}
 
@@ -150,11 +158,15 @@ namespace VPWStudio
 			LoadFileTableDB();
 		}
 
+		/// <summary>
+		/// Get the path to the default FileTableDB for the loaded game type.
+		/// </summary>
+		/// <returns></returns>
 		private string GetFileTableDBPath()
 		{
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
-			// special case WWF WrestleMania 2000 NTSC-J
+			// special case: WWF WrestleMania 2000 NTSC-J
 			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
 			{
 				dbFilePath += "WM2K-J.txt";
@@ -335,7 +347,7 @@ namespace VPWStudio
 			else
 			{
 				// more than one file
-				MessageBox.Show("Haven't implemented it yet.");
+				MessageBox.Show("Haven't implemented multi-extract dialog yet.");
 			}
 		}
 
