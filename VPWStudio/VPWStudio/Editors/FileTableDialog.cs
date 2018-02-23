@@ -88,7 +88,7 @@ namespace VPWStudio
 				if (Program.CurrentProject.ProjectFileTable.Entries.Count == 0)
 				{
 					MessageBox.Show(
-						"Project FileTable not found. Attempting to create from ROM.",
+						SharedStrings.FileTableDialog_AttemptRomTableBuild,
 						SharedStrings.MainForm_Title,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Information
@@ -138,7 +138,7 @@ namespace VPWStudio
 			{
 				// fallback to hardedcoded offset and length.
 				MessageBox.Show(
-					"File Table location not found; using hardcoded offset and length instead.",
+					SharedStrings.FileTableDialog_UsingHardcodedValues,
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Information
@@ -192,7 +192,12 @@ namespace VPWStudio
 			if (!File.Exists(dbFilePath))
 			{
 				// well you've gone and beefed it now.
-				MessageBox.Show("I need to write a proper error dialog, but the filetable db for this game isn't there.");
+				MessageBox.Show(
+					"Unable to find the requested FileTable Database in the 'FileTableDB' directory.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 			}
 			else
 			{
@@ -249,12 +254,10 @@ namespace VPWStudio
 				});
 				lvi.UseItemStyleForSubItems = false;
 				Color rowColor = (i % 2 == 0) ? Color.White : Color.FromArgb(240, 240, 240);
-				lvi.SubItems[FILE_ID_COLUMN].BackColor = rowColor;
-				lvi.SubItems[LOCATION_COLUMN].BackColor = rowColor;
-				lvi.SubItems[ROM_ADDR_COLUMN].BackColor = rowColor;
-				lvi.SubItems[FILE_TYPE_COLUMN].BackColor = rowColor;
-				lvi.SubItems[LZSS_COLUMN].BackColor = rowColor;
-				lvi.SubItems[COMMENT_COLUMN].BackColor = rowColor;
+				foreach (ListViewItem.ListViewSubItem subitem in lvi.SubItems)
+				{
+					subitem.BackColor = rowColor;
+				}
 
 				Font regular = new Font(FontFamily.GenericSansSerif, 8.25f);
 				Font mono = new Font(FontFamily.GenericMonospace, 10.0f);
@@ -348,6 +351,17 @@ namespace VPWStudio
 			{
 				// more than one file
 				MessageBox.Show("Haven't implemented multi-extract dialog yet.");
+				List<int> ExtractIDs = new List<int>();
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[0].Text, NumberStyles.HexNumber);
+					ExtractIDs.Add(key);
+				}
+				FileTable_ExtractFilesDialog efd = new FileTable_ExtractFilesDialog(ExtractIDs);
+				if (efd.ShowDialog() == DialogResult.OK)
+				{
+
+				}
 			}
 		}
 

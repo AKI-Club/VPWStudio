@@ -37,6 +37,9 @@ namespace VPWStudio
 		#region File Table dialog
 		public static string FileTableDialog_ExtractFile = "&Extract File...";
 		public static string FileTableDialog_ExtractFiles = "&Extract Files...";
+
+		public static string FileTableDialog_AttemptRomTableBuild = "Project FileTable not found. Attempting to create from ROM.";
+		public static string FileTableDialog_UsingHardcodedValues = "File Table location not found; using hardcoded offset and length instead.";
 		#endregion
 	}
 }
