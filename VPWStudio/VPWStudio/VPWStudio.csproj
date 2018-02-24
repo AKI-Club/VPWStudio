@@ -100,6 +100,12 @@
     <Compile Include="Dialogs\FileTable\FileTable_ExtractFilesDialog.Designer.cs">
       <DependentUpon>FileTable_ExtractFilesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_GoToDialog.Designer.cs">
+      <DependentUpon>FileTable_GoToDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_TexPreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_ExtractFilesDialog.resx">
       <DependentUpon>FileTable_ExtractFilesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_GoToDialog.resx">
+      <DependentUpon>FileTable_GoToDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_TexPreviewDialog.resx">
       <DependentUpon>FileTable_TexPreviewDialog.cs</DependentUpon>
