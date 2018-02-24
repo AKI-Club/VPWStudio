@@ -24,3 +24,6 @@ valid lengths are anything greater than 0.
 
 comments go to the end of the line, \n terminated.
 this way, they should work on all platforms that matter?
+
+todo: some comment names are treated special.
+$indicator - location of data for the program to handle

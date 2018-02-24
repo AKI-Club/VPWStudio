@@ -14,6 +14,104 @@ This is used to insert 'raw', possibly pre-compressed files."""
 # If compress = -1, this will select the smaller of the two filesizes.
 # 1 and 0 force compressed or uncompressed, respectively.
 
+    from array import array
+
+    if isinstance(rom, bytes):
+        rom = bytearray(rom)
+
+	# (freem) get the filetable location from the code.
+    h = int.from_bytes(rom[0x48DA:0x48DC], byteorder='big') << 16
+    l = int.from_bytes(rom[0x48DE:0x48E0], byteorder='big', signed=True)
+    filetable = h + l
+
+	# (freem) get filetable
+    tbl = array("L", rom[filetable:filetable+0xCC8C])
+    tbl.byteswap()
+
+    s = tbl[index] & (~1)
+    e = tbl[index+1] & (~1)
+
+    # True if compressed, so compress file before insertion.
+    if (tbl[index] & 1) and not force_raw:
+        org = len(data).to_bytes(4, 'big')
+        data = b''.join((org, LZSS.encode(data, fill=0)))
+
+    # Force output data HW aligned.
+    if len(data)&1:
+        data = b''.join((data, b'\x00'))
+
+    difference = len(data) - (e - s)
+
+    for i in range(index+1, len(tbl)):
+        tbl[i] += difference
+
+    tbl.byteswap()
+    rom[filetable:filetable+0xCC8C] = tbl.tobytes()
+
+    # Slide in the file after updating the offsets.
+    rom[0x152DF0+s:0x152DF0+e] = data
+
+    def addr2hws(a1, a2):
+        h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
+        v = h + int.from_bytes(rom[a2:a2+2], byteorder='big', signed=True)
+        v += difference
+        h = (v>>16)
+        if v & 0x8000:
+            h += 1
+        l = v & 0xFFFF
+        rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
+        rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
+
+    addr2hws(0x48DA, 0x48DE)
+    # The audio file offsets.
+##    difference += 15
+##    a = difference & 15
+##    difference &= (~15)
+    addr2hws(0x432A, 0x432E)
+    addr2hws(0x4336, 0x433A)
+    addr2hws(0x4366, 0x436A)
+    addr2hws(0x436E, 0x4372)
+    addr2hws(0x439A, 0x439E)
+    addr2hws(0x43A2, 0x43A6)
+    addr2hws(0x43CE, 0x43D2)
+    addr2hws(0x43D6, 0x43DA)
+    addr2hws(0x4402, 0x4406)
+    addr2hws(0x440A, 0x440E)
+    addr2hws(0x447A, 0x447E)
+    addr2hws(0x44DE, 0x44E6)
+    addr2hws(0x4512, 0x451A)
+    addr2hws(0x17312,0x17316)
+    addr2hws(0x1731A,0x1731E)
+    addr2hws(0x1732E,0x17332)
+    addr2hws(0x17336,0x1733A)
+    addr2hws(0x173AE,0x173B2)
+    addr2hws(0x173B6,0x173BA)
+    addr2hws(0x173CA,0x173CE)
+    addr2hws(0x173D2,0x173D6)
+    addr2hws(0x17466,0x1746E)
+    addr2hws(0x174AE,0x174B6)
+    addr2hws(0x17772,0x17776)
+    addr2hws(0x1777A,0x1777E)
+    addr2hws(0x177A6,0x177AA)
+    addr2hws(0x177AE,0x177B2)
+    addr2hws(0x177EE,0x177F6)
+    addr2hws(0x179FA,0x179FE)
+    addr2hws(0x17A02,0x17A06)
+    addr2hws(0x17A22,0x17A26)
+    addr2hws(0x17A2A,0x17A2E)
+    addr2hws(0x17A46,0x17A4A)
+    addr2hws(0x17A4E,0x17A52)
+    addr2hws(0x17A6A,0x17A6E)
+    addr2hws(0x17A72,0x17A76)
+    addr2hws(0x17B7A,0x17B82)
+    addr2hws(0x17B46,0x17B4E)
+
+##    h = int.from_bytes(rom[0x4336:0x4338], byteorder='big') << 16
+##    l = int.from_bytes(rom[0x433A:0x433C], byteorder='big', signed=True)
+##    filetable = h + l
+##    rom.insert(filetable-a, bytes(a))
+
+    return rom
 
 --------------------------------------------------------------------------------
 class LZSS:
