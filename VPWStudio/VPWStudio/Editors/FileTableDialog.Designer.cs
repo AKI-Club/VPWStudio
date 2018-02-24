@@ -44,6 +44,11 @@
 			this.menuStripFileTable = new System.Windows.Forms.MenuStrip();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.navigationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.goToTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.goToBottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -145,6 +150,7 @@
 			// 
 			this.menuStripFileTable.AllowMerge = false;
 			this.menuStripFileTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.navigationToolStripMenuItem,
             this.exportToolStripMenuItem});
 			this.menuStripFileTable.Location = new System.Drawing.Point(0, 0);
 			this.menuStripFileTable.Name = "menuStripFileTable";
@@ -166,6 +172,44 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
+			// 
+			// navigationToolStripMenuItem
+			// 
+			this.navigationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.goToToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.goToTopToolStripMenuItem,
+            this.goToBottomToolStripMenuItem});
+			this.navigationToolStripMenuItem.Name = "navigationToolStripMenuItem";
+			this.navigationToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+			this.navigationToolStripMenuItem.Text = "&Navigation";
+			// 
+			// goToToolStripMenuItem
+			// 
+			this.goToToolStripMenuItem.Name = "goToToolStripMenuItem";
+			this.goToToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+			this.goToToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.goToToolStripMenuItem.Text = "&Go to...";
+			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
+			// 
+			// goToTopToolStripMenuItem
+			// 
+			this.goToTopToolStripMenuItem.Name = "goToTopToolStripMenuItem";
+			this.goToTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.goToTopToolStripMenuItem.Text = "Go to Top";
+			this.goToTopToolStripMenuItem.Click += new System.EventHandler(this.goToTopToolStripMenuItem_Click);
+			// 
+			// goToBottomToolStripMenuItem
+			// 
+			this.goToBottomToolStripMenuItem.Name = "goToBottomToolStripMenuItem";
+			this.goToBottomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.goToBottomToolStripMenuItem.Text = "Go to Bottom";
+			this.goToBottomToolStripMenuItem.Click += new System.EventHandler(this.goToBottomToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
 			// 
 			// FileTableDialog
 			// 
@@ -202,5 +246,10 @@
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportMidwaydecFileListToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem extractRawToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem navigationToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem goToToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem goToTopToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem goToBottomToolStripMenuItem;
 	}
 }

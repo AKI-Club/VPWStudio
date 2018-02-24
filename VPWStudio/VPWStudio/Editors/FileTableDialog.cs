@@ -166,7 +166,8 @@ namespace VPWStudio
 		{
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
-			// special case: WWF WrestleMania 2000 NTSC-J
+			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable
+			// than the NTSC-U and PAL versions... Haven't figured out the actual changes yet.
 			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
 			{
 				dbFilePath += "WM2K-J.txt";
@@ -486,5 +487,38 @@ namespace VPWStudio
 				sw.Close();
 			}
 		}
+
+		#region Navigation Menu Items
+		/// <summary>
+		/// Go to a specific file ID.
+		/// </summary>
+		private void goToToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FileTable_GoToDialog gtd = new FileTable_GoToDialog();
+			if (gtd.ShowDialog() == DialogResult.OK)
+			{
+				lvFileList.FocusedItem = lvFileList.Items[gtd.DestinationFileID-1];
+				lvFileList.EnsureVisible(gtd.DestinationFileID-1);
+			}
+		}
+
+		/// <summary>
+		/// Go to the top of the FileTable.
+		/// </summary>
+		private void goToTopToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			lvFileList.FocusedItem = lvFileList.Items[0];
+			lvFileList.EnsureVisible(0);
+		}
+
+		/// <summary>
+		/// Go to the bottom of the FileTable.
+		/// </summary>
+		private void goToBottomToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			lvFileList.FocusedItem = lvFileList.Items[lvFileList.Items.Count-1];
+			lvFileList.EnsureVisible(lvFileList.Items.Count-1);
+		}
+		#endregion
 	}
 }
