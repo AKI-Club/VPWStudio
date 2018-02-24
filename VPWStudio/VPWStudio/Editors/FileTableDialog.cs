@@ -136,7 +136,7 @@ namespace VPWStudio
 			}
 			if (!hasLocation || !hasLength)
 			{
-				// fallback to hardedcoded offset and length.
+				// fallback to hardcoded offset and length.
 				MessageBox.Show(
 					SharedStrings.FileTableDialog_UsingHardcodedValues,
 					SharedStrings.MainForm_Title,
@@ -212,9 +212,9 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Update the entries in the list with information from the FileTableDB.
+		/// Reload the FileTableDB.
 		/// </summary>
-		private void UpdateFileTableDB()
+		private void ReloadFileTableDB()
 		{
 			// this one is tricky because we don't want to kill any comments that were entered in the program.
 		}
