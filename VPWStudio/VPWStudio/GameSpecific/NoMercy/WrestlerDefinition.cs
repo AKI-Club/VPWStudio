@@ -11,7 +11,7 @@ namespace VPWStudio.GameSpecific.NoMercy
 	/// WWF No Mercy Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : IWrestlerDefinition
+	public class WrestlerDefinition : IXmlSerializable
 	{
 		#region Class Members
 		/// <summary>
@@ -157,6 +157,7 @@ namespace VPWStudio.GameSpecific.NoMercy
 			br.ReadBytes(2);
 		}
 
+		#region XML Read/Write
 		public XmlSchema GetSchema()
 		{
 			return null;
@@ -169,5 +170,6 @@ namespace VPWStudio.GameSpecific.NoMercy
 		public void WriteXml(XmlWriter xr)
 		{
 		}
+		#endregion
 	}
 }

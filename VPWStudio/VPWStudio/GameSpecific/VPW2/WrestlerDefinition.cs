@@ -12,7 +12,7 @@ namespace VPWStudio.GameSpecific.VPW2
 	/// Virtual Pro-Wrestling 2 Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : IWrestlerDefinition
+	public class WrestlerDefinition : IXmlSerializable
 	{
 		#region Class Members
 		/// <summary>
@@ -163,11 +163,16 @@ namespace VPWStudio.GameSpecific.VPW2
 			br.ReadBytes(2);
 		}
 
+		#region XML Read/Write
 		public XmlSchema GetSchema()
 		{
 			return null;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xr"></param>
 		public void ReadXml(XmlReader xr)
 		{
 			System.Windows.Forms.MessageBox.Show(xr.Name);
@@ -191,6 +196,10 @@ namespace VPWStudio.GameSpecific.VPW2
 			string profileIndex = xr.ReadElementContentAsString();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xr"></param>
 		public void WriteXml(XmlWriter xr)
 		{
 			xr.WriteStartElement("WrestlerDefinition");
@@ -210,5 +219,6 @@ namespace VPWStudio.GameSpecific.VPW2
 
 			xr.WriteEndElement();
 		}
+		#endregion
 	}
 }
