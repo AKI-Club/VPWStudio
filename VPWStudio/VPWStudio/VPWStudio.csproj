@@ -148,7 +148,6 @@
     <Compile Include="Editors\VPW2\WrestlerMain_VPW2.Designer.cs">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameSpecific\IWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
