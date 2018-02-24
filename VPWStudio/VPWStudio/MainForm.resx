@@ -331,28 +331,28 @@
     <value>&amp;Tools</value>
   </data>
   <data name="cascadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="cascadeToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Cascade</value>
   </data>
   <data name="tileHorizontallyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="tileHorizontallyToolStripMenuItem.Text" xml:space="preserve">
     <value>Tile &amp;Horizontally</value>
   </data>
   <data name="tileVerticallyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="tileVerticallyToolStripMenuItem.Text" xml:space="preserve">
     <value>Tile &amp;Vertically</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>146, 6</value>
   </data>
   <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>149, 22</value>
   </data>
   <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Close &amp;All</value>
@@ -410,6 +410,12 @@
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Text" xml:space="preserve">
     <value>name encoder/decoder</value>
+  </data>
+  <data name="toki1Testvpw2OnlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="toki1Testvpw2OnlyToolStripMenuItem.Text" xml:space="preserve">
+    <value>toki 1 test (vpw2 only)</value>
   </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -1631,6 +1637,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toki1Testvpw2OnlyToolStripMenuItem.Name" xml:space="preserve">
+    <value>toki1Testvpw2OnlyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;toki1Testvpw2OnlyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

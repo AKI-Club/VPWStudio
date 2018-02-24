@@ -231,6 +231,8 @@ namespace VPWStudio
 					Program.CurLocationFile.LoadFile(locPath);
 					Program.CurLocationFilePath = locPath;
 				}
+
+				// todo: generate initial filelist
 			}
 		}
 
@@ -1183,5 +1185,10 @@ namespace VPWStudio
 		}
 		#endregion
 
+		private void toki1Testvpw2OnlyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Toki1TestDialog t1td = new Toki1TestDialog();
+			t1td.ShowDialog();
+		}
 	}
 }
