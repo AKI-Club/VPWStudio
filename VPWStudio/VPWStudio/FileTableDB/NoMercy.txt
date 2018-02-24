@@ -1,1 +1,27 @@
 # FileTable database for WWF No Mercy
+0002=AkiText;Default Character Names
+0003=AkiModel;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Palette;
+000C=Ci4Palette;
+000D=Ci4Palette;
+000E=Ci4Palette;
+000F=Ci4Palette;
+0010=Ci4Palette;
+0011=Ci4Palette;
+0012=Ci4Palette;
+0013=Ci4Palette;
+0014=Ci4Palette;
+0015=Ci4Palette;
+0016=Ci4Palette;
+0017=Ci4Palette;
+0018=Ci4Palette;
+0019=Ci4Palette;
+0027=Ci8Palette;
+0028=Ci8Texture;
