@@ -26,6 +26,17 @@ namespace VPWStudio
 
 		private void LoadFile(int fileID)
 		{
+			if (!Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(fileID))
+			{
+				MessageBox.Show(
+					String.Format("Error attempting to load file ID {0:X4}", fileID),
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+				return;
+			}
+
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
