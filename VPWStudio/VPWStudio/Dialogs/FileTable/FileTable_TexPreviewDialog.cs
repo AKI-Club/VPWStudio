@@ -106,6 +106,7 @@ namespace VPWStudio
 			if (cd.ShowDialog() == DialogResult.OK)
 			{
 				pbPreview.BackColor = cd.Color;
+				DrawImage();
 			}
 		}
 
@@ -138,7 +139,11 @@ namespace VPWStudio
 					this.CurrentZoom = MinZoom;
 				}
 			}
+			DrawImage();
+		}
 
+		private void DrawImage()
+		{
 			Bitmap zoomed = new Bitmap(this.DefaultImageSize.Width * this.CurrentZoom, this.DefaultImageSize.Height * this.CurrentZoom);
 
 			Graphics g = Graphics.FromImage(zoomed);
