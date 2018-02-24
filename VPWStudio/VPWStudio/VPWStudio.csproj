@@ -313,6 +313,9 @@
     <Content Include="FileTableDB\VPW64.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FileTableDB\WM2K-J.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="FileTableDB\WM2K.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
