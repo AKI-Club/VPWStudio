@@ -119,12 +119,22 @@ namespace VPWStudio.Editors.VPW2
 
 		private void buttonMoveset_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("not implemented yet");
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
 		}
 
 		private void buttonParams_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("not implemented yet");
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 	}
 }
