@@ -176,6 +176,7 @@
 			this.Controls.Add(this.lvFileList);
 			this.MainMenuStrip = this.menuStripFileTable;
 			this.Name = "FileTableDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "File Table";
 			this.cmsFileEntry.ResumeLayout(false);
 			this.menuStripFileTable.ResumeLayout(false);
