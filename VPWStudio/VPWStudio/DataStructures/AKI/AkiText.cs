@@ -102,6 +102,12 @@ namespace VPWStudio
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void Decode(BinaryReader br)
 		{
+			// figure out file size, because some files don't end on an 0x00 byte; they just implicitly end...
+			br.BaseStream.Seek(0, SeekOrigin.End);
+			int fileSize = 0;
+			fileSize = (int)br.BaseStream.Position;
+			br.BaseStream.Seek(0, SeekOrigin.Begin);
+
 			// Figure out table size
 			byte[] tsb = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
@@ -137,12 +143,23 @@ namespace VPWStudio
 			int i = 0;
 			foreach (UInt16 l in Locations)
 			{
+				// handle "pointer at end of file" awkwardness
+				if (l >= fileSize)
+				{
+					continue;
+				}
+
 				br.BaseStream.Seek(l, SeekOrigin.Begin);
 
 				int strLen = 0;
 				while (br.ReadByte() != 0)
 				{
 					strLen++;
+					// if we're at the end of the file, that also counts as the end of the string.
+					if (br.BaseStream.Position == fileSize)
+					{
+						break;
+					}
 				}
 				br.BaseStream.Seek(l, SeekOrigin.Begin);
 				byte[] strBytes = br.ReadBytes(strLen);
