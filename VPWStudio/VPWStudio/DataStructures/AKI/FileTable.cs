@@ -251,9 +251,6 @@ namespace VPWStudio
 				case FileTypes.AkiTexture:
 					ftype = "TEX";
 					break;
-				case FileTypes.AkiTextureArc:
-					ftype = "TEXarc";
-					break;
 				default: // fallback for everything else
 					ftype = "bin";
 					break;
