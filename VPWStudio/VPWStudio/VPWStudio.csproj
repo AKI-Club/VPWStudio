@@ -417,6 +417,10 @@
     <None Include="Resources\menus.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\textarchives.png" />
+    <Content Include="Manual\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\manual.css" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />

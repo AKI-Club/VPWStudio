@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>VPW Studio (very temporary) Manual</title>
+</head>
+
+<body>
+<div id="header">
+<h1>VPW Studio (very temporary) Manual</h1>
+</div>
+
+<hr />
+
+<h2>Table of Contents</h2>
+<ol>
+<li>Introduction</li>
+</ol>
+
+<h3>Appendices</h3>
+<ol type='A'>
+<li><a href="#LocationFile">LocationFile Format</a></li>
+<li><a href="#FileTableDB">FileTableDB Format</a></li>
+</ol>
+
+<hr />
+<h2>Introduction</h2>
+<p>VPW Studio blah blah save the world by ROM hacking AKI Corp.'s Virtual Pro Wrestling
+games.</p>
+
+<hr />
+<h2><a name="LocationFile">Appendix A: LocationFile Format</a></h2>
+<p>The LocationFile format is a plain text database defining locations in ROM
+and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
+the LocationFile.</p>
+
+<p>Lines starting with the <code>#</code> character are comments, and will be
+ignored by the LocationFile loader.</p>
+
+<h3>Breakdown</h3>
+<p><code>LocationType:Location,Size;Comment</code></p>
+
+<h4>LocationType</h4>
+<p>This value is either <code>ROM</code> or <code>RAM</code>.
+ROM locations assume the Z64 file format (like the rest of the program).
+RAM locations are primarily for use with the GameShark code tool.</p>
+
+<h4>Location</h4>
+<p>The location for this entry, specified in hex. If this is a RAM entry,
+it must begin with <code>80</code>. Do not use <code>81</code> if you are
+converting a GameShark code to a LocationFile entry; the size is handled
+in the next section.</p>
+
+<h4>Size</h4>
+<p>The size of this entry, in decimal. This is how many bytes to read/write.</p>
+
+<h4>Comment</h4>
+<p>The comment section is typically used to provide a note about the location,
+but comments starting with special characters have different meanings.</p>
+
+<p>Special characters currently handled:</p>
+<ul>
+<li><code>$</code> &ndash; Data Location: Specific locations VPW Studio looks
+for to handle ROM reads/writes.</li>
+<li><code>%</code> &ndash; Code Change: Locations used for modifying code.</li>
+</ul>
+
+<p>Special location strings are mapped in the program, so you can't make things up
+and expect VPW Studio to understand them. The current list of handled special
+location strings:</p>
+
+<strong>Data Locations</strong>
+<ul>
+<li><code>$FILETABLE</code> &ndash; Location of the FileTable in ROM.</li>
+<li><code>$FIRSTFILE</code> &ndash; Location of the first file described by the FileTable in ROM. (Size field does not matter.)</li>
+<li><code>$WRESTLERDEFS</code> &ndash; Location of Wrestler Definitions.</li>
+</ul>
+
+<strong>Code Changes</strong>
+<ul>
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+
+<li><code></code> &ndash; </li>
+<li><code></code> &ndash; </li>
+</ul>
+
+<hr />
+<h2><a name="FileTableDB">Appendix B: FileTableDB Format</a></h2>
+<p>The FileTableDB format is a plain text database mapping File IDs to types
+and comments.</p>
+
+<p>Lines starting with the <code>#</code> character are comments, and will be
+ignored by the FileTableDB loader.</p>
+
+<h3>Breakdown</h3>
+<p><code>FileID=Type;Comment</code></p>
+
+<h4>FileID</h4>
+<p>The ID file for this entry. Entries are in hex and should have 4 digits.
+Entries start from 0001, as 0000 is used as a "no file" index.</p>
+
+<h4>Type</h4>
+<p>(This is the challenging part.)</p>
+
+<p>Currently supported values:</p>
+<ul>
+<li><code>Binary</code> &ndash; Default file type.</li>
+<li><code>AkiArchive</code> &ndash; An archive of files. Zoinkity's Midwaydec
+uses "<code>TEXarchive</code>" for this format, but not all archives exclusively
+contain TEX files.</li>
+<li><code>AkiModel</code> &ndash; Model data.</li>
+<li><code>AkiTexture</code> &ndash; AKI texture wrapper (a.k.a. "TEX")</li>
+<li><code>AkiText</code> &ndash; AKI text archive.</li>
+<li><code>AkiLargeFont</code> &ndash; (not yet implemented)</li>
+<li><code>AkiSmallFont</code> &ndash; (not yet implemented)</li>
+<li><code>Ci4Palette</code> &ndash; CI4 palette (16 colors * 2 bytes)</li>
+<li><code>Ci8Palette</code> &ndash; CI8 palette (256 colors * 2 bytes)</li>
+<li><code>Ci4Texture</code> &ndash; CI4 texture (4BPP)</li>
+<li><code>Ci8Texture</code> &ndash; CI8 texture (8BPP)</li>
+<li><code>DoubleTex</code> &ndash; WCW/nWo Revenge credits faces (two TEX files, one after another)</li>
+</ul>
+
+<h4>Comment</h4>
+<p>A comment displayed in the FileTable dialog. Unlike the LocationFile format,
+there are no special characters to deal with.</p>
+
+<hr />
+<div id="footer">(footer content todo)</div>
+
+</body>
+</html>
