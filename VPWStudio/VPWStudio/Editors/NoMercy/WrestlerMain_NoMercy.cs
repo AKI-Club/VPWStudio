@@ -41,9 +41,10 @@ namespace VPWStudio.Editors.NoMercy
 			bool hasLocation = false;
 			if (Program.CurLocationFile != null)
 			{
-				if (Program.CurLocationFile.WrestlerDefs != null)
+				LocationFileEntry wdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["WrestlerDefs"]);
+				if (wdEntry != null)
 				{
-					br.BaseStream.Seek(Program.CurLocationFile.WrestlerDefs.Address, SeekOrigin.Begin);
+					br.BaseStream.Seek(wdEntry.Address, SeekOrigin.Begin);
 					hasLocation = true;
 				}
 			}

@@ -125,11 +125,12 @@ namespace VPWStudio
 			bool hasLength = false;
 			if (Program.CurLocationFile != null)
 			{
-				if (Program.CurLocationFile.FileTable != null)
+				LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
+				if (ftEntry != null)
 				{
-					br.BaseStream.Seek(Program.CurLocationFile.FileTable.Address, SeekOrigin.Begin);
-					Program.CurrentProject.ProjectFileTable.Read(br, Program.CurLocationFile.FileTable.Width);
-					Program.CurrentProject.ProjectFileTable.Location = Program.CurLocationFile.FileTable.Address;
+					br.BaseStream.Seek(ftEntry.Address, SeekOrigin.Begin);
+					Program.CurrentProject.ProjectFileTable.Read(br, ftEntry.Width);
+					Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					hasLocation = true;
 					hasLength = true;
 				}
@@ -228,9 +229,10 @@ namespace VPWStudio
 			bool hasOffset = false;
 			if (Program.CurLocationFile != null)
 			{
-				if (Program.CurLocationFile.FirstFile != null)
+				LocationFileEntry ffEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FirstFile"]);
+				if (ffEntry != null)
 				{
-					offset = Program.CurLocationFile.FirstFile.Address;
+					offset = ffEntry.Address;
 					hasOffset = true;
 				}
 			}

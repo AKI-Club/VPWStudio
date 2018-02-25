@@ -27,10 +27,30 @@ namespace VPWStudio
 	}
 
 	/// <summary>
+	/// Location Handler Type
+	/// </summary>
+	public enum LocationHandlerType
+	{
+		/// <summary>
+		/// Default
+		/// </summary>
+		None,
+		/// <summary>
+		/// "$comment"
+		/// </summary>
+		DataLocation,
+		/// <summary>
+		/// "%comment"
+		/// </summary>
+		CodeChange,
+	}
+
+	/// <summary>
 	/// Location Entry
 	/// </summary>
 	public class LocationFileEntry
 	{
+		#region Class Members
 		/// <summary>
 		/// Location type
 		/// </summary>
@@ -52,6 +72,12 @@ namespace VPWStudio
 		public string Comment;
 
 		/// <summary>
+		/// 
+		/// </summary>
+		public LocationHandlerType Handler;
+		#endregion
+
+		/// <summary>
 		/// Default constructor
 		/// </summary>
 		public LocationFileEntry()
@@ -60,6 +86,7 @@ namespace VPWStudio
 			this.Address = 0;
 			this.Width = 1;
 			this.Comment = String.Empty;
+			this.Handler = LocationHandlerType.None;
 		}
 
 		/// <summary>
@@ -75,6 +102,8 @@ namespace VPWStudio
 			this.Address = _addr;
 			this.Width = _width;
 			this.Comment = _comment;
+			// handler gets set separately.
+			this.Handler = LocationHandlerType.None;
 		}
 	}
 
@@ -84,7 +113,32 @@ namespace VPWStudio
 	public class LocationFile
 	{
 		#region Special Constants
-		
+		public static Dictionary<string, string> SpecialEntryStrings = new Dictionary<string, string>()
+		{
+			#region DataLocation
+			{ "FileTable", "$FILETABLE" }, // ROM location of filetable
+			{ "FirstFile", "$FIRSTFILE" }, // ROM location of first file
+			{ "WrestlerDefs", "$WRESTLERDEFS" }, // ROM location of wrestler definitions
+			#endregion
+
+			#region CodeChange
+			// SetupFileTable
+			{ "SetupFileTable_FtSize1", "%SETUPFT_FTSIZE1" },
+			{ "SetupFileTable_FtLoc1", "%SETUPFT_FTLOCATION" },
+			{ "SetupFileTable_FtSize2", "%SETUPFT_FTSIZE2" },
+			{ "SetupFileTable_FtSize2Minus1", "%SETUPFT_FTSIZE2_MINUS1" },
+			{ "SetupFileTable_FtBegins", "%SETUPFT_FTBEGINS" },
+			{ "SetupFileTable_FtMaxFilesMinus1", "%SETUPFT_MAXFILES_MINUS1" },
+
+			// GetFileLoc
+			{ "GetFileLoc_MaxFiles", "%GETFILELOC_MAXFILES" },
+			{ "GetFileLoc_FtBegins", "%GETFILELOC_FTBEGINS" },
+
+			// LoadFile
+			{ "LoadFile_MaxFiles", "%LOADFILE_MAXFILES" },
+			{ "LoadFile_FtBegins", "%LOADFILE_FTBEGINS" },
+			#endregion
+		};
 		#endregion
 
 		#region Class Members
@@ -92,28 +146,6 @@ namespace VPWStudio
 		/// List of locations
 		/// </summary>
 		public List<LocationFileEntry> Locations;
-		#endregion
-
-		#region Special Class Members
-		/// <summary>
-		/// Location of the filetable in ROM.
-		/// </summary>
-		public LocationFileEntry FileTable = null;
-
-		/// <summary>
-		/// Location of the first valid wrestler definition in ROM.
-		/// </summary>
-		public LocationFileEntry WrestlerDefs = null;
-
-		/// <summary>
-		/// Location of the first "file" (entry 0x0001) in the ROM.
-		/// </summary>
-		public LocationFileEntry FirstFile = null;
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public List<LocationFileEntry> CodeChangeEntries = null;
 		#endregion
 
 		#region Parsing Tables
@@ -125,21 +157,6 @@ namespace VPWStudio
 			{ "ROM", LocationType.ROM },
 			{ "RAM", LocationType.RAM },
 		};
-
-		/// <summary>
-		/// Special Class Member tokens
-		/// </summary>
-		private static List<String> SpecialTypes = new List<string>()
-		{
-			#region Data Locations ("$VALUE")
-			"$FILETABLE",    // (this.FileTable) Location of file table
-			"$WRESTLERDEFS", // (this.WrestlerDefs) Location of wrestler definitions
-			"$FIRSTFILE",    // (this.FirstFile) Location of first file listed in filetable
-			#endregion
-
-			#region Code Locations ("%VALUE")
-			#endregion
-		};
 		#endregion
 
 		/// <summary>
@@ -148,9 +165,9 @@ namespace VPWStudio
 		public LocationFile()
 		{
 			this.Locations = new List<LocationFileEntry>();
-			this.CodeChangeEntries = new List<LocationFileEntry>();
 		}
 
+		#region Load/Save
 		/// <summary>
 		/// Load locations from file.
 		/// </summary>
@@ -186,29 +203,17 @@ namespace VPWStudio
 				}
 
 				// handle special entry possibilities
-				if (SpecialTypes.Contains(tokens[3]))
+				if (SpecialEntryStrings.ContainsValue(tokens[3]))
 				{
 					if (tokens[3].StartsWith("$"))
 					{
-						if (tokens[3].Contains("FILETABLE"))
-						{
-							this.FileTable = entry;
-						}
-
-						if (tokens[3].Contains("WRESTLERDEFS"))
-						{
-							this.WrestlerDefs = entry;
-						}
-
-						if (tokens[3].Contains("FIRSTFILE"))
-						{
-							this.FirstFile = entry;
-						}
+						// data location entry
+						entry.Handler = LocationHandlerType.DataLocation;
 					}
 					else if (tokens[3].StartsWith("%"))
 					{
-						// add entry to CodeChangeEntries
-						this.CodeChangeEntries.Add(entry);
+						// code change entry
+						entry.Handler = LocationHandlerType.CodeChange;
 					}
 				}
 
@@ -240,6 +245,61 @@ namespace VPWStudio
 
 			sw.Flush();
 			sw.Close();
+		}
+		#endregion
+
+		/// <summary>
+		/// This is a hacky routine. That is all.
+		/// </summary>
+		/// <param name="_comment">Comment to search for.</param>
+		/// <returns>LocationFileEntry with this comment, or null if not found.</returns>
+		public LocationFileEntry GetEntryFromComment(string _comment)
+		{
+			foreach (LocationFileEntry e in this.Locations)
+			{
+				if (e.Comment.Equals(_comment))
+				{
+					return e;
+				}
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Get a List of all entries using the specified LocationType.
+		/// </summary>
+		/// <param name="_type">LocationType to use.</param>
+		/// <returns>List of all LocationFileEntry with the specified LocationType.</returns>
+		public List<LocationFileEntry> GetEntriesOfLocationType(LocationType _type)
+		{
+			List<LocationFileEntry> result = new List<LocationFileEntry>();
+			foreach (LocationFileEntry e in this.Locations)
+			{
+				if (e.Type == _type)
+				{
+					result.Add(e);
+				}
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Get a List of all entries using the specified LocationHandlerType.
+		/// </summary>
+		/// <param name="_type">LocationHandlerType to use.</param>
+		/// <returns>List of all LocationFileEntry with the specified LocationHandlerType.</returns>
+		public List<LocationFileEntry> GetEntriesOfHandlerType(LocationHandlerType _type)
+		{
+			List<LocationFileEntry> result = new List<LocationFileEntry>();
+			foreach (LocationFileEntry e in this.Locations)
+			{
+				if (e.Handler == _type)
+				{
+					result.Add(e);
+				}
+			}
+			return result;
 		}
 	}
 }
