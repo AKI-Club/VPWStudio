@@ -395,9 +395,9 @@ namespace VPWStudio
 		/// <summary>
 		/// Extract a file from the filetable.
 		/// </summary>
-		/// <param name="id"></param>
-		/// <param name="deLZSS"></param>
-		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool deLZSS = false)
+		/// <param name="id">File ID to extract.</param>
+		/// <param name="forceRaw">Force raw export</param>
+		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool forceRaw = false)
 		{
 			uint loc = this.GetRomLocation(id);
 			uint size = this.GetEntrySize(id);
@@ -405,15 +405,26 @@ namespace VPWStudio
 			_in.BaseStream.Seek(loc, SeekOrigin.Begin);
 			byte[] data = _in.ReadBytes((int)size);
 
-			if (deLZSS)
+			if (forceRaw)
 			{
-				MemoryStream ms = new MemoryStream(data);
-				BinaryReader br = new BinaryReader(ms);
-				AsmikLzss.Decode(br, _out);
+				// always export raw
+				_out.Write(data);
 			}
 			else
 			{
-				_out.Write(data);
+				// act on this.Entries[id].IsEncoded
+				if (this.Entries[id].IsEncoded)
+				{
+					// de-LZSS
+					MemoryStream ms = new MemoryStream(data);
+					BinaryReader br = new BinaryReader(ms);
+					AsmikLzss.Decode(br, _out);
+				}
+				else
+				{
+					// export raw
+					_out.Write(data);
+				}
 			}
 		}
 		#endregion

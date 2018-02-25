@@ -35,16 +35,13 @@ namespace VPWStudio
 			MemoryStream palStream = new MemoryStream();
 			BinaryWriter palWriter = new BinaryWriter(palStream);
 
-			// usually it's not, but you never know...
-			bool lzss = Program.CurrentProject.ProjectFileTable.Entries[fileID].IsEncoded;
-
 			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci4Palette)
 			{
 				CurViewMode = CiViewerModes.Ci4;
 				CurCI8Palette = null;
 
 				CurCI4Palette = new Ci4Palette();
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID, lzss);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID);
 				palStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(palStream);
 				CurCI4Palette.ReadData(fr);
@@ -56,7 +53,7 @@ namespace VPWStudio
 				CurCI4Palette = null;
 
 				CurCI8Palette = new Ci8Palette();
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID, lzss);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID);
 				palStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(palStream);
 				CurCI8Palette.ReadData(fr);

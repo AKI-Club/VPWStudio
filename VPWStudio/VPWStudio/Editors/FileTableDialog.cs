@@ -340,8 +340,7 @@ namespace VPWStudio
 					BinaryWriter outWriter = new BinaryWriter(outFile);
 
 					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
-					bool lzss = Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded;
-					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key, lzss);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
 
 					outWriter.Flush();
 					outWriter.Close();
@@ -366,6 +365,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Raw export (do not de-LZSS file)
+		/// </summary>
 		private void extractRawToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (lvFileList.SelectedItems.Count <= 0)
@@ -388,7 +390,7 @@ namespace VPWStudio
 					BinaryWriter outWriter = new BinaryWriter(outFile);
 
 					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
-					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key, true);
 
 					outWriter.Flush();
 					outWriter.Close();

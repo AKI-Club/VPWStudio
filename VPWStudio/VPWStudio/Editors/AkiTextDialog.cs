@@ -42,8 +42,7 @@ namespace VPWStudio
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
-			bool lzss = Program.CurrentProject.ProjectFileTable.Entries[fileID].IsEncoded;
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, fileID, lzss);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, fileID);
 			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);

@@ -40,8 +40,6 @@ namespace VPWStudio
 			MemoryStream imgStream = new MemoryStream();
 			BinaryWriter imgWriter = new BinaryWriter(imgStream);
 
-			bool lzss = Program.CurrentProject.ProjectFileTable.Entries[fileID].IsEncoded;
-
 			// CurViewMode depends on item type.
 			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci4Texture)
 			{
@@ -53,7 +51,7 @@ namespace VPWStudio
 				CurCI4Palette = new Ci4Palette();
 				CurCI4Texture = new Ci4Texture();
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID, lzss);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID);
 				imgStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(imgStream);
 				CurCI4Texture.ReadData(fr);
@@ -71,7 +69,7 @@ namespace VPWStudio
 				CurCI8Palette = new Ci8Palette();
 				CurCI8Texture = new Ci8Texture();
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID, lzss);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID);
 				imgStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(imgStream);
 				CurCI8Texture.ReadData(fr);
@@ -96,7 +94,6 @@ namespace VPWStudio
 		private void cbPalettes_SelectedValueChanged(object sender, EventArgs e)
 		{
 			int curID = paletteIDs[cbPalettes.SelectedIndex];
-			bool lzss = Program.CurrentProject.ProjectFileTable.Entries[curID].IsEncoded;
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -104,7 +101,7 @@ namespace VPWStudio
 			MemoryStream palStream = new MemoryStream();
 			BinaryWriter palWriter = new BinaryWriter(palStream);
 
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, curID, lzss);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, curID);
 			palStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader fr = new BinaryReader(palStream);
 
