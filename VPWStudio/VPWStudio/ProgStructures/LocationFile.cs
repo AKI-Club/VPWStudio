@@ -109,6 +109,11 @@ namespace VPWStudio
 		/// Location of the first "file" (entry 0x0001) in the ROM.
 		/// </summary>
 		public LocationFileEntry FirstFile = null;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public List<LocationFileEntry> CodeChangeEntries = null;
 		#endregion
 
 		#region Parsing Tables
@@ -126,9 +131,14 @@ namespace VPWStudio
 		/// </summary>
 		private static List<String> SpecialTypes = new List<string>()
 		{
-			"$FILETABLE", // this.FileTable
-			"$WRESTLERDEFS", // this.WrestlerDefs
-			"$FIRSTFILE", // this.FirstFile
+			#region Data Locations ("$VALUE")
+			"$FILETABLE",    // (this.FileTable) Location of file table
+			"$WRESTLERDEFS", // (this.WrestlerDefs) Location of wrestler definitions
+			"$FIRSTFILE",    // (this.FirstFile) Location of first file listed in filetable
+			#endregion
+
+			#region Code Locations ("%VALUE")
+			#endregion
 		};
 		#endregion
 
@@ -138,6 +148,7 @@ namespace VPWStudio
 		public LocationFile()
 		{
 			this.Locations = new List<LocationFileEntry>();
+			this.CodeChangeEntries = new List<LocationFileEntry>();
 		}
 
 		/// <summary>
@@ -177,19 +188,27 @@ namespace VPWStudio
 				// handle special entry possibilities
 				if (SpecialTypes.Contains(tokens[3]))
 				{
-					if (tokens[3].Contains("FILETABLE"))
+					if (tokens[3].StartsWith("$"))
 					{
-						this.FileTable = entry;
-					}
+						if (tokens[3].Contains("FILETABLE"))
+						{
+							this.FileTable = entry;
+						}
 
-					if (tokens[3].Contains("WRESTLERDEFS"))
-					{
-						this.WrestlerDefs = entry;
-					}
+						if (tokens[3].Contains("WRESTLERDEFS"))
+						{
+							this.WrestlerDefs = entry;
+						}
 
-					if (tokens[3].Contains("FIRSTFILE"))
+						if (tokens[3].Contains("FIRSTFILE"))
+						{
+							this.FirstFile = entry;
+						}
+					}
+					else if (tokens[3].StartsWith("%"))
 					{
-						this.FirstFile = entry;
+						// add entry to CodeChangeEntries
+						this.CodeChangeEntries.Add(entry);
 					}
 				}
 
@@ -211,12 +230,12 @@ namespace VPWStudio
 
 			if (!_topComment.Equals(String.Empty))
 			{
-				sw.WriteLine(String.Format("# {0}",_topComment));
+				sw.WriteLine(String.Format("# {0}", _topComment));
 			}
 
 			foreach (LocationFileEntry e in this.Locations)
 			{
-				sw.WriteLine(String.Format("{0}:{1:X},{2};{3}",e.Type.ToString(),e.Address,e.Width,e.Comment));
+				sw.WriteLine(String.Format("{0}:{1:X},{2};{3}", e.Type.ToString(), e.Address, e.Width, e.Comment));
 			}
 
 			sw.Flush();
