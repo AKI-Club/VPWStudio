@@ -12,10 +12,9 @@ namespace VPWStudio
 		Binary = 0, // also used for any "Unknown" format
 
 		// AKI-developed formats
-		AkiArchive,    // Archive of files
+		AkiArchive,    // Archive of files ("TEXarc" counts as this)
 		AkiModel,      // Model data
 		AkiTexture,    // "TEX" file, AKI's wrapper around some N64 texture types
-		AkiTextureArc, // TEX archive; need more information
 		AkiText,       // Text bank
 		AkiLargeFont,  // (not yet implemented)
 		AkiSmallFont,  // (not yet implemented)
@@ -47,13 +46,12 @@ namespace VPWStudio
 		public static Dictionary<FileTypes, string> DefaultFileTypeExtensions = new Dictionary<FileTypes, string>()
 		{
 			{ FileTypes.Binary, "bin" },
-			{ FileTypes.AkiArchive, "bin" }, // formerly "packed"; needs new name
+			{ FileTypes.AkiArchive, "akiarc" }, // formerly "packed"
 			{ FileTypes.AkiModel, "model" },
 			{ FileTypes.AkiTexture, "tex" },
-			{ FileTypes.AkiTextureArc, "texarc" },
 			{ FileTypes.AkiText, "akitext" },
-			{ FileTypes.AkiLargeFont, "bin" }, // todo: these aren't handled
-			{ FileTypes.AkiSmallFont, "bin" }, // todo: these aren't handled
+			{ FileTypes.AkiLargeFont, "bin" }, // todo: these aren't handled yet
+			{ FileTypes.AkiSmallFont, "bin" }, // todo: these aren't handled yet
 			{ FileTypes.Ci4Palette, "ci4.pal" },
 			{ FileTypes.Ci8Palette, "ci8.pal" },
 			{ FileTypes.Ci4Texture, "ci4.img" },
