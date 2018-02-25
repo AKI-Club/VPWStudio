@@ -213,6 +213,9 @@ namespace VPWStudio
 			}
 
 			// set up code buffer and index
+			//code_buf[0] = 0
+			//code_buf_ptr = mask = 1;
+			// s = 0; r = N - F;
 
 			// fill buffer
 			for (int i = 0; i < (BUFFER_SIZE - MATCH_LIMIT); i++)

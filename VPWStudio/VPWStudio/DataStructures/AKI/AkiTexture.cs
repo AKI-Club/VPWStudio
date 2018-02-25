@@ -9,7 +9,6 @@ namespace VPWStudio
 	/// </summary>
 	public class AkiTexture
 	{
-
 		/// <summary>
 		/// Possible 
 		/// </summary>
