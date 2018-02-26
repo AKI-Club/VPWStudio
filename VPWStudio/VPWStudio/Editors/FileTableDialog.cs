@@ -149,6 +149,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				bool changesMade = false;
 				FileTableDB ftdb = new FileTableDB(dbFilePath);
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
@@ -156,13 +157,21 @@ namespace VPWStudio
 					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
 					{
 						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+						changesMade = true;
 					}
 
 					// only replace comment if it's empty
 					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty)
 					{
 						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+						changesMade = true;
 					}
+				}
+
+				if (changesMade)
+				{
+					Program.UnsavedChanges = true;
+					((MainForm)(this.MdiParent)).UpdateTitleBar();
 				}
 			}
 		}

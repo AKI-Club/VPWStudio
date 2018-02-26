@@ -118,13 +118,14 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(164, 76);
+			this.cmsFileEntry.Size = new System.Drawing.Size(200, 98);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// editInformationToolStripMenuItem
 			// 
 			this.editInformationToolStripMenuItem.Name = "editInformationToolStripMenuItem";
-			this.editInformationToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.editInformationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+			this.editInformationToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
 			this.editInformationToolStripMenuItem.Text = "Edit &Information...";
 			this.editInformationToolStripMenuItem.Click += new System.EventHandler(this.editInformationToolStripMenuItem_Click);
 			// 
