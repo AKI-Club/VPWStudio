@@ -55,10 +55,13 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
+			this.tlpProfile = new System.Windows.Forms.TableLayoutPanel();
 			this.tbProfileIndex = new System.Windows.Forms.TextBox();
+			this.buttonProfile = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
+			this.tlpProfile.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -101,7 +104,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.label9, 0, 9);
 			this.tableLayoutPanel1.Controls.Add(this.tbAppearanceIndex, 1, 9);
 			this.tableLayoutPanel1.Controls.Add(this.label10, 0, 10);
-			this.tableLayoutPanel1.Controls.Add(this.tbProfileIndex, 1, 10);
+			this.tableLayoutPanel1.Controls.Add(this.tlpProfile, 1, 10);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(146, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 11;
@@ -373,14 +376,40 @@
 			this.label10.TabIndex = 15;
 			this.label10.Text = "Profile Index";
 			// 
+			// tlpProfile
+			// 
+			this.tlpProfile.ColumnCount = 2;
+			this.tlpProfile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpProfile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpProfile.Controls.Add(this.buttonProfile, 0, 0);
+			this.tlpProfile.Controls.Add(this.tbProfileIndex, 0, 0);
+			this.tlpProfile.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpProfile.Location = new System.Drawing.Point(106, 333);
+			this.tlpProfile.Name = "tlpProfile";
+			this.tlpProfile.RowCount = 1;
+			this.tlpProfile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpProfile.Size = new System.Drawing.Size(237, 31);
+			this.tlpProfile.TabIndex = 28;
+			// 
 			// tbProfileIndex
 			// 
 			this.tbProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbProfileIndex.Location = new System.Drawing.Point(106, 338);
+			this.tbProfileIndex.Location = new System.Drawing.Point(3, 5);
 			this.tbProfileIndex.Name = "tbProfileIndex";
 			this.tbProfileIndex.ReadOnly = true;
-			this.tbProfileIndex.Size = new System.Drawing.Size(237, 20);
-			this.tbProfileIndex.TabIndex = 5;
+			this.tbProfileIndex.Size = new System.Drawing.Size(159, 20);
+			this.tbProfileIndex.TabIndex = 6;
+			// 
+			// buttonProfile
+			// 
+			this.buttonProfile.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonProfile.Location = new System.Drawing.Point(168, 3);
+			this.buttonProfile.Name = "buttonProfile";
+			this.buttonProfile.Size = new System.Drawing.Size(66, 25);
+			this.buttonProfile.TabIndex = 7;
+			this.buttonProfile.Text = "View/Edit";
+			this.buttonProfile.UseVisualStyleBackColor = true;
+			this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
 			// 
 			// WrestlerMain_NoMercy
 			// 
@@ -400,6 +429,8 @@
 			this.tlpParams.PerformLayout();
 			this.tlpMoveset.ResumeLayout(false);
 			this.tlpMoveset.PerformLayout();
+			this.tlpProfile.ResumeLayout(false);
+			this.tlpProfile.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -411,7 +442,6 @@
 		private System.Windows.Forms.TextBox tbWrestlerID4;
 		private System.Windows.Forms.TextBox tbWrestlerID2;
 		private System.Windows.Forms.TextBox tbAppearanceIndex;
-		private System.Windows.Forms.TextBox tbProfileIndex;
 		private System.Windows.Forms.Label labelWrestlerID4;
 		private System.Windows.Forms.Label labelWrestlerID2;
 		private System.Windows.Forms.Label labelThemeMusic;
@@ -434,5 +464,8 @@
 		private System.Windows.Forms.TextBox tbWeight;
 		private System.Windows.Forms.TextBox tbUnknown;
 		private System.Windows.Forms.TextBox tbHeight;
+		private System.Windows.Forms.TableLayoutPanel tlpProfile;
+		private System.Windows.Forms.Button buttonProfile;
+		private System.Windows.Forms.TextBox tbProfileIndex;
 	}
 }

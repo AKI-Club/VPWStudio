@@ -152,5 +152,16 @@ namespace VPWStudio.Editors.NoMercy
 
 			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
+
+		private void buttonProfile_Click(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// request AkiText viewer, index 2
+			((MainForm)(this.MdiParent)).RequestAkiTextDialog(2, this.WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+		}
 	}
 }
