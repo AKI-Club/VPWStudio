@@ -77,6 +77,10 @@ namespace VPWStudio
 		#endregion
 
 		#region WM2K
+		/// <summary>
+		/// VPW2 Wrestler Editor, main form
+		/// </summary>
+		public Editors.WM2K.WrestlerMain_WM2K WrestlerMain_WM2K = null;
 		#endregion
 
 		#region VPW2
@@ -648,6 +652,19 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Weapon editor
+		/// </summary>
+		private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			MessageBox.Show("weapon dialog not yet designed");
+		}
+
+		/// <summary>
 		/// Wrestler editor
 		/// </summary>
 		private void wrestlersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -659,6 +676,29 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WM2K:
+					if (this.WrestlerMain_WM2K == null)
+					{
+						this.WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
+						this.WrestlerMain_WM2K.MdiParent = this;
+						this.WrestlerMain_WM2K.Show();
+					}
+					else
+					{
+						if (this.WrestlerMain_WM2K.IsDisposed)
+						{
+							this.WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
+						}
+						// check for minimized
+						if (this.WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
+						{
+							this.WrestlerMain_WM2K.WindowState = FormWindowState.Normal;
+						}
+						this.WrestlerMain_WM2K.MdiParent = this;
+						this.WrestlerMain_WM2K.Show();
+					}
+					break;
+
 				case VPWGames.VPW2:
 					if (this.WrestlerMain_VPW2 == null)
 					{
@@ -1190,5 +1230,7 @@ namespace VPWStudio
 			Toki1TestDialog t1td = new Toki1TestDialog();
 			t1td.ShowDialog();
 		}
+
+		
 	}
 }
