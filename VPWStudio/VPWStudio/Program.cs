@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -72,5 +73,34 @@ namespace VPWStudio
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm(args));
 		}
+
+		#region Helpers
+		/// <summary>
+		/// Get the path to the default FileTableDB for the loaded game type.
+		/// </summary>
+		/// <returns></returns>
+		public static string GetFileTableDBPath()
+		{
+			if (Program.CurrentProject == null)
+			{
+				return String.Empty;
+			}
+
+			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
+
+			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable
+			// than the NTSC-U and PAL versions... Haven't figured out the actual changes yet.
+			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
+			{
+				dbFilePath += "WM2K-J.txt";
+			}
+			else
+			{
+				dbFilePath += String.Format("{0}.txt", Program.CurrentProject.Settings.BaseGame.ToString());
+			}
+
+			return dbFilePath;
+		}
+		#endregion
 	}
 }
