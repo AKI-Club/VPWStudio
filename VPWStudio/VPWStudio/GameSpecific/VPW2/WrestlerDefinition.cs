@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Schema;
