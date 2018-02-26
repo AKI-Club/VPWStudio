@@ -153,6 +153,34 @@ namespace VPWStudio
 		#region Form Handling
 		// this section exists so other forms can perform nightmarish tricks
 
+		public void RequestAkiTextDialog(int fileID, int stringNum = -1)
+		{
+			if (AkiTextEditor == null)
+			{
+				AkiTextEditor = new AkiTextDialog(fileID, stringNum);
+				AkiTextEditor.MdiParent = this;
+				AkiTextEditor.Show();
+			}
+			else
+			{
+				if (AkiTextEditor.IsDisposed)
+				{
+					AkiTextEditor = new AkiTextDialog(fileID, stringNum);
+				}
+				else
+				{
+					AkiTextEditor.RequestLoad(fileID, stringNum);
+					AkiTextEditor.Focus();
+				}
+				AkiTextEditor.MdiParent = this;
+				AkiTextEditor.Show();
+				if (AkiTextEditor.WindowState == FormWindowState.Minimized)
+				{
+					AkiTextEditor.WindowState = FormWindowState.Normal;
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Request the use of the HexViewerForm.
 		/// </summary>

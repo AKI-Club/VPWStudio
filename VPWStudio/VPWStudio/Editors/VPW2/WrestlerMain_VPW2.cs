@@ -137,5 +137,11 @@ namespace VPWStudio.Editors.VPW2
 
 			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
+
+		private void buttonProfile_Click(object sender, EventArgs e)
+		{
+			// request AkiText viewer, index 0x006C
+			((MainForm)(this.MdiParent)).RequestAkiTextDialog(0x006C, this.WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+		}
 	}
 }

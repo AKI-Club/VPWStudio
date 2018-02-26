@@ -16,7 +16,7 @@ namespace VPWStudio
 
 		private List<int> AkiTextIDs = new List<int>();
 
-		public AkiTextDialog(int fileID = 0)
+		public AkiTextDialog(int fileID = 0, int stringIndex = -1)
 		{
 			InitializeComponent();
 			PopulateAkiTextList();
@@ -25,6 +25,28 @@ namespace VPWStudio
 			{
 				LoadFromID(fileID);
 				cbAvailableAkiText.SelectedIndex = AkiTextIDs.IndexOf(fileID);
+
+				if (stringIndex != -1)
+				{
+					// select the string in question if it exists
+					if (stringIndex >= 0 && stringIndex < lbEntries.Items.Count)
+					{
+						lbEntries.SelectedIndex = stringIndex;
+					}
+				}
+			}
+		}
+
+		public void RequestLoad(int fileID, int stringNum = -1)
+		{
+			LoadFromID(fileID);
+			if (stringNum != -1)
+			{
+				// select the string in question if it exists
+				if (stringNum >= 0 && stringNum < lbEntries.Items.Count)
+				{
+					lbEntries.SelectedIndex = stringNum;
+				}
 			}
 		}
 
@@ -32,7 +54,7 @@ namespace VPWStudio
 		/// Load AkiText from file ID.
 		/// </summary>
 		/// <param name="fileID"></param>
-		private void LoadFromID(int fileID)
+		private void LoadFromID(int fileID, int stringNum = -1)
 		{
 			CurAkiText = new AkiText();
 
@@ -111,6 +133,7 @@ namespace VPWStudio
 				return;
 			}
 
+			tbTextValue.Text = String.Empty;
 			LoadFromID(AkiTextIDs[cbAvailableAkiText.SelectedIndex]);
 		}
 	}

@@ -462,9 +462,7 @@ namespace VPWStudio
 
 				// AkiText archive
 				case FileTypes.AkiText:
-					// temporary
-					AkiTextDialog atd = new AkiTextDialog(key);
-					atd.ShowDialog();
+					((VPWStudio.MainForm)this.MdiParent).RequestAkiTextDialog(key);
 					break;
 
 				// no default handler; show the hex viewer.
