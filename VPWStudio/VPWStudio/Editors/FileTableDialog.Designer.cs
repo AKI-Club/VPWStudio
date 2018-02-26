@@ -42,13 +42,15 @@
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStripFileTable = new System.Windows.Forms.MenuStrip();
-			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.navigationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.goToTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.goToBottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -151,27 +153,13 @@
 			this.menuStripFileTable.AllowMerge = false;
 			this.menuStripFileTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.navigationToolStripMenuItem,
+            this.databaseToolStripMenuItem,
             this.exportToolStripMenuItem});
 			this.menuStripFileTable.Location = new System.Drawing.Point(0, 0);
 			this.menuStripFileTable.Name = "menuStripFileTable";
 			this.menuStripFileTable.Size = new System.Drawing.Size(592, 24);
 			this.menuStripFileTable.TabIndex = 2;
 			this.menuStripFileTable.Text = "menuStrip1";
-			// 
-			// exportToolStripMenuItem
-			// 
-			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportMidwaydecFileListToolStripMenuItem});
-			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-			this.exportToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-			this.exportToolStripMenuItem.Text = "&Export";
-			// 
-			// exportMidwaydecFileListToolStripMenuItem
-			// 
-			this.exportMidwaydecFileListToolStripMenuItem.Name = "exportMidwaydecFileListToolStripMenuItem";
-			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
-			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
 			// 
 			// navigationToolStripMenuItem
 			// 
@@ -192,6 +180,11 @@
 			this.goToToolStripMenuItem.Text = "&Go to...";
 			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+			// 
 			// goToTopToolStripMenuItem
 			// 
 			this.goToTopToolStripMenuItem.Name = "goToTopToolStripMenuItem";
@@ -206,10 +199,35 @@
 			this.goToBottomToolStripMenuItem.Text = "Go to Bottom";
 			this.goToBottomToolStripMenuItem.Click += new System.EventHandler(this.goToBottomToolStripMenuItem_Click);
 			// 
-			// toolStripSeparator2
+			// exportToolStripMenuItem
 			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportMidwaydecFileListToolStripMenuItem});
+			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+			this.exportToolStripMenuItem.Text = "&Export";
+			// 
+			// exportMidwaydecFileListToolStripMenuItem
+			// 
+			this.exportMidwaydecFileListToolStripMenuItem.Name = "exportMidwaydecFileListToolStripMenuItem";
+			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
+			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
+			// 
+			// databaseToolStripMenuItem
+			// 
+			this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reloadFileTableDatabaseToolStripMenuItem});
+			this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+			this.databaseToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+			this.databaseToolStripMenuItem.Text = "&Database";
+			// 
+			// reloadFileTableDatabaseToolStripMenuItem
+			// 
+			this.reloadFileTableDatabaseToolStripMenuItem.Name = "reloadFileTableDatabaseToolStripMenuItem";
+			this.reloadFileTableDatabaseToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+			this.reloadFileTableDatabaseToolStripMenuItem.Text = "&Reload File Table Database";
+			this.reloadFileTableDatabaseToolStripMenuItem.Click += new System.EventHandler(this.reloadFileTableDatabaseToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -251,5 +269,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem goToTopToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem goToBottomToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem reloadFileTableDatabaseToolStripMenuItem;
 	}
 }

@@ -23,62 +23,6 @@ namespace VPWStudio
 		private const int COMMENT_COLUMN = 5;
 		#endregion
 
-		#region Default File Table Data
-		// todo: this possibly belongs in another file,
-		// maybe ProgStructures/DefaultGameData.cs
-		private class DefaultFileTableData
-		{
-			public Int32 FileTableOffset; // filetable offset
-			public Int32 FileTableLength; // filetable length
-			public UInt32 FirstFileOffset; // first file offset
-
-			/// <summary>
-			/// Default constructor
-			/// </summary>
-			public DefaultFileTableData()
-			{
-				this.FileTableOffset = 0;
-				this.FileTableLength = 0;
-				this.FirstFileOffset = 0;
-			}
-
-			/// <summary>
-			/// Specific constructor
-			/// </summary>
-			/// <param name="_fto"></param>
-			/// <param name="_ftl"></param>
-			/// <param name="_firstFile"></param>
-			public DefaultFileTableData(Int32 _fto, Int32 _ftl, UInt32 _firstFile)
-			{
-				this.FileTableOffset = _fto;
-				this.FileTableLength = _ftl;
-				this.FirstFileOffset = _firstFile;
-			}
-		}
-
-		/// <summary>
-		/// Default FileTable data for each game.
-		/// </summary>
-		/// this probably also belongs in ProgStructures/DefaultGameData.cs
-		private Dictionary<SpecificGame, DefaultFileTableData> DefaultFileTables = new Dictionary<SpecificGame, DefaultFileTableData>()
-		{
-			{ SpecificGame.WorldTour_NTSC_U_10, new DefaultFileTableData(0x7C1A78, 21996, 0x39490) },
-			{ SpecificGame.WorldTour_NTSC_U_11, new DefaultFileTableData(0x7C1C70, 21996, 0x39500) },
-			{ SpecificGame.WorldTour_PAL, new DefaultFileTableData(0x7C1C00, 21996, 0x39490) },
-			{ SpecificGame.VPW64_NTSC_J, new DefaultFileTableData(0xC7B578, 37432, 0x4AD00) },
-			{ SpecificGame.Revenge_NTSC_U, new DefaultFileTableData(0xCE2752, 30632, 0xDAC50) },
-			{ SpecificGame.Revenge_PAL, new DefaultFileTableData(0xCDFCE2, 30632, 0xD81E0) },
-			{ SpecificGame.WM2K_NTSC_U, new DefaultFileTableData(0x11778BE, 41248, 0x144AA0) },
-			{ SpecificGame.WM2K_NTSC_J, new DefaultFileTableData(0x116F3C2, 41480, 0x12C070) },
-			{ SpecificGame.WM2K_PAL, new DefaultFileTableData(0x11778BE, 41248, 0x144AC0) },
-			{ SpecificGame.VPW2_NTSC_J, new DefaultFileTableData(0x1310F40, 52364, 0x152DF0) },
-			{ SpecificGame.NoMercy_NTSC_U_10, new DefaultFileTableData(0x16C3238, 77848, 0x1BD1B0) },
-			{ SpecificGame.NoMercy_NTSC_U_11, new DefaultFileTableData(0x16C31D8, 77848, 0x1BD150) },
-			{ SpecificGame.NoMercy_PAL_10, new DefaultFileTableData(0x16C32A8, 77848, 0x1BD220) },
-			{ SpecificGame.NoMercy_PAL_11, new DefaultFileTableData(0x16C3148, 77848, 0x1BD0C0) },
-		};
-		#endregion
-
 		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
@@ -87,6 +31,7 @@ namespace VPWStudio
 			{
 				if (Program.CurrentProject.ProjectFileTable.Entries.Count == 0)
 				{
+					// project filetable was not created.
 					MessageBox.Show(
 						SharedStrings.FileTableDialog_AttemptRomTableBuild,
 						SharedStrings.MainForm_Title,
@@ -96,6 +41,8 @@ namespace VPWStudio
 					MakeFileTableFromRom();
 
 					Program.UnsavedChanges = true;
+
+					// this is hacky as fuck but it's the only way I know how to do it without crashing.
 					(Application.OpenForms["MainForm"] as MainForm).UpdateTitleBar();
 				}
 				UpdateEntryList();
@@ -115,12 +62,7 @@ namespace VPWStudio
 		/// </summary>
 		private void MakeFileTableFromRom()
 		{
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
-			// load from input rom, then put in project filetable
 			Program.CurrentProject.ProjectFileTable = new FileTable();
-
 			bool hasLocation = false;
 			bool hasLength = false;
 			if (Program.CurLocationFile != null)
@@ -128,8 +70,7 @@ namespace VPWStudio
 				LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
 				if (ftEntry != null)
 				{
-					br.BaseStream.Seek(ftEntry.Address, SeekOrigin.Begin);
-					Program.CurrentProject.ProjectFileTable.Read(br, ftEntry.Width);
+					Program.CurrentProject.CreateProjectFiletable(ftEntry.Address, ftEntry.Width);
 					Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					hasLocation = true;
 					hasLength = true;
@@ -145,40 +86,16 @@ namespace VPWStudio
 					MessageBoxIcon.Information
 				);
 
-				int offset = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
-				int length = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
+				uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
+				int length = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
 
 				if (offset != 0 && length != 0)
 				{
-					br.BaseStream.Seek(offset, SeekOrigin.Begin);
-					Program.CurrentProject.ProjectFileTable.Read(br, length);
-					Program.CurrentProject.ProjectFileTable.Location = (UInt32)offset;
+					Program.CurrentProject.CreateProjectFiletable(offset, length);
+					Program.CurrentProject.ProjectFileTable.Location = offset;
 				}
 			}
-			br.Close();
 			LoadFileTableDB();
-		}
-
-		/// <summary>
-		/// Get the path to the default FileTableDB for the loaded game type.
-		/// </summary>
-		/// <returns></returns>
-		private string GetFileTableDBPath()
-		{
-			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
-
-			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable
-			// than the NTSC-U and PAL versions... Haven't figured out the actual changes yet.
-			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
-			{
-				dbFilePath += "WM2K-J.txt";
-			}
-			else
-			{
-				dbFilePath += String.Format("{0}.txt", Program.CurrentProject.Settings.BaseGame.ToString());
-			}
-
-			return dbFilePath;
 		}
 
 		/// <summary>
@@ -189,7 +106,7 @@ namespace VPWStudio
 			// read relevant file from FileTableDB
 			FileTableDB ftdb;
 
-			string dbFilePath = GetFileTableDBPath();
+			string dbFilePath = Program.GetFileTableDBPath();
 			// make sure it exists before we go and start adding things
 			if (!File.Exists(dbFilePath))
 			{
@@ -218,6 +135,36 @@ namespace VPWStudio
 		private void ReloadFileTableDB()
 		{
 			// this one is tricky because we don't want to kill any comments that were entered in the program.
+			string dbFilePath = Program.GetFileTableDBPath();
+
+			if (!File.Exists(dbFilePath))
+			{
+				// well you've gone and beefed it now.
+				MessageBox.Show(
+					"Unable to find the requested FileTable Database in the 'FileTableDB' directory.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+			}
+			else
+			{
+				FileTableDB ftdb = new FileTableDB(dbFilePath);
+				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
+				{
+					// only replace filetype if it doesn't match current
+					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+					{
+						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+					}
+
+					// only replace comment if it's empty
+					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty)
+					{
+						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -238,7 +185,7 @@ namespace VPWStudio
 			}
 			if (!hasOffset)
 			{
-				offset = this.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
+				offset = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
 			}
 			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
 
@@ -419,6 +366,8 @@ namespace VPWStudio
 				Program.CurrentProject.ProjectFileTable.Entries[key].DeepCopy(editInfoDialog.CurEntry);
 				lvFileList.SelectedItems[0].SubItems[FILE_TYPE_COLUMN].Text = editInfoDialog.CurEntry.FileType.ToString();
 				lvFileList.SelectedItems[0].SubItems[COMMENT_COLUMN].Text = editInfoDialog.CurEntry.Comment;
+				Program.UnsavedChanges = true;
+				((MainForm)(this.MdiParent)).UpdateTitleBar();
 			}
 		}
 
@@ -472,24 +421,6 @@ namespace VPWStudio
 			}
 		}
 
-		/// <summary>
-		/// Export the FileTable as a Midwaydec File List.
-		/// </summary>
-		private void exportMidwaydecFileListToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Title = "Export Midwaydec File List";
-			sfd.Filter = SharedStrings.FileFilter_Text;
-			if (sfd.ShowDialog() == DialogResult.OK)
-			{
-				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
-				StreamWriter sw = new StreamWriter(fs);
-				Program.CurrentProject.ProjectFileTable.WriteMidwaydec(sw);
-				sw.Flush();
-				sw.Close();
-			}
-		}
-
 		#region Navigation Menu Items
 		/// <summary>
 		/// Go to a specific file ID.
@@ -520,6 +451,34 @@ namespace VPWStudio
 		{
 			lvFileList.FocusedItem = lvFileList.Items[lvFileList.Items.Count-1];
 			lvFileList.EnsureVisible(lvFileList.Items.Count-1);
+		}
+		#endregion
+
+		#region Database Menu Items
+		private void reloadFileTableDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ReloadFileTableDB();
+			UpdateEntryList();
+		}
+		#endregion
+
+		#region Export Menu Items
+		/// <summary>
+		/// Export the FileTable as a Midwaydec File List.
+		/// </summary>
+		private void exportMidwaydecFileListToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export Midwaydec File List";
+			sfd.Filter = SharedStrings.FileFilter_Text;
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+				StreamWriter sw = new StreamWriter(fs);
+				Program.CurrentProject.ProjectFileTable.WriteMidwaydec(sw);
+				sw.Flush();
+				sw.Close();
+			}
 		}
 		#endregion
 	}
