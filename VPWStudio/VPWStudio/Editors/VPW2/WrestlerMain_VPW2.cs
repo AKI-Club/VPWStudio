@@ -140,6 +140,11 @@ namespace VPWStudio.Editors.VPW2
 
 		private void buttonProfile_Click(object sender, EventArgs e)
 		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			// request AkiText viewer, index 0x006C
 			((MainForm)(this.MdiParent)).RequestAkiTextDialog(0x006C, this.WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
 		}
