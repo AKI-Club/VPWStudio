@@ -151,8 +151,11 @@ namespace VPWStudio
 		#endregion
 
 		#region Form Handling
-		// this section exists so other forms can perform nightmarish tricks
-
+		/// <summary>
+		/// Request the use of the AkiTextDialog.
+		/// </summary>
+		/// <param name="fileID">File ID to load.</param>
+		/// <param name="stringNum">(optional) String index to select.</param>
 		public void RequestAkiTextDialog(int fileID, int stringNum = -1)
 		{
 			if (AkiTextEditor == null)
@@ -264,7 +267,38 @@ namespace VPWStudio
 					Program.CurLocationFilePath = locPath;
 				}
 
-				// todo: generate initial filelist
+				// generate initial filelist
+				if (Program.CurLocationFile != null)
+				{
+					// use location file entries
+					LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
+					if (ftEntry != null)
+					{
+						Program.CurrentProject.CreateProjectFiletable(ftEntry.Address, ftEntry.Width);
+						Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
+					}
+					// todo: handle situation where location file doesn't contain FileTable entry
+				}
+				else
+				{
+					// use fallback
+					uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
+					int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
+					Program.CurrentProject.CreateProjectFiletable(offset, size);
+					Program.CurrentProject.ProjectFileTable.Location = offset;
+				}
+
+				// filelist part 2: load data from FileTableDB
+				string ftdbPath = Program.GetFileTableDBPath();
+				if (!ftdbPath.Equals(String.Empty) && File.Exists(ftdbPath))
+				{
+					FileTableDB ftdb = new FileTableDB(ftdbPath);
+					foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
+					{
+						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+					}
+				}
 			}
 		}
 
@@ -1251,14 +1285,13 @@ namespace VPWStudio
 			NameEncodeDecodeTool nedTool = new NameEncodeDecodeTool();
 			nedTool.ShowDialog();
 		}
-		#endregion
 
 		private void toki1Testvpw2OnlyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Toki1TestDialog t1td = new Toki1TestDialog();
 			t1td.ShowDialog();
 		}
+		#endregion
 
-		
 	}
 }
