@@ -83,5 +83,17 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Helpers
+		public void CreateProjectFiletable(uint addr, int length)
+		{
+			FileStream fs = new FileStream(Settings.InputRomPath, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+			fs.Seek(addr, SeekOrigin.Begin);
+			this.ProjectFileTable.Read(br, length);
+			br.Close();
+			fs.Close();
+		}
+		#endregion
+
 	}
 }
