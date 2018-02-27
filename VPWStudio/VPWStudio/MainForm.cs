@@ -270,14 +270,32 @@ namespace VPWStudio
 				// generate initial filelist
 				if (Program.CurLocationFile != null)
 				{
-					// use location file entries
+					// look for filetable entry
 					LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
 					if (ftEntry != null)
 					{
 						Program.CurrentProject.CreateProjectFileTable(ftEntry.Address, ftEntry.Width);
 						Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					}
-					// todo: handle situation where location file doesn't contain FileTable entry
+					else
+					{
+						// todo: this is blatantly copy/pasted from the fallback situation below.
+						uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
+						int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
+						Program.CurrentProject.CreateProjectFileTable(offset, size);
+						Program.CurrentProject.ProjectFileTable.Location = offset;
+					}
+
+					// look for first file offset
+					LocationFileEntry ffEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FirstFile"]);
+					if (ffEntry != null)
+					{
+						Program.CurrentProject.ProjectFileTable.FirstFile = ffEntry.Address;
+					}
+					else
+					{
+						Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
+					}
 				}
 				else
 				{
@@ -286,6 +304,7 @@ namespace VPWStudio
 					int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
 					Program.CurrentProject.CreateProjectFileTable(offset, size);
 					Program.CurrentProject.ProjectFileTable.Location = offset;
+					Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
 				}
 
 				// filelist part 2: load data from FileTableDB
