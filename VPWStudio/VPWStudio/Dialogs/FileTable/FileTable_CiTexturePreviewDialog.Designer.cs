@@ -28,13 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.gbPalette = new System.Windows.Forms.GroupBox();
 			this.cbPalettes = new System.Windows.Forms.ComboBox();
 			this.gbPreview = new System.Windows.Forms.GroupBox();
 			this.pbPreview = new System.Windows.Forms.PictureBox();
+			this.cmsImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.savePNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbPalette.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
+			this.cmsImage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbPalette
@@ -71,12 +75,28 @@
 			// 
 			// pbPreview
 			// 
+			this.pbPreview.ContextMenuStrip = this.cmsImage;
 			this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbPreview.Location = new System.Drawing.Point(3, 16);
 			this.pbPreview.Name = "pbPreview";
 			this.pbPreview.Size = new System.Drawing.Size(362, 198);
 			this.pbPreview.TabIndex = 0;
 			this.pbPreview.TabStop = false;
+			// 
+			// cmsImage
+			// 
+			this.cmsImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.savePNGToolStripMenuItem});
+			this.cmsImage.Name = "cmsImage";
+			this.cmsImage.Size = new System.Drawing.Size(153, 48);
+			// 
+			// savePNGToolStripMenuItem
+			// 
+			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
+			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.savePNGToolStripMenuItem.Text = "Save PNG...";
+			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
 			// 
 			// FileTable_CiTexturePreviewDialog
 			// 
@@ -95,6 +115,7 @@
 			this.gbPalette.ResumeLayout(false);
 			this.gbPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
+			this.cmsImage.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -105,5 +126,7 @@
 		private System.Windows.Forms.ComboBox cbPalettes;
 		private System.Windows.Forms.GroupBox gbPreview;
 		private System.Windows.Forms.PictureBox pbPreview;
+		private System.Windows.Forms.ContextMenuStrip cmsImage;
+		private System.Windows.Forms.ToolStripMenuItem savePNGToolStripMenuItem;
 	}
 }

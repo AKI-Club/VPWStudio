@@ -145,5 +145,18 @@ namespace VPWStudio
 				this.Close();
 			}
 		}
+
+		#region Context Menu
+		private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Save PNG";
+			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				this.CurBitmap.Save(sfd.FileName);
+			}
+		}
+		#endregion
 	}
 }
