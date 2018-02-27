@@ -26,6 +26,7 @@ namespace VPWStudio
 		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
+			SetupSetTypeMenu();
 
 			if (Program.CurrentProject != null)
 			{
@@ -55,6 +56,21 @@ namespace VPWStudio
 					lvFileList.EnsureVisible(requestedFile.Index);
 				}
 			}
+		}
+
+		private void SetupSetTypeMenu()
+		{
+			ToolStripMenuItem[] types = new ToolStripMenuItem[Enum.GetValues(typeof(FileTypes)).Length];
+			for (int i = 0; i < types.Length; i++)
+			{
+				FileTypes curType = (FileTypes)i;
+				types[i] = new ToolStripMenuItem();
+				types[i].Name = String.Format("SetType{0}", curType);
+				types[i].Tag = curType.ToString();
+				types[i].Text = curType.ToString();
+				types[i].Click += new EventHandler(SetTypeItemHandler);
+			}
+			setTypeToolStripMenuItem.DropDownItems.AddRange(types);
 		}
 
 		/// <summary>
@@ -247,8 +263,34 @@ namespace VPWStudio
 			{
 				extractFileToolStripMenuItem.Text = SharedStrings.FileTableDialog_ExtractFile;
 
-				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 				extractRawToolStripMenuItem.Enabled = Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded;
+			}
+		}
+
+		/// <summary>
+		/// Change the item type of the selected item(s).
+		/// </summary>
+		private void SetTypeItemHandler(object sender, EventArgs e)
+		{
+			// don't do this without a selection
+			if (lvFileList.SelectedItems.Count == 0)
+			{
+				return;
+			}
+
+			ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+			if (tsmi != null)
+			{
+				FileTypes targetType = (FileTypes)Enum.Parse(typeof(FileTypes), tsmi.Tag.ToString());
+				lvFileList.BeginUpdate();
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					Program.CurrentProject.ProjectFileTable.Entries[key].FileType = targetType;
+					lvFileList.SelectedItems[i].SubItems[FILE_TYPE_COLUMN].Text = targetType.ToString();
+				}
+				lvFileList.EndUpdate();
 			}
 		}
 
@@ -297,7 +339,7 @@ namespace VPWStudio
 					FileStream outFile = new FileStream(sfd.FileName, FileMode.Create);
 					BinaryWriter outWriter = new BinaryWriter(outFile);
 
-					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
 
 					outWriter.Flush();
@@ -312,7 +354,7 @@ namespace VPWStudio
 				List<int> ExtractIDs = new List<int>();
 				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
 				{
-					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[0].Text, NumberStyles.HexNumber);
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					ExtractIDs.Add(key);
 				}
 				FileTable_ExtractFilesDialog efd = new FileTable_ExtractFilesDialog(ExtractIDs);
@@ -347,7 +389,7 @@ namespace VPWStudio
 					FileStream outFile = new FileStream(sfd.FileName, FileMode.Create);
 					BinaryWriter outWriter = new BinaryWriter(outFile);
 
-					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key, true);
 
 					outWriter.Flush();
@@ -368,7 +410,7 @@ namespace VPWStudio
 		/// </summary>
 		private void LoadEditInfoDialog()
 		{
-			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 			FileTableEditEntryInfoDialog editInfoDialog = new FileTableEditEntryInfoDialog(Program.CurrentProject.ProjectFileTable.Entries[key]);
 			if (editInfoDialog.ShowDialog() == DialogResult.OK)
 			{
@@ -392,7 +434,7 @@ namespace VPWStudio
 				return;
 			}
 
-			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[0].Text, NumberStyles.HexNumber);
+			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 			switch (Program.CurrentProject.ProjectFileTable.Entries[key].FileType)
 			{
 				// "TEX" files

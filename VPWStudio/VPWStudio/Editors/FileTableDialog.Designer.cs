@@ -51,6 +51,7 @@
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.setTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -114,12 +115,13 @@
 			// cmsFileEntry
 			// 
 			this.cmsFileEntry.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setTypeToolStripMenuItem,
             this.editInformationToolStripMenuItem,
             this.toolStripSeparator1,
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(200, 76);
+			this.cmsFileEntry.Size = new System.Drawing.Size(200, 120);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// editInformationToolStripMenuItem
@@ -231,6 +233,12 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
 			// 
+			// setTypeToolStripMenuItem
+			// 
+			this.setTypeToolStripMenuItem.Name = "setTypeToolStripMenuItem";
+			this.setTypeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.setTypeToolStripMenuItem.Text = "Set &Type";
+			// 
 			// FileTableDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,5 +281,6 @@
 		private System.Windows.Forms.ToolStripMenuItem goToBottomToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem reloadFileTableDatabaseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem setTypeToolStripMenuItem;
 	}
 }
