@@ -70,7 +70,7 @@ namespace VPWStudio
 				LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
 				if (ftEntry != null)
 				{
-					Program.CurrentProject.CreateProjectFiletable(ftEntry.Address, ftEntry.Width);
+					Program.CurrentProject.CreateProjectFileTable(ftEntry.Address, ftEntry.Width);
 					Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					hasLocation = true;
 					hasLength = true;
@@ -91,7 +91,7 @@ namespace VPWStudio
 
 				if (offset != 0 && length != 0)
 				{
-					Program.CurrentProject.CreateProjectFiletable(offset, length);
+					Program.CurrentProject.CreateProjectFileTable(offset, length);
 					Program.CurrentProject.ProjectFileTable.Location = offset;
 				}
 			}
@@ -380,10 +380,7 @@ namespace VPWStudio
 			}
 		}
 
-		/// <summary>
-		/// Double clicking on an item
-		/// </summary>
-		private void lvFileList_DoubleClick(object sender, EventArgs e)
+		private void LoadItemPreview()
 		{
 			if (lvFileList.SelectedItems.Count == 0)
 			{
@@ -427,6 +424,25 @@ namespace VPWStudio
 				default:
 					((VPWStudio.MainForm)this.MdiParent).RequestHexViewer(key);
 					break;
+			}
+		}
+
+		/// <summary>
+		/// Double clicking on an item
+		/// </summary>
+		private void lvFileList_DoubleClick(object sender, EventArgs e)
+		{
+			LoadItemPreview();
+		}
+
+		/// <summary>
+		/// Pressing Enter on an item
+		/// </summary>
+		private void lvFileList_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				LoadItemPreview();
 			}
 		}
 
@@ -490,5 +506,6 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
 	}
 }
