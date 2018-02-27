@@ -36,9 +36,9 @@
 			// 
 			// gbPaletteEntries
 			// 
-			this.gbPaletteEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.gbPaletteEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbPaletteEntries.Controls.Add(this.pbPalettePreview);
 			this.gbPaletteEntries.Location = new System.Drawing.Point(12, 12);
 			this.gbPaletteEntries.Name = "gbPaletteEntries";
@@ -68,6 +68,7 @@
 			this.Name = "FileTable_CiPalettePreviewDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "(CI* palette preview)";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_CiPalettePreviewDialog_KeyDown);
 			this.gbPaletteEntries.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbPalettePreview)).EndInit();
 			this.ResumeLayout(false);

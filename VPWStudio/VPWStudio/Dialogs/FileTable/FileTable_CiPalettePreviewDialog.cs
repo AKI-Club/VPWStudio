@@ -121,5 +121,13 @@ namespace VPWStudio
 			g.Dispose();
 			pbPalettePreview.Image = PalPreviewBitmap;
 		}
+
+		private void FileTable_CiPalettePreviewDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
 	}
 }

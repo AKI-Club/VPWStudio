@@ -127,5 +127,23 @@ namespace VPWStudio
 
 			pbPreview.Image = CurBitmap;
 		}
+
+		// this should work, but doesn't.
+		private void FileTable_CiTexturePreviewDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
+
+		// this is a hack because the above thing won't work.
+		private void cbPalettes_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
 	}
 }

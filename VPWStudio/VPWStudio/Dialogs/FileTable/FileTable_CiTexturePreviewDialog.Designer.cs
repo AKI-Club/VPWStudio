@@ -57,6 +57,7 @@
 			this.cbPalettes.Size = new System.Drawing.Size(356, 21);
 			this.cbPalettes.TabIndex = 0;
 			this.cbPalettes.SelectedValueChanged += new System.EventHandler(this.cbPalettes_SelectedValueChanged);
+			this.cbPalettes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbPalettes_KeyDown);
 			// 
 			// gbPreview
 			// 
@@ -90,6 +91,7 @@
 			this.Name = "FileTable_CiTexturePreviewDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "(CI* image preview)";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_CiTexturePreviewDialog_KeyDown);
 			this.gbPalette.ResumeLayout(false);
 			this.gbPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
