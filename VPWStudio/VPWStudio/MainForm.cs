@@ -274,7 +274,7 @@ namespace VPWStudio
 					LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
 					if (ftEntry != null)
 					{
-						Program.CurrentProject.CreateProjectFiletable(ftEntry.Address, ftEntry.Width);
+						Program.CurrentProject.CreateProjectFileTable(ftEntry.Address, ftEntry.Width);
 						Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					}
 					// todo: handle situation where location file doesn't contain FileTable entry
@@ -284,7 +284,7 @@ namespace VPWStudio
 					// use fallback
 					uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
 					int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
-					Program.CurrentProject.CreateProjectFiletable(offset, size);
+					Program.CurrentProject.CreateProjectFileTable(offset, size);
 					Program.CurrentProject.ProjectFileTable.Location = offset;
 				}
 

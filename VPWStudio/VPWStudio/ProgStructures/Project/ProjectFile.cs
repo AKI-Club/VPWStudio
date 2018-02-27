@@ -84,7 +84,12 @@ namespace VPWStudio
 		#endregion
 
 		#region Helpers
-		public void CreateProjectFiletable(uint addr, int length)
+		/// <summary>
+		/// Initializes the Project FileTable using the Input ROM.
+		/// </summary>
+		/// <param name="addr">FileTable address in ROM</param>
+		/// <param name="length">Size of FileTable in bytes.</param>
+		public void CreateProjectFileTable(uint addr, int length)
 		{
 			FileStream fs = new FileStream(Settings.InputRomPath, FileMode.Open);
 			BinaryReader br = new BinaryReader(fs);
