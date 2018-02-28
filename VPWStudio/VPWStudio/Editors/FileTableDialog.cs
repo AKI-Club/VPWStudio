@@ -58,6 +58,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Create the "Set Type" menu sub-items.
+		/// </summary>
 		private void SetupSetTypeMenu()
 		{
 			ToolStripMenuItem[] types = new ToolStripMenuItem[Enum.GetValues(typeof(FileTypes)).Length];

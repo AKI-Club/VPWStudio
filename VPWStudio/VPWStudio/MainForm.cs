@@ -1267,6 +1267,7 @@ namespace VPWStudio
 				BinaryWriter bw = new BinaryWriter(outStr);
 
 				TestLzss.Compress(br, bw);
+				//LzssOriginal.Encode(br, bw);
 
 				bw.Flush();
 				bw.Close();
