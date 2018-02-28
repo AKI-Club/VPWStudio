@@ -161,6 +161,7 @@
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </Compile>
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
@@ -445,7 +446,6 @@
     <Folder Include="Editors\Revenge\" />
     <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
-    <Folder Include="GameSpecific\Revenge\" />
     <Folder Include="GameSpecific\VPW64\" />
     <Folder Include="GameSpecific\WorldTour\" />
   </ItemGroup>
