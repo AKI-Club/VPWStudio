@@ -63,6 +63,17 @@
 0046=AkiArchive;
 0047=AkiArchive;
 0048=AkiTexture;
+00BB=AkiTexture;[Stable Header] WCW 1
+00BC=AkiTexture;[Stable Header] WCW 2
+00BD=AkiTexture;[Stable Header] WCW 3
+00BE=AkiTexture;[Stable Header] nWo White
+00BF=AkiTexture;[Stable Header] nWo Red
+00C0=AkiTexture;[Stable Header] Raven's Flock
+00C1=AkiTexture;[Stable Header] EWF
+00C2=AkiTexture;[Stable Header] DAW
+00C3=AkiTexture;[Stable Header] Cruiserweight 1
+00C4=AkiTexture;[Stable Header] Cruiserweight 2
+00C5=AkiTexture;[Stable Header] WCW 4
 0120=AkiTexture;
 0121=AkiTexture;
 0122=AkiTexture;
