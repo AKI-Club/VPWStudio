@@ -187,10 +187,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <returns></returns>
 		public string GetName(BinaryReader br)
 		{
-			int nameAddr = (int)this.NamePointer;
-			nameAddr &= 0x0FFFFFFF;
-			nameAddr += 0xC00;
-
+			UInt32 nameAddr = Z64Rom.PointerToRom(this.NamePointer);
 			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
 			string s = String.Empty;
 			while (br.PeekChar() != 0)

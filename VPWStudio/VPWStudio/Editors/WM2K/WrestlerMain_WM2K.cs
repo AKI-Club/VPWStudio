@@ -72,10 +72,7 @@ namespace VPWStudio.Editors.WM2K
 				{
 					Array.Reverse(ptrBytes);
 				}
-				UInt32 wPtr = BitConverter.ToUInt32(ptrBytes, 0);
-				// adjust for ROM location
-				wPtr &= 0x0FFFFFFF;
-				wPtr += 0xC00;
+				UInt32 wPtr = Z64Rom.PointerToRom(BitConverter.ToUInt32(ptrBytes, 0));
 				br.BaseStream.Seek(wPtr, SeekOrigin.Begin);
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				this.WrestlerDefs.Add(i, wdef);

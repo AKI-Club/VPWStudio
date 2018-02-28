@@ -46,6 +46,19 @@ namespace VPWStudio
 	/// </summary>
 	public class Z64Rom
 	{
+		#region Static Junk
+		/// <summary>
+		/// Convert a pointer value to its location in ROM.
+		/// </summary>
+		/// <param name="_ptr">Pointer value</param>
+		/// <returns>ROM location of pointer value.</returns>
+		public static UInt32 PointerToRom(UInt32 _ptr)
+		{
+			_ptr &= 0x0FFFFFFF;
+			return (_ptr + 0xC00);
+		}
+		#endregion
+
 		#region Constants
 		/// <summary>
 		/// Start point of checksum 1
