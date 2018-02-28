@@ -28,10 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.gbPaletteEntries = new System.Windows.Forms.GroupBox();
 			this.pbPalettePreview = new System.Windows.Forms.PictureBox();
+			this.cmsPalette = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.exportJASCPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbPaletteEntries.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPalettePreview)).BeginInit();
+			this.cmsPalette.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbPaletteEntries
@@ -49,12 +53,28 @@
 			// 
 			// pbPalettePreview
 			// 
+			this.pbPalettePreview.ContextMenuStrip = this.cmsPalette;
 			this.pbPalettePreview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbPalettePreview.Location = new System.Drawing.Point(3, 16);
 			this.pbPalettePreview.Name = "pbPalettePreview";
 			this.pbPalettePreview.Size = new System.Drawing.Size(256, 256);
 			this.pbPalettePreview.TabIndex = 0;
 			this.pbPalettePreview.TabStop = false;
+			// 
+			// cmsPalette
+			// 
+			this.cmsPalette.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportJASCPaletteToolStripMenuItem});
+			this.cmsPalette.Name = "cmsPalette";
+			this.cmsPalette.Size = new System.Drawing.Size(184, 48);
+			// 
+			// exportJASCPaletteToolStripMenuItem
+			// 
+			this.exportJASCPaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
+			this.exportJASCPaletteToolStripMenuItem.Name = "exportJASCPaletteToolStripMenuItem";
+			this.exportJASCPaletteToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.exportJASCPaletteToolStripMenuItem.Text = "&Export JASC Palette...";
+			this.exportJASCPaletteToolStripMenuItem.Click += new System.EventHandler(this.exportJASCPaletteToolStripMenuItem_Click);
 			// 
 			// FileTable_CiPalettePreviewDialog
 			// 
@@ -71,6 +91,7 @@
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_CiPalettePreviewDialog_KeyDown);
 			this.gbPaletteEntries.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbPalettePreview)).EndInit();
+			this.cmsPalette.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -79,5 +100,7 @@
 
 		private System.Windows.Forms.GroupBox gbPaletteEntries;
 		private System.Windows.Forms.PictureBox pbPalettePreview;
+		private System.Windows.Forms.ContextMenuStrip cmsPalette;
+		private System.Windows.Forms.ToolStripMenuItem exportJASCPaletteToolStripMenuItem;
 	}
 }

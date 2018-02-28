@@ -129,5 +129,30 @@ namespace VPWStudio
 				this.Close();
 			}
 		}
+
+		private void exportJASCPaletteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export JASC Palette";
+			sfd.Filter = "JASC Palette (*.pal)|*.pal|All Files (*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+				StreamWriter sw = new StreamWriter(fs);
+
+				switch (CurViewMode)
+				{
+					case CiViewerModes.Ci4:
+						CurCI4Palette.ExportJasc(sw);
+						break;
+					case CiViewerModes.Ci8:
+						CurCI8Palette.ExportJasc(sw);
+						break;
+				}
+
+				sw.Close();
+				fs.Close();
+			}
+		}
 	}
 }
