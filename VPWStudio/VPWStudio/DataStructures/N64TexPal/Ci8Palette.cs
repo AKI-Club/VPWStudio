@@ -75,7 +75,7 @@ namespace VPWStudio
 			// write colors as RGB
 			for (int i = 0; i < this.Entries.Length; i++)
 			{
-				Color c = N64Colors.ValueToColor5551(this.Entries[i]);
+				Color c = N64Colors.Value5551ToColor(this.Entries[i]);
 				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
 			}
 		}

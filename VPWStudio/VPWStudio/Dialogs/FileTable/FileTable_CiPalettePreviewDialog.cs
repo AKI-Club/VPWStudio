@@ -87,7 +87,7 @@ namespace VPWStudio
 						// display 4 colors per line, 64x64px blocks
 						for (int i = 0; i < CurCI4Palette.Entries.Length; i++)
 						{
-							curPen = new Pen(N64Colors.ValueToColor5551(CurCI4Palette.Entries[i]));
+							curPen = new Pen(N64Colors.Value5551ToColor(CurCI4Palette.Entries[i]));
 							g.FillRectangle(curPen.Brush, new Rectangle(curCol*64, curRow*64, (curCol * 64) + 64, (curRow * 64)+ 64));
 
 							curCol++;
@@ -105,7 +105,7 @@ namespace VPWStudio
 						// display 16 colors per line, 16x16px blocks
 						for (int i = 0; i < CurCI8Palette.Entries.Length; i++)
 						{
-							curPen = new Pen(N64Colors.ValueToColor5551(CurCI8Palette.Entries[i]));
+							curPen = new Pen(N64Colors.Value5551ToColor(CurCI8Palette.Entries[i]));
 							g.FillRectangle(curPen.Brush, new Rectangle(curCol * 16, curRow * 16, (curCol * 16) + 16, (curRow * 16) + 16));
 
 							curCol++;

@@ -95,7 +95,7 @@ namespace VPWStudio
 				for (int x = 0; x < this.Width; x++)
 				{
 					byte palIdx = this.Data[(y * this.Width) + x];
-					Color c = N64Colors.ValueToColor5551(pal.Entries[palIdx]);
+					Color c = N64Colors.Value5551ToColor(pal.Entries[palIdx]);
 					bOut.SetPixel(x, y, c);
 				}
 			}
