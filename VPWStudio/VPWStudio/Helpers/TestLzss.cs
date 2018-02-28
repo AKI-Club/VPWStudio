@@ -93,6 +93,7 @@ namespace VPWStudio
 			return md;
 		}
 
+		// this is slightly better than before now that I know the mask and shit...
 		public static void Compress(BinaryReader inData, BinaryWriter outData)
 		{
 			// Asmik LZSS header (decompressed file size)
@@ -126,7 +127,7 @@ namespace VPWStudio
 
 			LzssMatchData md = FindMatch(windowHead, uncodedHead);
 
-			int flags = 0;
+			int flags = 0xFF00;
 			int flagPos = 1;
 			byte[] encodedData = new byte[16];
 			int nextEncode = 0;
@@ -172,7 +173,7 @@ namespace VPWStudio
 					}
 
 					// reset
-					flags = 0;
+					flags = 0xFF00;
 					flagPos = 1;
 					nextEncode = 0;
 				}
@@ -184,7 +185,12 @@ namespace VPWStudio
 				int replaceCount = 0;
 				while (replaceCount < md.Length)
 				{
-					int r = inData.Read();
+					if (inData.BaseStream.Position >= fileLen)
+					{
+						break;
+					}
+
+					int r = inData.ReadByte();
 					if (r == -1)
 					{
 						break;
