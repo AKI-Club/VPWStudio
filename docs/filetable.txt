@@ -1,0 +1,162 @@
+Notes on the filetable (and manipulating it)
+============================================
+
+================================================================================
+[WCW vs. nWo World Tour, NTSC-U v1.0]
+
+================================================================================
+[WCW vs. nWo World Tour, NTSC-U v1.1]
+
+================================================================================
+[WCW vs. nWo World Tour, PAL]
+
+================================================================================
+[Virtual Pro-Wrestling 64, NTSC-J]
+
+================================================================================
+[WCW/nWo Revenge, NTSC-U]
+
+================================================================================
+[WCW/nWo Revenge, PAL]
+
+================================================================================
+[WWF WrestleMania 2000, NTSC-U]
+
+================================================================================
+[WWF WrestleMania 2000, NTSC-J]
+
+================================================================================
+[WWF WrestleMania 2000, PAL]
+
+================================================================================
+[Virtual Pro-Wrestling 2, NTSC-J]
+
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80003CB0
+* Z64: 0x48B0
+
+"li $a0, 0xCC8C" ; size of filetable
+(34 04 CC 8C)
+* IDA: 80003CB4
+* Z64: 0x48B4
+
+"li $a0, 0x1310F40" ; filetable.bin location in ROM
+(3C 04 01 31) (24 84 0F 40)
+* IDA: 80003CD8
+* Z64: 0x48D8
+
+"li $a2, 0xCC8C" ; size of filetable
+(34 06 CC 8C)
+* IDA: 80003CF0
+* Z64: 0x48F0
+
+"li $a0, 0xCC88" ; (size of filetable - 4)
+(34 04 CC 88)
+* IDA: 80003CF8
+* Z64: 0x48F8
+
+"li $s4, 0x152DF0" ; beginning of files
+(3C 14 00 15) (26 94 2D F0)
+* IDA: 80003D20
+* Z64: 0x4920
+
+"sltiu $v0, $s2, 0x3322" ; (max filecount - 1)?
+(2E 42 33 22)
+* IDA: 80003D8C
+* Z64: 0x498C
+
+sub_80003DC4
+------------
+Routine begins at
+* IDA: 80003DC4
+* Z64: 0x49C4
+
+"sltiu $v0, 0x3323" ; max file count?
+(2C 42 33 23)
+* IDA: 80003DCC
+* Z64: 0x49CC
+
+"li $a0, 0x152DF0" ; beginning of files
+(3C 04 00 15) (24 84 2D F0)
+* IDA: 80003E40
+* Z64: 0x4A40
+
+LoadFile
+--------
+Routine begins at
+* IDA: 80003E88
+* Z64: 0x4A88
+
+"sltiu $v0, 0x3323" ; max file count
+(2C 42 33 23)
+* IDA: 8003EA8
+* Z64: 0x4AA8
+
+"li $a0, 0x152DF0" ; beginning of files
+(3C 04 00 15) (24 84 2D F0)
+* IDA: 80003F20
+* Z64: 0x4B20
+
+Soundtable/Wavetable
+--------------------
+todo: zoinkity has a list of z64 rom offsets
+
+addr2hws(0x432A, 0x432E) ; sndtbl-1.wbk \
+addr2hws(0x4336, 0x433A) ; sndtbl-1.ptr /
+addr2hws(0x4366, 0x436A) ; sndtbl-2.wbk \
+addr2hws(0x436E, 0x4372) ; sndtbl-2.ptr /
+addr2hws(0x439A, 0x439E) ; sndtbl-2.ptr \
+addr2hws(0x43A2, 0x43A6) ; sndtbl-1.tbl /
+addr2hws(0x43CE, 0x43D2) ; sndtbl-3.wbk \
+addr2hws(0x43D6, 0x43DA) ; sndtbl-3.ptr /
+addr2hws(0x4402, 0x4406) ; sndtbl-3.ptr \
+addr2hws(0x440A, 0x440E) ; sndtbl-2.tbl /
+addr2hws(0x447A, 0x447E) ; sndtbl-1.wbk
+addr2hws(0x44DE, 0x44E6) ; sndtbl-2.wbk
+addr2hws(0x4512, 0x451A) ; sndtbl-3.wbk
+
+addr2hws(0x17312,0x17316) ; sndtbl-4.wbk \
+addr2hws(0x1731A,0x1731E) ; sndtbl-4.ptr /
+addr2hws(0x1732E,0x17332) ; sndtbl-4.ptr \
+addr2hws(0x17336,0x1733A) ; sndtbl-3.tbl /
+addr2hws(0x173AE,0x173B2) ; sndtbl-5.wbk \
+addr2hws(0x173B6,0x173BA) ; sndtbl-5.ptr /
+addr2hws(0x173CA,0x173CE) ; sndtbl-5.ptr \
+addr2hws(0x173D2,0x173D6) ; sndtbl-4.tbl /
+addr2hws(0x17466,0x1746E) ; (IDA 8001686C)
+addr2hws(0x174AE,0x174B6) ; 
+addr2hws(0x17772,0x17776) ; 
+addr2hws(0x1777A,0x1777E) ; 
+addr2hws(0x177A6,0x177AA) ; 
+addr2hws(0x177AE,0x177B2) ; 
+addr2hws(0x177EE,0x177F6) ; 
+addr2hws(0x179FA,0x179FE) ; 
+addr2hws(0x17A02,0x17A06) ; 
+addr2hws(0x17A22,0x17A26) ; 
+addr2hws(0x17A2A,0x17A2E) ; 
+addr2hws(0x17A46,0x17A4A) ; 
+addr2hws(0x17A4E,0x17A52) ; 
+addr2hws(0x17A6A,0x17A6E) ; 
+addr2hws(0x17A72,0x17A76) ; 
+addr2hws(0x17B7A,0x17B82) ; 
+addr2hws(0x17B46,0x17B4E) ; 
+
+Others
+------
+There's a floating 0x0015D2F0 at...
+* IDA: 80047D30
+* Z64: 0x48930
+
+================================================================================
+[WWF No Mercy, NTSC-U v1.0]
+
+================================================================================
+[WWF No Mercy, NTSC-U v1.1]
+
+================================================================================
+[WWF No Mercy, PAL v1.0]
+
+================================================================================
+[WWF No Mercy, PAL v1.1]
