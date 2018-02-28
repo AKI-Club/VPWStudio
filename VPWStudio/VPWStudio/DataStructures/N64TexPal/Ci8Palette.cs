@@ -64,5 +64,21 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		#region JASC Palette Import/Export
+		// xxx: this relies on N64Colors.ValueToColor5551
+		public void ExportJasc(StreamWriter sw)
+		{
+			sw.WriteLine("JASC-PAL");
+			sw.WriteLine("0100");
+			sw.WriteLine("256");
+			// write colors as RGB
+			for (int i = 0; i < this.Entries.Length; i++)
+			{
+				Color c = N64Colors.ValueToColor5551(this.Entries[i]);
+				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
+			}
+		}
+		#endregion
 	}
 }
