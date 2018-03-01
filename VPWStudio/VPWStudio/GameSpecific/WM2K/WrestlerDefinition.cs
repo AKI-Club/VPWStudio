@@ -74,6 +74,8 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt32[] CostumePointers;
 		#endregion
 
+		// todo: store wrestler name string?
+
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
