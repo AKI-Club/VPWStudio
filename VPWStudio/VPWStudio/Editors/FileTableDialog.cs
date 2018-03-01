@@ -105,12 +105,13 @@ namespace VPWStudio
 					MessageBoxIcon.Information
 				);
 
-				uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
-				int length = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
+
+				uint offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Offset;
+				uint length = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Length;
 
 				if (offset != 0 && length != 0)
 				{
-					Program.CurrentProject.CreateProjectFileTable(offset, length);
+					Program.CurrentProject.CreateProjectFileTable(offset, (int)length);
 					Program.CurrentProject.ProjectFileTable.Location = offset;
 				}
 			}
@@ -220,7 +221,7 @@ namespace VPWStudio
 			}
 			if (!hasOffset)
 			{
-				offset = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
+				offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FirstFile"].Offset;
 			}
 			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
 

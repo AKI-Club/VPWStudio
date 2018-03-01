@@ -15,14 +15,6 @@ namespace VPWStudio.Editors.NoMercy
 	{
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 
-		public Dictionary<SpecificGame, int> DefaultWrestlerDefOffsets = new Dictionary<SpecificGame, int>()
-		{
-			{ SpecificGame.NoMercy_NTSC_U_10, 0x46658 },
-			{ SpecificGame.NoMercy_NTSC_U_11, 0x465B8 },
-			{ SpecificGame.NoMercy_PAL_10, 0x46658 },
-			{ SpecificGame.NoMercy_PAL_11, 0x464B8 },
-		};
-
 		public WrestlerMain_NoMercy()
 		{
 			InitializeComponent();
@@ -58,7 +50,8 @@ namespace VPWStudio.Editors.NoMercy
 					MessageBoxIcon.Information
 				);
 				// depends on game
-				br.BaseStream.Seek(DefaultWrestlerDefOffsets[Program.CurrentProject.Settings.GameType], SeekOrigin.Begin);
+				long offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset;
+				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
 
 			// xxx: default number of wrestler defs

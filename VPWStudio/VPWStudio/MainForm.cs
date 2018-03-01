@@ -284,9 +284,9 @@ namespace VPWStudio
 					else
 					{
 						// todo: this is blatantly copy/pasted from the fallback situation below.
-						uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
-						int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
-						Program.CurrentProject.CreateProjectFileTable(offset, size);
+						uint offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Offset;
+						uint size = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Length;
+						Program.CurrentProject.CreateProjectFileTable(offset, (int)size);
 						Program.CurrentProject.ProjectFileTable.Location = offset;
 					}
 
@@ -298,17 +298,17 @@ namespace VPWStudio
 					}
 					else
 					{
-						Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
+						Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FirstFile"].Offset;
 					}
 				}
 				else
 				{
 					// use fallback
-					uint offset = (uint)DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableOffset;
-					int size = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FileTableLength;
-					Program.CurrentProject.CreateProjectFileTable(offset, size);
+					uint offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Offset;
+					uint size = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Length;
+					Program.CurrentProject.CreateProjectFileTable(offset, (int)size);
 					Program.CurrentProject.ProjectFileTable.Location = offset;
-					Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultFileTables[Program.CurrentProject.Settings.GameType].FirstFileOffset;
+					Program.CurrentProject.ProjectFileTable.FirstFile = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FirstFile"].Offset;
 				}
 
 				// filelist part 2: load data from FileTableDB
@@ -601,7 +601,17 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("costumes dialog not yet designed");
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.Revenge:
+					Editors.Revenge.MaskDefs_Revenge mdr = new Editors.Revenge.MaskDefs_Revenge();
+					mdr.ShowDialog();
+					break;
+
+				default:
+					MessageBox.Show("costumes dialog not yet designed");
+					break;
+			}
 		}
 
 		/// <summary>

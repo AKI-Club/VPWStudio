@@ -9,70 +9,163 @@ namespace VPWStudio
 {
 	public class DefaultGameData
 	{
-		#region FileTable
+		#region Offsets
 		/// <summary>
-		/// Default FileTable Data entry.
+		/// An entry in DefaultLocationData.
 		/// </summary>
-		public class DefaultFileTableData
+		public class DefaultLocationDataEntry
 		{
-			/// <summary>
-			/// FileTable offset in ROM.
-			/// </summary>
-			public Int32 FileTableOffset;
+			public UInt32 Offset;
+			public UInt32 Length;
 
-			/// <summary>
-			/// FileTable length, in bytes.
-			/// </summary>
-			public Int32 FileTableLength;
-
-			/// <summary>
-			/// ROM offset of the first file in the FileTable.
-			/// </summary>
-			public UInt32 FirstFileOffset;
-
-			/// <summary>
-			/// Default constructor
-			/// </summary>
-			public DefaultFileTableData()
+			public DefaultLocationDataEntry()
 			{
-				this.FileTableOffset = 0;
-				this.FileTableLength = 0;
-				this.FirstFileOffset = 0;
+				this.Offset = 0;
+				this.Length = 0;
 			}
 
-			/// <summary>
-			/// Specific constructor
-			/// </summary>
-			/// <param name="_fto">FileTable offset in ROM.</param>
-			/// <param name="_ftl">FileTable length/size in bytes.</param>
-			/// <param name="_firstFile">Location of first file in ROM.</param>
-			public DefaultFileTableData(Int32 _fto, Int32 _ftl, UInt32 _firstFile)
+			public DefaultLocationDataEntry(UInt32 _off, UInt32 _len)
 			{
-				this.FileTableOffset = _fto;
-				this.FileTableLength = _ftl;
-				this.FirstFileOffset = _firstFile;
+				this.Offset = _off;
+				this.Length = _len;
 			}
 		}
 
 		/// <summary>
-		/// Default FileTable data for each game.
+		/// Default location data.
 		/// </summary>
-		public static Dictionary<SpecificGame, DefaultFileTableData> DefaultFileTables = new Dictionary<SpecificGame, DefaultFileTableData>()
+		public class DefaultLocationData
 		{
-			{ SpecificGame.WorldTour_NTSC_U_10, new DefaultFileTableData(0x7C1A78, 21996, 0x39490) },
-			{ SpecificGame.WorldTour_NTSC_U_11, new DefaultFileTableData(0x7C1C70, 21996, 0x39500) },
-			{ SpecificGame.WorldTour_PAL, new DefaultFileTableData(0x7C1C00, 21996, 0x39490) },
-			{ SpecificGame.VPW64_NTSC_J, new DefaultFileTableData(0xC7B578, 37432, 0x4AD00) },
-			{ SpecificGame.Revenge_NTSC_U, new DefaultFileTableData(0xCE2752, 30632, 0xDAC50) },
-			{ SpecificGame.Revenge_PAL, new DefaultFileTableData(0xCDFCE2, 30632, 0xD81E0) },
-			{ SpecificGame.WM2K_NTSC_U, new DefaultFileTableData(0x11778BE, 41248, 0x144AA0) },
-			{ SpecificGame.WM2K_NTSC_J, new DefaultFileTableData(0x116F3C2, 41480, 0x12C070) },
-			{ SpecificGame.WM2K_PAL, new DefaultFileTableData(0x11778BE, 41248, 0x144AC0) },
-			{ SpecificGame.VPW2_NTSC_J, new DefaultFileTableData(0x1310F40, 52364, 0x152DF0) },
-			{ SpecificGame.NoMercy_NTSC_U_10, new DefaultFileTableData(0x16C3238, 77848, 0x1BD1B0) },
-			{ SpecificGame.NoMercy_NTSC_U_11, new DefaultFileTableData(0x16C31D8, 77848, 0x1BD150) },
-			{ SpecificGame.NoMercy_PAL_10, new DefaultFileTableData(0x16C32A8, 77848, 0x1BD220) },
-			{ SpecificGame.NoMercy_PAL_11, new DefaultFileTableData(0x16C3148, 77848, 0x1BD0C0) },
+			public Dictionary<string, DefaultLocationDataEntry> Locations;
+
+			public DefaultLocationData()
+			{
+				this.Locations = new Dictionary<string, DefaultLocationDataEntry>();
+			}
+
+			public DefaultLocationData(Dictionary<string, DefaultLocationDataEntry> _entry)
+			{
+				this.Locations = _entry;
+			}
+		}
+
+		/// <summary>
+		/// Fallback LocationData for each SpecificGame.
+		/// </summary>
+		/// This primarily exists so the program can still be useful without the LocationFiles directory.
+		public static Dictionary<SpecificGame, DefaultLocationData> DefaultLocations = new Dictionary<SpecificGame, DefaultLocationData>()
+		{
+			{
+				SpecificGame.WorldTour_NTSC_U_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x7C1A78, 21996) },
+				})
+			},
+			{
+				SpecificGame.WorldTour_NTSC_U_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x37F38, 96) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x39500, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x7C1C70, 21996) },
+				})
+			},
+			{
+				SpecificGame.WorldTour_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					// todo: StableDefs
+					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x7C1C00, 21996) },
+				})
+			},
+			{
+				SpecificGame.VPW64_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x4989C, 176) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x4AD00, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0xC7B578, 37432) },
+				})
+			},
+			{
+				SpecificGame.Revenge_NTSC_U,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x3B0F8, 104) },
+					{ "FirstFile", new DefaultLocationDataEntry(0xDAC50, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0xCE2752, 30632) },
+				})
+			},
+			{
+				SpecificGame.Revenge_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x38548, 104) },
+					{ "FirstFile", new DefaultLocationDataEntry(0xD81E0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0xCDFCE2, 30632) },
+				})
+			},
+			{
+				SpecificGame.WM2K_NTSC_U,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x144AA0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
+				})
+			},
+			{
+				SpecificGame.WM2K_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x12C070, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x116F3C2, 41480) },
+				})
+			},
+			{
+				SpecificGame.WM2K_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					// todo: StableDefs
+					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
+				})
+			},
+			{
+				SpecificGame.VPW2_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "FirstFile", new DefaultLocationDataEntry(0x152DF0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x1310F40, 52364) },
+				})
+			},
+			{
+				SpecificGame.NoMercy_NTSC_U_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x1BD1B0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x16C3238, 77848) },
+				})
+			},
+			{
+				SpecificGame.NoMercy_NTSC_U_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x465B8, 0) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x1BD150, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x16C31D8, 77848) },
+				})
+			},
+			{
+				SpecificGame.NoMercy_PAL_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x1BD220, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x16C32A8, 77848) },
+				})
+			},
+			{
+				SpecificGame.NoMercy_PAL_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x464B8, 0) },
+					{ "FirstFile", new DefaultLocationDataEntry(0x1BD0C0, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x16C3148, 77848) },
+				})
+			},
 		};
 		#endregion
 
