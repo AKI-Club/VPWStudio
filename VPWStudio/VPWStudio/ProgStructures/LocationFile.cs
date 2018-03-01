@@ -119,6 +119,7 @@ namespace VPWStudio
 			{ "FileTable", "$FILETABLE" }, // ROM location of filetable
 			{ "FirstFile", "$FIRSTFILE" }, // ROM location of first file
 			{ "WrestlerDefs", "$WRESTLERDEFS" }, // ROM location of wrestler definitions
+			{ "StableDefs", "$STABLEDEFS" }, // ROM location of stable definitions
 			#endregion
 
 			#region CodeChange
