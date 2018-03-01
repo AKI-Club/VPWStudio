@@ -53,6 +53,7 @@
 			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.storyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.textArchivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -273,6 +273,13 @@
 			this.textArchivesToolStripMenuItem.Name = "textArchivesToolStripMenuItem";
 			resources.ApplyResources(this.textArchivesToolStripMenuItem, "textArchivesToolStripMenuItem");
 			this.textArchivesToolStripMenuItem.Click += new System.EventHandler(this.textArchivesToolStripMenuItem_Click);
+			// 
+			// weaponsToolStripMenuItem
+			// 
+			this.weaponsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Weapons;
+			this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
+			resources.ApplyResources(this.weaponsToolStripMenuItem, "weaponsToolStripMenuItem");
+			this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.weaponsToolStripMenuItem_Click);
 			// 
 			// wrestlersToolStripMenuItem
 			// 
@@ -488,12 +495,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// weaponsToolStripMenuItem
-			// 
-			this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
-			resources.ApplyResources(this.weaponsToolStripMenuItem, "weaponsToolStripMenuItem");
-			this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.weaponsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 

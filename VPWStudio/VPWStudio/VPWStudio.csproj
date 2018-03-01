@@ -450,6 +450,7 @@
     <Content Include="Resources\MainMenuBG\MainMenuBG_WM2K.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
     <None Include="Resources\sounds.png" />
+    <None Include="Resources\weapons.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
