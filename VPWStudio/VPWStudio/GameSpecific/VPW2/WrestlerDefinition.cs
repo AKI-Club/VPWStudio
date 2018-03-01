@@ -2,8 +2,6 @@
 using System.IO;
 using System.Globalization;
 using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.VPW2
 {
@@ -11,7 +9,7 @@ namespace VPWStudio.GameSpecific.VPW2
 	/// Virtual Pro-Wrestling 2 Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : IXmlSerializable
+	public class WrestlerDefinition : BaseWrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -65,12 +63,12 @@ namespace VPWStudio.GameSpecific.VPW2
 		public UInt16 ParamsFileIndex;
 
 		/// <summary>
-		/// Index into appearances table?
+		/// Index into appearances table
 		/// </summary>
 		public UInt16 AppearanceIndex;
 
 		/// <summary>
-		/// Index into profile/default names table?
+		/// Index into profile/default names table
 		/// </summary>
 		public UInt16 ProfileIndex;
 		#endregion
@@ -103,6 +101,7 @@ namespace VPWStudio.GameSpecific.VPW2
 			this.ReadData(br);
 		}
 
+		#region Binary Read/Write
 		/// <summary>
 		/// Read WrestlerDefinition data using a BinaryReader.
 		/// </summary>
@@ -161,18 +160,14 @@ namespace VPWStudio.GameSpecific.VPW2
 			// prepare for another possible read
 			br.ReadBytes(2);
 		}
+		#endregion
 
 		#region XML Read/Write
-		public XmlSchema GetSchema()
-		{
-			return null;
-		}
-
 		/// <summary>
-		/// 
+		/// Read VPW2 WrestlerDefinition from XML.
 		/// </summary>
-		/// <param name="xr"></param>
-		public void ReadXml(XmlReader xr)
+		/// <param name="xr">XmlReader instance to use.</param>
+		public override void ReadXml(XmlReader xr)
 		{
 			System.Windows.Forms.MessageBox.Show(xr.Name);
 
@@ -190,18 +185,22 @@ namespace VPWStudio.GameSpecific.VPW2
 			this.Voice2 = (byte)xr.ReadContentAsInt();
 
 			string moveIndex = xr.ReadElementContentAsString();
+			this.MovesetFileIndex = UInt16.Parse(moveIndex, NumberStyles.HexNumber);
 			string paramIndex = xr.ReadElementContentAsString();
+			this.ParamsFileIndex = UInt16.Parse(paramIndex, NumberStyles.HexNumber);
 			string costumeIndex = xr.ReadElementContentAsString();
+			this.AppearanceIndex = UInt16.Parse(costumeIndex, NumberStyles.HexNumber);
 			string profileIndex = xr.ReadElementContentAsString();
+			this.ProfileIndex = UInt16.Parse(profileIndex, NumberStyles.HexNumber);
 		}
 
 		/// <summary>
-		/// 
+		/// Write VPW2 WrestlerDefinition to XML.
 		/// </summary>
-		/// <param name="xr"></param>
-		public void WriteXml(XmlWriter xr)
+		/// <param name="xr">XmlWriter instance to use.</param>
+		public override void WriteXml(XmlWriter xr)
 		{
-			xr.WriteStartElement("WrestlerDefinition");
+			xr.WriteStartElement("WrestlerDefinition_VPW2");
 
 			xr.WriteElementString("WrestlerID4", String.Format("{0:X4}", this.WrestlerID4));
 			xr.WriteElementString("WrestlerID2", String.Format("{0:X2}", this.WrestlerID2));

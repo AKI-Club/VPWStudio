@@ -2,8 +2,6 @@
 using System.IO;
 using System.Globalization;
 using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.WM2K
 {
@@ -11,7 +9,7 @@ namespace VPWStudio.GameSpecific.WM2K
 	/// WWF WrestleMania 2000 Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition
+	public class WrestlerDefinition : BaseWrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -104,6 +102,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			this.ReadData(br);
 		}
 
+		#region Binary Read/Write
 		/// <summary>
 		/// Read WrestlerDefinition data using a BinaryReader.
 		/// </summary>
@@ -179,7 +178,21 @@ namespace VPWStudio.GameSpecific.WM2K
 				this.CostumePointers[i] = BitConverter.ToUInt32(cosptr, 0);
 			}
 		}
+		#endregion
 
+		#region XML Read/Write
+		public override void ReadXml(XmlReader xr)
+		{
+			// not implemented yet
+		}
+
+		public override void WriteXml(XmlWriter xr)
+		{
+			// not implemented yet
+		}
+		#endregion
+
+		#region Helpers
 		/// <summary>
 		/// Get wrestler name from ROM.
 		/// </summary>
@@ -196,5 +209,6 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 			return s;
 		}
+		#endregion
 	}
 }

@@ -2,8 +2,6 @@
 using System.IO;
 using System.Globalization;
 using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.NoMercy
 {
@@ -11,7 +9,7 @@ namespace VPWStudio.GameSpecific.NoMercy
 	/// WWF No Mercy Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : IXmlSerializable
+	public class WrestlerDefinition : BaseWrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -158,17 +156,14 @@ namespace VPWStudio.GameSpecific.NoMercy
 		}
 
 		#region XML Read/Write
-		public XmlSchema GetSchema()
+		public override void ReadXml(XmlReader xr)
 		{
-			return null;
+			// not implemented yet
 		}
 
-		public void ReadXml(XmlReader xr)
+		public override void WriteXml(XmlWriter xr)
 		{
-		}
-
-		public void WriteXml(XmlWriter xr)
-		{
+			// not implemented yet
 		}
 		#endregion
 	}
