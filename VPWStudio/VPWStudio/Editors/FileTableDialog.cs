@@ -301,6 +301,7 @@ namespace VPWStudio
 					lvFileList.SelectedItems[i].SubItems[FILE_TYPE_COLUMN].Text = targetType.ToString();
 				}
 				lvFileList.EndUpdate();
+				Program.UnsavedChanges = true;
 			}
 		}
 
