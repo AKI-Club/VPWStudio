@@ -75,6 +75,11 @@ namespace VPWStudio
 
 		#region Revenge
 		/// <summary>
+		/// WCW/nWo Revenge Costume and Mask/Head Editor
+		/// </summary>
+		public Editors.Revenge.CostumeDefs_Revenge CostumeDefs_Revenge = null;
+
+		/// <summary>
 		/// WCW/nWo Revenge Stable Editor
 		/// </summary>
 		public Editors.Revenge.StableDefs_Revenge StableDefs_Revenge = null;
@@ -530,6 +535,14 @@ namespace VPWStudio
 					updateBG = true;
 					// invalidate project data
 					Program.CurrentProject.ProjectFileTable = new FileTable();
+
+					// close any open dialogs; they contain invalid data now
+					foreach (Form f in this.MdiChildren)
+					{
+						f.Close();
+					}
+
+					// todo: probably have to reload filetable data.
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
@@ -616,12 +629,29 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.Revenge:
-					Editors.Revenge.MaskDefs_Revenge mdr = new Editors.Revenge.MaskDefs_Revenge();
-					mdr.ShowDialog();
+					if (CostumeDefs_Revenge == null)
+					{
+						CostumeDefs_Revenge = new Editors.Revenge.CostumeDefs_Revenge();
+						CostumeDefs_Revenge.MdiParent = this;
+						CostumeDefs_Revenge.Show();
+					}
+					else
+					{
+						if (CostumeDefs_Revenge.IsDisposed)
+						{
+							CostumeDefs_Revenge = new Editors.Revenge.CostumeDefs_Revenge();
+						}
+						if (CostumeDefs_Revenge.WindowState == FormWindowState.Minimized)
+						{
+							CostumeDefs_Revenge.WindowState = FormWindowState.Normal;
+						}
+						CostumeDefs_Revenge.MdiParent = this;
+						CostumeDefs_Revenge.Show();
+					}
 					break;
 
 				default:
-					MessageBox.Show("costumes dialog not yet designed");
+					MessageBox.Show(String.Format("costumes dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
