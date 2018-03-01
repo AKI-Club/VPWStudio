@@ -74,6 +74,10 @@ namespace VPWStudio
 		#endregion
 
 		#region Revenge
+		/// <summary>
+		/// WCW/nWo Revenge Stable Editor
+		/// </summary>
+		public Editors.Revenge.StableDefs_Revenge StableDefs_Revenge = null;
 		#endregion
 
 		#region WM2K
@@ -683,7 +687,34 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("stables dialog not yet designed");
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.Revenge:
+					if (StableDefs_Revenge == null)
+					{
+						StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
+						StableDefs_Revenge.MdiParent = this;
+						StableDefs_Revenge.Show();
+					}
+					else
+					{
+						if (StableDefs_Revenge.IsDisposed)
+						{
+							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
+						}
+						if (StableDefs_Revenge.WindowState == FormWindowState.Minimized)
+						{
+							StableDefs_Revenge.WindowState = FormWindowState.Normal;
+						}
+						StableDefs_Revenge.MdiParent = this;
+						StableDefs_Revenge.Show();
+					}
+					break;
+
+				default:
+					MessageBox.Show(String.Format("stables dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
+					break;
+			}
 		}
 
 		/// <summary>

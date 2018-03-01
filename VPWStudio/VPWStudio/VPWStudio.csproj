@@ -148,6 +148,12 @@
     <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.Designer.cs">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\Revenge\StableDefs_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\StableDefs_Revenge.Designer.cs">
+      <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\VPW2\WrestlerMain_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,8 +166,10 @@
     <Compile Include="Editors\WM2K\WrestlerMain_WM2K.Designer.cs">
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameSpecific\BaseWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
@@ -278,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
+      <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\WrestlerMain_VPW2.resx">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
@@ -443,7 +454,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Editors\Revenge\" />
     <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
     <Folder Include="GameSpecific\VPW64\" />
