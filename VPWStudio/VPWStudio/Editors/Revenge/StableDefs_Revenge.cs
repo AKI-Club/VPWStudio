@@ -37,7 +37,7 @@ namespace VPWStudio.Editors.Revenge
 			{
 				// fallback to hardedcoded offset
 				MessageBox.Show(
-					"Wrestler Definition location not found; using hardcoded offset instead.",
+					"Stable Definition location not found; using hardcoded offset instead.",
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Information
