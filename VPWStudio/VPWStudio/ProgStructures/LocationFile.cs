@@ -120,6 +120,11 @@ namespace VPWStudio
 			{ "FirstFile", "$FIRSTFILE" }, // ROM location of first file
 			{ "WrestlerDefs", "$WRESTLERDEFS" }, // ROM location of wrestler definitions
 			{ "StableDefs", "$STABLEDEFS" }, // ROM location of stable definitions
+
+			// these two are used for World Tour, VPW64, and Revenge at least.
+			// the other three games probably have their own ways of doing things.
+			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions
+			{ "HeadDefs", "$HEADDEFS" }, // ROM location of head/mask definitions
 			#endregion
 
 			#region CodeChange
