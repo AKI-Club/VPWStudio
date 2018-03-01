@@ -148,6 +148,18 @@
     <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.Designer.cs">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\Revenge\CostumeDefs_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\CostumeDefs_Revenge.Designer.cs">
+      <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\Revenge\MaskDefs_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\MaskDefs_Revenge.Designer.cs">
+      <DependentUpon>MaskDefs_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\Revenge\StableDefs_Revenge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +179,8 @@
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </Compile>
     <Compile Include="GameSpecific\BaseWrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\CostumeDef_Early.cs" />
+    <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
@@ -286,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\CostumeDefs_Revenge.resx">
+      <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\MaskDefs_Revenge.resx">
+      <DependentUpon>MaskDefs_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
