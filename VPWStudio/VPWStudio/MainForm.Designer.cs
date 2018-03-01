@@ -506,6 +506,7 @@
 			this.MainMenuStrip = this.MainMenu;
 			this.Name = "MainForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+			this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
 			this.Resize += new System.EventHandler(this.MainForm_Resize);
 			this.MainMenu.ResumeLayout(false);
 			this.MainMenu.PerformLayout();

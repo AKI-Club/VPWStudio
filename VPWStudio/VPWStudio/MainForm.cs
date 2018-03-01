@@ -322,6 +322,12 @@ namespace VPWStudio
 						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
 					}
 				}
+
+				// close any open dialogs
+				foreach (Form f in this.MdiChildren)
+				{
+					f.Close();
+				}
 			}
 		}
 
@@ -384,6 +390,12 @@ namespace VPWStudio
 					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
 					Program.CurLocationFile.LoadFile(locPath);
 					Program.CurLocationFilePath = locPath;
+				}
+
+				// close any open dialogs
+				foreach (Form f in this.MdiChildren)
+				{
+					f.Close();
 				}
 			}
 		}
@@ -479,7 +491,7 @@ namespace VPWStudio
 			Program.CurrentInputROM = null;
 			Program.CurrentOutputROM = null;
 
-			// todo: close any open dialogs
+			// close any open dialogs
 			foreach (Form f in this.MdiChildren)
 			{
 				f.Close();
@@ -1242,6 +1254,14 @@ namespace VPWStudio
 
 		#region Various Helpers
 		/// <summary>
+		/// Ooh! I pressed the F1 key!
+		/// </summary>
+		private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+		{
+			manualToolStripMenuItem_Click(sender, hlpevent);
+		}
+
+		/// <summary>
 		/// Get the 16px game icon for the current project's base game.
 		/// </summary>
 		/// <returns></returns>
@@ -1354,5 +1374,6 @@ namespace VPWStudio
 		}
 		#endregion
 
+		
 	}
 }
