@@ -170,6 +170,13 @@ namespace VPWStudio
 			{
 				bool changesMade = false;
 				FileTableDB ftdb = new FileTableDB(dbFilePath);
+
+				bool replaceComments = false;
+				if (MessageBox.Show("Do you want to overwrite your comments with comments from the FileTable Database?", SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+				{
+					replaceComments = true;
+				}
+
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
 					// only replace filetype if it doesn't match current
@@ -179,8 +186,8 @@ namespace VPWStudio
 						changesMade = true;
 					}
 
-					// only replace comment if it's empty
-					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty)
+					// only replace comment if it's empty, or we were requested to.
+					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
 					{
 						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
 						changesMade = true;
