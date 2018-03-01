@@ -43,7 +43,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Deep copy and existing ProjectFile instance.
+		/// Deep copy an existing ProjectFile instance.
 		/// </summary>
 		/// <param name="_src">Source ProjectFile to copy.</param>
 		public void DeepCopy(ProjectFile _src)
@@ -94,6 +94,13 @@ namespace VPWStudio
 			FileStream fs = new FileStream(Settings.InputRomPath, FileMode.Open);
 			BinaryReader br = new BinaryReader(fs);
 			fs.Seek(addr, SeekOrigin.Begin);
+
+			// sanity check (unsure if needed, but seems like a good idea)
+			//if (this.ProjectFileTable == null)
+			//{
+			//	this.ProjectFileTable = new FileTable();
+			//}
+
 			this.ProjectFileTable.Read(br, length);
 			br.Close();
 			fs.Close();
