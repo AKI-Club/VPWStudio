@@ -19,8 +19,13 @@
 
 <h3>Appendices</h3>
 <ol type='A'>
-<li><a href="#LocationFile">LocationFile Format</a></li>
-<li><a href="#FileTableDB">FileTableDB Format</a></li>
+<li>Program Formats
+	<ol type="1">
+	<li><a href="#LocationFile">LocationFile Format</a></li>
+	<li><a href="#FileTableDB">FileTableDB Format</a></li>
+	</ol>
+</li>
+<li>Game Data Formats</li>
 </ol>
 
 <hr />
@@ -29,7 +34,10 @@
 games.</p>
 
 <hr />
-<h2><a name="LocationFile">Appendix A: LocationFile Format</a></h2>
+<h2>Appendix A: Program Formats</h2>
+<p>(notes about program file formats)</p>
+
+<h3><a name="LocationFile">Appendix A1: LocationFile Format</a></h3>
 <p>The LocationFile format is a plain text database defining locations in ROM
 and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
 the LocationFile.</p>
@@ -37,7 +45,7 @@ the LocationFile.</p>
 <p>Lines starting with the <code>#</code> character are comments, and will be
 ignored by the LocationFile loader.</p>
 
-<h3>Breakdown</h3>
+<h4>Breakdown</h4>
 <p><code>LocationType:Location,Size;Comment</code></p>
 
 <h4>LocationType</h4>
@@ -93,14 +101,14 @@ location strings:</p>
 </ul>
 
 <hr />
-<h2><a name="FileTableDB">Appendix B: FileTableDB Format</a></h2>
+<h3><a name="FileTableDB">Appendix A2: FileTableDB Format</a></h3>
 <p>The FileTableDB format is a plain text database mapping File IDs to types
 and comments.</p>
 
 <p>Lines starting with the <code>#</code> character are comments, and will be
 ignored by the FileTableDB loader.</p>
 
-<h3>Breakdown</h3>
+<h4>Breakdown</h4>
 <p><code>FileID=Type;Comment</code></p>
 
 <h4>FileID</h4>
@@ -131,6 +139,10 @@ contain TEX files.</li>
 <h4>Comment</h4>
 <p>A comment displayed in the FileTable dialog. Unlike the LocationFile format,
 there are no special characters to deal with.</p>
+
+<hr />
+<h2>Appendix B: Game Data Formats</h2>
+<p>(notes about data structures used in the games)</p>
 
 <hr />
 <div id="footer">(footer content todo)</div>
