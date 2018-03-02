@@ -75,27 +75,27 @@ namespace VPWStudio.GameSpecific
 		/// </summary>
 		public MaskDef_Early()
 		{
-			this.NeckModel = 0;
-			this.HeadModel = 0;
-			this.ExtraModel = 0;
-			this.NeckPalette = 0;
-			this.NeckTexture = 0;
-			this.HeadPalette = 0;
-			this.HeadTexture = 0;
-			this.ExtraPalette = 0;
-			this.ExtraTexture = 0;
-			this.RippedMaskPalette = 0;
-			this.RippedMaskTexture = 0;
-			this.SkinColor = 0;
+			NeckModel = 0;
+			HeadModel = 0;
+			ExtraModel = 0;
+			NeckPalette = 0;
+			NeckTexture = 0;
+			HeadPalette = 0;
+			HeadTexture = 0;
+			ExtraPalette = 0;
+			ExtraTexture = 0;
+			RippedMaskPalette = 0;
+			RippedMaskTexture = 0;
+			SkinColor = 0;
 		}
 
 		/// <summary>
-		/// Constructor using BinaryReader
+		/// Constructor using a BinaryReader.
 		/// </summary>
-		/// <param name="br"></param>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public MaskDef_Early(BinaryReader br)
 		{
-			this.ReadData(br);
+			ReadData(br);
 		}
 
 		/// <summary>
@@ -104,114 +104,85 @@ namespace VPWStudio.GameSpecific
 		/// <param name="_src"></param>
 		public void DeepCopy(MaskDef_Early _src)
 		{
-			this.NeckModel = _src.NeckModel;
-			this.HeadModel = _src.HeadModel;
-			this.ExtraModel = _src.ExtraModel;
-			this.NeckPalette = _src.NeckPalette;
-			this.NeckTexture = _src.NeckTexture;
-			this.HeadPalette = _src.HeadPalette;
-			this.HeadTexture = _src.HeadTexture;
-			this.ExtraPalette = _src.ExtraPalette;
-			this.ExtraTexture = _src.ExtraTexture;
-			this.RippedMaskPalette = _src.RippedMaskPalette;
-			this.RippedMaskTexture = _src.RippedMaskTexture;
-			this.SkinColor = _src.SkinColor;
+			NeckModel = _src.NeckModel;
+			HeadModel = _src.HeadModel;
+			ExtraModel = _src.ExtraModel;
+			NeckPalette = _src.NeckPalette;
+			NeckTexture = _src.NeckTexture;
+			HeadPalette = _src.HeadPalette;
+			HeadTexture = _src.HeadTexture;
+			ExtraPalette = _src.ExtraPalette;
+			ExtraTexture = _src.ExtraTexture;
+			RippedMaskPalette = _src.RippedMaskPalette;
+			RippedMaskTexture = _src.RippedMaskTexture;
+			SkinColor = _src.SkinColor;
 		}
 
 		#region Binary Read/Write
+		/// <summary>
+		/// Read helper.
+		/// </summary>
+		/// <param name="br"></param>
+		/// <returns></returns>
+		private UInt16 ReadElement(BinaryReader br)
+		{
+			byte[] rByte = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(rByte);
+			}
+			return BitConverter.ToUInt16(rByte, 0);
+		}
+
 		/// <summary>
 		/// Read MaskDef_Early data using a BinaryReader.
 		/// </summary>
 		/// <param name="br"></param>
 		public void ReadData(BinaryReader br)
 		{
-			byte[] nm = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(nm);
-			}
-			this.NeckModel = BitConverter.ToUInt16(nm, 0);
+			NeckModel = ReadElement(br);
+			HeadModel = ReadElement(br);
+			ExtraModel = ReadElement(br);
+			NeckPalette = ReadElement(br);
+			NeckTexture = ReadElement(br);
+			HeadPalette = ReadElement(br);
+			HeadTexture = ReadElement(br);
+			ExtraPalette = ReadElement(br);
+			ExtraTexture = ReadElement(br);
+			RippedMaskPalette = ReadElement(br);
+			RippedMaskTexture = ReadElement(br);
+			SkinColor = ReadElement(br);
+		}
 
-			byte[] hm = br.ReadBytes(2);
+		/// <summary>
+		/// Write helper.
+		/// </summary>
+		/// <param name="bw"></param>
+		/// <param name="val"></param>
+		private void WriteElement(BinaryWriter bw, UInt16 val)
+		{
+			byte[] wByte = BitConverter.GetBytes(val);
 			if (BitConverter.IsLittleEndian)
 			{
-				Array.Reverse(hm);
+				Array.Reverse(wByte);
 			}
-			this.HeadModel = BitConverter.ToUInt16(hm, 0);
-
-			byte[] em = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(em);
-			}
-			this.ExtraModel = BitConverter.ToUInt16(em, 0);
-
-			byte[] np = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(np);
-			}
-			this.NeckPalette = BitConverter.ToUInt16(np, 0);
-
-			byte[] nt = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(nt);
-			}
-			this.NeckTexture = BitConverter.ToUInt16(nt, 0);
-
-			byte[] hp = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(hp);
-			}
-			this.HeadPalette = BitConverter.ToUInt16(hp, 0);
-
-			byte[] ht = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(ht);
-			}
-			this.HeadTexture = BitConverter.ToUInt16(ht, 0);
-
-			byte[] ep = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(ep);
-			}
-			this.ExtraPalette = BitConverter.ToUInt16(ep, 0);
-
-			byte[] et = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(et);
-			}
-			this.ExtraTexture = BitConverter.ToUInt16(et, 0);
-
-			byte[] rmp = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(rmp);
-			}
-			this.RippedMaskPalette = BitConverter.ToUInt16(rmp, 0);
-
-			byte[] rmt = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(rmt);
-			}
-			this.RippedMaskTexture = BitConverter.ToUInt16(rmt, 0);
-
-			byte[] sc = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(sc);
-			}
-			this.SkinColor = BitConverter.ToUInt16(sc, 0);
+			bw.Write(wByte);
 		}
 
 		public void WriteData(BinaryWriter bw)
 		{
+			WriteElement(bw, NeckModel);
+			WriteElement(bw, HeadModel);
+			WriteElement(bw, ExtraModel);
+			WriteElement(bw, NeckPalette);
+			WriteElement(bw, NeckTexture);
+			WriteElement(bw, HeadPalette);
+			WriteElement(bw, HeadTexture);
+			WriteElement(bw, ExtraPalette);
+			WriteElement(bw, ExtraTexture);
+			WriteElement(bw, RippedMaskPalette);
+			WriteElement(bw, RippedMaskTexture);
+			WriteElement(bw, SkinColor);
 		}
 		#endregion
 	}
