@@ -4,6 +4,84 @@ Notes on the filetable (and manipulating it)
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.0]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80004C10
+* Z64: 0x5810
+
+"li $a0, 0x55EC" ; filetable size
+(24 04 55 EC)
+* IDA: 80004C38
+* Z64: 0x5838
+
+"lui $a0, 0x7C"
+(3C 04 00 7C)
+* IDA: 80004C44
+* Z64: 0x5844
+
+"li $a0, 0x7C1A78" ; filetable location
+(24 84 1A 78)
+* IDA: 80004C4C
+* Z64: 0x584C
+
+"li $a2, 0x55EC" ; filetable size
+(24 06 55 EC)
+* IDA: 80004C58
+* Z64: 0x5858
+
+"li $a0, 0x55E8" ; filetable size - 4 (one entry)
+(24 04 55 E8)
+* IDA: 8004C60
+* Z64: 0x5860
+
+"lui $s4, 4" ; related to below
+(3C 14 00 04)
+* IDA: 80004C7C
+* Z64: 0x587C
+
+"li $s4, 0x39490" ; first file location
+(26 94 94 90)
+* IDA: 80004C84
+* Z64: 0x5884
+
+"li $s6, 0x55E8" ; filetable size - 4 (two)
+(24 16 55 E8)
+* IDA: 80004C90
+* Z64: 0x5890
+
+sub_80004D24
+------------
+Routine begins at
+* IDA: 80004D24
+* Z64: 0x5924
+
+"slti $at, $t6, 0x157B" ; max file ID/count
+(29 C1 15 7B)
+* IDA: 80004D38
+* Z64: 0x5938
+
+"li $a3, 0x39490" ; first file location
+(3C 07 00 04 24 E7 94 90)
+* IDA: 80004D68
+* Z64: 0x5968
+
+sub_800014B0
+------------
+Routine begins at
+* IDA: 800014B0
+* Z64: 0x20B0
+
+"lui $t8, 4" ; set up high byte of file location
+(3C 18 00 04)
+* IDA: 800014E8
+* Z64: 0x20E8
+
+"li $t8, 0x39490" ; first file location
+(27 18 94 90)
+* IDA: 800014FC
+* Z64: 0x20FC
+
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.1]
 
