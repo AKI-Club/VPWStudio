@@ -1,0 +1,335 @@
+midi tool notes
+
+================================================================================
+entries
+
+[WCW vs. nWo - World Tour (E)]
+00A094EC,00A2164D
+
+[WCW vs. nWo - World Tour (U) (V1.0)]
+00A0936C,00A214CD
+
+[WCW vs. nWo - World Tour (U) (V1.1)]
+00A0955C,00A216BD
+
+[Virtual Pro Wrestling 64 (J)]
+00EF40D4,00F1A374
+
+--------------------------------------------------------------------------------
+
+[WCW-nWo Revenge (E) (Binary FX)]:type=Sng
+0002E21C,0002D230,8002C630
+
+[WCW-nWo Revenge (U) (Binary FX)]:type=Sng
+00030ACC,0002FAE0,8002EEE0
+
+[WCW-nWo Revenge (U)]:type=ASMICSng
+002058CA,00206848
+00206848,00207982
+00207982,00208322
+00208322,00209752
+00209752,00209F6E
+00209F6E,0020A54C
+0020A54C,0020B932
+0020B932,0020BD82
+0020BD82,0020D5BE
+0020D5BE,0020E70E
+0020E70E,0020F8E4
+0020F8E4,00210666
+00210666,002126A6
+002126A6,00213882
+00213882,00214C70
+00214C70,002167DA
+002167DA,002169A6
+002169A6,0021831E
+0021831E,00218816
+00218816,0021A828
+0021A828,0021C8D4
+
+--------------------------------------------------------------------------------
+[WWF WrestleMania 2000 (E)]:type=LZSS_0BSng
+48DB96,48EB4C
+48EB4C,490AEC
+490AEC,491030
+491030,491BC6
+491BC6,491F9A
+491F9A,4941BE
+4941BE,495EB2
+495EB2,4961F0
+4961F0,49648C
+49648C,4968AA
+4968AA,4982EA
+4982EA,4993B0
+4993B0,499FE6
+499FE6,49B02A
+49B02A,49C53E
+49C53E,49E22A
+
+[WWF WrestleMania 2000 (E) (Binary FX)]:type=Sng
+012B1ED0,012B3500
+0143FD90,014407DA
+
+[WWF WrestleMania 2000 (J)]:type=LZSS_0BSng
+0048567A,00486630
+00486630,004885D0
+004885D0,00488B14
+00488B14,004896AA
+004896AA,00489A7E
+00489A7E,0048BCA2
+0048BCA2,0048D996
+0048D996,0048DCD4
+0048DCD4,0048DF70
+0048DF70,0048E38E
+0048E38E,0048FDCE
+0048FDCE,00490E94
+00490E94,00491ACA
+00491ACA,00492B0E
+00492B0E,00494022
+00494022,00495D0E
+
+[WWF WrestleMania 2000 (J) (Binary FX)]:type=Sng
+012A9AA0,012AB0D0
+01437960,014383AA
+
+[WWF WrestleMania 2000 (U)]:type=LZSS_0BSng
+48DB76,48EB2C
+48EB2C,490ACC
+490ACC,491010
+491010,491BA6
+491BA6,491F7A
+491F7A,49419E
+49419E,495E92
+495E92,4961D0
+4961D0,49646C
+49646C,49688A
+49688A,4982CA
+4982CA,499390
+499390,499FC6
+499FC6,49B00A
+49B00A,49C51E
+49C51E,49E20A
+
+[WWF WrestleMania 2000 (U) (Binary FX)]:type=Sng
+012B1EB0,012B34E0
+0143FD70,014407BA
+
+--------------------------------------------------------------------------------
+[Virtual Pro Wrestling 2 - Oudou Keishou (J) (Binary FX)]:type=Sng
+0144E0A0,0144FD26
+0156E7D0,0156EA2C
+01C97400,01C98A10
+01D0AC40,01D0C164
+01E47EF0,01E487AC
+01E90030,01E906F4
+01EDC410,01EDCAE0
+
+[Virtual Pro Wrestling 2 - Oudou Keishou (J)]:type=LZSS_0BSng
+272620,2735D6
+2735D6,275576
+275576,275ABA
+275ABA,276650
+276650,27860E
+27860E,27A302
+27A302,27A640
+27A640,27A8DC
+27A8DC,27AE06
+27AE06,27B2CC
+27B2CC,27B792
+27B792,27B946
+27B946,27BD64
+27BD64,27D7A4
+27D7A4,27E86A
+27E86A,27F4A0
+27F4A0,2804E4
+2804E4,2819F8
+2819F8,2836E4
+
+--------------------------------------------------------------------------------
+[WWF No Mercy (E) (V1.0)]:type=Sng
+0029FC88,002A0B12
+002A0B12,002A0D66
+002A0D66,002A106C
+002A106C,002A473A
+002A473A,002A4C50
+002A4C50,002AB684
+002AB684,002AD7D6
+002AD7D6,002AEC84
+002AEC84,002B28BE
+002B28BE,002B396C
+002B396C,002B6D66
+002B6D66,002B985C
+002B985C,002B9B42
+002B9B42,002BA2E0
+002BA2E0,002BAC30
+002BAC30,002BBAEA
+002BBAEA,002BCEF0
+002BCEF0,002BD67A
+002BD67A,002BE27E
+002BE27E,002BE92A
+002BE92A,002BEDC0
+002BEDC0,002BF17A
+002BF17A,002BF51A
+002BF51A,002BFC16
+002BFC16,002C044A
+002C044A,002C33B2
+002C33B2,002C35FE
+
+[WWF No Mercy (E) (V1.0) (Binary FX)]:type=Sng
+01856060,018580FA
+01965D20,019674DC
+
+[WWF No Mercy (E) (V1.1)]:type=Sng
+0029FB28,002A09B2
+002A09B2,002A0C06
+002A0C06,002A0F0C
+002A0F0C,002A45DA
+002A45DA,002A4AF0
+002A4AF0,002AB524
+002AB524,002AD676
+002AD676,002AEB24
+002AEB24,002B275E
+002B275E,002B380C
+002B380C,002B6C06
+002B6C06,002B96FC
+002B96FC,002B99E2
+002B99E2,002BA180
+002BA180,002BAAD0
+002BAAD0,002BB98A
+002BB98A,002BCD90
+002BCD90,002BD51A
+002BD51A,002BE11E
+002BE11E,002BE7CA
+002BE7CA,002BEC60
+002BEC60,002BF01A
+002BF01A,002BF3BA
+002BF3BA,002BFAB6
+002BFAB6,002C02EA
+002C02EA,002C3252
+002C3252,002C349E
+
+[WWF No Mercy (E) (V1.1) (Binary FX)]:type=Sng
+01855F00,01857F9A
+01965BC0,0196737C
+
+[WWF No Mercy (U) (V1.0)]:type=Sng
+0029FC18,002A0AA2
+002A0AA2,002A0CF6
+002A0CF6,002A0FFC
+002A0FFC,002A46CA
+002A46CA,002A4BE0
+002A4BE0,002AB614
+002AB614,002AD766
+002AD766,002AEC14
+002AEC14,002B284E
+002B284E,002B38FC
+002B38FC,002B6CF6
+002B6CF6,002B97EC
+002B97EC,002B9AD2
+002B9AD2,002BA270
+002BA270,002BABC0
+002BABC0,002BBA7A
+002BBA7A,002BCE80
+002BCE80,002BD60A
+002BD60A,002BE20E
+002BE20E,002BE8BA
+002BE8BA,002BED50
+002BED50,002BF10A
+002BF10A,002BF4AA
+002BF4AA,002BFBA6
+002BFBA6,002C03DA
+002C03DA,002C3342
+002C3342,002C358E
+
+[WWF No Mercy (U) (V1.0) (Binary FX)]:type=Sng
+01855FF0,0185808A
+01965CB0,0196746C
+
+================================================================================
+if (gameName.CompareNoCase("Sng") == 0)
+{
+	compressed = false;
+	for (int x = 0; x < gameConfig[gameNumber].numberMidis; x++)
+	{
+		CString tempSpotStr;
+		if (gameConfig[gameNumber].midiBanks[x].extra != 0)
+			tempSpotStr.Format("%08X:%08X:%08X", gameConfig[gameNumber].midiBanks[x].start, (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start), gameConfig[gameNumber].midiBanks[x].extra);
+		else
+			tempSpotStr.Format("%08X:%08X", gameConfig[gameNumber].midiBanks[x].start, (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start));
+		addMidiStrings.push_back(tempSpotStr);
+		numberMidiStrings++;
+
+		if (calculateInstrumentCount)
+		{
+			int numberInstTemp = 0;
+			
+			bool hasLoopPoint = false;
+			int loopStart = 0;
+			int loopEnd = 0;
+			midiParse.ExportToMidi(gameConfig[gameNumber].gameName, buffer, bufferSize, gameConfig[gameNumber].midiBanks[x].start, (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start), "asdasdaw43.mid", gameName, numberInstTemp, 0, compressed, hasLoopPoint, loopStart, loopEnd, true, separateByInstrument, false, gameConfig[gameNumber].midiBanks[x].extra, gameConfig[gameNumber].midiBanks[x].extra2, writeOutLoops, loopWriteCount, extendTracksToHighest, extraGameMidiInfo);
+			if (numberInstTemp > numberInstruments)
+				numberInstruments = numberInstTemp;
+			::DeleteFile("asdasdaw43.mid");
+		}
+	}
+}
+
+if (gameName.CompareNoCase("ASMICSng") == 0)
+{
+	compressed = true;
+
+	for (int x = 0; x < gameConfig[gameNumber].numberMidis; x++)
+	{
+		CString tempSpotStr;
+		tempSpotStr.Format("%08X:%08X", gameConfig[gameNumber].midiBanks[x].start, (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start));
+		addMidiStrings.push_back(tempSpotStr);
+		numberMidiStrings++;
+
+		if (calculateInstrumentCount)
+		{
+			int numberInstTemp = 0;
+			int fileSizeCompressed = -1;
+			CASMICDecoder decode;
+			unsigned char* outputDecompressed = new unsigned char[0x50000];
+			int expectedSize = decode.dec(&buffer[gameConfig[gameNumber].midiBanks[x].start], fileSizeCompressed, outputDecompressed);
+
+			midiParse.SngToMidi(outputDecompressed, expectedSize, "asdasdaw43.mid", numberInstTemp, true, separateByInstrument, gameConfig[gameNumber].midiBanks[x].extra);
+
+			if (numberInstTemp > numberInstruments)
+				numberInstruments = numberInstTemp;
+			delete [] outputDecompressed;
+			::DeleteFile("asdasdaw43.mid");
+		}
+	}
+}
+
+if (gameName.CompareNoCase("LZSS_0BSng") == 0)
+{
+	compressed = true;
+
+	for (int x = 0; x < gameConfig[gameNumber].numberMidis; x++)
+	{
+		CString tempSpotStr;
+		tempSpotStr.Format("%08X:%08X", gameConfig[gameNumber].midiBanks[x].start, (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start));
+		addMidiStrings.push_back(tempSpotStr);
+		numberMidiStrings++;
+
+		if (calculateInstrumentCount)
+		{
+			int numberInstTemp = 0;
+			int fileSizeCompressed = (gameConfig[gameNumber].midiBanks[x].end - gameConfig[gameNumber].midiBanks[x].start);
+			CMidwayDecoder decode;
+			unsigned char* outputDecompressed = new unsigned char[0x50000];
+			int expectedSize = decode.dec(&buffer[gameConfig[gameNumber].midiBanks[x].start+4], fileSizeCompressed, outputDecompressed, "LZSS_0");
+			
+			/*FILE* a = fopen("C:\\temp\\a.bin", "wb");
+			fwrite(outputDecompressed, 1, expectedSize, a);
+			fclose(a);*/
+			midiParse.SngToMidi(outputDecompressed, expectedSize, "asdasdaw43.mid", numberInstTemp, true, separateByInstrument, gameConfig[gameNumber].midiBanks[x].extra);
+
+			if (numberInstTemp > numberInstruments)
+				numberInstruments = numberInstTemp;
+			delete [] outputDecompressed;
+			::DeleteFile("asdasdaw43.mid");
+		}
+	}
+}
