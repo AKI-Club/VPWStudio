@@ -1399,8 +1399,28 @@ namespace VPWStudio
 			Toki1TestDialog t1td = new Toki1TestDialog();
 			t1td.ShowDialog();
 		}
+
 		#endregion
 
-		
+		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "open png";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+				{
+					AkiTexture test = new AkiTexture();
+					test.FromBitmap(b);
+					FileStream fs = new FileStream("test.tex", FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+			}
+		}
 	}
 }
