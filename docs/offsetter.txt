@@ -112,3 +112,49 @@ This is used to insert 'raw', possibly pre-compressed files."""
 ##    rom.insert(filetable-a, bytes(a))
 
     return rom
+
+--------------------------------------------------------------------------------
+def VPW2_EOF(rom, pad=False):
+    """Last address revealed at (0x17B7A,0x17B82).
+    Read the PtrTable before it at (0x17A6A,0x17A6E).
+    0x20 is #entries, 0x30 starts entries. Each entry is 0xA0.
+    At PtrTable + 0xA0(#entries-1) + 0x30 is final wave, so grab size from that.
+    Entry+0 is offset, Entry+4 is size.  Pad to 0x16 for actual.
+    """
+    # Make sure it's mutable.
+    if isinstance(rom, bytes):
+        rom = bytearray(rom)
+
+    # Find size of final wavebank, in case somebody editted it.
+    h = int.from_bytes(rom[0x17A6A:0x17A6C], byteorder='big') << 16
+    l = int.from_bytes(rom[0x17A6E:0x17A70], byteorder='big', signed=True)
+    ptr = h + l
+
+    # Get size and offset.
+    ptr+= int.from_bytes(rom[ptr+0x2C:ptr+0x30], byteorder='big')
+    p = int.from_bytes(rom[ptr-0xA0:ptr-0x9C], byteorder='big')
+    p+= int.from_bytes(rom[ptr-0x9C:ptr-0x98], byteorder='big')
+
+    # Find position of final wavebank.
+    h = int.from_bytes(rom[0x17B7A:0x17B7C], byteorder='big') << 16
+    l = int.from_bytes(rom[0x17B82:0x17B84], byteorder='big', signed=True)
+    wbk = h + l
+    # Endpoint of ROM, followed by padded endpoint.
+    wbk+=p
+    e = (wbk+15) & ~15
+
+    if e>=0x4000000:
+        print("Warning! Your ROM exceeds 512Mb.  It will not run on console.")
+
+    # Pad wbk to 0x16, in conformance with the standard (though not 100% necessary).
+    b = b'\xb6U#\x950\xec+\x8d\xb6U#\x950\xec+\x8d'
+    rom[wbk:e] = b[wbk&15:]
+    rom = rom[:e]
+
+    # If pad=True, pad the ROM up to the nearest 0x400000 boundry.
+    if pad:
+        p = e+0x3FFFFF
+        p&= ~0x3FFFFF
+        from itertools import repeat
+        rom.extend(repeat(255, p-e))
+    return rom
