@@ -19,7 +19,7 @@ This is used to insert 'raw', possibly pre-compressed files."""
     if isinstance(rom, bytes):
         rom = bytearray(rom)
 
-	# (freem) get the filetable location from the code.
+	# (freem) get the filetable location from the code ("SetupFiletable").
     h = int.from_bytes(rom[0x48DA:0x48DC], byteorder='big') << 16
     l = int.from_bytes(rom[0x48DE:0x48E0], byteorder='big', signed=True)
     filetable = h + l
