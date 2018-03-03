@@ -27,6 +27,7 @@ namespace VPWStudio
 		/// </summary>
 		public UInt32 Location;
 
+		#region Program-Specific
 		/// <summary>
 		/// FileType for this item.
 		/// </summary>
@@ -41,6 +42,7 @@ namespace VPWStudio
 		/// Comment about this file entry.
 		/// </summary>
 		public string Comment;
+		#endregion // program-specific
 		#endregion
 
 		#region Constructors
@@ -369,6 +371,8 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="id">File ID to get size of.</param>
 		/// <returns></returns>
+		/// Note: This calculates the size based on the filetable
+		/// entries, not the files themselves.
 		public uint GetEntrySize(int id)
 		{
 			if (id == this.Entries.Count)
