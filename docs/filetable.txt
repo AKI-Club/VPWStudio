@@ -166,6 +166,84 @@ Routine begins at
 ================================================================================
 [WCW vs. nWo World Tour, PAL]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80004BF0
+* Z64: 0x57F0
+
+"li $a0, 0x55EC" ; filetable size
+(24 04 55 EC)
+* IDA: 80004C18
+* Z64: 0x5818
+
+"lui $a0, 0x7C"
+(3C 04 00 7C)
+* IDA: 80004C24
+* Z64: 0x5824
+
+"li $a0, 0x7C1C00" ; filetable start
+(24 84 1C 00)
+* IDA: 80004C2C
+* Z64: 0x582C
+
+"li $a2, 0x55EC" ; filetable size
+(24 06 55 EC)
+* IDA: 80004C38
+* Z64: 0x5838
+
+"li $a0, 0x55E8" ; filetable size - 1 entry
+(24 04 55 E8)
+* IDA: 80004C40
+* Z64: 0x5840
+
+"lui $s4, 4"
+(3C 14 00 04)
+* IDA: 80004C5C
+* Z64: 0x585C
+
+"li $s4, 0x39490" ; first file location?
+(26 94 94 90)
+* IDA: 80004C64
+* Z64: 0x5864
+
+"li $s6, 0x55E8" ; filetable size - 1 entry
+(24 16 55 E8)
+* IDA: 80004C70
+* Z64: 0x5870
+
+sub_80004D04
+--------------
+Routine begins at
+* IDA: 80004D04
+* Z64: 0x5904
+
+"slti $at, $t6, 0x157B" ; max file ID
+(29 C1 15 7B)
+* IDA: 80004D18
+* Z64: 0x5918
+
+"li $a3, 0x39490" ; first file location
+(3C 07 00 04 24 E7 94 90)
+* IDA: 80004D4F
+* Z64: 0x594F
+
+sub_800014B0
+------------
+Routine begins at
+* IDA: 800014B0
+* Z64: 0x20B0
+
+"lui $t8, 4" ; set up high byte of file location
+(3C 18 00 04)
+* IDA: 800014E8
+* Z64: 0x20E8
+
+"li $t8, 0x39490" ; first file location
+(27 18 94 90)
+* IDA: 800014FC
+* Z64: 0x20FC
+
 ================================================================================
 [Virtual Pro-Wrestling 64, NTSC-J]
 
