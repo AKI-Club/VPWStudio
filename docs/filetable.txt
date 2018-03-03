@@ -7,6 +7,32 @@ Notes on the filetable (and manipulating it)
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.1]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80004C10
+* Z64: 0x5810
+
+"li $a0, 0x55EC" ; filetable size
+
+"li $a0, 0x7C1C70" ; filetable location
+
+"li $a2, 0x55EC" ; filetable size
+
+"li $a0, 0x55E8" ; filetable size - 4 (one entry)
+
+"li $s4, 0x39500" ; first file location
+
+sub_80004D24
+------------
+Routine begins at
+* IDA: 80004D24
+* Z64: ?
+
+"slti $at, $t6, 0x157B" ; max file ID/count
+
+"li $a3, 0x39500" ; first file location
+
 ================================================================================
 [WCW vs. nWo World Tour, PAL]
 
