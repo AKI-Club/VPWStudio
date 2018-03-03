@@ -351,6 +351,27 @@ namespace VPWStudio
 			{
 				case AkiTextureFormat.Ci4:
 					// one pixel = two bytes
+					List<byte> pixels = new List<byte>();
+					byte build = 0;
+					for (int y = 0; y < this.Height; y++)
+					{
+						for (int x = 0; x < this.Width; x++)
+						{
+							if (x % 2 == 0)
+							{
+								build = (byte)((BitmapColors.IndexOfValue(bm.GetPixel(x, y)) & 0x0F) << 4);
+							}
+							else
+							{
+								build |= (byte)(BitmapColors.IndexOfValue(bm.GetPixel(x, y)) & 0x0F);
+								pixels.Add(build);
+							}
+						}
+					}
+					for (int i = 0; i < pixels.Count; i++)
+					{
+						this.Data[i] = pixels[i];
+					}
 					break;
 
 				case AkiTextureFormat.Ci8:

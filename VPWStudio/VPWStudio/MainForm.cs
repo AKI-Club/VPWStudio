@@ -1410,7 +1410,8 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				Bitmap b = new Bitmap(ofd.FileName);
-				if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+				if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed ||
+					b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format4bppIndexed)
 				{
 					AkiTexture test = new AkiTexture();
 					test.FromBitmap(b);
