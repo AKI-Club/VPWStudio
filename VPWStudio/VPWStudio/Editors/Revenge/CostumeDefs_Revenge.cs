@@ -43,9 +43,50 @@ namespace VPWStudio.Editors.Revenge
 		#region Data Load
 		private void LoadCostumeDefs(BinaryReader br)
 		{
-			//
+			bool hasLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry cdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["CostumeDefs"]);
+				if (cdEntry != null)
+				{
+					br.BaseStream.Seek(cdEntry.Address, SeekOrigin.Begin);
+					hasLocation = true;
+				}
+			}
+			if (!hasLocation)
+			{
+				// fallback to hardedcoded offset
+				/*
+				MessageBox.Show(
+					"Costume Definition location not found; using hardcoded offset instead.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Information
+				);
+
+				long offset = 0;
+				switch (Program.CurrentProject.Settings.GameType)
+				{
+					case SpecificGame.Revenge_NTSC_U:
+						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
+						offset = 0x33744;
+						break;
+					case SpecificGame.Revenge_PAL:
+						
+						offset = 0;
+						break;
+				}
+				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				*/
+
+				// if you thought mask defs were a pain, this is worse.
+			}
 		}
 
+		/// <summary>
+		/// Load Mask/Head Definitions.
+		/// </summary>
+		/// <param name="br"></param>
 		private void LoadMaskDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
@@ -72,6 +113,7 @@ namespace VPWStudio.Editors.Revenge
 				switch (Program.CurrentProject.Settings.GameType)
 				{
 					case SpecificGame.Revenge_NTSC_U:
+						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
 						offset = 0x33744;
 						break;
 					case SpecificGame.Revenge_PAL:
@@ -135,6 +177,9 @@ namespace VPWStudio.Editors.Revenge
 		#endregion
 
 		#region ListBox Population
+		/// <summary>
+		/// Populate the Costumes listbox.
+		/// </summary>
 		private void PopulateCostumes()
 		{
 			lbCostumes.Items.Clear();
@@ -148,6 +193,9 @@ namespace VPWStudio.Editors.Revenge
 			lbCostumes.EndUpdate();
 		}
 
+		/// <summary>
+		/// Populate the Mask/Head listbox.
+		/// </summary>
 		private void PopulateMasks()
 		{
 			lbHeadsMasks.Items.Clear();
@@ -163,9 +211,19 @@ namespace VPWStudio.Editors.Revenge
 		#endregion
 
 		#region Costumes
+		private void LoadCostumeDefinition(CostumeDef_Early cdef)
+		{
+			// lots of shit.
+		}
+
 		private void lbCostumes_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (lbCostumes.SelectedIndex < 0)
+			{
+				return;
+			}
 
+			LoadCostumeDefinition(CostumeDefs[lbCostumes.SelectedIndex]);
 		}
 		#endregion
 
@@ -304,10 +362,11 @@ namespace VPWStudio.Editors.Revenge
 				pbExtra.Image = null;
 			}
 
-			// ripped mask is probably CI8
+			// ripped mask is probably CI8, but we'll never know,
+			// since it wasn't implemented in Revenge.
 			if (mdef.RippedMaskPalette != 0 && mdef.RippedMaskTexture != 0)
 			{
-
+				
 			}
 
 			romReader.Close();
