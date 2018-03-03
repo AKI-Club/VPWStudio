@@ -50,6 +50,9 @@
     <ApplicationIcon>VPWStudio.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -182,10 +185,8 @@
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\Crc32.cs" />
-    <Compile Include="Helpers\LzssOriginal.cs" />
     <Compile Include="Helpers\N64Colors.cs" />
     <Compile Include="Helpers\NameHandler.cs" />
-    <Compile Include="Helpers\TestLzss.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
@@ -336,6 +337,7 @@
     <EmbeddedResource Include="Tools\Toki1TestDialog.resx">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
