@@ -1346,8 +1346,6 @@ namespace VPWStudio
 
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("this thing SUUUUUUUUUCKS, don't use it.\n\nwait until I finish the better lzss");
-
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select file to LZSS";
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -1357,8 +1355,7 @@ namespace VPWStudio
 				FileStream outStr = new FileStream("comp.lzss", FileMode.Create);
 				BinaryWriter bw = new BinaryWriter(outStr);
 
-				TestLzss.Compress(br, bw);
-				//LzssOriginal.Encode(br, bw);
+				AsmikLzss.Encode(br, bw);
 
 				bw.Flush();
 				bw.Close();
