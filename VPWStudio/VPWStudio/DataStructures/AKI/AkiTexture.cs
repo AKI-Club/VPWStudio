@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace VPWStudio
 {
@@ -10,8 +12,9 @@ namespace VPWStudio
 	public class AkiTexture
 	{
 		/// <summary>
-		/// Possible 
+		/// Possible image formats.
 		/// </summary>
+		/// Non-CI4/CI8 formats have not been found in TEX files yet??
 		public enum AkiTextureFormat
 		{
 			Ci4 = 0x04, // 4bpp
@@ -95,6 +98,7 @@ namespace VPWStudio
 			//this.CachedBitmap = null;
 		}
 
+		#region Binary Read/Write
 		/// <summary>
 		/// Read AkiTexture data using a BinaryReader.
 		/// </summary>
@@ -186,6 +190,66 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Write AkiTexture data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw"></param>
+		public void WriteData(BinaryWriter bw)
+		{
+			// header
+			bw.Write('T');
+			bw.Write('E');
+			bw.Write('X');
+			bw.Write((byte)0);
+
+			// width
+			byte[] w = BitConverter.GetBytes(this.Width);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(w);
+			}
+			bw.Write(w);
+
+			// height
+			byte[] h = BitConverter.GetBytes(this.Height);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(h);
+			}
+			bw.Write(h);
+
+			// image format
+			bw.Write((byte)this.ImageFormat);
+
+			// color width
+			bw.Write(this.ColorWidth);
+
+			// number of colors
+			byte[] nc = BitConverter.GetBytes(this.PaletteNumColors);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(nc);
+			}
+			bw.Write(nc);
+
+			// palette data at 0x10
+			bw.Seek(0x10, SeekOrigin.Begin);
+			for (int i = 0; i < this.PaletteNumColors; i++)
+			{
+				byte[] cv = BitConverter.GetBytes(this.Palette[i]);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(cv);
+				}
+				bw.Write(cv);
+			}
+
+			// image data after palette
+			bw.Write(this.Data);
+		}
+		#endregion
+
+		#region Bitmap conversion routines
+		/// <summary>
 		/// Convert this AkiTexture to a Bitmap.
 		/// </summary>
 		/// <returns></returns>
@@ -236,5 +300,71 @@ namespace VPWStudio
 				}
 			}
 		}
+
+		public void FromBitmap(Bitmap bm)
+		{
+			if (bm.PixelFormat == PixelFormat.Format4bppIndexed)
+			{
+				// CI4
+				this.ImageFormat = AkiTextureFormat.Ci4;
+				this.ColorWidth = 2;
+				this.PaletteNumColors = 16;
+			}
+			else if (bm.PixelFormat == PixelFormat.Format8bppIndexed)
+			{
+				// CI8
+				this.ImageFormat = AkiTextureFormat.Ci8;
+				this.ColorWidth = 2;
+				this.PaletteNumColors = 256;
+			}
+			else
+			{
+				// unsupported format
+				return;
+			}
+
+			// set common items
+			this.Width = (UInt16)bm.Width;
+			this.Height = (UInt16)bm.Height;
+
+			// convert palette
+			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
+			this.Palette = new UInt16[this.PaletteNumColors];
+			for (int i = 0; i < bm.Palette.Entries.Length; i++)
+			{
+				BitmapColors.Add(i, bm.Palette.Entries[i]);
+				this.Palette[i] = N64Colors.ColorToValue5551(bm.Palette.Entries[i]);
+
+				/*
+				byte[] convColor = BitConverter.GetBytes(N64Colors.ColorToValue5551(bm.Palette.Entries[i]));
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(convColor);
+				}
+				this.Palette[i] = BitConverter.ToUInt16(convColor, 0);
+				*/
+			}
+
+			// convert image data
+			this.Data = new byte[this.Width * this.Height];
+			switch (this.ImageFormat)
+			{
+				case AkiTextureFormat.Ci4:
+					// one pixel = two bytes
+					break;
+
+				case AkiTextureFormat.Ci8:
+					// one pixel = one byte
+					for (int y = 0; y < this.Height; y++)
+					{
+						for (int x = 0; x < this.Width; x++)
+						{
+							this.Data[(y*this.Width) + x] = (byte)BitmapColors.IndexOfValue(bm.GetPixel(x, y));
+						}
+					}
+					break;
+			}
+		}
+		#endregion
 	}
 }
