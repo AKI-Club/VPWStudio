@@ -63,9 +63,13 @@ namespace VPWStudio
 		/// Output ROM internal name.
 		/// </summary>
 		/// Typically copied from the input ROM
-		public string OutputRomInternalName = String.Empty;
+		public string OutputRomInternalName;
 
-		// todo: output ROM game code (four characters total, 'N' + game code + region code)
+		/// <summary>
+		/// Output ROM game code.
+		/// </summary>
+		/// Four characters total: 'N' + game code + region code
+		public string OutputRomGameCode;
 		#endregion
 
 		/// <summary>
@@ -84,6 +88,7 @@ namespace VPWStudio
 			this.CustomLocationFilePath = String.Empty;
 			this.ProjectGSCodeFilePath = String.Empty;
 			this.OutputRomInternalName = String.Empty;
+			this.OutputRomGameCode = String.Empty;
 		}
 
 		/// <summary>
@@ -111,6 +116,7 @@ namespace VPWStudio
 			this.CustomLocationFilePath = _locPath;
 			this.ProjectGSCodeFilePath = _gscPath;
 			this.OutputRomInternalName = String.Empty;
+			this.OutputRomGameCode = String.Empty;
 		}
 
 		/// <summary>
@@ -139,6 +145,7 @@ namespace VPWStudio
 			this.CustomLocationFilePath = _src.CustomLocationFilePath;
 			this.ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
 			this.OutputRomInternalName = _src.OutputRomInternalName;
+			this.OutputRomGameCode = _src.OutputRomGameCode;
 		}
 	}
 }
