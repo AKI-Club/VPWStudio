@@ -303,6 +303,7 @@ namespace VPWStudio
 				}
 				lvFileList.EndUpdate();
 				Program.UnsavedChanges = true;
+				((MainForm)(this.MdiParent)).UpdateTitleBar();
 			}
 		}
 
