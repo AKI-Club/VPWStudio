@@ -48,6 +48,7 @@ namespace VPWStudio
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
 				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
+				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
 			}
 		}
 
@@ -137,6 +138,14 @@ namespace VPWStudio
 			}
 
 			// todo: output rom internal name must not be blank?
+
+			// internal game code must start with "N" because none of the games have 64DD support
+			// this isn't a hard error; just replace it silently.
+			if (!Program.CurrentProject.Settings.OutputRomInternalName.StartsWith("N"))
+			{
+				string remain = Program.CurrentProject.Settings.OutputRomInternalName.Substring(1);
+				Program.CurrentProject.Settings.OutputRomInternalName = "N" + remain;
+			}
 			#endregion
 
 			// check for project type change

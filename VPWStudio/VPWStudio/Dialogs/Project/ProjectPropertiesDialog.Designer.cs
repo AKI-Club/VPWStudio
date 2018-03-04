@@ -32,11 +32,7 @@
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tcProjectProperties = new System.Windows.Forms.TabControl();
 			this.tpMainProperties = new System.Windows.Forms.TabPage();
-			this.tpOutputRom = new System.Windows.Forms.TabPage();
 			this.tlpProjectOptions = new System.Windows.Forms.TableLayoutPanel();
-			this.tlpGameSharkCodeFile = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetGSCodefile = new System.Windows.Forms.Button();
-			this.tbGSCodeFile = new System.Windows.Forms.TextBox();
 			this.labelProjectName = new System.Windows.Forms.Label();
 			this.labelAuthors = new System.Windows.Forms.Label();
 			this.labelGameType = new System.Windows.Forms.Label();
@@ -47,12 +43,17 @@
 			this.tbProjectName = new System.Windows.Forms.TextBox();
 			this.tbAuthors = new System.Windows.Forms.TextBox();
 			this.cbGameType = new System.Windows.Forms.ComboBox();
+			this.labelGSCodeFile = new System.Windows.Forms.Label();
+			this.tlpGameSharkCodeFile = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetGSCodefile = new System.Windows.Forms.Button();
+			this.tbGSCodeFile = new System.Windows.Forms.TextBox();
 			this.tlpCustomLoc = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetCustomLocFile = new System.Windows.Forms.Button();
 			this.tbCustomLocationFile = new System.Windows.Forms.TextBox();
 			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
-			this.labelGSCodeFile = new System.Windows.Forms.Label();
+			this.tpOutputRom = new System.Windows.Forms.TabPage();
 			this.tlpOutputRom = new System.Windows.Forms.TableLayoutPanel();
+			this.tbOutRomProductCode = new System.Windows.Forms.TextBox();
 			this.labelOutROM = new System.Windows.Forms.Label();
 			this.tlpOutROM = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetOutROM = new System.Windows.Forms.Button();
@@ -60,14 +61,13 @@
 			this.labelOutRomInternalName = new System.Windows.Forms.Label();
 			this.tbOutRomInternalName = new System.Windows.Forms.TextBox();
 			this.labelOutRomGameCode = new System.Windows.Forms.Label();
-			this.tbOutRomProductCode = new System.Windows.Forms.TextBox();
 			this.tcProjectProperties.SuspendLayout();
 			this.tpMainProperties.SuspendLayout();
-			this.tpOutputRom.SuspendLayout();
 			this.tlpProjectOptions.SuspendLayout();
-			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.tlpBaseROM.SuspendLayout();
+			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
+			this.tpOutputRom.SuspendLayout();
 			this.tlpOutputRom.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
 			this.SuspendLayout();
@@ -117,17 +117,6 @@
 			this.tpMainProperties.Text = "Main";
 			this.tpMainProperties.UseVisualStyleBackColor = true;
 			// 
-			// tpOutputRom
-			// 
-			this.tpOutputRom.Controls.Add(this.tlpOutputRom);
-			this.tpOutputRom.Location = new System.Drawing.Point(4, 22);
-			this.tpOutputRom.Name = "tpOutputRom";
-			this.tpOutputRom.Padding = new System.Windows.Forms.Padding(3);
-			this.tpOutputRom.Size = new System.Drawing.Size(502, 216);
-			this.tpOutputRom.TabIndex = 1;
-			this.tpOutputRom.Text = "Output ROM";
-			this.tpOutputRom.UseVisualStyleBackColor = true;
-			// 
 			// tlpProjectOptions
 			// 
 			this.tlpProjectOptions.ColumnCount = 2;
@@ -157,39 +146,6 @@
 			this.tlpProjectOptions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
 			this.tlpProjectOptions.Size = new System.Drawing.Size(496, 210);
 			this.tlpProjectOptions.TabIndex = 3;
-			// 
-			// tlpGameSharkCodeFile
-			// 
-			this.tlpGameSharkCodeFile.ColumnCount = 2;
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tlpGameSharkCodeFile.Controls.Add(this.buttonSetGSCodefile, 1, 0);
-			this.tlpGameSharkCodeFile.Controls.Add(this.tbGSCodeFile, 0, 0);
-			this.tlpGameSharkCodeFile.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpGameSharkCodeFile.Location = new System.Drawing.Point(141, 139);
-			this.tlpGameSharkCodeFile.Name = "tlpGameSharkCodeFile";
-			this.tlpGameSharkCodeFile.RowCount = 1;
-			this.tlpGameSharkCodeFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpGameSharkCodeFile.Size = new System.Drawing.Size(352, 28);
-			this.tlpGameSharkCodeFile.TabIndex = 13;
-			// 
-			// buttonSetGSCodefile
-			// 
-			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetGSCodefile.Location = new System.Drawing.Point(319, 4);
-			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
-			this.buttonSetGSCodefile.Size = new System.Drawing.Size(30, 19);
-			this.buttonSetGSCodefile.TabIndex = 1;
-			this.buttonSetGSCodefile.Text = "...";
-			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
-			// 
-			// tbGSCodeFile
-			// 
-			this.tbGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbGSCodeFile.Location = new System.Drawing.Point(3, 4);
-			this.tbGSCodeFile.Name = "tbGSCodeFile";
-			this.tbGSCodeFile.Size = new System.Drawing.Size(310, 20);
-			this.tbGSCodeFile.TabIndex = 2;
 			// 
 			// labelProjectName
 			// 
@@ -290,6 +246,49 @@
 			this.cbGameType.Size = new System.Drawing.Size(352, 21);
 			this.cbGameType.TabIndex = 9;
 			// 
+			// labelGSCodeFile
+			// 
+			this.labelGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelGSCodeFile.AutoSize = true;
+			this.labelGSCodeFile.Location = new System.Drawing.Point(3, 146);
+			this.labelGSCodeFile.Name = "labelGSCodeFile";
+			this.labelGSCodeFile.Size = new System.Drawing.Size(132, 13);
+			this.labelGSCodeFile.TabIndex = 12;
+			this.labelGSCodeFile.Text = "Game&Shark Code File";
+			// 
+			// tlpGameSharkCodeFile
+			// 
+			this.tlpGameSharkCodeFile.ColumnCount = 2;
+			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpGameSharkCodeFile.Controls.Add(this.buttonSetGSCodefile, 1, 0);
+			this.tlpGameSharkCodeFile.Controls.Add(this.tbGSCodeFile, 0, 0);
+			this.tlpGameSharkCodeFile.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpGameSharkCodeFile.Location = new System.Drawing.Point(141, 139);
+			this.tlpGameSharkCodeFile.Name = "tlpGameSharkCodeFile";
+			this.tlpGameSharkCodeFile.RowCount = 1;
+			this.tlpGameSharkCodeFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpGameSharkCodeFile.Size = new System.Drawing.Size(352, 28);
+			this.tlpGameSharkCodeFile.TabIndex = 13;
+			// 
+			// buttonSetGSCodefile
+			// 
+			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetGSCodefile.Location = new System.Drawing.Point(319, 4);
+			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
+			this.buttonSetGSCodefile.Size = new System.Drawing.Size(30, 19);
+			this.buttonSetGSCodefile.TabIndex = 1;
+			this.buttonSetGSCodefile.Text = "...";
+			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
+			// 
+			// tbGSCodeFile
+			// 
+			this.tbGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbGSCodeFile.Location = new System.Drawing.Point(3, 4);
+			this.tbGSCodeFile.Name = "tbGSCodeFile";
+			this.tbGSCodeFile.Size = new System.Drawing.Size(310, 20);
+			this.tbGSCodeFile.TabIndex = 2;
+			// 
 			// tlpCustomLoc
 			// 
 			this.tlpCustomLoc.ColumnCount = 2;
@@ -336,15 +335,16 @@
 			this.chbCustomLocation.Text = "Custom &Location File";
 			this.chbCustomLocation.UseVisualStyleBackColor = true;
 			// 
-			// labelGSCodeFile
+			// tpOutputRom
 			// 
-			this.labelGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelGSCodeFile.AutoSize = true;
-			this.labelGSCodeFile.Location = new System.Drawing.Point(3, 146);
-			this.labelGSCodeFile.Name = "labelGSCodeFile";
-			this.labelGSCodeFile.Size = new System.Drawing.Size(132, 13);
-			this.labelGSCodeFile.TabIndex = 12;
-			this.labelGSCodeFile.Text = "Game&Shark Code File";
+			this.tpOutputRom.Controls.Add(this.tlpOutputRom);
+			this.tpOutputRom.Location = new System.Drawing.Point(4, 22);
+			this.tpOutputRom.Name = "tpOutputRom";
+			this.tpOutputRom.Padding = new System.Windows.Forms.Padding(3);
+			this.tpOutputRom.Size = new System.Drawing.Size(502, 216);
+			this.tpOutputRom.TabIndex = 1;
+			this.tpOutputRom.Text = "Output ROM";
+			this.tpOutputRom.UseVisualStyleBackColor = true;
 			// 
 			// tlpOutputRom
 			// 
@@ -366,6 +366,15 @@
 			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpOutputRom.Size = new System.Drawing.Size(496, 210);
 			this.tlpOutputRom.TabIndex = 0;
+			// 
+			// tbOutRomProductCode
+			// 
+			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 165);
+			this.tbOutRomProductCode.MaxLength = 4;
+			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
+			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
+			this.tbOutRomProductCode.TabIndex = 11;
 			// 
 			// labelOutROM
 			// 
@@ -414,7 +423,7 @@
 			// 
 			this.labelOutRomInternalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOutRomInternalName.AutoSize = true;
-			this.labelOutRomInternalName.Location = new System.Drawing.Point(3, 97);
+			this.labelOutRomInternalName.Location = new System.Drawing.Point(3, 98);
 			this.labelOutRomInternalName.Name = "labelOutRomInternalName";
 			this.labelOutRomInternalName.Size = new System.Drawing.Size(118, 13);
 			this.labelOutRomInternalName.TabIndex = 8;
@@ -423,7 +432,7 @@
 			// tbOutRomInternalName
 			// 
 			this.tbOutRomInternalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutRomInternalName.Location = new System.Drawing.Point(127, 93);
+			this.tbOutRomInternalName.Location = new System.Drawing.Point(127, 95);
 			this.tbOutRomInternalName.MaxLength = 20;
 			this.tbOutRomInternalName.Name = "tbOutRomInternalName";
 			this.tbOutRomInternalName.Size = new System.Drawing.Size(366, 20);
@@ -433,20 +442,11 @@
 			// 
 			this.labelOutRomGameCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOutRomGameCode.AutoSize = true;
-			this.labelOutRomGameCode.Location = new System.Drawing.Point(3, 167);
+			this.labelOutRomGameCode.Location = new System.Drawing.Point(3, 168);
 			this.labelOutRomGameCode.Name = "labelOutRomGameCode";
 			this.labelOutRomGameCode.Size = new System.Drawing.Size(118, 13);
 			this.labelOutRomGameCode.TabIndex = 10;
 			this.labelOutRomGameCode.Text = "&Product Code";
-			// 
-			// tbOutRomProductCode
-			// 
-			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 164);
-			this.tbOutRomProductCode.MaxLength = 4;
-			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
-			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
-			this.tbOutRomProductCode.TabIndex = 11;
 			// 
 			// ProjectPropertiesDialog
 			// 
@@ -467,15 +467,15 @@
 			this.Text = "Project Properties";
 			this.tcProjectProperties.ResumeLayout(false);
 			this.tpMainProperties.ResumeLayout(false);
-			this.tpOutputRom.ResumeLayout(false);
 			this.tlpProjectOptions.ResumeLayout(false);
 			this.tlpProjectOptions.PerformLayout();
-			this.tlpGameSharkCodeFile.ResumeLayout(false);
-			this.tlpGameSharkCodeFile.PerformLayout();
 			this.tlpBaseROM.ResumeLayout(false);
 			this.tlpBaseROM.PerformLayout();
+			this.tlpGameSharkCodeFile.ResumeLayout(false);
+			this.tlpGameSharkCodeFile.PerformLayout();
 			this.tlpCustomLoc.ResumeLayout(false);
 			this.tlpCustomLoc.PerformLayout();
+			this.tpOutputRom.ResumeLayout(false);
 			this.tlpOutputRom.ResumeLayout(false);
 			this.tlpOutputRom.PerformLayout();
 			this.tlpOutROM.ResumeLayout(false);
