@@ -301,6 +301,11 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Convert a Bitmap to an AkiTexture.
+		/// </summary>
+		/// <param name="bm">Bitmap to convert.</param>
+		/// <remarks>Only supports CI4 (16 colors) and CI8 (256 colors) formats.</remarks>
 		public void FromBitmap(Bitmap bm)
 		{
 			if (bm.PixelFormat == PixelFormat.Format4bppIndexed)
@@ -334,23 +339,14 @@ namespace VPWStudio
 			{
 				BitmapColors.Add(i, bm.Palette.Entries[i]);
 				this.Palette[i] = N64Colors.ColorToValue5551(bm.Palette.Entries[i]);
-
-				/*
-				byte[] convColor = BitConverter.GetBytes(N64Colors.ColorToValue5551(bm.Palette.Entries[i]));
-				if (BitConverter.IsLittleEndian)
-				{
-					Array.Reverse(convColor);
-				}
-				this.Palette[i] = BitConverter.ToUInt16(convColor, 0);
-				*/
 			}
 
 			// convert image data
-			this.Data = new byte[this.Width * this.Height];
 			switch (this.ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
 					// one pixel = two bytes
+					this.Data = new byte[(this.Width/2) * this.Height];
 					List<byte> pixels = new List<byte>();
 					byte build = 0;
 					for (int y = 0; y < this.Height; y++)
@@ -376,6 +372,7 @@ namespace VPWStudio
 
 				case AkiTextureFormat.Ci8:
 					// one pixel = one byte
+					this.Data = new byte[this.Width * this.Height];
 					for (int y = 0; y < this.Height; y++)
 					{
 						for (int x = 0; x < this.Width; x++)
