@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -264,8 +265,12 @@ namespace VPWStudio
 				BinaryReader br = new BinaryReader(ms);
 				ms.Seek(0x20, SeekOrigin.Begin);
 				byte[] gameName = br.ReadBytes(20);
-				br.Close();
 				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
+
+				ms.Seek(0x3B, SeekOrigin.Begin);
+				char[] gameCode = br.ReadChars(4);
+				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{0}{1}{2}{3}", gameCode[0], gameCode[1], gameCode[2], gameCode[3]);
+				br.Close();
 
 				if (Program.CurrentProject.Settings.UseCustomLocationFile)
 				{
@@ -277,11 +282,25 @@ namespace VPWStudio
 				else
 				{
 					// load location file based on game name
-					Program.CurLocationFile = new LocationFile();
 					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
 					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
-					Program.CurLocationFile.LoadFile(locPath);
-					Program.CurLocationFilePath = locPath;
+
+					if (!File.Exists(locPath))
+					{
+						MessageBox.Show(
+							String.Format("Location file {0} does not exist.", locPath),
+							SharedStrings.MainForm_Title,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error
+						);
+						Program.CurLocationFile = null;
+					}
+					else
+					{
+						Program.CurLocationFile = new LocationFile();
+						Program.CurLocationFile.LoadFile(locPath);
+						Program.CurLocationFilePath = locPath;
+					}
 				}
 
 				// generate initial filelist
@@ -1468,8 +1487,8 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				Bitmap b = new Bitmap(ofd.FileName);
-				if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed ||
-					b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format4bppIndexed)
+				if (b.PixelFormat == PixelFormat.Format8bppIndexed ||
+					b.PixelFormat == PixelFormat.Format4bppIndexed)
 				{
 					AkiTexture test = new AkiTexture();
 					test.FromBitmap(b);
@@ -1478,6 +1497,70 @@ namespace VPWStudio
 					test.WriteData(bw);
 					bw.Close();
 					fs.Close();
+				}
+				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
+				{
+					// dealing with a transparent image, which is possibly paletted.
+					HashSet<Color> usedColors = new HashSet<Color>();
+					UInt16 alphaColor = 0;
+					// xxx: this could be done with LockBits but eh, I'm lazy as fuck.
+					for (int y = 0; y < b.Height; y++)
+					{
+						for (int x = 0; x < b.Width; x++)
+						{
+							Color c = b.GetPixel(x, y);
+							if (c.A == 0)
+							{
+								alphaColor = N64Colors.ColorToValue5551(c);
+							}
+
+							if (usedColors.Contains(c))
+								continue;
+
+							usedColors.Add(c);
+						}
+					}
+					
+					AkiTexture test = new AkiTexture();
+					Bitmap converted;
+					// xxx: this conversion sucks
+					if (usedColors.Count <= 16)
+					{
+						// ci4
+						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format4bppIndexed);
+					}
+					else
+					{
+						// assume ci8
+						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format8bppIndexed);
+						
+					}
+					test.FromBitmap(converted);
+
+					// find the alpha color and kill its alpha bit
+					for (int i = 0; i < test.Palette.Length; i++)
+					{
+						UInt16 thisColor = test.Palette[i];
+						if ((thisColor & 0xFFFE) == alphaColor)
+						{
+							test.Palette[i] &= 0xFFFE;
+						}
+					}
+
+					FileStream fs = new FileStream("test.tex", FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+				else
+				{
+					MessageBox.Show(
+						String.Format("Unsupported PixelFormat {0}", b.PixelFormat),
+						SharedStrings.MainForm_Title,
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Error
+					);
 				}
 			}
 		}
