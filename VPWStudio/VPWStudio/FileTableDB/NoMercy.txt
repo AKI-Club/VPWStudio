@@ -447,3 +447,17 @@
 0E69=Ci4Texture;
 0E6A=Ci4Palette;
 0E6B=Ci4Texture;
+1D72=Ci8Palette;
+1D73=Ci8Texture;
+1D74=Ci8Palette;
+1D75=Ci8Texture;
+1D76=Ci8Palette;
+1D77=Ci8Texture;
+1D78=Ci8Palette;
+1D79=Ci8Texture;
+1D7A=Ci8Palette;
+1D7B=Ci8Texture;
+1D7C=Ci8Palette;
+1D7D=Ci8Texture;
+1D7E=Ci8Palette;
+1D7F=Ci8Texture;
