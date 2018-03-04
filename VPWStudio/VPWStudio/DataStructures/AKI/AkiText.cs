@@ -45,15 +45,29 @@ namespace VPWStudio
 		public AkiText(BinaryReader br)
 		{
 			this.Entries = new SortedList<int, AkiTextEntry>();
-			this.Decode(br);
+			this.ReadData(br);
 		}
 
-		#region Encode/Decode
+		/// <summary>
+		/// Get the string for a specific entry.
+		/// </summary>
+		/// <param name="id">String ID to get.</param>
+		/// <returns>String for the specified entry, or String.Empty if invalid.</returns>
+		public string GetEntry(int id)
+		{
+			if (id < 0 || id >= this.Entries.Count)
+			{
+				return String.Empty;
+			}
+			return this.Entries[id].Text;
+		}
+
+		#region Binary Read/Write
 		/// <summary>
 		/// Encode AkiText binary format.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>
-		public void Encode(BinaryWriter bw)
+		public void WriteData(BinaryWriter bw)
 		{
 			// the pointers themselves need to be calculated based on the string lengths.
 			int startLoc = (this.Entries.Count * 2);
@@ -100,7 +114,7 @@ namespace VPWStudio
 		/// Decode AkiText binary format.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public void Decode(BinaryReader br)
+		public void ReadData(BinaryReader br)
 		{
 			// figure out file size, because some files don't end on an 0x00 byte; they just implicitly end...
 			br.BaseStream.Seek(0, SeekOrigin.End);

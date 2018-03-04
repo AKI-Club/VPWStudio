@@ -25,7 +25,7 @@ namespace VPWStudio
 			{
 				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
 				BinaryReader br = new BinaryReader(fs);
-				this.CurAkiText.Decode(br);
+				this.CurAkiText.ReadData(br);
 				br.Close();
 
 				StringBuilder sb = new StringBuilder();

@@ -69,7 +69,7 @@ namespace VPWStudio
 
 			outStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader outReader = new BinaryReader(outStream);
-			CurAkiText.Decode(outReader);
+			CurAkiText.ReadData(outReader);
 
 			outReader.Close();
 			outWriter.Close();
