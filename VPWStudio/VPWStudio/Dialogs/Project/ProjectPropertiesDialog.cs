@@ -47,6 +47,7 @@ namespace VPWStudio
 				tbGSCodeFile.Text = Program.CurrentProject.Settings.ProjectGSCodeFilePath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
+				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
 			}
 		}
 
@@ -134,6 +135,8 @@ namespace VPWStudio
 				MessageBox.Show(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+
+			// todo: output rom internal name must not be blank?
 			#endregion
 
 			// check for project type change
