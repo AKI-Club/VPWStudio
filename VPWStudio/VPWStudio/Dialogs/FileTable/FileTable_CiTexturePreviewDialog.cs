@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace VPWStudio
 				CurCI4Texture.ReadData(fr);
 				fr.Close();
 
-				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height);
+				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
 			}
 			else if(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci8Texture)
 			{
@@ -75,7 +76,7 @@ namespace VPWStudio
 				CurCI8Texture.ReadData(fr);
 				fr.Close();
 
-				CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height);
+				CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
 			}
 
 			imgWriter.Close();
