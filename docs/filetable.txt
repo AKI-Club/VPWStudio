@@ -247,6 +247,84 @@ Routine begins at
 ================================================================================
 [Virtual Pro-Wrestling 64, NTSC-J]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80004D30
+* Z64: 0x5930
+
+"li $a0, 0x9238" ; filetable size
+(34 04 92 38)
+* IDA: 80004D58
+* Z64: 0x5958
+
+"lui $a0, 0xC8"
+(3C 04 00 C8)
+* IDA: 80004D64
+* Z64: 0x5964
+
+"li $a0, 0xC7B578" ; filetable location
+(24 84 B5 78)
+* IDA: 80004D6C
+* Z64: 0x596C
+
+"li $a2, 0x9238" ; filetable size
+(34 06 92 38)
+* IDA: 80004D78
+* Z64: 0x5978
+
+"li $a0, 0x9234" ; filetable size - 1 entry
+(34 04 92 34)
+* IDA: 80004D80
+* Z64: 0x5980
+
+"lui $s4, 5"
+(3C 14 00 05)
+* IDA: 80004D9C
+* Z64: 0x599C
+
+"li $s4, 0x4AD00" ; first file location?
+(26 94 AD 00)
+* IDA: 80004DA4
+* Z64: 0x59A4
+
+sub_80004E44
+--------------
+Routine begins at
+* IDA: 80004E44
+* Z64: 0x5A44
+
+"slti $at, $t6, 0x248E" ; max file count?
+(29 C1 24 8E)
+* IDA: 80004E5C
+* Z64: 0x5A5C
+
+"lui $a2, 5"
+(3C 06 00 05)
+* IDA: 80004E8C
+* Z64: 0x5A8C
+
+"li $a2, 0x4AD00" ; first file location?
+(24 C6 AD 00)
+* IDA: 80004EA4
+* Z64: 0x5AA4
+
+sub_800014B0
+--------------
+Routine begins at
+* IDA: 800014B0
+* Z64: 0x20B0
+
+"lui $t8, 5"
+(3C18 00 05)
+* IDA: 800014E8
+* Z64: 0x20E8
+
+"li $t8, 0x4AD00" ; first file location?
+(27 18 AD 00)
+* IDA: 800014FC
+* Z64: 0x20FC
+
 ================================================================================
 [WCW/nWo Revenge, NTSC-U]
 
