@@ -639,10 +639,10 @@
 1742=Ci8Palette;
 1743=Ci8Palette;
 1744=Ci8Palette;
-1745=Ci8Palette;
-1746=Ci8Palette;
-1747=Ci8Palette;
-1748=Ci8Palette;
+1745=Ci8Palette;[Face Color] 0
+1746=Ci8Palette;[Face Color] 1
+1747=Ci8Palette;[Face Color] 2
+1748=Ci8Palette;[Face Color] 3
 179B=Ci4Palette;[Hair Color] 0 (Skin Colors 2,3)
 179C=Ci4Palette;[Hair Color] 1 (Skin Colors 2,3)
 179D=Ci4Palette;[Hair Color] 2 (Skin Colors 2,3)
