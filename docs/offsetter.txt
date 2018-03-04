@@ -1,6 +1,9 @@
 notes on Zoinkity's VPW2 offsetter
 ==================================
 
+fileidx: "I'm stupid and lazy.  This is hardcoded."
+the first entry is the ROM address of the first file.
+
 --------------------------------------------------------------------------------
 def offset(rom, index, data, force_raw=False, compress=-1):
 
@@ -158,3 +161,77 @@ def VPW2_EOF(rom, pad=False):
         from itertools import repeat
         rom.extend(repeat(255, p-e))
     return rom
+
+--------------------------------------------------------------------------------
+def filelist(rom, filename):
+    """Opens a utf-8 filelist of formatted entries, inserting them into rom.
+    rom may be a bytes/bytearray object or N64 instance.  No rom verification is performed.
+    Returns a rom bytearray with corrected checksum or None if an error occurred."""
+    if not rom or not filename:
+        return None
+
+    try:
+        import codecs
+        with codecs.open(filename, encoding='utf-8-sig') as f:
+            cmds = [i.rstrip() for i in f.readlines()]
+    except:
+        print("Could not read filelist.")
+        return None
+    if not isinstance(rom, N64):
+        rom = N64(rom)
+
+    try:
+        for c, i in enumerate(cmds):
+            if not i or i[0]=='#':
+                continue
+
+            t, s, n = i.split(maxsplit=2)
+            with open(n, 'rb') as f:
+                data = f.read()
+
+            # Else, this is a file to be inserted in a slot
+            if t=='-patch':
+                rom.rom = patch_10.apply(rom.rom)
+                rom.rom = patch_crack.apply(rom.rom)
+
+            # Slot 'global' is global text, right now fixed to default settings.
+            elif s=='global':
+                if t=='-r':
+                    print("Unable to insert global text: raw file format not yet supported.")
+                    continue
+                elif t=='b':
+                    # Presume it's a binary dump of the data, which is altogether stupid if you ask me.
+                    data = fetchGlobalText(data, 0xE94, 309, 0x80104200)
+
+                rom.rom = insertGlobalText(data, rom.rom)
+
+            else:
+                v = int(s, base=0)
+                idx = fileidx.index(v)
+                print("{:d}\tInserting {} in slot {:d} (0x{:X}).".format(c,n,idx,v))
+
+                if t == '-t':
+                    print("\tconverting text to binary...")
+                    data = CSVtoVPW2(data)
+
+                if t == '-p':
+                    print("\tconverting png to TEX...")
+                    data = TEXfile.frompng(data).write()
+
+                fr = True if t=='-r' else False
+                rom.rom = offset(rom.rom, idx, data, fr)
+
+    except ValueError:
+        print("Formatting error in line {:d}: {}".format(c, i))
+    except IndexError:
+        print("Line {:d}: slot 0x{:X} is not recognized.".format(c, s))
+    except OSError as E:
+        print("Line {:d}: {}.".format(c, E))
+    except Exception as E:
+        print("Line {:d}: {}".format(c, E))
+    else:
+        # If all went well, save it back and recalc the checksum.
+        print("Fixing checksum.")
+        rom.calccrc(fix=True)
+        print("Done.")
+        return rom.rom
