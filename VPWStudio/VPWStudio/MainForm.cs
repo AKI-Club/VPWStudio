@@ -259,6 +259,14 @@ namespace VPWStudio
 				Program.CurrentInputROM = new Z64Rom();
 				Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
 
+				// set up internal game name and code
+				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader br = new BinaryReader(ms);
+				ms.Seek(0x20, SeekOrigin.Begin);
+				byte[] gameName = br.ReadBytes(20);
+				br.Close();
+				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
+
 				if (Program.CurrentProject.Settings.UseCustomLocationFile)
 				{
 					// load custom location file
@@ -945,12 +953,13 @@ namespace VPWStudio
 
 			// perform "build" process
 			MessageBox.Show("doesn't do anything yet");
+			//return;
 
 			// copy the input ROM to the output ROM
-			//Program.CurrentOutputROM = new Z64Rom();
+			Program.CurrentOutputROM = new Z64Rom();
 			// output ROM may be bigger than input ROM, so use a List.
-			//List<byte> outRomData = new List<byte>();
-			//outRomData.AddRange(Program.CurrentInputROM.Data);
+			List<byte> outRomData = new List<byte>();
+			outRomData.AddRange(Program.CurrentInputROM.Data);
 
 			// make changes based on the project file contents
 			// - filetable
@@ -962,18 +971,29 @@ namespace VPWStudio
 
 			// fix up soundtable references
 
+			// determine if the new output ROM is too big to run on console
+			if (outRomData.Count >= 0x4000000)
+			{
+				MessageBox.Show(
+					"This ROM exceeds 512Mb and *will not* run on console.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Warning
+				);
+			}
+
 			// write outRomData to Program.CurrentOutputROM.Data
-			//Program.CurrentOutputROM.Data = outRomData.ToArray();
+			Program.CurrentOutputROM.Data = outRomData.ToArray();
 
 			// recalculate checksums
-			//Program.CurrentOutputROM.CalculateChecksums();
+			Program.CurrentOutputROM.CalculateChecksums();
 
 			// write ROM
-			//FileStream fs = new FileStream(Program.CurrentProject.Settings.OutputRomPath, FileMode.Create);
-			//BinaryWriter bw = new BinaryWriter(fs);
-			//bw.Write(Program.CurrentOutputROM.Data);
-			//bw.Flush();
-			//bw.Dispose();
+			FileStream fs = new FileStream(Program.CurrentProject.Settings.OutputRomPath, FileMode.Create);
+			BinaryWriter bw = new BinaryWriter(fs);
+			bw.Write(Program.CurrentOutputROM.Data);
+			bw.Flush();
+			bw.Dispose();
 		}
 
 		/// <summary>
