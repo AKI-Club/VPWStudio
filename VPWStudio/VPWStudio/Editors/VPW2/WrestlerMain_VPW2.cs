@@ -16,12 +16,39 @@ namespace VPWStudio.Editors.VPW2
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 		public const int DefaultWrestlerDefOffset = 0x3FBE4;
 
+		private AkiText DefaultNames;
+
 		public WrestlerMain_VPW2()
 		{
 			InitializeComponent();
 
+			LoadDefaultNames();
 			LoadDefs_Rom(); // temporary
-			PopulateList(); // not so temporary
+			PopulateList();
+		}
+
+		/// <summary>
+		/// Load default names AkiText entry
+		/// </summary>
+		private void LoadDefaultNames()
+		{
+			// default names are in file 006C
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			MemoryStream outStream = new MemoryStream();
+			BinaryWriter outWriter = new BinaryWriter(outStream);
+
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x006C);
+			romReader.Close();
+
+			outStream.Seek(0, SeekOrigin.Begin);
+			BinaryReader outReader = new BinaryReader(outStream);
+			DefaultNames = new AkiText();
+			DefaultNames.ReadData(outReader);
+
+			outReader.Close();
+			outWriter.Close();
 		}
 
 		#region Load Wrestler Definitions
