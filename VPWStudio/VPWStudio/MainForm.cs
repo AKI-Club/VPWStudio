@@ -825,7 +825,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("weapon dialog not yet designed");
+			MessageBox.Show("weapons dialog not yet designed");
 		}
 
 		/// <summary>
@@ -931,11 +931,49 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("doesn't do anything yet");
+			if (Program.CurrentInputROM == null)
+			{
+				// needs input ROM.
+				return;
+			}
 
-			// todo: check if output rom path is a valid one
+			if (Program.CurrentProject.Settings.OutputRomPath == String.Empty)
+			{
+				// invalid output ROM path
+				return;
+			}
 
 			// perform "build" process
+			MessageBox.Show("doesn't do anything yet");
+
+			// copy the input ROM to the output ROM
+			//Program.CurrentOutputROM = new Z64Rom();
+			// output ROM may be bigger than input ROM, so use a List.
+			//List<byte> outRomData = new List<byte>();
+			//outRomData.AddRange(Program.CurrentInputROM.Data);
+
+			// make changes based on the project file contents
+			// - filetable
+
+			// - other junk
+
+			// if adding/removing files (you madman),
+			// update the relevant parts of the game code.
+
+			// fix up soundtable references
+
+			// write outRomData to Program.CurrentOutputROM.Data
+			//Program.CurrentOutputROM.Data = outRomData.ToArray();
+
+			// recalculate checksums
+			//Program.CurrentOutputROM.CalculateChecksums();
+
+			// write ROM
+			//FileStream fs = new FileStream(Program.CurrentProject.Settings.OutputRomPath, FileMode.Create);
+			//BinaryWriter bw = new BinaryWriter(fs);
+			//bw.Write(Program.CurrentOutputROM.Data);
+			//bw.Flush();
+			//bw.Dispose();
 		}
 
 		/// <summary>
@@ -1405,7 +1443,7 @@ namespace VPWStudio
 		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "open png";
+			ofd.Title = "Convert PNG to TEX";
 			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
