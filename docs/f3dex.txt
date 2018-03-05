@@ -1,0 +1,159 @@
+Resources:
+https://wiki.cloudmodding.com/oot/F3DZEX
+https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX
+https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX-Instruction-Set
+https://jul.rustedlogic.net/thread.php?id=3489
+
+ucodes used:
+"RSP Gfx ucode F3DEX       xbus 2.08  Yoshitaka Yasumoto 1999 Nintendo"
+"RSP Gfx ucode F3DLX.Rej   xbus 2.08  Yoshitaka Yasumoto 1999 Nintendo"
+
+VPW2's default display list (Z64 addr 0x4BEA0)
+
+03 C0 01 E0 01 FF 00 00 - "G_CULLDL"?
+
+03 C0 01 E0 01 FF 00 00 - "G_CULLDL"?
+
+DC 08 00 08 01 00 00 00 - "G_MOVEMEM"
+   nn oo ii aa aa aa aa
+
+nn = size = ((8 >> 3) + 1) * 8
+oo = offset = (0 * 8)
+ii = index = 8 ("G_MV_VIEWPORT")
+aa = address 0x01000000
+
+DB 04 00 04 00 00 00 02 - "G_MOVEWORD"
+   ii oo oo dd dd dd dd
+
+ii = index
+oo = offset
+dd = data
+   
+DB 04 00 0C 00 00 00 02 - "G_MOVEWORD"
+   ii oo oo dd dd dd dd
+
+ii = index
+oo = offset
+dd = data
+
+DB 04 00 14 00 00 FF FE - "G_MOVEWORD"
+   ii oo oo dd dd dd dd
+
+ii = index
+oo = offset
+dd = data
+
+DB 04 00 1C 00 00 FF FE - "G_MOVEWORD"
+   ii oo oo dd dd dd dd
+
+ii = index
+oo = offset
+dd = data
+
+ED 00 00 00 00 78 03 C0 - "G_SETSCISSOR"
+   xx xy yy m0 vv vw ww
+
+xxx = upper left x (0)
+yyy = upper left y (0)
+m   = interpolation mode ("G_SC_NON_INTERLACE")
+vvv = lower right x (1920)
+www = lower right y (960)
+
+FC FF FF FF FF FE 79 3C - "G_SETCOMBINE"
+this one is bit-based
+
+aaaa cccc
+czzz xxxe
+eeeg gggg
+bbbb ffff
+vvvt ttdd
+dyyy wwwh
+hhuu usss
+
+aaaa  = Color 'a' value, cycle 1
+ccccc = Color 'c' value, cycle 1
+zzz   = Alpha 'a' value, cycle 1
+xxx   = Alpha 'c' value, cycle 1
+eeee  = Color 'a' value, cycle 2
+ggggg = Color 'c' value, cycle 2
+bbbb  = Color 'b' value, cycle 1
+ffff  = Color 'b' value, cycle 2
+vvv   = Alpha 'a' value, cycle 2
+ttt   = Alpha 'c' value, cycle 2
+ddd   = Color 'd' value, cycle 1
+yyy   = Alpha 'b' value, cycle 1
+www   = Alpha 'd' value, cycle 1
+hhh   = Color 'd' value, cycle 2
+uuu   = Alpha 'b' value, cycle 2
+sss   = Alpha 'd' value, cycle 2
+
+The general formula used to mix colors in the Color combiner is of the form:
+(A - B) * C + D
+
+
+E3 00 0F 00 00 00 00 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 16 ("G_MDSFT_TEXTLOD"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 0D 01 00 00 00 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 17 ("G_MDSFT_TEXTDETAIL"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 0C 00 00 08 00 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 19 ("G_MDSFT_TEXTPERSP"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 12 01 00 00 20 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 12 ("G_MDSFT_TEXTFILT"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 14 02 00 00 0C 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 9 ("G_MDSFT_TEXTCONV"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 17 00 00 00 00 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 8 ("G_MDSFT_COMBKEY"))
+nn = length (nn + 1)
+dd = data
+
+E2 00 1E 01 00 00 00 00 - "G_SETOTHERMODE_L"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 0 ("G_MDSFT_ALPHACOMPARE"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 18 01 00 00 00 C0 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 6 ("G_MDSFT_RGBDITHER"))
+nn = length (nn + 1)
+dd = data
+
+E3 00 08 00 00 00 00 00 - "G_SETOTHERMODE_H"
+      ss nn dd dd dd dd
+
+ss = shift (32 - (nn+1) - ss = 23 ("G_MDSFT_PIPELINE"))
+nn = length (nn + 1)
+dd = data
+
+DF 00 00 00 00 00 00 00 - "G_ENDDL" (end display list)
+
+00 00 00 00 00 00 00 00 - probably padding/alignment
