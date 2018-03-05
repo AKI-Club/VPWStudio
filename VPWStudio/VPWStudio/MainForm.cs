@@ -456,6 +456,15 @@ namespace VPWStudio
 				}
 			}
 
+			if (Program.CurrentProject.Settings.ProjectFilesPath == String.Empty)
+			{
+				// make new folder where the project file is being saved
+				string projFilesDir = Path.GetDirectoryName(Program.CurProjectPath) + @"\ProjectFiles";
+				Directory.CreateDirectory(projFilesDir);
+				// set relative path
+				Program.CurrentProject.Settings.ProjectFilesPath = "ProjectFiles";
+			}
+
 			// do the actual saving
 			Program.CurrentProject.SaveFile(Program.CurProjectPath);
 			Program.UnsavedChanges = false;
@@ -483,6 +492,8 @@ namespace VPWStudio
 				{
 					Program.CurProjectPath = sfd.FileName;
 				}
+
+				// todo: handle ProjectFiles folder
 
 				// hack to unset UnsavedChanges if saving over the existing file.
 				if (Path.GetFullPath(sfd.FileName).Equals(Program.CurProjectPath))
@@ -610,6 +621,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region Project editor section
 		/// <summary>
 		/// Arena editor
 		/// </summary>
@@ -945,6 +957,7 @@ namespace VPWStudio
 					break;
 			}
 		}
+		#endregion
 
 		#region Project build section
 		/// <summary>
@@ -981,6 +994,28 @@ namespace VPWStudio
 			outRomData.AddRange(Program.CurrentInputROM.Data);
 
 			// make changes based on the project file contents
+
+			// - internal game name
+			string intName = Program.CurrentProject.Settings.OutputRomInternalName;
+			if (intName.Length > 20)
+			{
+				//  truncate
+				intName = intName.Substring(0, 20);
+			}
+			else if (intName.Length < 20)
+			{
+				// pad
+				intName = intName.PadRight(20);
+			}
+
+			byte[] nameBytes = Encoding.GetEncoding("Shift-JIS").GetBytes(intName);
+			for (int i = 0; i < 20; i++)
+			{
+				outRomData[0x20 + i] = nameBytes[i];
+			}
+
+			// - game code
+
 			// - filetable
 
 			// - other junk
@@ -1007,12 +1042,27 @@ namespace VPWStudio
 			// recalculate checksums
 			Program.CurrentOutputROM.CalculateChecksums();
 
+			// determine output ROM path (may be relative to project file)
+			string outRomPath = Program.CurrentProject.Settings.OutputRomPath;
+			string prevWorkDir = Environment.CurrentDirectory;
+			bool resetWorkDir = false;
+			if (!Path.IsPathRooted(outRomPath))
+			{
+				Environment.CurrentDirectory = Path.GetDirectoryName(Program.CurProjectPath);
+				resetWorkDir = true;
+			}
+
 			// write ROM
-			FileStream fs = new FileStream(Program.CurrentProject.Settings.OutputRomPath, FileMode.Create);
+			FileStream fs = new FileStream(outRomPath, FileMode.Create);
 			BinaryWriter bw = new BinaryWriter(fs);
 			bw.Write(Program.CurrentOutputROM.Data);
 			bw.Flush();
 			bw.Dispose();
+
+			if (resetWorkDir)
+			{
+				Environment.CurrentDirectory = prevWorkDir;
+			}
 		}
 
 		/// <summary>
