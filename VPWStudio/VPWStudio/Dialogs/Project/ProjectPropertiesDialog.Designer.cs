@@ -45,7 +45,6 @@
 			this.cbGameType = new System.Windows.Forms.ComboBox();
 			this.tpOutputRom = new System.Windows.Forms.TabPage();
 			this.tlpOutputRom = new System.Windows.Forms.TableLayoutPanel();
-			this.tbOutRomProductCode = new System.Windows.Forms.TextBox();
 			this.labelOutROM = new System.Windows.Forms.Label();
 			this.tlpOutROM = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetOutROM = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@
 			this.tlpProjFilesPath = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetProjFilesPath = new System.Windows.Forms.Button();
 			this.tbProjFilesPath = new System.Windows.Forms.TextBox();
+			this.tbOutRomProductCode = new System.Windows.Forms.TextBox();
 			this.tcProjectProperties.SuspendLayout();
 			this.tpMainProperties.SuspendLayout();
 			this.tlpProjectOptions.SuspendLayout();
@@ -209,9 +209,9 @@
 			// buttonOpenBaseROM
 			// 
 			this.buttonOpenBaseROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOpenBaseROM.Location = new System.Drawing.Point(319, 14);
+			this.buttonOpenBaseROM.Location = new System.Drawing.Point(319, 9);
 			this.buttonOpenBaseROM.Name = "buttonOpenBaseROM";
-			this.buttonOpenBaseROM.Size = new System.Drawing.Size(30, 19);
+			this.buttonOpenBaseROM.Size = new System.Drawing.Size(30, 30);
 			this.buttonOpenBaseROM.TabIndex = 0;
 			this.buttonOpenBaseROM.Text = "...";
 			this.buttonOpenBaseROM.UseVisualStyleBackColor = true;
@@ -282,15 +282,6 @@
 			this.tlpOutputRom.Size = new System.Drawing.Size(496, 210);
 			this.tlpOutputRom.TabIndex = 0;
 			// 
-			// tbOutRomProductCode
-			// 
-			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 165);
-			this.tbOutRomProductCode.MaxLength = 4;
-			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
-			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
-			this.tbOutRomProductCode.TabIndex = 11;
-			// 
 			// labelOutROM
 			// 
 			this.labelOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -303,25 +294,25 @@
 			// 
 			// tlpOutROM
 			// 
-			this.tlpOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpOutROM.ColumnCount = 2;
 			this.tlpOutROM.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
 			this.tlpOutROM.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tlpOutROM.Controls.Add(this.buttonSetOutROM, 1, 0);
 			this.tlpOutROM.Controls.Add(this.tbOutROMPath, 0, 0);
-			this.tlpOutROM.Location = new System.Drawing.Point(127, 23);
+			this.tlpOutROM.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpOutROM.Location = new System.Drawing.Point(127, 3);
 			this.tlpOutROM.Name = "tlpOutROM";
 			this.tlpOutROM.RowCount = 1;
 			this.tlpOutROM.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpOutROM.Size = new System.Drawing.Size(366, 23);
+			this.tlpOutROM.Size = new System.Drawing.Size(366, 64);
 			this.tlpOutROM.TabIndex = 7;
 			// 
 			// buttonSetOutROM
 			// 
 			this.buttonSetOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetOutROM.Location = new System.Drawing.Point(332, 3);
+			this.buttonSetOutROM.Location = new System.Drawing.Point(332, 17);
 			this.buttonSetOutROM.Name = "buttonSetOutROM";
-			this.buttonSetOutROM.Size = new System.Drawing.Size(31, 17);
+			this.buttonSetOutROM.Size = new System.Drawing.Size(31, 30);
 			this.buttonSetOutROM.TabIndex = 1;
 			this.buttonSetOutROM.Text = "...";
 			this.buttonSetOutROM.UseVisualStyleBackColor = true;
@@ -329,7 +320,7 @@
 			// tbOutROMPath
 			// 
 			this.tbOutROMPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutROMPath.Location = new System.Drawing.Point(3, 3);
+			this.tbOutROMPath.Location = new System.Drawing.Point(3, 22);
 			this.tbOutROMPath.Name = "tbOutROMPath";
 			this.tbOutROMPath.Size = new System.Drawing.Size(323, 20);
 			this.tbOutROMPath.TabIndex = 2;
@@ -424,9 +415,9 @@
 			// buttonSetGSCodefile
 			// 
 			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetGSCodefile.Location = new System.Drawing.Point(319, 23);
+			this.buttonSetGSCodefile.Location = new System.Drawing.Point(319, 18);
 			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
-			this.buttonSetGSCodefile.Size = new System.Drawing.Size(30, 19);
+			this.buttonSetGSCodefile.Size = new System.Drawing.Size(30, 30);
 			this.buttonSetGSCodefile.TabIndex = 1;
 			this.buttonSetGSCodefile.Text = "...";
 			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
@@ -469,9 +460,9 @@
 			// 
 			this.buttonSetCustomLocFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonSetCustomLocFile.Enabled = false;
-			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(319, 20);
+			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(319, 16);
 			this.buttonSetCustomLocFile.Name = "buttonSetCustomLocFile";
-			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(30, 22);
+			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(30, 30);
 			this.buttonSetCustomLocFile.TabIndex = 1;
 			this.buttonSetCustomLocFile.Text = "...";
 			this.buttonSetCustomLocFile.UseVisualStyleBackColor = true;
@@ -513,22 +504,30 @@
 			// buttonSetProjFilesPath
 			// 
 			this.buttonSetProjFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetProjFilesPath.Enabled = false;
-			this.buttonSetProjFilesPath.Location = new System.Drawing.Point(319, 20);
+			this.buttonSetProjFilesPath.Location = new System.Drawing.Point(319, 16);
 			this.buttonSetProjFilesPath.Name = "buttonSetProjFilesPath";
-			this.buttonSetProjFilesPath.Size = new System.Drawing.Size(30, 22);
+			this.buttonSetProjFilesPath.Size = new System.Drawing.Size(30, 30);
 			this.buttonSetProjFilesPath.TabIndex = 1;
 			this.buttonSetProjFilesPath.Text = "...";
 			this.buttonSetProjFilesPath.UseVisualStyleBackColor = true;
+			this.buttonSetProjFilesPath.Click += new System.EventHandler(this.buttonSetProjFilesPath_Click);
 			// 
 			// tbProjFilesPath
 			// 
 			this.tbProjFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbProjFilesPath.Enabled = false;
 			this.tbProjFilesPath.Location = new System.Drawing.Point(3, 21);
 			this.tbProjFilesPath.Name = "tbProjFilesPath";
 			this.tbProjFilesPath.Size = new System.Drawing.Size(310, 20);
 			this.tbProjFilesPath.TabIndex = 2;
+			// 
+			// tbOutRomProductCode
+			// 
+			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 165);
+			this.tbOutRomProductCode.MaxLength = 4;
+			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
+			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
+			this.tbOutRomProductCode.TabIndex = 13;
 			// 
 			// ProjectPropertiesDialog
 			// 
@@ -596,7 +595,6 @@
 		private System.Windows.Forms.TextBox tbOutROMPath;
 		private System.Windows.Forms.Label labelOutRomInternalName;
 		private System.Windows.Forms.TextBox tbOutRomInternalName;
-		private System.Windows.Forms.TextBox tbOutRomProductCode;
 		private System.Windows.Forms.Label labelOutRomGameCode;
 		private System.Windows.Forms.TabPage tpProjectFiles;
 		private System.Windows.Forms.TableLayoutPanel tlpProjFilesTab;
@@ -612,5 +610,6 @@
 		private System.Windows.Forms.Button buttonSetGSCodefile;
 		private System.Windows.Forms.TextBox tbGSCodeFile;
 		private System.Windows.Forms.Label labelProjFilesPath;
+		private System.Windows.Forms.TextBox tbOutRomProductCode;
 	}
 }

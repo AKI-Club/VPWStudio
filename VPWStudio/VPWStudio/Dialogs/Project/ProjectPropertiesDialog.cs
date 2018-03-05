@@ -39,16 +39,22 @@ namespace VPWStudio
 			{
 				this.NewSettings.DeepCopy(Program.CurrentProject.Settings);
 
+				// main page
 				tbProjectName.Text = Program.CurrentProject.Settings.ProjectName;
 				tbAuthors.Text = Program.CurrentProject.Settings.Authors;
 				cbGameType.SelectedIndex = (int)Program.CurrentProject.Settings.GameType;
 				tbBaseROMPath.Text = Program.CurrentProject.Settings.InputRomPath;
+
+				// output rom page
 				tbOutROMPath.Text = Program.CurrentProject.Settings.OutputRomPath;
+				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
+				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
+
+				// project files page
+				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
 				tbGSCodeFile.Text = Program.CurrentProject.Settings.ProjectGSCodeFilePath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
-				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
-				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
 			}
 		}
 
@@ -116,13 +122,18 @@ namespace VPWStudio
 				}
 			}
 
-			// transfer
+			// main tab
 			this.NewSettings.ProjectName = tbProjectName.Text;
 			this.NewSettings.Authors = tbAuthors.Text;
 			this.NewSettings.GameType = (SpecificGame)cbGameType.SelectedIndex;
 			this.NewSettings.BaseGame = GameInformation.GetBaseGameFromSpecificGame(this.NewSettings.GameType);
 			this.NewSettings.InputRomPath = tbBaseROMPath.Text;
+
+			// output rom tab
 			this.NewSettings.OutputRomPath = tbOutROMPath.Text;
+			this.NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
+
+			// project files tab
 			this.NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
 
 			this.NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
@@ -180,6 +191,11 @@ namespace VPWStudio
 		#endregion
 
 		#region Project Files Tab
+		private void buttonSetProjFilesPath_Click(object sender, EventArgs e)
+		{
+			// todo: balls.
+		}
+
 		private void chbCustomLocation_Click(object sender, EventArgs e)
 		{
 			buttonSetCustomLocFile.Enabled = chbCustomLocation.Checked;
