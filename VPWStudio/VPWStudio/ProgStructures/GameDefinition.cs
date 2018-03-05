@@ -249,20 +249,20 @@ namespace VPWStudio
 		{
 			switch (sg)
 			{
-				case SpecificGame.WorldTour_NTSC_U_10: return GetBaseGameName(VPWGames.WorldTour) + " NTSC-U (NWNE)";
-				case SpecificGame.WorldTour_NTSC_U_11: return GetBaseGameName(VPWGames.WorldTour) + " NTSC-U (NWNE-1)";
-				case SpecificGame.WorldTour_PAL:       return GetBaseGameName(VPWGames.WorldTour) + " PAL (NWNP)";
-				case SpecificGame.VPW64_NTSC_J:        return GetBaseGameName(VPWGames.VPW64) + " (NVPJ)";
-				case SpecificGame.Revenge_NTSC_U:      return GetBaseGameName(VPWGames.Revenge) + " NTSC-U (NW2E)";
-				case SpecificGame.Revenge_PAL:         return GetBaseGameName(VPWGames.Revenge) + " PAL (NW2P)";
-				case SpecificGame.WM2K_NTSC_U:         return GetBaseGameName(VPWGames.WM2K) + " NTSC-U (NWXE)";
-				case SpecificGame.WM2K_NTSC_J:         return GetBaseGameName(VPWGames.WM2K) + " NTSC-J (NWXJ)";
-				case SpecificGame.WM2K_PAL:            return GetBaseGameName(VPWGames.WM2K) + " PAL (NWXP)";
-				case SpecificGame.VPW2_NTSC_J:         return GetBaseGameName(VPWGames.VPW2) + " NTSC-J (NA2J)";
-				case SpecificGame.NoMercy_NTSC_U_10:   return GetBaseGameName(VPWGames.NoMercy) + " NTSC-U v1.0 (NW4E)";
-				case SpecificGame.NoMercy_NTSC_U_11:   return GetBaseGameName(VPWGames.NoMercy) + " NTSC-U v1.1 (NW4E-1)";
-				case SpecificGame.NoMercy_PAL_10:      return GetBaseGameName(VPWGames.NoMercy) + " PAL v1.0 (NW4P)";
-				case SpecificGame.NoMercy_PAL_11:      return GetBaseGameName(VPWGames.NoMercy) + " PAL v1.1 (NW4P-1)";
+				case SpecificGame.WorldTour_NTSC_U_10: return GetBaseGameName(VPWGames.WorldTour) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WorldTour_NTSC_U_11: return GetBaseGameName(VPWGames.WorldTour) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WorldTour_PAL:       return GetBaseGameName(VPWGames.WorldTour) + String.Format(" PAL ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.VPW64_NTSC_J:        return GetBaseGameName(VPWGames.VPW64) + String.Format(" ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.Revenge_NTSC_U:      return GetBaseGameName(VPWGames.Revenge) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.Revenge_PAL:         return GetBaseGameName(VPWGames.Revenge) + String.Format(" PAL ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WM2K_NTSC_U:         return GetBaseGameName(VPWGames.WM2K) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WM2K_NTSC_J:         return GetBaseGameName(VPWGames.WM2K) + String.Format(" NTSC-J ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WM2K_PAL:            return GetBaseGameName(VPWGames.WM2K) + String.Format(" PAL ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.VPW2_NTSC_J:         return GetBaseGameName(VPWGames.VPW2) + String.Format(" NTSC-J ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.NoMercy_NTSC_U_10:   return GetBaseGameName(VPWGames.NoMercy) + String.Format(" NTSC-U v1.0 ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.NoMercy_NTSC_U_11:   return GetBaseGameName(VPWGames.NoMercy) + String.Format(" NTSC-U v1.1 ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.NoMercy_PAL_10:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.0 ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.NoMercy_PAL_11:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.1 ({0})", GameDefs[sg].GameCode);
 			}
 			return "(unknown game)";
 		}
