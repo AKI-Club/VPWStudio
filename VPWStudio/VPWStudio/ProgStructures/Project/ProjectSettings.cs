@@ -45,6 +45,11 @@ namespace VPWStudio
 		public string OutputRomPath;
 
 		/// <summary>
+		/// Path to files in the project.
+		/// </summary>
+		public string ProjectFilesPath;
+
+		/// <summary>
 		/// Use a custom location file?
 		/// </summary>
 		public bool UseCustomLocationFile;
@@ -84,6 +89,7 @@ namespace VPWStudio
 			this.Notes = String.Empty;
 			this.InputRomPath = String.Empty;
 			this.OutputRomPath = String.Empty;
+			this.ProjectFilesPath = String.Empty;
 			this.UseCustomLocationFile = false;
 			this.CustomLocationFilePath = String.Empty;
 			this.ProjectGSCodeFilePath = String.Empty;
@@ -112,6 +118,7 @@ namespace VPWStudio
 			this.Notes = _notes;
 			this.InputRomPath = _inROM;
 			this.OutputRomPath = _outROM;
+			this.ProjectFilesPath = String.Empty;
 			this.UseCustomLocationFile = !_locPath.Equals(String.Empty);
 			this.CustomLocationFilePath = _locPath;
 			this.ProjectGSCodeFilePath = _gscPath;
@@ -141,6 +148,7 @@ namespace VPWStudio
 			this.Notes = _src.Notes;
 			this.InputRomPath = _src.InputRomPath;
 			this.OutputRomPath = _src.OutputRomPath;
+			this.ProjectFilesPath = _src.ProjectFilesPath;
 			this.UseCustomLocationFile = _src.UseCustomLocationFile;
 			this.CustomLocationFilePath = _src.CustomLocationFilePath;
 			this.ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
