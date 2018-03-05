@@ -52,53 +52,7 @@ namespace VPWStudio
 			}
 		}
 
-		#region File Selectors
-		private void buttonOpenBaseROM_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Set Base ROM File Path";
-			ofd.Filter = SharedStrings.FileFilter_N64Rom;
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				tbBaseROMPath.Text = Path.GetFullPath(ofd.FileName);
-			}
-		}
-
-		private void buttonSetOutROM_Click(object sender, EventArgs e)
-		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Title = "Set Output ROM File Path";
-			sfd.Filter = SharedStrings.FileFilter_N64Rom;
-			sfd.CheckFileExists = false;
-			if (sfd.ShowDialog() == DialogResult.OK)
-			{
-				tbBaseROMPath.Text = Path.GetFullPath(sfd.FileName);
-			}
-		}
-
-		private void buttonSetCustomLocFile_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Select Custom Location File";
-			ofd.Filter = SharedStrings.FileFilter_Text;
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				tbCustomLocationFile.Text = ofd.FileName;
-			}
-		}
-
-		private void buttonSetGSCodefile_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Select GameShark Code File";
-			ofd.Filter = SharedStrings.FileFilter_GameSharkCodes;
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				tbGSCodeFile.Text = ofd.FileName;
-			}
-		}
-		#endregion
-
+		#region Main Buttons
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			#region Validation
@@ -190,11 +144,69 @@ namespace VPWStudio
 			this.DialogResult = DialogResult.Cancel;
 			this.Close();
 		}
+		#endregion
 
+		#region Main Tab
+		/// <summary>
+		/// Select input/base ROM path.
+		/// </summary>
+		private void buttonOpenBaseROM_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Set Base ROM File Path";
+			ofd.Filter = SharedStrings.FileFilter_N64Rom;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbBaseROMPath.Text = Path.GetFullPath(ofd.FileName);
+			}
+		}
+		#endregion
+
+		#region Output ROM Tab
+		/// <summary>
+		/// Select output ROM path.
+		/// </summary>
+		private void buttonSetOutROM_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Set Output ROM File Path";
+			sfd.Filter = SharedStrings.FileFilter_N64Rom;
+			sfd.CheckFileExists = false;
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				tbBaseROMPath.Text = Path.GetFullPath(sfd.FileName);
+			}
+		}
+		#endregion
+
+		#region Project Files Tab
 		private void chbCustomLocation_Click(object sender, EventArgs e)
 		{
 			buttonSetCustomLocFile.Enabled = chbCustomLocation.Checked;
 			tbCustomLocationFile.Enabled = chbCustomLocation.Checked;
 		}
+
+		private void buttonSetCustomLocFile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Custom Location File";
+			ofd.Filter = SharedStrings.FileFilter_Text;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbCustomLocationFile.Text = ofd.FileName;
+			}
+		}
+
+		private void buttonSetGSCodefile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select GameShark Code File";
+			ofd.Filter = SharedStrings.FileFilter_GameSharkCodes;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbGSCodeFile.Text = ofd.FileName;
+			}
+		}
+		#endregion
 	}
 }
