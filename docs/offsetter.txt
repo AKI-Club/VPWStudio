@@ -22,15 +22,16 @@ This is used to insert 'raw', possibly pre-compressed files."""
     if isinstance(rom, bytes):
         rom = bytearray(rom)
 
-	# (freem) get the filetable location from the code ("SetupFiletable").
+    # (freem) get the filetable location from the code ("SetupFiletable").
     h = int.from_bytes(rom[0x48DA:0x48DC], byteorder='big') << 16
     l = int.from_bytes(rom[0x48DE:0x48E0], byteorder='big', signed=True)
     filetable = h + l
 
-	# (freem) get filetable
+    # (freem) get filetable (hardcoded table size)
     tbl = array("L", rom[filetable:filetable+0xCC8C])
     tbl.byteswap()
 
+    # (freem) get start and end points, sans compression indicator
     s = tbl[index] & (~1)
     e = tbl[index+1] & (~1)
 
@@ -43,8 +44,10 @@ This is used to insert 'raw', possibly pre-compressed files."""
     if len(data)&1:
         data = b''.join((data, b'\x00'))
 
+    # (freem) calculate difference between data size and (end - start)
     difference = len(data) - (e - s)
 
+    # (freem) update the following indices in the filetable
     for i in range(index+1, len(tbl)):
         tbl[i] += difference
 
@@ -65,7 +68,9 @@ This is used to insert 'raw', possibly pre-compressed files."""
         rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
         rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
 
+    # (freem) perform on filetable load addr
     addr2hws(0x48DA, 0x48DE)
+
     # The audio file offsets.
 ##    difference += 15
 ##    a = difference & 15
