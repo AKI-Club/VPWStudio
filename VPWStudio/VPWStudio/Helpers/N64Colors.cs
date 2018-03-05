@@ -5,6 +5,28 @@ namespace VPWStudio
 {
 	public class N64Colors
 	{
+		#region Macros from Texture64
+		private static int SCALE_5_8(int v)
+		{
+			return (v * 0xFF) / 0x1F;
+		}
+
+		private static byte SCALE_8_5(byte v)
+		{
+			return (byte)((((v) + 4) * 0x1F) / 0xFF);
+		}
+
+		private static byte SCALE_8_3(byte v)
+		{
+			return (byte)(v / 0x24);
+		}
+
+		private static byte SCALE_8_4(byte v)
+		{
+			return (byte)(v / 0x11);
+		}
+		#endregion
+
 		/// <summary>
 		/// Convert a UInt16 RGBA 5551 value to a Color.
 		/// </summary>
@@ -13,29 +35,22 @@ namespace VPWStudio
 		public static Color Value5551ToColor(UInt16 cv)
 		{
 			// old color calculation
+			/*
 			return Color.FromArgb(
 				((cv & 0x0001) > 0) ? 0xFF : 0,
 				((cv & 0xF800) >> 11) * 8,
 				((cv & 0x07C0) >> 6) * 8,
 				((cv & 0x003E) >> 1) * 8
 			);
+			*/
 
-			// new color calculation from offsetter
-			/*
-			int red = ((cv & 0xF800) >> 8);
-			red |= red >> 5;
-			int grn = ((cv & 0x07C0) >> 3);
-			grn |= grn >> 5;
-			int blu = ((cv & 0x003E) << 2);
-			blu |= blu >> 5;
-
+			// color calc from Texture64
 			return Color.FromArgb(
 				((cv & 0x0001) > 0) ? 0xFF : 0,
-				red,
-				grn,
-				blu
+				SCALE_5_8((cv & 0xF800) >> 11),
+				SCALE_5_8((cv & 0x07C0) >> 6),
+				SCALE_5_8((cv & 0x003E) >> 1)
 			);
-			*/
 		}
 
 		/// <summary>
@@ -46,9 +61,9 @@ namespace VPWStudio
 		public static UInt16 ColorToValue5551(Color c)
 		{
 			UInt16 result = (UInt16)((c.A > 0) ? 1 : 0);
-			result |= (UInt16)((c.R >> 3) << 11);
-			result |= (UInt16)((c.G >> 3) << 6);
-			result |= (UInt16)((c.B >> 3) << 1);
+			result |= (UInt16)((SCALE_8_5(c.R)) << 11);
+			result |= (UInt16)((SCALE_8_5(c.G)) << 6);
+			result |= (UInt16)((SCALE_8_5(c.B)) << 1);
 			return result;
 		}
 	}
