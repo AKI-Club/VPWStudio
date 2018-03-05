@@ -235,3 +235,63 @@ def filelist(rom, filename):
         rom.calccrc(fix=True)
         print("Done.")
         return rom.rom
+
+--------------------------------------------------------------------------------
+
+## These commands wrap up injectors and file parsers.
+def inject(self, Event=None, filename=None, mode=None, slot=None):
+    if mode=='csv':
+        exts = self.csv_exts
+    elif mode in ('bin', 'raw'):
+        exts = self.bin_exts
+    elif mode=='png':
+        exts = self.png_exts
+    else:
+        exts = self.csv_exts + self.bin_exts + self.png_exts
+
+    # Yes, even csv's are opened this way.
+    if not filename:
+        filename = filedialog.askopenfilename(title="Open File",filetypes=exts+self.def_exts, defaultextension=exts[0][1].strip('*'))
+    try:
+        f = open(filename, 'rb')
+        data = f.read()
+        f.close()
+    except IOError as E:
+        if filename: print(E)
+        return
+
+    if not mode:
+        # Screw guessing the format.  Users were made to provide input.
+        pass
+    if mode == 'csv':
+        print("Converting text to binary file.")
+        data = CSVtoVPW2(data)
+    elif mode == 'png':
+        print("Converting PNG to TEX file.")
+        data = TEXfile.frompng(data).write()
+
+    # Choose an index if you can't glean it from the filename.
+    if slot==None:
+        import os
+        slot = os.path.basename(filename)
+        slot = os.path.splitext(slot)[0]
+        try:
+            slot = int(slot, base=16)
+        except ValueError:
+            slot = -1
+        if slot in fileidx:
+            slot = fileidx.index(slot)
+        else:
+            # Print each index as index# followed by hex offset.
+            slot = ListBoxChoice(self, entries=self.entries, altered=self.altered).returnValue()
+    # 0 is a good return, None or an empty list is not.
+    if not slot and slot!=0:
+        return
+
+    # Format-specific conversions.
+    fr = True if mode=='raw' else False
+    print("Inserting file in slot {:d} (0x{:X})...please wait.".format(slot,fileidx[slot]))
+    self.rom.rom = offset(self.rom.rom, slot, data, fr)
+    self.altered.append(slot)
+    print("Insertion complete.")
+    self._fillListbox()
