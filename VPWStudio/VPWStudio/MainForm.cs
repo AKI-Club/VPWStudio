@@ -563,6 +563,10 @@ namespace VPWStudio
 			{
 				ProjPropDialog = new ProjectPropertiesDialog();
 			}
+			else
+			{
+				ProjPropDialog.SetInitialTabPage();
+			}
 
 			if (ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
