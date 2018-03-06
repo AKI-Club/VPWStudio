@@ -545,7 +545,7 @@ namespace VPWStudio
 				outData.Write(codebuf.ToArray());
 			}
 
-			// handle alignment
+			// handle alignment (todo: this belongs elsewhere)
 			if (outData.BaseStream.Position % 2 != 0)
 			{
 				outData.Write((byte)0);
