@@ -57,6 +57,7 @@ This is used to insert 'raw', possibly pre-compressed files."""
     # Slide in the file after updating the offsets.
     rom[0x152DF0+s:0x152DF0+e] = data
 
+    # (freem) performs some sort of value correction
     def addr2hws(a1, a2):
         h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
         v = h + int.from_bytes(rom[a2:a2+2], byteorder='big', signed=True)
@@ -122,6 +123,11 @@ This is used to insert 'raw', possibly pre-compressed files."""
     return rom
 
 --------------------------------------------------------------------------------
+VPW2_EOF is called in:
+* saveRom
+* cmdfile
+* cmdline
+
 def VPW2_EOF(rom, pad=False):
     """Last address revealed at (0x17B7A,0x17B82).
     Read the PtrTable before it at (0x17A6A,0x17A6E).
