@@ -58,6 +58,14 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Hacky thing used by MainForm
+		/// </summary>
+		public void SetInitialTabPage()
+		{
+			tcProjectProperties.SelectedIndex = 0;
+		}
+
 		#region Main Buttons
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
@@ -99,13 +107,19 @@ namespace VPWStudio
 
 			// todo: output rom internal name must not be blank?
 
-			// internal game code must start with "N" because none of the games have 64DD support
-			// this isn't a hard error; just replace it silently.
-			if (!Program.CurrentProject.Settings.OutputRomInternalName.StartsWith("N"))
+			if (tbOutRomProductCode.Text.Equals(String.Empty))
 			{
-				string remain = Program.CurrentProject.Settings.OutputRomInternalName.Substring(1);
-				Program.CurrentProject.Settings.OutputRomInternalName = "N" + remain;
+				// empty string? replace with the game code for the current game.
+				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(0, 4);
 			}
+			else if (!tbOutRomProductCode.Text.StartsWith("N"))
+			{
+				// internal game code must start with "N" because none of the games have 64DD support
+				// this isn't a hard error; just replace it silently.
+				string remain = tbOutRomProductCode.Text.Substring(1,3);
+				tbOutRomProductCode.Text = "N" + remain;
+			}
+
 			#endregion
 
 			// check for project type change
@@ -132,6 +146,7 @@ namespace VPWStudio
 			// output rom tab
 			this.NewSettings.OutputRomPath = tbOutROMPath.Text;
 			this.NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
+			this.NewSettings.OutputRomGameCode = tbOutRomProductCode.Text;
 
 			// project files tab
 			this.NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
