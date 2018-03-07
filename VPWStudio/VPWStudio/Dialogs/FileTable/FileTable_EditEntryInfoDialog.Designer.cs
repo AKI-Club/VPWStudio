@@ -175,6 +175,7 @@
 			this.cbReplaceEncoding.Name = "cbReplaceEncoding";
 			this.cbReplaceEncoding.Size = new System.Drawing.Size(288, 21);
 			this.cbReplaceEncoding.TabIndex = 2;
+			this.cbReplaceEncoding.SelectedValueChanged += new System.EventHandler(this.cbReplaceEncoding_SelectedValueChanged);
 			// 
 			// labelEditingEntry
 			// 

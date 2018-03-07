@@ -38,6 +38,8 @@ namespace VPWStudio
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			this.CurEntry.Comment = tbComment.Text;
+			this.CurEntry.ReplaceFilePath = tbReplaceFilePath.Text;
+
 			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
@@ -72,6 +74,11 @@ namespace VPWStudio
 				this.CurEntry.ReplaceFilePath = ofd.FileName;
 				tbReplaceFilePath.Text = ofd.FileName;
 			}
+		}
+
+		private void cbReplaceEncoding_SelectedValueChanged(object sender, EventArgs e)
+		{
+			this.CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
 		}
 	}
 }
