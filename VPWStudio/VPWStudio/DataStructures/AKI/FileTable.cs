@@ -205,15 +205,12 @@ namespace VPWStudio
 				this.IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
 			}
 
-			bool reading = true;
-
-			while (reading)
+			while (true)
 			{
 				xr.Read();
 
 				if (xr.Name == "Entry" && xr.NodeType == XmlNodeType.EndElement)
 				{
-					reading = false;
 					break;
 				}
 

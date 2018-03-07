@@ -175,16 +175,15 @@ namespace VPWStudio
 		/// <param name="xr"></param>
 		public void ReadXml(XmlReader xr)
 		{
-			bool reading = true;
 			int numCodes = 0;
 
-			while (reading)
+			while (true)
 			{
 				xr.Read();
 
 				if (xr.NodeType == XmlNodeType.EndElement && xr.Name == "GameSharkCodeSet")
 				{
-					reading = false;
+					break;
 				}
 
 				if (xr.Name == "Name")
