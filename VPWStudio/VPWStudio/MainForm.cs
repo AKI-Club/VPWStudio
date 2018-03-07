@@ -1531,8 +1531,6 @@ namespace VPWStudio
 			t1td.ShowDialog();
 		}
 
-		#endregion
-
 		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -1554,6 +1552,12 @@ namespace VPWStudio
 				}
 				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
 				{
+					MessageBox.Show(
+						"Images with transparency are not properly handled at the moment.",
+						SharedStrings.MainForm_Title,
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Warning
+					);
 					// dealing with a transparent image, which is possibly paletted.
 					HashSet<Color> usedColors = new HashSet<Color>();
 					UInt16 alphaColor = 0;
@@ -1574,7 +1578,7 @@ namespace VPWStudio
 							usedColors.Add(c);
 						}
 					}
-					
+
 					AkiTexture test = new AkiTexture();
 					Bitmap converted;
 					// xxx: this conversion sucks
@@ -1587,7 +1591,7 @@ namespace VPWStudio
 					{
 						// assume ci8
 						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format8bppIndexed);
-						
+
 					}
 					test.FromBitmap(converted);
 
@@ -1618,5 +1622,6 @@ namespace VPWStudio
 				}
 			}
 		}
+		#endregion
 	}
 }
