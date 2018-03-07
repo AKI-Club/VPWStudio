@@ -4,15 +4,49 @@ https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX
 https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX-Instruction-Set
 https://jul.rustedlogic.net/thread.php?id=3489
 
-ucodes used:
-"RSP Gfx ucode F3DEX       xbus 2.08  Yoshitaka Yasumoto 1999 Nintendo"
-"RSP Gfx ucode F3DLX.Rej   xbus 2.08  Yoshitaka Yasumoto 1999 Nintendo"
+================================================================================
+ucodes by game
 
+[WCW vs. nWo World Tour]
+RSP Gfx ucode F3DEX         1.23
+RSP Gfx ucode F3DLX.Rej     1.23
+
+[Virtual Pro-Wrestling 64]
+RSP Gfx ucode F3DEX         1.23
+RSP Gfx ucode F3DLX.Rej     1.23
+
+[WCW/nWo Revenge]
+RSP Gfx ucode F3DEX       fifo 2.06
+RSP Gfx ucode F3DLX.Rej   fifo 2.06
+
+[WWF WrestleMania 2000]
+RSP Gfx ucode F3DEX       xbus 2.08
+RSP Gfx ucode F3DLX.Rej   xbus 2.08
+
+[Virtual Pro-Wrestling 2]
+RSP Gfx ucode F3DEX       xbus 2.08
+RSP Gfx ucode F3DLX.Rej   xbus 2.08
+
+[WWF No Mercy]
+RSP Gfx ucode F3DEX       xbus 2.08
+RSP Gfx ucode F3DLX.Rej   xbus 2.08
+
+================================================================================
 VPW2's default display list (Z64 addr 0x4BEA0)
 
 03 C0 01 E0 01 FF 00 00 - "G_CULLDL"?
+   ?? vv vv ww ww
+
+?? = mystery value that most docs say is 0x00, but clearly isn't here
+vv = vfirst (vvvv/2 from microcode)
+ww = vlast (wwww/2 from microcode)
 
 03 C0 01 E0 01 FF 00 00 - "G_CULLDL"?
+   ?? vv vv ww ww
+
+?? = mystery value that most docs say is 0x00, but clearly isn't here
+vv = vfirst (vvvv/2 from microcode)
+ww = vlast (wwww/2 from microcode)
 
 DC 08 00 08 01 00 00 00 - "G_MOVEMEM"
    nn oo ii aa aa aa aa
@@ -25,29 +59,29 @@ aa = address 0x01000000
 DB 04 00 04 00 00 00 02 - "G_MOVEWORD"
    ii oo oo dd dd dd dd
 
-ii = index
-oo = offset
+ii = index (04 = G_MW_CLIP)
+oo = offset (04 = G_MWO_CLIP_RNX)
 dd = data
    
 DB 04 00 0C 00 00 00 02 - "G_MOVEWORD"
    ii oo oo dd dd dd dd
 
-ii = index
-oo = offset
+ii = index (04 = G_MW_CLIP)
+oo = offset (0C = G_MWO_CLIP_RNY)
 dd = data
 
 DB 04 00 14 00 00 FF FE - "G_MOVEWORD"
    ii oo oo dd dd dd dd
 
-ii = index
-oo = offset
+ii = index (04 = G_MW_CLIP)
+oo = offset (14 = G_MWO_CLIP_RPX)
 dd = data
 
 DB 04 00 1C 00 00 FF FE - "G_MOVEWORD"
    ii oo oo dd dd dd dd
 
-ii = index
-oo = offset
+ii = index (04 = G_MW_CLIP)
+oo = offset (1C = G_MWO_CLIP_RPY)
 dd = data
 
 ED 00 00 00 00 78 03 C0 - "G_SETSCISSOR"
