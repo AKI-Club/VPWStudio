@@ -984,11 +984,17 @@ namespace VPWStudio
 			if (Program.CurrentProject.Settings.OutputRomPath == String.Empty)
 			{
 				// invalid output ROM path
+				MessageBox.Show(
+					"Output ROM path not set. Please set Output ROM path in Project Options.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 				return;
 			}
 
 			// perform "build" process
-			MessageBox.Show("doesn't do anything yet");
+			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.");
 			//return;
 
 			// copy the input ROM to the output ROM
@@ -999,7 +1005,7 @@ namespace VPWStudio
 
 			// make changes based on the project file contents
 
-			// - internal game name
+			#region Internal Game Name
 			string intName = Program.CurrentProject.Settings.OutputRomInternalName;
 			if (intName.Length > 20)
 			{
@@ -1017,10 +1023,106 @@ namespace VPWStudio
 			{
 				outRomData[0x20 + i] = nameBytes[i];
 			}
+			#endregion
 
 			// - game code
+			string intCode = Program.CurrentProject.Settings.OutputRomGameCode;
+			if (intCode.Length != 4)
+			{
+				// error
+			}
+			if (!intCode.StartsWith("N"))
+			{
+				// not error, but fix
+			}
 
+			#region FileTable
 			// - filetable
+			// 1) change the offsets for files after the index
+			// 2) insert file data
+
+			int totalDifference = 0;
+
+			for (int i = 1; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+			{
+				FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[i];
+				if (fte.ReplaceFilePath != String.Empty)
+				{
+					int start = (int)fte.Location;
+					int end = (int)Program.CurrentProject.ProjectFileTable.Entries[i + 1].Location;
+
+					// try loading file data
+					string replaceFilePath = String.Empty;
+					if (!Path.IsPathRooted(fte.ReplaceFilePath))
+					{
+						// relative path, harder
+					}
+					else
+					{
+						// absolute path, easy
+						replaceFilePath = fte.ReplaceFilePath;
+					}
+
+					FileStream curFileFS = new FileStream(replaceFilePath, FileMode.Open);
+					BinaryReader curFileBR = new BinaryReader(curFileFS);
+
+					MemoryStream outDataMS = new MemoryStream();
+					BinaryWriter outDataBW = new BinaryWriter(outDataMS);
+
+					curFileBR.BaseStream.Seek(0, SeekOrigin.End);
+					int fileLen = (int)curFileBR.BaseStream.Position;
+					curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
+
+					// determine if we need to compress this.
+					// todo: take into account existing slot's encoding
+					switch (fte.ReplaceEncoding)
+					{
+						case FileTableReplaceEncoding.ForceRaw:
+							// force raw
+							outDataBW.Write(curFileBR.ReadBytes(fileLen));
+							break;
+
+						case FileTableReplaceEncoding.ForceLzss:
+							// force LZSS
+							AsmikLzss.Encode(curFileBR, outDataBW);
+							break;
+
+						case FileTableReplaceEncoding.PickBest:
+						default:
+							// pick best fit... ugh
+							break;
+					}
+
+					curFileBR.Close();
+					curFileFS.Close();
+
+					// perform alignment if needed
+					if ((fileLen & 1) != 0)
+					{
+						outDataBW.Write((byte)0);
+					}
+
+					// if successful, calculate difference
+					int diff = fileLen - (end - start);
+					totalDifference += diff;
+
+					// update future filetable indices
+					for (int u = fte.FileID + 1; u < Program.CurrentProject.ProjectFileTable.Entries.Count; u++)
+					{
+						Program.CurrentProject.ProjectFileTable.Entries[u].Location += (uint)diff;
+					}
+
+					// add data to ROM
+					outDataBW.BaseStream.Seek(0, SeekOrigin.Begin);
+					for (int d = 0; d < fileLen; d++)
+					{
+						outRomData[(int)(d + Program.CurrentProject.ProjectFileTable.FirstFile + fte.Location)] = (byte)outDataBW.BaseStream.ReadByte();
+					}
+
+					outDataBW.Close();
+				}
+			}
+			#endregion
 
 			// - other junk
 
@@ -1029,11 +1131,12 @@ namespace VPWStudio
 
 			// fix up soundtable references
 
+			#region Create Output ROM
 			// determine if the new output ROM is too big to run on console
 			if (outRomData.Count >= 0x4000000)
 			{
 				MessageBox.Show(
-					"This ROM exceeds 512Mb and *will not* run on console.",
+					"This ROM exceeds 512Mbits and *will not* run on console.",
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Warning
@@ -1057,16 +1160,17 @@ namespace VPWStudio
 			}
 
 			// write ROM
-			FileStream fs = new FileStream(outRomPath, FileMode.Create);
-			BinaryWriter bw = new BinaryWriter(fs);
-			bw.Write(Program.CurrentOutputROM.Data);
-			bw.Flush();
-			bw.Dispose();
+			FileStream outRomFS = new FileStream(outRomPath, FileMode.Create);
+			BinaryWriter outRomBW = new BinaryWriter(outRomFS);
+			outRomBW.Write(Program.CurrentOutputROM.Data);
+			outRomBW.Flush();
+			outRomBW.Dispose();
 
 			if (resetWorkDir)
 			{
 				Environment.CurrentDirectory = prevWorkDir;
 			}
+			#endregion
 		}
 
 		/// <summary>
