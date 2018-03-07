@@ -23,11 +23,18 @@ namespace VPWStudio
 			InitializeComponent();
 
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
+
 			cbFileTypes.Items.AddRange(Enum.GetNames(typeof(FileTypes)));
 			cbFileTypes.SelectedIndex = (int)this.CurEntry.FileType;
 			tbComment.Text = fte.Comment;
+
+			cbReplaceEncoding.SelectedIndex = (int)this.CurEntry.ReplaceEncoding;
+			tbReplaceFilePath.Text = this.CurEntry.ReplaceFilePath;
 		}
 
+		/// <summary>
+		/// OK button
+		/// </summary>
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			this.CurEntry.Comment = tbComment.Text;
@@ -35,6 +42,9 @@ namespace VPWStudio
 			this.Close();
 		}
 
+		/// <summary>
+		/// Cancel button
+		/// </summary>
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
@@ -47,6 +57,21 @@ namespace VPWStudio
 		private void cbFileTypes_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			this.CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+		}
+
+		/// <summary>
+		/// Browse for a replacement file.
+		/// </summary>
+		private void buttonReplaceFileBrowse_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Replacement File";
+			ofd.Filter = SharedStrings.FileFilter_None;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				this.CurEntry.ReplaceFilePath = ofd.FileName;
+				tbReplaceFilePath.Text = ofd.FileName;
+			}
 		}
 	}
 }
