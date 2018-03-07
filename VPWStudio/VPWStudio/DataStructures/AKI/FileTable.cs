@@ -8,6 +8,27 @@ using System.Xml.Serialization;
 
 namespace VPWStudio
 {
+	/// <summary>
+	/// Possible encoding states for FileTableReplacement entries.
+	/// </summary>
+	public enum FileTableReplaceEncoding
+	{
+		/// <summary>
+		/// Pick the best fit between Raw and LZSS.
+		/// </summary>
+		PickBest = 0,
+
+		/// <summary>
+		/// Force raw.
+		/// </summary>
+		ForceRaw = 1,
+
+		/// <summary>
+		/// Force LZSS encoding.
+		/// </summary>
+		ForceLzss = 2
+	}
+
 	#region File Table Entry
 	/// <summary>
 	/// A single entry in the filetable.
@@ -41,6 +62,16 @@ namespace VPWStudio
 		/// Comment about this file entry.
 		/// </summary>
 		public string Comment;
+
+		/// <summary>
+		/// Replacement file encoding.
+		/// </summary>
+		public FileTableReplaceEncoding ReplaceEncoding;
+
+		/// <summary>
+		/// Replacement file path.
+		/// </summary>
+		public string ReplaceFilePath;
 		#endregion // program-specific
 		#endregion
 
@@ -55,6 +86,8 @@ namespace VPWStudio
 			this.FileType = FileTypes.Binary;
 			this.IsEncoded = false;
 			this.Comment = String.Empty;
+			this.ReplaceEncoding = FileTableReplaceEncoding.PickBest;
+			this.ReplaceFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -69,6 +102,8 @@ namespace VPWStudio
 			this.FileType = FileTypes.Binary;
 			this.IsEncoded = _enc;
 			this.Comment = String.Empty;
+			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			this.ReplaceFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -83,6 +118,8 @@ namespace VPWStudio
 			this.FileType = FileTypes.Binary;
 			this.IsEncoded = _enc;
 			this.Comment = _comment;
+			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			this.ReplaceFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -106,6 +143,8 @@ namespace VPWStudio
 			this.FileType = _src.FileType;
 			this.IsEncoded = _src.IsEncoded;
 			this.Comment = _src.Comment;
+			this.ReplaceEncoding = _src.ReplaceEncoding;
+			this.ReplaceFilePath = _src.ReplaceFilePath;
 		}
 
 		#region Binary Read/Write
@@ -122,6 +161,7 @@ namespace VPWStudio
 			}
 			this.Location = (BitConverter.ToUInt32(loc, 0) & 0xFFFFFFFE);
 			this.IsEncoded = (BitConverter.ToUInt32(loc, 0) & 1) != 0;
+			this.ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 		}
 
 		/// <summary>
@@ -165,14 +205,41 @@ namespace VPWStudio
 				this.IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
 			}
 
-			if (!xr.IsEmptyElement)
+			bool reading = true;
+
+			while (reading)
 			{
 				xr.Read();
-				this.Comment = xr.Value;
-			}
-			else
-			{
-				this.Comment = String.Empty;
+
+				if (xr.Name == "Entry" && xr.NodeType == XmlNodeType.EndElement)
+				{
+					reading = false;
+					break;
+				}
+
+				if (xr.Name == "Comment" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.Comment = xr.Value;
+					}
+				}
+
+				if (xr.Name == "ReplaceEncoding" && xr.NodeType == XmlNodeType.Element)
+				{
+					xr.Read();
+					this.ReplaceEncoding = (FileTableReplaceEncoding)Enum.Parse(typeof(FileTableReplaceEncoding), xr.Value);
+				}
+
+				if (xr.Name == "ReplaceFilePath" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.ReplaceFilePath = xr.Value;
+					}
+				}
 			}
 		}
 
@@ -187,7 +254,11 @@ namespace VPWStudio
 			xw.WriteAttributeString("loc", String.Format("{0:X8}", this.Location));
 			xw.WriteAttributeString("type", this.FileType.ToString());
 			xw.WriteAttributeString("lzss", this.IsEncoded.ToString());
-			xw.WriteString(this.Comment);
+
+			xw.WriteElementString("Comment", this.Comment);
+			xw.WriteElementString("ReplaceEncoding", this.ReplaceEncoding.ToString());
+			xw.WriteElementString("ReplaceFilePath", this.ReplaceFilePath);
+
 			xw.WriteEndElement();
 		}
 		#endregion
@@ -398,8 +469,10 @@ namespace VPWStudio
 		/// <summary>
 		/// Extract a file from the filetable.
 		/// </summary>
+		/// <param name="_in">BinaryReader instance with ROM loaded.</param>
+		/// <param name="_out">BinaryWriter instance to write data to.</param>
 		/// <param name="id">File ID to extract.</param>
-		/// <param name="forceRaw">Force raw export</param>
+		/// <param name="forceRaw">Force raw export.</param>
 		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool forceRaw = false)
 		{
 			uint loc = this.GetRomLocation(id);
