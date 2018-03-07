@@ -80,14 +80,14 @@ namespace VPWStudio
 			// input ROM path must not be empty
 			if (tbBaseROMPath.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide input ROM path.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Must provide Input ROM path.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
 			// input ROM must exist
 			if (!File.Exists(tbBaseROMPath.Text))
 			{
-				MessageBox.Show(String.Format("ROM file not found at\n{0}", Path.GetFullPath(tbBaseROMPath.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(String.Format("Input ROM file not found at\n{0}", Path.GetFullPath(tbBaseROMPath.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
@@ -106,6 +106,7 @@ namespace VPWStudio
 			}
 
 			// todo: output rom internal name must not be blank?
+			// length issues are ignored because they can be dealt with silently at build time.
 
 			if (tbOutRomProductCode.Text.Equals(String.Empty))
 			{
@@ -116,8 +117,14 @@ namespace VPWStudio
 			{
 				// internal game code must start with "N" because none of the games have 64DD support
 				// this isn't a hard error; just replace it silently.
-				string remain = tbOutRomProductCode.Text.Substring(1,3);
+				string remain = tbOutRomProductCode.Text.Substring(1, 3);
 				tbOutRomProductCode.Text = "N" + remain;
+			}
+			else if (tbOutRomProductCode.Text.Length != 4)
+			{
+				// must be four characters.
+				MessageBox.Show("Output ROM Product Code must be four characters long.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
 			}
 
 			#endregion
