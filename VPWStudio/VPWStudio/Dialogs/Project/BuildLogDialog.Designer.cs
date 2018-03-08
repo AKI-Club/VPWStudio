@@ -28,22 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tbLogOutput = new System.Windows.Forms.TextBox();
+			this.tbLogOutput = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
 			// tbLogOutput
 			// 
 			this.tbLogOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tbLogOutput.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbLogOutput.Location = new System.Drawing.Point(0, 0);
-			this.tbLogOutput.MaxLength = 65535;
-			this.tbLogOutput.Multiline = true;
 			this.tbLogOutput.Name = "tbLogOutput";
 			this.tbLogOutput.ReadOnly = true;
-			this.tbLogOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.tbLogOutput.Size = new System.Drawing.Size(506, 103);
-			this.tbLogOutput.TabIndex = 0;
-			this.tbLogOutput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbLogOutput_KeyUp);
+			this.tbLogOutput.TabIndex = 1;
+			this.tbLogOutput.Text = "";
 			// 
 			// BuildLogDialog
 			// 
@@ -57,14 +53,12 @@
 			this.Name = "BuildLogDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Build Log";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BuildLogDialog_KeyDown);
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TextBox tbLogOutput;
+		private System.Windows.Forms.RichTextBox tbLogOutput;
 	}
 }

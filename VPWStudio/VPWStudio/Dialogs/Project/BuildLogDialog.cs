@@ -46,14 +46,9 @@ namespace VPWStudio
 			tbLogOutput.Text += t + Environment.NewLine;
 		}
 
-		private void BuildLogDialog_KeyDown(object sender, KeyEventArgs e)
-		{
-			if(BuildFinished && e.KeyCode == Keys.Escape)
-			{
-				this.Close();
-			}
-		}
-
+		/// <summary>
+		/// Handle Escape when build finished
+		/// </summary>
 		private void tbLogOutput_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (BuildFinished && e.KeyCode == Keys.Escape)
