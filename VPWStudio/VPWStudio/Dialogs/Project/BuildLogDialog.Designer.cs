@@ -40,6 +40,7 @@
 			this.tbLogOutput.Size = new System.Drawing.Size(506, 103);
 			this.tbLogOutput.TabIndex = 1;
 			this.tbLogOutput.Text = "";
+			this.tbLogOutput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbLogOutput_KeyUp);
 			// 
 			// BuildLogDialog
 			// 
