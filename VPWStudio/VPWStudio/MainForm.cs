@@ -1114,8 +1114,13 @@ namespace VPWStudio
 						replaceFilePath = fte.ReplaceFilePath;
 					}
 
-					// todo: check if the file exists.
+					// check if the file exists.
 					// If it doesn't, we're going to have a hard time replacing data.
+					if (!File.Exists(replaceFilePath))
+					{
+						BuildLogForm.AddLine(String.Format("Error attempting to open '{0}'", replaceFilePath));
+						continue;
+					}
 
 					// another general todo for this section:
 					// if converting a file from the Assets folder, the current
@@ -1164,7 +1169,7 @@ namespace VPWStudio
 					int diff = fileLen - (end - start);
 					totalDifference += diff;
 
-					BuildLogForm.AddText(String.Format("[Entry {0:X4}] ", fte.FileID));
+					BuildLogForm.AddText(String.Format("[File {0:X4}] ", fte.FileID));
 					string sizeCompareChar = "";
 
 					if (fileLen > (end - start))
@@ -1268,7 +1273,7 @@ namespace VPWStudio
 
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
 			BuildLogForm.AddLine(
-				String.Format("Built '{0}' in {1} (min:sec.ms)",
+				String.Format("Successfully built '{0}' in {1} (min:sec.ms)",
 					outRomPath,
 					buildTimeTaken.ToString(@"mm\:ss\.fffff")
 				)
