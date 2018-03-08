@@ -1164,6 +1164,29 @@ namespace VPWStudio
 					int diff = fileLen - (end - start);
 					totalDifference += diff;
 
+					BuildLogForm.AddText(String.Format("[Entry {0:X4}] ", fte.FileID));
+					string sizeCompareChar = "";
+
+					if (fileLen > (end - start))
+					{
+						sizeCompareChar = "<";
+					}
+					else if (fileLen < (end - start))
+					{
+						sizeCompareChar = ">";
+					}
+					else
+					{
+						sizeCompareChar = "=";
+					}
+					BuildLogForm.AddLine(
+						String.Format("old size = {0} {1} new size = {2}",
+						(end - start),
+						sizeCompareChar,
+						fileLen
+						)
+					);
+
 					// todo: handle a possible situation where the new file is smaller than the older one.
 
 					// update future filetable indices
@@ -1198,7 +1221,7 @@ namespace VPWStudio
 			}
 
 			// todo: maybe you should consider re-writing the FileTable huh freem
-			// oh and be advised that it IS possible for the FileTable position to change.
+			// oh and be advised that it IS possible for the FileTable position (and size) to change.
 			#endregion
 
 			// - other junk
