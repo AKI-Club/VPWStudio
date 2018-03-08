@@ -248,6 +248,7 @@ def filelist(rom, filename):
         return rom.rom
 
 --------------------------------------------------------------------------------
+Used by the Import menu items, Application._choose
 
 ## These commands wrap up injectors and file parsers.
 def inject(self, Event=None, filename=None, mode=None, slot=None):
