@@ -64,6 +64,11 @@ namespace VPWStudio
 		/// About box
 		/// </summary>
 		public AboutBox AboutVPWStudio = null;
+
+		/// <summary>
+		/// Build Log dialog
+		/// </summary>
+		public BuildLogDialog BuildLogForm = null;
 		#endregion
 
 		#region Game-Specific Editors
@@ -994,10 +999,26 @@ namespace VPWStudio
 			}
 
 			// perform "build" process
+			// todo: the actual build process could probably be moved into Program.cs
+
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.");
 			//return;
 
-			// todo: the actual build process could probably be moved into Program.cs
+			if (BuildLogForm == null)
+			{
+				BuildLogForm = new BuildLogDialog();
+			}
+			else
+			{
+				if (BuildLogForm.IsDisposed)
+				{
+					BuildLogForm = new BuildLogDialog();
+				}
+			}
+			BuildLogForm.MdiParent = this;
+			BuildLogForm.Show();
+			BuildLogForm.Clear();
+			DateTime startTime = DateTime.Now;
 
 			// copy the input ROM to the output ROM
 			Program.CurrentOutputROM = new Z64Rom();
@@ -1025,8 +1046,11 @@ namespace VPWStudio
 			{
 				outRomData[0x20 + i] = nameBytes[i];
 			}
+
+			BuildLogForm.AddLine(String.Format("Internal Game Name: {0}", Program.CurrentProject.Settings.OutputRomInternalName));
 			#endregion
 
+			#region Product/Game Code
 			// - game code
 			string intCode = Program.CurrentProject.Settings.OutputRomGameCode;
 			if (intCode.Length != 4)
@@ -1037,33 +1061,65 @@ namespace VPWStudio
 			{
 				// not error, but fix
 			}
+			#endregion
 
 			#region FileTable
-			// - filetable
+			// General FileTable tasks:
 			// 1) change the offsets for files after the index
 			// 2) insert file data
+			// todo: it's a bit more complicated than this.
 
+			// Work on a copy of the filetable. If you don't do this, the
+			// Project FileTable will get changed, and reading data from the
+			// Input ROM becomes somewhat impossible once you start changing items.
+			FileTable buildFileTable = new FileTable();
+			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
+
+			// The total difference from all of the changed files.
+
+			// In Zoinkity's original offsetter code, files are added one at a time,
+			// with all relevant code addresses (e.g. WaveTables, PointerTables)
+			// being updated on each change.
+
+			// Here, we're remaking the entire FileTable at once,
+			// saving the necessary code changes for later.
 			int totalDifference = 0;
 
-			for (int i = 1; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
+			for (int i = 1; i < buildFileTable.Entries.Count; i++)
 			{
-				FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[i];
+				FileTableEntry fte = buildFileTable.Entries[i];
 				if (fte.ReplaceFilePath != String.Empty)
 				{
 					int start = (int)fte.Location;
-					int end = (int)Program.CurrentProject.ProjectFileTable.Entries[i + 1].Location;
+					int end = (int)buildFileTable.Entries[i + 1].Location;
 
 					// try loading file data
 					string replaceFilePath = String.Empty;
 					if (!Path.IsPathRooted(fte.ReplaceFilePath))
 					{
 						// relative path, harder
+						// The base is Path.GetDirectoryName(Program.CurProjectPath)
+						replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(Program.CurProjectPath), fte.ReplaceFilePath);
+
+						// This is typically going to be in the ProjectFiles or Assets directories.
+						// Anything in ProjectFiles is either raw data or pre-LZSS'd data.
+
+						// The Assets directory is for files that get converted to other types.
+						// (PNG to TEX (AkiTexture), PNG to CI4/CI8 Texture, JASC PAL to CI4/CI8 Palette, etc.)
 					}
 					else
 					{
 						// absolute path, easy
 						replaceFilePath = fte.ReplaceFilePath;
 					}
+
+					// todo: check if the file exists.
+					// If it doesn't, we're going to have a hard time replacing data.
+
+					// another general todo for this section:
+					// if converting a file from the Assets folder, the current
+					// type of the file being replaced is infinitely helpful to know.
 
 					FileStream curFileFS = new FileStream(replaceFilePath, FileMode.Open);
 					BinaryReader curFileBR = new BinaryReader(curFileFS);
@@ -1108,22 +1164,41 @@ namespace VPWStudio
 					int diff = fileLen - (end - start);
 					totalDifference += diff;
 
+					// todo: handle a possible situation where the new file is smaller than the older one.
+
 					// update future filetable indices
-					for (int u = fte.FileID + 1; u < Program.CurrentProject.ProjectFileTable.Entries.Count; u++)
+					for (int u = fte.FileID + 1; u < buildFileTable.Entries.Count; u++)
 					{
-						Program.CurrentProject.ProjectFileTable.Entries[u].Location += (uint)diff;
+						buildFileTable.Entries[u].Location += (uint)diff;
 					}
 
 					// add data to ROM
 					outDataBW.BaseStream.Seek(0, SeekOrigin.Begin);
 					for (int d = 0; d < fileLen; d++)
 					{
-						outRomData[(int)(d + Program.CurrentProject.ProjectFileTable.FirstFile + fte.Location)] = (byte)outDataBW.BaseStream.ReadByte();
+						outRomData[(int)(d + buildFileTable.FirstFile + fte.Location)] = (byte)outDataBW.BaseStream.ReadByte();
+					}
+
+					// not sure if I need this, but...
+					// if the new file is smaller than the older one, fill the gap between
+					// the end of the new data and the end of the old data with 0x00.
+
+					// in the future, you might want to move the other files upwards to
+					// take advantage of the space, but that's a bit complicated for now.
+					if (diff < 0)
+					{
+						for (int dx = 0; dx < ((end - start) - fileLen); dx++)
+						{
+							outRomData[(int)(buildFileTable.FirstFile + fte.Location + fileLen + dx)] = 0;
+						}
 					}
 
 					outDataBW.Close();
 				}
 			}
+
+			// todo: maybe you should consider re-writing the FileTable huh freem
+			// oh and be advised that it IS possible for the FileTable position to change.
 			#endregion
 
 			// - other junk
@@ -1167,6 +1242,15 @@ namespace VPWStudio
 			outRomBW.Write(Program.CurrentOutputROM.Data);
 			outRomBW.Flush();
 			outRomBW.Dispose();
+
+			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
+			BuildLogForm.AddLine(
+				String.Format("Built '{0}' in {1} (min:sec.ms)",
+					outRomPath,
+					buildTimeTaken.ToString(@"mm\:ss\.fffff")
+				)
+			);
+			BuildLogForm.BuildFinished = true;
 
 			if (resetWorkDir)
 			{
