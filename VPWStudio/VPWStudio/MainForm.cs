@@ -997,6 +997,8 @@ namespace VPWStudio
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.");
 			//return;
 
+			// todo: the actual build process could probably be moved into Program.cs
+
 			// copy the input ROM to the output ROM
 			Program.CurrentOutputROM = new Z64Rom();
 			// output ROM may be bigger than input ROM, so use a List.
@@ -1146,8 +1148,8 @@ namespace VPWStudio
 			// write outRomData to Program.CurrentOutputROM.Data
 			Program.CurrentOutputROM.Data = outRomData.ToArray();
 
-			// recalculate checksums
-			Program.CurrentOutputROM.CalculateChecksums();
+			// fix checksums
+			Program.CurrentOutputROM.FixChecksums();
 
 			// determine output ROM path (may be relative to project file)
 			string outRomPath = Program.CurrentProject.Settings.OutputRomPath;
@@ -1180,9 +1182,9 @@ namespace VPWStudio
 		{
 			// todo: use the output rom instead of input
 
+			// no project loaded to play ROM of
 			if (Program.CurrentProject == null)
 			{
-				// no project loaded to play ROM of
 				// todo: allow launching the emulator (alone) anyways?
 				MessageBox.Show(
 					SharedStrings.PlayRomError_NoProjectLoaded,
@@ -1194,7 +1196,7 @@ namespace VPWStudio
 			}
 
 			// playing ROM depends on program options
-			if (VPWStudio.Properties.Settings.Default.EmulatorPath.Equals(String.Empty))
+			if (Properties.Settings.Default.EmulatorPath.Equals(String.Empty))
 			{
 				// must set emulator path
 				MessageBox.Show(
@@ -1206,7 +1208,8 @@ namespace VPWStudio
 				return;
 			}
 
-			if (!File.Exists(VPWStudio.Properties.Settings.Default.EmulatorPath))
+			// check that emulator exists
+			if (!File.Exists(Properties.Settings.Default.EmulatorPath))
 			{
 				// invalid emulator path
 				MessageBox.Show(
@@ -1218,11 +1221,37 @@ namespace VPWStudio
 				return;
 			}
 
+			// check if output ROM exists
+			string romPath = String.Empty;
+			if (!Path.IsPathRooted(Program.CurrentProject.Settings.OutputRomPath))
+			{
+				// relative to project file
+				romPath = String.Format("{0}\\{1}", Path.GetDirectoryName(Program.CurProjectPath), Program.CurrentProject.Settings.OutputRomPath);
+			}
+			else
+			{
+				// absolute
+				romPath = Program.CurrentProject.Settings.OutputRomPath;
+			}
+
+			if (!File.Exists(romPath))
+			{
+				// output ROM does not exist
+				// technically, we should build in this situation.
+				MessageBox.Show(
+					"Output ROM does not exist.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+				return;
+			}
+
 			// todo: rebuild output rom if needed
 
 			System.Diagnostics.Process.Start(
-				VPWStudio.Properties.Settings.Default.EmulatorPath,
-				Program.CurrentProject.Settings.InputRomPath
+				Properties.Settings.Default.EmulatorPath,
+				romPath
 			);
 		}
 		#endregion
