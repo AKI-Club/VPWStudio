@@ -81,10 +81,10 @@
 			this.akiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.nameEncoderdecoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toki1Testvpw2OnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pngTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.pngTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -471,6 +471,12 @@
 			resources.ApplyResources(this.toki1Testvpw2OnlyToolStripMenuItem, "toki1Testvpw2OnlyToolStripMenuItem");
 			this.toki1Testvpw2OnlyToolStripMenuItem.Click += new System.EventHandler(this.toki1Testvpw2OnlyToolStripMenuItem_Click);
 			// 
+			// pngTestToolStripMenuItem
+			// 
+			this.pngTestToolStripMenuItem.Name = "pngTestToolStripMenuItem";
+			resources.ApplyResources(this.pngTestToolStripMenuItem, "pngTestToolStripMenuItem");
+			this.pngTestToolStripMenuItem.Click += new System.EventHandler(this.pngTestToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -497,12 +503,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// pngTestToolStripMenuItem
-			// 
-			this.pngTestToolStripMenuItem.Name = "pngTestToolStripMenuItem";
-			resources.ApplyResources(this.pngTestToolStripMenuItem, "pngTestToolStripMenuItem");
-			this.pngTestToolStripMenuItem.Click += new System.EventHandler(this.pngTestToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
