@@ -278,26 +278,20 @@ namespace VPWStudio
 			this.Checksum1 = calculated[0];
 			this.Checksum2 = calculated[1];
 
-			MemoryStream ms = new MemoryStream(this.Data);
-			BinaryWriter bw = new BinaryWriter(ms);
-			bw.BaseStream.Seek(0x10, SeekOrigin.Begin);
-
 			byte[] calc1 = BitConverter.GetBytes(this.Checksum1);
+			byte[] calc2 = BitConverter.GetBytes(this.Checksum2);
+
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(calc1);
-			}
-			bw.Write(calc1);
-
-			byte[] calc2 = BitConverter.GetBytes(this.Checksum2);
-			if (BitConverter.IsLittleEndian)
-			{
 				Array.Reverse(calc2);
 			}
-			bw.Write(calc2);
 
-			bw.Close();
-			ms.Close();
+			for (int i = 0; i < 4; i++)
+			{
+				this.Data[0x10 + i] = calc1[i];
+				this.Data[0x14 + i] = calc2[i];
+			}
 		}
 
 		/// <summary>
