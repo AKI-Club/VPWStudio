@@ -139,6 +139,12 @@
     <Compile Include="Dialogs\Program\ProgramOptionsDialog.Designer.cs">
       <DependentUpon>ProgramOptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Project\BuildLogDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Project\BuildLogDialog.Designer.cs">
+      <DependentUpon>BuildLogDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Project\ProjectPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Program\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Project\BuildLogDialog.resx">
+      <DependentUpon>BuildLogDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Project\NewProjectDialog.resx">
       <DependentUpon>NewProjectDialog.cs</DependentUpon>
