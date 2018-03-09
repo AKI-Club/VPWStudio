@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 
@@ -6,6 +7,7 @@ namespace VPWStudio
 {
 	/// <summary>
 	/// CI4 palette; 16 colors.
+	/// Can also contain sub-Palettes.
 	/// </summary>
 	public class Ci4Palette
 	{
@@ -13,11 +15,17 @@ namespace VPWStudio
 		public UInt16[] Entries;
 
 		/// <summary>
+		/// Sub-palettes (only used when the file size is greater than 32 bytes)
+		/// </summary>
+		public List<Ci4Palette> SubPalettes;
+
+		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public Ci4Palette()
 		{
 			this.Entries = new UInt16[16];
+			this.SubPalettes = new List<Ci4Palette>();
 		}
 
 		/// <summary>
@@ -27,6 +35,7 @@ namespace VPWStudio
 		public Ci4Palette(BinaryReader br)
 		{
 			this.Entries = new UInt16[16];
+			this.SubPalettes = new List<Ci4Palette>();
 			this.ReadData(br);
 		}
 
@@ -46,6 +55,30 @@ namespace VPWStudio
 				}
 				this.Entries[i] = BitConverter.ToUInt16(b, 0);
 			}
+
+			int curPos = (int)br.BaseStream.Position;
+			br.BaseStream.Seek(0, SeekOrigin.End);
+			int endPos = (int)br.BaseStream.Position;
+
+			if (curPos != endPos)
+			{
+				int numSubPal = (endPos / 32) - 1;
+				br.BaseStream.Seek(0x20, SeekOrigin.Begin);
+				for (int i = 0; i < numSubPal; i++)
+				{
+					Ci4Palette subPal = new Ci4Palette();
+					for (int j = 0; j < 16; j++)
+					{
+						byte[] b = br.ReadBytes(2);
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(b);
+						}
+						subPal.Entries[j] = BitConverter.ToUInt16(b, 0);
+					}
+					this.SubPalettes.Add(subPal);
+				}
+			}
 		}
 
 		/// <summary>
@@ -63,6 +96,23 @@ namespace VPWStudio
 				}
 				bw.Write(b);
 			}
+
+			// todo: is this correct?
+			if (this.SubPalettes.Count != 0)
+			{
+				foreach (Ci4Palette p in SubPalettes)
+				{
+					foreach (UInt16 cv in p.Entries)
+					{
+						byte[] b = BitConverter.GetBytes(cv);
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(b);
+						}
+						bw.Write(b);
+					}
+				}
+			}
 		}
 		#endregion
 
@@ -79,6 +129,8 @@ namespace VPWStudio
 				Color c = N64Colors.Value5551ToColor(this.Entries[i]);
 				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
 			}
+
+			// todo: subpalettes require other junk!
 		}
 		#endregion
 
