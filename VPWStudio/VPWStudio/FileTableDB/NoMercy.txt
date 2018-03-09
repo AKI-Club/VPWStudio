@@ -447,8 +447,12 @@
 0E69=Ci4Texture;
 0E6A=Ci4Palette;
 0E6B=Ci4Texture;
-1D72=Ci8Palette;
-1D73=Ci8Texture;
+1D6E=Ci4Palette;
+1D6F=Ci4Texture;
+1D70=Ci4Palette;
+1D71=Ci4Texture;
+1D72=Ci8Palette;[Face] Male 01
+1D73=Ci8Texture;[Face] Male 01
 1D74=Ci8Palette;
 1D75=Ci8Texture;
 1D76=Ci8Palette;
@@ -461,3 +465,7 @@
 1D7D=Ci8Texture;
 1D7E=Ci8Palette;
 1D7F=Ci8Texture;
+1D80=Ci8Palette;
+1D81=Ci8Texture;
+1D82=Ci8Palette;
+1D83=Ci8Texture;
