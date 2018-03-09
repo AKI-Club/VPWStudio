@@ -1023,8 +1023,8 @@
 1113=Ci8Palette;[Face Palette] 1
 1114=Ci8Palette;[Face Palette] 2
 1115=Ci8Palette;[Face Palette] 3
-1115=Ci8Palette;[Face Palette] 4
-1116=Ci8Palette;[Face Palette] 5
+1116=Ci8Palette;[Face Palette] 4
+1117=Ci8Palette;[Face Palette] 5
 112A=Ci4Palette;
 112B=Ci4Palette;
 112C=Ci8Palette;
