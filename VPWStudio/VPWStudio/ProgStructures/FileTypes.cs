@@ -58,6 +58,26 @@ namespace VPWStudio
 			{ FileTypes.Ci8Texture, "ci8.img" },
 			{ FileTypes.DoubleTex, "tex" }, // note: exports as two files
 		};
+
+		/// <summary>
+		/// List of FileTypes containing texture data.
+		/// </summary>
+		public static List<FileTypes> TextureFileTypes = new List<FileTypes>()
+		{
+			FileTypes.AkiTexture,
+			FileTypes.Ci4Texture,
+			FileTypes.Ci8Texture,
+			FileTypes.DoubleTex
+		};
+
+		/// <summary>
+		/// List of FileTypes containing texture data.
+		/// </summary>
+		public static List<FileTypes> PaletteFileTypes = new List<FileTypes>()
+		{
+			FileTypes.Ci4Palette,
+			FileTypes.Ci8Palette
+		};
 	}
 
 }
