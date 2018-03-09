@@ -1022,7 +1022,7 @@ namespace VPWStudio
 
 			// copy the input ROM to the output ROM
 			Program.CurrentOutputROM = new Z64Rom();
-			// output ROM may be bigger than input ROM, so use a List.
+			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
 			outRomData.AddRange(Program.CurrentInputROM.Data);
 
@@ -1069,9 +1069,9 @@ namespace VPWStudio
 			// 2) insert file data
 			// todo: it's a bit more complicated than this.
 
-			// Work on a copy of the filetable. If you don't do this, the
-			// Project FileTable will get changed, and reading data from the
-			// Input ROM becomes somewhat impossible once you start changing items.
+			// Work on a copy of the FileTable.
+			// This prevents changes from being made to the Project's FileTable,
+			// which messes up the rest of the program.
 			FileTable buildFileTable = new FileTable();
 			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
 
@@ -1126,6 +1126,8 @@ namespace VPWStudio
 					// if converting a file from the Assets folder, the current
 					// type of the file being replaced is infinitely helpful to know.
 
+					BuildLogForm.AddLine(String.Format("[File {0:X4}]", fte.FileID));
+
 					FileStream curFileFS = new FileStream(replaceFilePath, FileMode.Open);
 					BinaryReader curFileBR = new BinaryReader(curFileFS);
 
@@ -1152,7 +1154,29 @@ namespace VPWStudio
 
 						case FileTableReplaceEncoding.PickBest:
 						default:
-							// pick best fit... ugh
+							// pick best fit... ugh this code sucks
+
+							// fileLen holds the uncompressed size
+							using (MemoryStream compStream = new MemoryStream())
+							{
+								using (BinaryWriter compWriter = new BinaryWriter(compStream))
+								{
+									AsmikLzss.Encode(curFileBR, compWriter);
+									if (compWriter.BaseStream.Position < fileLen)
+									{
+										// insert compressed
+										curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
+										AsmikLzss.Encode(curFileBR, outDataBW);
+									}
+									else if (compWriter.BaseStream.Position > fileLen)
+									{
+										// insert raw
+										curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
+										outDataBW.Write(curFileBR.ReadBytes(fileLen));
+									}
+								}
+							}
+
 							break;
 					}
 
@@ -1160,6 +1184,7 @@ namespace VPWStudio
 					curFileFS.Close();
 
 					// perform alignment if needed
+					// xxx: operates on fileLen and not outDataBW position
 					if ((fileLen & 1) != 0)
 					{
 						outDataBW.Write((byte)0);
@@ -1169,9 +1194,7 @@ namespace VPWStudio
 					int diff = fileLen - (end - start);
 					totalDifference += diff;
 
-					BuildLogForm.AddText(String.Format("[File {0:X4}] ", fte.FileID));
 					string sizeCompareChar = "";
-
 					if (fileLen > (end - start))
 					{
 						sizeCompareChar = "<";
@@ -1182,7 +1205,7 @@ namespace VPWStudio
 					}
 					else
 					{
-						sizeCompareChar = "=";
+						sizeCompareChar = "==";
 					}
 					BuildLogForm.AddLine(
 						String.Format("old size = {0} {1} new size = {2}",
