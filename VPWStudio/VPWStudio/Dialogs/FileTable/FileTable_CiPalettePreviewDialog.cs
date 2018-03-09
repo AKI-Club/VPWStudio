@@ -46,6 +46,16 @@ namespace VPWStudio
 				BinaryReader fr = new BinaryReader(palStream);
 				CurCI4Palette.ReadData(fr);
 				fr.Close();
+
+				if (CurCI4Palette.SubPalettes.Count != 0)
+				{
+					MessageBox.Show(
+						"Subpalette support not yet implemented.",
+						SharedStrings.MainForm_Title,
+						MessageBoxButtons.OK,
+						MessageBoxIcon.Warning
+					);
+				}
 			}
 			else if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci8Palette)
 			{
