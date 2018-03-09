@@ -463,11 +463,14 @@ namespace VPWStudio
 
 			if (Program.CurrentProject.Settings.ProjectFilesPath == String.Empty)
 			{
-				// make new folder where the project file is being saved
-				string projFilesDir = Path.GetDirectoryName(Program.CurProjectPath) + @"\ProjectFiles";
-				Directory.CreateDirectory(projFilesDir);
-				// set relative path
+				// make new folders where the project file is being saved
+				string projPath = Path.GetDirectoryName(Program.CurProjectPath);
+				Directory.CreateDirectory(projPath + @"\ProjectFiles");
+				Directory.CreateDirectory(projPath + @"\Assets");
+
+				// set relative paths
 				Program.CurrentProject.Settings.ProjectFilesPath = "ProjectFiles";
+				Program.CurrentProject.Settings.AssetsPath = "Assets";
 			}
 
 			// do the actual saving
