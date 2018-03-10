@@ -475,6 +475,54 @@ namespace VPWStudio
 					((VPWStudio.MainForm)this.MdiParent).RequestAkiTextDialog(key);
 					break;
 
+				// TEMPORARY
+				case FileTypes.AkiSmallFont:
+					{
+						MessageBox.Show("sorry, but I'm temporarily exporting this font to 'temporary-small.png' in the current working folder.");
+						AkiFont f = new AkiFont(AkiFontType.AkiSmallFont);
+
+						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+						BinaryReader romReader = new BinaryReader(romStream);
+
+						MemoryStream fontStream = new MemoryStream();
+						BinaryWriter fontWriter = new BinaryWriter(fontStream);
+
+						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fontWriter, key);
+
+						fontStream.Seek(0, SeekOrigin.Begin);
+						BinaryReader fontReader = new BinaryReader(fontStream);
+						f.ReadData(fontReader);
+						f.WriteRawData();
+						f.ToBitmap().Save("temporary-small.png");
+						fontReader.Close();
+						romReader.Close();
+					}
+					break;
+
+				case FileTypes.AkiLargeFont:
+					{
+						MessageBox.Show("sorry, but I'm temporarily exporting this font to 'temporary-large.png' in the current working folder.");
+						AkiFont f = new AkiFont(AkiFontType.AkiLargeFont);
+
+						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+						BinaryReader romReader = new BinaryReader(romStream);
+
+						MemoryStream fontStream = new MemoryStream();
+						BinaryWriter fontWriter = new BinaryWriter(fontStream);
+
+						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fontWriter, key);
+
+						fontStream.Seek(0, SeekOrigin.Begin);
+						BinaryReader fontReader = new BinaryReader(fontStream);
+						f.ReadData(fontReader);
+						f.WriteRawData();
+						f.ToBitmap().Save("temporary-large.png");
+						fontReader.Close();
+						romReader.Close();
+					}
+					break;
+				// end temporary
+
 				// no default handler; show the hex viewer.
 				default:
 					((VPWStudio.MainForm)this.MdiParent).RequestHexViewer(key);
