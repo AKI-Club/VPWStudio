@@ -83,7 +83,6 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region Helpers
 		/// <summary>
 		/// Initializes the Project FileTable using the Input ROM.
 		/// </summary>
@@ -105,7 +104,5 @@ namespace VPWStudio
 			br.Close();
 			fs.Close();
 		}
-		#endregion
-
 	}
 }
