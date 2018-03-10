@@ -42,6 +42,80 @@ namespace VPWStudio
 	}
 
 	/// <summary>
+	/// Possible region codes for N64 ROMs.
+	/// </summary>
+	public enum RegionCodes
+	{
+		/// <summary>
+		/// Japan, Japanese
+		/// </summary>
+		Japanese = 'J',
+		/// <summary>
+		/// North America, English
+		/// </summary>
+		NorthAmerica = 'E',
+		/// <summary>
+		/// European, Generic
+		/// </summary>
+		European = 'P',
+		/// <summary>
+		/// French
+		/// </summary>
+		French = 'F',
+		/// <summary>
+		/// Canada (English/French?)
+		/// </summary>
+		Canadian = 'N',
+		/// <summary>
+		/// Germany, German
+		/// </summary>
+		German = 'D',
+		/// <summary>
+		/// Netherlands, Dutch
+		/// </summary>
+		Dutch = 'H',
+		/// <summary>
+		/// Italy, Italian
+		/// </summary>
+		Italian = 'I',
+		/// <summary>
+		/// Spain, Spanish
+		/// </summary>
+		Spanish = 'S',
+		/// <summary>
+		/// Scandinavia, Scandinavian
+		/// </summary>
+		Scandinavian = 'W',
+		/// <summary>
+		/// China, Chinese (iQue?)
+		/// </summary>
+		Chinese = 'C',
+		/// <summary>
+		/// Korea, Korean
+		/// </summary>
+		Korean = 'K',
+		/// <summary>
+		/// Brazil, Brazilian
+		/// </summary>
+		Brazilian = 'B',
+		/// <summary>
+		/// Australia, Australian
+		/// </summary>
+		Australian = 'U',
+		OthersX = 'X',
+		OthersY = 'Y',
+		OthersZ = 'Z',
+		/// <summary>
+		/// Gateway/Lodgenet NTSC
+		/// </summary>
+		GatewayNTSC = 'G',
+		/// <summary>
+		/// Gateway/Lodgenet PAL
+		/// </summary>
+		GatewayPAL = 'L'
+	}
+
+	/// <summary>
 	/// Z64 format Nintendo 64 ROM.
 	/// </summary>
 	public class Z64Rom
