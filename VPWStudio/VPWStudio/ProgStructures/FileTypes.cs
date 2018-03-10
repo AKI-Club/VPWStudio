@@ -52,10 +52,10 @@ namespace VPWStudio
 			{ FileTypes.AkiText, "akitext" },
 			{ FileTypes.AkiLargeFont, "bin" }, // todo: these aren't handled yet
 			{ FileTypes.AkiSmallFont, "bin" }, // todo: these aren't handled yet
-			{ FileTypes.Ci4Palette, "ci4.pal" },
-			{ FileTypes.Ci8Palette, "ci8.pal" },
-			{ FileTypes.Ci4Texture, "ci4.img" },
-			{ FileTypes.Ci8Texture, "ci8.img" },
+			{ FileTypes.Ci4Palette, "ci4pal" },
+			{ FileTypes.Ci8Palette, "ci8pal" },
+			{ FileTypes.Ci4Texture, "ci4tex" },
+			{ FileTypes.Ci8Texture, "ci8tex" },
 			{ FileTypes.DoubleTex, "tex" }, // note: exports as two files
 		};
 
