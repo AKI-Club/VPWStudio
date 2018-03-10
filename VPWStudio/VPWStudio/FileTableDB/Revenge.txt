@@ -539,10 +539,10 @@
 0432=AkiModel;
 0A62=Ci4Palette;[Head] Sting (white paint)
 0A63=AkiModel;[Head] Sting (white paint)
-0A64=Ci4Texture[Head] Sting (white paint)
+0A64=Ci4Texture;[Head] Sting (white paint)
 0A65=Ci4Palette;[Neck] Sting (white paint)
 0A66=AkiModel;[Neck] Sting (white paint)
-0A67=Ci4Texture[Neck] Sting (white paint)
+0A67=Ci4Texture;[Neck] Sting (white paint)
 0A68=Ci8Palette;[Face] Sting (white paint)
 0A69=AkiModel;[Face] Sting (white paint)
 0A6A=Ci8Texture;[Face] Sting (white paint)
