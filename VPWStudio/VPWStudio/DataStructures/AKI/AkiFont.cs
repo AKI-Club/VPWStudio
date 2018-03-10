@@ -33,7 +33,7 @@ namespace VPWStudio
 	public class AkiFont
 	{
 		#region Constants
-		// XXX: THESE VALUES ONLY MAKE SENSE FOR VPW2
+		// XXX: (some of) THESE VALUES ONLY MAKE SENSE FOR VPW2
 		// they also work with WM2K for some "unknown" reason (a.k.a. they based WM2K off of VPW2)
 
 		#region Large Font Constants
@@ -45,6 +45,7 @@ namespace VPWStudio
 		/// Large font character cell height.
 		/// </summary>
 		public const int LARGE_FONT_HEIGHT = 21;
+
 		/// <summary>
 		/// Total number of characters in the large font data.
 		/// </summary>
@@ -68,6 +69,7 @@ namespace VPWStudio
 		/// Small font character cell height.
 		/// </summary>
 		public const int SMALL_FONT_HEIGHT = 13;
+
 		/// <summary>
 		/// Total number of characters in the small font data.
 		/// </summary>
