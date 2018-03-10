@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\AKI\AkiFont.cs" />
     <Compile Include="DataStructures\AKI\AkiModel.cs" />
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
