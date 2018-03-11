@@ -461,15 +461,17 @@ namespace VPWStudio
 				}
 			}
 
+			// Create new directories where the project is being saved,
+			// and set relative paths in the project file.
+			string projPath = Path.GetDirectoryName(Program.CurProjectPath);
 			if (Program.CurrentProject.Settings.ProjectFilesPath == String.Empty)
 			{
-				// make new folders where the project file is being saved
-				string projPath = Path.GetDirectoryName(Program.CurProjectPath);
 				Directory.CreateDirectory(projPath + @"\ProjectFiles");
-				Directory.CreateDirectory(projPath + @"\Assets");
-
-				// set relative paths
 				Program.CurrentProject.Settings.ProjectFilesPath = "ProjectFiles";
+			}
+			if (Program.CurrentProject.Settings.AssetsPath == String.Empty)
+			{
+				Directory.CreateDirectory(projPath + @"\Assets");
 				Program.CurrentProject.Settings.AssetsPath = "Assets";
 			}
 
@@ -499,9 +501,9 @@ namespace VPWStudio
 				if (Program.CurProjectPath.Equals(String.Empty))
 				{
 					Program.CurProjectPath = sfd.FileName;
-				}
 
-				// todo: handle ProjectFiles folder
+					// todo: handle ProjectFiles and Assets directories
+				}
 
 				// hack to unset UnsavedChanges if saving over the existing file.
 				if (Path.GetFullPath(sfd.FileName).Equals(Program.CurProjectPath))
@@ -592,7 +594,7 @@ namespace VPWStudio
 						f.Close();
 					}
 
-					// todo: probably have to reload filetable data.
+					// todo: reload filetable data
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
@@ -701,6 +703,11 @@ namespace VPWStudio
 					}
 					break;
 
+				case VPWGames.WorldTour:
+				case VPWGames.VPW64:
+					MessageBox.Show("this game will be using the same dialog as Revenge, once I'm done coding the damned thing.");
+					break;
+				
 				default:
 					MessageBox.Show(String.Format("costumes dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
 					break;
@@ -1002,7 +1009,8 @@ namespace VPWStudio
 			}
 
 			// perform "build" process
-			// todo: the actual build process could probably be moved into Program.cs
+			// todo: the actual build process could probably be moved into Program.cs,
+			// with other portions being implemented by the relevant classes.
 
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.");
 			//return;
@@ -1129,6 +1137,13 @@ namespace VPWStudio
 					// if converting a file from the Assets folder, the current
 					// type of the file being replaced is infinitely helpful to know.
 
+					string replaceFileExtension = Path.GetExtension(replaceFilePath);
+					if (replaceFileExtension == ".png")
+					{
+						// skip over this for now so things don't break
+						continue;
+					}
+
 					BuildLogForm.AddLine(String.Format("[File {0:X4}]", fte.FileID));
 
 					FileStream curFileFS = new FileStream(replaceFilePath, FileMode.Open);
@@ -1194,15 +1209,16 @@ namespace VPWStudio
 					}
 
 					// if successful, calculate difference
-					int diff = fileLen - (end - start);
+					int insertDataLen = (int)outDataBW.BaseStream.Position;
+					int diff = insertDataLen - (end - start);
 					totalDifference += diff;
 
 					string sizeCompareChar = "";
-					if (fileLen > (end - start))
+					if (insertDataLen > (end - start))
 					{
 						sizeCompareChar = "<";
 					}
-					else if (fileLen < (end - start))
+					else if (insertDataLen < (end - start))
 					{
 						sizeCompareChar = ">";
 					}
@@ -1214,11 +1230,11 @@ namespace VPWStudio
 						String.Format("old size = {0} {1} new size = {2}",
 						(end - start),
 						sizeCompareChar,
-						fileLen
+						insertDataLen
 						)
 					);
 
-					// todo: handle a possible situation where the new file is smaller than the older one.
+					// todo: handle situations: new file > old file; old file > new file
 
 					// update future filetable indices
 					for (int u = fte.FileID + 1; u < buildFileTable.Entries.Count; u++)
@@ -1374,10 +1390,9 @@ namespace VPWStudio
 
 			if (!File.Exists(romPath))
 			{
-				// output ROM does not exist
-				// technically, we should build in this situation.
+				// output ROM does not exist; todo: rebuild it
 				MessageBox.Show(
-					"Output ROM does not exist.",
+					"Output ROM does not exist. (Yes, I need to add an automatic re-build option probably)",
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error
@@ -1385,7 +1400,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// todo: rebuild output rom if needed
+			// todo: rebuild output rom if needed (a.k.a. changes made since last build)
 
 			System.Diagnostics.Process.Start(
 				Properties.Settings.Default.EmulatorPath,
