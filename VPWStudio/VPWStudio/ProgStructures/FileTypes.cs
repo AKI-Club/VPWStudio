@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VPWStudio
 {
@@ -16,8 +13,9 @@ namespace VPWStudio
 		AkiModel,      // Model data
 		AkiTexture,    // "TEX" file, AKI's wrapper around some N64 texture types
 		AkiText,       // Text bank
-		AkiLargeFont,  // (not yet implemented)
-		AkiSmallFont,  // (not yet implemented)
+		AkiLargeFont,  // Large font (24x21px character cells)
+		AkiSmallFont,  // Small font (16x13px character cells)
+		AkiFontChars,  // (not yet implemented, but a Shift-JIS encoded text file)
 
 		// N64 standard textures and palettes
 		Ci4Palette, // raw CI4 palette data (32 bytes)
@@ -50,8 +48,9 @@ namespace VPWStudio
 			{ FileTypes.AkiModel, "model" },
 			{ FileTypes.AkiTexture, "tex" },
 			{ FileTypes.AkiText, "akitext" },
-			{ FileTypes.AkiLargeFont, "bin" }, // todo: these aren't handled yet
-			{ FileTypes.AkiSmallFont, "bin" }, // todo: these aren't handled yet
+			{ FileTypes.AkiLargeFont, "largefont" },
+			{ FileTypes.AkiSmallFont, "smallfont" },
+			{ FileTypes.AkiFontChars, "txt" },
 			{ FileTypes.Ci4Palette, "ci4pal" },
 			{ FileTypes.Ci8Palette, "ci8pal" },
 			{ FileTypes.Ci4Texture, "ci4tex" },
@@ -71,7 +70,7 @@ namespace VPWStudio
 		};
 
 		/// <summary>
-		/// List of FileTypes containing texture data.
+		/// List of FileTypes containing palette data.
 		/// </summary>
 		public static List<FileTypes> PaletteFileTypes = new List<FileTypes>()
 		{
