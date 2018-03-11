@@ -6,11 +6,6 @@ using System.IO;
 
 namespace VPWStudio
 {
-	/*
-	 * Various notes on VPW2:
-	 * 3253 actual characters according to font.txt (File ID 0x0003)
-	 */
-
 	/// <summary>
 	/// Possible AKI font types.
 	/// </summary>
@@ -33,59 +28,89 @@ namespace VPWStudio
 	public class AkiFont
 	{
 		#region Constants
-		// XXX: (some of) THESE VALUES ONLY MAKE SENSE FOR VPW2
-		// they also work with WM2K for some "unknown" reason (a.k.a. they based WM2K off of VPW2)
+		// LargeFontWidth    - Character cell width
+		// LargeFontHeight   - Character cell height
+		// LargeFontCharSize - This could very well be calculated, but I'd rather not.
+		// LargeFontChars    - Number of characters defined
+		// LargeFontCols     - Number of columns in output image
+		// LargeFontRows     - Number of rows in output image
+		// (repeat the above list but starting with "Small" instead of "Large")
 
-		#region Large Font Constants
-		/// <summary>
-		/// Large font character cell width.
-		/// </summary>
-		public const int LARGE_FONT_WIDTH = 24;
-		/// <summary>
-		/// Large font character cell height.
-		/// </summary>
-		public const int LARGE_FONT_HEIGHT = 21;
+		private static Dictionary<VPWGames, Dictionary<string, int>> DefaultFontMetrics = new Dictionary<VPWGames, Dictionary<string, int>>()
+		{
+			{
+				VPWGames.Revenge,
+				// actual font characters differ between fonts
+				new Dictionary<string, int>()
+				{
+					{ "LargeFontWidth", 24 },
+					{ "LargeFontHeight", 23 },
+					{ "LargeFontCharSize", 0x45 },
+					{ "LargeFontChars", 120 },
+					{ "LargeFontCols", 24 },
+					{ "LargeFontRows", 5 },
 
-		/// <summary>
-		/// Total number of characters in the large font data.
-		/// </summary>
-		public const int LARGE_FONT_CHARS = 3260;
-		/// <summary>
-		/// Number of characters per row for large font output image.
-		/// </summary>
-		public const int LARGE_FONT_COLS = 20;
-		/// <summary>
-		/// Number of rows for large font output image.
-		/// </summary>
-		public const int LARGE_FONT_ROWS = 163;
-		#endregion
+					{ "SmallFontWidth", 16 },
+					{ "SmallFontHeight", 14 },
+					{ "SmallFontCharSize", 0x1C },
+					{ "SmallFontChars", 128 },
+					{ "SmallFontCols", 16 },
+					{ "SmallFontRows", 9 },
+				}
+			},
+			{
+				VPWGames.WM2K,
+				// Actual font characters: 103
+				new Dictionary<string, int>()
+				{
+					{ "LargeFontWidth", 24 },
+					{ "LargeFontHeight", 21 },
+					{ "LargeFontCharSize", 0x3F },
+					{ "LargeFontChars", 110 },
+					{ "LargeFontCols", 16 },
+					{ "LargeFontRows", 7 },
 
-		#region Small Font Constants
-		/// <summary>
-		/// Small font character cell width.
-		/// </summary>
-		public const int SMALL_FONT_WIDTH = 16;
-		/// <summary>
-		/// Small font character cell height.
-		/// </summary>
-		public const int SMALL_FONT_HEIGHT = 13;
+					{ "SmallFontWidth", 16 },
+					{ "SmallFontHeight", 13 },
+					{ "SmallFontCharSize", 0x1A },
+					{ "SmallFontChars", 112 },
+					{ "SmallFontCols", 16 },
+					{ "SmallFontRows", 7 },
+				}
+			},
+			{
+				VPWGames.VPW2,
+				// Actual font characters: 3253
+				new Dictionary<string, int>()
+				{
+					{ "LargeFontWidth", 24 },
+					{ "LargeFontHeight", 21 },
+					{ "LargeFontCharSize", 0x3F },
+					{ "LargeFontChars", 3260 },
+					{ "LargeFontCols", 20 },
+					{ "LargeFontRows", 163 },
 
-		/// <summary>
-		/// Total number of characters in the small font data.
-		/// </summary>
-		public const int SMALL_FONT_CHARS = 3264;
-		/// <summary>
-		/// Number of characters per row for small font output image.
-		/// </summary>
-		public const int SMALL_FONT_COLS = 64;
-		/// <summary>
-		/// Number of rows for small font output image.
-		/// </summary>
-		public const int SMALL_FONT_ROWS = 51;
-		#endregion
+					{ "SmallFontWidth", 16 },
+					{ "SmallFontHeight", 13 },
+					{ "SmallFontCharSize", 0x1A },
+					{ "SmallFontChars", 3264 },
+					{ "SmallFontCols", 64 },
+					{ "SmallFontRows", 51 },
+				}
+			},
+		};
+
 		#endregion
 
 		#region Class Members
+		/// <summary>
+		/// Game type for this AkiFont.
+		/// </summary>
+		/// "Why is this needed?", you will ask...
+		/// Each game seems to require different values for the font data.
+		/// There goes the neighborhood.
+		public VPWGames GameType;
+
 		/// <summary>
 		/// Font type (large or small)
 		/// </summary>
@@ -107,6 +132,7 @@ namespace VPWStudio
 		/// </summary>
 		public AkiFont()
 		{
+			this.GameType = VPWGames.Invalid;
 			this.FontType = AkiFontType.AkiSmallFont;
 			this.Data = new List<byte>();
 			this.RawData = new List<byte>();
@@ -116,8 +142,9 @@ namespace VPWStudio
 		/// Specific constructor.
 		/// </summary>
 		/// <param name="_ft">AkiFontType to use.</param>
-		public AkiFont(AkiFontType _ft)
+		public AkiFont(VPWGames _game, AkiFontType _ft)
 		{
+			this.GameType = _game;
 			this.FontType = _ft;
 			this.Data = new List<byte>();
 			this.RawData = new List<byte>();
@@ -132,6 +159,7 @@ namespace VPWStudio
 		private void ReadFontData_Large(BinaryReader br)
 		{
 			byte[] test = new byte[3];
+			int numEntries = 0;
 			while (true)
 			{
 				test = br.ReadBytes(3);
@@ -139,8 +167,10 @@ namespace VPWStudio
 				{
 					break;
 				}
-				Data.AddRange(br.ReadBytes(0x3F));
+				Data.AddRange(br.ReadBytes(DefaultFontMetrics[GameType]["LargeFontCharSize"]));
+				numEntries++;
 			}
+			System.Windows.Forms.MessageBox.Show(String.Format("Loaded {0} chars from large font", numEntries));
 		}
 
 		/// <summary>
@@ -154,11 +184,14 @@ namespace VPWStudio
 			int fileLen = (int)br.BaseStream.Position;
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
+			int numEntries = 0;
 			while (br.BaseStream.Position < fileLen)
 			{
 				br.ReadBytes(2);
-				Data.AddRange(br.ReadBytes(0x1A));
+				Data.AddRange(br.ReadBytes(DefaultFontMetrics[GameType]["SmallFontCharSize"]));
+				numEntries++;
 			}
+			System.Windows.Forms.MessageBox.Show(String.Format("Loaded {0} chars from small font", numEntries));
 		}
 
 		/// <summary>
@@ -217,21 +250,21 @@ namespace VPWStudio
 			switch (FontType)
 			{
 				case AkiFontType.AkiLargeFont:
-					charWidth = LARGE_FONT_WIDTH;
-					charHeight = LARGE_FONT_HEIGHT;
-					charBytes = LARGE_FONT_WIDTH * LARGE_FONT_HEIGHT;
-					outColumns = LARGE_FONT_COLS;
-					outRows = LARGE_FONT_ROWS;
-					numChars = LARGE_FONT_CHARS;
+					charWidth = DefaultFontMetrics[GameType]["LargeFontWidth"];
+					charHeight = DefaultFontMetrics[GameType]["LargeFontHeight"];
+					charBytes = charWidth * charHeight;
+					outColumns = DefaultFontMetrics[GameType]["LargeFontCols"];
+					outRows = DefaultFontMetrics[GameType]["LargeFontRows"];
+					numChars = DefaultFontMetrics[GameType]["LargeFontChars"];
 					break;
 
 				case AkiFontType.AkiSmallFont:
-					charWidth = SMALL_FONT_WIDTH;
-					charHeight = SMALL_FONT_HEIGHT;
-					charBytes = SMALL_FONT_WIDTH * SMALL_FONT_HEIGHT;
-					outColumns = SMALL_FONT_COLS;
-					outRows = SMALL_FONT_ROWS;
-					numChars = SMALL_FONT_CHARS;
+					charWidth = DefaultFontMetrics[GameType]["SmallFontWidth"];
+					charHeight = DefaultFontMetrics[GameType]["SmallFontHeight"];
+					charBytes = charWidth * charHeight;
+					outColumns = DefaultFontMetrics[GameType]["SmallFontCols"];
+					outRows = DefaultFontMetrics[GameType]["SmallFontRows"];
+					numChars = DefaultFontMetrics[GameType]["SmallFontChars"];
 					break;
 			}
 
