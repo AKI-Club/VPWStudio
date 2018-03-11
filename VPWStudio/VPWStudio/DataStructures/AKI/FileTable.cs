@@ -500,6 +500,128 @@ namespace VPWStudio
 				}
 			}
 		}
+
+		public enum ReplaceFileReturnCode
+		{
+			/// <summary>
+			/// Invalid FileType set for this entry.
+			/// </summary>
+			/// Example: trying to load a PNG into AkiText
+			InvalidFileType = -3,
+
+			/// <summary>
+			/// Replacement file does not exist.
+			/// </summary>
+			FileDoesNotExist = -2,
+
+			/// <summary>
+			/// Generic error.
+			/// </summary>
+			Error = -1,
+
+			/// <summary>
+			/// Everything went ok. (New file size == old file size)
+			/// </summary>
+			OK = 0,
+
+			/// <summary>
+			/// New file is smaller than the older file.
+			/// </summary>
+			NewFileSmaller = 1,
+
+			/// <summary>
+			/// New file is bigger than the older file.
+			/// </summary>
+			NewFileBigger = 2,
+		}
+
+		/// <summary>
+		/// ReplaceFile return information.
+		/// </summary>
+		public struct ReplaceFileReturnData
+		{
+			/// <summary>
+			/// Difference in filesize between old and new files.
+			/// </summary>
+			public int Difference;
+			public ReplaceFileReturnCode ReturnCode;
+		}
+
+		public ReplaceFileReturnData ReplaceFile(List<byte> romData, FileTableEntry fte, string projectPath)
+		{
+			ReplaceFileReturnData rd = new ReplaceFileReturnData();
+
+			int start = (int)fte.Location;
+			int end = (int)Entries[fte.FileID + 1].Location;
+
+			// determine path type for replacement file and act accordingly
+			string replaceFilePath = String.Empty;
+			if (!Path.IsPathRooted(fte.ReplaceFilePath))
+			{
+				// relative to projectPath
+				replaceFilePath = String.Format("{0}\\{1}", projectPath, fte.ReplaceFilePath);
+			}
+			else
+			{
+				// absolute
+				replaceFilePath = fte.ReplaceFilePath;
+			}
+
+			// make sure replacement file exists
+			if (!File.Exists(replaceFilePath))
+			{
+				rd.ReturnCode = ReplaceFileReturnCode.FileDoesNotExist;
+				rd.Difference = 0;
+				return rd;
+			}
+
+			// load data and determine filesize
+			FileStream replaceFileStream = new FileStream(replaceFilePath, FileMode.Open);
+			BinaryReader replaceFileReader = new BinaryReader(replaceFileStream);
+
+			replaceFileReader.BaseStream.Seek(0, SeekOrigin.End);
+			int replaceFileLen = (int)replaceFileReader.BaseStream.Position;
+			replaceFileReader.BaseStream.Seek(0, SeekOrigin.Begin);
+			byte[] replaceFileData = replaceFileReader.ReadBytes(replaceFileLen);
+			replaceFileReader.Close();
+
+			MemoryStream outDataStream = new MemoryStream();
+			BinaryWriter outDataWriter = new BinaryWriter(outDataStream);
+
+			// todo: handle replacement.
+			// this depends on a number of variables...
+			// - file extension
+			// - FileTableEntry's FileType value
+			// - FileTableEntry's IsEncoded value
+
+			// handle replacement based on file extension and FileTableEntry.FileType
+			string replaceFileExtension = Path.GetExtension(replaceFilePath);
+			if (replaceFileExtension == ".lzss")
+			{
+				// file is already LZSS encoded; do not re-encode it.
+			}
+			else if (replaceFileExtension == ".tex")
+			{
+				// AkiTexture
+			}
+			else if (replaceFileExtension == ".akitext")
+			{
+				// AkiText archive
+			}
+			else if (replaceFileExtension == ".png")
+			{
+				// png is tough
+			}
+			else
+			{
+				// fallback handler: treat everything else as binary
+			}
+
+			outDataWriter.Close();
+			replaceFileReader.Close();
+
+			return rd;
+		}
 		#endregion
 
 		#region Binary Read/Write
