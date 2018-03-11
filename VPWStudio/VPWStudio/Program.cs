@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -96,11 +97,87 @@ namespace VPWStudio
 			}
 			else
 			{
-				dbFilePath += String.Format("{0}.txt", Program.CurrentProject.Settings.BaseGame.ToString());
+				dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
 			}
 
 			return dbFilePath;
 		}
+		#endregion
+
+		#region ROM Building
+		public static void BuildRom()
+		{
+			CurrentOutputROM = new Z64Rom();
+			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
+			List<byte> outRomData = new List<byte>();
+			outRomData.AddRange(CurrentInputROM.Data);
+
+			// make changes based on the project file contents
+
+			#region Internal Game Name
+			string intName = Program.CurrentProject.Settings.OutputRomInternalName;
+			if (intName.Length > 20)
+			{
+				//  truncate
+				intName = intName.Substring(0, 20);
+			}
+			else if (intName.Length < 20)
+			{
+				// pad
+				intName = intName.PadRight(20);
+			}
+
+			byte[] nameBytes = Encoding.GetEncoding("Shift-JIS").GetBytes(intName);
+			for (int i = 0; i < 20; i++)
+			{
+				outRomData[0x20 + i] = nameBytes[i];
+			}
+
+			// todo: log output
+			#endregion
+
+			#region Product/Game Code
+			// - game code
+			string intCode = Program.CurrentProject.Settings.OutputRomGameCode;
+			if (intCode.Length != 4)
+			{
+				// error
+			}
+			if (!intCode.StartsWith("N"))
+			{
+				// not error, but fix
+			}
+			#endregion
+
+			#region FileTable
+			// Work on a copy of the FileTable.
+			// This prevents changes from being made to the Project's FileTable,
+			// which messes up the rest of the program.
+			FileTable buildFileTable = new FileTable();
+			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
+
+			// The total difference from all of the changed files.
+
+			// In Zoinkity's original offsetter code, files are added one at a time,
+			// with all relevant code addresses (e.g. WaveTables, PointerTables)
+			// being updated on each change.
+
+			// Here, we're remaking the entire FileTable at once,
+			// saving the necessary code changes for later.
+			int totalDifference = 0;
+
+			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
+			for (int i = 1; i < buildFileTable.Entries.Count; i++)
+			{
+				FileTableEntry fte = buildFileTable.Entries[i];
+				if (fte.ReplaceFilePath != String.Empty)
+				{
+					// we have work to do, eh booboo??
+				}
+			}
+			#endregion
+		}
+
 		#endregion
 	}
 }
