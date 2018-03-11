@@ -478,7 +478,7 @@ namespace VPWStudio
 				// TEMPORARY
 				case FileTypes.AkiSmallFont:
 					{
-						MessageBox.Show("sorry, but I'm temporarily exporting this font to 'temporary-small.png' in the current working folder.");
+						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
 						AkiFont f = new AkiFont(Program.CurrentProject.Settings.BaseGame, AkiFontType.AkiSmallFont);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -492,8 +492,7 @@ namespace VPWStudio
 						fontStream.Seek(0, SeekOrigin.Begin);
 						BinaryReader fontReader = new BinaryReader(fontStream);
 						f.ReadData(fontReader);
-						f.WriteRawData();
-						f.ToBitmap().Save("temporary-small.png");
+						f.ToBitmap().Save(String.Format("smallfont-{0:X4}.png", key));
 						fontReader.Close();
 						romReader.Close();
 					}
@@ -501,7 +500,7 @@ namespace VPWStudio
 
 				case FileTypes.AkiLargeFont:
 					{
-						MessageBox.Show("sorry, but I'm temporarily exporting this font to 'temporary-large.png' in the current working folder.");
+						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
 						AkiFont f = new AkiFont(Program.CurrentProject.Settings.BaseGame, AkiFontType.AkiLargeFont);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -515,8 +514,7 @@ namespace VPWStudio
 						fontStream.Seek(0, SeekOrigin.Begin);
 						BinaryReader fontReader = new BinaryReader(fontStream);
 						f.ReadData(fontReader);
-						f.WriteRawData();
-						f.ToBitmap().Save("temporary-large.png");
+						f.ToBitmap().Save(String.Format("largefont-{0:X4}.png", key));
 						fontReader.Close();
 						romReader.Close();
 					}
