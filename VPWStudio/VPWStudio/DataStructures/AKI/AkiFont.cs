@@ -28,77 +28,99 @@ namespace VPWStudio
 	public class AkiFont
 	{
 		#region Constants
-		// LargeFontWidth    - Character cell width
-		// LargeFontHeight   - Character cell height
-		// LargeFontCharSize - This could very well be calculated, but I'd rather not.
-		// LargeFontChars    - Number of characters defined
-		// LargeFontCols     - Number of columns in output image
-		// LargeFontRows     - Number of rows in output image
-		// (repeat the above list but starting with "Small" instead of "Large")
+		// *FontWidth    - Character cell width
+		// *FontHeight   - Character cell height
+		// *FontCharSize - This could very well be calculated, but I'd rather not.
+		// *FontChars    - Number of characters defined
+		// *FontCols     - Number of columns in output image
+		// *FontRows     - Number of rows in output image
 
-		private static Dictionary<VPWGames, Dictionary<string, int>> DefaultFontMetrics = new Dictionary<VPWGames, Dictionary<string, int>>()
+		// WM2K Actual font characters: 103
+		// VPW2 Actual font characters: 3253
+
+		#region Large Font
+		private static Dictionary<VPWGames, int> LargeFontHeight = new Dictionary<VPWGames, int>()
 		{
-			{
-				VPWGames.Revenge,
-				// actual font characters differ between fonts
-				new Dictionary<string, int>()
-				{
-					{ "LargeFontWidth", 24 },
-					{ "LargeFontHeight", 23 },
-					{ "LargeFontCharSize", 0x45 },
-					{ "LargeFontChars", 120 },
-					{ "LargeFontCols", 24 },
-					{ "LargeFontRows", 5 },
-
-					{ "SmallFontWidth", 16 },
-					{ "SmallFontHeight", 14 },
-					{ "SmallFontCharSize", 0x1C },
-					{ "SmallFontChars", 128 },
-					{ "SmallFontCols", 16 },
-					{ "SmallFontRows", 9 },
-				}
-			},
-			{
-				VPWGames.WM2K,
-				// Actual font characters: 103
-				new Dictionary<string, int>()
-				{
-					{ "LargeFontWidth", 24 },
-					{ "LargeFontHeight", 21 },
-					{ "LargeFontCharSize", 0x3F },
-					{ "LargeFontChars", 110 },
-					{ "LargeFontCols", 16 },
-					{ "LargeFontRows", 7 },
-
-					{ "SmallFontWidth", 16 },
-					{ "SmallFontHeight", 13 },
-					{ "SmallFontCharSize", 0x1A },
-					{ "SmallFontChars", 112 },
-					{ "SmallFontCols", 16 },
-					{ "SmallFontRows", 7 },
-				}
-			},
-			{
-				VPWGames.VPW2,
-				// Actual font characters: 3253
-				new Dictionary<string, int>()
-				{
-					{ "LargeFontWidth", 24 },
-					{ "LargeFontHeight", 21 },
-					{ "LargeFontCharSize", 0x3F },
-					{ "LargeFontChars", 3260 },
-					{ "LargeFontCols", 20 },
-					{ "LargeFontRows", 163 },
-
-					{ "SmallFontWidth", 16 },
-					{ "SmallFontHeight", 13 },
-					{ "SmallFontCharSize", 0x1A },
-					{ "SmallFontChars", 3264 },
-					{ "SmallFontCols", 64 },
-					{ "SmallFontRows", 51 },
-				}
-			},
+			{ VPWGames.WorldTour, 23 },
+			{ VPWGames.VPW64, 23 },
+			{ VPWGames.Revenge, 23 },
+			{ VPWGames.WM2K, 21 },
+			{ VPWGames.VPW2, 21 },
+			{ VPWGames.NoMercy, 22 },
 		};
+
+		private static Dictionary<VPWGames, int> LargeFontNumChars = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 100 },
+			{ VPWGames.VPW64, 3240 },
+			{ VPWGames.Revenge, 120 },
+			{ VPWGames.WM2K, 110 },
+			{ VPWGames.VPW2, 3260 },
+			{ VPWGames.NoMercy, 110 },
+		};
+
+		private static Dictionary<VPWGames, int> LargeFontOutCols = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 24 },
+			{ VPWGames.VPW64, 24 },
+			{ VPWGames.Revenge, 24 },
+			{ VPWGames.WM2K, 16 },
+			{ VPWGames.VPW2, 20 },
+			{ VPWGames.NoMercy, 24 },
+		};
+
+		private static Dictionary<VPWGames, int> LargeFontOutRows = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 5 },
+			{ VPWGames.VPW64, 135 },
+			{ VPWGames.Revenge, 5 },
+			{ VPWGames.WM2K, 7 },
+			{ VPWGames.VPW2, 163 },
+			{ VPWGames.NoMercy, 5 },
+		};
+		#endregion
+
+		#region Small Font
+		private static Dictionary<VPWGames, int> SmallFontHeight = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 14 },
+			{ VPWGames.VPW64, 14 },
+			{ VPWGames.Revenge, 14 },
+			{ VPWGames.WM2K, 13 },
+			{ VPWGames.VPW2, 13 },
+			{ VPWGames.NoMercy, 14 },
+		};
+
+		private static Dictionary<VPWGames, int> SmallFontNumChars = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 112 },
+			{ VPWGames.VPW64, 3248 },
+			{ VPWGames.Revenge, 128 },
+			{ VPWGames.WM2K, 112 },
+			{ VPWGames.VPW2, 3264 },
+			{ VPWGames.NoMercy, 112 },
+		};
+
+		private static Dictionary<VPWGames, int> SmallFontOutCols = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 16 },
+			{ VPWGames.VPW64, 16 },
+			{ VPWGames.Revenge, 16 },
+			{ VPWGames.WM2K, 16 },
+			{ VPWGames.VPW2, 64 },
+			{ VPWGames.NoMercy, 16 },
+		};
+
+		private static Dictionary<VPWGames, int> SmallFontOutRows = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 7 },
+			{ VPWGames.VPW64, 203 },
+			{ VPWGames.Revenge, 8 },
+			{ VPWGames.WM2K, 7 },
+			{ VPWGames.VPW2, 51 },
+			{ VPWGames.NoMercy, 7 },
+		};
+		#endregion
 
 		#endregion
 
@@ -159,7 +181,7 @@ namespace VPWStudio
 		private void ReadFontData_Large(BinaryReader br)
 		{
 			byte[] test = new byte[3];
-			int numEntries = 0;
+			int charBytes = (LargeFontHeight[GameType] * 24) / 8;
 			while (true)
 			{
 				test = br.ReadBytes(3);
@@ -167,10 +189,8 @@ namespace VPWStudio
 				{
 					break;
 				}
-				Data.AddRange(br.ReadBytes(DefaultFontMetrics[GameType]["LargeFontCharSize"]));
-				numEntries++;
+				Data.AddRange(br.ReadBytes(charBytes));
 			}
-			System.Windows.Forms.MessageBox.Show(String.Format("Loaded {0} chars from large font", numEntries));
 		}
 
 		/// <summary>
@@ -184,14 +204,12 @@ namespace VPWStudio
 			int fileLen = (int)br.BaseStream.Position;
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
-			int numEntries = 0;
+			int charBytes = (SmallFontHeight[GameType] * 16) / 8;
 			while (br.BaseStream.Position < fileLen)
 			{
 				br.ReadBytes(2);
-				Data.AddRange(br.ReadBytes(DefaultFontMetrics[GameType]["SmallFontCharSize"]));
-				numEntries++;
+				Data.AddRange(br.ReadBytes(charBytes));
 			}
-			System.Windows.Forms.MessageBox.Show(String.Format("Loaded {0} chars from small font", numEntries));
 		}
 
 		/// <summary>
@@ -210,6 +228,8 @@ namespace VPWStudio
 					ReadFontData_Small(br);
 					break;
 			}
+			// update raw data values
+			WriteRawData();
 		}
 		#endregion
 
@@ -218,7 +238,7 @@ namespace VPWStudio
 		/// Convert the packed pixel data to raw pixel data.
 		/// </summary>
 		/// The equivalent of AKIfnt.i1(raw) in offsetter
-		public void WriteRawData()
+		private void WriteRawData()
 		{
 			RawData.Clear();
 			for (int i = 0; i < Data.Count; i++)
@@ -240,7 +260,7 @@ namespace VPWStudio
 		/// <returns>Bitmap with the characters.</returns>
 		public Bitmap ToBitmap()
 		{
-			int charWidth = 0;
+			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? 24 : 16;
 			int charHeight = 0;
 			int charBytes = 0;
 			int outColumns = 0;
@@ -250,21 +270,19 @@ namespace VPWStudio
 			switch (FontType)
 			{
 				case AkiFontType.AkiLargeFont:
-					charWidth = DefaultFontMetrics[GameType]["LargeFontWidth"];
-					charHeight = DefaultFontMetrics[GameType]["LargeFontHeight"];
-					charBytes = charWidth * charHeight;
-					outColumns = DefaultFontMetrics[GameType]["LargeFontCols"];
-					outRows = DefaultFontMetrics[GameType]["LargeFontRows"];
-					numChars = DefaultFontMetrics[GameType]["LargeFontChars"];
+					charHeight = LargeFontHeight[GameType];
+					charBytes = (charWidth * charHeight);
+					outColumns = LargeFontOutCols[GameType];
+					outRows = LargeFontOutRows[GameType];
+					numChars = LargeFontNumChars[GameType];
 					break;
 
 				case AkiFontType.AkiSmallFont:
-					charWidth = DefaultFontMetrics[GameType]["SmallFontWidth"];
-					charHeight = DefaultFontMetrics[GameType]["SmallFontHeight"];
-					charBytes = charWidth * charHeight;
-					outColumns = DefaultFontMetrics[GameType]["SmallFontCols"];
-					outRows = DefaultFontMetrics[GameType]["SmallFontRows"];
-					numChars = DefaultFontMetrics[GameType]["SmallFontChars"];
+					charHeight = SmallFontHeight[GameType];
+					charBytes = (charWidth * charHeight);
+					outColumns = SmallFontOutCols[GameType];
+					outRows = SmallFontOutRows[GameType];
+					numChars = SmallFontNumChars[GameType];
 					break;
 			}
 
@@ -307,7 +325,6 @@ namespace VPWStudio
 						{
 							for (int charX = 0; charX < charWidth; charX++)
 							{
-
 								charBmp.SetPixel(charX, charY,
 									(RawData[((curCol * charWidth) + (charY * charWidth) + charX)] == 0) ? Color.White : Color.Black
 								);
@@ -319,6 +336,7 @@ namespace VPWStudio
 			}
 			g.Dispose();
 
+			// save as 1bpp, since that's what the data is stored as.
 			return mainBmp.Clone(new Rectangle(0, 0, mainBmp.Width, mainBmp.Height), PixelFormat.Format1bppIndexed);
 		}
 		#endregion
