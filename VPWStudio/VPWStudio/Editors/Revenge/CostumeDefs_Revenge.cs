@@ -117,8 +117,7 @@ namespace VPWStudio.Editors.Revenge
 						offset = 0x33744;
 						break;
 					case SpecificGame.Revenge_PAL:
-						MessageBox.Show("tell freem to find the proper damned offset for Revenge PAL!");
-						offset = 0;
+						offset = 0x30E94;
 						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
