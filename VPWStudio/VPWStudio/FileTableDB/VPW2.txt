@@ -959,8 +959,8 @@
 17ED=Ci8Palette;
 17EE=Ci8Palette;
 17EF=Ci8Palette;Accessory palette?
-17F0=Ci8Texture;[Face Texture] 001
-17F1=Ci8Texture;[Face Texture] 002
+17F0=Ci8Texture;[Face Texture] 001 (Giant Baba)
+17F1=Ci8Texture;[Face Texture] 002 (Mitsuharu Misawa)
 17F2=Ci8Texture;[Face Texture] 003
 17F3=Ci8Texture;[Face Texture] 004
 17F4=Ci8Texture;[Face Texture] 005
