@@ -1,4 +1,6 @@
 # FileTable database for Virtual Pro-Wrestling 64
+0001=AkiSmallFont;small font
+0002=AkiLargeFont;large font
 0003=AkiTexture;[Main Menu] Elimination icon
 0004=AkiTexture;[Main Menu] Exhibition icon
 0005=AkiTexture;[Main Menu] Champion Road icon

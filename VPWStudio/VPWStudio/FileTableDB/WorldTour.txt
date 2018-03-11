@@ -1,4 +1,6 @@
 # FileTable database for WCW vs. nWo World Tour
+0001=AkiSmallFont;small font
+0002=AkiLargeFont;large font
 0004=AkiTexture;[Small Character Portrait] Hogan
 0006=AkiTexture;[Small Character Portrait] Fake Sting
 0008=AkiTexture;[Small Character Portrait] Buff Bagwell
