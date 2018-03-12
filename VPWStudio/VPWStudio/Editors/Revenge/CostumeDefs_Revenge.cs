@@ -56,7 +56,6 @@ namespace VPWStudio.Editors.Revenge
 			if (!hasLocation)
 			{
 				// fallback to hardedcoded offset
-				/*
 				MessageBox.Show(
 					"Costume Definition location not found; using hardcoded offset instead.",
 					SharedStrings.MainForm_Title,
@@ -68,18 +67,50 @@ namespace VPWStudio.Editors.Revenge
 				switch (Program.CurrentProject.Settings.GameType)
 				{
 					case SpecificGame.Revenge_NTSC_U:
-						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
-						offset = 0x33744;
+						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"]
+						offset = 0x36AA4;
 						break;
 					case SpecificGame.Revenge_PAL:
-						
+						MessageBox.Show("tell freem to find the costume start point for Revenge PAL!");
 						offset = 0;
 						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
-				*/
+			}
 
-				// if you thought mask defs were a pain, this is worse.
+			// if you thought mask defs were a pain, this is worse.
+			// each pointer in the main list goes to another list containing three pointers.
+			// usually, the three pointers are the same, and we don't have to worry about anything.
+
+			// $COSTUMEDEFS is a cheat, as it points to the first defined costume.
+			// The main costume pointers work in reverse (the last pointer is
+			// for the first set of costumes), so we don't use that.
+
+			long curCostumePos = br.BaseStream.Position;
+
+			// cheating helper: there are 147 pointers in the main list.
+			for (int i = 0; i < 147; i++)
+			{
+				byte[] cosPtr = br.ReadBytes(4);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(cosPtr);
+				}
+				curCostumePos = br.BaseStream.Position;
+				UInt32 costumePointer = BitConverter.ToUInt32(cosPtr, 0);
+
+				// main pointer has been read; now deal with the pointer at that location
+				br.BaseStream.Seek(Z64Rom.PointerToRom(costumePointer), SeekOrigin.Begin);
+				byte[] ccPtr = br.ReadBytes(4);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(ccPtr);
+				}
+				br.BaseStream.Seek(Z64Rom.PointerToRom(BitConverter.ToUInt32(ccPtr, 0)), SeekOrigin.Begin);
+				this.CostumeDefs.Add(new CostumeDef_Early(br));
+
+				// next
+				br.BaseStream.Seek(curCostumePos, SeekOrigin.Begin);
 			}
 		}
 
@@ -209,10 +240,108 @@ namespace VPWStudio.Editors.Revenge
 		}
 		#endregion
 
+		/// <summary>
+		/// Helper routine because I write a lot of the same looking code.
+		/// </summary>
+		/// <param name="tb">TextBox that gets updated.</param>
+		/// <param name="value">File ID to be displayed in the text box.</param>
+		private void SetTextBoxContentsHex4(TextBox tb, UInt16 value)
+		{
+			tb.Text = String.Format("{0:X4}", value);
+		}
+
+		private void LoadPreview_CI4(BinaryReader romStream, PictureBox pb, UInt16 palID, UInt16 texID)
+		{
+			Ci4Palette previewPal = new Ci4Palette();
+			MemoryStream palStream = new MemoryStream();
+			BinaryWriter palWriter = new BinaryWriter(palStream);
+			BinaryReader palReader = new BinaryReader(palStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romStream, palWriter, palID);
+			palStream.Seek(0, SeekOrigin.Begin);
+			previewPal.ReadData(palReader);
+			palStream.Dispose();
+
+			Ci4Texture previewTex = new Ci4Texture();
+			MemoryStream texStream = new MemoryStream();
+			BinaryWriter texWriter = new BinaryWriter(texStream);
+			BinaryReader texReader = new BinaryReader(texStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romStream, texWriter, texID);
+			texStream.Seek(0, SeekOrigin.Begin);
+			previewTex.ReadData(texReader);
+			texStream.Dispose();
+
+			pb.Image = previewTex.GetBitmap(previewPal);
+		}
+
 		#region Costumes
 		private void LoadCostumeDefinition(CostumeDef_Early cdef)
 		{
 			// lots of shit.
+			tbCostumeUnknown.Text = String.Format("{0:X2}", cdef.Unknown);
+			tbBodyType.Text = String.Format("{0:X2}", cdef.BodyType);
+
+			SetTextBoxContentsHex4(tbPelvisPalette, cdef.PelvisPalette);
+			SetTextBoxContentsHex4(tbPelvisTexture, cdef.PelvisTexture);
+			SetTextBoxContentsHex4(tbStomachPalette, cdef.StomachPalette);
+			SetTextBoxContentsHex4(tbStomachTexture, cdef.StomachTexture);
+			SetTextBoxContentsHex4(tbChestPalette, cdef.ChestPalette);
+			SetTextBoxContentsHex4(tbChestTexture, cdef.ChestTexture);
+
+			SetTextBoxContentsHex4(tbLeftBootPalette, cdef.LeftBootPalette);
+			SetTextBoxContentsHex4(tbLeftBootTexture, cdef.LeftBootTexture);
+			SetTextBoxContentsHex4(tbLeftLegPalette, cdef.LeftLegPalette);
+			SetTextBoxContentsHex4(tbLeftLegTexture, cdef.LeftLegTexture);
+			SetTextBoxContentsHex4(tbLeftFootPalette, cdef.LeftFootPalette);
+			SetTextBoxContentsHex4(tbLeftFootTexture, cdef.LeftFootTexture);
+			SetTextBoxContentsHex4(tbLeftPalmPalette, cdef.LeftPalmPalette);
+			SetTextBoxContentsHex4(tbLeftPalmTexture, cdef.LeftPalmTexture);
+			SetTextBoxContentsHex4(tbLeftFingersPalette, cdef.LeftFingersPalette);
+			SetTextBoxContentsHex4(tbLeftFingersTexture, cdef.LeftFingersTexture);
+			SetTextBoxContentsHex4(tbLeftForearmPalette, cdef.LeftForearmPalette);
+			SetTextBoxContentsHex4(tbLeftForearmTexture, cdef.LeftForearmTexture);
+			SetTextBoxContentsHex4(tbLeftUpperArmPalette, cdef.LeftUpperArmPalette);
+			SetTextBoxContentsHex4(tbLeftUpperArmTexture, cdef.LeftUpperArmTexture);
+
+			SetTextBoxContentsHex4(tbRightBootPalette, cdef.RightBootPalette);
+			SetTextBoxContentsHex4(tbRightBootTexture, cdef.RightBootTexture);
+			SetTextBoxContentsHex4(tbRightLegPalette, cdef.RightLegPalette);
+			SetTextBoxContentsHex4(tbRightLegTexture, cdef.RightLegTexture);
+			SetTextBoxContentsHex4(tbRightFootPalette, cdef.RightFootPalette);
+			SetTextBoxContentsHex4(tbRightFootTexture, cdef.RightFootTexture);
+			SetTextBoxContentsHex4(tbRightForearmPalette, cdef.RightForearmPalette);
+			SetTextBoxContentsHex4(tbRightForearmTexture, cdef.RightForearmTexture);
+			SetTextBoxContentsHex4(tbRightPalmPalette, cdef.RightPalmPalette);
+			SetTextBoxContentsHex4(tbRightPalmTexture, cdef.RightPalmTexture);
+			SetTextBoxContentsHex4(tbRightFingersPalette, cdef.RightFingersPalette);
+			SetTextBoxContentsHex4(tbRightFingersTexture, cdef.RightFingersTexture);
+			SetTextBoxContentsHex4(tbRightUpperArmPalette, cdef.RightUpperArmPalette);
+			SetTextBoxContentsHex4(tbRightUpperArmTexture, cdef.RightUpperArmTexture);
+
+			// drawing textures is fun, not!!
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			LoadPreview_CI4(romReader, pbPelvis, cdef.PelvisPalette, cdef.PelvisTexture);
+			LoadPreview_CI4(romReader, pbStomach, cdef.StomachPalette, cdef.StomachTexture);
+			LoadPreview_CI4(romReader, pbChest, cdef.ChestPalette, cdef.ChestTexture);
+
+			LoadPreview_CI4(romReader, pbLeftBoot, cdef.LeftBootPalette, cdef.LeftBootTexture);
+			LoadPreview_CI4(romReader, pbLeftLeg, cdef.LeftLegPalette, cdef.LeftLegTexture);
+			LoadPreview_CI4(romReader, pbLeftFoot, cdef.LeftFootPalette, cdef.LeftFootTexture);
+			LoadPreview_CI4(romReader, pbLeftPalm, cdef.LeftPalmPalette, cdef.LeftPalmTexture);
+			LoadPreview_CI4(romReader, pbLeftFingers, cdef.LeftFingersPalette, cdef.LeftFingersTexture);
+			LoadPreview_CI4(romReader, pbLeftForearm, cdef.LeftForearmPalette, cdef.LeftForearmTexture);
+			LoadPreview_CI4(romReader, pbLeftUpperArm, cdef.LeftUpperArmPalette, cdef.LeftUpperArmTexture);
+
+			LoadPreview_CI4(romReader, pbRightBoot, cdef.RightBootPalette, cdef.RightBootTexture);
+			LoadPreview_CI4(romReader, pbRightLeg, cdef.RightLegPalette, cdef.RightLegTexture);
+			LoadPreview_CI4(romReader, pbRightFoot, cdef.RightFootPalette, cdef.RightFootTexture);
+			LoadPreview_CI4(romReader, pbRightPalm, cdef.RightPalmPalette, cdef.RightPalmTexture);
+			LoadPreview_CI4(romReader, pbRightFingers, cdef.RightFingersPalette, cdef.RightFingersTexture);
+			LoadPreview_CI4(romReader, pbRightForearm, cdef.RightForearmPalette, cdef.RightForearmTexture);
+			LoadPreview_CI4(romReader, pbRightUpperArm, cdef.RightUpperArmPalette, cdef.RightUpperArmTexture);
+
+			romReader.Close();
 		}
 
 		private void lbCostumes_SelectedIndexChanged(object sender, EventArgs e)
@@ -229,23 +358,23 @@ namespace VPWStudio.Editors.Revenge
 		#region Masks/Heads
 		private void LoadMaskDefinition(MaskDef_Early mdef)
 		{
-			tbNeckModel.Text = String.Format("{0:X4}", mdef.NeckModel);
-			tbNeckPalette.Text = String.Format("{0:X4}", mdef.NeckPalette);
-			tbNeckTexture.Text = String.Format("{0:X4}", mdef.NeckTexture);
+			SetTextBoxContentsHex4(tbNeckModel, mdef.NeckModel);
+			SetTextBoxContentsHex4(tbNeckPalette, mdef.NeckPalette);
+			SetTextBoxContentsHex4(tbNeckTexture, mdef.NeckTexture);
 
-			tbFaceModel.Text = String.Format("{0:X4}", mdef.HeadModel);
-			tbFacePalette.Text = String.Format("{0:X4}", mdef.HeadPalette);
-			tbFaceTexture.Text = String.Format("{0:X4}", mdef.HeadTexture);
+			SetTextBoxContentsHex4(tbFaceModel, mdef.HeadModel);
+			SetTextBoxContentsHex4(tbFacePalette, mdef.HeadPalette);
+			SetTextBoxContentsHex4(tbFaceTexture, mdef.HeadTexture);
 
-			tbExtraModel.Text = String.Format("{0:X4}", mdef.ExtraModel);
-			tbExtraPalette.Text = String.Format("{0:X4}", mdef.ExtraPalette);
-			tbExtraTexture.Text = String.Format("{0:X4}", mdef.ExtraTexture);
+			SetTextBoxContentsHex4(tbExtraModel, mdef.ExtraModel);
+			SetTextBoxContentsHex4(tbExtraPalette, mdef.ExtraPalette);
+			SetTextBoxContentsHex4(tbExtraTexture, mdef.ExtraTexture);
 
-			tbRipMaskPalette.Text = String.Format("{0:X4}", mdef.RippedMaskPalette);
-			tbRipMaskTexture.Text = String.Format("{0:X4}", mdef.RippedMaskTexture);
-			tbSkinColor.Text = String.Format("{0:X4}", mdef.SkinColor);
+			SetTextBoxContentsHex4(tbRipMaskPalette, mdef.RippedMaskPalette);
+			SetTextBoxContentsHex4(tbRipMaskTexture, mdef.RippedMaskTexture);
+			SetTextBoxContentsHex4(tbSkinColor, mdef.SkinColor);
 
-			// todo: load textures.
+			// load textures and palettes
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
