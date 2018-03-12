@@ -342,8 +342,18 @@ namespace VPWStudio
 			if (lvFileList.SelectedItems.Count == 1)
 			{
 				// only one file; no need to go through rigmarole
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 				SaveFileDialog sfd = new SaveFileDialog();
 				sfd.Title = "Extract File";
+				sfd.Filter = SharedStrings.FileFilter_None;
+				// generate filename
+				string fileExt = "bin";
+				if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(Program.CurrentProject.ProjectFileTable.Entries[key].FileType))
+				{
+					fileExt = FileTypeInfo.DefaultFileTypeExtensions[Program.CurrentProject.ProjectFileTable.Entries[key].FileType];
+				}
+				sfd.FileName = String.Format("{0:X4}.{1}", key, fileExt);
+
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
 					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -352,7 +362,6 @@ namespace VPWStudio
 					FileStream outFile = new FileStream(sfd.FileName, FileMode.Create);
 					BinaryWriter outWriter = new BinaryWriter(outFile);
 
-					int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
 
 					outWriter.Flush();
