@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace VPWStudio
 		private List<int> FileIDs;
 
 		/// <summary>
-		/// Final list of File IDs to extract.
+		/// Final list of File IDs to extract, along with output filename.
 		/// </summary>
 		public SortedList<int, string> ExtractFiles;
 
@@ -90,7 +91,31 @@ namespace VPWStudio
 					continue;
 				}
 
+				string outName;
+				int outID = UInt16.Parse(dgvFiles.Rows[i].Cells[1].Value.ToString(), NumberStyles.HexNumber);
+				if ((string)dgvFiles.Rows[i].Cells[3].Value == String.Empty)
+				{
+					if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(Program.CurrentProject.ProjectFileTable.Entries[outID].FileType))
+					{
+						outName = String.Format(
+							"{0:X4}.{1}",
+							dgvFiles.Rows[i].Cells[1].Value,
+							FileTypeInfo.DefaultFileTypeExtensions[Program.CurrentProject.ProjectFileTable.Entries[outID].FileType]
+						);
+					}
+					else
+					{
+						// we don't have an extension set... ugh
+						outName = String.Format("{0:X4}.bin", dgvFiles.Rows[i].Cells[1].Value);
+					}
+				}
+				else
+				{
+					outName = (string)dgvFiles.Rows[i].Cells[3].Value;
+				}
+
 				// add entry to ExtractFiles
+				ExtractFiles.Add(UInt16.Parse(dgvFiles.Rows[i].Cells[1].Value.ToString(), NumberStyles.HexNumber), outName);
 			}
 
 			this.DialogResult = DialogResult.OK;

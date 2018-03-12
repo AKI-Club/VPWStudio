@@ -363,7 +363,6 @@ namespace VPWStudio
 			else
 			{
 				// more than one file
-				MessageBox.Show("Haven't implemented multi-extract dialog yet.");
 				List<int> ExtractIDs = new List<int>();
 				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
 				{
@@ -373,7 +372,29 @@ namespace VPWStudio
 				FileTable_ExtractFilesDialog efd = new FileTable_ExtractFilesDialog(ExtractIDs);
 				if (efd.ShowDialog() == DialogResult.OK)
 				{
+					// set output directory
+					SaveFileDialog sfd = new SaveFileDialog();
+					sfd.Title = "Select Export Directory";
+					sfd.Filter = SharedStrings.FileFilter_None;
+					sfd.CheckFileExists = false;
+					sfd.FileName = "(choose a directory)";
+					if (sfd.ShowDialog() == DialogResult.OK)
+					{
+						string outPath = Path.GetDirectoryName(sfd.FileName);
+						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+						BinaryReader romReader = new BinaryReader(romStream);
 
+						foreach (KeyValuePair<int, string> extractFile in efd.ExtractFiles)
+						{
+							FileStream outFile = new FileStream(String.Format("{0}\\{1}", outPath, extractFile.Value), FileMode.Create);
+							BinaryWriter outWriter = new BinaryWriter(outFile);
+							Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, extractFile.Key);
+							outWriter.Flush();
+							outWriter.Close();
+						}
+
+						romReader.Close();
+					}
 				}
 			}
 		}
@@ -435,6 +456,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		private void LoadItemPreview()
 		{
 			if (lvFileList.SelectedItems.Count == 0)
@@ -472,7 +496,7 @@ namespace VPWStudio
 
 				// AkiText archive
 				case FileTypes.AkiText:
-					((VPWStudio.MainForm)this.MdiParent).RequestAkiTextDialog(key);
+					((MainForm)this.MdiParent).RequestAkiTextDialog(key);
 					break;
 
 				// TEMPORARY
