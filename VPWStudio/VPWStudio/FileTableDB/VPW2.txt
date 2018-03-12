@@ -1,7 +1,7 @@
 # FileTable database for Virtual Pro-Wrestling 2
 0001=AkiLargeFont;large font
 0002=AkiSmallFont;small font
-0003=Binary;font.txt
+0003=AkiFontChars;font characters
 0004=Binary;kanji.txt
 0005=AkiText;(Edit Mode strings)
 0006=AkiText;Unlock messages?

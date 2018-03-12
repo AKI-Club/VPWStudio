@@ -1,7 +1,7 @@
 # FileTable database for WWF WrestleMania 2000 (NTSC-U, PAL)
 0001=AkiLargeFont;large font
 0002=AkiSmallFont;small font
-0003=Binary;font.txt
+0003=AkiFontChars;font characters
 0004=AkiText;
 0005=AkiText;
 0006=AkiText;
