@@ -540,6 +540,9 @@ namespace VPWStudio.Editors.Revenge
 		}
 		#endregion
 
+		/// <summary>
+		/// Toggle the use of the subpalette for Costume items.
+		/// </summary>
 		private void cbCostumesAltPalette_Click(object sender, EventArgs e)
 		{
 			Costume_UseSubpalette = cbCostumesAltPalette.Checked;
