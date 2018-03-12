@@ -47,6 +47,11 @@ namespace VPWStudio.Editors.Revenge
 	public partial class CostumeDefs_Revenge : Form
 	{
 		/// <summary>
+		/// Body type definitions
+		/// </summary>
+		private List<BodyTypeDef_Early> BodyTypeDefs = new List<BodyTypeDef_Early>();
+
+		/// <summary>
 		/// Costume definitions
 		/// </summary>
 		private List<CostumeDef_Early> CostumeDefs = new List<CostumeDef_Early>();
@@ -77,6 +82,19 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		#region Data Load
+		private void LoadBodyTypeDefs(BinaryReader br)
+		{
+			bool hasLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry btdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["BodyTypeDefs"]);
+			}
+
+			if (!hasLocation)
+			{
+			}
+		}
+
 		private void LoadCostumeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
@@ -319,6 +337,9 @@ namespace VPWStudio.Editors.Revenge
 
 			pb.Image = previewTex.GetBitmap(previewPal, subPalette);
 		}
+
+		#region Body Types
+		#endregion
 
 		#region Costumes
 		private void LoadCostumeDefinition(CostumeDef_Early cdef)
