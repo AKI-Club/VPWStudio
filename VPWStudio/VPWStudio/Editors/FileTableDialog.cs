@@ -558,6 +558,10 @@ namespace VPWStudio
 			{
 				lvFileList.FocusedItem = lvFileList.Items[gtd.DestinationFileID-1];
 				lvFileList.EnsureVisible(gtd.DestinationFileID-1);
+				foreach (ListViewItem lvi in lvFileList.Items)
+				{
+					lvi.Selected = (lvi.Index == gtd.DestinationFileID - 1);
+				}
 			}
 		}
 
