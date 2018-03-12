@@ -8,60 +8,92 @@ namespace VPWStudio.GameSpecific
 	/// </summary>
 	public class BodyTypeDef_Early
 	{
-		/*
-		 0x00: pelvis
-		0x02: stomach
-		0x04: chest
-		0x06: left lower leg
-		0x08: left upper leg
-		0x0A: left foot
-		0x0C: left palm
-		0x0E: left fingers
-		0x10: left forearm
-		0x12: left upper arm
-		0x14: right lower leg
-		0x16: right upper leg
-		0x18: right right foot
-		0x1A: right forearm
-		0x1C: right palm
-		0x1E: right fingers
-		0x20: right upper arm
-		0x22: terminator
-		 */
-
+		#region Class Members
+		/// <summary>
+		/// File ID of pelvis model.
+		/// </summary>
 		public UInt16 PelvisModel;
 
+		/// <summary>
+		/// File ID of stomach model.
+		/// </summary>
 		public UInt16 StomachModel;
 
+		/// <summary>
+		/// File ID of chest model.
+		/// </summary>
 		public UInt16 ChestModel;
 
+		/// <summary>
+		/// File ID of left lower leg model.
+		/// </summary>
 		public UInt16 LeftLowerLegModel;
 
+		/// <summary>
+		/// File ID of left upper leg model.
+		/// </summary>
 		public UInt16 LeftUpperLegModel;
 
+		/// <summary>
+		/// File ID of left foot model.
+		/// </summary>
 		public UInt16 LeftFootModel;
 
+		/// <summary>
+		/// File ID of left palm model.
+		/// </summary>
 		public UInt16 LeftPalmModel;
 
+		/// <summary>
+		/// File ID of left fingers model.
+		/// </summary>
 		public UInt16 LeftFingersModel;
 
+		/// <summary>
+		/// File ID of left forearm model.
+		/// </summary>
 		public UInt16 LeftForearmModel;
 
+		/// <summary>
+		/// File ID of left upper arm model.
+		/// </summary>
 		public UInt16 LeftUpperArmModel;
 
+		/// <summary>
+		/// File ID of right lower leg model.
+		/// </summary>
 		public UInt16 RightLowerLegModel;
 
+		/// <summary>
+		/// File ID of right upper leg model.
+		/// </summary>
 		public UInt16 RightUpperLegModel;
 
+		/// <summary>
+		/// File ID of right foot model.
+		/// </summary>
 		public UInt16 RightFootModel;
 
+		/// <summary>
+		/// File ID of right forearm model.
+		/// </summary>
 		public UInt16 RightForearmModel;
 
+		/// <summary>
+		/// File ID of right palm model.
+		/// </summary>
 		public UInt16 RightPalmModel;
 
+		/// <summary>
+		/// File ID of right fingers model.
+		/// </summary>
 		public UInt16 RightFingersModel;
 
+		/// <summary>
+		/// File ID of right upper arm model.
+		/// </summary>
 		public UInt16 RightUpperArmModel;
+		#endregion
 
 		/// <summary>
 		/// Default constructor.
