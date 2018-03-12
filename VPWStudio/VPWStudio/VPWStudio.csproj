@@ -195,6 +195,7 @@
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </Compile>
     <Compile Include="GameSpecific\BaseWrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\BodyTypeDef_Early.cs" />
     <Compile Include="GameSpecific\CostumeDef_Early.cs" />
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
