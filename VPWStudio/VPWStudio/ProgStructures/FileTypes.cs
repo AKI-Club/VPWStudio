@@ -33,6 +33,10 @@ namespace VPWStudio
 		DoubleTex,  // WCW/nWo Revenge credits faces (two TEX files, one after another, no headers or anything.)
 		#endregion
 
+		#region WWF No Mercy
+		NoMercyText, // WWF No Mercy text archives (used for move names)
+		#endregion
+
 		#endregion
 	}
 

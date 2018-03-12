@@ -198,6 +198,7 @@
     <Compile Include="GameSpecific\BodyTypeDef_Early.cs" />
     <Compile Include="GameSpecific\CostumeDef_Early.cs" />
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
+    <Compile Include="GameSpecific\NoMercy\NoMercyText.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
