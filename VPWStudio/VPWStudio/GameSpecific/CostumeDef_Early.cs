@@ -165,12 +165,12 @@ namespace VPWStudio.GameSpecific
 			RightLegTexture = ReadElement(br);
 			RightFootPalette = ReadElement(br);
 			RightFootTexture = ReadElement(br);
+			RightForearmPalette = ReadElement(br);
+			RightForearmTexture = ReadElement(br);
 			RightPalmPalette = ReadElement(br);
 			RightPalmTexture = ReadElement(br);
 			RightFingersPalette = ReadElement(br);
 			RightFingersTexture = ReadElement(br);
-			RightForearmPalette = ReadElement(br);
-			RightForearmTexture = ReadElement(br);
 			RightUpperArmPalette = ReadElement(br);
 			RightUpperArmTexture = ReadElement(br);
 			Terminator = ReadElement(br);
