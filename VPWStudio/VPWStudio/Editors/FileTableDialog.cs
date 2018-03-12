@@ -89,7 +89,7 @@ namespace VPWStudio
 				LocationFileEntry ftEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
 				if (ftEntry != null)
 				{
-					Program.CurrentProject.CreateProjectFileTable(ftEntry.Address, ftEntry.Width);
+					Program.CurrentProject.CreateProjectFileTable(ftEntry.Address, ftEntry.Length);
 					Program.CurrentProject.ProjectFileTable.Location = ftEntry.Address;
 					hasLocation = true;
 					hasLength = true;

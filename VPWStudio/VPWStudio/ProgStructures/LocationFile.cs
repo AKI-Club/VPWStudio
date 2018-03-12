@@ -62,9 +62,9 @@ namespace VPWStudio
 		public UInt32 Address;
 
 		/// <summary>
-		/// Data width
+		/// Data length
 		/// </summary>
-		public int Width;
+		public int Length;
 
 		/// <summary>
 		/// Comment
@@ -84,7 +84,7 @@ namespace VPWStudio
 		{
 			this.Type = LocationType.Invalid;
 			this.Address = 0;
-			this.Width = 1;
+			this.Length = 1;
 			this.Comment = String.Empty;
 			this.Handler = LocationHandlerType.None;
 		}
@@ -94,13 +94,13 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="_type">Location type</param>
 		/// <param name="_addr">Address</param>
-		/// <param name="_width">Data width</param>
+		/// <param name="_length">Data length</param>
 		/// <param name="_comment">Comment about location</param>
-		public LocationFileEntry(LocationType _type, UInt32 _addr, int _width, string _comment)
+		public LocationFileEntry(LocationType _type, UInt32 _addr, int _length, string _comment)
 		{
 			this.Type = _type;
 			this.Address = _addr;
-			this.Width = _width;
+			this.Length = _length;
 			this.Comment = _comment;
 			// handler gets set separately.
 			this.Handler = LocationHandlerType.None;
@@ -246,7 +246,7 @@ namespace VPWStudio
 
 			foreach (LocationFileEntry e in this.Locations)
 			{
-				sw.WriteLine(String.Format("{0}:{1:X},{2};{3}", e.Type.ToString(), e.Address, e.Width, e.Comment));
+				sw.WriteLine(String.Format("{0}:{1:X},{2};{3}", e.Type.ToString(), e.Address, e.Length, e.Comment));
 			}
 
 			sw.Flush();
