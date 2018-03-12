@@ -424,6 +424,7 @@ namespace VPWStudio
 				// only one file; no need to go through rigmarole
 				SaveFileDialog sfd = new SaveFileDialog();
 				sfd.Title = "Extract File (Raw)";
+				sfd.Filter = SharedStrings.FileFilter_None;
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
 					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -443,7 +444,7 @@ namespace VPWStudio
 			else
 			{
 				// more than one file
-				MessageBox.Show("Haven't implemented it yet.");
+				MessageBox.Show("Haven't implemented multiple raw extraction yet.");
 			}
 		}
 		#endregion
@@ -466,7 +467,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// 
+		/// Load an item preview (or the hex viewer).
 		/// </summary>
 		private void LoadItemPreview()
 		{
