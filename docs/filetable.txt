@@ -328,8 +328,156 @@ Routine begins at
 ================================================================================
 [WCW/nWo Revenge, NTSC-U]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 800034A0
+* Z64: 0x40A0
+
+"li $a0, 0x77A8" ; filetable size
+(24 04 77 A8)
+* IDA: 800034A4
+* Z64: 0x40A4
+
+"li $a0, 0xCE2752" ; filetable location
+(3C 04 00 CE 24 84 27 52)
+* IDA: 800034C8
+* Z64: 0x40C8
+
+"li $a2, 0x77A8" ; size of filetable
+(24 06 77 A8)
+* IDA: 800034E0
+* Z64: 0x40E0
+
+"li $a0, 0x77A4" ; size of filetable-1
+(24 04 77 A4)
+* IDA: 800034E8
+* Z64: 0x40E8
+
+"li $s4, 0xDAC50" ; files start here
+(3C 14 00 0E 26 94 AC 50)
+* IDA: 80003510
+* Z64: 0x4110
+
+"sltiu $v0, $s2, 0x1DE9" ; number of files-1?
+(2E 42 1D E9)
+* IDA: 8000357C
+* Z64: 0x417C
+
+sub_800035B4
+------------
+Routine begins at
+* IDA: 800035B4
+* Z64: 0x41B4
+
+"sltiu $v0, 0x1DEA" ; max file number?
+(2C 42 1D EA)
+* IDA: 800035C0
+* Z64: 0x41C0
+
+"li $a2, 0xDAC50" ; first file location
+(3C 06 00 0E  24 C6 AC 50)
+* IDA: 80003604
+* Z64: 0x4204
+
+LoadFile
+--------
+Routine begins at
+* IDA: 80003684
+* Z64: 0x4284
+
+"sltiu $v0, 0x1DEA" ; maximum file count?
+(2C 42 1D EA)
+* IDA: 800036A4
+* Z64: 0x42A4
+
+"li $a2, 0xDAC50" ; files start here
+(3C 06 00 0E  24 C6 AC 50)
+* IDA: 800036EC
+* Z64: 0x42EC
+
+Others
+------
+There's a floating 0x000DAC50 at...
+* IDA: 80036E58
+* Z64: 0x37A58
+
 ================================================================================
 [WCW/nWo Revenge, PAL]
+
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 800033C0
+* Z64: 0x3FC0
+
+"li $a0, 0x77A8" ; filetable size
+(24 04 77 A8)
+* IDA: 800033C4
+* Z64: 0x3FC4
+
+"li $a0, 0xCDFCE2" ; filetable location
+(3C 04 00 CE 24 84 FC E2)
+* IDA: 800033E8
+* Z64: 0x3FE8
+
+"li $a2, 0x77A8" ; filetable size
+(24 06 77 A8)
+* IDA: 80003400
+* Z64: 0x4000
+
+"li $a0, 0x77A4" ; filetable size - 1 entry
+(24 04 77 A4)
+* IDA: 80003408
+* Z64: 0x4008
+
+"li $s4, 0xD81E0" ; first file location
+(3C 14 00 0E 26 94 81 E0)
+* IDA: 80003430
+* Z64: 0x4030
+
+"sltiu $v0, $s2, 0x1DE9" ; number of files - 1
+(2E 42 1D E9)
+* IDA: 8000349C
+* Z64: 0x409C
+
+sub_800034D4
+------------
+Routine begins at
+* IDA: 800034D4
+* Z64: 0x40D4
+
+"sltiu $v0, 0x1DEA" ; max file number?
+(2C 42 1D EA)
+* IDA: 800034E0
+* Z64: 0x40E0
+
+"li $a2, 0xD81E0" ; first file location
+(3C 06 00 0E  24 C6 81 E0)
+* IDA: 80003524
+* Z64: 0x4124
+
+LoadFile
+--------
+Routine begins at
+* IDA: 800035A4
+* Z64: 0x41A4
+
+"sltiu $v0, 0x1DEA" ; max file count
+(2C 42 1D EA)
+* IDA: 800035C4
+* Z64: 0x41C4
+
+"li $a2, 0xD81E0" ; files start here
+(3C 06 00 0E 24 C6 81 E0)
+* IDA: 8000360C
+* Z64: 0x420C
+
+Others
+------
+There's a floating 0x000D81E0 at...
+* IDA: 800345AB
+* Z64: 0x351A8
 
 ================================================================================
 [WWF WrestleMania 2000, NTSC-U]
