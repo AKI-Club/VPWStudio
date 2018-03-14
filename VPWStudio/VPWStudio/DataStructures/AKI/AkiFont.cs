@@ -15,10 +15,17 @@ namespace VPWStudio
 		/// 24px wide
 		/// </summary>
 		AkiLargeFont,
+
 		/// <summary>
 		/// 16px wide
 		/// </summary>
-		AkiSmallFont
+		AkiSmallFont/*,
+
+		/// <summary>
+		/// the one used in No Mercy for in-match names
+		/// </summary>
+		AkiTinyFont
+		*/
 	}
 
 	/// <summary>
