@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Drawing;
+using System.IO;
 
 namespace VPWStudio
 {
@@ -44,6 +44,7 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Binary Read/Write
 		/// <summary>
 		/// Read image data using a BinaryReader.
 		/// </summary>
@@ -69,6 +70,33 @@ namespace VPWStudio
 				i+=2;
 			}
 		}
+
+		/// <summary>
+		/// Read raw CI4 image data (no header)
+		/// </summary>
+		/// <param name="width">Width of image</param>
+		/// <param name="height">Height of image</param>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public void ReadRawData(int width, int height, BinaryReader br)
+		{
+			// set width and height
+			this.Width = width;
+			this.Height = height;
+
+			int numPixels = width * height;
+			this.Data = new byte[numPixels];
+
+			// two pixels in one byte
+			int i = 0;
+			while (i < numPixels)
+			{
+				byte b = br.ReadByte();
+				this.Data[i] = (byte)((b & 0xF0) >> 4);
+				this.Data[i + 1] = (byte)(b & 0x0F);
+				i += 2;
+			}
+		}
+		#endregion
 
 		/// <summary>
 		/// Convert this Ci4Image to a Bitmap.
