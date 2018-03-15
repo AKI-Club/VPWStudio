@@ -20,9 +20,10 @@ namespace VPWStudio
 		// N64 standard textures and palettes
 		Ci4Palette, // raw CI4 palette data (32 bytes)
 		Ci8Palette, // raw CI8 palette data (512 bytes)
-		Ci4Texture, // raw CI4 texture data
-		Ci8Texture, // raw CI8 texture data
-		// todo: IA8, IA4, I8, I4, others
+		Ci4Texture, // CI4 texture data (with header)
+		Ci8Texture, // CI8 texture data (with header)
+		I4Texture,  // raw I4 texture data
+		// todo: IA8, IA4, I8, others
 
 		// "special" formats
 		#region Game-Specific
