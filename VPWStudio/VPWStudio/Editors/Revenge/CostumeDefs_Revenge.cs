@@ -323,7 +323,7 @@ namespace VPWStudio.Editors.Revenge
 			BinaryReader palReader = new BinaryReader(palStream);
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romStream, palWriter, palID);
 			palStream.Seek(0, SeekOrigin.Begin);
-			previewPal.ReadData(palReader);
+			previewPal.ReadData(palReader, true);
 			palStream.Dispose();
 
 			Ci4Texture previewTex = new Ci4Texture();
