@@ -979,6 +979,18 @@ namespace VPWStudio
 		#endregion
 
 		#region Project build section
+		/*
+		 * addr2hws(a1, a2)
+		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
+		 *     v = h + int.from_bytes(rom[a2:a2+2], byteorder='big')
+		 *     v += difference;
+		 *     h = (v>>16)
+		 *     if(v & 0x8000) h += 1
+		 *     l = v & 0xFFFF
+		 *     rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
+		 *     rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
+		 */
+
 		/// <summary>
 		/// Build ROM
 		/// </summary>
@@ -1012,7 +1024,7 @@ namespace VPWStudio
 			// todo: the actual build process could probably be moved into Program.cs,
 			// with other portions being implemented by the relevant classes.
 
-			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.");
+			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
 			//return;
 
 			if (BuildLogForm == null)
@@ -1202,8 +1214,7 @@ namespace VPWStudio
 					curFileFS.Close();
 
 					// perform alignment if needed
-					// xxx: operates on fileLen and not outDataBW position
-					if ((fileLen & 1) != 0)
+					if ((outDataBW.BaseStream.Position & 1) != 0)
 					{
 						outDataBW.Write((byte)0);
 					}
