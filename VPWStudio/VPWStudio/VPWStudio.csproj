@@ -92,6 +92,7 @@
     <Compile Include="DataStructures\N64TexPal\Ci4Palette.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Texture.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
+    <Compile Include="DataStructures\N64TexPal\I4Texture.cs" />
     <Compile Include="Dialogs\FileTable\FileTable_CiPalettePreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +165,12 @@
     <Compile Include="Editors\FileTableDialog.Designer.cs">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\FontDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\FontDialog.Designer.cs">
+      <DependentUpon>FontDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +209,7 @@
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
+    <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
@@ -316,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
       <DependentUpon>FileTableDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\FontDialog.resx">
+      <DependentUpon>FontDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
@@ -482,6 +493,7 @@
     <Content Include="Manual\manual.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\font.ico" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />
