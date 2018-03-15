@@ -36,11 +36,11 @@ namespace VPWStudio
 		/// </summary>
 		None,
 		/// <summary>
-		/// "$comment"
+		/// Changes to game data. "$name"
 		/// </summary>
 		DataLocation,
 		/// <summary>
-		/// "%comment"
+		/// Changes to game code. "%name"
 		/// </summary>
 		CodeChange,
 	}
@@ -72,7 +72,7 @@ namespace VPWStudio
 		public string Comment;
 
 		/// <summary>
-		/// 
+		/// Location type handler
 		/// </summary>
 		public LocationHandlerType Handler;
 		#endregion

@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VPWStudio.GameSpecific;
 
 namespace VPWStudio
 {
@@ -346,6 +347,7 @@ namespace VPWStudio
 				SaveFileDialog sfd = new SaveFileDialog();
 				sfd.Title = "Extract File";
 				sfd.Filter = SharedStrings.FileFilter_None;
+
 				// generate filename
 				string fileExt = "bin";
 				if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(Program.CurrentProject.ProjectFileTable.Entries[key].FileType))
@@ -378,6 +380,7 @@ namespace VPWStudio
 					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					ExtractIDs.Add(key);
 				}
+
 				FileTable_ExtractFilesDialog efd = new FileTable_ExtractFilesDialog(ExtractIDs);
 				if (efd.ShowDialog() == DialogResult.OK)
 				{
@@ -476,6 +479,7 @@ namespace VPWStudio
 				return;
 			}
 
+			// preview is not allowed for multiple selection...
 			if (lvFileList.SelectedItems.Count > 1)
 			{
 				return;
@@ -553,11 +557,35 @@ namespace VPWStudio
 						romReader.Close();
 					}
 					break;
+
+				/*
+				case FileTypes.MenuBackgroundImage:
+					{
+						// see if my plan worked
+						MenuBackgroundImage mbi = new MenuBackgroundImage();
+
+						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+						BinaryReader romReader = new BinaryReader(romStream);
+
+						MemoryStream mbiStream = new MemoryStream();
+						BinaryWriter mbiWriter = new BinaryWriter(mbiStream);
+
+						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, mbiWriter, key);
+
+						mbiStream.Seek(0, SeekOrigin.Begin);
+						BinaryReader mbiReader = new BinaryReader(mbiStream);
+						mbi.ReadData(mbiReader);
+						mbi.ToBitmap().Save(String.Format("mbi-{0:X4}.png", key));
+						mbiReader.Close();
+						romReader.Close();
+					}
+					break;
+				*/
 				// end temporary
 
 				// no default handler; show the hex viewer.
 				default:
-					((VPWStudio.MainForm)this.MdiParent).RequestHexViewer(key);
+					((MainForm)this.MdiParent).RequestHexViewer(key);
 					break;
 			}
 		}
