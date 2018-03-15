@@ -44,7 +44,7 @@ namespace VPWStudio
 		/// Read CI4 palette data with a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public void ReadData(BinaryReader br)
+		public void ReadData(BinaryReader br, bool handleSubpal = false)
 		{
 			for (int i = 0; i < 16; i++)
 			{
@@ -56,27 +56,30 @@ namespace VPWStudio
 				this.Entries[i] = BitConverter.ToUInt16(b, 0);
 			}
 
-			int curPos = (int)br.BaseStream.Position;
-			br.BaseStream.Seek(0, SeekOrigin.End);
-			int endPos = (int)br.BaseStream.Position;
-
-			if (curPos != endPos)
+			if (handleSubpal)
 			{
-				int numSubPal = (endPos / 32) - 1;
-				br.BaseStream.Seek(0x20, SeekOrigin.Begin);
-				for (int i = 0; i < numSubPal; i++)
+				int curPos = (int)br.BaseStream.Position;
+				br.BaseStream.Seek(0, SeekOrigin.End);
+				int endPos = (int)br.BaseStream.Position;
+
+				if (curPos != endPos)
 				{
-					Ci4Palette subPal = new Ci4Palette();
-					for (int j = 0; j < 16; j++)
+					int numSubPal = (endPos / 32) - 1;
+					br.BaseStream.Seek(0x20, SeekOrigin.Begin);
+					for (int i = 0; i < numSubPal; i++)
 					{
-						byte[] b = br.ReadBytes(2);
-						if (BitConverter.IsLittleEndian)
+						Ci4Palette subPal = new Ci4Palette();
+						for (int j = 0; j < 16; j++)
 						{
-							Array.Reverse(b);
+							byte[] b = br.ReadBytes(2);
+							if (BitConverter.IsLittleEndian)
+							{
+								Array.Reverse(b);
+							}
+							subPal.Entries[j] = BitConverter.ToUInt16(b, 0);
 						}
-						subPal.Entries[j] = BitConverter.ToUInt16(b, 0);
+						this.SubPalettes.Add(subPal);
 					}
-					this.SubPalettes.Add(subPal);
 				}
 			}
 		}
