@@ -8,7 +8,7 @@ namespace VPWStudio
 	/// 4BPP intensity-only image.
 	/// </summary>
 	/// todo: the images I've found do not give width and height values.
-	/// other note: the values are possibly reversed (meaning F is transparent and 0 is opaque)
+	/// they are probably provided by the game.
 	public class I4Texture
 	{
 		#region Class Members
@@ -18,10 +18,17 @@ namespace VPWStudio
 		public byte[] Data;
 		#endregion
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public I4Texture()
 		{
 		}
 
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public I4Texture(BinaryReader br)
 		{
 			ReadData(br);
@@ -55,10 +62,12 @@ namespace VPWStudio
 		#endregion
 
 		/// <summary>
-		/// Convert this I4Image to a Bitmap.
+		/// Convert this I4Texture into a Bitmap.
 		/// </summary>
-		/// <returns>Bitmap containing an image drawn with the requested Ci4Palette.</returns>
-		public Bitmap GetBitmap(int width, int height)
+		/// <param name="width">I4Texture Width</param>
+		/// <param name="height">I4Texture Height</param>
+		/// <returns>Bitmap representing the I4Texture.</returns>
+		public Bitmap ToBitmap(int width, int height)
 		{
 			if (this.Data == null)
 			{
@@ -72,7 +81,10 @@ namespace VPWStudio
 				for (int x = 0; x < width; x++)
 				{
 					byte palIdx = this.Data[(y * width) + x];
-					bOut.SetPixel(x, y, Color.FromArgb(palIdx * 16, 255, 255, 255));
+					// I am not sure if alpha is meant to be calculated like this,
+					// but it matches how the I4 textures look in game.
+					// Whether or not the game performs this transform is unknown.
+					bOut.SetPixel(x, y, Color.FromArgb((15 - palIdx) * 16, 255, 255, 255));
 				}
 			}
 
