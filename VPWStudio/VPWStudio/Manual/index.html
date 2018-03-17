@@ -18,6 +18,11 @@
 <li>Introduction</li>
 <li>Requirements and Notes</li>
 <li>Project Files</li>
+<li>Tools
+	<ol>
+	<li>GameShark Code Tool</li>
+	</ol>
+</li>
 </ol>
 
 <h3>Appendices</h3>
@@ -34,15 +39,80 @@
 
 <hr />
 <h2>Introduction</h2>
-<p>VPW Studio blah blah save the world by ROM hacking AKI Corp.'s Virtual Pro Wrestling
-games.</p>
+<p>VPW Studio is a tool that assists in ROM hacking the games in AKI Corporation's
+Virtual Pro-Wrestling series.</p>
+
+<h3>Supported Games</h3>
+<p>Currently, only the AKI wrestling games on the Nintendo 64 are supported:</p>
+<ul>
+<li>WCW vs. nWo World Tour (NTSC-U v1.0, NTSC-U v1.1/Revision A, PAL)</li>
+<li>Virtual Pro-Wrestling 64 (NTSC-J)</li>
+<li>WCW/nWo Revenge (NTSC-U, PAL)</li>
+<li>WWF WrestleMania 2000 (NTSC-U, NTSC-J, PAL)</li>
+<li>Virtual Pro-Wrestling 2 (NTSC-J)</li>
+<li>WWF No Mercy (NTSC-U v1.0, NTSC-U v1.1/Revision A, PAL v1.0, PAL v1.1/Revision A)</li>
+</ul>
 
 <hr />
 <h2>Requirements and Notes</h2>
 <p>(todo)</p>
 
+<h3>Requirements</h3>
+<p>(todo)</p>
+<ul>
+<li>.NET Framework 4.6.1</li>
+<li>Any of the above listed games in Z64 ROM format. No other N64 ROM formats are supported at this time.</li>
+</ul>
+
+<h3>Notes</h3>
+<p>(todo)</p>
+
 <hr />
 <h2>Project Files</h2>
+<p>VPW Studio primarily operates on the concept of Project Files. (todo)</p>
+
+<h3>Creating a New Project</h3>
+<p>Getting started with the main portion of the program requires creating a new project.
+Select "New Project..." from the File menu, which will bring up the New Project dialog.</p>
+
+<p>(todo)</p>
+
+<ul>
+<li><strong>Project Name</strong> &ndash; The name of this project.</li>
+<li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional.</li>
+<li><strong>Game Type</strong> &ndash; Set the game type.</li>
+<li><strong>Base ROM File</strong> &ndash; Set the location of the base Z64 ROM.</li>
+<li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
+<li><strong>Custom Location File</strong> &ndash; When checked, allows you to use a
+custom Location File. Helpful if you've already made changes to the base ROM that
+result in differences from the default Location File for the specified Game Type.</li>
+</ul>
+
+<p>Upon pressing OK, you will be sent back to the main screen.</p>
+
+<h3>Open an Existing Project</h3>
+<p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.</p>
+
+<h3>Save, Save As</h3>
+<p>When you want to save changes to a project, there are two options: "Save Project",
+and "Save Project As". Both are available from the File menu.</p>
+
+<h4>Save Project</h4>
+<p>The first time you save a new project, the program will ask you for a location
+and name to save the file. Upon doing so, two folders will be created in the
+directory where the project file is saved: "Assets" and "ProjectFiles".</p>
+
+<h4>Save Project As</h4>
+<p>(todo)</p>
+
+<h3>Project Settings</h3>
+<p>"Project &rarr; Project Settings" (todo)</p>
+
+<hr />
+<h2>Tools</h2>
+<p>(todo)</p>
+
+<h3>GameShark Tool</h3>
 <p>(todo)</p>
 
 <hr />
@@ -115,13 +185,13 @@ location strings:</p>
 <hr />
 <h3><a name="FileTableDB">Appendix A2: FileTableDB Format</a></h3>
 <p>The FileTableDB format is a plain text database mapping File IDs to types
-and comments.</p>
+and notes.</p>
 
 <p>Lines starting with the <code>#</code> character are comments, and will be
 ignored by the FileTableDB loader.</p>
 
 <h4>Breakdown</h4>
-<p><code>FileID=Type;Comment</code></p>
+<p><code>FileID=Type;Notes</code></p>
 
 <h4>FileID</h4>
 <p>The ID file for this entry. Entries are in hex and should have 4 digits.
@@ -139,8 +209,8 @@ contain TEX files.</li>
 <li><code>AkiModel</code> &ndash; Model data.</li>
 <li><code>AkiTexture</code> &ndash; AKI texture wrapper (a.k.a. "TEX")</li>
 <li><code>AkiText</code> &ndash; AKI text archive.</li>
-<li><code>AkiLargeFont</code> &ndash; (not yet implemented)</li>
-<li><code>AkiSmallFont</code> &ndash; (not yet implemented)</li>
+<li><code>AkiLargeFont</code> &ndash; Large font data (24px wide)</li>
+<li><code>AkiSmallFont</code> &ndash; Small font data (16px wide)</li>
 <li><code>Ci4Palette</code> &ndash; CI4 palette (16 colors * 2 bytes)</li>
 <li><code>Ci8Palette</code> &ndash; CI8 palette (256 colors * 2 bytes)</li>
 <li><code>Ci4Texture</code> &ndash; CI4 texture (4BPP)</li>
@@ -148,9 +218,9 @@ contain TEX files.</li>
 <li><code>DoubleTex</code> &ndash; WCW/nWo Revenge credits faces (two TEX files, one after another)</li>
 </ul>
 
-<h4>Comment</h4>
-<p>A comment displayed in the FileTable dialog. Unlike the LocationFile format,
-there are no special characters to deal with.</p>
+<h4>Notes</h4>
+<p>A note displayed in the FileTable dialog. Unlike the LocationFile format,
+there are no special tokens to deal with.</p>
 
 <hr />
 <h3><a name="GameSharkCodeSet">Appendix A3: GameShark CodeSet Format</a></h3>
