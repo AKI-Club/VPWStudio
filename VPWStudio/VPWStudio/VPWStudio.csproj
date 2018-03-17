@@ -214,6 +214,7 @@
     <Compile Include="GameSpecific\NoMercy\NoMercyText.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
