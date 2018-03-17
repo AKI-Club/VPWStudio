@@ -16,10 +16,12 @@ namespace VPWStudio
 		/// Invalid type.
 		/// </summary>
 		Invalid = -1,
+
 		/// <summary>
 		/// Found in ROM. (Z64 format assumed)
 		/// </summary>
 		ROM = 0,
+
 		/// <summary>
 		/// Found in RAM. (GameShark code)
 		/// </summary>
@@ -35,10 +37,12 @@ namespace VPWStudio
 		/// Default
 		/// </summary>
 		None,
+
 		/// <summary>
 		/// Changes to game data. "$name"
 		/// </summary>
 		DataLocation,
+
 		/// <summary>
 		/// Changes to game code. "%name"
 		/// </summary>

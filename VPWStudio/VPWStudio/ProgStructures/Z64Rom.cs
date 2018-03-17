@@ -203,6 +203,10 @@ namespace VPWStudio
 		public string InternalName;
 
 		// offsets 0x3B-0x3E
+		/// <summary>
+		/// Game Code. Typically starts with 'N' and ends with a region code.
+		/// </summary>
+		/// Not sure if I should just make this two characters and use another variable for region/language/whatever
 		public string GameCode;
 
 		// offset 0x3F
