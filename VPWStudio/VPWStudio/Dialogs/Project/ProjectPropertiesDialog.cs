@@ -52,6 +52,7 @@ namespace VPWStudio
 
 				// project files page
 				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
+				tbAssetFilesPath.Text = Program.CurrentProject.Settings.AssetsPath;
 				tbGSCodeFile.Text = Program.CurrentProject.Settings.ProjectGSCodeFilePath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
@@ -216,6 +217,11 @@ namespace VPWStudio
 		private void buttonSetProjFilesPath_Click(object sender, EventArgs e)
 		{
 			// todo: balls.
+		}
+
+		private void buttonSetAssetFilesPath_Click(object sender, EventArgs e)
+		{
+			// todo: also balls.
 		}
 
 		private void chbCustomLocation_Click(object sender, EventArgs e)
