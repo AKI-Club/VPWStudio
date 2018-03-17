@@ -493,7 +493,8 @@ namespace VPWStudio
 					FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
 					tpd.ShowDialog();
 					break;
-
+				
+				// I4 textures
 				case FileTypes.I4Texture:
 					FileTable_ITexturePreviewDialog ipd = new FileTable_ITexturePreviewDialog(key);
 					ipd.ShowDialog();

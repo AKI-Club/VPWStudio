@@ -51,6 +51,7 @@ This is used to insert 'raw', possibly pre-compressed files."""
     for i in range(index+1, len(tbl)):
         tbl[i] += difference
 
+    # (freem) write updated filetable to rom
     tbl.byteswap()
     rom[filetable:filetable+0xCC8C] = tbl.tobytes()
 
