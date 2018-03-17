@@ -9,9 +9,15 @@ namespace VPWStudio
 	/// </summary>
 	public class Ci8Palette
 	{
-		// 512 bytes
+		#region Class Members
+		/// <summary>
+		/// Palette entries.
+		/// </summary>
+		/// 512 bytes
 		public UInt16[] Entries;
+		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor
 		/// </summary>
@@ -28,8 +34,9 @@ namespace VPWStudio
 		{
 			this.ReadData(br);
 		}
+		#endregion
 
-		#region Read/Write Data.
+		#region Binary Read/Write
 		/// <summary>
 		/// Read CI8 palette data with a BinaryReader.
 		/// </summary>
@@ -65,8 +72,11 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region JASC Palette Import/Export
-		// xxx: this relies on N64Colors.ValueToColor5551
+		#region JASC Paint Shop Pro Palette Import/Export
+		/// <summary>
+		/// Export Ci8Palette as a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write Palette data to.</param>
 		public void ExportJasc(StreamWriter sw)
 		{
 			sw.WriteLine("JASC-PAL");
@@ -78,6 +88,33 @@ namespace VPWStudio
 				Color c = N64Colors.Value5551ToColor(this.Entries[i]);
 				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
 			}
+		}
+
+		/// <summary>
+		/// Import Ci8Palette data from a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sr">StreamReader to read Palette data from.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool ImportJasc(StreamReader sr)
+		{
+			sr.ReadLine(); // "JASC-PAL"
+			sr.ReadLine(); // version number
+
+			// number of colors
+			int numColors = int.Parse(sr.ReadLine());
+			if (numColors != 256)
+			{
+				return false;
+			}
+
+			// color per line
+			for (int i = 0; i < numColors; i++)
+			{
+				string[] colorDef = sr.ReadLine().Split(' ');
+				Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+			}
+
+			return true;
 		}
 		#endregion
 
