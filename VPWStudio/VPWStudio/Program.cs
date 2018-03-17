@@ -60,6 +60,11 @@ namespace VPWStudio
 		public static string CurGSCFPath = String.Empty;
 		#endregion
 
+		/// <summary>
+		/// Build log publisher.
+		/// </summary>
+		public static BuildLogEventPublisher BuildLogPub = new BuildLogEventPublisher();
+
 		#endregion
 
 		/// <summary>
@@ -133,7 +138,7 @@ namespace VPWStudio
 				outRomData[0x20 + i] = nameBytes[i];
 			}
 
-			// todo: log output
+			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName));
 			#endregion
 
 			#region Product/Game Code
@@ -155,6 +160,8 @@ namespace VPWStudio
 			// which messes up the rest of the program.
 			FileTable buildFileTable = new FileTable();
 			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
+
+			// todo: figure out how to handle the differences.
 
 			// The total difference from all of the changed files.
 
