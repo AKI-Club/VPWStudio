@@ -15,7 +15,7 @@ namespace VPWStudio
 		AkiText,       // Text bank
 		AkiLargeFont,  // Large font (24x21px character cells)
 		AkiSmallFont,  // Small font (16x13px character cells)
-		AkiFontChars,  // (not yet implemented, but a Shift-JIS encoded text file)
+		AkiFontChars,  // (not yet implemented; Shift-JIS encoded text file with all font characters)
 
 		// N64 standard textures and palettes
 		Ci4Palette, // raw CI4 palette data (32 bytes)
@@ -31,7 +31,7 @@ namespace VPWStudio
 		// it also includes (possible) one-off formats.
 
 		#region WCW/nWo Revenge
-		DoubleTex,  // WCW/nWo Revenge credits faces (two TEX files, one after another, no headers or anything.)
+		DoubleTex,  // two TEX files, one after another, no headers or anything.
 		#endregion
 
 		#region WWF No Mercy
@@ -60,6 +60,7 @@ namespace VPWStudio
 			{ FileTypes.Ci8Palette, "ci8pal" },
 			{ FileTypes.Ci4Texture, "ci4tex" },
 			{ FileTypes.Ci8Texture, "ci8tex" },
+			{ FileTypes.I4Texture, "i4tex" },
 			{ FileTypes.DoubleTex, "tex" }, // note: exports as two files
 		};
 
@@ -71,6 +72,7 @@ namespace VPWStudio
 			FileTypes.AkiTexture,
 			FileTypes.Ci4Texture,
 			FileTypes.Ci8Texture,
+			FileTypes.I4Texture,
 			FileTypes.DoubleTex
 		};
 
@@ -81,6 +83,16 @@ namespace VPWStudio
 		{
 			FileTypes.Ci4Palette,
 			FileTypes.Ci8Palette
+		};
+
+		/// <summary>
+		/// List of FileTypes containing font-related data.
+		/// </summary>
+		public static List<FileTypes> FontFileTypes = new List<FileTypes>()
+		{
+			FileTypes.AkiFontChars,
+			FileTypes.AkiSmallFont,
+			FileTypes.AkiLargeFont
 		};
 	}
 
