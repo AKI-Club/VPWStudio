@@ -1027,15 +1027,17 @@ namespace VPWStudio
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
 			//return;
 
+			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
+
 			if (BuildLogForm == null)
 			{
-				BuildLogForm = new BuildLogDialog();
+				BuildLogForm = new BuildLogDialog(buildLogPub);
 			}
 			else
 			{
 				if (BuildLogForm.IsDisposed)
 				{
-					BuildLogForm = new BuildLogDialog();
+					BuildLogForm = new BuildLogDialog(buildLogPub);
 				}
 			}
 			BuildLogForm.MdiParent = this;
@@ -1070,7 +1072,7 @@ namespace VPWStudio
 				outRomData[0x20 + i] = nameBytes[i];
 			}
 
-			BuildLogForm.AddLine(String.Format("Internal Game Name: {0}", Program.CurrentProject.Settings.OutputRomInternalName));
+			buildLogPub.AddLine(String.Format("Internal Game Name: {0}", Program.CurrentProject.Settings.OutputRomInternalName));
 			#endregion
 
 			#region Product/Game Code
@@ -1095,8 +1097,7 @@ namespace VPWStudio
 			// Work on a copy of the FileTable.
 			// This prevents changes from being made to the Project's FileTable,
 			// which messes up the rest of the program.
-			FileTable buildFileTable = new FileTable();
-			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
+			FileTable buildFileTable = new FileTable(Program.CurrentProject.ProjectFileTable);
 
 			// The total difference from all of the changed files.
 
@@ -1141,7 +1142,7 @@ namespace VPWStudio
 					// If it doesn't, we're going to have a hard time replacing data.
 					if (!File.Exists(replaceFilePath))
 					{
-						BuildLogForm.AddLine(String.Format("Error attempting to open '{0}'", replaceFilePath));
+						buildLogPub.AddLine(String.Format("Error attempting to open '{0}'", replaceFilePath));
 						continue;
 					}
 
@@ -1156,7 +1157,7 @@ namespace VPWStudio
 						continue;
 					}
 
-					BuildLogForm.AddLine(String.Format("[File {0:X4}]", fte.FileID));
+					buildLogPub.AddLine(String.Format("[File {0:X4}]", fte.FileID));
 
 					FileStream curFileFS = new FileStream(replaceFilePath, FileMode.Open);
 					BinaryReader curFileBR = new BinaryReader(curFileFS);
@@ -1237,7 +1238,7 @@ namespace VPWStudio
 					{
 						sizeCompareChar = "==";
 					}
-					BuildLogForm.AddLine(
+					buildLogPub.AddLine(
 						String.Format("old size = {0} {1} new size = {2}",
 						(end - start),
 						sizeCompareChar,
@@ -1266,11 +1267,14 @@ namespace VPWStudio
 
 					// in the future, you might want to move the other files upwards to
 					// take advantage of the space, but that's a bit complicated for now.
+
+					// XXX: this does not properly handle compressed data?!
 					if (diff < 0)
 					{
-						for (int dx = 0; dx < ((end - start) - fileLen); dx++)
+						//for (int dx = 0; dx < ((end - start) - fileLen); dx++)
+						for (int dx = 0; dx < ((end - start) - insertDataLen); dx++)
 						{
-							outRomData[(int)(buildFileTable.FirstFile + fte.Location + fileLen + dx)] = 0;
+							outRomData[(int)(buildFileTable.FirstFile + fte.Location + insertDataLen + dx)] = 0;
 						}
 					}
 
@@ -1278,8 +1282,8 @@ namespace VPWStudio
 				}
 			}
 
-			// todo: maybe you should consider re-writing the FileTable huh freem
-			// oh and be advised that it IS possible for the FileTable position (and size) to change.
+			// todo: maybe you should consider re-writing the FileTable, huh, freem?
+			// be advised that it IS possible for the FileTable position (and size) to change.
 			#endregion
 
 			// - other junk
@@ -1325,11 +1329,11 @@ namespace VPWStudio
 			outRomBW.Dispose();
 
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
-			BuildLogForm.AddLine(
+			buildLogPub.AddLine(
 				String.Format("Successfully built '{0}' in {1} (min:sec.ms)",
 					outRomPath,
 					buildTimeTaken.ToString(@"mm\:ss\.fffff")
-				)
+				), false
 			);
 			BuildLogForm.BuildFinished = true;
 
