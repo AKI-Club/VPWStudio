@@ -123,6 +123,15 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Specific constructor from an existing FileTableEntry instance.
+		/// </summary>
+		/// <param name="_existing">FileTableEntry instance to clone.</param>
+		public FileTableEntry(FileTableEntry _existing)
+		{
+			DeepCopy(_existing);
+		}
+
+		/// <summary>
 		/// Specific constructor from BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
@@ -395,6 +404,15 @@ namespace VPWStudio
 			this.Location = _loc;
 			this.FirstFile = _firstFile;
 		}
+
+		/// <summary>
+		/// Create a new FileTable from an existing FileTable instance.
+		/// </summary>
+		/// <param name="_existing">FileTable instance to clone.</param>
+		public FileTable(FileTable _existing)
+		{
+			DeepCopy(_existing);
+		}
 		#endregion
 
 		/// <summary>
@@ -405,7 +423,7 @@ namespace VPWStudio
 		{
 			this.Location = _src.Location;
 			this.FirstFile = _src.FirstFile;
-			this.Entries.Clear();
+			this.Entries = new SortedList<int, FileTableEntry>();
 			foreach (KeyValuePair<int, FileTableEntry> fte in _src.Entries)
 			{
 				this.Entries.Add(fte.Key, fte.Value);
@@ -417,7 +435,7 @@ namespace VPWStudio
 		/// Find all files of a specified type in the FileTable.
 		/// </summary>
 		/// <param name="t">FileTypes enum value of file type to find.</param>
-		/// <returns>A list containing all the IDs of files matching the specified type.</returns>
+		/// <returns>A List containing all the IDs of files matching the specified type.</returns>
 		public List<int> GetFilesOfType(FileTypes t)
 		{
 			List<int> files = new List<int>();
@@ -501,8 +519,24 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Return code for file replacement routine.
+		/// </summary>
 		public enum ReplaceFileReturnCode
 		{
+			/// <summary>
+			/// The (former) name of this enum (DotNetTransparencyHandlingSucks) is self-explanatory.
+			/// </summary>
+			/// Basically if you try importing a paletted image with transparency,
+			/// .NET will "helpfully" convert the PixelFormat to Format32bppArgb.
+			DotNetTransparencyHandlingSucks = -5,
+
+			/// <summary>
+			/// Invalid PixelFormat for this entry.
+			/// </summary>
+			/// Example: trying to load a CI8 (256 colors) image into a CI4 (16 colors) slot
+			InvalidPixelFormat = -4,
+
 			/// <summary>
 			/// Invalid FileType set for this entry.
 			/// </summary>
@@ -547,6 +581,13 @@ namespace VPWStudio
 			public ReplaceFileReturnCode ReturnCode;
 		}
 
+		/// <summary>
+		/// oh my god freem what are you doing!
+		/// </summary>
+		/// <param name="romData"></param>
+		/// <param name="fte"></param>
+		/// <param name="projectPath"></param>
+		/// <returns></returns>
 		public ReplaceFileReturnData ReplaceFile(List<byte> romData, FileTableEntry fte, string projectPath)
 		{
 			ReplaceFileReturnData rd = new ReplaceFileReturnData();
@@ -574,6 +615,17 @@ namespace VPWStudio
 				rd.Difference = 0;
 				return rd;
 			}
+
+			// todo: this is the part of the routine that needs fixing
+			// AND requires the most attention.
+
+			// what happens during replacement depends on multiple factors:
+			// - is the original file slot compressed?
+			// - replacement file type (could be pre-lzss'd, could be data that needs compressing, could even be data that needs conversion)
+			// - what type of slot are we replacing?
+
+			// of these, I believe the slot filetype is the most important, as it will define how we handle the data.
+
 
 			// load data and determine filesize
 			FileStream replaceFileStream = new FileStream(replaceFilePath, FileMode.Open);
@@ -642,7 +694,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Write filetable using a BinaryWriter.
+		/// Write filetable data using a BinaryWriter.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void Write(BinaryWriter bw)
