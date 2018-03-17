@@ -494,6 +494,11 @@ namespace VPWStudio
 					tpd.ShowDialog();
 					break;
 
+				case FileTypes.I4Texture:
+					FileTable_ITexturePreviewDialog ipd = new FileTable_ITexturePreviewDialog(key);
+					ipd.ShowDialog();
+					break;
+
 				// CI4/CI8 textures
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
