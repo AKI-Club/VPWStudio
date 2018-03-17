@@ -35,12 +35,10 @@ namespace VPWStudio
 	public class AkiFont
 	{
 		#region Constants
-		// *FontWidth    - Character cell width
-		// *FontHeight   - Character cell height
-		// *FontCharSize - This could very well be calculated, but I'd rather not.
-		// *FontChars    - Number of characters defined
-		// *FontCols     - Number of columns in output image
-		// *FontRows     - Number of rows in output image
+		// * FontHeight   - Character cell height
+		// * FontChars    - Number of characters defined
+		// * FontCols     - Number of columns in output image
+		// * FontRows     - Number of rows in output image
 
 		// WM2K Actual font characters: 103
 		// VPW2 Actual font characters: 3253
@@ -133,14 +131,6 @@ namespace VPWStudio
 
 		#region Class Members
 		/// <summary>
-		/// Game type for this AkiFont.
-		/// </summary>
-		/// "Why is this needed?", you will ask...
-		/// Each game seems to require different values for the font data.
-		/// There goes the neighborhood.
-		public VPWGames GameType;
-
-		/// <summary>
 		/// Font type (large or small)
 		/// </summary>
 		public AkiFontType FontType;
@@ -154,6 +144,26 @@ namespace VPWStudio
 		/// Unpacked pixel data (1BPP)
 		/// </summary>
 		public List<byte> RawData;
+
+		/// <summary>
+		/// Height of each character cell.
+		/// </summary>
+		public int CellHeight;
+
+		/// <summary>
+		/// Number of characters in the font data.
+		/// </summary>
+		public int NumCharacters;
+
+		/// <summary>
+		/// Number of columns to output.
+		/// </summary>
+		public int OutColumns;
+
+		/// <summary>
+		/// Number of rows to output.
+		/// </summary>
+		public int OutRows;
 		#endregion
 
 		/// <summary>
@@ -161,22 +171,62 @@ namespace VPWStudio
 		/// </summary>
 		public AkiFont()
 		{
-			this.GameType = VPWGames.Invalid;
-			this.FontType = AkiFontType.AkiSmallFont;
-			this.Data = new List<byte>();
-			this.RawData = new List<byte>();
+			FontType = AkiFontType.AkiSmallFont;
+			Data = new List<byte>();
+			RawData = new List<byte>();
+
+			CellHeight = 0;
+			NumCharacters = 0;
+			OutColumns = 0;
+			OutRows = 0;
 		}
 
 		/// <summary>
-		/// Specific constructor.
+		/// Specific constructor using specific game defaults.
 		/// </summary>
 		/// <param name="_ft">AkiFontType to use.</param>
-		public AkiFont(VPWGames _game, AkiFontType _ft)
+		/// <param name="_game">VPWGames enum entry to get defaults from.</param>
+		public AkiFont(AkiFontType _ft, VPWGames _game)
 		{
-			this.GameType = _game;
-			this.FontType = _ft;
-			this.Data = new List<byte>();
-			this.RawData = new List<byte>();
+			FontType = _ft;
+			Data = new List<byte>();
+			RawData = new List<byte>();
+
+			switch (FontType)
+			{
+				case AkiFontType.AkiLargeFont:
+					CellHeight = LargeFontHeight[_game];
+					NumCharacters = LargeFontNumChars[_game];
+					OutColumns = LargeFontOutCols[_game];
+					OutRows = LargeFontOutRows[_game];
+					break;
+				case AkiFontType.AkiSmallFont:
+					CellHeight = SmallFontHeight[_game];
+					NumCharacters = SmallFontNumChars[_game];
+					OutColumns = SmallFontOutCols[_game];
+					OutRows = SmallFontOutRows[_game];
+					break;
+			}
+		}
+
+		/// <summary>
+		/// Specific constructor using manually-provided details.
+		/// </summary>
+		/// <param name="_ft">AkiFontType to use.</param>
+		/// <param name="_cellHeight">Cell height for each character.</param>
+		/// <param name="_numChars">Number of characters in this font.</param>
+		/// <param name="_outCols">Number of columns to output.</param>
+		/// <param name="_outRows">Number of rows to output.</param>
+		public AkiFont(AkiFontType _ft, int _cellHeight, int _numChars, int _outCols, int _outRows)
+		{
+			FontType = _ft;
+			Data = new List<byte>();
+			RawData = new List<byte>();
+
+			CellHeight = _cellHeight;
+			NumCharacters = _numChars;
+			OutColumns = _outCols;
+			OutRows = _outRows;
 		}
 
 		#region Read Data
@@ -188,7 +238,7 @@ namespace VPWStudio
 		private void ReadFontData_Large(BinaryReader br)
 		{
 			byte[] test = new byte[3];
-			int charBytes = (LargeFontHeight[GameType] * 24) / 8;
+			int charBytes = (CellHeight * 24) / 8;
 			while (true)
 			{
 				test = br.ReadBytes(3);
@@ -211,7 +261,7 @@ namespace VPWStudio
 			int fileLen = (int)br.BaseStream.Position;
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
-			int charBytes = (SmallFontHeight[GameType] * 16) / 8;
+			int charBytes = (CellHeight * 16) / 8;
 			while (br.BaseStream.Position < fileLen)
 			{
 				br.ReadBytes(2);
@@ -268,45 +318,22 @@ namespace VPWStudio
 		public Bitmap ToBitmap()
 		{
 			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? 24 : 16;
-			int charHeight = 0;
-			int charBytes = 0;
-			int outColumns = 0;
-			int outRows = 0;
-			int numChars = 0;
+			int charBytes = (charWidth * CellHeight);
 
-			switch (FontType)
-			{
-				case AkiFontType.AkiLargeFont:
-					charHeight = LargeFontHeight[GameType];
-					charBytes = (charWidth * charHeight);
-					outColumns = LargeFontOutCols[GameType];
-					outRows = LargeFontOutRows[GameType];
-					numChars = LargeFontNumChars[GameType];
-					break;
-
-				case AkiFontType.AkiSmallFont:
-					charHeight = SmallFontHeight[GameType];
-					charBytes = (charWidth * charHeight);
-					outColumns = SmallFontOutCols[GameType];
-					outRows = SmallFontOutRows[GameType];
-					numChars = SmallFontNumChars[GameType];
-					break;
-			}
-
-			Bitmap mainBmp = new Bitmap((charWidth * outColumns), (charHeight * outRows));
+			Bitmap mainBmp = new Bitmap((charWidth * OutColumns), (CellHeight * OutRows));
 			Graphics g = Graphics.FromImage(mainBmp);
 
-			for (int curRow = 0; curRow < outRows; curRow++)
+			for (int curRow = 0; curRow < OutRows; curRow++)
 			{
-				for (int curCol = 0; curCol < outColumns; curCol++)
+				for (int curCol = 0; curCol < OutColumns; curCol++)
 				{
-					Bitmap charBmp = new Bitmap(charWidth, charHeight);
-					int basePixelAddr = (curRow * (charBytes * outColumns)) + (curCol * charBytes);
+					Bitmap charBmp = new Bitmap(charWidth, CellHeight);
+					int basePixelAddr = (curRow * (charBytes * OutColumns)) + (curCol * charBytes);
 					if (basePixelAddr >= RawData.Count)
 					{
 						break;
 					}
-					for (int charY = 0; charY < charHeight; charY++)
+					for (int charY = 0; charY < CellHeight; charY++)
 					{
 						for (int charX = 0; charX < charWidth; charX++)
 						{
@@ -316,19 +343,19 @@ namespace VPWStudio
 						}
 					}
 					// then copy that output to outBmp
-					g.DrawImage(charBmp, new Rectangle((curCol * charWidth), (curRow * charHeight), charWidth, charHeight));
+					g.DrawImage(charBmp, new Rectangle((curCol * charWidth), (curRow * CellHeight), charWidth, CellHeight));
 				}
 			}
 
-			for (int curRow = 0; curRow < outRows; curRow++)
+			for (int curRow = 0; curRow < OutRows; curRow++)
 			{
-				for (int curCol = 0; curCol < outColumns; curCol++)
+				for (int curCol = 0; curCol < OutColumns; curCol++)
 				{
-					if (((curCol * outColumns) + (curRow * outRows)) < numChars )
+					if (((curCol * OutColumns) + (curRow * OutRows)) < NumCharacters )
 					{
 						// output each character to a charWidth*charHeight Bitmap
-						Bitmap charBmp = new Bitmap(charWidth, charHeight);
-						for (int charY = 0; charY < charHeight; charY++)
+						Bitmap charBmp = new Bitmap(charWidth, CellHeight);
+						for (int charY = 0; charY < CellHeight; charY++)
 						{
 							for (int charX = 0; charX < charWidth; charX++)
 							{
