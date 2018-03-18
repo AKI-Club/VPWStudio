@@ -181,7 +181,63 @@ namespace VPWStudio
 				i++;
 			}
 		}
+		#endregion
 
+		#region CSV Read/Write
+		public void ReadCsv(StreamReader sr)
+		{
+			
+			// zoinkity's original code
+			/*
+			def CSVtoVPW2(data, * args):
+				from array import array
+
+				# Split at tabs, then strip the last newlines off.
+				l = data.split(b'\t')[1:]
+				# Create an array with len(lst) entries, each 2 bytes long.
+				sz = len(l) << 1
+
+				a, b, t = array('H'), bytearray(), []
+				for i in l:
+				    a.append(sz + len(b))
+				    # This is a bit convoluted for python, but screw it.
+				    s = b''.join((i.rsplit(b'\n', 1)[0].rstrip(), b'\x00'))
+				    b.extend(s)
+					t.append(s)
+				# Condense the list, which should have been done before...
+				for c, i in enumerate(t) :
+
+					p = b.rfind(i)
+					q = a[c] - sz
+				    if p == q:
+				        p = b.rfind(i, 0, q)
+				    if p<0: continue
+				    # On a hit, set new index and delete the old reference.
+				    l = len(i)
+					del b[q:q + l]
+					q = a[c]
+
+					a[c] = p + sz
+				    for j in range(len(a)) :
+				        if a[j] > q:
+				            a[j]-=l
+				a.byteswap()
+				return b''.join((a.tobytes(), b))
+				*/
+		}
+
+		/// <summary>
+		/// Write out AkiText to a CSV file
+		/// </summary>
+		/// <param name="sw">StreamWriter instance to use.</param>
+		public void WriteCsv(StreamWriter sw)
+		{
+			// todo: this could probably be improved.
+			for (int i = 0; i < Entries.Count; i++)
+			{
+				sw.WriteLine(String.Format("{0}\t{1}", i, Entries[i].Text));
+			}
+		}
 		#endregion
 	}
 }
