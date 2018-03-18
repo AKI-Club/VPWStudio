@@ -183,6 +183,7 @@
 			this.buttonReplaceFileBrowse.TabIndex = 0;
 			this.buttonReplaceFileBrowse.Text = "Browse...";
 			this.buttonReplaceFileBrowse.UseVisualStyleBackColor = true;
+			this.buttonReplaceFileBrowse.Click += new System.EventHandler(this.buttonReplaceFileBrowse_Click);
 			// 
 			// tbReplaceFilePath
 			// 

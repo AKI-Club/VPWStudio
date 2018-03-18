@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPWStudio
@@ -19,17 +12,17 @@ namespace VPWStudio
 
 		public FileTableEditEntryInfoDialog(FileTableEntry fte)
 		{
-			this.CurEntry.DeepCopy(fte);
+			CurEntry.DeepCopy(fte);
 			InitializeComponent();
 
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
 
 			cbFileTypes.Items.AddRange(Enum.GetNames(typeof(FileTypes)));
-			cbFileTypes.SelectedIndex = (int)this.CurEntry.FileType;
+			cbFileTypes.SelectedIndex = (int)CurEntry.FileType;
 			tbComment.Text = fte.Comment;
 
-			cbReplaceEncoding.SelectedIndex = (int)this.CurEntry.ReplaceEncoding;
-			tbReplaceFilePath.Text = this.CurEntry.ReplaceFilePath;
+			cbReplaceEncoding.SelectedIndex = (int)CurEntry.ReplaceEncoding;
+			tbReplaceFilePath.Text = CurEntry.ReplaceFilePath;
 		}
 
 		/// <summary>
@@ -37,11 +30,13 @@ namespace VPWStudio
 		/// </summary>
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			this.CurEntry.Comment = tbComment.Text;
-			this.CurEntry.ReplaceFilePath = tbReplaceFilePath.Text;
+			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+			CurEntry.Comment = tbComment.Text;
+			CurEntry.ReplaceFilePath = tbReplaceFilePath.Text;
+			CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
 
-			this.DialogResult = DialogResult.OK;
-			this.Close();
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 
 		/// <summary>
@@ -49,16 +44,8 @@ namespace VPWStudio
 		/// </summary>
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
-			this.DialogResult = DialogResult.Cancel;
-			this.Close();
-		}
-
-		/// <summary>
-		/// Update selected file type.
-		/// </summary>
-		private void cbFileTypes_SelectionChangeCommitted(object sender, EventArgs e)
-		{
-			this.CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 
 		/// <summary>
@@ -71,14 +58,9 @@ namespace VPWStudio
 			ofd.Filter = SharedStrings.FileFilter_None;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
-				this.CurEntry.ReplaceFilePath = ofd.FileName;
+				CurEntry.ReplaceFilePath = ofd.FileName;
 				tbReplaceFilePath.Text = ofd.FileName;
 			}
-		}
-
-		private void cbReplaceEncoding_SelectedValueChanged(object sender, EventArgs e)
-		{
-			this.CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
 		}
 	}
 }
