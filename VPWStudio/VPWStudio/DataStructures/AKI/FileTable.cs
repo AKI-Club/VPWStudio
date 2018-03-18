@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Xml;
@@ -8,6 +10,126 @@ using System.Xml.Serialization;
 
 namespace VPWStudio
 {
+	#region File Table Entry Extra Data
+	/// <summary>
+	/// Extra Information for FileTableEntry items.
+	/// </summary>
+	public class FileTableEntryExtraData : IXmlSerializable
+	{
+		/// <summary>
+		/// "Not used" value.
+		/// </summary>
+		private const int INVALID_DATA = -1;
+
+		/// <summary>
+		/// Image Width, when not provided by the file.
+		/// </summary>
+		public int ImageWidth;
+
+		/// <summary>
+		/// Image Height, when not provided by the file.
+		/// </summary>
+		public int ImageHeight;
+
+		/// <summary>
+		/// Index of transparent color.
+		/// </summary>
+		public int TransparentColorIndex;
+
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public FileTableEntryExtraData()
+		{
+			ImageWidth = INVALID_DATA;
+			ImageHeight = INVALID_DATA;
+			TransparentColorIndex = INVALID_DATA;
+		}
+
+		#region XML Read/Write
+		public XmlSchema GetSchema()
+		{
+			return null;
+		}
+
+		/// <summary>
+		/// Read FileTableEntryExtraData using an XmlReader.
+		/// </summary>
+		/// <param name="xr">XmlReader instance to use.</param>
+		public void ReadXml(XmlReader xr)
+		{
+			while (true)
+			{
+				xr.Read();
+
+				if (xr.Name == "ExtraData" && xr.NodeType == XmlNodeType.EndElement)
+				{
+					break;
+				}
+
+				if (xr.Name == "ImageWidth" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.ImageWidth = int.Parse(xr.Value);
+					}
+				}
+
+				if (xr.Name == "ImageHeight" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.ImageHeight = int.Parse(xr.Value);
+					}
+				}
+
+				if (xr.Name == "TransparentColorIndex" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.TransparentColorIndex = int.Parse(xr.Value);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Element write helper.
+		/// </summary>
+		/// <param name="xw">XmlWriter instance to use.</param>
+		/// <param name="name">Name of element to write.</param>
+		/// <param name="value">Value to write to element.</param>
+		private void WriteElement(XmlWriter xw, string name, int value)
+		{
+			// Only bother writing data if it's not invalid.
+			// We don't need the project files ballooning in file size unnecessarily.
+			if (value != INVALID_DATA)
+			{
+				xw.WriteElementString(name, value.ToString());
+			}
+		}
+
+		/// <summary>
+		/// Write FileTableEntryExtraData using an XmlWriter.
+		/// </summary>
+		/// <param name="xw">XmlWriter instance to use.</param>
+		public void WriteXml(XmlWriter xw)
+		{
+			xw.WriteStartElement("ExtraData");
+
+			WriteElement(xw, "ImageWidth", ImageWidth);
+			WriteElement(xw, "ImageHeight", ImageHeight);
+			WriteElement(xw, "TransparentColorIndex", TransparentColorIndex);
+
+			xw.WriteEndElement();
+		}
+		#endregion
+	}
+	#endregion
+
 	/// <summary>
 	/// Possible encoding states for FileTableReplacement entries.
 	/// </summary>
@@ -72,6 +194,8 @@ namespace VPWStudio
 		/// Replacement file path.
 		/// </summary>
 		public string ReplaceFilePath;
+
+		public FileTableEntryExtraData ExtraData;
 		#endregion // program-specific
 		#endregion
 
@@ -88,6 +212,7 @@ namespace VPWStudio
 			this.Comment = String.Empty;
 			this.ReplaceEncoding = FileTableReplaceEncoding.PickBest;
 			this.ReplaceFilePath = String.Empty;
+			this.ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -104,6 +229,7 @@ namespace VPWStudio
 			this.Comment = String.Empty;
 			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			this.ReplaceFilePath = String.Empty;
+			this.ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -120,6 +246,7 @@ namespace VPWStudio
 			this.Comment = _comment;
 			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			this.ReplaceFilePath = String.Empty;
+			this.ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -246,6 +373,15 @@ namespace VPWStudio
 						this.ReplaceFilePath = xr.Value;
 					}
 				}
+
+				if (xr.Name == "ExtraData" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						ExtraData.ReadXml(xr);
+					}
+				}
 			}
 		}
 
@@ -264,6 +400,8 @@ namespace VPWStudio
 			xw.WriteElementString("Comment", this.Comment);
 			xw.WriteElementString("ReplaceEncoding", this.ReplaceEncoding.ToString());
 			xw.WriteElementString("ReplaceFilePath", this.ReplaceFilePath);
+
+			ExtraData.WriteXml(xw);
 
 			xw.WriteEndElement();
 		}
@@ -584,16 +722,14 @@ namespace VPWStudio
 		/// <summary>
 		/// oh my god freem what are you doing!
 		/// </summary>
-		/// <param name="romData"></param>
-		/// <param name="fte"></param>
-		/// <param name="projectPath"></param>
-		/// <returns></returns>
-		public ReplaceFileReturnData ReplaceFile(List<byte> romData, FileTableEntry fte, string projectPath)
+		/// <param name="romData">A List of bytes containing the output ROM data.</param>
+		/// <param name="fte">FileTableEntry of file to replace.</param>
+		/// <param name="projectPath">Project file path. (used for relative path resolution)</param>
+		/// <param name="gameType">VPW Game Type. (used for font conversion)</param>
+		/// <returns>ReplaceFileReturnData describing the result.</returns>
+		public ReplaceFileReturnData ReplaceFile(List<byte> romData, FileTableEntry fte, string projectPath, VPWGames gameType)
 		{
 			ReplaceFileReturnData rd = new ReplaceFileReturnData();
-
-			int start = (int)fte.Location;
-			int end = (int)Entries[fte.FileID + 1].Location;
 
 			// determine path type for replacement file and act accordingly
 			string replaceFilePath = String.Empty;
@@ -616,6 +752,10 @@ namespace VPWStudio
 				return rd;
 			}
 
+			// determine start and end points of the existing file at this location
+			int start = (int)fte.Location;
+			int end = (int)Entries[fte.FileID + 1].Location;
+
 			// todo: this is the part of the routine that needs fixing
 			// AND requires the most attention.
 
@@ -625,12 +765,404 @@ namespace VPWStudio
 			// - what type of slot are we replacing?
 
 			// of these, I believe the slot filetype is the most important, as it will define how we handle the data.
+			// there is the minor issue that someone will want to replace data in a slot that's marked as "Binary".
 
+			// The replacement file's extension plays a big part in how data is handled.
+			string replaceFileExtension = Path.GetExtension(replaceFilePath);
+			// we can shortcut the FileType handling if the input data is already compressed/encoded.
+			bool alreadyCompressed = (replaceFileExtension == "lzss");
 
-			// load data and determine filesize
+			// todo: we don't always want to do this, do we?
+			// some files are better served with StreamReader...
 			FileStream replaceFileStream = new FileStream(replaceFilePath, FileMode.Open);
 			BinaryReader replaceFileReader = new BinaryReader(replaceFileStream);
 
+			// these, however, are pretty much required.
+			MemoryStream outFileStream = new MemoryStream();
+			BinaryWriter outFileWriter = new BinaryWriter(outFileStream);
+
+			if (!alreadyCompressed)
+			{
+				#region FileType handling
+				switch (fte.FileType)
+				{
+					case FileTypes.Binary:
+						{
+							// well, fuck.
+						}
+						break;
+
+					#region todo: sort me
+					case FileTypes.AkiArchive:
+						{
+						}
+						break;
+
+					case FileTypes.AkiModel:
+						{
+						}
+						break;
+					#endregion
+
+					#region Palette Types
+					case FileTypes.Ci4Palette:
+						{
+							Ci4Palette ci4pal = new Ci4Palette();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.Ci4Palette])
+							{
+								// Ci4Palette, uncompressed/unencoded
+								ci4pal.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "pal")
+							{
+								// JASC Paint Shop Pro Palette, needs conversion
+								FileStream fs = new FileStream(replaceFilePath, FileMode.Open);
+								StreamReader sr = new StreamReader(fs);
+								if (ci4pal.ImportJasc(sr) == false)
+								{
+									sr.Close();
+									rd.Difference = 0;
+									rd.ReturnCode = ReplaceFileReturnCode.Error;
+									return rd;
+								}
+								sr.Close();
+							}
+							else
+							{
+								// invalid Ci4Palette input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+
+							// handle transparent color
+							if (fte.ExtraData.TransparentColorIndex != -1)
+							{
+								// todo: argh this probably isn't right because lol endianness
+								ci4pal.Entries[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
+							}
+
+							ci4pal.WriteData(outFileWriter);
+						}
+						break;
+
+					case FileTypes.Ci8Palette:
+						{
+							Ci8Palette ci8pal = new Ci8Palette();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.Ci8Palette])
+							{
+								// Ci8Palette, uncompressed/unencoded
+								ci8pal.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "pal")
+							{
+								// JASC Paint Shop Pro Palette, needs conversion
+								FileStream fs = new FileStream(replaceFilePath, FileMode.Open);
+								StreamReader sr = new StreamReader(fs);
+								if (ci8pal.ImportJasc(sr) == false)
+								{
+									sr.Close();
+									rd.Difference = 0;
+									rd.ReturnCode = ReplaceFileReturnCode.Error;
+									return rd;
+								}
+								sr.Close();
+							}
+							else
+							{
+								// invalid Ci8Palette input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+
+							// handle transparent color
+							if (fte.ExtraData.TransparentColorIndex != -1)
+							{
+								// todo: argh this probably isn't right because lol endianness
+								ci8pal.Entries[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
+							}
+
+							ci8pal.WriteData(outFileWriter);
+						}
+						break;
+					#endregion // Palette Types
+
+					#region Texture Types
+					// AKI "TEX" format
+					case FileTypes.AkiTexture:
+						{
+							AkiTexture akitex = new AkiTexture();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.AkiTexture])
+							{
+								// AkiTexture, uncompressed/unencoded
+								akitex.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion
+								Bitmap png = new Bitmap(replaceFilePath);
+								akitex.FromBitmap(png);
+							}
+							else
+							{
+								// invalid AkiTexture input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+
+							// handle transparent color
+							if (fte.ExtraData.TransparentColorIndex != -1)
+							{
+								// todo: argh this probably isn't right because lol endianness
+								akitex.Palette[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
+							}
+
+							akitex.WriteData(outFileWriter);
+						}
+						break;
+
+					case FileTypes.DoubleTex:
+						{
+						}
+						break;
+
+					// CI4 Textures (16 colors)
+					case FileTypes.Ci4Texture:
+						{
+							Ci4Texture ci4tex = new Ci4Texture();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.Ci4Texture])
+							{
+								// CI4 texture, uncompressed/unencoded
+								ci4tex.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion
+								Bitmap png = new Bitmap(replaceFilePath);
+								if (png.PixelFormat == PixelFormat.Format4bppIndexed)
+								{
+									// ok
+								}
+								else if (png.PixelFormat == PixelFormat.Format32bppArgb)
+								{
+									rd.ReturnCode = ReplaceFileReturnCode.DotNetTransparencyHandlingSucks;
+									rd.Difference = 0;
+									return rd;
+								}
+								else
+								{
+									rd.ReturnCode = ReplaceFileReturnCode.InvalidPixelFormat;
+									rd.Difference = 0;
+									return rd;
+								}
+							}
+							else
+							{
+								// invalid CI4 input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+						}
+						break;
+
+					// CI8 Textures (256 colors)
+					case FileTypes.Ci8Texture:
+						{
+							Ci8Texture ci8tex = new Ci8Texture();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.Ci8Texture])
+							{
+								// CI8 texture, uncompressed/unencoded
+								ci8tex.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion
+								Bitmap png = new Bitmap(replaceFilePath);
+								if (png.PixelFormat == PixelFormat.Format8bppIndexed)
+								{
+									// ok
+								}
+								else if (png.PixelFormat == PixelFormat.Format32bppArgb)
+								{
+									rd.ReturnCode = ReplaceFileReturnCode.DotNetTransparencyHandlingSucks;
+									rd.Difference = 0;
+									return rd;
+								}
+								else
+								{
+									rd.ReturnCode = ReplaceFileReturnCode.InvalidPixelFormat;
+									rd.Difference = 0;
+									return rd;
+								}
+							}
+							else
+							{
+								// invalid CI8 input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+						}
+						break;
+
+					// I4 Textures (16 indices)
+					case FileTypes.I4Texture:
+						{
+							I4Texture i4tex = new I4Texture();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.I4Texture])
+							{
+								// I4 texture, uncompressed/unencoded
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion.
+							}
+							else
+							{
+								// invalid I4 input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+						}
+						break;
+					#endregion // Texture Data
+
+					#region Font Types
+					case FileTypes.AkiFontChars:
+						{
+							// this could really be done as Binary, I guess.
+						}
+						break;
+
+					case FileTypes.AkiLargeFont:
+						{
+							// fun!
+							AkiFont largeFont = new AkiFont(AkiFontType.AkiLargeFont, gameType);
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.AkiLargeFont])
+							{
+								// AkiLargeFont, uncompressed/unencoded
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion.
+							}
+							else
+							{
+								// invalid AkiLargeFont input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+						}
+						break;
+
+					case FileTypes.AkiSmallFont:
+						{
+							// fun!
+							AkiFont smallFont = new AkiFont(AkiFontType.AkiSmallFont, gameType);
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.AkiSmallFont])
+							{
+								// AkiSmallFont, uncompressed/unencoded
+							}
+							else if (replaceFileExtension == "png")
+							{
+								// PNG image, needs conversion.
+							}
+							else
+							{
+								// invalid AkiSmallFont input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+						}
+						break;
+					#endregion // Font Types
+
+					#region Text Types
+					case FileTypes.AkiText:
+						{
+							AkiText textData = new AkiText();
+							if (replaceFileExtension == FileTypeInfo.DefaultFileTypeExtensions[FileTypes.AkiText])
+							{
+								// AkiText, uncompressed/unencoded
+								textData.ReadData(replaceFileReader);
+							}
+							else if (replaceFileExtension == "csv")
+							{
+								// todo: CSV conversion not yet supported
+							}
+							else
+							{
+								// invalid AkiText input
+								rd.ReturnCode = ReplaceFileReturnCode.InvalidFileType;
+								rd.Difference = 0;
+								return rd;
+							}
+
+							textData.WriteData(outFileWriter);
+						}
+						break;
+
+					case FileTypes.NoMercyText:
+						{
+							//GameSpecific.NoMercy.NoMercyText nmText = new GameSpecific.NoMercy.NoMercyText();
+						}
+						break;
+						#endregion // Text Types
+				}
+				#endregion
+			}
+
+			// handle output data
+			outFileStream.Seek(0, SeekOrigin.Begin);
+			BinaryReader outFileReader = new BinaryReader(outFileStream);
+
+			if (!fte.IsEncoded)
+			{
+				// insert raw
+			}
+			else
+			{
+				if (alreadyCompressed)
+				{
+					// insert pre-compressed data
+				}
+				else
+				{
+					// compress and insert compressed
+					//AsmikLzss.Encode(outFileReader, outFileWriter);
+				}
+			}
+
+			// handle alignment
+			if ((outFileWriter.BaseStream.Position % 2) != 0)
+			{
+				outFileWriter.Write((byte)0);
+			}
+
+			// do file size comparison
+			rd.Difference = (int)outFileWriter.BaseStream.Position - (end - start);
+			if (rd.Difference > 0)
+			{
+				rd.ReturnCode = ReplaceFileReturnCode.NewFileBigger;
+			}
+			else if (rd.Difference < 0)
+			{
+				rd.ReturnCode = ReplaceFileReturnCode.NewFileSmaller;
+			}
+			else
+			{
+				rd.ReturnCode = ReplaceFileReturnCode.OK;
+			}
+
+			// !! everything below this point needs to be re-thought. !!
+
+			// determine filesize
 			replaceFileReader.BaseStream.Seek(0, SeekOrigin.End);
 			int replaceFileLen = (int)replaceFileReader.BaseStream.Position;
 			replaceFileReader.BaseStream.Seek(0, SeekOrigin.Begin);
@@ -645,29 +1177,6 @@ namespace VPWStudio
 			// - file extension
 			// - FileTableEntry's FileType value
 			// - FileTableEntry's IsEncoded value
-
-			// handle replacement based on file extension and FileTableEntry.FileType
-			string replaceFileExtension = Path.GetExtension(replaceFilePath);
-			if (replaceFileExtension == ".lzss")
-			{
-				// file is already LZSS encoded; do not re-encode it.
-			}
-			else if (replaceFileExtension == ".tex")
-			{
-				// AkiTexture
-			}
-			else if (replaceFileExtension == ".akitext")
-			{
-				// AkiText archive
-			}
-			else if (replaceFileExtension == ".png")
-			{
-				// png is tough
-			}
-			else
-			{
-				// fallback handler: treat everything else as binary
-			}
 
 			outDataWriter.Close();
 			replaceFileReader.Close();
