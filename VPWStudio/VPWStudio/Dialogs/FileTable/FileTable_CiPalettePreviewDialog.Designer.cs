@@ -40,9 +40,6 @@
 			// 
 			// gbPaletteEntries
 			// 
-			this.gbPaletteEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbPaletteEntries.Controls.Add(this.pbPalettePreview);
 			this.gbPaletteEntries.Location = new System.Drawing.Point(12, 12);
 			this.gbPaletteEntries.Name = "gbPaletteEntries";
@@ -66,7 +63,7 @@
 			this.cmsPalette.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportJASCPaletteToolStripMenuItem});
 			this.cmsPalette.Name = "cmsPalette";
-			this.cmsPalette.Size = new System.Drawing.Size(184, 48);
+			this.cmsPalette.Size = new System.Drawing.Size(184, 26);
 			// 
 			// exportJASCPaletteToolStripMenuItem
 			// 
