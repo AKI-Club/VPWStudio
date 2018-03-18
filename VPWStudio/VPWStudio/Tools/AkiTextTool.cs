@@ -19,6 +19,7 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 
+			/*
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Open AKI Text File";
 			if (ofd.ShowDialog() == DialogResult.OK)
@@ -40,6 +41,7 @@ namespace VPWStudio
 			{
 				MessageBox.Show("this is awkward, but I won't really need this dialog in the future...");
 			}
+			*/
 
 			// now i don't need the immediate re-encoding step
 			/*
@@ -48,12 +50,25 @@ namespace VPWStudio
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
-				BinaryWriter bw = new BinaryWriter(fs);
+				StreamWriter sw = new StreamWriter(fs);
 
-				this.CurAkiText.Encode(bw);
+				this.CurAkiText.WriteCsv(sw);
 
-				bw.Close();
+				sw.Close();
 				fs.Close();
+			}
+			*/
+
+			/*
+			OpenFileDialog testCsv = new OpenFileDialog();
+			testCsv.Title = "Open CSV for testing";
+			if (testCsv.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(testCsv.FileName, FileMode.Open);
+				StreamReader sr = new StreamReader(fs);
+				AkiText temp = new AkiText();
+				temp.ReadCsv(sr);
+				sr.Close();
 			}
 			*/
 		}
