@@ -655,8 +655,16 @@ namespace VPWStudio
 		#region Database Menu Items
 		private void reloadFileTableDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			// save previous position
+			ListViewItem prevItem = lvFileList.FocusedItem;
+			int prevIndex = prevItem.Index;
+
 			ReloadFileTableDB();
 			UpdateEntryList();
+
+			// reload previous position
+			lvFileList.EnsureVisible(prevIndex);
+			lvFileList.FocusedItem = prevItem;
 		}
 		#endregion
 
