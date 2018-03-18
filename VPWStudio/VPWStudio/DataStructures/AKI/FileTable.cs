@@ -565,7 +565,9 @@ namespace VPWStudio
 			Entries.Clear();
 			foreach (KeyValuePair<int, FileTableEntry> fte in _src.Entries)
 			{
-				Entries.Add(fte.Key, fte.Value);
+				FileTableEntry cloneEntry = new FileTableEntry();
+				cloneEntry.DeepCopy(fte.Value);
+				Entries.Add(fte.Key, cloneEntry);
 			}
 		}
 
