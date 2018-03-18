@@ -37,9 +37,9 @@ namespace VPWStudio
 		/// </summary>
 		public ProjectFile()
 		{
-			this.ProjectFileVersion = CUR_PROJECTFILE_VER;
-			this.Settings = new ProjectSettings();
-			this.ProjectFileTable = new FileTable();
+			ProjectFileVersion = CUR_PROJECTFILE_VER;
+			Settings = new ProjectSettings();
+			ProjectFileTable = new FileTable();
 		}
 
 		/// <summary>
@@ -48,9 +48,9 @@ namespace VPWStudio
 		/// <param name="_src">Source ProjectFile to copy.</param>
 		public void DeepCopy(ProjectFile _src)
 		{
-			this.ProjectFileVersion = _src.ProjectFileVersion;
-			this.Settings.DeepCopy(_src.Settings);
-			this.ProjectFileTable.DeepCopy(_src.ProjectFileTable);
+			ProjectFileVersion = _src.ProjectFileVersion;
+			Settings.DeepCopy(_src.Settings);
+			ProjectFileTable.DeepCopy(_src.ProjectFileTable);
 		}
 
 		#region Project File Load/Save
@@ -79,7 +79,7 @@ namespace VPWStudio
 			FileStream fs = new FileStream(_path, FileMode.Open);
 			ProjectFile temp = (ProjectFile)xs.Deserialize(fs);
 			fs.Close();
-			this.DeepCopy(temp);
+			DeepCopy(temp);
 		}
 		#endregion
 
@@ -95,12 +95,12 @@ namespace VPWStudio
 			fs.Seek(addr, SeekOrigin.Begin);
 
 			// sanity check (unsure if needed, but seems like a good idea)
-			//if (this.ProjectFileTable == null)
+			//if (ProjectFileTable == null)
 			//{
-			//	this.ProjectFileTable = new FileTable();
+			//	ProjectFileTable = new FileTable();
 			//}
 
-			this.ProjectFileTable.Read(br, length);
+			ProjectFileTable.Read(br, length);
 			br.Close();
 			fs.Close();
 		}
