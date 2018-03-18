@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific.Revenge;
 
@@ -183,6 +178,11 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonSwitchGroup_Click(object sender, EventArgs e)
 		{
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			MessageBox.Show("not implemented yet");
 		}
 		#endregion
