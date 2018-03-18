@@ -37,6 +37,7 @@
 			this.chLzss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.setTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,6 @@
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.setTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -72,6 +72,7 @@
 			this.lvFileList.FullRowSelect = true;
 			this.lvFileList.GridLines = true;
 			this.lvFileList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lvFileList.HideSelection = false;
 			this.lvFileList.Location = new System.Drawing.Point(12, 27);
 			this.lvFileList.Name = "lvFileList";
 			this.lvFileList.ShowGroups = false;
@@ -121,8 +122,14 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(200, 120);
+			this.cmsFileEntry.Size = new System.Drawing.Size(200, 98);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
+			// 
+			// setTypeToolStripMenuItem
+			// 
+			this.setTypeToolStripMenuItem.Name = "setTypeToolStripMenuItem";
+			this.setTypeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.setTypeToolStripMenuItem.Text = "Set &Type";
 			// 
 			// editInformationToolStripMenuItem
 			// 
@@ -232,12 +239,6 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
-			// 
-			// setTypeToolStripMenuItem
-			// 
-			this.setTypeToolStripMenuItem.Name = "setTypeToolStripMenuItem";
-			this.setTypeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-			this.setTypeToolStripMenuItem.Text = "Set &Type";
 			// 
 			// FileTableDialog
 			// 
