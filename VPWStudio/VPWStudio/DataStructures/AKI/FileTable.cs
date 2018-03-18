@@ -559,9 +559,10 @@ namespace VPWStudio
 		/// <param name="_src">FileTable instance to copy.</param>
 		public void DeepCopy(FileTable _src)
 		{
-			this.Location = _src.Location;
-			this.FirstFile = _src.FirstFile;
-			this.Entries = new SortedList<int, FileTableEntry>();
+			Location = _src.Location;
+			FirstFile = _src.FirstFile;
+			Entries = new SortedList<int, FileTableEntry>();
+			Entries.Clear();
 			foreach (KeyValuePair<int, FileTableEntry> fte in _src.Entries)
 			{
 				this.Entries.Add(fte.Key, fte.Value);
@@ -618,6 +619,7 @@ namespace VPWStudio
 		{
 			return this.Entries[id].Location + this.FirstFile;
 		}
+		#endregion
 
 		/// <summary>
 		/// Extract a file from the filetable.
@@ -657,6 +659,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region FileTable replacement
 		/// <summary>
 		/// Return code for file replacement routine.
 		/// </summary>
@@ -720,7 +723,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// oh my god freem what are you doing!
+		/// Attempt file replacement.
 		/// </summary>
 		/// <param name="romData">A List of bytes containing the output ROM data.</param>
 		/// <param name="fte">FileTableEntry of file to replace.</param>
@@ -795,11 +798,13 @@ namespace VPWStudio
 					#region todo: sort me
 					case FileTypes.AkiArchive:
 						{
+							// "akiarc" is the only accepted type
 						}
 						break;
 
 					case FileTypes.AkiModel:
 						{
+							// "model" and "obj" types
 						}
 						break;
 					#endregion
@@ -1135,7 +1140,7 @@ namespace VPWStudio
 				else
 				{
 					// compress and insert compressed
-					//AsmikLzss.Encode(outFileReader, outFileWriter);
+					AsmikLzss.Encode(outFileReader, outFileWriter);
 				}
 			}
 
@@ -1159,6 +1164,21 @@ namespace VPWStudio
 			{
 				rd.ReturnCode = ReplaceFileReturnCode.OK;
 			}
+
+			// update all FileTable entries after this one with the difference.
+			for (int i = fte.FileID + 1; i < Entries.Count; i++)
+			{
+				if (rd.Difference < 0)
+				{
+					Entries[i].Location = (UInt32)(Entries[i].Location - Math.Abs(rd.Difference));
+				}
+				else
+				{
+					Entries[i].Location = (UInt32)(Entries[i].Location + rd.Difference);
+				}
+			}
+
+			// todo: insert data into rom, handling differences as needed.
 
 			// !! everything below this point needs to be re-thought. !!
 

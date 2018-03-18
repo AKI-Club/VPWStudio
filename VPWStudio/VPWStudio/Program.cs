@@ -120,7 +120,7 @@ namespace VPWStudio
 			// make changes based on the project file contents
 
 			#region Internal Game Name
-			string intName = Program.CurrentProject.Settings.OutputRomInternalName;
+			string intName = CurrentProject.Settings.OutputRomInternalName;
 			if (intName.Length > 20)
 			{
 				//  truncate
@@ -143,7 +143,7 @@ namespace VPWStudio
 
 			#region Product/Game Code
 			// - game code
-			string intCode = Program.CurrentProject.Settings.OutputRomGameCode;
+			string intCode = CurrentProject.Settings.OutputRomGameCode;
 			if (intCode.Length != 4)
 			{
 				// error
@@ -159,7 +159,7 @@ namespace VPWStudio
 			// This prevents changes from being made to the Project's FileTable,
 			// which messes up the rest of the program.
 			FileTable buildFileTable = new FileTable();
-			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
+			buildFileTable.DeepCopy(CurrentProject.ProjectFileTable);
 
 			// todo: figure out how to properly handle the differences.
 
@@ -179,7 +179,18 @@ namespace VPWStudio
 				FileTableEntry fte = buildFileTable.Entries[i];
 				if (fte.ReplaceFilePath != String.Empty)
 				{
-					// we have work to do, eh booboo??
+					BuildLogPub.AddLine(String.Format("[File {0:X4}]", fte.FileID));
+					FileTable.ReplaceFileReturnData rd = buildFileTable.ReplaceFile(outRomData, fte, CurProjectPath, CurrentProject.Settings.BaseGame);
+					if (rd.ReturnCode >= 0)
+					{
+						// success
+						totalDifference += rd.Difference;
+					}
+					else
+					{
+						// failed to replace this file.
+						BuildLogPub.AddLine(String.Format("Failed to replace file ID {0:X4}; Return code: {1}", fte.FileID, rd.ReturnCode));
+					}
 				}
 			}
 			#endregion

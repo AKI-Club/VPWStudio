@@ -1104,7 +1104,8 @@ namespace VPWStudio
 			// Work on a copy of the FileTable.
 			// This prevents changes from being made to the Project's FileTable,
 			// which messes up the rest of the program.
-			FileTable buildFileTable = new FileTable(Program.CurrentProject.ProjectFileTable);
+			FileTable buildFileTable = new FileTable();
+			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
 
 			// The total difference from all of the changed files.
 
@@ -1258,7 +1259,14 @@ namespace VPWStudio
 					// update future filetable indices
 					for (int u = fte.FileID + 1; u < buildFileTable.Entries.Count; u++)
 					{
-						buildFileTable.Entries[u].Location += (uint)diff;
+						if (diff < 0)
+						{
+							buildFileTable.Entries[u].Location = (uint)(buildFileTable.Entries[u].Location - diff);
+						}
+						else
+						{
+							buildFileTable.Entries[u].Location += (uint)diff;
+						}
 					}
 
 					// add data to ROM
@@ -1278,8 +1286,8 @@ namespace VPWStudio
 					// XXX: this does not properly handle compressed data?!
 					if (diff < 0)
 					{
-						//for (int dx = 0; dx < ((end - start) - fileLen); dx++)
-						for (int dx = 0; dx < ((end - start) - insertDataLen); dx++)
+						for (int dx = 0; dx < ((end - start) - fileLen); dx++)
+						//for (int dx = 0; dx < ((end - start) - insertDataLen); dx++)
 						{
 							outRomData[(int)(buildFileTable.FirstFile + fte.Location + insertDataLen + dx)] = 0;
 						}
