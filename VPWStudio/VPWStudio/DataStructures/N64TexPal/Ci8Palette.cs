@@ -36,6 +36,22 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Helpers
+		/// <summary>
+		/// Set the transparency value for the specified index.
+		/// </summary>
+		/// <param name="_index">Palette index to change transparency for.</param>
+		/// <param name="_transparent">New transparent value.</param>
+		public void SetTransparency(int _index, bool _transparent)
+		{
+			Entries[_index] &= 0xFFFE;
+			if (!_transparent)
+			{
+				Entries[_index] |= 1;
+			}
+		}
+		#endregion
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read CI8 palette data with a BinaryReader.

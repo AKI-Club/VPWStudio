@@ -46,6 +46,35 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Helpers
+		/// <summary>
+		/// Set the transparency value for the specified index.
+		/// </summary>
+		/// /// <param name="_transparent">New transparent value.</param>
+		/// <param name="_index">Palette index to change transparency for.</param>
+		/// <param name="_subpalette">Optional subpalette to use.</param>
+		public void SetTransparency(bool _transparent, int _index, int _subpalette = 0)
+		{
+			if (_subpalette > 0)
+			{
+				_subpalette -= 1; // perform subpalette correction
+				SubPalettes[_subpalette].Entries[_index] &= 0xFFFE;
+				if (!_transparent)
+				{
+					SubPalettes[_subpalette].Entries[_index] |= 1;
+				}
+			}
+			else
+			{
+				Entries[_index] &= 0xFFFE;
+				if (!_transparent)
+				{
+					Entries[_index] |= 1;
+				}
+			}
+		}
+		#endregion
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read CI4 palette data with a BinaryReader.
