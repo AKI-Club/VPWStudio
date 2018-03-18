@@ -1829,7 +1829,7 @@ namespace VPWStudio
 			{
 				FileStream inStr = new FileStream(ofd.FileName, FileMode.Open);
 				BinaryReader br = new BinaryReader(inStr);
-				FileStream outStr = new FileStream("comp.lzss", FileMode.Create);
+				FileStream outStr = new FileStream(String.Format("{0}.lzss", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
 				BinaryWriter bw = new BinaryWriter(outStr);
 
 				AsmikLzss.Encode(br, bw);
@@ -1848,7 +1848,7 @@ namespace VPWStudio
 			{
 				FileStream inStr = new FileStream(ofd.FileName, FileMode.Open);
 				BinaryReader br = new BinaryReader(inStr);
-				FileStream outStr = new FileStream("decomp.bin", FileMode.Create);
+				FileStream outStr = new FileStream(String.Format("{0}.bin", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
 				BinaryWriter bw = new BinaryWriter(outStr);
 
 				AsmikLzss.Decode(br, bw);
@@ -1890,7 +1890,7 @@ namespace VPWStudio
 				{
 					AkiTexture test = new AkiTexture();
 					test.FromBitmap(b);
-					FileStream fs = new FileStream("test.tex", FileMode.Create);
+					FileStream fs = new FileStream(String.Format("{0}.tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
 					BinaryWriter bw = new BinaryWriter(fs);
 					test.WriteData(bw);
 					bw.Close();
