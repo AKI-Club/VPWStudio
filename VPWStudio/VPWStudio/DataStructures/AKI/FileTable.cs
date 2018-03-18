@@ -665,6 +665,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Return code for file replacement routine.
 		/// </summary>
+		/// todo: some of these codes belong elsewhere
 		public enum ReplaceFileReturnCode
 		{
 			/// <summary>

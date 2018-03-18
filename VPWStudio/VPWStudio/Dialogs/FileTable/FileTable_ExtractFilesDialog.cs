@@ -43,7 +43,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Get a suggested file name for the specified FileTableEntry.
+		/// Get a suggested filename for the specified FileTableEntry.
 		/// </summary>
 		/// <param name="fte">FileTableEntry to get suggested filename for.</param>
 		/// <returns>A suggested filename based on the FileTableEntry.</returns>
