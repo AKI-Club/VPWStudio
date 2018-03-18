@@ -88,7 +88,7 @@
 0057=AkiTexture;[Revenge leftover] Random
 0058=AkiTexture;[Revenge leftover] Entrance order
 0059=AkiTexture;[Battle Royal Menu] Wrestler Count Numbers
-005A=AkiTexture;
+005A=AkiTexture;[Controller Settings] Cursor
 005B=AkiTexture;
 005C=AkiTexture;VS. Screen emblem
 005D=AkiTexture;
