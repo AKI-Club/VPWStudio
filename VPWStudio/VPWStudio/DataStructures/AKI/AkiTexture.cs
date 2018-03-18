@@ -78,14 +78,14 @@ namespace VPWStudio
 		/// </summary>
 		public AkiTexture()
 		{
-			this.Width = 0;
-			this.Height = 0;
-			this.ImageFormat = 0;
-			this.ColorWidth = 0;
-			this.PaletteNumColors = 0;
-			this.Palette = null;
-			this.Data = null;
-			//this.CachedBitmap = null;
+			Width = 0;
+			Height = 0;
+			ImageFormat = 0;
+			ColorWidth = 0;
+			PaletteNumColors = 0;
+			Palette = null;
+			Data = null;
+			//CachedBitmap = null;
 		}
 
 		/// <summary>
@@ -94,8 +94,8 @@ namespace VPWStudio
 		/// <param name="br"></param>
 		public AkiTexture(BinaryReader br)
 		{
-			this.ReadData(br);
-			//this.CachedBitmap = null;
+			ReadData(br);
+			//CachedBitmap = null;
 		}
 
 		#region Binary Read/Write
@@ -117,17 +117,17 @@ namespace VPWStudio
 			{
 				Array.Reverse(w);
 			}
-			this.Width = BitConverter.ToUInt16(w, 0);
+			Width = BitConverter.ToUInt16(w, 0);
 
 			byte[] h = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(h);
 			}
-			this.Height = BitConverter.ToUInt16(h, 0);
+			Height = BitConverter.ToUInt16(h, 0);
 
-			this.ImageFormat = (AkiTextureFormat)br.ReadByte();
-			this.ColorWidth = br.ReadByte();
+			ImageFormat = (AkiTextureFormat)br.ReadByte();
+			ColorWidth = br.ReadByte();
 
 			// read palette num colors
 			byte[] pnc = br.ReadBytes(2);
@@ -135,38 +135,38 @@ namespace VPWStudio
 			{
 				Array.Reverse(pnc);
 			}
-			this.PaletteNumColors = BitConverter.ToUInt16(pnc, 0);
+			PaletteNumColors = BitConverter.ToUInt16(pnc, 0);
 
 			// skip to 0x10
 			br.BaseStream.Seek(0x10, SeekOrigin.Begin);
 			// read palette (todo: might need to handle this differently)
-			this.Palette = new ushort[this.PaletteNumColors];
-			for (int i = 0; i < this.PaletteNumColors; i++)
+			Palette = new ushort[PaletteNumColors];
+			for (int i = 0; i < PaletteNumColors; i++)
 			{
 				byte[] cd = br.ReadBytes(2);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(cd);
 				}
-				this.Palette[i] = BitConverter.ToUInt16(cd,0);
+				Palette[i] = BitConverter.ToUInt16(cd,0);
 			}
 
 			// read image data
 			// size depends on image format...
-			br.BaseStream.Seek((this.PaletteNumColors * this.ColorWidth) + 0x10, SeekOrigin.Begin);
-			switch (this.ImageFormat)
+			br.BaseStream.Seek((PaletteNumColors * ColorWidth) + 0x10, SeekOrigin.Begin);
+			switch (ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
 					// one byte = two pixels
 					{
-						int numPixels = this.Width * this.Height;
-						this.Data = new byte[numPixels];
+						int numPixels = Width * Height;
+						Data = new byte[numPixels];
 						int i = 0;
 						while (i < numPixels)
 						{
 							byte b = br.ReadByte();
-							this.Data[i] = (byte)((b & 0xF0) >> 4);
-							this.Data[i + 1] = (byte)(b & 0x0F);
+							Data[i] = (byte)((b & 0xF0) >> 4);
+							Data[i + 1] = (byte)(b & 0x0F);
 							i += 2;
 						}
 					}
@@ -174,12 +174,12 @@ namespace VPWStudio
 				case AkiTextureFormat.Ci8:
 					// one byte = one pixel
 					{
-						int numPixels = this.Width * this.Height;
-						this.Data = new byte[numPixels];
+						int numPixels = Width * Height;
+						Data = new byte[numPixels];
 						int i = 0;
 						while (i < numPixels)
 						{
-							this.Data[i] = br.ReadByte();
+							Data[i] = br.ReadByte();
 							i++;
 						}
 					}
@@ -202,7 +202,7 @@ namespace VPWStudio
 			bw.Write((byte)0);
 
 			// width
-			byte[] w = BitConverter.GetBytes(this.Width);
+			byte[] w = BitConverter.GetBytes(Width);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(w);
@@ -210,7 +210,7 @@ namespace VPWStudio
 			bw.Write(w);
 
 			// height
-			byte[] h = BitConverter.GetBytes(this.Height);
+			byte[] h = BitConverter.GetBytes(Height);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(h);
@@ -218,13 +218,13 @@ namespace VPWStudio
 			bw.Write(h);
 
 			// image format
-			bw.Write((byte)this.ImageFormat);
+			bw.Write((byte)ImageFormat);
 
 			// color width
-			bw.Write(this.ColorWidth);
+			bw.Write(ColorWidth);
 
 			// number of colors
-			byte[] nc = BitConverter.GetBytes(this.PaletteNumColors);
+			byte[] nc = BitConverter.GetBytes(PaletteNumColors);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(nc);
@@ -233,9 +233,9 @@ namespace VPWStudio
 
 			// palette data at 0x10
 			bw.Seek(0x10, SeekOrigin.Begin);
-			for (int i = 0; i < this.PaletteNumColors; i++)
+			for (int i = 0; i < PaletteNumColors; i++)
 			{
-				byte[] cv = BitConverter.GetBytes(this.Palette[i]);
+				byte[] cv = BitConverter.GetBytes(Palette[i]);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(cv);
@@ -244,7 +244,7 @@ namespace VPWStudio
 			}
 
 			// image data after palette
-			bw.Write(this.Data);
+			bw.Write(Data);
 		}
 		#endregion
 
@@ -255,21 +255,21 @@ namespace VPWStudio
 		/// <returns></returns>
 		public Bitmap ToBitmap(bool _skipCache = false)
 		{
-			if (this.Data == null)
+			if (Data == null)
 			{
 				return null;
 			}
 
 			/*
-			if (!_skipCache && this.CachedBitmap != null)
+			if (!_skipCache && CachedBitmap != null)
 			{
-				return this.CachedBitmap;
+				return CachedBitmap;
 			}
 			*/
 
-			Bitmap bOut = new Bitmap(this.Width, this.Height);
+			Bitmap bOut = new Bitmap(Width, Height);
 
-			switch (this.ImageFormat)
+			switch (ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
 				case AkiTextureFormat.Ci8:
@@ -280,7 +280,7 @@ namespace VPWStudio
 					break;
 			}
 
-			//this.CachedBitmap = bOut;
+			//CachedBitmap = bOut;
 			return bOut;
 		}
 
@@ -290,12 +290,12 @@ namespace VPWStudio
 		/// <param name="bOut"></param>
 		private void ToBitmap_CI(Bitmap bOut)
 		{
-			for (int y = 0; y < this.Height; y++)
+			for (int y = 0; y < Height; y++)
 			{
-				for (int x = 0; x < this.Width; x++)
+				for (int x = 0; x < Width; x++)
 				{
-					byte palIdx = this.Data[(y * this.Width) + x];
-					Color c = N64Colors.Value5551ToColor(this.Palette[palIdx]);
+					byte palIdx = Data[(y * Width) + x];
+					Color c = N64Colors.Value5551ToColor(Palette[palIdx]);
 					bOut.SetPixel(x, y, c);
 				}
 			}
@@ -311,16 +311,16 @@ namespace VPWStudio
 			if (bm.PixelFormat == PixelFormat.Format4bppIndexed)
 			{
 				// CI4
-				this.ImageFormat = AkiTextureFormat.Ci4;
-				this.ColorWidth = 2;
-				this.PaletteNumColors = 16;
+				ImageFormat = AkiTextureFormat.Ci4;
+				ColorWidth = 2;
+				PaletteNumColors = 16;
 			}
 			else if (bm.PixelFormat == PixelFormat.Format8bppIndexed)
 			{
 				// CI8
-				this.ImageFormat = AkiTextureFormat.Ci8;
-				this.ColorWidth = 2;
-				this.PaletteNumColors = 256;
+				ImageFormat = AkiTextureFormat.Ci8;
+				ColorWidth = 2;
+				PaletteNumColors = 256;
 			}
 			else
 			{
@@ -329,29 +329,29 @@ namespace VPWStudio
 			}
 
 			// set common items
-			this.Width = (UInt16)bm.Width;
-			this.Height = (UInt16)bm.Height;
+			Width = (UInt16)bm.Width;
+			Height = (UInt16)bm.Height;
 
 			// convert palette
 			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
-			this.Palette = new UInt16[this.PaletteNumColors];
+			Palette = new UInt16[PaletteNumColors];
 			for (int i = 0; i < bm.Palette.Entries.Length; i++)
 			{
 				BitmapColors.Add(i, bm.Palette.Entries[i]);
-				this.Palette[i] = N64Colors.ColorToValue5551(bm.Palette.Entries[i]);
+				Palette[i] = N64Colors.ColorToValue5551(bm.Palette.Entries[i]);
 			}
 
 			// convert image data
-			switch (this.ImageFormat)
+			switch (ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
 					// one pixel = two bytes
-					this.Data = new byte[(this.Width/2) * this.Height];
+					Data = new byte[(Width/2) * Height];
 					List<byte> pixels = new List<byte>();
 					byte build = 0;
-					for (int y = 0; y < this.Height; y++)
+					for (int y = 0; y < Height; y++)
 					{
-						for (int x = 0; x < this.Width; x++)
+						for (int x = 0; x < Width; x++)
 						{
 							if (x % 2 == 0)
 							{
@@ -366,18 +366,18 @@ namespace VPWStudio
 					}
 					for (int i = 0; i < pixels.Count; i++)
 					{
-						this.Data[i] = pixels[i];
+						Data[i] = pixels[i];
 					}
 					break;
 
 				case AkiTextureFormat.Ci8:
 					// one pixel = one byte
-					this.Data = new byte[this.Width * this.Height];
-					for (int y = 0; y < this.Height; y++)
+					Data = new byte[Width * Height];
+					for (int y = 0; y < Height; y++)
 					{
-						for (int x = 0; x < this.Width; x++)
+						for (int x = 0; x < Width; x++)
 						{
-							this.Data[(y*this.Width) + x] = (byte)BitmapColors.IndexOfValue(bm.GetPixel(x, y));
+							Data[(y*Width) + x] = (byte)BitmapColors.IndexOfValue(bm.GetPixel(x, y));
 						}
 					}
 					break;
