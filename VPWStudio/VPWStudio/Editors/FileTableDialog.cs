@@ -523,7 +523,7 @@ namespace VPWStudio
 				case FileTypes.AkiSmallFont:
 					{
 						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
-						AkiFont f = new AkiFont(Program.CurrentProject.Settings.BaseGame, AkiFontType.AkiSmallFont);
+						AkiFont f = new AkiFont(AkiFontType.AkiSmallFont, Program.CurrentProject.Settings.BaseGame);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 						BinaryReader romReader = new BinaryReader(romStream);
@@ -545,7 +545,7 @@ namespace VPWStudio
 				case FileTypes.AkiLargeFont:
 					{
 						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
-						AkiFont f = new AkiFont(Program.CurrentProject.Settings.BaseGame, AkiFontType.AkiLargeFont);
+						AkiFont f = new AkiFont(AkiFontType.AkiLargeFont, Program.CurrentProject.Settings.BaseGame);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 						BinaryReader romReader = new BinaryReader(romStream);
