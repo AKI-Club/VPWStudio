@@ -54,8 +54,8 @@ namespace VPWStudio
 			while (i < numPixels)
 			{
 				byte b = br.ReadByte();
-				this.Data[i] = (byte)((b & 0xF0) >> 4);
-				this.Data[i + 1] = (byte)(b & 0x0F);
+				Data[i] = (byte)((b & 0xF0) >> 4);
+				Data[i + 1] = (byte)(b & 0x0F);
 				i += 2;
 			}
 		}
@@ -69,7 +69,7 @@ namespace VPWStudio
 		/// <returns>Bitmap representing the I4Texture.</returns>
 		public Bitmap ToBitmap(int width, int height)
 		{
-			if (this.Data == null)
+			if (Data == null)
 			{
 				return null;
 			}
@@ -80,7 +80,7 @@ namespace VPWStudio
 			{
 				for (int x = 0; x < width; x++)
 				{
-					byte palIdx = this.Data[(y * width) + x];
+					byte palIdx = Data[(y * width) + x];
 					// I am not sure if alpha is meant to be calculated like this,
 					// but it matches how the I4 textures look in game.
 					// Whether or not the game performs this transform is unknown.
