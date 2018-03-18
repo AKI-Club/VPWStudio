@@ -565,7 +565,7 @@ namespace VPWStudio
 			Entries.Clear();
 			foreach (KeyValuePair<int, FileTableEntry> fte in _src.Entries)
 			{
-				this.Entries.Add(fte.Key, fte.Value);
+				Entries.Add(fte.Key, fte.Value);
 			}
 		}
 
@@ -732,6 +732,10 @@ namespace VPWStudio
 		/// <returns>ReplaceFileReturnData describing the result.</returns>
 		public ReplaceFileReturnData ReplaceFile(List<byte> romData, FileTableEntry fte, string projectPath, VPWGames gameType)
 		{
+			// this routine needs A LOT of thought.
+			// right now, it handles more things than it should.
+			// file type conversion, while required, can probably be handled elsewhere (Program.cs)?
+
 			ReplaceFileReturnData rd = new ReplaceFileReturnData();
 
 			// determine path type for replacement file and act accordingly
@@ -928,6 +932,7 @@ namespace VPWStudio
 						}
 						break;
 
+					// "DoubleTex" format; two TEX files back to back
 					case FileTypes.DoubleTex:
 						{
 						}
@@ -970,6 +975,8 @@ namespace VPWStudio
 								rd.Difference = 0;
 								return rd;
 							}
+
+							ci4tex.WriteData(outFileWriter);
 						}
 						break;
 
@@ -1010,6 +1017,8 @@ namespace VPWStudio
 								rd.Difference = 0;
 								return rd;
 							}
+
+							ci8tex.WriteData(outFileWriter);
 						}
 						break;
 
