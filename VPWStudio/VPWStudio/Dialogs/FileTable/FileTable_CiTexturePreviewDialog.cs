@@ -30,10 +30,15 @@ namespace VPWStudio
 		}
 		private CiViewerModes CurViewMode;
 
+		private int CurSubPalette = -1;
+
+		private int PreviewImageFileID = 0;
+
 		public FileTable_CiTexturePreviewDialog(int fileID)
 		{
+			PreviewImageFileID = fileID;
 			InitializeComponent();
-			this.Text = String.Format("Preview [0x{0:X4}]", fileID);
+			this.Text = String.Format("Preview [0x{0:X4}]", PreviewImageFileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -42,7 +47,7 @@ namespace VPWStudio
 			BinaryWriter imgWriter = new BinaryWriter(imgStream);
 
 			// CurViewMode depends on item type.
-			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci4Texture)
+			if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci4Texture)
 			{
 				CurViewMode = CiViewerModes.Ci4;
 				CurCI8Palette = null;
@@ -52,7 +57,7 @@ namespace VPWStudio
 				CurCI4Palette = new Ci4Palette();
 				CurCI4Texture = new Ci4Texture();
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
 				imgStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(imgStream);
 				CurCI4Texture.ReadData(fr);
@@ -60,7 +65,7 @@ namespace VPWStudio
 
 				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
 			}
-			else if(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci8Texture)
+			else if(Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci8Texture)
 			{
 				CurViewMode = CiViewerModes.Ci8;
 				CurCI4Palette = null;
@@ -70,7 +75,7 @@ namespace VPWStudio
 				CurCI8Palette = new Ci8Palette();
 				CurCI8Texture = new Ci8Texture();
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, fileID);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
 				imgStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(imgStream);
 				CurCI8Texture.ReadData(fr);
@@ -100,17 +105,19 @@ namespace VPWStudio
 			cbPalettes.EndUpdate();
 		}
 
-		private void cbPalettes_SelectedValueChanged(object sender, EventArgs e)
+		/// <summary>
+		/// Update image preview
+		/// </summary>
+		/// <param name="palID">File ID of palette to use.</param>
+		private void UpdateImage(int palID)
 		{
-			int curID = paletteIDs[cbPalettes.SelectedIndex];
-
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
 			MemoryStream palStream = new MemoryStream();
 			BinaryWriter palWriter = new BinaryWriter(palStream);
 
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, curID);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, palID);
 			palStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader fr = new BinaryReader(palStream);
 
@@ -118,13 +125,21 @@ namespace VPWStudio
 			{
 				case CiViewerModes.Ci4:
 					{
-						CurCI4Palette.ReadData(fr);
-						CurBitmap = CurCI4Texture.ToBitmap(CurCI4Palette);
+						CurCI4Palette = new Ci4Palette();
+						CurCI4Palette.ReadData(fr, true);
+						if (CurSubPalette == -1)
+						{
+							CurBitmap = CurCI4Texture.ToBitmap(CurCI4Palette);
+						}
+						else
+						{
+							CurBitmap = CurCI4Texture.ToBitmap(CurCI4Palette, CurSubPalette);
+						}
 					}
 					break;
 				case CiViewerModes.Ci8:
 					{
-						CurCI8Palette.ReadData(fr);
+						CurCI8Palette = new Ci8Palette(fr);
 						CurBitmap = CurCI8Texture.ToBitmap(CurCI8Palette);
 					}
 					break;
@@ -137,7 +152,75 @@ namespace VPWStudio
 			pbPreview.Image = CurBitmap;
 		}
 
-		// this should work, but doesn't.
+		/// <summary>
+		/// Set new palette and update Sub-Palette list.
+		/// </summary>
+		private void cbPalettes_SelectedValueChanged(object sender, EventArgs e)
+		{
+			UpdateImage(paletteIDs[cbPalettes.SelectedIndex]);
+			UpdateSubPaletteList();
+		}
+
+		/// <summary>
+		/// Update sub-palette list.
+		/// </summary>
+		private void UpdateSubPaletteList()
+		{
+			if (CurViewMode == CiViewerModes.Ci8)
+			{
+				cbSubPalettes.Items.Clear();
+				cbSubPalettes.Enabled = false;
+			}
+			else
+			{
+				if (CurCI4Palette.SubPalettes.Count == 0)
+				{
+					cbSubPalettes.Items.Clear();
+					cbSubPalettes.Enabled = false;
+				}
+				else
+				{
+					cbSubPalettes.Items.Clear();
+					cbSubPalettes.BeginUpdate();
+
+					cbSubPalettes.Items.Add("None");
+					for (int i = 0; i < CurCI4Palette.SubPalettes.Count; i++)
+					{
+						cbSubPalettes.Items.Add(i);
+					}
+
+					cbSubPalettes.EndUpdate();
+					cbSubPalettes.Enabled = true;
+					cbSubPalettes.SelectedIndex = 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Selected new sub-palette
+		/// </summary>
+		private void cbSubPalettes_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			if (cbSubPalettes.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (CurViewMode == CiViewerModes.Ci4)
+			{
+				if (cbSubPalettes.SelectedIndex == 0)
+				{
+					CurSubPalette = -1;
+				}
+				else
+				{
+					CurSubPalette = cbSubPalettes.SelectedIndex;
+				}
+				UpdateImage(paletteIDs[cbPalettes.SelectedIndex]);
+			}
+		}
+
+		#region Keyboard Shortcuts
 		private void FileTable_CiTexturePreviewDialog_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Escape)
@@ -145,15 +228,7 @@ namespace VPWStudio
 				this.Close();
 			}
 		}
-
-		// this is a hack because the above thing won't work.
-		private void cbPalettes_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Escape)
-			{
-				this.Close();
-			}
-		}
+		#endregion
 
 		#region Context Menu
 		private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,11 +236,14 @@ namespace VPWStudio
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Title = "Save PNG";
 			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
+			sfd.FileName = String.Format("{0:X4}.png", PreviewImageFileID);
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				this.CurBitmap.Save(sfd.FileName);
 			}
 		}
 		#endregion
+
+		
 	}
 }
