@@ -159,7 +159,7 @@ namespace VPWStudio
 					{
 						if (ReplaceFileExtension == "png")
 						{
-							Ci4Texture ci8tex = new Ci4Texture();
+							Ci8Texture ci8tex = new Ci8Texture();
 							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
 							if (!ci8tex.FromBitmap(bm))
 							{
