@@ -1283,13 +1283,12 @@ namespace VPWStudio
 					// in the future, you might want to move the other files upwards to
 					// take advantage of the space, but that's a bit complicated for now.
 
-					// XXX: this does not properly handle compressed data?!
+					// xxx: this is somehow broken
 					if (diff < 0)
 					{
 						for (int dx = 0; dx < ((end - start) - fileLen); dx++)
-						//for (int dx = 0; dx < ((end - start) - insertDataLen); dx++)
 						{
-							outRomData[(int)(buildFileTable.FirstFile + fte.Location + insertDataLen + dx)] = 0;
+							outRomData[(int)(buildFileTable.FirstFile + fte.Location + fileLen + dx)] = 0;
 						}
 					}
 
