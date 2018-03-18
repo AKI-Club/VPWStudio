@@ -103,6 +103,11 @@ namespace VPWStudio
 		/// VPW2 Wrestler Editor, main form
 		/// </summary>
 		public Editors.VPW2.WrestlerMain_VPW2 WrestlerMain_VPW2 = null;
+
+		/// <summary>
+		/// VPW2 Stable Editor
+		/// </summary>
+		public Editors.VPW2.StableDefs_VPW2 StableDefs_VPW2 = null;
 		#endregion
 
 		#region No Mercy
@@ -800,24 +805,50 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.Revenge:
-					if (StableDefs_Revenge == null)
 					{
-						StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
-						StableDefs_Revenge.MdiParent = this;
-						StableDefs_Revenge.Show();
-					}
-					else
-					{
-						if (StableDefs_Revenge.IsDisposed)
+						if (StableDefs_Revenge == null)
 						{
 							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
+							StableDefs_Revenge.MdiParent = this;
+							StableDefs_Revenge.Show();
 						}
-						if (StableDefs_Revenge.WindowState == FormWindowState.Minimized)
+						else
 						{
-							StableDefs_Revenge.WindowState = FormWindowState.Normal;
+							if (StableDefs_Revenge.IsDisposed)
+							{
+								StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
+							}
+							if (StableDefs_Revenge.WindowState == FormWindowState.Minimized)
+							{
+								StableDefs_Revenge.WindowState = FormWindowState.Normal;
+							}
+							StableDefs_Revenge.MdiParent = this;
+							StableDefs_Revenge.Show();
 						}
-						StableDefs_Revenge.MdiParent = this;
-						StableDefs_Revenge.Show();
+					}
+					break;
+
+				case VPWGames.VPW2:
+					{
+						if (StableDefs_VPW2 == null)
+						{
+							StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
+							StableDefs_VPW2.MdiParent = this;
+							StableDefs_VPW2.Show();
+						}
+						else
+						{
+							if (StableDefs_VPW2.IsDisposed)
+							{
+								StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
+							}
+							if (StableDefs_VPW2.WindowState == FormWindowState.Minimized)
+							{
+								StableDefs_VPW2.WindowState = FormWindowState.Normal;
+							}
+							StableDefs_VPW2.MdiParent = this;
+							StableDefs_VPW2.Show();
+						}
 					}
 					break;
 

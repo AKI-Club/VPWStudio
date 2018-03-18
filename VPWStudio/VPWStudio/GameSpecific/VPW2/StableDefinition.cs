@@ -29,11 +29,26 @@ namespace VPWStudio.GameSpecific.VPW2
 		public byte[] WrestlerID2s;
 		#endregion
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public StableDefinition()
 		{
 			WrestlerPointerStart = 0;
 			StableNameIndex = 0;
 			WrestlerID2s = new byte[8];
+		}
+
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public StableDefinition(BinaryReader br)
+		{
+			WrestlerPointerStart = 0;
+			StableNameIndex = 0;
+			WrestlerID2s = new byte[8];
+			ReadData(br);
 		}
 
 		#region Binary Read/Write
