@@ -16,6 +16,14 @@ namespace VPWStudio
 	/// </summary>
 	public partial class FileTable_ExtractFilesDialog : Form
 	{
+		#region Constants
+		private const int EXPORT_COLUMN = 0;
+		private const int FILEID_COLUMN = 1;
+		private const int FILETYPE_COLUMN = 2;
+		private const int COMMENT_COLUMN = 3;
+		private const int FILENAME_COLUMN = 4;
+		#endregion
+
 		/// <summary>
 		/// Initial list of File IDs to extract.
 		/// </summary>
@@ -35,6 +43,23 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Get a suggested file name for the specified FileTableEntry.
+		/// </summary>
+		/// <param name="fte">FileTableEntry to get suggested filename for.</param>
+		/// <returns>A suggested filename based on the FileTableEntry.</returns>
+		private string GetSuggestedFilename(FileTableEntry fte)
+		{
+			if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(fte.FileType))
+			{
+				return String.Format("{0:X4}.{1}", fte.FileID, FileTypeInfo.DefaultFileTypeExtensions[fte.FileType]);
+			}
+			else
+			{
+				return String.Format("{0:X4}.bin", fte.FileID);
+			}
+		}
+
+		/// <summary>
 		/// Populate list with files to export.
 		/// </summary>
 		private void PopulateList()
@@ -43,10 +68,11 @@ namespace VPWStudio
 			dgvFiles.Rows.Add(FileIDs.Count);
 			for (int i = 0; i < FileIDs.Count; i++)
 			{
-				dgvFiles.Rows[i].Cells[0].Value = true;
-				dgvFiles.Rows[i].Cells[1].Value = String.Format("{0:X4}", FileIDs[i]);
-				dgvFiles.Rows[i].Cells[2].Value = Program.CurrentProject.ProjectFileTable.Entries[FileIDs[i]].Comment;
-				dgvFiles.Rows[i].Cells[3].Value = String.Empty;
+				dgvFiles.Rows[i].Cells[EXPORT_COLUMN].Value = true;
+				dgvFiles.Rows[i].Cells[FILEID_COLUMN].Value = String.Format("{0:X4}", FileIDs[i]);
+				dgvFiles.Rows[i].Cells[FILETYPE_COLUMN].Value = Program.CurrentProject.ProjectFileTable.Entries[FileIDs[i]].FileType;
+				dgvFiles.Rows[i].Cells[COMMENT_COLUMN].Value = Program.CurrentProject.ProjectFileTable.Entries[FileIDs[i]].Comment;
+				dgvFiles.Rows[i].Cells[FILENAME_COLUMN].Value = GetSuggestedFilename(Program.CurrentProject.ProjectFileTable.Entries[FileIDs[i]]);
 			}
 		}
 
@@ -68,7 +94,7 @@ namespace VPWStudio
 			int checkedCount = 0;
 			for (int i = 0; i < FileIDs.Count; i++)
 			{
-				if ((bool)dgvFiles.Rows[i].Cells[0].Value == true)
+				if ((bool)dgvFiles.Rows[i].Cells[EXPORT_COLUMN].Value == true)
 				{
 					checkedCount++;
 				}
@@ -86,36 +112,24 @@ namespace VPWStudio
 			//   2) Default to "(fileID).bin" (which may not be the best option...)
 			for (int i = 0; i < dgvFiles.Rows.Count; i++)
 			{
-				if ((bool)dgvFiles.Rows[i].Cells[0].Value == false)
+				if ((bool)dgvFiles.Rows[i].Cells[EXPORT_COLUMN].Value == false)
 				{
 					continue;
 				}
 
 				string outName;
-				int outID = UInt16.Parse(dgvFiles.Rows[i].Cells[1].Value.ToString(), NumberStyles.HexNumber);
-				if ((string)dgvFiles.Rows[i].Cells[3].Value == String.Empty)
+				int outID = UInt16.Parse(dgvFiles.Rows[i].Cells[FILEID_COLUMN].Value.ToString(), NumberStyles.HexNumber);
+				if ((string)dgvFiles.Rows[i].Cells[FILENAME_COLUMN].Value == String.Empty)
 				{
-					if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(Program.CurrentProject.ProjectFileTable.Entries[outID].FileType))
-					{
-						outName = String.Format(
-							"{0:X4}.{1}",
-							dgvFiles.Rows[i].Cells[1].Value,
-							FileTypeInfo.DefaultFileTypeExtensions[Program.CurrentProject.ProjectFileTable.Entries[outID].FileType]
-						);
-					}
-					else
-					{
-						// we don't have an extension set... ugh
-						outName = String.Format("{0:X4}.bin", dgvFiles.Rows[i].Cells[1].Value);
-					}
+					outName = GetSuggestedFilename(Program.CurrentProject.ProjectFileTable.Entries[FileIDs[i]]);
 				}
 				else
 				{
-					outName = (string)dgvFiles.Rows[i].Cells[3].Value;
+					outName = (string)dgvFiles.Rows[i].Cells[FILENAME_COLUMN].Value;
 				}
 
 				// add entry to ExtractFiles
-				ExtractFiles.Add(UInt16.Parse(dgvFiles.Rows[i].Cells[1].Value.ToString(), NumberStyles.HexNumber), outName);
+				ExtractFiles.Add(UInt16.Parse(dgvFiles.Rows[i].Cells[FILEID_COLUMN].Value.ToString(), NumberStyles.HexNumber), outName);
 			}
 
 			this.DialogResult = DialogResult.OK;
