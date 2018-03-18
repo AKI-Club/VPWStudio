@@ -1005,6 +1005,12 @@ namespace VPWStudio
 			if (Program.CurrentInputROM == null)
 			{
 				// needs input ROM.
+				MessageBox.Show(
+					"No Input ROM available to build from. Please set Input path in Project Options.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
 				return;
 			}
 
@@ -1025,10 +1031,9 @@ namespace VPWStudio
 			// with other portions being implemented by the relevant classes.
 
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
-			//return;
 
+			// set up logging
 			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
-
 			if (BuildLogForm == null)
 			{
 				BuildLogForm = new BuildLogDialog(buildLogPub);
@@ -1044,6 +1049,8 @@ namespace VPWStudio
 			BuildLogForm.Show();
 			BuildLogForm.Clear();
 			DateTime startTime = DateTime.Now;
+
+			// todo: Program.BuildRom() goes here
 
 			// copy the input ROM to the output ROM
 			Program.CurrentOutputROM = new Z64Rom();

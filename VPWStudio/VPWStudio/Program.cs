@@ -161,7 +161,7 @@ namespace VPWStudio
 			FileTable buildFileTable = new FileTable();
 			buildFileTable.DeepCopy(Program.CurrentProject.ProjectFileTable);
 
-			// todo: figure out how to handle the differences.
+			// todo: figure out how to properly handle the differences.
 
 			// The total difference from all of the changed files.
 
