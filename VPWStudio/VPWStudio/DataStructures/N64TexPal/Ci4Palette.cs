@@ -100,7 +100,7 @@ namespace VPWStudio
 		{
 			for (int i = 0; i < 16; i++)
 			{
-				byte[] b = BitConverter.GetBytes(this.Entries[i]);
+				byte[] b = BitConverter.GetBytes(Entries[i]);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(b);
@@ -138,7 +138,7 @@ namespace VPWStudio
 			sw.WriteLine("0100");
 			sw.WriteLine("16");
 			// write colors as RGB
-			for (int i = 0; i < this.Entries.Length; i++)
+			for (int i = 0; i < Entries.Length; i++)
 			{
 				Color c = N64Colors.Value5551ToColor(Entries[i]);
 				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));

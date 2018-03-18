@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace VPWStudio
 {
@@ -37,45 +39,66 @@ namespace VPWStudio
 		/// </summary>
 		public Ci8Texture()
 		{
-			this.Width = 0;
-			this.Height = 0;
-			this.Unknown = null;
-			this.Data = null;
+			Width = 0;
+			Height = 0;
+			Unknown = null;
+			Data = null;
 		}
 		#endregion
 
+		#region Binary Read/Write
 		/// <summary>
-		/// Read image data using a BinaryReader.
+		/// Read CI8 texture data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
-			this.Width = (br.ReadByte() + 1);
-			this.Height = (br.ReadByte() + 1);
+			Width = (br.ReadByte() + 1);
+			Height = (br.ReadByte() + 1);
 
 			// 6 bytes with unknown purpose; some of these might be format indicators?
-			this.Unknown = br.ReadBytes(6);
+			Unknown = br.ReadBytes(6);
 
-			int numPixels = this.Width * this.Height;
-			this.Data = new byte[numPixels];
+			int numPixels = Width * Height;
+			Data = new byte[numPixels];
 
 			// one pixel per byte
 			int i = 0;
 			while (i < numPixels)
 			{
-				this.Data[i] = br.ReadByte();
+				Data[i] = br.ReadByte();
 				i++;
 			}
 		}
 
 		/// <summary>
+		/// Write CI8 texture data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			// header
+			bw.Write(((byte)Width-1));
+			bw.Write(((byte)Height-1));
+			bw.Write(Unknown);
+
+			// image data
+			for (int i = 0; i < Data.Length; i++)
+			{
+				bw.Write((byte)Data[i]);
+			}
+		}
+		#endregion
+
+		#region Bitmap Read/Write
+		/// <summary>
 		/// Convert this Ci8Image to a Bitmap.
 		/// </summary>
 		/// <param name="pal">CI8 Palette data to use.</param>
 		/// <returns></returns>
-		public Bitmap GetBitmap(Ci8Palette pal)
+		public Bitmap ToBitmap(Ci8Palette pal)
 		{
-			if (this.Data == null)
+			if (Data == null)
 			{
 				return null;
 			}
@@ -86,13 +109,13 @@ namespace VPWStudio
 				return null;
 			}
 
-			Bitmap bOut = new Bitmap(this.Width, this.Height);
+			Bitmap bOut = new Bitmap(Width, Height);
 
-			for (int y = 0; y < this.Height; y++)
+			for (int y = 0; y < Height; y++)
 			{
-				for (int x = 0; x < this.Width; x++)
+				for (int x = 0; x < Width; x++)
 				{
-					byte palIdx = this.Data[(y * this.Width) + x];
+					byte palIdx = Data[(y * Width) + x];
 					Color c = N64Colors.Value5551ToColor(pal.Entries[palIdx]);
 					bOut.SetPixel(x, y, c);
 				}
@@ -100,5 +123,43 @@ namespace VPWStudio
 
 			return bOut;
 		}
+
+		/// <summary>
+		/// Convert Bitmap to Ci8Texture.
+		/// </summary>
+		/// <param name="inBmp">Bitmap to convert.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool FromBitmap(Bitmap inBmp)
+		{
+			if (inBmp.PixelFormat != PixelFormat.Format8bppIndexed)
+			{
+				return false;
+			}
+
+			Width = (UInt16)inBmp.Width;
+			Height = (UInt16)inBmp.Height;
+
+			// convert palette
+			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
+			UInt16[] Palette = new UInt16[256];
+			for (int i = 0; i < inBmp.Palette.Entries.Length; i++)
+			{
+				BitmapColors.Add(i, inBmp.Palette.Entries[i]);
+				Palette[i] = N64Colors.ColorToValue5551(inBmp.Palette.Entries[i]);
+			}
+
+			// one pixel = one byte
+			Data = new byte[Width * Height];
+			for (int y = 0; y < Height; y++)
+			{
+				for (int x = 0; x < Width; x++)
+				{
+					Data[(y * Width) + x] = (byte)BitmapColors.IndexOfValue(inBmp.GetPixel(x, y));
+				}
+			}
+
+			return true;
+		}
+		#endregion
 	}
 }
