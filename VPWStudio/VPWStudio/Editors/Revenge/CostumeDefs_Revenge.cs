@@ -335,7 +335,7 @@ namespace VPWStudio.Editors.Revenge
 			previewTex.ReadData(texReader);
 			texStream.Dispose();
 
-			pb.Image = previewTex.GetBitmap(previewPal, subPalette);
+			pb.Image = previewTex.ToBitmap(previewPal, subPalette);
 		}
 
 		#region Body Types
@@ -474,7 +474,7 @@ namespace VPWStudio.Editors.Revenge
 				faceTexStream.Seek(0, SeekOrigin.Begin);
 				faceTex.ReadData(faceTexReader);
 				faceTexStream.Dispose();
-				pbFace.Image = faceTex.GetBitmap(facePal);
+				pbFace.Image = faceTex.ToBitmap(facePal);
 			}
 			else
 			{
@@ -488,7 +488,7 @@ namespace VPWStudio.Editors.Revenge
 				faceTexStream.Seek(0, SeekOrigin.Begin);
 				faceTex.ReadData(faceTexReader);
 				faceTexStream.Dispose();
-				pbFace.Image = faceTex.GetBitmap(facePal);
+				pbFace.Image = faceTex.ToBitmap(facePal);
 			}
 
 			// extra is either CI4 or CI8 depending on who you try editing
@@ -517,7 +517,7 @@ namespace VPWStudio.Editors.Revenge
 					extraTex.ReadData(extraTexReader);
 					extraTexStream.Dispose();
 
-					pbExtra.Image = extraTex.GetBitmap(extraPal);
+					pbExtra.Image = extraTex.ToBitmap(extraPal);
 				}
 				else
 				{
@@ -532,7 +532,7 @@ namespace VPWStudio.Editors.Revenge
 					extraTex.ReadData(extraTexReader);
 					extraTexStream.Dispose();
 
-					pbExtra.Image = extraTex.GetBitmap(extraPal);
+					pbExtra.Image = extraTex.ToBitmap(extraPal);
 				}
 			}
 			else

@@ -119,13 +119,13 @@ namespace VPWStudio
 				case CiViewerModes.Ci4:
 					{
 						CurCI4Palette.ReadData(fr);
-						CurBitmap = CurCI4Texture.GetBitmap(CurCI4Palette);
+						CurBitmap = CurCI4Texture.ToBitmap(CurCI4Palette);
 					}
 					break;
 				case CiViewerModes.Ci8:
 					{
 						CurCI8Palette.ReadData(fr);
-						CurBitmap = CurCI8Texture.GetBitmap(CurCI8Palette);
+						CurBitmap = CurCI8Texture.ToBitmap(CurCI8Palette);
 					}
 					break;
 			}
