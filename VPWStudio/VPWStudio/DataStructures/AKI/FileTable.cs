@@ -741,16 +741,11 @@ namespace VPWStudio
 			ReplaceFileReturnData rd = new ReplaceFileReturnData();
 
 			// determine path type for replacement file and act accordingly
-			string replaceFilePath = String.Empty;
+			string replaceFilePath = fte.ReplaceFilePath;
 			if (!Path.IsPathRooted(fte.ReplaceFilePath))
 			{
 				// relative to projectPath
 				replaceFilePath = String.Format("{0}\\{1}", projectPath, fte.ReplaceFilePath);
-			}
-			else
-			{
-				// absolute
-				replaceFilePath = fte.ReplaceFilePath;
 			}
 
 			// make sure replacement file exists
@@ -792,6 +787,7 @@ namespace VPWStudio
 
 			if (!alreadyCompressed)
 			{
+				// todo: this portion belongs elsewhere
 				#region FileType handling
 				switch (fte.FileType)
 				{
