@@ -110,8 +110,78 @@ namespace VPWStudio
 		#endregion
 
 		#region ROM Building
+		// this routine should only be called if the file extension is not "lzss" or the intended extension.
+		// todo: running this for FileTypes.Binary is dumb
+		public static byte[] ConvertData(FileTableEntry fte)
+		{
+			// Get replacement file information
+			string ReplaceFileExtension = Path.GetExtension(fte.ReplaceFilePath);
+			string ReplaceFilePath = fte.ReplaceFilePath;
+			if (!Path.IsPathRooted(fte.ReplaceFilePath))
+			{
+				ReplaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+			}
+
+			MemoryStream ms = new MemoryStream();
+			BinaryWriter bw = new BinaryWriter(ms);
+
+			// perform action based on filetype
+			switch (fte.FileType)
+			{
+				case FileTypes.AkiTexture:
+					{
+						if (ReplaceFileExtension == "png")
+						{
+							AkiTexture at = new AkiTexture();
+							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+							at.FromBitmap(bm);
+							at.WriteData(bw);
+						}
+					}
+					break;
+
+				case FileTypes.Ci4Texture:
+					{
+						if (ReplaceFileExtension == "png")
+						{
+							Ci4Texture ci4tex = new Ci4Texture();
+							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+							if (!ci4tex.FromBitmap(bm))
+							{
+								return null;
+							}
+							ci4tex.WriteData(bw);
+						}
+					}
+					break;
+
+				case FileTypes.Ci8Texture:
+					{
+						if (ReplaceFileExtension == "png")
+						{
+							Ci4Texture ci8tex = new Ci4Texture();
+							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+							if (!ci8tex.FromBitmap(bm))
+							{
+								return null;
+							}
+							ci8tex.WriteData(bw);
+						}
+					}
+					break;
+			}
+
+			// return data
+			int outFileLen = (int)ms.Position;
+			ms.Seek(0, SeekOrigin.Begin);
+			byte[] outData = new byte[outFileLen];
+			ms.Read(outData, 0, outFileLen);
+			return outData;
+		}
+
 		public static void BuildRom()
 		{
+			// create output ROM using input ROM data as base.
 			CurrentOutputROM = new Z64Rom();
 			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
