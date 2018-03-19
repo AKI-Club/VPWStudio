@@ -21,6 +21,7 @@ namespace VPWStudio
 		/// </summary>
 		private const int INVALID_DATA = -1;
 
+		#region Class Members
 		/// <summary>
 		/// Image Width, when not provided by the file.
 		/// </summary>
@@ -37,6 +38,12 @@ namespace VPWStudio
 		public int TransparentColorIndex;
 
 		/// <summary>
+		/// Intended palette file for an image.
+		/// </summary>
+		public int IntendedPaletteFileID;
+		#endregion
+
+		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public FileTableEntryExtraData()
@@ -44,6 +51,7 @@ namespace VPWStudio
 			ImageWidth = INVALID_DATA;
 			ImageHeight = INVALID_DATA;
 			TransparentColorIndex = INVALID_DATA;
+			IntendedPaletteFileID = INVALID_DATA;
 		}
 
 		#region XML Read/Write
@@ -93,6 +101,15 @@ namespace VPWStudio
 						this.TransparentColorIndex = int.Parse(xr.Value);
 					}
 				}
+
+				if (xr.Name == "IntendedPaletteFile" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.IntendedPaletteFileID = int.Parse(xr.Value);
+					}
+				}
 			}
 		}
 
@@ -123,6 +140,7 @@ namespace VPWStudio
 			WriteElement(xw, "ImageWidth", ImageWidth);
 			WriteElement(xw, "ImageHeight", ImageHeight);
 			WriteElement(xw, "TransparentColorIndex", TransparentColorIndex);
+			WriteElement(xw, "IntendedPaletteFile", IntendedPaletteFileID);
 
 			xw.WriteEndElement();
 		}
