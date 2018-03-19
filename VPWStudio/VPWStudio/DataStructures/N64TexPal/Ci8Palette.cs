@@ -32,6 +32,7 @@ namespace VPWStudio
 		/// <param name="br">BinaryReader instance to use.</param>
 		public Ci8Palette(BinaryReader br)
 		{
+			Entries = new UInt16[256];
 			ReadData(br);
 		}
 		#endregion
