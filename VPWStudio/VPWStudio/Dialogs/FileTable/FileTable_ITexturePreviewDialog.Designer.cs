@@ -91,11 +91,11 @@
 			this.pbPreview.BackColor = System.Drawing.SystemColors.Control;
 			this.pbPreview.ContextMenuStrip = this.cmsPreview;
 			this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pbPreview.Location = new System.Drawing.Point(0, 36);
+			this.pbPreview.Location = new System.Drawing.Point(0, 35);
 			this.pbPreview.Margin = new System.Windows.Forms.Padding(0);
 			this.pbPreview.MinimumSize = new System.Drawing.Size(1, 1);
 			this.pbPreview.Name = "pbPreview";
-			this.pbPreview.Size = new System.Drawing.Size(314, 182);
+			this.pbPreview.Size = new System.Drawing.Size(314, 183);
 			this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.pbPreview.TabIndex = 3;
 			this.pbPreview.TabStop = false;
@@ -118,7 +118,7 @@
 			this.tlpImageControls.Name = "tlpImageControls";
 			this.tlpImageControls.RowCount = 1;
 			this.tlpImageControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpImageControls.Size = new System.Drawing.Size(308, 30);
+			this.tlpImageControls.Size = new System.Drawing.Size(308, 29);
 			this.tlpImageControls.TabIndex = 4;
 			// 
 			// buttonRedraw
@@ -126,7 +126,7 @@
 			this.buttonRedraw.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonRedraw.Location = new System.Drawing.Point(247, 3);
 			this.buttonRedraw.Name = "buttonRedraw";
-			this.buttonRedraw.Size = new System.Drawing.Size(58, 24);
+			this.buttonRedraw.Size = new System.Drawing.Size(58, 23);
 			this.buttonRedraw.TabIndex = 2;
 			this.buttonRedraw.Text = "&Redraw";
 			this.buttonRedraw.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
 			// nudWidth
 			// 
 			this.nudWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudWidth.Location = new System.Drawing.Point(64, 5);
+			this.nudWidth.Location = new System.Drawing.Point(64, 4);
 			this.nudWidth.Maximum = new decimal(new int[] {
             512,
             0,
@@ -179,7 +179,7 @@
 			// nudHeight
 			// 
 			this.nudHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudHeight.Location = new System.Drawing.Point(186, 5);
+			this.nudHeight.Location = new System.Drawing.Point(186, 4);
 			this.nudHeight.Maximum = new decimal(new int[] {
             512,
             0,
@@ -205,18 +205,16 @@
 			this.AcceptButton = this.buttonRedraw;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(314, 218);
 			this.Controls.Add(this.tlpMainContainer);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(1024, 768);
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(320, 240);
 			this.Name = "FileTable_ITexturePreviewDialog";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
-			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Preview";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_ITexturePreviewDialog_KeyDown);
