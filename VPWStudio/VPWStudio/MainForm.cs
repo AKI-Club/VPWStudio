@@ -1010,17 +1010,6 @@ namespace VPWStudio
 		#endregion
 
 		#region Project build section
-		/*
-		 * addr2hws(a1, a2)
-		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
-		 *     v = h + int.from_bytes(rom[a2:a2+2], byteorder='big')
-		 *     v += difference;
-		 *     h = (v>>16)
-		 *     if(v & 0x8000) h += 1
-		 *     l = v & 0xFFFF
-		 *     rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
-		 *     rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
-		 */
 
 		/// <summary>
 		/// Build ROM
@@ -1058,8 +1047,6 @@ namespace VPWStudio
 			}
 
 			// perform "build" process
-			// todo: the actual build process could probably be moved into Program.cs,
-			// with other portions being implemented by the relevant classes.
 
 			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
 
@@ -1082,11 +1069,15 @@ namespace VPWStudio
 			DateTime startTime = DateTime.Now;
 
 			// todo: Program.BuildRom() goes here
+			// anything below this line is not exactly trustable code.
 
 			// copy the input ROM to the output ROM
 			Program.CurrentOutputROM = new Z64Rom();
 			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
+
+			// the input rom could have changed between the last build and now,
+			Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
 			outRomData.AddRange(Program.CurrentInputROM.Data);
 
 			// make changes based on the project file contents
@@ -1313,8 +1304,6 @@ namespace VPWStudio
 
 					// in the future, you might want to move the other files upwards to
 					// take advantage of the space, but that's a bit complicated for now.
-
-					// xxx: this is somehow broken
 					if (diff < 0)
 					{
 						for (int dx = 0; dx < ((end - start) - fileLen); dx++)
