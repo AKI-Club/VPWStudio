@@ -23,7 +23,7 @@
 0016=AkiArchive;lightning
 0017=AkiTexture;[Splash] Press Start
 0018=AkiTexture;[UI] League Result
-0019=AkiTexture;[Revenge leftover] VS Screen Control
+0019=AkiTexture;[Controller Settings] Player Control icons
 001A=AkiTexture;[UI] Menu Control 1
 001B=AkiTexture;[UI] Menu Control 2
 001C=AkiTexture;[UI] Locus of Battle
