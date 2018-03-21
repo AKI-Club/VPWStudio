@@ -82,7 +82,7 @@ namespace VPWStudio
 				{
 					byte palIdx = Data[(y * width) + x];
 					// I am not sure if alpha is meant to be calculated like this,
-					// but it matches how the I4 textures look in game.
+					// but it matches how most I4 textures look in game.
 					// Whether or not the game performs this transform is unknown.
 					bOut.SetPixel(x, y, Color.FromArgb((15 - palIdx) * 16, 255, 255, 255));
 				}

@@ -324,7 +324,6 @@ namespace VPWStudio
 			}
 			return N64Cic.Unknown;
 		}
-
 		#endregion
 
 		#region Checksum-Related
@@ -335,11 +334,11 @@ namespace VPWStudio
 		public bool HasValidChecksums()
 		{
 			UInt32[] calculated = CalculateChecksums();
-			if (this.Checksum1 != calculated[0])
+			if (Checksum1 != calculated[0])
 			{
 				return false;
 			}
-			if (this.Checksum2 != calculated[1])
+			if (Checksum2 != calculated[1])
 			{
 				return false;
 			}
@@ -353,11 +352,11 @@ namespace VPWStudio
 		public void FixChecksums()
 		{
 			UInt32[] calculated = CalculateChecksums();
-			this.Checksum1 = calculated[0];
-			this.Checksum2 = calculated[1];
+			Checksum1 = calculated[0];
+			Checksum2 = calculated[1];
 
-			byte[] calc1 = BitConverter.GetBytes(this.Checksum1);
-			byte[] calc2 = BitConverter.GetBytes(this.Checksum2);
+			byte[] calc1 = BitConverter.GetBytes(Checksum1);
+			byte[] calc2 = BitConverter.GetBytes(Checksum2);
 
 			if (BitConverter.IsLittleEndian)
 			{
@@ -367,8 +366,8 @@ namespace VPWStudio
 
 			for (int i = 0; i < 4; i++)
 			{
-				this.Data[0x10 + i] = calc1[i];
-				this.Data[0x14 + i] = calc2[i];
+				Data[0x10 + i] = calc1[i];
+				Data[0x14 + i] = calc2[i];
 			}
 		}
 
