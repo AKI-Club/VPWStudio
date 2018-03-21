@@ -27,6 +27,7 @@
 
 <h3>Appendices</h3>
 <ol type='A'>
+<li>Glossary</li>
 <li>Program Formats
 	<ol type="1">
 	<li><a href="#LocationFile">LocationFile Format</a></li>
@@ -116,10 +117,42 @@ directory where the project file is saved: "Assets" and "ProjectFiles".</p>
 <p>(todo)</p>
 
 <hr />
-<h2>Appendix A: Program Formats</h2>
+<h2>Appendix A: Glossary</h2>
+<p>The Virtual Pro-Wrestling series hacking communities use jargon to refer to
+some items and concepts. These terms can be confusing when first encountered.</p>
+
+<dl>
+<dt>Addy</dt>
+<dd>Short for "address", as in "memory address".</dd>
+
+<dt>Broad Action</dt>
+<dd>The general action the wrestler is performing.</dd>
+
+<dt>ID2</dt>
+<dd>One of the two ways of identifying a wrestler. This value is one byte
+and controls indexing into various arrays and structures. ID2 values are
+always given in hex.</dd>
+
+<dt>ID4</dt>
+<dd>One of the two ways of identifying a wrestler. This value is two bytes,
+being used as a unique identifier (not necessarily matching the ID2 order).
+ID4 values are always given in hex.</dd>
+
+<dt>Toki 1</dt>
+<dd>(todo; related to moves)</dd>
+
+<dt>Toki 2</dt>
+<dd>(todo; related to moves)</dd>
+
+<dt>Toki 3</dt>
+<dd>Toki 3 values are the File IDs of items in the FileTable.</dd>
+</dl>
+
+<hr />
+<h2>Appendix B: Program Formats</h2>
 <p>(notes about program file formats)</p>
 
-<h3><a name="LocationFile">Appendix A1: LocationFile Format</a></h3>
+<h3><a name="LocationFile">Appendix B1: LocationFile Format</a></h3>
 <p>The LocationFile format is a plain text database defining locations in ROM
 and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
 the LocationFile.</p>
@@ -183,7 +216,7 @@ location strings:</p>
 </ul>
 
 <hr />
-<h3><a name="FileTableDB">Appendix A2: FileTableDB Format</a></h3>
+<h3><a name="FileTableDB">Appendix B2: FileTableDB Format</a></h3>
 <p>The FileTableDB format is a plain text database mapping File IDs to types
 and notes.</p>
 
@@ -223,11 +256,11 @@ contain TEX files.</li>
 there are no special tokens to deal with.</p>
 
 <hr />
-<h3><a name="GameSharkCodeSet">Appendix A3: GameShark CodeSet Format</a></h3>
+<h3><a name="GameSharkCodeSet">Appendix B3: GameShark CodeSet Format</a></h3>
 <p>(todo)</p>
 
 <hr />
-<h2>Appendix B: Game Data Formats</h2>
+<h2>Appendix C: Game Data Formats</h2>
 <p>(notes about data structures used in the games)</p>
 
 <hr />
