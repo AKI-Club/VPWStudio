@@ -122,63 +122,143 @@ namespace VPWStudio
 				ReplaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
 			}
 
-			MemoryStream ms = new MemoryStream();
-			BinaryWriter bw = new BinaryWriter(ms);
-
-			// perform action based on filetype
-			switch (fte.FileType)
+			using (MemoryStream ms = new MemoryStream())
 			{
-				case FileTypes.AkiTexture:
+				using (BinaryWriter bw = new BinaryWriter(ms))
+				{
+					// perform action based on filetype
+					switch (fte.FileType)
 					{
-						if (ReplaceFileExtension == "png")
-						{
-							AkiTexture at = new AkiTexture();
-							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-							at.FromBitmap(bm);
-							at.WriteData(bw);
-						}
-					}
-					break;
-
-				case FileTypes.Ci4Texture:
-					{
-						if (ReplaceFileExtension == "png")
-						{
-							Ci4Texture ci4tex = new Ci4Texture();
-							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-							if (!ci4tex.FromBitmap(bm))
+						case FileTypes.AkiTexture:
 							{
-								return null;
+								if (ReplaceFileExtension == "png")
+								{
+									AkiTexture at = new AkiTexture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									at.FromBitmap(bm);
+									at.WriteData(bw);
+								}
 							}
-							ci4tex.WriteData(bw);
-						}
-					}
-					break;
+							break;
 
-				case FileTypes.Ci8Texture:
-					{
-						if (ReplaceFileExtension == "png")
-						{
-							Ci8Texture ci8tex = new Ci8Texture();
-							System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-							if (!ci8tex.FromBitmap(bm))
+						case FileTypes.Ci4Texture:
 							{
-								return null;
+								if (ReplaceFileExtension == "png")
+								{
+									Ci4Texture ci4tex = new Ci4Texture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									if (!ci4tex.FromBitmap(bm))
+									{
+										return null;
+									}
+									ci4tex.WriteData(bw);
+								}
 							}
-							ci8tex.WriteData(bw);
-						}
+							break;
+
+						case FileTypes.Ci8Texture:
+							{
+								if (ReplaceFileExtension == "png")
+								{
+									Ci8Texture ci8tex = new Ci8Texture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									if (!ci8tex.FromBitmap(bm))
+									{
+										return null;
+									}
+									ci8tex.WriteData(bw);
+								}
+							}
+							break;
 					}
-					break;
+
+					// return data
+					int outFileLen = (int)ms.Position;
+					ms.Seek(0, SeekOrigin.Begin);
+					byte[] outData = new byte[outFileLen];
+					ms.Read(outData, 0, outFileLen);
+					return outData;
+				}
 			}
-
-			// return data
-			int outFileLen = (int)ms.Position;
-			ms.Seek(0, SeekOrigin.Begin);
-			byte[] outData = new byte[outFileLen];
-			ms.Read(outData, 0, outFileLen);
-			return outData;
 		}
 
+		/*
+		 * addr2hws(a1, a2)
+		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
+		 *     v = h + int.from_bytes(rom[a2:a2+2], byteorder='big')
+		 *     v += difference;
+		 *     h = (v>>16)
+		 *     if(v & 0x8000) h += 1
+		 *     l = v & 0xFFFF
+		 *     rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
+		 *     rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
+		 */
+		/// <summary>
+		/// My version of Zoinkity's addr2hws.
+		/// </summary>
+		/// <param name="romData">ROM data</param>
+		/// <param name="addr1">Address 1</param>
+		/// <param name="addr2">Address 2</param>
+		/// <param name="difference">Difference</param>
+		public static void FixAddresses(MemoryStream romStream, int addr1, int addr2, int difference)
+		{
+			using (BinaryReader br = new BinaryReader(romStream))
+			{
+				using (BinaryWriter bw = new BinaryWriter(romStream))
+				{
+					// read values
+					romStream.Seek(addr1, SeekOrigin.Begin);
+					byte[] high = br.ReadBytes(2);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(high);
+					}
+					int h = BitConverter.ToInt32(high, 0) << 16;
+
+					romStream.Seek(addr2, SeekOrigin.Begin);
+					byte[] low = br.ReadBytes(2);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(low);
+					}
+					int v = h + BitConverter.ToInt32(low, 0);
+
+					// add difference
+					v += difference;
+					h = (v >> 16);
+
+					// perform correction
+					if ((v & 0x8000) != 0)
+					{
+						h += 1;
+					}
+
+					// mask low
+					int l = (v & 0xFFFF);
+
+					// write new values
+					romStream.Seek(addr1, SeekOrigin.Begin);
+					byte[] newH = BitConverter.GetBytes(h);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(newH);
+					}
+					bw.Write(newH);
+
+					romStream.Seek(addr2, SeekOrigin.Begin);
+					byte[] newL = BitConverter.GetBytes(l);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(newL);
+					}
+					bw.Write(newL);
+				}
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public static void BuildRom()
 		{
 			// create output ROM using input ROM data as base.
