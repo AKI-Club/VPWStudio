@@ -213,7 +213,7 @@ namespace VPWStudio
 		/// </summary>
 		public string ReplaceFilePath;
 
-		public FileTableEntryExtraData ExtraData;
+		//public FileTableEntryExtraData ExtraData;
 		#endregion // program-specific
 		#endregion
 
@@ -223,14 +223,14 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableEntry()
 		{
-			this.FileID = 0;
-			this.Location = 0;
-			this.FileType = FileTypes.Binary;
-			this.IsEncoded = false;
-			this.Comment = String.Empty;
-			this.ReplaceEncoding = FileTableReplaceEncoding.PickBest;
-			this.ReplaceFilePath = String.Empty;
-			this.ExtraData = new FileTableEntryExtraData();
+			FileID = 0;
+			Location = 0;
+			FileType = FileTypes.Binary;
+			IsEncoded = false;
+			Comment = String.Empty;
+			ReplaceEncoding = FileTableReplaceEncoding.PickBest;
+			ReplaceFilePath = String.Empty;
+			//ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -240,14 +240,14 @@ namespace VPWStudio
 		/// <param name="_enc">Is this file (LZSS) encoded?</param>
 		public FileTableEntry(UInt16 _id, UInt32 _loc, bool _enc)
 		{
-			this.FileID = _id;
-			this.Location = _loc;
-			this.FileType = FileTypes.Binary;
-			this.IsEncoded = _enc;
-			this.Comment = String.Empty;
-			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
-			this.ReplaceFilePath = String.Empty;
-			this.ExtraData = new FileTableEntryExtraData();
+			FileID = _id;
+			Location = _loc;
+			FileType = FileTypes.Binary;
+			IsEncoded = _enc;
+			Comment = String.Empty;
+			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			ReplaceFilePath = String.Empty;
+			//ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -257,14 +257,14 @@ namespace VPWStudio
 		/// <param name="_enc"></param>
 		public FileTableEntry(UInt16 _id, UInt32 _loc, bool _enc, string _comment)
 		{
-			this.FileID = _id;
-			this.Location = _loc;
-			this.FileType = FileTypes.Binary;
-			this.IsEncoded = _enc;
-			this.Comment = _comment;
-			this.ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
-			this.ReplaceFilePath = String.Empty;
-			this.ExtraData = new FileTableEntryExtraData();
+			FileID = _id;
+			Location = _loc;
+			FileType = FileTypes.Binary;
+			IsEncoded = _enc;
+			Comment = _comment;
+			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			ReplaceFilePath = String.Empty;
+			//ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -282,7 +282,7 @@ namespace VPWStudio
 		/// <param name="br">BinaryReader instance to use.</param>
 		public FileTableEntry(BinaryReader br)
 		{
-			this.ReadEntry(br);
+			ReadEntry(br);
 		}
 		#endregion
 
@@ -292,13 +292,14 @@ namespace VPWStudio
 		/// <param name="_src"></param>
 		public void DeepCopy(FileTableEntry _src)
 		{
-			this.FileID = _src.FileID;
-			this.Location = _src.Location;
-			this.FileType = _src.FileType;
-			this.IsEncoded = _src.IsEncoded;
-			this.Comment = _src.Comment;
-			this.ReplaceEncoding = _src.ReplaceEncoding;
-			this.ReplaceFilePath = _src.ReplaceFilePath;
+			FileID = _src.FileID;
+			Location = _src.Location;
+			FileType = _src.FileType;
+			IsEncoded = _src.IsEncoded;
+			Comment = _src.Comment;
+			ReplaceEncoding = _src.ReplaceEncoding;
+			ReplaceFilePath = _src.ReplaceFilePath;
+			//ExtraData = 
 		}
 
 		#region Binary Read/Write
@@ -313,9 +314,9 @@ namespace VPWStudio
 			{
 				Array.Reverse(loc);
 			}
-			this.Location = (BitConverter.ToUInt32(loc, 0) & 0xFFFFFFFE);
-			this.IsEncoded = (BitConverter.ToUInt32(loc, 0) & 1) != 0;
-			this.ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			Location = (BitConverter.ToUInt32(loc, 0) & 0xFFFFFFFE);
+			IsEncoded = (BitConverter.ToUInt32(loc, 0) & 1) != 0;
+			ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 		}
 
 		/// <summary>
@@ -324,8 +325,8 @@ namespace VPWStudio
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteEntry(BinaryWriter bw)
 		{
-			UInt32 finalLoc = this.Location;
-			if (this.IsEncoded)
+			UInt32 finalLoc = Location;
+			if (IsEncoded)
 			{
 				finalLoc |= 1;
 			}
@@ -353,10 +354,10 @@ namespace VPWStudio
 		{
 			if (xr.HasAttributes)
 			{
-				this.FileID = UInt16.Parse(xr.GetAttribute("id"), NumberStyles.HexNumber);
-				this.Location = UInt32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
-				this.FileType = (FileTypes)Enum.Parse(typeof(FileTypes), xr.GetAttribute("type"));
-				this.IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
+				FileID = UInt16.Parse(xr.GetAttribute("id"), NumberStyles.HexNumber);
+				Location = UInt32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
+				FileType = (FileTypes)Enum.Parse(typeof(FileTypes), xr.GetAttribute("type"));
+				IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
 			}
 
 			while (true)
@@ -373,14 +374,14 @@ namespace VPWStudio
 					if (!xr.IsEmptyElement)
 					{
 						xr.Read();
-						this.Comment = xr.Value;
+						Comment = xr.Value;
 					}
 				}
 
 				if (xr.Name == "ReplaceEncoding" && xr.NodeType == XmlNodeType.Element)
 				{
 					xr.Read();
-					this.ReplaceEncoding = (FileTableReplaceEncoding)Enum.Parse(typeof(FileTableReplaceEncoding), xr.Value);
+					ReplaceEncoding = (FileTableReplaceEncoding)Enum.Parse(typeof(FileTableReplaceEncoding), xr.Value);
 				}
 
 				if (xr.Name == "ReplaceFilePath" && xr.NodeType == XmlNodeType.Element)
@@ -388,10 +389,11 @@ namespace VPWStudio
 					if (!xr.IsEmptyElement)
 					{
 						xr.Read();
-						this.ReplaceFilePath = xr.Value;
+						ReplaceFilePath = xr.Value;
 					}
 				}
 
+				/*
 				if (xr.Name == "ExtraData" && xr.NodeType == XmlNodeType.Element)
 				{
 					if (!xr.IsEmptyElement)
@@ -400,6 +402,7 @@ namespace VPWStudio
 						ExtraData.ReadXml(xr);
 					}
 				}
+				*/
 			}
 		}
 
@@ -410,16 +413,16 @@ namespace VPWStudio
 		public void WriteXml(XmlWriter xw)
 		{
 			xw.WriteStartElement("Entry");
-			xw.WriteAttributeString("id", String.Format("{0:X4}", this.FileID));
-			xw.WriteAttributeString("loc", String.Format("{0:X8}", this.Location));
-			xw.WriteAttributeString("type", this.FileType.ToString());
-			xw.WriteAttributeString("lzss", this.IsEncoded.ToString());
+			xw.WriteAttributeString("id", String.Format("{0:X4}", FileID));
+			xw.WriteAttributeString("loc", String.Format("{0:X8}", Location));
+			xw.WriteAttributeString("type", FileType.ToString());
+			xw.WriteAttributeString("lzss", IsEncoded.ToString());
 
-			xw.WriteElementString("Comment", this.Comment);
-			xw.WriteElementString("ReplaceEncoding", this.ReplaceEncoding.ToString());
-			xw.WriteElementString("ReplaceFilePath", this.ReplaceFilePath);
+			xw.WriteElementString("Comment", Comment);
+			xw.WriteElementString("ReplaceEncoding", ReplaceEncoding.ToString());
+			xw.WriteElementString("ReplaceFilePath", ReplaceFilePath);
 
-			ExtraData.WriteXml(xw);
+			//ExtraData.WriteXml(xw);
 
 			xw.WriteEndElement();
 		}
@@ -494,12 +497,12 @@ namespace VPWStudio
 			{
 				// the main wrench here is that ftype can be appended to the LZSS string
 				// {location}\t("LZSS_0B", ftype)\tfilename
-				string typeDef = this.IsEncoded ? String.Format("{0}, {1}", lzss, ftype) : ftype;
+				string typeDef = IsEncoded ? String.Format("{0}, {1}", lzss, ftype) : ftype;
 				sw.WriteLine(String.Format(
 					"0x{0:X}\t{1}\t{2:X4}{{ext}}",
-					this.Location + _offset,
+					Location + _offset,
 					typeDef,
-					this.FileID
+					FileID
 				));
 			}
 			else
@@ -507,9 +510,9 @@ namespace VPWStudio
 				// {location}\t("LZSS_0B" or "bin")\tfilename
 				sw.WriteLine(String.Format(
 					"0x{0:X}\t{1}\t{2:X4}{{ext}}",
-					this.Location + _offset,
-					this.IsEncoded ? lzss : ftype,
-					this.FileID
+					Location + _offset,
+					IsEncoded ? lzss : ftype,
+					FileID
 				));
 			}
 		}
@@ -545,9 +548,9 @@ namespace VPWStudio
 		/// </summary>
 		public FileTable()
 		{
-			this.Entries = new SortedList<int, FileTableEntry>();
-			this.Location = 0;
-			this.FirstFile = 0;
+			Entries = new SortedList<int, FileTableEntry>();
+			Location = 0;
+			FirstFile = 0;
 		}
 
 		/// <summary>
@@ -556,9 +559,9 @@ namespace VPWStudio
 		/// <param name="_loc">Location of FileTable in ROM.</param>
 		public FileTable(UInt32 _loc, UInt32 _firstFile)
 		{
-			this.Entries = new SortedList<int, FileTableEntry>();
-			this.Location = _loc;
-			this.FirstFile = _firstFile;
+			Entries = new SortedList<int, FileTableEntry>();
+			Location = _loc;
+			FirstFile = _firstFile;
 		}
 
 		/// <summary>
@@ -862,11 +865,13 @@ namespace VPWStudio
 							}
 
 							// handle transparent color
+							/*
 							if (fte.ExtraData.TransparentColorIndex != -1)
 							{
 								// todo: argh this probably isn't right because lol endianness
 								ci4pal.Entries[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
 							}
+							*/
 
 							ci4pal.WriteData(outFileWriter);
 						}
@@ -903,11 +908,13 @@ namespace VPWStudio
 							}
 
 							// handle transparent color
+							/*
 							if (fte.ExtraData.TransparentColorIndex != -1)
 							{
 								// todo: argh this probably isn't right because lol endianness
 								ci8pal.Entries[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
 							}
+							*/
 
 							ci8pal.WriteData(outFileWriter);
 						}
@@ -939,11 +946,13 @@ namespace VPWStudio
 							}
 
 							// handle transparent color
+							/*
 							if (fte.ExtraData.TransparentColorIndex != -1)
 							{
 								// todo: argh this probably isn't right because lol endianness
 								akitex.Palette[fte.ExtraData.TransparentColorIndex] &= 0xFFFE;
 							}
+							*/
 
 							akitex.WriteData(outFileWriter);
 						}
