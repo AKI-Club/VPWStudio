@@ -1217,27 +1217,34 @@ namespace VPWStudio
 						default:
 							// pick best fit... ugh this code sucks
 
-							// fileLen holds the uncompressed size
-							using (MemoryStream compStream = new MemoryStream())
+							if (Path.GetExtension(replaceFilePath) == "lzss")
 							{
-								using (BinaryWriter compWriter = new BinaryWriter(compStream))
+								// you idiot, don't LZSS an already-LZSS'ed file!
+								outDataBW.Write(curFileBR.ReadBytes(fileLen));
+							}
+							else
+							{
+								using (MemoryStream compStream = new MemoryStream())
 								{
-									AsmikLzss.Encode(curFileBR, compWriter);
-									if (compWriter.BaseStream.Position < fileLen)
+									using (BinaryWriter compWriter = new BinaryWriter(compStream))
 									{
-										// insert compressed
-										curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
-										AsmikLzss.Encode(curFileBR, outDataBW);
-									}
-									else if (compWriter.BaseStream.Position > fileLen)
-									{
-										// insert raw
-										curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
-										outDataBW.Write(curFileBR.ReadBytes(fileLen));
+										// fileLen holds the uncompressed size
+										AsmikLzss.Encode(curFileBR, compWriter);
+										if (compWriter.BaseStream.Position < fileLen)
+										{
+											// insert compressed
+											curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
+											AsmikLzss.Encode(curFileBR, outDataBW);
+										}
+										else if (compWriter.BaseStream.Position > fileLen)
+										{
+											// insert raw
+											curFileBR.BaseStream.Seek(0, SeekOrigin.Begin);
+											outDataBW.Write(curFileBR.ReadBytes(fileLen));
+										}
 									}
 								}
 							}
-
 							break;
 					}
 
