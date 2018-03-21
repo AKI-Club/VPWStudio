@@ -316,7 +316,7 @@ namespace VPWStudio
 			}
 			Location = (BitConverter.ToUInt32(loc, 0) & 0xFFFFFFFE);
 			IsEncoded = (BitConverter.ToUInt32(loc, 0) & 1) != 0;
-			ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
+			ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.ForceRaw;
 		}
 
 		/// <summary>
@@ -602,7 +602,7 @@ namespace VPWStudio
 		{
 			List<int> files = new List<int>();
 
-			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
+			foreach (KeyValuePair<int, FileTableEntry> fte in Entries)
 			{
 				if (fte.Value.FileType == t)
 				{
@@ -622,14 +622,24 @@ namespace VPWStudio
 		/// entries, not the files themselves.
 		public uint GetEntrySize(int id)
 		{
-			if (id == this.Entries.Count)
+			if (id == Entries.Count)
 			{
 				// last entry needs different calculation
-				return (this.Location - this.Entries[id].Location) - this.FirstFile;
+				return (Location - Entries[id].Location) - FirstFile;
 			}
 			else
 			{
-				return (this.Entries[id + 1].Location - this.Entries[id].Location);
+				// a certain file in WWF No Mercy's filetable (ID 4C03)
+				// requires me to make this otherwise unnecessary check...
+
+				if (Entries[id].Location > Entries[id + 1].Location)
+				{
+					return (Entries[id].Location - Entries[id + 1].Location);
+				}
+				else
+				{
+					return (Entries[id + 1].Location - Entries[id].Location);
+				}
 			}
 		}
 
@@ -640,7 +650,7 @@ namespace VPWStudio
 		/// <returns>ROM location of the specified file ID.</returns>
 		public uint GetRomLocation(int id)
 		{
-			return this.Entries[id].Location + this.FirstFile;
+			return Entries[id].Location + FirstFile;
 		}
 		#endregion
 
@@ -653,8 +663,8 @@ namespace VPWStudio
 		/// <param name="forceRaw">Force raw export.</param>
 		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool forceRaw = false)
 		{
-			uint loc = this.GetRomLocation(id);
-			uint size = this.GetEntrySize(id);
+			uint loc = GetRomLocation(id);
+			uint size = GetEntrySize(id);
 
 			_in.BaseStream.Seek(loc, SeekOrigin.Begin);
 			byte[] data = _in.ReadBytes((int)size);
