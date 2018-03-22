@@ -26,5 +26,10 @@ namespace VPWStudio.GameSpecific.Revenge
 		// [half] assumed halfword 2
 		// [half] assumed halfword 3
 		// [word] Pointer to some ID2 list
+
+		public void ReadData(BinaryReader br)
+		{
+			// why'd you write this when you don't even have a towel
+		}
 	}
 }
