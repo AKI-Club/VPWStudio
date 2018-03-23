@@ -109,7 +109,7 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region ROM Building
+		#region ROM Building - OLD SHIT
 		/// <summary>
 		/// !!! OLD SHIT !!!
 		/// </summary>
@@ -562,11 +562,12 @@ namespace VPWStudio
 
 			int totalDifference = 0;
 
-			for (int i = 1; i < buildFileTable.Entries.Count; i++)
+			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
+			for (int i = 1; i <= buildFileTable.Entries.Count; i++)
 			{
 				FileTableEntry fte = buildFileTable.Entries[i];
 				// 0) check if a replacement file is set
-				if (fte.ReplaceFilePath != String.Empty)
+				if (!fte.ReplaceFilePath.Equals(String.Empty))
 				{
 					// determine if this is relative or absolute
 					string replaceFilePath = fte.ReplaceFilePath;
@@ -588,9 +589,10 @@ namespace VPWStudio
 					// get the start and end points of this entry
 					// xxx: some files in WWF No Mercy's filetable break this assumption
 
-					int start = buildFileTable.Entries[i].Location;
+					int start = fte.Location;
 					int end = buildFileTable.Entries[i + 1].Location;
-					int oldFileSize = (end - start);
+					//int oldFileSize = (end - start);
+					int oldFileSize = buildFileTable.GetEntrySize(i);
 					// todo: does this fix the assumption?
 					if (start > end)
 					{
@@ -649,6 +651,7 @@ namespace VPWStudio
 					// if we were unable to get output data, then there's no point in continuing.
 					if (outData == null)
 					{
+						BuildLogPub.AddLine("Unable to load replacement file data for this entry. Skipping.");
 						continue;
 					}
 
@@ -683,10 +686,12 @@ namespace VPWStudio
 
 					// 4) fix up filetable refs
 					int difference = (finalOutData.Count - oldFileSize);
-					for (int j = i+1; j < buildFileTable.Entries.Count; j++)
+					BuildLogPub.AddLine(String.Format("old file/new file difference: {0}", difference));
+					for (int j = i+1; j <= buildFileTable.Entries.Count; j++)
 					{
 						buildFileTable.Entries[j].Location += difference;
 					}
+					totalDifference += difference;
 
 					if (difference > 0)
 					{
@@ -707,8 +712,6 @@ namespace VPWStudio
 					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
 					outRomData.InsertRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), finalOutData);
 
-					totalDifference += difference;
-
 					BuildLogPub.AddLine();
 				}
 			}
@@ -718,7 +721,7 @@ namespace VPWStudio
 			BinaryWriter finalTableBW = new BinaryWriter(finalTableMS);
 			buildFileTable.Write(finalTableBW);
 
-			//outRomData
+			BuildLogPub.AddLine(String.Format("TotalDifference final: {0}", totalDifference));
 
 			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location));
 			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference));
