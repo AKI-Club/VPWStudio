@@ -111,7 +111,7 @@ namespace VPWStudio
 
 		#region ROM Building
 		/// <summary>
-		/// OLD SHIT
+		/// !!! OLD SHIT !!!
 		/// </summary>
 		public static void BuildRom()
 		{
@@ -184,6 +184,7 @@ namespace VPWStudio
 				if (fte.ReplaceFilePath != String.Empty)
 				{
 					BuildLogPub.AddLine(String.Format("[File {0:X4}]", fte.FileID));
+					/*
 					FileTable.ReplaceFileReturnData rd = buildFileTable.ReplaceFile(outRomData, fte, CurProjectPath, CurrentProject.Settings.BaseGame);
 					if (rd.ReturnCode >= 0)
 					{
@@ -195,6 +196,7 @@ namespace VPWStudio
 						// failed to replace this file.
 						BuildLogPub.AddLine(String.Format("Failed to replace file ID {0:X4}; Return code: {1}", fte.FileID, rd.ReturnCode));
 					}
+					*/
 				}
 			}
 			#endregion
@@ -207,6 +209,17 @@ namespace VPWStudio
 		// - overall build rom process
 		// * convert file
 		// - handle offsetting
+
+		/*
+		 * Where we're at - 2018/03/23 edition
+		 * - Another attempt has been made to provide offsetter functionality. This is what, #3?
+		 *   As expected, it has failed in the general sense. However, some things ARE confirmed
+		 *   to work, so it's not an overall loss. Even still, it's better than the old code.
+		 * - Notable issues include:
+		 *  - inconsistent builds
+		 *  - files getting fucked on every build after the first
+		 *  - having to return the rom data every time you fix an address
+		 */
 
 		/*
 		 * addr2hws(a1, a2)
@@ -228,6 +241,64 @@ namespace VPWStudio
 		/// <param name="difference">Difference</param>
 		public static List<byte> FixAddresses(List<byte> romData, int addr1, int addr2, int difference)
 		{
+			// todo: implement this without streams
+			/*
+			{
+				byte[] high = new byte[]
+				{
+					romData[addr1],
+					romData[addr1+1]
+				};
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(high);
+				}
+				int h = BitConverter.ToInt16(high, 0) << 16;
+
+				byte[] low = new byte[]
+				{
+					romData[addr2],
+					romData[addr2+1]
+				};
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(low);
+				}
+				int v = h + BitConverter.ToInt16(low, 0);
+
+				// add difference
+				v += difference;
+				h = (v >> 16);
+
+				// perform correction
+				if ((v & 0x8000) != 0)
+				{
+					h += 1;
+				}
+
+				// mask low
+				int l = (v & 0xFFFF);
+
+				// write new values
+
+				byte[] high2 = BitConverter.GetBytes(h);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(high2);
+				}
+				romData[addr1] = high2[0];
+				romData[addr1+1] = high2[1];
+
+				byte[] low2 = BitConverter.GetBytes(l);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(low2);
+				}
+				romData[addr2] = low2[0];
+				romData[addr2 + 1] = low2[1];
+			}
+			*/
+
 			MemoryStream romStream = new MemoryStream(romData.ToArray());
 			using (BinaryReader br = new BinaryReader(romStream))
 			{
@@ -374,6 +445,38 @@ namespace VPWStudio
 						#endregion
 
 						// todo: other filetypes.
+
+						#region Ci4Palette Conversion
+						#endregion
+
+						#region Ci8Palette Conversion
+						case FileTypes.Ci8Palette:
+							{
+								if (ReplaceFileExtension == ".pal")
+								{
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											Ci8Palette ci8pal = new Ci8Palette();
+											if (!ci8pal.ImportJasc(sr))
+											{
+												return null;
+											}
+											ci8pal.WriteData(bw);
+										}
+									}
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+							break;
+						#endregion
+
+						#region AkiText Conversion
 						case FileTypes.AkiText:
 							{
 								/*
@@ -391,6 +494,7 @@ namespace VPWStudio
 								return null;
 							}
 							//break;
+						#endregion
 					}
 
 					// return data
@@ -407,10 +511,12 @@ namespace VPWStudio
 		{
 			// the overall rom building process.
 
-			// create output ROM using input ROM data as base.
+			// copy the input ROM to the output ROM
 			CurrentOutputROM = new Z64Rom();
 			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
+			// the input rom could have changed between the last build and now,
+			CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
 			outRomData.AddRange(CurrentInputROM.Data);
 
 			#region Internal Game Name
@@ -462,7 +568,7 @@ namespace VPWStudio
 				if (fte.ReplaceFilePath != String.Empty)
 				{
 					// determine if this is relative or absolute
-					string replaceFilePath = buildFileTable.Entries[i].ReplaceFilePath;
+					string replaceFilePath = fte.ReplaceFilePath;
 					if (!Path.IsPathRooted(replaceFilePath))
 					{
 						replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
@@ -474,10 +580,10 @@ namespace VPWStudio
 						continue;
 					}
 
-					// get the start and end points of the original file
-					// xxx: WWF No Mercy filetable entries at the end break this assumption.
-					int start = CurrentProject.ProjectFileTable.Entries[i].Location;
-					int end = CurrentProject.ProjectFileTable.Entries[i+1].Location;
+					// get the start and end points of this entry
+					//int start = buildFileTable.Entries[i].Location;
+					int start = fte.Location;
+					int end = buildFileTable.Entries[i + 1].Location;
 					int oldFileSize = (end - start);
 
 					// 1) use file extension to determine action
@@ -507,7 +613,7 @@ namespace VPWStudio
 					}
 					else
 					{
-						// read LZSS'd data
+						// read pre-LZSS'd data
 						using (FileStream fs = new FileStream(replaceFilePath, FileMode.Open))
 						{
 							using (BinaryReader br = new BinaryReader(fs))
@@ -539,14 +645,16 @@ namespace VPWStudio
 							BinaryWriter lzssBW = new BinaryWriter(lzssMS);
 
 							AsmikLzss.Encode(inFileBR, lzssBW);
+							lzssBW.Flush();
 							inFileBR.Close();
 							outData = lzssMS.ToArray();
+							fte.IsEncoded = true;
 						}
 					}
 
 					// create final output data and add 0x00 pad byte if needed
 					List<byte> finalOutData = new List<byte>(outData);
-					if ((finalOutData.Count & 1) != 0)
+					if ((finalOutData.Count % 2) != 0)
 					{
 						finalOutData.Add(0);
 					}
@@ -582,9 +690,8 @@ namespace VPWStudio
 
 			//outRomData
 
-			// remove original filetable from ROM
+			// rewrite filetable
 			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
-			// insert new filetable
 			outRomData.InsertRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), finalTableMS.ToArray());
 
 			finalTableBW.Close();
