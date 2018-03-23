@@ -1049,7 +1049,35 @@ namespace VPWStudio
 			// perform "build" process
 
 			MessageBox.Show("PROCEED WITH CAUTION.");
+
+			// set up logging
+			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
+			if (BuildLogForm == null)
+			{
+				BuildLogForm = new BuildLogDialog(buildLogPub);
+			}
+			else
+			{
+				if (BuildLogForm.IsDisposed)
+				{
+					BuildLogForm = new BuildLogDialog(buildLogPub);
+				}
+			}
+			BuildLogForm.MdiParent = this;
+			BuildLogForm.Show();
+			BuildLogForm.Clear();
+			DateTime startTime = DateTime.Now;
+
 			Program.MotherfuckingBuildRom();
+
+			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
+			buildLogPub.AddLine(
+				String.Format("Successfully built '{0}' in {1} (min:sec.ms)",
+					Program.CurrentProject.Settings.OutputRomPath,
+					buildTimeTaken.ToString(@"mm\:ss\.fffff")
+				), false
+			);
+			BuildLogForm.BuildFinished = true;
 
 			//MessageBox.Show("I'm disabling this shit again because I am sick of the broken version");
 			//return;

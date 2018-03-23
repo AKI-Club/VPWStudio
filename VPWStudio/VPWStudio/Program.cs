@@ -580,11 +580,28 @@ namespace VPWStudio
 						continue;
 					}
 
+					BuildLogPub.AddLine(String.Format("[File {0:X4}] {1}", i, replaceFilePath));
+
 					// get the start and end points of this entry
-					//int start = buildFileTable.Entries[i].Location;
-					int start = fte.Location;
+					// xxx: some files in WWF No Mercy's filetable break this assumption
+
+					int start = buildFileTable.Entries[i].Location;
 					int end = buildFileTable.Entries[i + 1].Location;
 					int oldFileSize = (end - start);
+					// todo: does this fix the assumption?
+					if (start > end)
+					{
+						oldFileSize = start - end;
+					}
+
+					BuildLogPub.AddLine(String.Format("old location {0:X} ({1:X})",
+						CurrentProject.ProjectFileTable.Entries[i].Location,
+						CurrentProject.ProjectFileTable.Entries[i].Location + CurrentProject.ProjectFileTable.FirstFile
+					));
+					BuildLogPub.AddLine(String.Format("new location {0:X} ({1:X})",
+						buildFileTable.Entries[i].Location,
+						buildFileTable.Entries[i].Location + buildFileTable.FirstFile
+					));
 
 					// 1) use file extension to determine action
 					byte[] outData = null;
@@ -633,7 +650,7 @@ namespace VPWStudio
 					}
 
 					// 3) perform final transforms
-					if (fte.IsEncoded || fte.ReplaceEncoding == FileTableReplaceEncoding.ForceLzss)
+					if (fte.ReplaceEncoding != FileTableReplaceEncoding.ForceRaw)
 					{
 						if (!AlreadyCompressed)
 						{
@@ -661,18 +678,22 @@ namespace VPWStudio
 
 					// 4) fix up filetable refs
 					int difference = (finalOutData.Count - oldFileSize);
-					/*
-					foreach (KeyValuePair<int, FileTableEntry> bfe in buildFileTable.Entries)
-					{
-						if (bfe.Key > i)
-						{
-							bfe.Value.Location += difference;
-						}
-					}
-					*/
 					for (int j = i+1; j < buildFileTable.Entries.Count; j++)
 					{
 						buildFileTable.Entries[j].Location += difference;
+					}
+
+					if (difference > 0)
+					{
+						BuildLogPub.AddLine(String.Format("old file size {0} < new file size {1}", oldFileSize, finalOutData.Count));
+					}
+					else if (difference < 0)
+					{
+						BuildLogPub.AddLine(String.Format("old file size {0} > new file size {1}", oldFileSize, finalOutData.Count));
+					}
+					else
+					{
+						BuildLogPub.AddLine(String.Format("old file size {0} = new file size {1}", oldFileSize, finalOutData.Count));
 					}
 
 					// 5) motherfucking offset the data
@@ -690,6 +711,9 @@ namespace VPWStudio
 
 			//outRomData
 
+			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location));
+			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference));
+
 			// rewrite filetable
 			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
 			outRomData.InsertRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), finalTableMS.ToArray());
@@ -697,6 +721,11 @@ namespace VPWStudio
 			finalTableBW.Close();
 
 			// update code offsets
+			// xxx: hardcoded for vpw2
+
+			// xxx2: very inefficient method that I wish I could fix
+			// probably inline this, and then later, switch to a not terrible method
+
 			// - filetable load
 			outRomData = FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
 
