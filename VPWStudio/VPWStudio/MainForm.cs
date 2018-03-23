@@ -1627,7 +1627,6 @@ namespace VPWStudio
 					{
 						// assume ci8
 						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format8bppIndexed);
-
 					}
 					test.FromBitmap(converted);
 
@@ -1659,5 +1658,47 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		private void pngToCi4ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to CI4";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == PixelFormat.Format4bppIndexed)
+				{
+					Ci4Texture test = new Ci4Texture();
+					test.FromBitmap(b);
+					FileStream fs = new FileStream(String.Format("{0}.ci4tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+			}
+		}
+
+		private void pngToCi8ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to CI8";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
+				{
+					Ci8Texture test = new Ci8Texture();
+					test.FromBitmap(b);
+					FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+			}
+		}
 	}
 }
