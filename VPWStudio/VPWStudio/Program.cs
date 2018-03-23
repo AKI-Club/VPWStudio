@@ -539,6 +539,7 @@ namespace VPWStudio
 			}
 
 			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName));
+			BuildLogPub.AddLine();
 			#endregion
 
 			#region Product/Game Code
@@ -580,7 +581,9 @@ namespace VPWStudio
 						continue;
 					}
 
-					BuildLogPub.AddLine(String.Format("[File {0:X4}] {1}", i, replaceFilePath));
+					BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath));
+					BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}",
+						fte.FileType, fte.IsEncoded, fte.ReplaceEncoding));
 
 					// get the start and end points of this entry
 					// xxx: some files in WWF No Mercy's filetable break this assumption
@@ -667,6 +670,7 @@ namespace VPWStudio
 							inFileBR.Close();
 							outData = lzssMS.ToArray();
 							fte.IsEncoded = true;
+							lzssBW.Close();
 						}
 					}
 
@@ -697,11 +701,15 @@ namespace VPWStudio
 						BuildLogPub.AddLine(String.Format("old file size {0} = new file size {1}", oldFileSize, finalOutData.Count));
 					}
 
+					// todo: this part is where zoinkity would rebuild the filetable in ROM.
+
 					// 5) motherfucking offset the data
 					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
 					outRomData.InsertRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), finalOutData);
 
 					totalDifference += difference;
+
+					BuildLogPub.AddLine();
 				}
 			}
 
