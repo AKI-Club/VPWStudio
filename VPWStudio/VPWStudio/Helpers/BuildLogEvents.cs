@@ -41,6 +41,14 @@ namespace VPWStudio
 		public event EventHandler<BuildLogEventArgs> RaiseBuildLogEvent;
 
 		/// <summary>
+		/// Raise a BuildLogEvent with a newline.
+		/// </summary>
+		public void AddLine()
+		{
+			OnRaiseBuildLogEvent(new BuildLogEventArgs(Environment.NewLine, false));
+		}
+
+		/// <summary>
 		/// Raise a BuildLogEvent with the specified message.
 		/// </summary>
 		/// <param name="s">Message to add to the log.</param>
