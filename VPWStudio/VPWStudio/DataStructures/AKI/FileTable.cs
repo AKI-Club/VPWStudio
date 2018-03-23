@@ -185,7 +185,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Location of this file (relative to the beginning of the files).
 		/// </summary>
-		public UInt32 Location;
+		public Int32 Location;
 
 		#region Program-Specific
 		/// <summary>
@@ -238,7 +238,7 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="_loc">Location (do not add 1 for encoded files)</param>
 		/// <param name="_enc">Is this file (LZSS) encoded?</param>
-		public FileTableEntry(UInt16 _id, UInt32 _loc, bool _enc)
+		public FileTableEntry(UInt16 _id, Int32 _loc, bool _enc)
 		{
 			FileID = _id;
 			Location = _loc;
@@ -255,7 +255,7 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="_loc"></param>
 		/// <param name="_enc"></param>
-		public FileTableEntry(UInt16 _id, UInt32 _loc, bool _enc, string _comment)
+		public FileTableEntry(UInt16 _id, Int32 _loc, bool _enc, string _comment)
 		{
 			FileID = _id;
 			Location = _loc;
@@ -314,7 +314,7 @@ namespace VPWStudio
 			{
 				Array.Reverse(loc);
 			}
-			Location = (BitConverter.ToUInt32(loc, 0) & 0xFFFFFFFE);
+			Location = (int)(BitConverter.ToInt32(loc, 0) & 0xFFFFFFFE);
 			IsEncoded = (BitConverter.ToUInt32(loc, 0) & 1) != 0;
 			ReplaceEncoding = (this.IsEncoded) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.ForceRaw;
 		}
@@ -325,7 +325,7 @@ namespace VPWStudio
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteEntry(BinaryWriter bw)
 		{
-			UInt32 finalLoc = Location;
+			Int32 finalLoc = Location;
 			if (IsEncoded)
 			{
 				finalLoc |= 1;
@@ -355,7 +355,7 @@ namespace VPWStudio
 			if (xr.HasAttributes)
 			{
 				FileID = UInt16.Parse(xr.GetAttribute("id"), NumberStyles.HexNumber);
-				Location = UInt32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
+				Location = Int32.Parse(xr.GetAttribute("loc"), NumberStyles.HexNumber);
 				FileType = (FileTypes)Enum.Parse(typeof(FileTypes), xr.GetAttribute("type"));
 				IsEncoded = bool.Parse(xr.GetAttribute("lzss"));
 			}
@@ -620,12 +620,12 @@ namespace VPWStudio
 		/// <returns></returns>
 		/// Note: This calculates the size based on the filetable
 		/// entries, not the files themselves.
-		public uint GetEntrySize(int id)
+		public int GetEntrySize(int id)
 		{
 			if (id == Entries.Count)
 			{
 				// last entry needs different calculation
-				return (Location - Entries[id].Location) - FirstFile;
+				return (int)((Location - Entries[id].Location) - FirstFile);
 			}
 			else
 			{
@@ -648,9 +648,9 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="id">File ID to get location for.</param>
 		/// <returns>ROM location of the specified file ID.</returns>
-		public uint GetRomLocation(int id)
+		public int GetRomLocation(int id)
 		{
-			return Entries[id].Location + FirstFile;
+			return (int)(Entries[id].Location + FirstFile);
 		}
 		#endregion
 
@@ -663,8 +663,8 @@ namespace VPWStudio
 		/// <param name="forceRaw">Force raw export.</param>
 		public void ExtractFile(BinaryReader _in, BinaryWriter _out, int id, bool forceRaw = false)
 		{
-			uint loc = GetRomLocation(id);
-			uint size = GetEntrySize(id);
+			int loc = GetRomLocation(id);
+			int size = GetEntrySize(id);
 
 			_in.BaseStream.Seek(loc, SeekOrigin.Begin);
 			byte[] data = _in.ReadBytes((int)size);
@@ -693,6 +693,8 @@ namespace VPWStudio
 		}
 
 		#region FileTable replacement
+		// todo: this stuff doesn't belong here...
+
 		/// <summary>
 		/// Return code for file replacement routine.
 		/// </summary>
@@ -1215,11 +1217,11 @@ namespace VPWStudio
 			{
 				if (rd.Difference < 0)
 				{
-					Entries[i].Location = (UInt32)(Entries[i].Location - Math.Abs(rd.Difference));
+					Entries[i].Location = (Int32)(Entries[i].Location - Math.Abs(rd.Difference));
 				}
 				else
 				{
-					Entries[i].Location = (UInt32)(Entries[i].Location + rd.Difference);
+					Entries[i].Location = (Int32)(Entries[i].Location + rd.Difference);
 				}
 			}
 
