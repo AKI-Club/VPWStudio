@@ -78,14 +78,14 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			// header
-			bw.Write(((byte)Width-1));
-			bw.Write(((byte)Height-1));
+			bw.Write((byte)(Width-1));
+			bw.Write((byte)(Height-1));
 			bw.Write(Unknown);
 
 			// image data
 			for (int i = 0; i < Data.Length; i++)
 			{
-				bw.Write((byte)Data[i]);
+				bw.Write(Data[i]);
 			}
 		}
 		#endregion

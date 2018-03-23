@@ -106,8 +106,8 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			// header
-			bw.Write(((byte)Width - 1));
-			bw.Write(((byte)Height - 1));
+			bw.Write((byte)(Width - 1));
+			bw.Write((byte)(Height - 1));
 			bw.Write(Unknown);
 
 			// image data
