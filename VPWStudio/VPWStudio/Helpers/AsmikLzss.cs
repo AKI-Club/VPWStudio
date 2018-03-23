@@ -155,7 +155,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Shared match data.
 		/// </summary>
-		private static LzssMatchData MatchData;
+		private static LzssMatchData MatchData = new LzssMatchData();
 		#endregion
 
 		/// <summary>
@@ -427,6 +427,7 @@ namespace VPWStudio
 			{
 				dad[i] = NIL_VALUE;
 			}
+			BufferIndex = BUFFER_SIZE - MATCH_LIMIT;
 
 			UInt16 mask = 0xFF00;
 			List<byte> codebuf = new List<byte>();
@@ -543,12 +544,6 @@ namespace VPWStudio
 				mask &= 0xFF;
 				outData.Write((byte)(mask >> l));
 				outData.Write(codebuf.ToArray());
-			}
-
-			// handle alignment (todo: this belongs elsewhere)
-			if (outData.BaseStream.Position % 2 != 0)
-			{
-				outData.Write((byte)0);
 			}
 		}
 		#endregion
