@@ -567,7 +567,7 @@ namespace VPWStudio
 			{
 				FileTableEntry fte = buildFileTable.Entries[i];
 				// 0) check if a replacement file is set
-				if (!fte.ReplaceFilePath.Equals(String.Empty))
+				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 				{
 					// determine if this is relative or absolute
 					string replaceFilePath = fte.ReplaceFilePath;
@@ -672,8 +672,8 @@ namespace VPWStudio
 							lzssBW.Flush();
 							inFileBR.Close();
 							outData = lzssMS.ToArray();
-							fte.IsEncoded = true;
 							lzssBW.Close();
+							fte.IsEncoded = true;
 						}
 					}
 
