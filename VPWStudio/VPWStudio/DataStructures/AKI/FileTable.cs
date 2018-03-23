@@ -701,7 +701,7 @@ namespace VPWStudio
 		public void Read(BinaryReader br, int size)
 		{
 			// number of entries = size >> 2;
-			for (int i = 1; i < size >> 2; i++)
+			for (int i = 1; i <= size >> 2; i++)
 			{
 				FileTableEntry fte = new FileTableEntry(br);
 				fte.FileID = (UInt16)i;
@@ -715,7 +715,7 @@ namespace VPWStudio
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void Write(BinaryWriter bw)
 		{
-			for (int i = 1; i < Entries.Count; i++)
+			for (int i = 1; i <= Entries.Count; i++)
 			{
 				Entries[i].WriteEntry(bw);
 			}
