@@ -110,154 +110,8 @@ namespace VPWStudio
 		#endregion
 
 		#region ROM Building
-		// this routine should only be called if the file extension is not "lzss" or the intended extension.
-		// todo: running this for FileTypes.Binary is dumb
-		public static byte[] ConvertData(FileTableEntry fte)
-		{
-			// Get replacement file information
-			string ReplaceFileExtension = Path.GetExtension(fte.ReplaceFilePath);
-			string ReplaceFilePath = fte.ReplaceFilePath;
-			if (!Path.IsPathRooted(fte.ReplaceFilePath))
-			{
-				ReplaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
-			}
-
-			using (MemoryStream ms = new MemoryStream())
-			{
-				using (BinaryWriter bw = new BinaryWriter(ms))
-				{
-					// perform action based on filetype
-					switch (fte.FileType)
-					{
-						case FileTypes.AkiTexture:
-							{
-								if (ReplaceFileExtension == "png")
-								{
-									AkiTexture at = new AkiTexture();
-									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-									at.FromBitmap(bm);
-									at.WriteData(bw);
-								}
-							}
-							break;
-
-						case FileTypes.Ci4Texture:
-							{
-								if (ReplaceFileExtension == "png")
-								{
-									Ci4Texture ci4tex = new Ci4Texture();
-									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-									if (!ci4tex.FromBitmap(bm))
-									{
-										return null;
-									}
-									ci4tex.WriteData(bw);
-								}
-							}
-							break;
-
-						case FileTypes.Ci8Texture:
-							{
-								if (ReplaceFileExtension == "png")
-								{
-									Ci8Texture ci8tex = new Ci8Texture();
-									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-									if (!ci8tex.FromBitmap(bm))
-									{
-										return null;
-									}
-									ci8tex.WriteData(bw);
-								}
-							}
-							break;
-					}
-
-					// return data
-					int outFileLen = (int)ms.Position;
-					ms.Seek(0, SeekOrigin.Begin);
-					byte[] outData = new byte[outFileLen];
-					ms.Read(outData, 0, outFileLen);
-					return outData;
-				}
-			}
-		}
-
-		/*
-		 * addr2hws(a1, a2)
-		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
-		 *     v = h + int.from_bytes(rom[a2:a2+2], byteorder='big')
-		 *     v += difference;
-		 *     h = (v>>16)
-		 *     if(v & 0x8000) h += 1
-		 *     l = v & 0xFFFF
-		 *     rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
-		 *     rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
-		 */
 		/// <summary>
-		/// My version of Zoinkity's addr2hws.
-		/// </summary>
-		/// <param name="romData">ROM data</param>
-		/// <param name="addr1">Address 1</param>
-		/// <param name="addr2">Address 2</param>
-		/// <param name="difference">Difference</param>
-		public static void FixAddresses(MemoryStream romStream, int addr1, int addr2, int difference)
-		{
-			using (BinaryReader br = new BinaryReader(romStream))
-			{
-				using (BinaryWriter bw = new BinaryWriter(romStream))
-				{
-					// read values
-					romStream.Seek(addr1, SeekOrigin.Begin);
-					byte[] high = br.ReadBytes(2);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(high);
-					}
-					int h = BitConverter.ToInt32(high, 0) << 16;
-
-					romStream.Seek(addr2, SeekOrigin.Begin);
-					byte[] low = br.ReadBytes(2);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(low);
-					}
-					int v = h + BitConverter.ToInt32(low, 0);
-
-					// add difference
-					v += difference;
-					h = (v >> 16);
-
-					// perform correction
-					if ((v & 0x8000) != 0)
-					{
-						h += 1;
-					}
-
-					// mask low
-					int l = (v & 0xFFFF);
-
-					// write new values
-					romStream.Seek(addr1, SeekOrigin.Begin);
-					byte[] newH = BitConverter.GetBytes(h);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(newH);
-					}
-					bw.Write(newH);
-
-					romStream.Seek(addr2, SeekOrigin.Begin);
-					byte[] newL = BitConverter.GetBytes(l);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(newL);
-					}
-					bw.Write(newL);
-				}
-			}
-		}
-
-		/// <summary>
-		/// 
+		/// OLD SHIT
 		/// </summary>
 		public static void BuildRom()
 		{
@@ -346,6 +200,483 @@ namespace VPWStudio
 			#endregion
 		}
 
+		#endregion
+
+		#region CLEAR MY HEAD - new offsetter functionality section
+		// Routines needed:
+		// - overall build rom process
+		// * convert file
+		// - handle offsetting
+
+		/*
+		 * addr2hws(a1, a2)
+		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
+		 *     v = h + int.from_bytes(rom[a2:a2+2], byteorder='big')
+		 *     v += difference;
+		 *     h = (v>>16)
+		 *     if(v & 0x8000) h += 1
+		 *     l = v & 0xFFFF
+		 *     rom[a1:a1+2] = h.to_bytes(2, byteorder='big')
+		 *     rom[a2:a2+2] = l.to_bytes(2, byteorder='big')
+		 */
+		/// <summary>
+		/// My version of Zoinkity's addr2hws.
+		/// </summary>
+		/// <param name="romData">ROM data</param>
+		/// <param name="addr1">Address 1</param>
+		/// <param name="addr2">Address 2</param>
+		/// <param name="difference">Difference</param>
+		public static List<byte> FixAddresses(List<byte> romData, int addr1, int addr2, int difference)
+		{
+			MemoryStream romStream = new MemoryStream(romData.ToArray());
+			using (BinaryReader br = new BinaryReader(romStream))
+			{
+				using (BinaryWriter bw = new BinaryWriter(romStream))
+				{
+					// read values
+					romStream.Seek(addr1, SeekOrigin.Begin);
+					byte[] high = br.ReadBytes(2);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(high);
+					}
+					int h = BitConverter.ToInt16(high, 0) << 16;
+
+					romStream.Seek(addr2, SeekOrigin.Begin);
+					byte[] low = br.ReadBytes(2);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(low);
+					}
+					int v = h + BitConverter.ToInt16(low, 0);
+
+					// add difference
+					v += difference;
+					h = (v >> 16);
+
+					// perform correction
+					if ((v & 0x8000) != 0)
+					{
+						h += 1;
+					}
+
+					// mask low
+					int l = (v & 0xFFFF);
+
+					// write new values
+					romStream.Seek(addr1, SeekOrigin.Begin);
+					byte[] newH = BitConverter.GetBytes((Int16)h);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(newH);
+					}
+					bw.Write(newH);
+
+					romStream.Seek(addr2, SeekOrigin.Begin);
+					byte[] newL = BitConverter.GetBytes((Int16)l);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(newL);
+					}
+					bw.Write(newL);
+
+					return new List<byte>(romStream.ToArray());
+				}
+			}
+		}
+
+		/// <summary>
+		/// (formerly ConvertData)
+		/// </summary>
+		/// <param name="fileID"></param>
+		/// <returns></returns>
+		/// this routine should only be called if the file extension is not "lzss" or the intended extension.
+		/// todo: running this for FileTypes.Binary is dumb
+		public static byte[] MotherfuckingConversion(int fileID)
+		{
+			// Get replacement file information
+			FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[fileID];
+			string ReplaceFileExtension = Path.GetExtension(fte.ReplaceFilePath);
+			string ReplaceFilePath = fte.ReplaceFilePath;
+			if (!Path.IsPathRooted(fte.ReplaceFilePath))
+			{
+				ReplaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+			}
+
+			using (MemoryStream ms = new MemoryStream())
+			{
+				using (BinaryWriter bw = new BinaryWriter(ms))
+				{
+					// perform action based on filetype
+					switch (fte.FileType)
+					{
+						#region AkiTexture conversion
+						case FileTypes.AkiTexture:
+							{
+								if (ReplaceFileExtension == "png")
+								{
+									AkiTexture at = new AkiTexture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									at.FromBitmap(bm);
+									at.WriteData(bw);
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+							break;
+						#endregion
+
+						#region Ci4Texture conversion
+						case FileTypes.Ci4Texture:
+							{
+								if (ReplaceFileExtension == "png")
+								{
+									Ci4Texture ci4tex = new Ci4Texture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									if (!ci4tex.FromBitmap(bm))
+									{
+										return null;
+									}
+									ci4tex.WriteData(bw);
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+							break;
+						#endregion
+
+						#region Ci8Texture conversion
+						case FileTypes.Ci8Texture:
+							{
+								if (ReplaceFileExtension == "png")
+								{
+									Ci8Texture ci8tex = new Ci8Texture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									if (!ci8tex.FromBitmap(bm))
+									{
+										return null;
+									}
+									ci8tex.WriteData(bw);
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+							break;
+						#endregion
+
+						// todo: other filetypes.
+						case FileTypes.AkiText:
+							{
+								/*
+								if (ReplaceFileExtension == "csv")
+								{
+									// not implemented error
+									return null;
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+								*/
+								return null;
+							}
+							//break;
+					}
+
+					// return data
+					int outFileLen = (int)ms.Position;
+					ms.Seek(0, SeekOrigin.Begin);
+					byte[] outData = new byte[outFileLen];
+					ms.Read(outData, 0, outFileLen);
+					return outData;
+				}
+			}
+		}
+
+		public static void MotherfuckingBuildRom()
+		{
+			// the overall rom building process.
+
+			// create output ROM using input ROM data as base.
+			CurrentOutputROM = new Z64Rom();
+			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
+			List<byte> outRomData = new List<byte>();
+			outRomData.AddRange(CurrentInputROM.Data);
+
+			#region Internal Game Name
+			string intName = CurrentProject.Settings.OutputRomInternalName;
+			if (intName.Length > 20)
+			{
+				//  truncate
+				intName = intName.Substring(0, 20);
+			}
+			else if (intName.Length < 20)
+			{
+				// pad
+				intName = intName.PadRight(20);
+			}
+
+			byte[] nameBytes = Encoding.GetEncoding("Shift-JIS").GetBytes(intName);
+			for (int i = 0; i < 20; i++)
+			{
+				outRomData[0x20 + i] = nameBytes[i];
+			}
+
+			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName));
+			#endregion
+
+			#region Product/Game Code
+			// - game code
+			string intCode = CurrentProject.Settings.OutputRomGameCode;
+			if (intCode.Length != 4)
+			{
+				// error
+			}
+			if (!intCode.StartsWith("N"))
+			{
+				// not error, but fix
+			}
+			#endregion
+
+			// filetable shit
+			// 0) make a copy
+			FileTable buildFileTable = new FileTable();
+			buildFileTable.DeepCopy(CurrentProject.ProjectFileTable);
+
+			int totalDifference = 0;
+
+			for (int i = 1; i < buildFileTable.Entries.Count; i++)
+			{
+				FileTableEntry fte = buildFileTable.Entries[i];
+				// 0) check if a replacement file is set
+				if (fte.ReplaceFilePath != String.Empty)
+				{
+					// determine if this is relative or absolute
+					string replaceFilePath = buildFileTable.Entries[i].ReplaceFilePath;
+					if (!Path.IsPathRooted(replaceFilePath))
+					{
+						replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+					}
+
+					// ensure the file exists, otherwise we can't do anything.
+					if (!File.Exists(replaceFilePath))
+					{
+						continue;
+					}
+
+					// get the start and end points of the original file
+					// xxx: WWF No Mercy filetable entries at the end break this assumption.
+					int start = CurrentProject.ProjectFileTable.Entries[i].Location;
+					int end = CurrentProject.ProjectFileTable.Entries[i+1].Location;
+					int oldFileSize = (end - start);
+
+					// 1) use file extension to determine action
+					byte[] outData = null;
+					bool AlreadyCompressed = Path.GetExtension(replaceFilePath) == ".lzss";
+					if (!AlreadyCompressed)
+					{
+						if (Path.GetExtension(replaceFilePath) == FileTypeInfo.DefaultFileTypeExtensions[fte.FileType])
+						{
+							// matched type, read raw data
+							using (FileStream fs = new FileStream(replaceFilePath, FileMode.Open))
+							{
+								using (BinaryReader br = new BinaryReader(fs))
+								{
+									fs.Seek(0, SeekOrigin.End);
+									int fileLen = (int)fs.Position;
+									fs.Seek(0, SeekOrigin.Begin);
+									outData = br.ReadBytes(fileLen);
+								}
+							}
+						}
+						else
+						{
+							// try conversion
+							outData = MotherfuckingConversion(i);
+						}
+					}
+					else
+					{
+						// read LZSS'd data
+						using (FileStream fs = new FileStream(replaceFilePath, FileMode.Open))
+						{
+							using (BinaryReader br = new BinaryReader(fs))
+							{
+								fs.Seek(0, SeekOrigin.End);
+								int fileLen = (int)fs.Position;
+								fs.Seek(0, SeekOrigin.Begin);
+								outData = br.ReadBytes(fileLen);
+							}
+						}
+					}
+
+					// if we were unable to get output data, then there's no point in continuing.
+					if (outData == null)
+					{
+						continue;
+					}
+
+					// 3) perform final transforms
+					if (fte.IsEncoded || fte.ReplaceEncoding == FileTableReplaceEncoding.ForceLzss)
+					{
+						if (!AlreadyCompressed)
+						{
+							// LZSS it
+							MemoryStream inFileMS = new MemoryStream(outData);
+							BinaryReader inFileBR = new BinaryReader(inFileMS);
+
+							MemoryStream lzssMS = new MemoryStream();
+							BinaryWriter lzssBW = new BinaryWriter(lzssMS);
+
+							AsmikLzss.Encode(inFileBR, lzssBW);
+							inFileBR.Close();
+							outData = lzssMS.ToArray();
+						}
+					}
+
+					// create final output data and add 0x00 pad byte if needed
+					List<byte> finalOutData = new List<byte>(outData);
+					if ((finalOutData.Count & 1) != 0)
+					{
+						finalOutData.Add(0);
+					}
+
+					// 4) fix up filetable refs
+					int difference = (finalOutData.Count - oldFileSize);
+					/*
+					foreach (KeyValuePair<int, FileTableEntry> bfe in buildFileTable.Entries)
+					{
+						if (bfe.Key > i)
+						{
+							bfe.Value.Location += difference;
+						}
+					}
+					*/
+					for (int j = i+1; j < buildFileTable.Entries.Count; j++)
+					{
+						buildFileTable.Entries[j].Location += difference;
+					}
+
+					// 5) motherfucking offset the data
+					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
+					outRomData.InsertRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), finalOutData);
+
+					totalDifference += difference;
+				}
+			}
+
+			// write new filetable data
+			MemoryStream finalTableMS = new MemoryStream();
+			BinaryWriter finalTableBW = new BinaryWriter(finalTableMS);
+			buildFileTable.Write(finalTableBW);
+
+			//outRomData
+
+			// remove original filetable from ROM
+			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
+			// insert new filetable
+			outRomData.InsertRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), finalTableMS.ToArray());
+
+			finalTableBW.Close();
+
+			// update code offsets
+			// - filetable load
+			outRomData = FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
+
+			// - audio stuff
+			outRomData = FixAddresses(outRomData, 0x432A, 0x432E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x4336, 0x433A, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x4366, 0x436A, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x436E, 0x4372, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x439A, 0x439E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x4402, 0x4406, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x440A, 0x440E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x447A, 0x447E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x4512, 0x451A, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17312, 0x17316, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17772, 0x17776, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference);
+			outRomData = FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference);
+
+			// now put it all together in one big ROM.
+			#region Create Output ROM
+			// determine if the new output ROM is too big to run on console
+			/*
+			if (outRomData.Count >= 0x4000000)
+			{
+				MessageBox.Show(
+					"This ROM exceeds 512Mbits and *will not* run on console.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Warning
+				);
+			}
+			*/
+
+			// write outRomData to Program.CurrentOutputROM.Data
+			CurrentOutputROM.Data = outRomData.ToArray();
+
+			// fix checksums
+			CurrentOutputROM.FixChecksums();
+
+			// determine output ROM path (may be relative to project file)
+			string outRomPath = CurrentProject.Settings.OutputRomPath;
+			string prevWorkDir = Environment.CurrentDirectory;
+			bool resetWorkDir = false;
+			if (!Path.IsPathRooted(outRomPath))
+			{
+				Environment.CurrentDirectory = Path.GetDirectoryName(CurProjectPath);
+				resetWorkDir = true;
+			}
+
+			// write ROM
+			FileStream outRomFS = new FileStream(outRomPath, FileMode.Create);
+			BinaryWriter outRomBW = new BinaryWriter(outRomFS);
+			outRomBW.Write(CurrentOutputROM.Data);
+			outRomBW.Flush();
+			outRomBW.Dispose();
+
+			if (resetWorkDir)
+			{
+				Environment.CurrentDirectory = prevWorkDir;
+			}
+			#endregion
+		}
 		#endregion
 	}
 }

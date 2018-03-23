@@ -1048,10 +1048,14 @@ namespace VPWStudio
 
 			// perform "build" process
 
-			MessageBox.Show("I'm disabling this shit again because I am sick of the broken version");
-			return;
+			MessageBox.Show("PROCEED WITH CAUTION.");
+			Program.MotherfuckingBuildRom();
 
-			MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
+			//MessageBox.Show("I'm disabling this shit again because I am sick of the broken version");
+			//return;
+
+			//MessageBox.Show("This *KIND OF* works, but I'm not fully confident about it at the moment.\n\nexpect bugs and errors.");
+			/*
 
 			// set up logging
 			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
@@ -1386,6 +1390,7 @@ namespace VPWStudio
 				Environment.CurrentDirectory = prevWorkDir;
 			}
 			#endregion
+			*/
 		}
 
 		/// <summary>
