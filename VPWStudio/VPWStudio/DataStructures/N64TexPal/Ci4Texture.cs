@@ -41,6 +41,8 @@ namespace VPWStudio
 		{
 			Width = 0;
 			Height = 0;
+			// xxx: this can change between textures. fuuuuuuuck.
+			// last three observed { 01,07,05 } ???, { 00,06,04 } spirit meter danger
 			Unknown = new byte[6] { 0x00, 0x10, 0x00, 0x01, 0x07, 0x05 };
 			Data = null;
 		}
