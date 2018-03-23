@@ -51,7 +51,7 @@ namespace VPWStudio
 		{
 			if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(fte.FileType))
 			{
-				return String.Format("{0:X4}.{1}", fte.FileID, FileTypeInfo.DefaultFileTypeExtensions[fte.FileType]);
+				return String.Format("{0:X4}{1}", fte.FileID, FileTypeInfo.DefaultFileTypeExtensions[fte.FileType]);
 			}
 			else
 			{

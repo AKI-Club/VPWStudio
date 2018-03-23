@@ -349,12 +349,12 @@ namespace VPWStudio
 				sfd.Filter = SharedStrings.FileFilter_None;
 
 				// generate filename
-				string fileExt = "bin";
+				string fileExt = ".bin";
 				if (FileTypeInfo.DefaultFileTypeExtensions.ContainsKey(Program.CurrentProject.ProjectFileTable.Entries[key].FileType))
 				{
 					fileExt = FileTypeInfo.DefaultFileTypeExtensions[Program.CurrentProject.ProjectFileTable.Entries[key].FileType];
 				}
-				sfd.FileName = String.Format("{0:X4}.{1}", key, fileExt);
+				sfd.FileName = String.Format("{0:X4}{1}", key, fileExt);
 
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
