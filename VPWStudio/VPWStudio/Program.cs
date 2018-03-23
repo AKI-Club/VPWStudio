@@ -313,7 +313,7 @@ namespace VPWStudio
 						#region AkiTexture conversion
 						case FileTypes.AkiTexture:
 							{
-								if (ReplaceFileExtension == "png")
+								if (ReplaceFileExtension == ".png")
 								{
 									AkiTexture at = new AkiTexture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
@@ -332,7 +332,7 @@ namespace VPWStudio
 						#region Ci4Texture conversion
 						case FileTypes.Ci4Texture:
 							{
-								if (ReplaceFileExtension == "png")
+								if (ReplaceFileExtension == ".png")
 								{
 									Ci4Texture ci4tex = new Ci4Texture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
@@ -354,7 +354,7 @@ namespace VPWStudio
 						#region Ci8Texture conversion
 						case FileTypes.Ci8Texture:
 							{
-								if (ReplaceFileExtension == "png")
+								if (ReplaceFileExtension == ".png")
 								{
 									Ci8Texture ci8tex = new Ci8Texture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
@@ -377,7 +377,7 @@ namespace VPWStudio
 						case FileTypes.AkiText:
 							{
 								/*
-								if (ReplaceFileExtension == "csv")
+								if (ReplaceFileExtension == ".csv")
 								{
 									// not implemented error
 									return null;
