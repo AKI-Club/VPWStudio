@@ -41,7 +41,7 @@ namespace VPWStudio
 		{
 			Width = 0;
 			Height = 0;
-			Unknown = null;
+			Unknown = new byte[6]{ 0x01, 0x00, 0x01, 0x01, 0x05, 0x06 };
 			Data = null;
 		}
 		#endregion
