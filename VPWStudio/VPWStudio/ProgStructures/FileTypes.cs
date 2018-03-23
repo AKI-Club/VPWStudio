@@ -48,20 +48,20 @@ namespace VPWStudio
 		/// </summary>
 		public static Dictionary<FileTypes, string> DefaultFileTypeExtensions = new Dictionary<FileTypes, string>()
 		{
-			{ FileTypes.Binary, "bin" },
-			{ FileTypes.AkiArchive, "akiarc" }, // formerly "packed"
-			{ FileTypes.AkiModel, "model" },
-			{ FileTypes.AkiTexture, "tex" },
-			{ FileTypes.AkiText, "akitext" },
-			{ FileTypes.AkiLargeFont, "largefont" },
-			{ FileTypes.AkiSmallFont, "smallfont" },
-			{ FileTypes.AkiFontChars, "txt" },
-			{ FileTypes.Ci4Palette, "ci4pal" },
-			{ FileTypes.Ci8Palette, "ci8pal" },
-			{ FileTypes.Ci4Texture, "ci4tex" },
-			{ FileTypes.Ci8Texture, "ci8tex" },
-			{ FileTypes.I4Texture, "i4tex" },
-			{ FileTypes.DoubleTex, "tex" }, // note: exports as two files
+			{ FileTypes.Binary, ".bin" },
+			{ FileTypes.AkiArchive, ".akiarc" }, // formerly "packed"
+			{ FileTypes.AkiModel, ".model" },
+			{ FileTypes.AkiTexture, ".tex" },
+			{ FileTypes.AkiText, ".akitext" },
+			{ FileTypes.AkiLargeFont, ".largefont" },
+			{ FileTypes.AkiSmallFont, ".smallfont" },
+			{ FileTypes.AkiFontChars, ".txt" },
+			{ FileTypes.Ci4Palette, ".ci4pal" },
+			{ FileTypes.Ci8Palette, ".ci8pal" },
+			{ FileTypes.Ci4Texture, ".ci4tex" },
+			{ FileTypes.Ci8Texture, ".ci8tex" },
+			{ FileTypes.I4Texture, ".i4tex" },
+			{ FileTypes.DoubleTex, ".tex" }, // note: exports as two files
 		};
 
 		/// <summary>
