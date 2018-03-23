@@ -652,6 +652,7 @@ namespace VPWStudio
 					// 3) perform final transforms
 					if (fte.ReplaceEncoding != FileTableReplaceEncoding.ForceRaw)
 					{
+						// xxx: this condition is not final but it's better than it was before
 						if (!AlreadyCompressed)
 						{
 							// LZSS it
