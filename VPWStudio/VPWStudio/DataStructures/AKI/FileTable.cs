@@ -705,7 +705,7 @@ namespace VPWStudio
 			{
 				FileTableEntry fte = new FileTableEntry(br);
 				fte.FileID = (UInt16)i;
-				this.Entries.Add(i, fte);
+				Entries.Add(i, fte);
 			}
 		}
 
@@ -715,9 +715,9 @@ namespace VPWStudio
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void Write(BinaryWriter bw)
 		{
-			for (int i = 1; i < this.Entries.Count; i++)
+			for (int i = 1; i < Entries.Count; i++)
 			{
-				this.Entries[i].WriteEntry(bw);
+				Entries[i].WriteEntry(bw);
 			}
 		}
 		#endregion
