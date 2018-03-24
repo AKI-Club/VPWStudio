@@ -335,8 +335,6 @@ namespace VPWStudio
 							break;
 						#endregion
 
-						// todo: other filetypes.
-
 						#region Ci4Palette Conversion
 						case FileTypes.Ci4Palette:
 							{
@@ -390,6 +388,8 @@ namespace VPWStudio
 							}
 							break;
 						#endregion
+
+						// todo: other filetypes.
 
 						#region AkiText Conversion
 						case FileTypes.AkiText:
