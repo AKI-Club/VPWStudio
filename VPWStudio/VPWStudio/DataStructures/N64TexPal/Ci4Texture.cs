@@ -257,6 +257,9 @@ namespace VPWStudio
 			}
 
 			// one pixel = two bytes
+			// todo: this is wrong and needs to be fixed.
+			// I don't know *how* you managed to get it working for TEX files.
+
 			Data = new byte[(Width / 2) * Height];
 			List<byte> pixels = new List<byte>();
 			byte build = 0;
@@ -264,13 +267,14 @@ namespace VPWStudio
 			{
 				for (int x = 0; x < Width; x++)
 				{
+					Color thisCol = inBmp.GetPixel(x, y);
 					if (x % 2 == 0)
 					{
-						build = (byte)((BitmapColors.IndexOfValue(inBmp.GetPixel(x, y)) & 0x0F) << 4);
+						build = (byte)((BitmapColors.IndexOfValue(thisCol) & 0x0F) << 4);
 					}
 					else
 					{
-						build |= (byte)(BitmapColors.IndexOfValue(inBmp.GetPixel(x, y)) & 0x0F);
+						build |= (byte)(BitmapColors.IndexOfValue(thisCol) & 0x0F);
 						pixels.Add(build);
 					}
 				}
