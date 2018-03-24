@@ -338,6 +338,30 @@ namespace VPWStudio
 						// todo: other filetypes.
 
 						#region Ci4Palette Conversion
+						case FileTypes.Ci4Palette:
+							{
+								if (ReplaceFileExtension == ".pal")
+								{
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											Ci4Palette ci4pal = new Ci4Palette();
+											if (!ci4pal.ImportJasc(sr))
+											{
+												return null;
+											}
+											ci4pal.WriteData(bw);
+										}
+									}
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+							break;
 						#endregion
 
 						#region Ci8Palette Conversion
