@@ -155,12 +155,7 @@ namespace VPWStudio
 			bw.Write(HeightBitLength);
 
 			// image data
-			for (int i = 0; i < Data.Length; i+=2)
-			{
-				byte outPixel = (byte)(Data[i+1] & 0x0F);
-				outPixel |= (byte)(Data[i] << 4);
-				bw.Write(outPixel);
-			}
+			bw.Write(Data);
 		}
 		#endregion
 
@@ -257,31 +252,25 @@ namespace VPWStudio
 			}
 
 			// one pixel = two bytes
-			// todo: this is wrong and needs to be fixed.
-			// I don't know *how* you managed to get it working for TEX files.
-
-			Data = new byte[(Width / 2) * Height];
-			List<byte> pixels = new List<byte>();
-			byte build = 0;
+			Data = new byte[(Width * Height) / 2];
 			for (int y = 0; y < Height; y++)
 			{
 				for (int x = 0; x < Width; x++)
 				{
 					Color thisCol = inBmp.GetPixel(x, y);
-					if (x % 2 == 0)
+					int pixIndex = (y * Width) + x;
+					int palIndex = BitmapColors.IndexOfValue(thisCol);
+
+					byte old = Data[pixIndex / 2];
+					if ((pixIndex % 2) > 0)
 					{
-						build = (byte)((BitmapColors.IndexOfValue(thisCol) & 0x0F) << 4);
+						Data[pixIndex / 2] = (byte)((old & 0xF0) | (byte)palIndex);
 					}
 					else
 					{
-						build |= (byte)(BitmapColors.IndexOfValue(thisCol) & 0x0F);
-						pixels.Add(build);
+						Data[pixIndex / 2] = (byte)((old & 0x0F) | ((byte)palIndex << 4));
 					}
 				}
-			}
-			for (int i = 0; i < pixels.Count; i++)
-			{
-				Data[i] = pixels[i];
 			}
 
 			return true;
