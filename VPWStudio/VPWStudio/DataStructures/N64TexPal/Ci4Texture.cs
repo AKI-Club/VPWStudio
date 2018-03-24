@@ -23,9 +23,29 @@ namespace VPWStudio
 		public int Height;
 
 		/// <summary>
-		/// Bytes with currently unknown purpose.
+		/// Number of Palette Entries.
 		/// </summary>
-		public byte[] Unknown;
+		public UInt16 NumPalEntries;
+
+		/// <summary>
+		/// Preferred palette number.
+		/// </summary>
+		public byte PreferredPalette;
+
+		/// <summary>
+		/// Number of palettes available.
+		/// </summary>
+		public byte NumPalettes;
+
+		/// <summary>
+		/// Bit length of Width value.
+		/// </summary>
+		public byte WidthBitLength;
+
+		/// <summary>
+		/// Bit length of Height value.
+		/// </summary>
+		public byte HeightBitLength;
 
 		/// <summary>
 		/// Image pixels
@@ -41,9 +61,11 @@ namespace VPWStudio
 		{
 			Width = 0;
 			Height = 0;
-			// xxx: this can change between textures. fuuuuuuuck.
-			// last three observed { 01,07,05 } ???, { 00,06,04 } spirit meter danger
-			Unknown = new byte[6] { 0x00, 0x10, 0x00, 0x01, 0x07, 0x05 };
+			NumPalEntries = 16;
+			PreferredPalette = 0;
+			NumPalettes = 0;
+			WidthBitLength = 0;
+			HeightBitLength = 0;
 			Data = null;
 		}
 		#endregion
@@ -58,8 +80,17 @@ namespace VPWStudio
 			Width = (br.ReadByte() + 1);
 			Height = (br.ReadByte() + 1);
 
-			// 6 bytes with unknown purpose; some of these might be format indicators?
-			Unknown = br.ReadBytes(6);
+			byte[] npe = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(npe);
+			}
+			NumPalEntries = BitConverter.ToUInt16(npe, 0);
+
+			PreferredPalette = br.ReadByte();
+			NumPalettes = br.ReadByte();
+			WidthBitLength = br.ReadByte();
+			HeightBitLength = br.ReadByte();
 
 			int numPixels = Width * Height;
 			Data = new byte[numPixels];
@@ -110,7 +141,18 @@ namespace VPWStudio
 			// header
 			bw.Write((byte)(Width - 1));
 			bw.Write((byte)(Height - 1));
-			bw.Write(Unknown);
+
+			byte[] npe = BitConverter.GetBytes(NumPalEntries);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(npe);
+			}
+			bw.Write(npe);
+
+			bw.Write(PreferredPalette);
+			bw.Write(NumPalettes);
+			bw.Write(WidthBitLength);
+			bw.Write(HeightBitLength);
 
 			// image data
 			for (int i = 0; i < Data.Length; i+=2)
@@ -185,10 +227,29 @@ namespace VPWStudio
 
 			Width = (UInt16)inBmp.Width;
 			Height = (UInt16)inBmp.Height;
+			{
+				int temp = Width - 1;
+				int l = 0;
+				do
+				{
+					l++;
+				} while ((temp >>= 1) != 0);
+				WidthBitLength = (byte)l;
+
+				temp = Height - 1;
+				l = 0;
+				do
+				{
+					l++;
+				} while ((temp >>= 1) != 0);
+				HeightBitLength = (byte)l;
+			}
+
 
 			// convert palette
 			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
-			UInt16[] Palette = new UInt16[16];
+			NumPalEntries = 16;
+			UInt16[] Palette = new UInt16[NumPalEntries];
 			for (int i = 0; i < inBmp.Palette.Entries.Length; i++)
 			{
 				BitmapColors.Add(i, inBmp.Palette.Entries[i]);
