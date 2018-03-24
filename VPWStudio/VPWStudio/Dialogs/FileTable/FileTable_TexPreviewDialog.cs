@@ -28,6 +28,11 @@ namespace VPWStudio
 		/// Current zoom level
 		/// </summary>
 		private int CurrentZoom = 1;
+
+		/// <summary>
+		/// File ID; only used for making a friendly filename on saving a PNG.
+		/// </summary>
+		private int FileID = 0;
 		#endregion
 
 		#region Constants
@@ -45,7 +50,8 @@ namespace VPWStudio
 		public FileTable_TexPreviewDialog(int fileID)
 		{
 			InitializeComponent();
-			this.Text = String.Format("Preview [0x{0:X4}]",fileID);
+			FileID = fileID;
+			this.Text = String.Format("Preview [0x{0:X4}]", FileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -59,13 +65,13 @@ namespace VPWStudio
 			BinaryReader outReader = new BinaryReader(outStream);
 			outStream.Seek(0, SeekOrigin.Begin);
 
-			this.CurrentTEX = new AkiTexture(outReader);
-			pbPreview.Width = this.CurrentTEX.Width;
-			pbPreview.Height = this.CurrentTEX.Height;
-			this.DefaultImageSize = new Size(this.CurrentTEX.Width, this.CurrentTEX.Height);
+			CurrentTEX = new AkiTexture(outReader);
+			pbPreview.Width = CurrentTEX.Width;
+			pbPreview.Height = CurrentTEX.Height;
+			DefaultImageSize = new Size(CurrentTEX.Width, CurrentTEX.Height);
 
-			this.CurrentBitmap = this.CurrentTEX.ToBitmap();
-			pbPreview.Image = this.CurrentBitmap;
+			CurrentBitmap = CurrentTEX.ToBitmap();
+			pbPreview.Image = CurrentBitmap;
 
 			outReader.Close();
 			outWriter.Close();
@@ -78,7 +84,7 @@ namespace VPWStudio
 		{
 			if (e.KeyCode == Keys.Escape)
 			{
-				this.Close();
+				Close();
 			}
 		}
 
@@ -90,9 +96,11 @@ namespace VPWStudio
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Title = "Save PNG";
 			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
+			// suggest a filename based on FileID
+			sfd.FileName = String.Format("{0:X4}.png", FileID);
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				this.CurrentBitmap.Save(sfd.FileName);
+				CurrentBitmap.Save(sfd.FileName);
 			}
 		}
 
@@ -118,24 +126,24 @@ namespace VPWStudio
 
 			if (e.Delta == 120)
 			{
-				if (this.CurrentZoom < MaxZoom)
+				if (CurrentZoom < MaxZoom)
 				{
-					this.CurrentZoom++;
+					CurrentZoom++;
 				}
 				else
 				{
-					this.CurrentZoom = MaxZoom;
+					CurrentZoom = MaxZoom;
 				}
 			}
 			else if (e.Delta == -120)
 			{
-				if (this.CurrentZoom > MinZoom)
+				if (CurrentZoom > MinZoom)
 				{
-					this.CurrentZoom--;
+					CurrentZoom--;
 				}
 				else
 				{
-					this.CurrentZoom = MinZoom;
+					CurrentZoom = MinZoom;
 				}
 			}
 			DrawImage();
@@ -143,7 +151,7 @@ namespace VPWStudio
 
 		private void DrawImage()
 		{
-			Bitmap zoomed = new Bitmap(this.DefaultImageSize.Width * this.CurrentZoom, this.DefaultImageSize.Height * this.CurrentZoom);
+			Bitmap zoomed = new Bitmap(DefaultImageSize.Width * CurrentZoom, DefaultImageSize.Height * CurrentZoom);
 
 			Graphics g = Graphics.FromImage(zoomed);
 			g.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -151,8 +159,8 @@ namespace VPWStudio
 
 			g.DrawImage(
 				CurrentBitmap,
-				new Rectangle(0, 0, this.DefaultImageSize.Width * this.CurrentZoom, this.DefaultImageSize.Height * this.CurrentZoom),
-				new Rectangle(0, 0, this.DefaultImageSize.Width, this.DefaultImageSize.Height),
+				new Rectangle(0, 0, DefaultImageSize.Width * CurrentZoom, DefaultImageSize.Height * CurrentZoom),
+				new Rectangle(0, 0, DefaultImageSize.Width, DefaultImageSize.Height),
 				GraphicsUnit.Pixel
 			);
 			g.Dispose();
