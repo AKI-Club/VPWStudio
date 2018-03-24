@@ -127,10 +127,7 @@ namespace VPWStudio
 			bw.Write(HeightBitLength);
 
 			// image data
-			for (int i = 0; i < Data.Length; i++)
-			{
-				bw.Write(Data[i]);
-			}
+			bw.Write(Data);
 		}
 		#endregion
 
