@@ -1046,8 +1046,17 @@ namespace VPWStudio
 				return;
 			}
 
-			// perform "build" process
-			MessageBox.Show("PROCEED WITH CAUTION. This is known to be fucked for every file after the first.");
+			// this only works with VPW2 for now
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			{
+				MessageBox.Show(
+					"Sorry, this only works with Virtual Pro-Wrestling 2 at the moment.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+				return;
+			}
 
 			// set up logging
 			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
