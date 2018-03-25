@@ -1999,3 +1999,4 @@
 1A87=Ci4Texture;
 1A88=Ci8Palette;The Rock, Revenge-style
 1A89=Ci8Texture;The Rock, Revenge-style
+1A90=Binary;(first animation data?)

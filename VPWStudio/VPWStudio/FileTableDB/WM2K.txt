@@ -1164,3 +1164,4 @@
 1182=Ci4Texture;
 1183=Ci4Texture;
 1184=Ci4Texture;
+1609=Binary;(first animation data?)

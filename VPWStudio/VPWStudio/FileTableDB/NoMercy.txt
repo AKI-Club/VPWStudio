@@ -477,6 +477,7 @@
 1E67=Ci8Texture;The Rock's face w/People's Eyebrow
 1E68=Ci4Palette;
 1E69=Ci4Texture;
+2DD9=Binary;(first animation data?)
 4477=AkiLargeFont;(large font)
 4478=AkiSmallFont;(small font)
 4479=AkiSmallFont;(small font)

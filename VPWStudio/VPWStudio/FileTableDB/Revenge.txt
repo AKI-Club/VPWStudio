@@ -884,3 +884,4 @@
 0E36=Ci4Texture;
 0E37=Ci8Palette;[Face] Han Zo Mon (Yellow)
 0E38=Ci8Texture;[Face] Han Zo Mon (Yellow)
+0E39=Binary;(first animation data?)
