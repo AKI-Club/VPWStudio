@@ -1067,7 +1067,7 @@ namespace VPWStudio
 			BuildLogForm.Clear();
 			DateTime startTime = DateTime.Now;
 
-			Program.MotherfuckingBuildRom();
+			Program.BuildRom();
 
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
 			buildLogPub.AddLine(

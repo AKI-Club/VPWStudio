@@ -110,8 +110,6 @@ namespace VPWStudio
 		#endregion
 
 		#region ROM Building
-		// Notable issue: having to return the rom data every time you fix an address. argh.
-
 		/*
 		 * addr2hws(a1, a2)
 		 *     h = int.from_bytes(rom[a1:a1+2], byteorder='big') << 16
@@ -130,121 +128,60 @@ namespace VPWStudio
 		/// <param name="addr1">Address 1</param>
 		/// <param name="addr2">Address 2</param>
 		/// <param name="difference">Difference</param>
-		public static List<byte> FixAddresses(List<byte> romData, int addr1, int addr2, int difference)
+		public static void FixAddresses(List<byte> romData, int addr1, int addr2, int difference)
 		{
-			// todo: implement this without streams
-			/*
-			{
-				byte[] high = new byte[]
+			byte[] high = new byte[]
 				{
 					romData[addr1],
 					romData[addr1+1]
 				};
-				if (BitConverter.IsLittleEndian)
-				{
-					Array.Reverse(high);
-				}
-				int h = BitConverter.ToInt16(high, 0) << 16;
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(high);
+			}
+			Int32 h = BitConverter.ToInt16(high, 0) << 16;
 
-				byte[] low = new byte[]
-				{
+			byte[] low = new byte[]
+			{
 					romData[addr2],
 					romData[addr2+1]
-				};
-				if (BitConverter.IsLittleEndian)
-				{
-					Array.Reverse(low);
-				}
-				int v = h + BitConverter.ToInt16(low, 0);
-
-				// add difference
-				v += difference;
-				h = (v >> 16);
-
-				// perform correction
-				if ((v & 0x8000) != 0)
-				{
-					h += 1;
-				}
-
-				// mask low
-				int l = (v & 0xFFFF);
-
-				// write new values
-
-				byte[] high2 = BitConverter.GetBytes(h);
-				if (BitConverter.IsLittleEndian)
-				{
-					Array.Reverse(high2);
-				}
-				romData[addr1] = high2[0];
-				romData[addr1+1] = high2[1];
-
-				byte[] low2 = BitConverter.GetBytes(l);
-				if (BitConverter.IsLittleEndian)
-				{
-					Array.Reverse(low2);
-				}
-				romData[addr2] = low2[0];
-				romData[addr2 + 1] = low2[1];
-			}
-			*/
-
-			MemoryStream romStream = new MemoryStream(romData.ToArray());
-			using (BinaryReader br = new BinaryReader(romStream))
+			};
+			if (BitConverter.IsLittleEndian)
 			{
-				using (BinaryWriter bw = new BinaryWriter(romStream))
-				{
-					// read values
-					romStream.Seek(addr1, SeekOrigin.Begin);
-					byte[] high = br.ReadBytes(2);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(high);
-					}
-					int h = BitConverter.ToInt16(high, 0) << 16;
-
-					romStream.Seek(addr2, SeekOrigin.Begin);
-					byte[] low = br.ReadBytes(2);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(low);
-					}
-					int v = h + BitConverter.ToInt16(low, 0);
-
-					// add difference
-					v += difference;
-					h = (v >> 16);
-
-					// perform correction
-					if ((v & 0x8000) != 0)
-					{
-						h += 1;
-					}
-
-					// mask low
-					int l = (v & 0xFFFF);
-
-					// write new values
-					romStream.Seek(addr1, SeekOrigin.Begin);
-					byte[] newH = BitConverter.GetBytes((Int16)h);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(newH);
-					}
-					bw.Write(newH);
-
-					romStream.Seek(addr2, SeekOrigin.Begin);
-					byte[] newL = BitConverter.GetBytes((Int16)l);
-					if (BitConverter.IsLittleEndian)
-					{
-						Array.Reverse(newL);
-					}
-					bw.Write(newL);
-
-					return new List<byte>(romStream.ToArray());
-				}
+				Array.Reverse(low);
 			}
+			Int32 v = h + BitConverter.ToInt16(low, 0);
+
+			// add difference
+			v += difference;
+			h = (v >> 16);
+
+			// perform correction
+			if ((v & 0x8000) != 0)
+			{
+				h += 1;
+			}
+
+			// mask low
+			Int16 l = (Int16)(v & 0xFFFF);
+
+			// write new values
+
+			byte[] high2 = BitConverter.GetBytes((Int16)h);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(high2);
+			}
+			romData[addr1] = high2[0];
+			romData[addr1 + 1] = high2[1];
+
+			byte[] low2 = BitConverter.GetBytes((Int16)l);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(low2);
+			}
+			romData[addr2] = low2[0];
+			romData[addr2 + 1] = low2[1];
 		}
 
 		/// <summary>
@@ -422,15 +359,15 @@ namespace VPWStudio
 			}
 		}
 
-		public static void MotherfuckingBuildRom()
+		/// <summary>
+		/// Builds the Output ROM using the Input ROM as a base, applying changes as necessary.
+		/// </summary>
+		public static void BuildRom()
 		{
-			// the overall rom building process.
-
-			// copy the input ROM to the output ROM
 			CurrentOutputROM = new Z64Rom();
-			// output ROM may be bigger (or smaller!) than input ROM, so use a List.
+			// The Output ROM may be bigger (or smaller!) than the Input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
-			// the input rom could have changed between the last build and now,
+			// The Input ROM could have changed since the previous build, so reload it.
 			CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
 			outRomData.AddRange(CurrentInputROM.Data);
 
@@ -470,7 +407,9 @@ namespace VPWStudio
 			}
 			#endregion
 
-			// filetable shit
+
+			#region Filetable Changes
+			// This portion of the Build ROM process is the most involved.
 			// 0) make a copy
 			FileTable buildFileTable = new FileTable();
 			buildFileTable.DeepCopy(CurrentProject.ProjectFileTable);
@@ -602,7 +541,7 @@ namespace VPWStudio
 					// 4) fix up filetable refs
 					int difference = (finalOutData.Count - oldFileSize);
 					BuildLogPub.AddLine(String.Format("old file/new file difference: {0}", difference));
-					for (int j = i+1; j <= buildFileTable.Entries.Count; j++)
+					for (int j = i + 1; j <= buildFileTable.Entries.Count; j++)
 					{
 						buildFileTable.Entries[j].Location += difference;
 					}
@@ -646,55 +585,54 @@ namespace VPWStudio
 			outRomData.InsertRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), finalTableMS.ToArray());
 
 			finalTableBW.Close();
+			#endregion
 
-			// update code offsets
-			// xxx: hardcoded for vpw2
-
-			// xxx2: very inefficient method that I wish I could fix
-			// probably inline this, and then later, switch to a not terrible method
+			#region Update Game Code
+			// xxx: Currently, this is hardcoded for Virtual Pro-Wrestling 2.
 
 			// - filetable load
-			outRomData = FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
+			FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
 
 			// - audio stuff
-			outRomData = FixAddresses(outRomData, 0x432A, 0x432E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x4336, 0x433A, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x4366, 0x436A, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x436E, 0x4372, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x439A, 0x439E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x4402, 0x4406, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x440A, 0x440E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x447A, 0x447E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x4512, 0x451A, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17312, 0x17316, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17772, 0x17776, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference);
-			outRomData = FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference);
+			FixAddresses(outRomData, 0x432A, 0x432E, totalDifference);
+			FixAddresses(outRomData, 0x4336, 0x433A, totalDifference);
+			FixAddresses(outRomData, 0x4366, 0x436A, totalDifference);
+			FixAddresses(outRomData, 0x436E, 0x4372, totalDifference);
+			FixAddresses(outRomData, 0x439A, 0x439E, totalDifference);
+			FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference);
+			FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference);
+			FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference);
+			FixAddresses(outRomData, 0x4402, 0x4406, totalDifference);
+			FixAddresses(outRomData, 0x440A, 0x440E, totalDifference);
+			FixAddresses(outRomData, 0x447A, 0x447E, totalDifference);
+			FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference);
+			FixAddresses(outRomData, 0x4512, 0x451A, totalDifference);
+			FixAddresses(outRomData, 0x17312, 0x17316, totalDifference);
+			FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference);
+			FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference);
+			FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference);
+			FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference);
+			FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference);
+			FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference);
+			FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference);
+			FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference);
+			FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference);
+			FixAddresses(outRomData, 0x17772, 0x17776, totalDifference);
+			FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference);
+			FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference);
+			FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference);
+			FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference);
+			FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference);
+			FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference);
+			FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference);
+			FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference);
+			FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference);
+			FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference);
+			FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference);
+			FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference);
+			FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference);
+			FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference);
+			#endregion
 
 			// now put it all together in one big ROM.
 			#region Create Output ROM
