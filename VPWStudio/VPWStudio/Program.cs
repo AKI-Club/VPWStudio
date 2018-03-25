@@ -410,10 +410,11 @@ namespace VPWStudio
 
 			#region Filetable Changes
 			// This portion of the Build ROM process is the most involved.
-			// 0) make a copy
+			// 0) Make a copy of the FileTable so the Project FileTable doesn't get changed.
 			FileTable buildFileTable = new FileTable();
 			buildFileTable.DeepCopy(CurrentProject.ProjectFileTable);
 
+			// keep a running total of differences in file sizes.
 			int totalDifference = 0;
 
 			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
@@ -423,7 +424,6 @@ namespace VPWStudio
 				// 0) check if a replacement file is set
 				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 				{
-					// determine if this is relative or absolute
 					string replaceFilePath = fte.ReplaceFilePath;
 					if (!Path.IsPathRooted(replaceFilePath))
 					{
@@ -453,6 +453,7 @@ namespace VPWStudio
 						oldFileSize = start - end;
 					}
 
+					/*
 					BuildLogPub.AddLine(String.Format("old location {0:X} ({1:X})",
 						CurrentProject.ProjectFileTable.Entries[i].Location,
 						CurrentProject.ProjectFileTable.Entries[i].Location + CurrentProject.ProjectFileTable.FirstFile
@@ -461,6 +462,7 @@ namespace VPWStudio
 						buildFileTable.Entries[i].Location,
 						buildFileTable.Entries[i].Location + buildFileTable.FirstFile
 					));
+					*/
 
 					// 1) use file extension to determine action
 					byte[] outData = null;
@@ -540,13 +542,14 @@ namespace VPWStudio
 
 					// 4) fix up filetable refs
 					int difference = (finalOutData.Count - oldFileSize);
-					BuildLogPub.AddLine(String.Format("old file/new file difference: {0}", difference));
+					//BuildLogPub.AddLine(String.Format("old file/new file difference: {0}", difference));
 					for (int j = i + 1; j <= buildFileTable.Entries.Count; j++)
 					{
 						buildFileTable.Entries[j].Location += difference;
 					}
 					totalDifference += difference;
 
+					/*
 					if (difference > 0)
 					{
 						BuildLogPub.AddLine(String.Format("old file size {0} < new file size {1}", oldFileSize, finalOutData.Count));
@@ -559,6 +562,7 @@ namespace VPWStudio
 					{
 						BuildLogPub.AddLine(String.Format("old file size {0} = new file size {1}", oldFileSize, finalOutData.Count));
 					}
+					*/
 
 					// todo: this part is where zoinkity would rebuild the filetable in ROM.
 
@@ -575,10 +579,11 @@ namespace VPWStudio
 			BinaryWriter finalTableBW = new BinaryWriter(finalTableMS);
 			buildFileTable.Write(finalTableBW);
 
+			/*
 			BuildLogPub.AddLine(String.Format("TotalDifference final: {0}", totalDifference));
-
 			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location));
 			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference));
+			*/
 
 			// rewrite filetable
 			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
@@ -590,64 +595,79 @@ namespace VPWStudio
 			#region Update Game Code
 			// xxx: Currently, this is hardcoded for Virtual Pro-Wrestling 2.
 
-			// - filetable load
+			// [SetupFiletable]
+			// fix filetable location
 			FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
 
+			// [LoadFile]
+			// todo: we don't currently support adding/removing entries from the filetable.
+
 			// - audio stuff
-			FixAddresses(outRomData, 0x432A, 0x432E, totalDifference);
-			FixAddresses(outRomData, 0x4336, 0x433A, totalDifference);
-			FixAddresses(outRomData, 0x4366, 0x436A, totalDifference);
-			FixAddresses(outRomData, 0x436E, 0x4372, totalDifference);
-			FixAddresses(outRomData, 0x439A, 0x439E, totalDifference);
-			FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference);
-			FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference);
-			FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference);
-			FixAddresses(outRomData, 0x4402, 0x4406, totalDifference);
-			FixAddresses(outRomData, 0x440A, 0x440E, totalDifference);
-			FixAddresses(outRomData, 0x447A, 0x447E, totalDifference);
-			FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference);
-			FixAddresses(outRomData, 0x4512, 0x451A, totalDifference);
-			FixAddresses(outRomData, 0x17312, 0x17316, totalDifference);
-			FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference);
-			FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference);
-			FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference);
-			FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference);
-			FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference);
-			FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference);
-			FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference);
-			FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference);
-			FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference);
-			FixAddresses(outRomData, 0x17772, 0x17776, totalDifference);
-			FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference);
-			FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference);
-			FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference);
-			FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference);
-			FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference);
-			FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference);
-			FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference);
-			FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference);
-			FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference);
-			FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference);
-			FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference);
-			FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference);
-			FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference);
-			FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference);
+			FixAddresses(outRomData, 0x432A, 0x432E, totalDifference); // sndtbl-1.wbk
+			FixAddresses(outRomData, 0x4336, 0x433A, totalDifference); // sndtbl-1.ptr
+
+			FixAddresses(outRomData, 0x4366, 0x436A, totalDifference); // sndtbl-2.wbk
+			FixAddresses(outRomData, 0x436E, 0x4372, totalDifference); // sndtbl-2.ptr
+
+			FixAddresses(outRomData, 0x439A, 0x439E, totalDifference); // sndtbl-2.ptr
+			FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference); // sndtbl-1.tbl
+
+			FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference); // sndtbl-3.wbk
+			FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference); // sndtbl-3.ptr
+
+			FixAddresses(outRomData, 0x4402, 0x4406, totalDifference); // sndtbl-3.ptr
+			FixAddresses(outRomData, 0x440A, 0x440E, totalDifference); // sndtbl-2.tbl
+
+			FixAddresses(outRomData, 0x447A, 0x447E, totalDifference); // load sndtbl-1.wbk
+			FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference); // load sndtbl-2.wbk
+			FixAddresses(outRomData, 0x4512, 0x451A, totalDifference); // load sndtbl-3.wbk
+
+			FixAddresses(outRomData, 0x17312, 0x17316, totalDifference); // sndtbl-4.wbk
+			FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference); // sndtbl-4.ptr
+
+			FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference); // sndtbl-4.ptr
+			FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference); // sndtbl-3.tbl
+
+			FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference); // sndtbl-5.wbk
+			FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference); // sndtbl-5.ptr
+
+			FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference); // sndtbl-5.ptr
+			FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference); // sndtbl-4.tbl
+
+			FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference); // load sndtbl-4.wbk
+			FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference); // load sndtbl-5.wbk
+
+			FixAddresses(outRomData, 0x17772, 0x17776, totalDifference); // sndtbl-6.wbk
+			FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference); // sndtbl-6.ptr
+
+			FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference); // sndtbl-6.ptr
+			FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference); // sndtbl-5.tbl
+
+			FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference); // load sndtbl-6.wbk
+
+			FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference); // sndtbl-7.wbk
+			FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference); // sndtbl-7.ptr
+
+			FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference); // sndtbl-7.ptr
+			FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference); // sndtbl-6.tbl
+
+			FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference); // sndtbl-8.wbk
+			FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference); // sndtbl-8.ptr
+
+			FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference); // sndtbl-8.ptr
+			FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference); // sndtbl-7.tbl
+
+			FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference); // load sndtbl-8.wbk
+			FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference); // load sndtbl-7.wbk
 			#endregion
 
 			// now put it all together in one big ROM.
 			#region Create Output ROM
 			// determine if the new output ROM is too big to run on console
-			/*
 			if (outRomData.Count >= 0x4000000)
 			{
-				MessageBox.Show(
-					"This ROM exceeds 512Mbits and *will not* run on console.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Warning
-				);
+				BuildLogPub.AddLine("WARNING: This ROM exceeds 512Mbits and *will not* run on console.");
 			}
-			*/
 
 			// write outRomData to Program.CurrentOutputROM.Data
 			CurrentOutputROM.Data = outRomData.ToArray();
