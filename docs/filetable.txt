@@ -15,15 +15,21 @@ Routine begins at
 * IDA: 80004C38
 * Z64: 0x5838
 
-"lui $a0, 0x7C"
+---------------
+"lui $a0, 0x7C" ; filetable location part 1
 (3C 04 00 7C)
 * IDA: 80004C44
 * Z64: 0x5844
 
-"li $a0, 0x7C1A78" ; filetable location
+"li $a0, 0x7C1A78" ; filetable location part 2
 (24 84 1A 78)
 * IDA: 80004C4C
 * Z64: 0x584C
+
+When combined...
+* Zoinkity would change: { 0x5846, 0x5846+1 }, { 0x584E, 0x584E+1 }
+* freem offsets: { +2, +3 } | { +2, +3 }
+---------------
 
 "li $a2, 0x55EC" ; filetable size
 (24 06 55 EC)
@@ -96,15 +102,21 @@ Routine begins at
 * IDA: 80004C38
 * Z64: 0x5838
 
-"lui $a0, 0x7C"
+---------------
+"lui $a0, 0x7C" ; filetable location part 1
 (3C 04 00 7C)
 * IDA: 80004C44
 * Z64: 0x5844
 
-"li $a0, 0x7C1C70" ; filetable location
+"li $a0, 0x7C1C70" ; filetable location part 2
 (24 84 1C 70)
 * IDA: 80004C4C
 * Z64: 0x584C
+
+When combined...
+* Zoinkity would change: { 0x5846, 0x5846+1 }, { 0x584E, 0x584E+1 }
+* freem offsets: { +2, +3 } | { +2, +3 }
+---------------
 
 "li $a2, 0x55EC" ; filetable size
 (24 06 55 EC)
@@ -177,15 +189,21 @@ Routine begins at
 * IDA: 80004C18
 * Z64: 0x5818
 
-"lui $a0, 0x7C"
+---------------
+"lui $a0, 0x7C" ; filetable location part 1
 (3C 04 00 7C)
 * IDA: 80004C24
 * Z64: 0x5824
 
-"li $a0, 0x7C1C00" ; filetable start
+"li $a0, 0x7C1C00" ; filetable location part 2
 (24 84 1C 00)
 * IDA: 80004C2C
 * Z64: 0x582C
+
+When combined...
+* Zoinkity would change: { 0x5826, 0x5826+1 }, { 0x582E, 0x582E+1 }
+* freem offsets: { +2, +3 } | { +2, +3 }
+---------------
 
 "li $a2, 0x55EC" ; filetable size
 (24 06 55 EC)
@@ -258,15 +276,21 @@ Routine begins at
 * IDA: 80004D58
 * Z64: 0x5958
 
-"lui $a0, 0xC8"
+---------------
+"lui $a0, 0xC8" ; filetable location part 1
 (3C 04 00 C8)
 * IDA: 80004D64
 * Z64: 0x5964
 
-"li $a0, 0xC7B578" ; filetable location
+"li $a0, 0xC7B578" ; filetable location part 2
 (24 84 B5 78)
 * IDA: 80004D6C
 * Z64: 0x596C
+
+When combined...
+* Zoinkity would change: { 0x5966, 0x5966+1 }, { 0x596E, 0x596E+1 }
+* freem offsets: { +2, +3 } | { +2, +3 }
+---------------
 
 "li $a2, 0x9238" ; filetable size
 (34 06 92 38)
@@ -343,6 +367,8 @@ Routine begins at
 (3C 04 00 CE 24 84 27 52)
 * IDA: 800034C8
 * Z64: 0x40C8
+* Zoinkity would change: { 0x40CA, 0x40CA+1 }, { 0x40CE, 0x40CE+1 }
+* freem offsets: { +2, +3 }, { +6, +7 }
 
 "li $a2, 0x77A8" ; size of filetable
 (24 06 77 A8)
@@ -420,6 +446,8 @@ Routine begins at
 (3C 04 00 CE 24 84 FC E2)
 * IDA: 800033E8
 * Z64: 0x3FE8
+* Zoinkity would change: { 0x3FEA, 0x3FEA+1 }, { 0x3FEE, 0x3FEE+1 }
+* freem offsets: { +2, +3 }, { +6, +7 }
 
 "li $a2, 0x77A8" ; filetable size
 (24 06 77 A8)
@@ -482,11 +510,208 @@ There's a floating 0x000D81E0 at...
 ================================================================================
 [WWF WrestleMania 2000, NTSC-U]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80003CC0
+* Z64: 0x48C0
+
+"li $a0, 0xA120" ; size of filetable
+(34 04 A1 20)
+* IDA: 80003CC4
+* Z64: 0x48C4
+
+"li $a0, 0x11778BE" ; filetable location
+(3C 04 01 17 24 84 78 BE)
+* IDA: 80003CE8
+* Z64: 0x48E8
+
+"li $a2, 0xA120" ; size of filetable
+(34 06 A1 20)
+* IDA: 80003D00
+* Z64: 0x4900
+
+"li $a0, 0xA11C" ; (size of filetable-4)
+(34 04 A1 1C)
+* IDA: 80003D08
+* Z64: 0x4908
+
+"li $s4, 0x144AA0" ; first file location
+(3C 14 00 14 26 94 4A A0)
+* IDA: 80003D03
+* Z64: 0x4930
+
+"sltiu $v0, $s2, 0x2847" ; number of files - 1
+(2E 42 28 47)
+* IDA: 80003D9C
+* Z64: 0x499C
+
+sub_80003DD4
+------------
+Routine begins at
+* IDA: 80003DD4
+* Z64: 0x49D4
+
+"sltiu $v0, 0x2848" ; max file number?
+(2C 42 28 48)
+* IDA: 80003DDC
+* Z64: 0x49DC
+
+"li $a0, 0x144AA0" ; files start here
+(3C 04 00 14 24 84 4A A0)
+* IDA: 80003E50
+* Z64: 0x4A50
+
+LoadFile
+--------
+Routine begins at
+* IDA: 80003E98
+* Z64: 0x4A98
+
+"sltiu $v0, 0x2848" ; max file count
+(2C 42 28 48)
+* IDA: 80003EB8
+* Z64: 0x4AB8
+
+"li $a0, 0x144AA0" ; first file location
+(3C 04 00 14 24 84 4A A0)
+* IDA: 80003F30
+* Z64: 0x4B30
+
 ================================================================================
 [WWF WrestleMania 2000, NTSC-J]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80003B60
+* Z64: 0x4760
+
+"li $a0, 0xA208" ; size of filetable
+(34 04 A2 08)
+* IDA: 80003B64
+* Z64: 0x4764
+
+"li $a0, 0x116F3C2" ; filetable location in rom
+(3C 04 01 17 24 84 F3 C2)
+* IDA: 80003B88
+* Z64: 0x4788
+
+"li $a2, 0xA208" ; size of filetable
+(34 06 A2 08)
+* IDA: 80003BA0
+* Z64: 0x47A0
+
+"li $a0, 0xA204" ; (filetable size - 4)
+(34 04 A2 04)
+* IDA: 80003BA8
+* Z64: 0x47A8
+
+"li $s4, 0x12C070" ; location of first file
+(3C 14 00 13 26 94 C0 70)
+* IDA: 80003BD0
+* Z64: 0x47D0
+
+"sltiu $v0, $s2, 0x2881" ; number of files - 1
+(2E 42 28 81)
+* IDA: 80003C3C
+* Z64: 0x483C
+
+sub_80003C74
+------------
+Routine begins at
+* IDA: 80003C74
+* Z64: 0x4B74
+
+"sltiu $v0, 0x2882" ; number of files
+(2C 42 28 82)
+* IDA: 80003C7C
+* Z64: 0x487C
+
+"li $a0, 0x12C070" ; first file location
+(3C 04 00 13 24 84 C0 70)
+* IDA: 80003CF0
+* Z64: 0x48F0
+
+LoadFile
+--------
+Routine begins at
+* IDA: 80003D38
+* Z64: 0x4938
+
+This routine seems to have changed in the NTSC-J version...
+It calls sub_80003C74, meaning there's nothing to change here.
+
 ================================================================================
 [WWF WrestleMania 2000, PAL]
+
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 80003CC0
+* Z64: 0x48C0
+
+"li $a0, 0xA120" ; filetable size
+(34 04 A1 20)
+* IDA: 80003CC4
+* Z64: 0x48C4
+
+"li $a0, 0x11778DE" ; filetable location
+(3C 04 01 17 24 84 78 DE)
+* IDA: 80003CE8
+* Z64: 0x48E8
+
+"li $a2, 0xA120" ; filetable size
+(34 06 A1 20)
+* IDA: 80003D00
+* Z64: 0x4900
+
+"li $a0, 0xA11C" ; (filetable size - 4)
+(34 04 A1 1C)
+* IDA: 80003D08
+* Z64: 0x4908
+
+"li $s4, 0x144AC0" ; first file location
+(3C 14 00 14 26 94 4A C0)
+* IDA: 80003D30
+* Z64: 0x4930
+
+"sltiu $v0, $s2, 0x2847" ; number of files - 1
+(2E 42 28 47)
+* IDA: 80003D9C
+* Z64: 0x499C
+
+sub_80003DD4
+------------
+Routine begins at
+* IDA: 80003DD4
+* Z64: 0x49D4
+
+"sltiu $v0, 0x2848" ; max file number
+(2C 42 28 48)
+* IDA: 80003DDC
+* Z64: 0x49DC
+
+"li $a0, 0x144AC0" ; files start here
+(3C 04 00 14 24 84 4A C0)
+* IDA: 80003E50
+* Z64: 0x4A50
+
+LoadFile
+--------
+Routine begins at
+* IDA: 80003E98
+* Z64: 0x4A98
+
+"sltiu $v0, 0x2848" ; max file number
+(2C 42 28 48)
+* IDA: 80003EB8
+* Z64: 0x4AB8
+
+"li $a0, 0x144AC0" ; first file location
+(3C 04 00 14 24 84 4A C0)
+* IDA: 80003F30
+* Z64: 0x4B30
 
 ================================================================================
 [Virtual Pro-Wrestling 2, NTSC-J]
@@ -501,31 +726,38 @@ Routine begins at
 (34 04 CC 8C)
 * IDA: 80003CB4
 * Z64: 0x48B4
+* freem offsets: { +2, +3 }
 
 "li $a0, 0x1310F40" ; filetable.bin location in ROM
 (3C 04 01 31) (24 84 0F 40)
 * IDA: 80003CD8
 * Z64: 0x48D8
+* Zoinkity changes: { 0x48DA, 0x48DA+1 }, { 0x48DE, 0x48DE+1 }
+* freem offsets: { +2, +3 }, { +6, +7 }
 
 "li $a2, 0xCC8C" ; size of filetable
 (34 06 CC 8C)
 * IDA: 80003CF0
 * Z64: 0x48F0
+* freem offsets: { +2, +3 }
 
 "li $a0, 0xCC88" ; (size of filetable - 4)
 (34 04 CC 88)
 * IDA: 80003CF8
 * Z64: 0x48F8
+* freem offsets: { +2, +3 }
 
 "li $s4, 0x152DF0" ; beginning of files
 (3C 14 00 15) (26 94 2D F0)
 * IDA: 80003D20
 * Z64: 0x4920
+* freem offsets: { +2, +3 }, { +6, +7 }
 
 "sltiu $v0, $s2, 0x3322" ; (max filecount - 1)?
 (2E 42 33 22)
 * IDA: 80003D8C
 * Z64: 0x498C
+* freem offsets: { +2, +3 }
 
 sub_80003DC4
 ------------
@@ -612,11 +844,83 @@ There's a floating 0x00152DF0 at...
 ================================================================================
 [WWF No Mercy, NTSC-U v1.0]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+sub_x
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+LoadFile
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
 ================================================================================
 [WWF No Mercy, NTSC-U v1.1]
+
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+sub_x
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+LoadFile
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
 
 ================================================================================
 [WWF No Mercy, PAL v1.0]
 
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+sub_x
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+LoadFile
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
 ================================================================================
 [WWF No Mercy, PAL v1.1]
+
+SetupFiletable
+--------------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+sub_x
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
+
+LoadFile
+--------
+Routine begins at
+* IDA: 8000
+* Z64: 0x
