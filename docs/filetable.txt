@@ -858,9 +858,7 @@ Routine begins at
 
 LoadFile
 --------
-Routine begins at
-* IDA: 8000
-* Z64: 0x
+(same setup as WM2K NTSC-J; no changes needed)
 
 ================================================================================
 [WWF No Mercy, NTSC-U v1.1]
@@ -868,20 +866,68 @@ Routine begins at
 SetupFiletable
 --------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003AB0
+* Z64: 0x46B0
 
-sub_x
---------
+"li $a0, 0x1300C" ; filetable size
+(3C 04 00 01 34 84 30 0C)
+* IDA: 80003AB4
+* Z64: 0x46B4
+
+"li $a0, 0x16C31D8" ; location of filetable
+(3C 04 01 6C 24 84 31 D8)
+* IDA: 80003ADC
+* Z64: 0x46DC
+
+"lui $a2, 1" ; filetable size part 1
+(3C 06 00 01)
+* IDA: 80003AE8
+* Z64: 0x46E8
+
+"li $a2, 0x1300C" ; filetable size part 2
+(34 C6 30 0C)
+* IDA: 80003AF8
+* Z64: 0x46F8
+
+"lui $a0, 1" ; filetable size - 4, part 1
+(3C 04 00 01)
+* IDA: 80003AFC
+* Z64: 0x46FC
+
+"li $a0, 0x13008" ; filetable size - 4, part 2
+(34 84 30 08)
+* IDA: 80003B04
+* Z64: 0x4704
+
+"li $s4, 0x1BD150" ; files begin here
+(3C 14 00 1C 26 94 D1 50)
+* IDA: 80003B2C
+* Z64: 0x472C
+
+"sltiu $v0, $s2, 0x4C02" ; number of files - 1
+(2E 42 4C 02)
+* IDA: 80003B98
+* Z64: 0x4798
+
+sub_80003BD0
+------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003BD0
+* Z64: 0x47D0
+
+"sltiu $v0, 0x4C03" ; maximum ID?
+(2C 42 4C 03)
+* IDA: 80003BD8
+* Z64: 0x47D8
+
+"li $a0, 0x1BD150" ; files begin here
+(3C 04 00 1C 24 84 D1 50)
+* IDA: 80003C4C
+* Z64: 0x4B4C
 
 LoadFile
 --------
-Routine begins at
-* IDA: 8000
-* Z64: 0x
+(same setup as WM2K NTSC-J; no changes needed)
 
 ================================================================================
 [WWF No Mercy, PAL v1.0]
@@ -900,9 +946,7 @@ Routine begins at
 
 LoadFile
 --------
-Routine begins at
-* IDA: 8000
-* Z64: 0x
+(same setup as WM2K NTSC-J; no changes needed)
 
 ================================================================================
 [WWF No Mercy, PAL v1.1]
@@ -921,6 +965,4 @@ Routine begins at
 
 LoadFile
 --------
-Routine begins at
-* IDA: 8000
-* Z64: 0x
+(same setup as WM2K NTSC-J; no changes needed)
