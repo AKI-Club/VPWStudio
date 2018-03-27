@@ -22,7 +22,7 @@ namespace VPWStudio
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
-			MenuBG = Program.CurrentProject.ProjectFileTable.ExtractMenuBackground(romReader, FileID);
+			MenuBG = Program.CurrentProject.ProjectFileTable.ExtractMenuBackground(romReader, FileID, Program.CurrentProject.Settings.BaseGame);
 			romReader.Close();
 			pbMenuBG.Image = MenuBG.ToBitmap();
 		}

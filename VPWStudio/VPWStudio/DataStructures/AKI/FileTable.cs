@@ -692,13 +692,13 @@ namespace VPWStudio
 			}
 		}
 
-		public MenuBackground ExtractMenuBackground(BinaryReader _in, int firstID)
+		public MenuBackground ExtractMenuBackground(BinaryReader _in, int firstID, VPWGames gameType)
 		{
-			MenuBackground mb = new MenuBackground();
+			MenuBackground mb = new MenuBackground(firstID, gameType);
 			List<byte> bgData = new List<byte>();
 
 			// extract all files
-			for (int i = 0; i < 40; i++)
+			for (int i = 0; i < (mb.ChunkColumns * mb.ChunkRows); i++)
 			{
 				int curID = firstID + i;
 				int loc = GetRomLocation(curID);
