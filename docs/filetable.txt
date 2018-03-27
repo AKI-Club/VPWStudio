@@ -847,14 +847,64 @@ There's a floating 0x00152DF0 at...
 SetupFiletable
 --------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003AB0
+* Z64: 0x46B0
 
-sub_x
---------
+"li $a0, 0x1300C" ; filetable size
+(3C 04 00 01  34 84 30 0C)
+* IDA: 80003AB4
+* Z64: 0x46B4
+
+"li $a0, 0x16C3238" ; location of filetable
+(3C 04 01 6C 24 84 32 38)
+* IDA: 80003ADC
+* Z64: 0x446DC
+
+"lui $a2, 1" ; filetable size, part 1
+(3C 06 00 01)
+* IDA: 80003AE8
+* Z64: 0x46E8
+
+"li $a2, 0x1300C" ; filetable size, part 2
+(34 C6 30 0C)
+* IDA: 80003AF8
+* Z64: 0x46F8
+
+"lui $a0, 1" ; filetable size - 4, part 1
+(3C 04 00 01)
+* IDA: 80003AFC
+* Z64: 0x46FC
+
+"li $a0, 0x13008" ; filetable size - 4, part 2
+(34 84 30 08)
+* IDA: 80003B04
+* Z64: 0x4704
+
+"li $s4, 0x1BD1B0" ; files begin here
+(3C 14 00 1C 26 94 D1 B0)
+* IDA: 80003B2C
+* Z64: 0x472C
+
+"sltiu $v0, $s2, 0x4C02" ; number of files - 1
+(2E 42 4C 02)
+* IDA: 80003B98
+* Z64: 0x4798
+
+sub_80003BD0
+------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003BD0
+* Z64: 0x47D0
+
+"sltiu $v0, 0x4C03" ; max files
+(2C 42 4C 03)
+* IDA: 80003BD8
+* Z64: 0x47DB
+
+"li $a0, 0x1BD1B0" ; files begin here
+(3C 04 00 1C 24 84 D1 B0)
+* IDA: 80003C4C
+* Z64: 0x484C
 
 LoadFile
 --------
@@ -935,14 +985,64 @@ LoadFile
 SetupFiletable
 --------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003AB0
+* Z64: 0x46B0
 
-sub_x
+"li $a0, 0x1300C" ; filetable size
+(3C 04 00 01  34 84 30 0C)
+* IDA: 80003AB4
+* Z64: 0x46B4
+
+"li $a0, 0x16C32A8" ; filetable location
+(3C 04 01 6C 24 84 32 A8)
+* IDA: 80003ADC
+* Z64: 0x46DC
+
+"lui $a2, 1" ; filetable size, part 1
+(3C 06 00 01)
+* IDA: 80003AE8
+* Z64: 0x46E8
+
+"li $a2, 0x1300C" ; filetable size, part 2
+(34 C6 30 0C)
+* IDA: 80003AF8
+* Z64: 0x46F8
+
+"lui $a0, 1" ; (filetable size - 4) part 1
+(3C 04 00 01)
+* IDA: 80003AFC
+* Z64: 0x46FC
+
+"li $a0, 0x13008" ; (filetable size - 4) part 2
+(34 84 30 08)
+* IDA: 80003B04
+* Z64: 0x4704
+
+"li $s4, 0x1BD220" ; first file location
+(3C 14 00 1C 26 94 D2 20)
+* IDA: 80003B2C
+* Z64: 0x472C
+
+"sltiu $v0, $s2, 0x4C02" ; maximum number of files
+(2E 42 4C 02)
+* IDA: 80003B98
+* Z64: 0x4798
+
+sub_80003BD0
 --------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003BD0
+* Z64: 0x47D0
+
+"sltiu $v0, 0x4C03" ; maximum ID?
+(2C 42 4C 03)
+* IDA: 80003BD8
+* Z64: 0x47D8
+
+"li $a0, 0x1BD220" ; files begin here
+(3C 04 00 1C 24 84 D2 20)
+* IDA: 80003C4C
+* Z64: 0x4B4C
 
 LoadFile
 --------
@@ -954,14 +1054,64 @@ LoadFile
 SetupFiletable
 --------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003AB0
+* Z64: 0x46B0
 
-sub_x
---------
+"li $a0, 0x1300C" ; filetable size
+(3C 04 00 01 34 84 30 0C)
+* IDA: 80003AB4
+* Z64: 0x46B4
+
+"li $a0, 0x16C3148" ; filetable location
+(3C 04 01 6C 24 84 31 48)
+* IDA: 80003ADC
+* Z64: 0x46DC
+
+"lui $a2, 1" ; filetable size part 1
+(3C 06 00 01)
+* IDA: 80003AE8
+* Z64: 0x46E8
+
+"li $a2, 0x1300C" ; filetable size part 2
+(34 C6 30 0C)
+* IDA: 80003AF8
+* Z64: 0x446F8
+
+"lui $a0, 1" ; (filetable size - 4) part 1
+(3C 04 00 01)
+* IDA: 80003AFC
+* Z64: 0x46FC
+
+"li $a0, 0x13008" ; (filetable size - 4) part 2
+(34 84 30 08)
+* IDA: 80003B04
+* Z64: 0x44704
+
+"li $s4, 0x1BD0C0" ; files begin here
+(3C 14 00 1C 26 94 D0 C0)
+* IDA: 80003B2C
+* Z64: 0x472C
+
+"sltiu $v0, $s2, 0x4C02" ; max file number - 1
+(2E 42 4C 02)
+* IDA: 80003B98
+* Z64: 0x4798
+
+sub_80003BD0
+------------
 Routine begins at
-* IDA: 8000
-* Z64: 0x
+* IDA: 80003BD0
+* Z64: 0x47D0
+
+"sltiu $v0, 0x4C03" ; max file number
+(2C 42 4C 03)
+* IDA: 80003BD8
+* Z64: 0x47D8
+
+"li $a0, 0x1BD0C0" ; files begin here
+(3C 04 00 1C 24 84 D0 C0)
+* IDA: 80003C4C
+* Z64: 0x484C
 
 LoadFile
 --------
