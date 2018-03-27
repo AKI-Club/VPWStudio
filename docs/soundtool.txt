@@ -1,0 +1,83 @@
+sound tool notes
+
+================================================================================
+entries
+
+[WCW vs. nWo - World Tour (E)]
+7C71F0,7D0090
+8E8DE0,8EECE0
+
+[WCW vs. nWo - World Tour (U) (V1.0)]
+7C7070,7CFD20
+8E8C60,8EEB60
+
+[WCW vs. nWo - World Tour (U) (V1.1)]
+7C7260,7CFF10
+8E8E50,8EED50
+
+[Virtual Pro Wrestling 64 (J)]
+C847B0,C8D750
+D736F0,D7BF70
+
+--------------------------------------------------------------------------------
+
+[WCW-nWo Revenge (E)]:type=N64WavePtrTableV2
+CE7490,CE9BA0
+E32600,E38890
+
+[WCW-nWo Revenge (U)]:type=N64WavePtrTableV2
+CE9F00,CEC610
+E35070,E3B300
+
+--------------------------------------------------------------------------------
+
+[WWF WrestleMania 2000 (E)]:type=N64WavePtrTableV2
+119EAB0,11A0C40
+12B3500,12B96A0
+14407E0,1442E40
+
+[WWF WrestleMania 2000 (J)]:type=N64WavePtrTableV2
+1196680,1198810
+12AB0D0,12B1270
+14383B0,143AA10
+
+[WWF WrestleMania 2000 (U)]:type=N64WavePtrTableV2
+0119EA90,011A0C20
+012B34E0,012B9680
+014407C0,01442E20
+
+--------------------------------------------------------------------------------
+
+[Virtual Pro Wrestling 2 - Oudou Keishou (J)]:type=N64WavePtrTableV2
+133AC80,133CE10
+144FD30,1454C20
+156EA30,156F2E0
+1C98A10,1C9C700
+1D0C170,1D0FB10
+1E487B0,1E49FB0
+1E90700,1E930D0
+1EDCAE0,1EDF4B0
+
+--------------------------------------------------------------------------------
+
+[WWF No Mercy (E) (V1.0)]:type=N64WavePtrTableV2
+016F3370,016F6FE0
+01858100,0185EE80
+019674E0,01969950
+
+[WWF No Mercy (E) (V1.1)]:type=N64WavePtrTableV2
+016F3210,016F6E80
+01857FA0,0185ED20
+01967380,019697F0
+
+[WWF No Mercy (U) (V1.0)]:type=N64WavePtrTableV2
+016F3300,016F6F70
+01858090,0185EE10
+01967470,019698E0
+
+================================================================================
+source files of interest
+
+N64SoundLibrary\N64AIFCAudio.cpp
+ALBank* CN64AIFCAudio::ReadAudioN64PtrWavetableV2
+ALBank* CN64AIFCAudio::ReadAudio
