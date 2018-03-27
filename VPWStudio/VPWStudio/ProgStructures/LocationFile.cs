@@ -135,7 +135,16 @@ namespace VPWStudio
 			#region CodeChange
 			// SetupFileTable
 			{ "SetupFileTable_FtSize1", "%SETUPFT_FTSIZE1" },
-			{ "SetupFileTable_FtLoc1", "%SETUPFT_FTLOCATION" },
+
+			// Due to differences in how the filetable address is loaded,
+			// we need to differentiate the FileTable location entry.
+
+			// only used with VPW64 and earlier:
+			{ "SetupFileTable_FtLoc1", "%SETUPFT_FTLOC1" },
+			{ "SetupFileTable_FtLoc2", "%SETUPFT_FTLOC2" },
+			// only used with WCW/nWo Revenge and later:
+			{ "SetupFileTable_FtLocation", "%SETUPFT_FTLOCATION" },
+
 			{ "SetupFileTable_FtSize2", "%SETUPFT_FTSIZE2" },
 			{ "SetupFileTable_FtSize2Minus1", "%SETUPFT_FTSIZE2_MINUS1" },
 			{ "SetupFileTable_FtBegins", "%SETUPFT_FTBEGINS" },
