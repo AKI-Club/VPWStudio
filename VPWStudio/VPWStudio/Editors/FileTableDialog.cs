@@ -519,6 +519,12 @@ namespace VPWStudio
 					((MainForm)this.MdiParent).RequestAkiTextDialog(key);
 					break;
 
+				// Menu Backgrounds
+				case FileTypes.MenuBackground:
+					FileTable_MenuBackgoundPreviewDialog mbgp = new FileTable_MenuBackgoundPreviewDialog(key);
+					mbgp.ShowDialog();
+					break;
+
 				// TEMPORARY
 				case FileTypes.AkiSmallFont:
 					{
@@ -564,29 +570,7 @@ namespace VPWStudio
 					}
 					break;
 
-				/*
-				case FileTypes.MenuBackgroundImage:
-					{
-						// see if my plan worked
-						MenuBackgroundImage mbi = new MenuBackgroundImage();
-
-						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-						BinaryReader romReader = new BinaryReader(romStream);
-
-						MemoryStream mbiStream = new MemoryStream();
-						BinaryWriter mbiWriter = new BinaryWriter(mbiStream);
-
-						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, mbiWriter, key);
-
-						mbiStream.Seek(0, SeekOrigin.Begin);
-						BinaryReader mbiReader = new BinaryReader(mbiStream);
-						mbi.ReadData(mbiReader);
-						mbi.ToBitmap().Save(String.Format("mbi-{0:X4}.png", key));
-						mbiReader.Close();
-						romReader.Close();
-					}
-					break;
-				*/
+				
 				// end temporary
 
 				// no default handler; show the hex viewer.

@@ -677,7 +677,7 @@ namespace VPWStudio
 			else
 			{
 				// act on this.Entries[id].IsEncoded
-				if (this.Entries[id].IsEncoded)
+				if (Entries[id].IsEncoded)
 				{
 					// de-LZSS
 					MemoryStream ms = new MemoryStream(data);
@@ -690,6 +690,46 @@ namespace VPWStudio
 					_out.Write(data);
 				}
 			}
+		}
+
+		public MenuBackground ExtractMenuBackground(BinaryReader _in, int firstID)
+		{
+			MenuBackground mb = new MenuBackground();
+			List<byte> bgData = new List<byte>();
+
+			// extract all files
+			for (int i = 0; i < 40; i++)
+			{
+				int curID = firstID + i;
+				int loc = GetRomLocation(curID);
+				int size = GetEntrySize(curID);
+
+				_in.BaseStream.Seek(loc, SeekOrigin.Begin);
+				byte[] data = _in.ReadBytes((int)size);
+
+				if (Entries[curID].IsEncoded)
+				{
+					// de-lzss
+					MemoryStream tempOut = new MemoryStream();
+					BinaryWriter tempWriter = new BinaryWriter(tempOut);
+
+					MemoryStream ms = new MemoryStream(data);
+					BinaryReader br = new BinaryReader(ms);
+					AsmikLzss.Decode(br, tempWriter);
+					bgData.AddRange(tempOut.ToArray());
+					br.Close();
+					tempWriter.Close();
+				}
+				else
+				{
+					// monday night raw
+					bgData.AddRange(data);
+				}
+			}
+
+			mb.Data = bgData.ToArray();
+			mb.ReadData();
+			return mb;
 		}
 
 		#region Binary Read/Write

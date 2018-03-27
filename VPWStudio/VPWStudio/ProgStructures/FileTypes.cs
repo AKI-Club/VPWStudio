@@ -9,13 +9,14 @@ namespace VPWStudio
 		Binary = 0, // also used for any "Unknown" format
 
 		// AKI-developed formats
-		AkiArchive,    // Archive of files ("TEXarc" counts as this)
-		AkiModel,      // Model data
-		AkiTexture,    // "TEX" file, AKI's wrapper around some N64 texture types
-		AkiText,       // Text bank
-		AkiLargeFont,  // Large font (24x21px character cells)
-		AkiSmallFont,  // Small font (16x13px character cells)
-		AkiFontChars,  // (not yet implemented; Shift-JIS encoded text file with all font characters)
+		AkiArchive,     // Archive of files ("TEXarc" counts as this)
+		AkiModel,       // Model data
+		AkiTexture,     // "TEX" file, AKI's wrapper around some N64 texture types
+		AkiText,        // Text bank
+		AkiLargeFont,   // Large font (24x21px character cells)
+		AkiSmallFont,   // Small font (16x13px character cells)
+		AkiFontChars,   // (not yet implemented; Shift-JIS encoded text file with all font characters)
+		MenuBackground, // Menu background image (40 files, 64x30 CI4 chunks)
 
 		// N64 standard textures and palettes
 		Ci4Palette, // raw CI4 palette data (32 bytes)
