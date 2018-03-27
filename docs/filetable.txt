@@ -1,5 +1,6 @@
 Notes on the filetable (and manipulating it)
 ============================================
+todo: find and add the sound table information for the other games.
 
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.0]
@@ -88,6 +89,34 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
+sub_80003700
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003700
+* Z64: 0x4300
+
+addresses of note:
+0x8E8C60 - part of alHeapDBAlloc calculation?
+0x8EEB60 - part of alHeapDBAlloc calculation?
+0x8EEB60 - $a1 arg for alBnkfNew
+
+0x7C7070 - part of alHeapDBAlloc calculation?
+0x7CFD20 - part of alHeapDBAlloc calculation?
+0x7CFD20 - $a1 arg for alBnkfNew
+
+sub_80003BC8
+------------
+Another possible Soundtable/Wavetable Load Routine
+* IDA: 80003BC8
+* Z64: 0x47C8
+
+addresses of note:
+0xA092D0 - used in DMA, alSeqFileNew call
+
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.1]
 
@@ -174,6 +203,34 @@ Routine begins at
 (27 18 95 00)
 * IDA: 800014FC
 * Z64: 0x20FC
+
+Soundtable/Wavetable
+--------------------
+(todo)
+
+sub_80003700
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003700
+* Z64: 0x4300
+
+addresses of note:
+0x8E8E50 - part of alHeapDBAlloc calculation?
+0x8EED50 - part of alHeapDBAlloc calculation?
+0x8EED50 - $a1 arg for alBnkfNew
+
+0x7C7260 - part of alHeapDBAlloc calculation?
+0x7CFF10 - part of alHeapDBAlloc calculation?
+0x7CFF10 - $a1 arg for alBnkfNew
+
+sub_80003BC8
+------------
+Another possible Soundtable/Wavetable Load Routine
+* IDA: 80003BC8
+* Z64: 0x47C8
+
+addresses of note:
+0xA094C0 - used in DMA, alSeqFileNew calls
 
 ================================================================================
 [WCW vs. nWo World Tour, PAL]
@@ -262,6 +319,10 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
 ================================================================================
 [Virtual Pro-Wrestling 64, NTSC-J]
 
@@ -349,6 +410,33 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
+sub_80003800
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003800
+* Z64: 0x4400
+
+addresses of note:
+0xD736F0 - part of alHeapDBAlloc calculation?
+0xD7BF70 - part of alHeapDBAlloc calculation?
+0xD7BF70 - $a1 arg for alBnkfNew
+
+0xC847B0 - part of alHeapDBAlloc calculation?
+0xC8D750 - part of alHeapDBAlloc calculation?
+0xC8D750 - $a1 arg for alBnkfNew
+
+sub_80003CCC
+------------
+* IDA: 80003CCC
+* Z64: 0x48CC
+
+addresses of note:
+0xEF3FF0 - used in DMA, alSeqFileNew calls
+
 ================================================================================
 [WCW/nWo Revenge, NTSC-U]
 
@@ -427,6 +515,24 @@ Others
 There's a floating 0x000DAC50 at...
 * IDA: 80036E58
 * Z64: 0x37A58
+
+Soundtable/Wavetable
+--------------------
+(todo)
+
+sub_80003120
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003120
+* Z64: 0x3D20
+
+addresses of note:
+0xCEC610    # n64 wavetables ?
+0xCE9F00    # n64 ptrtables v2 ("proset.wbk")
+0xE3B300    # n64 wavetables ?
+0xE35070    # n64 ptrtables v2 ("se_pack.wbk")
+0xCEC610    # n64 wavetables ?
+0xE3B300    # n64 wavetables ?
 
 ================================================================================
 [WCW/nWo Revenge, PAL]
@@ -507,6 +613,10 @@ There's a floating 0x000D81E0 at...
 * IDA: 800345AB
 * Z64: 0x351A8
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
 ================================================================================
 [WWF WrestleMania 2000, NTSC-U]
 
@@ -578,6 +688,10 @@ Routine begins at
 * IDA: 80003F30
 * Z64: 0x4B30
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
 ================================================================================
 [WWF WrestleMania 2000, NTSC-J]
 
@@ -641,6 +755,10 @@ Routine begins at
 
 This routine seems to have changed in the NTSC-J version...
 It calls sub_80003C74, meaning there's nothing to change here.
+
+Soundtable/Wavetable
+--------------------
+(todo)
 
 ================================================================================
 [WWF WrestleMania 2000, PAL]
@@ -712,6 +830,10 @@ Routine begins at
 (3C 04 00 14 24 84 4A C0)
 * IDA: 80003F30
 * Z64: 0x4B30
+
+Soundtable/Wavetable
+--------------------
+(todo)
 
 ================================================================================
 [Virtual Pro-Wrestling 2, NTSC-J]
@@ -910,6 +1032,10 @@ LoadFile
 --------
 (same setup as WM2K NTSC-J; no changes needed)
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
 ================================================================================
 [WWF No Mercy, NTSC-U v1.1]
 
@@ -978,6 +1104,10 @@ Routine begins at
 LoadFile
 --------
 (same setup as WM2K NTSC-J; no changes needed)
+
+Soundtable/Wavetable
+--------------------
+(todo)
 
 ================================================================================
 [WWF No Mercy, PAL v1.0]
@@ -1048,6 +1178,10 @@ LoadFile
 --------
 (same setup as WM2K NTSC-J; no changes needed)
 
+Soundtable/Wavetable
+--------------------
+(todo)
+
 ================================================================================
 [WWF No Mercy, PAL v1.1]
 
@@ -1116,3 +1250,7 @@ Routine begins at
 LoadFile
 --------
 (same setup as WM2K NTSC-J; no changes needed)
+
+Soundtable/Wavetable
+--------------------
+(todo)
