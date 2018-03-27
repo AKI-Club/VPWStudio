@@ -209,7 +209,9 @@
 0181=AkiTexture;
 0182=I4Texture;WWF logo main (64x64)
 0183=I4Texture;WWF logo underline (64x64)
-0184=I4Texture;
+0184=I4Texture;TOUGH!! (64x64)
+0185=I4Texture;H.B.K. (64x64)
+0186=I4Texture;Mr. Socko (128x32)
 01FB=I4Texture;
 01FC=AkiTexture;
 01FD=AkiTexture;
