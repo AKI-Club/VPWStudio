@@ -36,6 +36,7 @@ namespace VPWStudio
 			{ VPWGames.Revenge, -1 },
 			{ VPWGames.WM2K, 320 },
 			{ VPWGames.VPW2, 64 },
+			{ VPWGames.NoMercy, 64 },
 		};
 
 		private static Dictionary<VPWGames, int> MenuChunkHeight = new Dictionary<VPWGames, int>(){
@@ -44,6 +45,7 @@ namespace VPWStudio
 			{ VPWGames.Revenge, -1 },
 			{ VPWGames.WM2K, 24 },
 			{ VPWGames.VPW2, 30 },
+			{ VPWGames.NoMercy, 30 },
 		};
 
 		private static Dictionary<VPWGames, int> MenuChunkColumns = new Dictionary<VPWGames, int>(){
@@ -52,6 +54,7 @@ namespace VPWStudio
 			{ VPWGames.Revenge, -1 },
 			{ VPWGames.WM2K, 1 },
 			{ VPWGames.VPW2, 5 },
+			{ VPWGames.NoMercy, 5 },
 		};
 
 		private static Dictionary<VPWGames, int> MenuChunkRows = new Dictionary<VPWGames, int>(){
@@ -60,6 +63,7 @@ namespace VPWStudio
 			{ VPWGames.Revenge, -1 },
 			{ VPWGames.WM2K, 10 },
 			{ VPWGames.VPW2, 8 },
+			{ VPWGames.NoMercy, 8 },
 		};
 		#endregion
 
@@ -221,6 +225,7 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			// todo: this is probably a clusterfuck.
+			// it should probably return a byte[] instead of using a BinaryWriter?
 		}
 		#endregion
 
@@ -242,29 +247,33 @@ namespace VPWStudio
 
 			// obtain palette
 			Ci4Palette newPal = new Ci4Palette();
+			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
 			for (int i = 0; i < b.Palette.Entries.Length; i++)
 			{
+				BitmapColors.Add(i, b.Palette.Entries[i]);
 				newPal.Entries[i] = N64Colors.ColorToValue5551(b.Palette.Entries[i]);
 			}
 			Palette = newPal;
 
 			// do conversion
 			int texNum = 0;
-			for (int y = 0; y < ChunkRows; y++)
+			for (int curRow = 0; curRow < ChunkRows; curRow++)
 			{
-				for (int x = 0; x < ChunkColumns; x++)
+				for (int curCol = 0; curCol < ChunkColumns; curCol++)
 				{
-					// convert each 64x30 chunk
+					// convert each chunk
 					texNum++;
 				}
-
-				texNum++;
 			}
 
 			g.Dispose();
 			return true;
 		}
 
+		/// <summary>
+		/// Convert this MenuBackground to a Bitmap.
+		/// </summary>
+		/// <returns>Bitmap with the MenuBackground data.</returns>
 		public Bitmap ToBitmap()
 		{
 			Bitmap outBmp = new Bitmap(MENUBG_WIDTH, MENUBG_HEIGHT);
