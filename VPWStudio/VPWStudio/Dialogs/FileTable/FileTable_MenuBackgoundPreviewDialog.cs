@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPWStudio
@@ -18,6 +13,7 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 			FileID = _fileID;
+			Text = String.Format("Background Preview - File {0:X4}", FileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -32,6 +28,7 @@ namespace VPWStudio
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Title = "Export PNG";
 			sfd.Filter = "PNG Files (*.png)|*.png|All Files (*.*)|*.*";
+			sfd.FileName = String.Format("{0:X4}.png", FileID);
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				pbMenuBG.Image.Save(sfd.FileName);
