@@ -692,6 +692,13 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Extract a MenuBackground from the FileTable.
+		/// </summary>
+		/// <param name="_in">BinaryReader instance with ROM loaded.</param>
+		/// <param name="firstID">First File ID of the MenuBackground.</param>
+		/// <param name="gameType"></param>
+		/// <returns>MenuBackground item with the extracted data.</returns>
 		public MenuBackground ExtractMenuBackground(BinaryReader _in, int firstID, VPWGames gameType)
 		{
 			MenuBackground mb = new MenuBackground(firstID, gameType);
