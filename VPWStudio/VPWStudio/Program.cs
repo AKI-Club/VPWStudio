@@ -131,10 +131,10 @@ namespace VPWStudio
 		public static void FixAddresses(List<byte> romData, int addr1, int addr2, int difference)
 		{
 			byte[] high = new byte[]
-				{
-					romData[addr1],
-					romData[addr1+1]
-				};
+			{
+				romData[addr1],
+				romData[addr1+1]
+			};
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(high);
@@ -143,8 +143,8 @@ namespace VPWStudio
 
 			byte[] low = new byte[]
 			{
-					romData[addr2],
-					romData[addr2+1]
+				romData[addr2],
+				romData[addr2+1]
 			};
 			if (BitConverter.IsLittleEndian)
 			{
@@ -185,13 +185,13 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// (formerly ConvertData)
+		/// (todo)
 		/// </summary>
 		/// <param name="fileID"></param>
 		/// <returns></returns>
 		/// this routine should only be called if the file extension is not "lzss" or the intended extension.
 		/// todo: running this for FileTypes.Binary is dumb
-		public static byte[] MotherfuckingConversion(int fileID)
+		public static byte[] ConvertFile(int fileID)
 		{
 			// Get replacement file information
 			FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[fileID];
@@ -486,7 +486,7 @@ namespace VPWStudio
 						else
 						{
 							// try conversion
-							outData = MotherfuckingConversion(i);
+							outData = ConvertFile(i);
 						}
 					}
 					else
@@ -595,14 +595,31 @@ namespace VPWStudio
 			#region Update Game Code
 			// xxx: Currently, this is hardcoded for Virtual Pro-Wrestling 2.
 
+			if (CurLocationFile != null)
+			{
+				// try getting addresses from the Location File.
+
+				// currently, we want to change %SETUPFT_FTLOCATION
+
+				// and then deal with all the audio junk, which is different per-game...
+
+			}
+			else
+			{
+				// hardcoded junk, ugh.
+			}
+
 			// [SetupFiletable]
 			// fix filetable location
 			FixAddresses(outRomData, 0x48DA, 0x48DE, totalDifference);
 
+			// [GetFileLocation]
+			// todo: we don't currently support adding/removing entries from the filetable.
+
 			// [LoadFile]
 			// todo: we don't currently support adding/removing entries from the filetable.
 
-			// - audio stuff
+			// [Audio Stuff]
 			FixAddresses(outRomData, 0x432A, 0x432E, totalDifference); // sndtbl-1.wbk
 			FixAddresses(outRomData, 0x4336, 0x433A, totalDifference); // sndtbl-1.ptr
 
