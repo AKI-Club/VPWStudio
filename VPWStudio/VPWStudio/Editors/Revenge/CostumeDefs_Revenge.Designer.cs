@@ -30,6 +30,42 @@
 		{
 			this.tcMain = new System.Windows.Forms.TabControl();
 			this.tpBodyTypes = new System.Windows.Forms.TabPage();
+			this.panelBodyTypesData = new System.Windows.Forms.Panel();
+			this.tlpBodyType = new System.Windows.Forms.TableLayoutPanel();
+			this.tbPelvisModel = new System.Windows.Forms.TextBox();
+			this.tbStomachModel = new System.Windows.Forms.TextBox();
+			this.tbChestModel = new System.Windows.Forms.TextBox();
+			this.tbLeftLowerLegModel = new System.Windows.Forms.TextBox();
+			this.tbLeftUpperLegModel = new System.Windows.Forms.TextBox();
+			this.tbLeftFootModel = new System.Windows.Forms.TextBox();
+			this.tbLeftPalmModel = new System.Windows.Forms.TextBox();
+			this.tbLeftFingersModel = new System.Windows.Forms.TextBox();
+			this.tbLeftForearmModel = new System.Windows.Forms.TextBox();
+			this.tbLeftUpperArmModel = new System.Windows.Forms.TextBox();
+			this.tbRightLowerLegModel = new System.Windows.Forms.TextBox();
+			this.tbRightUpperLegModel = new System.Windows.Forms.TextBox();
+			this.tbRightFootModel = new System.Windows.Forms.TextBox();
+			this.tbRightForearmModel = new System.Windows.Forms.TextBox();
+			this.tbRightPalmModel = new System.Windows.Forms.TextBox();
+			this.tbRightFingersModel = new System.Windows.Forms.TextBox();
+			this.tbRightUpperArmModel = new System.Windows.Forms.TextBox();
+			this.label36 = new System.Windows.Forms.Label();
+			this.label37 = new System.Windows.Forms.Label();
+			this.label38 = new System.Windows.Forms.Label();
+			this.label39 = new System.Windows.Forms.Label();
+			this.label40 = new System.Windows.Forms.Label();
+			this.label41 = new System.Windows.Forms.Label();
+			this.label42 = new System.Windows.Forms.Label();
+			this.label43 = new System.Windows.Forms.Label();
+			this.label44 = new System.Windows.Forms.Label();
+			this.label45 = new System.Windows.Forms.Label();
+			this.label46 = new System.Windows.Forms.Label();
+			this.label47 = new System.Windows.Forms.Label();
+			this.label48 = new System.Windows.Forms.Label();
+			this.label49 = new System.Windows.Forms.Label();
+			this.label50 = new System.Windows.Forms.Label();
+			this.label51 = new System.Windows.Forms.Label();
+			this.label52 = new System.Windows.Forms.Label();
 			this.lbBodyTypes = new System.Windows.Forms.ListBox();
 			this.tpCostumes = new System.Windows.Forms.TabPage();
 			this.panelCostumeData = new System.Windows.Forms.Panel();
@@ -37,120 +73,120 @@
 			this.tlpCostumeRightUpperArm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightUpperArmTexture = new System.Windows.Forms.TextBox();
-			this.label33 = new System.Windows.Forms.Label();
-			this.label34 = new System.Windows.Forms.Label();
+			this.labelRightUpperArmTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightUpperArm = new System.Windows.Forms.Label();
 			this.pbRightUpperArm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel47 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightUpperArmPalette = new System.Windows.Forms.TextBox();
-			this.label35 = new System.Windows.Forms.Label();
+			this.labelRightUpperArmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightFingers = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel43 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightFingersTexture = new System.Windows.Forms.TextBox();
-			this.label30 = new System.Windows.Forms.Label();
-			this.label31 = new System.Windows.Forms.Label();
+			this.labelRightFingersTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightFingers = new System.Windows.Forms.Label();
 			this.pbRightFingers = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel44 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightFingersPalette = new System.Windows.Forms.TextBox();
-			this.label32 = new System.Windows.Forms.Label();
+			this.labelRightFingersPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightPalm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel40 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightPalmTexture = new System.Windows.Forms.TextBox();
-			this.label27 = new System.Windows.Forms.Label();
-			this.label28 = new System.Windows.Forms.Label();
+			this.labelRightPalmTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightPalm = new System.Windows.Forms.Label();
 			this.pbRightPalm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel41 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightPalmPalette = new System.Windows.Forms.TextBox();
-			this.label29 = new System.Windows.Forms.Label();
+			this.labelRightPalmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightForearm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel37 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightForearmTexture = new System.Windows.Forms.TextBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.label25 = new System.Windows.Forms.Label();
+			this.labelRightForearmTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightForearm = new System.Windows.Forms.Label();
 			this.pbRightForearm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel38 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightForearmPalette = new System.Windows.Forms.TextBox();
-			this.label26 = new System.Windows.Forms.Label();
+			this.labelRightForearmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightFoot = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel34 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightFootTexture = new System.Windows.Forms.TextBox();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label22 = new System.Windows.Forms.Label();
+			this.labelRightFootTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightFoot = new System.Windows.Forms.Label();
 			this.pbRightFoot = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel35 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightFootPalette = new System.Windows.Forms.TextBox();
-			this.label23 = new System.Windows.Forms.Label();
+			this.labelRightFootPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightLeg = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightLegTexture = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
+			this.labelRightLegTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightLeg = new System.Windows.Forms.Label();
 			this.pbRightLeg = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightLegPalette = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
+			this.labelRightLegPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeRightBoot = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightBootTexture = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
+			this.labelRightBootTexture = new System.Windows.Forms.Label();
+			this.labelCostumeRightBoot = new System.Windows.Forms.Label();
 			this.pbRightBoot = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbRightBootPalette = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
+			this.labelRightBootPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftUpperArm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftUpperArmTexture = new System.Windows.Forms.TextBox();
-			this.label19 = new System.Windows.Forms.Label();
+			this.labelLeftUpperArmTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftUpperArm = new System.Windows.Forms.Label();
 			this.pbLeftUpperArm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftUpperArmPalette = new System.Windows.Forms.TextBox();
-			this.label21 = new System.Windows.Forms.Label();
+			this.labelLeftUpperArmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftForearm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftForearmTexture = new System.Windows.Forms.TextBox();
-			this.label16 = new System.Windows.Forms.Label();
+			this.labelLeftForearmTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftForearm = new System.Windows.Forms.Label();
 			this.pbLeftForearm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftForearmPalette = new System.Windows.Forms.TextBox();
-			this.label18 = new System.Windows.Forms.Label();
+			this.labelLeftForearmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftFingers = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftFingersTexture = new System.Windows.Forms.TextBox();
-			this.label13 = new System.Windows.Forms.Label();
+			this.labelLeftFingersTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftFingers = new System.Windows.Forms.Label();
 			this.pbLeftFingers = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftFingersPalette = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
+			this.labelLeftFingersPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftPalm = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftPalmTexture = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
+			this.labelLeftPalmTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftPalm = new System.Windows.Forms.Label();
 			this.pbLeftPalm = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftPalmPalette = new System.Windows.Forms.TextBox();
-			this.label12 = new System.Windows.Forms.Label();
+			this.labelLeftPalmPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftFoot = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftFootTexture = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
+			this.labelLeftFootTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftFoot = new System.Windows.Forms.Label();
 			this.pbLeftFoot = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftFootPalette = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
+			this.labelLeftFootPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeLeftLeg = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftLegTexture = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.labelLeftLegTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftLeg = new System.Windows.Forms.Label();
 			this.pbLeftLeg = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftLegPalette = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
+			this.labelLeftLegPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeChest = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbChestTexture = new System.Windows.Forms.TextBox();
@@ -172,15 +208,16 @@
 			this.tlpCostumeLeftBoot = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftBootTexture = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.labelLeftBootTexture = new System.Windows.Forms.Label();
 			this.labelCostumeLeftBoot = new System.Windows.Forms.Label();
 			this.pbLeftBoot = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbLeftBootPalette = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.labelLeftBootPalette = new System.Windows.Forms.Label();
 			this.tlpCostumeUnknown = new System.Windows.Forms.TableLayoutPanel();
 			this.labelCostumeUnknown = new System.Windows.Forms.Label();
 			this.tbCostumeUnknown = new System.Windows.Forms.TextBox();
+			this.cbCostumesAltPalette = new System.Windows.Forms.CheckBox();
 			this.tlpCostumeBodyType = new System.Windows.Forms.TableLayoutPanel();
 			this.labelCostumeBodyType = new System.Windows.Forms.Label();
 			this.tbBodyType = new System.Windows.Forms.TextBox();
@@ -232,9 +269,10 @@
 			this.tbNeckPalette = new System.Windows.Forms.TextBox();
 			this.tbNeckTexture = new System.Windows.Forms.TextBox();
 			this.lbHeadsMasks = new System.Windows.Forms.ListBox();
-			this.cbCostumesAltPalette = new System.Windows.Forms.CheckBox();
 			this.tcMain.SuspendLayout();
 			this.tpBodyTypes.SuspendLayout();
+			this.panelBodyTypesData.SuspendLayout();
+			this.tlpBodyType.SuspendLayout();
 			this.tpCostumes.SuspendLayout();
 			this.panelCostumeData.SuspendLayout();
 			this.tlpCostumeMain.SuspendLayout();
@@ -339,6 +377,7 @@
 			// 
 			// tpBodyTypes
 			// 
+			this.tpBodyTypes.Controls.Add(this.panelBodyTypesData);
 			this.tpBodyTypes.Controls.Add(this.lbBodyTypes);
 			this.tpBodyTypes.Location = new System.Drawing.Point(4, 22);
 			this.tpBodyTypes.Name = "tpBodyTypes";
@@ -347,6 +386,400 @@
 			this.tpBodyTypes.TabIndex = 2;
 			this.tpBodyTypes.Text = "Body Types";
 			this.tpBodyTypes.UseVisualStyleBackColor = true;
+			// 
+			// panelBodyTypesData
+			// 
+			this.panelBodyTypesData.AutoScroll = true;
+			this.panelBodyTypesData.Controls.Add(this.tlpBodyType);
+			this.panelBodyTypesData.Location = new System.Drawing.Point(132, 9);
+			this.panelBodyTypesData.Name = "panelBodyTypesData";
+			this.panelBodyTypesData.Size = new System.Drawing.Size(464, 350);
+			this.panelBodyTypesData.TabIndex = 3;
+			// 
+			// tlpBodyType
+			// 
+			this.tlpBodyType.ColumnCount = 2;
+			this.tlpBodyType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpBodyType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpBodyType.Controls.Add(this.tbPelvisModel, 1, 0);
+			this.tlpBodyType.Controls.Add(this.tbStomachModel, 1, 1);
+			this.tlpBodyType.Controls.Add(this.tbChestModel, 1, 2);
+			this.tlpBodyType.Controls.Add(this.tbLeftLowerLegModel, 1, 3);
+			this.tlpBodyType.Controls.Add(this.tbLeftUpperLegModel, 1, 4);
+			this.tlpBodyType.Controls.Add(this.tbLeftFootModel, 1, 5);
+			this.tlpBodyType.Controls.Add(this.tbLeftPalmModel, 1, 6);
+			this.tlpBodyType.Controls.Add(this.tbLeftFingersModel, 1, 7);
+			this.tlpBodyType.Controls.Add(this.tbLeftForearmModel, 1, 8);
+			this.tlpBodyType.Controls.Add(this.tbLeftUpperArmModel, 1, 9);
+			this.tlpBodyType.Controls.Add(this.tbRightLowerLegModel, 1, 10);
+			this.tlpBodyType.Controls.Add(this.tbRightUpperLegModel, 1, 11);
+			this.tlpBodyType.Controls.Add(this.tbRightFootModel, 1, 12);
+			this.tlpBodyType.Controls.Add(this.tbRightForearmModel, 1, 13);
+			this.tlpBodyType.Controls.Add(this.tbRightPalmModel, 1, 14);
+			this.tlpBodyType.Controls.Add(this.tbRightFingersModel, 1, 15);
+			this.tlpBodyType.Controls.Add(this.tbRightUpperArmModel, 1, 16);
+			this.tlpBodyType.Controls.Add(this.label36, 0, 0);
+			this.tlpBodyType.Controls.Add(this.label37, 0, 1);
+			this.tlpBodyType.Controls.Add(this.label38, 0, 2);
+			this.tlpBodyType.Controls.Add(this.label39, 0, 3);
+			this.tlpBodyType.Controls.Add(this.label40, 0, 4);
+			this.tlpBodyType.Controls.Add(this.label41, 0, 5);
+			this.tlpBodyType.Controls.Add(this.label42, 0, 6);
+			this.tlpBodyType.Controls.Add(this.label43, 0, 7);
+			this.tlpBodyType.Controls.Add(this.label44, 0, 8);
+			this.tlpBodyType.Controls.Add(this.label45, 0, 9);
+			this.tlpBodyType.Controls.Add(this.label46, 0, 10);
+			this.tlpBodyType.Controls.Add(this.label47, 0, 11);
+			this.tlpBodyType.Controls.Add(this.label48, 0, 12);
+			this.tlpBodyType.Controls.Add(this.label49, 0, 13);
+			this.tlpBodyType.Controls.Add(this.label50, 0, 14);
+			this.tlpBodyType.Controls.Add(this.label51, 0, 15);
+			this.tlpBodyType.Controls.Add(this.label52, 0, 16);
+			this.tlpBodyType.Location = new System.Drawing.Point(3, 3);
+			this.tlpBodyType.Name = "tlpBodyType";
+			this.tlpBodyType.RowCount = 17;
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+			this.tlpBodyType.Size = new System.Drawing.Size(444, 396);
+			this.tlpBodyType.TabIndex = 2;
+			// 
+			// tbPelvisModel
+			// 
+			this.tbPelvisModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbPelvisModel.Location = new System.Drawing.Point(225, 3);
+			this.tbPelvisModel.Name = "tbPelvisModel";
+			this.tbPelvisModel.ReadOnly = true;
+			this.tbPelvisModel.Size = new System.Drawing.Size(216, 20);
+			this.tbPelvisModel.TabIndex = 0;
+			// 
+			// tbStomachModel
+			// 
+			this.tbStomachModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbStomachModel.Location = new System.Drawing.Point(225, 26);
+			this.tbStomachModel.Name = "tbStomachModel";
+			this.tbStomachModel.ReadOnly = true;
+			this.tbStomachModel.Size = new System.Drawing.Size(216, 20);
+			this.tbStomachModel.TabIndex = 1;
+			// 
+			// tbChestModel
+			// 
+			this.tbChestModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbChestModel.Location = new System.Drawing.Point(225, 49);
+			this.tbChestModel.Name = "tbChestModel";
+			this.tbChestModel.ReadOnly = true;
+			this.tbChestModel.Size = new System.Drawing.Size(216, 20);
+			this.tbChestModel.TabIndex = 2;
+			// 
+			// tbLeftLowerLegModel
+			// 
+			this.tbLeftLowerLegModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftLowerLegModel.Location = new System.Drawing.Point(225, 72);
+			this.tbLeftLowerLegModel.Name = "tbLeftLowerLegModel";
+			this.tbLeftLowerLegModel.ReadOnly = true;
+			this.tbLeftLowerLegModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftLowerLegModel.TabIndex = 3;
+			// 
+			// tbLeftUpperLegModel
+			// 
+			this.tbLeftUpperLegModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftUpperLegModel.Location = new System.Drawing.Point(225, 95);
+			this.tbLeftUpperLegModel.Name = "tbLeftUpperLegModel";
+			this.tbLeftUpperLegModel.ReadOnly = true;
+			this.tbLeftUpperLegModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftUpperLegModel.TabIndex = 4;
+			// 
+			// tbLeftFootModel
+			// 
+			this.tbLeftFootModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftFootModel.Location = new System.Drawing.Point(225, 118);
+			this.tbLeftFootModel.Name = "tbLeftFootModel";
+			this.tbLeftFootModel.ReadOnly = true;
+			this.tbLeftFootModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftFootModel.TabIndex = 5;
+			// 
+			// tbLeftPalmModel
+			// 
+			this.tbLeftPalmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftPalmModel.Location = new System.Drawing.Point(225, 141);
+			this.tbLeftPalmModel.Name = "tbLeftPalmModel";
+			this.tbLeftPalmModel.ReadOnly = true;
+			this.tbLeftPalmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftPalmModel.TabIndex = 6;
+			// 
+			// tbLeftFingersModel
+			// 
+			this.tbLeftFingersModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftFingersModel.Location = new System.Drawing.Point(225, 164);
+			this.tbLeftFingersModel.Name = "tbLeftFingersModel";
+			this.tbLeftFingersModel.ReadOnly = true;
+			this.tbLeftFingersModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftFingersModel.TabIndex = 7;
+			// 
+			// tbLeftForearmModel
+			// 
+			this.tbLeftForearmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftForearmModel.Location = new System.Drawing.Point(225, 187);
+			this.tbLeftForearmModel.Name = "tbLeftForearmModel";
+			this.tbLeftForearmModel.ReadOnly = true;
+			this.tbLeftForearmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftForearmModel.TabIndex = 8;
+			// 
+			// tbLeftUpperArmModel
+			// 
+			this.tbLeftUpperArmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLeftUpperArmModel.Location = new System.Drawing.Point(225, 210);
+			this.tbLeftUpperArmModel.Name = "tbLeftUpperArmModel";
+			this.tbLeftUpperArmModel.ReadOnly = true;
+			this.tbLeftUpperArmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbLeftUpperArmModel.TabIndex = 9;
+			// 
+			// tbRightLowerLegModel
+			// 
+			this.tbRightLowerLegModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightLowerLegModel.Location = new System.Drawing.Point(225, 233);
+			this.tbRightLowerLegModel.Name = "tbRightLowerLegModel";
+			this.tbRightLowerLegModel.ReadOnly = true;
+			this.tbRightLowerLegModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightLowerLegModel.TabIndex = 10;
+			// 
+			// tbRightUpperLegModel
+			// 
+			this.tbRightUpperLegModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightUpperLegModel.Location = new System.Drawing.Point(225, 256);
+			this.tbRightUpperLegModel.Name = "tbRightUpperLegModel";
+			this.tbRightUpperLegModel.ReadOnly = true;
+			this.tbRightUpperLegModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightUpperLegModel.TabIndex = 11;
+			// 
+			// tbRightFootModel
+			// 
+			this.tbRightFootModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightFootModel.Location = new System.Drawing.Point(225, 279);
+			this.tbRightFootModel.Name = "tbRightFootModel";
+			this.tbRightFootModel.ReadOnly = true;
+			this.tbRightFootModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightFootModel.TabIndex = 12;
+			// 
+			// tbRightForearmModel
+			// 
+			this.tbRightForearmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightForearmModel.Location = new System.Drawing.Point(225, 302);
+			this.tbRightForearmModel.Name = "tbRightForearmModel";
+			this.tbRightForearmModel.ReadOnly = true;
+			this.tbRightForearmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightForearmModel.TabIndex = 13;
+			// 
+			// tbRightPalmModel
+			// 
+			this.tbRightPalmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightPalmModel.Location = new System.Drawing.Point(225, 325);
+			this.tbRightPalmModel.Name = "tbRightPalmModel";
+			this.tbRightPalmModel.ReadOnly = true;
+			this.tbRightPalmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightPalmModel.TabIndex = 14;
+			// 
+			// tbRightFingersModel
+			// 
+			this.tbRightFingersModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightFingersModel.Location = new System.Drawing.Point(225, 348);
+			this.tbRightFingersModel.Name = "tbRightFingersModel";
+			this.tbRightFingersModel.ReadOnly = true;
+			this.tbRightFingersModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightFingersModel.TabIndex = 15;
+			// 
+			// tbRightUpperArmModel
+			// 
+			this.tbRightUpperArmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRightUpperArmModel.Location = new System.Drawing.Point(225, 372);
+			this.tbRightUpperArmModel.Name = "tbRightUpperArmModel";
+			this.tbRightUpperArmModel.ReadOnly = true;
+			this.tbRightUpperArmModel.Size = new System.Drawing.Size(216, 20);
+			this.tbRightUpperArmModel.TabIndex = 16;
+			// 
+			// label36
+			// 
+			this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label36.AutoSize = true;
+			this.label36.Location = new System.Drawing.Point(3, 5);
+			this.label36.Name = "label36";
+			this.label36.Size = new System.Drawing.Size(216, 13);
+			this.label36.TabIndex = 17;
+			this.label36.Text = "Pelvis Model";
+			// 
+			// label37
+			// 
+			this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label37.AutoSize = true;
+			this.label37.Location = new System.Drawing.Point(3, 28);
+			this.label37.Name = "label37";
+			this.label37.Size = new System.Drawing.Size(216, 13);
+			this.label37.TabIndex = 18;
+			this.label37.Text = "Stomach Model";
+			// 
+			// label38
+			// 
+			this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label38.AutoSize = true;
+			this.label38.Location = new System.Drawing.Point(3, 51);
+			this.label38.Name = "label38";
+			this.label38.Size = new System.Drawing.Size(216, 13);
+			this.label38.TabIndex = 19;
+			this.label38.Text = "Chest Model";
+			// 
+			// label39
+			// 
+			this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label39.AutoSize = true;
+			this.label39.Location = new System.Drawing.Point(3, 74);
+			this.label39.Name = "label39";
+			this.label39.Size = new System.Drawing.Size(216, 13);
+			this.label39.TabIndex = 20;
+			this.label39.Text = "Left Lower Leg Model";
+			// 
+			// label40
+			// 
+			this.label40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label40.AutoSize = true;
+			this.label40.Location = new System.Drawing.Point(3, 97);
+			this.label40.Name = "label40";
+			this.label40.Size = new System.Drawing.Size(216, 13);
+			this.label40.TabIndex = 21;
+			this.label40.Text = "Left Upper Leg Model";
+			// 
+			// label41
+			// 
+			this.label41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label41.AutoSize = true;
+			this.label41.Location = new System.Drawing.Point(3, 120);
+			this.label41.Name = "label41";
+			this.label41.Size = new System.Drawing.Size(216, 13);
+			this.label41.TabIndex = 22;
+			this.label41.Text = "Left Foot Model";
+			// 
+			// label42
+			// 
+			this.label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label42.AutoSize = true;
+			this.label42.Location = new System.Drawing.Point(3, 143);
+			this.label42.Name = "label42";
+			this.label42.Size = new System.Drawing.Size(216, 13);
+			this.label42.TabIndex = 23;
+			this.label42.Text = "Left Palm Model";
+			// 
+			// label43
+			// 
+			this.label43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label43.AutoSize = true;
+			this.label43.Location = new System.Drawing.Point(3, 166);
+			this.label43.Name = "label43";
+			this.label43.Size = new System.Drawing.Size(216, 13);
+			this.label43.TabIndex = 24;
+			this.label43.Text = "Left Fingers Model";
+			// 
+			// label44
+			// 
+			this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label44.AutoSize = true;
+			this.label44.Location = new System.Drawing.Point(3, 189);
+			this.label44.Name = "label44";
+			this.label44.Size = new System.Drawing.Size(216, 13);
+			this.label44.TabIndex = 25;
+			this.label44.Text = "Left Forearm Model";
+			// 
+			// label45
+			// 
+			this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label45.AutoSize = true;
+			this.label45.Location = new System.Drawing.Point(3, 212);
+			this.label45.Name = "label45";
+			this.label45.Size = new System.Drawing.Size(216, 13);
+			this.label45.TabIndex = 26;
+			this.label45.Text = "Left Upper Arm Model";
+			// 
+			// label46
+			// 
+			this.label46.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label46.AutoSize = true;
+			this.label46.Location = new System.Drawing.Point(3, 235);
+			this.label46.Name = "label46";
+			this.label46.Size = new System.Drawing.Size(216, 13);
+			this.label46.TabIndex = 27;
+			this.label46.Text = "Right Lower Leg Model";
+			// 
+			// label47
+			// 
+			this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label47.AutoSize = true;
+			this.label47.Location = new System.Drawing.Point(3, 258);
+			this.label47.Name = "label47";
+			this.label47.Size = new System.Drawing.Size(216, 13);
+			this.label47.TabIndex = 28;
+			this.label47.Text = "Right Upper Leg Model";
+			// 
+			// label48
+			// 
+			this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label48.AutoSize = true;
+			this.label48.Location = new System.Drawing.Point(3, 281);
+			this.label48.Name = "label48";
+			this.label48.Size = new System.Drawing.Size(216, 13);
+			this.label48.TabIndex = 29;
+			this.label48.Text = "Right Foot Model";
+			// 
+			// label49
+			// 
+			this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label49.AutoSize = true;
+			this.label49.Location = new System.Drawing.Point(3, 304);
+			this.label49.Name = "label49";
+			this.label49.Size = new System.Drawing.Size(216, 13);
+			this.label49.TabIndex = 30;
+			this.label49.Text = "Right Forearm Model";
+			// 
+			// label50
+			// 
+			this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label50.AutoSize = true;
+			this.label50.Location = new System.Drawing.Point(3, 327);
+			this.label50.Name = "label50";
+			this.label50.Size = new System.Drawing.Size(216, 13);
+			this.label50.TabIndex = 31;
+			this.label50.Text = "Right Palm Model";
+			// 
+			// label51
+			// 
+			this.label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label51.AutoSize = true;
+			this.label51.Location = new System.Drawing.Point(3, 350);
+			this.label51.Name = "label51";
+			this.label51.Size = new System.Drawing.Size(216, 13);
+			this.label51.TabIndex = 32;
+			this.label51.Text = "Right Fingers Model";
+			// 
+			// label52
+			// 
+			this.label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label52.AutoSize = true;
+			this.label52.Location = new System.Drawing.Point(3, 375);
+			this.label52.Name = "label52";
+			this.label52.Size = new System.Drawing.Size(216, 13);
+			this.label52.TabIndex = 33;
+			this.label52.Text = "Right Upper Arm Model";
 			// 
 			// lbBodyTypes
 			// 
@@ -437,9 +870,9 @@
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.99144F));
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.00428F));
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.00428F));
-			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightUpperArm.Controls.Add(this.tableLayoutPanel46, 2, 0);
-			this.tlpCostumeRightUpperArm.Controls.Add(this.label34, 0, 0);
+			this.tlpCostumeRightUpperArm.Controls.Add(this.labelCostumeRightUpperArm, 0, 0);
 			this.tlpCostumeRightUpperArm.Controls.Add(this.pbRightUpperArm, 3, 0);
 			this.tlpCostumeRightUpperArm.Controls.Add(this.tableLayoutPanel47, 1, 0);
 			this.tlpCostumeRightUpperArm.Location = new System.Drawing.Point(3, 1316);
@@ -454,13 +887,13 @@
 			this.tableLayoutPanel46.ColumnCount = 1;
 			this.tableLayoutPanel46.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel46.Controls.Add(this.tbRightUpperArmTexture, 0, 1);
-			this.tableLayoutPanel46.Controls.Add(this.label33, 0, 0);
-			this.tableLayoutPanel46.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel46.Controls.Add(this.labelRightUpperArmTexture, 0, 0);
+			this.tableLayoutPanel46.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel46.Name = "tableLayoutPanel46";
 			this.tableLayoutPanel46.RowCount = 2;
 			this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel46.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel46.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel46.TabIndex = 5;
 			// 
 			// tbRightUpperArmTexture
@@ -469,36 +902,36 @@
 			this.tbRightUpperArmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightUpperArmTexture.Name = "tbRightUpperArmTexture";
 			this.tbRightUpperArmTexture.ReadOnly = true;
-			this.tbRightUpperArmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightUpperArmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightUpperArmTexture.TabIndex = 2;
 			// 
-			// label33
+			// labelRightUpperArmTexture
 			// 
-			this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label33.AutoSize = true;
-			this.label33.Location = new System.Drawing.Point(3, 10);
-			this.label33.Name = "label33";
-			this.label33.Size = new System.Drawing.Size(91, 13);
-			this.label33.TabIndex = 3;
-			this.label33.Text = "Texture";
-			this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightUpperArmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightUpperArmTexture.AutoSize = true;
+			this.labelRightUpperArmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightUpperArmTexture.Name = "labelRightUpperArmTexture";
+			this.labelRightUpperArmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightUpperArmTexture.TabIndex = 3;
+			this.labelRightUpperArmTexture.Text = "Texture";
+			this.labelRightUpperArmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label34
+			// labelCostumeRightUpperArm
 			// 
-			this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label34.AutoSize = true;
-			this.label34.Location = new System.Drawing.Point(3, 29);
-			this.label34.Name = "label34";
-			this.label34.Size = new System.Drawing.Size(90, 13);
-			this.label34.TabIndex = 0;
-			this.label34.Text = "Right Upper Arm";
+			this.labelCostumeRightUpperArm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightUpperArm.AutoSize = true;
+			this.labelCostumeRightUpperArm.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightUpperArm.Name = "labelCostumeRightUpperArm";
+			this.labelCostumeRightUpperArm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightUpperArm.TabIndex = 0;
+			this.labelCostumeRightUpperArm.Text = "Right Upper Arm";
 			// 
 			// pbRightUpperArm
 			// 
 			this.pbRightUpperArm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightUpperArm.Location = new System.Drawing.Point(305, 4);
+			this.pbRightUpperArm.Location = new System.Drawing.Point(302, 4);
 			this.pbRightUpperArm.Name = "pbRightUpperArm";
-			this.pbRightUpperArm.Size = new System.Drawing.Size(129, 64);
+			this.pbRightUpperArm.Size = new System.Drawing.Size(132, 64);
 			this.pbRightUpperArm.TabIndex = 4;
 			this.pbRightUpperArm.TabStop = false;
 			// 
@@ -507,13 +940,13 @@
 			this.tableLayoutPanel47.ColumnCount = 1;
 			this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel47.Controls.Add(this.tbRightUpperArmPalette, 0, 1);
-			this.tableLayoutPanel47.Controls.Add(this.label35, 0, 0);
-			this.tableLayoutPanel47.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel47.Controls.Add(this.labelRightUpperArmPalette, 0, 0);
+			this.tableLayoutPanel47.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel47.Name = "tableLayoutPanel47";
 			this.tableLayoutPanel47.RowCount = 2;
 			this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel47.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel47.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel47.TabIndex = 3;
 			// 
 			// tbRightUpperArmPalette
@@ -522,19 +955,19 @@
 			this.tbRightUpperArmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightUpperArmPalette.Name = "tbRightUpperArmPalette";
 			this.tbRightUpperArmPalette.ReadOnly = true;
-			this.tbRightUpperArmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightUpperArmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightUpperArmPalette.TabIndex = 2;
 			// 
-			// label35
+			// labelRightUpperArmPalette
 			// 
-			this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(3, 10);
-			this.label35.Name = "label35";
-			this.label35.Size = new System.Drawing.Size(91, 13);
-			this.label35.TabIndex = 3;
-			this.label35.Text = "Palette";
-			this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightUpperArmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightUpperArmPalette.AutoSize = true;
+			this.labelRightUpperArmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightUpperArmPalette.Name = "labelRightUpperArmPalette";
+			this.labelRightUpperArmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightUpperArmPalette.TabIndex = 3;
+			this.labelRightUpperArmPalette.Text = "Palette";
+			this.labelRightUpperArmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightFingers
 			// 
@@ -543,9 +976,9 @@
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightFingers.Controls.Add(this.tableLayoutPanel43, 2, 0);
-			this.tlpCostumeRightFingers.Controls.Add(this.label31, 0, 0);
+			this.tlpCostumeRightFingers.Controls.Add(this.labelCostumeRightFingers, 0, 0);
 			this.tlpCostumeRightFingers.Controls.Add(this.pbRightFingers, 3, 0);
 			this.tlpCostumeRightFingers.Controls.Add(this.tableLayoutPanel44, 1, 0);
 			this.tlpCostumeRightFingers.Location = new System.Drawing.Point(3, 1237);
@@ -560,13 +993,13 @@
 			this.tableLayoutPanel43.ColumnCount = 1;
 			this.tableLayoutPanel43.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel43.Controls.Add(this.tbRightFingersTexture, 0, 1);
-			this.tableLayoutPanel43.Controls.Add(this.label30, 0, 0);
-			this.tableLayoutPanel43.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel43.Controls.Add(this.labelRightFingersTexture, 0, 0);
+			this.tableLayoutPanel43.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel43.Name = "tableLayoutPanel43";
 			this.tableLayoutPanel43.RowCount = 2;
 			this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel43.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel43.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel43.TabIndex = 5;
 			// 
 			// tbRightFingersTexture
@@ -575,36 +1008,36 @@
 			this.tbRightFingersTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightFingersTexture.Name = "tbRightFingersTexture";
 			this.tbRightFingersTexture.ReadOnly = true;
-			this.tbRightFingersTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightFingersTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightFingersTexture.TabIndex = 2;
 			// 
-			// label30
+			// labelRightFingersTexture
 			// 
-			this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label30.AutoSize = true;
-			this.label30.Location = new System.Drawing.Point(3, 10);
-			this.label30.Name = "label30";
-			this.label30.Size = new System.Drawing.Size(91, 13);
-			this.label30.TabIndex = 3;
-			this.label30.Text = "Texture";
-			this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightFingersTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightFingersTexture.AutoSize = true;
+			this.labelRightFingersTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightFingersTexture.Name = "labelRightFingersTexture";
+			this.labelRightFingersTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightFingersTexture.TabIndex = 3;
+			this.labelRightFingersTexture.Text = "Texture";
+			this.labelRightFingersTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label31
+			// labelCostumeRightFingers
 			// 
-			this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label31.AutoSize = true;
-			this.label31.Location = new System.Drawing.Point(3, 29);
-			this.label31.Name = "label31";
-			this.label31.Size = new System.Drawing.Size(90, 13);
-			this.label31.TabIndex = 0;
-			this.label31.Text = "Right Fingers";
+			this.labelCostumeRightFingers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightFingers.AutoSize = true;
+			this.labelCostumeRightFingers.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightFingers.Name = "labelCostumeRightFingers";
+			this.labelCostumeRightFingers.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightFingers.TabIndex = 0;
+			this.labelCostumeRightFingers.Text = "Right Fingers";
 			// 
 			// pbRightFingers
 			// 
 			this.pbRightFingers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightFingers.Location = new System.Drawing.Point(305, 4);
+			this.pbRightFingers.Location = new System.Drawing.Point(302, 4);
 			this.pbRightFingers.Name = "pbRightFingers";
-			this.pbRightFingers.Size = new System.Drawing.Size(129, 64);
+			this.pbRightFingers.Size = new System.Drawing.Size(132, 64);
 			this.pbRightFingers.TabIndex = 4;
 			this.pbRightFingers.TabStop = false;
 			// 
@@ -613,13 +1046,13 @@
 			this.tableLayoutPanel44.ColumnCount = 1;
 			this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel44.Controls.Add(this.tbRightFingersPalette, 0, 1);
-			this.tableLayoutPanel44.Controls.Add(this.label32, 0, 0);
-			this.tableLayoutPanel44.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel44.Controls.Add(this.labelRightFingersPalette, 0, 0);
+			this.tableLayoutPanel44.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel44.Name = "tableLayoutPanel44";
 			this.tableLayoutPanel44.RowCount = 2;
 			this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel44.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel44.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel44.TabIndex = 3;
 			// 
 			// tbRightFingersPalette
@@ -628,19 +1061,19 @@
 			this.tbRightFingersPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightFingersPalette.Name = "tbRightFingersPalette";
 			this.tbRightFingersPalette.ReadOnly = true;
-			this.tbRightFingersPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightFingersPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightFingersPalette.TabIndex = 2;
 			// 
-			// label32
+			// labelRightFingersPalette
 			// 
-			this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label32.AutoSize = true;
-			this.label32.Location = new System.Drawing.Point(3, 10);
-			this.label32.Name = "label32";
-			this.label32.Size = new System.Drawing.Size(91, 13);
-			this.label32.TabIndex = 3;
-			this.label32.Text = "Palette";
-			this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightFingersPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightFingersPalette.AutoSize = true;
+			this.labelRightFingersPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightFingersPalette.Name = "labelRightFingersPalette";
+			this.labelRightFingersPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightFingersPalette.TabIndex = 3;
+			this.labelRightFingersPalette.Text = "Palette";
+			this.labelRightFingersPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightPalm
 			// 
@@ -649,9 +1082,9 @@
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightPalm.Controls.Add(this.tableLayoutPanel40, 2, 0);
-			this.tlpCostumeRightPalm.Controls.Add(this.label28, 0, 0);
+			this.tlpCostumeRightPalm.Controls.Add(this.labelCostumeRightPalm, 0, 0);
 			this.tlpCostumeRightPalm.Controls.Add(this.pbRightPalm, 3, 0);
 			this.tlpCostumeRightPalm.Controls.Add(this.tableLayoutPanel41, 1, 0);
 			this.tlpCostumeRightPalm.Location = new System.Drawing.Point(3, 1159);
@@ -666,13 +1099,13 @@
 			this.tableLayoutPanel40.ColumnCount = 1;
 			this.tableLayoutPanel40.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel40.Controls.Add(this.tbRightPalmTexture, 0, 1);
-			this.tableLayoutPanel40.Controls.Add(this.label27, 0, 0);
-			this.tableLayoutPanel40.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel40.Controls.Add(this.labelRightPalmTexture, 0, 0);
+			this.tableLayoutPanel40.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel40.Name = "tableLayoutPanel40";
 			this.tableLayoutPanel40.RowCount = 2;
 			this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel40.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel40.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel40.TabIndex = 5;
 			// 
 			// tbRightPalmTexture
@@ -681,36 +1114,36 @@
 			this.tbRightPalmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightPalmTexture.Name = "tbRightPalmTexture";
 			this.tbRightPalmTexture.ReadOnly = true;
-			this.tbRightPalmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightPalmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightPalmTexture.TabIndex = 2;
 			// 
-			// label27
+			// labelRightPalmTexture
 			// 
-			this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(3, 10);
-			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(91, 13);
-			this.label27.TabIndex = 3;
-			this.label27.Text = "Texture";
-			this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightPalmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightPalmTexture.AutoSize = true;
+			this.labelRightPalmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightPalmTexture.Name = "labelRightPalmTexture";
+			this.labelRightPalmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightPalmTexture.TabIndex = 3;
+			this.labelRightPalmTexture.Text = "Texture";
+			this.labelRightPalmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label28
+			// labelCostumeRightPalm
 			// 
-			this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(3, 29);
-			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(90, 13);
-			this.label28.TabIndex = 0;
-			this.label28.Text = "Right Palm";
+			this.labelCostumeRightPalm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightPalm.AutoSize = true;
+			this.labelCostumeRightPalm.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightPalm.Name = "labelCostumeRightPalm";
+			this.labelCostumeRightPalm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightPalm.TabIndex = 0;
+			this.labelCostumeRightPalm.Text = "Right Palm";
 			// 
 			// pbRightPalm
 			// 
 			this.pbRightPalm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightPalm.Location = new System.Drawing.Point(305, 4);
+			this.pbRightPalm.Location = new System.Drawing.Point(302, 4);
 			this.pbRightPalm.Name = "pbRightPalm";
-			this.pbRightPalm.Size = new System.Drawing.Size(129, 64);
+			this.pbRightPalm.Size = new System.Drawing.Size(132, 64);
 			this.pbRightPalm.TabIndex = 4;
 			this.pbRightPalm.TabStop = false;
 			// 
@@ -719,13 +1152,13 @@
 			this.tableLayoutPanel41.ColumnCount = 1;
 			this.tableLayoutPanel41.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel41.Controls.Add(this.tbRightPalmPalette, 0, 1);
-			this.tableLayoutPanel41.Controls.Add(this.label29, 0, 0);
-			this.tableLayoutPanel41.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel41.Controls.Add(this.labelRightPalmPalette, 0, 0);
+			this.tableLayoutPanel41.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel41.Name = "tableLayoutPanel41";
 			this.tableLayoutPanel41.RowCount = 2;
 			this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel41.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel41.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel41.TabIndex = 3;
 			// 
 			// tbRightPalmPalette
@@ -734,19 +1167,19 @@
 			this.tbRightPalmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightPalmPalette.Name = "tbRightPalmPalette";
 			this.tbRightPalmPalette.ReadOnly = true;
-			this.tbRightPalmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightPalmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightPalmPalette.TabIndex = 2;
 			// 
-			// label29
+			// labelRightPalmPalette
 			// 
-			this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label29.AutoSize = true;
-			this.label29.Location = new System.Drawing.Point(3, 10);
-			this.label29.Name = "label29";
-			this.label29.Size = new System.Drawing.Size(91, 13);
-			this.label29.TabIndex = 3;
-			this.label29.Text = "Palette";
-			this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightPalmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightPalmPalette.AutoSize = true;
+			this.labelRightPalmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightPalmPalette.Name = "labelRightPalmPalette";
+			this.labelRightPalmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightPalmPalette.TabIndex = 3;
+			this.labelRightPalmPalette.Text = "Palette";
+			this.labelRightPalmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightForearm
 			// 
@@ -755,9 +1188,9 @@
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightForearm.Controls.Add(this.tableLayoutPanel37, 2, 0);
-			this.tlpCostumeRightForearm.Controls.Add(this.label25, 0, 0);
+			this.tlpCostumeRightForearm.Controls.Add(this.labelCostumeRightForearm, 0, 0);
 			this.tlpCostumeRightForearm.Controls.Add(this.pbRightForearm, 3, 0);
 			this.tlpCostumeRightForearm.Controls.Add(this.tableLayoutPanel38, 1, 0);
 			this.tlpCostumeRightForearm.Location = new System.Drawing.Point(3, 1081);
@@ -772,13 +1205,13 @@
 			this.tableLayoutPanel37.ColumnCount = 1;
 			this.tableLayoutPanel37.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel37.Controls.Add(this.tbRightForearmTexture, 0, 1);
-			this.tableLayoutPanel37.Controls.Add(this.label24, 0, 0);
-			this.tableLayoutPanel37.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel37.Controls.Add(this.labelRightForearmTexture, 0, 0);
+			this.tableLayoutPanel37.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel37.Name = "tableLayoutPanel37";
 			this.tableLayoutPanel37.RowCount = 2;
 			this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel37.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel37.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel37.TabIndex = 5;
 			// 
 			// tbRightForearmTexture
@@ -787,36 +1220,36 @@
 			this.tbRightForearmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightForearmTexture.Name = "tbRightForearmTexture";
 			this.tbRightForearmTexture.ReadOnly = true;
-			this.tbRightForearmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightForearmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightForearmTexture.TabIndex = 2;
 			// 
-			// label24
+			// labelRightForearmTexture
 			// 
-			this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(3, 10);
-			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(91, 13);
-			this.label24.TabIndex = 3;
-			this.label24.Text = "Texture";
-			this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightForearmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightForearmTexture.AutoSize = true;
+			this.labelRightForearmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightForearmTexture.Name = "labelRightForearmTexture";
+			this.labelRightForearmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightForearmTexture.TabIndex = 3;
+			this.labelRightForearmTexture.Text = "Texture";
+			this.labelRightForearmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label25
+			// labelCostumeRightForearm
 			// 
-			this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(3, 29);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(90, 13);
-			this.label25.TabIndex = 0;
-			this.label25.Text = "Right Forearm";
+			this.labelCostumeRightForearm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightForearm.AutoSize = true;
+			this.labelCostumeRightForearm.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightForearm.Name = "labelCostumeRightForearm";
+			this.labelCostumeRightForearm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightForearm.TabIndex = 0;
+			this.labelCostumeRightForearm.Text = "Right Forearm";
 			// 
 			// pbRightForearm
 			// 
 			this.pbRightForearm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightForearm.Location = new System.Drawing.Point(305, 4);
+			this.pbRightForearm.Location = new System.Drawing.Point(302, 4);
 			this.pbRightForearm.Name = "pbRightForearm";
-			this.pbRightForearm.Size = new System.Drawing.Size(129, 64);
+			this.pbRightForearm.Size = new System.Drawing.Size(132, 64);
 			this.pbRightForearm.TabIndex = 4;
 			this.pbRightForearm.TabStop = false;
 			// 
@@ -825,13 +1258,13 @@
 			this.tableLayoutPanel38.ColumnCount = 1;
 			this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel38.Controls.Add(this.tbRightForearmPalette, 0, 1);
-			this.tableLayoutPanel38.Controls.Add(this.label26, 0, 0);
-			this.tableLayoutPanel38.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel38.Controls.Add(this.labelRightForearmPalette, 0, 0);
+			this.tableLayoutPanel38.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel38.Name = "tableLayoutPanel38";
 			this.tableLayoutPanel38.RowCount = 2;
 			this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel38.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel38.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel38.TabIndex = 3;
 			// 
 			// tbRightForearmPalette
@@ -840,19 +1273,19 @@
 			this.tbRightForearmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightForearmPalette.Name = "tbRightForearmPalette";
 			this.tbRightForearmPalette.ReadOnly = true;
-			this.tbRightForearmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightForearmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightForearmPalette.TabIndex = 2;
 			// 
-			// label26
+			// labelRightForearmPalette
 			// 
-			this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(3, 10);
-			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(91, 13);
-			this.label26.TabIndex = 3;
-			this.label26.Text = "Palette";
-			this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightForearmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightForearmPalette.AutoSize = true;
+			this.labelRightForearmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightForearmPalette.Name = "labelRightForearmPalette";
+			this.labelRightForearmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightForearmPalette.TabIndex = 3;
+			this.labelRightForearmPalette.Text = "Palette";
+			this.labelRightForearmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightFoot
 			// 
@@ -861,9 +1294,9 @@
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightFoot.Controls.Add(this.tableLayoutPanel34, 2, 0);
-			this.tlpCostumeRightFoot.Controls.Add(this.label22, 0, 0);
+			this.tlpCostumeRightFoot.Controls.Add(this.labelCostumeRightFoot, 0, 0);
 			this.tlpCostumeRightFoot.Controls.Add(this.pbRightFoot, 3, 0);
 			this.tlpCostumeRightFoot.Controls.Add(this.tableLayoutPanel35, 1, 0);
 			this.tlpCostumeRightFoot.Location = new System.Drawing.Point(3, 1003);
@@ -878,13 +1311,13 @@
 			this.tableLayoutPanel34.ColumnCount = 1;
 			this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel34.Controls.Add(this.tbRightFootTexture, 0, 1);
-			this.tableLayoutPanel34.Controls.Add(this.label20, 0, 0);
-			this.tableLayoutPanel34.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel34.Controls.Add(this.labelRightFootTexture, 0, 0);
+			this.tableLayoutPanel34.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel34.Name = "tableLayoutPanel34";
 			this.tableLayoutPanel34.RowCount = 2;
 			this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel34.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel34.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel34.TabIndex = 5;
 			// 
 			// tbRightFootTexture
@@ -893,36 +1326,36 @@
 			this.tbRightFootTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightFootTexture.Name = "tbRightFootTexture";
 			this.tbRightFootTexture.ReadOnly = true;
-			this.tbRightFootTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightFootTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightFootTexture.TabIndex = 2;
 			// 
-			// label20
+			// labelRightFootTexture
 			// 
-			this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(3, 10);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(91, 13);
-			this.label20.TabIndex = 3;
-			this.label20.Text = "Texture";
-			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightFootTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightFootTexture.AutoSize = true;
+			this.labelRightFootTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightFootTexture.Name = "labelRightFootTexture";
+			this.labelRightFootTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightFootTexture.TabIndex = 3;
+			this.labelRightFootTexture.Text = "Texture";
+			this.labelRightFootTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label22
+			// labelCostumeRightFoot
 			// 
-			this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(3, 29);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(90, 13);
-			this.label22.TabIndex = 0;
-			this.label22.Text = "Right Foot";
+			this.labelCostumeRightFoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightFoot.AutoSize = true;
+			this.labelCostumeRightFoot.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightFoot.Name = "labelCostumeRightFoot";
+			this.labelCostumeRightFoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightFoot.TabIndex = 0;
+			this.labelCostumeRightFoot.Text = "Right Foot";
 			// 
 			// pbRightFoot
 			// 
 			this.pbRightFoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightFoot.Location = new System.Drawing.Point(305, 4);
+			this.pbRightFoot.Location = new System.Drawing.Point(302, 4);
 			this.pbRightFoot.Name = "pbRightFoot";
-			this.pbRightFoot.Size = new System.Drawing.Size(129, 64);
+			this.pbRightFoot.Size = new System.Drawing.Size(132, 64);
 			this.pbRightFoot.TabIndex = 4;
 			this.pbRightFoot.TabStop = false;
 			// 
@@ -931,13 +1364,13 @@
 			this.tableLayoutPanel35.ColumnCount = 1;
 			this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel35.Controls.Add(this.tbRightFootPalette, 0, 1);
-			this.tableLayoutPanel35.Controls.Add(this.label23, 0, 0);
-			this.tableLayoutPanel35.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel35.Controls.Add(this.labelRightFootPalette, 0, 0);
+			this.tableLayoutPanel35.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel35.Name = "tableLayoutPanel35";
 			this.tableLayoutPanel35.RowCount = 2;
 			this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel35.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel35.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel35.TabIndex = 3;
 			// 
 			// tbRightFootPalette
@@ -946,19 +1379,19 @@
 			this.tbRightFootPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightFootPalette.Name = "tbRightFootPalette";
 			this.tbRightFootPalette.ReadOnly = true;
-			this.tbRightFootPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightFootPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightFootPalette.TabIndex = 2;
 			// 
-			// label23
+			// labelRightFootPalette
 			// 
-			this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(3, 10);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(91, 13);
-			this.label23.TabIndex = 3;
-			this.label23.Text = "Palette";
-			this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightFootPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightFootPalette.AutoSize = true;
+			this.labelRightFootPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightFootPalette.Name = "labelRightFootPalette";
+			this.labelRightFootPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightFootPalette.TabIndex = 3;
+			this.labelRightFootPalette.Text = "Palette";
+			this.labelRightFootPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightLeg
 			// 
@@ -967,9 +1400,9 @@
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightLeg.Controls.Add(this.tableLayoutPanel31, 2, 0);
-			this.tlpCostumeRightLeg.Controls.Add(this.label14, 0, 0);
+			this.tlpCostumeRightLeg.Controls.Add(this.labelCostumeRightLeg, 0, 0);
 			this.tlpCostumeRightLeg.Controls.Add(this.pbRightLeg, 3, 0);
 			this.tlpCostumeRightLeg.Controls.Add(this.tableLayoutPanel32, 1, 0);
 			this.tlpCostumeRightLeg.Location = new System.Drawing.Point(3, 925);
@@ -984,13 +1417,13 @@
 			this.tableLayoutPanel31.ColumnCount = 1;
 			this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel31.Controls.Add(this.tbRightLegTexture, 0, 1);
-			this.tableLayoutPanel31.Controls.Add(this.label11, 0, 0);
-			this.tableLayoutPanel31.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel31.Controls.Add(this.labelRightLegTexture, 0, 0);
+			this.tableLayoutPanel31.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel31.Name = "tableLayoutPanel31";
 			this.tableLayoutPanel31.RowCount = 2;
 			this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel31.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel31.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel31.TabIndex = 5;
 			// 
 			// tbRightLegTexture
@@ -999,36 +1432,36 @@
 			this.tbRightLegTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightLegTexture.Name = "tbRightLegTexture";
 			this.tbRightLegTexture.ReadOnly = true;
-			this.tbRightLegTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightLegTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightLegTexture.TabIndex = 2;
 			// 
-			// label11
+			// labelRightLegTexture
 			// 
-			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(3, 10);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(91, 13);
-			this.label11.TabIndex = 3;
-			this.label11.Text = "Texture";
-			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightLegTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightLegTexture.AutoSize = true;
+			this.labelRightLegTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightLegTexture.Name = "labelRightLegTexture";
+			this.labelRightLegTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightLegTexture.TabIndex = 3;
+			this.labelRightLegTexture.Text = "Texture";
+			this.labelRightLegTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label14
+			// labelCostumeRightLeg
 			// 
-			this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 29);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(90, 13);
-			this.label14.TabIndex = 0;
-			this.label14.Text = "Right Leg";
+			this.labelCostumeRightLeg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightLeg.AutoSize = true;
+			this.labelCostumeRightLeg.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightLeg.Name = "labelCostumeRightLeg";
+			this.labelCostumeRightLeg.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightLeg.TabIndex = 0;
+			this.labelCostumeRightLeg.Text = "Right Leg";
 			// 
 			// pbRightLeg
 			// 
 			this.pbRightLeg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightLeg.Location = new System.Drawing.Point(305, 4);
+			this.pbRightLeg.Location = new System.Drawing.Point(302, 4);
 			this.pbRightLeg.Name = "pbRightLeg";
-			this.pbRightLeg.Size = new System.Drawing.Size(129, 64);
+			this.pbRightLeg.Size = new System.Drawing.Size(132, 64);
 			this.pbRightLeg.TabIndex = 4;
 			this.pbRightLeg.TabStop = false;
 			// 
@@ -1037,13 +1470,13 @@
 			this.tableLayoutPanel32.ColumnCount = 1;
 			this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel32.Controls.Add(this.tbRightLegPalette, 0, 1);
-			this.tableLayoutPanel32.Controls.Add(this.label17, 0, 0);
-			this.tableLayoutPanel32.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel32.Controls.Add(this.labelRightLegPalette, 0, 0);
+			this.tableLayoutPanel32.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel32.Name = "tableLayoutPanel32";
 			this.tableLayoutPanel32.RowCount = 2;
 			this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel32.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel32.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel32.TabIndex = 3;
 			// 
 			// tbRightLegPalette
@@ -1052,19 +1485,19 @@
 			this.tbRightLegPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightLegPalette.Name = "tbRightLegPalette";
 			this.tbRightLegPalette.ReadOnly = true;
-			this.tbRightLegPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightLegPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightLegPalette.TabIndex = 2;
 			// 
-			// label17
+			// labelRightLegPalette
 			// 
-			this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(3, 10);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(91, 13);
-			this.label17.TabIndex = 3;
-			this.label17.Text = "Palette";
-			this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightLegPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightLegPalette.AutoSize = true;
+			this.labelRightLegPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightLegPalette.Name = "labelRightLegPalette";
+			this.labelRightLegPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightLegPalette.TabIndex = 3;
+			this.labelRightLegPalette.Text = "Palette";
+			this.labelRightLegPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeRightBoot
 			// 
@@ -1073,9 +1506,9 @@
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeRightBoot.Controls.Add(this.tableLayoutPanel4, 2, 0);
-			this.tlpCostumeRightBoot.Controls.Add(this.label5, 0, 0);
+			this.tlpCostumeRightBoot.Controls.Add(this.labelCostumeRightBoot, 0, 0);
 			this.tlpCostumeRightBoot.Controls.Add(this.pbRightBoot, 3, 0);
 			this.tlpCostumeRightBoot.Controls.Add(this.tableLayoutPanel7, 1, 0);
 			this.tlpCostumeRightBoot.Location = new System.Drawing.Point(3, 847);
@@ -1090,13 +1523,13 @@
 			this.tableLayoutPanel4.ColumnCount = 1;
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.Controls.Add(this.tbRightBootTexture, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel4.Controls.Add(this.labelRightBootTexture, 0, 0);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 2;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel4.TabIndex = 5;
 			// 
 			// tbRightBootTexture
@@ -1105,36 +1538,36 @@
 			this.tbRightBootTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbRightBootTexture.Name = "tbRightBootTexture";
 			this.tbRightBootTexture.ReadOnly = true;
-			this.tbRightBootTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbRightBootTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbRightBootTexture.TabIndex = 2;
 			// 
-			// label2
+			// labelRightBootTexture
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 10);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(91, 13);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Texture";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightBootTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightBootTexture.AutoSize = true;
+			this.labelRightBootTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelRightBootTexture.Name = "labelRightBootTexture";
+			this.labelRightBootTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelRightBootTexture.TabIndex = 3;
+			this.labelRightBootTexture.Text = "Texture";
+			this.labelRightBootTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label5
+			// labelCostumeRightBoot
 			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 29);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(90, 13);
-			this.label5.TabIndex = 0;
-			this.label5.Text = "Right Boot";
+			this.labelCostumeRightBoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCostumeRightBoot.AutoSize = true;
+			this.labelCostumeRightBoot.Location = new System.Drawing.Point(3, 29);
+			this.labelCostumeRightBoot.Name = "labelCostumeRightBoot";
+			this.labelCostumeRightBoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightBoot.TabIndex = 0;
+			this.labelCostumeRightBoot.Text = "Right Boot";
 			// 
 			// pbRightBoot
 			// 
 			this.pbRightBoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightBoot.Location = new System.Drawing.Point(305, 4);
+			this.pbRightBoot.Location = new System.Drawing.Point(302, 4);
 			this.pbRightBoot.Name = "pbRightBoot";
-			this.pbRightBoot.Size = new System.Drawing.Size(129, 64);
+			this.pbRightBoot.Size = new System.Drawing.Size(132, 64);
 			this.pbRightBoot.TabIndex = 4;
 			this.pbRightBoot.TabStop = false;
 			// 
@@ -1143,13 +1576,13 @@
 			this.tableLayoutPanel7.ColumnCount = 1;
 			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel7.Controls.Add(this.tbRightBootPalette, 0, 1);
-			this.tableLayoutPanel7.Controls.Add(this.label8, 0, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel7.Controls.Add(this.labelRightBootPalette, 0, 0);
+			this.tableLayoutPanel7.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 2;
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel7.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel7.TabIndex = 3;
 			// 
 			// tbRightBootPalette
@@ -1158,19 +1591,19 @@
 			this.tbRightBootPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbRightBootPalette.Name = "tbRightBootPalette";
 			this.tbRightBootPalette.ReadOnly = true;
-			this.tbRightBootPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbRightBootPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbRightBootPalette.TabIndex = 2;
 			// 
-			// label8
+			// labelRightBootPalette
 			// 
-			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(3, 10);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(91, 13);
-			this.label8.TabIndex = 3;
-			this.label8.Text = "Palette";
-			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelRightBootPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRightBootPalette.AutoSize = true;
+			this.labelRightBootPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelRightBootPalette.Name = "labelRightBootPalette";
+			this.labelRightBootPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelRightBootPalette.TabIndex = 3;
+			this.labelRightBootPalette.Text = "Palette";
+			this.labelRightBootPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftUpperArm
 			// 
@@ -1179,7 +1612,7 @@
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.tableLayoutPanel29, 2, 0);
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.labelCostumeLeftUpperArm, 0, 0);
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.pbLeftUpperArm, 3, 0);
@@ -1196,13 +1629,13 @@
 			this.tableLayoutPanel29.ColumnCount = 1;
 			this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel29.Controls.Add(this.tbLeftUpperArmTexture, 0, 1);
-			this.tableLayoutPanel29.Controls.Add(this.label19, 0, 0);
-			this.tableLayoutPanel29.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel29.Controls.Add(this.labelLeftUpperArmTexture, 0, 0);
+			this.tableLayoutPanel29.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel29.Name = "tableLayoutPanel29";
 			this.tableLayoutPanel29.RowCount = 2;
 			this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel29.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel29.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel29.TabIndex = 5;
 			// 
 			// tbLeftUpperArmTexture
@@ -1211,19 +1644,19 @@
 			this.tbLeftUpperArmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftUpperArmTexture.Name = "tbLeftUpperArmTexture";
 			this.tbLeftUpperArmTexture.ReadOnly = true;
-			this.tbLeftUpperArmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftUpperArmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftUpperArmTexture.TabIndex = 2;
 			// 
-			// label19
+			// labelLeftUpperArmTexture
 			// 
-			this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(3, 10);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(91, 13);
-			this.label19.TabIndex = 3;
-			this.label19.Text = "Texture";
-			this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftUpperArmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftUpperArmTexture.AutoSize = true;
+			this.labelLeftUpperArmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftUpperArmTexture.Name = "labelLeftUpperArmTexture";
+			this.labelLeftUpperArmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftUpperArmTexture.TabIndex = 3;
+			this.labelLeftUpperArmTexture.Text = "Texture";
+			this.labelLeftUpperArmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftUpperArm
 			// 
@@ -1231,16 +1664,16 @@
 			this.labelCostumeLeftUpperArm.AutoSize = true;
 			this.labelCostumeLeftUpperArm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftUpperArm.Name = "labelCostumeLeftUpperArm";
-			this.labelCostumeLeftUpperArm.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftUpperArm.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftUpperArm.TabIndex = 0;
 			this.labelCostumeLeftUpperArm.Text = "Left Upper Arm";
 			// 
 			// pbLeftUpperArm
 			// 
 			this.pbLeftUpperArm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftUpperArm.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftUpperArm.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftUpperArm.Name = "pbLeftUpperArm";
-			this.pbLeftUpperArm.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftUpperArm.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftUpperArm.TabIndex = 4;
 			this.pbLeftUpperArm.TabStop = false;
 			// 
@@ -1249,13 +1682,13 @@
 			this.tableLayoutPanel30.ColumnCount = 1;
 			this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel30.Controls.Add(this.tbLeftUpperArmPalette, 0, 1);
-			this.tableLayoutPanel30.Controls.Add(this.label21, 0, 0);
-			this.tableLayoutPanel30.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel30.Controls.Add(this.labelLeftUpperArmPalette, 0, 0);
+			this.tableLayoutPanel30.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel30.Name = "tableLayoutPanel30";
 			this.tableLayoutPanel30.RowCount = 2;
 			this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel30.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel30.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel30.TabIndex = 3;
 			// 
 			// tbLeftUpperArmPalette
@@ -1264,19 +1697,19 @@
 			this.tbLeftUpperArmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftUpperArmPalette.Name = "tbLeftUpperArmPalette";
 			this.tbLeftUpperArmPalette.ReadOnly = true;
-			this.tbLeftUpperArmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftUpperArmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftUpperArmPalette.TabIndex = 2;
 			// 
-			// label21
+			// labelLeftUpperArmPalette
 			// 
-			this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(3, 10);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(91, 13);
-			this.label21.TabIndex = 3;
-			this.label21.Text = "Palette";
-			this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftUpperArmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftUpperArmPalette.AutoSize = true;
+			this.labelLeftUpperArmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftUpperArmPalette.Name = "labelLeftUpperArmPalette";
+			this.labelLeftUpperArmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftUpperArmPalette.TabIndex = 3;
+			this.labelLeftUpperArmPalette.Text = "Palette";
+			this.labelLeftUpperArmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftForearm
 			// 
@@ -1285,7 +1718,7 @@
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftForearm.Controls.Add(this.tableLayoutPanel26, 2, 0);
 			this.tlpCostumeLeftForearm.Controls.Add(this.labelCostumeLeftForearm, 0, 0);
 			this.tlpCostumeLeftForearm.Controls.Add(this.pbLeftForearm, 3, 0);
@@ -1302,13 +1735,13 @@
 			this.tableLayoutPanel26.ColumnCount = 1;
 			this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel26.Controls.Add(this.tbLeftForearmTexture, 0, 1);
-			this.tableLayoutPanel26.Controls.Add(this.label16, 0, 0);
-			this.tableLayoutPanel26.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel26.Controls.Add(this.labelLeftForearmTexture, 0, 0);
+			this.tableLayoutPanel26.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel26.Name = "tableLayoutPanel26";
 			this.tableLayoutPanel26.RowCount = 2;
 			this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel26.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel26.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel26.TabIndex = 5;
 			// 
 			// tbLeftForearmTexture
@@ -1317,19 +1750,19 @@
 			this.tbLeftForearmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftForearmTexture.Name = "tbLeftForearmTexture";
 			this.tbLeftForearmTexture.ReadOnly = true;
-			this.tbLeftForearmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftForearmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftForearmTexture.TabIndex = 2;
 			// 
-			// label16
+			// labelLeftForearmTexture
 			// 
-			this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(3, 10);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(91, 13);
-			this.label16.TabIndex = 3;
-			this.label16.Text = "Texture";
-			this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftForearmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftForearmTexture.AutoSize = true;
+			this.labelLeftForearmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftForearmTexture.Name = "labelLeftForearmTexture";
+			this.labelLeftForearmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftForearmTexture.TabIndex = 3;
+			this.labelLeftForearmTexture.Text = "Texture";
+			this.labelLeftForearmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftForearm
 			// 
@@ -1337,16 +1770,16 @@
 			this.labelCostumeLeftForearm.AutoSize = true;
 			this.labelCostumeLeftForearm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftForearm.Name = "labelCostumeLeftForearm";
-			this.labelCostumeLeftForearm.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftForearm.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftForearm.TabIndex = 0;
 			this.labelCostumeLeftForearm.Text = "Left Forearm";
 			// 
 			// pbLeftForearm
 			// 
 			this.pbLeftForearm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftForearm.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftForearm.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftForearm.Name = "pbLeftForearm";
-			this.pbLeftForearm.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftForearm.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftForearm.TabIndex = 4;
 			this.pbLeftForearm.TabStop = false;
 			// 
@@ -1355,13 +1788,13 @@
 			this.tableLayoutPanel27.ColumnCount = 1;
 			this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel27.Controls.Add(this.tbLeftForearmPalette, 0, 1);
-			this.tableLayoutPanel27.Controls.Add(this.label18, 0, 0);
-			this.tableLayoutPanel27.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel27.Controls.Add(this.labelLeftForearmPalette, 0, 0);
+			this.tableLayoutPanel27.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel27.Name = "tableLayoutPanel27";
 			this.tableLayoutPanel27.RowCount = 2;
 			this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel27.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel27.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel27.TabIndex = 3;
 			// 
 			// tbLeftForearmPalette
@@ -1370,19 +1803,19 @@
 			this.tbLeftForearmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftForearmPalette.Name = "tbLeftForearmPalette";
 			this.tbLeftForearmPalette.ReadOnly = true;
-			this.tbLeftForearmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftForearmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftForearmPalette.TabIndex = 2;
 			// 
-			// label18
+			// labelLeftForearmPalette
 			// 
-			this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(3, 10);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(91, 13);
-			this.label18.TabIndex = 3;
-			this.label18.Text = "Palette";
-			this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftForearmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftForearmPalette.AutoSize = true;
+			this.labelLeftForearmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftForearmPalette.Name = "labelLeftForearmPalette";
+			this.labelLeftForearmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftForearmPalette.TabIndex = 3;
+			this.labelLeftForearmPalette.Text = "Palette";
+			this.labelLeftForearmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftFingers
 			// 
@@ -1391,7 +1824,7 @@
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftFingers.Controls.Add(this.tableLayoutPanel23, 2, 0);
 			this.tlpCostumeLeftFingers.Controls.Add(this.labelCostumeLeftFingers, 0, 0);
 			this.tlpCostumeLeftFingers.Controls.Add(this.pbLeftFingers, 3, 0);
@@ -1408,13 +1841,13 @@
 			this.tableLayoutPanel23.ColumnCount = 1;
 			this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel23.Controls.Add(this.tbLeftFingersTexture, 0, 1);
-			this.tableLayoutPanel23.Controls.Add(this.label13, 0, 0);
-			this.tableLayoutPanel23.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel23.Controls.Add(this.labelLeftFingersTexture, 0, 0);
+			this.tableLayoutPanel23.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel23.Name = "tableLayoutPanel23";
 			this.tableLayoutPanel23.RowCount = 2;
 			this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel23.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel23.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel23.TabIndex = 5;
 			// 
 			// tbLeftFingersTexture
@@ -1423,19 +1856,19 @@
 			this.tbLeftFingersTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftFingersTexture.Name = "tbLeftFingersTexture";
 			this.tbLeftFingersTexture.ReadOnly = true;
-			this.tbLeftFingersTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftFingersTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftFingersTexture.TabIndex = 2;
 			// 
-			// label13
+			// labelLeftFingersTexture
 			// 
-			this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(3, 10);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(91, 13);
-			this.label13.TabIndex = 3;
-			this.label13.Text = "Texture";
-			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftFingersTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftFingersTexture.AutoSize = true;
+			this.labelLeftFingersTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftFingersTexture.Name = "labelLeftFingersTexture";
+			this.labelLeftFingersTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftFingersTexture.TabIndex = 3;
+			this.labelLeftFingersTexture.Text = "Texture";
+			this.labelLeftFingersTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftFingers
 			// 
@@ -1443,16 +1876,16 @@
 			this.labelCostumeLeftFingers.AutoSize = true;
 			this.labelCostumeLeftFingers.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftFingers.Name = "labelCostumeLeftFingers";
-			this.labelCostumeLeftFingers.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftFingers.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftFingers.TabIndex = 0;
 			this.labelCostumeLeftFingers.Text = "Left Fingers";
 			// 
 			// pbLeftFingers
 			// 
 			this.pbLeftFingers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftFingers.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftFingers.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftFingers.Name = "pbLeftFingers";
-			this.pbLeftFingers.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftFingers.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftFingers.TabIndex = 4;
 			this.pbLeftFingers.TabStop = false;
 			// 
@@ -1461,13 +1894,13 @@
 			this.tableLayoutPanel24.ColumnCount = 1;
 			this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel24.Controls.Add(this.tbLeftFingersPalette, 0, 1);
-			this.tableLayoutPanel24.Controls.Add(this.label15, 0, 0);
-			this.tableLayoutPanel24.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel24.Controls.Add(this.labelLeftFingersPalette, 0, 0);
+			this.tableLayoutPanel24.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel24.Name = "tableLayoutPanel24";
 			this.tableLayoutPanel24.RowCount = 2;
 			this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel24.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel24.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel24.TabIndex = 3;
 			// 
 			// tbLeftFingersPalette
@@ -1476,19 +1909,19 @@
 			this.tbLeftFingersPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftFingersPalette.Name = "tbLeftFingersPalette";
 			this.tbLeftFingersPalette.ReadOnly = true;
-			this.tbLeftFingersPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftFingersPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftFingersPalette.TabIndex = 2;
 			// 
-			// label15
+			// labelLeftFingersPalette
 			// 
-			this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(3, 10);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(91, 13);
-			this.label15.TabIndex = 3;
-			this.label15.Text = "Palette";
-			this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftFingersPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftFingersPalette.AutoSize = true;
+			this.labelLeftFingersPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftFingersPalette.Name = "labelLeftFingersPalette";
+			this.labelLeftFingersPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftFingersPalette.TabIndex = 3;
+			this.labelLeftFingersPalette.Text = "Palette";
+			this.labelLeftFingersPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftPalm
 			// 
@@ -1497,7 +1930,7 @@
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftPalm.Controls.Add(this.tableLayoutPanel20, 2, 0);
 			this.tlpCostumeLeftPalm.Controls.Add(this.labelCostumeLeftPalm, 0, 0);
 			this.tlpCostumeLeftPalm.Controls.Add(this.pbLeftPalm, 3, 0);
@@ -1514,13 +1947,13 @@
 			this.tableLayoutPanel20.ColumnCount = 1;
 			this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel20.Controls.Add(this.tbLeftPalmTexture, 0, 1);
-			this.tableLayoutPanel20.Controls.Add(this.label10, 0, 0);
-			this.tableLayoutPanel20.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel20.Controls.Add(this.labelLeftPalmTexture, 0, 0);
+			this.tableLayoutPanel20.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel20.Name = "tableLayoutPanel20";
 			this.tableLayoutPanel20.RowCount = 2;
 			this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel20.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel20.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel20.TabIndex = 5;
 			// 
 			// tbLeftPalmTexture
@@ -1529,19 +1962,19 @@
 			this.tbLeftPalmTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftPalmTexture.Name = "tbLeftPalmTexture";
 			this.tbLeftPalmTexture.ReadOnly = true;
-			this.tbLeftPalmTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftPalmTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftPalmTexture.TabIndex = 2;
 			// 
-			// label10
+			// labelLeftPalmTexture
 			// 
-			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(3, 10);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(91, 13);
-			this.label10.TabIndex = 3;
-			this.label10.Text = "Texture";
-			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftPalmTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftPalmTexture.AutoSize = true;
+			this.labelLeftPalmTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftPalmTexture.Name = "labelLeftPalmTexture";
+			this.labelLeftPalmTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftPalmTexture.TabIndex = 3;
+			this.labelLeftPalmTexture.Text = "Texture";
+			this.labelLeftPalmTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftPalm
 			// 
@@ -1549,16 +1982,16 @@
 			this.labelCostumeLeftPalm.AutoSize = true;
 			this.labelCostumeLeftPalm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftPalm.Name = "labelCostumeLeftPalm";
-			this.labelCostumeLeftPalm.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftPalm.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftPalm.TabIndex = 0;
 			this.labelCostumeLeftPalm.Text = "Left Palm";
 			// 
 			// pbLeftPalm
 			// 
 			this.pbLeftPalm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftPalm.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftPalm.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftPalm.Name = "pbLeftPalm";
-			this.pbLeftPalm.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftPalm.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftPalm.TabIndex = 4;
 			this.pbLeftPalm.TabStop = false;
 			// 
@@ -1567,13 +2000,13 @@
 			this.tableLayoutPanel21.ColumnCount = 1;
 			this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel21.Controls.Add(this.tbLeftPalmPalette, 0, 1);
-			this.tableLayoutPanel21.Controls.Add(this.label12, 0, 0);
-			this.tableLayoutPanel21.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel21.Controls.Add(this.labelLeftPalmPalette, 0, 0);
+			this.tableLayoutPanel21.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel21.Name = "tableLayoutPanel21";
 			this.tableLayoutPanel21.RowCount = 2;
 			this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel21.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel21.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel21.TabIndex = 3;
 			// 
 			// tbLeftPalmPalette
@@ -1582,19 +2015,19 @@
 			this.tbLeftPalmPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftPalmPalette.Name = "tbLeftPalmPalette";
 			this.tbLeftPalmPalette.ReadOnly = true;
-			this.tbLeftPalmPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftPalmPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftPalmPalette.TabIndex = 2;
 			// 
-			// label12
+			// labelLeftPalmPalette
 			// 
-			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(3, 10);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(91, 13);
-			this.label12.TabIndex = 3;
-			this.label12.Text = "Palette";
-			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftPalmPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftPalmPalette.AutoSize = true;
+			this.labelLeftPalmPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftPalmPalette.Name = "labelLeftPalmPalette";
+			this.labelLeftPalmPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftPalmPalette.TabIndex = 3;
+			this.labelLeftPalmPalette.Text = "Palette";
+			this.labelLeftPalmPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftFoot
 			// 
@@ -1603,7 +2036,7 @@
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftFoot.Controls.Add(this.tableLayoutPanel17, 2, 0);
 			this.tlpCostumeLeftFoot.Controls.Add(this.labelCostumeLeftFoot, 0, 0);
 			this.tlpCostumeLeftFoot.Controls.Add(this.pbLeftFoot, 3, 0);
@@ -1620,13 +2053,13 @@
 			this.tableLayoutPanel17.ColumnCount = 1;
 			this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel17.Controls.Add(this.tbLeftFootTexture, 0, 1);
-			this.tableLayoutPanel17.Controls.Add(this.label7, 0, 0);
-			this.tableLayoutPanel17.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel17.Controls.Add(this.labelLeftFootTexture, 0, 0);
+			this.tableLayoutPanel17.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel17.Name = "tableLayoutPanel17";
 			this.tableLayoutPanel17.RowCount = 2;
 			this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel17.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel17.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel17.TabIndex = 5;
 			// 
 			// tbLeftFootTexture
@@ -1635,19 +2068,19 @@
 			this.tbLeftFootTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftFootTexture.Name = "tbLeftFootTexture";
 			this.tbLeftFootTexture.ReadOnly = true;
-			this.tbLeftFootTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftFootTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftFootTexture.TabIndex = 2;
 			// 
-			// label7
+			// labelLeftFootTexture
 			// 
-			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(3, 10);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(91, 13);
-			this.label7.TabIndex = 3;
-			this.label7.Text = "Texture";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftFootTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftFootTexture.AutoSize = true;
+			this.labelLeftFootTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftFootTexture.Name = "labelLeftFootTexture";
+			this.labelLeftFootTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftFootTexture.TabIndex = 3;
+			this.labelLeftFootTexture.Text = "Texture";
+			this.labelLeftFootTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftFoot
 			// 
@@ -1655,16 +2088,16 @@
 			this.labelCostumeLeftFoot.AutoSize = true;
 			this.labelCostumeLeftFoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftFoot.Name = "labelCostumeLeftFoot";
-			this.labelCostumeLeftFoot.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftFoot.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftFoot.TabIndex = 0;
 			this.labelCostumeLeftFoot.Text = "Left Foot";
 			// 
 			// pbLeftFoot
 			// 
 			this.pbLeftFoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftFoot.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftFoot.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftFoot.Name = "pbLeftFoot";
-			this.pbLeftFoot.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftFoot.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftFoot.TabIndex = 4;
 			this.pbLeftFoot.TabStop = false;
 			// 
@@ -1673,13 +2106,13 @@
 			this.tableLayoutPanel18.ColumnCount = 1;
 			this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel18.Controls.Add(this.tbLeftFootPalette, 0, 1);
-			this.tableLayoutPanel18.Controls.Add(this.label9, 0, 0);
-			this.tableLayoutPanel18.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel18.Controls.Add(this.labelLeftFootPalette, 0, 0);
+			this.tableLayoutPanel18.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel18.Name = "tableLayoutPanel18";
 			this.tableLayoutPanel18.RowCount = 2;
 			this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel18.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel18.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel18.TabIndex = 3;
 			// 
 			// tbLeftFootPalette
@@ -1688,19 +2121,19 @@
 			this.tbLeftFootPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftFootPalette.Name = "tbLeftFootPalette";
 			this.tbLeftFootPalette.ReadOnly = true;
-			this.tbLeftFootPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftFootPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftFootPalette.TabIndex = 2;
 			// 
-			// label9
+			// labelLeftFootPalette
 			// 
-			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(3, 10);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(91, 13);
-			this.label9.TabIndex = 3;
-			this.label9.Text = "Palette";
-			this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftFootPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftFootPalette.AutoSize = true;
+			this.labelLeftFootPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftFootPalette.Name = "labelLeftFootPalette";
+			this.labelLeftFootPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftFootPalette.TabIndex = 3;
+			this.labelLeftFootPalette.Text = "Palette";
+			this.labelLeftFootPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeLeftLeg
 			// 
@@ -1709,7 +2142,7 @@
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftLeg.Controls.Add(this.tableLayoutPanel14, 2, 0);
 			this.tlpCostumeLeftLeg.Controls.Add(this.labelCostumeLeftLeg, 0, 0);
 			this.tlpCostumeLeftLeg.Controls.Add(this.pbLeftLeg, 3, 0);
@@ -1726,13 +2159,13 @@
 			this.tableLayoutPanel14.ColumnCount = 1;
 			this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel14.Controls.Add(this.tbLeftLegTexture, 0, 1);
-			this.tableLayoutPanel14.Controls.Add(this.label4, 0, 0);
-			this.tableLayoutPanel14.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel14.Controls.Add(this.labelLeftLegTexture, 0, 0);
+			this.tableLayoutPanel14.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel14.Name = "tableLayoutPanel14";
 			this.tableLayoutPanel14.RowCount = 2;
 			this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel14.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel14.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel14.TabIndex = 5;
 			// 
 			// tbLeftLegTexture
@@ -1741,19 +2174,19 @@
 			this.tbLeftLegTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftLegTexture.Name = "tbLeftLegTexture";
 			this.tbLeftLegTexture.ReadOnly = true;
-			this.tbLeftLegTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftLegTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftLegTexture.TabIndex = 2;
 			// 
-			// label4
+			// labelLeftLegTexture
 			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 10);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(91, 13);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "Texture";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftLegTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftLegTexture.AutoSize = true;
+			this.labelLeftLegTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftLegTexture.Name = "labelLeftLegTexture";
+			this.labelLeftLegTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftLegTexture.TabIndex = 3;
+			this.labelLeftLegTexture.Text = "Texture";
+			this.labelLeftLegTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftLeg
 			// 
@@ -1761,16 +2194,16 @@
 			this.labelCostumeLeftLeg.AutoSize = true;
 			this.labelCostumeLeftLeg.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftLeg.Name = "labelCostumeLeftLeg";
-			this.labelCostumeLeftLeg.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftLeg.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftLeg.TabIndex = 0;
 			this.labelCostumeLeftLeg.Text = "Left Leg";
 			// 
 			// pbLeftLeg
 			// 
 			this.pbLeftLeg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftLeg.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftLeg.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftLeg.Name = "pbLeftLeg";
-			this.pbLeftLeg.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftLeg.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftLeg.TabIndex = 4;
 			this.pbLeftLeg.TabStop = false;
 			// 
@@ -1779,13 +2212,13 @@
 			this.tableLayoutPanel15.ColumnCount = 1;
 			this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel15.Controls.Add(this.tbLeftLegPalette, 0, 1);
-			this.tableLayoutPanel15.Controls.Add(this.label6, 0, 0);
-			this.tableLayoutPanel15.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel15.Controls.Add(this.labelLeftLegPalette, 0, 0);
+			this.tableLayoutPanel15.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel15.Name = "tableLayoutPanel15";
 			this.tableLayoutPanel15.RowCount = 2;
 			this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel15.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel15.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel15.TabIndex = 3;
 			// 
 			// tbLeftLegPalette
@@ -1794,19 +2227,19 @@
 			this.tbLeftLegPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftLegPalette.Name = "tbLeftLegPalette";
 			this.tbLeftLegPalette.ReadOnly = true;
-			this.tbLeftLegPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftLegPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftLegPalette.TabIndex = 2;
 			// 
-			// label6
+			// labelLeftLegPalette
 			// 
-			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(3, 10);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(91, 13);
-			this.label6.TabIndex = 3;
-			this.label6.Text = "Palette";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftLegPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftLegPalette.AutoSize = true;
+			this.labelLeftLegPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftLegPalette.Name = "labelLeftLegPalette";
+			this.labelLeftLegPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftLegPalette.TabIndex = 3;
+			this.labelLeftLegPalette.Text = "Palette";
+			this.labelLeftLegPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeChest
 			// 
@@ -1815,7 +2248,7 @@
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeChest.Controls.Add(this.tableLayoutPanel8, 2, 0);
 			this.tlpCostumeChest.Controls.Add(this.labelCostumeChest, 0, 0);
 			this.tlpCostumeChest.Controls.Add(this.pbChest, 3, 0);
@@ -1833,12 +2266,12 @@
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel8.Controls.Add(this.tbChestTexture, 0, 1);
 			this.tableLayoutPanel8.Controls.Add(this.labelChestTexture, 0, 0);
-			this.tableLayoutPanel8.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel8.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.tableLayoutPanel8.RowCount = 2;
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel8.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel8.TabIndex = 5;
 			// 
 			// tbChestTexture
@@ -1847,7 +2280,7 @@
 			this.tbChestTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbChestTexture.Name = "tbChestTexture";
 			this.tbChestTexture.ReadOnly = true;
-			this.tbChestTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbChestTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbChestTexture.TabIndex = 2;
 			// 
 			// labelChestTexture
@@ -1856,7 +2289,7 @@
 			this.labelChestTexture.AutoSize = true;
 			this.labelChestTexture.Location = new System.Drawing.Point(3, 10);
 			this.labelChestTexture.Name = "labelChestTexture";
-			this.labelChestTexture.Size = new System.Drawing.Size(91, 13);
+			this.labelChestTexture.Size = new System.Drawing.Size(90, 13);
 			this.labelChestTexture.TabIndex = 3;
 			this.labelChestTexture.Text = "Texture";
 			this.labelChestTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1867,16 +2300,16 @@
 			this.labelCostumeChest.AutoSize = true;
 			this.labelCostumeChest.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeChest.Name = "labelCostumeChest";
-			this.labelCostumeChest.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeChest.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeChest.TabIndex = 0;
 			this.labelCostumeChest.Text = "Chest";
 			// 
 			// pbChest
 			// 
 			this.pbChest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbChest.Location = new System.Drawing.Point(305, 4);
+			this.pbChest.Location = new System.Drawing.Point(302, 4);
 			this.pbChest.Name = "pbChest";
-			this.pbChest.Size = new System.Drawing.Size(129, 64);
+			this.pbChest.Size = new System.Drawing.Size(132, 64);
 			this.pbChest.TabIndex = 4;
 			this.pbChest.TabStop = false;
 			// 
@@ -1886,12 +2319,12 @@
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel9.Controls.Add(this.tbChestPalette, 0, 1);
 			this.tableLayoutPanel9.Controls.Add(this.labelChestPalette, 0, 0);
-			this.tableLayoutPanel9.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel9.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			this.tableLayoutPanel9.RowCount = 2;
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel9.TabIndex = 3;
 			// 
 			// tbChestPalette
@@ -1900,7 +2333,7 @@
 			this.tbChestPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbChestPalette.Name = "tbChestPalette";
 			this.tbChestPalette.ReadOnly = true;
-			this.tbChestPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbChestPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbChestPalette.TabIndex = 2;
 			// 
 			// labelChestPalette
@@ -1909,7 +2342,7 @@
 			this.labelChestPalette.AutoSize = true;
 			this.labelChestPalette.Location = new System.Drawing.Point(3, 10);
 			this.labelChestPalette.Name = "labelChestPalette";
-			this.labelChestPalette.Size = new System.Drawing.Size(91, 13);
+			this.labelChestPalette.Size = new System.Drawing.Size(90, 13);
 			this.labelChestPalette.TabIndex = 3;
 			this.labelChestPalette.Text = "Palette";
 			this.labelChestPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1921,7 +2354,7 @@
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeStomach.Controls.Add(this.tableLayoutPanel5, 2, 0);
 			this.tlpCostumeStomach.Controls.Add(this.labelCostumeStomach, 0, 0);
 			this.tlpCostumeStomach.Controls.Add(this.pbStomach, 3, 0);
@@ -1939,12 +2372,12 @@
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel5.Controls.Add(this.tbStomachTexture, 0, 1);
 			this.tableLayoutPanel5.Controls.Add(this.labelStomachTexture, 0, 0);
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.tableLayoutPanel5.RowCount = 2;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel5.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel5.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel5.TabIndex = 5;
 			// 
 			// tbStomachTexture
@@ -1953,7 +2386,7 @@
 			this.tbStomachTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbStomachTexture.Name = "tbStomachTexture";
 			this.tbStomachTexture.ReadOnly = true;
-			this.tbStomachTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbStomachTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbStomachTexture.TabIndex = 2;
 			// 
 			// labelStomachTexture
@@ -1962,7 +2395,7 @@
 			this.labelStomachTexture.AutoSize = true;
 			this.labelStomachTexture.Location = new System.Drawing.Point(3, 10);
 			this.labelStomachTexture.Name = "labelStomachTexture";
-			this.labelStomachTexture.Size = new System.Drawing.Size(91, 13);
+			this.labelStomachTexture.Size = new System.Drawing.Size(90, 13);
 			this.labelStomachTexture.TabIndex = 3;
 			this.labelStomachTexture.Text = "Texture";
 			this.labelStomachTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1973,16 +2406,16 @@
 			this.labelCostumeStomach.AutoSize = true;
 			this.labelCostumeStomach.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeStomach.Name = "labelCostumeStomach";
-			this.labelCostumeStomach.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeStomach.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeStomach.TabIndex = 0;
 			this.labelCostumeStomach.Text = "Stomach";
 			// 
 			// pbStomach
 			// 
 			this.pbStomach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbStomach.Location = new System.Drawing.Point(305, 4);
+			this.pbStomach.Location = new System.Drawing.Point(302, 4);
 			this.pbStomach.Name = "pbStomach";
-			this.pbStomach.Size = new System.Drawing.Size(129, 64);
+			this.pbStomach.Size = new System.Drawing.Size(132, 64);
 			this.pbStomach.TabIndex = 4;
 			this.pbStomach.TabStop = false;
 			// 
@@ -1992,12 +2425,12 @@
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel6.Controls.Add(this.tbStomachPalette, 0, 1);
 			this.tableLayoutPanel6.Controls.Add(this.labelStomachPalette, 0, 0);
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel6.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			this.tableLayoutPanel6.RowCount = 2;
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel6.TabIndex = 3;
 			// 
 			// tbStomachPalette
@@ -2006,7 +2439,7 @@
 			this.tbStomachPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbStomachPalette.Name = "tbStomachPalette";
 			this.tbStomachPalette.ReadOnly = true;
-			this.tbStomachPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbStomachPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbStomachPalette.TabIndex = 2;
 			// 
 			// labelStomachPalette
@@ -2015,7 +2448,7 @@
 			this.labelStomachPalette.AutoSize = true;
 			this.labelStomachPalette.Location = new System.Drawing.Point(3, 10);
 			this.labelStomachPalette.Name = "labelStomachPalette";
-			this.labelStomachPalette.Size = new System.Drawing.Size(91, 13);
+			this.labelStomachPalette.Size = new System.Drawing.Size(90, 13);
 			this.labelStomachPalette.TabIndex = 3;
 			this.labelStomachPalette.Text = "Palette";
 			this.labelStomachPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2027,7 +2460,7 @@
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumeLeftBoot.Controls.Add(this.tableLayoutPanel11, 2, 0);
 			this.tlpCostumeLeftBoot.Controls.Add(this.labelCostumeLeftBoot, 0, 0);
 			this.tlpCostumeLeftBoot.Controls.Add(this.pbLeftBoot, 3, 0);
@@ -2044,13 +2477,13 @@
 			this.tableLayoutPanel11.ColumnCount = 1;
 			this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel11.Controls.Add(this.tbLeftBootTexture, 0, 1);
-			this.tableLayoutPanel11.Controls.Add(this.label1, 0, 0);
-			this.tableLayoutPanel11.Location = new System.Drawing.Point(202, 3);
+			this.tableLayoutPanel11.Controls.Add(this.labelLeftBootTexture, 0, 0);
+			this.tableLayoutPanel11.Location = new System.Drawing.Point(200, 3);
 			this.tableLayoutPanel11.Name = "tableLayoutPanel11";
 			this.tableLayoutPanel11.RowCount = 2;
 			this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel11.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel11.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel11.TabIndex = 5;
 			// 
 			// tbLeftBootTexture
@@ -2059,19 +2492,19 @@
 			this.tbLeftBootTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftBootTexture.Name = "tbLeftBootTexture";
 			this.tbLeftBootTexture.ReadOnly = true;
-			this.tbLeftBootTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftBootTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftBootTexture.TabIndex = 2;
 			// 
-			// label1
+			// labelLeftBootTexture
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(91, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Texture";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftBootTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftBootTexture.AutoSize = true;
+			this.labelLeftBootTexture.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftBootTexture.Name = "labelLeftBootTexture";
+			this.labelLeftBootTexture.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftBootTexture.TabIndex = 3;
+			this.labelLeftBootTexture.Text = "Texture";
+			this.labelLeftBootTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelCostumeLeftBoot
 			// 
@@ -2079,16 +2512,16 @@
 			this.labelCostumeLeftBoot.AutoSize = true;
 			this.labelCostumeLeftBoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftBoot.Name = "labelCostumeLeftBoot";
-			this.labelCostumeLeftBoot.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumeLeftBoot.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumeLeftBoot.TabIndex = 0;
 			this.labelCostumeLeftBoot.Text = "Left Boot";
 			// 
 			// pbLeftBoot
 			// 
 			this.pbLeftBoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftBoot.Location = new System.Drawing.Point(305, 4);
+			this.pbLeftBoot.Location = new System.Drawing.Point(302, 4);
 			this.pbLeftBoot.Name = "pbLeftBoot";
-			this.pbLeftBoot.Size = new System.Drawing.Size(129, 64);
+			this.pbLeftBoot.Size = new System.Drawing.Size(132, 64);
 			this.pbLeftBoot.TabIndex = 4;
 			this.pbLeftBoot.TabStop = false;
 			// 
@@ -2097,13 +2530,13 @@
 			this.tableLayoutPanel12.ColumnCount = 1;
 			this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel12.Controls.Add(this.tbLeftBootPalette, 0, 1);
-			this.tableLayoutPanel12.Controls.Add(this.label3, 0, 0);
-			this.tableLayoutPanel12.Location = new System.Drawing.Point(99, 3);
+			this.tableLayoutPanel12.Controls.Add(this.labelLeftBootPalette, 0, 0);
+			this.tableLayoutPanel12.Location = new System.Drawing.Point(98, 3);
 			this.tableLayoutPanel12.Name = "tableLayoutPanel12";
 			this.tableLayoutPanel12.RowCount = 2;
 			this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel12.Size = new System.Drawing.Size(97, 66);
+			this.tableLayoutPanel12.Size = new System.Drawing.Size(96, 66);
 			this.tableLayoutPanel12.TabIndex = 3;
 			// 
 			// tbLeftBootPalette
@@ -2112,19 +2545,19 @@
 			this.tbLeftBootPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbLeftBootPalette.Name = "tbLeftBootPalette";
 			this.tbLeftBootPalette.ReadOnly = true;
-			this.tbLeftBootPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbLeftBootPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbLeftBootPalette.TabIndex = 2;
 			// 
-			// label3
+			// labelLeftBootPalette
 			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 10);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(91, 13);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "Palette";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelLeftBootPalette.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelLeftBootPalette.AutoSize = true;
+			this.labelLeftBootPalette.Location = new System.Drawing.Point(3, 10);
+			this.labelLeftBootPalette.Name = "labelLeftBootPalette";
+			this.labelLeftBootPalette.Size = new System.Drawing.Size(90, 13);
+			this.labelLeftBootPalette.TabIndex = 3;
+			this.labelLeftBootPalette.Text = "Palette";
+			this.labelLeftBootPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpCostumeUnknown
 			// 
@@ -2132,7 +2565,7 @@
 			this.tlpCostumeUnknown.ColumnCount = 3;
 			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.46328F));
 			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.53672F));
-			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
+			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 138F));
 			this.tlpCostumeUnknown.Controls.Add(this.labelCostumeUnknown, 0, 0);
 			this.tlpCostumeUnknown.Controls.Add(this.tbCostumeUnknown, 1, 0);
 			this.tlpCostumeUnknown.Controls.Add(this.cbCostumesAltPalette, 2, 0);
@@ -2159,8 +2592,19 @@
 			this.tbCostumeUnknown.Location = new System.Drawing.Point(106, 3);
 			this.tbCostumeUnknown.Name = "tbCostumeUnknown";
 			this.tbCostumeUnknown.ReadOnly = true;
-			this.tbCostumeUnknown.Size = new System.Drawing.Size(191, 20);
+			this.tbCostumeUnknown.Size = new System.Drawing.Size(189, 20);
 			this.tbCostumeUnknown.TabIndex = 1;
+			// 
+			// cbCostumesAltPalette
+			// 
+			this.cbCostumesAltPalette.AutoSize = true;
+			this.cbCostumesAltPalette.Location = new System.Drawing.Point(301, 3);
+			this.cbCostumesAltPalette.Name = "cbCostumesAltPalette";
+			this.cbCostumesAltPalette.Size = new System.Drawing.Size(126, 17);
+			this.cbCostumesAltPalette.TabIndex = 2;
+			this.cbCostumesAltPalette.Text = "Use Alternate Palette";
+			this.cbCostumesAltPalette.UseVisualStyleBackColor = true;
+			this.cbCostumesAltPalette.Click += new System.EventHandler(this.cbCostumesAltPalette_Click);
 			// 
 			// tlpCostumeBodyType
 			// 
@@ -2203,7 +2647,7 @@
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
 			this.tlpCostumePelvis.Controls.Add(this.tlpPelvisTexture, 2, 0);
 			this.tlpCostumePelvis.Controls.Add(this.labelCostumePelvis, 0, 0);
 			this.tlpCostumePelvis.Controls.Add(this.pbPelvis, 3, 0);
@@ -2221,12 +2665,12 @@
 			this.tlpPelvisTexture.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpPelvisTexture.Controls.Add(this.tbPelvisTexture, 0, 1);
 			this.tlpPelvisTexture.Controls.Add(this.labelPelvisTexture, 0, 0);
-			this.tlpPelvisTexture.Location = new System.Drawing.Point(202, 3);
+			this.tlpPelvisTexture.Location = new System.Drawing.Point(200, 3);
 			this.tlpPelvisTexture.Name = "tlpPelvisTexture";
 			this.tlpPelvisTexture.RowCount = 2;
 			this.tlpPelvisTexture.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpPelvisTexture.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpPelvisTexture.Size = new System.Drawing.Size(97, 66);
+			this.tlpPelvisTexture.Size = new System.Drawing.Size(96, 66);
 			this.tlpPelvisTexture.TabIndex = 5;
 			// 
 			// tbPelvisTexture
@@ -2235,7 +2679,7 @@
 			this.tbPelvisTexture.Location = new System.Drawing.Point(3, 39);
 			this.tbPelvisTexture.Name = "tbPelvisTexture";
 			this.tbPelvisTexture.ReadOnly = true;
-			this.tbPelvisTexture.Size = new System.Drawing.Size(91, 20);
+			this.tbPelvisTexture.Size = new System.Drawing.Size(90, 20);
 			this.tbPelvisTexture.TabIndex = 2;
 			// 
 			// labelPelvisTexture
@@ -2244,7 +2688,7 @@
 			this.labelPelvisTexture.AutoSize = true;
 			this.labelPelvisTexture.Location = new System.Drawing.Point(3, 10);
 			this.labelPelvisTexture.Name = "labelPelvisTexture";
-			this.labelPelvisTexture.Size = new System.Drawing.Size(91, 13);
+			this.labelPelvisTexture.Size = new System.Drawing.Size(90, 13);
 			this.labelPelvisTexture.TabIndex = 3;
 			this.labelPelvisTexture.Text = "Texture";
 			this.labelPelvisTexture.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2255,16 +2699,16 @@
 			this.labelCostumePelvis.AutoSize = true;
 			this.labelCostumePelvis.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumePelvis.Name = "labelCostumePelvis";
-			this.labelCostumePelvis.Size = new System.Drawing.Size(90, 13);
+			this.labelCostumePelvis.Size = new System.Drawing.Size(89, 13);
 			this.labelCostumePelvis.TabIndex = 0;
 			this.labelCostumePelvis.Text = "Pelvis";
 			// 
 			// pbPelvis
 			// 
 			this.pbPelvis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbPelvis.Location = new System.Drawing.Point(305, 4);
+			this.pbPelvis.Location = new System.Drawing.Point(302, 4);
 			this.pbPelvis.Name = "pbPelvis";
-			this.pbPelvis.Size = new System.Drawing.Size(129, 64);
+			this.pbPelvis.Size = new System.Drawing.Size(132, 64);
 			this.pbPelvis.TabIndex = 4;
 			this.pbPelvis.TabStop = false;
 			// 
@@ -2274,12 +2718,12 @@
 			this.tlpPelvisPalette.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpPelvisPalette.Controls.Add(this.tbPelvisPalette, 0, 1);
 			this.tlpPelvisPalette.Controls.Add(this.labelPelvisPalette, 0, 0);
-			this.tlpPelvisPalette.Location = new System.Drawing.Point(99, 3);
+			this.tlpPelvisPalette.Location = new System.Drawing.Point(98, 3);
 			this.tlpPelvisPalette.Name = "tlpPelvisPalette";
 			this.tlpPelvisPalette.RowCount = 2;
 			this.tlpPelvisPalette.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpPelvisPalette.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpPelvisPalette.Size = new System.Drawing.Size(97, 66);
+			this.tlpPelvisPalette.Size = new System.Drawing.Size(96, 66);
 			this.tlpPelvisPalette.TabIndex = 3;
 			// 
 			// tbPelvisPalette
@@ -2288,7 +2732,7 @@
 			this.tbPelvisPalette.Location = new System.Drawing.Point(3, 39);
 			this.tbPelvisPalette.Name = "tbPelvisPalette";
 			this.tbPelvisPalette.ReadOnly = true;
-			this.tbPelvisPalette.Size = new System.Drawing.Size(91, 20);
+			this.tbPelvisPalette.Size = new System.Drawing.Size(90, 20);
 			this.tbPelvisPalette.TabIndex = 2;
 			// 
 			// labelPelvisPalette
@@ -2297,7 +2741,7 @@
 			this.labelPelvisPalette.AutoSize = true;
 			this.labelPelvisPalette.Location = new System.Drawing.Point(3, 10);
 			this.labelPelvisPalette.Name = "labelPelvisPalette";
-			this.labelPelvisPalette.Size = new System.Drawing.Size(91, 13);
+			this.labelPelvisPalette.Size = new System.Drawing.Size(90, 13);
 			this.labelPelvisPalette.TabIndex = 3;
 			this.labelPelvisPalette.Text = "Palette";
 			this.labelPelvisPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2723,17 +3167,6 @@
 			this.lbHeadsMasks.TabIndex = 1;
 			this.lbHeadsMasks.SelectedIndexChanged += new System.EventHandler(this.lbHeadsMasks_SelectedIndexChanged);
 			// 
-			// cbCostumesAltPalette
-			// 
-			this.cbCostumesAltPalette.AutoSize = true;
-			this.cbCostumesAltPalette.Location = new System.Drawing.Point(303, 3);
-			this.cbCostumesAltPalette.Name = "cbCostumesAltPalette";
-			this.cbCostumesAltPalette.Size = new System.Drawing.Size(126, 17);
-			this.cbCostumesAltPalette.TabIndex = 2;
-			this.cbCostumesAltPalette.Text = "Use Alternate Palette";
-			this.cbCostumesAltPalette.UseVisualStyleBackColor = true;
-			this.cbCostumesAltPalette.Click += new System.EventHandler(this.cbCostumesAltPalette_Click);
-			// 
 			// CostumeDefs_Revenge
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2747,6 +3180,9 @@
 			this.Text = "Costumes, Heads/Masks, Body Types";
 			this.tcMain.ResumeLayout(false);
 			this.tpBodyTypes.ResumeLayout(false);
+			this.panelBodyTypesData.ResumeLayout(false);
+			this.tlpBodyType.ResumeLayout(false);
+			this.tlpBodyType.PerformLayout();
 			this.tpCostumes.ResumeLayout(false);
 			this.panelCostumeData.ResumeLayout(false);
 			this.tlpCostumeMain.ResumeLayout(false);
@@ -2977,129 +3413,165 @@
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftBoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
 		private System.Windows.Forms.TextBox tbLeftBootTexture;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label labelLeftBootTexture;
 		private System.Windows.Forms.Label labelCostumeLeftBoot;
 		private System.Windows.Forms.PictureBox pbLeftBoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
 		private System.Windows.Forms.TextBox tbLeftBootPalette;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label labelLeftBootPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftUpperArm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
 		private System.Windows.Forms.TextBox tbLeftUpperArmTexture;
-		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label labelLeftUpperArmTexture;
 		private System.Windows.Forms.Label labelCostumeLeftUpperArm;
 		private System.Windows.Forms.PictureBox pbLeftUpperArm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel30;
 		private System.Windows.Forms.TextBox tbLeftUpperArmPalette;
-		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label labelLeftUpperArmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftForearm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel26;
 		private System.Windows.Forms.TextBox tbLeftForearmTexture;
-		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label labelLeftForearmTexture;
 		private System.Windows.Forms.Label labelCostumeLeftForearm;
 		private System.Windows.Forms.PictureBox pbLeftForearm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
 		private System.Windows.Forms.TextBox tbLeftForearmPalette;
-		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label labelLeftForearmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftFingers;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
 		private System.Windows.Forms.TextBox tbLeftFingersTexture;
-		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label labelLeftFingersTexture;
 		private System.Windows.Forms.Label labelCostumeLeftFingers;
 		private System.Windows.Forms.PictureBox pbLeftFingers;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
 		private System.Windows.Forms.TextBox tbLeftFingersPalette;
-		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label labelLeftFingersPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftPalm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
 		private System.Windows.Forms.TextBox tbLeftPalmTexture;
-		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label labelLeftPalmTexture;
 		private System.Windows.Forms.Label labelCostumeLeftPalm;
 		private System.Windows.Forms.PictureBox pbLeftPalm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
 		private System.Windows.Forms.TextBox tbLeftPalmPalette;
-		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label labelLeftPalmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftFoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
 		private System.Windows.Forms.TextBox tbLeftFootTexture;
-		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label labelLeftFootTexture;
 		private System.Windows.Forms.Label labelCostumeLeftFoot;
 		private System.Windows.Forms.PictureBox pbLeftFoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
 		private System.Windows.Forms.TextBox tbLeftFootPalette;
-		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label labelLeftFootPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeLeftLeg;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
 		private System.Windows.Forms.TextBox tbLeftLegTexture;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label labelLeftLegTexture;
 		private System.Windows.Forms.Label labelCostumeLeftLeg;
 		private System.Windows.Forms.PictureBox pbLeftLeg;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
 		private System.Windows.Forms.TextBox tbLeftLegPalette;
-		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label labelLeftLegPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightUpperArm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel46;
 		private System.Windows.Forms.TextBox tbRightUpperArmTexture;
-		private System.Windows.Forms.Label label33;
-		private System.Windows.Forms.Label label34;
+		private System.Windows.Forms.Label labelRightUpperArmTexture;
+		private System.Windows.Forms.Label labelCostumeRightUpperArm;
 		private System.Windows.Forms.PictureBox pbRightUpperArm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel47;
 		private System.Windows.Forms.TextBox tbRightUpperArmPalette;
-		private System.Windows.Forms.Label label35;
+		private System.Windows.Forms.Label labelRightUpperArmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightFingers;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel43;
 		private System.Windows.Forms.TextBox tbRightFingersTexture;
-		private System.Windows.Forms.Label label30;
-		private System.Windows.Forms.Label label31;
+		private System.Windows.Forms.Label labelRightFingersTexture;
+		private System.Windows.Forms.Label labelCostumeRightFingers;
 		private System.Windows.Forms.PictureBox pbRightFingers;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel44;
 		private System.Windows.Forms.TextBox tbRightFingersPalette;
-		private System.Windows.Forms.Label label32;
+		private System.Windows.Forms.Label labelRightFingersPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightPalm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel40;
 		private System.Windows.Forms.TextBox tbRightPalmTexture;
-		private System.Windows.Forms.Label label27;
-		private System.Windows.Forms.Label label28;
+		private System.Windows.Forms.Label labelRightPalmTexture;
+		private System.Windows.Forms.Label labelCostumeRightPalm;
 		private System.Windows.Forms.PictureBox pbRightPalm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel41;
 		private System.Windows.Forms.TextBox tbRightPalmPalette;
-		private System.Windows.Forms.Label label29;
+		private System.Windows.Forms.Label labelRightPalmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightForearm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel37;
 		private System.Windows.Forms.TextBox tbRightForearmTexture;
-		private System.Windows.Forms.Label label24;
-		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Label labelRightForearmTexture;
+		private System.Windows.Forms.Label labelCostumeRightForearm;
 		private System.Windows.Forms.PictureBox pbRightForearm;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel38;
 		private System.Windows.Forms.TextBox tbRightForearmPalette;
-		private System.Windows.Forms.Label label26;
+		private System.Windows.Forms.Label labelRightForearmPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightFoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel34;
 		private System.Windows.Forms.TextBox tbRightFootTexture;
-		private System.Windows.Forms.Label label20;
-		private System.Windows.Forms.Label label22;
+		private System.Windows.Forms.Label labelRightFootTexture;
+		private System.Windows.Forms.Label labelCostumeRightFoot;
 		private System.Windows.Forms.PictureBox pbRightFoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel35;
 		private System.Windows.Forms.TextBox tbRightFootPalette;
-		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.Label labelRightFootPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightLeg;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
 		private System.Windows.Forms.TextBox tbRightLegTexture;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label labelRightLegTexture;
+		private System.Windows.Forms.Label labelCostumeRightLeg;
 		private System.Windows.Forms.PictureBox pbRightLeg;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
 		private System.Windows.Forms.TextBox tbRightLegPalette;
-		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.Label labelRightLegPalette;
 		private System.Windows.Forms.TableLayoutPanel tlpCostumeRightBoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.TextBox tbRightBootTexture;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label labelRightBootTexture;
+		private System.Windows.Forms.Label labelCostumeRightBoot;
 		private System.Windows.Forms.PictureBox pbRightBoot;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.TextBox tbRightBootPalette;
-		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label labelRightBootPalette;
 		private System.Windows.Forms.CheckBox cbCostumesAltPalette;
+		private System.Windows.Forms.TableLayoutPanel tlpBodyType;
+		private System.Windows.Forms.TextBox tbPelvisModel;
+		private System.Windows.Forms.TextBox tbStomachModel;
+		private System.Windows.Forms.TextBox tbChestModel;
+		private System.Windows.Forms.TextBox tbLeftLowerLegModel;
+		private System.Windows.Forms.TextBox tbLeftUpperLegModel;
+		private System.Windows.Forms.TextBox tbLeftFootModel;
+		private System.Windows.Forms.TextBox tbLeftPalmModel;
+		private System.Windows.Forms.TextBox tbLeftFingersModel;
+		private System.Windows.Forms.TextBox tbLeftForearmModel;
+		private System.Windows.Forms.TextBox tbLeftUpperArmModel;
+		private System.Windows.Forms.TextBox tbRightLowerLegModel;
+		private System.Windows.Forms.TextBox tbRightUpperLegModel;
+		private System.Windows.Forms.TextBox tbRightFootModel;
+		private System.Windows.Forms.TextBox tbRightForearmModel;
+		private System.Windows.Forms.TextBox tbRightPalmModel;
+		private System.Windows.Forms.TextBox tbRightFingersModel;
+		private System.Windows.Forms.TextBox tbRightUpperArmModel;
+		private System.Windows.Forms.Panel panelBodyTypesData;
+		private System.Windows.Forms.Label label36;
+		private System.Windows.Forms.Label label37;
+		private System.Windows.Forms.Label label38;
+		private System.Windows.Forms.Label label39;
+		private System.Windows.Forms.Label label40;
+		private System.Windows.Forms.Label label41;
+		private System.Windows.Forms.Label label42;
+		private System.Windows.Forms.Label label43;
+		private System.Windows.Forms.Label label44;
+		private System.Windows.Forms.Label label45;
+		private System.Windows.Forms.Label label46;
+		private System.Windows.Forms.Label label47;
+		private System.Windows.Forms.Label label48;
+		private System.Windows.Forms.Label label49;
+		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.Label label51;
+		private System.Windows.Forms.Label label52;
 	}
 }
