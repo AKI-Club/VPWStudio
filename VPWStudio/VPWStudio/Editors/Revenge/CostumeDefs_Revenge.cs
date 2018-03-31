@@ -85,13 +85,26 @@ namespace VPWStudio.Editors.Revenge
 		private void LoadBodyTypeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
+			int numBodyDefs = 0;
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry btdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["BodyTypeDefs"]);
+				if (btdEntry != null)
+				{
+					br.BaseStream.Seek(btdEntry.Address, SeekOrigin.Begin);
+					hasLocation = true;
+				}
 			}
 
 			if (!hasLocation)
 			{
+				// fallback to hardcoded offset
+				MessageBox.Show(
+					"Body Type Definition location not found; using hardcoded offset instead.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Information
+				);
 			}
 		}
 
@@ -111,7 +124,7 @@ namespace VPWStudio.Editors.Revenge
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				MessageBox.Show(
 					"Costume Definition location not found; using hardcoded offset instead.",
 					SharedStrings.MainForm_Title,
@@ -190,7 +203,7 @@ namespace VPWStudio.Editors.Revenge
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				MessageBox.Show(
 					"Head/Mask Definition location not found; using hardcoded offset instead.",
 					SharedStrings.MainForm_Title,
