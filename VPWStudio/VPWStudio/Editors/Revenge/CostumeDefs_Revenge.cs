@@ -71,12 +71,14 @@ namespace VPWStudio.Editors.Revenge
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
+			LoadBodyTypeDefs(br);
 			LoadCostumeDefs(br);
 			LoadMaskDefs(br);
 
 			br.Close();
 
 			// populate lists
+			PopulateBodyTypes();
 			PopulateCostumes();
 			PopulateMasks();
 		}
@@ -92,6 +94,7 @@ namespace VPWStudio.Editors.Revenge
 				if (btdEntry != null)
 				{
 					br.BaseStream.Seek(btdEntry.Address, SeekOrigin.Begin);
+					numBodyDefs = btdEntry.Length/4;
 					hasLocation = true;
 				}
 			}
@@ -105,6 +108,41 @@ namespace VPWStudio.Editors.Revenge
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Information
 				);
+
+				long offset = 0;
+				switch (Program.CurrentProject.Settings.GameType)
+				{
+					case SpecificGame.Revenge_NTSC_U:
+						offset = 0x323F0;
+						numBodyDefs = 52;
+						break;
+					case SpecificGame.Revenge_PAL:
+						offset = 0x2FB40;
+						numBodyDefs = 52;
+						break;
+				}
+				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+			}
+
+			// read pointer, go to address, read values, return to pointer list
+			long curBodyTypePos = br.BaseStream.Position;
+
+			for (int i = 0; i < numBodyDefs; i++)
+			{
+				byte[] bodytypePtr = br.ReadBytes(4);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(bodytypePtr);
+				}
+				curBodyTypePos = br.BaseStream.Position;
+				UInt32 bodyTypePointer = BitConverter.ToUInt32(bodytypePtr, 0);
+
+				// get data
+				br.BaseStream.Seek(Z64Rom.PointerToRom(bodyTypePointer), SeekOrigin.Begin);
+				this.BodyTypeDefs.Add(new BodyTypeDef_Early(br));
+
+				// next
+				br.BaseStream.Seek(curBodyTypePos, SeekOrigin.Begin);
 			}
 		}
 
@@ -141,8 +179,7 @@ namespace VPWStudio.Editors.Revenge
 						numCostumes = 147;
 						break;
 					case SpecificGame.Revenge_PAL:
-						MessageBox.Show("tell freem to find the costume start point for Revenge PAL!");
-						offset = 0;
+						offset = 0x341F4;
 						numCostumes = 147;
 						break;
 				}
@@ -159,7 +196,6 @@ namespace VPWStudio.Editors.Revenge
 
 			long curCostumePos = br.BaseStream.Position;
 
-			// cheating helper: there are 147 pointers in the main list.
 			for (int i = 0; i < numCostumes; i++)
 			{
 				byte[] cosPtr = br.ReadBytes(4);
@@ -278,6 +314,19 @@ namespace VPWStudio.Editors.Revenge
 		#endregion
 
 		#region ListBox Population
+		private void PopulateBodyTypes()
+		{
+			lbBodyTypes.Items.Clear();
+			lbBodyTypes.BeginUpdate();
+			int counter = 1;
+			foreach (BodyTypeDef_Early btdef in BodyTypeDefs)
+			{
+				lbBodyTypes.Items.Add(String.Format("Body Type {0}", counter));
+				counter++;
+			}
+			lbBodyTypes.EndUpdate();
+		}
+
 		/// <summary>
 		/// Populate the Costumes listbox.
 		/// </summary>
@@ -352,6 +401,38 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		#region Body Types
+		private void LoadBodyTypeDefinition(BodyTypeDef_Early btdef)
+		{
+			SetTextBoxContentsHex4(tbPelvisModel, btdef.PelvisModel);
+			SetTextBoxContentsHex4(tbStomachModel, btdef.StomachModel);
+			SetTextBoxContentsHex4(tbChestModel, btdef.ChestModel);
+
+			SetTextBoxContentsHex4(tbLeftLowerLegModel, btdef.LeftLowerLegModel);
+			SetTextBoxContentsHex4(tbLeftUpperLegModel, btdef.LeftUpperLegModel);
+			SetTextBoxContentsHex4(tbLeftFootModel, btdef.LeftFootModel);
+			SetTextBoxContentsHex4(tbLeftPalmModel, btdef.LeftPalmModel);
+			SetTextBoxContentsHex4(tbLeftFingersModel, btdef.LeftFingersModel);
+			SetTextBoxContentsHex4(tbLeftForearmModel, btdef.LeftForearmModel);
+			SetTextBoxContentsHex4(tbLeftUpperArmModel, btdef.LeftUpperArmModel);
+
+			SetTextBoxContentsHex4(tbRightLowerLegModel, btdef.RightLowerLegModel);
+			SetTextBoxContentsHex4(tbRightUpperLegModel, btdef.RightUpperLegModel);
+			SetTextBoxContentsHex4(tbRightFootModel, btdef.RightFootModel);
+			SetTextBoxContentsHex4(tbRightForearmModel, btdef.RightForearmModel);
+			SetTextBoxContentsHex4(tbRightPalmModel, btdef.RightPalmModel);
+			SetTextBoxContentsHex4(tbRightFingersModel, btdef.RightFingersModel);
+			SetTextBoxContentsHex4(tbRightUpperArmModel, btdef.RightUpperArmModel);
+		}
+
+		private void lbBodyTypes_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbBodyTypes.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			LoadBodyTypeDefinition(BodyTypeDefs[lbBodyTypes.SelectedIndex]);
+		}
 		#endregion
 
 		#region Costumes
@@ -588,5 +669,7 @@ namespace VPWStudio.Editors.Revenge
 
 			LoadCostumeDefinition(CostumeDefs[lbCostumes.SelectedIndex]);
 		}
+
+		
 	}
 }
