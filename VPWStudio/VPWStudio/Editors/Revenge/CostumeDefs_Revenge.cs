@@ -61,18 +61,78 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private List<MaskDef_Early> MaskDefs = new List<MaskDef_Early>();
 
+		/// <summary>
+		/// Determine if the subpalette should be shown.
+		/// </summary>
 		private bool Costume_UseSubpalette = false;
+
+		#region VPW64-specific
+		private const int VPW64_SMALL = 0;
+		private const int VPW64_MEDIUM = 1;
+		private const int VPW64_LARGE = 2;
+		private const int VPW64_SALADIN = 3;
+		private const int VPW64_BABA = 4;
+		private const int VPW64_JUDOKA = 5;
+		private const int VPW64_FEMALE = 6;
+		private const int VPW64_UNUSED = 7;
+
+		/// <summary>
+		/// Friendly names for costume types in Virtual Pro-Wrestling 64.
+		/// </summary>
+		private string[] CostumeTypes_VPW64 = new string[]
+		{
+			"Small",
+			"Medium",
+			"Large",
+			"Saladin",
+			"Giant Baba",
+			"Judoka",
+			"BlackWidow",
+			"unused?"
+		};
+
+		/// <summary>
+		/// Number of costumes available for each Body Type in Virtual Pro-Wrestling 64.
+		/// </summary>
+		private int[] NumCostumes_VPW64 = new int[]
+		{
+			126, // Small
+			96,  // Medium
+			21,  // Large
+			3,   // Saladin
+			2,   // Giant Baba
+			2,   // Judoka
+			2,   // BlackWidow
+			4    // unused?
+		};
+		#endregion
 
 		public CostumeDefs_Revenge()
 		{
 			InitializeComponent();
 			cbCostumesAltPalette.Checked = Costume_UseSubpalette;
 
+			// Only show sub-palette toggle for WCW/nWo Revenge
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.Revenge)
+			{
+				cbCostumesAltPalette.Enabled = false;
+				cbCostumesAltPalette.Visible = false;
+			}
+
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
 			LoadBodyTypeDefs(br);
-			LoadCostumeDefs(br);
+
+			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW64)
+			{
+				LoadCostumeDefs_VPW64(br);
+			}
+			else
+			{
+				LoadCostumeDefs(br);
+			}
+
 			LoadMaskDefs(br);
 
 			br.Close();
@@ -175,8 +235,6 @@ namespace VPWStudio.Editors.Revenge
 			bool hasLocation = false;
 			int numCostumes = 0;
 
-			// todo: VPW64 requires more thought
-
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry cdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["CostumeDefs"]);
@@ -192,11 +250,6 @@ namespace VPWStudio.Editors.Revenge
 							numCostumes = 45;
 							break;
 
-						case SpecificGame.VPW64_NTSC_J:
-							// xxx: this isn't perfect
-							numCostumes = (cdEntry.Length / 4) - 2;
-							break;
-						
 						case SpecificGame.Revenge_NTSC_U:
 						case SpecificGame.Revenge_PAL:
 							numCostumes = (cdEntry.Length / 4) - 1;
@@ -231,10 +284,6 @@ namespace VPWStudio.Editors.Revenge
 						offset = 0x336DC;
 						numCostumes = 45;
 						return;
-					case SpecificGame.VPW64_NTSC_J:
-						offset = 0x36EC0;
-						numCostumes = 98;
-						break;
 					case SpecificGame.Revenge_NTSC_U:
 						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"]
 						offset = 0x36AA4;
@@ -283,6 +332,180 @@ namespace VPWStudio.Editors.Revenge
 				// next
 				br.BaseStream.Seek(curCostumePos, SeekOrigin.Begin);
 			}
+		}
+
+		/// <summary>
+		/// Helper for loading VPW64 Costume Definitions
+		/// </summary>
+		/// <param name="br"></param>
+		/// <param name="offset"></param>
+		/// <param name="numCostumes"></param>
+		/// <param name="secondary">Is this a secondary costume type?</param>
+		private void VPW64CostumeLoader(BinaryReader br, long offset, long numCostumes, bool secondary = false)
+		{
+			br.BaseStream.Seek(offset, SeekOrigin.Begin);
+			long curCostumePos = br.BaseStream.Position;
+
+			for (int i = 0; i < numCostumes; i++)
+			{
+				// read pointer
+				byte[] ptr = br.ReadBytes(4);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(ptr);
+				}
+				curCostumePos = br.BaseStream.Position;
+				UInt32 costumePointer = BitConverter.ToUInt32(ptr, 0);
+
+				// main pointer has been read; now deal with the pointer at that location
+				br.BaseStream.Seek(Z64Rom.PointerToRom(costumePointer), SeekOrigin.Begin);
+				if (!secondary)
+				{
+					byte[] ccPtr = br.ReadBytes(4);
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(ccPtr);
+					}
+					br.BaseStream.Seek(Z64Rom.PointerToRom(BitConverter.ToUInt32(ccPtr, 0)), SeekOrigin.Begin);
+				}
+				CostumeDefs.Add(new CostumeDef_Early(br));
+
+				// next
+				br.BaseStream.Seek(curCostumePos, SeekOrigin.Begin);
+			}
+		}
+
+		/// <summary>
+		/// Costume definition loading special case for Virtual Pro-Wrestling 64.
+		/// </summary>
+		/// <param name="br"></param>
+		private void LoadCostumeDefs_VPW64(BinaryReader br)
+		{
+			long smallCostumeLoc = 0, smallCostumeNum = 0;
+			long medCostumeLoc = 0, medCostumeNum = 0;
+			long largeCostumeLoc = 0, largeCostumeNum = 0;
+			long saladinCostumeLoc = 0, saladinCostumeNum = 0;
+			long babaCostumeLoc = 0, babaCostumeNum = 0;
+			long judokaCostumeLoc = 0, judokaCostumeNum = 0;
+			long widowCostumeLoc = 0, widowCostumeNum = 0;
+			long unusedCostumeLoc = 0, unusedCostumeNum = 0;
+
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry small = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Small"]);
+				if (small != null)
+				{
+					smallCostumeLoc = small.Address;
+					smallCostumeNum = small.Length / 4;
+				}
+
+				LocationFileEntry medium = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Medium"]);
+				if (medium != null)
+				{
+					medCostumeLoc = medium.Address;
+					medCostumeNum = medium.Length / 4;
+				}
+
+				LocationFileEntry large = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Large"]);
+				if (large != null)
+				{
+					largeCostumeLoc = large.Address;
+					largeCostumeNum = large.Length / 4;
+				}
+
+				LocationFileEntry saladin = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Saladin"]);
+				if (saladin != null)
+				{
+					saladinCostumeLoc = saladin.Address;
+					saladinCostumeNum = saladin.Length / 4;
+				}
+
+				LocationFileEntry baba = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Baba"]);
+				if (baba != null)
+				{
+					babaCostumeLoc = baba.Address;
+					babaCostumeNum = baba.Length / 4;
+				}
+
+				LocationFileEntry judoka = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Judoka"]);
+				if (judoka != null)
+				{
+					judokaCostumeLoc = judoka.Address;
+					judokaCostumeNum = judoka.Length / 4;
+				}
+
+				LocationFileEntry female = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Female"]);
+				if (female != null)
+				{
+					widowCostumeLoc = female.Address;
+					widowCostumeNum = female.Length / 4;
+				}
+
+				LocationFileEntry unused = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["VPW64Costumes_Unused"]);
+				if (unused != null)
+				{
+					unusedCostumeLoc = unused.Address;
+					unusedCostumeNum = unused.Length / 4;
+				}
+			}
+
+			bool hasLocations = (smallCostumeLoc != 0) && (medCostumeLoc != 0) && (largeCostumeLoc != 0)
+				&& (saladinCostumeLoc != 0) && (babaCostumeLoc != 0) && (judokaCostumeLoc != 0)
+				&& (widowCostumeLoc != 0) && (unusedCostumeLoc != 0);
+
+			if (!hasLocations)
+			{
+				// fallback to hardcoded offsets
+				MessageBox.Show(
+					"Costume Definition locations not found; using hardcoded offsets instead.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Information
+				);
+
+				if (smallCostumeLoc == 0){
+					smallCostumeLoc = 0x3EE40;
+					smallCostumeNum = NumCostumes_VPW64[VPW64_SMALL];
+				}
+				if (medCostumeLoc == 0) {
+					medCostumeLoc = 0x36EC0;
+					medCostumeNum = NumCostumes_VPW64[VPW64_MEDIUM];
+				}
+				if (largeCostumeLoc == 0) {
+					largeCostumeLoc = 0x32CF0;
+					largeCostumeNum = NumCostumes_VPW64[VPW64_LARGE];
+				}
+				if (saladinCostumeLoc == 0) {
+					saladinCostumeLoc = 0x31B58;
+					saladinCostumeNum = NumCostumes_VPW64[VPW64_SALADIN];
+				}
+				if (babaCostumeLoc == 0) {
+					babaCostumeLoc = 0x31C08;
+					babaCostumeNum = NumCostumes_VPW64[VPW64_BABA];
+				}
+				if (judokaCostumeLoc == 0) {
+					judokaCostumeLoc = 0x31CB4;
+					judokaCostumeNum = NumCostumes_VPW64[VPW64_JUDOKA];
+				}
+				if (widowCostumeLoc == 0) {
+					widowCostumeLoc = 0x31D60;
+					widowCostumeNum = NumCostumes_VPW64[VPW64_FEMALE];
+				}
+				if (unusedCostumeLoc == 0) {
+					unusedCostumeLoc = 0x31EAC;
+					unusedCostumeNum = NumCostumes_VPW64[VPW64_UNUSED];
+				}
+			}
+
+			// handle loading all costumes. VPW64 handles costumes differently from the other early games.
+			VPW64CostumeLoader(br, smallCostumeLoc, smallCostumeNum);
+			VPW64CostumeLoader(br, medCostumeLoc, medCostumeNum);
+			VPW64CostumeLoader(br, largeCostumeLoc, largeCostumeNum);
+			VPW64CostumeLoader(br, saladinCostumeLoc, saladinCostumeNum, true);
+			VPW64CostumeLoader(br, babaCostumeLoc, babaCostumeNum, true);
+			VPW64CostumeLoader(br, judokaCostumeLoc, judokaCostumeNum, true);
+			VPW64CostumeLoader(br, widowCostumeLoc, widowCostumeNum, true);
+			VPW64CostumeLoader(br, unusedCostumeLoc, unusedCostumeNum, true);
 		}
 
 		/// <summary>
@@ -434,10 +657,28 @@ namespace VPWStudio.Editors.Revenge
 			lbCostumes.Items.Clear();
 			lbCostumes.BeginUpdate();
 			int counter = 1;
-			foreach (CostumeDef_Early cdef in CostumeDefs)
+			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW64)
 			{
-				lbCostumes.Items.Add(String.Format("Costume {0}", counter));
-				counter++;
+				// VPW64 special case
+				int costumeType = 0;
+				foreach (CostumeDef_Early cdef in CostumeDefs)
+				{
+					lbCostumes.Items.Add(String.Format("{0} {1}", CostumeTypes_VPW64[costumeType], counter));
+					counter++;
+					if (counter > NumCostumes_VPW64[costumeType])
+					{
+						counter = 1;
+						costumeType++;
+					}
+				}
+			}
+			else
+			{
+				foreach (CostumeDef_Early cdef in CostumeDefs)
+				{
+					lbCostumes.Items.Add(String.Format("Costume {0}", counter));
+					counter++;
+				}
 			}
 			lbCostumes.EndUpdate();
 		}
