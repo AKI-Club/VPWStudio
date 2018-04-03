@@ -686,6 +686,7 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WorldTour:
 				case VPWGames.Revenge:
 					if (CostumeDefs_Revenge == null)
 					{
@@ -708,11 +709,10 @@ namespace VPWStudio
 					}
 					break;
 
-				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
-					MessageBox.Show("this game will be using the same dialog as Revenge, once I'm done coding the damned thing.");
+					MessageBox.Show("VPW64 support is kind of busted (costumes, specifically). please give me more time.");
 					break;
-				
+
 				default:
 					MessageBox.Show(String.Format("costumes dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
 					break;
