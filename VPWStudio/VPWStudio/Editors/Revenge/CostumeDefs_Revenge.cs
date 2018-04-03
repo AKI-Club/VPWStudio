@@ -14,24 +14,24 @@ namespace VPWStudio.Editors.Revenge
 {
 	/*
 	 * [WCW vs. nWo World Tour NTSC v1.0]
-	 * Body Type Defs: ???
-	 * Head/Mask Defs: TODO
-	 * Costume Defs: TODO
+	 * Body Type Defs: 0x2F150, 176 bytes (44 entries)
+	 * Head/Mask Defs: 0x2FD50, 32 bytes (8 base pointers, 45 entries)
+	 * Costume Defs: 0x33740, 32 bytes (8 base pointers, 45 entries)
 	 * 
 	 * [WCW vs. nWo World Tour NTSC v1.1]
-	 * Body Type Defs: ???
-	 * Head/Mask Defs: TODO
-	 * Costume Defs: TODO
+	 * Body Type Defs: 0x2F170, 176 bytes (44 entries)
+	 * Head/Mask Defs: 0x2FDC0, 32 bytes (8 base pointers, 45 entries)
+	 * Costume Defs: 0x336FC, 32 bytes (8 base pointers, 45 entries)
 	 * 
 	 * [WCW vs. nWo World Tour PAL]
-	 * Body Type Defs: ???
-	 * Head/Mask Defs: TODO
-	 * Costume Defs: TODO
+	 * Body Type Defs: 0x2F150, 176 bytes (44 entries)
+	 * Head/Mask Defs: 0x2FDA0, 32 bytes (8 base pointers, 45 entries)
+	 * Costume Defs: 0x336DC, 32 bytes (8 base pointers, 45 entries)
 	 * 
 	 * [Virtual Pro-Wrestling 64]
-	 * Body Type Defs: ???
-	 * Head/Mask Defs: TODO
-	 * Costume Defs: TODO
+	 * Body Type Defs: 0x2FCE4, 176 bytes (44 entries)
+	 * Head/Mask Defs: 0x31A44, 36 bytes (9 base pointers, 106? total entries)
+	 * Costume Defs: TODO; this game is a pain and has multiple pointer lists for costumes.
 	 * 
 	 * [WCW/nWo Revenge NTSC]
 	 * Body Type Defs: 0x323F0, 208 bytes (52 entries)
@@ -39,9 +39,9 @@ namespace VPWStudio.Editors.Revenge
 	 * Costume Defs: 0x36AA4, 592 bytes (147 entries)
 	 * 
 	 * [WCW/nWo Revenge PAL]
-	 * Body Type Defs: ???, 208 bytes
+	 * Body Type Defs: 0x2FB40, 208 bytes
 	 * Head/Mask Defs: 0x30E94, 40 bytes
-	 * Costume Defs: TODO, 592 bytes
+	 * Costume Defs: 0x341F4, 592 bytes
 	 */
 
 	public partial class CostumeDefs_Revenge : Form
@@ -84,6 +84,10 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		#region Data Load
+		/// <summary>
+		/// Load Body Type Definitions.
+		/// </summary>
+		/// <param name="br"></param>
 		private void LoadBodyTypeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
@@ -112,6 +116,22 @@ namespace VPWStudio.Editors.Revenge
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)
 				{
+					case SpecificGame.WorldTour_NTSC_U_10:
+						offset = 0x2F100;
+						numBodyDefs = 44;
+						break;
+					case SpecificGame.WorldTour_NTSC_U_11:
+						offset = 0x2F170;
+						numBodyDefs = 44;
+						break;
+					case SpecificGame.WorldTour_PAL:
+						offset = 0x2F150;
+						numBodyDefs = 44;
+						break;
+					case SpecificGame.VPW64_NTSC_J:
+						offset = 0x2FCE4;
+						numBodyDefs = 44;
+						break;
 					case SpecificGame.Revenge_NTSC_U:
 						offset = 0x323F0;
 						numBodyDefs = 52;
@@ -146,17 +166,43 @@ namespace VPWStudio.Editors.Revenge
 			}
 		}
 
+		/// <summary>
+		/// Load Costume Definitions.
+		/// </summary>
+		/// <param name="br"></param>
 		private void LoadCostumeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
 			int numCostumes = 0;
+
+			// todo: VPW64 requires more thought
+
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry cdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["CostumeDefs"]);
 				if (cdEntry != null)
 				{
 					br.BaseStream.Seek(cdEntry.Address, SeekOrigin.Begin);
-					numCostumes = (cdEntry.Length / 4) - 1;
+
+					switch (Program.CurrentProject.Settings.GameType)
+					{
+						case SpecificGame.WorldTour_NTSC_U_10:
+						case SpecificGame.WorldTour_NTSC_U_11:
+						case SpecificGame.WorldTour_PAL:
+							numCostumes = 45;
+							break;
+
+						case SpecificGame.VPW64_NTSC_J:
+							// xxx: this isn't perfect
+							numCostumes = (cdEntry.Length / 4) - 2;
+							break;
+						
+						case SpecificGame.Revenge_NTSC_U:
+						case SpecificGame.Revenge_PAL:
+							numCostumes = (cdEntry.Length / 4) - 1;
+							break;
+					}
+
 					hasLocation = true;
 				}
 			}
@@ -173,6 +219,22 @@ namespace VPWStudio.Editors.Revenge
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)
 				{
+					case SpecificGame.WorldTour_NTSC_U_10:
+						offset = 0x3368C;
+						numCostumes = 45;
+						return;
+					case SpecificGame.WorldTour_NTSC_U_11:
+						offset = 0x336FC;
+						numCostumes = 45;
+						break;
+					case SpecificGame.WorldTour_PAL:
+						offset = 0x336DC;
+						numCostumes = 45;
+						return;
+					case SpecificGame.VPW64_NTSC_J:
+						offset = 0x36EC0;
+						numCostumes = 98;
+						break;
 					case SpecificGame.Revenge_NTSC_U:
 						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"]
 						offset = 0x36AA4;
@@ -187,6 +249,8 @@ namespace VPWStudio.Editors.Revenge
 			}
 
 			// if you thought mask defs were a pain, this is worse.
+
+			// xxx: this below description is probably for WCW/nWo Revenge only
 			// each pointer in the main list goes to another list containing three pointers.
 			// usually, the three pointers are the same, and we don't have to worry about anything.
 
@@ -228,6 +292,7 @@ namespace VPWStudio.Editors.Revenge
 		private void LoadMaskDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
+			int numHeadDefs = 0;
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry hdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["HeadDefs"]);
@@ -235,6 +300,22 @@ namespace VPWStudio.Editors.Revenge
 				{
 					br.BaseStream.Seek(hdEntry.Address, SeekOrigin.Begin);
 					hasLocation = true;
+				}
+
+				switch (Program.CurrentProject.Settings.GameType)
+				{
+					case SpecificGame.WorldTour_NTSC_U_10:
+					case SpecificGame.WorldTour_NTSC_U_11:
+					case SpecificGame.WorldTour_PAL:
+						numHeadDefs = 45;
+						break;
+					case SpecificGame.VPW64_NTSC_J:
+						numHeadDefs = 106;
+						break;
+					case SpecificGame.Revenge_NTSC_U:
+					case SpecificGame.Revenge_PAL:
+						numHeadDefs = 90;
+						break;
 				}
 			}
 			if (!hasLocation)
@@ -250,12 +331,30 @@ namespace VPWStudio.Editors.Revenge
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)
 				{
+					case SpecificGame.WorldTour_NTSC_U_10:
+						offset = 0x2FD50;
+						numHeadDefs = 45;
+						break;
+					case SpecificGame.WorldTour_NTSC_U_11:
+						offset = 0x2FDC0;
+						numHeadDefs = 45;
+						break;
+					case SpecificGame.WorldTour_PAL:
+						offset = 0x2FDA0;
+						numHeadDefs = 45;
+						break;
+					case SpecificGame.VPW64_NTSC_J:
+						offset = 0x31A44;
+						numHeadDefs = 106;
+						break;
 					case SpecificGame.Revenge_NTSC_U:
 						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
 						offset = 0x33744;
+						numHeadDefs = 90;
 						break;
 					case SpecificGame.Revenge_PAL:
 						offset = 0x30E94;
+						numHeadDefs = 90;
 						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
@@ -274,11 +373,11 @@ namespace VPWStudio.Editors.Revenge
 			br.BaseStream.Seek(Z64Rom.PointerToRom(listPtr), SeekOrigin.Begin);
 			long curWrestlerPos = br.BaseStream.Position;
 
-			// cheating helper: there are 90 such pointers.
+			// cheating helper:
 			// maskdef list is pointers to first wrestler in group.
 			// this pointer leads to the mask list pointer for that wrestler.
 			long curMaskPointerPos = 0;
-			for (int i = 0; i < 90; i++)
+			for (int i = 0; i < numHeadDefs; i++)
 			{
 				byte[] wmptr = br.ReadBytes(4);
 				if (BitConverter.IsLittleEndian)
@@ -540,11 +639,49 @@ namespace VPWStudio.Editors.Revenge
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
-			// neck is usually CI4
-			LoadPreview_CI4(romReader, pbNeck, mdef.NeckPalette, mdef.NeckTexture);
+			// neck is usually CI4, but not always...
+			// xxx: hacky; this needs to be determined in a better way.
+			MemoryStream neckPalStream = new MemoryStream();
+			BinaryWriter neckPalWriter = new BinaryWriter(neckPalStream);
+			BinaryReader neckPalReader = new BinaryReader(neckPalStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, neckPalWriter, mdef.NeckPalette);
 
-			// face is usually CI8
-			// CI4 entries: 60, 106
+			MemoryStream neckTexStream = new MemoryStream();
+			BinaryWriter neckTexWriter = new BinaryWriter(neckTexStream);
+			BinaryReader neckTexReader = new BinaryReader(neckTexStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, neckTexWriter, mdef.NeckTexture);
+
+			if (neckPalWriter.BaseStream.Position == 0x200)
+			{
+				// CI8
+				neckPalStream.Seek(0, SeekOrigin.Begin);
+				Ci8Palette neckPal = new Ci8Palette();
+				neckPal.ReadData(neckPalReader);
+				neckPalStream.Dispose();
+				Ci8Texture neckTex = new Ci8Texture();
+
+				neckTexStream.Seek(0, SeekOrigin.Begin);
+				neckTex.ReadData(neckTexReader);
+				neckTexStream.Dispose();
+				pbNeck.Image = neckTex.ToBitmap(neckPal);
+			}
+			else
+			{
+				// CI4
+				neckPalStream.Seek(0, SeekOrigin.Begin);
+				Ci4Palette neckPal = new Ci4Palette();
+				neckPal.ReadData(neckPalReader);
+				neckPalStream.Dispose();
+				Ci4Texture neckTex = new Ci4Texture();
+
+				neckTexStream.Seek(0, SeekOrigin.Begin);
+				neckTex.ReadData(neckTexReader);
+				neckTexStream.Dispose();
+				pbNeck.Image = neckTex.ToBitmap(neckPal);
+			}
+
+			// face is usually CI8, but not always.
+			// WCW/nWo Revenge CI4 entries: 60, 106
 			// xxx: hack; this needs to be determined in a better way.
 			MemoryStream facePalStream = new MemoryStream();
 			BinaryWriter facePalWriter = new BinaryWriter(facePalStream);
@@ -585,7 +722,7 @@ namespace VPWStudio.Editors.Revenge
 				pbFace.Image = faceTex.ToBitmap(facePal);
 			}
 
-			// extra is either CI4 or CI8 depending on who you try editing
+			// extra is either CI4 or CI8
 			if (mdef.ExtraPalette != 0 && mdef.ExtraTexture != 0)
 			{
 				MemoryStream extraPalStream = new MemoryStream();
@@ -634,11 +771,51 @@ namespace VPWStudio.Editors.Revenge
 				pbExtra.Image = null;
 			}
 
-			// ripped mask is probably CI8, but we'll never know,
-			// since it wasn't implemented in Revenge.
+			// ripped mask is probably CI8
 			if (mdef.RippedMaskPalette != 0 && mdef.RippedMaskTexture != 0)
 			{
-				
+				MemoryStream ripMaskPalStream = new MemoryStream();
+				BinaryWriter ripMaskPalWriter = new BinaryWriter(ripMaskPalStream);
+				BinaryReader ripMaskPalReader = new BinaryReader(ripMaskPalStream);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, ripMaskPalWriter, mdef.RippedMaskPalette);
+
+				MemoryStream ripMaskTexStream = new MemoryStream();
+				BinaryWriter ripMaskTexWriter = new BinaryWriter(ripMaskTexStream);
+				BinaryReader ripMaskTexReader = new BinaryReader(ripMaskTexStream);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, ripMaskTexWriter, mdef.RippedMaskTexture);
+
+				if (ripMaskPalWriter.BaseStream.Position == 0x200)
+				{
+					// CI8
+					ripMaskPalStream.Seek(0, SeekOrigin.Begin);
+					Ci8Palette ripMaskPal = new Ci8Palette();
+					ripMaskPal.ReadData(ripMaskPalReader);
+					ripMaskPalStream.Dispose();
+					Ci8Texture ripMaskTex = new Ci8Texture();
+
+					ripMaskTexStream.Seek(0, SeekOrigin.Begin);
+					ripMaskTex.ReadData(ripMaskTexReader);
+					ripMaskTexStream.Dispose();
+					pbRippedMask.Image = ripMaskTex.ToBitmap(ripMaskPal);
+				}
+				else
+				{
+					// CI4
+					ripMaskPalStream.Seek(0, SeekOrigin.Begin);
+					Ci4Palette ripMaskPal = new Ci4Palette();
+					ripMaskPal.ReadData(ripMaskPalReader);
+					ripMaskPalStream.Dispose();
+					Ci4Texture ripMaskTex = new Ci4Texture();
+
+					ripMaskTexStream.Seek(0, SeekOrigin.Begin);
+					ripMaskTex.ReadData(ripMaskTexReader);
+					ripMaskTexStream.Dispose();
+					pbRippedMask.Image = ripMaskTex.ToBitmap(ripMaskPal);
+				}
+			}
+			else
+			{
+				pbRippedMask.Image = null;
 			}
 
 			romReader.Close();
