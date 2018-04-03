@@ -119,17 +119,29 @@ namespace VPWStudio
 		#region Special Constants
 		public static Dictionary<string, string> SpecialEntryStrings = new Dictionary<string, string>()
 		{
+			// Everything in this Dictionary assumes Z64 ROM locations.
+
 			#region DataLocation
 			{ "FileTable", "$FILETABLE" }, // ROM location of filetable
 			{ "FirstFile", "$FIRSTFILE" }, // ROM location of first file
 			{ "WrestlerDefs", "$WRESTLERDEFS" }, // ROM location of wrestler definitions
 			{ "StableDefs", "$STABLEDEFS" }, // ROM location of stable definitions
 
-			// these three are used for World Tour, VPW64, and Revenge at least.
-			// the other three games probably have their own ways of doing things.
+			// World Tour, VPW64, and Revenge share BodyTypeDefs and HeadDefs.
+			// If VPW64 didn't do its own thing for CostumeDefs, it'd be here too.
 			{ "BodyTypeDefs", "$BODYTYPEDEFS" }, // ROM location of body type definitions
-			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions
+			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions (World Tour and Revenge only)
 			{ "HeadDefs", "$HEADDEFS" }, // ROM location of head/mask definitions
+
+			// VPW64 costume definitions
+			{ "VPW64Costumes_Small", "$VPW64COSTUMES_SMALL" },
+			{ "VPW64Costumes_Medium", "$VPW64COSTUMES_MED" },
+			{ "VPW64Costumes_Large", "$VPW64COSTUMES_LARGE" },
+			{ "VPW64Costumes_Saladin", "$VPW64COSTUMES_SALADIN" },
+			{ "VPW64Costumes_Baba", "$VPW64COSTUMES_BABA" },
+			{ "VPW64Costumes_Judoka", "$VPW64COSTUMES_JUDOKA" },
+			{ "VPW64Costumes_Female", "$VPW64COSTUMES_FEMALE" },
+			{ "VPW64Costumes_Unused", "$VPW64COSTUMES_UNUSED" },
 			#endregion
 
 			#region CodeChange
