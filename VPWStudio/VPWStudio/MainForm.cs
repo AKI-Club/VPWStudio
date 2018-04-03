@@ -1071,6 +1071,7 @@ namespace VPWStudio
 			}
 			BuildLogForm.MdiParent = this;
 			BuildLogForm.Show();
+			BuildLogForm.BringToFront();
 			BuildLogForm.Clear();
 			DateTime startTime = DateTime.Now;
 
