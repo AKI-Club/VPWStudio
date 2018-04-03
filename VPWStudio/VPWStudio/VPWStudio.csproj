@@ -190,11 +190,11 @@
     <Compile Include="Editors\NoMercy\WrestlerMain_NoMercy.Designer.cs">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editors\Revenge\CostumeDefs_Revenge.cs">
+    <Compile Include="Editors\CostumeDefs_Early.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editors\Revenge\CostumeDefs_Revenge.Designer.cs">
-      <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
+    <Compile Include="Editors\CostumeDefs_Early.Designer.cs">
+      <DependentUpon>CostumeDefs_Early.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\Revenge\StableDefs_Revenge.cs">
       <SubType>Form</SubType>
@@ -358,8 +358,8 @@
     <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editors\Revenge\CostumeDefs_Revenge.resx">
-      <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\CostumeDefs_Early.resx">
+      <DependentUpon>CostumeDefs_Early.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
