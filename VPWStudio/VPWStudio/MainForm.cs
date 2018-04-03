@@ -73,6 +73,11 @@ namespace VPWStudio
 
 		#region Game-Specific Editors
 
+		/// <summary>
+		/// Costume and Mask/Head Editor for early VPW games
+		/// </summary>
+		public Editors.CostumeDefs_Early CostumeDefs_Early = null;
+
 		#region World Tour
 		#endregion
 
@@ -80,11 +85,6 @@ namespace VPWStudio
 		#endregion
 
 		#region Revenge
-		/// <summary>
-		/// WCW/nWo Revenge Costume and Mask/Head Editor
-		/// </summary>
-		public Editors.Revenge.CostumeDefs_Revenge CostumeDefs_Revenge = null;
-
 		/// <summary>
 		/// WCW/nWo Revenge Stable Editor
 		/// </summary>
@@ -686,35 +686,30 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				// Early VPW games
 				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
 				case VPWGames.Revenge:
-					if (CostumeDefs_Revenge == null)
+					if (CostumeDefs_Early == null)
 					{
-						CostumeDefs_Revenge = new Editors.Revenge.CostumeDefs_Revenge();
-						CostumeDefs_Revenge.MdiParent = this;
-						CostumeDefs_Revenge.Show();
+						CostumeDefs_Early = new Editors.CostumeDefs_Early();
+						CostumeDefs_Early.MdiParent = this;
+						CostumeDefs_Early.Show();
 					}
 					else
 					{
-						if (CostumeDefs_Revenge.IsDisposed)
+						if (CostumeDefs_Early.IsDisposed)
 						{
-							CostumeDefs_Revenge = new Editors.Revenge.CostumeDefs_Revenge();
+							CostumeDefs_Early = new Editors.CostumeDefs_Early();
 						}
-						if (CostumeDefs_Revenge.WindowState == FormWindowState.Minimized)
+						if (CostumeDefs_Early.WindowState == FormWindowState.Minimized)
 						{
-							CostumeDefs_Revenge.WindowState = FormWindowState.Normal;
+							CostumeDefs_Early.WindowState = FormWindowState.Normal;
 						}
-						CostumeDefs_Revenge.MdiParent = this;
-						CostumeDefs_Revenge.Show();
+						CostumeDefs_Early.MdiParent = this;
+						CostumeDefs_Early.Show();
 					}
 					break;
-
-					/*
-				case VPWGames.VPW64:
-					MessageBox.Show("VPW64 support is kind of busted (costumes, specifically). please give me more time.");
-					break;
-					*/
 
 				default:
 					MessageBox.Show(String.Format("costumes dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));

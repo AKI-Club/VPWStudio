@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific;
 
-namespace VPWStudio.Editors.Revenge
+namespace VPWStudio.Editors
 {
 	/*
 	 * [WCW vs. nWo World Tour NTSC v1.0]
@@ -47,7 +47,7 @@ namespace VPWStudio.Editors.Revenge
 	/// Body Type, Costume, and Head/Mask Form for the early VPW series games.
 	/// (WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, WCW/nWo Revenge)
 	/// </summary>
-	public partial class CostumeDefs_Revenge : Form
+	public partial class CostumeDefs_Early : Form
 	{
 		/// <summary>
 		/// Body type definitions
@@ -110,7 +110,7 @@ namespace VPWStudio.Editors.Revenge
 		};
 		#endregion
 
-		public CostumeDefs_Revenge()
+		public CostumeDefs_Early()
 		{
 			InitializeComponent();
 			cbCostumesAltPalette.Checked = Costume_UseSubpalette;
