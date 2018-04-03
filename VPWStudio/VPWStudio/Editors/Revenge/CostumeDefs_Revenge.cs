@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific;
 
-// todo: this should be expanded to support World Tour and VPW64.
 namespace VPWStudio.Editors.Revenge
 {
 	/*
@@ -31,7 +30,7 @@ namespace VPWStudio.Editors.Revenge
 	 * [Virtual Pro-Wrestling 64]
 	 * Body Type Defs: 0x2FCE4, 176 bytes (44 entries)
 	 * Head/Mask Defs: 0x31A44, 36 bytes (9 base pointers, 106? total entries)
-	 * Costume Defs: TODO; this game is a pain and has multiple pointer lists for costumes.
+	 * Costume Defs: See source code; VPW64 has multiple pointer lists for costumes.
 	 * 
 	 * [WCW/nWo Revenge NTSC]
 	 * Body Type Defs: 0x323F0, 208 bytes (52 entries)
@@ -44,6 +43,10 @@ namespace VPWStudio.Editors.Revenge
 	 * Costume Defs: 0x341F4, 592 bytes
 	 */
 
+	/// <summary>
+	/// Body Type, Costume, and Head/Mask Form for the early VPW series games.
+	/// (WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, WCW/nWo Revenge)
+	/// </summary>
 	public partial class CostumeDefs_Revenge : Form
 	{
 		/// <summary>
@@ -227,7 +230,7 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		/// <summary>
-		/// Load Costume Definitions.
+		/// Load Costume Definitions for every early game that's not VPW64.
 		/// </summary>
 		/// <param name="br"></param>
 		private void LoadCostumeDefs(BinaryReader br)
@@ -335,13 +338,13 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		/// <summary>
-		/// Helper for loading VPW64 Costume Definitions
+		/// Helper for loading VPW64 Costume Definitions.
 		/// </summary>
 		/// <param name="br"></param>
 		/// <param name="offset"></param>
 		/// <param name="numCostumes"></param>
 		/// <param name="secondary">Is this a secondary costume type?</param>
-		private void VPW64CostumeLoader(BinaryReader br, long offset, long numCostumes, bool secondary = false)
+		private void VPW64CostumeLoader(BinaryReader br, long offset, int numCostumes, bool secondary = false)
 		{
 			br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			long curCostumePos = br.BaseStream.Position;
@@ -359,6 +362,8 @@ namespace VPWStudio.Editors.Revenge
 
 				// main pointer has been read; now deal with the pointer at that location
 				br.BaseStream.Seek(Z64Rom.PointerToRom(costumePointer), SeekOrigin.Begin);
+
+				// we only need to perform this step for the main costume types
 				if (!secondary)
 				{
 					byte[] ccPtr = br.ReadBytes(4);
@@ -381,14 +386,14 @@ namespace VPWStudio.Editors.Revenge
 		/// <param name="br"></param>
 		private void LoadCostumeDefs_VPW64(BinaryReader br)
 		{
-			long smallCostumeLoc = 0, smallCostumeNum = 0;
-			long medCostumeLoc = 0, medCostumeNum = 0;
-			long largeCostumeLoc = 0, largeCostumeNum = 0;
-			long saladinCostumeLoc = 0, saladinCostumeNum = 0;
-			long babaCostumeLoc = 0, babaCostumeNum = 0;
-			long judokaCostumeLoc = 0, judokaCostumeNum = 0;
-			long widowCostumeLoc = 0, widowCostumeNum = 0;
-			long unusedCostumeLoc = 0, unusedCostumeNum = 0;
+			long smallCostumeLoc = 0;   int smallCostumeNum = 0;
+			long medCostumeLoc = 0;     int medCostumeNum = 0;
+			long largeCostumeLoc = 0;   int largeCostumeNum = 0;
+			long saladinCostumeLoc = 0; int saladinCostumeNum = 0;
+			long babaCostumeLoc = 0;    int babaCostumeNum = 0;
+			long judokaCostumeLoc = 0;  int judokaCostumeNum = 0;
+			long widowCostumeLoc = 0;   int widowCostumeNum = 0;
+			long unusedCostumeLoc = 0;  int unusedCostumeNum = 0;
 
 			if (Program.CurLocationFile != null)
 			{
@@ -497,10 +502,12 @@ namespace VPWStudio.Editors.Revenge
 				}
 			}
 
-			// handle loading all costumes. VPW64 handles costumes differently from the other early games.
+			// load main costumes
 			VPW64CostumeLoader(br, smallCostumeLoc, smallCostumeNum);
 			VPW64CostumeLoader(br, medCostumeLoc, medCostumeNum);
 			VPW64CostumeLoader(br, largeCostumeLoc, largeCostumeNum);
+
+			// load special case costumes
 			VPW64CostumeLoader(br, saladinCostumeLoc, saladinCostumeNum, true);
 			VPW64CostumeLoader(br, babaCostumeLoc, babaCostumeNum, true);
 			VPW64CostumeLoader(br, judokaCostumeLoc, judokaCostumeNum, true);
