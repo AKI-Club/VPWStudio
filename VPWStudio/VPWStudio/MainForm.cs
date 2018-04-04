@@ -1728,6 +1728,32 @@ namespace VPWStudio
 				fs.Close();
 			}
 		}
+
+		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to menu bg";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				MenuBackground mbg = new MenuBackground();
+				mbg.FromBitmap(b);
+
+				/*
+				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
+				{
+					Ci8Texture test = new Ci8Texture();
+					test.FromBitmap(b);
+					FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+				*/
+			}
+		}
 		#endregion
 	}
 }
