@@ -61,6 +61,8 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1A78, 21996) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F100, 176) },
+					//{ "CostumeDefs", new DefaultLocationDataEntry(0x3368C, ?) },
 				})
 			},
 			{
@@ -69,14 +71,18 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x37F38, 96) },
 					{ "FirstFile", new DefaultLocationDataEntry(0x39500, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1C70, 21996) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F170, 176) },
+					//{ "CostumeDefs", new DefaultLocationDataEntry(0x336FC, ?) },
 				})
 			},
 			{
 				SpecificGame.WorldTour_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-					// todo: StableDefs
+					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1C00, 21996) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
+					//{ "CostumeDefs", new DefaultLocationDataEntry(0x336DC, ?) },
 				})
 			},
 			{
@@ -85,6 +91,7 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x4989C, 176) },
 					{ "FirstFile", new DefaultLocationDataEntry(0x4AD00, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xC7B578, 37432) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
 				})
 			},
 			{
@@ -93,6 +100,8 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x3B0F8, 104) },
 					{ "FirstFile", new DefaultLocationDataEntry(0xDAC50, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xCE2752, 30632) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
+					{ "CostumeDefs", new DefaultLocationDataEntry(0x36AA4, 592) },
 				})
 			},
 			{
@@ -101,6 +110,8 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x38548, 104) },
 					{ "FirstFile", new DefaultLocationDataEntry(0xD81E0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xCDFCE2, 30632) },
+					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FB40, 208) },
+					{ "CostumeDefs", new DefaultLocationDataEntry(0x341F4, 592) },
 				})
 			},
 			{
