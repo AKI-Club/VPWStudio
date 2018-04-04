@@ -169,6 +169,9 @@ namespace VPWStudio
 			// LoadFile
 			{ "LoadFile_MaxFiles", "%LOADFILE_MAXFILES" },
 			{ "LoadFile_FtBegins", "%LOADFILE_FTBEGINS" },
+
+			// Sound-related (VPW2)
+
 			#endregion
 		};
 		#endregion
