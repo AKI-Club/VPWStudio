@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+//using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -243,7 +244,8 @@ namespace VPWStudio
 				return false;
 			}
 
-			Graphics g = Graphics.FromImage(b);
+			// Graphics can't handle paletted images for some reason... hooray
+			Graphics g = Graphics.FromImage(b.Clone(new Rectangle(0, 0, 320, 240), PixelFormat.Format16bppRgb555));
 
 			// obtain palette
 			Ci4Palette newPal = new Ci4Palette();
@@ -262,6 +264,24 @@ namespace VPWStudio
 				for (int curCol = 0; curCol < ChunkColumns; curCol++)
 				{
 					// convert each chunk
+					// todo: this is a lot harder than it looks
+
+					// this method didn't work out as well as I would've liked:
+					/*
+					BitmapData bd = b.LockBits(
+						new Rectangle(curCol * ChunkWidth, curRow * ChunkHeight, ChunkWidth, ChunkHeight),
+						ImageLockMode.ReadOnly, PixelFormat.Format16bppRgb555
+					);
+
+					IntPtr iptr = bd.Scan0;
+
+					int numBytes = Math.Abs(bd.Stride) * b.Height;
+					byte[] newPix = new byte[numBytes];
+					Marshal.Copy(iptr, newPix, 0, numBytes);
+					Textures[texNum].Data = newPix;
+
+					b.UnlockBits(bd);
+					*/
 					texNum++;
 				}
 			}
@@ -285,7 +305,7 @@ namespace VPWStudio
 			{
 				for (int x = 0; x < ChunkColumns; x++)
 				{
-					// draw each 64x30 chunk
+					// draw each chunk
 					g.DrawImage(Textures[texNum].ToBitmap(Palette), new Point(x * ChunkWidth, y * ChunkHeight));
 					texNum++;
 				}
