@@ -264,24 +264,11 @@ namespace VPWStudio
 				for (int curCol = 0; curCol < ChunkColumns; curCol++)
 				{
 					// convert each chunk
-					// todo: this is a lot harder than it looks
+					Bitmap curChunk = b.Clone(new Rectangle(curCol * ChunkWidth, curRow * ChunkHeight, ChunkWidth, ChunkHeight), PixelFormat.Format4bppIndexed);
+					Textures[texNum].FromBitmapRaw(curChunk, ChunkWidth, ChunkHeight);
 
-					// this method didn't work out as well as I would've liked:
-					/*
-					BitmapData bd = b.LockBits(
-						new Rectangle(curCol * ChunkWidth, curRow * ChunkHeight, ChunkWidth, ChunkHeight),
-						ImageLockMode.ReadOnly, PixelFormat.Format16bppRgb555
-					);
+					// todo: ?
 
-					IntPtr iptr = bd.Scan0;
-
-					int numBytes = Math.Abs(bd.Stride) * b.Height;
-					byte[] newPix = new byte[numBytes];
-					Marshal.Copy(iptr, newPix, 0, numBytes);
-					Textures[texNum].Data = newPix;
-
-					b.UnlockBits(bd);
-					*/
 					texNum++;
 				}
 			}
