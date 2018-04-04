@@ -469,35 +469,35 @@ namespace VPWStudio.Editors
 				);
 
 				if (smallCostumeLoc == 0){
-					smallCostumeLoc = 0x3EE40;
+					smallCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Small").Offset;
 					smallCostumeNum = NumCostumes_VPW64[VPW64_SMALL];
 				}
 				if (medCostumeLoc == 0) {
-					medCostumeLoc = 0x36EC0;
+					medCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Medium").Offset;
 					medCostumeNum = NumCostumes_VPW64[VPW64_MEDIUM];
 				}
 				if (largeCostumeLoc == 0) {
-					largeCostumeLoc = 0x32CF0;
+					largeCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Large").Offset;
 					largeCostumeNum = NumCostumes_VPW64[VPW64_LARGE];
 				}
 				if (saladinCostumeLoc == 0) {
-					saladinCostumeLoc = 0x31B58;
+					saladinCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Saladin").Offset;
 					saladinCostumeNum = NumCostumes_VPW64[VPW64_SALADIN];
 				}
 				if (babaCostumeLoc == 0) {
-					babaCostumeLoc = 0x31C08;
+					babaCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Baba").Offset;
 					babaCostumeNum = NumCostumes_VPW64[VPW64_BABA];
 				}
 				if (judokaCostumeLoc == 0) {
-					judokaCostumeLoc = 0x31CB4;
+					judokaCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Judoka").Offset;
 					judokaCostumeNum = NumCostumes_VPW64[VPW64_JUDOKA];
 				}
 				if (widowCostumeLoc == 0) {
-					widowCostumeLoc = 0x31D60;
+					widowCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Female").Offset;
 					widowCostumeNum = NumCostumes_VPW64[VPW64_FEMALE];
 				}
 				if (unusedCostumeLoc == 0) {
-					unusedCostumeLoc = 0x31EAC;
+					unusedCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Unused").Offset;
 					unusedCostumeNum = NumCostumes_VPW64[VPW64_UNUSED];
 				}
 			}
