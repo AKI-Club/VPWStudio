@@ -92,6 +92,16 @@ namespace VPWStudio
 					{ "FirstFile", new DefaultLocationDataEntry(0x4AD00, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xC7B578, 37432) },
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
+
+					// costume definitions
+					{ "VPW64Costumes_Small", new DefaultLocationDataEntry(0x3EE40, 504) },
+					{ "VPW64Costumes_Medium", new DefaultLocationDataEntry(0x36EC0, 384) },
+					{ "VPW64Costumes_Large", new DefaultLocationDataEntry(0x32CF0, 84) },
+					{ "VPW64Costumes_Saladin", new DefaultLocationDataEntry(0x31B58, 12) },
+					{ "VPW64Costumes_Baba", new DefaultLocationDataEntry(0x31C08, 8) },
+					{ "VPW64Costumes_Judoka", new DefaultLocationDataEntry(0x31CB4, 8) },
+					{ "VPW64Costumes_Female", new DefaultLocationDataEntry(0x31D60, 8) },
+					{ "VPW64Costumes_Unused", new DefaultLocationDataEntry(0x31EAC, 16) },
 				})
 			},
 			{
@@ -178,6 +188,23 @@ namespace VPWStudio
 				})
 			},
 		};
+
+		/// <summary>
+		/// Get an entry from the DefaultLocations dictionary.
+		/// </summary>
+		/// <param name="game">SpecificGame type.</param>
+		/// <param name="name">Location name to look up.</param>
+		/// <returns>DefaultLocationDataEntry if found, or null if not found.</returns>
+		public static DefaultLocationDataEntry GetEntry(SpecificGame game, string name)
+		{
+			if (DefaultLocations[game].Locations.ContainsKey(name))
+			{
+				return DefaultLocations[game].Locations[name];
+			}
+			else{
+				return null;
+			}
+		}
 		#endregion
 
 		// rethink how you want to handle the rest of this.
