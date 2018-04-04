@@ -1732,13 +1732,16 @@ namespace VPWStudio
 		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert PNG to menu bg";
+			ofd.Title = "Convert PNG to MenuBackground";
 			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				Bitmap b = new Bitmap(ofd.FileName);
 				MenuBackground mbg = new MenuBackground();
-				mbg.FromBitmap(b);
+				if (mbg.FromBitmap(b))
+				{
+					// todo: write out complete data?
+				}
 
 				/*
 				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
