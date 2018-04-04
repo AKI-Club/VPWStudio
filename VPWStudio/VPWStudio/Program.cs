@@ -417,10 +417,33 @@ namespace VPWStudio
 			// keep a running total of differences in file sizes.
 			int totalDifference = 0;
 
+			// special background parsing
+			//bool MenuBackgroundMode = false;
+			//int MenuBackgroundNumber = 0;
+
 			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
 			for (int i = 1; i <= buildFileTable.Entries.Count; i++)
 			{
 				FileTableEntry fte = buildFileTable.Entries[i];
+
+				// todo: MenuBackgroundMode changes how this works
+
+				// determine if we need to start MenuBackgroundMode
+				//if (fte.FileType == FileTypes.MenuBackground)
+				//{
+				//	MenuBackgroundMode = true;
+				//	MenuBackgroundNumber = 0;
+				//}
+
+				//if (MenuBackgroundMode == true)
+				//{
+				//	// handling menu background...
+				//}
+				//else
+				//{
+				//	// continue as normal
+				//}
+
 				// 0) check if a replacement file is set
 				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 				{
