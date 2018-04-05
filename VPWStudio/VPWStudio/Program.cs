@@ -107,6 +107,15 @@ namespace VPWStudio
 
 			return dbFilePath;
 		}
+
+		/// <summary>
+		/// Show an error message dialog.
+		/// </summary>
+		/// <param name="msg">Error message to show.</param>
+		public static void ErrorMessageBox(string msg)
+		{
+			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
 		#endregion
 
 		#region ROM Building
@@ -326,6 +335,27 @@ namespace VPWStudio
 							break;
 						#endregion
 
+						#region MenuBackground Conversion
+						case FileTypes.MenuBackground:
+							{
+								if (ReplaceFileExtension == ".png")
+								{
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									MenuBackground mbg = new MenuBackground(-1, CurrentProject.Settings.BaseGame);
+									if (!mbg.FromBitmap(bm))
+									{
+										return null;
+									}
+									return mbg.WriteData();
+								}
+								else
+								{
+									// unsupported type for conversions
+									return null;
+								}
+							}
+						#endregion
+
 						// todo: other filetypes.
 
 						#region AkiText Conversion
@@ -418,31 +448,99 @@ namespace VPWStudio
 			int totalDifference = 0;
 
 			// special background parsing
-			//bool MenuBackgroundMode = false;
-			//int MenuBackgroundNumber = 0;
+			/*
+			bool MenuBackgroundMode = false;
+			int MenuBackgroundNumber = 0;
+			MenuBackground CurMenuBackground = null;
+			int MenuBgNumChunks = 0;
+			int MenuBgChunkPixels = 0;
+			*/
 
 			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
 			for (int i = 1; i <= buildFileTable.Entries.Count; i++)
 			{
 				FileTableEntry fte = buildFileTable.Entries[i];
+				byte[] outData = null;
 
-				// todo: MenuBackgroundMode changes how this works
+				// MenuBackgroundMode changes how this works; it would be simpler otherwise.
 
+				/*
 				// determine if we need to start MenuBackgroundMode
-				//if (fte.FileType == FileTypes.MenuBackground)
-				//{
-				//	MenuBackgroundMode = true;
-				//	MenuBackgroundNumber = 0;
-				//}
+				if (fte.FileType == FileTypes.MenuBackground)
+				{
+					if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
+					{
+						string replaceFilePath = fte.ReplaceFilePath;
+						if (!Path.IsPathRooted(replaceFilePath))
+						{
+							replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+						}
 
-				//if (MenuBackgroundMode == true)
-				//{
-				//	// handling menu background...
-				//}
-				//else
-				//{
-				//	// continue as normal
-				//}
+						// ensure the file exists, otherwise we can't do anything.
+						if (!File.Exists(replaceFilePath))
+						{
+							MenuBackgroundMode = false;
+							CurMenuBackground = null;
+							MenuBgNumChunks = 0;
+							MenuBgChunkPixels = 0;
+							continue;
+						}
+
+						outData = ConvertFile(fte.FileID);
+						if (outData == null)
+						{
+							MenuBackgroundMode = false;
+							CurMenuBackground = null;
+							MenuBgNumChunks = 0;
+							MenuBgChunkPixels = 0;
+							continue;
+						}
+
+						MenuBackgroundMode = true;
+						MenuBackgroundNumber = 0;
+
+						CurMenuBackground = new MenuBackground(fte.FileID, CurrentProject.Settings.BaseGame);
+						Array.Copy(outData, CurMenuBackground.Data, outData.Length);
+
+						MenuBgNumChunks = CurMenuBackground.ChunkColumns * CurMenuBackground.ChunkRows;
+						MenuBgChunkPixels = CurMenuBackground.ChunkWidth * CurMenuBackground.ChunkHeight;
+					}
+				}
+
+				if (MenuBackgroundMode == true)
+				{
+					// handling menu background...
+
+					byte[] bgChunkData;
+					if (MenuBackgroundNumber == 0)
+					{
+						// first file: Palette and image data
+						bgChunkData = new byte[0x20+MenuBgChunkPixels];
+						Array.Copy(CurMenuBackground.Data, 0, bgChunkData, 0, bgChunkData.Length);
+					}
+					else
+					{
+						// remaining files: image data only
+						bgChunkData = new byte[MenuBgChunkPixels];
+						Array.Copy(CurMenuBackground.Data, (MenuBgChunkPixels * MenuBackgroundNumber), bgChunkData, 0, bgChunkData.Length);
+					}
+
+					// we have the raw output data at this point
+
+					// housekeeping
+					MenuBackgroundNumber++;
+					// perform check
+					if (MenuBackgroundNumber == MenuBgNumChunks)
+					{
+						MenuBackgroundMode = false;
+						CurMenuBackground = null;
+					}
+				}
+				else
+				{
+					// continue as normal
+				}
+				*/
 
 				// 0) check if a replacement file is set
 				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
@@ -488,7 +586,7 @@ namespace VPWStudio
 					*/
 
 					// 1) use file extension to determine action
-					byte[] outData = null;
+					outData = null;
 					bool AlreadyCompressed = Path.GetExtension(replaceFilePath) == ".lzss";
 					if (!AlreadyCompressed)
 					{
@@ -739,5 +837,6 @@ namespace VPWStudio
 			#endregion
 		}
 		#endregion
+
 	}
 }
