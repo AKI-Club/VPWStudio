@@ -275,52 +275,6 @@ namespace VPWStudio
 
 			return true;
 		}
-
-		public bool FromBitmapRaw(Bitmap inBmp, int width, int height)
-		{
-			if (inBmp.PixelFormat != PixelFormat.Format4bppIndexed)
-			{
-				return false;
-			}
-
-			// set width and height
-			Width = width;
-			Height = height;
-
-			// convert palette
-			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
-			NumPalEntries = 16;
-			UInt16[] Palette = new UInt16[NumPalEntries];
-			for (int i = 0; i < inBmp.Palette.Entries.Length; i++)
-			{
-				BitmapColors.Add(i, inBmp.Palette.Entries[i]);
-				Palette[i] = N64Colors.ColorToValue5551(inBmp.Palette.Entries[i]);
-			}
-
-			// one pixel = two bytes
-			Data = new byte[(Width * Height) / 2];
-			for (int y = 0; y < Height; y++)
-			{
-				for (int x = 0; x < Width; x++)
-				{
-					Color thisCol = inBmp.GetPixel(x, y);
-					int pixIndex = (y * Width) + x;
-					int palIndex = BitmapColors.IndexOfValue(thisCol);
-
-					byte old = Data[pixIndex / 2];
-					if ((pixIndex % 2) > 0)
-					{
-						Data[pixIndex / 2] = (byte)((old & 0xF0) | (byte)palIndex);
-					}
-					else
-					{
-						Data[pixIndex / 2] = (byte)((old & 0x0F) | ((byte)palIndex << 4));
-					}
-				}
-			}
-
-			return true;
-		}
 		#endregion
 	}
 }
