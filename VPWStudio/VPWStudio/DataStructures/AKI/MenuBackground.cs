@@ -31,24 +31,9 @@ namespace VPWStudio
 		/// </summary>
 		private const int MENUBG_HEIGHT = 240;
 
-		private static Dictionary<VPWGames, int> MenuChunkWidth = new Dictionary<VPWGames, int>(){
-			{ VPWGames.WorldTour, -1 },
-			{ VPWGames.VPW64, -1 },
-			{ VPWGames.Revenge, -1 },
-			{ VPWGames.WM2K, 320 },
-			{ VPWGames.VPW2, 64 },
-			{ VPWGames.NoMercy, 64 },
-		};
-
-		private static Dictionary<VPWGames, int> MenuChunkHeight = new Dictionary<VPWGames, int>(){
-			{ VPWGames.WorldTour, -1 },
-			{ VPWGames.VPW64, -1 },
-			{ VPWGames.Revenge, -1 },
-			{ VPWGames.WM2K, 24 },
-			{ VPWGames.VPW2, 30 },
-			{ VPWGames.NoMercy, 30 },
-		};
-
+		/// <summary>
+		/// Number of chunk columns in one row of the MenuBackground.
+		/// </summary>
 		private static Dictionary<VPWGames, int> MenuChunkColumns = new Dictionary<VPWGames, int>(){
 			{ VPWGames.WorldTour, -1 },
 			{ VPWGames.VPW64, -1 },
@@ -58,6 +43,9 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 5 },
 		};
 
+		/// <summary>
+		/// Number of chunk rows in one column of the MenuBackground.
+		/// </summary>
 		private static Dictionary<VPWGames, int> MenuChunkRows = new Dictionary<VPWGames, int>(){
 			{ VPWGames.WorldTour, -1 },
 			{ VPWGames.VPW64, -1 },
@@ -65,6 +53,30 @@ namespace VPWStudio
 			{ VPWGames.WM2K, 10 },
 			{ VPWGames.VPW2, 8 },
 			{ VPWGames.NoMercy, 8 },
+		};
+
+		/// <summary>
+		/// Width of each MenuBackground chunk.
+		/// </summary>
+		private static Dictionary<VPWGames, int> MenuChunkWidth = new Dictionary<VPWGames, int>(){
+			{ VPWGames.WorldTour, -1 },
+			{ VPWGames.VPW64, -1 },
+			{ VPWGames.Revenge, -1 },
+			{ VPWGames.WM2K, MENUBG_WIDTH },
+			{ VPWGames.VPW2, MENUBG_WIDTH/MenuChunkColumns[VPWGames.VPW2] },
+			{ VPWGames.NoMercy, MENUBG_WIDTH/MenuChunkColumns[VPWGames.NoMercy] },
+		};
+
+		/// <summary>
+		/// Height of each MenuBackground chunk.
+		/// </summary>
+		private static Dictionary<VPWGames, int> MenuChunkHeight = new Dictionary<VPWGames, int>(){
+			{ VPWGames.WorldTour, -1 },
+			{ VPWGames.VPW64, -1 },
+			{ VPWGames.Revenge, -1 },
+			{ VPWGames.WM2K, MENUBG_HEIGHT/MenuChunkRows[VPWGames.WM2K] },
+			{ VPWGames.VPW2, MENUBG_HEIGHT/MenuChunkRows[VPWGames.VPW2] },
+			{ VPWGames.NoMercy, MENUBG_HEIGHT/MenuChunkRows[VPWGames.NoMercy] },
 		};
 		#endregion
 
@@ -205,9 +217,12 @@ namespace VPWStudio
 		// as well, making our job harder.
 
 		#region Binary Read/Write
+		/// <summary>
+		/// Read MenuBackground data.
+		/// FileTable.ExtractMenuBackground *MUST BE* called before this.
+		/// </summary>
 		public void ReadData()
 		{
-			// this should be called AFTER FileTable.ExtractMenuBackground
 			MemoryStream ms = new MemoryStream(Data);
 			BinaryReader br = new BinaryReader(ms);
 
@@ -223,14 +238,37 @@ namespace VPWStudio
 			br.Close();
 		}
 
-		public void WriteData(BinaryWriter bw)
+		/// <summary>
+		/// Write MenuBackground data.
+		/// </summary>
+		/// <returns>Array of bytes with the MenuBackground data.</returns>
+		public byte[] WriteData()
 		{
-			// todo: this is probably a clusterfuck.
-			// it should probably return a byte[] instead of using a BinaryWriter?
+			using (MemoryStream outStream = new MemoryStream())
+			{
+				using (BinaryWriter bw = new BinaryWriter(outStream))
+				{
+					// palette
+					Palette.WriteData(bw);
+
+					// textures; only write the pixels
+					for (int i = 0; i < Textures.Length; i++)
+					{
+						bw.Write(Textures[i].Data);
+					}
+
+					return outStream.ToArray();
+				}
+			}
 		}
 		#endregion
 
 		#region Bitmap Read/Write
+		/// <summary>
+		/// Convert the specified Bitmap into a MenuBackground.
+		/// </summary>
+		/// <param name="b">Bitmap to convert</param>
+		/// <returns>Returns true if conversion was successful; false otherwise.</returns>
 		public bool FromBitmap(Bitmap b)
 		{
 			// check for invalid size
@@ -244,9 +282,6 @@ namespace VPWStudio
 				return false;
 			}
 
-			// Graphics can't handle paletted images for some reason... hooray
-			Graphics g = Graphics.FromImage(b.Clone(new Rectangle(0, 0, 320, 240), PixelFormat.Format16bppRgb555));
-
 			// obtain palette
 			Ci4Palette newPal = new Ci4Palette();
 			SortedList<int, Color> BitmapColors = new SortedList<int, Color>();
@@ -257,23 +292,19 @@ namespace VPWStudio
 			}
 			Palette = newPal;
 
-			// do conversion
+			// convert textures, one chunk at a time
 			int texNum = 0;
 			for (int curRow = 0; curRow < ChunkRows; curRow++)
 			{
 				for (int curCol = 0; curCol < ChunkColumns; curCol++)
 				{
-					// convert each chunk
 					Bitmap curChunk = b.Clone(new Rectangle(curCol * ChunkWidth, curRow * ChunkHeight, ChunkWidth, ChunkHeight), PixelFormat.Format4bppIndexed);
-					Textures[texNum].FromBitmapRaw(curChunk, ChunkWidth, ChunkHeight);
-
-					// todo: ?
-
+					curChunk.Palette = b.Palette;
+					Textures[texNum].FromBitmap(curChunk);
 					texNum++;
 				}
 			}
 
-			g.Dispose();
 			return true;
 		}
 
