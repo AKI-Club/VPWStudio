@@ -34,5 +34,13 @@ namespace VPWStudio
 				pbMenuBG.Image.Save(sfd.FileName);
 			}
 		}
+
+		private void FileTable_MenuBackgoundPreviewDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
