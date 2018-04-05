@@ -130,11 +130,11 @@
     <Compile Include="Dialogs\FileTable\FileTable_ITexturePreviewDialog.Designer.cs">
       <DependentUpon>FileTable_ITexturePreviewDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_MenuBackgoundPreviewDialog.cs">
+    <Compile Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_MenuBackgoundPreviewDialog.Designer.cs">
-      <DependentUpon>FileTable_MenuBackgoundPreviewDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.Designer.cs">
+      <DependentUpon>FileTable_MenuBackgroundPreviewDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_TexPreviewDialog.cs">
       <SubType>Form</SubType>
@@ -325,8 +325,8 @@
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_ITexturePreviewDialog.resx">
       <DependentUpon>FileTable_ITexturePreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FileTable\FileTable_MenuBackgoundPreviewDialog.resx">
-      <DependentUpon>FileTable_MenuBackgoundPreviewDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.resx">
+      <DependentUpon>FileTable_MenuBackgroundPreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_TexPreviewDialog.resx">
       <DependentUpon>FileTable_TexPreviewDialog.cs</DependentUpon>
