@@ -625,12 +625,7 @@ namespace VPWStudio
 						}
 						else
 						{
-							MessageBox.Show(
-								String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
-								SharedStrings.MainForm_Title,
-								MessageBoxButtons.OK,
-								MessageBoxIcon.Error
-							);
+							Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath));
 						}
 					}
 				}
@@ -1014,6 +1009,7 @@ namespace VPWStudio
 		/// </summary>
 		private void buildROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			#region Sanity Checking
 			if (Program.CurrentProject == null)
 			{
 				// no project loaded to build ROM for
@@ -1023,38 +1019,24 @@ namespace VPWStudio
 			if (Program.CurrentInputROM == null)
 			{
 				// needs input ROM.
-				MessageBox.Show(
-					"No Input ROM available to build from. Please set Input path in Project Options.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox("No Input ROM available to build from.\nPlease set Input path in Project Options.");
 				return;
 			}
 
 			if (Program.CurrentProject.Settings.OutputRomPath == String.Empty)
 			{
 				// invalid output ROM path
-				MessageBox.Show(
-					"Output ROM path not set. Please set Output ROM path in Project Options.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox("Output ROM path not set.\nPlease set Output ROM path in Project Options.");
 				return;
 			}
 
 			// this only works with VPW2 for now
 			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
 			{
-				MessageBox.Show(
-					"Sorry, this only works with Virtual Pro-Wrestling 2 at the moment.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox("Sorry, this only works with Virtual Pro-Wrestling 2 at the moment.");
 				return;
 			}
+			#endregion
 
 			// set up logging
 			BuildLogEventPublisher buildLogPub = Program.BuildLogPub;
@@ -1149,12 +1131,7 @@ namespace VPWStudio
 			if (!File.Exists(romPath))
 			{
 				// output ROM does not exist; todo: rebuild it
-				MessageBox.Show(
-					"Output ROM does not exist. (Yes, I need to add an automatic re-build option probably)",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox("Output ROM does not exist. (Yes, I need to add an automatic re-build option probably)");
 				return;
 			}
 
@@ -1740,21 +1717,16 @@ namespace VPWStudio
 				MenuBackground mbg = new MenuBackground();
 				if (mbg.FromBitmap(b))
 				{
-					// todo: write out complete data?
+					using (FileStream fs = new FileStream("menubackground.mbg", FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							bw.Write(mbg.WriteData());
+							bw.Flush();
+							bw.Close();
+						}
+					}
 				}
-
-				/*
-				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
-				{
-					Ci8Texture test = new Ci8Texture();
-					test.FromBitmap(b);
-					FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
-					BinaryWriter bw = new BinaryWriter(fs);
-					test.WriteData(bw);
-					bw.Close();
-					fs.Close();
-				}
-				*/
 			}
 		}
 		#endregion
