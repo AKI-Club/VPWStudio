@@ -1056,15 +1056,22 @@ namespace VPWStudio
 			BuildLogForm.BringToFront();
 			BuildLogForm.Clear();
 			DateTime startTime = DateTime.Now;
+			buildLogPub.AddLine(
+				String.Format("[{0}] Beginning build process for '{1}'",
+					startTime.ToString(),
+					Program.CurrentProject.Settings.ProjectName
+				)
+			);
 
 			Program.BuildRom();
 
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
 			buildLogPub.AddLine(
-				String.Format("Successfully built '{0}' in {1} (min:sec.ms)",
+				String.Format("[{0}] Successfully built '{1}' in {2} (min:sec.ms)",
+					DateTime.Now.ToString(),
 					Program.CurrentProject.Settings.OutputRomPath,
 					buildTimeTaken.ToString(@"mm\:ss\.fffff")
-				), false
+				)
 			);
 			BuildLogForm.BuildFinished = true;
 		}
@@ -1080,12 +1087,7 @@ namespace VPWStudio
 			if (Program.CurrentProject == null)
 			{
 				// todo: allow launching the emulator (alone) anyways?
-				MessageBox.Show(
-					SharedStrings.PlayRomError_NoProjectLoaded,
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox(SharedStrings.PlayRomError_NoProjectLoaded);
 				return;
 			}
 
@@ -1093,12 +1095,7 @@ namespace VPWStudio
 			if (Properties.Settings.Default.EmulatorPath.Equals(String.Empty))
 			{
 				// must set emulator path
-				MessageBox.Show(
-					SharedStrings.PlayRomError_EmuPathNotSet,
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox(SharedStrings.PlayRomError_EmuPathNotSet);
 				return;
 			}
 
@@ -1106,12 +1103,7 @@ namespace VPWStudio
 			if (!File.Exists(Properties.Settings.Default.EmulatorPath))
 			{
 				// invalid emulator path
-				MessageBox.Show(
-					SharedStrings.PlayRomError_EmuPathNotExist,
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
+				Program.ErrorMessageBox(SharedStrings.PlayRomError_EmuPathNotExist);
 				return;
 			}
 
