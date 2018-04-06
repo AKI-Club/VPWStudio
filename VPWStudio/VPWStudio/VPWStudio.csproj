@@ -94,12 +94,6 @@
     <Compile Include="DataStructures\N64TexPal\Ci8Texture.cs" />
     <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
     <Compile Include="DataStructures\N64TexPal\I4Texture.cs" />
-    <Compile Include="Dialogs\FileTable\FileTable_CiPalettePreviewDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_CiPalettePreviewDialog.Designer.cs">
-      <DependentUpon>FileTable_CiPalettePreviewDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,9 +307,6 @@
     <Compile Include="Tools\Toki1TestDialog.Designer.cs">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiPalettePreviewDialog.resx">
-      <DependentUpon>FileTable_CiPalettePreviewDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.resx">
       <DependentUpon>FileTable_CiTexturePreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
