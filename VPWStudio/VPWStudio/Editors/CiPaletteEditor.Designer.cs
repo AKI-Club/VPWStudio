@@ -44,6 +44,8 @@
 			this.cbColorEntries = new System.Windows.Forms.ComboBox();
 			this.labelCurColor = new System.Windows.Forms.Label();
 			this.panelCurColor = new System.Windows.Forms.Panel();
+			this.buttonImport = new System.Windows.Forms.Button();
+			this.buttonExport = new System.Windows.Forms.Button();
 			this.gbPalettePreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPalettePreview)).BeginInit();
 			this.tlpColorValues.SuspendLayout();
@@ -230,16 +232,39 @@
 			// 
 			// panelCurColor
 			// 
+			this.panelCurColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panelCurColor.Location = new System.Drawing.Point(370, 39);
 			this.panelCurColor.Name = "panelCurColor";
 			this.panelCurColor.Size = new System.Drawing.Size(100, 100);
 			this.panelCurColor.TabIndex = 6;
+			// 
+			// buttonImport
+			// 
+			this.buttonImport.Location = new System.Drawing.Point(12, 307);
+			this.buttonImport.Name = "buttonImport";
+			this.buttonImport.Size = new System.Drawing.Size(75, 23);
+			this.buttonImport.TabIndex = 7;
+			this.buttonImport.Text = "&Import...";
+			this.buttonImport.UseVisualStyleBackColor = true;
+			this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+			// 
+			// buttonExport
+			// 
+			this.buttonExport.Location = new System.Drawing.Point(93, 307);
+			this.buttonExport.Name = "buttonExport";
+			this.buttonExport.Size = new System.Drawing.Size(75, 23);
+			this.buttonExport.TabIndex = 8;
+			this.buttonExport.Text = "&Export...";
+			this.buttonExport.UseVisualStyleBackColor = true;
+			this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
 			// 
 			// CiPaletteEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(482, 342);
+			this.Controls.Add(this.buttonExport);
+			this.Controls.Add(this.buttonImport);
 			this.Controls.Add(this.panelCurColor);
 			this.Controls.Add(this.labelCurColor);
 			this.Controls.Add(this.cbColorEntries);
@@ -283,5 +308,7 @@
 		private System.Windows.Forms.ComboBox cbColorEntries;
 		private System.Windows.Forms.Label labelCurColor;
 		private System.Windows.Forms.Panel panelCurColor;
+		private System.Windows.Forms.Button buttonImport;
+		private System.Windows.Forms.Button buttonExport;
 	}
 }

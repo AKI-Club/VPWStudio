@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VPWStudio.Editors
 {
+	/// <summary>
+	/// CI4/CI8 Palette Editor.
+	/// </summary>
 	public partial class CiPaletteEditor : Form
 	{
 		public Ci4Palette CurPaletteCI4;
@@ -24,19 +27,35 @@ namespace VPWStudio.Editors
 		}
 		private CiEditorModes CurEditMode;
 
-		private List<UInt16> AllColors = new List<UInt16>();
+		/// <summary>
+		/// List of all colors in this palette.
+		/// </summary>
+		private List<UInt16> ColorList = new List<UInt16>();
 
 		// I need this hack because of how NumericUpDown handles ValueChanged events...
 		private bool ChangingColors = false;
 
+		private int FileID;
+
 		public CiPaletteEditor(int fileID)
 		{
 			InitializeComponent();
+			FileID = fileID;
 
 			// todo:
 			// - determine if a replacement file is set
 			//   - if so, determine the data type (could be raw, could be JASC) and load it
 			//   - if not, load from ROM (see current code)
+
+			string replaceFile = Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath;
+			if (replaceFile != null && replaceFile != String.Empty)
+			{
+				// load replacement file (might be raw, might be jasc psp palette)
+			}
+			else
+			{
+				// business as usual
+			}
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -44,47 +63,48 @@ namespace VPWStudio.Editors
 			MemoryStream palStream = new MemoryStream();
 			BinaryWriter palWriter = new BinaryWriter(palStream);
 
-			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci4Palette)
+			if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.Ci4Palette)
 			{
 				CurEditMode = CiEditorModes.Ci4;
 				CurPaletteCI8 = null;
 
 				CurPaletteCI4 = new Ci4Palette();
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, FileID);
 				palStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(palStream);
 				CurPaletteCI4.ReadData(fr, true);
 				fr.Close();
-				AllColors.AddRange(CurPaletteCI4.Entries);
+				ColorList.AddRange(CurPaletteCI4.Entries);
 				if (CurPaletteCI4.SubPalettes.Count > 0)
 				{
 					foreach (Ci4Palette sub in CurPaletteCI4.SubPalettes)
 					{
-						AllColors.AddRange(sub.Entries);
+						ColorList.AddRange(sub.Entries);
 					}
 				}
 			}
-			else if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.Ci8Palette)
+			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.Ci8Palette)
 			{
 				CurEditMode = CiEditorModes.Ci8;
 				CurPaletteCI4 = null;
 
 				CurPaletteCI8 = new Ci8Palette();
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, FileID);
 				palStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(palStream);
 				CurPaletteCI8.ReadData(fr);
 				fr.Close();
-				AllColors.AddRange(CurPaletteCI8.Entries);
+				ColorList.AddRange(CurPaletteCI8.Entries);
 			}
 
-			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, fileID);
+			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
 
 			PopulateList();
 			UpdatePreview();
 			cbColorEntries.SelectedIndex = 0;
 		}
 
+		#region OK and Cancel
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			// add AllColors back to the working Ci*Palette
@@ -98,6 +118,7 @@ namespace VPWStudio.Editors
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
+		#endregion
 
 		/// <summary>
 		/// Populate the drop-down list with all of the palette colors.
@@ -106,7 +127,7 @@ namespace VPWStudio.Editors
 		{
 			cbColorEntries.Items.Clear();
 			cbColorEntries.BeginUpdate();
-			for (int i = 0; i < AllColors.Count; i++)
+			for (int i = 0; i < ColorList.Count; i++)
 			{
 				cbColorEntries.Items.Add(String.Format("Color {0:D3}", i+1));
 			}
@@ -148,7 +169,7 @@ namespace VPWStudio.Editors
 							// draw main
 							for (int i = 0; i < CurPaletteCI4.Entries.Length; i++)
 							{
-								curPen = new Pen(N64Colors.Value5551ToColor(AllColors[i]));
+								curPen = new Pen(N64Colors.Value5551ToColor(ColorList[i]));
 								g.FillRectangle(curPen.Brush, new Rectangle(curCol * swatchWidth, curRow * swatchHeight, swatchWidth, swatchHeight));
 
 								curCol++;
@@ -164,7 +185,7 @@ namespace VPWStudio.Editors
 								Ci4Palette tmp = CurPaletteCI4.SubPalettes[spn];
 								for (int spc = 0; spc < tmp.Entries.Length; spc++)
 								{
-									curPen = new Pen(N64Colors.Value5551ToColor(AllColors[16+(spn*16)+spc]));
+									curPen = new Pen(N64Colors.Value5551ToColor(ColorList[16+(spn*16)+spc]));
 									g.FillRectangle(curPen.Brush, new Rectangle(curCol * swatchWidth, curRow * swatchHeight, swatchWidth, swatchHeight));
 
 									curCol++;
@@ -183,7 +204,7 @@ namespace VPWStudio.Editors
 
 							for (int i = 0; i < CurPaletteCI4.Entries.Length; i++)
 							{
-								curPen = new Pen(N64Colors.Value5551ToColor(AllColors[i]));
+								curPen = new Pen(N64Colors.Value5551ToColor(ColorList[i]));
 								g.FillRectangle(curPen.Brush, new Rectangle(curCol * swatchWidth, curRow, swatchWidth, swatchHeight));
 
 								curCol++;
@@ -203,7 +224,7 @@ namespace VPWStudio.Editors
 						swatchHeight = 8;
 						for (int i = 0; i < CurPaletteCI8.Entries.Length; i++)
 						{
-							curPen = new Pen(N64Colors.Value5551ToColor(AllColors[i]));
+							curPen = new Pen(N64Colors.Value5551ToColor(ColorList[i]));
 							g.FillRectangle(curPen.Brush, new Rectangle(curCol * swatchWidth, curRow * swatchHeight, swatchWidth, swatchHeight));
 
 							curCol++;
@@ -230,7 +251,7 @@ namespace VPWStudio.Editors
 			{
 				return;
 			}
-			panelCurColor.BackColor = N64Colors.Value5551ToColor(AllColors[cbColorEntries.SelectedIndex]);
+			panelCurColor.BackColor = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
 		}
 
 		/// <summary>
@@ -246,7 +267,7 @@ namespace VPWStudio.Editors
 			ChangingColors = true;
 
 			int colorNum = cbColorEntries.SelectedIndex;
-			Color converted = N64Colors.Value5551ToColor(AllColors[colorNum]);
+			Color converted = N64Colors.Value5551ToColor(ColorList[colorNum]);
 			UpdateCurColorSwatch();
 			nudRed.Value = converted.R / 8;
 			nudGreen.Value = converted.G / 8;
@@ -264,9 +285,9 @@ namespace VPWStudio.Editors
 				return;
 			}
 
-			Color tmp = N64Colors.Value5551ToColor(AllColors[cbColorEntries.SelectedIndex]);
+			Color tmp = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
 			Color changed = Color.FromArgb((cbTransparent.Checked ? 0 : 255), tmp.R, tmp.G, tmp.B);
-			AllColors[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
+			ColorList[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
 			UpdateCurColorSwatch();
 			UpdatePreview();
 		}
@@ -280,9 +301,9 @@ namespace VPWStudio.Editors
 
 			if (!ChangingColors)
 			{
-				Color tmp = N64Colors.Value5551ToColor(AllColors[cbColorEntries.SelectedIndex]);
+				Color tmp = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
 				Color changed = Color.FromArgb(tmp.A, (int)(nudRed.Value * 8), tmp.G, tmp.B);
-				AllColors[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
+				ColorList[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
 				UpdateCurColorSwatch();
 				UpdatePreview();
 			}
@@ -297,9 +318,9 @@ namespace VPWStudio.Editors
 
 			if (!ChangingColors)
 			{
-				Color tmp = N64Colors.Value5551ToColor(AllColors[cbColorEntries.SelectedIndex]);
+				Color tmp = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
 				Color changed = Color.FromArgb(tmp.A, tmp.R, (int)(nudGreen.Value * 8), tmp.B);
-				AllColors[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
+				ColorList[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
 				UpdateCurColorSwatch();
 				UpdatePreview();
 			}
@@ -314,11 +335,172 @@ namespace VPWStudio.Editors
 
 			if (!ChangingColors)
 			{
-				Color tmp = N64Colors.Value5551ToColor(AllColors[cbColorEntries.SelectedIndex]);
+				Color tmp = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
 				Color changed = Color.FromArgb(tmp.A, tmp.R, tmp.G, (int)(nudBlue.Value * 8));
-				AllColors[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
+				ColorList[cbColorEntries.SelectedIndex] = N64Colors.ColorToValue5551(changed);
 				UpdateCurColorSwatch();
 				UpdatePreview();
+			}
+		}
+		#endregion
+
+		#region Import/Export
+		private void buttonImport_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Import Palette";
+			string filters = String.Empty;
+			switch (CurEditMode)
+			{
+				case CiEditorModes.Ci4:
+					filters = "CI4 Palette (*.ci4pal)|*.ci4pal|";
+					break;
+				case CiEditorModes.Ci8:
+					filters = "CI8 Palette (*.ci8pal)|*.ci8pal|";
+					break;
+			}
+			ofd.Filter = filters + "JASC Paint Shop Pro Palette (*.pal)|*.pal|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				// load that
+				using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+				{
+					switch (CurEditMode)
+					{
+						case CiEditorModes.Ci4:
+							{
+								Ci4Palette import = new Ci4Palette();
+								if (Path.GetExtension(ofd.FileName) == ".pal")
+								{
+									// import JASC Paint Shop Pro palette
+
+									// todo: subpalettes suuuuuuck
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".ci4pal")
+								{
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										import.ReadData(br, true);
+										CurPaletteCI4 = import; // temporary; move this down later
+									}
+								}
+							}
+							break;
+						case CiEditorModes.Ci8:
+							{
+								Ci8Palette import = new Ci8Palette();
+								if (Path.GetExtension(ofd.FileName) == ".pal")
+								{
+									// import JASC Paint Shop Pro palette
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										import.ImportJasc(sr);
+										
+									}
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".ci8pal")
+								{
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										import.ReadData(br);
+									}
+								}
+								CurPaletteCI8 = import;
+								ColorList.Clear();
+								ColorList.AddRange(import.Entries);
+								UpdateCurColorSwatch();
+								UpdatePreview();
+							}
+							break;
+					}
+				}
+			}
+		}
+
+		private void buttonExport_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export Palette";
+			sfd.FileName = String.Format("{0:X4}", FileID);
+			string filters = String.Empty;
+			switch (CurEditMode)
+			{
+				case CiEditorModes.Ci4:
+					filters = "CI4 Palette (*.ci4pal)|*.ci4pal|";
+					break;
+				case CiEditorModes.Ci8:
+					filters = "CI8 Palette (*.ci8pal)|*.ci8pal|";
+					break;
+			}
+			sfd.Filter = filters + "JASC Paint Shop Pro Palette (*.pal)|*.pal|All Files (*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				// save that
+				using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+				{
+					switch (CurEditMode)
+					{
+						case CiEditorModes.Ci4:
+							{
+								Ci4Palette export = new Ci4Palette();
+								export.ImportList(ColorList);
+
+								if (Path.GetExtension(sfd.FileName) == ".pal")
+								{
+									// export JASC Paint Shop Pro palette
+
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportJasc(sw);
+
+										if (export.SubPalettes.Count > 0)
+										{
+											MessageBox.Show("CI4 subpalette export not yet implemented");
+											/*
+											int subPal = 1;
+											foreach (Ci4Palette s in export.SubPalettes)
+											{
+												subPal++;
+											}
+											*/
+										}
+									}
+								}
+								else
+								{
+									// export .ci4pal
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										export.WriteData(bw);
+									}
+								}
+							}
+							break;
+						case CiEditorModes.Ci8:
+							{
+								Ci8Palette export = new Ci8Palette();
+								export.ImportList(ColorList);
+
+								if (Path.GetExtension(sfd.FileName) == ".pal")
+								{
+									// export JASC Paint Shop Pro palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportJasc(sw);
+									}
+								}
+								else
+								{
+									// export .ci8pal
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										export.WriteData(bw);
+									}
+								}
+							}
+							break;
+					}
+				}
 			}
 		}
 		#endregion
