@@ -96,12 +96,49 @@ namespace VPWStudio.Editors
 				fr.Close();
 				ColorList.AddRange(CurPaletteCI8.Entries);
 			}
+			/*
+			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.AkiTexture)
+			{
+				// ugh ok maybe I can support this
+				AkiTexture tex = new AkiTexture();
+				using (MemoryStream texStream = new MemoryStream())
+				{
+					using (BinaryWriter texWriter = new BinaryWriter(texStream))
+					{
+						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, texWriter, FileID);
+						texStream.Seek(0, SeekOrigin.Begin);
+						using (BinaryReader br = new BinaryReader(texStream))
+						{
+							tex.ReadData(br);
+						}
+
+						switch (tex.ImageFormat)
+						{
+							case AkiTexture.AkiTextureFormat.Ci4:
+								{
+									CurEditMode = CiEditorModes.Ci4;
+									CurPaletteCI8 = null;
+								}
+								break;
+							case AkiTexture.AkiTextureFormat.Ci8:
+								{
+									CurEditMode = CiEditorModes.Ci8;
+									CurPaletteCI4 = null;
+								}
+								break;
+						}
+					}
+				}
+			}
+			*/
 
 			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
 
 			PopulateList();
 			UpdatePreview();
+
 			cbColorEntries.SelectedIndex = 0;
+			cbColorEntries_SelectionChangeCommitted(this, new EventArgs());
 		}
 
 		#region OK and Cancel
@@ -140,18 +177,18 @@ namespace VPWStudio.Editors
 		}
 
 		/// <summary>
-		/// 
+		/// Update the palette preview.
 		/// </summary>
 		private void UpdatePreview()
 		{
 			// depends on CurEditMode
-			PalPreviewBitmap = new Bitmap(448, 128);
+			PalPreviewBitmap = new Bitmap(pbPalettePreview.Width, pbPalettePreview.Height);
 			Graphics g = Graphics.FromImage(PalPreviewBitmap);
 
 			int curRow = 0;
 			int curCol = 0;
-			int swatchWidth = 28;
-			int swatchHeight = 28;
+			int swatchWidth = pbPalettePreview.Width / 16;
+			int swatchHeight = pbPalettePreview.Height;
 			Pen curPen;
 
 			// CI8 is easy
@@ -162,7 +199,6 @@ namespace VPWStudio.Editors
 					{
 						if (CurPaletteCI4.SubPalettes.Count > 0)
 						{
-							// entry 15b3
 							// worst case scenario is having enough subpalettes to fill all 256 entries
 							swatchHeight = pbPalettePreview.Height / (CurPaletteCI4.SubPalettes.Count + 1);
 
@@ -199,8 +235,7 @@ namespace VPWStudio.Editors
 						}
 						else
 						{
-							// 28x128
-							swatchHeight = 128;
+							swatchHeight = pbPalettePreview.Height;
 
 							for (int i = 0; i < CurPaletteCI4.Entries.Length; i++)
 							{
@@ -221,7 +256,7 @@ namespace VPWStudio.Editors
 				case CiEditorModes.Ci8:
 					{
 						// draw 'em all
-						swatchHeight = 8;
+						swatchHeight = pbPalettePreview.Height/16;
 						for (int i = 0; i < CurPaletteCI8.Entries.Length; i++)
 						{
 							curPen = new Pen(N64Colors.Value5551ToColor(ColorList[i]));
@@ -375,13 +410,19 @@ namespace VPWStudio.Editors
 									// import JASC Paint Shop Pro palette
 
 									// todo: subpalettes suuuuuuck
+									MessageBox.Show("Paint Shop Pro Palette Import not yet implemented");
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci4pal")
 								{
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										import.ReadData(br, true);
-										CurPaletteCI4 = import; // temporary; move this down later
+										// temporary; move this down later
+										CurPaletteCI4 = import;
+										ColorList.Clear();
+										ColorList.AddRange(import.Entries);
+										UpdateCurColorSwatch();
+										UpdatePreview();
 									}
 								}
 							}
