@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 
@@ -50,6 +51,15 @@ namespace VPWStudio
 			{
 				Entries[_index] |= 1;
 			}
+		}
+
+		/// <summary>
+		/// Import color data from a List of UInt16 values.
+		/// </summary>
+		/// <param name="colors">List of UInt16 values to import.</param>
+		public void ImportList(List<UInt16> colors)
+		{
+			Entries = colors.ToArray();
 		}
 		#endregion
 
