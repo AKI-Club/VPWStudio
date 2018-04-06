@@ -172,6 +172,12 @@
     <Compile Include="Editors\AkiTextDialog.Designer.cs">
       <DependentUpon>AkiTextDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\CiPaletteEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\CiPaletteEditor.Designer.cs">
+      <DependentUpon>CiPaletteEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\FileTableDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\AkiTextDialog.resx">
       <DependentUpon>AkiTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\CiPaletteEditor.resx">
+      <DependentUpon>CiPaletteEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FileTableDialog.resx">
       <DependentUpon>FileTableDialog.cs</DependentUpon>

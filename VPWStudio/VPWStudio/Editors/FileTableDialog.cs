@@ -510,8 +510,11 @@ namespace VPWStudio
 				// CI4/CI8 palettes
 				case FileTypes.Ci4Palette:
 				case FileTypes.Ci8Palette:
-					FileTable_CiPalettePreviewDialog cipd = new FileTable_CiPalettePreviewDialog(key);
-					cipd.ShowDialog();
+					Editors.CiPaletteEditor cipe = new Editors.CiPaletteEditor(key);
+					if (cipe.ShowDialog() == DialogResult.OK)
+					{
+						// commit changes... somehow.
+					}
 					break;
 
 				// AkiText archive
