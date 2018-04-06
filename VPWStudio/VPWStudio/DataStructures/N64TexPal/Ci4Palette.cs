@@ -73,6 +73,34 @@ namespace VPWStudio
 				}
 			}
 		}
+
+		/// <summary>
+		/// Import color data from a List of UInt16 values.
+		/// </summary>
+		/// <param name="colors">List of UInt16 values to import.</param>
+		public void ImportList(List<UInt16> colors)
+		{
+			if (colors.Count > 16)
+			{
+				// hard mode
+				Entries = colors.GetRange(0, 16).ToArray();
+
+				// handle subpalettes
+				SubPalettes = new List<Ci4Palette>();
+				int numSubPal = (colors.Count / 16) - 1;
+				for (int i = 0; i < numSubPal; i++)
+				{
+					Ci4Palette newSub = new Ci4Palette();
+					newSub.Entries = colors.GetRange(16 * (i + 1), 16).ToArray();
+					SubPalettes.Add(newSub);
+				}
+			}
+			else
+			{
+				// easy mode
+				Entries = colors.ToArray();
+			}
+		}
 		#endregion
 
 		#region Binary Read/Write
