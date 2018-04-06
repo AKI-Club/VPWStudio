@@ -44,7 +44,7 @@ namespace VPWStudio
 				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, fileID);
 				palStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader fr = new BinaryReader(palStream);
-				CurCI4Palette.ReadData(fr);
+				CurCI4Palette.ReadData(fr, true);
 				fr.Close();
 
 				if (CurCI4Palette.SubPalettes.Count != 0)
@@ -73,7 +73,7 @@ namespace VPWStudio
 			palWriter.Close();
 			romReader.Close();
 
-			// todo: the part where you draw the palette
+			// the part where you draw the palette
 			DrawPalettePreview();
 		}
 
