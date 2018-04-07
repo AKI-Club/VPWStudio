@@ -464,6 +464,11 @@ namespace VPWStudio
 					Program.CurProjectPath = sfd.FileName;
 					UpdateStatusBar();
 				}
+				else
+				{
+					// they hit cancel; don't do anything below
+					return;
+				}
 			}
 
 			// Create new directories where the project is being saved,
@@ -507,7 +512,7 @@ namespace VPWStudio
 				{
 					Program.CurProjectPath = sfd.FileName;
 
-					// todo: handle ProjectFiles and Assets directories
+					// todo: handle ProjectFiles and Assets directories?
 				}
 
 				// hack to unset UnsavedChanges if saving over the existing file.
@@ -1016,6 +1021,20 @@ namespace VPWStudio
 				return;
 			}
 
+			// we need to have a saved project
+			if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+			{
+				MessageBox.Show("ROM Building process requires Project File to be saved.\nPlease save the Project File before continuing.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				saveProjectToolStripMenuItem_Click(this, new EventArgs());
+
+				// if we don't have a project file path, we can't continue with the build process.
+				if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+				{
+					Program.ErrorMessageBox("Project File not saved; aborting ROM Building process.");
+					return;
+				}
+			}
+
 			if (Program.CurrentInputROM == null)
 			{
 				// needs input ROM.
@@ -1129,9 +1148,19 @@ namespace VPWStudio
 
 			// todo: rebuild output rom if needed (a.k.a. changes made since last build)
 
+			string emuArgs = String.Empty;
+			if (Properties.Settings.Default.EmulatorArguments != String.Empty)
+			{
+				emuArgs = String.Format("{0} {1}", Properties.Settings.Default.EmulatorArguments, romPath);
+			}
+			else
+			{
+				emuArgs = romPath;
+			}
+
 			System.Diagnostics.Process.Start(
 				Properties.Settings.Default.EmulatorPath,
-				romPath
+				emuArgs
 			);
 		}
 		#endregion
@@ -1141,15 +1170,16 @@ namespace VPWStudio
 		#region Tool Menu Items
 		private void programOptionsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (this.ProgOptionsDialog == null)
+			if (ProgOptionsDialog == null)
 			{
-				this.ProgOptionsDialog = new ProgramOptionsDialog();
+				ProgOptionsDialog = new ProgramOptionsDialog();
 			}
 
-			if (this.ProgOptionsDialog.ShowDialog() == DialogResult.OK)
+			if (ProgOptionsDialog.ShowDialog() == DialogResult.OK)
 			{
-				VPWStudio.Properties.Settings.Default.EmulatorPath = this.ProgOptionsDialog.EmulatorPath;
-				VPWStudio.Properties.Settings.Default.Save();
+				Properties.Settings.Default.EmulatorPath = ProgOptionsDialog.EmulatorPath;
+				Properties.Settings.Default.EmulatorArguments = ProgOptionsDialog.EmulatorArgs;
+				Properties.Settings.Default.Save();
 			}
 		}
 
