@@ -1002,7 +1002,7 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region Project build section
+		#region Project Build section
 
 		/// <summary>
 		/// Build ROM
