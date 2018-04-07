@@ -1752,5 +1752,21 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			{
+				return;
+			}
+
+			FaceTester ft = new FaceTester();
+			ft.ShowDialog();
+		}
 	}
 }
