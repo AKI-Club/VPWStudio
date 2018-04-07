@@ -16,33 +16,38 @@ namespace VPWStudio
 		/// Path to emulator executable.
 		/// </summary>
 		public string EmulatorPath;
+		public string EmulatorArgs;
 
 		public ProgramOptionsDialog()
 		{
-			this.EmulatorPath = VPWStudio.Properties.Settings.Default.EmulatorPath;
+			EmulatorPath = Properties.Settings.Default.EmulatorPath;
+			EmulatorArgs = Properties.Settings.Default.EmulatorArguments;
 
 			InitializeComponent();
 
-			tbEmuPath.Text = this.EmulatorPath;
+			tbEmuPath.Text = EmulatorPath;
+			tbEmulatorArguments.Text = EmulatorArgs;
 		}
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			if (!File.Exists(tbEmuPath.Text))
+			if (tbEmuPath.Text != String.Empty && !File.Exists(tbEmuPath.Text))
 			{
 				// todo: error
+				Program.ErrorMessageBox("Emulator executable not found.");
 				return;
 			}
-			this.EmulatorPath = tbEmuPath.Text;
+			EmulatorPath = tbEmuPath.Text;
+			EmulatorArgs = tbEmulatorArguments.Text;
 
-			this.DialogResult = DialogResult.OK;
-			this.Close();
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
-			this.DialogResult = DialogResult.Cancel;
-			this.Close();
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 
 		private void buttonBrowse_Click(object sender, EventArgs e)
