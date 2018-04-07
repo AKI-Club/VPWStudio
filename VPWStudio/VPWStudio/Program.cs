@@ -124,13 +124,49 @@ namespace VPWStudio
 		/// <returns>Full path string, or null if Project Path not set.</returns>
 		public static string ConvertRelativePath(string relPath)
 		{
+			// somehow already passed in an absolute path
+			if (Path.IsPathRooted(relPath))
+			{
+				return relPath;
+			}
+
+			// We NEED the Project File to be saved to handle relative paths.
 			if (CurProjectPath == null || CurProjectPath == String.Empty)
 			{
 				return null;
 			}
 
-			// otherwise...
 			return String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), relPath);
+		}
+
+		/// <summary>
+		/// Attempt to shorten an absolute path to a project file-relative one.
+		/// </summary>
+		/// <param name="absPath">Absolute path to shorten.</param>
+		/// <returns>Project File-relative path name, or null if unable to create one.</returns>
+		public static string ShortenAbsolutePath(string absPath)
+		{
+			// somehow already passed in a relative path
+			if (!Path.IsPathRooted(absPath))
+			{
+				return absPath;
+			}
+
+			// We NEED the Project File to be saved to handle relative paths.
+			if (CurProjectPath == null || CurProjectPath == String.Empty)
+			{
+				return null;
+			}
+
+			// Check if it's even possible to convert this to a relative path
+			if (!absPath.Contains(Path.GetDirectoryName(CurProjectPath)))
+			{
+				return null;
+			}
+
+			// if we've made it here, it SHOULD work.
+			return absPath.Remove(0, Path.GetDirectoryName(CurProjectPath).Length+1);
+
 		}
 		#endregion
 
