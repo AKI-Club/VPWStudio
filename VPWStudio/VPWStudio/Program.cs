@@ -116,6 +116,22 @@ namespace VPWStudio
 		{
 			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
+
+		/// <summary>
+		/// Convert a relative path to an absolute path using the current project file's path.
+		/// </summary>
+		/// <param name="relPath">Relative path to resolve.</param>
+		/// <returns>Full path string, or null if Project Path not set.</returns>
+		public static string ConvertRelativePath(string relPath)
+		{
+			if (CurProjectPath == null || CurProjectPath == String.Empty)
+			{
+				return null;
+			}
+
+			// otherwise...
+			return String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), relPath);
+		}
 		#endregion
 
 		#region ROM Building
