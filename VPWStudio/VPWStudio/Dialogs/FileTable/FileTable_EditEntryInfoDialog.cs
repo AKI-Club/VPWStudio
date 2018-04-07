@@ -32,7 +32,18 @@ namespace VPWStudio
 		{
 			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
 			CurEntry.Comment = tbComment.Text;
-			CurEntry.ReplaceFilePath = tbReplaceFilePath.Text;
+
+			// Attempt to convert absolute paths to relative, so the project files take up less space.
+			string relPath = Program.ShortenAbsolutePath(tbReplaceFilePath.Text);
+			if (relPath != null)
+			{
+				CurEntry.ReplaceFilePath = relPath;
+			}
+			else
+			{
+				CurEntry.ReplaceFilePath = tbReplaceFilePath.Text;
+			}
+
 			CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
 
 			DialogResult = DialogResult.OK;
