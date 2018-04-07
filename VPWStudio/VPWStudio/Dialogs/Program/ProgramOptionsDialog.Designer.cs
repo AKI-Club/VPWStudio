@@ -34,12 +34,18 @@
 			this.labelEmuPath = new System.Windows.Forms.Label();
 			this.tbEmuPath = new System.Windows.Forms.TextBox();
 			this.buttonBrowse = new System.Windows.Forms.Button();
+			this.gbEmuSettings = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.tbEmulatorArguments = new System.Windows.Forms.TextBox();
+			this.labelEmuArguments = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.gbEmuSettings.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(354, 66);
+			this.buttonOK.Location = new System.Drawing.Point(354, 118);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 2;
@@ -50,7 +56,7 @@
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(435, 66);
+			this.buttonCancel.Location = new System.Drawing.Point(435, 118);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 3;
@@ -61,17 +67,17 @@
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.38534F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.61465F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.02469F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.97531F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
 			this.tableLayoutPanel1.Controls.Add(this.labelEmuPath, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tbEmuPath, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.buttonBrowse, 2, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 35);
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(486, 35);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
 			// labelEmuPath
@@ -80,22 +86,22 @@
 			this.labelEmuPath.AutoSize = true;
 			this.labelEmuPath.Location = new System.Drawing.Point(3, 11);
 			this.labelEmuPath.Name = "labelEmuPath";
-			this.labelEmuPath.Size = new System.Drawing.Size(75, 13);
+			this.labelEmuPath.Size = new System.Drawing.Size(67, 13);
 			this.labelEmuPath.TabIndex = 0;
-			this.labelEmuPath.Text = "&Emulator Path";
+			this.labelEmuPath.Text = "&Path";
 			// 
 			// tbEmuPath
 			// 
 			this.tbEmuPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEmuPath.Location = new System.Drawing.Point(84, 7);
+			this.tbEmuPath.Location = new System.Drawing.Point(76, 7);
 			this.tbEmuPath.Name = "tbEmuPath";
-			this.tbEmuPath.Size = new System.Drawing.Size(330, 20);
+			this.tbEmuPath.Size = new System.Drawing.Size(326, 20);
 			this.tbEmuPath.TabIndex = 0;
 			// 
 			// buttonBrowse
 			// 
 			this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonBrowse.Location = new System.Drawing.Point(420, 6);
+			this.buttonBrowse.Location = new System.Drawing.Point(408, 6);
 			this.buttonBrowse.Name = "buttonBrowse";
 			this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
 			this.buttonBrowse.TabIndex = 1;
@@ -103,14 +109,57 @@
 			this.buttonBrowse.UseVisualStyleBackColor = true;
 			this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
 			// 
+			// gbEmuSettings
+			// 
+			this.gbEmuSettings.Controls.Add(this.tableLayoutPanel2);
+			this.gbEmuSettings.Controls.Add(this.tableLayoutPanel1);
+			this.gbEmuSettings.Location = new System.Drawing.Point(12, 12);
+			this.gbEmuSettings.Name = "gbEmuSettings";
+			this.gbEmuSettings.Size = new System.Drawing.Size(498, 100);
+			this.gbEmuSettings.TabIndex = 4;
+			this.gbEmuSettings.TabStop = false;
+			this.gbEmuSettings.Text = "Emulator Settings";
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+			this.tableLayoutPanel2.Controls.Add(this.tbEmulatorArguments, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.labelEmuArguments, 0, 0);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 60);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 1;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(486, 34);
+			this.tableLayoutPanel2.TabIndex = 3;
+			// 
+			// tbEmulatorArguments
+			// 
+			this.tbEmulatorArguments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbEmulatorArguments.Location = new System.Drawing.Point(75, 7);
+			this.tbEmulatorArguments.Name = "tbEmulatorArguments";
+			this.tbEmulatorArguments.Size = new System.Drawing.Size(408, 20);
+			this.tbEmulatorArguments.TabIndex = 0;
+			// 
+			// labelEmuArguments
+			// 
+			this.labelEmuArguments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelEmuArguments.AutoSize = true;
+			this.labelEmuArguments.Location = new System.Drawing.Point(3, 10);
+			this.labelEmuArguments.Name = "labelEmuArguments";
+			this.labelEmuArguments.Size = new System.Drawing.Size(66, 13);
+			this.labelEmuArguments.TabIndex = 1;
+			this.labelEmuArguments.Text = "&Arguments";
+			// 
 			// ProgramOptionsDialog
 			// 
 			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(522, 101);
-			this.Controls.Add(this.tableLayoutPanel1);
+			this.ClientSize = new System.Drawing.Size(522, 153);
+			this.Controls.Add(this.gbEmuSettings);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -121,6 +170,9 @@
 			this.Text = "Program Options";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.gbEmuSettings.ResumeLayout(false);
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -133,5 +185,9 @@
 		private System.Windows.Forms.Label labelEmuPath;
 		private System.Windows.Forms.TextBox tbEmuPath;
 		private System.Windows.Forms.Button buttonBrowse;
+		private System.Windows.Forms.GroupBox gbEmuSettings;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.TextBox tbEmulatorArguments;
+		private System.Windows.Forms.Label labelEmuArguments;
 	}
 }
