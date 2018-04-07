@@ -38,12 +38,12 @@ namespace VPWStudio.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EmulatorExtraCommands {
+        public string EmulatorArguments {
             get {
-                return ((string)(this["EmulatorExtraCommands"]));
+                return ((string)(this["EmulatorArguments"]));
             }
             set {
-                this["EmulatorExtraCommands"] = value;
+                this["EmulatorArguments"] = value;
             }
         }
     }
