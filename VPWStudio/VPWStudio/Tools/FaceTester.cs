@@ -23,9 +23,20 @@ namespace VPWStudio
 
 		private Bitmap FacePreview = new Bitmap(32,64);
 
+		private byte[] DefaultFaceDisplacement_FacialHair = new byte[110];
+		private byte[] DefaultFaceDisplacement_PaintAccessories = new byte[110];
+
+		private byte[] Displacement_FacialHair = new byte[32];
+		private byte[] Displacement_Paint = new byte[32];
+		private byte[] Displacement_Accessories = new byte[32];
+
+		private byte[] FacepaintType = new byte[32];
+		private byte[] AccessoryType = new byte[32];
+
 		public FaceTester()
 		{
 			InitializeComponent();
+			InitDisplacementTables();
 
 			cbFace.BeginUpdate();
 			cbFrontHair.BeginUpdate();
@@ -45,6 +56,35 @@ namespace VPWStudio
 			cbFacialHair.SelectedIndex = 0;
 			cbPaint.SelectedIndex = 0;
 			cbAccessory.SelectedIndex = 0;
+		}
+
+		private void InitDisplacementTables()
+		{
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			romStream.Seek(0x469B8, SeekOrigin.Begin);
+			DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(110);
+
+			romStream.Seek(0x46A28, SeekOrigin.Begin);
+			DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(110);
+
+			romStream.Seek(0x46C58, SeekOrigin.Begin);
+			Displacement_FacialHair = romReader.ReadBytes(32);
+
+			romStream.Seek(0x46CD8, SeekOrigin.Begin);
+			Displacement_Paint = romReader.ReadBytes(32);
+
+			romStream.Seek(0x46CF8, SeekOrigin.Begin);
+			Displacement_Accessories = romReader.ReadBytes(32);
+
+			romStream.Seek(0x46D18, SeekOrigin.Begin);
+			FacepaintType = romReader.ReadBytes(32);
+
+			romStream.Seek(0x46D38, SeekOrigin.Begin);
+			AccessoryType = romReader.ReadBytes(32);
+
+			romReader.Close();
 		}
 
 		#region Changing Items!
@@ -80,6 +120,11 @@ namespace VPWStudio
 				return;
 			}
 			Face = (UInt16)(0x17F0 + cbFace.SelectedIndex);
+
+			// update base displacement values
+			//DefaultDisplacement_FacialHair
+			//DefaultDisplacement_PaintAccessories
+
 			UpdatePreview();
 		}
 
@@ -242,8 +287,10 @@ namespace VPWStudio
 				br.Close();
 				fhtexWriter.Close();
 
-				// todo: vertical position relies on data points in ROM
-				g.DrawImage(FacialHairTex.ToBitmap(FacialHairPal), new Point(0, 0));
+				// todo: fix displacement
+				int displace = DefaultFaceDisplacement_FacialHair[cbFace.SelectedIndex];
+				//displace -= Displacement_FacialHair[(cbFacialHair.SelectedIndex)];
+				g.DrawImage(FacialHairTex.ToBitmap(FacialHairPal), new Point(0, displace));
 			}
 
 			// facepaint
@@ -271,8 +318,18 @@ namespace VPWStudio
 				br.Close();
 				fptexWriter.Close();
 
-				// todo: vertical position relies on data points in ROM
-				g.DrawImage(FacePaintTex.ToBitmap(FacePaintPal), new Point(0, 0));
+				// todo: fix displacement
+				int selectedFP = cbPaint.SelectedIndex;
+				int displace = 0;
+				if (FacepaintType[selectedFP] != 0)
+				{
+					displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Paint[selectedFP]);
+				}
+				else
+				{
+					displace = 0;
+				}
+				g.DrawImage(FacePaintTex.ToBitmap(FacePaintPal), new Point(0, displace));
 			}
 
 			// accessory
@@ -300,8 +357,27 @@ namespace VPWStudio
 				br.Close();
 				atexWriter.Close();
 
-				// todo: vertical position relies on data points in ROM
-				g.DrawImage(AccessoryTex.ToBitmap(AccessoryPal), new Point(0,0));
+				// todo: fix displacement
+				int selectedAcc = cbAccessory.SelectedIndex;
+				int displace = 0;
+				if (AccessoryType[selectedAcc] != 0)
+				{
+					//displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Accessories[selectedAcc]);
+					displace = 0;
+				}
+				else
+				{
+					//displace = 0;
+					if ((sbyte)(Displacement_Accessories[selectedAcc]) < 0)
+					{
+						displace = (sbyte)(Displacement_Accessories[selectedAcc]);
+					}
+					else
+					{
+						displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Accessories[selectedAcc]);
+					}
+				}
+				g.DrawImage(AccessoryTex.ToBitmap(AccessoryPal), new Point(0, displace));
 			}
 
 			// front hair
