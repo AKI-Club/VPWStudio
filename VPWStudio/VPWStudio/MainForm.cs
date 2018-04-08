@@ -1515,7 +1515,7 @@ namespace VPWStudio
 		#endregion
 
 		#region Danger Zone items
-		// items in this section are short lived.
+		// items in this section are (meant to be) short lived.
 		// I just wanted a better place to put them.
 
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)

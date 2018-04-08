@@ -338,6 +338,7 @@ namespace VPWStudio
 							{
 								if (ReplaceFileExtension == ".pal")
 								{
+									// todo: sub-palettes!!
 									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
 									{
 										using (StreamReader sr = new StreamReader(fs))
