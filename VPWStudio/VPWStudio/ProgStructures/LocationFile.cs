@@ -142,6 +142,15 @@ namespace VPWStudio
 			{ "VPW64Costumes_Judoka", "$VPW64COSTUMES_JUDOKA" },
 			{ "VPW64Costumes_Female", "$VPW64COSTUMES_FEMALE" },
 			{ "VPW64Costumes_Unused", "$VPW64COSTUMES_UNUSED" },
+
+			// might be shared between WM2K, VPW2, No Mercy
+			{ "DefaultFace_FacialHair_VertDisplacement", "$DEFAULTFACE_FACIALHAIR_VERTDISPLACEMENT" },
+			{ "DefaultFace_PaintAccessories_VertDisplacement", "$DEFAULTFACE_PAINTACCESSORIES_VERTDISPLACEMENT" },
+			{ "FacialHair_VertDisplacement", "$FACIALHAIR_VERTDISPLACEMENT" },
+			{ "FacePaint_VertDisplacement", "$FACEPAINT_VERTDISPLACEMENT" },
+			{ "FacePaint_Type", "$FACEPAINT_TYPE" },
+			{ "FaceAccessories_VertDisplacement", "$FACEACCESSORIES_VERTDISPLACEMENT" },
+			{ "FaceAccessories_Type", "$FACEACCESSORIES_TYPE" },
 			#endregion
 
 			#region CodeChange
