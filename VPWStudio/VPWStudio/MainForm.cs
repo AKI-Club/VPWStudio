@@ -1677,11 +1677,14 @@ namespace VPWStudio
 				{
 					Ci4Texture test = new Ci4Texture();
 					test.FromBitmap(b);
-					FileStream fs = new FileStream(String.Format("{0}.ci4tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
-					BinaryWriter bw = new BinaryWriter(fs);
-					test.WriteData(bw);
-					bw.Close();
-					fs.Close();
+					using (FileStream fs = new FileStream(String.Format("{0}.ci4tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							test.WriteData(bw);
+							bw.Flush();
+						}
+					}
 				}
 			}
 		}
@@ -1698,11 +1701,14 @@ namespace VPWStudio
 				{
 					Ci8Texture test = new Ci8Texture();
 					test.FromBitmap(b);
-					FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
-					BinaryWriter bw = new BinaryWriter(fs);
-					test.WriteData(bw);
-					bw.Close();
-					fs.Close();
+					using (FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							test.WriteData(bw);
+							bw.Flush();
+						}
+					}
 				}
 			}
 		}
