@@ -9,6 +9,8 @@ namespace VPWStudio.GameSpecific.Revenge
 	public class ChampionshipDefinition
 	{
 		// [byte] championship number?
+		public byte Identifier;
+
 		// [byte] ??? always 7
 
 		// [byte] Initial Champion 1 ID2
