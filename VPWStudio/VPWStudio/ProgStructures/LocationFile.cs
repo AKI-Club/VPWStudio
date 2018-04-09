@@ -166,6 +166,7 @@ namespace VPWStudio
 			// only used with WCW/nWo Revenge and later:
 			{ "SetupFileTable_FtLocation", "%SETUPFT_FTLOCATION" },
 
+			// todo: filetable size is larger in No Mercy
 			{ "SetupFileTable_FtSize2", "%SETUPFT_FTSIZE2" },
 			{ "SetupFileTable_FtSize2Minus1", "%SETUPFT_FTSIZE2_MINUS1" },
 			{ "SetupFileTable_FtBegins", "%SETUPFT_FTBEGINS" },
