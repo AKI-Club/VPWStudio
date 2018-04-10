@@ -121,8 +121,14 @@
   <data name="AboutBox_Banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\about_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FileType_AkiArchive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\filetypes\akiarchive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FileType_AkiLargeFont" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\filetypes\akilargefont.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileType_AkiModel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\filetypes\akimodel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FileType_AkiSmallFont" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\filetypes\akismallfont.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
