@@ -534,6 +534,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\font.ico" />
+    <Content Include="Resources\FileTypes\AkiLargeFont.png" />
+    <Content Include="Resources\FileTypes\AkiSmallFont.png" />
+    <Content Include="Resources\FileTypes\AkiText.png" />
+    <Content Include="Resources\FileTypes\AkiTexture.png" />
+    <Content Include="Resources\FileTypes\Binary.png" />
+    <Content Include="Resources\FileTypes\Ci4Palette.png" />
+    <Content Include="Resources\FileTypes\Ci4Texture.png" />
+    <Content Include="Resources\FileTypes\Ci8Palette.png" />
+    <Content Include="Resources\FileTypes\Ci8Texture.png" />
+    <Content Include="Resources\FileTypes\DoubleTex.png" />
+    <Content Include="Resources\FileTypes\I4Texture.png" />
+    <Content Include="Resources\FileTypes\I8Texture.png" />
+    <Content Include="Resources\FileTypes\Ia4Texture.png" />
+    <Content Include="Resources\FileTypes\Ia8Texture.png" />
+    <Content Include="Resources\FileTypes\MenuBackground.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />
