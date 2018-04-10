@@ -534,7 +534,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\font.ico" />
+    <Content Include="Resources\FileTypes\AkiArchive.png" />
     <Content Include="Resources\FileTypes\AkiLargeFont.png" />
+    <Content Include="Resources\FileTypes\AkiModel.png" />
     <Content Include="Resources\FileTypes\AkiSmallFont.png" />
     <Content Include="Resources\FileTypes\AkiText.png" />
     <Content Include="Resources\FileTypes\AkiTexture.png" />

@@ -73,9 +73,29 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FileType_AkiArchive {
+            get {
+                object obj = ResourceManager.GetObject("FileType_AkiArchive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FileType_AkiLargeFont {
             get {
                 object obj = ResourceManager.GetObject("FileType_AkiLargeFont", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FileType_AkiModel {
+            get {
+                object obj = ResourceManager.GetObject("FileType_AkiModel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
