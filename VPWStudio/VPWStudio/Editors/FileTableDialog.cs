@@ -59,19 +59,24 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Icons for each filetype
+		/// </summary>
 		private Dictionary<FileTypes, Image> FileTypeIcons = new Dictionary<FileTypes, Image>()
 		{
-			{ FileTypes.Binary, Properties.Resources.FileType_Binary },
+			{ FileTypes.AkiArchive, Properties.Resources.FileType_AkiArchive },
 			{ FileTypes.AkiLargeFont, Properties.Resources.FileType_AkiLargeFont },
+			{ FileTypes.AkiModel, Properties.Resources.FileType_AkiModel },
 			{ FileTypes.AkiSmallFont, Properties.Resources.FileType_AkiSmallFont },
 			{ FileTypes.AkiText, Properties.Resources.FileType_AkiText },
 			{ FileTypes.AkiTexture, Properties.Resources.FileType_AkiTexture },
+			{ FileTypes.Binary, Properties.Resources.FileType_Binary },
 			{ FileTypes.Ci4Palette, Properties.Resources.FileType_Ci4Palette },
 			{ FileTypes.Ci4Texture, Properties.Resources.FileType_Ci4Texture },
 			{ FileTypes.Ci8Palette, Properties.Resources.FileType_Ci8Palette },
 			{ FileTypes.Ci8Texture, Properties.Resources.FileType_Ci8Texture },
-			{ FileTypes.I4Texture, Properties.Resources.FileType_I4Texture },
 			{ FileTypes.DoubleTex, Properties.Resources.FileType_DoubleTex },
+			{ FileTypes.I4Texture, Properties.Resources.FileType_I4Texture },
 			{ FileTypes.MenuBackground, Properties.Resources.FileType_MenuBackground },
 		};
 
@@ -80,21 +85,42 @@ namespace VPWStudio
 		/// </summary>
 		private void SetupSetTypeMenu()
 		{
-			ToolStripMenuItem[] types = new ToolStripMenuItem[Enum.GetValues(typeof(FileTypes)).Length];
-			for (int i = 0; i < types.Length; i++)
+			SortedList<FileTypes, ToolStripMenuItem> types = new SortedList<FileTypes, ToolStripMenuItem>();
+			for (int i = 0; i < Enum.GetValues(typeof(FileTypes)).Length; i++)
 			{
 				FileTypes curType = (FileTypes)i;
-				types[i] = new ToolStripMenuItem();
-				types[i].Name = String.Format("SetType{0}", curType);
-				types[i].Tag = curType.ToString();
-				types[i].Text = curType.ToString();
-				types[i].Click += new EventHandler(SetTypeItemHandler);
+
+				#region Per-Game Hacks
+				// AkiText is only available in WM2K and later
+				if (curType == FileTypes.AkiText && Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K)
+				{
+					continue;
+				}
+
+				// NoMercyText is only available in No Mercy (<sarcasm>really???? you think?!</sarcasm>)
+				if (curType == FileTypes.NoMercyText && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
+				{
+					continue;
+				}
+				#endregion
+
+				ToolStripMenuItem tsmi = new ToolStripMenuItem()
+				{
+					Name = String.Format("SetType{0}", curType),
+					Tag = curType.ToString(),
+					Text = curType.ToString(),
+				};
+				tsmi.Click += new EventHandler(SetTypeItemHandler);
 				if (FileTypeIcons.ContainsKey(curType))
 				{
-					types[i].Image = FileTypeIcons[curType];
+					tsmi.Image = FileTypeIcons[curType];
 				}
+				types.Add(curType, tsmi);
 			}
-			setTypeToolStripMenuItem.DropDownItems.AddRange(types);
+			foreach (KeyValuePair<FileTypes, ToolStripMenuItem> entry in types)
+			{
+				setTypeToolStripMenuItem.DropDownItems.Add(entry.Value);
+			}
 		}
 
 		/// <summary>
