@@ -1188,27 +1188,27 @@ namespace VPWStudio
 		/// </summary>
 		private void modelDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (this.ModelToolForm == null)
+			if (ModelToolForm == null)
 			{
-				this.ModelToolForm = new ModelTool();
-				this.ModelToolForm.MdiParent = this;
-				this.ModelToolForm.Show();
+				ModelToolForm = new ModelTool();
+				ModelToolForm.MdiParent = this;
+				ModelToolForm.Show();
 				UpdateWindowMenus();
 			}
 			else
 			{
-				if (this.ModelToolForm.IsDisposed)
+				if (ModelToolForm.IsDisposed)
 				{
-					this.ModelToolForm = new ModelTool();
+					ModelToolForm = new ModelTool();
 				}
 
 				// if it was minimized, show it again.
-				if (this.ModelToolForm.WindowState == FormWindowState.Minimized)
+				if (ModelToolForm.WindowState == FormWindowState.Minimized)
 				{
-					this.ModelToolForm.WindowState = FormWindowState.Normal;
+					ModelToolForm.WindowState = FormWindowState.Normal;
 				}
-				this.ModelToolForm.MdiParent = this;
-				this.ModelToolForm.Show();
+				ModelToolForm.MdiParent = this;
+				ModelToolForm.Show();
 				UpdateWindowMenus();
 			}
 		}
@@ -1218,27 +1218,27 @@ namespace VPWStudio
 		/// </summary>
 		private void packedFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (this.PackFileTool == null)
+			if (PackFileTool == null)
 			{
-				this.PackFileTool = new PackedFileTool();
-				this.PackFileTool.MdiParent = this;
-				this.PackFileTool.Show();
+				PackFileTool = new PackedFileTool();
+				PackFileTool.MdiParent = this;
+				PackFileTool.Show();
 				UpdateWindowMenus();
 			}
 			else
 			{
-				if (this.PackFileTool.IsDisposed)
+				if (PackFileTool.IsDisposed)
 				{
-					this.PackFileTool = new PackedFileTool();
+					PackFileTool = new PackedFileTool();
 				}
 
 				// if it was minimized, show it again.
-				if (this.PackFileTool.WindowState == FormWindowState.Minimized)
+				if (PackFileTool.WindowState == FormWindowState.Minimized)
 				{
-					this.PackFileTool.WindowState = FormWindowState.Normal;
+					PackFileTool.WindowState = FormWindowState.Normal;
 				}
-				this.PackFileTool.MdiParent = this;
-				this.PackFileTool.Show();
+				PackFileTool.MdiParent = this;
+				PackFileTool.Show();
 				UpdateWindowMenus();
 			}
 		}
@@ -1249,27 +1249,27 @@ namespace VPWStudio
 		/// currently a little broken, but not the form's fault...?
 		private void sharkTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (this.GSTool == null)
+			if (GSTool == null)
 			{
-				this.GSTool = new GameSharkTool();
-				this.GSTool.MdiParent = this;
-				this.GSTool.Show();
+				GSTool = new GameSharkTool();
+				GSTool.MdiParent = this;
+				GSTool.Show();
 				UpdateWindowMenus();
 			}
 			else
 			{
-				if (this.GSTool.IsDisposed)
+				if (GSTool.IsDisposed)
 				{
-					this.GSTool = new GameSharkTool();
+					GSTool = new GameSharkTool();
 				}
 
 				// if it was minimized, show it again.
-				if (this.GSTool.WindowState == FormWindowState.Minimized)
+				if (GSTool.WindowState == FormWindowState.Minimized)
 				{
-					this.GSTool.WindowState = FormWindowState.Normal;
+					GSTool.WindowState = FormWindowState.Normal;
 				}
-				this.GSTool.MdiParent = this;
-				this.GSTool.Show();
+				GSTool.MdiParent = this;
+				GSTool.Show();
 				UpdateWindowMenus();
 			}
 		}
