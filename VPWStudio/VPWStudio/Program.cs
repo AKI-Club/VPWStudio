@@ -108,6 +108,16 @@ namespace VPWStudio
 			return dbFilePath;
 		}
 
+		#region MessageBoxes
+		/// <summary>
+		/// Show a warning message dialog.
+		/// </summary>
+		/// <param name="msg">Warning message to show.</param>
+		public static void WarningMessageBox(string msg)
+		{
+			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+		}
+
 		/// <summary>
 		/// Show an error message dialog.
 		/// </summary>
@@ -116,6 +126,7 @@ namespace VPWStudio
 		{
 			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
+		#endregion
 
 		/// <summary>
 		/// Convert a relative path to an absolute path using the current project file's path.
