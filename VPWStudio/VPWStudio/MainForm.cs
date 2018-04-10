@@ -1316,20 +1316,11 @@ namespace VPWStudio
 		/// </summary>
 		private void aboutVPWStudioToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//AboutVPWStudio
-			if (this.AboutVPWStudio == null)
+			if (AboutVPWStudio == null || AboutVPWStudio.IsDisposed)
 			{
-				this.AboutVPWStudio = new AboutBox();
-				this.AboutVPWStudio.ShowDialog();
+				AboutVPWStudio = new AboutBox();
 			}
-			else
-			{
-				if (this.AboutVPWStudio.IsDisposed)
-				{
-					this.AboutVPWStudio = new AboutBox();
-				}
-				this.AboutVPWStudio.ShowDialog();
-			}
+			AboutVPWStudio.ShowDialog();
 		}
 		#endregion
 
@@ -1478,12 +1469,12 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
-				case VPWGames.WorldTour: return VPWStudio.Properties.Resources.GameIcon16_WorldTour;
-				case VPWGames.VPW64: return VPWStudio.Properties.Resources.GameIcon16_VPW64;
-				case VPWGames.Revenge: return VPWStudio.Properties.Resources.GameIcon16_Revenge;
-				case VPWGames.WM2K: return VPWStudio.Properties.Resources.GameIcon16_WM2K;
-				case VPWGames.VPW2: return VPWStudio.Properties.Resources.GameIcon16_VPW2;
-				case VPWGames.NoMercy: return VPWStudio.Properties.Resources.GameIcon16_NoMercy;
+				case VPWGames.WorldTour: return Properties.Resources.GameIcon16_WorldTour;
+				case VPWGames.VPW64: return Properties.Resources.GameIcon16_VPW64;
+				case VPWGames.Revenge: return Properties.Resources.GameIcon16_Revenge;
+				case VPWGames.WM2K: return Properties.Resources.GameIcon16_WM2K;
+				case VPWGames.VPW2: return Properties.Resources.GameIcon16_VPW2;
+				case VPWGames.NoMercy: return Properties.Resources.GameIcon16_NoMercy;
 				default:
 					return null;
 			}
@@ -1502,12 +1493,12 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
-				case VPWGames.WorldTour: return VPWStudio.Properties.Resources.MainMenuBG_WorldTour;
-				case VPWGames.VPW64: return VPWStudio.Properties.Resources.MainMenuBG_VPW64;
-				case VPWGames.Revenge: return VPWStudio.Properties.Resources.MainMenuBG_Revenge;
-				case VPWGames.WM2K: return VPWStudio.Properties.Resources.MainMenuBG_WM2K;
-				case VPWGames.VPW2: return VPWStudio.Properties.Resources.MainMenuBG_VPW2;
-				case VPWGames.NoMercy: return VPWStudio.Properties.Resources.MainMenuBG_NoMercy;
+				case VPWGames.WorldTour: return Properties.Resources.MainMenuBG_WorldTour;
+				case VPWGames.VPW64: return Properties.Resources.MainMenuBG_VPW64;
+				case VPWGames.Revenge: return Properties.Resources.MainMenuBG_Revenge;
+				case VPWGames.WM2K: return Properties.Resources.MainMenuBG_WM2K;
+				case VPWGames.VPW2: return Properties.Resources.MainMenuBG_VPW2;
+				case VPWGames.NoMercy: return Properties.Resources.MainMenuBG_NoMercy;
 				default:
 					return null;
 			}
@@ -1595,12 +1586,7 @@ namespace VPWStudio
 				}
 				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
 				{
-					MessageBox.Show(
-						"Images with transparency are not properly handled at the moment.",
-						SharedStrings.MainForm_Title,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Warning
-					);
+					Program.WarningMessageBox("Images with transparency are not properly handled at the moment.");
 					// dealing with a transparent image, which is possibly paletted.
 					HashSet<Color> usedColors = new HashSet<Color>();
 					UInt16 alphaColor = 0;
@@ -1655,12 +1641,7 @@ namespace VPWStudio
 				}
 				else
 				{
-					MessageBox.Show(
-						String.Format("Unsupported PixelFormat {0}", b.PixelFormat),
-						SharedStrings.MainForm_Title,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error
-					);
+					Program.ErrorMessageBox(String.Format("Unsupported PixelFormat {0}", b.PixelFormat));
 				}
 			}
 		}
@@ -1686,6 +1667,10 @@ namespace VPWStudio
 						}
 					}
 				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI4", b.PixelFormat));
+				}
 			}
 		}
 
@@ -1709,6 +1694,10 @@ namespace VPWStudio
 							bw.Flush();
 						}
 					}
+				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI8", b.PixelFormat));
 				}
 			}
 		}
@@ -1755,9 +1744,12 @@ namespace VPWStudio
 						}
 					}
 				}
+				else
+				{
+					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
+				}
 			}
 		}
-		#endregion
 
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1768,11 +1760,13 @@ namespace VPWStudio
 
 			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
 			{
+				Program.ErrorMessageBox("VPW2 only!!");
 				return;
 			}
 
 			FaceTester ft = new FaceTester();
 			ft.ShowDialog();
 		}
+		#endregion
 	}
 }
