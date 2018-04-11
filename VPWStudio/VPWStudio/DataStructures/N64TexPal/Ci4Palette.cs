@@ -165,9 +165,9 @@ namespace VPWStudio
 				bw.Write(b);
 			}
 
-			// todo: is this correct?
 			if (SubPalettes.Count != 0)
 			{
+				// todo: is this correct, or should I be using a regular for loop?
 				foreach (Ci4Palette p in SubPalettes)
 				{
 					foreach (UInt16 cv in p.Entries)
@@ -186,26 +186,65 @@ namespace VPWStudio
 
 		#region JASC Paint Shop Pro Palette Import/Export
 		/// <summary>
-		/// Export Ci4Palette as a JASC Paint Shop Pro palette file.
+		/// Write header data for a JASC Paint Shop Pro palette file.
 		/// </summary>
-		/// <param name="sw">StreamWriter to write Palette data to.</param>
-		public void ExportJasc(StreamWriter sw)
+		/// <param name="sw">StreamWriter to write header to.</param>
+		private void WriteJascHeader(StreamWriter sw)
 		{
 			sw.WriteLine("JASC-PAL");
 			sw.WriteLine("0100");
 			sw.WriteLine("16");
-			// write colors as RGB
-			for (int i = 0; i < Entries.Length; i++)
-			{
-				Color c = N64Colors.Value5551ToColor(Entries[i]);
-				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
-			}
-
-			// todo: subpalettes require other files!
 		}
 
 		/// <summary>
-		/// Import Ci4Palette data from a JASC Paint Shop Pro palette file.
+		/// Helper for writing a Color to a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="c">Color to write.</param>
+		/// <returns>Palette data string</returns>
+		private string ColorToJascPalEntry(Color c)
+		{
+			return String.Format("{0} {1} {2}", c.R, c.G, c.B);
+		}
+
+		/// <summary>
+		/// Export (main) Ci4Palette as a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write Palette data to.</param>
+		public void ExportJasc(StreamWriter sw)
+		{
+			WriteJascHeader(sw);
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+			}
+		}
+
+		/// <summary>
+		/// Export a SubPalette as a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write sub-palette data to.</param>
+		/// <param name="subPalNum">Sub-palette number to write.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool ExportJascSubPal(StreamWriter sw, int subPalNum)
+		{
+			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
+			{
+				// unable to deal with subpalette
+				return false;
+			}
+
+			WriteJascHeader(sw);
+			Ci4Palette subpalette = SubPalettes[subPalNum];
+			for (int i = 0; i < subpalette.Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(subpalette.Entries[i])));
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Import (main) Ci4Palette data from a JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sr">StreamReader to read Palette data from.</param>
 		/// <returns>True if successful, false otherwise.</returns>
@@ -228,7 +267,43 @@ namespace VPWStudio
 				Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
 			}
 
-			// todo: subpalettes require other files!
+			return true;
+		}
+
+		/// <summary>
+		/// Import SubPalette data from a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <param name="subPalNum"></param>
+		/// <returns></returns>
+		public bool ImportJascSubPal(StreamReader sr, int subPalNum)
+		{
+			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
+			{
+				// unable to deal with subpalette
+				return false;
+			}
+
+			sr.ReadLine(); // "JASC-PAL"
+			sr.ReadLine(); // version number
+
+			// number of colors
+			int numColors = int.Parse(sr.ReadLine());
+			if (numColors != 16)
+			{
+				return false;
+			}
+
+			if (SubPalettes[subPalNum] == null)
+			{
+				SubPalettes[subPalNum] = new Ci4Palette();
+			}
+			// color per line
+			for (int i = 0; i < numColors; i++)
+			{
+				string[] colorDef = sr.ReadLine().Split(' ');
+				SubPalettes[subPalNum].Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+			}
 
 			return true;
 		}
