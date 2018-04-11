@@ -414,27 +414,39 @@ namespace VPWStudio.Editors
 					{
 						case CiEditorModes.Ci4:
 							{
-								Ci4Palette import = new Ci4Palette();
+								Ci4Palette import = CurPaletteCI4;
 								if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
 									// import JASC Paint Shop Pro palette
-
-									// todo: subpalettes suuuuuuck
-									MessageBox.Show("Paint Shop Pro Palette Import not yet implemented");
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										if (cbPalettes.SelectedIndex > 0)
+										{
+											import.ImportJascSubPal(sr, cbPalettes.SelectedIndex - 1);
+											ColorList.RemoveRange((cbPalettes.SelectedIndex*16), 16);
+											ColorList.InsertRange((cbPalettes.SelectedIndex * 16), import.SubPalettes[cbPalettes.SelectedIndex - 1].Entries);
+										}
+										else
+										{
+											import.ImportJasc(sr);
+											ColorList.RemoveRange(0, 16);
+											ColorList.InsertRange(0, import.Entries);
+										}
+									}
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci4pal")
 								{
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										import.ReadData(br, true);
-										// temporary; move this down later
-										CurPaletteCI4 = import;
 										ColorList.Clear();
 										ColorList.AddRange(import.Entries);
-										UpdateCurColorSwatch();
-										UpdatePreview();
 									}
 								}
+								CurPaletteCI4 = import;
+								UpdateCurColorSwatch();
+								UpdatePreview();
 							}
 							break;
 						case CiEditorModes.Ci8:
@@ -502,10 +514,9 @@ namespace VPWStudio.Editors
 									using (StreamWriter sw = new StreamWriter(fs))
 									{
 										// export based on cbPalettes.SelectedIndex
-										// todo: does not save changes to subpalette
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											CurPaletteCI4.ExportJascSubPal(sw, cbPalettes.SelectedIndex - 1);
+											export.ExportJascSubPal(sw, cbPalettes.SelectedIndex - 1);
 										}
 										else
 										{
