@@ -212,6 +212,34 @@ namespace VPWStudio
 		}
 		#endregion
 
+		/// <summary>
+		/// Get the chunk data for a part of the background.
+		/// </summary>
+		/// <param name="chunkNum">Background chunk number to get data for</param>
+		/// <returns>Background chunk data as byte array</returns>
+		public byte[] GetChunkBytes(int chunkNum)
+		{
+			if (chunkNum == 0)
+			{
+				// special case: palette and first chunk
+				List<byte> firstChunk = new List<byte>();
+
+				MemoryStream pms = new MemoryStream();
+				BinaryWriter pbw = new BinaryWriter(pms);
+				Palette.WriteData(pbw);
+				firstChunk.AddRange(pms.ToArray());
+				firstChunk.AddRange(Textures[chunkNum].Data);
+				pbw.Close();
+
+				return firstChunk.ToArray();
+			}
+			else
+			{
+				// normal case: chunk
+				return Textures[chunkNum].Data;
+			}
+		}
+
 		// The main issue with the MenuBackground concept is that each menu
 		// background consists of 40 files. These files are typically LZSS'd
 		// as well, making our job harder.
