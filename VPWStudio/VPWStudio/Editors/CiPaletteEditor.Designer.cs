@@ -46,12 +46,15 @@
 			this.panelCurColor = new System.Windows.Forms.Panel();
 			this.buttonImport = new System.Windows.Forms.Button();
 			this.buttonExport = new System.Windows.Forms.Button();
+			this.gbImportExport = new System.Windows.Forms.GroupBox();
+			this.cbPalettes = new System.Windows.Forms.ComboBox();
 			this.gbPalettePreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPalettePreview)).BeginInit();
 			this.tlpColorValues.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudRed)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudGreen)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudBlue)).BeginInit();
+			this.gbImportExport.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -96,8 +99,8 @@
 			// tlpColorValues
 			// 
 			this.tlpColorValues.ColumnCount = 2;
-			this.tlpColorValues.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-			this.tlpColorValues.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tlpColorValues.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tlpColorValues.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
 			this.tlpColorValues.Controls.Add(this.nudRed, 1, 0);
 			this.tlpColorValues.Controls.Add(this.nudGreen, 1, 1);
 			this.tlpColorValues.Controls.Add(this.nudBlue, 1, 2);
@@ -113,48 +116,48 @@
 			this.tlpColorValues.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpColorValues.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpColorValues.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpColorValues.Size = new System.Drawing.Size(376, 100);
+			this.tlpColorValues.Size = new System.Drawing.Size(206, 100);
 			this.tlpColorValues.TabIndex = 3;
 			// 
 			// nudRed
 			// 
 			this.nudRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudRed.Location = new System.Drawing.Point(153, 3);
+			this.nudRed.Location = new System.Drawing.Point(75, 3);
 			this.nudRed.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudRed.Name = "nudRed";
-			this.nudRed.Size = new System.Drawing.Size(220, 20);
+			this.nudRed.Size = new System.Drawing.Size(128, 20);
 			this.nudRed.TabIndex = 0;
 			this.nudRed.ValueChanged += new System.EventHandler(this.nudRed_ValueChanged);
 			// 
 			// nudGreen
 			// 
 			this.nudGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudGreen.Location = new System.Drawing.Point(153, 28);
+			this.nudGreen.Location = new System.Drawing.Point(75, 28);
 			this.nudGreen.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudGreen.Name = "nudGreen";
-			this.nudGreen.Size = new System.Drawing.Size(220, 20);
+			this.nudGreen.Size = new System.Drawing.Size(128, 20);
 			this.nudGreen.TabIndex = 1;
 			this.nudGreen.ValueChanged += new System.EventHandler(this.nudGreen_ValueChanged);
 			// 
 			// nudBlue
 			// 
 			this.nudBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudBlue.Location = new System.Drawing.Point(153, 53);
+			this.nudBlue.Location = new System.Drawing.Point(75, 53);
 			this.nudBlue.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudBlue.Name = "nudBlue";
-			this.nudBlue.Size = new System.Drawing.Size(220, 20);
+			this.nudBlue.Size = new System.Drawing.Size(128, 20);
 			this.nudBlue.TabIndex = 2;
 			this.nudBlue.ValueChanged += new System.EventHandler(this.nudBlue_ValueChanged);
 			// 
@@ -164,7 +167,7 @@
 			this.labelRed.AutoSize = true;
 			this.labelRed.Location = new System.Drawing.Point(3, 6);
 			this.labelRed.Name = "labelRed";
-			this.labelRed.Size = new System.Drawing.Size(144, 13);
+			this.labelRed.Size = new System.Drawing.Size(66, 13);
 			this.labelRed.TabIndex = 3;
 			this.labelRed.Text = "&Red";
 			// 
@@ -174,7 +177,7 @@
 			this.labelGreen.AutoSize = true;
 			this.labelGreen.Location = new System.Drawing.Point(3, 31);
 			this.labelGreen.Name = "labelGreen";
-			this.labelGreen.Size = new System.Drawing.Size(144, 13);
+			this.labelGreen.Size = new System.Drawing.Size(66, 13);
 			this.labelGreen.TabIndex = 4;
 			this.labelGreen.Text = "&Green";
 			// 
@@ -184,7 +187,7 @@
 			this.labelBlue.AutoSize = true;
 			this.labelBlue.Location = new System.Drawing.Point(3, 56);
 			this.labelBlue.Name = "labelBlue";
-			this.labelBlue.Size = new System.Drawing.Size(144, 13);
+			this.labelBlue.Size = new System.Drawing.Size(66, 13);
 			this.labelBlue.TabIndex = 5;
 			this.labelBlue.Text = "&Blue";
 			// 
@@ -194,7 +197,7 @@
 			this.labelTransparent.AutoSize = true;
 			this.labelTransparent.Location = new System.Drawing.Point(3, 81);
 			this.labelTransparent.Name = "labelTransparent";
-			this.labelTransparent.Size = new System.Drawing.Size(144, 13);
+			this.labelTransparent.Size = new System.Drawing.Size(66, 13);
 			this.labelTransparent.TabIndex = 6;
 			this.labelTransparent.Text = "&Transparent";
 			// 
@@ -202,9 +205,9 @@
 			// 
 			this.cbTransparent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbTransparent.AutoSize = true;
-			this.cbTransparent.Location = new System.Drawing.Point(153, 79);
+			this.cbTransparent.Location = new System.Drawing.Point(75, 79);
 			this.cbTransparent.Name = "cbTransparent";
-			this.cbTransparent.Size = new System.Drawing.Size(220, 17);
+			this.cbTransparent.Size = new System.Drawing.Size(128, 17);
 			this.cbTransparent.TabIndex = 7;
 			this.cbTransparent.Text = "Transparent";
 			this.cbTransparent.UseVisualStyleBackColor = true;
@@ -217,7 +220,7 @@
 			this.cbColorEntries.Location = new System.Drawing.Point(86, 12);
 			this.cbColorEntries.MaxDropDownItems = 16;
 			this.cbColorEntries.Name = "cbColorEntries";
-			this.cbColorEntries.Size = new System.Drawing.Size(408, 21);
+			this.cbColorEntries.Size = new System.Drawing.Size(418, 21);
 			this.cbColorEntries.TabIndex = 4;
 			this.cbColorEntries.SelectionChangeCommitted += new System.EventHandler(this.cbColorEntries_SelectionChangeCommitted);
 			// 
@@ -233,16 +236,16 @@
 			// panelCurColor
 			// 
 			this.panelCurColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelCurColor.Location = new System.Drawing.Point(394, 39);
+			this.panelCurColor.Location = new System.Drawing.Point(224, 39);
 			this.panelCurColor.Name = "panelCurColor";
 			this.panelCurColor.Size = new System.Drawing.Size(100, 100);
 			this.panelCurColor.TabIndex = 6;
 			// 
 			// buttonImport
 			// 
-			this.buttonImport.Location = new System.Drawing.Point(12, 437);
+			this.buttonImport.Location = new System.Drawing.Point(6, 43);
 			this.buttonImport.Name = "buttonImport";
-			this.buttonImport.Size = new System.Drawing.Size(75, 23);
+			this.buttonImport.Size = new System.Drawing.Size(76, 24);
 			this.buttonImport.TabIndex = 7;
 			this.buttonImport.Text = "&Import...";
 			this.buttonImport.UseVisualStyleBackColor = true;
@@ -250,21 +253,43 @@
 			// 
 			// buttonExport
 			// 
-			this.buttonExport.Location = new System.Drawing.Point(93, 437);
+			this.buttonExport.Location = new System.Drawing.Point(92, 43);
 			this.buttonExport.Name = "buttonExport";
-			this.buttonExport.Size = new System.Drawing.Size(75, 23);
+			this.buttonExport.Size = new System.Drawing.Size(76, 24);
 			this.buttonExport.TabIndex = 8;
 			this.buttonExport.Text = "&Export...";
 			this.buttonExport.UseVisualStyleBackColor = true;
 			this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+			// 
+			// gbImportExport
+			// 
+			this.gbImportExport.Controls.Add(this.cbPalettes);
+			this.gbImportExport.Controls.Add(this.buttonExport);
+			this.gbImportExport.Controls.Add(this.buttonImport);
+			this.gbImportExport.Location = new System.Drawing.Point(330, 39);
+			this.gbImportExport.Name = "gbImportExport";
+			this.gbImportExport.Size = new System.Drawing.Size(174, 73);
+			this.gbImportExport.TabIndex = 10;
+			this.gbImportExport.TabStop = false;
+			this.gbImportExport.Text = "Import/Export Palette";
+			// 
+			// cbPalettes
+			// 
+			this.cbPalettes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbPalettes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbPalettes.FormattingEnabled = true;
+			this.cbPalettes.Location = new System.Drawing.Point(6, 16);
+			this.cbPalettes.Name = "cbPalettes";
+			this.cbPalettes.Size = new System.Drawing.Size(162, 21);
+			this.cbPalettes.TabIndex = 9;
 			// 
 			// CiPaletteEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(516, 472);
-			this.Controls.Add(this.buttonExport);
-			this.Controls.Add(this.buttonImport);
+			this.Controls.Add(this.gbImportExport);
 			this.Controls.Add(this.panelCurColor);
 			this.Controls.Add(this.labelCurColor);
 			this.Controls.Add(this.cbColorEntries);
@@ -285,6 +310,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.nudRed)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudGreen)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudBlue)).EndInit();
+			this.gbImportExport.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -310,5 +336,7 @@
 		private System.Windows.Forms.Panel panelCurColor;
 		private System.Windows.Forms.Button buttonImport;
 		private System.Windows.Forms.Button buttonExport;
+		private System.Windows.Forms.GroupBox gbImportExport;
+		private System.Windows.Forms.ComboBox cbPalettes;
 	}
 }
