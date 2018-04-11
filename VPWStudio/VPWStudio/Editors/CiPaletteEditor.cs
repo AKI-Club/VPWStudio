@@ -75,13 +75,21 @@ namespace VPWStudio.Editors
 				CurPaletteCI4.ReadData(fr, true);
 				fr.Close();
 				ColorList.AddRange(CurPaletteCI4.Entries);
+
+				cbPalettes.Items.Add("Main Palette");
 				if (CurPaletteCI4.SubPalettes.Count > 0)
 				{
+					cbPalettes.BeginUpdate();
+					int subPalCount = 1;
 					foreach (Ci4Palette sub in CurPaletteCI4.SubPalettes)
 					{
+						cbPalettes.Items.Add(String.Format("Sub-Palette {0}", subPalCount));
 						ColorList.AddRange(sub.Entries);
+						subPalCount++;
 					}
+					cbPalettes.EndUpdate();
 				}
+				cbPalettes.SelectedIndex = 0;
 			}
 			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.Ci8Palette)
 			{
@@ -95,6 +103,8 @@ namespace VPWStudio.Editors
 				CurPaletteCI8.ReadData(fr);
 				fr.Close();
 				ColorList.AddRange(CurPaletteCI8.Entries);
+
+				cbPalettes.Enabled = false;
 			}
 			/*
 			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.AkiTexture)
@@ -489,21 +499,17 @@ namespace VPWStudio.Editors
 								if (Path.GetExtension(sfd.FileName) == ".pal")
 								{
 									// export JASC Paint Shop Pro palette
-
 									using (StreamWriter sw = new StreamWriter(fs))
 									{
-										export.ExportJasc(sw);
-
-										if (export.SubPalettes.Count > 0)
+										// export based on cbPalettes.SelectedIndex
+										// todo: does not save changes to subpalette
+										if (cbPalettes.SelectedIndex > 0)
 										{
-											MessageBox.Show("CI4 subpalette export not yet implemented");
-											/*
-											int subPal = 1;
-											foreach (Ci4Palette s in export.SubPalettes)
-											{
-												subPal++;
-											}
-											*/
+											CurPaletteCI4.ExportJascSubPal(sw, cbPalettes.SelectedIndex - 1);
+										}
+										else
+										{
+											export.ExportJasc(sw);
 										}
 									}
 								}
