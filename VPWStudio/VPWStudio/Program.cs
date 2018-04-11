@@ -525,19 +525,28 @@ namespace VPWStudio
 			{
 				FileTableEntry fte = buildFileTable.Entries[i];
 				byte[] outData = null;
+				bool AlreadyCompressed = false;
+				string replaceFilePath = String.Empty;
+				int start = 0;
+				int end = 0;
+				int oldFileSize = 0;
 
 				// MenuBackgroundMode changes how this works; it would be simpler otherwise.
-
 				/*
 				// determine if we need to start MenuBackgroundMode
 				if (fte.FileType == FileTypes.MenuBackground)
 				{
 					if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 					{
-						string replaceFilePath = fte.ReplaceFilePath;
-						if (!Path.IsPathRooted(replaceFilePath))
+						replaceFilePath = ConvertRelativePath(fte.ReplaceFilePath);
+						if (replaceFilePath == null)
 						{
-							replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+							// unable to convert relative path
+							MenuBackgroundMode = false;
+							CurMenuBackground = null;
+							MenuBgNumChunks = 0;
+							MenuBgChunkPixels = 0;
+							continue;
 						}
 
 						// ensure the file exists, otherwise we can't do anything.
@@ -568,6 +577,11 @@ namespace VPWStudio
 
 						MenuBgNumChunks = CurMenuBackground.ChunkColumns * CurMenuBackground.ChunkRows;
 						MenuBgChunkPixels = CurMenuBackground.ChunkWidth * CurMenuBackground.ChunkHeight;
+
+						// todo: make this log message unique
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath));
+						BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}",
+						fte.FileType, fte.IsEncoded, fte.ReplaceEncoding));
 					}
 				}
 
@@ -575,21 +589,19 @@ namespace VPWStudio
 				{
 					// handling menu background...
 
-					byte[] bgChunkData;
-					if (MenuBackgroundNumber == 0)
+					// get the start and end points of this entry
+					// xxx: some files in WWF No Mercy's filetable break this assumption
+					start = fte.Location;
+					end = buildFileTable.Entries[i + 1].Location;
+					oldFileSize = buildFileTable.GetEntrySize(i);
+					// todo: does this fix the assumption?
+					if (start > end)
 					{
-						// first file: Palette and image data
-						bgChunkData = new byte[0x20+MenuBgChunkPixels];
-						Array.Copy(CurMenuBackground.Data, 0, bgChunkData, 0, bgChunkData.Length);
-					}
-					else
-					{
-						// remaining files: image data only
-						bgChunkData = new byte[MenuBgChunkPixels];
-						Array.Copy(CurMenuBackground.Data, (MenuBgChunkPixels * MenuBackgroundNumber), bgChunkData, 0, bgChunkData.Length);
+						oldFileSize = start - end;
 					}
 
-					// we have the raw output data at this point
+					//
+					outData = CurMenuBackground.GetChunkBytes(MenuBackgroundNumber);
 
 					// housekeeping
 					MenuBackgroundNumber++;
@@ -609,10 +621,11 @@ namespace VPWStudio
 				// 0) check if a replacement file is set
 				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 				{
-					string replaceFilePath = fte.ReplaceFilePath;
-					if (!Path.IsPathRooted(replaceFilePath))
+					replaceFilePath = ConvertRelativePath(fte.ReplaceFilePath);
+					if (replaceFilePath == null)
 					{
-						replaceFilePath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), fte.ReplaceFilePath);
+						// unable to convert relative path
+						continue;
 					}
 
 					// ensure the file exists, otherwise we can't do anything.
@@ -627,11 +640,9 @@ namespace VPWStudio
 
 					// get the start and end points of this entry
 					// xxx: some files in WWF No Mercy's filetable break this assumption
-
-					int start = fte.Location;
-					int end = buildFileTable.Entries[i + 1].Location;
-					//int oldFileSize = (end - start);
-					int oldFileSize = buildFileTable.GetEntrySize(i);
+					start = fte.Location;
+					end = buildFileTable.Entries[i + 1].Location;
+					oldFileSize = buildFileTable.GetEntrySize(i);
 					// todo: does this fix the assumption?
 					if (start > end)
 					{
@@ -651,7 +662,7 @@ namespace VPWStudio
 
 					// 1) use file extension to determine action
 					outData = null;
-					bool AlreadyCompressed = Path.GetExtension(replaceFilePath) == ".lzss";
+					AlreadyCompressed = Path.GetExtension(replaceFilePath) == ".lzss";
 					if (!AlreadyCompressed)
 					{
 						if (Path.GetExtension(replaceFilePath) == FileTypeInfo.DefaultFileTypeExtensions[fte.FileType])
@@ -749,9 +760,7 @@ namespace VPWStudio
 					}
 					*/
 
-					// todo: this part is where zoinkity would rebuild the filetable in ROM.
-
-					// 5) motherfucking offset the data
+					// 5) offset the data
 					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
 					outRomData.InsertRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), finalOutData);
 
