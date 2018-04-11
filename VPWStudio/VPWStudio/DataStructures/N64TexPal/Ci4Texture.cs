@@ -72,7 +72,7 @@ namespace VPWStudio
 
 		#region Binary Read/Write
 		/// <summary>
-		/// Read image data using a BinaryReader.
+		/// Read (headered) CI4Texture data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
@@ -107,7 +107,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Read raw CI4 image data (no header)
+		/// Read raw CI4Texture data (no header)
 		/// </summary>
 		/// <param name="width">Width of image</param>
 		/// <param name="height">Height of image</param>
@@ -133,7 +133,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// 
+		/// Write (headered) CI4Texture data using a BinaryWriter.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
