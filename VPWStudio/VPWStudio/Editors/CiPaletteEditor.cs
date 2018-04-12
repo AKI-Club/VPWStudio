@@ -15,17 +15,17 @@ namespace VPWStudio.Editors
 	/// </summary>
 	public partial class CiPaletteEditor : Form
 	{
-		public Ci4Palette CurPaletteCI4;
-		public Ci8Palette CurPaletteCI8;
-
-		private Bitmap PalPreviewBitmap;
-
 		private enum CiEditorModes
 		{
 			Ci4,
 			Ci8
 		}
 		private CiEditorModes CurEditMode;
+
+		public Ci4Palette CurPaletteCI4;
+		public Ci8Palette CurPaletteCI8;
+
+		private Bitmap PalPreviewBitmap;
 
 		/// <summary>
 		/// List of all colors in this palette.
@@ -36,6 +36,8 @@ namespace VPWStudio.Editors
 		private bool ChangingColors = false;
 
 		private int FileID;
+
+		private int PaletteNumber = 0;
 
 		public CiPaletteEditor(int fileID)
 		{
@@ -144,7 +146,7 @@ namespace VPWStudio.Editors
 
 			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
 
-			PopulateList();
+			PopulateColorList();
 			UpdatePreview();
 
 			cbColorEntries.SelectedIndex = 0;
@@ -170,13 +172,19 @@ namespace VPWStudio.Editors
 		/// <summary>
 		/// Populate the drop-down list with all of the palette colors.
 		/// </summary>
-		private void PopulateList()
+		private void PopulateColorList()
 		{
 			cbColorEntries.Items.Clear();
 			cbColorEntries.BeginUpdate();
-			for (int i = 0; i < ColorList.Count; i++)
+
+			int numEntries = ColorList.Count;
+			if (CurEditMode == CiEditorModes.Ci4)
 			{
-				cbColorEntries.Items.Add(String.Format("Color {0:D3}", i+1));
+				numEntries = 16;
+			}
+			for (int i = 0; i < numEntries; i++)
+			{
+				cbColorEntries.Items.Add(String.Format("Color {0:D3}", i + 1));
 			}
 			cbColorEntries.EndUpdate();
 		}
@@ -201,12 +209,11 @@ namespace VPWStudio.Editors
 			int swatchHeight = pbPalettePreview.Height;
 			Pen curPen;
 
-			// CI8 is easy
-			// CI4 depends on how many subpalettes we have
 			switch (CurEditMode)
 			{
 				case CiEditorModes.Ci4:
 					{
+						// CI4 depends on how many subpalettes we have
 						if (CurPaletteCI4.SubPalettes.Count > 0)
 						{
 							// worst case scenario is having enough subpalettes to fill all 256 entries
@@ -265,7 +272,7 @@ namespace VPWStudio.Editors
 
 				case CiEditorModes.Ci8:
 					{
-						// draw 'em all
+						// CI8 is easy; draw 'em all
 						swatchHeight = pbPalettePreview.Height/16;
 						for (int i = 0; i < CurPaletteCI8.Entries.Length; i++)
 						{
@@ -288,6 +295,18 @@ namespace VPWStudio.Editors
 		}
 
 		/// <summary>
+		/// Update the color textboxes and transparency checkbox.
+		/// </summary>
+		/// <param name="c"></param>
+		private void UpdateColorValues(Color c)
+		{
+			nudRed.Value = c.R / 8;
+			nudGreen.Value = c.G / 8;
+			nudBlue.Value = c.B / 8;
+			cbTransparent.Checked = (c.A == 0);
+		}
+
+		/// <summary>
 		/// Update the "Currently Editing" color swatch
 		/// </summary>
 		private void UpdateCurColorSwatch()
@@ -296,7 +315,71 @@ namespace VPWStudio.Editors
 			{
 				return;
 			}
-			panelCurColor.BackColor = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
+
+			switch (CurEditMode)
+			{
+				case CiEditorModes.Ci4:
+					if (PaletteNumber == 0)
+					{
+						panelCurColor.BackColor = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
+					}
+					else
+					{
+						panelCurColor.BackColor = N64Colors.Value5551ToColor(ColorList[(16*PaletteNumber) + cbColorEntries.SelectedIndex]);
+					}
+					break;
+
+				case CiEditorModes.Ci8:
+					{
+						panelCurColor.BackColor = N64Colors.Value5551ToColor(ColorList[cbColorEntries.SelectedIndex]);
+					}
+					break;
+			}
+		}
+
+		private int GetColorNumber()
+		{
+			int colorNum = 0;
+			switch (CurEditMode)
+			{
+				case CiEditorModes.Ci4:
+					{
+						if (cbPalettes.SelectedIndex <= 0)
+						{
+							colorNum = cbColorEntries.SelectedIndex;
+						}
+						else
+						{
+							colorNum = (cbColorEntries.SelectedIndex) + (cbPalettes.SelectedIndex * 16);
+						}
+					}
+					break;
+				case CiEditorModes.Ci8:
+					{
+						colorNum = cbColorEntries.SelectedIndex;
+					}
+					break;
+			}
+			return colorNum;
+		}
+
+		/// <summary>
+		/// Selected a new palette
+		/// </summary>
+		private void cbPalettes_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			if (cbPalettes.SelectedIndex < 0)
+			{
+				return;
+			}
+			PaletteNumber = cbPalettes.SelectedIndex;
+
+			ChangingColors = true;
+
+			UpdateCurColorSwatch();
+			UpdateColorValues(N64Colors.Value5551ToColor(ColorList[GetColorNumber()]));
+
+			ChangingColors = false;
 		}
 
 		/// <summary>
@@ -311,14 +394,9 @@ namespace VPWStudio.Editors
 
 			ChangingColors = true;
 
-			int colorNum = cbColorEntries.SelectedIndex;
-			Color converted = N64Colors.Value5551ToColor(ColorList[colorNum]);
 			UpdateCurColorSwatch();
-			nudRed.Value = converted.R / 8;
-			nudGreen.Value = converted.G / 8;
-			nudBlue.Value = converted.B / 8;
-			cbTransparent.Checked = (converted.A == 0);
-
+			UpdateColorValues(N64Colors.Value5551ToColor(ColorList[GetColorNumber()]));
+			
 			ChangingColors = false;
 		}
 
