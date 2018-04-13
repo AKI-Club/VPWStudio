@@ -360,6 +360,10 @@ namespace VPWStudio
 			return result;
 		}
 
+		/// <summary>
+		/// Get a list of all entries whose name starts with "%SOUND".
+		/// </summary>
+		/// <returns>List of all LocationFileEntry whose comment starts with "%SOUND".</returns>
 		public List<LocationFileEntry> GetSoundEntries()
 		{
 			List<LocationFileEntry> soundEntries = new List<LocationFileEntry>();
