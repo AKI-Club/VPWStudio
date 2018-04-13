@@ -1079,7 +1079,7 @@ namespace VPWStudio
 				String.Format("[{0}] Beginning build process for '{1}'",
 					startTime.ToString(),
 					Program.CurrentProject.Settings.ProjectName
-				)
+				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
 			);
 
 			Program.BuildRom();
@@ -1090,7 +1090,7 @@ namespace VPWStudio
 					DateTime.Now.ToString(),
 					Program.CurrentProject.Settings.OutputRomPath,
 					buildTimeTaken.ToString(@"mm\:ss\.fffff")
-				)
+				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
 			);
 			BuildLogForm.BuildFinished = true;
 		}
@@ -1179,6 +1179,7 @@ namespace VPWStudio
 			{
 				Properties.Settings.Default.EmulatorPath = ProgOptionsDialog.EmulatorPath;
 				Properties.Settings.Default.EmulatorArguments = ProgOptionsDialog.EmulatorArgs;
+				Properties.Settings.Default.BuildLogVerbosity = ProgOptionsDialog.BuildLogVerbosity;
 				Properties.Settings.Default.Save();
 			}
 		}
