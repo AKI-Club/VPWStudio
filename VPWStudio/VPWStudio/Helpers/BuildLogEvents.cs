@@ -44,14 +44,9 @@ namespace VPWStudio
 		public enum BuildLogVerbosity
 		{
 			/// <summary>
-			/// Say NOTHING.
-			/// </summary>
-			Quiet = 0,
-
-			/// <summary>
 			/// Only "required" items
 			/// </summary>
-			Minimal,
+			Minimal = 0,
 
 			/// <summary>
 			/// Default logging level.
