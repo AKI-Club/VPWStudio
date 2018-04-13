@@ -46,5 +46,17 @@ namespace VPWStudio.Properties {
                 this["EmulatorArguments"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int BuildLogVerbosity {
+            get {
+                return ((int)(this["BuildLogVerbosity"]));
+            }
+            set {
+                this["BuildLogVerbosity"] = value;
+            }
+        }
     }
 }

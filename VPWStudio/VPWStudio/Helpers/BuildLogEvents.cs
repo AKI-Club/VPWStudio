@@ -38,6 +38,37 @@ namespace VPWStudio
 	/// </summary>
 	public class BuildLogEventPublisher
 	{
+		/// <summary>
+		/// Values for possible Build Log verbosity.
+		/// </summary>
+		public enum BuildLogVerbosity
+		{
+			/// <summary>
+			/// Say NOTHING.
+			/// </summary>
+			Quiet = 0,
+
+			/// <summary>
+			/// Only "required" items
+			/// </summary>
+			Minimal,
+
+			/// <summary>
+			/// Default logging level.
+			/// </summary>
+			Normal,
+
+			/// <summary>
+			/// Show most everything.
+			/// </summary>
+			Detailed,
+
+			/// <summary>
+			/// Show me EVERYTHING.
+			/// </summary>
+			Diagnostic
+		}
+
 		public event EventHandler<BuildLogEventArgs> RaiseBuildLogEvent;
 
 		/// <summary>
@@ -53,9 +84,13 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="s">Message to add to the log.</param>
 		/// <param name="n">Add newline at the end of message? Defaults to true.</param>
-		public void AddLine(string s, bool n = true)
+		/// <param name="vl">Minimum level of verbosity to show this line.</param>
+		public void AddLine(string s, bool n = true, BuildLogVerbosity vl = BuildLogVerbosity.Normal)
 		{
-			OnRaiseBuildLogEvent(new BuildLogEventArgs(s, n));
+			if ((BuildLogVerbosity)Properties.Settings.Default.BuildLogVerbosity >= vl)
+			{
+				OnRaiseBuildLogEvent(new BuildLogEventArgs(s, n));
+			}
 		}
 
 		/// <summary>
