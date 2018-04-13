@@ -59,6 +59,7 @@ namespace VPWStudio
 				SpecificGame.WorldTour_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5846, 8) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F100, 176) },
@@ -74,6 +75,7 @@ namespace VPWStudio
 				SpecificGame.WorldTour_NTSC_U_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5846, 8) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F170, 176) },
@@ -89,6 +91,7 @@ namespace VPWStudio
 				SpecificGame.WorldTour_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5826, 8) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
@@ -104,6 +107,7 @@ namespace VPWStudio
 				SpecificGame.VPW64_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5966, 8) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
@@ -128,7 +132,7 @@ namespace VPWStudio
 				SpecificGame.Revenge_NTSC_U,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x40C8, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x40CA, 4) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
@@ -144,7 +148,7 @@ namespace VPWStudio
 				SpecificGame.Revenge_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x3FE8, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x3FEA, 4) },
 
 					// data defs
 					{ "StableDefs", new DefaultLocationDataEntry(0x38548, 104) },
@@ -160,7 +164,7 @@ namespace VPWStudio
 				SpecificGame.WM2K_NTSC_U,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48E8, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48EA, 4) },
 
 					// data defs
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
@@ -174,7 +178,7 @@ namespace VPWStudio
 				SpecificGame.WM2K_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x4788, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x478A, 4) },
 
 					// data defs
 					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
@@ -188,7 +192,7 @@ namespace VPWStudio
 				SpecificGame.WM2K_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48E8, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48EA, 4) },
 
 					// data defs
 					// todo: StableDefs
@@ -202,7 +206,7 @@ namespace VPWStudio
 				SpecificGame.VPW2_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48DA, 4) }, // ok for new version
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48DA, 4) },
 
 					// data defs
 
@@ -215,7 +219,7 @@ namespace VPWStudio
 				SpecificGame.NoMercy_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DC, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
@@ -229,7 +233,7 @@ namespace VPWStudio
 				SpecificGame.NoMercy_NTSC_U_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DC, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x465B8, 0) },
@@ -243,7 +247,7 @@ namespace VPWStudio
 				SpecificGame.NoMercy_PAL_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DC, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
@@ -258,7 +262,7 @@ namespace VPWStudio
 				SpecificGame.NoMercy_PAL_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
-					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DC, 8) },
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x464B8, 0) },
