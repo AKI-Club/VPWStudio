@@ -812,6 +812,14 @@ namespace VPWStudio
 
 				#region Audio Stuff
 				// and then deal with all the audio junk, which is different per-game...
+
+				// xxx: temporary
+				/*
+				foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
+				{
+					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
+				}
+				*/
 				#endregion
 			}
 
@@ -831,6 +839,12 @@ namespace VPWStudio
 
 				// [Audio Stuff]
 				// todo: how in ze hell...
+				/*
+				foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
+				{
+					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
+				}
+				*/
 			}
 
 			// [Audio Stuff]
