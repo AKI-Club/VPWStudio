@@ -484,7 +484,7 @@ namespace VPWStudio
 				outRomData[0x20 + i] = nameBytes[i];
 			}
 
-			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName));
+			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			BuildLogPub.AddLine();
 			#endregion
 
@@ -634,7 +634,7 @@ namespace VPWStudio
 						continue;
 					}
 
-					BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath));
+					BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 					BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}",
 						fte.FileType, fte.IsEncoded, fte.ReplaceEncoding));
 
@@ -649,16 +649,14 @@ namespace VPWStudio
 						oldFileSize = start - end;
 					}
 
-					/*
 					BuildLogPub.AddLine(String.Format("old location {0:X} ({1:X})",
 						CurrentProject.ProjectFileTable.Entries[i].Location,
 						CurrentProject.ProjectFileTable.Entries[i].Location + CurrentProject.ProjectFileTable.FirstFile
-					));
+					), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 					BuildLogPub.AddLine(String.Format("new location {0:X} ({1:X})",
 						buildFileTable.Entries[i].Location,
 						buildFileTable.Entries[i].Location + buildFileTable.FirstFile
-					));
-					*/
+					), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 
 					// 1) use file extension to determine action
 					outData = null;
@@ -703,7 +701,7 @@ namespace VPWStudio
 					// if we were unable to get output data, then there's no point in continuing.
 					if (outData == null)
 					{
-						BuildLogPub.AddLine("Unable to load replacement file data for this entry. Skipping.");
+						BuildLogPub.AddLine("Unable to load replacement file data for this entry. Skipping.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 						continue;
 					}
 
@@ -774,6 +772,7 @@ namespace VPWStudio
 			BuildLogPub.AddLine(String.Format("TotalDifference final: {0}", totalDifference), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
+			BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 
 			// rewrite filetable
 			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
