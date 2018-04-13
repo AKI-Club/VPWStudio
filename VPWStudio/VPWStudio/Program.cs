@@ -793,33 +793,12 @@ namespace VPWStudio
 				// try getting addresses from the Location File.
 
 				#region SetupFiletable
-				// try getting single entry version
-				LocationFileEntry ftLoc1 = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["SetupFileTable_FtLocation"]);
-				LocationFileEntry ftLoc2 = null;
-
-				if (ftLoc1 == null)
+				LocationFileEntry ftLoc = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["SetupFileTable_FtLocation"]);
+				if (ftLoc != null)
 				{
-					// if not, try getting the two entry version.
-					ftLoc1 = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["SetupFileTable_FtLoc1"]);
-					ftLoc2 = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["SetupFileTable_FtLoc2"]);
-				}
-
-				// ftLoc1 should be filled by now.
-				if (ftLoc1 != null)
-				{
+					// use %SETUPFT_FTLOCATION
 					FoundFileTableLocValues = true;
-
-					if (ftLoc2 != null)
-					{
-						// dealing with two locations
-						FixAddresses(outRomData, (int)(ftLoc1.Address + 2), (int)(ftLoc2.Address + 2), totalDifference);
-					}
-					else
-					{
-						// change %SETUPFT_FTLOCATION (offset+2, offset+6)
-						//FixAddresses(outRomData, (int)(ftLoc1.Address + 2), (int)(ftLoc1.Address + 6), totalDifference);
-						FixAddresses(outRomData, (int)(ftLoc1.Address), (int)(ftLoc1.Address + ftLoc1.Length), totalDifference);
-					}
+					FixAddresses(outRomData, (int)(ftLoc.Address), (int)(ftLoc.Address + ftLoc.Length), totalDifference);
 				}
 				#endregion
 
@@ -841,9 +820,8 @@ namespace VPWStudio
 			{
 				// [SetupFiletable]
 				// fix filetable location
-				// xxx: does not work for world tour or vpw64!
-				int baseAddr = (int)DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["SetupFT_FTLocation"].Offset;
-				FixAddresses(outRomData, baseAddr+2, baseAddr+6, totalDifference);
+				DefaultGameData.DefaultLocationDataEntry dlde = DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["SetupFT_FTLocation"];
+				FixAddresses(outRomData, (int)dlde.Offset, (int)(dlde.Offset + dlde.Length), totalDifference);
 
 				// [GetFileLocation]
 				// todo: we don't currently support adding/removing entries from the filetable.
