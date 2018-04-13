@@ -788,6 +788,8 @@ namespace VPWStudio
 
 			#region Update Game Code
 			bool FoundFileTableLocValues = false;
+			bool HasSoundLocations = false;
+
 			if (CurLocationFile != null)
 			{
 				// try getting addresses from the Location File.
@@ -812,14 +814,19 @@ namespace VPWStudio
 
 				#region Audio Stuff
 				// and then deal with all the audio junk, which is different per-game...
-
-				// xxx: temporary
-				/*
-				foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
+				List<LocationFileEntry> SoundEntries = CurLocationFile.GetSoundEntries();
+				if (SoundEntries.Count > 0)
 				{
-					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
+					foreach (LocationFileEntry lfe in SoundEntries)
+					{
+						FixAddresses(outRomData, (int)lfe.Address, (int)(lfe.Address + lfe.Length), totalDifference);
+					}
+					HasSoundLocations = true;
 				}
-				*/
+				else
+				{
+					HasSoundLocations = false;
+				}
 				#endregion
 			}
 
@@ -836,75 +843,18 @@ namespace VPWStudio
 
 				// [LoadFile]
 				// todo: we don't currently support adding/removing entries from the filetable.
+			}
 
+			// didn't find audio information from LocationFile; use hardcoded values.
+			if (!HasSoundLocations)
+			{
 				// [Audio Stuff]
-				// todo: how in ze hell...
-				/*
 				foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
 				{
 					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
 				}
-				*/
+				HasSoundLocations = true;
 			}
-
-			// [Audio Stuff]
-			// XXX HARDCODED FOR VPW2 - HARDCODED FOR VPW2 - WILL NOT WORK WITH OTHER GAMES
-			FixAddresses(outRomData, 0x432A, 0x432E, totalDifference); // sndtbl-1.wbk
-			FixAddresses(outRomData, 0x4336, 0x433A, totalDifference); // sndtbl-1.ptr
-
-			FixAddresses(outRomData, 0x4366, 0x436A, totalDifference); // sndtbl-2.wbk
-			FixAddresses(outRomData, 0x436E, 0x4372, totalDifference); // sndtbl-2.ptr
-
-			FixAddresses(outRomData, 0x439A, 0x439E, totalDifference); // sndtbl-2.ptr
-			FixAddresses(outRomData, 0x43A2, 0x43A6, totalDifference); // sndtbl-1.tbl
-
-			FixAddresses(outRomData, 0x43CE, 0x43D2, totalDifference); // sndtbl-3.wbk
-			FixAddresses(outRomData, 0x43D6, 0x43DA, totalDifference); // sndtbl-3.ptr
-
-			FixAddresses(outRomData, 0x4402, 0x4406, totalDifference); // sndtbl-3.ptr
-			FixAddresses(outRomData, 0x440A, 0x440E, totalDifference); // sndtbl-2.tbl
-
-			FixAddresses(outRomData, 0x447A, 0x447E, totalDifference); // load sndtbl-1.wbk
-			FixAddresses(outRomData, 0x44DE, 0x44E6, totalDifference); // load sndtbl-2.wbk
-			FixAddresses(outRomData, 0x4512, 0x451A, totalDifference); // load sndtbl-3.wbk
-
-			FixAddresses(outRomData, 0x17312, 0x17316, totalDifference); // sndtbl-4.wbk
-			FixAddresses(outRomData, 0x1731A, 0x1731E, totalDifference); // sndtbl-4.ptr
-
-			FixAddresses(outRomData, 0x1732E, 0x17332, totalDifference); // sndtbl-4.ptr
-			FixAddresses(outRomData, 0x17336, 0x1733A, totalDifference); // sndtbl-3.tbl
-
-			FixAddresses(outRomData, 0x173AE, 0x173B2, totalDifference); // sndtbl-5.wbk
-			FixAddresses(outRomData, 0x173B6, 0x173BA, totalDifference); // sndtbl-5.ptr
-
-			FixAddresses(outRomData, 0x173CA, 0x173CE, totalDifference); // sndtbl-5.ptr
-			FixAddresses(outRomData, 0x173D2, 0x173D6, totalDifference); // sndtbl-4.tbl
-
-			FixAddresses(outRomData, 0x17466, 0x1746E, totalDifference); // load sndtbl-4.wbk
-			FixAddresses(outRomData, 0x174AE, 0x174B6, totalDifference); // load sndtbl-5.wbk
-
-			FixAddresses(outRomData, 0x17772, 0x17776, totalDifference); // sndtbl-6.wbk
-			FixAddresses(outRomData, 0x1777A, 0x1777E, totalDifference); // sndtbl-6.ptr
-
-			FixAddresses(outRomData, 0x177A6, 0x177AA, totalDifference); // sndtbl-6.ptr
-			FixAddresses(outRomData, 0x177AE, 0x177B2, totalDifference); // sndtbl-5.tbl
-
-			FixAddresses(outRomData, 0x177EE, 0x177F6, totalDifference); // load sndtbl-6.wbk
-
-			FixAddresses(outRomData, 0x179FA, 0x179FE, totalDifference); // sndtbl-7.wbk
-			FixAddresses(outRomData, 0x17A02, 0x17A06, totalDifference); // sndtbl-7.ptr
-
-			FixAddresses(outRomData, 0x17A22, 0x17A26, totalDifference); // sndtbl-7.ptr
-			FixAddresses(outRomData, 0x17A2A, 0x17A2E, totalDifference); // sndtbl-6.tbl
-
-			FixAddresses(outRomData, 0x17A46, 0x17A4A, totalDifference); // sndtbl-8.wbk
-			FixAddresses(outRomData, 0x17A4E, 0x17A52, totalDifference); // sndtbl-8.ptr
-
-			FixAddresses(outRomData, 0x17A6A, 0x17A6E, totalDifference); // sndtbl-8.ptr
-			FixAddresses(outRomData, 0x17A72, 0x17A76, totalDifference); // sndtbl-7.tbl
-
-			FixAddresses(outRomData, 0x17B7A, 0x17B82, totalDifference); // load sndtbl-8.wbk
-			FixAddresses(outRomData, 0x17B46, 0x17B4E, totalDifference); // load sndtbl-7.wbk
 			#endregion
 
 			// now put it all together in one big ROM.
