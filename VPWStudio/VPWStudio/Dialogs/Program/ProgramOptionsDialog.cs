@@ -17,6 +17,7 @@ namespace VPWStudio
 		/// </summary>
 		public string EmulatorPath;
 		public string EmulatorArgs;
+		public int BuildLogVerbosity;
 
 		public ProgramOptionsDialog()
 		{
@@ -27,6 +28,14 @@ namespace VPWStudio
 
 			tbEmuPath.Text = EmulatorPath;
 			tbEmulatorArguments.Text = EmulatorArgs;
+
+			cbBuildLogVerbosity.BeginUpdate();
+			foreach (int i in Enum.GetValues(typeof(BuildLogEventPublisher.BuildLogVerbosity)))
+			{
+				cbBuildLogVerbosity.Items.Add(((BuildLogEventPublisher.BuildLogVerbosity)i).ToString());
+			}
+			cbBuildLogVerbosity.EndUpdate();
+			cbBuildLogVerbosity.SelectedIndex = Properties.Settings.Default.BuildLogVerbosity;
 		}
 
 		private void buttonOK_Click(object sender, EventArgs e)
@@ -39,6 +48,7 @@ namespace VPWStudio
 			}
 			EmulatorPath = tbEmuPath.Text;
 			EmulatorArgs = tbEmulatorArguments.Text;
+			BuildLogVerbosity = cbBuildLogVerbosity.SelectedIndex;
 
 			DialogResult = DialogResult.OK;
 			Close();

@@ -30,7 +30,7 @@
 		{
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpEmuPath = new System.Windows.Forms.TableLayoutPanel();
 			this.labelEmuPath = new System.Windows.Forms.Label();
 			this.tbEmuPath = new System.Windows.Forms.TextBox();
 			this.buttonBrowse = new System.Windows.Forms.Button();
@@ -38,14 +38,18 @@
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbEmulatorArguments = new System.Windows.Forms.TextBox();
 			this.labelEmuArguments = new System.Windows.Forms.Label();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpBuildLogVerbosity = new System.Windows.Forms.TableLayoutPanel();
+			this.labelBuildLogVerbosity = new System.Windows.Forms.Label();
+			this.cbBuildLogVerbosity = new System.Windows.Forms.ComboBox();
+			this.tlpEmuPath.SuspendLayout();
 			this.gbEmuSettings.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			this.tlpBuildLogVerbosity.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(354, 118);
+			this.buttonOK.Location = new System.Drawing.Point(354, 152);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 2;
@@ -56,7 +60,7 @@
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(435, 118);
+			this.buttonCancel.Location = new System.Drawing.Point(435, 152);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 3;
@@ -64,21 +68,21 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// tableLayoutPanel1
+			// tlpEmuPath
 			// 
-			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.02469F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.97531F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-			this.tableLayoutPanel1.Controls.Add(this.labelEmuPath, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.tbEmuPath, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.buttonBrowse, 2, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(486, 35);
-			this.tableLayoutPanel1.TabIndex = 2;
+			this.tlpEmuPath.ColumnCount = 3;
+			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.02469F));
+			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.97531F));
+			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+			this.tlpEmuPath.Controls.Add(this.labelEmuPath, 0, 0);
+			this.tlpEmuPath.Controls.Add(this.tbEmuPath, 1, 0);
+			this.tlpEmuPath.Controls.Add(this.buttonBrowse, 2, 0);
+			this.tlpEmuPath.Location = new System.Drawing.Point(6, 19);
+			this.tlpEmuPath.Name = "tlpEmuPath";
+			this.tlpEmuPath.RowCount = 1;
+			this.tlpEmuPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpEmuPath.Size = new System.Drawing.Size(486, 35);
+			this.tlpEmuPath.TabIndex = 2;
 			// 
 			// labelEmuPath
 			// 
@@ -86,14 +90,14 @@
 			this.labelEmuPath.AutoSize = true;
 			this.labelEmuPath.Location = new System.Drawing.Point(3, 11);
 			this.labelEmuPath.Name = "labelEmuPath";
-			this.labelEmuPath.Size = new System.Drawing.Size(67, 13);
+			this.labelEmuPath.Size = new System.Drawing.Size(66, 13);
 			this.labelEmuPath.TabIndex = 0;
 			this.labelEmuPath.Text = "&Path";
 			// 
 			// tbEmuPath
 			// 
 			this.tbEmuPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEmuPath.Location = new System.Drawing.Point(76, 7);
+			this.tbEmuPath.Location = new System.Drawing.Point(75, 7);
 			this.tbEmuPath.Name = "tbEmuPath";
 			this.tbEmuPath.Size = new System.Drawing.Size(326, 20);
 			this.tbEmuPath.TabIndex = 0;
@@ -101,9 +105,9 @@
 			// buttonBrowse
 			// 
 			this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonBrowse.Location = new System.Drawing.Point(408, 6);
+			this.buttonBrowse.Location = new System.Drawing.Point(407, 6);
 			this.buttonBrowse.Name = "buttonBrowse";
-			this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
+			this.buttonBrowse.Size = new System.Drawing.Size(76, 23);
 			this.buttonBrowse.TabIndex = 1;
 			this.buttonBrowse.Text = "&Browse...";
 			this.buttonBrowse.UseVisualStyleBackColor = true;
@@ -112,10 +116,10 @@
 			// gbEmuSettings
 			// 
 			this.gbEmuSettings.Controls.Add(this.tableLayoutPanel2);
-			this.gbEmuSettings.Controls.Add(this.tableLayoutPanel1);
+			this.gbEmuSettings.Controls.Add(this.tlpEmuPath);
 			this.gbEmuSettings.Location = new System.Drawing.Point(12, 12);
 			this.gbEmuSettings.Name = "gbEmuSettings";
-			this.gbEmuSettings.Size = new System.Drawing.Size(498, 100);
+			this.gbEmuSettings.Size = new System.Drawing.Size(498, 102);
 			this.gbEmuSettings.TabIndex = 4;
 			this.gbEmuSettings.TabStop = false;
 			this.gbEmuSettings.Text = "Emulator Settings";
@@ -152,13 +156,48 @@
 			this.labelEmuArguments.TabIndex = 1;
 			this.labelEmuArguments.Text = "&Arguments";
 			// 
+			// tlpBuildLogVerbosity
+			// 
+			this.tlpBuildLogVerbosity.ColumnCount = 2;
+			this.tlpBuildLogVerbosity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpBuildLogVerbosity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpBuildLogVerbosity.Controls.Add(this.labelBuildLogVerbosity, 0, 0);
+			this.tlpBuildLogVerbosity.Controls.Add(this.cbBuildLogVerbosity, 1, 0);
+			this.tlpBuildLogVerbosity.Location = new System.Drawing.Point(12, 120);
+			this.tlpBuildLogVerbosity.Name = "tlpBuildLogVerbosity";
+			this.tlpBuildLogVerbosity.RowCount = 1;
+			this.tlpBuildLogVerbosity.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpBuildLogVerbosity.Size = new System.Drawing.Size(498, 26);
+			this.tlpBuildLogVerbosity.TabIndex = 5;
+			// 
+			// labelBuildLogVerbosity
+			// 
+			this.labelBuildLogVerbosity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelBuildLogVerbosity.AutoSize = true;
+			this.labelBuildLogVerbosity.Location = new System.Drawing.Point(3, 6);
+			this.labelBuildLogVerbosity.Name = "labelBuildLogVerbosity";
+			this.labelBuildLogVerbosity.Size = new System.Drawing.Size(118, 13);
+			this.labelBuildLogVerbosity.TabIndex = 0;
+			this.labelBuildLogVerbosity.Text = "Build Log &Verbosity";
+			// 
+			// cbBuildLogVerbosity
+			// 
+			this.cbBuildLogVerbosity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbBuildLogVerbosity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbBuildLogVerbosity.FormattingEnabled = true;
+			this.cbBuildLogVerbosity.Location = new System.Drawing.Point(127, 3);
+			this.cbBuildLogVerbosity.Name = "cbBuildLogVerbosity";
+			this.cbBuildLogVerbosity.Size = new System.Drawing.Size(368, 21);
+			this.cbBuildLogVerbosity.TabIndex = 1;
+			// 
 			// ProgramOptionsDialog
 			// 
 			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(522, 153);
+			this.ClientSize = new System.Drawing.Size(522, 187);
+			this.Controls.Add(this.tlpBuildLogVerbosity);
 			this.Controls.Add(this.gbEmuSettings);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
@@ -168,11 +207,13 @@
 			this.Name = "ProgramOptionsDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Program Options";
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
+			this.tlpEmuPath.ResumeLayout(false);
+			this.tlpEmuPath.PerformLayout();
 			this.gbEmuSettings.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			this.tlpBuildLogVerbosity.ResumeLayout(false);
+			this.tlpBuildLogVerbosity.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -181,7 +222,7 @@
 
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel tlpEmuPath;
 		private System.Windows.Forms.Label labelEmuPath;
 		private System.Windows.Forms.TextBox tbEmuPath;
 		private System.Windows.Forms.Button buttonBrowse;
@@ -189,5 +230,8 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.TextBox tbEmulatorArguments;
 		private System.Windows.Forms.Label labelEmuArguments;
+		private System.Windows.Forms.TableLayoutPanel tlpBuildLogVerbosity;
+		private System.Windows.Forms.Label labelBuildLogVerbosity;
+		private System.Windows.Forms.ComboBox cbBuildLogVerbosity;
 	}
 }
