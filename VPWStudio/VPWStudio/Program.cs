@@ -745,20 +745,18 @@ namespace VPWStudio
 					}
 					totalDifference += difference;
 
-					/*
 					if (difference > 0)
 					{
-						BuildLogPub.AddLine(String.Format("old file size {0} < new file size {1}", oldFileSize, finalOutData.Count));
+						BuildLogPub.AddLine(String.Format("old file size {0} < new file size {1}", oldFileSize, finalOutData.Count), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 					}
 					else if (difference < 0)
 					{
-						BuildLogPub.AddLine(String.Format("old file size {0} > new file size {1}", oldFileSize, finalOutData.Count));
+						BuildLogPub.AddLine(String.Format("old file size {0} > new file size {1}", oldFileSize, finalOutData.Count), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 					}
 					else
 					{
-						BuildLogPub.AddLine(String.Format("old file size {0} = new file size {1}", oldFileSize, finalOutData.Count));
+						BuildLogPub.AddLine(String.Format("old file size {0} = new file size {1}", oldFileSize, finalOutData.Count), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 					}
-					*/
 
 					// 5) offset the data
 					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
@@ -773,11 +771,9 @@ namespace VPWStudio
 			BinaryWriter finalTableBW = new BinaryWriter(finalTableMS);
 			buildFileTable.Write(finalTableBW);
 
-			/*
-			BuildLogPub.AddLine(String.Format("TotalDifference final: {0}", totalDifference));
-			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location));
-			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference));
-			*/
+			BuildLogPub.AddLine(String.Format("TotalDifference final: {0}", totalDifference), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
+			BuildLogPub.AddLine(String.Format("old ft location {0:X}", CurrentProject.ProjectFileTable.Location), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
+			BuildLogPub.AddLine(String.Format("new ft location {0:X}", buildFileTable.Location + totalDifference), true, BuildLogEventPublisher.BuildLogVerbosity.Detailed);
 
 			// rewrite filetable
 			outRomData.RemoveRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), (CurrentProject.ProjectFileTable.Entries.Count * 4));
@@ -862,7 +858,7 @@ namespace VPWStudio
 			// determine if the new output ROM is too big to run on console
 			if (outRomData.Count >= 0x4000000)
 			{
-				BuildLogPub.AddLine("WARNING: This ROM exceeds 512Mbits and *will not* run on console.");
+				BuildLogPub.AddLine("WARNING: This ROM exceeds 512Mbits and *will not* run on console.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
 
 			// write outRomData to Program.CurrentOutputROM.Data
