@@ -2,6 +2,19 @@ Notes on the filetable (and manipulating it)
 ============================================
 todo: find and add the sound table information for the other games.
 
+[LocationFile Notes]
+I have no idea how the naming will work, but I have an idea of how the offset
+and length values SHOULD work.
+
+Currently, I've been adding offsets to the base value.
+However, this breaks down if the next offset isn't at an expected location.
+
+The proposed solution is...
+* offset becomes first location to modify.
+* length becomes the number of bytes between the first location and the second.
+This SHOULD handle instances where the upper half of a number is set in one
+instruction and the other half in a non-adjacent instruction.
+
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.0]
 
@@ -915,48 +928,256 @@ Routine begins at
 
 Soundtable/Wavetable
 --------------------
-zoinkity has a list of z64 rom offsets
+Thanks to Zoinkity for these offsets.
 
-addr2hws(0x432A, 0x432E) ; sndtbl-1.wbk \ determine length
-addr2hws(0x4336, 0x433A) ; sndtbl-1.ptr / for ?
-addr2hws(0x4366, 0x436A) ; sndtbl-2.wbk \ determine length
-addr2hws(0x436E, 0x4372) ; sndtbl-2.ptr / for ?
-addr2hws(0x439A, 0x439E) ; sndtbl-2.ptr \ determine length
-addr2hws(0x43A2, 0x43A6) ; sndtbl-1.tbl / for ?
-addr2hws(0x43CE, 0x43D2) ; sndtbl-3.wbk \ determine length
-addr2hws(0x43D6, 0x43DA) ; sndtbl-3.ptr / for ?
-addr2hws(0x4402, 0x4406) ; sndtbl-3.ptr \ determine length
-addr2hws(0x440A, 0x440E) ; sndtbl-2.tbl / for ?
+sub_80003720 | Sound Table Setup - Banks 1,2,3
+----------------------------------------------
+IDA: 80003720
+Z64: 0x4320
+
+{
+addr2hws(0x432A, 0x432E) ; sndtbl-1.wbk
+"li $s0, 0x133CE10" ; sndtbl\sndtbl-1.wbk
+(3C 10 01 34) (26 10 CE 10)
+* IDA: 80003728
+* Z64: 0x4328
+
+addr2hws(0x4336, 0x433A) ; sndtbl-1.ptr
+"li $s1, 0x133AC80" ; sndtbl\sndtbl-1.ptr
+(3C 11 01 34) (26 31 AC 80)
+* IDA: 80003734
+* Z64: 0x4334
+}
+
+{
+addr2hws(0x4366, 0x436A) ; sndtbl-2.wbk
+"li $s0, 0x1454C20" ; sndtbl\sndtbl-2.wbk
+(3C 10 01 45) (26 10 4C 20)
+* IDA: 80003764
+* Z64: 0x4364
+
+addr2hws(0x436E, 0x4372) ; sndtbl-2.ptr
+"li $s1, 0x144FD30" ; sndtbl\sndtbl-2.ptr
+(3C 11 01 45) (26 31 FD 30)
+* IDA: 8000376C
+* Z64: 0x436C
+}
+
+{
+addr2hws(0x439A, 0x439E) ; sndtbl-2.ptr
+"li $s0, 0x144FD30" ; sndtbl\sndtbl-2.ptr
+(3C 10 01 45) (26 10 FD 30)
+* IDA: 80003798
+* Z64: 0x4398
+
+addr2hws(0x43A2, 0x43A6) ; sndtbl-1.tbl
+"li $s1, 0x144E0A0" ; sndtbl\sndtbl-1.tbl
+(3C 11 01 45) (26 31 E0 A0)
+* IDA: 800037A0
+* Z64: 0x43A0
+}
+
+{
+addr2hws(0x43CE, 0x43D2) ; sndtbl-3.wbk
+"li $s0, 0x156F2E0" ; sndtbl\sndtbl-3.wbk
+(3C 10 01 57) (26 10 F2 E0)
+* IDA: 800037CC
+* Z64: 0x43CC
+
+addr2hws(0x43D6, 0x43DA) ; sndtbl-3.ptr
+"li $s1, 0x156EA30" ; sndtbl\sndtbl-3.ptr
+(3C 11 01 57) (26 31 EA 30)
+* IDA: 800037D4
+* Z64: 0x43D4
+}
+
+{
+addr2hws(0x4402, 0x4406) ; sndtbl-3.ptr
+"li $s0, 0x156EA30" ; sndtbl\sndtbl-3.ptr
+(3C 10 01 57) (26 10 EA 30)
+* IDA: 80003800
+* Z64: 0x4400
+
+addr2hws(0x440A, 0x440E) ; sndtbl-2.tbl
+"li $s1, 0x156E7D0" ; sndtbl\sndtbl-2.tbl
+(3C 11 01 57) (26 31 E7 D0)
+* IDA: 80003808
+* Z64: 0x4408
+}
+
+{
 addr2hws(0x447A, 0x447E) ; sndtbl-1.wbk (load)
+"li $v0, 0x133CE10" ; sndtbl\sndtbl-1.wbk
+(3C 02 01 34) (24 42 CE 10)
+* IDA: 80003878
+* Z64: 0x4478
+
 addr2hws(0x44DE, 0x44E6) ; sndtbl-2.wbk (load)
+"li $a1, 0x1454C20" ; sndtbl\sndtbl-2.wbk
+(3C 05 01 45) ... (24 A5 4C 20)
+* IDA: 800038DC, 800038E4
+* Z64: 0x44DC, 0x44E4
+
 addr2hws(0x4512, 0x451A) ; sndtbl-3.wbk (load)
+"li $a1, 0x156F2E0" ; sndtbl\sndtbl-3.wbk
+(3C 05 01 57) ... (24 A5 F2 E0)
+* IDA: 80003910, 80003918
+* Z64: 0x4510, 0x4518
+}
 
-addr2hws(0x17312,0x17316) ; sndtbl-4.wbk \ determine length
-addr2hws(0x1731A,0x1731E) ; sndtbl-4.ptr / for ?
-addr2hws(0x1732E,0x17332) ; sndtbl-4.ptr \ determine length
-addr2hws(0x17336,0x1733A) ; sndtbl-3.tbl / for ?
-addr2hws(0x173AE,0x173B2) ; sndtbl-5.wbk \ determine length
-addr2hws(0x173B6,0x173BA) ; sndtbl-5.ptr / for ?
-addr2hws(0x173CA,0x173CE) ; sndtbl-5.ptr \ determine length
-addr2hws(0x173D2,0x173D6) ; sndtbl-4.tbl / for ?
+sub_800166CC | Sound Table Setup - Banks 4,5
+--------------------------------------------
+IDA: 800166CC
+Z64: 0x172CC
+
+{
+addr2hws(0x17312,0x17316) ; sndtbl-4.wbk
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x1731A,0x1731E) ; sndtbl-4.ptr
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x1732E,0x17332) ; sndtbl-4.ptr()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17336,0x1733A) ; sndtbl-3.tbl()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x173AE,0x173B2) ; sndtbl-5.wbk
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x173B6,0x173BA) ; sndtbl-5.ptr
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x173CA,0x173CE) ; sndtbl-5.ptr
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x173D2,0x173D6) ; sndtbl-4.tbl
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
 addr2hws(0x17466,0x1746E) ; sndtbl-4.wbk (load)
-addr2hws(0x174AE,0x174B6) ; sndtbl-5.wbk (load)
-addr2hws(0x17772,0x17776) ; sndtbl-6.wbk \ determine length
-addr2hws(0x1777A,0x1777E) ; sndtbl-6.ptr / for ?
-addr2hws(0x177A6,0x177AA) ; sndtbl-6.ptr \ determine length
-addr2hws(0x177AE,0x177B2) ; sndtbl-5.tbl / for ?
-addr2hws(0x177EE,0x177F6) ; sndtbl-6.wbk (load)
-addr2hws(0x179FA,0x179FE) ; sndtbl-7.wbk \ determine length
-addr2hws(0x17A02,0x17A06) ; sndtbl-7.ptr / for ?
-addr2hws(0x17A22,0x17A26) ; sndtbl-7.ptr \ determine length
-addr2hws(0x17A2A,0x17A2E) ; sndtbl-6.tbl / for ?
-addr2hws(0x17A46,0x17A4A) ; sndtbl-8.wbk \ determine length
-addr2hws(0x17A4E,0x17A52) ; sndtbl-8.ptr / for ?
-addr2hws(0x17A6A,0x17A6E) ; sndtbl-8.ptr \ determine length
-addr2hws(0x17A72,0x17A76) ; sndtbl-7.tbl / for ?
-addr2hws(0x17B7A,0x17B82) ; sndtbl-8.wbk (load)
-addr2hws(0x17B46,0x17B4E) ; sndtbl-7.wbk (load)
+()
+* IDA: 8000
+* Z64: 0x
 
+addr2hws(0x174AE,0x174B6) ; sndtbl-5.wbk (load)
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x17772,0x17776) ; sndtbl-6.wbk
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x1777A,0x1777E) ; sndtbl-6.ptr
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x177A6,0x177AA) ; sndtbl-6.ptr
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x177AE,0x177B2) ; sndtbl-5.tbl
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x177EE,0x177F6) ; sndtbl-6.wbk (load)
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x179FA,0x179FE) ; sndtbl-7.wbk \ determine length
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17A02,0x17A06) ; sndtbl-7.ptr / for ?
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x17A22,0x17A26) ; sndtbl-7.ptr \ determine length
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17A2A,0x17A2E) ; sndtbl-6.tbl / for ?
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x17A46,0x17A4A) ; sndtbl-8.wbk \ determine length
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17A4E,0x17A52) ; sndtbl-8.ptr / for ?
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x17A6A,0x17A6E) ; sndtbl-8.ptr \ determine length
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17A72,0x17A76) ; sndtbl-7.tbl / for ?
+()
+* IDA: 8000
+* Z64: 0x
+}
+
+{
+addr2hws(0x17B7A,0x17B82) ; sndtbl-8.wbk (load)
+()
+* IDA: 8000
+* Z64: 0x
+
+addr2hws(0x17B46,0x17B4E) ; sndtbl-7.wbk (load)
+()
+* IDA: 8000
+* Z64: 0x
+}
 Others
 ------
 There's a floating 0x00152DF0 at...
@@ -980,7 +1201,7 @@ Routine begins at
 "li $a0, 0x16C3238" ; location of filetable
 (3C 04 01 6C 24 84 32 38)
 * IDA: 80003ADC
-* Z64: 0x446DC
+* Z64: 0x46DC
 
 "lui $a2, 1" ; filetable size, part 1
 (3C 06 00 01)

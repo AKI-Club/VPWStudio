@@ -154,6 +154,8 @@ namespace VPWStudio
 			#endregion
 
 			#region CodeChange
+
+			#region SetupFileTable
 			// SetupFileTable
 			{ "SetupFileTable_FtSize1", "%SETUPFT_FTSIZE1" },
 
@@ -171,18 +173,23 @@ namespace VPWStudio
 			{ "SetupFileTable_FtSize2Minus1", "%SETUPFT_FTSIZE2_MINUS1" },
 			{ "SetupFileTable_FtBegins", "%SETUPFT_FTBEGINS" },
 			{ "SetupFileTable_FtMaxFilesMinus1", "%SETUPFT_MAXFILES_MINUS1" },
+			#endregion
 
+			#region GetFileLoc
 			// GetFileLoc
 			{ "GetFileLoc_MaxFiles", "%GETFILELOC_MAXFILES" },
 			{ "GetFileLoc_FtBegins", "%GETFILELOC_FTBEGINS" },
+			#endregion
 
+			#region LoadFile
 			// LoadFile
 			{ "LoadFile_MaxFiles", "%LOADFILE_MAXFILES" },
 			{ "LoadFile_FtBegins", "%LOADFILE_FTBEGINS" },
-
-			// Sound-related (VPW2)
-
 			#endregion
+
+			// todo: sound-related... ugh
+
+			#endregion // CodeChange
 		};
 		#endregion
 
