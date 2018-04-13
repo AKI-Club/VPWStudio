@@ -158,14 +158,6 @@ namespace VPWStudio
 			#region SetupFileTable
 			// SetupFileTable
 			{ "SetupFileTable_FtSize1", "%SETUPFT_FTSIZE1" },
-
-			// Due to differences in how the filetable address is loaded,
-			// we need to differentiate the FileTable location entry.
-
-			// only used with VPW64 and earlier:
-			{ "SetupFileTable_FtLoc1", "%SETUPFT_FTLOC1" },
-			{ "SetupFileTable_FtLoc2", "%SETUPFT_FTLOC2" },
-			// only used with WCW/nWo Revenge and later:
 			{ "SetupFileTable_FtLocation", "%SETUPFT_FTLOCATION" },
 
 			// todo: filetable size is larger in No Mercy
