@@ -9,7 +9,6 @@ namespace VPWStudio
 {
 	public class DefaultGameData
 	{
-		#region Offsets
 		/// <summary>
 		/// An entry in DefaultLocationData.
 		/// </summary>
@@ -31,6 +30,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region Primary Offsets
 		/// <summary>
 		/// Default location data.
 		/// </summary>
@@ -290,6 +290,133 @@ namespace VPWStudio
 				return null;
 			}
 		}
+		#endregion
+
+		#region Sound Offsets
+		public static Dictionary<SpecificGame, DefaultLocationData> SoundOffsets = new Dictionary<SpecificGame, DefaultLocationData>()
+		{
+			{
+				SpecificGame.WorldTour_NTSC_U_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.WorldTour_NTSC_U_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.WorldTour_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.VPW64_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.Revenge_NTSC_U,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.Revenge_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.WM2K_NTSC_U,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.WM2K_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.WM2K_PAL,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.VPW2_NTSC_J,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+					{ "Sound01", new DefaultLocationDataEntry(0x432A, 4) },  // (0x432A,  0x432E); sndtbl-1.wbk
+					{ "Sound02", new DefaultLocationDataEntry(0x4336, 4) },  // (0x4336,  0x433A); sndtbl-1.ptr
+					{ "Sound03", new DefaultLocationDataEntry(0x4366, 4) },  // (0x4366,  0x436A); sndtbl-2.wbk
+					{ "Sound04", new DefaultLocationDataEntry(0x436E, 4) },  // (0x436E,  0x4372); sndtbl-2.ptr
+					{ "Sound05", new DefaultLocationDataEntry(0x439A, 4) },  // (0x439A,  0x439E); sndtbl-2.ptr
+					{ "Sound06", new DefaultLocationDataEntry(0x43A2, 4) },  // (0x43A2,  0x43A6); sndtbl-1.tbl
+					{ "Sound07", new DefaultLocationDataEntry(0x43CE, 4) },  // (0x43CE,  0x43D2); sndtbl-3.wbk
+					{ "Sound08", new DefaultLocationDataEntry(0x43D6, 4) },  // (0x43D6,  0x43DA); sndtbl-3.ptr
+					{ "Sound09", new DefaultLocationDataEntry(0x4402, 4) },  // (0x4402,  0x4406); sndtbl-3.ptr
+					{ "Sound10", new DefaultLocationDataEntry(0x440A, 4) },  // (0x440A,  0x440E); sndtbl-2.tbl
+					{ "Sound11", new DefaultLocationDataEntry(0x447A, 4) },  // (0x447A,  0x447E); load sndtbl-1.wbk
+					{ "Sound12", new DefaultLocationDataEntry(0x44DE, 8) },  // (0x44DE,  0x44E6); load sndtbl-2.wbk
+					{ "Sound13", new DefaultLocationDataEntry(0x4512, 8) },  // (0x4512,  0x451A); load sndtbl-3.wbk
+					{ "Sound14", new DefaultLocationDataEntry(0x17312, 4) }, // (0x17312, 0x17316); sndtbl-4.wbk
+					{ "Sound15", new DefaultLocationDataEntry(0x1731A, 4) }, // (0x1731A, 0x1731E); sndtbl-4.ptr
+					{ "Sound16", new DefaultLocationDataEntry(0x1732E, 4) }, // (0x1732E, 0x17332); sndtbl-4.ptr
+					{ "Sound17", new DefaultLocationDataEntry(0x17336, 4) }, // (0x17336, 0x1733A); sndtbl-3.tbl
+					{ "Sound18", new DefaultLocationDataEntry(0x173AE, 4) }, // (0x173AE, 0x173B2); sndtbl-5.wbk
+					{ "Sound19", new DefaultLocationDataEntry(0x173B6, 4) }, // (0x173B6, 0x173BA); sndtbl-5.ptr
+					{ "Sound20", new DefaultLocationDataEntry(0x173CA, 4) }, // (0x173CA, 0x173CE); sndtbl-5.ptr
+					{ "Sound21", new DefaultLocationDataEntry(0x173D2, 4) }, // (0x173D2, 0x173D6); sndtbl-4.tbl
+					{ "Sound22", new DefaultLocationDataEntry(0x17466, 8) }, // (0x17466, 0x1746E); load sndtbl-4.wbk
+					{ "Sound23", new DefaultLocationDataEntry(0x174AE, 8) }, // (0x174AE, 0x174B6); load sndtbl-5.wbk
+					{ "Sound24", new DefaultLocationDataEntry(0x17772, 4) }, // (0x17772, 0x17776); sndtbl-6.wbk
+					{ "Sound25", new DefaultLocationDataEntry(0x1777A, 4) }, // (0x1777A, 0x1777E); sndtbl-6.ptr
+					{ "Sound26", new DefaultLocationDataEntry(0x177A6, 4) }, // (0x177A6, 0x177AA); sndtbl-6.ptr
+					{ "Sound27", new DefaultLocationDataEntry(0x177AE, 4) }, // (0x177AE, 0x177B2); sndtbl-5.tbl
+					{ "Sound28", new DefaultLocationDataEntry(0x177EE, 8) }, // (0x177EE, 0x177F6); load sndtbl-6.wbk
+					{ "Sound29", new DefaultLocationDataEntry(0x179FA, 4) }, // (0x179FA, 0x179FE); sndtbl-7.wbk
+					{ "Sound30", new DefaultLocationDataEntry(0x17A02, 4) }, // (0x17A02, 0x17A06); sndtbl-7.ptr
+					{ "Sound31", new DefaultLocationDataEntry(0x17A22, 4) }, // (0x17A22, 0x17A26); sndtbl-7.ptr
+					{ "Sound32", new DefaultLocationDataEntry(0x17A2A, 4) }, // (0x17A2A, 0x17A2E); sndtbl-6.tbl
+					{ "Sound33", new DefaultLocationDataEntry(0x17A46, 4) }, // (0x17A46, 0x17A4A); sndtbl-8.wbk
+					{ "Sound34", new DefaultLocationDataEntry(0x17A4E, 4) }, // (0x17A4E, 0x17A52); sndtbl-8.ptr
+					{ "Sound35", new DefaultLocationDataEntry(0x17A6A, 4) }, // (0x17A6A, 0x17A6E); sndtbl-8.ptr
+					{ "Sound36", new DefaultLocationDataEntry(0x17A72, 4) }, // (0x17A72, 0x17A76); sndtbl-7.tbl
+					{ "Sound37", new DefaultLocationDataEntry(0x17B7A, 8) }, // (0x17B7A, 0x17B82); load sndtbl-8.wbk
+					{ "Sound38", new DefaultLocationDataEntry(0x17B46, 8) }, // (0x17B46, 0x17B4E); load sndtbl-7.wbk
+				})
+			},
+			{
+				SpecificGame.NoMercy_NTSC_U_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.NoMercy_NTSC_U_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.NoMercy_PAL_10,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			},
+			{
+				SpecificGame.NoMercy_PAL_11,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
+
+				})
+			}
+		};
 		#endregion
 
 		// rethink how you want to handle the rest of this.
