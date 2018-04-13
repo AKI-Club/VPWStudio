@@ -75,6 +75,18 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Raise a BuildLogEvent with a newline for the specified BuildLogVerbosity.
+		/// </summary>
+		/// <param name="vl"Minimum level of verbosity to show this line.</param>
+		public void AddLine(BuildLogVerbosity vl)
+		{
+			if ((BuildLogVerbosity)Properties.Settings.Default.BuildLogVerbosity >= vl)
+			{
+				OnRaiseBuildLogEvent(new BuildLogEventArgs(Environment.NewLine, false));
+			}
+		}
+
+		/// <summary>
 		/// Raise a BuildLogEvent with the specified message.
 		/// </summary>
 		/// <param name="s">Message to add to the log.</param>
