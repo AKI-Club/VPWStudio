@@ -42,7 +42,7 @@ Routine begins at
 
 When combined...
 * Zoinkity would change: { 0x5846, 0x5846+1 }, { 0x584E, 0x584E+1 }
-* freem offsets: { +2, +3 } | { +2, +3 }
+* freem offset (new): {0x5846, 0x584E} (length = 8)
 ---------------
 
 "li $a2, 0x55EC" ; filetable size
@@ -157,7 +157,7 @@ Routine begins at
 
 When combined...
 * Zoinkity would change: { 0x5846, 0x5846+1 }, { 0x584E, 0x584E+1 }
-* freem offsets: { +2, +3 } | { +2, +3 }
+* freem offset (new): {0x5846, 0x584E} (length = 8)
 ---------------
 
 "li $a2, 0x55EC" ; filetable size
@@ -272,7 +272,7 @@ Routine begins at
 
 When combined...
 * Zoinkity would change: { 0x5826, 0x5826+1 }, { 0x582E, 0x582E+1 }
-* freem offsets: { +2, +3 } | { +2, +3 }
+* freem offset (new): {0x5826, 0x582E} (length = 8)
 ---------------
 
 "li $a2, 0x55EC" ; filetable size
@@ -363,7 +363,7 @@ Routine begins at
 
 When combined...
 * Zoinkity would change: { 0x5966, 0x5966+1 }, { 0x596E, 0x596E+1 }
-* freem offsets: { +2, +3 } | { +2, +3 }
+* freem offset (new): {0x5966, 0x596E} (length = 8)
 ---------------
 
 "li $a2, 0x9238" ; filetable size
@@ -469,7 +469,7 @@ Routine begins at
 * IDA: 800034C8
 * Z64: 0x40C8
 * Zoinkity would change: { 0x40CA, 0x40CA+1 }, { 0x40CE, 0x40CE+1 }
-* freem offsets: { +2, +3 }, { +6, +7 }
+* freem offset (new): {0x40CA, 0x40CE} (length = 4)
 
 "li $a2, 0x77A8" ; size of filetable
 (24 06 77 A8)
@@ -566,7 +566,7 @@ Routine begins at
 * IDA: 800033E8
 * Z64: 0x3FE8
 * Zoinkity would change: { 0x3FEA, 0x3FEA+1 }, { 0x3FEE, 0x3FEE+1 }
-* freem offsets: { +2, +3 }, { +6, +7 }
+* freem offset (new): {0x3FEA, 0x3FEE} (length = 4)
 
 "li $a2, 0x77A8" ; filetable size
 (24 06 77 A8)
@@ -648,6 +648,7 @@ Routine begins at
 (3C 04 01 17 24 84 78 BE)
 * IDA: 80003CE8
 * Z64: 0x48E8
+* freem offset (new): {0x48EA, 0x48EE} (length = 4)
 
 "li $a2, 0xA120" ; size of filetable
 (34 06 A1 20)
@@ -723,6 +724,7 @@ Routine begins at
 (3C 04 01 17 24 84 F3 C2)
 * IDA: 80003B88
 * Z64: 0x4788
+* freem offset (new): {0x478A, 0x478E} (length = 4)
 
 "li $a2, 0xA208" ; size of filetable
 (34 06 A2 08)
@@ -791,6 +793,7 @@ Routine begins at
 (3C 04 01 17 24 84 78 DE)
 * IDA: 80003CE8
 * Z64: 0x48E8
+* freem offset (new): {0x48EA, 0x48EE} (length = 4)
 
 "li $a2, 0xA120" ; filetable size
 (34 06 A1 20)
@@ -861,14 +864,14 @@ Routine begins at
 (34 04 CC 8C)
 * IDA: 80003CB4
 * Z64: 0x48B4
-* freem offsets: { +2, +3 }
+* freem offsets (old): { +2, +3 }
 
 "li $a0, 0x1310F40" ; filetable.bin location in ROM
 (3C 04 01 31) (24 84 0F 40)
 * IDA: 80003CD8
 * Z64: 0x48D8
 * Zoinkity changes: { 0x48DA, 0x48DA+1 }, { 0x48DE, 0x48DE+1 }
-* freem offsets: { +2, +3 }, { +6, +7 }
+* freem offset (new): {0x48DA, 0x48DE} (length = 4)
 
 "li $a2, 0xCC8C" ; size of filetable
 (34 06 CC 8C)
@@ -1202,6 +1205,7 @@ Routine begins at
 (3C 04 01 6C 24 84 32 38)
 * IDA: 80003ADC
 * Z64: 0x46DC
+* freem offset (new): {0x46DE, 0x46E2} (length = 4)
 
 "lui $a2, 1" ; filetable size, part 1
 (3C 06 00 01)
@@ -1275,6 +1279,7 @@ Routine begins at
 (3C 04 01 6C 24 84 31 D8)
 * IDA: 80003ADC
 * Z64: 0x46DC
+* freem offset (new): {0x46DE, 0x46E2} (length = 4)
 
 "lui $a2, 1" ; filetable size part 1
 (3C 06 00 01)
@@ -1348,6 +1353,7 @@ Routine begins at
 (3C 04 01 6C 24 84 32 A8)
 * IDA: 80003ADC
 * Z64: 0x46DC
+* freem offset (new): {0x46DE, 0x46E2} (length = 4)
 
 "lui $a2, 1" ; filetable size, part 1
 (3C 06 00 01)
@@ -1421,6 +1427,7 @@ Routine begins at
 (3C 04 01 6C 24 84 31 48)
 * IDA: 80003ADC
 * Z64: 0x46DC
+* freem offset (new): {0x46DE, 0x46E2} (length = 4)
 
 "lui $a2, 1" ; filetable size part 1
 (3C 06 00 01)
