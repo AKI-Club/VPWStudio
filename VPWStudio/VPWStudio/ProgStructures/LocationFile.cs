@@ -260,8 +260,22 @@ namespace VPWStudio
 						entry.Handler = LocationHandlerType.CodeChange;
 					}
 				}
+				else
+				{
+					// handle things I haven't coded up yet
+					if (tokens[3].StartsWith("$"))
+					{
+						// data location entry
+						entry.Handler = LocationHandlerType.DataLocation;
+					}
+					else if (tokens[3].StartsWith("%"))
+					{
+						// code change entry
+						entry.Handler = LocationHandlerType.CodeChange;
+					}
+				}
 
-				this.Locations.Add(entry);
+				Locations.Add(entry);
 			}
 
 			sr.Close();
@@ -344,6 +358,20 @@ namespace VPWStudio
 				}
 			}
 			return result;
+		}
+
+		public List<LocationFileEntry> GetSoundEntries()
+		{
+			List<LocationFileEntry> soundEntries = new List<LocationFileEntry>();
+			foreach (LocationFileEntry lfe in Locations)
+			{
+				if (lfe.Comment.StartsWith("%SOUND"))
+				{
+					soundEntries.Add(lfe);
+				}
+			}
+
+			return soundEntries;
 		}
 	}
 }
