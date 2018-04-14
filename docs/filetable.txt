@@ -1069,6 +1069,104 @@ Soundtable/Wavetable
 --------------------
 (todo)
 
+sub_800035D0
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 800035D0
+* Z64: 0x41D0
+
+li $s0, 0x1198810
+(3C 10 01 1A 26 10 88 10)
+* IDA: 800035D8
+* Z64: 0x41D8
+* freem offset (new): {0x41DA, 0x41DE} (length = 4)
+
+li $s1, 0x1196680
+(3C 11 01 19 26 31 66 80)
+* IDA: 800035E4
+* Z64: 0x41E4
+* freem offset (new): {0x41E6, 0x41EA} (length = 4)
+
+li $s0, 0x12B1270
+(3C 10 01 2B 26 10 12 70)
+* IDA: 80003614
+* Z64: 0x4214
+* freem offset (new): {0x4216, 0x421A} (length = 4)
+
+li $s1, 0x12AB0D0
+(3C 11 01 2B 26 31 B0 D0)
+* IDA: 8000361C
+* Z64: 0x421C
+* freem offset (new): {0x421E, 0x4222} (length = 4)
+
+li $s0, 0x12AB0D0
+(3C 10 01 2B 26 10 B0 D0)
+* IDA: 80003648
+* Z64: 0x4248
+* freem offset (new): {0x424A, 0x424E} (length = 4)
+
+li $s1, 0x12A9AA0
+(3C 11 01 2B 26 31 9A A0)
+* IDA: 80003650
+* Z64: 0x4250
+* freem offset (new): {0x4252, 0x4256} (length = 4)
+
+li $s0, 0x143AA10
+(3C 10 01 44 26 10 AA 10)
+* IDA: 8000367C
+* Z64: 0x427C
+* freem offset (new): {0x427E, 0x4282} (length = 4)
+
+li $s1, 0x14383B0
+(3C 11 01 44 26 31 83 B0)
+* IDA: 80003684
+* Z64: 0x4284
+* freem offset (new): {0x4286, 0x428A} (length = 4)
+
+li $s0, 0x14383B0
+(3C 10 01 44 26 10 83 B0)
+* IDA: 800036B0
+* Z64: 0x42B0
+* freem offset (new): {0x42B2, 0x42B6} (length = 4)
+
+li $s1, 0x1437960
+(3C 11 01 43 26 31 79 60)
+* IDA: 800036B8
+* Z64: 0x42B8
+* freem offset (new): {0x42BA, 0x42BE} (length = 4)
+
+li $v0, 0x1198810
+(3C 02 01 1A 24 42 88 10)
+* IDA: 80003728
+* Z64: 0x4328
+* freem offset (new): {0x432A, 0x432E} (length = 4)
+
+{
+lui $a1, 0x12B
+(3C 05 01 2B)
+* IDA: 8000378C
+* Z64: 0x438C
+
+li $a1, 0x12B1270
+(24 A5 12 70)
+* IDA: 80003794
+* Z64: 0x4394
+}
+* freem offset (new): {0x438E, 0x4396} (length = 8)
+
+{
+lui $a1, 0x144
+(3C 05 01 44)
+* IDA: 800037C0
+* Z64: 0x43C0
+
+li $a1, 0x143AA10
+(24 A5 AA 10)
+* IDA: 800037C8
+* Z64: 0x43C8
+}
+* freem offset (new): {0x43C2, 0x43CA} (length = 8)
+
 ================================================================================
 [WWF WrestleMania 2000, PAL]
 
@@ -1151,7 +1249,7 @@ Primary Soundtable/Wavetable Load Routine
 * IDA: 80003720
 * Z64: 0x4320
 
-are you shitting me, the routine is in the same location
+are you shitting me, the routine is in the same location as NTSC-U
 
 ================================================================================
 [Virtual Pro-Wrestling 2, NTSC-J]
