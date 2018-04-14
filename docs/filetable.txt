@@ -547,6 +547,50 @@ addresses of note:
 0xCEC610    # n64 wavetables ?
 0xE3B300    # n64 wavetables ?
 
+"li $s0, 0xCEC610" ; n64 wavetables ?
+(3C 10 00 CF) (26 10 C6 10)
+* IDA: 80003128
+* Z64: 0x3D28
+* freem offset (new): {0x3D2A, 0x3D2E} (length = 4)
+
+"li $s1, 0xCE9F00" ; n64 ptrtables v2 ("proset.wbk")
+(3C 11 00 CF) (26 31 9F 00)
+* IDA: 80003134
+* Z64: 0x3D34
+* freem offset (new): {0x3D36, 0x3D3A} (length = 4)
+
+"li $s0, 0xE3B300" ; n64 wavetables ?
+(3C 10 00 E4) (26 10 B3 00)
+* IDA: 80003164
+* Z64: 0x3D64
+* freem offset (new): {0x3D66, 0x3D6A} (length = 4)
+
+"li $s1, 0xE35070" ; n64 ptrtables v2 ("se_pack.wbk")
+(3C 11 00 E3) (26 31 50 70)
+* IDA: 8000316C
+* Z64: 0x3D6C
+* freem offset (new): {0x3D6E, 0x3D72} (length = 4)
+
+"li $v0, 0xCEC610" ; n64 wavetables ?
+(3C 02 00 CF) (24 42 C6 10)
+* IDA: 800031D4
+* Z64: 0x3DD4
+* freem offset (new): {0x3DD6, 0x3DDA} (length = 4)
+
+{
+"lui a1, 0xE4"
+(3C 05 00 E4)
+* IDA: 8000325C
+* Z64: 0x3E5C
+
+"li $a1, 0xE3B300" ; n64 wavetables ?
+(24 A5 B3 00)
+* IDA: 80003264
+* Z64: 0x3E64
+}
+* freem offset (new): {0x3E5E, 0x3E66} (length = 8)
+
+
 ================================================================================
 [WCW/nWo Revenge, PAL]
 
@@ -629,6 +673,62 @@ There's a floating 0x000D81E0 at...
 Soundtable/Wavetable
 --------------------
 (todo)
+
+sub_80003040
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003040
+* Z64: 0x3C40
+
+addresses of note:
+0xCE9BA0    # n64 wavetables?
+0xCE7490    # n64 ptrtables v2 ("proset.wbk")
+0xE32600    # n64 ptrtables v2 ("se_pack.wbk")
+0xCE9BA0    # n64 wavetables ?
+0xE38890    # n64 wavetables ?
+
+"li $s0, 0xCE9BA0" ; n64 wavetables ?
+(3C 10 00 CF) (26 10 9B A0)
+* IDA: 80003048
+* Z64: 0x3C48
+* freem offset (new): {0x3C4A, 0x3C4E} (length = 4)
+
+"li $s1, 0xCE7490" ; n64 ptrtables v2 ("proset.wbk")
+(3C 11 00 CE) (26 31 74 90)
+* IDA: 80003054
+* Z64: 0x3C54
+* freem offset (new): {0x3C56, 0x3C5A} (length = 4)
+
+"li $s0, 0xE38890" ; n64 wavetables ?
+(3C 10 00 E4) (26 10 88 90)
+* IDA: 80003084
+* Z64: 0x3C84
+* freem offset (new): {0x3C86, 0x3C8A} (length = 4)
+
+"li $s1,  0xE32600" ; n64 ptrtables v2 ("se_pack.wbk")
+(3C 11 00 E3) (26 31 26 00)
+* IDA: 8000308C
+* Z64: 0x3C8C
+* freem offset (new): {0x3C8E, 0x3C92} (length = 4)
+
+"li $v0, 0xCE9BA0" ; n64 wavetables ?
+(3C 02 00 CF) (24 42 9B A0)
+* IDA: 800030F4
+* Z64: 0x3CF4
+* freem offset (new): {0x3CF6, 0x3CFA} (length = 4)
+
+{
+"lui a1, 0xE4"
+(3C 05 00 E4)
+* IDA: 8000317C
+* Z64: 0x3D7C
+
+"li $a1, 0xE3B300" ; n64 wavetables ?
+(24 A5 B3 00)
+* IDA: 80003184
+* Z64: 0x3D84
+}
+* freem offset (new): {0x3D7E, 0x3D86} (length = 8)
 
 ================================================================================
 [WWF WrestleMania 2000, NTSC-U]
