@@ -1385,6 +1385,11 @@ addr2hws(0x174AE,0x174B6) ; sndtbl-5.wbk (load)
 * Z64: 0x
 }
 
+sub_80016B54 | Sound Table Setup - Bank 6
+-----------------------------------------
+* IDA: 80016B54
+* Z64: 0x17754
+
 {
 addr2hws(0x17772,0x17776) ; sndtbl-6.wbk
 ()
@@ -1415,6 +1420,11 @@ addr2hws(0x177EE,0x177F6) ; sndtbl-6.wbk (load)
 * IDA: 8000
 * Z64: 0x
 }
+
+sub_80016DC4 | Sound Table Setup - Banks 7, 8
+---------------------------------------------
+* IDA: 80016DC4
+* Z64: 0x179C4
 
 {
 addr2hws(0x179FA,0x179FE) ; sndtbl-7.wbk \ determine length
@@ -1475,6 +1485,7 @@ addr2hws(0x17B46,0x17B4E) ; sndtbl-7.wbk (load)
 * IDA: 8000
 * Z64: 0x
 }
+
 Others
 ------
 There's a floating 0x00152DF0 at...
