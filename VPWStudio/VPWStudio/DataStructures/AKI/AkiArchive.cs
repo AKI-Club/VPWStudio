@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VPWStudio
 {
 	/// <summary>
-	/// An entry in an AKI archive.
+	/// An entry in an AKI Archive.
 	/// </summary>
 	public class AkiArchiveEntry
 	{
@@ -24,6 +24,10 @@ namespace VPWStudio
 		/// </summary>
 		public byte[] Data;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		/// <param name="_addr">Address for this AkiArchiveEntry.</param>
 		public AkiArchiveEntry(Int32 _addr)
 		{
 			this.StartAddr = _addr;
@@ -40,120 +44,56 @@ namespace VPWStudio
 		// 0x04: entries begin; "DW aligned with 0xFFs"
 
 		/// <summary>
-		/// Number of files in this archive.
+		/// Number of files in the archive, according to the header.
 		/// </summary>
 		public int NumFiles;
 
+		/// <summary>
+		/// Files in the archive.
+		/// </summary>
 		public Dictionary<int, AkiArchiveEntry> FileEntries;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public AkiArchive()
 		{
-			this.NumFiles = 0;
-			this.FileEntries = new Dictionary<int, AkiArchiveEntry>();
+			NumFiles = 0;
+			FileEntries = new Dictionary<int, AkiArchiveEntry>();
 		}
 
-		/// <summary>
-		/// Read a packed file archive.
-		/// </summary>
-		/// <param name="_path">Path to archive.</param>
-		public void ReadFile(string _path)
+		// routines in this section are incomplete.
+		#region Binary Read/Write
+		// incomplete
+		public void ReadData(BinaryReader br)
 		{
-			FileStream fs = new FileStream(_path,FileMode.Open);
-			BinaryReader br = new BinaryReader(fs);
-
 			// get number of files
 			byte[] numFiles = br.ReadBytes(4);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(numFiles);
 			}
-			this.NumFiles = BitConverter.ToInt32(numFiles, 0);
+			NumFiles = BitConverter.ToInt32(numFiles, 0);
 
 			// get file offsets
-			for (int i = 0; i < this.NumFiles; i++)
+			for (int i = 0; i < NumFiles; i++)
 			{
 				byte[] addr = br.ReadBytes(4);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(addr);
 				}
-				AkiArchiveEntry pae = new AkiArchiveEntry(BitConverter.ToInt32(addr, 0));
-				this.FileEntries.Add(i, pae);
+				FileEntries.Add(i, new AkiArchiveEntry(BitConverter.ToInt32(addr, 0)));
 			}
 
-			// todo: better size setting code.
-			// * Some archives claim to have more files than they actually do.
-			//   This is denoted by an address of 0...
-			/*
-			for (int i = 0; i < this.FileEntries.Count; i++)
-			{
-				if (this.FileEntries[i].StartAddr == 0)
-				{
-					this.FileEntries[i].Size = 0;
-				}
-				else
-				{
-					if (i < this.FileEntries.Count - 1)
-					{
-						if (this.FileEntries[i + 1].StartAddr > 0)
-						{
-							this.FileEntries[i].Size = this.FileEntries[i + 1].StartAddr - this.FileEntries[i].StartAddr;
-						}
-						else
-						{
-							// oh no
-						}
-					}
-					else
-					{
-						// the last file
-					}
-				}
-			}
-			*/
-
-			// old-ish code
-			// set sizes for most files
-			for (int i = (this.FileEntries.Count - 2); i > 0; i--)
-			{
-				if (this.FileEntries[i].StartAddr == 0)
-				{
-					this.FileEntries[i].Size = 0;
-				}
-				else
-				{
-					this.FileEntries[i].Size = this.FileEntries[i + 1].StartAddr - this.FileEntries[i].StartAddr;
-				}
-			}
-			// index 0 requires a hack
-			this.FileEntries[0].Size = this.FileEntries[1].StartAddr - this.FileEntries[0].StartAddr;
-
-			// as does the last index...
-			// however, there are issues regarding unused files...
-			if (this.FileEntries[this.NumFiles - 1].StartAddr != 0)
-			{
-				br.BaseStream.Seek(0, SeekOrigin.End);
-				long fileSize = br.BaseStream.Position;
-				this.FileEntries[this.NumFiles - 1].Size = (int)(fileSize - this.FileEntries[this.NumFiles - 1].StartAddr);
-			}
-
-			// read data
-			for (int i = 0; i < this.FileEntries.Count; i++)
-			{
-				br.BaseStream.Seek(this.FileEntries[i].StartAddr, SeekOrigin.Begin);
-				this.FileEntries[i].Data = br.ReadBytes((int)this.FileEntries[i].Size);
-			}
-
-			br.Close();
+			// todo: everything else
 		}
 
-		public bool WriteFile(string _path)
+		// todo: copy and pasted from the file path version
+		public void WriteData(BinaryWriter bw)
 		{
-			FileStream fs = new FileStream(_path, FileMode.Create);
-			BinaryWriter bw = new BinaryWriter(fs);
-
 			// number of files
-			byte[] numFile = BitConverter.GetBytes(this.NumFiles);
+			byte[] numFile = BitConverter.GetBytes(NumFiles);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(numFile);
@@ -161,9 +101,9 @@ namespace VPWStudio
 			bw.Write(numFile);
 
 			// file table
-			for (int i = 0; i < this.NumFiles; i++)
+			for (int i = 0; i < NumFiles; i++)
 			{
-				byte[] addr = BitConverter.GetBytes(this.FileEntries[i].StartAddr);
+				byte[] addr = BitConverter.GetBytes(FileEntries[i].StartAddr);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(addr);
@@ -190,9 +130,154 @@ namespace VPWStudio
 			}
 
 			// write file data
-			for (int i = 0; i < this.NumFiles; i++)
+			for (int i = 0; i < NumFiles; i++)
 			{
-				bw.Write(this.FileEntries[i].Data);
+				bw.Write(FileEntries[i].Data);
+			}
+		}
+		#endregion
+
+		#region old "to/from File" code
+		/// <summary>
+		/// Read a packed file archive.
+		/// </summary>
+		/// <param name="_path">Path to archive.</param>
+		public void ReadFile(string _path)
+		{
+			FileStream fs = new FileStream(_path,FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+
+			// get number of files
+			byte[] numFiles = br.ReadBytes(4);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(numFiles);
+			}
+			NumFiles = BitConverter.ToInt32(numFiles, 0);
+
+			// get file offsets
+			for (int i = 0; i < NumFiles; i++)
+			{
+				byte[] addr = br.ReadBytes(4);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(addr);
+				}
+				FileEntries.Add(i, new AkiArchiveEntry(BitConverter.ToInt32(addr, 0)));
+			}
+
+			// todo: better size setting code.
+			// * Some archives claim to have more files than they actually do.
+			//   This is denoted by an address of 0...
+			/*
+			for (int i = 0; i < FileEntries.Count; i++)
+			{
+				if (FileEntries[i].StartAddr == 0)
+				{
+					FileEntries[i].Size = 0;
+				}
+				else
+				{
+					if (i < FileEntries.Count - 1)
+					{
+						if (FileEntries[i + 1].StartAddr > 0)
+						{
+							FileEntries[i].Size = FileEntries[i + 1].StartAddr - FileEntries[i].StartAddr;
+						}
+						else
+						{
+							// oh no
+						}
+					}
+					else
+					{
+						// the last file
+					}
+				}
+			}
+			*/
+
+			// old-ish code
+			// set sizes for most files
+			for (int i = (FileEntries.Count - 2); i > 0; i--)
+			{
+				if (FileEntries[i].StartAddr == 0)
+				{
+					FileEntries[i].Size = 0;
+				}
+				else
+				{
+					FileEntries[i].Size = FileEntries[i + 1].StartAddr - FileEntries[i].StartAddr;
+				}
+			}
+			// index 0 requires a hack
+			FileEntries[0].Size = FileEntries[1].StartAddr - FileEntries[0].StartAddr;
+
+			// as does the last index...
+			// however, there are issues regarding unused files...
+			if (FileEntries[NumFiles - 1].StartAddr != 0)
+			{
+				br.BaseStream.Seek(0, SeekOrigin.End);
+				long fileSize = br.BaseStream.Position;
+				FileEntries[NumFiles - 1].Size = (int)(fileSize - FileEntries[NumFiles - 1].StartAddr);
+			}
+
+			// read data
+			for (int i = 0; i < FileEntries.Count; i++)
+			{
+				br.BaseStream.Seek(FileEntries[i].StartAddr, SeekOrigin.Begin);
+				FileEntries[i].Data = br.ReadBytes(FileEntries[i].Size);
+			}
+
+			br.Close();
+		}
+
+		public bool WriteFile(string _path)
+		{
+			FileStream fs = new FileStream(_path, FileMode.Create);
+			BinaryWriter bw = new BinaryWriter(fs);
+
+			// number of files
+			byte[] numFile = BitConverter.GetBytes(NumFiles);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(numFile);
+			}
+			bw.Write(numFile);
+
+			// file table
+			for (int i = 0; i < NumFiles; i++)
+			{
+				byte[] addr = BitConverter.GetBytes(FileEntries[i].StartAddr);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(addr);
+				}
+				bw.Write(addr);
+			}
+
+			// export 0xFF bytes as needed to align to 0x00 and 0x08
+			long alignTest = bw.BaseStream.Position & 0x0000000F;
+			if (alignTest != 0 && alignTest != 8)
+			{
+				// determine where we are and how many bytes we need to fill.
+				int fillCount = (8 - (int)alignTest);
+
+				if (alignTest > 8)
+				{
+					fillCount = (16 - (int)alignTest);
+				}
+
+				for (int f = 0; f < fillCount; f++)
+				{
+					bw.Write((byte)0xFF);
+				}
+			}
+
+			// write file data
+			for (int i = 0; i < NumFiles; i++)
+			{
+				bw.Write(FileEntries[i].Data);
 			}
 
 			bw.Close();
@@ -209,10 +294,11 @@ namespace VPWStudio
 			FileStream fs = new FileStream(_path, FileMode.Create);
 			BinaryWriter bw = new BinaryWriter(fs);
 
-			bw.Write(this.FileEntries[_fileNum].Data);
+			bw.Write(FileEntries[_fileNum].Data);
 
 			bw.Flush();
 			bw.Close();
 		}
+		#endregion
 	}
 }
