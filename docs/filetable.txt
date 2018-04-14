@@ -1145,6 +1145,14 @@ Soundtable/Wavetable
 --------------------
 (todo)
 
+sub_80003720
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003720
+* Z64: 0x4320
+
+are you shitting me, the routine is in the same location
+
 ================================================================================
 [Virtual Pro-Wrestling 2, NTSC-J]
 
