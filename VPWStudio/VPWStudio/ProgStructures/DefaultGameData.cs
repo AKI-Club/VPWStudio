@@ -362,7 +362,19 @@ namespace VPWStudio
 			{
 				SpecificGame.WM2K_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x41DA,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x41E6,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4216,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x421E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x424A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x4252,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x427E,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x4286,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x42B2,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x42BA,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x432A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x438E,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x43C2,8) },
 				})
 			},
 			{
