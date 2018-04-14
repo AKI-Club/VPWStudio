@@ -199,7 +199,7 @@ namespace VPWStudio
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
-					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
+					{ "FileTable", new DefaultLocationDataEntry(0x11778DE, 41248) },
 				})
 			},
 			{
@@ -368,7 +368,19 @@ namespace VPWStudio
 			{
 				SpecificGame.WM2K_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x432A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4336,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4366,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x436E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x439A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x43A2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x43CE,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x43D6,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x4402,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x440A,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x447A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x44DE,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x4512,8) },
 				})
 			},
 			{
