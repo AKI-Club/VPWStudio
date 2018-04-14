@@ -1049,12 +1049,11 @@ namespace VPWStudio
 				return;
 			}
 
-			// this only works with VPW2 and Revenge for now.
+			// this only works with Revenge, WM2K, and VPW2 for now.
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
-				case VPWGames.WM2K:
 				case VPWGames.NoMercy:
 					Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
 					return;
