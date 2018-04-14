@@ -441,25 +441,73 @@ namespace VPWStudio
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x402A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4036,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4066,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x406E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x409A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x40A2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x40CE,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x40D6,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x4102,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x410A,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x417A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x41DE,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x402A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4036,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4066,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x406E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x409A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x40A2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x40CE,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x40D6,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x4102,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x410A,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x417A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x41DE,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			},
 			{
 				SpecificGame.NoMercy_PAL_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x402A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4036,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4066,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x406E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x409A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x40A2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x40CE,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x40D6,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x4102,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x410A,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x417A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x41DE,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			},
 			{
 				SpecificGame.NoMercy_PAL_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x402A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4036,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4066,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x406E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x409A,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x40A2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x40CE,4) },
+					{ "Sound08", new DefaultLocationDataEntry(0x40D6,4) },
+					{ "Sound09", new DefaultLocationDataEntry(0x4102,4) },
+					{ "Sound10", new DefaultLocationDataEntry(0x410A,4) },
+					{ "Sound11", new DefaultLocationDataEntry(0x417A,4) },
+					{ "Sound12", new DefaultLocationDataEntry(0x41DE,8) },
+					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			}
 		};
