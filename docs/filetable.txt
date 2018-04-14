@@ -442,6 +442,70 @@ addresses of note:
 0xC8D750 - part of alHeapDBAlloc calculation?
 0xC8D750 - $a1 arg for alBnkfNew
 
+{
+"lui $s2, 0xD7"
+(3C 12 00 D7)
+* IDA: 80003A0C
+* Z64: 0x460C
+
+"li $s2, 0xD736F0"
+(26 52 36 F0)
+* IDA: 80003A14
+* Z64: 0x4614
+}
+* freem offset (new): {0x460E, 0x4616} (length = 8)
+
+{
+"lui $t7, 0xD8"
+(3C 0F 00 D8)
+* IDA: 80003A10
+* Z64: 0x4610
+
+"li $t7, 0xD7BF70"
+(0xD7BF70)
+* IDA: 80003A18
+* Z64: 0x4618
+}
+* freem offset (new): {0x4612, 0x461A} (length = 8)
+
+"li $a1, 0xD7BF70"
+(3C 05 00 D8 24 A5 BF 70)
+* IDA: 80003A58
+* Z64: 0x4658
+* freem offset (new): {0x465A, 0x465E} (length = 4)
+
+{
+"lui $s2, 0xC8"
+(3C 12 00 C8)
+* IDA: 80003A78
+* Z64: 0x4678
+
+"li $s2, 0xC847B0"
+(26 52 47 B0)
+* IDA: 80003A80
+* Z64: 0x4680
+}
+* freem offset (new): {0x467A, 0x4682} (length = 8)
+
+{
+"lui $t9, 0xC9"
+(3C 19 00 C9)
+* IDA: 80003A7C
+* Z64: 0x467C
+
+"li $t9, 0xC8D750"
+(27 39 D7 50)
+* IDA: 80003A84
+* Z64: 0x4684
+}
+* freem offset (new): {0x467E, 0x4686} (length = 8)
+
+"li $a1, 0xC8D750"
+(3C 05 00 C9 24 A5 D7 50)
+* IDA: 80003AC0
+* Z64: 0x46C0
+* freem offset (new): {0x46C2, 0x46C6} (length = 4)
+
 sub_80003CCC
 ------------
 * IDA: 80003CCC
@@ -449,6 +513,38 @@ sub_80003CCC
 
 addresses of note:
 0xEF3FF0 - used in DMA, alSeqFileNew calls
+
+{
+"lui $a0, 0xEF"
+(3C 04 00 EF)
+* IDA: 80003D5C
+* Z64: 0x495C
+
+"li $a0, 0xEF3FF0"
+(24 84 3F F0)
+* IDA: 80003D64
+* Z64: 0x4964
+}
+* freem offset (new): {0x495E, 0x4966} (length = 8)
+
+{
+"lui $a0, 0xEF"
+(3C 04 00 EF)
+* IDA: 80003DA4
+* Z64: 0x49A4
+
+"li $a0, 0xEF3FF0"
+(24 84 3F F0)
+* IDA: 80003DAC
+* Z64: 0x49AC
+}
+* freem offset (new): {0x49A6, 0x49AE} (length = 8)
+
+"li $a1, 0xEF3FF0"
+(3C 05 00 EF 24 A5 3F F0)
+* IDA: 80003DBC
+* Z64: 0x49BC
+* freem offset (new): {0x49BE, 0x49C2} (length = 4)
 
 ================================================================================
 [WCW/nWo Revenge, NTSC-U]
@@ -805,6 +901,104 @@ Routine begins at
 Soundtable/Wavetable
 --------------------
 (todo)
+
+sub_80003720
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003720
+* Z64: 0x4320
+
+"li $s0, 0x11A0C20" ; wavetables
+(3C 10 01 1A 26 10 0C 20)
+* IDA: 80003728
+* Z64: 0x4328
+* freem offset (new): {0x432A, 0x432E} (length = 4)
+
+"li $s1, 0x119EA90" ; ptrtables
+(3C 11 01 1A 26 31 EA 90)
+* IDA: 80003734
+* Z64: 0x4334
+* freem offset (new): {0x4336, 0x433A} (length = 4)
+
+"li $s0, 0x12B9680" ; wavetables
+(3C 10 01 2C 26 10 96 80)
+* IDA: 80003764
+* Z64: 0x4364
+* freem offset (new): {0x4366, 0x436A} (length = 4)
+
+"li $s1, 0x12B34E0" ; ptrtables
+(3C 11 01 2B 26 31 34 E0)
+* IDA: 8000376C
+* Z64: 0x436C
+* freem offset (new): {0x436E, 0x4372} (length = 4)
+
+"li $s0, 0x12B34E0" ; ptrtables
+(3C 10 01 2B 26 10 34 E0)
+* IDA: 80003798
+* Z64: 0x4398
+* freem offset (new): {0x439A, 0x439E} (length = 4)
+
+"li $s1, 0x12B1EB0" ; ??
+(3C 11 01 2B 26 31 1E B0)
+* IDA: 800037A0
+* Z64: 0x43A0
+* freem offset (new): {0x43A2, 0x43A6} (length = 4)
+
+"li $s0, 0x1442E20" ; wavetables
+(3C 10 01 44 26 10 2E 20)
+* IDA: 800037CC
+* Z64: 0x43CC
+* freem offset (new): {0x43CE, 0x43D2} (length = 4)
+
+"li $s1, 0x14407C0" ; ptrtables
+(3C 11 01 44 26 31 07 C0)
+* IDA: 800037D4
+* Z64: 0x43D4
+* freem offset (new): {0x43D6, 0x43DA} (length = 4)
+
+"li $s0, 0x14407C0" ; ptrtables
+(3C 10 01 44 26 10 07 C0)
+* IDA: 80003800
+* Z64: 0x4400
+* freem offset (new): {0x4402, 0x4406} (length = 4)
+
+"li $s1, 0x143FD70" ; ??
+(3C 11 01 44 26 31 FD 70)
+* IDA: 80003808
+* Z64: 0x4408
+* freem offset (new): {0x440A, 0x440E} (length = 4)
+
+"li $v0, 0x11A0C20" ; wavetables
+(3C 02 01 1A 24 42 0C 20)
+* IDA: 80003878
+* Z64: 0x4478
+* freem offset (new): {0x447A, 0x447E} (length = 4)
+
+{
+"lui $a1, 0x12C"
+(3C 05 01 2C)
+* IDA: 800038DC
+* Z64: 0x44DC
+
+"li $a1, 0x12B9680" ; wavetables
+(24 A5 96 80)
+* IDA: 800038E4
+* Z64: 0x44E4
+}
+* freem offset (new): {0x44DE, 0x44E6} (length = 8)
+
+{
+"lui $a1, 0x144"
+(3C 05 01 44)
+* IDA: 80003910
+* Z64: 0x4510
+
+"li $a1, 0x1442E20" ; wavetables
+(24 A5 2E 20)
+* IDA: 80003918
+* Z64: 0x4518
+}
+* freem offset (new): {0x4512, 0x451A} (length = 8)
 
 ================================================================================
 [WWF WrestleMania 2000, NTSC-J]
