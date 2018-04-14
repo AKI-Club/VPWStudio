@@ -118,7 +118,7 @@ namespace VPWStudio
 				return;
 			}
 
-			tbTextValue.Text = CurAkiText.Entries[lbEntries.SelectedIndex].Text.Replace("\n","\r\n");
+			tbTextValue.Text = CurAkiText.Entries[lbEntries.SelectedIndex].Text.Replace("\n", Environment.NewLine);
 		}
 
 		/// <summary>
