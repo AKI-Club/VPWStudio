@@ -322,13 +322,23 @@ namespace VPWStudio
 			{
 				SpecificGame.Revenge_NTSC_U,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x3D2A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x3D36,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x3D66,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x3D6E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x3DD6,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x3E5E,8) }
 				})
 			},
 			{
 				SpecificGame.Revenge_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x3C4A,4) },
+					{ "Sound02", new DefaultLocationDataEntry(0x3C56,4) },
+					{ "Sound03", new DefaultLocationDataEntry(0x3C86,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x3C8E,4) },
+					{ "Sound05", new DefaultLocationDataEntry(0x3CF6,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x3D7E,8) }
 				})
 			},
 			{
