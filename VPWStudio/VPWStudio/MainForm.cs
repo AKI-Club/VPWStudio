@@ -1049,11 +1049,15 @@ namespace VPWStudio
 				return;
 			}
 
-			// this only works with VPW2 for now
-			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			// this only works with VPW2 and Revenge for now.
+			switch (Program.CurrentProject.Settings.BaseGame)
 			{
-				Program.ErrorMessageBox("Sorry, this only works with Virtual Pro-Wrestling 2 at the moment.");
-				return;
+				case VPWGames.WorldTour:
+				case VPWGames.VPW64:
+				case VPWGames.WM2K:
+				case VPWGames.NoMercy:
+					Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
+					return;
 			}
 			#endregion
 
