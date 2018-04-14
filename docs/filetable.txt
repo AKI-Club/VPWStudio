@@ -462,7 +462,7 @@ addresses of note:
 * Z64: 0x4610
 
 "li $t7, 0xD7BF70"
-(0xD7BF70)
+(25 EF BF 70)
 * IDA: 80003A18
 * Z64: 0x4618
 }
