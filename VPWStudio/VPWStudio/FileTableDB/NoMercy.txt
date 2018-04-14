@@ -108,6 +108,7 @@
 006F=AkiText;
 0070=AkiText;
 0071=AkiText;Credits
+0072=Binary;(raw CI4 image)
 0073=AkiTexture;[Splash] Legal Info
 0074=AkiTexture;[Splash] THQ
 0075=AkiTexture;[Splash] Asmik
