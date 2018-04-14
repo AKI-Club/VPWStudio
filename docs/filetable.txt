@@ -1672,6 +1672,104 @@ Soundtable/Wavetable
 --------------------
 (todo)
 
+sub_80003420
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 80003420
+* Z64: 0x4020
+
+"li $s0, 0x16F6F70"
+(3C 10 01 6F 26 10 6F 70)
+* IDA: 80003428
+* Z64: 0x4028
+* freem offset (new): {0x402A, 0x402E} (length = 4)
+
+"li $s1, 0x16F3300"
+(3C 11 01 6F 26 31 33 00)
+* IDA: 80003434
+* Z64: 0x4034
+* freem offset (new): {0x4036, 0x403A} (length = 4)
+
+"li $s0, 0x185EE10"
+(3C 10 01 86 26 10 EE 10)
+* IDA: 80003464
+* Z64: 0x4064
+* freem offset (new): {0x4066, 0x406A} (length = 4)
+
+"li $s1, 0x1858090"
+(3C 11 01 86 26 31 80 90)
+* IDA: 8000346C
+* Z64: 0x406C
+* freem offset (new): {0x406E, 0x4072} (length = 4)
+
+"li $s0, 0x1858090"
+(3C 10 01 86 26 10 80 90)
+* IDA: 80003498
+* Z64: 0x4098
+* freem offset (new): {0x409A, 0x409E} (length = 4)
+
+"li $s1, 0x1855FF0"
+(3C 11 01 85 26 31 5F F0)
+* IDA: 800034A0
+* Z64: 0x40A0
+* freem offset (new): {0x40A2, 0x40A6} (length = 4)
+
+"li $s0, 0x19698E0"
+(3C 10 01 97 26 10 98 E0)
+* IDA: 800034CC
+* Z64: 0x40CC
+* freem offset (new): {0x40CE, 0x40D2} (length = 4)
+
+"li $s1, 0x1967470"
+(3C 11 01 96 26 31 74 70)
+* IDA: 800034D4
+* Z64: 0x40D4
+* freem offset (new): {0x40D6, 0x40DA} (length = 4)
+
+"li $s0, 0x1967470"
+(3C 10 01 96 26 10 74 70)
+* IDA: 80003500
+* Z64: 0x4100
+* freem offset (new): {0x4102, 0x4106} (length = 4)
+
+"li $s1, 0x1965CB0"
+(3C 11 01 96 26 31 5C B0)
+* IDA: 80003508
+* Z64: 0x4108
+* freem offset (new): {0x410A, 0x410E} (length = 4)
+
+"li $v0, 0x16F6F70"
+(3C 02 01 6F 24 42 6F 70)
+* IDA: 80003578
+* Z64: 0x4178
+* freem offset (new): {0x417A, 0x417E} (length = 4)
+
+{
+"lui $a1, 0x186"
+(3C 05 01 86)
+* IDA: 800035DC
+* Z64: 0x41DC
+
+"li $a1, 0x185EE10"
+(24 A5 EE 10)
+* IDA: 800035E4
+* Z64: 0x41E4
+}
+* freem offset (new): {0x41DE, 0x41E6} (length = 8)
+
+{
+"lui $a1, 0x197"
+(3C 05 01 97)
+* IDA: 80003610
+* Z64: 0x4210
+
+"li $a1, 0x19698E0"
+(24 A5 98 E0)
+* IDA: 80003618
+* Z64: 0x4218
+}
+* freem offset (new): {0x4212, 0x421A} (length = 8)
+
 ================================================================================
 [WWF No Mercy, NTSC-U v1.1]
 
@@ -1744,7 +1842,7 @@ LoadFile
 
 Soundtable/Wavetable
 --------------------
-(todo)
+(same as WWF No Mercy NTSC-U v1.0)
 
 ================================================================================
 [WWF No Mercy, PAL v1.0]
@@ -1818,7 +1916,7 @@ LoadFile
 
 Soundtable/Wavetable
 --------------------
-(todo)
+(same as WWF No Mercy NTSC-U v1.0)
 
 ================================================================================
 [WWF No Mercy, PAL v1.1]
@@ -1892,4 +1990,4 @@ LoadFile
 
 Soundtable/Wavetable
 --------------------
-(todo)
+(same as WWF No Mercy NTSC-U v1.0)
