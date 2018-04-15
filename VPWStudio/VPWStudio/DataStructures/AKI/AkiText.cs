@@ -15,8 +15,8 @@ namespace VPWStudio
 
 		public AkiTextEntry(UInt16 _l, string _s)
 		{
-			this.Location = _l;
-			this.Text = _s;
+			Location = _l;
+			Text = _s;
 		}
 	}
 
@@ -35,7 +35,7 @@ namespace VPWStudio
 		/// </summary>
 		public AkiText()
 		{
-			this.Entries = new SortedList<int, AkiTextEntry>();
+			Entries = new SortedList<int, AkiTextEntry>();
 		}
 
 		/// <summary>
@@ -44,8 +44,8 @@ namespace VPWStudio
 		/// <param name="br">BinaryReader instance to use.</param>
 		public AkiText(BinaryReader br)
 		{
-			this.Entries = new SortedList<int, AkiTextEntry>();
-			this.ReadData(br);
+			Entries = new SortedList<int, AkiTextEntry>();
+			ReadData(br);
 		}
 
 		/// <summary>
@@ -55,11 +55,11 @@ namespace VPWStudio
 		/// <returns>String for the specified entry, or String.Empty if invalid.</returns>
 		public string GetEntry(int id)
 		{
-			if (id < 0 || id >= this.Entries.Count)
+			if (id < 0 || id >= Entries.Count)
 			{
 				return String.Empty;
 			}
-			return this.Entries[id].Text;
+			return Entries[id].Text;
 		}
 
 		#region Binary Read/Write
@@ -70,25 +70,25 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			// the pointers themselves need to be calculated based on the string lengths.
-			int startLoc = (this.Entries.Count * 2);
+			int startLoc = (Entries.Count * 2);
 
 			// adjust for terminator if needed
-			if (this.Entries.Count % 2 != 0)
+			if (Entries.Count % 2 != 0)
 			{
 				startLoc += 2;
 			}
 
 			int curLoc = startLoc;
-			for (int i = 0; i < this.Entries.Count; i++)
+			for (int i = 0; i < Entries.Count; i++)
 			{
-				this.Entries[i].Location = (UInt16)curLoc;
-				curLoc += (Encoding.GetEncoding("shift_jis").GetBytes(this.Entries[i].Text).Length + 1);
+				Entries[i].Location = (UInt16)curLoc;
+				curLoc += (Encoding.GetEncoding("shift_jis").GetBytes(Entries[i].Text).Length + 1);
 			}
 
 			// write out the pointer table
-			for (int i = 0; i < this.Entries.Count; i++)
+			for (int i = 0; i < Entries.Count; i++)
 			{
-				byte[] l = BitConverter.GetBytes(this.Entries[i].Location);
+				byte[] l = BitConverter.GetBytes(Entries[i].Location);
 				if (BitConverter.IsLittleEndian)
 				{
 					Array.Reverse(l);
@@ -97,15 +97,15 @@ namespace VPWStudio
 			}
 
 			// insert alignment/terminator as needed
-			if (this.Entries.Count % 2 != 0)
+			if (Entries.Count % 2 != 0)
 			{
 				bw.Write((UInt16)0);
 			}
 
 			// then write out the strings
-			for (int i = 0; i < this.Entries.Count; i++)
+			for (int i = 0; i < Entries.Count; i++)
 			{
-				bw.Write(Encoding.GetEncoding("shift_jis").GetBytes(this.Entries[i].Text));
+				bw.Write(Encoding.GetEncoding("shift_jis").GetBytes(Entries[i].Text));
 				bw.Write((byte)0);
 			}
 		}
