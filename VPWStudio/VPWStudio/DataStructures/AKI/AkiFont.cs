@@ -127,6 +127,10 @@ namespace VPWStudio
 		};
 		#endregion
 
+		#region WrestleMania 2000 (NTSC-J)
+		// this game is probably a giant exception to the rule for certain fonts
+		#endregion
+
 		#endregion
 
 		#region Class Members
@@ -166,6 +170,7 @@ namespace VPWStudio
 		public int OutRows;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -228,6 +233,7 @@ namespace VPWStudio
 			OutColumns = _outCols;
 			OutRows = _outRows;
 		}
+		#endregion
 
 		#region Read Data
 		/// <summary>
