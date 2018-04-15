@@ -9,6 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio (very temporary) Manual</h1>
+<p>Version 0.0.0.0 (no date)<br />Program and Manual by freem</p>
 </div>
 
 <hr />
@@ -18,6 +19,18 @@
 <li>Introduction</li>
 <li>Requirements and Notes</li>
 <li>Project Files</li>
+<li>Arenas</li>
+<li>Championships</li>
+<li>Costumes</li>
+<li>File Table</li>
+<li>Menus</li>
+<li>Moves</li>
+<li>Sound/Music</li>
+<li>Stables</li>
+<li>Story Mode</li>
+<li>Text Archives</li>
+<li>Weapons</li>
+<li>Wrestlers</li>
 <li>Tools
 	<ol>
 	<li>GameShark Code Tool</li>
@@ -185,8 +198,125 @@ directory where the project file is saved: "Assets" and "ProjectFiles".</p>
 <p>"Project &rarr; Project Settings" (todo)</p>
 
 <hr />
-<h2>Tools</h2>
+<h2>Arenas</h2>
 <p>(todo)</p>
+
+<hr />
+<h2>Championships</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Costumes</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>File Table</h2>
+<table>
+<tr>
+<th>Game</th>
+<th>Read</th>
+<th>Write</th>
+</tr>
+<tr>
+<td>WCW vs. nWo World Tour</td>
+<td class="supported">Yes</td>
+<td class="notsupported">No</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 64</td>
+<td class="supported">Yes</td>
+<td class="notsupported">No</td>
+</tr>
+<tr>
+<td>WCW/nWo Revenge</td>
+<td class="supported">Yes</td>
+<td class="supported">Yes</td>
+</tr>
+<tr>
+<td>WWF WrestleMania 2000</td>
+<td class="supported">Yes</td>
+<td class="supported">Yes</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 2</td>
+<td class="supported">Yes</td>
+<td class="supported">Yes</td>
+</tr>
+<tr>
+<td>WWF No Mercy</td>
+<td class="supported">Yes</td>
+<td class="supported">Yes</td>
+</tr>
+</table>
+<p>"Project &rarr; File Table" (todo)</p>
+
+<hr />
+<h2>Menus</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Moves</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Sound/Music</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Stables</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Story Mode</h2>
+<table>
+<tr>
+<th>Game</th>
+<th>Support</th>
+</tr>
+<tr>
+<td>WCW vs. nWo World Tour</td>
+<td class="notsupported">No*</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 64</td>
+<td class="notsupported">No*</td>
+</tr>
+<tr>
+<td>WCW/nWo Revenge</td>
+<td class="notsupported">No*</td>
+</tr>
+<tr>
+<td>WWF WrestleMania 2000</td>
+<td class="supported">Yes</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 2</td>
+<td class="supported">Yes</td>
+</tr>
+<tr>
+<td>WWF No Mercy</td>
+<td class="supported">Yes</td>
+</tr>
+</table>
+<p>"Project &rarr; Story Mode" (todo)</p>
+
+<p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the Championships section.</p>
+
+<hr />
+<h2>Text Archives</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Weapons</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Wrestlers</h2>
+<p>(todo)</p>
+
+<hr />
+<h2>Tools</h2>
+<p>VPW Studio also provides tools that aren't tied to the concept of Projects. (todo)</p>
 
 <h3>GameShark Tool</h3>
 <p>(todo)</p>
@@ -258,7 +388,11 @@ converting a GameShark code to a LocationFile entry; the size is handled
 in the next section.</p>
 
 <h4>Size</h4>
-<p>The size of this entry, in decimal. This is how many bytes to read/write.</p>
+<p>The size of this entry, in decimal. For a normal entry, this is how many
+bytes to read/write.</p>
+
+<p>When handling a Code Change entry (see below), the Size value represents
+the number of bytes between the first and second change.</p>
 
 <h4>Comment</h4>
 <p>The comment section is typically used to provide a note about the location,
@@ -266,9 +400,9 @@ but comments starting with special characters have different meanings.</p>
 
 <p>Special characters currently handled:</p>
 <ul>
-<li><code>$</code> &ndash; Data Location: Specific locations VPW Studio looks
-for to handle ROM reads/writes.</li>
-<li><code>%</code> &ndash; Code Change: Locations used for modifying code.</li>
+<li><code>$</code> &ndash; <strong>Data Location</strong>: Specific locations
+VPW Studio looks for to handle ROM reads/writes.</li>
+<li><code>%</code> &ndash; <strong>Code Change</strong>: Locations used for modifying game code.</li>
 </ul>
 
 <p>Special location strings are mapped in the program, so you can't make things up
