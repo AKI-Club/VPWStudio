@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Globalization;
 using System.Xml;
 
 namespace VPWStudio.GameSpecific.NoMercy
@@ -64,22 +63,23 @@ namespace VPWStudio.GameSpecific.NoMercy
 		public UInt16 ProfileIndex;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public WrestlerDefinition()
 		{
-			this.WrestlerID4 = 0;
-			this.WrestlerID2 = 0;
-			this.ThemeSong = 0;
-			this.EntranceVideo = 0;
-			this.Height = 0;
-			this.Unknown = 0;
-			this.Weight = 0;
-			this.MovesetFileIndex = 0;
-			this.ParamsFileIndex = 0;
-			this.AppearanceIndex = 0;
-			this.ProfileIndex = 0;
+			WrestlerID4 = 0;
+			WrestlerID2 = 0;
+			ThemeSong = 0;
+			EntranceVideo = 0;
+			Height = 0;
+			Unknown = 0;
+			Weight = 0;
+			MovesetFileIndex = 0;
+			ParamsFileIndex = 0;
+			AppearanceIndex = 0;
+			ProfileIndex = 0;
 		}
 
 		/// <summary>
@@ -88,9 +88,11 @@ namespace VPWStudio.GameSpecific.NoMercy
 		/// <param name="br">BinaryReader instance to use.</param>
 		public WrestlerDefinition(BinaryReader br)
 		{
-			this.ReadData(br);
+			ReadData(br);
 		}
+		#endregion
 
+		#region Binary Read/Write
 		/// <summary>
 		/// Read WrestlerDefinition data using a BinaryReader.
 		/// </summary>
@@ -102,58 +104,122 @@ namespace VPWStudio.GameSpecific.NoMercy
 			{
 				Array.Reverse(id4);
 			}
-			this.WrestlerID4 = BitConverter.ToUInt16(id4, 0);
+			WrestlerID4 = BitConverter.ToUInt16(id4, 0);
 
 			byte[] id2 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(id2);
 			}
-			this.WrestlerID2 = BitConverter.ToUInt16(id2, 0);
+			WrestlerID2 = BitConverter.ToUInt16(id2, 0);
 
-			this.ThemeSong = br.ReadByte();
-			this.EntranceVideo = br.ReadByte();
-			this.Height = br.ReadByte();
-			this.Unknown = br.ReadByte();
+			ThemeSong = br.ReadByte();
+			EntranceVideo = br.ReadByte();
+			Height = br.ReadByte();
+			Unknown = br.ReadByte();
 
 			byte[] w = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(w);
 			}
-			this.Weight = BitConverter.ToUInt16(w, 0);
+			Weight = BitConverter.ToUInt16(w, 0);
 
 			byte[] moveIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(moveIdx);
 			}
-			this.MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
+			MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
 
 			byte[] paramIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(paramIdx);
 			}
-			this.ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
+			ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
 
 			byte[] appearIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(appearIdx);
 			}
-			this.AppearanceIndex = BitConverter.ToUInt16(appearIdx, 0);
+			AppearanceIndex = BitConverter.ToUInt16(appearIdx, 0);
 
 			byte[] profileIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(profileIdx);
 			}
-			this.ProfileIndex = BitConverter.ToUInt16(profileIdx, 0);
+			ProfileIndex = BitConverter.ToUInt16(profileIdx, 0);
 
 			// prepare for another possible read
 			br.ReadBytes(2);
 		}
+
+		/// <summary>
+		/// Write WrestlerDefinition data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			byte[] id4 = BitConverter.GetBytes(WrestlerID4);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id4);
+			}
+			bw.Write(id4);
+
+			byte[] id2 = BitConverter.GetBytes(WrestlerID2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id2);
+			}
+			bw.Write(id2);
+
+			bw.Write(ThemeSong);
+			bw.Write(EntranceVideo);
+			bw.Write(Height);
+			bw.Write(Unknown);
+
+			byte[] w = BitConverter.GetBytes(Weight);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(w);
+			}
+			bw.Write(w);
+
+			byte[] moveIdx = BitConverter.GetBytes(MovesetFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(moveIdx);
+			}
+			bw.Write(moveIdx);
+
+			byte[] paramIdx = BitConverter.GetBytes(ParamsFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(paramIdx);
+			}
+			bw.Write(paramIdx);
+
+			byte[] appearIdx = BitConverter.GetBytes(AppearanceIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(appearIdx);
+			}
+			bw.Write(appearIdx);
+
+			byte[] profileIdx = BitConverter.GetBytes(ProfileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(profileIdx);
+			}
+			bw.Write(profileIdx);
+
+			bw.Write((Int16)0);
+		}
+		#endregion
 
 		#region XML Read/Write
 		public override void ReadXml(XmlReader xr)
