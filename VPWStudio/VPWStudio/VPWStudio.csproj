@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\OptionsControl_Emulator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionsControl_Emulator.Designer.cs">
+      <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataStructures\AKI\AkiFont.cs" />
     <Compile Include="DataStructures\AKI\AkiModel.cs" />
     <Compile Include="DataStructures\AKI\AkiText.cs" />
@@ -315,6 +321,9 @@
     <Compile Include="Tools\Toki1TestDialog.Designer.cs">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\OptionsControl_Emulator.resx">
+      <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.resx">
       <DependentUpon>FileTable_CiTexturePreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -563,7 +572,6 @@
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
     <Folder Include="GameSpecific\VPW64\" />
