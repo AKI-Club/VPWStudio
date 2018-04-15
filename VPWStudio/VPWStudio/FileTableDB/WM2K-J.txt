@@ -1,4 +1,7 @@
 # FileTable database for WWF WrestleMania 2000 (NTSC-J)
+0001=AkiLargeFont;
+0002=AkiSmallFont;
+0003=AkiFontChars;
 0004=AkiText;
 0005=AkiText;
 0006=AkiText;
@@ -15,6 +18,7 @@
 0012=AkiTexture;Title Logo
 0014=AkiTexture;Press Start
 0015=AkiTexture;
+0016=AkiArchive;
 0017=DoubleTex;
 0018=DoubleTex;
 0019=DoubleTex;
@@ -39,6 +43,30 @@
 002C=AkiTexture;
 002D=AkiTexture;
 002E=AkiTexture;
+002F=AkiArchive;
+0030=AkiArchive;
+0031=AkiArchive;
+0032=AkiArchive;
+0033=AkiArchive;
+0034=AkiArchive;
+0035=AkiArchive;
+0036=AkiArchive;
+0037=AkiArchive;
+0038=AkiArchive;
+0039=AkiArchive;
+003A=AkiArchive;
+003B=AkiArchive;
+003C=AkiArchive;
+003D=AkiArchive;
+003E=AkiArchive;
+003F=AkiArchive;
+0040=AkiArchive;
+0041=AkiArchive;
+0042=AkiArchive;
+0043=AkiArchive;
+0044=AkiArchive;
+0045=AkiArchive;
+0046=AkiArchive;
 0047=AkiTexture;
 0048=AkiTexture;
 0049=AkiTexture;
