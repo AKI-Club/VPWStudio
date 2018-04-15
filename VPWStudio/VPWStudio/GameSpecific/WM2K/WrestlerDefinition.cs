@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Globalization;
 using System.Xml;
 
 namespace VPWStudio.GameSpecific.WM2K
@@ -76,22 +75,23 @@ namespace VPWStudio.GameSpecific.WM2K
 
 		// todo: store wrestler name string?
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public WrestlerDefinition()
 		{
-			this.NamePointer = 0;
-			this.WrestlerID4 = 0;
-			this.WrestlerID2 = 0;
-			this.Height = 0;
-			this.Weight = 0;
-			this.MovesetFileIndex = 0;
-			this.ParamsFileIndex = 0;
-			this.ThemeSong = 0;
-			this.EntranceVideo = 0;
-			this.Unknown = 0;
-			this.CostumePointers = new UInt32[4];
+			NamePointer = 0;
+			WrestlerID4 = 0;
+			WrestlerID2 = 0;
+			Height = 0;
+			Weight = 0;
+			MovesetFileIndex = 0;
+			ParamsFileIndex = 0;
+			ThemeSong = 0;
+			EntranceVideo = 0;
+			Unknown = 0;
+			CostumePointers = new UInt32[4];
 		}
 
 		/// <summary>
@@ -100,9 +100,10 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <param name="br">BinaryReader instance to use.</param>
 		public WrestlerDefinition(BinaryReader br)
 		{
-			this.CostumePointers = new UInt32[4];
-			this.ReadData(br);
+			CostumePointers = new UInt32[4];
+			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
@@ -116,59 +117,59 @@ namespace VPWStudio.GameSpecific.WM2K
 			{
 				Array.Reverse(np);
 			}
-			this.NamePointer = BitConverter.ToUInt32(np,0);
+			NamePointer = BitConverter.ToUInt32(np,0);
 
 			byte[] id4 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(id4);
 			}
-			this.WrestlerID4 = BitConverter.ToUInt16(id4, 0);
+			WrestlerID4 = BitConverter.ToUInt16(id4, 0);
 
 			byte[] id2 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(id2);
 			}
-			this.WrestlerID2 = BitConverter.ToUInt16(id2, 0);
+			WrestlerID2 = BitConverter.ToUInt16(id2, 0);
 
 			byte[] h = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(h);
 			}
-			this.Height = BitConverter.ToUInt16(h, 0);
+			Height = BitConverter.ToUInt16(h, 0);
 
 			byte[] w = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(w);
 			}
-			this.Weight = BitConverter.ToUInt16(w, 0);
+			Weight = BitConverter.ToUInt16(w, 0);
 
 			byte[] moveIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(moveIdx);
 			}
-			this.MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
+			MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
 
 			byte[] paramIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(paramIdx);
 			}
-			this.ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
+			ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
 
-			this.ThemeSong = br.ReadByte();
-			this.EntranceVideo = br.ReadByte();
+			ThemeSong = br.ReadByte();
+			EntranceVideo = br.ReadByte();
 
 			byte[] unk = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(unk);
 			}
-			this.Unknown = BitConverter.ToUInt16(unk, 0);
+			Unknown = BitConverter.ToUInt16(unk, 0);
 
 			for (int i = 0; i < 4; i++)
 			{
@@ -177,7 +178,83 @@ namespace VPWStudio.GameSpecific.WM2K
 				{
 					Array.Reverse(cosptr);
 				}
-				this.CostumePointers[i] = BitConverter.ToUInt32(cosptr, 0);
+				CostumePointers[i] = BitConverter.ToUInt32(cosptr, 0);
+			}
+		}
+
+		/// <summary>
+		/// Write WrestlerDefinition data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			byte[] np = BitConverter.GetBytes(NamePointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(np);
+			}
+			bw.Write(np);
+
+			byte[] id4 = BitConverter.GetBytes(WrestlerID4);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id4);
+			}
+			bw.Write(id4);
+
+			byte[] id2 = BitConverter.GetBytes(WrestlerID2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id2);
+			}
+			bw.Write(id2);
+
+			byte[] h = BitConverter.GetBytes(Height);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(h);
+			}
+			bw.Write(h);
+
+			byte[] w = BitConverter.GetBytes(Weight);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(w);
+			}
+			bw.Write(w);
+
+			byte[] moves = BitConverter.GetBytes(MovesetFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(moves);
+			}
+			bw.Write(moves);
+
+			byte[] param = BitConverter.GetBytes(ParamsFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(param);
+			}
+			bw.Write(param);
+
+			bw.Write(ThemeSong);
+			bw.Write(EntranceVideo);
+
+			byte[] unk = BitConverter.GetBytes(Unknown);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk);
+			}
+			bw.Write(unk);
+
+			for (int i = 0; i < 4; i++)
+			{
+				byte[] cosptr = BitConverter.GetBytes(CostumePointers[i]);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(cosptr);
+				}
+				bw.Write(cosptr);
 			}
 		}
 		#endregion
@@ -202,7 +279,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <returns></returns>
 		public string GetName(BinaryReader br)
 		{
-			UInt32 nameAddr = Z64Rom.PointerToRom(this.NamePointer);
+			UInt32 nameAddr = Z64Rom.PointerToRom(NamePointer);
 			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
 			string s = String.Empty;
 			while (br.PeekChar() != 0)
