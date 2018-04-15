@@ -287,28 +287,10 @@ namespace VPWStudio
 				br.Close();
 				fhtexWriter.Close();
 
-				// todo: fix displacement
+				// handle displacement
 				int fDisplace = DefaultFaceDisplacement_FacialHair[cbFace.SelectedIndex];
 				int hDisplace = Displacement_FacialHair[(cbFacialHair.SelectedIndex)];
-				labelFValue.Text = String.Format("{0:X2}", fDisplace);
-				labelHValue.Text = String.Format("{0:X2}", hDisplace);
-
-				int displace = fDisplace - hDisplace;
-				int difference = fDisplace - displace;
-
-				g.DrawImage(FacialHairTex.ToBitmap(FacialHairPal), new Point(0, difference));
-			}
-			else
-			{
-				if (cbFace.SelectedIndex >= 0)
-				{
-					labelFValue.Text = String.Format("{0:X2}", DefaultFaceDisplacement_FacialHair[cbFace.SelectedIndex]);
-				}
-				else
-				{
-					labelFValue.Text = "fuck";
-				}
-				labelHValue.Text = String.Format("{0:X2}", 0);
+				g.DrawImage(FacialHairTex.ToBitmap(FacialHairPal), new Point(0, (sbyte)(32 + (fDisplace - hDisplace))));
 			}
 
 			// facepaint
