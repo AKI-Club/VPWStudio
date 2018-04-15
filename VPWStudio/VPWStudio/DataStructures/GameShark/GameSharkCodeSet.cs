@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 
@@ -22,13 +21,14 @@ namespace VPWStudio
 		/// </summary>
 		public SortedList<int, GameSharkCode> Codes;
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public GameSharkCodeSet()
 		{
-			this.Name = "Untitled Codeset";
-			this.Codes = new SortedList<int, GameSharkCode>();
+			Name = "Untitled Codeset";
+			Codes = new SortedList<int, GameSharkCode>();
 		}
 
 		/// <summary>
@@ -37,9 +37,10 @@ namespace VPWStudio
 		/// <param name="_name"></param>
 		public GameSharkCodeSet(string _name)
 		{
-			this.Name = _name;
-			this.Codes = new SortedList<int, GameSharkCode>();
+			Name = _name;
+			Codes = new SortedList<int, GameSharkCode>();
 		}
+		#endregion
 
 		#region Things to re-consider
 		/// <summary>
@@ -48,7 +49,7 @@ namespace VPWStudio
 		/// <param name="gsc">GameSharkCode object to add.</param>
 		public void AddCode(GameSharkCode gsc)
 		{
-			this.Codes.Add(this.Codes.Count, gsc);
+			Codes.Add(Codes.Count, gsc);
 		}
 
 		/// <summary>
@@ -59,12 +60,12 @@ namespace VPWStudio
 		/// <returns></returns>
 		public bool AddCodeAt(GameSharkCode gsc, int index)
 		{
-			if (index > (this.Codes.Count + 1) || index < 0)
+			if (index > (Codes.Count + 1) || index < 0)
 			{
 				return false;
 			}
 
-			this.Codes.Add(index, gsc);
+			Codes.Add(index, gsc);
 			return true;
 		}
 
@@ -75,12 +76,12 @@ namespace VPWStudio
 		/// <returns></returns>
 		public bool RemoveCodeAt(int index)
 		{
-			if (index > this.Codes.Count || index < 0)
+			if (index > Codes.Count || index < 0)
 			{
 				return false;
 			}
 
-			this.Codes.Remove(index);
+			Codes.Remove(index);
 			return true;
 		}
 		#endregion
@@ -92,9 +93,9 @@ namespace VPWStudio
 		public string GetCodes()
 		{
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < this.Codes.Count; i++)
+			for (int i = 0; i < Codes.Count; i++)
 			{
-				sb.AppendLine(this.Codes[i].ToString());
+				sb.AppendLine(Codes[i].ToString());
 			}
 			return sb.ToString();
 		}
@@ -105,11 +106,11 @@ namespace VPWStudio
 		/// <param name="_src"></param>
 		public void DeepCopy(GameSharkCodeSet _src)
 		{
-			this.Name = _src.Name;
-			this.Codes = new SortedList<int, GameSharkCode>();
+			Name = _src.Name;
+			Codes = new SortedList<int, GameSharkCode>();
 			for (int i = 0; i < _src.Codes.Count; i++)
 			{
-				this.AddCodeAt((GameSharkCode)_src.Codes[i], i);
+				AddCodeAt(_src.Codes[i], i);
 			}
 		}
 
@@ -120,7 +121,7 @@ namespace VPWStudio
 		/// <param name="_path">Path to XML file with GameSharkCodeSet data.</param>
 		public void LoadFile(XmlReader xr)
 		{
-			this.Codes.Clear();
+			Codes.Clear();
 			ReadXml(xr);
 		}
 
@@ -134,7 +135,7 @@ namespace VPWStudio
 		{
 			xw.WriteStartDocument();
 
-			this.WriteXml(xw);
+			WriteXml(xw);
 
 			xw.WriteEndDocument();
 			xw.Flush();
@@ -153,16 +154,16 @@ namespace VPWStudio
 			xw.WriteStartElement("GameSharkCodeSet");
 
 			xw.WriteStartElement("Name");
-			xw.WriteValue(this.Name);
+			xw.WriteValue(Name);
 			xw.WriteEndElement();
 
-			xw.WriteElementString("NumCodes", this.Codes.Count.ToString());
+			xw.WriteElementString("NumCodes", Codes.Count.ToString());
 
-			for (int i = 0; i < this.Codes.Count; i++)
+			for (int i = 0; i < Codes.Count; i++)
 			{
 				xw.WriteElementString(
 					String.Format("Code{0}", i),
-					this.Codes[i].ToString()
+					Codes[i].ToString()
 				);
 			}
 
@@ -188,7 +189,7 @@ namespace VPWStudio
 
 				if (xr.Name == "Name")
 				{
-					this.Name = xr.ReadElementContentAsString();
+					Name = xr.ReadElementContentAsString();
 				}
 
 				if (xr.Name == "NumCodes")
@@ -200,7 +201,7 @@ namespace VPWStudio
 				{
 					int codeNum = int.Parse(xr.Name.Substring(4));
 					string code = xr.ReadElementContentAsString();
-					this.Codes.Add(codeNum, new GameSharkCode(code));
+					Codes.Add(codeNum, new GameSharkCode(code));
 				}
 			}
 		}
@@ -218,13 +219,13 @@ namespace VPWStudio
 			string cheat = String.Empty;
 			for (int i = 0; i < this.Codes.Count; i++)
 			{
-				cheat += this.Codes[i].ToString();
-				if (i < this.Codes.Count - 1)
+				cheat += Codes[i].ToString();
+				if (i < Codes.Count - 1)
 				{
 					cheat += ",";
 				}
 			}
-			sw.WriteLine(String.Format("Cheat{0}=\"{1}\",{2}", codeNum, this.Name, cheat));
+			sw.WriteLine(String.Format("Cheat{0}=\"{1}\",{2}", codeNum, Name, cheat));
 		}
 		#endregion
 	}
