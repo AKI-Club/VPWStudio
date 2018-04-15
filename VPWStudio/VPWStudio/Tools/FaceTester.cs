@@ -318,17 +318,25 @@ namespace VPWStudio
 				br.Close();
 				fptexWriter.Close();
 
-				// todo: fix displacement
+				// handle displacement
 				int selectedFP = cbPaint.SelectedIndex;
+				int fDisplace = (sbyte)DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex];
+				int pDisplace = (sbyte)Displacement_Paint[selectedFP];
+				
 				int displace = 0;
 				if (FacepaintType[selectedFP] != 0)
 				{
-					displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Paint[selectedFP]);
+					displace = 0;
 				}
-				else
+				else if (pDisplace < 0)
 				{
 					displace = 0;
 				}
+				else
+				{
+					displace = (sbyte)fDisplace - (sbyte)pDisplace;
+				}
+
 				g.DrawImage(FacePaintTex.ToBitmap(FacePaintPal), new Point(0, displace));
 			}
 
@@ -359,24 +367,27 @@ namespace VPWStudio
 
 				// todo: fix displacement
 				int selectedAcc = cbAccessory.SelectedIndex;
+				int fDisplace = (sbyte)DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex];
+				int aDisplace = (sbyte)(Displacement_Accessories[selectedAcc]);
 				int displace = 0;
+
 				if (AccessoryType[selectedAcc] != 0)
 				{
-					//displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Accessories[selectedAcc]);
+					displace = 0;
+				}
+				else if (aDisplace < 0)
+				{
 					displace = 0;
 				}
 				else
 				{
-					//displace = 0;
-					if ((sbyte)(Displacement_Accessories[selectedAcc]) < 0)
-					{
-						displace = (sbyte)(Displacement_Accessories[selectedAcc]);
-					}
-					else
-					{
-						displace = (sbyte)(DefaultFaceDisplacement_PaintAccessories[cbFace.SelectedIndex]) - (sbyte)(Displacement_Accessories[selectedAcc]);
-					}
+					displace = (sbyte)fDisplace - (sbyte)aDisplace;
 				}
+
+				labelFValue.Text = String.Format("{0}", fDisplace);
+				labelAValue.Text = String.Format("{0}", aDisplace);
+				labelDValue.Text = String.Format("{0}", displace);
+
 				g.DrawImage(AccessoryTex.ToBitmap(AccessoryPal), new Point(0, displace));
 			}
 

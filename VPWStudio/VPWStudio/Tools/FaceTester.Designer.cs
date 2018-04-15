@@ -45,9 +45,17 @@
 			this.cbFrontHair = new System.Windows.Forms.ComboBox();
 			this.labelFrontHair = new System.Windows.Forms.Label();
 			this.labelHairColor = new System.Windows.Forms.Label();
+			this.labelDValue = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.labelAValue = new System.Windows.Forms.Label();
+			this.labelFValue = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.gbPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbFacePreview)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbPreview
@@ -360,11 +368,92 @@
 			this.labelHairColor.TabIndex = 12;
 			this.labelHairColor.Text = "Hair Color";
 			// 
+			// labelDValue
+			// 
+			this.labelDValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelDValue.AutoSize = true;
+			this.labelDValue.Location = new System.Drawing.Point(21, 54);
+			this.labelDValue.Name = "labelDValue";
+			this.labelDValue.Size = new System.Drawing.Size(38, 13);
+			this.labelDValue.TabIndex = 5;
+			this.labelDValue.Text = "0";
+			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 54);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(12, 13);
+			this.label1.TabIndex = 4;
+			this.label1.Text = "D";
+			// 
+			// labelAValue
+			// 
+			this.labelAValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelAValue.AutoSize = true;
+			this.labelAValue.Location = new System.Drawing.Point(21, 29);
+			this.labelAValue.Name = "labelAValue";
+			this.labelAValue.Size = new System.Drawing.Size(38, 13);
+			this.labelAValue.TabIndex = 3;
+			this.labelAValue.Text = "0";
+			// 
+			// labelFValue
+			// 
+			this.labelFValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelFValue.AutoSize = true;
+			this.labelFValue.Location = new System.Drawing.Point(21, 5);
+			this.labelFValue.Name = "labelFValue";
+			this.labelFValue.Size = new System.Drawing.Size(38, 13);
+			this.labelFValue.TabIndex = 2;
+			this.labelFValue.Text = "0";
+			// 
+			// label9
+			// 
+			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(3, 29);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(12, 13);
+			this.label9.TabIndex = 1;
+			this.label9.Text = "A";
+			// 
+			// label8
+			// 
+			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(3, 5);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(12, 13);
+			this.label8.TabIndex = 0;
+			this.label8.Text = "F";
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel2.Controls.Add(this.label8, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label9, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.labelFValue, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.labelAValue, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.labelDValue, 1, 2);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(398, 118);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 3;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(62, 73);
+			this.tableLayoutPanel2.TabIndex = 2;
+			// 
 			// FaceTester
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(472, 203);
+			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.gbPreview);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -377,6 +466,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pbFacePreview)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -400,5 +491,12 @@
 		private System.Windows.Forms.ComboBox cbAccessory;
 		private System.Windows.Forms.ComboBox cbHairColor;
 		private System.Windows.Forms.Label labelHairColor;
+		private System.Windows.Forms.Label labelDValue;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label labelAValue;
+		private System.Windows.Forms.Label labelFValue;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 	}
 }
