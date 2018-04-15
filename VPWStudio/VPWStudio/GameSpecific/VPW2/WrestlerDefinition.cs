@@ -63,7 +63,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		public UInt16 ParamsFileIndex;
 
 		/// <summary>
-		/// Index into appearances table
+		/// Index into default appearances table
 		/// </summary>
 		public UInt16 AppearanceIndex;
 
@@ -73,23 +73,24 @@ namespace VPWStudio.GameSpecific.VPW2
 		public UInt16 ProfileIndex;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public WrestlerDefinition()
 		{
-			this.WrestlerID4 = 0;
-			this.WrestlerID2 = 0;
-			this.ThemeSong = 0;
-			this.NameCall = 0;
-			this.Height = 0;
-			this.Weight = 0;
-			this.Voice1 = 0;
-			this.Voice2 = 0;
-			this.MovesetFileIndex = 0;
-			this.ParamsFileIndex = 0;
-			this.AppearanceIndex = 0;
-			this.ProfileIndex = 0;
+			WrestlerID4 = 0;
+			WrestlerID2 = 0;
+			ThemeSong = 0;
+			NameCall = 0;
+			Height = 0;
+			Weight = 0;
+			Voice1 = 0;
+			Voice2 = 0;
+			MovesetFileIndex = 0;
+			ParamsFileIndex = 0;
+			AppearanceIndex = 0;
+			ProfileIndex = 0;
 		}
 
 		/// <summary>
@@ -98,8 +99,9 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// <param name="br">BinaryReader instance to use.</param>
 		public WrestlerDefinition(BinaryReader br)
 		{
-			this.ReadData(br);
+			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
@@ -113,52 +115,111 @@ namespace VPWStudio.GameSpecific.VPW2
 			{
 				Array.Reverse(id4);
 			}
-			this.WrestlerID4 = BitConverter.ToUInt16(id4, 0);
+			WrestlerID4 = BitConverter.ToUInt16(id4, 0);
 
 			byte[] id2 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(id2);
 			}
-			this.WrestlerID2 = BitConverter.ToUInt16(id2, 0);
+			WrestlerID2 = BitConverter.ToUInt16(id2, 0);
 
-			this.ThemeSong = br.ReadByte();
-			this.NameCall = br.ReadByte();
-			this.Height = br.ReadByte();
-			this.Weight = br.ReadByte();
-			this.Voice1 = br.ReadByte();
-			this.Voice2 = br.ReadByte();
+			ThemeSong = br.ReadByte();
+			NameCall = br.ReadByte();
+			Height = br.ReadByte();
+			Weight = br.ReadByte();
+			Voice1 = br.ReadByte();
+			Voice2 = br.ReadByte();
 
 			byte[] moveIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(moveIdx);
 			}
-			this.MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
+			MovesetFileIndex = BitConverter.ToUInt16(moveIdx, 0);
 
 			byte[] paramIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(paramIdx);
 			}
-			this.ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
+			ParamsFileIndex = BitConverter.ToUInt16(paramIdx, 0);
 
 			byte[] appearIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(appearIdx);
 			}
-			this.AppearanceIndex = BitConverter.ToUInt16(appearIdx, 0);
+			AppearanceIndex = BitConverter.ToUInt16(appearIdx, 0);
 
 			byte[] profileIdx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(profileIdx);
 			}
-			this.ProfileIndex = BitConverter.ToUInt16(profileIdx, 0);
+			ProfileIndex = BitConverter.ToUInt16(profileIdx, 0);
 
 			// prepare for another possible read
 			br.ReadBytes(2);
+		}
+
+		/// <summary>
+		/// Write WrestlerDefinition data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		private void WriteData(BinaryWriter bw)
+		{
+			byte[] id4 = BitConverter.GetBytes(WrestlerID4);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id4);
+			}
+			bw.Write(id4);
+
+			byte[] id2 = BitConverter.GetBytes(WrestlerID2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(id2);
+			}
+			bw.Write(id2);
+
+			bw.Write(ThemeSong);
+			bw.Write(NameCall);
+			bw.Write(Height);
+			bw.Write(Weight);
+			bw.Write(Voice1);
+			bw.Write(Voice2);
+
+			byte[] moves = BitConverter.GetBytes(MovesetFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(moves);
+			}
+			bw.Write(moves);
+
+			byte[] param = BitConverter.GetBytes(ParamsFileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(param);
+			}
+			bw.Write(param);
+
+			byte[] appear = BitConverter.GetBytes(AppearanceIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(appear);
+			}
+			bw.Write(appear);
+
+			byte[] profile = BitConverter.GetBytes(ProfileIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(profile);
+			}
+			bw.Write(profile);
+
+			// terminator
+			bw.Write((Int16)0);
 		}
 		#endregion
 
@@ -172,26 +233,26 @@ namespace VPWStudio.GameSpecific.VPW2
 			System.Windows.Forms.MessageBox.Show(xr.Name);
 
 			string id4 = xr.ReadElementContentAsString();
-			this.WrestlerID4 = ushort.Parse(id4, NumberStyles.HexNumber);
+			WrestlerID4 = ushort.Parse(id4, NumberStyles.HexNumber);
 
 			string id2 = xr.ReadElementContentAsString();
-			this.WrestlerID2 = ushort.Parse(id2, NumberStyles.HexNumber);
+			WrestlerID2 = ushort.Parse(id2, NumberStyles.HexNumber);
 
-			this.ThemeSong = (byte)xr.ReadContentAsInt();
-			this.NameCall = (byte)xr.ReadContentAsInt();
-			this.Height = (byte)xr.ReadContentAsInt();
-			this.Weight = (byte)xr.ReadContentAsInt();
-			this.Voice1 = (byte)xr.ReadContentAsInt();
-			this.Voice2 = (byte)xr.ReadContentAsInt();
+			ThemeSong = (byte)xr.ReadContentAsInt();
+			NameCall = (byte)xr.ReadContentAsInt();
+			Height = (byte)xr.ReadContentAsInt();
+			Weight = (byte)xr.ReadContentAsInt();
+			Voice1 = (byte)xr.ReadContentAsInt();
+			Voice2 = (byte)xr.ReadContentAsInt();
 
 			string moveIndex = xr.ReadElementContentAsString();
-			this.MovesetFileIndex = UInt16.Parse(moveIndex, NumberStyles.HexNumber);
+			MovesetFileIndex = UInt16.Parse(moveIndex, NumberStyles.HexNumber);
 			string paramIndex = xr.ReadElementContentAsString();
-			this.ParamsFileIndex = UInt16.Parse(paramIndex, NumberStyles.HexNumber);
+			ParamsFileIndex = UInt16.Parse(paramIndex, NumberStyles.HexNumber);
 			string costumeIndex = xr.ReadElementContentAsString();
-			this.AppearanceIndex = UInt16.Parse(costumeIndex, NumberStyles.HexNumber);
+			AppearanceIndex = UInt16.Parse(costumeIndex, NumberStyles.HexNumber);
 			string profileIndex = xr.ReadElementContentAsString();
-			this.ProfileIndex = UInt16.Parse(profileIndex, NumberStyles.HexNumber);
+			ProfileIndex = UInt16.Parse(profileIndex, NumberStyles.HexNumber);
 		}
 
 		/// <summary>
@@ -202,18 +263,18 @@ namespace VPWStudio.GameSpecific.VPW2
 		{
 			xr.WriteStartElement("WrestlerDefinition_VPW2");
 
-			xr.WriteElementString("WrestlerID4", String.Format("{0:X4}", this.WrestlerID4));
-			xr.WriteElementString("WrestlerID2", String.Format("{0:X2}", this.WrestlerID2));
-			xr.WriteElementString("ThemeSong", this.ThemeSong.ToString());
-			xr.WriteElementString("NameCall", this.NameCall.ToString());
-			xr.WriteElementString("Height", this.Height.ToString());
-			xr.WriteElementString("Weight", this.Weight.ToString());
-			xr.WriteElementString("Voice1", this.Voice1.ToString());
-			xr.WriteElementString("Voice2", this.Voice2.ToString());
-			xr.WriteElementString("MovesetFileIndex", String.Format("{0:X4}", this.MovesetFileIndex));
-			xr.WriteElementString("ParamsFileIndex", String.Format("{0:X4}", this.ParamsFileIndex));
-			xr.WriteElementString("AppearanceIndex", String.Format("{0:X4}", this.AppearanceIndex));
-			xr.WriteElementString("ProfileIndex", String.Format("{0:X4}", this.ProfileIndex));
+			xr.WriteElementString("WrestlerID4", String.Format("{0:X4}", WrestlerID4));
+			xr.WriteElementString("WrestlerID2", String.Format("{0:X2}", WrestlerID2));
+			xr.WriteElementString("ThemeSong", ThemeSong.ToString());
+			xr.WriteElementString("NameCall", NameCall.ToString());
+			xr.WriteElementString("Height", Height.ToString());
+			xr.WriteElementString("Weight", Weight.ToString());
+			xr.WriteElementString("Voice1", Voice1.ToString());
+			xr.WriteElementString("Voice2", Voice2.ToString());
+			xr.WriteElementString("MovesetFileIndex", String.Format("{0:X4}", MovesetFileIndex));
+			xr.WriteElementString("ParamsFileIndex", String.Format("{0:X4}", ParamsFileIndex));
+			xr.WriteElementString("AppearanceIndex", String.Format("{0:X4}", AppearanceIndex));
+			xr.WriteElementString("ProfileIndex", String.Format("{0:X4}", ProfileIndex));
 
 			xr.WriteEndElement();
 		}
