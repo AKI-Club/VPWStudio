@@ -52,6 +52,10 @@ namespace VPWStudio.GameSpecific.VPW2
 		}
 
 		#region Binary Read/Write
+		/// <summary>
+		/// Read StableDefinition data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			byte[] wptr = br.ReadBytes(4);
@@ -78,6 +82,25 @@ namespace VPWStudio.GameSpecific.VPW2
 				i++;
 			}
 			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
+		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			byte[] wptr = BitConverter.GetBytes(WrestlerPointerStart);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(wptr);
+			}
+			bw.Write(wptr);
+
+			byte[] name = BitConverter.GetBytes(StableNameIndex);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(name);
+			}
+			bw.Write(name);
+
+			// ugh this part blows nuts
 		}
 		#endregion
 	}
