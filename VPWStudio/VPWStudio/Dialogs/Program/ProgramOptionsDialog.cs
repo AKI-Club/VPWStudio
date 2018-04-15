@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPWStudio
@@ -25,9 +19,10 @@ namespace VPWStudio
 			EmulatorArgs = Properties.Settings.Default.EmulatorArguments;
 
 			InitializeComponent();
+			tvOptions.SelectedNode = tvOptions.Nodes["Emulator"];
 
-			tbEmuPath.Text = EmulatorPath;
-			tbEmulatorArguments.Text = EmulatorArgs;
+			optionControlEmu.tbEmuPath.Text = EmulatorPath;
+			optionControlEmu.tbEmulatorArguments.Text = EmulatorArgs;
 
 			cbBuildLogVerbosity.BeginUpdate();
 			foreach (int i in Enum.GetValues(typeof(BuildLogEventPublisher.BuildLogVerbosity)))
@@ -40,14 +35,13 @@ namespace VPWStudio
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			if (tbEmuPath.Text != String.Empty && !File.Exists(tbEmuPath.Text))
+			if (optionControlEmu.tbEmuPath.Text != String.Empty && !File.Exists(optionControlEmu.tbEmuPath.Text))
 			{
-				// todo: error
 				Program.ErrorMessageBox("Emulator executable not found.");
 				return;
 			}
-			EmulatorPath = tbEmuPath.Text;
-			EmulatorArgs = tbEmulatorArguments.Text;
+			EmulatorPath = optionControlEmu.tbEmuPath.Text;
+			EmulatorArgs = optionControlEmu.tbEmulatorArguments.Text;
 			BuildLogVerbosity = cbBuildLogVerbosity.SelectedIndex;
 
 			DialogResult = DialogResult.OK;
@@ -60,14 +54,27 @@ namespace VPWStudio
 			Close();
 		}
 
-		private void buttonBrowse_Click(object sender, EventArgs e)
+		private void tvOptions_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Select Emulator Executable";
-			ofd.Filter = "Executable Files (*.exe)|*.exe|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
+			if (tvOptions.SelectedNode == null)
 			{
-				tbEmuPath.Text = ofd.FileName;
+				return;
+			}
+
+			switch (tvOptions.SelectedNode.Name)
+			{
+				case "Emulator":
+					{
+						optionControlEmu.Visible = true;
+						tlpBuildLogVerbosity.Visible = false;
+					}
+					break;
+				case "Build":
+					{
+						optionControlEmu.Visible = false;
+						tlpBuildLogVerbosity.Visible = true;
+					}
+					break;
 			}
 		}
 	}
