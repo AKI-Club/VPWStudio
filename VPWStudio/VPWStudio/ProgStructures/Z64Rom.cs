@@ -131,6 +131,17 @@ namespace VPWStudio
 			_ptr &= 0x0FFFFFFF;
 			return (_ptr + 0xC00);
 		}
+
+		/// <summary>
+		/// Convert a ROM location to a pointer value.
+		/// </summary>
+		/// <param name="_rom">ROM location of pointer value.</param>
+		/// <returns>Pointer value</returns>
+		public static UInt32 RomToPointer(UInt32 _rom)
+		{
+			_rom |= 0x80000000;
+			return (_rom - 0xC00);
+		}
 		#endregion
 
 		#region Constants
