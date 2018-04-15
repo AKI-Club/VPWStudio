@@ -137,7 +137,7 @@ namespace VPWStudio.GameSpecific
 		/// <summary>
 		/// Read MaskDef_Early data using a BinaryReader.
 		/// </summary>
-		/// <param name="br"></param>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			NeckModel = ReadElement(br);
@@ -157,8 +157,8 @@ namespace VPWStudio.GameSpecific
 		/// <summary>
 		/// Write helper.
 		/// </summary>
-		/// <param name="bw"></param>
-		/// <param name="val"></param>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		/// <param name="val">Value to write.</param>
 		private void WriteElement(BinaryWriter bw, UInt16 val)
 		{
 			byte[] wByte = BitConverter.GetBytes(val);
@@ -169,6 +169,10 @@ namespace VPWStudio.GameSpecific
 			bw.Write(wByte);
 		}
 
+		/// <summary>
+		/// Write MaskDef_Early data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			WriteElement(bw, NeckModel);
