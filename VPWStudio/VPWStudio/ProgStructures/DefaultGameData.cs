@@ -373,7 +373,7 @@ namespace VPWStudio
 					{ "Sound03", new DefaultLocationDataEntry(0x4536,4) },
 					{ "Sound04", new DefaultLocationDataEntry(0x4556,8) },
 					{ "Sound05", new DefaultLocationDataEntry(0x455A,8) },
-					{ "Sound06", new DefaultLocationDataEntry(0x45EE,4) },
+					{ "Sound06", new DefaultLocationDataEntry(0x459E,4) },
 					{ "Sound07", new DefaultLocationDataEntry(0x483A,8) },
 					{ "Sound08", new DefaultLocationDataEntry(0x4882,8) },
 					{ "Sound09", new DefaultLocationDataEntry(0x489A,4) }
