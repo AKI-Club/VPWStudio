@@ -65,6 +65,12 @@ namespace VPWStudio
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1A78, 21996) },
+
+					// relocatable code addresses
+					{ "RelocatableCodeAddress1", new DefaultLocationDataEntry(0x337A0, 4) },
+					{ "RelocatableCodeAddress2", new DefaultLocationDataEntry(0x337A4, 4) },
+					{ "RelocatableCodeAddress3", new DefaultLocationDataEntry(0x337C4, 4) },
+					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x337C8, 4) },
 				})
 			},
 			{
@@ -81,6 +87,12 @@ namespace VPWStudio
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x39500, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1C70, 21996) },
+
+					// relocatable code addresses
+					{ "RelocatableCodeAddress1", new DefaultLocationDataEntry(0x33810, 4) },
+					{ "RelocatableCodeAddress2", new DefaultLocationDataEntry(0x33814, 4) },
+					{ "RelocatableCodeAddress3", new DefaultLocationDataEntry(0x33834, 4) },
+					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x33838, 4) },
 				})
 			},
 			{
@@ -97,6 +109,12 @@ namespace VPWStudio
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x7C1C00, 21996) },
+
+					// relocatable code addresses
+					{ "RelocatableCodeAddress1", new DefaultLocationDataEntry(0x337F0, 4) },
+					{ "RelocatableCodeAddress2", new DefaultLocationDataEntry(0x337F4, 4) },
+					{ "RelocatableCodeAddress3", new DefaultLocationDataEntry(0x33814, 4) },
+					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x33818, 4) },
 				})
 			},
 			{
@@ -122,6 +140,12 @@ namespace VPWStudio
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x4AD00, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xC7B578, 37432) },
+
+					// relocatable code addresses
+					{ "RelocatableCodeAddress1", new DefaultLocationDataEntry(0x3FAC0, 4) },
+					{ "RelocatableCodeAddress2", new DefaultLocationDataEntry(0x3FAC4, 4) },
+					{ "RelocatableCodeAddress3", new DefaultLocationDataEntry(0x3FAE4, 4) },
+					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x3FAE8, 4) },
 				})
 			},
 			{
@@ -286,6 +310,25 @@ namespace VPWStudio
 				return null;
 			}
 		}
+
+		/// <summary>
+		/// Return a list of entries starting with the specified string.
+		/// </summary>
+		/// <param name="game"></param>
+		/// <param name="b"></param>
+		/// <returns></returns>
+		public static List<DefaultLocationDataEntry> GetEntriesStartingWith(SpecificGame game, string b)
+		{
+			List<DefaultLocationDataEntry> entries = new List<DefaultLocationDataEntry>();
+			foreach (KeyValuePair<string, DefaultLocationDataEntry> entry in DefaultLocations[game].Locations)
+			{
+				if (entry.Key.StartsWith(b))
+				{
+					entries.Add(entry.Value);
+				}
+			}
+			return entries;
+		}
 		#endregion
 
 		#region Sound Offsets
@@ -312,7 +355,15 @@ namespace VPWStudio
 			{
 				SpecificGame.VPW64_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x460E,8) },
+					{ "Sound02", new DefaultLocationDataEntry(0x4612,8) },
+					{ "Sound03", new DefaultLocationDataEntry(0x465A,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x467A,8) },
+					{ "Sound05", new DefaultLocationDataEntry(0x467E,8) },
+					{ "Sound06", new DefaultLocationDataEntry(0x46C2,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x495E,8) },
+					{ "Sound08", new DefaultLocationDataEntry(0x49A6,8) },
+					{ "Sound09", new DefaultLocationDataEntry(0x49BE,4) }
 				})
 			},
 			{
