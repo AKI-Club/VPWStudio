@@ -337,19 +337,27 @@ namespace VPWStudio
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					// xxx: needs fixing
 				})
 			},
 			{
 				SpecificGame.WorldTour_NTSC_U_11,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					{ "Sound01", new DefaultLocationDataEntry(0x450A,8) },
+					{ "Sound02", new DefaultLocationDataEntry(0x450E,8) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4556,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x4576,8) },
+					{ "Sound05", new DefaultLocationDataEntry(0x457A,8) },
+					{ "Sound06", new DefaultLocationDataEntry(0x45BE,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x485A,8) },
+					{ "Sound08", new DefaultLocationDataEntry(0x48A2,8) },
+					{ "Sound09", new DefaultLocationDataEntry(0x48BA,4) }
 				})
 			},
 			{
 				SpecificGame.WorldTour_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-
+					// xxx: needs fixing
 				})
 			},
 			{
