@@ -140,6 +140,70 @@ addresses of note:
 0x7CFD20 - part of alHeapDBAlloc calculation?
 0x7CFD20 - $a1 arg for alBnkfNew
 
+{
+lui     $s2, 0x8F
+(3C 12 00 8F)
+* IDA: 80003908
+* Z64: 0x4508
+
+li      $s2, 0x8E8C60
+(26 52 8C 60)
+* IDA: 80003910
+* Z64: 0x4510
+}
+* freem offset (new): {0x450A, 0x4512} (length = 8)
+
+{
+lui     $t7, 0x8F
+(3C 0F 00 8F)
+* IDA: 8000390C
+* Z64: 0x450C
+
+li      $t7, 0x8EEB60
+(25 EF EB 60)
+* IDA: 80003914
+* Z64: 0x4514
+}
+* freem offset (new): {0x450E, 0x4516} (length = 8)
+
+li      $a1, 0x8EEB60
+(3C 05 00 8F 24 A5 EB 60)
+* IDA: 80003954
+* Z64: 0x4554
+* freem offset (new): {0x4556, 0x455A} (length = 4)
+
+{
+lui     $s2, 0x7C
+(3C 12 00 7C)
+* IDA: 80003974
+* Z64: 0x4574
+
+li      $s2, 0x7C7070
+(26 52 70 70)
+* IDA: 8000397C
+* Z64: 0x457C
+}
+* freem offset (new): {0x4576, 0x457E} (length = 8)
+
+{
+lui     $t9, 0x7D
+(3C 19 00 7D)
+* IDA: 80003978
+* Z64: 0x4578
+
+li      $t9, 0x7CFD20
+(27 39 FD 20)
+* IDA: 80003980
+* Z64: 0x4580
+}
+* freem offset (new): {0x457A, 0x4582} (length = 8)
+
+li      $a1, 0x7CFD20
+(3C 05 00 7D 24 A5 FD 20)
+* IDA: 800039BC
+* Z64: 0x45BC
+* freem offset (new): {0x45BE, 0x45C2} (length = 4)
+
 sub_80003BC8
 ------------
 Another possible Soundtable/Wavetable Load Routine
@@ -148,6 +212,38 @@ Another possible Soundtable/Wavetable Load Routine
 
 addresses of note:
 0xA092D0 - used in DMA, alSeqFileNew call
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003C58
+* Z64: 0x4858
+
+li      $a0, 0xA092D0
+(24 84 92 D0)
+* IDA: 80003C60
+* Z64: 0x4860
+}
+* freem offset (new): {0x485A, 0x4862} (length = 8)
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003CA0
+* Z64: 0x48A0
+
+li      $a0, 0xA092D0
+(24 84 92 D0)
+* IDA: 80003CA8
+* Z64: 0x48A8
+}
+* freem offset (new): {0x48A2, 0x48AA} (length = 8)
+
+li      $a1, 0xA092D0
+(3C 05 00 A1 24 A5 92 D0)
+* IDA: 80003CB8
+* Z64: 0x48B8
+* freem offset (new): {0x48BA, 0x48BE} (length = 4)
 
 ================================================================================
 [WCW vs. nWo World Tour, NTSC-U v1.1]
@@ -274,6 +370,70 @@ addresses of note:
 0x7CFF10 - part of alHeapDBAlloc calculation?
 0x7CFF10 - $a1 arg for alBnkfNew
 
+{
+lui     $s2, 0x8F
+(3C 12 00 8F)
+* IDA: 80003908
+* Z64: 0x4508
+
+li      $s2, 0x8E8E50
+(26 52 8E 50)
+* IDA: 80003910
+* Z64: 0x4510
+}
+* freem offset (new): {0x450A, 0x4512} (length = 8)
+
+{
+lui     $t7, 0x8F
+(3C 0F 00 8F)
+* IDA: 8000390C
+* Z64: 0x450C
+
+li      $t7, 0x8EED50
+(25 EF ED 50)
+* IDA: 80003914
+* Z64: 0x4514
+}
+* freem offset (new): {0x450E, 0x4516} (length = 8)
+
+li      $a1, 0x8EED50
+(3C 05 00 8F 24 A5 ED 50)
+* IDA: 80003954
+* Z64: 0x4554
+* freem offset (new): {0x4556, 0x455A} (length = 4)
+
+{
+lui     $s2, 0x7C
+(3C 12 00 7C)
+* IDA: 80003974
+* Z64: 0x4574
+
+li      $s2, 0x7C7260
+(26 52 72 60)
+* IDA: 8000397C
+* Z64: 0x457C
+}
+* freem offset (new): {0x4576, 0x457E} (length = 8)
+
+{
+lui     $t9, 0x7D
+(3C 19 00 7D)
+* IDA: 80003978
+* Z64: 0x4578
+
+li      $t9, 0x7CFF10
+(27 39 FF 10)
+* IDA: 80003980
+* Z64: 0x4580
+}
+* freem offset (new): {0x457A, 0x4582} (length = 8)
+
+li      $a1, 0x7CFF10
+(3C 05 00 7D 24 A5 FF 10)
+* IDA: 800039BC
+* Z64: 0x45BC
+* freem offset (new): {0x45BE, 0x45C2} (length = 4)
+
 sub_80003BC8
 ------------
 Another possible Soundtable/Wavetable Load Routine
@@ -282,6 +442,38 @@ Another possible Soundtable/Wavetable Load Routine
 
 addresses of note:
 0xA094C0 - used in DMA, alSeqFileNew calls
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003C58
+* Z64: 0x4858
+
+li      $a0, 0xA094C0
+(24 84 94 C0)
+* IDA: 80003C60
+* Z64: 0x4860
+}
+* freem offset (new): {0x485A, 0x4862} (length = 8)
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003CA0
+* Z64: 0x48A0
+
+li      $a0, 0xA094C0
+(24 84 94 C0)
+* IDA: 80003CA8
+* Z64: 0x48A8
+}
+* freem offset (new): {0x48A2, 0x48AA} (length = 8)
+
+li      $a1, 0xA094C0
+(3C 05 00 A1 24 A5 94 C0)
+* IDA: 80003CB8
+* Z64: 0x48B8
+* freem offset (new): {0x48BA, 0x48BE} (length = 4)
 
 ================================================================================
 [WCW vs. nWo World Tour, PAL]
@@ -405,6 +597,70 @@ addresses of note:
 0x7C71F0
 0x7CFEA0
 
+{
+lui     $s2, 0x8F
+(3C 12 00 8F)
+* IDA: 800038E8
+* Z64: 0x44E8
+
+li      $s2, 0x8E8DE0
+(26 52 8D E0)
+* IDA: 800038F0
+* Z64: 0x44F0
+}
+* freem offset (new): {0x44EA, 0x44F2} (length = 8)
+
+{
+lui     $t7, 0x8F
+(3C 0F 00 8F)
+* IDA: 800038EC
+* Z64: 0x44EC
+
+li      $t7, 0x8EECE0
+(25 EF EC E0)
+* IDA: 800038F4
+* Z64: 0x44F4
+}
+* freem offset (new): {0x44EE, 0x44F6} (length = 8)
+
+li      $a1, 0x8EECE0
+(3C 05 00 8F 24 A5 EC E0)
+* IDA: 80003934
+* Z64: 0x4534
+* freem offset (new): {0x4536, 0x453A} (length = 4)
+
+{
+lui     $s2, 0x7C
+(3C 12 00 7C)
+* IDA: 80003954
+* Z64: 0x4554
+
+li      $s2, 0x7C71F0
+(26 52 71 F0)
+* IDA: 8000395C
+* Z64: 0x455C
+}
+* freem offset (new): {0x4556, 0x455E} (length = 8)
+
+{
+lui     $t9, 0x7D
+(3C 19 00 7D)
+* IDA: 80003958
+* Z64: 0x4558
+
+li      $t9, 0x7CFEA0
+(27 39 FE A0)
+* IDA: 80003960
+* Z64: 0x4560
+}
+* freem offset (new): {0x455A, 0x4562} (length = 8)
+
+li      $a1, 0x7CFEA0
+(3C 05 00 7D 24 A5 FE A0)
+* IDA: 8000399C
+* Z64: 0x459C
+* freem offset (new): {0x459E, 0x45A2} (length = 4)
+
 sub_80003BA8
 ------------
 * IDA: 80003BA8
@@ -412,6 +668,38 @@ sub_80003BA8
 
 addresses of note:
 0xA09450
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003C38
+* Z64: 0x4838
+
+li      $a0, 0xA09450
+(24 84 94 50)
+* IDA: 80003C40
+* Z64: 0x4840
+}
+* freem offset (new): {0x483A, 0x4842} (length = 8)
+
+{
+lui     $a0, 0xA1
+(3C 04 00 A1)
+* IDA: 80003C80
+* Z64: 0x4880
+
+li      $a0, 0xA09450
+(24 84 94 50)
+* IDA: 80003C88
+* Z64: 0x4888
+}
+* freem offset (new): {0x4882, 0x488A} (length = 8)
+
+li      $a1, 0xA09450
+(3C 05 00 A1 24 A5 94 50)
+* IDA: 80003C98
+* Z64: 0x4898
+* freem offset (new): {0x489A, 0x489E} (length = 4)
 
 ================================================================================
 [Virtual Pro-Wrestling 64, NTSC-J]
