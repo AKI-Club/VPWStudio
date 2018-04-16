@@ -337,7 +337,17 @@ namespace VPWStudio
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-					// xxx: needs fixing
+					/*
+					{ "Sound01", new DefaultLocationDataEntry(0x450A,8) },
+					{ "Sound02", new DefaultLocationDataEntry(0x450E,8) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4556,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x4576,8) },
+					{ "Sound05", new DefaultLocationDataEntry(0x457A,8) },
+					{ "Sound06", new DefaultLocationDataEntry(0x45BE,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x485A,8) },
+					{ "Sound08", new DefaultLocationDataEntry(0x48A2,8) },
+					{ "Sound09", new DefaultLocationDataEntry(0x48BA,4) }
+					*/
 				})
 			},
 			{
@@ -357,7 +367,17 @@ namespace VPWStudio
 			{
 				SpecificGame.WorldTour_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-					// xxx: needs fixing
+					/*
+					{ "Sound01", new DefaultLocationDataEntry(0x44EA,8) },
+					{ "Sound02", new DefaultLocationDataEntry(0x44EE,8) },
+					{ "Sound03", new DefaultLocationDataEntry(0x4536,4) },
+					{ "Sound04", new DefaultLocationDataEntry(0x4556,8) },
+					{ "Sound05", new DefaultLocationDataEntry(0x455A,8) },
+					{ "Sound06", new DefaultLocationDataEntry(0x45EE,4) },
+					{ "Sound07", new DefaultLocationDataEntry(0x483A,8) },
+					{ "Sound08", new DefaultLocationDataEntry(0x4882,8) },
+					{ "Sound09", new DefaultLocationDataEntry(0x489A,4) }
+					*/
 				})
 			},
 			{
