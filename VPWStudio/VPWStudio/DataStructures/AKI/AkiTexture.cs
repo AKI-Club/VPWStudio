@@ -11,6 +11,8 @@ namespace VPWStudio
 	/// </summary>
 	public class AkiTexture
 	{
+		private byte[] TEX_HEADER_MAGIC = { 0x54, 0x45, 0x58, 0x00 };
+
 		/// <summary>
 		/// Possible image formats.
 		/// </summary>
@@ -196,10 +198,7 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			// header
-			bw.Write('T');
-			bw.Write('E');
-			bw.Write('X');
-			bw.Write((byte)0);
+			bw.Write(TEX_HEADER_MAGIC);
 
 			// width
 			byte[] w = BitConverter.GetBytes(Width);
