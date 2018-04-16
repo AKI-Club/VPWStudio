@@ -1049,11 +1049,10 @@ namespace VPWStudio
 				return;
 			}
 
-			// this only works with Revenge, WM2K, VPW2, and No Mercy for now.
+			// this only works with everything but WCW vs. nWo World Tour for now.
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WorldTour:
-				case VPWGames.VPW64:
 					Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
 					return;
 			}
