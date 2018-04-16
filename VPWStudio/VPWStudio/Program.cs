@@ -785,6 +785,9 @@ namespace VPWStudio
 			bool FoundFileTableLocValues = false;
 			bool HasSoundLocations = false;
 
+			bool NeedsCodeLoadChanges = (CurrentProject.Settings.BaseGame == VPWGames.VPW64 || CurrentProject.Settings.BaseGame == VPWGames.WorldTour);
+			bool HasCodeLoadChanges = false;
+
 			if (CurLocationFile != null)
 			{
 				// try getting addresses from the Location File.
@@ -823,6 +826,34 @@ namespace VPWStudio
 					HasSoundLocations = false;
 				}
 				#endregion
+
+				// fixing up World Tour and VPW64, location file
+				if (NeedsCodeLoadChanges)
+				{
+					// RelocatableCodeAddress1 through RelocatableCodeAddress4
+					List<LocationFileEntry> RcaEntries = CurLocationFile.GetEntriesStartingWith("%RELOCATABLECODEADDRESS");
+					foreach (LocationFileEntry lfe in RcaEntries)
+					{
+						byte[] loc = outRomData.GetRange((int)lfe.Address, (int)lfe.Length).ToArray();
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(loc);
+						}
+						int codeLoc1 = BitConverter.ToInt32(loc, 0) + totalDifference;
+						loc = BitConverter.GetBytes(codeLoc1);
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(loc);
+						}
+						int startOffset = (int)lfe.Address;
+						outRomData[startOffset] = loc[0];
+						outRomData[startOffset + 1] = loc[1];
+						outRomData[startOffset + 2] = loc[2];
+						outRomData[startOffset + 3] = loc[3];
+					}
+
+					HasCodeLoadChanges = true;
+				}
 			}
 
 			// didn't find anything from the location file; use hardcoded values (ugh)
@@ -849,6 +880,33 @@ namespace VPWStudio
 					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
 				}
 				HasSoundLocations = true;
+			}
+
+			// requires RelocatableCodeAddress entries in LocationFile but didn't find any; use hardcoded values.
+			if (NeedsCodeLoadChanges && !HasCodeLoadChanges)
+			{
+				foreach (DefaultGameData.DefaultLocationDataEntry dlde in DefaultGameData.GetEntriesStartingWith(CurrentProject.Settings.GameType, "RelocatableCodeAddress"))
+				{
+					if (dlde != null)
+					{
+						byte[] loc = outRomData.GetRange((int)dlde.Offset, (int)dlde.Length).ToArray();
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(loc);
+						}
+						int codeLoc1 = BitConverter.ToInt32(loc, 0) + totalDifference;
+						loc = BitConverter.GetBytes(codeLoc1);
+						if (BitConverter.IsLittleEndian)
+						{
+							Array.Reverse(loc);
+						}
+						int startOffset = (int)dlde.Offset;
+						outRomData[startOffset] = loc[0];
+						outRomData[startOffset + 1] = loc[1];
+						outRomData[startOffset + 2] = loc[2];
+						outRomData[startOffset + 3] = loc[3];
+					}
+				}
 			}
 			#endregion
 
