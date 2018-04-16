@@ -1055,7 +1055,7 @@ namespace VPWStudio
 				case VPWGames.WorldTour:
 					if (Program.CurrentProject.Settings.GameType != SpecificGame.WorldTour_NTSC_U_11)
 					{
-						Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
+						Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.GameType));
 						return;
 					}
 					break;
