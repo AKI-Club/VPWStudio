@@ -179,8 +179,6 @@ namespace VPWStudio
 			{ "LoadFile_FtBegins", "%LOADFILE_FTBEGINS" },
 			#endregion
 
-			// todo: sound-related... ugh
-
 			#endregion // CodeChange
 		};
 		#endregion
@@ -361,21 +359,31 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Get a list of all entries whose name starts with the specified string.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public List<LocationFileEntry> GetEntriesStartingWith(string s)
+		{
+			List<LocationFileEntry> entries = new List<LocationFileEntry>();
+			foreach (LocationFileEntry lfe in Locations)
+			{
+				if (lfe.Comment.StartsWith(s))
+				{
+					entries.Add(lfe);
+				}
+			}
+
+			return entries;
+		}
+
+		/// <summary>
 		/// Get a list of all entries whose name starts with "%SOUND".
 		/// </summary>
 		/// <returns>List of all LocationFileEntry whose comment starts with "%SOUND".</returns>
 		public List<LocationFileEntry> GetSoundEntries()
 		{
-			List<LocationFileEntry> soundEntries = new List<LocationFileEntry>();
-			foreach (LocationFileEntry lfe in Locations)
-			{
-				if (lfe.Comment.StartsWith("%SOUND"))
-				{
-					soundEntries.Add(lfe);
-				}
-			}
-
-			return soundEntries;
+			return GetEntriesStartingWith("%SOUND");
 		}
 	}
 }
