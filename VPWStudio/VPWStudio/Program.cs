@@ -882,11 +882,18 @@ namespace VPWStudio
 			if (!HasSoundLocations)
 			{
 				// [Audio Stuff]
-				foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
+				if (DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Count > 0)
 				{
-					FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
+					foreach (DefaultGameData.DefaultLocationDataEntry soundLoc in DefaultGameData.SoundOffsets[CurrentProject.Settings.GameType].Locations.Values)
+					{
+						FixAddresses(outRomData, (int)soundLoc.Offset, (int)(soundLoc.Offset + soundLoc.Length), totalDifference);
+					}
+					HasSoundLocations = true;
 				}
-				HasSoundLocations = true;
+				else
+				{
+					HasSoundLocations = false;
+				}
 			}
 
 			// requires RelocatableCodeAddress entries in LocationFile but didn't find any; use hardcoded values.
