@@ -1049,12 +1049,16 @@ namespace VPWStudio
 				return;
 			}
 
-			// this only works with everything but WCW vs. nWo World Tour for now.
+			// Most everything works... WCW vs. nWo World Tour NTSC-U v1.0 and PAL don't...
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WorldTour:
-					Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
-					return;
+					if (Program.CurrentProject.Settings.GameType != SpecificGame.WorldTour_NTSC_U_11)
+					{
+						Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.BaseGame));
+						return;
+					}
+					break;
 			}
 			#endregion
 
