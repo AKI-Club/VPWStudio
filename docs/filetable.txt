@@ -102,6 +102,25 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+other non-sound stuff
+---------------------
+
+dword_80032BA0
+--------------
+* IDA 80032BA0
+* Z64 0x337A0
+
+.word 0xA21750 ; relocatable code chunk 0
+.word 0xA69570 ; relocatable code chunk 1
+
+dword_80032BC4
+--------------
+* IDA 80032BC4
+* Z64 0x337C4
+
+.word 0xA69570 # relocatable code chunk 1
+.word 0xAC2970 # end of ROM
+
 Soundtable/Wavetable
 --------------------
 (todo)
@@ -216,6 +235,25 @@ Routine begins at
 (27 18 95 00)
 * IDA: 800014FC
 * Z64: 0x20FC
+
+other non-sound stuff
+---------------------
+
+dword_80032C10
+--------------
+* IDA 80032C10
+* Z64 0x33810
+
+.word 0xA21940 ; relocatable code chunk 0
+.word 0xA698B0 ; relocatable code chunk 1
+
+dword_80032C34
+--------------
+* IDA 80032C34
+* Z64 0x33834
+
+.word 0xA698B0 # relocatable code chunk 1
+.word 0xAC2CE0 # end of ROM
 
 Soundtable/Wavetable
 --------------------
@@ -332,9 +370,48 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+other non-sound stuff
+---------------------
+
+dword_80032BF0
+--------------
+* IDA 80032BF0
+* Z64 0x337F0
+
+.word 0xA218D0 ; relocatable code chunk 0
+.word 0xA69840 ; relocatable code chunk 1
+
+dword_80032C14
+--------------
+* IDA 80032BC4
+* Z64 0x33814
+
+.word 0xA69840 # relocatable code chunk 1
+.word 0xAC2C70 # end of ROM
+
 Soundtable/Wavetable
 --------------------
 (todo)
+
+sub_800036E0
+------------
+Primary Soundtable/Wavetable Load Routine
+* IDA: 800036E0
+* Z64: 0x42E0
+
+addresses of note:
+0x8E8DE0
+0x8EECE0
+0x7C71F0
+0x7CFEA0
+
+sub_80003BA8
+------------
+* IDA: 80003BA8
+* Z64: 0x47A8
+
+addresses of note:
+0xA09450
 
 ================================================================================
 [Virtual Pro-Wrestling 64, NTSC-J]
@@ -423,9 +500,27 @@ Routine begins at
 * IDA: 800014FC
 * Z64: 0x20FC
 
+other non-sound stuff
+---------------------
+
+dword_8003EEC0
+--------------
+* IDA 8003EEC0
+* Z64 0x3FAC0
+
+.word 0x00F1AF80 ; relocatable code chunk 0
+.word 0x00F6D170 ; relocatable code chunk 1
+
+dword_8003EEE4
+--------------
+* IDA 8003EEE4
+* Z64 0x3FAE4
+
+.word 0x00F6D170 # relocatable code chunk 1
+.word 0x00FD1430 # end of ROM
+
 Soundtable/Wavetable
 --------------------
-(todo)
 
 sub_80003800
 ------------
