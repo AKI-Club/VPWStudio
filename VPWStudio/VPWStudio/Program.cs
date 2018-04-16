@@ -832,27 +832,34 @@ namespace VPWStudio
 				{
 					// RelocatableCodeAddress1 through RelocatableCodeAddress4
 					List<LocationFileEntry> RcaEntries = CurLocationFile.GetEntriesStartingWith("%RELOCATABLECODEADDRESS");
-					foreach (LocationFileEntry lfe in RcaEntries)
+					if (RcaEntries.Count > 0)
 					{
-						byte[] loc = outRomData.GetRange((int)lfe.Address, (int)lfe.Length).ToArray();
-						if (BitConverter.IsLittleEndian)
+						foreach (LocationFileEntry lfe in RcaEntries)
 						{
-							Array.Reverse(loc);
+							byte[] loc = outRomData.GetRange((int)lfe.Address, (int)lfe.Length).ToArray();
+							if (BitConverter.IsLittleEndian)
+							{
+								Array.Reverse(loc);
+							}
+							int codeLoc1 = BitConverter.ToInt32(loc, 0) + totalDifference;
+							loc = BitConverter.GetBytes(codeLoc1);
+							if (BitConverter.IsLittleEndian)
+							{
+								Array.Reverse(loc);
+							}
+							int startOffset = (int)lfe.Address;
+							outRomData[startOffset] = loc[0];
+							outRomData[startOffset + 1] = loc[1];
+							outRomData[startOffset + 2] = loc[2];
+							outRomData[startOffset + 3] = loc[3];
 						}
-						int codeLoc1 = BitConverter.ToInt32(loc, 0) + totalDifference;
-						loc = BitConverter.GetBytes(codeLoc1);
-						if (BitConverter.IsLittleEndian)
-						{
-							Array.Reverse(loc);
-						}
-						int startOffset = (int)lfe.Address;
-						outRomData[startOffset] = loc[0];
-						outRomData[startOffset + 1] = loc[1];
-						outRomData[startOffset + 2] = loc[2];
-						outRomData[startOffset + 3] = loc[3];
-					}
 
-					HasCodeLoadChanges = true;
+						HasCodeLoadChanges = true;
+					}
+					else
+					{
+						HasCodeLoadChanges = false;
+					}
 				}
 			}
 
