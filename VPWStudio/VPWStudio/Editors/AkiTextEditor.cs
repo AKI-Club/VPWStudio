@@ -17,7 +17,15 @@ namespace VPWStudio.Editors
 		/// </summary>
 		public AkiText CurTextArchive = new AkiText();
 
+		/// <summary>
+		/// Original text archive.
+		/// </summary>
 		private AkiText OrigTextArchive = new AkiText();
+
+		/// <summary>
+		/// pseudo-crap
+		/// </summary>
+		private int FileKey = -1;
 
 		#region Constructors
 		/// <summary>
@@ -26,6 +34,7 @@ namespace VPWStudio.Editors
 		/// <param name="fileID"></param>
 		public AkiTextEditor(int fileID)
 		{
+			FileKey = fileID;
 			InitializeComponent();
 			LoadFromRom(fileID);
 			OrigTextArchive.DeepCopy(CurTextArchive);
@@ -54,7 +63,7 @@ namespace VPWStudio.Editors
 			cbTextEntries.BeginUpdate();
 			for (int i = 0; i < CurTextArchive.Entries.Count; i++)
 			{
-				cbTextEntries.Items.Add(String.Format("Entry {0}", i+1));
+				cbTextEntries.Items.Add(String.Format("Entry {0}: {1}", i+1, CurTextArchive.Entries[i].Text));
 			}
 			cbTextEntries.EndUpdate();
 			cbTextEntries.SelectedIndex = 0;
@@ -91,11 +100,25 @@ namespace VPWStudio.Editors
 		private void LoadFromFile(string path)
 		{
 			CurTextArchive = new AkiText();
+
 			using (FileStream fs = new FileStream(path, FileMode.Open))
 			{
-				using (BinaryReader br = new BinaryReader(fs))
+				// someone might have put a CSV file here...
+				if (Path.GetExtension(path) == ".csv")
 				{
-					CurTextArchive.ReadData(br);
+					// Zoinkity's CSV format
+					using (StreamReader sr = new StreamReader(fs))
+					{
+						CurTextArchive.ReadCsv(sr);
+					}
+				}
+				else
+				{
+					// AkiText binary format
+					using (BinaryReader br = new BinaryReader(fs))
+					{
+						CurTextArchive.ReadData(br);
+					}
 				}
 			}
 		}
@@ -106,6 +129,7 @@ namespace VPWStudio.Editors
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
+			Close();
 		}
 
 		/// <summary>
@@ -114,6 +138,7 @@ namespace VPWStudio.Editors
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 
 		// selected new entry
@@ -134,12 +159,47 @@ namespace VPWStudio.Editors
 		#region CSV Import/Export
 		private void buttonImportCSV_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("not yet implemented");
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Import CSV";
+			ofd.Filter = SharedStrings.FileFilter_CSV;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+				{
+					using (StreamReader sr = new StreamReader(fs))
+					{
+						CurTextArchive = new AkiText();
+						CurTextArchive.ReadCsv(sr);
+						PopulateEntryList();
+					}
+				}
+			}
 		}
 
 		private void buttonExportCSV_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("not yet implemented");
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export CSV";
+			sfd.Filter = SharedStrings.FileFilter_CSV;
+			if (FileKey == -1)
+			{
+				// todo: we could make this better
+				sfd.FileName = "export.csv";
+			}
+			else
+			{
+				sfd.FileName = String.Format("{0:X4}.csv", FileKey);
+			}
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+				{
+					using (StreamWriter sw = new StreamWriter(fs))
+					{
+						CurTextArchive.WriteCsv(sw);
+					}
+				}
+			}
 		}
 		#endregion
 
