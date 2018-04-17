@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPWStudio.Editors
@@ -203,6 +197,9 @@ namespace VPWStudio.Editors
 		}
 		#endregion
 
+		/// <summary>
+		/// Editing active text entry
+		/// </summary>
 		private void tbNewText_KeyUp(object sender, KeyEventArgs e)
 		{
 			CurTextArchive.Entries[cbTextEntries.SelectedIndex].Text = tbNewText.Text.Replace(Environment.NewLine, "\n");
