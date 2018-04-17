@@ -14,6 +14,7 @@ namespace VPWStudio
 
 		#region Save/Load Dialog Filter Strings
 		public static string FileFilter_None = "All Files (*.*)|*.*";
+		public static string FileFilter_CSV = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
 		public static string FileFilter_Text = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 		public static string FileFilter_N64Rom = "Z64 format N64 ROMs (*.z64)|*.z64|All Files (*.*)|*.*";
 		public static string FileFilter_Project = "VPW Studio Project File (*.vpwsproj)|*.vpwsproj|All Files (*.*)|*.*";
