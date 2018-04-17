@@ -45,6 +45,9 @@ namespace VPWStudio.Editors
 		}
 		#endregion
 
+		/// <summary>
+		/// Add all entries from the AkiText archive to the dropdown list.
+		/// </summary>
 		private void PopulateEntryList()
 		{
 			cbTextEntries.Items.Clear();
