@@ -565,7 +565,11 @@ namespace VPWStudio
 
 				// AkiText archive
 				case FileTypes.AkiText:
-					((MainForm)this.MdiParent).RequestAkiTextDialog(key);
+					Editors.AkiTextEditor ate = new Editors.AkiTextEditor(key);
+					if (ate.ShowDialog() == DialogResult.OK)
+					{
+						Program.WarningMessageBox("I haven't actually implemented shit yet, my dude");
+					}
 					break;
 
 				// Menu Backgrounds
