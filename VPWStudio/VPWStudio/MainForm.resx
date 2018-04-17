@@ -405,12 +405,6 @@
   <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss decompress test</value>
   </data>
-  <data name="akiTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="akiTextToolStripMenuItem.Text" xml:space="preserve">
-    <value>aki text</value>
-  </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 22</value>
   </data>
@@ -1662,12 +1656,6 @@
   <data name="&gt;&gt;lzssDecompressTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;akiTextToolStripMenuItem.Name" xml:space="preserve">
-    <value>akiTextToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;akiTextToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;nameEncoderdecoderToolStripMenuItem.Name" xml:space="preserve">
     <value>nameEncoderdecoderToolStripMenuItem</value>
   </data>
@@ -1710,6 +1698,12 @@
   <data name="&gt;&gt;pngToMenubgToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;vpw2FaceTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>vpw2FaceTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;vpw2FaceTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -1721,12 +1715,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vpw2FaceTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>vpw2FaceTestToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;vpw2FaceTestToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
