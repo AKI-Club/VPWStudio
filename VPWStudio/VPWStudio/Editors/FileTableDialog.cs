@@ -532,50 +532,78 @@ namespace VPWStudio
 			}
 
 			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
-			switch (Program.CurrentProject.ProjectFileTable.Entries[key].FileType)
+			FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[key];
+
+			switch (fte.FileType)
 			{
 				// "TEX" files
 				case FileTypes.AkiTexture:
-					FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
-					tpd.ShowDialog();
+					{
+						FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
+						tpd.ShowDialog();
+					}
 					break;
 				
 				// I4 textures
 				case FileTypes.I4Texture:
-					FileTable_ITexturePreviewDialog ipd = new FileTable_ITexturePreviewDialog(key);
-					ipd.ShowDialog();
+					{
+						FileTable_ITexturePreviewDialog ipd = new FileTable_ITexturePreviewDialog(key);
+						ipd.ShowDialog();
+					}
 					break;
 
 				// CI4/CI8 textures
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
-					FileTable_CiTexturePreviewDialog citd = new FileTable_CiTexturePreviewDialog(key);
-					citd.ShowDialog();
+					{
+						FileTable_CiTexturePreviewDialog citd = new FileTable_CiTexturePreviewDialog(key);
+						citd.ShowDialog();
+					}
 					break;
 
 				// CI4/CI8 palettes
 				case FileTypes.Ci4Palette:
 				case FileTypes.Ci8Palette:
-					Editors.CiPaletteEditor cipe = new Editors.CiPaletteEditor(key);
-					if (cipe.ShowDialog() == DialogResult.OK)
 					{
-						// commit changes... somehow.
+						Editors.CiPaletteEditor cipe = new Editors.CiPaletteEditor(key);
+						if (cipe.ShowDialog() == DialogResult.OK)
+						{
+							// commit changes... somehow.
+						}
 					}
 					break;
 
 				// AkiText archive
 				case FileTypes.AkiText:
-					Editors.AkiTextEditor ate = new Editors.AkiTextEditor(key);
-					if (ate.ShowDialog() == DialogResult.OK)
 					{
-						Program.WarningMessageBox("I haven't actually implemented shit yet, my dude");
+						// todo: act upon working file if it exists
+						Editors.AkiTextEditor ate;
+						if (fte.ReplaceFilePath != null && fte.ReplaceFilePath != String.Empty)
+						{
+							// load file
+							ate = new Editors.AkiTextEditor(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else
+						{
+							// load rom
+							ate = new Editors.AkiTextEditor(key);
+						}
+
+						if (ate.ShowDialog() == DialogResult.OK)
+						{
+							Program.WarningMessageBox("I haven't actually implemented shit yet, my dude");
+							// todo: save as "(key).akitext" in ProjectFiles folder
+							// todo2: set ReplaceFilePath to new file
+						}
 					}
 					break;
 
 				// Menu Backgrounds
 				case FileTypes.MenuBackground:
-					FileTable_MenuBackgoundPreviewDialog mbgp = new FileTable_MenuBackgoundPreviewDialog(key);
-					mbgp.ShowDialog();
+					{
+						FileTable_MenuBackgoundPreviewDialog mbgp = new FileTable_MenuBackgoundPreviewDialog(key);
+						mbgp.ShowDialog();
+					}
 					break;
 
 				// TEMPORARY
