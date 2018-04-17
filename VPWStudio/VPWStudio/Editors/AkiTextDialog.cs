@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
+	/// <summary>
+	/// deprecated
+	/// </summary>
 	public partial class AkiTextDialog : Form
 	{
 		private AkiText CurAkiText = new AkiText();
