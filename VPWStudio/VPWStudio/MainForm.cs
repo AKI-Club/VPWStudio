@@ -1519,11 +1519,15 @@ namespace VPWStudio
 				{
 					AkiTexture test = new AkiTexture();
 					test.FromBitmap(b);
-					FileStream fs = new FileStream(String.Format("{0}.tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
-					BinaryWriter bw = new BinaryWriter(fs);
-					test.WriteData(bw);
-					bw.Close();
-					fs.Close();
+					using (FileStream fs = new FileStream(String.Format("{0}.tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							test.WriteData(bw);
+							bw.Close();
+							fs.Close();
+						}
+					}
 				}
 				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
 				{
@@ -1583,6 +1587,7 @@ namespace VPWStudio
 				else
 				{
 					Program.ErrorMessageBox(String.Format("Unsupported PixelFormat {0}", b.PixelFormat));
+					b.Dispose();
 				}
 			}
 		}
@@ -1611,6 +1616,7 @@ namespace VPWStudio
 				else
 				{
 					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI4", b.PixelFormat));
+					b.Dispose();
 				}
 			}
 		}
@@ -1639,6 +1645,7 @@ namespace VPWStudio
 				else
 				{
 					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI8", b.PixelFormat));
+					b.Dispose();
 				}
 			}
 		}
@@ -1688,6 +1695,7 @@ namespace VPWStudio
 				else
 				{
 					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
+					b.Dispose();
 				}
 			}
 		}
