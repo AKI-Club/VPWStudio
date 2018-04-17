@@ -49,6 +49,19 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Deep copy an existing AkiText instance.
+		/// </summary>
+		/// <param name="_src">AkiText instance to copy.</param>
+		public void DeepCopy(AkiText _src)
+		{
+			Entries = new SortedList<int, AkiTextEntry>();
+			foreach (KeyValuePair<int, AkiTextEntry> e in _src.Entries)
+			{
+				Entries.Add(e.Key, new AkiTextEntry(e.Value.Location, e.Value.Text));
+			}
+		}
+
+		/// <summary>
 		/// Get the string for a specific entry.
 		/// </summary>
 		/// <param name="id">String ID to get.</param>
