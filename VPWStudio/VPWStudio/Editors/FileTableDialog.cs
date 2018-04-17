@@ -245,7 +245,7 @@ namespace VPWStudio
 				if (changesMade)
 				{
 					Program.UnsavedChanges = true;
-					((MainForm)(this.MdiParent)).UpdateTitleBar();
+					((MainForm)(MdiParent)).UpdateTitleBar();
 				}
 			}
 		}
@@ -350,7 +350,7 @@ namespace VPWStudio
 				}
 				lvFileList.EndUpdate();
 				Program.UnsavedChanges = true;
-				((MainForm)(this.MdiParent)).UpdateTitleBar();
+				((MainForm)(MdiParent)).UpdateTitleBar();
 			}
 		}
 
@@ -511,7 +511,7 @@ namespace VPWStudio
 				lvFileList.SelectedItems[0].SubItems[FILE_TYPE_COLUMN].Text = editInfoDialog.CurEntry.FileType.ToString();
 				lvFileList.SelectedItems[0].SubItems[COMMENT_COLUMN].Text = editInfoDialog.CurEntry.Comment;
 				Program.UnsavedChanges = true;
-				((MainForm)(this.MdiParent)).UpdateTitleBar();
+				((MainForm)(MdiParent)).UpdateTitleBar();
 			}
 		}
 
@@ -576,7 +576,7 @@ namespace VPWStudio
 				// AkiText archive
 				case FileTypes.AkiText:
 					{
-						// todo: act upon working file if it exists
+						// act upon working file if it exists
 						Editors.AkiTextEditor ate;
 						if (fte.ReplaceFilePath != null && fte.ReplaceFilePath != String.Empty)
 						{
@@ -591,9 +591,51 @@ namespace VPWStudio
 
 						if (ate.ShowDialog() == DialogResult.OK)
 						{
-							Program.WarningMessageBox("I haven't actually implemented shit yet, my dude");
-							// todo: save as "(key).akitext" in ProjectFiles folder
-							// todo2: set ReplaceFilePath to new file
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save AkiText changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							if (fte.ReplaceFilePath == null || fte.ReplaceFilePath == String.Empty)
+							{
+								// situation 1: editing for the first time (make new file)
+								string filename = String.Format("{0}\\{1:X4}.akitext", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), key);
+								using (FileStream fs = new FileStream(filename, FileMode.Create))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										ate.CurTextArchive.WriteData(bw);
+									}
+								}
+
+								// set new ReplaceFilePath
+								fte.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+								MessageBox.Show(String.Format("Wrote new AkiText archive to {0}.", filename), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+								Program.UnsavedChanges = true;
+								((MainForm)(MdiParent)).UpdateTitleBar();
+							}
+							else if (Path.GetExtension(fte.ReplaceFilePath) == ".csv")
+							{
+								Program.WarningMessageBox("todo: have not implemented CSV ReplaceFile case; changes not saved.");
+								// situation 2: csv file in ReplaceFilePath (make new akitext binary file)
+								// ProjectFiles/(key).akitext
+
+								// set new ReplaceFilePath
+							}
+							else if (Path.GetExtension(fte.ReplaceFilePath) == ".akitext")
+							{
+								// situation 3: akitext binary in ReplaceFilePath (overwrite existing file)
+								using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										ate.CurTextArchive.WriteData(bw);
+									}
+								}
+							}
 						}
 					}
 					break;
