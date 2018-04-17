@@ -563,7 +563,6 @@ namespace VPWStudio
 			UpdateTitleBar();
 			UpdateValidMenus();
 			UpdateStatusBar();
-			UpdateWindowMenus();
 			UpdateBackground();
 		}
 		#endregion
@@ -732,7 +731,6 @@ namespace VPWStudio
 				FileTableEditor = new FileTableDialog();
 				FileTableEditor.MdiParent = this;
 				FileTableEditor.Show();
-				UpdateWindowMenus();
 			}
 			else
 			{
@@ -747,7 +745,6 @@ namespace VPWStudio
 				}
 				FileTableEditor.MdiParent = this;
 				FileTableEditor.Show();
-				UpdateWindowMenus();
 			}
 		}
 
@@ -898,7 +895,6 @@ namespace VPWStudio
 				}
 				AkiTextEditor.MdiParent = this;
 				AkiTextEditor.Show();
-				UpdateWindowMenus();
 			}
 		}
 
@@ -956,7 +952,6 @@ namespace VPWStudio
 						this.WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
 						this.WrestlerMain_VPW2.MdiParent = this;
 						this.WrestlerMain_VPW2.Show();
-						UpdateWindowMenus();
 					}
 					else
 					{
@@ -971,7 +966,6 @@ namespace VPWStudio
 						}
 						this.WrestlerMain_VPW2.MdiParent = this;
 						this.WrestlerMain_VPW2.Show();
-						UpdateWindowMenus();
 					}
 					break;
 
@@ -981,7 +975,6 @@ namespace VPWStudio
 						this.WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
 						this.WrestlerMain_NoMercy.MdiParent = this;
 						this.WrestlerMain_NoMercy.Show();
-						UpdateWindowMenus();
 					}
 					else
 					{
@@ -996,7 +989,6 @@ namespace VPWStudio
 						}
 						this.WrestlerMain_NoMercy.MdiParent = this;
 						this.WrestlerMain_NoMercy.Show();
-						UpdateWindowMenus();
 					}
 					break;
 
@@ -1194,7 +1186,6 @@ namespace VPWStudio
 				ModelToolForm = new ModelTool();
 				ModelToolForm.MdiParent = this;
 				ModelToolForm.Show();
-				UpdateWindowMenus();
 			}
 			else
 			{
@@ -1210,7 +1201,6 @@ namespace VPWStudio
 				}
 				ModelToolForm.MdiParent = this;
 				ModelToolForm.Show();
-				UpdateWindowMenus();
 			}
 		}
 
@@ -1224,7 +1214,6 @@ namespace VPWStudio
 				PackFileTool = new PackedFileTool();
 				PackFileTool.MdiParent = this;
 				PackFileTool.Show();
-				UpdateWindowMenus();
 			}
 			else
 			{
@@ -1240,7 +1229,6 @@ namespace VPWStudio
 				}
 				PackFileTool.MdiParent = this;
 				PackFileTool.Show();
-				UpdateWindowMenus();
 			}
 		}
 
@@ -1255,7 +1243,6 @@ namespace VPWStudio
 				GSTool = new GameSharkTool();
 				GSTool.MdiParent = this;
 				GSTool.Show();
-				UpdateWindowMenus();
 			}
 			else
 			{
@@ -1271,34 +1258,7 @@ namespace VPWStudio
 				}
 				GSTool.MdiParent = this;
 				GSTool.Show();
-				UpdateWindowMenus();
 			}
-		}
-		#endregion
-
-		#region Window Menu Items
-		private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.LayoutMdi(MdiLayout.Cascade);
-		}
-
-		private void tileHorizontallyToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.LayoutMdi(MdiLayout.TileHorizontal);
-		}
-
-		private void tileVerticallyToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.LayoutMdi(MdiLayout.TileVertical);
-		}
-
-		private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			foreach (Form f in this.MdiChildren)
-			{
-				f.Close();
-			}
-			UpdateWindowMenus();
 		}
 		#endregion
 
@@ -1309,7 +1269,7 @@ namespace VPWStudio
 		/// </summary>
 		private void manualToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("I can't yell at you to read the manual because it doesn't exist yet. it also won't exist for a while because this program is THAT early into development.");
+			MessageBox.Show("I can't yell at you to read the manual because it's not particularly helpful.\nThis program is very early into development and will change a lot.");
 		}
 
 		/// <summary>
@@ -1394,20 +1354,6 @@ namespace VPWStudio
 						break;
 				}
 			}
-
-			UpdateWindowMenus();
-		}
-
-		/// <summary>
-		/// Updates the Window menu.
-		/// </summary>
-		private void UpdateWindowMenus()
-		{
-			bool anyWindowsOpen = this.MdiChildren.Length > 0;
-			cascadeToolStripMenuItem.Enabled = anyWindowsOpen;
-			tileHorizontallyToolStripMenuItem.Enabled = anyWindowsOpen;
-			tileVerticallyToolStripMenuItem.Enabled = anyWindowsOpen;
-			closeAllToolStripMenuItem.Enabled = anyWindowsOpen;
 		}
 
 		/// <summary>
