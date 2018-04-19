@@ -305,7 +305,7 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="bm">Bitmap to convert.</param>
 		/// <remarks>Only supports CI4 (16 colors) and CI8 (256 colors) formats.</remarks>
-		public void FromBitmap(Bitmap bm)
+		public bool FromBitmap(Bitmap bm)
 		{
 			if (bm.PixelFormat == PixelFormat.Format4bppIndexed)
 			{
@@ -324,7 +324,7 @@ namespace VPWStudio
 			else
 			{
 				// unsupported format
-				return;
+				return false;
 			}
 
 			// set common items
@@ -381,6 +381,7 @@ namespace VPWStudio
 					}
 					break;
 			}
+			return true;
 		}
 		#endregion
 	}
