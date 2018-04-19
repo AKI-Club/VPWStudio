@@ -288,8 +288,18 @@ namespace VPWStudio
 								{
 									AkiTexture at = new AkiTexture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+
+									// todo: determine if this texture is valid (4bpp, 8bpp).
+									if (bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format4bppIndexed || bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+									{
+										// invalid
+										bm.Dispose();
+										return null;
+									}
+
 									at.FromBitmap(bm);
 									at.WriteData(bw);
+									bm.Dispose();
 								}
 								else
 								{
