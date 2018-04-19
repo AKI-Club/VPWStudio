@@ -110,6 +110,15 @@ namespace VPWStudio
 
 		#region MessageBoxes
 		/// <summary>
+		/// Show an information message dialog.
+		/// </summary>
+		/// <param name="msg">Message to show.</param>
+		public static void InfoMessageBox(string msg)
+		{
+			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		/// <summary>
 		/// Show a warning message dialog.
 		/// </summary>
 		/// <param name="msg">Warning message to show.</param>
@@ -128,6 +137,7 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region Relative and Absolute Paths
 		/// <summary>
 		/// Convert a relative path to an absolute path using the current project file's path.
 		/// </summary>
@@ -180,6 +190,8 @@ namespace VPWStudio
 
 		}
 		#endregion
+
+		#endregion // helpers
 
 		#region ROM Building
 		/*
