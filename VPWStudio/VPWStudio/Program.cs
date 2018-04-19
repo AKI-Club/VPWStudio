@@ -422,8 +422,10 @@ namespace VPWStudio
 									MenuBackground mbg = new MenuBackground(-1, CurrentProject.Settings.BaseGame);
 									if (!mbg.FromBitmap(bm))
 									{
+										bm.Dispose();
 										return null;
 									}
+									bm.Dispose();
 									return mbg.WriteData();
 								}
 								else
