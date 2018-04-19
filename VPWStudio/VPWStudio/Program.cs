@@ -289,7 +289,7 @@ namespace VPWStudio
 									AkiTexture at = new AkiTexture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
 
-									// todo: determine if this texture is valid (4bpp, 8bpp).
+									// determine if format is valid
 									if (bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format4bppIndexed || bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
 									{
 										// invalid
@@ -319,9 +319,11 @@ namespace VPWStudio
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
 									if (!ci4tex.FromBitmap(bm))
 									{
+										bm.Dispose();
 										return null;
 									}
 									ci4tex.WriteData(bw);
+									bm.Dispose();
 								}
 								else
 								{
@@ -341,9 +343,11 @@ namespace VPWStudio
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
 									if (!ci8tex.FromBitmap(bm))
 									{
+										bm.Dispose();
 										return null;
 									}
 									ci8tex.WriteData(bw);
+									bm.Dispose();
 								}
 								else
 								{
