@@ -11,6 +11,8 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio.Editors
 {
+	// XXX: ALL HARDCODED VALUES SHOULD BE ADDED TO DEFAULTGAMELOCATIONS!!!!
+
 	/*
 	 * [WCW vs. nWo World Tour NTSC v1.0]
 	 * Body Type Defs: 0x2F150, 176 bytes (44 entries)
@@ -169,12 +171,7 @@ namespace VPWStudio.Editors
 			if (!hasLocation)
 			{
 				// fallback to hardcoded offset
-				MessageBox.Show(
-					"Body Type Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Body Type Definition location not found; using hardcoded offset instead.");
 
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)
@@ -265,12 +262,7 @@ namespace VPWStudio.Editors
 			if (!hasLocation)
 			{
 				// fallback to hardcoded offset
-				MessageBox.Show(
-					"Costume Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Costume Definition location not found; using hardcoded offset instead.");
 
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)
@@ -461,12 +453,7 @@ namespace VPWStudio.Editors
 			if (!hasLocations)
 			{
 				// fallback to hardcoded offsets
-				MessageBox.Show(
-					"Costume Definition locations not found; using hardcoded offsets instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Costume Definition locations not found; using hardcoded offsets instead.");
 
 				if (smallCostumeLoc == 0){
 					smallCostumeLoc = DefaultGameData.GetEntry(SpecificGame.VPW64_NTSC_J, "VPW64Costumes_Small").Offset;
@@ -551,12 +538,7 @@ namespace VPWStudio.Editors
 			if (!hasLocation)
 			{
 				// fallback to hardcoded offset
-				MessageBox.Show(
-					"Head/Mask Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Head/Mask Definition location not found; using hardcoded offset instead.");
 
 				long offset = 0;
 				switch (Program.CurrentProject.Settings.GameType)

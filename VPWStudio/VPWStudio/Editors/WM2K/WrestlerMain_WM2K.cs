@@ -52,12 +52,7 @@ namespace VPWStudio.Editors.WM2K
 			if (!hasLocation)
 			{
 				// fallback to hardedcoded offset
-				MessageBox.Show(
-					"Wrestler Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
 				// depends on game
 				baseLocation = DefaultWrestlerDefOffsets[Program.CurrentProject.Settings.GameType];
 				br.BaseStream.Seek(baseLocation, SeekOrigin.Begin);

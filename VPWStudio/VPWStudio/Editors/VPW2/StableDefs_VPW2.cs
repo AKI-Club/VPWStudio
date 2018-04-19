@@ -33,12 +33,7 @@ namespace VPWStudio.Editors.VPW2
 			if (!hasLocation)
 			{
 				// fallback to hardedcoded offset
-				MessageBox.Show(
-					"Stable Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
 
 				br.BaseStream.Seek(0x408BC, SeekOrigin.Begin);
 			}
