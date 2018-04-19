@@ -71,12 +71,7 @@ namespace VPWStudio.Editors.VPW2
 			if (!hasLocation)
 			{
 				// fallback to hardedcoded offset
-				MessageBox.Show(
-					"Wrestler Definition location not found; using hardcoded offset instead.",
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
+				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
 				br.BaseStream.Seek(DefaultWrestlerDefOffset, SeekOrigin.Begin);
 			}
 

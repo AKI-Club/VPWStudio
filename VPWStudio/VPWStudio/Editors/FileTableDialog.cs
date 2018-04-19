@@ -34,12 +34,7 @@ namespace VPWStudio
 				if (Program.CurrentProject.ProjectFileTable.Entries.Count == 0)
 				{
 					// project filetable was not created.
-					MessageBox.Show(
-						SharedStrings.FileTableDialog_AttemptRomTableBuild,
-						SharedStrings.MainForm_Title,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Information
-					);
+					Program.InfoMessageBox(SharedStrings.FileTableDialog_AttemptRomTableBuild);
 					MakeFileTableFromRom();
 
 					Program.UnsavedChanges = true;
@@ -145,13 +140,7 @@ namespace VPWStudio
 			if (!hasLocation || !hasLength)
 			{
 				// fallback to hardcoded offset and length.
-				MessageBox.Show(
-					SharedStrings.FileTableDialog_UsingHardcodedValues,
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Information
-				);
-
+				Program.InfoMessageBox(SharedStrings.FileTableDialog_UsingHardcodedValues);
 
 				uint offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Offset;
 				uint length = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FileTable"].Length;
@@ -612,7 +601,7 @@ namespace VPWStudio
 
 								// set new ReplaceFilePath
 								fte.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
-								MessageBox.Show(String.Format("Wrote new AkiText archive to {0}.", filename), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+								Program.InfoMessageBox(String.Format("Wrote new AkiText archive to {0}.", filename));
 
 								Program.UnsavedChanges = true;
 								((MainForm)(MdiParent)).UpdateTitleBar();
