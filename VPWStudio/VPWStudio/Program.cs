@@ -289,17 +289,16 @@ namespace VPWStudio
 									AkiTexture at = new AkiTexture();
 									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
 
-									// determine if format is valid
-									if (bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format4bppIndexed || bm.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+									if (at.FromBitmap(bm))
 									{
-										// invalid
+										at.WriteData(bw);
+										bm.Dispose();
+									}
+									else
+									{
 										bm.Dispose();
 										return null;
 									}
-
-									at.FromBitmap(bm);
-									at.WriteData(bw);
-									bm.Dispose();
 								}
 								else
 								{
