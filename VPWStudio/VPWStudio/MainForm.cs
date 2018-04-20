@@ -650,7 +650,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("arena dialog not yet designed");
+			Program.ErrorMessageBox("Arena dialog not yet designed.");
 		}
 
 		/// <summary>
@@ -670,7 +670,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("championships dialog not yet designed");
+			Program.ErrorMessageBox("Championships dialog not yet designed");
 		}
 
 		/// <summary>
@@ -711,7 +711,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					MessageBox.Show(String.Format("costumes dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
+					Program.ErrorMessageBox(String.Format("Costumes dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
@@ -758,7 +758,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("menu dialog not yet designed");
+			Program.ErrorMessageBox("Menu dialog not yet designed.");
 		}
 
 		/// <summary>
@@ -771,7 +771,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("moves dialog not yet designed");
+			Program.ErrorMessageBox("Moves dialog not yet designed.");
 		}
 
 		/// <summary>
@@ -784,7 +784,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("sounds dialog not yet designed");
+			Program.ErrorMessageBox("Sounds dialog not yet designed.");
 		}
 
 		/// <summary>
@@ -848,7 +848,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					MessageBox.Show(String.Format("stables dialog not yet designed for {0}", Program.CurrentProject.Settings.BaseGame));
+					Program.ErrorMessageBox(String.Format("Stables dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
@@ -863,7 +863,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("story mode dialogs not yet designed");
+			Program.ErrorMessageBox("Story mode dialogs not yet designed.");
 		}
 
 		/// <summary>
@@ -871,6 +871,8 @@ namespace VPWStudio
 		/// </summary>
 		private void textArchivesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			// todo: this menu item is deprecated
+
 			if (Program.CurrentProject == null)
 			{
 				return;
@@ -908,7 +910,7 @@ namespace VPWStudio
 				return;
 			}
 
-			MessageBox.Show("weapons dialog not yet designed");
+			Program.ErrorMessageBox("Weapons dialog not yet designed.");
 		}
 
 		/// <summary>
@@ -993,7 +995,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					MessageBox.Show(String.Format("wrestler definition editor not implemented for {0} yet", Program.CurrentProject.Settings.BaseGame.ToString()));
+					Program.ErrorMessageBox(String.Format("Wrestler definition editor not implemented for {0} yet.", Program.CurrentProject.Settings.BaseGame.ToString()));
 					break;
 			}
 		}
@@ -1156,6 +1158,9 @@ namespace VPWStudio
 			);
 		}
 
+		/// <summary>
+		/// Runs the "Build ROM" and "Play ROM" items.
+		/// </summary>
 		private void buildAndPlayToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			buildROMToolStripMenuItem_Click(this, e);
@@ -1350,10 +1355,10 @@ namespace VPWStudio
 				{
 					case VPWGames.WM2K:
 					case VPWGames.VPW2:
-						storyModeToolStripMenuItem.Image = VPWStudio.Properties.Resources.MenuIcon16_Story_WM2K_VPW2;
+						storyModeToolStripMenuItem.Image = Properties.Resources.MenuIcon16_Story_WM2K_VPW2;
 						break;
 					case VPWGames.NoMercy:
-						storyModeToolStripMenuItem.Image = VPWStudio.Properties.Resources.MenuIcon16_Story_NoMercy;
+						storyModeToolStripMenuItem.Image = Properties.Resources.MenuIcon16_Story_NoMercy;
 						break;
 					default:
 						storyModeToolStripMenuItem.Image = null;
