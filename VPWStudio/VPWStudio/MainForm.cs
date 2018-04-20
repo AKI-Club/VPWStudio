@@ -926,71 +926,71 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WM2K:
-					if (this.WrestlerMain_WM2K == null)
+					if (WrestlerMain_WM2K == null)
 					{
-						this.WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
-						this.WrestlerMain_WM2K.MdiParent = this;
-						this.WrestlerMain_WM2K.Show();
+						WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
+						WrestlerMain_WM2K.MdiParent = this;
+						WrestlerMain_WM2K.Show();
 					}
 					else
 					{
-						if (this.WrestlerMain_WM2K.IsDisposed)
+						if (WrestlerMain_WM2K.IsDisposed)
 						{
-							this.WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
+							WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
 						}
 						// check for minimized
-						if (this.WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
+						if (WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
 						{
-							this.WrestlerMain_WM2K.WindowState = FormWindowState.Normal;
+							WrestlerMain_WM2K.WindowState = FormWindowState.Normal;
 						}
-						this.WrestlerMain_WM2K.MdiParent = this;
-						this.WrestlerMain_WM2K.Show();
+						WrestlerMain_WM2K.MdiParent = this;
+						WrestlerMain_WM2K.Show();
 					}
 					break;
 
 				case VPWGames.VPW2:
-					if (this.WrestlerMain_VPW2 == null)
+					if (WrestlerMain_VPW2 == null)
 					{
-						this.WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
-						this.WrestlerMain_VPW2.MdiParent = this;
-						this.WrestlerMain_VPW2.Show();
+						WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
+						WrestlerMain_VPW2.MdiParent = this;
+						WrestlerMain_VPW2.Show();
 					}
 					else
 					{
-						if (this.WrestlerMain_VPW2.IsDisposed)
+						if (WrestlerMain_VPW2.IsDisposed)
 						{
-							this.WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
+							WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
 						}
 						// check for minimized
-						if (this.WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
+						if (WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
 						{
-							this.WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
+							WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
 						}
-						this.WrestlerMain_VPW2.MdiParent = this;
-						this.WrestlerMain_VPW2.Show();
+						WrestlerMain_VPW2.MdiParent = this;
+						WrestlerMain_VPW2.Show();
 					}
 					break;
 
 				case VPWGames.NoMercy:
-					if (this.WrestlerMain_NoMercy == null)
+					if (WrestlerMain_NoMercy == null)
 					{
-						this.WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
-						this.WrestlerMain_NoMercy.MdiParent = this;
-						this.WrestlerMain_NoMercy.Show();
+						WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
+						WrestlerMain_NoMercy.MdiParent = this;
+						WrestlerMain_NoMercy.Show();
 					}
 					else
 					{
-						if (this.WrestlerMain_NoMercy.IsDisposed)
+						if (WrestlerMain_NoMercy.IsDisposed)
 						{
-							this.WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
+							WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
 						}
 						// check for minimized
-						if (this.WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
+						if (WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
 						{
-							this.WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
+							WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
 						}
-						this.WrestlerMain_NoMercy.MdiParent = this;
-						this.WrestlerMain_NoMercy.Show();
+						WrestlerMain_NoMercy.MdiParent = this;
+						WrestlerMain_NoMercy.Show();
 					}
 					break;
 
