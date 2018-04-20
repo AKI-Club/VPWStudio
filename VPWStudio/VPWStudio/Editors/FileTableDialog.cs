@@ -359,7 +359,7 @@ namespace VPWStudio
 			}
 			else
 			{
-				MessageBox.Show("multi select sucks, i haven't handled it yet");
+				Program.ErrorMessageBox("multi select sucks, i haven't handled it yet");
 				return;
 			}
 		}
@@ -371,7 +371,7 @@ namespace VPWStudio
 		{
 			if (lvFileList.SelectedItems.Count <= 0)
 			{
-				MessageBox.Show("Please select at least one item to extract.");
+				Program.ErrorMessageBox("Please select at least one item to extract.");
 				return;
 			}
 
@@ -453,7 +453,7 @@ namespace VPWStudio
 		{
 			if (lvFileList.SelectedItems.Count <= 0)
 			{
-				MessageBox.Show("Please select at least one item to extract.");
+				Program.ErrorMessageBox("Please select at least one item to extract.");
 				return;
 			}
 
@@ -482,7 +482,7 @@ namespace VPWStudio
 			else
 			{
 				// more than one file
-				MessageBox.Show("Haven't implemented multiple raw extraction yet.");
+				Program.ErrorMessageBox("Haven't implemented multiple raw extraction yet.");
 			}
 		}
 		#endregion
@@ -640,7 +640,7 @@ namespace VPWStudio
 				// TEMPORARY
 				case FileTypes.AkiSmallFont:
 					{
-						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
+						Program.InfoMessageBox("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
 						AkiFont f = new AkiFont(AkiFontType.AkiSmallFont, Program.CurrentProject.Settings.BaseGame);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -662,7 +662,7 @@ namespace VPWStudio
 
 				case FileTypes.AkiLargeFont:
 					{
-						MessageBox.Show("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
+						Program.InfoMessageBox("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
 						AkiFont f = new AkiFont(AkiFontType.AkiLargeFont, Program.CurrentProject.Settings.BaseGame);
 
 						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
