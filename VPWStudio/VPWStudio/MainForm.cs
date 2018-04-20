@@ -1155,6 +1155,12 @@ namespace VPWStudio
 				emuArgs
 			);
 		}
+
+		private void buildAndPlayToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			buildROMToolStripMenuItem_Click(this, e);
+			playROMToolStripMenuItem_Click(this, e);
+		}
 		#endregion
 
 		#endregion
@@ -1719,5 +1725,7 @@ namespace VPWStudio
 			ft.ShowDialog();
 		}
 		#endregion
+
+		
 	}
 }

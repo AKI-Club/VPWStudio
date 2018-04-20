@@ -83,6 +83,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.buildAndPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -189,7 +190,8 @@
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
             this.buildROMToolStripMenuItem,
-            this.playROMToolStripMenuItem});
+            this.playROMToolStripMenuItem,
+            this.buildAndPlayToolStripMenuItem});
 			this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
 			resources.ApplyResources(this.projectToolStripMenuItem, "projectToolStripMenuItem");
 			// 
@@ -488,6 +490,12 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// buildAndPlayToolStripMenuItem
+			// 
+			this.buildAndPlayToolStripMenuItem.Name = "buildAndPlayToolStripMenuItem";
+			resources.ApplyResources(this.buildAndPlayToolStripMenuItem, "buildAndPlayToolStripMenuItem");
+			this.buildAndPlayToolStripMenuItem.Click += new System.EventHandler(this.buildAndPlayToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -565,6 +573,7 @@
 		private System.Windows.Forms.ToolStripMenuItem jascPalToCi4ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw2FaceTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem buildAndPlayToolStripMenuItem;
 	}
 }
 
