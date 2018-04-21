@@ -13,9 +13,9 @@ namespace VPWStudio.Editors.VPW2
 	/// <summary>
 	/// Body Type, Costume, and Head/Mask Form for Virtual Pro-Wrestling 2.
 	/// </summary>
-	public partial class CostumeDefs : Form
+	public partial class CostumeDefs_VPW2 : Form
 	{
-		public CostumeDefs()
+		public CostumeDefs_VPW2()
 		{
 			InitializeComponent();
 		}

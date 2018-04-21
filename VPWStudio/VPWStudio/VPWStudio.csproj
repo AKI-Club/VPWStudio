@@ -214,11 +214,11 @@
     <Compile Include="Editors\Revenge\StableDefs_Revenge.Designer.cs">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editors\VPW2\CostumeDefs.cs">
+    <Compile Include="Editors\VPW2\CostumeDefs_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editors\VPW2\CostumeDefs.Designer.cs">
-      <DependentUpon>CostumeDefs.cs</DependentUpon>
+    <Compile Include="Editors\VPW2\CostumeDefs_VPW2.Designer.cs">
+      <DependentUpon>CostumeDefs_VPW2.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\VPW2\StableDefs_VPW2.cs">
       <SubType>Form</SubType>
@@ -390,8 +390,8 @@
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editors\VPW2\CostumeDefs.resx">
-      <DependentUpon>CostumeDefs.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\VPW2\CostumeDefs_VPW2.resx">
+      <DependentUpon>CostumeDefs_VPW2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\StableDefs_VPW2.resx">
       <DependentUpon>StableDefs_VPW2.cs</DependentUpon>
