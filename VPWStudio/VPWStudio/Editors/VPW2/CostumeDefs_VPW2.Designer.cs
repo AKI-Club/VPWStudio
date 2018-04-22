@@ -34,7 +34,7 @@
 			this.tlpBodyTypeData = new System.Windows.Forms.TableLayoutPanel();
 			this.tbBodyTypeExtraModel = new System.Windows.Forms.TextBox();
 			this.tbBodyTypeRightUpperArmTexture = new System.Windows.Forms.TextBox();
-			this.Model = new System.Windows.Forms.TextBox();
+			this.tbBodyTypeRightUpperArmModel = new System.Windows.Forms.TextBox();
 			this.textBox32 = new System.Windows.Forms.TextBox();
 			this.textBox31 = new System.Windows.Forms.TextBox();
 			this.textBox30 = new System.Windows.Forms.TextBox();
@@ -166,7 +166,7 @@
 			this.tlpBodyTypeData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
 			this.tlpBodyTypeData.Controls.Add(this.tbBodyTypeExtraModel, 1, 18);
 			this.tlpBodyTypeData.Controls.Add(this.tbBodyTypeRightUpperArmTexture, 2, 17);
-			this.tlpBodyTypeData.Controls.Add(this.Model, 1, 17);
+			this.tlpBodyTypeData.Controls.Add(this.tbBodyTypeRightUpperArmModel, 1, 17);
 			this.tlpBodyTypeData.Controls.Add(this.textBox32, 2, 16);
 			this.tlpBodyTypeData.Controls.Add(this.textBox31, 1, 16);
 			this.tlpBodyTypeData.Controls.Add(this.textBox30, 2, 15);
@@ -263,14 +263,14 @@
 			this.tbBodyTypeRightUpperArmTexture.Size = new System.Drawing.Size(139, 20);
 			this.tbBodyTypeRightUpperArmTexture.TabIndex = 54;
 			// 
-			// Model
+			// tbBodyTypeRightUpperArmModel
 			// 
-			this.Model.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.Model.Location = new System.Drawing.Point(126, 492);
-			this.Model.Name = "Model";
-			this.Model.ReadOnly = true;
-			this.Model.Size = new System.Drawing.Size(137, 20);
-			this.Model.TabIndex = 53;
+			this.tbBodyTypeRightUpperArmModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbBodyTypeRightUpperArmModel.Location = new System.Drawing.Point(126, 492);
+			this.tbBodyTypeRightUpperArmModel.Name = "tbBodyTypeRightUpperArmModel";
+			this.tbBodyTypeRightUpperArmModel.ReadOnly = true;
+			this.tbBodyTypeRightUpperArmModel.Size = new System.Drawing.Size(137, 20);
+			this.tbBodyTypeRightUpperArmModel.TabIndex = 53;
 			// 
 			// textBox32
 			// 
@@ -592,7 +592,7 @@
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(117, 13);
 			this.label7.TabIndex = 12;
-			this.label7.Text = "xxx1";
+			this.label7.Text = "(Left Palm?)";
 			// 
 			// label8
 			// 
@@ -602,7 +602,7 @@
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(117, 13);
 			this.label8.TabIndex = 13;
-			this.label8.Text = "xxx2";
+			this.label8.Text = "(Left Fingers?)";
 			// 
 			// labelBodyTypeLeftLowArm
 			// 
@@ -672,7 +672,7 @@
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(117, 13);
 			this.label15.TabIndex = 20;
-			this.label15.Text = "xxx3";
+			this.label15.Text = "(Right Palm?)";
 			// 
 			// label16
 			// 
@@ -682,7 +682,7 @@
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(117, 13);
 			this.label16.TabIndex = 21;
-			this.label16.Text = "xxx4";
+			this.label16.Text = "(Right Fingers?)";
 			// 
 			// labelBodyTypeRightUpArm
 			// 
@@ -785,6 +785,7 @@
 			this.lbBodyTypes.Name = "lbBodyTypes";
 			this.lbBodyTypes.Size = new System.Drawing.Size(150, 342);
 			this.lbBodyTypes.TabIndex = 2;
+			this.lbBodyTypes.SelectedIndexChanged += new System.EventHandler(this.lbBodyTypes_SelectedIndexChanged);
 			// 
 			// tpCostumes
 			// 
@@ -881,6 +882,7 @@
 			this.cbCostumeCategory.Name = "cbCostumeCategory";
 			this.cbCostumeCategory.Size = new System.Drawing.Size(150, 21);
 			this.cbCostumeCategory.TabIndex = 2;
+			this.cbCostumeCategory.SelectedIndexChanged += new System.EventHandler(this.cbCostumeCategory_SelectedIndexChanged);
 			// 
 			// lbCostumeItems
 			// 
@@ -889,6 +891,7 @@
 			this.lbCostumeItems.Name = "lbCostumeItems";
 			this.lbCostumeItems.Size = new System.Drawing.Size(150, 316);
 			this.lbCostumeItems.TabIndex = 1;
+			this.lbCostumeItems.SelectedIndexChanged += new System.EventHandler(this.lbCostumeItems_SelectedIndexChanged);
 			// 
 			// tpHeadMask
 			// 
@@ -945,14 +948,17 @@
 			this.lbHeadEntries.Name = "lbHeadEntries";
 			this.lbHeadEntries.Size = new System.Drawing.Size(150, 277);
 			this.lbHeadEntries.TabIndex = 1;
+			this.lbHeadEntries.SelectedIndexChanged += new System.EventHandler(this.lbHeadEntries_SelectedIndexChanged);
 			// 
 			// cbHeadCategory
 			// 
+			this.cbHeadCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbHeadCategory.FormattingEnabled = true;
 			this.cbHeadCategory.Location = new System.Drawing.Point(3, 3);
 			this.cbHeadCategory.Name = "cbHeadCategory";
 			this.cbHeadCategory.Size = new System.Drawing.Size(150, 21);
 			this.cbHeadCategory.TabIndex = 0;
+			this.cbHeadCategory.SelectedIndexChanged += new System.EventHandler(this.cbHeadCategory_SelectedIndexChanged);
 			// 
 			// tpMasks
 			// 
@@ -989,6 +995,7 @@
 			this.lbMaskEntries.Name = "lbMaskEntries";
 			this.lbMaskEntries.Size = new System.Drawing.Size(150, 277);
 			this.lbMaskEntries.TabIndex = 1;
+			this.lbMaskEntries.SelectedIndexChanged += new System.EventHandler(this.lbMaskEntries_SelectedIndexChanged);
 			// 
 			// cbMaskCategory
 			// 
@@ -998,6 +1005,7 @@
 			this.cbMaskCategory.Name = "cbMaskCategory";
 			this.cbMaskCategory.Size = new System.Drawing.Size(150, 21);
 			this.cbMaskCategory.TabIndex = 0;
+			this.cbMaskCategory.SelectedIndexChanged += new System.EventHandler(this.cbMaskCategory_SelectedIndexChanged);
 			// 
 			// CostumeDefs_VPW2
 			// 
@@ -1085,7 +1093,7 @@
 		private System.Windows.Forms.Label labelBodyTypeExtraModel;
 		private System.Windows.Forms.TextBox tbBodyTypeExtraModel;
 		private System.Windows.Forms.TextBox tbBodyTypeRightUpperArmTexture;
-		private System.Windows.Forms.TextBox Model;
+		private System.Windows.Forms.TextBox tbBodyTypeRightUpperArmModel;
 		private System.Windows.Forms.TextBox textBox32;
 		private System.Windows.Forms.TextBox textBox31;
 		private System.Windows.Forms.TextBox textBox30;
