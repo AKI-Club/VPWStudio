@@ -565,6 +565,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\font.ico" />
+    <EmbeddedResource Include="Resources\DefaultShader.fx" />
     <Content Include="Resources\FileTypes\AkiArchive.png" />
     <Content Include="Resources\FileTypes\AkiLargeFont.png" />
     <Content Include="Resources\FileTypes\AkiModel.png" />
