@@ -26,6 +26,8 @@ namespace VPWStudio
 	{
 		private AkiModel CurModel = new AkiModel();
 
+		private int FileID;
+
 		#region SharpDX-related Members
 		private RenderControl CurRenderControl = new RenderControl();
 
@@ -77,13 +79,17 @@ namespace VPWStudio
 		public ModelTool2(int fileID)
 		{
 			InitializeComponent();
-			LoadModel(fileID);
+			FileID = fileID;
+
+			LoadModel(FileID);
 			InitSharpDX();
 
 			tbFileID.Text = String.Format("{0:X4}", fileID);
 			tbModelScale.Text = String.Format("{0} (0x{0:X2})", CurModel.Scale);
 			tbNumVerts.Text = String.Format("{0} (0x{0:X2})", CurModel.NumVertices);
+			tbNumVertsTopBit.Text = String.Format("{0}", CurModel.ModelType >> 7);
 			tbNumFaces.Text = String.Format("{0} (0x{0:X2})", CurModel.NumFaces);
+			tbNumFacesTopBit.Text = String.Format("{0}", CurModel.UnknownFacesTopBit >> 7);
 			tbUnknown.Text = String.Format("{0} (0x{0:X2})", CurModel.UnknownValue);
 			tbOffsetX.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetX);
 			tbOffsetY.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetY);
@@ -240,6 +246,22 @@ namespace VPWStudio
 				CurRenderControl.DrawToBitmap(b, new System.Drawing.Rectangle(0, 0, pbPreview.Width, pbPreview.Height));
 				pbPreview.Image = b;
 				b.Dispose();
+			}
+		}
+
+		private void buttonExportWavefrontOBJ_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export Wavefront OBJ";
+			sfd.Filter = "Wavefront OBJ File (*.obj)|*.obj";
+			sfd.FileName = String.Format("{0:X4}", FileID);
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				using (StreamWriter sw = new StreamWriter(sfd.FileName))
+				{
+					CurModel.WriteWavefrontObj(sw);
+					sw.Flush();
+				}
 			}
 		}
 	}
