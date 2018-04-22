@@ -149,7 +149,8 @@ namespace VPWStudio.Editors.NoMercy
 			}
 
 			// request AkiText viewer, index 2
-			((MainForm)(this.MdiParent)).RequestAkiTextDialog(2, this.WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+			AkiTextEditor ate = new AkiTextEditor(2, this.WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+			ate.ShowDialog();
 		}
 	}
 }

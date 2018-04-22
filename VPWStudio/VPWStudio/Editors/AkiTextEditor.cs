@@ -26,13 +26,18 @@ namespace VPWStudio.Editors
 		/// Constructor using file ID.
 		/// </summary>
 		/// <param name="fileID"></param>
-		public AkiTextEditor(int fileID)
+		public AkiTextEditor(int fileID, int selectEntry = -1)
 		{
 			FileKey = fileID;
 			InitializeComponent();
 			LoadFromRom(fileID);
 			OrigTextArchive.DeepCopy(CurTextArchive);
 			PopulateEntryList();
+
+			if (selectEntry != -1)
+			{
+				cbTextEntries.SelectedIndex = selectEntry;
+			}
 		}
 
 		/// <summary>

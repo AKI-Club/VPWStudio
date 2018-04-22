@@ -177,39 +177,6 @@ namespace VPWStudio
 
 		#region Form Handling
 		/// <summary>
-		/// Request the use of the AkiTextDialog.
-		/// </summary>
-		/// <param name="fileID">File ID to load.</param>
-		/// <param name="stringNum">(optional) String index to select.</param>
-		public void RequestAkiTextDialog(int fileID, int stringNum = -1)
-		{
-			if (AkiTextEditor == null)
-			{
-				AkiTextEditor = new AkiTextDialog(fileID, stringNum);
-				AkiTextEditor.MdiParent = this;
-				AkiTextEditor.Show();
-			}
-			else
-			{
-				if (AkiTextEditor.IsDisposed)
-				{
-					AkiTextEditor = new AkiTextDialog(fileID, stringNum);
-				}
-				else
-				{
-					AkiTextEditor.RequestLoad(fileID, stringNum);
-					AkiTextEditor.Focus();
-				}
-				AkiTextEditor.MdiParent = this;
-				AkiTextEditor.Show();
-				if (AkiTextEditor.WindowState == FormWindowState.Minimized)
-				{
-					AkiTextEditor.WindowState = FormWindowState.Normal;
-				}
-			}
-		}
-		
-		/// <summary>
 		/// Request the use of the HexViewerForm.
 		/// </summary>
 		/// <param name="fileID">File ID to load.</param>
@@ -715,7 +682,7 @@ namespace VPWStudio
 					}
 					break;
 
-				// WIP site
+				// WIP shite
 				case VPWGames.VPW2:
 					if (CostumeDefs_VPW2 == null)
 					{
@@ -892,40 +859,6 @@ namespace VPWStudio
 			}
 
 			Program.ErrorMessageBox("Story mode dialogs not yet designed.");
-		}
-
-		/// <summary>
-		/// AkiText editor (and maybe some in-ROM strings too.)
-		/// </summary>
-		private void textArchivesToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			// todo: this menu item is deprecated
-
-			if (Program.CurrentProject == null)
-			{
-				return;
-			}
-
-			// todo: world tour and vpw64 may need special handling?
-			if (AkiTextEditor == null)
-			{
-				AkiTextEditor = new AkiTextDialog();
-				AkiTextEditor.MdiParent = this;
-				AkiTextEditor.Show();
-			}
-			else
-			{
-				if (AkiTextEditor.IsDisposed)
-				{
-					AkiTextEditor = new AkiTextDialog();
-				}
-				if (AkiTextEditor.WindowState == FormWindowState.Minimized)
-				{
-					AkiTextEditor.WindowState = FormWindowState.Normal;
-				}
-				AkiTextEditor.MdiParent = this;
-				AkiTextEditor.Show();
-			}
 		}
 
 		/// <summary>

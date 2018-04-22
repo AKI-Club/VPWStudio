@@ -52,12 +52,12 @@
 			this.soundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.storyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.textArchivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.buildAndPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.packedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +83,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.buildAndPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -185,7 +184,6 @@
             this.soundsToolStripMenuItem,
             this.stablesToolStripMenuItem,
             this.storyModeToolStripMenuItem,
-            this.textArchivesToolStripMenuItem,
             this.weaponsToolStripMenuItem,
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
@@ -267,13 +265,6 @@
 			resources.ApplyResources(this.storyModeToolStripMenuItem, "storyModeToolStripMenuItem");
 			this.storyModeToolStripMenuItem.Click += new System.EventHandler(this.storyModeToolStripMenuItem_Click);
 			// 
-			// textArchivesToolStripMenuItem
-			// 
-			this.textArchivesToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_TextArchives;
-			this.textArchivesToolStripMenuItem.Name = "textArchivesToolStripMenuItem";
-			resources.ApplyResources(this.textArchivesToolStripMenuItem, "textArchivesToolStripMenuItem");
-			this.textArchivesToolStripMenuItem.Click += new System.EventHandler(this.textArchivesToolStripMenuItem_Click);
-			// 
 			// weaponsToolStripMenuItem
 			// 
 			this.weaponsToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Weapons;
@@ -306,6 +297,12 @@
 			this.playROMToolStripMenuItem.Name = "playROMToolStripMenuItem";
 			resources.ApplyResources(this.playROMToolStripMenuItem, "playROMToolStripMenuItem");
 			this.playROMToolStripMenuItem.Click += new System.EventHandler(this.playROMToolStripMenuItem_Click);
+			// 
+			// buildAndPlayToolStripMenuItem
+			// 
+			this.buildAndPlayToolStripMenuItem.Name = "buildAndPlayToolStripMenuItem";
+			resources.ApplyResources(this.buildAndPlayToolStripMenuItem, "buildAndPlayToolStripMenuItem");
+			this.buildAndPlayToolStripMenuItem.Click += new System.EventHandler(this.buildAndPlayToolStripMenuItem_Click);
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -490,12 +487,6 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// buildAndPlayToolStripMenuItem
-			// 
-			this.buildAndPlayToolStripMenuItem.Name = "buildAndPlayToolStripMenuItem";
-			resources.ApplyResources(this.buildAndPlayToolStripMenuItem, "buildAndPlayToolStripMenuItem");
-			this.buildAndPlayToolStripMenuItem.Click += new System.EventHandler(this.buildAndPlayToolStripMenuItem_Click);
-			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -562,7 +553,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripMenuItem menusToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem storyModeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem textArchivesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem nameEncoderdecoderToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem soundsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toki1Testvpw2OnlyToolStripMenuItem;
