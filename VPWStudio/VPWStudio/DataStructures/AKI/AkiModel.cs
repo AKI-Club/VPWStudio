@@ -306,6 +306,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Texture Map location offset
 		/// </summary>
+		/// possibly stored as nibbles (perhaps "uuuu vvvv" format?)
 		public int OffsetTexture;
 
 		/// <summary>
@@ -363,7 +364,7 @@ namespace VPWStudio
 			OffsetX = (SByte)br.ReadByte();
 			OffsetY = (SByte)br.ReadByte();
 			OffsetZ = (SByte)br.ReadByte();
-			OffsetTexture = (SByte)br.ReadByte();
+			OffsetTexture = br.ReadByte();
 
 			Vertices = new List<AkiVertex>();
 			for (int v = 0; v < this.NumVertices; v++)
