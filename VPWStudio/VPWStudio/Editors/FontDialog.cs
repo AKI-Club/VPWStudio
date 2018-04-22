@@ -26,7 +26,10 @@ namespace VPWStudio.Editors
 		{
 			InitializeComponent();
 			LoadFont(fileID);
-			LoadCharacters(charsID);
+			if (charsID > 0)
+			{
+				LoadCharacters(charsID);
+			}
 		}
 
 		/// <summary>
@@ -35,8 +38,6 @@ namespace VPWStudio.Editors
 		/// <param name="fileID">File ID of AkiFont data.</param>
 		private void LoadFont(int fileID)
 		{
-			// rom bullshit
-
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
@@ -47,12 +48,10 @@ namespace VPWStudio.Editors
 
 			fontStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader fontReader = new BinaryReader(fontStream);
+			CurFont.FontType = (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont;
 			CurFont.ReadData(fontReader);
 			fontReader.Close();
 			romReader.Close();
-
-			// AkiSmallFont vs. AkiLargeFont is determined by FileType
-			//Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType
 		}
 
 		/// <summary>
