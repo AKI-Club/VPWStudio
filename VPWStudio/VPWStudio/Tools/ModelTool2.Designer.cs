@@ -31,14 +31,14 @@
 			this.pbPreview = new System.Windows.Forms.PictureBox();
 			this.gbModelInfo = new System.Windows.Forms.GroupBox();
 			this.tlpModelInfo = new System.Windows.Forms.TableLayoutPanel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
+			this.labelModelScale = new System.Windows.Forms.Label();
+			this.labelNumVerts = new System.Windows.Forms.Label();
+			this.labelNumFaces = new System.Windows.Forms.Label();
+			this.labelUnknown = new System.Windows.Forms.Label();
+			this.labelOffsetX = new System.Windows.Forms.Label();
+			this.labelOffsetY = new System.Windows.Forms.Label();
+			this.labelOffsetZ = new System.Windows.Forms.Label();
+			this.labelTextureOffset = new System.Windows.Forms.Label();
 			this.tbModelScale = new System.Windows.Forms.TextBox();
 			this.tbNumVerts = new System.Windows.Forms.TextBox();
 			this.tbNumFaces = new System.Windows.Forms.TextBox();
@@ -47,6 +47,8 @@
 			this.tbOffsetY = new System.Windows.Forms.TextBox();
 			this.tbOffsetZ = new System.Windows.Forms.TextBox();
 			this.tbOffsetUV = new System.Windows.Forms.TextBox();
+			this.labelFileID = new System.Windows.Forms.Label();
+			this.tbFileID = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
 			this.gbModelInfo.SuspendLayout();
 			this.tlpModelInfo.SuspendLayout();
@@ -54,6 +56,7 @@
 			// 
 			// pbPreview
 			// 
+			this.pbPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pbPreview.Location = new System.Drawing.Point(366, 12);
 			this.pbPreview.Name = "pbPreview";
 			this.pbPreview.Size = new System.Drawing.Size(256, 256);
@@ -75,188 +78,211 @@
 			this.tlpModelInfo.ColumnCount = 2;
 			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31F));
 			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69F));
-			this.tlpModelInfo.Controls.Add(this.label1, 0, 0);
-			this.tlpModelInfo.Controls.Add(this.label2, 0, 1);
-			this.tlpModelInfo.Controls.Add(this.label3, 0, 2);
-			this.tlpModelInfo.Controls.Add(this.label4, 0, 3);
-			this.tlpModelInfo.Controls.Add(this.label5, 0, 4);
-			this.tlpModelInfo.Controls.Add(this.label6, 0, 5);
-			this.tlpModelInfo.Controls.Add(this.label7, 0, 6);
-			this.tlpModelInfo.Controls.Add(this.label8, 0, 7);
-			this.tlpModelInfo.Controls.Add(this.tbModelScale, 1, 0);
-			this.tlpModelInfo.Controls.Add(this.tbNumVerts, 1, 1);
-			this.tlpModelInfo.Controls.Add(this.tbNumFaces, 1, 2);
-			this.tlpModelInfo.Controls.Add(this.tbUnknown, 1, 3);
-			this.tlpModelInfo.Controls.Add(this.tbOffsetX, 1, 4);
-			this.tlpModelInfo.Controls.Add(this.tbOffsetY, 1, 5);
-			this.tlpModelInfo.Controls.Add(this.tbOffsetZ, 1, 6);
-			this.tlpModelInfo.Controls.Add(this.tbOffsetUV, 1, 7);
+			this.tlpModelInfo.Controls.Add(this.tbOffsetUV, 1, 8);
+			this.tlpModelInfo.Controls.Add(this.labelTextureOffset, 0, 8);
+			this.tlpModelInfo.Controls.Add(this.labelOffsetZ, 0, 7);
+			this.tlpModelInfo.Controls.Add(this.tbOffsetZ, 1, 7);
+			this.tlpModelInfo.Controls.Add(this.tbOffsetY, 1, 6);
+			this.tlpModelInfo.Controls.Add(this.labelOffsetY, 0, 6);
+			this.tlpModelInfo.Controls.Add(this.labelOffsetX, 0, 5);
+			this.tlpModelInfo.Controls.Add(this.tbOffsetX, 1, 5);
+			this.tlpModelInfo.Controls.Add(this.labelUnknown, 0, 4);
+			this.tlpModelInfo.Controls.Add(this.tbUnknown, 1, 4);
+			this.tlpModelInfo.Controls.Add(this.labelNumFaces, 0, 3);
+			this.tlpModelInfo.Controls.Add(this.tbNumFaces, 1, 3);
+			this.tlpModelInfo.Controls.Add(this.tbNumVerts, 1, 2);
+			this.tlpModelInfo.Controls.Add(this.labelNumVerts, 0, 2);
+			this.tlpModelInfo.Controls.Add(this.tbModelScale, 1, 1);
+			this.tlpModelInfo.Controls.Add(this.labelModelScale, 0, 1);
+			this.tlpModelInfo.Controls.Add(this.labelFileID, 0, 0);
+			this.tlpModelInfo.Controls.Add(this.tbFileID, 1, 0);
 			this.tlpModelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlpModelInfo.Location = new System.Drawing.Point(3, 16);
 			this.tlpModelInfo.Name = "tlpModelInfo";
-			this.tlpModelInfo.RowCount = 8;
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+			this.tlpModelInfo.RowCount = 9;
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tlpModelInfo.Size = new System.Drawing.Size(342, 237);
 			this.tlpModelInfo.TabIndex = 0;
 			// 
-			// label1
+			// labelModelScale
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(100, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Scale";
+			this.labelModelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelModelScale.AutoSize = true;
+			this.labelModelScale.Location = new System.Drawing.Point(3, 32);
+			this.labelModelScale.Name = "labelModelScale";
+			this.labelModelScale.Size = new System.Drawing.Size(100, 13);
+			this.labelModelScale.TabIndex = 1;
+			this.labelModelScale.Text = "Scale";
 			// 
-			// label2
+			// labelNumVerts
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 37);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(100, 13);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Number of Vertices";
+			this.labelNumVerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelNumVerts.AutoSize = true;
+			this.labelNumVerts.Location = new System.Drawing.Point(3, 58);
+			this.labelNumVerts.Name = "labelNumVerts";
+			this.labelNumVerts.Size = new System.Drawing.Size(100, 13);
+			this.labelNumVerts.TabIndex = 2;
+			this.labelNumVerts.Text = "Number of Vertices";
 			// 
-			// label3
+			// labelNumFaces
 			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 66);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(100, 13);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Number of Faces";
+			this.labelNumFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelNumFaces.AutoSize = true;
+			this.labelNumFaces.Location = new System.Drawing.Point(3, 84);
+			this.labelNumFaces.Name = "labelNumFaces";
+			this.labelNumFaces.Size = new System.Drawing.Size(100, 13);
+			this.labelNumFaces.TabIndex = 3;
+			this.labelNumFaces.Text = "Number of Faces";
 			// 
-			// label4
+			// labelUnknown
 			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 95);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(100, 13);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "(unknown)";
+			this.labelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown.AutoSize = true;
+			this.labelUnknown.Location = new System.Drawing.Point(3, 110);
+			this.labelUnknown.Name = "labelUnknown";
+			this.labelUnknown.Size = new System.Drawing.Size(100, 13);
+			this.labelUnknown.TabIndex = 4;
+			this.labelUnknown.Text = "(unknown)";
 			// 
-			// label5
+			// labelOffsetX
 			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 124);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(100, 13);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Offset X";
+			this.labelOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelOffsetX.AutoSize = true;
+			this.labelOffsetX.Location = new System.Drawing.Point(3, 136);
+			this.labelOffsetX.Name = "labelOffsetX";
+			this.labelOffsetX.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetX.TabIndex = 5;
+			this.labelOffsetX.Text = "Offset X";
 			// 
-			// label6
+			// labelOffsetY
 			// 
-			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(3, 153);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(100, 13);
-			this.label6.TabIndex = 5;
-			this.label6.Text = "Offset Y";
+			this.labelOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelOffsetY.AutoSize = true;
+			this.labelOffsetY.Location = new System.Drawing.Point(3, 162);
+			this.labelOffsetY.Name = "labelOffsetY";
+			this.labelOffsetY.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetY.TabIndex = 6;
+			this.labelOffsetY.Text = "Offset Y";
 			// 
-			// label7
+			// labelOffsetZ
 			// 
-			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(3, 182);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(100, 13);
-			this.label7.TabIndex = 6;
-			this.label7.Text = "Offset Z";
+			this.labelOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelOffsetZ.AutoSize = true;
+			this.labelOffsetZ.Location = new System.Drawing.Point(3, 188);
+			this.labelOffsetZ.Name = "labelOffsetZ";
+			this.labelOffsetZ.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetZ.TabIndex = 7;
+			this.labelOffsetZ.Text = "Offset Z";
 			// 
-			// label8
+			// labelTextureOffset
 			// 
-			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(3, 213);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(100, 13);
-			this.label8.TabIndex = 7;
-			this.label8.Text = "Texture Offset";
+			this.labelTextureOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelTextureOffset.AutoSize = true;
+			this.labelTextureOffset.Location = new System.Drawing.Point(3, 216);
+			this.labelTextureOffset.Name = "labelTextureOffset";
+			this.labelTextureOffset.Size = new System.Drawing.Size(100, 13);
+			this.labelTextureOffset.TabIndex = 8;
+			this.labelTextureOffset.Text = "Texture Offset";
 			// 
 			// tbModelScale
 			// 
 			this.tbModelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbModelScale.Location = new System.Drawing.Point(109, 4);
+			this.tbModelScale.Location = new System.Drawing.Point(109, 29);
 			this.tbModelScale.Name = "tbModelScale";
 			this.tbModelScale.ReadOnly = true;
 			this.tbModelScale.Size = new System.Drawing.Size(230, 20);
-			this.tbModelScale.TabIndex = 8;
+			this.tbModelScale.TabIndex = 1;
 			// 
 			// tbNumVerts
 			// 
 			this.tbNumVerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumVerts.Location = new System.Drawing.Point(109, 33);
+			this.tbNumVerts.Location = new System.Drawing.Point(109, 55);
 			this.tbNumVerts.Name = "tbNumVerts";
 			this.tbNumVerts.ReadOnly = true;
 			this.tbNumVerts.Size = new System.Drawing.Size(230, 20);
-			this.tbNumVerts.TabIndex = 9;
+			this.tbNumVerts.TabIndex = 2;
 			// 
 			// tbNumFaces
 			// 
 			this.tbNumFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumFaces.Location = new System.Drawing.Point(109, 62);
+			this.tbNumFaces.Location = new System.Drawing.Point(109, 81);
 			this.tbNumFaces.Name = "tbNumFaces";
 			this.tbNumFaces.ReadOnly = true;
 			this.tbNumFaces.Size = new System.Drawing.Size(230, 20);
-			this.tbNumFaces.TabIndex = 10;
+			this.tbNumFaces.TabIndex = 3;
 			// 
 			// tbUnknown
 			// 
 			this.tbUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown.Location = new System.Drawing.Point(109, 91);
+			this.tbUnknown.Location = new System.Drawing.Point(109, 107);
 			this.tbUnknown.Name = "tbUnknown";
 			this.tbUnknown.ReadOnly = true;
 			this.tbUnknown.Size = new System.Drawing.Size(230, 20);
-			this.tbUnknown.TabIndex = 11;
+			this.tbUnknown.TabIndex = 4;
 			// 
 			// tbOffsetX
 			// 
 			this.tbOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetX.Location = new System.Drawing.Point(109, 120);
+			this.tbOffsetX.Location = new System.Drawing.Point(109, 133);
 			this.tbOffsetX.Name = "tbOffsetX";
 			this.tbOffsetX.ReadOnly = true;
 			this.tbOffsetX.Size = new System.Drawing.Size(230, 20);
-			this.tbOffsetX.TabIndex = 12;
+			this.tbOffsetX.TabIndex = 5;
 			// 
 			// tbOffsetY
 			// 
 			this.tbOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetY.Location = new System.Drawing.Point(109, 149);
+			this.tbOffsetY.Location = new System.Drawing.Point(109, 159);
 			this.tbOffsetY.Name = "tbOffsetY";
 			this.tbOffsetY.ReadOnly = true;
 			this.tbOffsetY.Size = new System.Drawing.Size(230, 20);
-			this.tbOffsetY.TabIndex = 13;
+			this.tbOffsetY.TabIndex = 6;
 			// 
 			// tbOffsetZ
 			// 
 			this.tbOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetZ.Location = new System.Drawing.Point(109, 178);
+			this.tbOffsetZ.Location = new System.Drawing.Point(109, 185);
 			this.tbOffsetZ.Name = "tbOffsetZ";
 			this.tbOffsetZ.ReadOnly = true;
 			this.tbOffsetZ.Size = new System.Drawing.Size(230, 20);
-			this.tbOffsetZ.TabIndex = 14;
+			this.tbOffsetZ.TabIndex = 7;
 			// 
 			// tbOffsetUV
 			// 
 			this.tbOffsetUV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetUV.Location = new System.Drawing.Point(109, 210);
+			this.tbOffsetUV.Location = new System.Drawing.Point(109, 212);
 			this.tbOffsetUV.Name = "tbOffsetUV";
 			this.tbOffsetUV.ReadOnly = true;
 			this.tbOffsetUV.Size = new System.Drawing.Size(230, 20);
-			this.tbOffsetUV.TabIndex = 15;
+			this.tbOffsetUV.TabIndex = 8;
+			// 
+			// labelFileID
+			// 
+			this.labelFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelFileID.AutoSize = true;
+			this.labelFileID.Location = new System.Drawing.Point(3, 6);
+			this.labelFileID.Name = "labelFileID";
+			this.labelFileID.Size = new System.Drawing.Size(100, 13);
+			this.labelFileID.TabIndex = 0;
+			this.labelFileID.Text = "File ID";
+			// 
+			// tbFileID
+			// 
+			this.tbFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbFileID.Location = new System.Drawing.Point(109, 3);
+			this.tbFileID.Name = "tbFileID";
+			this.tbFileID.ReadOnly = true;
+			this.tbFileID.Size = new System.Drawing.Size(230, 20);
+			this.tbFileID.TabIndex = 0;
 			// 
 			// ModelTool2
 			// 
@@ -284,14 +310,14 @@
 		private System.Windows.Forms.PictureBox pbPreview;
 		private System.Windows.Forms.GroupBox gbModelInfo;
 		private System.Windows.Forms.TableLayoutPanel tlpModelInfo;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label labelModelScale;
+		private System.Windows.Forms.Label labelNumVerts;
+		private System.Windows.Forms.Label labelNumFaces;
+		private System.Windows.Forms.Label labelUnknown;
+		private System.Windows.Forms.Label labelOffsetX;
+		private System.Windows.Forms.Label labelOffsetY;
+		private System.Windows.Forms.Label labelOffsetZ;
+		private System.Windows.Forms.Label labelTextureOffset;
 		private System.Windows.Forms.TextBox tbModelScale;
 		private System.Windows.Forms.TextBox tbNumVerts;
 		private System.Windows.Forms.TextBox tbNumFaces;
@@ -300,5 +326,7 @@
 		private System.Windows.Forms.TextBox tbOffsetY;
 		private System.Windows.Forms.TextBox tbOffsetZ;
 		private System.Windows.Forms.TextBox tbOffsetUV;
+		private System.Windows.Forms.Label labelFileID;
+		private System.Windows.Forms.TextBox tbFileID;
 	}
 }
