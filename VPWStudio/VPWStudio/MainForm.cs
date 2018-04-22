@@ -108,6 +108,11 @@ namespace VPWStudio
 		/// VPW2 Stable Editor
 		/// </summary>
 		public Editors.VPW2.StableDefs_VPW2 StableDefs_VPW2 = null;
+
+		/// <summary>
+		/// VPW2 Costume Editor
+		/// </summary>
+		public Editors.VPW2.CostumeDefs_VPW2 CostumeDefs_VPW2 = null;
 		#endregion
 
 		#region No Mercy
@@ -710,6 +715,29 @@ namespace VPWStudio
 					}
 					break;
 
+				// WIP site
+				case VPWGames.VPW2:
+					if (CostumeDefs_VPW2 == null)
+					{
+						CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
+						CostumeDefs_VPW2.MdiParent = this;
+						CostumeDefs_VPW2.Show();
+					}
+					else
+					{
+						if (CostumeDefs_VPW2.IsDisposed)
+						{
+							CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
+						}
+						if (CostumeDefs_VPW2.WindowState == FormWindowState.Minimized)
+						{
+							CostumeDefs_VPW2.WindowState = FormWindowState.Normal;
+						}
+						CostumeDefs_VPW2.MdiParent = this;
+						CostumeDefs_VPW2.Show();
+					}
+					break;
+				
 				default:
 					Program.ErrorMessageBox(String.Format("Costumes dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
 					break;
