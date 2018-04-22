@@ -25,7 +25,8 @@ namespace VPWStudio.Editors
 		/// <summary>
 		/// Constructor using file ID.
 		/// </summary>
-		/// <param name="fileID"></param>
+		/// <param name="fileID">File ID of AkiText to load.</param>
+		/// <param name="selectEntry">(optional) Entry number to select.</param>
 		public AkiTextEditor(int fileID, int selectEntry = -1)
 		{
 			FileKey = fileID;
@@ -43,7 +44,7 @@ namespace VPWStudio.Editors
 		/// <summary>
 		/// Constructor using file path.
 		/// </summary>
-		/// <param name="path"></param>
+		/// <param name="path">Path to AkiText to load.</param>
 		public AkiTextEditor(string path)
 		{
 			InitializeComponent();
