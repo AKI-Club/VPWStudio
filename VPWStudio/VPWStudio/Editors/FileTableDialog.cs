@@ -682,7 +682,14 @@ namespace VPWStudio
 					}
 					break;
 
-				
+				// you thought the OTHERS were temporary...
+				case FileTypes.AkiModel:
+					{
+						ModelTool2 mt2 = new ModelTool2(key);
+						mt2.ShowDialog();
+					}
+					break;
+
 				// end temporary
 
 				// no default handler; show the hex viewer.
