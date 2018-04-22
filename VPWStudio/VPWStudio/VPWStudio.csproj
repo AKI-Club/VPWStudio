@@ -56,6 +56,9 @@
     <Reference Include="SharpDX.D3DCompiler, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.D3DCompiler.4.0.1\lib\net45\SharpDX.D3DCompiler.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Desktop.4.0.1\lib\net45\SharpDX.Desktop.dll</HintPath>
+    </Reference>
     <Reference Include="SharpDX.Direct3D11, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.Direct3D11.4.0.1\lib\net45\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
@@ -303,6 +306,12 @@
     <Compile Include="Tools\HexViewer.Designer.cs">
       <DependentUpon>HexViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ModelTool2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\ModelTool2.Designer.cs">
+      <DependentUpon>ModelTool2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\NameEncodeDecodeTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -418,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\HexViewer.resx">
       <DependentUpon>HexViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\ModelTool2.resx">
+      <DependentUpon>ModelTool2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\NameEncodeDecodeTool.resx">
       <DependentUpon>NameEncodeDecodeTool.cs</DependentUpon>
