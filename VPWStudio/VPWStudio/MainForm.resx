@@ -255,12 +255,6 @@
   <data name="storyModeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="textArchivesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="textArchivesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Text Archives</value>
-  </data>
   <data name="weaponsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -1476,12 +1470,6 @@
   <data name="&gt;&gt;storyModeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textArchivesToolStripMenuItem.Name" xml:space="preserve">
-    <value>textArchivesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;textArchivesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;weaponsToolStripMenuItem.Name" xml:space="preserve">
     <value>weaponsToolStripMenuItem</value>
   </data>
@@ -1510,6 +1498,12 @@
     <value>playROMToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;playROMToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Name" xml:space="preserve">
+    <value>buildAndPlayToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Name" xml:space="preserve">
@@ -1655,12 +1649,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Name" xml:space="preserve">
-    <value>buildAndPlayToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
