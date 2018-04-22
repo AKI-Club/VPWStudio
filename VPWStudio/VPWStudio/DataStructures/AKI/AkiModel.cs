@@ -319,7 +319,11 @@ namespace VPWStudio
 		/// </summary>
 		public List<AkiFace> Faces;
 
+		// top bit of NumVertices
 		public byte ModelType;
+
+		// top bit of NumFaces
+		public byte UnknownFacesTopBit;
 		#endregion
 
 		#region Constructors
@@ -328,18 +332,19 @@ namespace VPWStudio
 		/// </summary>
 		public AkiModel()
 		{
-			this.Scale = 1;
-			this.NumVertices = 0;
-			this.NumFaces = 0;
-			this.UnknownValue = 0;
-			this.OffsetX = 0;
-			this.OffsetY = 0;
-			this.OffsetZ = 0;
-			this.OffsetTexture = 0;
-			this.Vertices = new List<AkiVertex>();
-			this.Faces = new List<AkiFace>();
+			Scale = 1;
+			NumVertices = 0;
+			NumFaces = 0;
+			UnknownValue = 0;
+			OffsetX = 0;
+			OffsetY = 0;
+			OffsetZ = 0;
+			OffsetTexture = 0;
+			Vertices = new List<AkiVertex>();
+			Faces = new List<AkiFace>();
 
-			this.ModelType = 0;
+			ModelType = 0;
+			UnknownFacesTopBit = 0;
 		}
 
 		/// <summary>
@@ -359,7 +364,11 @@ namespace VPWStudio
 			byte numVerts = br.ReadByte();
 			NumVertices = numVerts & 0x7F;
 			ModelType = (byte)(numVerts & 0x80);
-			NumFaces = br.ReadByte() & 0x7F;
+
+			byte numFaces = br.ReadByte();
+			NumFaces = numFaces & 0x7F;
+			UnknownFacesTopBit = (byte)(numFaces & 0x80);
+
 			UnknownValue = br.ReadByte();
 			OffsetX = (SByte)br.ReadByte();
 			OffsetY = (SByte)br.ReadByte();
@@ -386,6 +395,7 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			bw.Write((byte)Scale);
+			// xxx: ignores ModelType, UnknownFacesTopBit
 			bw.Write((byte)Vertices.Count);
 			bw.Write((byte)Faces.Count);
 			bw.Write((byte)UnknownValue);
