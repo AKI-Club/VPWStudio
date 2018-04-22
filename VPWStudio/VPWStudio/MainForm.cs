@@ -25,11 +25,6 @@ namespace VPWStudio
 		/// File Table dialog
 		/// </summary>
 		public FileTableDialog FileTableEditor = null;
-
-		/// <summary>
-		/// AkiText dialog
-		/// </summary>
-		public AkiTextDialog AkiTextEditor = null;
 		#endregion
 
 		#region Tool Forms
