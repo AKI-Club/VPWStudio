@@ -77,7 +77,7 @@
 			this.lvFileList.Location = new System.Drawing.Point(12, 27);
 			this.lvFileList.Name = "lvFileList";
 			this.lvFileList.ShowGroups = false;
-			this.lvFileList.Size = new System.Drawing.Size(568, 393);
+			this.lvFileList.Size = new System.Drawing.Size(608, 394);
 			this.lvFileList.TabIndex = 1;
 			this.lvFileList.UseCompatibleStateImageBehavior = false;
 			this.lvFileList.View = System.Windows.Forms.View.Details;
@@ -102,7 +102,7 @@
 			// chFileType
 			// 
 			this.chFileType.Text = "File Type";
-			this.chFileType.Width = 80;
+			this.chFileType.Width = 98;
 			// 
 			// chLzss
 			// 
@@ -112,7 +112,7 @@
 			// chComments
 			// 
 			this.chComments.Text = "Comments";
-			this.chComments.Width = 216;
+			this.chComments.Width = 236;
 			// 
 			// cmsFileEntry
 			// 
@@ -124,7 +124,7 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(200, 142);
+			this.cmsFileEntry.Size = new System.Drawing.Size(200, 120);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// setTypeToolStripMenuItem
@@ -170,7 +170,7 @@
             this.exportToolStripMenuItem});
 			this.menuStripFileTable.Location = new System.Drawing.Point(0, 0);
 			this.menuStripFileTable.Name = "menuStripFileTable";
-			this.menuStripFileTable.Size = new System.Drawing.Size(592, 24);
+			this.menuStripFileTable.Size = new System.Drawing.Size(632, 24);
 			this.menuStripFileTable.TabIndex = 2;
 			this.menuStripFileTable.Text = "menuStrip1";
 			// 
@@ -253,7 +253,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(592, 432);
+			this.ClientSize = new System.Drawing.Size(632, 433);
 			this.Controls.Add(this.menuStripFileTable);
 			this.Controls.Add(this.lvFileList);
 			this.MainMenuStrip = this.menuStripFileTable;
