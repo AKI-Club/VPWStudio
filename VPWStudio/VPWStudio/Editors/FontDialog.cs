@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VPWStudio.Editors
 {
+	/// <summary>
+	/// Font Dialog
+	/// </summary>
 	public partial class FontDialog : Form
 	{
 		/// <summary>
@@ -22,7 +25,7 @@ namespace VPWStudio.Editors
 		/// </summary>
 		private SortedList<int, string> FontCharacters = new SortedList<int, string>();
 
-		public FontDialog(int fileID, int charsID)
+		public FontDialog(int fileID, int charsID = 0)
 		{
 			InitializeComponent();
 			LoadFont(fileID);
