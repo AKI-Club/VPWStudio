@@ -343,6 +343,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Call the hex viewer
+		/// </summary>
 		private void viewHexToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (lvFileList.SelectedItems.Count <= 0)
@@ -358,6 +361,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				// hard, since RequestHexViewer only allows for one dialog.
 				Program.ErrorMessageBox("multi select sucks, i haven't handled it yet");
 				return;
 			}
