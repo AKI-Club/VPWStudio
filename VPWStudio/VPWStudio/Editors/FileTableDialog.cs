@@ -343,6 +343,26 @@ namespace VPWStudio
 			}
 		}
 
+		private void viewHexToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			if (lvFileList.SelectedItems.Count == 1)
+			{
+				// easy
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+				((MainForm)this.MdiParent).RequestHexViewer(key);
+			}
+			else
+			{
+				Program.ErrorMessageBox("multi select sucks, i haven't handled it yet");
+				return;
+			}
+		}
+
 		/// <summary>
 		/// Edit the information of the selected FileTable entry/entries.
 		/// </summary>
@@ -790,6 +810,5 @@ namespace VPWStudio
 			}
 		}
 		#endregion
-
 	}
 }
