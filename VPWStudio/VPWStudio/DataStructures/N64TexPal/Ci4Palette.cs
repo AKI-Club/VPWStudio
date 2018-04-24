@@ -184,7 +184,7 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region JASC Paint Shop Pro Palette Import/Export
+		#region Normal JASC Paint Shop Pro Palette Import/Export
 		/// <summary>
 		/// Write header data for a JASC Paint Shop Pro palette file.
 		/// </summary>
@@ -210,7 +210,7 @@ namespace VPWStudio
 		/// Export (main) Ci4Palette as a JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sw">StreamWriter to write Palette data to.</param>
-		public void ExportJasc(StreamWriter sw)
+		public void ExportJascRegular(StreamWriter sw)
 		{
 			WriteJascHeader(sw);
 			for (int i = 0; i < Entries.Length; i++)
@@ -225,7 +225,7 @@ namespace VPWStudio
 		/// <param name="sw">StreamWriter to write sub-palette data to.</param>
 		/// <param name="subPalNum">Sub-palette number to write.</param>
 		/// <returns>True if successful, false otherwise.</returns>
-		public bool ExportJascSubPal(StreamWriter sw, int subPalNum)
+		public bool ExportJascRegularSubPal(StreamWriter sw, int subPalNum)
 		{
 			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
 			{
@@ -244,23 +244,36 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Import (main) Ci4Palette data from a JASC Paint Shop Pro palette file.
+		/// Import (main) Ci4Palette data from a regular JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sr">StreamReader to read Palette data from.</param>
 		/// <returns>True if successful, false otherwise.</returns>
-		public bool ImportJasc(StreamReader sr)
+		public bool ImportJascRegular(StreamReader sr)
 		{
-			sr.ReadLine(); // "JASC-PAL"
-			sr.ReadLine(); // version number
+			string palType = sr.ReadLine();
+			if (!palType.Equals("JASC-PAL"))
+			{
+				// not JASC PAL
+				return false;
+			}
+
+			// version number
+			string version = sr.ReadLine();
+			if (!version.Equals("0100"))
+			{
+				// unsupported format
+				return false;
+			}
 
 			// number of colors
 			int numColors = int.Parse(sr.ReadLine());
 			if (numColors != 16)
 			{
+				// not valid for CI4
 				return false;
 			}
 
-			// color per line
+			// one color per line
 			for (int i = 0; i < numColors; i++)
 			{
 				string[] colorDef = sr.ReadLine().Split(' ');
@@ -276,7 +289,7 @@ namespace VPWStudio
 		/// <param name="sr"></param>
 		/// <param name="subPalNum"></param>
 		/// <returns></returns>
-		public bool ImportJascSubPal(StreamReader sr, int subPalNum)
+		public bool ImportJascRegularSubPal(StreamReader sr, int subPalNum)
 		{
 			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
 			{
@@ -284,13 +297,26 @@ namespace VPWStudio
 				return false;
 			}
 
-			sr.ReadLine(); // "JASC-PAL"
-			sr.ReadLine(); // version number
+			string palType = sr.ReadLine();
+			if (!palType.Equals("JASC-PAL"))
+			{
+				// not JASC PAL
+				return false;
+			}
+
+			// version number
+			string version = sr.ReadLine();
+			if (!version.Equals("0100"))
+			{
+				// unsupported format
+				return false;
+			}
 
 			// number of colors
 			int numColors = int.Parse(sr.ReadLine());
 			if (numColors != 16)
 			{
+				// not valid for CI4
 				return false;
 			}
 
@@ -309,5 +335,110 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region VPW Studio Palette Import/Export
+		/*
+		 * Notes on modifications to the JASC Paint Shop Pro Palette format:
+		 * - Header is now "VPWStudio-PAL"
+		 * - Version line is now "0100" for regular CI4 palettes, or "01[num subpals]" for sub-palette support.
+		 * - Colors are defined as RGBA instead of RGB.
+		 */
+
+		/// <summary>
+		/// Write header data for our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw"></param>
+		private void WriteVpwsPalHeader(StreamWriter sw)
+		{
+			sw.WriteLine("VPWStudio-PAL");
+			sw.WriteLine(String.Format("01{0:D2}", SubPalettes.Count));
+			sw.WriteLine("16");
+		}
+
+		/// <summary>
+		/// Helper for writing a Color to our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		private string ColorToCustomVpwsPalEntry(Color c)
+		{
+			return String.Format("{0} {1} {2} {3}", c.R, c.G, c.B, c.A);
+		}
+
+		/// <summary>
+		/// Export Ci4Palette to our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw"></param>
+		public void ExportVpwsPal(StreamWriter sw)
+		{
+			WriteVpwsPalHeader(sw);
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToCustomVpwsPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+			}
+
+			// write subpalettes as needed
+			if (SubPalettes.Count > 0)
+			{
+				foreach (Ci4Palette s in SubPalettes)
+				{
+					for (int i = 0; i < s.Entries.Length; i++)
+					{
+						sw.WriteLine(ColorToCustomVpwsPalEntry(N64Colors.Value5551ToColor(s.Entries[i])));
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Import Ci4Palette data from our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <returns></returns>
+		public bool ImportVpwsPal(StreamReader sr)
+		{
+			// header
+			string palType = sr.ReadLine();
+			if (!palType.Equals("VPWStudio-PAL"))
+			{
+				return false;
+			}
+
+			// version, number of subpalettes
+			string version = sr.ReadLine();
+			int numSubPal = int.Parse(version.Substring(2));
+
+			// number of colors
+			int numColors = int.Parse(sr.ReadLine());
+			if (numColors != 16)
+			{
+				return false;
+			}
+
+			// color per line
+			for (int i = 0; i < numColors; i++)
+			{
+				string[] colorDef = sr.ReadLine().Split(' ');
+				Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+			}
+
+			// subpalettes
+			if (numSubPal > 0)
+			{
+				SubPalettes = new List<Ci4Palette>();
+				for (int i = 0; i < numSubPal; i++)
+				{
+					Ci4Palette sub = new Ci4Palette();
+					for (int j = 0; j < numColors; j++)
+					{
+						string[] colorDef = sr.ReadLine().Split(' ');
+						sub.Entries[j] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+					}
+					SubPalettes.Add(sub);
+				}
+			}
+
+			return true;
+		}
+		#endregion
 	}
 }
