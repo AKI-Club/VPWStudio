@@ -77,7 +77,6 @@
 			this.pngTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pngToCi4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pngToCi8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.jascPalToCi4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pngToMenubgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.vpw2FaceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
@@ -393,7 +392,6 @@
             this.pngTestToolStripMenuItem,
             this.pngToCi4ToolStripMenuItem,
             this.pngToCi8ToolStripMenuItem,
-            this.jascPalToCi4ToolStripMenuItem,
             this.pngToMenubgToolStripMenuItem,
             this.vpw2FaceTestToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
@@ -441,12 +439,6 @@
 			this.pngToCi8ToolStripMenuItem.Name = "pngToCi8ToolStripMenuItem";
 			resources.ApplyResources(this.pngToCi8ToolStripMenuItem, "pngToCi8ToolStripMenuItem");
 			this.pngToCi8ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi8ToolStripMenuItem_Click);
-			// 
-			// jascPalToCi4ToolStripMenuItem
-			// 
-			this.jascPalToCi4ToolStripMenuItem.Name = "jascPalToCi4ToolStripMenuItem";
-			resources.ApplyResources(this.jascPalToCi4ToolStripMenuItem, "jascPalToCi4ToolStripMenuItem");
-			this.jascPalToCi4ToolStripMenuItem.Click += new System.EventHandler(this.jascPalToCi4ToolStripMenuItem_Click);
 			// 
 			// pngToMenubgToolStripMenuItem
 			// 
@@ -560,7 +552,6 @@
 		private System.Windows.Forms.ToolStripMenuItem pngTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pngToCi4ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pngToCi8ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem jascPalToCi4ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw2FaceTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem buildAndPlayToolStripMenuItem;

@@ -1619,27 +1619,6 @@ namespace VPWStudio
 			}
 		}
 
-		private void jascPalToCi4ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert JASC Palette to CI4 Palette";
-			ofd.Filter = "JASC Paint Shop Pro Palette files (*.pal)|*.pal|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				Ci4Palette p = new Ci4Palette();
-				FileStream palfile = new FileStream(ofd.FileName, FileMode.Open);
-				StreamReader sr = new StreamReader(palfile);
-				p.ImportJasc(sr);
-				sr.Close();
-
-				FileStream fs = new FileStream(String.Format("{0}.ci4pal", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
-				BinaryWriter bw = new BinaryWriter(fs);
-				p.WriteData(bw);
-				bw.Close();
-				fs.Close();
-			}
-		}
-
 		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
