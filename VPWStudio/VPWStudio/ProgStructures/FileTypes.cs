@@ -16,7 +16,7 @@ namespace VPWStudio
 		AkiLargeFont,   // Large font (24x21px character cells)
 		AkiSmallFont,   // Small font (16x13px character cells)
 		AkiFontChars,   // (not yet implemented; Shift-JIS encoded text file with all font characters)
-		MenuBackground, // Menu background image (40 files, 64x30 CI4 chunks)
+		MenuBackground, // Menu background image (number and size are determined per-game)
 
 		// N64 standard textures and palettes
 		Ci4Palette, // raw CI4 palette data (32 bytes)
@@ -63,6 +63,7 @@ namespace VPWStudio
 			{ FileTypes.Ci8Texture, ".ci8tex" },
 			{ FileTypes.I4Texture, ".i4tex" },
 			{ FileTypes.DoubleTex, ".tex" }, // note: exports as two files
+			{ FileTypes.MenuBackground, ".menubg" }, // not really supported yet
 		};
 
 		/// <summary>
