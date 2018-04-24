@@ -528,6 +528,18 @@ namespace VPWStudio
 			}
 			#endregion
 
+			#region non-FileTable Changes
+			/*
+			 * this is where changes should be written for items like...
+			 * - Wrestler Definitions
+			 * - Stable Definitions
+			 * - Costume Definitions
+			 * - Story Mode
+			 * - Menus
+			 * and whatever else isn't involved with the FileTable.
+			 */
+
+			#endregion
 
 			#region Filetable Changes
 			// This portion of the Build ROM process is the most involved.
