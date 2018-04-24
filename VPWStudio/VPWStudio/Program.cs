@@ -398,7 +398,7 @@ namespace VPWStudio
 										using (StreamReader sr = new StreamReader(fs))
 										{
 											Ci4Palette ci4pal = new Ci4Palette();
-											if (!ci4pal.ImportJascRegular(sr))
+											if (!ci4pal.ImportJasc(sr))
 											{
 												return null;
 											}
