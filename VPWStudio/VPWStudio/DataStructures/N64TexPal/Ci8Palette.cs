@@ -145,5 +145,65 @@ namespace VPWStudio
 		}
 		#endregion
 
+		#region VPW Studio Palette Import/Export
+		/// <summary>
+		/// Helper for writing a Color to our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		private string ColorToCustomVpwsPalEntry(Color c)
+		{
+			return String.Format("{0} {1} {2} {3}", c.R, c.G, c.B, c.A);
+		}
+
+		/// <summary>
+		/// Export Ci4Palette to our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sw"></param>
+		public void ExportVpwsPal(StreamWriter sw)
+		{
+			sw.WriteLine("VPWStudio-PAL");
+			sw.WriteLine("0100");
+			sw.WriteLine("256");
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToCustomVpwsPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+			}
+		}
+
+		/// <summary>
+		/// Import Ci4Palette data from our variant of the JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <returns></returns>
+		public bool ImportVpwsPal(StreamReader sr)
+		{
+			// header
+			string palType = sr.ReadLine();
+			if (!palType.Equals("VPWStudio-PAL"))
+			{
+				return false;
+			}
+
+			// version
+			sr.ReadLine();
+
+			// number of colors
+			int numColors = int.Parse(sr.ReadLine());
+			if (numColors != 256)
+			{
+				return false;
+			}
+
+			// color per line
+			for (int i = 0; i < numColors; i++)
+			{
+				string[] colorDef = sr.ReadLine().Split(' ');
+				Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+			}
+
+			return true;
+		}
+		#endregion
 	}
 }
