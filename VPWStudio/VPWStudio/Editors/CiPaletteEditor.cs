@@ -522,13 +522,13 @@ namespace VPWStudio.Editors
 									{
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											import.ImportJascRegularSubPal(sr, cbPalettes.SelectedIndex - 1);
+											import.ImportJascSubPal(sr, cbPalettes.SelectedIndex - 1);
 											ColorList.RemoveRange((cbPalettes.SelectedIndex * 16), 16);
 											ColorList.InsertRange((cbPalettes.SelectedIndex * 16), import.SubPalettes[cbPalettes.SelectedIndex - 1].Entries);
 										}
 										else
 										{
-											import.ImportJascRegular(sr);
+											import.ImportJasc(sr);
 											ColorList.RemoveRange(0, 16);
 											ColorList.InsertRange(0, import.Entries);
 										}
@@ -559,7 +559,15 @@ namespace VPWStudio.Editors
 						case CiEditorModes.Ci8:
 							{
 								Ci8Palette import = new Ci8Palette();
-								if (Path.GetExtension(ofd.FileName) == ".pal")
+								if (Path.GetExtension(ofd.FileName) == ".vpwspal")
+								{
+									// import VPW Studio Palette
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										import.ImportVpwsPal(sr);
+									}
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
 									// import JASC Paint Shop Pro palette
 									using (StreamReader sr = new StreamReader(fs))
@@ -630,11 +638,11 @@ namespace VPWStudio.Editors
 										// export based on cbPalettes.SelectedIndex
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											export.ExportJascRegularSubPal(sw, cbPalettes.SelectedIndex - 1);
+											export.ExportJascSubPal(sw, cbPalettes.SelectedIndex - 1);
 										}
 										else
 										{
-											export.ExportJascRegular(sw);
+											export.ExportJasc(sw);
 										}
 									}
 								}
@@ -653,7 +661,15 @@ namespace VPWStudio.Editors
 								Ci8Palette export = new Ci8Palette();
 								export.ImportList(ColorList);
 
-								if (Path.GetExtension(sfd.FileName) == ".pal")
+								if (Path.GetExtension(sfd.FileName) == ".vpwspal")
+								{
+									// export VPW Studio palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportVpwsPal(sw);
+									}
+								}
+								else if (Path.GetExtension(sfd.FileName) == ".pal")
 								{
 									// export JASC Paint Shop Pro palette
 									using (StreamWriter sw = new StreamWriter(fs))
