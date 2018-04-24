@@ -1630,7 +1630,7 @@ namespace VPWStudio
 				MenuBackground mbg = new MenuBackground();
 				if (mbg.FromBitmap(b))
 				{
-					using (FileStream fs = new FileStream("menubackground.mbg", FileMode.Create))
+					using (FileStream fs = new FileStream("menubackground.menubg", FileMode.Create))
 					{
 						using (BinaryWriter bw = new BinaryWriter(fs))
 						{
