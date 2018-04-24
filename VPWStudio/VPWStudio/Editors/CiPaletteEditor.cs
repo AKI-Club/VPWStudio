@@ -482,7 +482,7 @@ namespace VPWStudio.Editors
 					filters = "CI8 Palette (*.ci8pal)|*.ci8pal|";
 					break;
 			}
-			ofd.Filter = filters + "JASC Paint Shop Pro Palette (*.pal)|*.pal|All Files (*.*)|*.*";
+			ofd.Filter = filters + SharedStrings.FileFilter_Palettes;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				// load that
@@ -493,21 +493,42 @@ namespace VPWStudio.Editors
 						case CiEditorModes.Ci4:
 							{
 								Ci4Palette import = CurPaletteCI4;
-								if (Path.GetExtension(ofd.FileName) == ".pal")
+								if (Path.GetExtension(ofd.FileName) == ".vpwspal")
+								{
+									// import VPW Studio palette
+									ColorList.Clear();
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										import = new Ci4Palette();
+										import.ImportVpwsPal(sr);
+										ColorList.Clear();
+										ColorList.AddRange(import.Entries);
+										if (import.SubPalettes.Count > 0)
+										{
+											foreach (Ci4Palette sub in import.SubPalettes)
+											{
+												ColorList.AddRange(sub.Entries);
+											}
+										}
+									}
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
 									// import JASC Paint Shop Pro palette
+									ColorList.Clear();
 									ColorList.AddRange(import.Entries);
 									using (StreamReader sr = new StreamReader(fs))
 									{
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											import.ImportJascSubPal(sr, cbPalettes.SelectedIndex - 1);
-											ColorList.RemoveRange((cbPalettes.SelectedIndex*16), 16);
+											import.ImportJascRegularSubPal(sr, cbPalettes.SelectedIndex - 1);
+											ColorList.RemoveRange((cbPalettes.SelectedIndex * 16), 16);
 											ColorList.InsertRange((cbPalettes.SelectedIndex * 16), import.SubPalettes[cbPalettes.SelectedIndex - 1].Entries);
 										}
 										else
 										{
-											import.ImportJasc(sr);
+											import.ImportJascRegular(sr);
 											ColorList.RemoveRange(0, 16);
 											ColorList.InsertRange(0, import.Entries);
 										}
@@ -517,9 +538,17 @@ namespace VPWStudio.Editors
 								{
 									using (BinaryReader br = new BinaryReader(fs))
 									{
+										import = new Ci4Palette();
 										import.ReadData(br, true);
 										ColorList.Clear();
 										ColorList.AddRange(import.Entries);
+										if (import.SubPalettes.Count > 0)
+										{
+											foreach (Ci4Palette sub in import.SubPalettes)
+											{
+												ColorList.AddRange(sub.Entries);
+											}
+										}
 									}
 								}
 								CurPaletteCI4 = import;
@@ -536,7 +565,6 @@ namespace VPWStudio.Editors
 									using (StreamReader sr = new StreamReader(fs))
 									{
 										import.ImportJasc(sr);
-										
 									}
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci8pal")
@@ -573,7 +601,7 @@ namespace VPWStudio.Editors
 					filters = "CI8 Palette (*.ci8pal)|*.ci8pal|";
 					break;
 			}
-			sfd.Filter = filters + "JASC Paint Shop Pro Palette (*.pal)|*.pal|All Files (*.*)|*.*";
+			sfd.Filter = filters + SharedStrings.FileFilter_Palettes;
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				// save that
@@ -586,7 +614,15 @@ namespace VPWStudio.Editors
 								Ci4Palette export = new Ci4Palette();
 								export.ImportList(ColorList);
 
-								if (Path.GetExtension(sfd.FileName) == ".pal")
+								if (Path.GetExtension(sfd.FileName) == ".vpwspal")
+								{
+									// export VPW Studio palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportVpwsPal(sw);
+									}
+								}
+								else if (Path.GetExtension(sfd.FileName) == ".pal")
 								{
 									// export JASC Paint Shop Pro palette
 									using (StreamWriter sw = new StreamWriter(fs))
@@ -594,11 +630,11 @@ namespace VPWStudio.Editors
 										// export based on cbPalettes.SelectedIndex
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											export.ExportJascSubPal(sw, cbPalettes.SelectedIndex - 1);
+											export.ExportJascRegularSubPal(sw, cbPalettes.SelectedIndex - 1);
 										}
 										else
 										{
-											export.ExportJasc(sw);
+											export.ExportJascRegular(sw);
 										}
 									}
 								}
