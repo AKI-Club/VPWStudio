@@ -372,15 +372,33 @@ namespace VPWStudio
 						#region Ci4Palette Conversion
 						case FileTypes.Ci4Palette:
 							{
-								if (ReplaceFileExtension == ".pal")
+								if (ReplaceFileExtension == ".vpwspal")
 								{
+									// VPW Studio Palette
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											Ci4Palette ci4pal = new Ci4Palette();
+											if (!ci4pal.ImportVpwsPal(sr))
+											{
+												return null;
+											}
+											ci4pal.WriteData(bw);
+										}
+									}
+								}
+								else if (ReplaceFileExtension == ".pal")
+								{
+									// JASC Paint Shop Pro Palette
+
 									// todo: sub-palettes!!
 									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
 									{
 										using (StreamReader sr = new StreamReader(fs))
 										{
 											Ci4Palette ci4pal = new Ci4Palette();
-											if (!ci4pal.ImportJasc(sr))
+											if (!ci4pal.ImportJascRegular(sr))
 											{
 												return null;
 											}
