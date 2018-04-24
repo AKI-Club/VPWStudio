@@ -210,7 +210,7 @@ namespace VPWStudio
 		/// Export (main) Ci4Palette as a JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sw">StreamWriter to write Palette data to.</param>
-		public void ExportJascRegular(StreamWriter sw)
+		public void ExportJasc(StreamWriter sw)
 		{
 			WriteJascHeader(sw);
 			for (int i = 0; i < Entries.Length; i++)
@@ -225,7 +225,7 @@ namespace VPWStudio
 		/// <param name="sw">StreamWriter to write sub-palette data to.</param>
 		/// <param name="subPalNum">Sub-palette number to write.</param>
 		/// <returns>True if successful, false otherwise.</returns>
-		public bool ExportJascRegularSubPal(StreamWriter sw, int subPalNum)
+		public bool ExportJascSubPal(StreamWriter sw, int subPalNum)
 		{
 			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
 			{
@@ -248,7 +248,7 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="sr">StreamReader to read Palette data from.</param>
 		/// <returns>True if successful, false otherwise.</returns>
-		public bool ImportJascRegular(StreamReader sr)
+		public bool ImportJasc(StreamReader sr)
 		{
 			string palType = sr.ReadLine();
 			if (!palType.Equals("JASC-PAL"))
@@ -289,7 +289,7 @@ namespace VPWStudio
 		/// <param name="sr"></param>
 		/// <param name="subPalNum"></param>
 		/// <returns></returns>
-		public bool ImportJascRegularSubPal(StreamReader sr, int subPalNum)
+		public bool ImportJascSubPal(StreamReader sr, int subPalNum)
 		{
 			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
 			{
