@@ -1629,7 +1629,7 @@ namespace VPWStudio
 				Ci4Palette p = new Ci4Palette();
 				FileStream palfile = new FileStream(ofd.FileName, FileMode.Open);
 				StreamReader sr = new StreamReader(palfile);
-				p.ImportJasc(sr);
+				p.ImportJascRegular(sr);
 				sr.Close();
 
 				FileStream fs = new FileStream(String.Format("{0}.ci4pal", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create);
