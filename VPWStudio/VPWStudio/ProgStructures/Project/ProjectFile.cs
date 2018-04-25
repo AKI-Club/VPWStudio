@@ -90,19 +90,21 @@ namespace VPWStudio
 		/// <param name="length">Size of FileTable in bytes.</param>
 		public void CreateProjectFileTable(uint addr, int length)
 		{
-			FileStream fs = new FileStream(Settings.InputRomPath, FileMode.Open);
-			BinaryReader br = new BinaryReader(fs);
-			fs.Seek(addr, SeekOrigin.Begin);
+			using (FileStream fs = new FileStream(Settings.InputRomPath, FileMode.Open))
+			{
+				using (BinaryReader br = new BinaryReader(fs))
+				{
+					fs.Seek(addr, SeekOrigin.Begin);
 
-			// sanity check (unsure if needed, but seems like a good idea)
-			//if (ProjectFileTable == null)
-			//{
-			//	ProjectFileTable = new FileTable();
-			//}
+					// sanity check (unsure if needed, but seems like a good idea)
+					//if (ProjectFileTable == null)
+					//{
+					//	ProjectFileTable = new FileTable();
+					//}
 
-			ProjectFileTable.Read(br, length);
-			br.Close();
-			fs.Close();
+					ProjectFileTable.Read(br, length);
+				}
+			}
 		}
 	}
 }
