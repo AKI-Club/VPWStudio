@@ -10,6 +10,7 @@ namespace VPWStudio.GameSpecific.VPW2
 	/// <summary>
 	/// Virtual Pro-Wrestling 2 Stable Definition
 	/// </summary>
+	/// todo: WWF No Mercy uses the same format.
 	public class StableDefinition
 	{
 		#region Class Members
@@ -29,6 +30,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		public byte[] WrestlerID2s;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -50,6 +52,7 @@ namespace VPWStudio.GameSpecific.VPW2
 			WrestlerID2s = new byte[8];
 			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
