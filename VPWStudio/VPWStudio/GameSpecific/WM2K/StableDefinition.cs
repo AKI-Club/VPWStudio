@@ -105,7 +105,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			// fill in any blanks
 			if (NumWrestlers < 8)
 			{
-				for (int j = 8 - NumWrestlers; j < 8; j++)
+				for (int j = 7; j > NumWrestlers; j--)
 				{
 					WrestlerID2s[j] = 0;
 				}
@@ -114,10 +114,10 @@ namespace VPWStudio.GameSpecific.WM2K
 			// obtain stable name
 			br.BaseStream.Seek(Z64Rom.PointerToRom(StableNamePointer), SeekOrigin.Begin);
 
-			string result = String.Empty;
+			StableName = String.Empty;
 			while (br.PeekChar() != 0)
 			{
-				result += br.ReadChar();
+				StableName += br.ReadChar();
 			}
 
 			// restore position
