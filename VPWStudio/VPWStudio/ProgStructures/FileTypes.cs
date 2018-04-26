@@ -13,8 +13,8 @@ namespace VPWStudio
 		AkiModel,       // Model data
 		AkiTexture,     // "TEX" file, AKI's wrapper around some N64 texture types
 		AkiText,        // Text bank
-		AkiLargeFont,   // Large font (24x21px character cells)
-		AkiSmallFont,   // Small font (16x13px character cells)
+		AkiLargeFont,   // Large font (24px wide character cells)
+		AkiSmallFont,   // Small font (16px wide character cells)
 		AkiFontChars,   // (not yet implemented; Shift-JIS encoded text file with all font characters)
 		MenuBackground, // Menu background image (number and size are determined per-game)
 

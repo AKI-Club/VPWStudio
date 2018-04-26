@@ -170,7 +170,7 @@ namespace VPWStudio.GameSpecific.WM2K
 				}
 			}
 
-			// write stable name
+			// write stable name (don't forget the ending 0x00)
 			bw.BaseStream.Seek(Z64Rom.PointerToRom(StableNamePointer), SeekOrigin.Begin);
 
 			// restore position
