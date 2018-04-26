@@ -248,6 +248,7 @@
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\WM2K\StableDefinition.cs" />
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\BuildLogEvents.cs" />
