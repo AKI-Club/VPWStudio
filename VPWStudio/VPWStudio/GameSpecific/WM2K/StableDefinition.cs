@@ -161,7 +161,13 @@ namespace VPWStudio.GameSpecific.WM2K
 			if (NumWrestlers % 4 != 0)
 			{
 				// determine the closest multiple of 4
+				int numPad = 4 - (NumWrestlers % 4);
+
 				// pad with 0x00
+				for (int j = 0; j < numPad; j++)
+				{
+					bw.Write((byte)0);
+				}
 			}
 
 			// write stable name
