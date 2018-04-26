@@ -91,6 +91,11 @@ namespace VPWStudio
 		/// VPW2 Wrestler Editor, main form
 		/// </summary>
 		public Editors.WM2K.WrestlerMain_WM2K WrestlerMain_WM2K = null;
+
+		/// <summary>
+		/// WM2K Stable Editor
+		/// </summary>
+		public Editors.WM2K.StableDefs_WM2K StableDefs_WM2K = null;
 		#endregion
 
 		#region VPW2
@@ -809,6 +814,30 @@ namespace VPWStudio
 							}
 							StableDefs_Revenge.MdiParent = this;
 							StableDefs_Revenge.Show();
+						}
+					}
+					break;
+
+				case VPWGames.WM2K:
+					{
+						if (StableDefs_WM2K == null)
+						{
+							StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
+							StableDefs_WM2K.MdiParent = this;
+							StableDefs_WM2K.Show();
+						}
+						else
+						{
+							if (StableDefs_WM2K.IsDisposed)
+							{
+								StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
+							}
+							if (StableDefs_WM2K.WindowState == FormWindowState.Minimized)
+							{
+								StableDefs_WM2K.WindowState = FormWindowState.Normal;
+							}
+							StableDefs_WM2K.MdiParent = this;
+							StableDefs_WM2K.Show();
 						}
 					}
 					break;
