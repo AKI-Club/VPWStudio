@@ -39,6 +39,10 @@
 			this.labelNumCharacters = new System.Windows.Forms.Label();
 			this.labelCharWidth = new System.Windows.Forms.Label();
 			this.labelCharHeight = new System.Windows.Forms.Label();
+			this.labelFontTypeValue = new System.Windows.Forms.Label();
+			this.labelNumCharsValue = new System.Windows.Forms.Label();
+			this.labelCharWidthValue = new System.Windows.Forms.Label();
+			this.labelCharHeightValue = new System.Windows.Forms.Label();
 			this.gbCharacters.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbCharacterPreview)).BeginInit();
 			this.gbCharacterPreview.SuspendLayout();
@@ -117,6 +121,10 @@
 			this.tableLayoutPanel1.Controls.Add(this.labelNumCharacters, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.labelCharWidth, 2, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelCharHeight, 2, 1);
+			this.tableLayoutPanel1.Controls.Add(this.labelFontTypeValue, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.labelNumCharsValue, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharWidthValue, 3, 0);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharHeightValue, 3, 1);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 2;
@@ -165,6 +173,42 @@
 			this.labelCharHeight.TabIndex = 3;
 			this.labelCharHeight.Text = "Character Height";
 			// 
+			// labelFontTypeValue
+			// 
+			this.labelFontTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelFontTypeValue.AutoSize = true;
+			this.labelFontTypeValue.Location = new System.Drawing.Point(120, 8);
+			this.labelFontTypeValue.Name = "labelFontTypeValue";
+			this.labelFontTypeValue.Size = new System.Drawing.Size(111, 13);
+			this.labelFontTypeValue.TabIndex = 4;
+			// 
+			// labelNumCharsValue
+			// 
+			this.labelNumCharsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelNumCharsValue.AutoSize = true;
+			this.labelNumCharsValue.Location = new System.Drawing.Point(120, 38);
+			this.labelNumCharsValue.Name = "labelNumCharsValue";
+			this.labelNumCharsValue.Size = new System.Drawing.Size(111, 13);
+			this.labelNumCharsValue.TabIndex = 5;
+			// 
+			// labelCharWidthValue
+			// 
+			this.labelCharWidthValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCharWidthValue.AutoSize = true;
+			this.labelCharWidthValue.Location = new System.Drawing.Point(354, 8);
+			this.labelCharWidthValue.Name = "labelCharWidthValue";
+			this.labelCharWidthValue.Size = new System.Drawing.Size(113, 13);
+			this.labelCharWidthValue.TabIndex = 6;
+			// 
+			// labelCharHeightValue
+			// 
+			this.labelCharHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelCharHeightValue.AutoSize = true;
+			this.labelCharHeightValue.Location = new System.Drawing.Point(354, 38);
+			this.labelCharHeightValue.Name = "labelCharHeightValue";
+			this.labelCharHeightValue.Size = new System.Drawing.Size(113, 13);
+			this.labelCharHeightValue.TabIndex = 7;
+			// 
 			// FontDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +222,7 @@
 			this.Icon = global::VPWStudio.Properties.Resources.Font;
 			this.MaximizeBox = false;
 			this.Name = "FontDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Fonts";
 			this.gbCharacters.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbCharacterPreview)).EndInit();
@@ -202,5 +247,9 @@
 		private System.Windows.Forms.Label labelNumCharacters;
 		private System.Windows.Forms.Label labelCharWidth;
 		private System.Windows.Forms.Label labelCharHeight;
+		private System.Windows.Forms.Label labelFontTypeValue;
+		private System.Windows.Forms.Label labelNumCharsValue;
+		private System.Windows.Forms.Label labelCharWidthValue;
+		private System.Windows.Forms.Label labelCharHeightValue;
 	}
 }
