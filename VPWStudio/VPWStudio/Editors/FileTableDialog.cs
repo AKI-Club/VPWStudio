@@ -686,6 +686,7 @@ namespace VPWStudio
 
 				case FileTypes.AkiLargeFont:
 					{
+						/*
 						Program.InfoMessageBox("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
 						AkiFont f = new AkiFont(AkiFontType.AkiLargeFont, Program.CurrentProject.Settings.BaseGame);
 
@@ -703,6 +704,16 @@ namespace VPWStudio
 						f.ToBitmap().Save(String.Format("largefont-{0:X4}.png", key));
 						fontReader.Close();
 						romReader.Close();
+						*/
+
+						int charsID = 0;
+						if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+						{
+							charsID = 3;
+						}
+
+						Editors.FontDialog fd = new Editors.FontDialog(key, charsID);
+						fd.ShowDialog();
 					}
 					break;
 
