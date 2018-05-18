@@ -235,6 +235,33 @@ namespace VPWStudio
 		}
 		#endregion
 
+		/// <summary>
+		/// Get a Bitmap for a single character.
+		/// </summary>
+		/// <param name="charNo">Character number to get Bitmap for.</param>
+		/// <returns>Bitmap of the specified character.</returns>
+		public Bitmap GetCharacterBitmap(int charNo)
+		{
+			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? 24 : 16;
+			int charBytes = (charWidth * CellHeight);
+
+			Bitmap chrBmp = new Bitmap(charWidth, CellHeight);
+
+			// get character pixels
+			int baseAddr = charBytes * charNo;
+			for (int y = 0; y < CellHeight; y++)
+			{
+				for (int x = 0; x < charWidth; x++)
+				{
+					chrBmp.SetPixel(x, y,
+							(RawData[baseAddr + ((y * charWidth) + x)] == 0) ? Color.White : Color.Black
+					);
+				}
+			}
+
+			return chrBmp.Clone(new Rectangle(0, 0, chrBmp.Width, chrBmp.Height), PixelFormat.Format1bppIndexed);
+		}
+
 		#region Read Data
 		/// <summary>
 		/// Read large font data.
