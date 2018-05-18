@@ -153,7 +153,7 @@ namespace VPWStudio.Editors
 			}
 
 			// update preview
-			//FontCharacters[lbCharacters.SelectedIndex];
+			pbCharacterPreview.Image = CurFont.GetCharacterBitmap(lbCharacters.SelectedIndex);
 		}
 
 		/// <summary>
