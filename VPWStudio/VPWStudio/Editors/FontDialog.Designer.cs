@@ -31,7 +31,6 @@
 			this.gbCharacters = new System.Windows.Forms.GroupBox();
 			this.lbCharacters = new System.Windows.Forms.ListBox();
 			this.pbCharacterPreview = new System.Windows.Forms.PictureBox();
-			this.gbCharacterPreview = new System.Windows.Forms.GroupBox();
 			this.buttonExportFontGraphic = new System.Windows.Forms.Button();
 			this.gbFontInfo = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +44,6 @@
 			this.labelCharHeightValue = new System.Windows.Forms.Label();
 			this.gbCharacters.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbCharacterPreview)).BeginInit();
-			this.gbCharacterPreview.SuspendLayout();
 			this.gbFontInfo.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -53,46 +51,36 @@
 			// gbCharacters
 			// 
 			this.gbCharacters.Controls.Add(this.lbCharacters);
-			this.gbCharacters.Location = new System.Drawing.Point(12, 103);
+			this.gbCharacters.Location = new System.Drawing.Point(262, 12);
 			this.gbCharacters.Name = "gbCharacters";
-			this.gbCharacters.Size = new System.Drawing.Size(109, 340);
+			this.gbCharacters.Size = new System.Drawing.Size(115, 140);
 			this.gbCharacters.TabIndex = 0;
 			this.gbCharacters.TabStop = false;
 			this.gbCharacters.Text = "Characters";
 			// 
 			// lbCharacters
 			// 
+			this.lbCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbCharacters.FormattingEnabled = true;
 			this.lbCharacters.Location = new System.Drawing.Point(6, 19);
 			this.lbCharacters.Name = "lbCharacters";
 			this.lbCharacters.ScrollAlwaysVisible = true;
-			this.lbCharacters.Size = new System.Drawing.Size(97, 316);
+			this.lbCharacters.Size = new System.Drawing.Size(103, 108);
 			this.lbCharacters.TabIndex = 0;
 			this.lbCharacters.SelectedIndexChanged += new System.EventHandler(this.lbCharacters_SelectedIndexChanged);
 			// 
 			// pbCharacterPreview
 			// 
-			this.pbCharacterPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbCharacterPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbCharacterPreview.Location = new System.Drawing.Point(13, 19);
+			this.pbCharacterPreview.Location = new System.Drawing.Point(383, 12);
 			this.pbCharacterPreview.Name = "pbCharacterPreview";
-			this.pbCharacterPreview.Size = new System.Drawing.Size(84, 96);
+			this.pbCharacterPreview.Size = new System.Drawing.Size(48, 48);
 			this.pbCharacterPreview.TabIndex = 1;
 			this.pbCharacterPreview.TabStop = false;
 			// 
-			// gbCharacterPreview
-			// 
-			this.gbCharacterPreview.Controls.Add(this.pbCharacterPreview);
-			this.gbCharacterPreview.Location = new System.Drawing.Point(127, 103);
-			this.gbCharacterPreview.Name = "gbCharacterPreview";
-			this.gbCharacterPreview.Size = new System.Drawing.Size(111, 121);
-			this.gbCharacterPreview.TabIndex = 2;
-			this.gbCharacterPreview.TabStop = false;
-			this.gbCharacterPreview.Text = "Character Preview";
-			// 
 			// buttonExportFontGraphic
 			// 
-			this.buttonExportFontGraphic.Location = new System.Drawing.Point(127, 420);
+			this.buttonExportFontGraphic.Location = new System.Drawing.Point(12, 158);
 			this.buttonExportFontGraphic.Name = "buttonExportFontGraphic";
 			this.buttonExportFontGraphic.Size = new System.Drawing.Size(128, 23);
 			this.buttonExportFontGraphic.TabIndex = 3;
@@ -105,41 +93,44 @@
 			this.gbFontInfo.Controls.Add(this.tableLayoutPanel1);
 			this.gbFontInfo.Location = new System.Drawing.Point(12, 12);
 			this.gbFontInfo.Name = "gbFontInfo";
-			this.gbFontInfo.Size = new System.Drawing.Size(482, 85);
+			this.gbFontInfo.Size = new System.Drawing.Size(244, 140);
 			this.gbFontInfo.TabIndex = 4;
 			this.gbFontInfo.TabStop = false;
 			this.gbFontInfo.Text = "Font Information";
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 4;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.Controls.Add(this.labelFontType, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelNumCharacters, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.labelCharWidth, 2, 0);
-			this.tableLayoutPanel1.Controls.Add(this.labelCharHeight, 2, 1);
 			this.tableLayoutPanel1.Controls.Add(this.labelFontTypeValue, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelNumCharsValue, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.labelCharWidthValue, 3, 0);
-			this.tableLayoutPanel1.Controls.Add(this.labelCharHeightValue, 3, 1);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharWidth, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharWidthValue, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharHeight, 0, 3);
+			this.tableLayoutPanel1.Controls.Add(this.labelCharHeightValue, 1, 3);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 60);
+			this.tableLayoutPanel1.RowCount = 4;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(232, 115);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// labelFontType
 			// 
 			this.labelFontType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelFontType.AutoSize = true;
-			this.labelFontType.Location = new System.Drawing.Point(3, 8);
+			this.labelFontType.Location = new System.Drawing.Point(3, 7);
 			this.labelFontType.Name = "labelFontType";
-			this.labelFontType.Size = new System.Drawing.Size(111, 13);
+			this.labelFontType.Size = new System.Drawing.Size(110, 13);
 			this.labelFontType.TabIndex = 0;
 			this.labelFontType.Text = "Font Type";
 			// 
@@ -147,9 +138,9 @@
 			// 
 			this.labelNumCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumCharacters.AutoSize = true;
-			this.labelNumCharacters.Location = new System.Drawing.Point(3, 38);
+			this.labelNumCharacters.Location = new System.Drawing.Point(3, 35);
 			this.labelNumCharacters.Name = "labelNumCharacters";
-			this.labelNumCharacters.Size = new System.Drawing.Size(111, 13);
+			this.labelNumCharacters.Size = new System.Drawing.Size(110, 13);
 			this.labelNumCharacters.TabIndex = 1;
 			this.labelNumCharacters.Text = "Number of Characters";
 			// 
@@ -157,9 +148,9 @@
 			// 
 			this.labelCharWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelCharWidth.AutoSize = true;
-			this.labelCharWidth.Location = new System.Drawing.Point(237, 8);
+			this.labelCharWidth.Location = new System.Drawing.Point(3, 63);
 			this.labelCharWidth.Name = "labelCharWidth";
-			this.labelCharWidth.Size = new System.Drawing.Size(111, 13);
+			this.labelCharWidth.Size = new System.Drawing.Size(110, 13);
 			this.labelCharWidth.TabIndex = 2;
 			this.labelCharWidth.Text = "Character Width";
 			// 
@@ -167,9 +158,9 @@
 			// 
 			this.labelCharHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelCharHeight.AutoSize = true;
-			this.labelCharHeight.Location = new System.Drawing.Point(237, 38);
+			this.labelCharHeight.Location = new System.Drawing.Point(3, 93);
 			this.labelCharHeight.Name = "labelCharHeight";
-			this.labelCharHeight.Size = new System.Drawing.Size(111, 13);
+			this.labelCharHeight.Size = new System.Drawing.Size(110, 13);
 			this.labelCharHeight.TabIndex = 3;
 			this.labelCharHeight.Text = "Character Height";
 			// 
@@ -177,46 +168,46 @@
 			// 
 			this.labelFontTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelFontTypeValue.AutoSize = true;
-			this.labelFontTypeValue.Location = new System.Drawing.Point(120, 8);
+			this.labelFontTypeValue.Location = new System.Drawing.Point(119, 7);
 			this.labelFontTypeValue.Name = "labelFontTypeValue";
-			this.labelFontTypeValue.Size = new System.Drawing.Size(111, 13);
+			this.labelFontTypeValue.Size = new System.Drawing.Size(110, 13);
 			this.labelFontTypeValue.TabIndex = 4;
 			// 
 			// labelNumCharsValue
 			// 
 			this.labelNumCharsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumCharsValue.AutoSize = true;
-			this.labelNumCharsValue.Location = new System.Drawing.Point(120, 38);
+			this.labelNumCharsValue.Location = new System.Drawing.Point(119, 35);
 			this.labelNumCharsValue.Name = "labelNumCharsValue";
-			this.labelNumCharsValue.Size = new System.Drawing.Size(111, 13);
+			this.labelNumCharsValue.Size = new System.Drawing.Size(110, 13);
 			this.labelNumCharsValue.TabIndex = 5;
 			// 
 			// labelCharWidthValue
 			// 
 			this.labelCharWidthValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelCharWidthValue.AutoSize = true;
-			this.labelCharWidthValue.Location = new System.Drawing.Point(354, 8);
+			this.labelCharWidthValue.Location = new System.Drawing.Point(119, 63);
 			this.labelCharWidthValue.Name = "labelCharWidthValue";
-			this.labelCharWidthValue.Size = new System.Drawing.Size(113, 13);
+			this.labelCharWidthValue.Size = new System.Drawing.Size(110, 13);
 			this.labelCharWidthValue.TabIndex = 6;
 			// 
 			// labelCharHeightValue
 			// 
 			this.labelCharHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelCharHeightValue.AutoSize = true;
-			this.labelCharHeightValue.Location = new System.Drawing.Point(354, 38);
+			this.labelCharHeightValue.Location = new System.Drawing.Point(119, 93);
 			this.labelCharHeightValue.Name = "labelCharHeightValue";
-			this.labelCharHeightValue.Size = new System.Drawing.Size(113, 13);
+			this.labelCharHeightValue.Size = new System.Drawing.Size(110, 13);
 			this.labelCharHeightValue.TabIndex = 7;
 			// 
 			// FontDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(506, 455);
+			this.ClientSize = new System.Drawing.Size(443, 193);
+			this.Controls.Add(this.pbCharacterPreview);
 			this.Controls.Add(this.gbFontInfo);
 			this.Controls.Add(this.buttonExportFontGraphic);
-			this.Controls.Add(this.gbCharacterPreview);
 			this.Controls.Add(this.gbCharacters);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = global::VPWStudio.Properties.Resources.Font;
@@ -226,7 +217,6 @@
 			this.Text = "Fonts";
 			this.gbCharacters.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbCharacterPreview)).EndInit();
-			this.gbCharacterPreview.ResumeLayout(false);
 			this.gbFontInfo.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
@@ -239,7 +229,6 @@
 		private System.Windows.Forms.GroupBox gbCharacters;
 		private System.Windows.Forms.ListBox lbCharacters;
 		private System.Windows.Forms.PictureBox pbCharacterPreview;
-		private System.Windows.Forms.GroupBox gbCharacterPreview;
 		private System.Windows.Forms.Button buttonExportFontGraphic;
 		private System.Windows.Forms.GroupBox gbFontInfo;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
