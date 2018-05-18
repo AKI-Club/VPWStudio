@@ -32,6 +32,7 @@ namespace VPWStudio.Editors
 			if (charsID > 0)
 			{
 				LoadCharacters(charsID);
+				PopulateCharacterList();
 			}
 		}
 
@@ -51,10 +52,14 @@ namespace VPWStudio.Editors
 
 			fontStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader fontReader = new BinaryReader(fontStream);
-			CurFont.FontType = (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont;
+			CurFont = new AkiFont(
+				(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont,
+				Program.CurrentProject.Settings.BaseGame
+			);
 			CurFont.ReadData(fontReader);
 			fontReader.Close();
 			romReader.Close();
+			UpdateValues();
 		}
 
 		/// <summary>
@@ -70,8 +75,20 @@ namespace VPWStudio.Editors
 				{
 					CurFont = new AkiFont();
 					CurFont.ReadData(br);
+					UpdateValues();
 				}
 			}
+		}
+
+		/// <summary>
+		/// Update data labels
+		/// </summary>
+		private void UpdateValues()
+		{
+			labelFontTypeValue.Text = CurFont.FontType.ToString();
+			labelNumCharsValue.Text = CurFont.NumCharacters.ToString();
+			labelCharWidthValue.Text = (CurFont.FontType == AkiFontType.AkiLargeFont) ? "24" : "16";
+			labelCharHeightValue.Text = CurFont.CellHeight.ToString();
 		}
 
 		/// <summary>
@@ -81,7 +98,6 @@ namespace VPWStudio.Editors
 		private void LoadCharacters(int charsID)
 		{
 			// add items to FontCharacters
-			/*
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
@@ -92,7 +108,13 @@ namespace VPWStudio.Editors
 
 			romReader.Close();
 			charsStream.Seek(0, SeekOrigin.Begin);
-			*/
+			BinaryReader br = new BinaryReader(charsStream);
+			for (int i = 0; i < CurFont.NumCharacters; i++)
+			{
+				byte[] temp = br.ReadBytes(2);
+				FontCharacters[i] = Encoding.GetEncoding("Shift-JIS").GetString(temp);
+			}
+			br.Close();
 		}
 
 		/// <summary>
@@ -131,6 +153,7 @@ namespace VPWStudio.Editors
 			}
 
 			// update preview
+			//FontCharacters[lbCharacters.SelectedIndex];
 		}
 
 		/// <summary>
