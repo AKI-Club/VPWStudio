@@ -115,7 +115,7 @@ namespace VPWStudio
 				BufferCount = 1,
 				ModeDescription = new ModeDescription(pbPreview.Width, pbPreview.Height, new Rational(60, 1), Format.R8G8B8A8_UNorm),
 				IsWindowed = true,
-				OutputHandle = CurRenderControl.Handle,
+				OutputHandle = Handle,
 				SampleDescription = new SampleDescription(1, 0),
 				SwapEffect = SwapEffect.Discard,
 				Usage = Usage.RenderTargetOutput
