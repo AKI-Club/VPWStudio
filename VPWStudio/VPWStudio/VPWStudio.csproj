@@ -139,6 +139,12 @@
     <Compile Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.Designer.cs">
       <DependentUpon>FileTable_MenuBackgroundPreviewDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.Designer.cs">
+      <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_TexPreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.resx">
       <DependentUpon>FileTable_MenuBackgroundPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.resx">
+      <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_TexPreviewDialog.resx">
       <DependentUpon>FileTable_TexPreviewDialog.cs</DependentUpon>
