@@ -673,9 +673,13 @@ namespace VPWStudio
 						}
 						else if (fontCharFiles.Count > 1)
 						{
-							// need to select
-							Program.ErrorMessageBox("More than one FontChars defined in the current project file.\nCurrently too lazy to make the selection dialog.");
-							// todo: FileTable_SelectFontCharsDialog
+							// multiple FontChars files defined; need to select which one to use.
+							FileTable_SelectFontCharsDialog sfcd = new FileTable_SelectFontCharsDialog(fontCharFiles);
+							if (sfcd.ShowDialog() == DialogResult.OK)
+							{
+								Editors.FontDialog fd = new Editors.FontDialog(key, sfcd.SelectedFileID);
+								fd.ShowDialog();
+							}
 						}
 						else
 						{
