@@ -661,29 +661,8 @@ namespace VPWStudio
 					}
 					break;
 
-				// TEMPORARY
+				// Fonts
 				case FileTypes.AkiSmallFont:
-					{
-						Program.InfoMessageBox("sorry, but I'm temporarily exporting this font as a png in the current working folder.");
-						AkiFont f = new AkiFont(AkiFontType.AkiSmallFont, Program.CurrentProject.Settings.BaseGame);
-
-						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-						BinaryReader romReader = new BinaryReader(romStream);
-
-						MemoryStream fontStream = new MemoryStream();
-						BinaryWriter fontWriter = new BinaryWriter(fontStream);
-
-						Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fontWriter, key);
-
-						fontStream.Seek(0, SeekOrigin.Begin);
-						BinaryReader fontReader = new BinaryReader(fontStream);
-						f.ReadData(fontReader);
-						f.ToBitmap().Save(String.Format("smallfont-{0:X4}.png", key));
-						fontReader.Close();
-						romReader.Close();
-					}
-					break;
-
 				case FileTypes.AkiLargeFont:
 					{
 						List<int> fontCharFiles = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.AkiFontChars);
@@ -696,6 +675,7 @@ namespace VPWStudio
 						{
 							// need to select
 							Program.ErrorMessageBox("More than one FontChars defined in the current project file.\nCurrently too lazy to make the selection dialog.");
+							// todo: FileTable_SelectFontCharsDialog
 						}
 						else
 						{
@@ -706,7 +686,7 @@ namespace VPWStudio
 					}
 					break;
 
-				// you thought the OTHERS were temporary...
+				// TEMPORARY
 				case FileTypes.AkiModel:
 					{
 						ModelTool2 mt2 = new ModelTool2(key);
