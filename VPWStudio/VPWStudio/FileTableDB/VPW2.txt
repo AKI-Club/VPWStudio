@@ -2298,3 +2298,4 @@
 1A88=Ci8Palette;The Rock, Revenge-style
 1A89=Ci8Texture;The Rock, Revenge-style
 1A90=Binary;(first animation data?)
+3164=Binary;[Move Animation] (abdullah the butcher taunt)
