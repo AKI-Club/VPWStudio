@@ -668,8 +668,9 @@ namespace VPWStudio
 						List<int> fontCharFiles = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.AkiFontChars);
 						if (fontCharFiles.Count == 0)
 						{
-							// we don't have FontChars defined...
-							Program.ErrorMessageBox("No FontChars defined in the current project file.");
+							// we don't have FontChars defined... use fallback charset in FontDialog.
+							Editors.FontDialog fd = new Editors.FontDialog(key);
+							fd.ShowDialog();
 						}
 						else if (fontCharFiles.Count > 1)
 						{
