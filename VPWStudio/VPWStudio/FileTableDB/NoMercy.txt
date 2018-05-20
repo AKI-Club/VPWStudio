@@ -848,7 +848,7 @@
 4845=AkiTexture;
 4991=AkiTexture;
 4992=AkiTexture;
-4993=Binary;(???)
+4993=Binary;(small in-game font ???)
 4A0B=Ci4Palette;
 4A0C=Ci4Texture;
 4A73=Ci4Palette;
