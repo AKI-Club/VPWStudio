@@ -1,0 +1,326 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VPWStudio
+{
+	/// <summary>
+	/// Combined Pivot and Rotation values. (4 bytes)
+	/// </summary>
+	public class PivotRotation
+	{
+		public short PivotX; // 12 bits
+
+		public byte Rotation;
+
+		public short PivotZ; // 12 bits
+
+		public PivotRotation()
+		{
+			PivotX = 0;
+			Rotation = 0;
+			PivotZ = 0;
+		}
+
+		public PivotRotation(short _x, byte _r, short _z)
+		{
+			PivotX = _x;
+			Rotation = _r;
+			PivotZ = _z;
+		}
+
+		public void ReadData(BinaryReader br)
+		{
+			// 3,2,3 format
+			byte[] temp = br.ReadBytes(4);
+			// XX_XX_XX_XX
+			// XX_X|X_X|X_XX
+
+			//PivotX: temp[0], temp[1]&0xF0
+			PivotX = (short)(temp[0] << 4 | ((temp[1] & 0xF0) >> 4));
+
+			//Rotation: temp[1]&0x0F, temp[2]&0xF0
+			Rotation = (byte)((temp[1]&0x0F) << 4 | (temp[2]&0xF0) >> 4);
+
+			//PivotZ: temp[2]&0x0F, temp[3]
+			PivotZ = (short)((temp[2]&0x0F) << 8 | temp[3]);
+		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			byte[] px = BitConverter.GetBytes(PivotX);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(px);
+			}
+			byte[] pz = BitConverter.GetBytes(PivotZ);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(pz);
+			}
+
+			bw.Write((byte)((px[0] & 0x0F) << 4 | ((px[1] & 0xF0) >> 4)));
+			bw.Write((byte)((px[1] & 0x0F) << 4 | (Rotation & 0xF0)>>4));
+			bw.Write((byte)((Rotation & 0x0F) << 4 | (pz[0] & 0x0F)));
+			bw.Write((pz[1]));
+		}
+	}
+
+	/// <summary>
+	/// "Overall Movement" (shared displacement? 4 bytes)
+	/// </summary>
+	public class OverallMovementXYZ
+	{
+		public short OverallX; // 12 bits
+
+		public byte OverallY;
+
+		public short OverallZ; // 12 bits
+
+		public OverallMovementXYZ()
+		{
+			OverallX = 0;
+			OverallY = 0;
+			OverallZ = 0;
+		}
+
+		public OverallMovementXYZ(short _x, byte _y, short _z)
+		{
+			OverallX = _x;
+			OverallY = _y;
+			OverallZ = _z;
+		}
+
+		public void ReadData(BinaryReader br)
+		{
+			// 3,2,3 format
+			byte[] temp = br.ReadBytes(4);
+			// XX_XX_XX_XX
+			// XX_X|X_X|X_XX
+
+			//OverallX: temp[0], temp[1]&0xF0
+			OverallX = (short)(temp[0] << 4 | ((temp[1] & 0xF0) >> 4));
+
+			//OverallY: temp[1]&0x0F, temp[2]&0xF0
+			OverallY = (byte)((temp[1] & 0x0F) << 4 | (temp[2] & 0xF0) >> 4);
+
+			//OverallZ: temp[2]&0x0F, temp[3]
+			OverallZ = (short)((temp[2] & 0x0F) << 8 | temp[3]);
+		}
+	}
+
+	/// <summary>
+	/// Movement X/Y/Z (3 bytes)
+	/// </summary>
+	public class MovementXYZ
+	{
+		/// <summary>
+		/// X movement
+		/// </summary>
+		public byte X;
+
+		/// <summary>
+		/// Y movement
+		/// </summary>
+		public byte Y;
+
+		/// <summary>
+		/// Z movement
+		/// </summary>
+		public byte Z;
+
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public MovementXYZ()
+		{
+			X = 0;
+			Y = 0;
+			Z = 0;
+		}
+
+		/// <summary>
+		/// Specific constructor.
+		/// </summary>
+		/// <param name="_x">X movement</param>
+		/// <param name="_y">Y movement</param>
+		/// <param name="_z">Z movement</param>
+		public MovementXYZ(byte _x, byte _y, byte _z)
+		{
+			X = _x;
+			Y = _y;
+			Z = _z;
+		}
+
+		/// <summary>
+		/// Constructor using BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public MovementXYZ(BinaryReader br)
+		{
+			ReadData(br);
+		}
+
+		/// <summary>
+		/// Read MovementXYZ data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public void ReadData(BinaryReader br)
+		{
+			X = br.ReadByte();
+			Y = br.ReadByte();
+			Z = br.ReadByte();
+		}
+
+		/// <summary>
+		/// Write MovementXYZ data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			bw.Write(X);
+			bw.Write(Y);
+			bw.Write(Z);
+		}
+	}
+
+	/// <summary>
+	/// A single frame of animation data.
+	/// </summary>
+	public class AnimationFrame
+	{
+		// 0x62 bytes of data
+		#region Class Members
+		public PivotRotation Pelvis;
+		public OverallMovementXYZ OverallMovement;
+		public PivotRotation LowerAb;
+		public MovementXYZ LowerAbMovement;
+		public PivotRotation UpperBody;
+		public MovementXYZ UpperBodyMovement;
+		public PivotRotation Neck;
+		public PivotRotation Head;
+		public PivotRotation LowerLeftLeg;
+		public PivotRotation UpperLeftLeg;
+		public MovementXYZ LeftLegMovement;
+		public PivotRotation LeftFoot;
+		public PivotRotation LeftHand;
+		public PivotRotation LeftFingers;
+		public PivotRotation LowerLeftArm;
+		public PivotRotation UpperLeftArm;
+		public MovementXYZ LeftArmMovement;
+		public PivotRotation LowerRightLeg;
+		public PivotRotation UpperRightLeg;
+		public MovementXYZ RightLegMovement;
+		public PivotRotation RightFoot;
+		public PivotRotation LowerRightArm;
+		public PivotRotation RightHand;
+		public PivotRotation RightFingers;
+		public PivotRotation UpperRightArm;
+		public MovementXYZ RightArmMovement;
+		#endregion
+
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public AnimationFrame()
+		{
+			Pelvis = new PivotRotation();
+			OverallMovement = new OverallMovementXYZ();
+			LowerAb = new PivotRotation();
+			LowerAbMovement = new MovementXYZ();
+			UpperBody = new PivotRotation();
+			UpperBodyMovement = new MovementXYZ();
+			Neck = new PivotRotation();
+			Head = new PivotRotation();
+			LowerLeftLeg = new PivotRotation();
+			UpperLeftLeg = new PivotRotation();
+			LeftLegMovement = new MovementXYZ();
+			LeftFoot = new PivotRotation();
+			LeftHand = new PivotRotation();
+			LeftFingers = new PivotRotation();
+			LowerLeftArm = new PivotRotation();
+			UpperLeftArm = new PivotRotation();
+			LeftArmMovement = new MovementXYZ();
+			LowerRightLeg = new PivotRotation();
+			UpperRightLeg = new PivotRotation();
+			RightLegMovement = new MovementXYZ();
+			RightFoot = new PivotRotation();
+			LowerRightArm = new PivotRotation();
+			RightHand = new PivotRotation();
+			RightFingers = new PivotRotation();
+			UpperRightArm = new PivotRotation();
+			RightArmMovement = new MovementXYZ();
+		}
+
+		public void ReadData(BinaryReader br)
+		{
+			Pelvis.ReadData(br);
+			OverallMovement.ReadData(br);
+			LowerAb.ReadData(br);
+			LowerAbMovement.ReadData(br);
+			UpperBody.ReadData(br);
+			UpperBodyMovement.ReadData(br);
+			Neck.ReadData(br);
+			Head.ReadData(br);
+			LowerLeftLeg.ReadData(br);
+			UpperLeftLeg.ReadData(br);
+			LeftLegMovement.ReadData(br);
+			LeftFoot.ReadData(br);
+			LeftHand.ReadData(br);
+			LeftFingers.ReadData(br);
+			LowerLeftArm.ReadData(br);
+			UpperLeftArm.ReadData(br);
+			LeftArmMovement.ReadData(br);
+			LowerRightLeg.ReadData(br);
+			UpperRightLeg.ReadData(br);
+			RightLegMovement.ReadData(br);
+			RightFoot.ReadData(br);
+			LowerRightArm.ReadData(br);
+			RightHand.ReadData(br);
+			RightFingers.ReadData(br);
+			UpperRightArm.ReadData(br);
+			RightArmMovement.ReadData(br);
+		}
+	}
+
+	/// <summary>
+	/// Animation data.
+	/// </summary>
+	public class AkiAnimation
+	{
+		// Toki 2 values (4 bytes)
+		public byte[] Toki2;
+
+		// frame data (0x62 bytes per frame)
+		public List<AnimationFrame> FrameData;
+
+		public AkiAnimation()
+		{
+			Toki2 = new byte[4];
+			FrameData = new List<AnimationFrame>();
+		}
+
+		public void ReadData(BinaryReader br)
+		{
+			Toki2 = br.ReadBytes(4);
+
+			// determine how many frames are in the animation
+			// todo: this is meant to be calculated from the Toki2 values, but...
+			long curPos = br.BaseStream.Position;
+			br.BaseStream.Seek(0, SeekOrigin.End);
+			long endPos = br.BaseStream.Position;
+			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
+
+			int numBytes = (int)(endPos - curPos);
+			int numFrames = numBytes / 0x62;
+			for (int i = 0; i < numFrames; i++)
+			{
+				AnimationFrame frame = new AnimationFrame();
+				frame.ReadData(br);
+				FrameData.Add(frame);
+			}
+		}
+	}
+}
