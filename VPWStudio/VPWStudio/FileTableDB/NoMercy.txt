@@ -732,7 +732,7 @@
 2DD7=Ci4Palette;
 2DD8=Ci4Texture;
 2DD9=Binary;(first animation data?)
-333C=Binary;[Move Animation - Grapple] Front Kick 01
+333C=Binary;[Move Animation - Strike?] Front Kick 01
 3375=Binary;[Move Animation - Grapple] Slap (1/2)
 3376=Binary;[Move Animation - Grapple] Slap (2/2)
 3377=Binary;[Move Animation - Grapple] Overhand Punch (1/2)
