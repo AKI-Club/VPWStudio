@@ -9,6 +9,7 @@ namespace VPWStudio
 		Binary = 0, // also used for any "Unknown" format
 
 		// AKI-developed formats
+		AkiAnimation,   // Animation data (moves, taunts)
 		AkiArchive,     // Archive of files ("TEXarc" counts as this)
 		AkiModel,       // Model data
 		AkiTexture,     // "TEX" file, AKI's wrapper around some N64 texture types
