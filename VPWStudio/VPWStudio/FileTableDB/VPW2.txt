@@ -788,8 +788,8 @@
 0342=Binary;Wrestler Moveset 0209
 0343=Binary;Wrestler Params 0902
 0344=Binary;Wrestler Moveset 0902
-0345=Binary;Edit Wrestler Params (Normal)
-0346=Binary;Edit Wrestler Moveset (Normal)
+0345=Binary;Edit Wrestler Params (Wrestling)
+0346=Binary;Edit Wrestler Moveset (Wrestling)
 0347=Binary;Edit Wrestler Params (Combo)
 0348=Binary;Edit Wrestler Moveset (Combo)
 0349=Binary;Edit Wrestler Params (Shoot)
