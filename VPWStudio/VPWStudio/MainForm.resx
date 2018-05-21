@@ -288,15 +288,6 @@
   <data name="playROMToolStripMenuItem.Text" xml:space="preserve">
     <value>Pla&amp;y ROM</value>
   </data>
-  <data name="buildAndPlayToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Shift+F5</value>
-  </data>
-  <data name="buildAndPlayToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="buildAndPlayToolStripMenuItem.Text" xml:space="preserve">
-    <value>Build and Play</value>
-  </data>
   <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
   </data>
@@ -1495,12 +1486,6 @@
     <value>playROMToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;playROMToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Name" xml:space="preserve">
-    <value>buildAndPlayToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;buildAndPlayToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Name" xml:space="preserve">
