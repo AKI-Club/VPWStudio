@@ -1120,9 +1120,8 @@ namespace VPWStudio
 
 			if (!File.Exists(romPath))
 			{
-				// output ROM does not exist; todo: rebuild it
-				Program.ErrorMessageBox("Output ROM does not exist. (Yes, I need to add an automatic re-build option probably)");
-				return;
+				// output ROM does not exist; rebuild it
+				buildROMToolStripMenuItem_Click(this, null);
 			}
 
 			// todo: rebuild output rom if needed (a.k.a. changes made since last build)
