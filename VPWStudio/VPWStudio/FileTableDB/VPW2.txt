@@ -686,8 +686,8 @@
 02DC=Binary;Wrestler Moveset 0203
 02DD=Binary;Wrestler Params 0105
 02DE=Binary;Wrestler Moveset 0105
-02DF=Binary;Wrestler Params 0105
-02E0=Binary;Wrestler Moveset 0105
+02DF=Binary;Wrestler Params 0005
+02E0=Binary;Wrestler Moveset 0005
 02E1=Binary;Wrestler Params 0304
 02E2=Binary;Wrestler Moveset 0304
 02E3=Binary;Wrestler Params 0206
