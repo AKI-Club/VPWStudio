@@ -57,7 +57,6 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.buildAndPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.packedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,8 +186,7 @@
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
             this.buildROMToolStripMenuItem,
-            this.playROMToolStripMenuItem,
-            this.buildAndPlayToolStripMenuItem});
+            this.playROMToolStripMenuItem});
 			this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
 			resources.ApplyResources(this.projectToolStripMenuItem, "projectToolStripMenuItem");
 			// 
@@ -296,12 +294,6 @@
 			this.playROMToolStripMenuItem.Name = "playROMToolStripMenuItem";
 			resources.ApplyResources(this.playROMToolStripMenuItem, "playROMToolStripMenuItem");
 			this.playROMToolStripMenuItem.Click += new System.EventHandler(this.playROMToolStripMenuItem_Click);
-			// 
-			// buildAndPlayToolStripMenuItem
-			// 
-			this.buildAndPlayToolStripMenuItem.Name = "buildAndPlayToolStripMenuItem";
-			resources.ApplyResources(this.buildAndPlayToolStripMenuItem, "buildAndPlayToolStripMenuItem");
-			this.buildAndPlayToolStripMenuItem.Click += new System.EventHandler(this.buildAndPlayToolStripMenuItem_Click);
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -554,7 +546,6 @@
 		private System.Windows.Forms.ToolStripMenuItem pngToCi8ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw2FaceTestToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem buildAndPlayToolStripMenuItem;
 	}
 }
 

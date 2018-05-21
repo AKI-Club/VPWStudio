@@ -1142,14 +1142,6 @@ namespace VPWStudio
 			);
 		}
 
-		/// <summary>
-		/// Runs the "Build ROM" and "Play ROM" items.
-		/// </summary>
-		private void buildAndPlayToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			buildROMToolStripMenuItem_Click(this, e);
-			playROMToolStripMenuItem_Click(this, e);
-		}
 		#endregion
 
 		#endregion
