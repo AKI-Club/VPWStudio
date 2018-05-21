@@ -272,6 +272,18 @@
 01ED=AkiText;[Story Mode] (GBC story dialog)
 01EF=Binary;(Move damage values?)
 01F8=Binary;some weird text file
+01F9=Binary;Wrestler Params 0001
+01FA=Binary;Wrestler Moveset 0001
+0283=Binary;Wrestler Params 0008
+0284=Binary;Wrestler Moveset 0008
+0285=Binary;[VPW2 leftover] Edit Wrestler Params (Wrestling)
+0286=Binary;[VPW2 leftover] Edit Wrestler Moveset (Wrestling)
+0287=Binary;[VPW2 leftover] Edit Wrestler Params (Combo)
+0288=Binary;[VPW2 leftover] Edit Wrestler Moveset (Combo)
+0289=Binary;[VPW2 leftover] Edit Wrestler Params (Shoot)
+028A=Binary;[VPW2 leftover] Edit Wrestler Moveset (Shoot)
+028B=Binary;Default CAW Params
+028C=Binary;Default CAW Moveset
 028D=Binary;(hidden wrestler params Jun Izumida?)
 028E=Binary;(hidden wrestler params Raven?)
 028F=Binary;(hidden wrestler params Atsushi Onita?)
@@ -322,6 +334,7 @@
 02BC=Binary;(hidden wrestler moveset Great Sasuke?)
 02BD=Binary;(hidden wrestler moveset Shinjiro Ohtani?)
 02BE=Binary;(hidden wrestler moveset CIMA?)
+02BF=Binary;(Toki1 data?)
 02C0=Binary;(0x00000215 file; music?)
 02C1=Binary;(0x00000215 file; music?)
 02C2=Binary;(0x00000215 file; music?)
