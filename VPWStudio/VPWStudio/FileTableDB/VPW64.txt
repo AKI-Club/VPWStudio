@@ -739,4 +739,4 @@
 1344=Ci4Texture;
 1345=Ci4Texture;
 1346=Ci4Texture;
-1347=Binary;(first animation data?)
+1347=AkiAnimation;(first animation data?)

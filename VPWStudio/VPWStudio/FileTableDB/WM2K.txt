@@ -1499,4 +1499,4 @@
 1297=Ci4Texture;(Dummy foot)
 1298=Ci4Palette;[Women Faces] xx
 1299=Ci4Texture;[Women Faces] xx
-1609=Binary;(first animation data?)
+1609=AkiAnimation;(first animation data?)
