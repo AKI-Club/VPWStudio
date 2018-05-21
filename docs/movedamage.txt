@@ -1,0 +1,126 @@
+Move Damage Data in the various games
+=====================================
+
+WorldTour | 0x?? bytes
+VPW64     | 0x?? bytes
+Revenge   | 0x?? bytes
+WM2K      | 0x20 bytes (unconfirmed); file ID 03AD
+VPW2      | 0x20 bytes
+NoMercy   | 0x24 bytes
+
+VPW2
+====
+00 - ??
+01 - ??
+02 - ??
+03 - ??
+04 - Link
+05 - Link
+06 - Damage
+07 - Spirit Gain
+08 - Spirit Drain
+09 - Blood Chance
+0A - TKO Chance
+0B - Attack Param
+0C - Defense Param
+0D - (Connect Point)
+0E - (Connect Point)
+0F - (Connect Point)
+10 - (Connect Point)
+11 - ??
+12 - Head Damage
+13 - Body Damage
+14 - Arm Damage
+15 - Leg Damage
+16 - Speed Damage
+17 - (Strike Reaction)
+18 - ??
+19 - ??
+1A - ??
+1B - ??
+1C - ??
+1D - ??
+1E - (Misc)
+1F - (Misc)
+
+No Mercy
+========
+AKI Man
+http://s4.zetaboards.com/Old_Skool_Reunion/topic/8676443/1/
+
+00 - ??
+01 - ??
+02 - ??
+03 - ??
+04 - ??
+05 - Links to another move at the end of this move
+06 - Damage
+07 - Spirit Gained
+08 - Spirit Drained
+09 - KO
+0A - Blood
+0B - Parameter you are using to attack
+0C - Parameter used for defence
+0D - ?? - Think has something to do with how they react to a move
+0E - ?? - Think has something to do with how they react to a move
+0F - ?? - Think has something to do with how they react to a move
+10 - ?? - Think has something to do with how they react to a move
+11 - ??
+12 - Head Damage
+13 - Body Damage
+14 - Arm Damage
+15 - Legs Damage
+16 - Speed Damage
+17 - ??
+18 - ??
+19 - ??
+1A - ?Chance of getting a Pinfall??
+1B - ??
+1C - ??
+1D - ??
+1E - ??
+1F - ??
+20 - ??
+21 - Move Type?(see later)
+22 - Move Type/Favourite
+23 - ??
+
+WldFb
+https://www.tapatalk.com/groups/wldfbarchiveforum/damage-mod-guide-t613.html
+
+00 - ??
+01 - ??
+02 - (Flying Move Target Body Part)
+03 - (Flying Move Target Body Part)
+04 - (Link Value)
+05 - (Link Value)
+06 - Damage
+07 - Spirit Gain
+08 - Spirit Drain
+09 - Blood Chance (0-5)
+0A - KO Chance (0-5)
+0B - Offensive Param
+0C - Defense Param
+0D - (Connect Point)
+0E - (Connect Point)
+0F - (Connect Point)
+10 - (Connect Point)
+11 - ?
+12 - Head Damage
+13 - Body Damage
+14 - Arm Damage
+15 - Leg Damage
+16 - Speed Damage
+17 - Strike Reaction
+18 - ??
+19 - ??
+1A - ??
+1B - Special Damage
+1C - Previous Move
+1D - ??
+1E - ??
+1F - ??
+20 - Move Type
+21 - Add. Properties
+22 - (Misc)
+23 - (Misc)
