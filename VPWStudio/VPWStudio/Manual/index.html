@@ -16,31 +16,31 @@
 
 <h2>Table of Contents</h2>
 <ol>
-<li>Introduction</li>
-<li>Requirements and Notes</li>
-<li>Project Files</li>
-<li>Arenas</li>
-<li>Championships</li>
-<li>Costumes</li>
-<li>File Table</li>
-<li>Menus</li>
-<li>Moves</li>
-<li>Sound/Music</li>
-<li>Stables</li>
-<li>Story Mode</li>
-<li>Text Archives</li>
-<li>Weapons</li>
-<li>Wrestlers</li>
-<li>Tools
+<li><a href="#Intro">Introduction</a></li>
+<li><a href="#Requirements">Requirements and Notes</a></li>
+<li><a href="#ProgramOptions">Program Options</a></li>
+<li><a href="#ProjectFiles">Project Files</a></li>
+<li><a href="#Arenas">Arenas</a></li>
+<li><a href="#Championships">Championships</a></li>
+<li><a href="#Costumes">Costumes</a></li>
+<li><a href="#FileTable">File Table</a></li>
+<li><a href="#Menus">Menus</a></li>
+<li><a href="#Moves">Moves</a></li>
+<li><a href="#SoundMusic">Sound/Music</a></li>
+<li><a href="#Stables">Stables</a></li>
+<li><a href="#StoryMode">Story Mode</a></li>
+<li><a href="#Weapons">Weapons</a></li>
+<li><a href="#Wrestlers">Wrestlers</a></li>
+<li><a href="#Tools">Tools</a>
 	<ol>
-	<li>GameShark Code Tool</li>
+	<li><a href="#GameSharkCodeTool">GameShark Code Tool</a></li>
 	</ol>
 </li>
 </ol>
 
 <h3>Appendices</h3>
 <ol type='A'>
-<li>Glossary</li>
+<li><a href="#Glossary">Glossary</a></li>
 <li>Program Formats
 	<ol type="1">
 	<li><a href="#LocationFile">LocationFile Format</a></li>
@@ -48,11 +48,11 @@
 	<li><a href="#GameSharkCodeSet">GameShark CodeSet Format</a></li>
 	</ol>
 </li>
-<li>Game Data Formats</li>
+<li><a href="#GameDataFormats">Game Data Formats</a></li>
 </ol>
 
 <hr />
-<h2>Introduction</h2>
+<h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a tool that assists in ROM hacking the games in AKI Corporation's
 Virtual Pro-Wrestling series.</p>
 
@@ -83,7 +83,7 @@ Virtual Pro-Wrestling series.</p>
 	<td>Original Release</td>
 </tr>
 <tr>
-	<td>Virtual Pro-Wrestling 64</td>
+	<td>バーチャル・プロレス64<br/>(Virtual Pro-Wrestling 64)</td>
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
@@ -103,7 +103,7 @@ Virtual Pro-Wrestling series.</p>
 	<td>Original Release</td>
 </tr>
 <tr>
-	<td>WWF WrestleMania 2000</td>
+	<td>WWFレッスルマニア2000<br/>(WWF WrestleMania 2000)</td>
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
@@ -113,52 +113,75 @@ Virtual Pro-Wrestling series.</p>
 	<td>Original Release</td>
 </tr>
 <tr>
-	<td>Virtual Pro-Wrestling 2</td>
+	<td>バーチャル・プロレス2 〜王道継承〜<br/>(Virtual Pro-Wrestling 2)</td>
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
 	<td>NTSC-U</td>
-	<td>Original Release ("v1.0")</td>
+	<td>Original Release ("v1.0"/"glitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
 	<td>NTSC-U</td>
-	<td>Revision A ("v1.1")</td>
+	<td>Revision A ("v1.1"/"unglitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
 	<td>PAL</td>
-	<td>Original Release ("v1.0")</td>
+	<td>Original Release ("v1.0"/"glitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
 	<td>PAL</td>
-	<td>Revision A ("v1.1")</td>
+	<td>Revision A ("v1.1"/"unglitched")</td>
 </tr>
 </tbody>
 </table>
+<p>Note that not every game supports every portion of VPW Studio. Supported games are
+listed in the specific sections for each tool.</p>
 
 <hr />
-<h2>Requirements and Notes</h2>
+<h2><a name="Requirements">Requirements and Notes</a></h2>
 <p>(todo)</p>
 
 <h3>Requirements</h3>
-<p>(todo)</p>
 <ul>
-<li>.NET Framework 4.6.1</li>
+<li>.NET Framework 4.6.1 or higher</li>
 <li>Any of the above listed games in Z64 ROM format. No other N64 ROM formats are
-supported at this time. Please convert your ROM with a tool, such as <a href="http://ucon64.sourceforge.net/">uCON64</a>.</li>
-<li>Patience.</li>
+supported at this time. Please convert non-Z64 format ROMs with a tool, such as
+<a href="http://ucon64.sourceforge.net/">uCON64</a>.</li>
+<li>Patience. (This program is not yet complete, and has a long way to go.)</li>
 </ul>
 
 <h3>Notes</h3>
-<p>(todo)</p>
+<p>This program is currently a GIANT work in progress. As such, a lot of things are
+not implemented yet.</p>
 
 <hr />
-<h2>Project Files</h2>
-<p>VPW Studio primarily operates on the concept of Project Files. (todo)</p>
+<h2><a name="ProgramOptions">Program Options</a></h2>
+<p>Tools &rarr; Program Options (todo)</p>
+
+<h3>Emulator</h3>
+<p>The "Emulator" section of the Program Options dialog allows you to set up an
+emulator to use for testing the changed ROM.</p>
+<ul>
+<li><strong>Path</strong> &ndash; Path to the emulator executable file.</li>
+<li><strong>Arguments</strong> &ndash; Any additional arguments to be passed to the emulator.</li>
+</ul>
+
+<h3>Build</h3>
+<p>The "Build" portion of the Program Options dialog only contains an option to modify
+the verbosity of the build log. The default option is "Normal".</p>
+
+<hr />
+<h2><a name="ProjectFiles">Project Files</a></h2>
+<p>VPW Studio primarily operates on the concept of Project Files. The use of project
+files stems from the number of total conversion hacks created by the AKI hacking
+communities.</p>
+
+<p>(more todo)</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -166,6 +189,7 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 
 <p>(todo)</p>
 
+<p>The options presented are:</p>
 <ul>
 <li><strong>Project Name</strong> &ndash; The name of this project.</li>
 <li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional.</li>
@@ -176,11 +200,13 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 custom Location File. Helpful if you've already made changes to the base ROM that
 result in differences from the default Location File for the specified Game Type.</li>
 </ul>
-
-<p>Upon pressing OK, you will be sent back to the main screen.</p>
+<p>All of these may be changed later in the Project Settings dialog. Upon pressing
+OK, you will be sent back to the main screen.</p>
 
 <h3>Open an Existing Project</h3>
-<p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.</p>
+<p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.
+After selecting a project file, the program interface will update to reflect what
+game is being edited.</p>
 
 <h3>Save, Save As</h3>
 <p>When you want to save changes to a project, there are two options: "Save Project",
@@ -188,29 +214,51 @@ and "Save Project As". Both are available from the File menu.</p>
 
 <h4>Save Project</h4>
 <p>The first time you save a new project, the program will ask you for a location
-and name to save the file. Upon doing so, two folders will be created in the
-directory where the project file is saved: "Assets" and "ProjectFiles".</p>
+and name to save the file. Upon doing so, two directories will be created in the
+directory where the project file is saved: "Assets" and "ProjectFiles". "Assets"
+is meant for unconverted items (such as .png images), while "ProjectFiles" will
+store any files that are in game-native formats.</p>
 
 <h4>Save Project As</h4>
-<p>(todo)</p>
+<p>"Save Project As" is similar to saving normally, but it always asks for a filename
+and doesn't automatically create the "Assets" and "ProjectFiles" directories.</p>
 
 <h3>Project Settings</h3>
 <p>"Project &rarr; Project Settings" (todo)</p>
 
+<h3>Build ROM</h3>
+<p>To build a ROM with the changes you've made, select "Build ROM" from the "Project" menu.
+This will bring up a build log window, which provides updates on the build process.</p>
+
+<h3>Play ROM</h3>
+<p>If you want to test the changes in an emulator, select "Play ROM" from the "Project" menu.
+If the changed ROM hasn't been built yet, it will build the ROM before playing it.</p>
+<p>For this to work, you must set up the emulator details in the Program Options section.</p>
+
 <hr />
-<h2>Arenas</h2>
+<h2><a name="Arenas">Arenas</a></h2>
+<p>(todo: this portion of the program requires a 3D renderer)</p>
+
+<hr />
+<h2><a name="Championships">Championships</a></h2>
+<p>(todo)</p>
+
+<p>For WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, and WCW/nWo Revenge, this
+doubles as the Story Mode editor.</p>
+
+<hr />
+<h2><a name="Costumes">Costumes</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Championships</h2>
-<p>(todo)</p>
+<h2><a name="FileTable">File Table</a></h2>
 
-<hr />
-<h2>Costumes</h2>
-<p>(todo)</p>
+<p>The File Table editor, accessed from "Project &rarr; File Table", allows you to
+view and edit the entries in the game's File Table. A large portion of the game's
+data is found in the File Table, including wrestler movesets, parameters, move data,
+textures, palettes, models, and more.</p>
 
-<hr />
-<h2>File Table</h2>
+<h3>Game Support</h3>
 <table>
 <tr>
 <th>Game</th>
@@ -250,26 +298,27 @@ directory where the project file is saved: "Assets" and "ProjectFiles".</p>
 </table>
 <p>* Only supports WCW vs. nWo World Tour NTSC-U v1.1.</p>
 
-<p>"Project &rarr; File Table" (todo)</p>
-
 <hr />
-<h2>Menus</h2>
+<h2><a name="Menus">Menus</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Moves</h2>
+<h2><a name="Moves">Moves</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Sound/Music</h2>
+<h2><a name="SoundMusic">Sound/Music</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Stables</h2>
+<h2><a name="Stables">Stables</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Story Mode</h2>
+<h2><a name="StoryMode">Story Mode</a></h2>
+<p>"Project &rarr; Story Mode" (todo)</p>
+
+<h3>Game Support</h3>
 <table>
 <tr>
 <th>Game</th>
@@ -300,31 +349,25 @@ directory where the project file is saved: "Assets" and "ProjectFiles".</p>
 <td class="supported">Yes</td>
 </tr>
 </table>
-<p>"Project &rarr; Story Mode" (todo)</p>
-
-<p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the Championships section.</p>
+<p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the <a href="#Championships">Championships</a> section.</p>
 
 <hr />
-<h2>Text Archives</h2>
+<h2><a name="Weapons">Weapons</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Weapons</h2>
+<h2><a name="Wrestlers">Wrestlers</a></h2>
 <p>(todo)</p>
 
 <hr />
-<h2>Wrestlers</h2>
-<p>(todo)</p>
-
-<hr />
-<h2>Tools</h2>
+<h2><a name="Tools">Tools</a></h2>
 <p>VPW Studio also provides tools that aren't tied to the concept of Projects. (todo)</p>
 
-<h3>GameShark Tool</h3>
+<h3><a name="GameSharkCodeTool">GameShark Code Tool</a></h3>
 <p>(todo)</p>
 
 <hr />
-<h2>Appendix A: Glossary</h2>
+<h2><a name="Glossary">Appendix A: Glossary</a></h2>
 <p>The Virtual Pro-Wrestling series hacking communities use jargon to refer to
 some items and concepts. These terms can be confusing when first encountered.
 In addition, certain programs are involved whose name and function are not
@@ -348,19 +391,21 @@ being used as a unique identifier (not necessarily matching the ID2 order).
 ID4 values are always given in hex.</dd>
 
 <dt>MidwayDec</dt>
-<dd>(todo: Zoinkity's tool for handling various N64 archive formats)</dd>
+<dd>A tool by Zoinkity that handles various N64 archive formats.</dd>
 
 <dt>Offsetter</dt>
-<dd>(todo: Zoinkity's tool for inserting files into a VPW2 ROM and fixing the relevant offsets)</dd>
+<dd>Another Zoinkity-created tool for inserting files into a VPW2 ROM and fixing the relevant offsets.</dd>
 
 <dt>Toki 1</dt>
-<dd>(todo; related to moves)</dd>
+<dd>(todo; related to move effects)</dd>
 
 <dt>Toki 2</dt>
 <dd>(todo; related to moves)</dd>
 
 <dt>Toki 3</dt>
-<dd>Toki 3 values are the File IDs of items in the FileTable.</dd>
+<dd>Toki 3 values are related to items in the FileTable. Depending on who you ask,
+they're either the file IDs themselves, or the location of the data in the ROM (relative
+to the start location of the first file in the archive).</dd>
 </dl>
 
 <hr />
@@ -463,6 +508,7 @@ contain TEX files.</li>
 <li><code>AkiText</code> &ndash; AKI text archive.</li>
 <li><code>AkiLargeFont</code> &ndash; Large font data (24px wide)</li>
 <li><code>AkiSmallFont</code> &ndash; Small font data (16px wide)</li>
+<li><code>AkiFontChars</code> &ndash; Font Characters (typically Shift-JIS)</li>
 <li><code>Ci4Palette</code> &ndash; CI4 palette (16 colors * 2 bytes)</li>
 <li><code>Ci8Palette</code> &ndash; CI8 palette (256 colors * 2 bytes)</li>
 <li><code>I4Texture</code> &ndash; I4 texture (4BPP)</li>
@@ -480,7 +526,7 @@ there are no special tokens to deal with.</p>
 <p>(todo)</p>
 
 <hr />
-<h2>Appendix C: Game Data Formats</h2>
+<h2><a name="GameDataFormats">Appendix C: Game Data Formats</a></h2>
 <p>(notes about data structures used in the games)</p>
 
 <hr />
