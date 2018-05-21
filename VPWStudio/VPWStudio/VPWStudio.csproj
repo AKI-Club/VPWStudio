@@ -296,6 +296,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SharedStrings.cs" />
+    <Compile Include="Tools\AnimTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\AnimTest.Designer.cs">
+      <DependentUpon>AnimTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\FaceTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +435,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\AnimTest.resx">
+      <DependentUpon>AnimTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\FaceTester.resx">
       <DependentUpon>FaceTester.cs</DependentUpon>
