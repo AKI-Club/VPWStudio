@@ -303,3 +303,4 @@
 041A=Ci4Palette;
 041B=Ci4Texture;
 041C=AkiModel;
+0B55=Binary;(wrestling stance?)
