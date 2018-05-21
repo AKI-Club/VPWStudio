@@ -699,6 +699,12 @@ namespace VPWStudio
 					}
 					break;
 
+				case FileTypes.AkiAnimation:
+					{
+						AnimTest t = new AnimTest(key);
+						t.ShowDialog();
+					}
+					break;
 				// end temporary
 
 				// no default handler; show the hex viewer.
