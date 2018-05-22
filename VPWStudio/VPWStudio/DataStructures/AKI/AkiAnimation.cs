@@ -109,6 +109,25 @@ namespace VPWStudio
 			//OverallZ: temp[2]&0x0F, temp[3]
 			OverallZ = (short)((temp[2] & 0x0F) << 8 | temp[3]);
 		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			byte[] ox = BitConverter.GetBytes(OverallX);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(ox);
+			}
+			byte[] oz = BitConverter.GetBytes(OverallZ);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(oz);
+			}
+
+			bw.Write((byte)((ox[0] & 0x0F) << 4 | ((ox[1] & 0xF0) >> 4)));
+			bw.Write((byte)((ox[1] & 0x0F) << 4 | (OverallY & 0xF0) >> 4));
+			bw.Write((byte)((OverallY & 0x0F) << 4 | (oz[0] & 0x0F)));
+			bw.Write((oz[1]));
+		}
 	}
 
 	/// <summary>
@@ -283,6 +302,36 @@ namespace VPWStudio
 			UpperRightArm.ReadData(br);
 			RightArmMovement.ReadData(br);
 		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			Pelvis.WriteData(bw);
+			OverallMovement.WriteData(bw);
+			LowerAb.WriteData(bw);
+			LowerAbMovement.WriteData(bw);
+			UpperBody.WriteData(bw);
+			UpperBodyMovement.WriteData(bw);
+			Neck.WriteData(bw);
+			Head.WriteData(bw);
+			LowerLeftLeg.WriteData(bw);
+			UpperLeftLeg.WriteData(bw);
+			LeftLegMovement.WriteData(bw);
+			LeftFoot.WriteData(bw);
+			LeftHand.WriteData(bw);
+			LeftFingers.WriteData(bw);
+			LowerLeftArm.WriteData(bw);
+			UpperLeftArm.WriteData(bw);
+			LeftArmMovement.WriteData(bw);
+			LowerRightLeg.WriteData(bw);
+			UpperRightLeg.WriteData(bw);
+			RightLegMovement.WriteData(bw);
+			RightFoot.WriteData(bw);
+			LowerRightArm.WriteData(bw);
+			RightHand.WriteData(bw);
+			RightFingers.WriteData(bw);
+			UpperRightArm.WriteData(bw);
+			RightArmMovement.WriteData(bw);
+		}
 	}
 
 	/// <summary>
@@ -292,6 +341,11 @@ namespace VPWStudio
 	{
 		// Toki 2 values (4 bytes)
 		public byte[] Toki2;
+		// what ARE the Toki2 values?
+		// 00 - 
+		// 01 - 
+		// 02 - 
+		// 03 - (number of frames * 2)? (divide by 2 and add 1 to get actual number of frames)
 
 		// frame data (0x62 bytes per frame)
 		public List<AnimationFrame> FrameData;
@@ -320,6 +374,21 @@ namespace VPWStudio
 				AnimationFrame frame = new AnimationFrame();
 				frame.ReadData(br);
 				FrameData.Add(frame);
+			}
+		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			// toki2
+			bw.Write(Toki2[0]);
+			bw.Write(Toki2[1]);
+			bw.Write(Toki2[2]);
+			bw.Write(Toki2[3]);
+
+			// anim data
+			for (int i = 0; i < FrameData.Count; i++)
+			{
+				FrameData[i].WriteData(bw);
 			}
 		}
 	}
