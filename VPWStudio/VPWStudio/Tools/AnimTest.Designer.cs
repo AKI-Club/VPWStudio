@@ -96,24 +96,28 @@
 			this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.ItemName.HeaderText = "Name";
 			this.ItemName.Name = "ItemName";
+			this.ItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			// 
 			// Value1
 			// 
 			this.Value1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Value1.HeaderText = "Value 1";
 			this.Value1.Name = "Value1";
+			this.Value1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			// 
 			// Value2
 			// 
 			this.Value2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Value2.HeaderText = "Value 2";
 			this.Value2.Name = "Value2";
+			this.Value2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			// 
 			// Value3
 			// 
 			this.Value3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Value3.HeaderText = "Value 3";
 			this.Value3.Name = "Value3";
+			this.Value3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			// 
 			// AnimTest
 			// 

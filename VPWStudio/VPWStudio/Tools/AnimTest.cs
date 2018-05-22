@@ -70,6 +70,14 @@ namespace VPWStudio
 			dgvFrameData.Rows[24].Cells[0].Value = "Upper Right Arm";
 			dgvFrameData.Rows[25].Cells[0].Value = "Right Arm Movement";
 
+			for (int i = 0; i < dgvFrameData.Rows.Count; i++)
+			{
+				dgvFrameData.Rows[i].Cells[0].ReadOnly = true;
+				dgvFrameData.Rows[i].Cells[1].ReadOnly = true;
+				dgvFrameData.Rows[i].Cells[2].ReadOnly = true;
+				dgvFrameData.Rows[i].Cells[3].ReadOnly = true;
+			}
+
 			cbFrames.SelectedIndex = 0;
 		}
 
