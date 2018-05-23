@@ -64,19 +64,19 @@ namespace VPWStudio
 			StringBuilder sb = new StringBuilder();
 
 			sb.AppendLine(String.Format("End of Animation status: 0x{0:X2}", t.Data[0]));
-			sb.AppendLine(String.Format("[01] 0x{0:X2}", t.Data[1]));
+			sb.AppendLine(String.Format("Single/Repeating: 0x{0:X2}", t.Data[1]));
 			sb.AppendLine(String.Format("[02] 0x{0:X2}", t.Data[2]));
 			sb.AppendLine(String.Format("[03] 0x{0:X2}", t.Data[3]));
 			sb.AppendLine(String.Format("[04] 0x{0:X2}", t.Data[4]));
-			sb.AppendLine(String.Format("[05] 0x{0:X2}", t.Data[5]));
-			sb.AppendLine(String.Format("[06] 0x{0:X2}", t.Data[6]));
+			sb.AppendLine(String.Format("Mist/Fire Type?: 0x{0:X2}", t.Data[5]));
+			sb.AppendLine(String.Format("Mist/Fire Frame: 0x{0:X2}", t.Data[6]));
 			sb.AppendLine(String.Format("[07] 0x{0:X2}", t.Data[7]));
 			sb.AppendLine(String.Format("[08] 0x{0:X2}", t.Data[8]));
 			sb.AppendLine(String.Format("[09] 0x{0:X2}", t.Data[9]));
 			sb.AppendLine(String.Format("[0A] 0x{0:X2}", t.Data[10]));
 			sb.AppendLine(String.Format("Motion Effect: frame {0}, value 0x{1:X2}", t.Data[11], t.Data[12]));
 			sb.AppendLine(String.Format("Camera Effect: frame {0}, value 0x{1:X2}", t.Data[13], t.Data[14]));
-			sb.AppendLine(String.Format("[0F] 0x{0:X2}", t.Data[15]));
+			sb.AppendLine(String.Format("Replay Frame: 0x{0:X2}", t.Data[15]));
 			sb.AppendLine(String.Format("[10] 0x{0:X2}", t.Data[16]));
 			sb.AppendLine(String.Format("[11] 0x{0:X2}", t.Data[17]));
 			sb.AppendLine(String.Format("[12] 0x{0:X2}", t.Data[18]));
