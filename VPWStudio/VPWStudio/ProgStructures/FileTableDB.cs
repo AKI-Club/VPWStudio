@@ -20,9 +20,9 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableDBEntry()
 		{
-			this.FileID = 0;
-			this.FileType = FileTypes.Binary;
-			this.Comment = String.Empty;
+			FileID = 0;
+			FileType = FileTypes.Binary;
+			Comment = String.Empty;
 		}
 
 		/// <summary>
@@ -33,9 +33,9 @@ namespace VPWStudio
 		/// <param name="_comment">Comment for this entry.</param>
 		public FileTableDBEntry(UInt16 _id, FileTypes _type, string _comment)
 		{
-			this.FileID = _id;
-			this.FileType = _type;
-			this.Comment = _comment;
+			FileID = _id;
+			FileType = _type;
+			Comment = _comment;
 		}
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace VPWStudio
 		/// <param name="_in"></param>
 		public FileTableDBEntry(string _in)
 		{
-			this.ReadString(_in);
+			ReadString(_in);
 		}
 
 		/// <summary>
@@ -54,9 +54,9 @@ namespace VPWStudio
 		public void ReadString(string _in)
 		{
 			string[] tokens = _in.Split(new char[] { '=', ';' });
-			this.FileID = UInt16.Parse(tokens[0], NumberStyles.HexNumber);
-			this.FileType = (FileTypes)Enum.Parse(typeof(FileTypes), tokens[1]);
-			this.Comment = tokens[2];
+			FileID = UInt16.Parse(tokens[0], NumberStyles.HexNumber);
+			FileType = (FileTypes)Enum.Parse(typeof(FileTypes), tokens[1]);
+			Comment = tokens[2];
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ namespace VPWStudio
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return String.Format("{0:X4}={1};{2}", this.FileID, this.FileType.ToString(), this.Comment );
+			return String.Format("{0:X4}={1};{2}", FileID, FileType.ToString(), Comment );
 		}
 	}
 
@@ -80,10 +80,6 @@ namespace VPWStudio
 	/// File table database.
 	/// Used as a helper when populating the project's FileTable from ROM data.
 	/// </summary>
-	/// 
-	/// MAJOR TODO: support read/write of filelists for Zoinkity's Midwaydec.
-	/// * determine first file location via LocationFile
-	/// * make assumptions that the first entry is 0x0001 and the last entry is the index before "filetable.bin".
 	public class FileTableDB
 	{
 		/// <summary>
@@ -96,7 +92,7 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableDB()
 		{
-			this.Entries = new Dictionary<ushort, FileTableDBEntry>();
+			Entries = new Dictionary<ushort, FileTableDBEntry>();
 		}
 
 		/// <summary>
@@ -105,19 +101,20 @@ namespace VPWStudio
 		/// <param name="_file"></param>
 		public FileTableDB(string _file)
 		{
-			this.Entries = new Dictionary<ushort, FileTableDBEntry>();
-			this.ReadFile(_file);
+			Entries = new Dictionary<ushort, FileTableDBEntry>();
+			ReadFile(_file);
 		}
 
 		/// <summary>
-		/// 
+		/// Read FileTableDB from file.
 		/// </summary>
-		/// <param name="_path"></param>
+		/// <param name="_path">Path to input FileTableDB.</param>
 		public void ReadFile(string _path)
 		{
 			FileStream fs = new FileStream(_path, FileMode.Open);
 			StreamReader sr = new StreamReader(fs);
 
+			int lineNumber = 1;
 			while (!sr.EndOfStream)
 			{
 				string line = sr.ReadLine();
@@ -125,20 +122,26 @@ namespace VPWStudio
 				// ignore comments
 				if (line.StartsWith("#"))
 				{
+					lineNumber++;
 					continue;
 				}
 
 				FileTableDBEntry ftdbe = new FileTableDBEntry(line);
-				this.Entries.Add(ftdbe.FileID, ftdbe);
+
+				// todo: error checking
+				Entries.Add(ftdbe.FileID, ftdbe);
+
+				lineNumber++;
 			}
 
 			sr.Close();
 		}
 
 		/// <summary>
-		/// 
+		/// Write FileTableDB to file.
 		/// </summary>
-		/// <param name="_path"></param>
+		/// <param name="_path">Path to output FileTableDB.</param>
+		/// <param name="_topLine">Optional top line comment.</param>
 		public void WriteFile(string _path, string _topLine)
 		{
 			FileStream fs = new FileStream(_path, FileMode.Create);
@@ -149,7 +152,7 @@ namespace VPWStudio
 				sw.WriteLine(String.Format("# {0}", _topLine));
 			}
 
-			foreach (KeyValuePair<UInt16,FileTableDBEntry> ftdbe in this.Entries)
+			foreach (KeyValuePair<UInt16,FileTableDBEntry> ftdbe in Entries)
 			{
 				ftdbe.Value.ToString();
 			}
