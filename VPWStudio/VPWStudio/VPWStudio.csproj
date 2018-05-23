@@ -578,6 +578,21 @@
     <None Include="Resources\menus.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\textarchives.png" />
+    <Content Include="Manual\img\main_interface.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\new_project.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\project_properties-main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\project_properties-outputrom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\project_properties-projectfiles.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
