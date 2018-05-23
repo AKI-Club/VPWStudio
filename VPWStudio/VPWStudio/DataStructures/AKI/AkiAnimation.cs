@@ -11,12 +11,24 @@ namespace VPWStudio
 	/// </summary>
 	public class PivotRotation
 	{
+		/// <summary>
+		/// X Pivot
+		/// </summary>
 		public short PivotX; // 12 bits
 
+		/// <summary>
+		/// Rotation
+		/// </summary>
 		public byte Rotation;
 
+		/// <summary>
+		/// Z Pivot
+		/// </summary>
 		public short PivotZ; // 12 bits
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public PivotRotation()
 		{
 			PivotX = 0;
@@ -24,6 +36,12 @@ namespace VPWStudio
 			PivotZ = 0;
 		}
 
+		/// <summary>
+		/// Specific constructor
+		/// </summary>
+		/// <param name="_x">Pivot X</param>
+		/// <param name="_r">Rotation</param>
+		/// <param name="_z">Pivot Z</param>
 		public PivotRotation(short _x, byte _r, short _z)
 		{
 			PivotX = _x;
@@ -31,6 +49,19 @@ namespace VPWStudio
 			PivotZ = _z;
 		}
 
+		/// <summary>
+		/// BinaryData constructor
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public PivotRotation(BinaryReader br)
+		{
+			ReadData(br);
+		}
+
+		/// <summary>
+		/// Read PivotRotation data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			// 3,2,3 format
@@ -48,6 +79,10 @@ namespace VPWStudio
 			PivotZ = (short)((temp[2]&0x0F) << 8 | temp[3]);
 		}
 
+		/// <summary>
+		/// Write PivotRotation data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			byte[] px = BitConverter.GetBytes(PivotX);
@@ -73,12 +108,24 @@ namespace VPWStudio
 	/// </summary>
 	public class OverallMovementXYZ
 	{
+		/// <summary>
+		/// Overall X movement
+		/// </summary>
 		public short OverallX; // 12 bits
 
+		/// <summary>
+		/// Overall Y movement
+		/// </summary>
 		public byte OverallY;
 
+		/// <summary>
+		/// Overall Z movement
+		/// </summary>
 		public short OverallZ; // 12 bits
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public OverallMovementXYZ()
 		{
 			OverallX = 0;
@@ -86,6 +133,12 @@ namespace VPWStudio
 			OverallZ = 0;
 		}
 
+		/// <summary>
+		/// Specific constructor.
+		/// </summary>
+		/// <param name="_x">Overall X movement</param>
+		/// <param name="_y">Overall Y movement</param>
+		/// <param name="_z">Overall Z movement</param>
 		public OverallMovementXYZ(short _x, byte _y, short _z)
 		{
 			OverallX = _x;
@@ -93,6 +146,19 @@ namespace VPWStudio
 			OverallZ = _z;
 		}
 
+		/// <summary>
+		/// BinaryReader constructor.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public OverallMovementXYZ(BinaryReader br)
+		{
+			ReadData(br);
+		}
+
+		/// <summary>
+		/// Read OverallMovementXYZ data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			// 3,2,3 format
@@ -110,6 +176,10 @@ namespace VPWStudio
 			OverallZ = (short)((temp[2] & 0x0F) << 8 | temp[3]);
 		}
 
+		/// <summary>
+		/// Write OverallMovementXYZ data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			byte[] ox = BitConverter.GetBytes(OverallX);
@@ -273,6 +343,10 @@ namespace VPWStudio
 			RightArmMovement = new MovementXYZ();
 		}
 
+		/// <summary>
+		/// Read AnimationFrame data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			Pelvis.ReadData(br);
@@ -303,6 +377,10 @@ namespace VPWStudio
 			RightArmMovement.ReadData(br);
 		}
 
+		/// <summary>
+		/// Write AnimationFrame data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			Pelvis.WriteData(bw);
@@ -339,7 +417,9 @@ namespace VPWStudio
 	/// </summary>
 	public class AkiAnimation
 	{
-		// Toki 2 values (4 bytes)
+		/// <summary>
+		/// Toki 2 values (4 bytes)
+		/// </summary>
 		public byte[] Toki2;
 		// what ARE the Toki2 values?
 		// 00 - 
@@ -347,15 +427,24 @@ namespace VPWStudio
 		// 02 - 
 		// 03 - (number of frames * 2)? (divide by 2 and add 1 to get actual number of frames)
 
-		// frame data (0x62 bytes per frame)
+		/// <summary>
+		/// List of frames in this animation.
+		/// </summary>
 		public List<AnimationFrame> FrameData;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public AkiAnimation()
 		{
 			Toki2 = new byte[4];
 			FrameData = new List<AnimationFrame>();
 		}
 
+		/// <summary>
+		/// Read AkiAnimation data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			Toki2 = br.ReadBytes(4);
@@ -377,6 +466,10 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Write AkiAnimation data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			// toki2
