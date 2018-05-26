@@ -1,12 +1,12 @@
 Move Damage Data in the various games
 =====================================
 
-WorldTour | 0x?? bytes
-VPW64     | 0x?? bytes
-Revenge   | 0x?? bytes
+WorldTour | 0x?? bytes; file ID xxxx
+VPW64     | 0x?? bytes; file ID xxxx
+Revenge   | 0x?? bytes; file ID xxxx
 WM2K      | 0x20 bytes (unconfirmed); file ID 03AD
-VPW2      | 0x20 bytes
-NoMercy   | 0x24 bytes
+VPW2      | 0x20 bytes; file ID 0277?
+NoMercy   | 0x24 bytes; file ID xxxx
 
 VPW2
 ====
