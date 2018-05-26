@@ -130,6 +130,17 @@
 0081=AkiTexture;Won Trophy BG
 0082=AkiTexture;Won Belt BG
 0083=AkiTexture;Created by AKI Corporation
+0087=Binary;(johnny ace moveset?)
+008B=Binary;(jun akiyama moveset?)
+008F=Binary;(andre the giant moveset?)
+0093=Binary;(yoji anjoh moveset?)
+0097=Binary;(ali moveset?)
+009B=Binary;(giant baba moveset?)
+009F=Binary;(eric bischoff moveset?)
+00CF=Binary;(ric flair moveset?)
+00D7=Binary;(tatsumi fujinami moveset?)
+0137=Binary;(kensuke sasaki moveset?)
+01FF=Binary;(riki choshu moveset?)
 0212=Ci4Palette;
 0213=Ci4Palette;
 0214=Ci4Palette;[Timer] Palette
