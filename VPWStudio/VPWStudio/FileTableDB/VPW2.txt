@@ -2210,8 +2210,8 @@
 1A2F=AkiModel;
 1A30=AkiModel;
 1A31=AkiModel;
-1A32=Ci8Palette;
-1A33=Ci8Texture;
+1A32=Ci8Palette;(feet?)
+1A33=Ci8Texture;(feet?)
 1A34=Ci8Palette;(fingers)
 1A35=Ci8Texture;(fingers)
 1A36=Ci4Palette;
