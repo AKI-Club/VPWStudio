@@ -6,6 +6,15 @@ using System.Text;
 
 namespace VPWStudio
 {
+	// june 2018 note: the below assumption is wrong
+	/*
+	 * [excel.jpg]
+	 * So here you can see that the UV values have been converted to decimal.
+	 * To calculate the values needed for the .obj file, I divided the values
+	 * under "U" by the highest value (which is equivalent to 1) in that
+	 * column. I did the same for the values under "V".
+	 */
+
 	// quick note on UV values:
 	// 0 = 0.0
 	// 31 = 1.0
