@@ -1602,6 +1602,8 @@
 4B89=Binary;(move names?)
 4B8A=Binary;(move names?)
 4B8B=Binary;(move names?)
+4BC2=Binary;(Taunts 022-053)
+4BC3=Binary;(Taunts 068-202)
 4BF6=Binary;(move names?)
 4BF7=Binary;(move names?)
 4BF8=Binary;(move names?)
