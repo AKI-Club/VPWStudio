@@ -1,4 +1,4 @@
-# FileTable database for WWF WrestleMania 2000 (NTSC-J)
+# FileTable database for WWF WrestleMania 2000 (NTSC-J (NWXJ))
 0001=AkiLargeFont;large font
 0002=AkiSmallFont;small font
 0003=AkiFontChars;Font characters (English)

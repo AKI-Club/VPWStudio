@@ -1,4 +1,4 @@
-# FileTable database for WWF No Mercy
+# FileTable database for WWF No Mercy (NW4E, NW4P)
 0002=AkiText;Default Character Names
 0003=AkiModel;
 0004=Ci4Palette;
