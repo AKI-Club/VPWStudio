@@ -1,4 +1,4 @@
-# FileTable database for WCW/nWo Revenge
+# FileTable database for WCW/nWo Revenge (NW2E, NW2P)
 0001=AkiSmallFont;small font
 0002=AkiLargeFont;large font
 0003=AkiTexture;[Splash] Legal Information

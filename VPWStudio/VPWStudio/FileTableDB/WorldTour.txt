@@ -1,4 +1,4 @@
-# FileTable database for WCW vs. nWo World Tour
+# FileTable database for WCW vs. nWo World Tour (NWNE, NWNP)
 0001=AkiSmallFont;small font
 0002=AkiLargeFont;large font
 0004=AkiTexture;[Small Character Portrait] Hogan
