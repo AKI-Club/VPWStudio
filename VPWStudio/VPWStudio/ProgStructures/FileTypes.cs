@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace VPWStudio
 {
@@ -51,6 +50,7 @@ namespace VPWStudio
 		public static Dictionary<FileTypes, string> DefaultFileTypeExtensions = new Dictionary<FileTypes, string>()
 		{
 			{ FileTypes.Binary, ".bin" },
+			{ FileTypes.AkiAnimation, ".anim" },
 			{ FileTypes.AkiArchive, ".akiarc" }, // formerly "packed"
 			{ FileTypes.AkiModel, ".model" },
 			{ FileTypes.AkiTexture, ".tex" },
