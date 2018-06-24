@@ -1495,6 +1495,9 @@
 0DBC=AkiModel;
 0DD6=AkiModel;
 0DD7=AkiModel;
+0E50=Ci4Palette;Default Costume Colors
+0E51=Ci4Palette;
+0E52=Ci4Texture;
 0E87=Ci4Palette;
 0E88=Ci4Texture;
 0EA1=Ci4Palette;[Ring Attire] A1
