@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace VPWStudio.GameSpecific.VPW2
 {
@@ -104,6 +101,8 @@ namespace VPWStudio.GameSpecific.VPW2
 			bw.Write(name);
 
 			// ugh this part blows nuts
+			bw.BaseStream.Seek(Z64Rom.PointerToRom(WrestlerPointerStart), SeekOrigin.Begin);
+			// write out the wrestler IDs
 		}
 		#endregion
 	}
