@@ -38,7 +38,14 @@ namespace VPWStudio
 		{
 			PreviewImageFileID = fileID;
 			InitializeComponent();
-			this.Text = String.Format("Preview [0x{0:X4}]", PreviewImageFileID);
+			if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].Comment != String.Empty)
+			{
+				Text = String.Format("Preview [0x{0:X4} - {1}]", PreviewImageFileID, Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].Comment);
+			}
+			else
+			{
+				Text = String.Format("Preview [0x{0:X4}]", PreviewImageFileID);
+			}
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
