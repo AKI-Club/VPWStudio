@@ -22,6 +22,8 @@ namespace VPWStudio
 			"S.K. Stylez",   // AKI Club founder
 			"DOOMSDAY EWF",  // found many values (textures)
 			"The Pelican",   // also found many values
+			"Keson",         // keeping the future alive with AKI Evo and new tools
+			"jordyad",       // pushed me further when I needed it most, providing great info
 			"(and others I haven't gotten around to listing yet)"
 		};
 
@@ -33,6 +35,7 @@ namespace VPWStudio
 			"the SSC",
 			"the Multitap community",
 			"Generation Hex",
+			"Old Skool Reunion",
 			"RagDas",
 			"WldFb"
 		};
@@ -50,7 +53,7 @@ namespace VPWStudio
 			string buildDate = reader.ReadToEnd().Substring(0, 19);
 			reader.Close();
 
-			this.labelVersion.Text = String.Format(
+			labelVersion.Text = String.Format(
 				"{0} (indev) v{1} by freem\nbuilt on {2}; Git hash: {3}",
 				AssemblyProduct,
 				AssemblyVersion,
@@ -71,10 +74,10 @@ namespace VPWStudio
 			sb.AppendLine("There are a number of people whose work and research is integral in making this project possible.");
 			sb.AppendLine();
 			sb.AppendLine("In no particular order:");
-			for (int i = 0; i < this.SpecialThanks.Count; i++)
+			for (int i = 0; i < SpecialThanks.Count; i++)
 			{
-				sb.Append(this.SpecialThanks[i]);
-				if (i < this.SpecialThanks.Count - 1)
+				sb.Append(SpecialThanks[i]);
+				if (i < SpecialThanks.Count - 1)
 				{
 					sb.Append(", ");
 				}
@@ -83,17 +86,17 @@ namespace VPWStudio
 			sb.AppendLine();
 
 			sb.AppendLine("freem sends greetings to:");
-			for (int i = 0; i < this.Greetings.Count; i++)
+			for (int i = 0; i < Greetings.Count; i++)
 			{
-				sb.Append(this.Greetings[i]);
-				if (i < this.Greetings.Count - 1)
+				sb.Append(Greetings[i]);
+				if (i < Greetings.Count - 1)
 				{
 					sb.Append(", ");
 				}
 			}
 			sb.AppendLine();
 
-			this.tbInformation.Text = sb.ToString();
+			tbInformation.Text = sb.ToString();
 		}
 
 		#region Assembly Attribute Accessors
