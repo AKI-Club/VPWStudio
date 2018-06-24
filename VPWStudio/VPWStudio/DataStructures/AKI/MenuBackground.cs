@@ -17,7 +17,7 @@ namespace VPWStudio
 		/*
 		 * Known Sizes
 		 * - WM2K: 320x24 chunks, 320x240 final image, 1 column 10 rows
-		 * - VPW2: 64x30  chunks, 320x240 final image, 5 columns 8 rows
+		 * - VPW2, No Mercy: 64x30  chunks, 320x240 final image, 5 columns 8 rows
 		 */
 
 		#region Constants
