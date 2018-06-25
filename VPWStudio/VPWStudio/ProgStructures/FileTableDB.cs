@@ -127,11 +127,27 @@ namespace VPWStudio
 				}
 
 				FileTableDBEntry ftdbe = new FileTableDBEntry(line);
-
-				// todo: error checking
-				Entries.Add(ftdbe.FileID, ftdbe);
-
-				lineNumber++;
+				try
+				{
+					Entries.Add(ftdbe.FileID, ftdbe);
+				}
+				catch (ArgumentException aex)
+				{
+					if (Entries.ContainsKey(ftdbe.FileID))
+					{
+						// duplicate entry
+						System.Windows.Forms.MessageBox.Show(String.Format("Error on line {0}: Duplicate entry for FileID {1:X4}", lineNumber, ftdbe.FileID));
+					}
+					else
+					{
+						// undefined error
+						System.Windows.Forms.MessageBox.Show(String.Format("Error on line {0}: {1}", lineNumber, aex.ToString()));
+					}
+				}
+				finally
+				{
+					lineNumber++;
+				}
 			}
 
 			sr.Close();
