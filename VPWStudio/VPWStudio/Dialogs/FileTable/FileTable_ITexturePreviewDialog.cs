@@ -28,7 +28,14 @@ namespace VPWStudio
 		public FileTable_ITexturePreviewDialog(int fileID)
 		{
 			InitializeComponent();
-			this.Text = String.Format("Preview [0x{0:X4}]",fileID);
+			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment != String.Empty)
+			{
+				Text = String.Format("Preview [0x{0:X4} - {1}]", fileID, Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment);
+			}
+			else
+			{
+				Text = String.Format("Preview [0x{0:X4}]", fileID);
+			}
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
