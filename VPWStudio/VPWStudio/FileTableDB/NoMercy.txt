@@ -1287,8 +1287,8 @@
 2D90=Ci4Texture;[Lobby] Deck of Cards
 2D91=Ci4Palette;[Lobby] Black Chair
 2D92=Ci4Texture;[Lobby] Black Chair
-2D93=Ci4Palette;[Lobby] Boiler Door
-2D94=Ci4Texture;[Lobby] Boiler Door
+2D93=Ci4Palette;[Lobby] Circuit Breaker Door
+2D94=Ci4Texture;[Lobby] Circuit Breaker Door
 2D95=Ci4Palette;[Lobby] White Door
 2D96=Ci4Texture;[Lobby] White Door
 2D97=Ci4Palette;[Lobby] WWF Oil Drum
@@ -1313,8 +1313,8 @@
 2DAA=Ci4Texture;[Lobby] Power Outlets
 2DAB=Ci4Palette;[Lobby] Cardboard Box
 2DAC=Ci4Texture;[Lobby] Cardboard Box
-2DAD=Ci4Palette;[Lobby] Cables from Cabinet
-2DAE=Ci4Texture;[Lobby] Cables from Cabinet
+2DAD=Ci4Palette;[Lobby] Cables from Circuit Breaker
+2DAE=Ci4Texture;[Lobby] Cables from Circuit Breaker
 2DAF=Ci4Palette;[Lobby] Metal Steps
 2DB0=Ci4Texture;[Lobby] Metal Steps
 2DB1=Ci4Palette;[Lobby] Steps Hand Rail
