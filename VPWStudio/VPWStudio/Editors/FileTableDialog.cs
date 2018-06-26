@@ -216,18 +216,21 @@ namespace VPWStudio
 
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
-					// only replace filetype if it doesn't match current
-					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(entry.Value.FileID))
 					{
-						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
-						changesMade = true;
-					}
+						// only replace filetype if it doesn't match current
+						if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+						{
+							Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+							changesMade = true;
+						}
 
-					// only replace comment if it's empty, or we were requested to.
-					if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
-					{
-						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
-						changesMade = true;
+						// only replace comment if it's empty, or we were requested to.
+						if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
+						{
+							Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+							changesMade = true;
+						}
 					}
 				}
 
