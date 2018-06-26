@@ -321,6 +321,12 @@
     <Compile Include="Tools\HexViewer.Designer.cs">
       <DependentUpon>HexViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\MenuBackgroundConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\MenuBackgroundConverter.Designer.cs">
+      <DependentUpon>MenuBackgroundConverter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ModelTool2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -448,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\HexViewer.resx">
       <DependentUpon>HexViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\MenuBackgroundConverter.resx">
+      <DependentUpon>MenuBackgroundConverter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool2.resx">
       <DependentUpon>ModelTool2.cs</DependentUpon>
