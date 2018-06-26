@@ -720,7 +720,8 @@ namespace VPWStudio
 					AlreadyCompressed = Path.GetExtension(replaceFilePath) == ".lzss";
 					if (!AlreadyCompressed)
 					{
-						if (Path.GetExtension(replaceFilePath) == FileTypeInfo.DefaultFileTypeExtensions[fte.FileType])
+						// xxx: read MenuBackground as binary
+						if (Path.GetExtension(replaceFilePath) == FileTypeInfo.DefaultFileTypeExtensions[fte.FileType] || fte.FileType == FileTypes.MenuBackground)
 						{
 							// matched type, read raw data
 							using (FileStream fs = new FileStream(replaceFilePath, FileMode.Open))
