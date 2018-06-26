@@ -126,6 +126,7 @@ namespace VPWStudio
 					continue;
 				}
 
+				// xxx: showing message boxes here is not good form
 				FileTableDBEntry ftdbe = new FileTableDBEntry(line);
 				try
 				{
