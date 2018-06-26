@@ -563,19 +563,36 @@ namespace VPWStudio
 			{
 				// check to see if project game type was changed
 				bool updateBG = false;
-				if (Program.CurrentProject.Settings.GameType != this.ProjPropDialog.NewSettings.GameType)
+				if (Program.CurrentProject.Settings.GameType != ProjPropDialog.NewSettings.GameType)
 				{
 					updateBG = true;
 					// invalidate project data
 					Program.CurrentProject.ProjectFileTable = new FileTable();
 
 					// close any open dialogs; they contain invalid data now
-					foreach (Form f in this.MdiChildren)
+					foreach (Form f in MdiChildren)
 					{
 						f.Close();
 					}
 
-					// todo: reload filetable data
+					// todo: reload locationfile, since the game type changed
+
+					// reload filetable data
+					string ftdbPath = Program.GetFileTableDBPath();
+					if (!ftdbPath.Equals(String.Empty) && File.Exists(ftdbPath))
+					{
+						FileTableDB ftdb = new FileTableDB(ftdbPath);
+						foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
+						{
+							FileTableEntry fte = new FileTableEntry
+							{
+								FileID = entry.Value.FileID,
+								FileType = entry.Value.FileType,
+								Comment = entry.Value.Comment
+							};
+							Program.CurrentProject.ProjectFileTable.Entries.Add(entry.Value.FileID, fte);
+						}
+					}
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
@@ -1641,6 +1658,8 @@ namespace VPWStudio
 
 		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			#region Old single-file .menubg export
+			/*
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Convert PNG to MenuBackground";
 			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
@@ -1666,6 +1685,35 @@ namespace VPWStudio
 				}
 				b.Dispose();
 			}
+			*/
+			#endregion
+
+			#region New multi-file export
+			MenuBackgroundConverter mbc = new MenuBackgroundConverter();
+			if (mbc.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(mbc.InputFile);
+				MenuBackground mbg = new MenuBackground();
+				if (mbg.FromBitmap(b))
+				{
+					for (int i = 0; i < mbg.ChunkRows*mbg.ChunkColumns; i++)
+					{
+						using (FileStream fs = new FileStream(String.Format("{0}\\bg{1:D2}.bin", mbc.OutputDirectory, i+1), FileMode.Create))
+						{
+							using (BinaryWriter bw = new BinaryWriter(fs))
+							{
+								bw.Write(mbg.GetChunkBytes(i));
+							}
+						}
+					}
+				}
+				else
+				{
+					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
+				}
+				b.Dispose();
+			}
+			#endregion
 		}
 
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
