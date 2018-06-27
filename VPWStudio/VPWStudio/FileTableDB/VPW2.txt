@@ -1482,6 +1482,7 @@
 0C51=AkiModel;
 0C52=AkiModel;
 0C53=AkiModel;
+0C7B=AkiModel;
 0C88=AkiModel;[Ring Attire] Trunks F1/F2 Pelvis (Body Type 7)
 0C89=AkiModel;[Ring Attire] Trunks F1/F2 Left Upper Leg (Body Type 7)
 0C8A=AkiModel;[Ring Attire] Trunks F1/F2 Right Upper Leg (Body Type 7)
@@ -1491,6 +1492,8 @@
 0CE3=AkiModel;[Ring Attire] Trunks F1/F2 Pelvis (Body Type 5/6)
 0CE4=AkiModel;[Ring Attire] Trunks F1/F2 Left Upper Leg (Body Type 5/6)
 0CE5=AkiModel;[Ring Attire] Trunks F1/F2 Right Upper Leg (Body Type 5/6)
+0D12=AkiModel;
+0D1B=AkiModel;
 0DBB=AkiModel;
 0DBC=AkiModel;
 0DD6=AkiModel;
@@ -1736,6 +1739,12 @@
 13F4=Ci4Texture;[Gloves 4] Fingers
 147D=Ci4Palette;
 147E=Ci4Texture;
+1597=Ci4Palette;
+1598=Ci4Texture;
+1599=Ci4Palette;
+159A=Ci4Texture;
+159B=Ci4Palette;
+159C=Ci4Texture;
 15B3=Ci4Palette;
 15B4=Ci4Texture;
 15B5=Ci4Palette;
