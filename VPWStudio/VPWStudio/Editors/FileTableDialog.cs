@@ -92,6 +92,12 @@ namespace VPWStudio
 					continue;
 				}
 
+				// MenuBackground is also only available in WM2K and later.
+				if (curType == FileTypes.MenuBackground && Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K)
+				{
+					continue;
+				}
+
 				// NoMercyText is only available in No Mercy (<sarcasm>really???? you think?!</sarcasm>)
 				if (curType == FileTypes.NoMercyText && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
 				{
@@ -308,6 +314,9 @@ namespace VPWStudio
 			if (lvFileList.SelectedItems.Count > 1)
 			{
 				extractFileToolStripMenuItem.Text = SharedStrings.FileTableDialog_ExtractFiles;
+
+				menuBackgroundReplacementToolStripMenuItem.Enabled = false;
+				menuBackgroundReplacementToolStripMenuItem.Visible = false;
 			}
 			else if (lvFileList.SelectedItems.Count == 1)
 			{
@@ -315,6 +324,10 @@ namespace VPWStudio
 
 				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 				extractRawToolStripMenuItem.Enabled = Program.CurrentProject.ProjectFileTable.Entries[key].IsEncoded;
+
+				bool isMenuBGItem = (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.MenuBackground);
+				menuBackgroundReplacementToolStripMenuItem.Enabled = isMenuBGItem;
+				menuBackgroundReplacementToolStripMenuItem.Visible = isMenuBGItem;
 			}
 		}
 
@@ -511,6 +524,28 @@ namespace VPWStudio
 				// more than one file
 				Program.ErrorMessageBox("Haven't implemented multiple raw extraction yet.");
 			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void menuBackgroundReplacementToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count <= 0)
+			{
+				Program.ErrorMessageBox("Please select a MenuBackground entry to replace.");
+				return;
+			}
+
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				Program.ErrorMessageBox("You only need to select the first MenuBackground entry.");
+				return;
+			}
+
+			Program.ErrorMessageBox("freem, please implement this, thank you.");
 		}
 		#endregion
 

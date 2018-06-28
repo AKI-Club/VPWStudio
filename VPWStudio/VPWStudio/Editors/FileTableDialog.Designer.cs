@@ -39,6 +39,7 @@
 			this.cmsFileEntry = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.setTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.viewHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,7 @@
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.menuBackgroundReplacementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -120,45 +121,51 @@
 			this.cmsFileEntry.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setTypeToolStripMenuItem,
             this.editInformationToolStripMenuItem,
+            this.menuBackgroundReplacementToolStripMenuItem,
             this.toolStripSeparator3,
             this.viewHexToolStripMenuItem,
             this.toolStripSeparator1,
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(200, 148);
+			this.cmsFileEntry.Size = new System.Drawing.Size(234, 148);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// setTypeToolStripMenuItem
 			// 
 			this.setTypeToolStripMenuItem.Name = "setTypeToolStripMenuItem";
-			this.setTypeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.setTypeToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.setTypeToolStripMenuItem.Text = "Set &Type";
 			// 
 			// editInformationToolStripMenuItem
 			// 
 			this.editInformationToolStripMenuItem.Name = "editInformationToolStripMenuItem";
 			this.editInformationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-			this.editInformationToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.editInformationToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.editInformationToolStripMenuItem.Text = "Edit &Information...";
 			this.editInformationToolStripMenuItem.Click += new System.EventHandler(this.editInformationToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
 			// 
 			// viewHexToolStripMenuItem
 			// 
 			this.viewHexToolStripMenuItem.Name = "viewHexToolStripMenuItem";
-			this.viewHexToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.viewHexToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.viewHexToolStripMenuItem.Text = "View &Hex...";
 			this.viewHexToolStripMenuItem.Click += new System.EventHandler(this.viewHexToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(196, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(230, 6);
 			// 
 			// extractFileToolStripMenuItem
 			// 
 			this.extractFileToolStripMenuItem.Name = "extractFileToolStripMenuItem";
-			this.extractFileToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.extractFileToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.extractFileToolStripMenuItem.Tag = "ExtractFile";
 			this.extractFileToolStripMenuItem.Text = "&Extract File...";
 			this.extractFileToolStripMenuItem.Click += new System.EventHandler(this.extractFileToolStripMenuItem_Click);
@@ -166,7 +173,7 @@
 			// extractRawToolStripMenuItem
 			// 
 			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
-			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
 			this.extractRawToolStripMenuItem.Text = "Extract &Raw...";
 			this.extractRawToolStripMenuItem.Click += new System.EventHandler(this.extractRawToolStripMenuItem_Click);
 			// 
@@ -251,10 +258,14 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
 			// 
-			// toolStripSeparator3
+			// menuBackgroundReplacementToolStripMenuItem
 			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(196, 6);
+			this.menuBackgroundReplacementToolStripMenuItem.Enabled = false;
+			this.menuBackgroundReplacementToolStripMenuItem.Name = "menuBackgroundReplacementToolStripMenuItem";
+			this.menuBackgroundReplacementToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+			this.menuBackgroundReplacementToolStripMenuItem.Text = "&MenuBackground Replacement...";
+			this.menuBackgroundReplacementToolStripMenuItem.Visible = false;
+			this.menuBackgroundReplacementToolStripMenuItem.Click += new System.EventHandler(this.menuBackgroundReplacementToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -301,5 +312,6 @@
 		private System.Windows.Forms.ToolStripMenuItem setTypeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewHexToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripMenuItem menuBackgroundReplacementToolStripMenuItem;
 	}
 }
