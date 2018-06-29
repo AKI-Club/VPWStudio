@@ -108,7 +108,6 @@
 			// cbTextEntries
 			// 
 			this.cbTextEntries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbTextEntries.FormattingEnabled = true;
 			this.cbTextEntries.Location = new System.Drawing.Point(73, 12);
 			this.cbTextEntries.Name = "cbTextEntries";
 			this.cbTextEntries.Size = new System.Drawing.Size(419, 21);
