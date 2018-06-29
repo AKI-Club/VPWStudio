@@ -102,7 +102,7 @@
 0065=AkiText;Move Names 3
 0066=AkiText;Move Names 4
 0067=AkiText;Move Names 5
-0068=AkiText;?
+0068=AkiText;Edit Mode Move Types
 0069=AkiText;Match Finish Move Names
 006A=AkiText;Edit Mode Costume Names
 006B=Binary;Default Wrestler Costume data
