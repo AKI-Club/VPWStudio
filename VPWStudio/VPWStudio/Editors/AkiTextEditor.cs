@@ -210,5 +210,51 @@ namespace VPWStudio.Editors
 		{
 			CurTextArchive.Entries[cbTextEntries.SelectedIndex].Text = tbNewText.Text.Replace(Environment.NewLine, "\n");
 		}
+
+		/// <summary>
+		/// Control code reference.
+		/// Defined separately because... well, look how long it is.
+		/// </summary>
+		private static string KnownControlCodes = "Known control codes:\n" +
+			"@B - Text Color Blue\n" +
+			"@C - Text Color Cyan\n" +
+			"@D - Default text color\n" +
+			"@G - Text Color Green\n" +
+			"@H - hidden costume item?\n" +
+			"@K - Text Color Black\n" +
+			"@O - Text Color Orange\n" +
+			"@P - Text Color Gray\n" +
+			"@R - Text Color Red\n" +
+			"@Y - Text Color Yellow\n" +
+			"%### - Short name of Wrestler with ID4 ###\n" +
+			"$0 - A button\n" +
+			"$1 - B button\n" +
+			"$2 - L button\n" +
+			"$3 - R button\n" +
+			"$4 - Z button\n" +
+			"$5 - 3D Stick\n" +
+			"$6 - C Up\n" +
+			"$7 - C Down\n" +
+			"$8 - C Left\n" +
+			"$9 - C Right\n" +
+			"$a - D-Pad Up\n" +
+			"$b - D-Pad Down\n" +
+			"$c - D-Pad Left\n" +
+			"$d - D-Pad Right\n" +
+			"$e - Start button\n"+
+			"$f - D-Pad";
+
+		/// <summary>
+		/// Show the Control Codes reference.
+		/// </summary>
+		private void buttonControlCodes_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show(
+				KnownControlCodes,
+				SharedStrings.MainForm_Title,
+				MessageBoxButtons.OK,
+				MessageBoxIcon.Information
+			);
+		}
 	}
 }
