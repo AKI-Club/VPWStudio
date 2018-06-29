@@ -249,12 +249,7 @@ namespace VPWStudio.Editors
 		/// </summary>
 		private void buttonControlCodes_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(
-				KnownControlCodes,
-				SharedStrings.MainForm_Title,
-				MessageBoxButtons.OK,
-				MessageBoxIcon.Information
-			);
+			Program.InfoMessageBox(KnownControlCodes);
 		}
 	}
 }
