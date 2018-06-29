@@ -38,6 +38,7 @@
 			this.labelTextEntry = new System.Windows.Forms.Label();
 			this.buttonImportCSV = new System.Windows.Forms.Button();
 			this.buttonExportCSV = new System.Windows.Forms.Button();
+			this.buttonControlCodes = new System.Windows.Forms.Button();
 			this.gbCurrentText.SuspendLayout();
 			this.gbNewText.SuspendLayout();
 			this.SuspendLayout();
@@ -48,9 +49,9 @@
 			this.gbCurrentText.Location = new System.Drawing.Point(12, 39);
 			this.gbCurrentText.Name = "gbCurrentText";
 			this.gbCurrentText.Size = new System.Drawing.Size(480, 144);
-			this.gbCurrentText.TabIndex = 0;
+			this.gbCurrentText.TabIndex = 1;
 			this.gbCurrentText.TabStop = false;
-			this.gbCurrentText.Text = "Original Text";
+			this.gbCurrentText.Text = "O&riginal Text";
 			// 
 			// tbCurText
 			// 
@@ -69,9 +70,9 @@
 			this.gbNewText.Location = new System.Drawing.Point(12, 189);
 			this.gbNewText.Name = "gbNewText";
 			this.gbNewText.Size = new System.Drawing.Size(480, 144);
-			this.gbNewText.TabIndex = 1;
+			this.gbNewText.TabIndex = 2;
 			this.gbNewText.TabStop = false;
-			this.gbNewText.Text = "New Text";
+			this.gbNewText.Text = "&New Text";
 			// 
 			// tbNewText
 			// 
@@ -89,7 +90,7 @@
 			this.buttonOK.Location = new System.Drawing.Point(336, 339);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 5;
+			this.buttonOK.TabIndex = 6;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -99,7 +100,7 @@
 			this.buttonCancel.Location = new System.Drawing.Point(417, 339);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 6;
+			this.buttonCancel.TabIndex = 7;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -143,11 +144,22 @@
 			this.buttonExportCSV.UseVisualStyleBackColor = true;
 			this.buttonExportCSV.Click += new System.EventHandler(this.buttonExportCSV_Click);
 			// 
+			// buttonControlCodes
+			// 
+			this.buttonControlCodes.Location = new System.Drawing.Point(200, 339);
+			this.buttonControlCodes.Name = "buttonControlCodes";
+			this.buttonControlCodes.Size = new System.Drawing.Size(130, 23);
+			this.buttonControlCodes.TabIndex = 5;
+			this.buttonControlCodes.Text = "Control Co&des";
+			this.buttonControlCodes.UseVisualStyleBackColor = true;
+			this.buttonControlCodes.Click += new System.EventHandler(this.buttonControlCodes_Click);
+			// 
 			// AkiTextEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(504, 374);
+			this.Controls.Add(this.buttonControlCodes);
 			this.Controls.Add(this.buttonExportCSV);
 			this.Controls.Add(this.buttonImportCSV);
 			this.Controls.Add(this.labelTextEntry);
@@ -183,5 +195,6 @@
 		private System.Windows.Forms.Label labelTextEntry;
 		private System.Windows.Forms.Button buttonImportCSV;
 		private System.Windows.Forms.Button buttonExportCSV;
+		private System.Windows.Forms.Button buttonControlCodes;
 	}
 }
