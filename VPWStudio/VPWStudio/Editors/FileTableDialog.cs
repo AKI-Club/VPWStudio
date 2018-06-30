@@ -399,8 +399,18 @@ namespace VPWStudio
 			}
 			else
 			{
-				Program.ErrorMessageBox("multi select sucks, i haven't handled it yet");
-				return;
+				List<FileTableEntry> EditEntries = new List<FileTableEntry>();
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					EditEntries.Add(Program.CurrentProject.ProjectFileTable.Entries[key]);
+				}
+
+				FileTable_EditMultiEntryInfoDialog emd = new FileTable_EditMultiEntryInfoDialog(EditEntries);
+				if (emd.ShowDialog() == DialogResult.OK)
+				{
+					Program.ErrorMessageBox("freem hasn't finished this yet, what a shock");
+				}
 			}
 		}
 
