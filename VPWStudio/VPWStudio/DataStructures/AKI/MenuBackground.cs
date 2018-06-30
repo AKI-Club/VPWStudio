@@ -141,6 +141,20 @@ namespace VPWStudio
 			Data = new byte[32 + ((ChunkWidth / 2) * ChunkColumns) + (ChunkHeight * ChunkRows)];
 		}
 
+		public MenuBackground(VPWGames gameType)
+		{
+			FirstFileID = 0;
+			Palette = new Ci4Palette();
+
+			ChunkWidth = MenuChunkWidth[gameType];
+			ChunkHeight = MenuChunkHeight[gameType];
+			ChunkColumns = MenuChunkColumns[gameType];
+			ChunkRows = MenuChunkRows[gameType];
+			Textures = new Ci4Texture[ChunkColumns * ChunkRows];
+			InitTextures();
+			Data = new byte[32 + ((ChunkWidth / 2) * ChunkColumns) + (ChunkHeight * ChunkRows)];
+		}
+
 		/// <summary>
 		/// Specific constructor.
 		/// </summary>
