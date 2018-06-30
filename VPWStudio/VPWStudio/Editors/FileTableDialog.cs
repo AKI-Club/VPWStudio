@@ -522,7 +522,40 @@ namespace VPWStudio
 			else
 			{
 				// more than one file
-				Program.ErrorMessageBox("Haven't implemented multiple raw extraction yet.");
+				List<int> ExtractIDs = new List<int>();
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					ExtractIDs.Add(key);
+				}
+
+				FileTable_ExtractFilesDialog efd = new FileTable_ExtractFilesDialog(ExtractIDs);
+				if (efd.ShowDialog() == DialogResult.OK)
+				{
+					// set output directory
+					SaveFileDialog sfd = new SaveFileDialog();
+					sfd.Title = "Select Export Directory";
+					sfd.Filter = SharedStrings.FileFilter_None;
+					sfd.CheckFileExists = false;
+					sfd.FileName = "(choose a directory)";
+					if (sfd.ShowDialog() == DialogResult.OK)
+					{
+						string outPath = Path.GetDirectoryName(sfd.FileName);
+						MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+						BinaryReader romReader = new BinaryReader(romStream);
+
+						foreach (KeyValuePair<int, string> extractFile in efd.ExtractFiles)
+						{
+							FileStream outFile = new FileStream(String.Format("{0}\\{1}", outPath, extractFile.Value), FileMode.Create);
+							BinaryWriter outWriter = new BinaryWriter(outFile);
+							Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, extractFile.Key, true);
+							outWriter.Flush();
+							outWriter.Close();
+						}
+
+						romReader.Close();
+					}
+				}
 			}
 		}
 
