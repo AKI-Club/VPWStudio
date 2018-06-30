@@ -17,7 +17,7 @@ namespace VPWStudio
 
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
 
-			cbFileTypes.Items.AddRange(Enum.GetNames(typeof(FileTypes)));
+			cbFileTypes.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
 			cbFileTypes.SelectedIndex = (int)CurEntry.FileType;
 			tbComment.Text = fte.Comment;
 
