@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VPWStudio
 {
@@ -97,6 +98,33 @@ namespace VPWStudio
 			FileTypes.AkiSmallFont,
 			FileTypes.AkiLargeFont
 		};
+
+		public static string[] GetValidFileTypesForGame(VPWGames gameType)
+		{
+			List<string> outTypes = new List<string>();
+
+			outTypes.AddRange(Enum.GetNames(typeof(FileTypes)));
+
+			// AkiText is in WM2K and later
+			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
+			{
+				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.AkiText));
+			}
+
+			// MenuBackground is in WM2K and later
+			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
+			{
+				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.MenuBackground));
+			}
+
+			// NoMercyTexty is in... you guessed it, WWF No Mercy.
+			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
+			{
+				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.NoMercyText));
+			}
+
+			return outTypes.ToArray();
+		}
 	}
 
 }
