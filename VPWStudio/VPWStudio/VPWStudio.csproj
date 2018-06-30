@@ -116,6 +116,12 @@
     <Compile Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.Designer.cs">
       <DependentUpon>FileTable_EditEntryInfoDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_EditMultiEntryInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_EditMultiEntryInfoDialog.Designer.cs">
+      <DependentUpon>FileTable_EditMultiEntryInfoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_ExtractFilesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_EditEntryInfoDialog.resx">
       <DependentUpon>FileTable_EditEntryInfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_EditMultiEntryInfoDialog.resx">
+      <DependentUpon>FileTable_EditMultiEntryInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_ExtractFilesDialog.resx">
       <DependentUpon>FileTable_ExtractFilesDialog.cs</DependentUpon>
