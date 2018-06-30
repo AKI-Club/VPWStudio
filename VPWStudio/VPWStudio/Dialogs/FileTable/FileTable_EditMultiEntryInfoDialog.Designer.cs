@@ -79,6 +79,7 @@
 			this.dgvEditEntries.Name = "dgvEditEntries";
 			this.dgvEditEntries.Size = new System.Drawing.Size(608, 220);
 			this.dgvEditEntries.TabIndex = 2;
+			this.dgvEditEntries.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEditEntries_CellContentClick);
 			// 
 			// FileID
 			// 
