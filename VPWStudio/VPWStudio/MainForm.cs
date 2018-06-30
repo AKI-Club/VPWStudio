@@ -1693,7 +1693,7 @@ namespace VPWStudio
 			if (mbc.ShowDialog() == DialogResult.OK)
 			{
 				Bitmap b = new Bitmap(mbc.InputFile);
-				MenuBackground mbg = new MenuBackground();
+				MenuBackground mbg = new MenuBackground(mbc.GameType);
 				if (mbg.FromBitmap(b))
 				{
 					for (int i = 0; i < mbg.ChunkRows*mbg.ChunkColumns; i++)
