@@ -545,7 +545,49 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("freem, please implement this, thank you.");
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Image to Convert";
+			ofd.Filter = SharedStrings.FileFilter_PNG;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				MenuBackground mbg = new MenuBackground(Program.CurrentProject.Settings.BaseGame);
+				Bitmap newBG = new Bitmap(ofd.FileName);
+				if (!mbg.FromBitmap(newBG))
+				{
+					Program.ErrorMessageBox("Unable to convert provided image to a menu background.");
+					newBG.Dispose();
+					return;
+				}
+
+				string outPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath) + @"\Backgrounds\";
+				if (!Directory.Exists(outPath))
+				{
+					Directory.CreateDirectory(outPath);
+				}
+				outPath += Path.GetFileNameWithoutExtension(ofd.FileName);
+				if (!Directory.Exists(outPath))
+				{
+					Directory.CreateDirectory(outPath);
+				}
+
+				int bgFileID = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+				for (int i = 0; i < mbg.ChunkRows * mbg.ChunkColumns; i++)
+				{
+					string outFileName = String.Format("{0}\\bg{1:D2}.bin", outPath, i + 1);
+					using (FileStream fs = new FileStream(outFileName, FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							bw.Write(mbg.GetChunkBytes(i));
+							Program.CurrentProject.ProjectFileTable.Entries[bgFileID].ReplaceFilePath = Program.ShortenAbsolutePath(outFileName);
+							bgFileID++;
+						}
+					}
+				}
+				Program.UnsavedChanges = true;
+				((MainForm)(MdiParent)).UpdateTitleBar();
+				newBG.Dispose();
+			}
 		}
 		#endregion
 
