@@ -28,9 +28,14 @@ namespace VPWStudio
 			PopulateEntries();
 		}
 
-		private void AddFileTypes(DataGridViewComboBoxCell cb, FileTableEntry entry)
+		private void AddFileTypes(DataGridViewComboBoxCell cb)
 		{
 			cb.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
+		}
+
+		private void AddEncodingEntries(DataGridViewComboBoxCell cb)
+		{
+			cb.Items.AddRange(Enum.GetNames(typeof(FileTableReplaceEncoding)));
 		}
 
 		private void PopulateEntries()
@@ -41,10 +46,11 @@ namespace VPWStudio
 			{
 				dgvEditEntries.Rows[i].Cells[COLUMN_FILEID].Value = String.Format("{0:X4}", Entries[i].FileID);
 
-				AddFileTypes((DataGridViewComboBoxCell)dgvEditEntries.Rows[i].Cells[COLUMN_FILETYPE], Entries[i]);
+				AddFileTypes((DataGridViewComboBoxCell)dgvEditEntries.Rows[i].Cells[COLUMN_FILETYPE]);
 				dgvEditEntries.Rows[i].Cells[COLUMN_FILETYPE].Value = Enum.GetName(typeof(FileTypes), Entries[i].FileType);
 
-				//dgvEditEntries.Rows[i].Cells[COLUMN_ENCODING]
+				AddEncodingEntries((DataGridViewComboBoxCell)dgvEditEntries.Rows[i].Cells[COLUMN_ENCODING]);
+				dgvEditEntries.Rows[i].Cells[COLUMN_ENCODING].Value = Enum.GetName(typeof(FileTableReplaceEncoding), Entries[i].ReplaceEncoding);
 
 				dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value = Entries[i].Comment;
 				dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value = Entries[i].ReplaceFilePath;
@@ -66,13 +72,27 @@ namespace VPWStudio
 				}
 
 				// encoding
+				FileTableReplaceEncoding ftre = (FileTableReplaceEncoding)Enum.Parse(typeof(FileTableReplaceEncoding), dgvEditEntries.Rows[i].Cells[COLUMN_ENCODING].Value.ToString());
+				if (ftre != Entries[i].ReplaceEncoding)
+				{
+					AnyChangesSubmitted = true;
+					Entries[i].ReplaceEncoding = ftre;
+				}
+
+				// comment
+				string newComment = dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value.ToString();
+				if (!newComment.Equals(Entries[i].Comment))
+				{
+					AnyChangesSubmitted = true;
+					Entries[i].Comment = newComment;
+				}
 
 				// replace path
 				string newPath = dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value.ToString();
 				if (newPath != Entries[i].ReplaceFilePath)
 				{
 					AnyChangesSubmitted = true;
-					// todo: gotta do shit
+					Entries[i].ReplaceFilePath = Program.ShortenAbsolutePath(newPath);
 				}
 			}
 
@@ -95,7 +115,7 @@ namespace VPWStudio
 				ofd.Title = String.Format("Select Replacement for File ID {0:X4}", editing.FileID);
 				if (ofd.ShowDialog() == DialogResult.OK)
 				{
-					Program.ErrorMessageBox("damnit freem can't you implement ANYTHING on the first try?!");
+					dgvEditEntries.Rows[e.RowIndex].Cells[COLUMN_REPLACEFILE].Value = Program.ShortenAbsolutePath(ofd.FileName);
 				}
 			}
 		}
