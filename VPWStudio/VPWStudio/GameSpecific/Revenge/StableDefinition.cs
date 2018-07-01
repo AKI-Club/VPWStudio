@@ -41,10 +41,10 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// </summary>
 		public StableDefinition()
 		{
-			this.WrestlerPointerStart = 0;
-			this.NumWrestlers = 0;
-			this.HeaderGraphicFile = 0;
-			this.WrestlerPointers = null;
+			WrestlerPointerStart = 0;
+			NumWrestlers = 0;
+			HeaderGraphicFile = 0;
+			WrestlerPointers = null;
 		}
 
 		/// <summary>
@@ -55,10 +55,10 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <param name="_headGraphic">Header graphic file index</param>
 		public StableDefinition(UInt32 _wresPtr, UInt16 _numWres, UInt16 _headGraphic)
 		{
-			this.WrestlerPointerStart = _wresPtr;
-			this.NumWrestlers = _numWres;
-			this.HeaderGraphicFile = _headGraphic;
-			this.WrestlerPointers = null;
+			WrestlerPointerStart = _wresPtr;
+			NumWrestlers = _numWres;
+			HeaderGraphicFile = _headGraphic;
+			WrestlerPointers = null;
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <param name="br">BinaryReader instance to use.</param>
 		public StableDefinition(BinaryReader br)
 		{
-			this.ReadData(br);
+			ReadData(br);
 		}
 
 		/// <summary>
@@ -76,14 +76,14 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <param name="_src">StableDefinition to copy from.</param>
 		public void DeepCopy(StableDefinition _src)
 		{
-			this.WrestlerPointerStart = _src.WrestlerPointerStart;
-			this.NumWrestlers = _src.NumWrestlers;
-			this.HeaderGraphicFile = _src.HeaderGraphicFile;
+			WrestlerPointerStart = _src.WrestlerPointerStart;
+			NumWrestlers = _src.NumWrestlers;
+			HeaderGraphicFile = _src.HeaderGraphicFile;
 
 			// hm, not sure if this is the best of ideas.
 			if (_src.WrestlerPointers != null)
 			{
-				Array.Copy(_src.WrestlerPointers, this.WrestlerPointers, this.NumWrestlers);
+				Array.Copy(_src.WrestlerPointers, WrestlerPointers, NumWrestlers);
 			}
 		}
 
@@ -99,26 +99,26 @@ namespace VPWStudio.GameSpecific.Revenge
 			{
 				Array.Reverse(wptr);
 			}
-			this.WrestlerPointerStart = BitConverter.ToUInt32(wptr, 0);
+			WrestlerPointerStart = BitConverter.ToUInt32(wptr, 0);
 
 			byte[] numw = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(numw);
 			}
-			this.NumWrestlers = BitConverter.ToUInt16(numw, 0);
-			this.WrestlerPointers = new UInt32[this.NumWrestlers];
+			NumWrestlers = BitConverter.ToUInt16(numw, 0);
+			WrestlerPointers = new UInt32[this.NumWrestlers];
 
 			byte[] head = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(head);
 			}
-			this.HeaderGraphicFile = BitConverter.ToUInt16(head, 0);
+			HeaderGraphicFile = BitConverter.ToUInt16(head, 0);
 
 			// get wrestler pointers
 			long curLoc = br.BaseStream.Position;
-			this.PopulateWrestlerPointers(br);
+			PopulateWrestlerPointers(br);
 			br.BaseStream.Seek(curLoc, SeekOrigin.Begin);
 		}
 
@@ -137,14 +137,14 @@ namespace VPWStudio.GameSpecific.Revenge
 			bw.Write(wresStart);
 
 			// should this be WrestlerPointers.Count instead?
-			byte[] numWres = BitConverter.GetBytes(this.NumWrestlers);
+			byte[] numWres = BitConverter.GetBytes(NumWrestlers);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(numWres);
 			}
 			bw.Write(numWres);
 
-			byte[] headerFile = BitConverter.GetBytes(this.HeaderGraphicFile);
+			byte[] headerFile = BitConverter.GetBytes(HeaderGraphicFile);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(headerFile);
@@ -155,10 +155,10 @@ namespace VPWStudio.GameSpecific.Revenge
 			{
 				// write this.WrestlerPointers at this.WrestlerPointerStart
 				long curLoc = bw.BaseStream.Position;
-				bw.BaseStream.Seek(Z64Rom.PointerToRom(this.WrestlerPointerStart), SeekOrigin.Begin);
-				for (int i = 0; i < this.NumWrestlers; i++)
+				bw.BaseStream.Seek(Z64Rom.PointerToRom(WrestlerPointerStart), SeekOrigin.Begin);
+				for (int i = 0; i < NumWrestlers; i++)
 				{
-					byte[] wptr = BitConverter.GetBytes(this.WrestlerPointers[i]);
+					byte[] wptr = BitConverter.GetBytes(WrestlerPointers[i]);
 					if (BitConverter.IsLittleEndian)
 					{
 						Array.Reverse(wptr);
@@ -177,12 +177,12 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <param name="br">BinaryReader instance with the Input ROM loaded.</param>
 		public void PopulateWrestlerPointers(BinaryReader br)
 		{
-			if (this.WrestlerPointers == null)
+			if (WrestlerPointers == null)
 			{
-				this.WrestlerPointers = new UInt32[this.NumWrestlers];
+				WrestlerPointers = new UInt32[NumWrestlers];
 			}
 
-			br.BaseStream.Seek(Z64Rom.PointerToRom(this.WrestlerPointerStart), SeekOrigin.Begin);
+			br.BaseStream.Seek(Z64Rom.PointerToRom(WrestlerPointerStart), SeekOrigin.Begin);
 			for (int i = 0; i < this.NumWrestlers; i++)
 			{
 				byte[] ptr = br.ReadBytes(4);
@@ -190,7 +190,7 @@ namespace VPWStudio.GameSpecific.Revenge
 				{
 					Array.Reverse(ptr);
 				}
-				this.WrestlerPointers[i] = BitConverter.ToUInt32(ptr, 0);
+				WrestlerPointers[i] = BitConverter.ToUInt32(ptr, 0);
 			}
 		}
 		#endregion
