@@ -1096,8 +1096,6 @@ namespace VPWStudio
 		/// </summary>
 		private void playROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// todo: use the output rom instead of input
-
 			// no project loaded to play ROM of
 			if (Program.CurrentProject == null)
 			{
