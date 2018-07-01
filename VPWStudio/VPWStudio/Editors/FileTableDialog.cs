@@ -409,7 +409,26 @@ namespace VPWStudio
 				FileTable_EditMultiEntryInfoDialog emd = new FileTable_EditMultiEntryInfoDialog(EditEntries);
 				if (emd.ShowDialog() == DialogResult.OK)
 				{
-					Program.ErrorMessageBox("freem hasn't finished this yet, what a shock");
+					if (emd.AnyChangesSubmitted)
+					{
+						// need to go through emd.Entries and update the FileTable
+						foreach (FileTableEntry fte in emd.Entries)
+						{
+							Program.CurrentProject.ProjectFileTable.Entries[fte.FileID].DeepCopy(fte);
+						}
+						// also need to update the DataGridView...
+						// sadly, this is not the most efficient way, but I'm lazy.
+
+						// save previous position
+						ListViewItem prevItem = lvFileList.FocusedItem;
+						int prevIndex = prevItem.Index;
+
+						UpdateEntryList();
+
+						// reload previous position
+						lvFileList.EnsureVisible(prevIndex);
+						lvFileList.FocusedItem = prevItem;
+					}
 				}
 			}
 		}
