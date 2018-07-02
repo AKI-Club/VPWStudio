@@ -297,7 +297,7 @@
 			// 
 			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 113);
-			this.tbOutRomProductCode.MaxLength = 4;
+			this.tbOutRomProductCode.MaxLength = 2;
 			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
 			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
 			this.tbOutRomProductCode.TabIndex = 13;
