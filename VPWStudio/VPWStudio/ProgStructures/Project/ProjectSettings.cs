@@ -89,20 +89,20 @@ namespace VPWStudio
 		/// </summary>
 		public ProjectSettings()
 		{
-			this.ProjectName = "Untitled Project";
-			this.BaseGame = VPWGames.Invalid;
-			this.GameType = SpecificGame.Invalid;
-			this.Authors = String.Empty;
-			this.Notes = String.Empty;
-			this.InputRomPath = String.Empty;
-			this.OutputRomPath = String.Empty;
-			this.ProjectFilesPath = String.Empty;
-			this.AssetsPath = String.Empty;
-			this.UseCustomLocationFile = false;
-			this.CustomLocationFilePath = String.Empty;
-			this.ProjectGSCodeFilePath = String.Empty;
-			this.OutputRomInternalName = String.Empty;
-			this.OutputRomGameCode = String.Empty;
+			ProjectName = "Untitled Project";
+			BaseGame = VPWGames.Invalid;
+			GameType = SpecificGame.Invalid;
+			Authors = String.Empty;
+			Notes = String.Empty;
+			InputRomPath = String.Empty;
+			OutputRomPath = String.Empty;
+			ProjectFilesPath = String.Empty;
+			AssetsPath = String.Empty;
+			UseCustomLocationFile = false;
+			CustomLocationFilePath = String.Empty;
+			ProjectGSCodeFilePath = String.Empty;
+			OutputRomInternalName = String.Empty;
+			OutputRomGameCode = String.Empty;
 		}
 
 		/// <summary>
@@ -119,20 +119,20 @@ namespace VPWStudio
 		/// <param name="_gscPath">GameShark Code File path</param>
 		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath, string _gscPath)
 		{
-			this.ProjectName = _name;
-			this.BaseGame = _baseGame;
-			this.GameType = _gameType;
-			this.Authors = _authors;
-			this.Notes = _notes;
-			this.InputRomPath = _inROM;
-			this.OutputRomPath = _outROM;
-			this.ProjectFilesPath = String.Empty;
-			this.AssetsPath = String.Empty;
-			this.UseCustomLocationFile = !_locPath.Equals(String.Empty);
-			this.CustomLocationFilePath = _locPath;
-			this.ProjectGSCodeFilePath = _gscPath;
-			this.OutputRomInternalName = String.Empty;
-			this.OutputRomGameCode = String.Empty;
+			ProjectName = _name;
+			BaseGame = _baseGame;
+			GameType = _gameType;
+			Authors = _authors;
+			Notes = _notes;
+			InputRomPath = _inROM;
+			OutputRomPath = _outROM;
+			ProjectFilesPath = String.Empty;
+			AssetsPath = String.Empty;
+			UseCustomLocationFile = !_locPath.Equals(String.Empty);
+			CustomLocationFilePath = _locPath;
+			ProjectGSCodeFilePath = _gscPath;
+			OutputRomInternalName = String.Empty;
+			OutputRomGameCode = String.Empty;
 		}
 
 		/// <summary>
@@ -141,7 +141,7 @@ namespace VPWStudio
 		/// <param name="_src"></param>
 		public ProjectSettings(ProjectSettings _src)
 		{
-			this.DeepCopy(_src);
+			DeepCopy(_src);
 		}
 
 		/// <summary>
@@ -150,20 +150,20 @@ namespace VPWStudio
 		/// <param name="_src"></param>
 		public void DeepCopy(ProjectSettings _src)
 		{
-			this.ProjectName = _src.ProjectName;
-			this.BaseGame = _src.BaseGame;
-			this.GameType = _src.GameType;
-			this.Authors = _src.Authors;
-			this.Notes = _src.Notes;
-			this.InputRomPath = _src.InputRomPath;
-			this.OutputRomPath = _src.OutputRomPath;
-			this.ProjectFilesPath = _src.ProjectFilesPath;
-			this.AssetsPath = _src.AssetsPath;
-			this.UseCustomLocationFile = _src.UseCustomLocationFile;
-			this.CustomLocationFilePath = _src.CustomLocationFilePath;
-			this.ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
-			this.OutputRomInternalName = _src.OutputRomInternalName;
-			this.OutputRomGameCode = _src.OutputRomGameCode;
+			ProjectName = _src.ProjectName;
+			BaseGame = _src.BaseGame;
+			GameType = _src.GameType;
+			Authors = _src.Authors;
+			Notes = _src.Notes;
+			InputRomPath = _src.InputRomPath;
+			OutputRomPath = _src.OutputRomPath;
+			ProjectFilesPath = _src.ProjectFilesPath;
+			AssetsPath = _src.AssetsPath;
+			UseCustomLocationFile = _src.UseCustomLocationFile;
+			CustomLocationFilePath = _src.CustomLocationFilePath;
+			ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
+			OutputRomInternalName = _src.OutputRomInternalName;
+			OutputRomGameCode = _src.OutputRomGameCode;
 		}
 	}
 }
