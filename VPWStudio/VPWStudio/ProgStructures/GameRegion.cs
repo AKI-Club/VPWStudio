@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace VPWStudio
 {
+	/// <summary>
+	/// Possible game regions, and their codes.
+	/// </summary>
 	public enum GameRegion
 	{
 		Japan = 'J',
@@ -29,6 +32,9 @@ namespace VPWStudio
 
 	public static class GameRegionInfo
 	{
+		/// <summary>
+		/// Map GameRegion values to human-readable strings.
+		/// </summary>
 		public static Dictionary<GameRegion, string> GameRegionNames = new Dictionary<GameRegion, string>()
 		{
 			{ GameRegion.Japan, "Japan" },
@@ -47,9 +53,9 @@ namespace VPWStudio
 			{ GameRegion.Australia, "Australia" },
 			{ GameRegion.Gateway_NTSC, "Gateway 64 (NTSC)" },
 			{ GameRegion.Gateway_PAL, "Gateway 64 (PAL)" },
-			{ GameRegion.OtherX, "Other (X)" },
-			{ GameRegion.OtherY, "Other (Y)" },
-			{ GameRegion.OtherZ, "Other (Z)" },
+			{ GameRegion.OtherX, "Other X" },
+			{ GameRegion.OtherY, "Other Y" },
+			{ GameRegion.OtherZ, "Other Z" },
 			{ GameRegion.Custom, "(custom)" }
 		};
 	}
