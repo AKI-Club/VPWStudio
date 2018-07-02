@@ -58,12 +58,14 @@
 			this.tbHeight = new System.Windows.Forms.TextBox();
 			this.tbWeight = new System.Windows.Forms.TextBox();
 			this.tlpProfile = new System.Windows.Forms.TableLayoutPanel();
-			this.tbProfileIndex = new System.Windows.Forms.TextBox();
 			this.buttonProfile = new System.Windows.Forms.Button();
+			this.tbProfileIndex = new System.Windows.Forms.TextBox();
+			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
 			this.tlpProfile.SuspendLayout();
+			this.gbWrestlers.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -71,10 +73,10 @@
 			this.lbWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbWrestlers.FormattingEnabled = true;
-			this.lbWrestlers.Location = new System.Drawing.Point(12, 12);
+			this.lbWrestlers.Location = new System.Drawing.Point(6, 19);
 			this.lbWrestlers.Name = "lbWrestlers";
 			this.lbWrestlers.ScrollAlwaysVisible = true;
-			this.lbWrestlers.Size = new System.Drawing.Size(128, 394);
+			this.lbWrestlers.Size = new System.Drawing.Size(119, 368);
 			this.lbWrestlers.TabIndex = 0;
 			this.lbWrestlers.SelectedIndexChanged += new System.EventHandler(this.lbWrestlers_SelectedIndexChanged);
 			// 
@@ -134,7 +136,7 @@
 			this.tbWrestlerID4.Name = "tbWrestlerID4";
 			this.tbWrestlerID4.ReadOnly = true;
 			this.tbWrestlerID4.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerID4.TabIndex = 0;
+			this.tbWrestlerID4.TabIndex = 1;
 			// 
 			// tbWrestlerID2
 			// 
@@ -143,7 +145,7 @@
 			this.tbWrestlerID2.Name = "tbWrestlerID2";
 			this.tbWrestlerID2.ReadOnly = true;
 			this.tbWrestlerID2.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerID2.TabIndex = 1;
+			this.tbWrestlerID2.TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -152,8 +154,8 @@
 			this.label1.Location = new System.Drawing.Point(3, 10);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(97, 13);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Wrestler ID4";
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Wrestler ID&4";
 			// 
 			// label2
 			// 
@@ -162,8 +164,8 @@
 			this.label2.Location = new System.Drawing.Point(3, 43);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(97, 13);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Wrestler ID2";
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Wrestler ID&2";
 			// 
 			// label3
 			// 
@@ -172,8 +174,8 @@
 			this.label3.Location = new System.Drawing.Point(3, 76);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(97, 13);
-			this.label3.TabIndex = 8;
-			this.label3.Text = "Theme Music";
+			this.label3.TabIndex = 3;
+			this.label3.Text = "Theme &Music";
 			// 
 			// label4
 			// 
@@ -182,8 +184,8 @@
 			this.label4.Location = new System.Drawing.Point(3, 109);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(97, 13);
-			this.label4.TabIndex = 9;
-			this.label4.Text = "Name Call";
+			this.label4.TabIndex = 4;
+			this.label4.Text = "&Name Call";
 			// 
 			// cbThemeMusic
 			// 
@@ -207,7 +209,7 @@
 			this.cbThemeMusic.Location = new System.Drawing.Point(106, 72);
 			this.cbThemeMusic.Name = "cbThemeMusic";
 			this.cbThemeMusic.Size = new System.Drawing.Size(237, 21);
-			this.cbThemeMusic.TabIndex = 16;
+			this.cbThemeMusic.TabIndex = 3;
 			// 
 			// cbNameCall
 			// 
@@ -217,7 +219,7 @@
 			this.cbNameCall.Location = new System.Drawing.Point(106, 105);
 			this.cbNameCall.Name = "cbNameCall";
 			this.cbNameCall.Size = new System.Drawing.Size(237, 21);
-			this.cbNameCall.TabIndex = 17;
+			this.cbNameCall.TabIndex = 4;
 			// 
 			// label10
 			// 
@@ -226,8 +228,8 @@
 			this.label10.Location = new System.Drawing.Point(3, 374);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(97, 13);
-			this.label10.TabIndex = 15;
-			this.label10.Text = "Profile Index";
+			this.label10.TabIndex = 14;
+			this.label10.Text = "Pro&file Index";
 			// 
 			// label9
 			// 
@@ -236,8 +238,8 @@
 			this.label9.Location = new System.Drawing.Point(3, 340);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(97, 13);
-			this.label9.TabIndex = 14;
-			this.label9.Text = "Appearance Index";
+			this.label9.TabIndex = 13;
+			this.label9.Text = "Appea&rance Index";
 			// 
 			// tbAppearanceIndex
 			// 
@@ -246,7 +248,7 @@
 			this.tbAppearanceIndex.Name = "tbAppearanceIndex";
 			this.tbAppearanceIndex.ReadOnly = true;
 			this.tbAppearanceIndex.Size = new System.Drawing.Size(237, 20);
-			this.tbAppearanceIndex.TabIndex = 4;
+			this.tbAppearanceIndex.TabIndex = 13;
 			// 
 			// label8
 			// 
@@ -255,8 +257,8 @@
 			this.label8.Location = new System.Drawing.Point(3, 307);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(97, 13);
-			this.label8.TabIndex = 13;
-			this.label8.Text = "Params Index";
+			this.label8.TabIndex = 11;
+			this.label8.Text = "&Params Index";
 			// 
 			// label7
 			// 
@@ -265,8 +267,8 @@
 			this.label7.Location = new System.Drawing.Point(3, 274);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(97, 13);
-			this.label7.TabIndex = 12;
-			this.label7.Text = "Moveset Index";
+			this.label7.TabIndex = 9;
+			this.label7.Text = "&Moveset Index";
 			// 
 			// tlpParams
 			// 
@@ -289,7 +291,7 @@
 			this.buttonParams.Location = new System.Drawing.Point(168, 3);
 			this.buttonParams.Name = "buttonParams";
 			this.buttonParams.Size = new System.Drawing.Size(66, 21);
-			this.buttonParams.TabIndex = 5;
+			this.buttonParams.TabIndex = 12;
 			this.buttonParams.Text = "View/Edit";
 			this.buttonParams.UseVisualStyleBackColor = true;
 			this.buttonParams.Click += new System.EventHandler(this.buttonParams_Click);
@@ -301,7 +303,7 @@
 			this.tbParamsIndex.Name = "tbParamsIndex";
 			this.tbParamsIndex.ReadOnly = true;
 			this.tbParamsIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbParamsIndex.TabIndex = 4;
+			this.tbParamsIndex.TabIndex = 11;
 			// 
 			// tlpMoveset
 			// 
@@ -325,7 +327,7 @@
 			this.tbMovesetIndex.Name = "tbMovesetIndex";
 			this.tbMovesetIndex.ReadOnly = true;
 			this.tbMovesetIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbMovesetIndex.TabIndex = 3;
+			this.tbMovesetIndex.TabIndex = 9;
 			// 
 			// buttonMoveset
 			// 
@@ -333,7 +335,7 @@
 			this.buttonMoveset.Location = new System.Drawing.Point(168, 3);
 			this.buttonMoveset.Name = "buttonMoveset";
 			this.buttonMoveset.Size = new System.Drawing.Size(66, 21);
-			this.buttonMoveset.TabIndex = 4;
+			this.buttonMoveset.TabIndex = 10;
 			this.buttonMoveset.Text = "View/Edit";
 			this.buttonMoveset.UseVisualStyleBackColor = true;
 			this.buttonMoveset.Click += new System.EventHandler(this.buttonMoveset_Click);
@@ -345,8 +347,8 @@
 			this.label6.Location = new System.Drawing.Point(3, 241);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(97, 13);
-			this.label6.TabIndex = 11;
-			this.label6.Text = "Voice B";
+			this.label6.TabIndex = 8;
+			this.label6.Text = "Voice &B";
 			// 
 			// label5
 			// 
@@ -355,8 +357,8 @@
 			this.label5.Location = new System.Drawing.Point(3, 208);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(97, 13);
-			this.label5.TabIndex = 10;
-			this.label5.Text = "Voice A";
+			this.label5.TabIndex = 7;
+			this.label5.Text = "Voice &A";
 			// 
 			// cbVoiceB
 			// 
@@ -431,7 +433,7 @@
 			this.cbVoiceB.Location = new System.Drawing.Point(106, 237);
 			this.cbVoiceB.Name = "cbVoiceB";
 			this.cbVoiceB.Size = new System.Drawing.Size(237, 21);
-			this.cbVoiceB.TabIndex = 19;
+			this.cbVoiceB.TabIndex = 8;
 			// 
 			// cbVoiceA
 			// 
@@ -506,7 +508,7 @@
 			this.cbVoiceA.Location = new System.Drawing.Point(106, 204);
 			this.cbVoiceA.Name = "cbVoiceA";
 			this.cbVoiceA.Size = new System.Drawing.Size(237, 21);
-			this.cbVoiceA.TabIndex = 18;
+			this.cbVoiceA.TabIndex = 7;
 			// 
 			// labelHeight
 			// 
@@ -515,8 +517,8 @@
 			this.labelHeight.Location = new System.Drawing.Point(3, 142);
 			this.labelHeight.Name = "labelHeight";
 			this.labelHeight.Size = new System.Drawing.Size(97, 13);
-			this.labelHeight.TabIndex = 22;
-			this.labelHeight.Text = "Height";
+			this.labelHeight.TabIndex = 5;
+			this.labelHeight.Text = "&Height";
 			// 
 			// label12
 			// 
@@ -525,8 +527,8 @@
 			this.label12.Location = new System.Drawing.Point(3, 175);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(97, 13);
-			this.label12.TabIndex = 23;
-			this.label12.Text = "Weight";
+			this.label12.TabIndex = 6;
+			this.label12.Text = "W&eight";
 			// 
 			// tbHeight
 			// 
@@ -535,7 +537,7 @@
 			this.tbHeight.Name = "tbHeight";
 			this.tbHeight.ReadOnly = true;
 			this.tbHeight.Size = new System.Drawing.Size(237, 20);
-			this.tbHeight.TabIndex = 24;
+			this.tbHeight.TabIndex = 5;
 			// 
 			// tbWeight
 			// 
@@ -544,7 +546,7 @@
 			this.tbWeight.Name = "tbWeight";
 			this.tbWeight.ReadOnly = true;
 			this.tbWeight.Size = new System.Drawing.Size(237, 20);
-			this.tbWeight.TabIndex = 25;
+			this.tbWeight.TabIndex = 6;
 			// 
 			// tlpProfile
 			// 
@@ -561,6 +563,17 @@
 			this.tlpProfile.Size = new System.Drawing.Size(237, 30);
 			this.tlpProfile.TabIndex = 26;
 			// 
+			// buttonProfile
+			// 
+			this.buttonProfile.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonProfile.Location = new System.Drawing.Point(168, 3);
+			this.buttonProfile.Name = "buttonProfile";
+			this.buttonProfile.Size = new System.Drawing.Size(66, 24);
+			this.buttonProfile.TabIndex = 15;
+			this.buttonProfile.Text = "View/Edit";
+			this.buttonProfile.UseVisualStyleBackColor = true;
+			this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
+			// 
 			// tbProfileIndex
 			// 
 			this.tbProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -568,26 +581,25 @@
 			this.tbProfileIndex.Name = "tbProfileIndex";
 			this.tbProfileIndex.ReadOnly = true;
 			this.tbProfileIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbProfileIndex.TabIndex = 6;
+			this.tbProfileIndex.TabIndex = 14;
 			// 
-			// buttonProfile
+			// gbWrestlers
 			// 
-			this.buttonProfile.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonProfile.Location = new System.Drawing.Point(168, 3);
-			this.buttonProfile.Name = "buttonProfile";
-			this.buttonProfile.Size = new System.Drawing.Size(66, 24);
-			this.buttonProfile.TabIndex = 7;
-			this.buttonProfile.Text = "View/Edit";
-			this.buttonProfile.UseVisualStyleBackColor = true;
-			this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
+			this.gbWrestlers.Controls.Add(this.lbWrestlers);
+			this.gbWrestlers.Location = new System.Drawing.Point(12, 12);
+			this.gbWrestlers.Name = "gbWrestlers";
+			this.gbWrestlers.Size = new System.Drawing.Size(131, 399);
+			this.gbWrestlers.TabIndex = 0;
+			this.gbWrestlers.TabStop = false;
+			this.gbWrestlers.Text = "&Wrestlers";
 			// 
 			// WrestlerMain_VPW2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(504, 423);
+			this.Controls.Add(this.gbWrestlers);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.Controls.Add(this.lbWrestlers);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "WrestlerMain_VPW2";
@@ -601,6 +613,7 @@
 			this.tlpMoveset.PerformLayout();
 			this.tlpProfile.ResumeLayout(false);
 			this.tlpProfile.PerformLayout();
+			this.gbWrestlers.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -639,5 +652,6 @@
 		private System.Windows.Forms.TableLayoutPanel tlpProfile;
 		private System.Windows.Forms.Button buttonProfile;
 		private System.Windows.Forms.TextBox tbProfileIndex;
+		private System.Windows.Forms.GroupBox gbWrestlers;
 	}
 }

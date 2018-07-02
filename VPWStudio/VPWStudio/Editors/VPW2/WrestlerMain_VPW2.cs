@@ -101,7 +101,8 @@ namespace VPWStudio.Editors.VPW2
 			for (int i = 0; i < this.WrestlerDefs.Count; i++)
 			{
 				WrestlerDefinition wd = this.WrestlerDefs[i];
-				lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
+				// profile index + 1 = short name entry
+				lbWrestlers.Items.Add(String.Format("{0:X4} {1}", wd.WrestlerID4, DefaultNames.Entries[wd.ProfileIndex+1].Text));
 			}
 			lbWrestlers.EndUpdate();
 		}
