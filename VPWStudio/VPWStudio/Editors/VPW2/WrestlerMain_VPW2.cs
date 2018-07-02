@@ -44,8 +44,7 @@ namespace VPWStudio.Editors.VPW2
 
 			outStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader outReader = new BinaryReader(outStream);
-			DefaultNames = new AkiText();
-			DefaultNames.ReadData(outReader);
+			DefaultNames = new AkiText(outReader);
 
 			outReader.Close();
 			outWriter.Close();
