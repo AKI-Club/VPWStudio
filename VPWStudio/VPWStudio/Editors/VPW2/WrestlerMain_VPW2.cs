@@ -115,7 +115,7 @@ namespace VPWStudio.Editors.VPW2
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
-			// name call
+			cbNameCall.SelectedIndex = wdef.NameCall;
 			tbHeight.Text = String.Format("{0:X2}", wdef.Height);
 			tbWeight.Text = String.Format("{0:X2}", wdef.Weight);
 			cbVoiceA.SelectedIndex = wdef.Voice1;
