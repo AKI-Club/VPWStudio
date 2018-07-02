@@ -29,6 +29,22 @@ td{
 	padding: 0.25em;
 }
 
+dt{
+	padding-top:0.2em;
+	padding-bottom:0.1em;
+}
+
+dd{
+	padding-top:0.25em;
+	padding-bottom:1em;
+}
+
+code{
+	background-color:#ddd;
+	font-family:Consolas, Courier, monospace;
+	font-size:105%;
+}
+
 .notsupported{
 	background-color: #F88;
 }

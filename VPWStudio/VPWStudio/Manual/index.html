@@ -8,8 +8,9 @@
 
 <body>
 <div id="header">
-<h1>VPW Studio (very temporary) Manual</h1>
-<p>Version 0.0.0.0 (no date)<br />Program and Manual by freem</p>
+<h1>VPW Studio <small>(incomplete)</small> Manual</h1>
+<p>Version 0.0.0.0 (no date)<br />Program and Manual by freem<br />
+<a href="http://vpw.ajworld.net/">http://vpw.ajworld.net/</a></p>
 </div>
 
 <hr />
@@ -36,6 +37,8 @@
 	<li><a href="#GameSharkCodeTool">GameShark Code Tool</a></li>
 	</ol>
 </li>
+<li><a href="#DangerZone">Danger Zone</a></li>
+<li><a href="#Credits">Credits</a></li>
 </ol>
 
 <h3>Appendices</h3>
@@ -142,13 +145,17 @@ Virtual Pro-Wrestling series.</p>
 <p>Note that not every game supports every portion of VPW Studio. Supported games are
 listed in the specific sections for each tool.</p>
 
+<p>Of the remaining AKI wrestling games, it's more likely the PlayStation 1 games
+(Virtual Pro-Wrestling and WCW vs. the World) will be supported before games on
+later systems.</p>
+
 <hr />
 <h2><a name="Requirements">Requirements and Notes</a></h2>
 <p>(todo)</p>
 
 <h3>Requirements</h3>
 <ul>
-<li>.NET Framework 4.6.1 or higher</li>
+<li>.NET Framework 4.6.1 or higher.</li>
 <li>Any of the above listed games in Z64 ROM format. No other N64 ROM formats are
 supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 <a href="http://ucon64.sourceforge.net/">uCON64</a>.</li>
@@ -166,7 +173,8 @@ not implemented yet.</p>
 
 <hr />
 <h2><a name="ProgramOptions">Program Options</a></h2>
-<p>Tools &rarr; Program Options (todo)</p>
+<p>VPW Studio has a small set of options, primarily targeted towards the building
+and playing process. Select Tools &rarr; Program Options to open the dialog.</p>
 
 <h3>Emulator</h3>
 <p>The "Emulator" section of the Program Options dialog allows you to set up an
@@ -177,16 +185,16 @@ emulator to use for testing the changed ROM.</p>
 </ul>
 
 <h3>Build</h3>
-<p>The "Build" portion of the Program Options dialog only contains an option to modify
-the verbosity of the build log. The default option is "Normal".</p>
+<p>The "Build" portion of the Program Options dialog currently only contains an
+option to modify the verbosity of the build log. The default option is "Normal".</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
-<p>VPW Studio primarily operates on the concept of Project Files. The use of project
-files stems from the number of total conversion hacks created by the AKI hacking
-communities.</p>
+<p>VPW Studio primarily operates on the concept of Project Files. This method of
+project management was chosen due to the number of total conversion hacks created
+by the AKI hacking communities.</p>
 
-<p>(more todo)</p>
+<p>Project Files have the extension <code>.vpwsproj</code>. (more todo)</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -205,8 +213,8 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 custom Location File. Helpful if you've already made changes to the base ROM that
 result in differences from the default Location File for the specified Game Type.</li>
 </ul>
-<p>All of these may be changed later in the Project Settings dialog. Upon pressing
-OK, you will be sent back to the main screen.</p>
+<p>All of these may be changed later in the <a href="#ProjectProperties">Project
+Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen.</p>
 
 <h3>Open an Existing Project</h3>
 <p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.
@@ -228,17 +236,38 @@ store any files that are in game-native formats.</p>
 <p>"Save Project As" is similar to saving normally, but it always asks for a filename
 and doesn't automatically create the "Assets" and "ProjectFiles" directories.</p>
 
-<h3>Project Properties</h3>
-<p>"Project &rarr; Project Properties" (todo)</p>
+<h3><a name="ProjectProperties">Project Properties</a></h3>
+<p>If you need to edit any of the project's properties, you can do so from
+Project &rarr; Project Properties. While some of these options are set from
+creating a new project, others can only be changed in this dialog.</p>
 
 <h4>Main Tab</h4>
 <img src="./img/project_properties-main.png" title="Project Properties - Main Tab" />
+<p>The options in this section are the same as the matching entries in the New Project
+dialog.</p>
 
 <h4>Output ROM</h4>
 <img src="./img/project_properties-outputrom.png" title="Project Properties - Output ROM Tab" />
+<ul>
+<li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
+<li><strong>Internal Game Name</strong> &ndash; Set the internal game name.</li>
+<li><strong>Product Code</strong> &ndash; Leave this alone unless you know what you're doing.</li>
+</ul>
+
+<p>Notes on the Product Code:</p>
+<ul>
+<li>Product code <strong>MUST</strong> start with 'N'. There are no known 64DD versions of any of the AKI wrestling games.</li>
+<li>The last letter of the product code defines the release region.</li>
+</ul>
 
 <h4>Project Files</h4>
 <img src="./img/project_properties-projectfiles.png" title="Project Properties - Project Files Tab" />
+<ul>
+<li><strong>Project Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
+<li><strong>Asset Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
+<li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes.</li>
+<li><strong>GameShark Code File</strong> &ndash; Path to the GameShark code file for this project.</li>
+</ul>
 
 <h3>Build ROM</h3>
 <p>To build a ROM with the changes you've made, select "Build ROM" from the "Project" menu.
@@ -247,7 +276,7 @@ This will bring up a build log window, which provides updates on the build proce
 <h3>Play ROM</h3>
 <p>If you want to test the changes in an emulator, select "Play ROM" from the "Project" menu.
 If the changed ROM hasn't been built yet, it will build the ROM before playing it.</p>
-<p>For this to work, you must set up the emulator details in the Program Options section.</p>
+<p>For this to work, you must set up the emulator details in the <a href="#ProgramOptions">Program Options</a> section.</p>
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
@@ -258,7 +287,7 @@ If the changed ROM hasn't been built yet, it will build the ROM before playing i
 <p>(todo)</p>
 
 <p>For WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, and WCW/nWo Revenge, this
-doubles as the Story Mode editor.</p>
+doubles as the Story Mode/Champion Road editor.</p>
 
 <hr />
 <h2><a name="Costumes">Costumes</a></h2>
@@ -266,7 +295,6 @@ doubles as the Story Mode editor.</p>
 
 <hr />
 <h2><a name="FileTable">File Table</a></h2>
-
 <p>The File Table editor, accessed from "Project &rarr; File Table", allows you to
 view and edit the entries in the game's File Table. A large portion of the game's
 data is found in the File Table, including wrestler movesets, parameters, move data,
@@ -381,6 +409,29 @@ textures, palettes, models, and more.</p>
 <p>(todo)</p>
 
 <hr />
+<h2><a name="DangerZone">Danger Zone</a></h2>
+<p>The Danger Zone is a collection of tools that is not necessarily meant for
+end users. These tools are typically rough and unfinished, and usually serve as
+the base for the final, more polished features.</p>
+
+<p>The list of items and what they do, since it's not always obvious:</p>
+<ul>
+<li><strong>lzss compress test</strong> &ndash; LZSS compress a file. File is exported as <code>(filename).lzss</code>.</li>
+<li><strong>lzss decompress test</strong> &ndash; Decompress an LZSS file. File is exported as <code>(filename).bin</code>.</li>
+<li><strong>name encoder/decoder</strong> &ndash; Work in progress tool for encoding and decoding the name format used from WCW vs. nWo World Tour through WWF WrestleMania 2000.</li>
+<li><strong>toki 1 test (vpw2 only)</strong> &ndash; Dumps Toki1 info. Requires an open VPW2 project.</li>
+<li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format.</li>
+<li><strong>png to ci4</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
+<li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
+<li><strong>png to menubg</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
+<li><strong>vpw2 face test</strong> &ndash; Attempts to render faces from VPW2 given specific values. Requires an open VPW2 project.</li>
+</ul>
+
+<hr />
+<h2><a name="Credits">Credits</a></h2>
+<p>(todo)</p>
+
+<hr />
 <h2><a name="Glossary">Appendix A: Glossary</a></h2>
 <p>The Virtual Pro-Wrestling series hacking communities use jargon to refer to
 some items and concepts. These terms can be confusing when first encountered.
@@ -393,6 +444,15 @@ immediately obvious.</p>
 
 <dt>Broad Action</dt>
 <dd>The general action the wrestler is performing.</dd>
+
+<dt>CI4</dt>
+<dd>Nintendo 64's 16 color texture format.</dd>
+
+<dt>CI8</dt>
+<dd>Nintendo 64's 256 color texture format.</dd>
+
+<dt>I4</dt>
+<dd>Nintendo 64's 16 value intensity texture format.</dd>
 
 <dt>ID2</dt>
 <dd>One of the two ways of identifying a wrestler. This value is one byte
