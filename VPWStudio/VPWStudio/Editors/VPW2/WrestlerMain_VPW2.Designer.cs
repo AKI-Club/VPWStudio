@@ -136,7 +136,7 @@
 			this.tbWrestlerID4.Name = "tbWrestlerID4";
 			this.tbWrestlerID4.ReadOnly = true;
 			this.tbWrestlerID4.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerID4.TabIndex = 1;
+			this.tbWrestlerID4.TabIndex = 2;
 			// 
 			// tbWrestlerID2
 			// 
@@ -145,7 +145,7 @@
 			this.tbWrestlerID2.Name = "tbWrestlerID2";
 			this.tbWrestlerID2.ReadOnly = true;
 			this.tbWrestlerID2.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerID2.TabIndex = 2;
+			this.tbWrestlerID2.TabIndex = 4;
 			// 
 			// label1
 			// 
@@ -164,7 +164,7 @@
 			this.label2.Location = new System.Drawing.Point(3, 43);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(97, 13);
-			this.label2.TabIndex = 2;
+			this.label2.TabIndex = 3;
 			this.label2.Text = "Wrestler ID&2";
 			// 
 			// label3
@@ -174,7 +174,7 @@
 			this.label3.Location = new System.Drawing.Point(3, 76);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(97, 13);
-			this.label3.TabIndex = 3;
+			this.label3.TabIndex = 5;
 			this.label3.Text = "Theme &Music";
 			// 
 			// label4
@@ -184,7 +184,7 @@
 			this.label4.Location = new System.Drawing.Point(3, 109);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(97, 13);
-			this.label4.TabIndex = 4;
+			this.label4.TabIndex = 7;
 			this.label4.Text = "&Name Call";
 			// 
 			// cbThemeMusic
@@ -209,7 +209,7 @@
 			this.cbThemeMusic.Location = new System.Drawing.Point(106, 72);
 			this.cbThemeMusic.Name = "cbThemeMusic";
 			this.cbThemeMusic.Size = new System.Drawing.Size(237, 21);
-			this.cbThemeMusic.TabIndex = 3;
+			this.cbThemeMusic.TabIndex = 6;
 			// 
 			// cbNameCall
 			// 
@@ -219,7 +219,7 @@
 			this.cbNameCall.Location = new System.Drawing.Point(106, 105);
 			this.cbNameCall.Name = "cbNameCall";
 			this.cbNameCall.Size = new System.Drawing.Size(237, 21);
-			this.cbNameCall.TabIndex = 4;
+			this.cbNameCall.TabIndex = 8;
 			// 
 			// label10
 			// 
@@ -228,7 +228,7 @@
 			this.label10.Location = new System.Drawing.Point(3, 374);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(97, 13);
-			this.label10.TabIndex = 14;
+			this.label10.TabIndex = 25;
 			this.label10.Text = "Pro&file Index";
 			// 
 			// label9
@@ -238,7 +238,7 @@
 			this.label9.Location = new System.Drawing.Point(3, 340);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(97, 13);
-			this.label9.TabIndex = 13;
+			this.label9.TabIndex = 23;
 			this.label9.Text = "Appea&rance Index";
 			// 
 			// tbAppearanceIndex
@@ -248,7 +248,7 @@
 			this.tbAppearanceIndex.Name = "tbAppearanceIndex";
 			this.tbAppearanceIndex.ReadOnly = true;
 			this.tbAppearanceIndex.Size = new System.Drawing.Size(237, 20);
-			this.tbAppearanceIndex.TabIndex = 13;
+			this.tbAppearanceIndex.TabIndex = 24;
 			// 
 			// label8
 			// 
@@ -257,7 +257,7 @@
 			this.label8.Location = new System.Drawing.Point(3, 307);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(97, 13);
-			this.label8.TabIndex = 11;
+			this.label8.TabIndex = 20;
 			this.label8.Text = "&Params Index";
 			// 
 			// label7
@@ -267,8 +267,8 @@
 			this.label7.Location = new System.Drawing.Point(3, 274);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(97, 13);
-			this.label7.TabIndex = 9;
-			this.label7.Text = "&Moveset Index";
+			this.label7.TabIndex = 17;
+			this.label7.Text = "Mo&veset Index";
 			// 
 			// tlpParams
 			// 
@@ -291,7 +291,7 @@
 			this.buttonParams.Location = new System.Drawing.Point(168, 3);
 			this.buttonParams.Name = "buttonParams";
 			this.buttonParams.Size = new System.Drawing.Size(66, 21);
-			this.buttonParams.TabIndex = 12;
+			this.buttonParams.TabIndex = 22;
 			this.buttonParams.Text = "View/Edit";
 			this.buttonParams.UseVisualStyleBackColor = true;
 			this.buttonParams.Click += new System.EventHandler(this.buttonParams_Click);
@@ -303,7 +303,7 @@
 			this.tbParamsIndex.Name = "tbParamsIndex";
 			this.tbParamsIndex.ReadOnly = true;
 			this.tbParamsIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbParamsIndex.TabIndex = 11;
+			this.tbParamsIndex.TabIndex = 21;
 			// 
 			// tlpMoveset
 			// 
@@ -327,7 +327,7 @@
 			this.tbMovesetIndex.Name = "tbMovesetIndex";
 			this.tbMovesetIndex.ReadOnly = true;
 			this.tbMovesetIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbMovesetIndex.TabIndex = 9;
+			this.tbMovesetIndex.TabIndex = 18;
 			// 
 			// buttonMoveset
 			// 
@@ -335,7 +335,7 @@
 			this.buttonMoveset.Location = new System.Drawing.Point(168, 3);
 			this.buttonMoveset.Name = "buttonMoveset";
 			this.buttonMoveset.Size = new System.Drawing.Size(66, 21);
-			this.buttonMoveset.TabIndex = 10;
+			this.buttonMoveset.TabIndex = 19;
 			this.buttonMoveset.Text = "View/Edit";
 			this.buttonMoveset.UseVisualStyleBackColor = true;
 			this.buttonMoveset.Click += new System.EventHandler(this.buttonMoveset_Click);
@@ -347,7 +347,7 @@
 			this.label6.Location = new System.Drawing.Point(3, 241);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(97, 13);
-			this.label6.TabIndex = 8;
+			this.label6.TabIndex = 15;
 			this.label6.Text = "Voice &B";
 			// 
 			// label5
@@ -357,7 +357,7 @@
 			this.label5.Location = new System.Drawing.Point(3, 208);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(97, 13);
-			this.label5.TabIndex = 7;
+			this.label5.TabIndex = 13;
 			this.label5.Text = "Voice &A";
 			// 
 			// cbVoiceB
@@ -433,7 +433,7 @@
 			this.cbVoiceB.Location = new System.Drawing.Point(106, 237);
 			this.cbVoiceB.Name = "cbVoiceB";
 			this.cbVoiceB.Size = new System.Drawing.Size(237, 21);
-			this.cbVoiceB.TabIndex = 8;
+			this.cbVoiceB.TabIndex = 16;
 			// 
 			// cbVoiceA
 			// 
@@ -508,7 +508,7 @@
 			this.cbVoiceA.Location = new System.Drawing.Point(106, 204);
 			this.cbVoiceA.Name = "cbVoiceA";
 			this.cbVoiceA.Size = new System.Drawing.Size(237, 21);
-			this.cbVoiceA.TabIndex = 7;
+			this.cbVoiceA.TabIndex = 14;
 			// 
 			// labelHeight
 			// 
@@ -517,7 +517,7 @@
 			this.labelHeight.Location = new System.Drawing.Point(3, 142);
 			this.labelHeight.Name = "labelHeight";
 			this.labelHeight.Size = new System.Drawing.Size(97, 13);
-			this.labelHeight.TabIndex = 5;
+			this.labelHeight.TabIndex = 9;
 			this.labelHeight.Text = "&Height";
 			// 
 			// label12
@@ -527,7 +527,7 @@
 			this.label12.Location = new System.Drawing.Point(3, 175);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(97, 13);
-			this.label12.TabIndex = 6;
+			this.label12.TabIndex = 11;
 			this.label12.Text = "W&eight";
 			// 
 			// tbHeight
@@ -537,7 +537,7 @@
 			this.tbHeight.Name = "tbHeight";
 			this.tbHeight.ReadOnly = true;
 			this.tbHeight.Size = new System.Drawing.Size(237, 20);
-			this.tbHeight.TabIndex = 5;
+			this.tbHeight.TabIndex = 10;
 			// 
 			// tbWeight
 			// 
@@ -546,7 +546,7 @@
 			this.tbWeight.Name = "tbWeight";
 			this.tbWeight.ReadOnly = true;
 			this.tbWeight.Size = new System.Drawing.Size(237, 20);
-			this.tbWeight.TabIndex = 6;
+			this.tbWeight.TabIndex = 12;
 			// 
 			// tlpProfile
 			// 
@@ -569,7 +569,7 @@
 			this.buttonProfile.Location = new System.Drawing.Point(168, 3);
 			this.buttonProfile.Name = "buttonProfile";
 			this.buttonProfile.Size = new System.Drawing.Size(66, 24);
-			this.buttonProfile.TabIndex = 15;
+			this.buttonProfile.TabIndex = 27;
 			this.buttonProfile.Text = "View/Edit";
 			this.buttonProfile.UseVisualStyleBackColor = true;
 			this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
@@ -581,7 +581,7 @@
 			this.tbProfileIndex.Name = "tbProfileIndex";
 			this.tbProfileIndex.ReadOnly = true;
 			this.tbProfileIndex.Size = new System.Drawing.Size(159, 20);
-			this.tbProfileIndex.TabIndex = 14;
+			this.tbProfileIndex.TabIndex = 26;
 			// 
 			// gbWrestlers
 			// 
