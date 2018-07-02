@@ -20,6 +20,8 @@ namespace VPWStudio
 		public ProjectSettings NewSettings = new ProjectSettings();
 		#endregion
 
+		private GameRegion[] RegionList;
+
 		public ProjectPropertiesDialog()
 		{
 			InitializeComponent();
@@ -31,13 +33,34 @@ namespace VPWStudio
 			}
 			cbGameType.EndUpdate();
 
+			RegionList = new GameRegion[Enum.GetValues(typeof(GameRegion)).Length];
+
+			cbRegionCode.BeginUpdate();
+			int regionCounter = 0;
+			foreach (KeyValuePair<GameRegion, string> region in GameRegionInfo.GameRegionNames)
+			{
+				RegionList[regionCounter] = region.Key;
+
+				if (region.Key == GameRegion.Custom)
+				{
+					cbRegionCode.Items.Add(region.Value);
+				}
+				else
+				{
+					cbRegionCode.Items.Add(String.Format("{0} ({1})", region.Value, (char)region.Key));
+				}
+
+				regionCounter++;
+			}
+			cbRegionCode.EndUpdate();
+
 			if (Program.CurrentProject == null)
 			{
 				MessageBox.Show("Now how in the world did you manage to do this?","???",MessageBoxButtons.OK);
 			}
 			else
 			{
-				this.NewSettings.DeepCopy(Program.CurrentProject.Settings);
+				NewSettings.DeepCopy(Program.CurrentProject.Settings);
 
 				// main page
 				tbProjectName.Text = Program.CurrentProject.Settings.ProjectName;
@@ -49,6 +72,7 @@ namespace VPWStudio
 				tbOutROMPath.Text = Program.CurrentProject.Settings.OutputRomPath;
 				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
 				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
+				// todo: region
 
 				// project files page
 				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
@@ -145,38 +169,38 @@ namespace VPWStudio
 			}
 
 			// main tab
-			this.NewSettings.ProjectName = tbProjectName.Text;
-			this.NewSettings.Authors = tbAuthors.Text;
-			this.NewSettings.GameType = (SpecificGame)cbGameType.SelectedIndex;
-			this.NewSettings.BaseGame = GameInformation.GetBaseGameFromSpecificGame(this.NewSettings.GameType);
-			this.NewSettings.InputRomPath = tbBaseROMPath.Text;
+			NewSettings.ProjectName = tbProjectName.Text;
+			NewSettings.Authors = tbAuthors.Text;
+			NewSettings.GameType = (SpecificGame)cbGameType.SelectedIndex;
+			NewSettings.BaseGame = GameInformation.GetBaseGameFromSpecificGame(NewSettings.GameType);
+			NewSettings.InputRomPath = tbBaseROMPath.Text;
 
 			// output rom tab
-			this.NewSettings.OutputRomPath = tbOutROMPath.Text;
-			this.NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
-			this.NewSettings.OutputRomGameCode = tbOutRomProductCode.Text;
+			NewSettings.OutputRomPath = tbOutROMPath.Text;
+			NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
+			NewSettings.OutputRomGameCode = tbOutRomProductCode.Text;
 
 			// project files tab
-			this.NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
+			NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
 
-			this.NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
+			NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
 			if (chbCustomLocation.Checked)
 			{
-				this.NewSettings.CustomLocationFilePath = tbCustomLocationFile.Text;
+				NewSettings.CustomLocationFilePath = tbCustomLocationFile.Text;
 			}
 			else
 			{
-				this.NewSettings.CustomLocationFilePath = String.Empty;
+				NewSettings.CustomLocationFilePath = String.Empty;
 			}
 
-			this.DialogResult = DialogResult.OK;
-			this.Close();
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
-			this.DialogResult = DialogResult.Cancel;
-			this.Close();
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 		#endregion
 
@@ -211,6 +235,27 @@ namespace VPWStudio
 				tbBaseROMPath.Text = Path.GetFullPath(sfd.FileName);
 			}
 		}
+
+		private void cbRegionCode_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbRegionCode.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// update region textbox
+			if (cbRegionCode.SelectedIndex == cbRegionCode.Items.Count - 1)
+			{
+				tbRegionCode.ReadOnly = false;
+				tbRegionCode.Text = "";
+			}
+			else
+			{
+				tbRegionCode.ReadOnly = true;
+				tbRegionCode.Text = ((char)RegionList[cbRegionCode.SelectedIndex]).ToString();
+			}
+		}
+
 		#endregion
 
 		#region Project Files Tab
@@ -252,5 +297,7 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		
 	}
 }
