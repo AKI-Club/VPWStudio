@@ -78,7 +78,7 @@ namespace VPWStudio.Editors.VPW2
 			for (int i = 0; i < 0x82; i++)
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
-				this.WrestlerDefs.Add(i, wdef);
+				WrestlerDefs.Add(i, wdef);
 				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
 
@@ -97,9 +97,9 @@ namespace VPWStudio.Editors.VPW2
 		private void PopulateList()
 		{
 			lbWrestlers.BeginUpdate();
-			for (int i = 0; i < this.WrestlerDefs.Count; i++)
+			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
-				WrestlerDefinition wd = this.WrestlerDefs[i];
+				WrestlerDefinition wd = WrestlerDefs[i];
 				// profile index + 1 = short name entry
 				lbWrestlers.Items.Add(String.Format("{0:X4} {1}", wd.WrestlerID4, DefaultNames.Entries[wd.ProfileIndex+1].Text));
 			}
@@ -137,7 +137,7 @@ namespace VPWStudio.Editors.VPW2
 			}
 
 			// load data
-			LoadEntryData(this.WrestlerDefs[lbWrestlers.SelectedIndex]);
+			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
 		}
 
 		private void buttonMoveset_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
-			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
+			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
 		}
 
 		private void buttonParams_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
-			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
+			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
 		private void buttonProfile_Click(object sender, EventArgs e)
