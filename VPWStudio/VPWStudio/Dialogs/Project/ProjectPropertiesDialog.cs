@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +19,9 @@ namespace VPWStudio
 		public ProjectSettings NewSettings = new ProjectSettings();
 		#endregion
 
+		/// <summary>
+		/// List of game regions used in the drop-down list.
+		/// </summary>
 		private GameRegion[] RegionList;
 
 		public ProjectPropertiesDialog()
@@ -98,35 +100,35 @@ namespace VPWStudio
 			// project name must not be empty
 			if (tbProjectName.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide a project name.", SharedStrings.MainForm_Title, MessageBoxButtons.OK,MessageBoxIcon.Error);
+				Program.ErrorMessageBox("Must provide a project name.");
 				return;
 			}
 
 			// input ROM path must not be empty
 			if (tbBaseROMPath.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide Input ROM path.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program.ErrorMessageBox("Must provide Input ROM path.");
 				return;
 			}
 
 			// input ROM must exist
 			if (!File.Exists(tbBaseROMPath.Text))
 			{
-				MessageBox.Show(String.Format("Input ROM file not found at\n{0}", Path.GetFullPath(tbBaseROMPath.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program.ErrorMessageBox(String.Format("Input ROM file not found at\n{0}", Path.GetFullPath(tbBaseROMPath.Text)));
 				return;
 			}
 
 			// if using custom location file, path to custom location must not be empty
 			if (chbCustomLocation.Checked && tbCustomLocationFile.Text.Equals(String.Empty))
 			{
-				MessageBox.Show("Must provide custom location path if using custom location file.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program.ErrorMessageBox("Must provide custom location path if using custom location file.");
 				return;
 			}
 
 			// custom location file must exist
 			if (chbCustomLocation.Checked && !File.Exists(tbCustomLocationFile.Text))
 			{
-				MessageBox.Show(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program.ErrorMessageBox(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)));
 				return;
 			}
 
@@ -136,20 +138,7 @@ namespace VPWStudio
 			if (tbOutRomProductCode.Text.Equals(String.Empty))
 			{
 				// empty string? replace with the game code for the current game.
-				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(0, 4);
-			}
-			else if (!tbOutRomProductCode.Text.StartsWith("N"))
-			{
-				// internal game code must start with "N" because none of the games have 64DD support
-				// this isn't a hard error; just replace it silently.
-				string remain = tbOutRomProductCode.Text.Substring(1, 3);
-				tbOutRomProductCode.Text = "N" + remain;
-			}
-			else if (tbOutRomProductCode.Text.Length != 4)
-			{
-				// must be four characters.
-				MessageBox.Show("Output ROM Product Code must be four characters long.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
+				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(1, 2);
 			}
 
 			#endregion
@@ -261,12 +250,22 @@ namespace VPWStudio
 		#region Project Files Tab
 		private void buttonSetProjFilesPath_Click(object sender, EventArgs e)
 		{
-			// todo: balls.
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			fbd.Description = "Select the Project Files directory.";
+			if (fbd.ShowDialog() == DialogResult.OK)
+			{
+				MessageBox.Show("argh freem implement this");
+			}
 		}
 
 		private void buttonSetAssetFilesPath_Click(object sender, EventArgs e)
 		{
-			// todo: also balls.
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			fbd.Description = "Select the Asset Files directory.";
+			if (fbd.ShowDialog() == DialogResult.OK)
+			{
+				MessageBox.Show("argh freem also implement this");
+			}
 		}
 
 		private void chbCustomLocation_Click(object sender, EventArgs e)
