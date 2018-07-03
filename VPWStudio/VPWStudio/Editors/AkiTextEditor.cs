@@ -221,6 +221,7 @@ namespace VPWStudio.Editors
 			"@D - Default text color\n" +
 			"@G - Text Color Green\n" +
 			"@H - hidden costume item?\n" +
+			"@h - hidden move item?\n" +
 			"@K - Text Color Black\n" +
 			"@O - Text Color Orange\n" +
 			"@P - Text Color Gray\n" +
