@@ -659,7 +659,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Championships dialog not yet designed");
+			Program.ErrorMessageBox("Championships dialog not yet designed.");
 		}
 
 		/// <summary>
