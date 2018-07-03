@@ -30,6 +30,17 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Move the cursor to the end of the log output box.
+		/// </summary>
+		/// I probably could have avoided this and the event stuff if I just
+		/// made the textbox public, but where's the fun in that?
+		public void MoveCursorToEnd()
+		{
+			tbLogOutput.SelectionStart = tbLogOutput.Text.Length - 1;
+			tbLogOutput.SelectionLength = 0;
+		}
+
+		/// <summary>
 		/// Clear log output.
 		/// </summary>
 		public void Clear()
