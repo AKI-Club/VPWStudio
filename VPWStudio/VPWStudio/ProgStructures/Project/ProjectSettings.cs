@@ -81,7 +81,22 @@ namespace VPWStudio
 		/// Output ROM game code.
 		/// </summary>
 		/// Four characters total: 'N' + game code + region code
+		/// 
+		/// todo: this should only be two characters;
+		/// 'N' should be hardcoded, and the last letter set from OutputRomRegion and/or OutputRomCustomRegion
 		public string OutputRomGameCode;
+
+		/// <summary>
+		/// Output ROM game region.
+		/// </summary>
+		/// Intended use: cast to char to get the letter necessary.
+		public GameRegion OutputRomRegion;
+
+		/// <summary>
+		/// Custom region character.
+		/// </summary>
+		/// Only used if OutputRomRegion is set to GameRegion.Custom
+		public char OutputRomCustomRegion;
 		#endregion
 
 		/// <summary>
@@ -103,6 +118,8 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = String.Empty;
 			OutputRomInternalName = String.Empty;
 			OutputRomGameCode = String.Empty;
+			OutputRomRegion = GameRegion.NorthAmerica;
+			OutputRomCustomRegion = '0';
 		}
 
 		/// <summary>
@@ -133,6 +150,8 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = _gscPath;
 			OutputRomInternalName = String.Empty;
 			OutputRomGameCode = String.Empty;
+			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
+			OutputRomCustomRegion = '0';
 		}
 
 		/// <summary>
@@ -164,6 +183,8 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
 			OutputRomInternalName = _src.OutputRomInternalName;
 			OutputRomGameCode = _src.OutputRomGameCode;
+			OutputRomRegion = _src.OutputRomRegion;
+			OutputRomCustomRegion = _src.OutputRomCustomRegion;
 		}
 	}
 }
