@@ -5,16 +5,8 @@ using System.Threading.Tasks;
 
 namespace VPWStudio
 {
-	// currently not used
-	public enum GameRegions
-	{
-		NTSC_U = 0, // 'E'
-		NTSC_J,     // 'J'
-		PAL         // 'P'
-	}
-
 	/// <summary>
-	/// Base VPW Game List
+	/// Base VPW series game list.
 	/// </summary>
 	public enum VPWGames
 	{
@@ -49,7 +41,7 @@ namespace VPWStudio
 	}
 
 	/// <summary>
-	/// Specific Game Versions
+	/// Specific Game Versions.
 	/// </summary>
 	public enum SpecificGame
 	{
@@ -120,6 +112,7 @@ namespace VPWStudio
 	/// </summary>
 	public class GameDefinition
 	{
+		#region Members
 		/// <summary>
 		/// Base game type.
 		/// </summary>
@@ -133,26 +126,36 @@ namespace VPWStudio
 		/// <summary>
 		/// Game version; 1.0 in most instances.
 		/// </summary>
+		/// todo: perhaps this should be a byte so it can be written in the mask rom version field.
 		public float GameVersion;
 
 		/// <summary>
-		/// Game code,
+		/// Game/program code name.
 		/// </summary>
+		/// Only meant to be two characters, but was originally set to 4 characters...
 		public string GameCode;
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, string _codeName)
+		/// <summary>
+		/// Region of game release.
+		/// </summary>
+		public GameRegion Region;
+		#endregion
+
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, string _codeName, GameRegion _region)
 		{
-			this.BaseGame = _baseGame;
-			this.GameType = _specific;
-			this.GameVersion = 1.0f;
-			this.GameCode = _codeName;
+			BaseGame = _baseGame;
+			GameType = _specific;
+			GameVersion = 1.0f;
+			GameCode = _codeName;
+			Region = _region;
 		}
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, float _ver, string _codeName){
-			this.BaseGame = _baseGame;
-			this.GameType = _specific;
-			this.GameVersion = _ver;
-			this.GameCode = _codeName;
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, float _ver, string _codeName, GameRegion _region){
+			BaseGame = _baseGame;
+			GameType = _specific;
+			GameVersion = _ver;
+			GameCode = _codeName;
+			Region = _region;
 		}
 	}
 
@@ -165,59 +168,59 @@ namespace VPWStudio
 		{
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, 1.0f, "NWNE")
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, 1.0f, "NWNE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_NTSC_U_11,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, 1.1f, "NWNE-1")
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, 1.1f, "NWNE-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_PAL,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, 1.0f, "NWNP")
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, 1.0f, "NWNP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW64_NTSC_J,
-				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, 1.0f, "NVPJ")
+				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, 1.0f, "NVPJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.Revenge_NTSC_U,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, 1.0f, "NW2E")
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, 1.0f, "NW2E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.Revenge_PAL,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, 1.0f, "NW2P")
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, 1.0f, "NW2P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.WM2K_NTSC_U,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, 1.0f, "NWXE")
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, 1.0f, "NWXE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WM2K_NTSC_J,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, 1.0f, "NWXJ")
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, 1.0f, "NWXJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.WM2K_PAL,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, 1.0f, "NWXP")
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, 1.0f, "NWXP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW2_NTSC_J,
-				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, 1.0f, "NA2J")
+				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, 1.0f, "NA2J", GameRegion.Japan)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, 1.0f, "NW4E")
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, 1.0f, "NW4E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, 1.1f, "NW4E-1")
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, 1.1f, "NW4E-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_PAL_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, 1.0f, "NW4P")
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, 1.0f, "NW4P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.NoMercy_PAL_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, 1.1f, "NW4P-1")
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, 1.1f, "NW4P-1", GameRegion.Europe)
 			}
 		};
 
