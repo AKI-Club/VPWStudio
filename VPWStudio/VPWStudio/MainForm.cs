@@ -1089,6 +1089,7 @@ namespace VPWStudio
 				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
 			);
 			BuildLogForm.BuildFinished = true;
+			BuildLogForm.MoveCursorToEnd();
 		}
 
 		/// <summary>
