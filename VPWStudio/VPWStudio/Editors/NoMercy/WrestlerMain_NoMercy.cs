@@ -122,8 +122,8 @@ namespace VPWStudio.Editors.NoMercy
 		{
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
-			//cbThemeMusic.SelectedIndex = wdef.ThemeSong;
-			//titantron
+			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
+			cbEntranceVideo.SelectedIndex = wdef.EntranceVideo;
 			tbHeight.Text = String.Format("{0:X2}", wdef.Height);
 			tbUnknown.Text = String.Format("{0:X2}", wdef.Unknown);
 			tbWeight.Text = String.Format("{0:X4}", wdef.Weight);
