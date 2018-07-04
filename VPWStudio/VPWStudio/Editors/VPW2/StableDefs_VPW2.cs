@@ -6,9 +6,12 @@ using VPWStudio.GameSpecific.VPW2;
 
 namespace VPWStudio.Editors.VPW2
 {
+	/// <summary>
+	/// VPW2 Stable Definitions editor
+	/// </summary>
 	public partial class StableDefs_VPW2 : Form
 	{
-		private SortedList<int, StableDefinition> StableDefs = new SortedList<int, StableDefinition>();
+		public SortedList<int, StableDefinition> StableDefs = new SortedList<int, StableDefinition>();
 
 		private AkiText DefaultNames;
 
@@ -17,6 +20,17 @@ namespace VPWStudio.Editors.VPW2
 			InitializeComponent();
 
 			// load stable definitions from VPW2 ROM
+
+			// todo: allow loading stabledefs from external file if project defines one
+			/*
+			if (Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty)
+			{
+			}
+			else
+			{
+			}
+			*/
+
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
@@ -42,7 +56,7 @@ namespace VPWStudio.Editors.VPW2
 			for (int i = 0; i < 17; i++)
 			{
 				StableDefinition sdef = new StableDefinition(br);
-				this.StableDefs.Add(i, sdef);
+				StableDefs.Add(i, sdef);
 			}
 
 			LoadDefaultNames(br);

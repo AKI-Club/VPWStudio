@@ -225,7 +225,9 @@
 			this.Controls.Add(this.gbStables);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "StableDefs_VPW2";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.gbStables.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
