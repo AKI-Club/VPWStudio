@@ -816,8 +816,6 @@ namespace VPWStudio
 						if (StableDefs_Revenge == null)
 						{
 							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
-							StableDefs_Revenge.MdiParent = this;
-							StableDefs_Revenge.Show();
 						}
 						else
 						{
@@ -829,9 +827,9 @@ namespace VPWStudio
 							{
 								StableDefs_Revenge.WindowState = FormWindowState.Normal;
 							}
-							StableDefs_Revenge.MdiParent = this;
-							StableDefs_Revenge.Show();
 						}
+						StableDefs_Revenge.MdiParent = this;
+						StableDefs_Revenge.Show();
 					}
 					break;
 
@@ -840,8 +838,6 @@ namespace VPWStudio
 						if (StableDefs_WM2K == null)
 						{
 							StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
-							StableDefs_WM2K.MdiParent = this;
-							StableDefs_WM2K.Show();
 						}
 						else
 						{
@@ -853,9 +849,9 @@ namespace VPWStudio
 							{
 								StableDefs_WM2K.WindowState = FormWindowState.Normal;
 							}
-							StableDefs_WM2K.MdiParent = this;
-							StableDefs_WM2K.Show();
 						}
+						StableDefs_WM2K.MdiParent = this;
+						StableDefs_WM2K.Show();
 					}
 					break;
 
@@ -864,8 +860,6 @@ namespace VPWStudio
 						if (StableDefs_VPW2 == null)
 						{
 							StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
-							StableDefs_VPW2.MdiParent = this;
-							StableDefs_VPW2.Show();
 						}
 						else
 						{
@@ -877,8 +871,40 @@ namespace VPWStudio
 							{
 								StableDefs_VPW2.WindowState = FormWindowState.Normal;
 							}
-							StableDefs_VPW2.MdiParent = this;
-							StableDefs_VPW2.Show();
+						}
+						if (StableDefs_VPW2.ShowDialog() == DialogResult.OK)
+						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save Stable Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							// check if StableDef file exists.
+							string stableDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath);
+							bool writePath = false;
+
+							if (!File.Exists(stableDefPath))
+							{
+								stableDefPath = Program.ConvertRelativePath(@"ProjectFiles\StableDefs.txt");
+								writePath = true;
+							}
+
+							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
+							StreamWriter sw = new StreamWriter(fs);
+							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
+							sdefs.StableDefs_VPW2 = StableDefs_VPW2.StableDefs;
+							sdefs.WriteFile(sw);
+							sw.Close();
+
+							if (writePath)
+							{
+								Program.CurrentProject.Settings.StableDefinitionFilePath = stableDefPath;
+								Program.UnsavedChanges = true;
+								UpdateTitleBar();
+								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
+							}
 						}
 					}
 					break;
