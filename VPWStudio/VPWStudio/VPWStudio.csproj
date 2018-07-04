@@ -296,6 +296,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgStructures\Project\ProjectSettings.cs" />
+    <Compile Include="ProgStructures\StableDefFile.cs" />
     <Compile Include="ProgStructures\Z64Rom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -357,6 +358,12 @@
     </Compile>
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\StableDefParseTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\StableDefParseTest.Designer.cs">
+      <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\Toki1TestDialog.cs">
       <SubType>Form</SubType>
@@ -479,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool.resx">
       <DependentUpon>ModelTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\StableDefParseTest.resx">
+      <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Toki1TestDialog.resx">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>

@@ -408,6 +408,12 @@
   <data name="vpw2FaceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw2 face test</value>
   </data>
+  <data name="stableParseTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="stableParseTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>stable parse test</value>
+  </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -1625,6 +1631,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stableParseTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>stableParseTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stableParseTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
