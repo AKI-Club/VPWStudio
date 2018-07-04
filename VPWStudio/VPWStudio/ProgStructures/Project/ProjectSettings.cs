@@ -97,6 +97,11 @@ namespace VPWStudio
 		/// </summary>
 		/// Only used if OutputRomRegion is set to GameRegion.Custom
 		public char OutputRomCustomRegion;
+
+		/// <summary>
+		/// Path to custom Stable Definition file.
+		/// </summary>
+		public string StableDefinitionFilePath;
 		#endregion
 
 		/// <summary>
@@ -120,6 +125,7 @@ namespace VPWStudio
 			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameRegion.NorthAmerica;
 			OutputRomCustomRegion = '0';
+			StableDefinitionFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -152,6 +158,7 @@ namespace VPWStudio
 			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
 			OutputRomCustomRegion = '0';
+			StableDefinitionFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -185,6 +192,7 @@ namespace VPWStudio
 			OutputRomGameCode = _src.OutputRomGameCode;
 			OutputRomRegion = _src.OutputRomRegion;
 			OutputRomCustomRegion = _src.OutputRomCustomRegion;
+			StableDefinitionFilePath = _src.StableDefinitionFilePath;
 		}
 	}
 }
