@@ -63,6 +63,10 @@ namespace VPWStudio
 		}
 
 		#region Read Data
+		/// <summary>
+		/// Read StableDef file.
+		/// </summary>
+		/// <param name="sr">StreamReader with StableDef file loaded.</param>
 		public void ReadFile(StreamReader sr)
 		{
 			// first line is GameType, which determines how the rest of the file is handled.
@@ -253,6 +257,10 @@ namespace VPWStudio
 		#endregion
 
 		#region Write Data
+		/// <summary>
+		/// Write data to StableDef file.
+		/// </summary>
+		/// <param name="sw">StreamWriter with StableDef output file.</param>
 		public void WriteFile(StreamWriter sw)
 		{
 			sw.WriteLine(GameType.ToString());
@@ -278,6 +286,8 @@ namespace VPWStudio
 					}
 					break;
 			}
+
+			sw.Flush();
 		}
 
 		public string WriteData_Revenge(KeyValuePair<int, GameSpecific.Revenge.StableDefinition> sd)
