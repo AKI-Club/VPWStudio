@@ -40,7 +40,7 @@
 			this.labelThemeMusic = new System.Windows.Forms.Label();
 			this.labelEntranceVideo = new System.Windows.Forms.Label();
 			this.cbThemeMusic = new System.Windows.Forms.ComboBox();
-			this.cbNameCall = new System.Windows.Forms.ComboBox();
+			this.cbEntranceVideo = new System.Windows.Forms.ComboBox();
 			this.labelHeight = new System.Windows.Forms.Label();
 			this.labelUnknown = new System.Windows.Forms.Label();
 			this.labelWeight = new System.Windows.Forms.Label();
@@ -95,7 +95,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.labelThemeMusic, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.labelEntranceVideo, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.cbThemeMusic, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.cbNameCall, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.cbEntranceVideo, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.labelHeight, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.labelWeight, 0, 6);
@@ -214,20 +214,124 @@
 			this.cbThemeMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbThemeMusic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbThemeMusic.FormattingEnabled = true;
+			this.cbThemeMusic.Items.AddRange(new object[] {
+            "00 (None?)",
+            "01 Kane",
+            "02 ???",
+            "03 N.A.O.",
+            "04 Shamrock",
+            "05 Venis",
+            "06 X-Pac",
+            "07 ???",
+            "08 Al Snow",
+            "09 Boss Man",
+            "0A Steve Blackman",
+            "0B ???",
+            "0C Corporate",
+            "0D D\'Lo",
+            "0E DX",
+            "0F Edge",
+            "10 Godfather",
+            "11 Mark Henry",
+            "12 Right to Censor",
+            "13 Raw",
+            "14 Mr. Ass",
+            "15 Hardy Boyz",
+            "16 Hardcore Holly",
+            "17 ???",
+            "18 Dudleys",
+            "19 British Bulldog",
+            "1A Viscera",
+            "1B Essa Rios",
+            "1C Chyna",
+            "1D ???",
+            "1E Malenko",
+            "1F ???",
+            "20 TAKA",
+            "21 Tazz",
+            "22 Real American",
+            "23 HHH",
+            "24 Austin",
+            "25 The Rock",
+            "26 APA",
+            "27 Mankind/Mick",
+            "28 Too Cool",
+            "29 Cactus",
+            "2A HBK",
+            "2B (Y2J Countdown)",
+            "2C Jericho",
+            "2D Angle",
+            "2E ???",
+            "2F Benoit",
+            "30 T&A",
+            "31 Guerrero",
+            "32 Saturn",
+            "33 Original 1",
+            "34 Original 2",
+            "35 Original 3",
+            "36 Original 4",
+            "37 Original 5",
+            "38 Original 6",
+            "39 Original 7"});
 			this.cbThemeMusic.Location = new System.Drawing.Point(106, 72);
 			this.cbThemeMusic.Name = "cbThemeMusic";
 			this.cbThemeMusic.Size = new System.Drawing.Size(219, 21);
 			this.cbThemeMusic.TabIndex = 6;
 			// 
-			// cbNameCall
+			// cbEntranceVideo
 			// 
-			this.cbNameCall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbNameCall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbNameCall.FormattingEnabled = true;
-			this.cbNameCall.Location = new System.Drawing.Point(106, 105);
-			this.cbNameCall.Name = "cbNameCall";
-			this.cbNameCall.Size = new System.Drawing.Size(219, 21);
-			this.cbNameCall.TabIndex = 8;
+			this.cbEntranceVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbEntranceVideo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbEntranceVideo.FormattingEnabled = true;
+			this.cbEntranceVideo.Items.AddRange(new object[] {
+            "00 (None?)",
+            "01 APA",
+            "02 Al Snow",
+            "03 Angle",
+            "04 Austin",
+            "05 (formerly big show?)",
+            "06 Blackman",
+            "07 Bossman",
+            "08 Bulldog",
+            "09 Cactus",
+            "0A Chyna",
+            "0B Corporate",
+            "0C D\'Lo",
+            "0D Dudleyz",
+            "0E DX",
+            "0F Edge",
+            "10 Rios",
+            "11 Godfather",
+            "12 Hardyz",
+            "13 HBK",
+            "14 HHH",
+            "15 Hollys",
+            "16 Jericho",
+            "17 Kane",
+            "18 Mankind",
+            "19 Mark Henry",
+            "1A Mr. Ass",
+            "1B NAO",
+            "1C Malenko",
+            "1D The Rock",
+            "1E Shamrock",
+            "1F Taka",
+            "20 Tazz",
+            "21 Too Cool",
+            "22 Venis",
+            "23 Viscera",
+            "24 X-Pac",
+            "25 (Y2J Countdown)",
+            "26 Undertaker",
+            "27 Benoit",
+            "28 T&A",
+            "29 Eddy",
+            "2A Saturn",
+            "2B Right to Censor"});
+			this.cbEntranceVideo.Location = new System.Drawing.Point(106, 105);
+			this.cbEntranceVideo.Name = "cbEntranceVideo";
+			this.cbEntranceVideo.Size = new System.Drawing.Size(219, 21);
+			this.cbEntranceVideo.TabIndex = 8;
 			// 
 			// labelHeight
 			// 
@@ -464,7 +568,7 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.ComboBox cbThemeMusic;
-		private System.Windows.Forms.ComboBox cbNameCall;
+		private System.Windows.Forms.ComboBox cbEntranceVideo;
 		private System.Windows.Forms.TableLayoutPanel tlpMoveset;
 		private System.Windows.Forms.TextBox tbMovesetIndex;
 		private System.Windows.Forms.Button buttonMoveset;
