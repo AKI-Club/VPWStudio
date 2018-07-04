@@ -1731,8 +1731,13 @@ namespace VPWStudio
 			FaceTester ft = new FaceTester();
 			ft.ShowDialog();
 		}
+
 		#endregion
 
-		
+		private void stableParseTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			StableDefParseTest sdpt = new StableDefParseTest();
+			sdpt.ShowDialog();
+		}
 	}
 }
