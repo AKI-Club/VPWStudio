@@ -115,5 +115,17 @@ namespace VPWStudio.Editors.VPW2
 
 			LoadData(StableDefs[lbStables.SelectedIndex]);
 		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
 	}
 }

@@ -75,8 +75,7 @@ namespace VPWStudio.Editors.WM2K
 		{
 			tbWrestlerDefPointer.Text = String.Format("{0:X8}", _sdef.WrestlerPointerStart);
 			tbNumWrestlers.Text = String.Format("{0}", _sdef.NumWrestlers);
-
-			// get default stable name
+			tbNamePointer.Text = String.Format("{0:X8}", _sdef.StableNamePointer);
 			tbStableName.Text = _sdef.StableName;
 
 			lbWresID2s.Items.Clear();
