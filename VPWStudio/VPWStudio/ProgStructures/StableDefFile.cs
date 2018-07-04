@@ -82,7 +82,7 @@ namespace VPWStudio
 							string line = sr.ReadLine();
 							if (!line.Equals(String.Empty))
 							{
-								GameSpecific.Revenge.StableDefinition sd = ReadData_Revenge(sr.ReadLine(), out int stableNum);
+								GameSpecific.Revenge.StableDefinition sd = ReadData_Revenge(line, out int stableNum);
 								StableDefs_Revenge.Add(stableNum, sd);
 							}
 						}
@@ -96,7 +96,7 @@ namespace VPWStudio
 							string line = sr.ReadLine();
 							if (!line.Equals(String.Empty))
 							{
-								GameSpecific.WM2K.StableDefinition sd = ReadData_WM2K(sr.ReadLine(), out int stableNum);
+								GameSpecific.WM2K.StableDefinition sd = ReadData_WM2K(line, out int stableNum);
 								StableDefs_WM2K.Add(stableNum, sd);
 							}
 						}
@@ -110,7 +110,7 @@ namespace VPWStudio
 							string line = sr.ReadLine();
 							if (!line.Equals(String.Empty))
 							{
-								GameSpecific.VPW2.StableDefinition sd = ReadData_VPW2(sr.ReadLine(), out int stableNum);
+								GameSpecific.VPW2.StableDefinition sd = ReadData_VPW2(line, out int stableNum);
 								StableDefs_VPW2.Add(stableNum, sd);
 							}
 						}
