@@ -442,29 +442,6 @@ namespace VPWStudio
 							break;
 						#endregion
 
-						#region MenuBackground Conversion
-						case FileTypes.MenuBackground:
-							{
-								if (ReplaceFileExtension == ".png")
-								{
-									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
-									MenuBackground mbg = new MenuBackground(-1, CurrentProject.Settings.BaseGame);
-									if (!mbg.FromBitmap(bm))
-									{
-										bm.Dispose();
-										return null;
-									}
-									bm.Dispose();
-									return mbg.WriteData();
-								}
-								else
-								{
-									// unsupported type for conversions
-									return null;
-								}
-							}
-						#endregion
-
 						// todo: other filetypes.
 
 						#region AkiText Conversion
@@ -497,7 +474,7 @@ namespace VPWStudio
 				}
 			}
 		}
-
+		
 		/// <summary>
 		/// Builds the Output ROM using the Input ROM as a base, applying changes as necessary.
 		/// </summary>
@@ -557,6 +534,48 @@ namespace VPWStudio
 			 * and whatever else isn't involved with the FileTable.
 			 */
 
+			#region Stable Definitions
+			if (CurrentProject.Settings.StableDefinitionFilePath != null &&
+				CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
+				File.Exists(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath))
+			){
+				BuildLogPub.AddLine("Stable Definition rewriting is currently not supported; sorry. Working on it.");
+
+				StableDefFile sdf = new StableDefFile();
+				FileStream sdStream = new FileStream(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
+				StreamReader sdReader = new StreamReader(sdStream);
+				sdf.ReadFile(sdReader);
+				sdReader.Close();
+
+				/*
+				bool hasLocation = false;
+				int stableDefLoc = 0;
+				if (CurLocationFile != null)
+				{
+					LocationFileEntry sdEntry = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+					if (sdEntry != null)
+					{
+						stableDefLoc = (int)sdEntry.Address;
+						hasLocation = true;
+					}
+				}
+				if (!hasLocation)
+				{
+					// fallback to hardcoded offset
+					stableDefLoc = 0x408BC;
+					//DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["StableDefs"];
+				}
+				*/
+
+				switch (CurrentProject.Settings.BaseGame)
+				{
+					case VPWGames.VPW2:
+						//sdf.StableDefs_VPW2
+						break;
+				}
+			}
+			#endregion
+
 			#endregion
 
 			#region Filetable Changes
@@ -568,15 +587,6 @@ namespace VPWStudio
 			// keep a running total of differences in file sizes.
 			int totalDifference = 0;
 
-			// special background parsing
-			/*
-			bool MenuBackgroundMode = false;
-			int MenuBackgroundNumber = 0;
-			MenuBackground CurMenuBackground = null;
-			int MenuBgNumChunks = 0;
-			int MenuBgChunkPixels = 0;
-			*/
-
 			// (File IDs start at 0x0001, and Entries is a SortedList with the file ID as Key.)
 			for (int i = 1; i <= buildFileTable.Entries.Count; i++)
 			{
@@ -587,94 +597,7 @@ namespace VPWStudio
 				int start = 0;
 				int end = 0;
 				int oldFileSize = 0;
-
-				// MenuBackgroundMode changes how this works; it would be simpler otherwise.
-				/*
-				// determine if we need to start MenuBackgroundMode
-				if (fte.FileType == FileTypes.MenuBackground)
-				{
-					if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
-					{
-						replaceFilePath = ConvertRelativePath(fte.ReplaceFilePath);
-						if (replaceFilePath == null)
-						{
-							// unable to convert relative path
-							MenuBackgroundMode = false;
-							CurMenuBackground = null;
-							MenuBgNumChunks = 0;
-							MenuBgChunkPixels = 0;
-							continue;
-						}
-
-						// ensure the file exists, otherwise we can't do anything.
-						if (!File.Exists(replaceFilePath))
-						{
-							MenuBackgroundMode = false;
-							CurMenuBackground = null;
-							MenuBgNumChunks = 0;
-							MenuBgChunkPixels = 0;
-							continue;
-						}
-
-						outData = ConvertFile(fte.FileID);
-						if (outData == null)
-						{
-							MenuBackgroundMode = false;
-							CurMenuBackground = null;
-							MenuBgNumChunks = 0;
-							MenuBgChunkPixels = 0;
-							continue;
-						}
-
-						MenuBackgroundMode = true;
-						MenuBackgroundNumber = 0;
-
-						CurMenuBackground = new MenuBackground(fte.FileID, CurrentProject.Settings.BaseGame);
-						Array.Copy(outData, CurMenuBackground.Data, outData.Length);
-
-						MenuBgNumChunks = CurMenuBackground.ChunkColumns * CurMenuBackground.ChunkRows;
-						MenuBgChunkPixels = CurMenuBackground.ChunkWidth * CurMenuBackground.ChunkHeight;
-
-						// todo: make this log message unique
-						BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath));
-						BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}",
-						fte.FileType, fte.IsEncoded, fte.ReplaceEncoding));
-					}
-				}
-
-				if (MenuBackgroundMode == true)
-				{
-					// handling menu background...
-
-					// get the start and end points of this entry
-					// xxx: some files in WWF No Mercy's filetable break this assumption
-					start = fte.Location;
-					end = buildFileTable.Entries[i + 1].Location;
-					oldFileSize = buildFileTable.GetEntrySize(i);
-					// todo: does this fix the assumption?
-					if (start > end)
-					{
-						oldFileSize = start - end;
-					}
-
-					//
-					outData = CurMenuBackground.GetChunkBytes(MenuBackgroundNumber);
-
-					// housekeeping
-					MenuBackgroundNumber++;
-					// perform check
-					if (MenuBackgroundNumber == MenuBgNumChunks)
-					{
-						MenuBackgroundMode = false;
-						CurMenuBackground = null;
-					}
-				}
-				else
-				{
-					// continue as normal
-				}
-				*/
-
+				
 				// 0) check if a replacement file is set
 				if (fte.ReplaceFilePath != null && !fte.ReplaceFilePath.Equals(String.Empty))
 				{
