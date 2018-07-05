@@ -99,10 +99,15 @@ namespace VPWStudio.GameSpecific.VPW2
 				Array.Reverse(name);
 			}
 			bw.Write(name);
+			long curPos = bw.BaseStream.Position;
 
-			// ugh this part blows nuts
-			bw.BaseStream.Seek(Z64Rom.PointerToRom(WrestlerPointerStart), SeekOrigin.Begin);
 			// write out the wrestler IDs
+			bw.BaseStream.Seek(Z64Rom.PointerToRom(WrestlerPointerStart), SeekOrigin.Begin);
+			for (int i = 0; i < WrestlerID2s.Length; i++)
+			{
+				bw.Write(WrestlerID2s[i]);
+			}
+			bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 		#endregion
 	}
