@@ -177,5 +177,52 @@ namespace VPWStudio.GameSpecific.WM2K
 			bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 		#endregion
+
+		#region Helpers
+		/// <summary>
+		/// Get the number of used wrestler slots in this Stable.
+		/// </summary>
+		/// <returns>Number of non-zero entries in WrestlerID2s.</returns>
+		public int GetWrestlerCount()
+		{
+			int count = 0;
+			for (int i = 0; i < WrestlerID2s.Length; i++)
+			{
+				if (WrestlerID2s[i] != 0)
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+
+		/// <summary>
+		/// Determine if this group has the maximum amount of wrestlers.
+		/// </summary>
+		/// <returns>True if all slots are used in this group, false otherwise.</returns>
+		public bool IsGroupFull()
+		{
+			return GetWrestlerCount() == 8;
+		}
+
+		/// <summary>
+		/// Gets the index of the first empty slot in this stable.
+		/// </summary>
+		/// <returns>Positive integer if found empty, -1 if group is full.</returns>
+		public int GetFirstEmptySlot()
+		{
+			int slot = -1;
+			for (int i = 0; i < WrestlerID2s.Length; i++)
+			{
+				if (WrestlerID2s[i] == 0)
+				{
+					slot = i;
+					break;
+				}
+			}
+
+			return slot;
+		}
+		#endregion
 	}
 }
