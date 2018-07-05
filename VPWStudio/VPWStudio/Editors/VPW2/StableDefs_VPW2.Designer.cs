@@ -161,6 +161,7 @@
 			this.buttonSwitchGroup.TabIndex = 15;
 			this.buttonSwitchGroup.Text = "Switch &Group";
 			this.buttonSwitchGroup.UseVisualStyleBackColor = true;
+			this.buttonSwitchGroup.Click += new System.EventHandler(this.buttonSwitchGroup_Click);
 			// 
 			// buttonMoveDown
 			// 
@@ -170,6 +171,7 @@
 			this.buttonMoveDown.TabIndex = 14;
 			this.buttonMoveDown.Text = "Move &Down";
 			this.buttonMoveDown.UseVisualStyleBackColor = true;
+			this.buttonMoveDown.Click += new System.EventHandler(this.buttonMoveDown_Click);
 			// 
 			// buttonMoveUp
 			// 
@@ -179,6 +181,7 @@
 			this.buttonMoveUp.TabIndex = 13;
 			this.buttonMoveUp.Text = "Move &Up";
 			this.buttonMoveUp.UseVisualStyleBackColor = true;
+			this.buttonMoveUp.Click += new System.EventHandler(this.buttonMoveUp_Click);
 			// 
 			// gbWrestlers
 			// 

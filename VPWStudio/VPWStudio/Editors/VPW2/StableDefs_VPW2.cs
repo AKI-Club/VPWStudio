@@ -19,55 +19,74 @@ namespace VPWStudio.Editors.VPW2
 		{
 			InitializeComponent();
 
-			// load stable definitions from VPW2 ROM
+			if (Program.CurrentProject.Settings.StableDefinitionFilePath != null &&
+				Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
+			){
+				// load stable definitions from external file
+				StableDefFile sdf = new StableDefFile(VPWGames.VPW2);
+				FileStream fs = new FileStream(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
+				StreamReader sr = new StreamReader(fs);
+				sdf.ReadFile(sr);
+				sr.Close();
+				StableDefs = sdf.StableDefs_VPW2;
 
-			// todo: allow loading stabledefs from external file if project defines one
-			/*
-			if (Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty)
-			{
+				// load default names
+				// xxx1: this check should be outside this conditional
+				// xxx2: the possibility of loading external AkiText...
+				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader br = new BinaryReader(ms);
+				LoadDefaultNames(br);
+				br.Close();
 			}
 			else
 			{
-			}
-			*/
+				// load stable definitions from VPW2 ROM
+				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader br = new BinaryReader(ms);
 
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
-			bool hasLocation = false;
-			if (Program.CurLocationFile != null)
-			{
-				LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
-				if (sdEntry != null)
+				bool hasLocation = false;
+				if (Program.CurLocationFile != null)
 				{
-					br.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
-					hasLocation = true;
+					LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+					if (sdEntry != null)
+					{
+						br.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+						hasLocation = true;
+					}
 				}
+				if (!hasLocation)
+				{
+					// fallback to hardedcoded offset
+					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
+
+					br.BaseStream.Seek(0x408BC, SeekOrigin.Begin);
+				}
+
+				// xxx: default number of stable defs
+				for (int i = 0; i < 17; i++)
+				{
+					StableDefinition sdef = new StableDefinition(br);
+					StableDefs.Add(i, sdef);
+				}
+
+				LoadDefaultNames(br);
+				br.Close();
 			}
-			if (!hasLocation)
-			{
-				// fallback to hardedcoded offset
-				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-
-				br.BaseStream.Seek(0x408BC, SeekOrigin.Begin);
-			}
-
-			// xxx: default number of stable defs
-			for (int i = 0; i < 17; i++)
-			{
-				StableDefinition sdef = new StableDefinition(br);
-				StableDefs.Add(i, sdef);
-			}
-
-			LoadDefaultNames(br);
-
-			br.Close();
 
 			PopulateList();
 		}
 
 		/// <summary>
-		/// Load default names AkiText entry
+		/// Load default names from external AkiText file.
+		/// </summary>
+		private void LoadExternalNames()
+		{
+			// todo
+		}
+
+		/// <summary>
+		/// Load default names from AkiText in ROM.
 		/// </summary>
 		private void LoadDefaultNames(BinaryReader romReader)
 		{
@@ -120,6 +139,22 @@ namespace VPWStudio.Editors.VPW2
 			lbWresID2s.EndUpdate();
 		}
 
+		private void UpdateWrestlerList()
+		{
+			StableDefinition sdef = StableDefs[lbStables.SelectedIndex];
+
+			lbWresID2s.Items.Clear();
+			lbWresID2s.BeginUpdate();
+			for (int i = 0; i < sdef.WrestlerID2s.Length; i++)
+			{
+				if (sdef.WrestlerID2s[i] != 0)
+				{
+					lbWresID2s.Items.Add(String.Format("{0:X2}", sdef.WrestlerID2s[i]));
+				}
+			}
+			lbWresID2s.EndUpdate();
+		}
+
 		private void lbStables_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lbStables.SelectedIndex < 0)
@@ -140,6 +175,42 @@ namespace VPWStudio.Editors.VPW2
 		{
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void buttonMoveUp_Click(object sender, EventArgs e)
+		{
+			if (lbWresID2s.SelectedIndex <= 0)
+			{
+				return;
+			}
+
+			// swap 'em if you got 'em
+			int newIndex = lbWresID2s.SelectedIndex - 1;
+			byte oldWres = StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex - 1];
+			byte moveWres = StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex - 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex] = oldWres;
+
+			UpdateWrestlerList();
+			lbWresID2s.SelectedIndex = newIndex;
+		}
+
+		private void buttonMoveDown_Click(object sender, EventArgs e)
+		{
+			if (lbWresID2s.SelectedIndex < 0)
+			{
+				return;
+			}
+			if (lbWresID2s.SelectedIndex == lbWresID2s.Items.Count-1)
+			{
+				return;
+			}
+		}
+
+		private void buttonSwitchGroup_Click(object sender, EventArgs e)
+		{
+			Program.ErrorMessageBox("look what freem hasn't implemented yet!!!");
 		}
 	}
 }
