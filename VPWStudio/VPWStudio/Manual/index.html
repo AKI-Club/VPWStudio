@@ -49,6 +49,8 @@
 	<li><a href="#LocationFile">LocationFile Format</a></li>
 	<li><a href="#FileTableDB">FileTableDB Format</a></li>
 	<li><a href="#GameSharkCodeSet">GameShark CodeSet Format</a></li>
+	<li><a href="#StableDef">Stable Definition Format</a></li>
+	<li><a href="#ProjectFile">ProjectFile Format</a></li>
 	</ol>
 </li>
 <li><a href="#GameDataFormats">Game Data Formats</a></li>
@@ -59,84 +61,118 @@
 <p>VPW Studio is a tool that assists in ROM hacking the games in AKI Corporation's
 Virtual Pro-Wrestling series.</p>
 
+<p>This program was created because the current solutions for making changes to
+AKI wrestling games are GameShark codes and emulator-only texture replacements.
+Anyone wanting to play projects using these methods on console could not fully do so.</p>
+
+<p>The primary inspiration for VPW Studio is the Goldeneye Setup Editor, which
+works directly on game data.</p>
+
 <h3>Supported Games</h3>
 <p>Currently, only the AKI wrestling games on the Nintendo 64 are supported:</p>
 <table>
 <thead>
 <tr>
 	<th>Game Name</th>
+	<!--<th>Platform</th>-->
 	<th>Region</th>
 	<th>Revision</th>
 </tr>
 </thead>
 <tbody>
+<!--<tr>
+	<td>バーチャル・プロレス<br/>(Virtual Pro-Wrestling)</td>
+	<td>PlayStation 1</td>
+	<td>NTSC-J</td>
+	<td>Original Release</td>
+</tr>-->
+<!--<tr>
+	<td>WCW vs. the World</td>
+	<td>PlayStation 1</td>
+	<td>NTSC-U</td>
+	<td>Original Release</td>
+</tr>-->
 <tr>
 	<td>WCW vs. nWo World Tour</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Original Release ("v1.0")</td>
 </tr>
 <tr>
 	<td>WCW vs. nWo World Tour</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Revision A ("v1.1")</td>
 </tr>
 <tr>
 	<td>WCW vs. nWo World Tour</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>PAL</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>バーチャル・プロレス64<br/>(Virtual Pro-Wrestling 64)</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WCW/nWo Revenge</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WCW/nWo Revenge</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>PAL</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WWF WrestleMania 2000</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WWFレッスルマニア2000<br/>(WWF WrestleMania 2000)</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WWF WrestleMania 2000</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>PAL</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>バーチャル・プロレス2 〜王道継承〜<br/>(Virtual Pro-Wrestling 2)</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-J</td>
 	<td>Original Release</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Original Release ("v1.0"/"glitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U</td>
 	<td>Revision A ("v1.1"/"unglitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>PAL</td>
 	<td>Original Release ("v1.0"/"glitched")</td>
 </tr>
 <tr>
 	<td>WWF No Mercy</td>
+	<!--<td>Nintendo 64</td>-->
 	<td>PAL</td>
 	<td>Revision A ("v1.1"/"unglitched")</td>
 </tr>
@@ -163,12 +199,18 @@ supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 </ul>
 
 <h3>Notes</h3>
-<p>This program is currently a GIANT work in progress. As such, a lot of things are
-not implemented yet.</p>
+<ul>
+<li>This program is currently a GIANT work in progress. As such, a lot of things are
+not implemented yet.</li>
+<li>Since the program is a work in progress, any and all file formats are subject
+to change.</li>
+</ul>
 
 <hr />
 <h2><a name="MainInterface">Main Interface</a></h2>
 <img src="./img/main_interface.png" title="Main Interface" />
+<p>The main form appears when you boot VPW Studio.</p>
+
 <p>(todo)</p>
 
 <hr />
@@ -286,6 +328,8 @@ doubles as the Story Mode/Champion Road editor.</p>
 
 <hr />
 <h2><a name="Costumes">Costumes</a></h2>
+<p>The costume viewer allows you to view the values used for each costume in the game.</p>
+
 <p>(todo)</p>
 
 <hr />
@@ -337,18 +381,28 @@ textures, palettes, models, and more.</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
+<p>The Menus option ("Project &rarr; Menus") allows you to change how the items
+are laid out on various game menus.</p>
+
 <p>(todo)</p>
 
 <hr />
 <h2><a name="Moves">Moves</a></h2>
+<p>The Moves section ("Project &rarr; Moves") deals with every move and animation found in the game.</p>
+
 <p>(todo)</p>
 
 <hr />
 <h2><a name="SoundMusic">Sound/Music</a></h2>
+<p>The Sound and Music editor ("Project &rarr; Sound/Music") will eventually allow you to preview and change
+sounds.</p>
+
 <p>(todo)</p>
 
 <hr />
 <h2><a name="Stables">Stables</a></h2>
+<p>The Stable Editor ("Project &rarr; Stables") allows you to change the default stable data.</p>
+
 <p>(todo)</p>
 
 <hr />
@@ -390,11 +444,11 @@ textures, palettes, models, and more.</p>
 
 <hr />
 <h2><a name="Weapons">Weapons</a></h2>
-<p>(todo)</p>
+<p>"Project &rarr; Weapons" (todo)</p>
 
 <hr />
 <h2><a name="Wrestlers">Wrestlers</a></h2>
-<p>(todo)</p>
+<p>"Project &rarr; Wrestlers" (todo)</p>
 
 <hr />
 <h2><a name="Tools">Tools</a></h2>
@@ -424,6 +478,11 @@ the base for the final, more polished features.</p>
 
 <hr />
 <h2><a name="Credits">Credits</a></h2>
+<ul>
+<li><strong>Main Programming</strong> &ndash; freem</li>
+<li><strong>Assistance</strong> &ndash; S.K. Styles, Keson, jordyad</li>
+</ul>
+
 <p>(todo)</p>
 
 <hr />
@@ -466,10 +525,17 @@ ID4 values are always given in hex.</dd>
 <dd>Another Zoinkity-created tool for inserting files into a VPW2 ROM and fixing the relevant offsets.</dd>
 
 <dt>Toki 1</dt>
-<dd>(todo; related to move effects)</dd>
+<dd>Originally known as "Animation Stat Mods 1", the Toki 1 values control
+a large number of parameters for moves.</dd>
 
 <dt>Toki 2</dt>
-<dd>(todo; related to moves)</dd>
+<dd>Originally known as "Animation Stat Mods 2", the Toki 2 values control:
+<ul>
+<li>Player's "general" animation at the end of the previous animation.</li>
+<li>Facing direction at the end of the animation.</li>
+<li>Number of frames in the animation.</li>
+</ul>
+</dd>
 
 <dt>Toki 3</dt>
 <dd>Toki 3 values are related to items in the FileTable. Depending on who you ask,
