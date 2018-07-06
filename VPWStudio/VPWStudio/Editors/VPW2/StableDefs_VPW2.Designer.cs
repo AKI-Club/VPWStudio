@@ -44,6 +44,7 @@
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.gbWrestlers.SuspendLayout();
@@ -185,6 +186,7 @@
 			// 
 			// gbWrestlers
 			// 
+			this.gbWrestlers.Controls.Add(this.buttonSwapWres);
 			this.gbWrestlers.Controls.Add(this.lbWresID2s);
 			this.gbWrestlers.Controls.Add(this.buttonSwitchGroup);
 			this.gbWrestlers.Controls.Add(this.buttonMoveUp);
@@ -215,6 +217,16 @@
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// buttonSwapWres
+			// 
+			this.buttonSwapWres.Location = new System.Drawing.Point(106, 104);
+			this.buttonSwapWres.Name = "buttonSwapWres";
+			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
+			this.buttonSwapWres.TabIndex = 16;
+			this.buttonSwapWres.Text = "Swa&p Wrestler";
+			this.buttonSwapWres.UseVisualStyleBackColor = true;
+			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
 			// 
 			// StableDefs_VPW2
 			// 
@@ -258,5 +270,6 @@
 		private System.Windows.Forms.GroupBox gbWrestlers;
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.Button buttonSwapWres;
 	}
 }

@@ -112,7 +112,7 @@ namespace VPWStudio.Editors.VPW2
 		private void PopulateList()
 		{
 			lbStables.BeginUpdate();
-			for (int i = 0; i < this.StableDefs.Count; i++)
+			for (int i = 0; i < StableDefs.Count; i++)
 			{
 				lbStables.Items.Add(i);
 			}
@@ -179,6 +179,11 @@ namespace VPWStudio.Editors.VPW2
 
 		private void buttonMoveUp_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresID2s.SelectedIndex <= 0)
 			{
 				return;
@@ -198,19 +203,82 @@ namespace VPWStudio.Editors.VPW2
 
 		private void buttonMoveDown_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresID2s.SelectedIndex < 0)
 			{
 				return;
 			}
-			if (lbWresID2s.SelectedIndex == lbWresID2s.Items.Count-1)
+
+			// bottom of list
+			if (lbWresID2s.SelectedIndex == lbWresID2s.Items.Count - 1)
 			{
 				return;
 			}
+
+			// swap 'em if you got 'em
+			int newIndex = lbWresID2s.SelectedIndex + 1;
+			byte oldWres = StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex + 1];
+			byte moveWres = StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex + 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerID2s[lbWresID2s.SelectedIndex] = oldWres;
+
+			UpdateWrestlerList();
+			lbWresID2s.SelectedIndex = newIndex;
 		}
 
 		private void buttonSwitchGroup_Click(object sender, EventArgs e)
 		{
-			Program.ErrorMessageBox("look what freem hasn't implemented yet!!!");
+			if (lbStables.SelectedIndex < 0 || lbWresID2s.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			int oldGroupNum = lbStables.SelectedIndex;
+			int oldIndex = lbWresID2s.SelectedIndex;
+			byte id2 = StableDefs[oldGroupNum].WrestlerID2s[oldIndex];
+			SwitchGroup_VPW2 sg = new SwitchGroup_VPW2(id2, oldGroupNum, StableDefs);
+			if (sg.ShowDialog() == DialogResult.OK)
+			{
+				// there are two things that need to be done here:
+				// 1/easy: add the wrestler to the first empty slot of the new stable
+				int newIndex = StableDefs[sg.NewStableNum].GetFirstEmptySlot();
+				StableDefs[sg.NewStableNum].WrestlerID2s[newIndex] = id2;
+
+				// 2/hard: remove the wrestler from the old stable and re-order list to remove the gap
+				StableDefs[oldGroupNum].WrestlerID2s[oldIndex] = 0;
+
+				// if the old index is the last item, we don't need to do anything
+				if (oldIndex != StableDefs[oldGroupNum].WrestlerID2s.Length - 1)
+				{
+					// otherwise, we need to shift up all the entries after the old index
+					for (int i = oldIndex; i < StableDefs[oldGroupNum].WrestlerID2s.Length-1; i++)
+					{
+						byte nextWres = StableDefs[oldGroupNum].WrestlerID2s[i + 1];
+						StableDefs[oldGroupNum].WrestlerID2s[i] = nextWres;
+						StableDefs[oldGroupNum].WrestlerID2s[i + 1] = 0;
+					}
+				}
+
+				UpdateWrestlerList();
+			}
+		}
+
+		private void buttonSwapWres_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0 || lbWresID2s.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// well this is gonna be fun
+			// things we need:
+			// * first wrestler id2 and group (passed in)
+			// * second wrestler id2 and group (written out)
 		}
 	}
 }
