@@ -59,8 +59,7 @@ namespace VPWStudio.Editors.VPW2
 				{
 					// fallback to hardedcoded offset
 					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-
-					br.BaseStream.Seek(0x408BC, SeekOrigin.Begin);
+					br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 				}
 
 				// xxx: default number of stable defs
