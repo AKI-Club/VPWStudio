@@ -274,10 +274,19 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
-			// well this is gonna be fun
-			// things we need:
-			// * first wrestler id2 and group (passed in)
-			// * second wrestler id2 and group (written out)
+			// we need the first wrestler's stable and first wrestler's index within stable
+			int stable1 = lbStables.SelectedIndex;
+			int index1 = lbWresID2s.SelectedIndex;
+
+			SwapWrestler_VPW2 sw = new SwapWrestler_VPW2(StableDefs, stable1, index1);
+			if (sw.ShowDialog() == DialogResult.OK)
+			{
+				// swap wrestlers at stable1[index1] and stable2[index2]
+				byte id2_first = StableDefs[stable1].WrestlerID2s[index1];
+				StableDefs[stable1].WrestlerID2s[index1] = StableDefs[sw.Wrestler2_CurStable].WrestlerID2s[sw.Wrestler2_CurIndex];
+				StableDefs[sw.Wrestler2_CurStable].WrestlerID2s[sw.Wrestler2_CurIndex] = id2_first;
+				UpdateWrestlerList();
+			}
 		}
 	}
 }
