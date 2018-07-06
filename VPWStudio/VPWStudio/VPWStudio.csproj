@@ -182,6 +182,18 @@
     <Compile Include="Dialogs\Project\ProjectPropertiesDialog.Designer.cs">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_VPW2.Designer.cs">
+      <DependentUpon>SwapWrestler_VPW2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_VPW2.Designer.cs">
+      <DependentUpon>SwitchGroup_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\AkiTextEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +427,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Project\ProjectPropertiesDialog.resx">
       <DependentUpon>ProjectPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwapWrestler_VPW2.resx">
+      <DependentUpon>SwapWrestler_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_VPW2.resx">
+      <DependentUpon>SwitchGroup_VPW2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\AkiTextEditor.resx">
       <DependentUpon>AkiTextEditor.cs</DependentUpon>
