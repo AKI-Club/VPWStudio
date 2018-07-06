@@ -215,7 +215,7 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48EA, 4) },
 
 					// data defs
-					// todo: StableDefs
+					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
