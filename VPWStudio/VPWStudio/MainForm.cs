@@ -867,10 +867,6 @@ namespace VPWStudio
 							{
 								StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
 							}
-							if (StableDefs_VPW2.WindowState == FormWindowState.Minimized)
-							{
-								StableDefs_VPW2.WindowState = FormWindowState.Normal;
-							}
 						}
 						if (StableDefs_VPW2.ShowDialog() == DialogResult.OK)
 						{
