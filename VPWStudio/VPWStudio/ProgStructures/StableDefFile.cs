@@ -137,7 +137,7 @@ namespace VPWStudio
 			// Revenge line format:
 			// #@P={wrespointers},graphicID
 			// # - stable number
-			// P - pointer to wrestler ID2s
+			// P - pointer to wrestler pointers
 			// {wrespointers} - list of pointers to wrestler data
 			// graphicID - file ID of stable graphic
 

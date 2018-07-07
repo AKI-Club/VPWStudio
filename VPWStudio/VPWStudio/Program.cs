@@ -547,6 +547,8 @@ namespace VPWStudio
 				sdf.ReadFile(sdReader);
 				sdReader.Close();
 
+				// make sure the external stabledefs are for the right game
+
 				/*
 				bool hasLocation = false;
 				int stableDefLoc = 0;
