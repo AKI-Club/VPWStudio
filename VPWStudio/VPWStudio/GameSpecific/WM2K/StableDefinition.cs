@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VPWStudio.GameSpecific.WM2K
 {
@@ -11,6 +9,11 @@ namespace VPWStudio.GameSpecific.WM2K
 	/// </summary>
 	public class StableDefinition
 	{
+		/// <summary>
+		/// Maximum number of wrestlers in a stable.
+		/// </summary>
+		private const int MAX_WRESTLERS_IN_STABLE = 8;
+
 		#region Class Members
 		/// <summary>
 		/// Pointer to Wrestler Definitions for this Stable.
@@ -38,6 +41,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		public string StableName;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -46,7 +50,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			WrestlerPointerStart = 0;
 			NumWrestlers = 0;
 			StableNamePointer = 0;
-			WrestlerID2s = new byte[8];
+			WrestlerID2s = new byte[MAX_WRESTLERS_IN_STABLE];
 			StableName = String.Empty;
 		}
 
@@ -59,10 +63,11 @@ namespace VPWStudio.GameSpecific.WM2K
 			WrestlerPointerStart = 0;
 			NumWrestlers = 0;
 			StableNamePointer = 0;
-			WrestlerID2s = new byte[8];
+			WrestlerID2s = new byte[MAX_WRESTLERS_IN_STABLE];
 			StableName = String.Empty;
 			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
@@ -103,9 +108,9 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 
 			// fill in any blanks
-			if (NumWrestlers < 8)
+			if (NumWrestlers < MAX_WRESTLERS_IN_STABLE)
 			{
-				for (int j = 7; j > NumWrestlers; j--)
+				for (int j = MAX_WRESTLERS_IN_STABLE-1; j > NumWrestlers; j--)
 				{
 					WrestlerID2s[j] = 0;
 				}
@@ -202,7 +207,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <returns>True if all slots are used in this group, false otherwise.</returns>
 		public bool IsGroupFull()
 		{
-			return GetWrestlerCount() == 8;
+			return GetWrestlerCount() == MAX_WRESTLERS_IN_STABLE;
 		}
 
 		/// <summary>
