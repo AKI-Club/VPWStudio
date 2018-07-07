@@ -45,7 +45,7 @@
 			this.cbDestStable.Location = new System.Drawing.Point(111, 25);
 			this.cbDestStable.Name = "cbDestStable";
 			this.cbDestStable.Size = new System.Drawing.Size(150, 21);
-			this.cbDestStable.TabIndex = 0;
+			this.cbDestStable.TabIndex = 1;
 			this.cbDestStable.SelectedIndexChanged += new System.EventHandler(this.cbDestStable_SelectedIndexChanged);
 			// 
 			// gbDestinationWrestlers
@@ -54,9 +54,9 @@
 			this.gbDestinationWrestlers.Location = new System.Drawing.Point(12, 52);
 			this.gbDestinationWrestlers.Name = "gbDestinationWrestlers";
 			this.gbDestinationWrestlers.Size = new System.Drawing.Size(249, 136);
-			this.gbDestinationWrestlers.TabIndex = 1;
+			this.gbDestinationWrestlers.TabIndex = 2;
 			this.gbDestinationWrestlers.TabStop = false;
-			this.gbDestinationWrestlers.Text = "Destination Wrestlers";
+			this.gbDestinationWrestlers.Text = "Destination &Wrestlers";
 			// 
 			// lbDestStableWrestlers
 			// 
@@ -64,24 +64,25 @@
 			this.lbDestStableWrestlers.Location = new System.Drawing.Point(6, 19);
 			this.lbDestStableWrestlers.Name = "lbDestStableWrestlers";
 			this.lbDestStableWrestlers.Size = new System.Drawing.Size(237, 108);
-			this.lbDestStableWrestlers.TabIndex = 1;
+			this.lbDestStableWrestlers.TabIndex = 3;
 			// 
 			// buttonOK
 			// 
 			this.buttonOK.Location = new System.Drawing.Point(12, 194);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 2;
+			this.buttonOK.TabIndex = 4;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
 			// buttonCancel
 			// 
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Location = new System.Drawing.Point(186, 194);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.TabIndex = 5;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -92,7 +93,7 @@
 			this.labelDestStable.Location = new System.Drawing.Point(12, 28);
 			this.labelDestStable.Name = "labelDestStable";
 			this.labelDestStable.Size = new System.Drawing.Size(93, 13);
-			this.labelDestStable.TabIndex = 2;
+			this.labelDestStable.TabIndex = 0;
 			this.labelDestStable.Text = "Destination &Stable";
 			// 
 			// labelSwapWres1
@@ -101,13 +102,15 @@
 			this.labelSwapWres1.Location = new System.Drawing.Point(12, 9);
 			this.labelSwapWres1.Name = "labelSwapWres1";
 			this.labelSwapWres1.Size = new System.Drawing.Size(256, 13);
-			this.labelSwapWres1.TabIndex = 4;
+			this.labelSwapWres1.TabIndex = 0;
 			this.labelSwapWres1.Text = "Swapping Wrestler ID2 {0:X2}, currently in Stable {1}";
 			// 
 			// SwapWrestler_VPW2
 			// 
+			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(273, 229);
 			this.Controls.Add(this.labelSwapWres1);
 			this.Controls.Add(this.cbDestStable);
