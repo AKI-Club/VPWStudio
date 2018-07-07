@@ -5,11 +5,15 @@ using System.IO;
 namespace VPWStudio.GameSpecific.VPW2
 {
 	/// <summary>
-	/// Virtual Pro-Wrestling 2 Stable Definition
+	/// Virtual Pro-Wrestling 2 Stable Definition.
 	/// </summary>
-	/// todo: WWF No Mercy uses the same format.
 	public class StableDefinition
 	{
+		/// <summary>
+		/// Maximum number of wrestlers in a stable.
+		/// </summary>
+		private const int MAX_WRESTLERS_IN_STABLE = 8;
+
 		#region Class Members
 		/// <summary>
 		/// Pointer to Wrestler Definitions for this Stable.
@@ -35,7 +39,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		{
 			WrestlerPointerStart = 0;
 			StableNameIndex = 0;
-			WrestlerID2s = new byte[8];
+			WrestlerID2s = new byte[MAX_WRESTLERS_IN_STABLE];
 		}
 
 		/// <summary>
@@ -46,7 +50,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		{
 			WrestlerPointerStart = 0;
 			StableNameIndex = 0;
-			WrestlerID2s = new byte[8];
+			WrestlerID2s = new byte[MAX_WRESTLERS_IN_STABLE];
 			ReadData(br);
 		}
 		#endregion
@@ -135,7 +139,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// <returns>True if all slots are used in this group, false otherwise.</returns>
 		public bool IsGroupFull()
 		{
-			return GetWrestlerCount() == 8;
+			return GetWrestlerCount() == MAX_WRESTLERS_IN_STABLE;
 		}
 
 		/// <summary>
