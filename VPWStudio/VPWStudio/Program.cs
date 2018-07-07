@@ -529,9 +529,12 @@ namespace VPWStudio
 			 * - Wrestler Definitions
 			 * - Stable Definitions
 			 * - Costume Definitions
+			 * - Championship Belts
 			 * - Story Mode
 			 * - Menus
-			 * and whatever else isn't involved with the FileTable.
+			 * - Arenas
+			 * - Weapons
+			 * and anything else not involving the FileTable.
 			 */
 
 			#region Stable Definitions
@@ -539,7 +542,7 @@ namespace VPWStudio
 				CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
 				File.Exists(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath))
 			){
-				BuildLogPub.AddLine("Stable Definition rewriting is currently not supported; sorry. Working on it.");
+				BuildLogPub.AddLine("Stable Definition rewriting is currently not supported; sorry. Working on it.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 
 				StableDefFile sdf = new StableDefFile();
 				FileStream sdStream = new FileStream(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
@@ -548,32 +551,41 @@ namespace VPWStudio
 				sdReader.Close();
 
 				// make sure the external stabledefs are for the right game
-
-				/*
-				bool hasLocation = false;
-				int stableDefLoc = 0;
-				if (CurLocationFile != null)
+				if (sdf.GameType == CurrentProject.Settings.BaseGame)
 				{
-					LocationFileEntry sdEntry = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
-					if (sdEntry != null)
+					// get stable def location in ROM
+					/*
+					bool hasLocation = false;
+					int stableDefLoc = 0;
+					if (CurLocationFile != null)
 					{
-						stableDefLoc = (int)sdEntry.Address;
-						hasLocation = true;
+						LocationFileEntry sdEntry = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+						if (sdEntry != null)
+						{
+							stableDefLoc = (int)sdEntry.Address;
+							hasLocation = true;
+						}
+					}
+					if (!hasLocation)
+					{
+						// fallback to hardcoded offset
+						stableDefLoc = DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["StableDefs"];
+					}
+					*/
+
+					switch (CurrentProject.Settings.BaseGame)
+					{
+						case VPWGames.VPW2:
+							//sdf.StableDefs_VPW2
+							break;
+						default:
+							BuildLogPub.AddLine(String.Format("Stable rebuilding not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+							break;
 					}
 				}
-				if (!hasLocation)
+				else
 				{
-					// fallback to hardcoded offset
-					stableDefLoc = 0x408BC;
-					//DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["StableDefs"];
-				}
-				*/
-
-				switch (CurrentProject.Settings.BaseGame)
-				{
-					case VPWGames.VPW2:
-						//sdf.StableDefs_VPW2
-						break;
+					BuildLogPub.AddLine(String.Format("Stable Definition file is for a different game. (Found '{0}', expected '{1}')", sdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 				}
 			}
 			#endregion
