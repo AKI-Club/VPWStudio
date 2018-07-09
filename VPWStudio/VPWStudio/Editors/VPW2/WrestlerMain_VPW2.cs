@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific.VPW2;
 
@@ -14,7 +9,6 @@ namespace VPWStudio.Editors.VPW2
 	public partial class WrestlerMain_VPW2 : Form
 	{
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
-		public const int DefaultWrestlerDefOffset = 0x3FBE4;
 
 		private AkiText DefaultNames;
 
@@ -71,7 +65,7 @@ namespace VPWStudio.Editors.VPW2
 			{
 				// fallback to hardedcoded offset
 				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
-				br.BaseStream.Seek(DefaultWrestlerDefOffset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// xxx: default number of wrestler defs
