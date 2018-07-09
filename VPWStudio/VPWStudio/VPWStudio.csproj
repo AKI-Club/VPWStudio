@@ -273,6 +273,7 @@
     <Compile Include="GameSpecific\NoMercy\CostumeDef.cs" />
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\NoMercy\NoMercyText.cs" />
+    <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
