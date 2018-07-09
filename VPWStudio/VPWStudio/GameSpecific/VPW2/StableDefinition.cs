@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace VPWStudio.GameSpecific.VPW2
@@ -88,6 +87,10 @@ namespace VPWStudio.GameSpecific.VPW2
 			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 
+		/// <summary>
+		/// Write StableDefinition data using a BinaryReader.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
 			byte[] wptr = BitConverter.GetBytes(WrestlerPointerStart);
