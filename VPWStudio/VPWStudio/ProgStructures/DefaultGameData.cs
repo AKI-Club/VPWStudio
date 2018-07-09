@@ -244,6 +244,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x48424, 192) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BD1B0, 0) },
@@ -258,6 +259,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x465B8, 0) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x48384, 192) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BD150, 0) },
@@ -272,6 +274,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x48424, 192) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BD220, 0) },
@@ -287,6 +290,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x464B8, 0) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x48284, 192) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BD0C0, 0) },
