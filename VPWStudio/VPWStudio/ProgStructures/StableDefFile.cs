@@ -31,10 +31,16 @@ namespace VPWStudio
 		/// Virtual Pro-Wrestling 2 Stable Definitions
 		/// </summary>
 		public SortedList<int, GameSpecific.VPW2.StableDefinition> StableDefs_VPW2;
+
+		/// <summary>
+		/// WWF No Mercy Stable Definitions
+		/// </summary>
+		public SortedList<int, GameSpecific.NoMercy.StableDefinition> StableDefs_NoMercy;
 		#endregion
 
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Generic constuctor.
 		/// </summary>
@@ -51,6 +57,7 @@ namespace VPWStudio
 		{
 			GameType = _game;
 		}
+		#endregion
 
 		/// <summary>
 		/// Check if this StableDefFile is compatible with a specific game.
@@ -116,10 +123,26 @@ namespace VPWStudio
 						}
 					}
 					break;
+				case VPWGames.NoMercy:
+					{
+						StableDefs_NoMercy = new SortedList<int, GameSpecific.NoMercy.StableDefinition>();
+						while (!sr.EndOfStream)
+						{
+							string line = sr.ReadLine();
+							if (!line.Equals(String.Empty))
+							{
+								GameSpecific.NoMercy.StableDefinition sd = ReadData_NoMercy(line, out int stableNum);
+								StableDefs_NoMercy.Add(stableNum, sd);
+							}
+						}
+					}
+					break;
+
 				default:
 					StableDefs_Revenge = null;
 					StableDefs_WM2K = null;
 					StableDefs_VPW2 = null;
+					StableDefs_NoMercy = null;
 					break;
 			}
 		}
@@ -254,6 +277,44 @@ namespace VPWStudio
 
 			return sd;
 		}
+
+		/// <summary>
+		/// Read data as WWF No Mercy Stable Definition data.
+		/// </summary>
+		/// <param name="input">Input string to parse.</param>
+		/// <param name="stableNum">(output) Stable number.</param>
+		/// <returns>a WWF No Mercy StableDefinition.</returns>
+		public GameSpecific.NoMercy.StableDefinition ReadData_NoMercy(string input, out int stableNum)
+		{
+			GameSpecific.NoMercy.StableDefinition sd = new GameSpecific.NoMercy.StableDefinition();
+
+			// No Mercy line format is the same as VPW2, except the wrestler list has 9 entries.
+
+			string[] tokens = input.Split(new char[] { '@', '=' });
+			// tokens[0] = stable num
+			// tokens[1] = id2 pointer
+			// tokens[2] = everything after '='; needs further parsing
+
+			string[] data = tokens[2].Split(new char[] { '{', '}' });
+			// data[0] = fuck all
+			// data[1] = wrestlers ID2s
+			// data[2] = ',' stable name ID
+
+			string[] id2 = data[1].Split(',');
+
+			stableNum = int.Parse(tokens[0]);
+			sd.WrestlerPointerStart = UInt32.Parse(tokens[1], NumberStyles.HexNumber);
+			sd.StableNameIndex = UInt16.Parse(data[2].Substring(1), NumberStyles.HexNumber);
+
+			// wrestlers
+			sd.WrestlerID2s = new byte[id2.Length];
+			for (int w = 0; w < sd.WrestlerID2s.Length; w++)
+			{
+				sd.WrestlerID2s[w] = byte.Parse(id2[w], NumberStyles.HexNumber);
+			}
+
+			return sd;
+		}
 		#endregion
 
 		#region Write Data
@@ -283,6 +344,12 @@ namespace VPWStudio
 					foreach (KeyValuePair<int, GameSpecific.VPW2.StableDefinition> sd in StableDefs_VPW2)
 					{
 						sw.WriteLine(WriteData_VPW2(sd));
+					}
+					break;
+				case VPWGames.NoMercy:
+					foreach (KeyValuePair<int, GameSpecific.NoMercy.StableDefinition> sd in StableDefs_NoMercy)
+					{
+						sw.WriteLine(WriteData_NoMercy(sd));
 					}
 					break;
 			}
@@ -346,6 +413,26 @@ namespace VPWStudio
 
 			// end wrestlers, text index
 			outData += String.Format("}},{0:X4}",sd.Value.StableNameIndex);
+
+			return outData;
+		}
+
+		public string WriteData_NoMercy(KeyValuePair<int, GameSpecific.NoMercy.StableDefinition> sd)
+		{
+			string outData = String.Format("{0}@{1:X8}={{", sd.Key, sd.Value.WrestlerPointerStart);
+
+			// wrestlers
+			for (int wres = 0; wres < sd.Value.WrestlerID2s.Length; wres++)
+			{
+				outData += String.Format("{0:X2}", sd.Value.WrestlerID2s[wres]);
+				if (wres < sd.Value.WrestlerID2s.Length - 1)
+				{
+					outData += ',';
+				}
+			}
+
+			// end wrestlers, text index
+			outData += String.Format("}},{0:X4}", sd.Value.StableNameIndex);
 
 			return outData;
 		}
