@@ -238,8 +238,6 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			Program.ErrorMessageBox("god damnit freem can't you implement EVERYTHING the first time around?");
-			/*
 			int oldGroupNum = lbStables.SelectedIndex;
 			int oldIndex = lbWresID2s.SelectedIndex;
 			byte id2 = StableDefs[oldGroupNum].WrestlerID2s[oldIndex];
@@ -268,7 +266,6 @@ namespace VPWStudio.Editors.NoMercy
 
 				UpdateWrestlerList();
 			}
-			*/
 		}
 
 		private void buttonSwapWres_Click(object sender, EventArgs e)
@@ -278,8 +275,6 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			Program.ErrorMessageBox("if you find a video called 'swap.avi', DON'T EVER WATCH IT. also I didn't get around to implementing this yet.");
-			/*
 			// we need the first wrestler's stable and first wrestler's index within stable
 			int stable1 = lbStables.SelectedIndex;
 			int index1 = lbWresID2s.SelectedIndex;
@@ -293,7 +288,6 @@ namespace VPWStudio.Editors.NoMercy
 				StableDefs[sw.Wrestler2_CurStable].WrestlerID2s[sw.Wrestler2_CurIndex] = id2_first;
 				UpdateWrestlerList();
 			}
-			*/
 		}
 	}
 }
