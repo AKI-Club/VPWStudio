@@ -932,9 +932,6 @@ namespace VPWStudio
 								return;
 							}
 
-							Program.ErrorMessageBox("hey freem you should probably implement the rest of this, but you need to get the two companion dialogs made first");
-
-							/*
 							// check if StableDef file exists.
 							string stableDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath);
 							bool writePath = false;
@@ -948,7 +945,7 @@ namespace VPWStudio
 							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
 							StreamWriter sw = new StreamWriter(fs);
 							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
-							sdefs.StableDefs_VPW2 = StableDefs_VPW2.StableDefs;
+							sdefs.StableDefs_NoMercy = StableDefs_NoMercy.StableDefs;
 							sdefs.WriteFile(sw);
 							sw.Close();
 
@@ -959,7 +956,6 @@ namespace VPWStudio
 								UpdateTitleBar();
 								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
 							}
-							*/
 						}
 					}
 					break;
