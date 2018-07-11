@@ -120,6 +120,11 @@ namespace VPWStudio
 		/// No Mercy Wrestler Editor, main form
 		/// </summary>
 		public Editors.NoMercy.WrestlerMain_NoMercy WrestlerMain_NoMercy = null;
+
+		/// <summary>
+		/// No Mercy Stable Editor
+		/// </summary>
+		public Editors.NoMercy.StableDefs_NoMercy StableDefs_NoMercy = null;
 		#endregion
 
 		#endregion
@@ -901,6 +906,60 @@ namespace VPWStudio
 								UpdateTitleBar();
 								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
 							}
+						}
+					}
+					break;
+
+				case VPWGames.NoMercy:
+					{
+						if (StableDefs_NoMercy == null)
+						{
+							StableDefs_NoMercy = new Editors.NoMercy.StableDefs_NoMercy();
+						}
+						else
+						{
+							if (StableDefs_NoMercy.IsDisposed)
+							{
+								StableDefs_NoMercy = new Editors.NoMercy.StableDefs_NoMercy();
+							}
+						}
+						if (StableDefs_NoMercy.ShowDialog() == DialogResult.OK)
+						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save Stable Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							Program.ErrorMessageBox("hey freem you should probably implement the rest of this, but you need to get the two companion dialogs made first");
+
+							/*
+							// check if StableDef file exists.
+							string stableDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath);
+							bool writePath = false;
+
+							if (!File.Exists(stableDefPath))
+							{
+								stableDefPath = Program.ConvertRelativePath(@"ProjectFiles\StableDefs.txt");
+								writePath = true;
+							}
+
+							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
+							StreamWriter sw = new StreamWriter(fs);
+							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
+							sdefs.StableDefs_VPW2 = StableDefs_VPW2.StableDefs;
+							sdefs.WriteFile(sw);
+							sw.Close();
+
+							if (writePath)
+							{
+								Program.CurrentProject.Settings.StableDefinitionFilePath = stableDefPath;
+								Program.UnsavedChanges = true;
+								UpdateTitleBar();
+								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
+							}
+							*/
 						}
 					}
 					break;
