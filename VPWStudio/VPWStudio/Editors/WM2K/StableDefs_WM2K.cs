@@ -30,20 +30,9 @@ namespace VPWStudio.Editors.WM2K
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WM2K_NTSC_U:
-					case SpecificGame.WM2K_PAL:
-						br.BaseStream.Seek(0x41EE0, SeekOrigin.Begin);
-						break;
-
-					case SpecificGame.WM2K_NTSC_J:
-						br.BaseStream.Seek(0x3F980, SeekOrigin.Begin);
-						break;
-				}
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// xxx: default number of stable defs
