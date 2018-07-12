@@ -30,27 +30,16 @@ namespace VPWStudio.Editors.Revenge
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.Revenge_NTSC_U:
-						offset = 0x3B0F8;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x38548;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// xxx: default number of stable defs
 			for (int i = 0; i < 13; i++)
 			{
 				StableDefinition sdef = new StableDefinition(br);
-				this.StableDefs.Add(i, sdef);
+				StableDefs.Add(i, sdef);
 			}
 
 			br.Close();
