@@ -474,10 +474,11 @@ namespace VPWStudio
 				}
 			}
 		}
-		
+
 		/// <summary>
 		/// Builds the Output ROM using the Input ROM as a base, applying changes as necessary.
 		/// </summary>
+		/// a.k.a. the giant fuckoff routine
 		public static void BuildRom()
 		{
 			CurrentOutputROM = new Z64Rom();
@@ -542,8 +543,6 @@ namespace VPWStudio
 				CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
 				File.Exists(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath))
 			){
-				BuildLogPub.AddLine("Stable Definition rewriting is currently not supported; sorry. Working on it.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-
 				StableDefFile sdf = new StableDefFile();
 				FileStream sdStream = new FileStream(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
 				StreamReader sdReader = new StreamReader(sdStream);
@@ -554,7 +553,6 @@ namespace VPWStudio
 				if (sdf.GameType == CurrentProject.Settings.BaseGame)
 				{
 					// get stable def location in ROM
-					/*
 					bool hasLocation = false;
 					int stableDefLoc = 0;
 					if (CurLocationFile != null)
@@ -569,19 +567,50 @@ namespace VPWStudio
 					if (!hasLocation)
 					{
 						// fallback to hardcoded offset
-						stableDefLoc = DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["StableDefs"];
+						stableDefLoc = (int)DefaultGameData.DefaultLocations[CurrentProject.Settings.GameType].Locations["StableDefs"].Offset;
 					}
-					*/
+
+					MemoryStream ms = new MemoryStream(outRomData.ToArray());
+					BinaryWriter bw = new BinaryWriter(ms);
+					bw.Seek(stableDefLoc, SeekOrigin.Begin);
+
+					// temporary bullshit
+					bool writeData = false;
 
 					switch (CurrentProject.Settings.BaseGame)
 					{
+						case VPWGames.WM2K:
+							foreach (KeyValuePair<int, GameSpecific.WM2K.StableDefinition> sdef in sdf.StableDefs_WM2K)
+							{
+								sdef.Value.WriteData(bw);
+							}
+							writeData = true;
+							break;
 						case VPWGames.VPW2:
-							//sdf.StableDefs_VPW2
+							foreach (KeyValuePair<int, GameSpecific.VPW2.StableDefinition> sdef in sdf.StableDefs_VPW2)
+							{
+								sdef.Value.WriteData(bw);
+							}
+							writeData = true;
+							break;
+						case VPWGames.NoMercy:
+							foreach (KeyValuePair<int, GameSpecific.NoMercy.StableDefinition> sdef in sdf.StableDefs_NoMercy)
+							{
+								sdef.Value.WriteData(bw);
+							}
+							writeData = true;
 							break;
 						default:
 							BuildLogPub.AddLine(String.Format("Stable rebuilding not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 							break;
 					}
+
+					// temporary bullshit part 2
+					if (writeData)
+					{
+						outRomData = new List<byte>(ms.ToArray());
+					}
+					bw.Close();
 				}
 				else
 				{
