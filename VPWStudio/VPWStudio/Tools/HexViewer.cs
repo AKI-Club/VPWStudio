@@ -10,20 +10,61 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
+	public enum HexViewerDataSource
+	{
+		/// <summary>
+		/// Data from a FileTable entry.
+		/// </summary>
+		FileTable = 0,
+
+		/// <summary>
+		/// External data passed in
+		/// </summary>
+		ExternalData
+	}
+
 	/// <summary>
 	/// Quick and dirty hex dump viewer.
 	/// </summary>
 	public partial class HexViewer : Form
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public HexViewerDataSource ViewSource;
+
+		#region Constructors
+		/// <summary>
+		/// HexViewer constructor using FileTable ID.
+		/// </summary>
+		/// <param name="fileID"></param>
 		public HexViewer(int fileID)
 		{
 			InitializeComponent();
 			byteViewer.SetDisplayMode(DisplayMode.Hexdump);
+			ViewSource = HexViewerDataSource.FileTable;
 			LoadFile(fileID);
 		}
 
+		/// <summary>
+		/// HexViewer constructor using external data.
+		/// </summary>
+		/// <param name="data"></param>
+		public HexViewer(byte[] data)
+		{
+			InitializeComponent();
+			byteViewer.SetDisplayMode(DisplayMode.Hexdump);
+			ViewSource = HexViewerDataSource.ExternalData;
+			byteViewer.SetBytes(data);
+		}
+		#endregion
+
 		public void RequestLoad(int fileID) => LoadFile(fileID);
 
+		/// <summary>
+		/// Load a file from the current project's filetable.
+		/// </summary>
+		/// <param name="fileID"></param>
 		private void LoadFile(int fileID)
 		{
 			if (!Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(fileID))
@@ -54,7 +95,7 @@ namespace VPWStudio
 			extractWriter.Close();
 
 			byteViewer.SetBytes(data);
-			this.Text = String.Format("Hex Viewer [{0:X4}]", fileID);
+			Text = String.Format("Hex Viewer [{0:X4}]", fileID);
 		}
 	}
 }
