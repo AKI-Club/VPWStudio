@@ -850,13 +850,41 @@ namespace VPWStudio
 							{
 								StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
 							}
-							if (StableDefs_WM2K.WindowState == FormWindowState.Minimized)
+						}
+						if (StableDefs_WM2K.ShowDialog() == DialogResult.OK)
+						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
 							{
-								StableDefs_WM2K.WindowState = FormWindowState.Normal;
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save Stable Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							// check if StableDef file exists.
+							string stableDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath);
+							bool writePath = false;
+
+							if (!File.Exists(stableDefPath))
+							{
+								stableDefPath = Program.ConvertRelativePath(@"ProjectFiles\StableDefs.txt");
+								writePath = true;
+							}
+
+							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
+							StreamWriter sw = new StreamWriter(fs);
+							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
+							sdefs.StableDefs_WM2K = StableDefs_WM2K.StableDefs;
+							sdefs.WriteFile(sw);
+							sw.Close();
+
+							if (writePath)
+							{
+								Program.CurrentProject.Settings.StableDefinitionFilePath = stableDefPath;
+								Program.UnsavedChanges = true;
+								UpdateTitleBar();
+								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
 							}
 						}
-						StableDefs_WM2K.MdiParent = this;
-						StableDefs_WM2K.Show();
 					}
 					break;
 
