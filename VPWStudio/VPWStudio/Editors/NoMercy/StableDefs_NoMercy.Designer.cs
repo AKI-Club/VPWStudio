@@ -42,9 +42,9 @@
 			this.buttonMoveDown = new System.Windows.Forms.Button();
 			this.buttonMoveUp = new System.Windows.Forms.Button();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
+			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.gbWrestlers.SuspendLayout();
@@ -55,7 +55,7 @@
 			this.lbStables.FormattingEnabled = true;
 			this.lbStables.Location = new System.Drawing.Point(6, 19);
 			this.lbStables.Name = "lbStables";
-			this.lbStables.Size = new System.Drawing.Size(108, 225);
+			this.lbStables.Size = new System.Drawing.Size(108, 238);
 			this.lbStables.TabIndex = 0;
 			this.lbStables.SelectedIndexChanged += new System.EventHandler(this.lbStables_SelectedIndexChanged);
 			// 
@@ -64,7 +64,7 @@
 			this.gbStables.Controls.Add(this.lbStables);
 			this.gbStables.Location = new System.Drawing.Point(12, 12);
 			this.gbStables.Name = "gbStables";
-			this.gbStables.Size = new System.Drawing.Size(120, 251);
+			this.gbStables.Size = new System.Drawing.Size(120, 266);
 			this.gbStables.TabIndex = 4;
 			this.gbStables.TabStop = false;
 			this.gbStables.Text = "&Stables";
@@ -151,12 +151,12 @@
 			this.lbWresID2s.FormattingEnabled = true;
 			this.lbWresID2s.Location = new System.Drawing.Point(6, 19);
 			this.lbWresID2s.Name = "lbWresID2s";
-			this.lbWresID2s.Size = new System.Drawing.Size(94, 108);
+			this.lbWresID2s.Size = new System.Drawing.Size(94, 121);
 			this.lbWresID2s.TabIndex = 8;
 			// 
 			// buttonSwitchGroup
 			// 
-			this.buttonSwitchGroup.Location = new System.Drawing.Point(106, 77);
+			this.buttonSwitchGroup.Location = new System.Drawing.Point(106, 88);
 			this.buttonSwitchGroup.Name = "buttonSwitchGroup";
 			this.buttonSwitchGroup.Size = new System.Drawing.Size(89, 23);
 			this.buttonSwitchGroup.TabIndex = 15;
@@ -193,14 +193,24 @@
 			this.gbWrestlers.Controls.Add(this.buttonMoveDown);
 			this.gbWrestlers.Location = new System.Drawing.Point(144, 98);
 			this.gbWrestlers.Name = "gbWrestlers";
-			this.gbWrestlers.Size = new System.Drawing.Size(200, 136);
+			this.gbWrestlers.Size = new System.Drawing.Size(200, 151);
 			this.gbWrestlers.TabIndex = 16;
 			this.gbWrestlers.TabStop = false;
 			this.gbWrestlers.Text = "&Wrestlers";
 			// 
+			// buttonSwapWres
+			// 
+			this.buttonSwapWres.Location = new System.Drawing.Point(106, 117);
+			this.buttonSwapWres.Name = "buttonSwapWres";
+			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
+			this.buttonSwapWres.TabIndex = 16;
+			this.buttonSwapWres.Text = "Swa&p Wrestler";
+			this.buttonSwapWres.UseVisualStyleBackColor = true;
+			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
+			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(144, 240);
+			this.buttonOK.Location = new System.Drawing.Point(138, 255);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 17;
@@ -210,7 +220,7 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(269, 240);
+			this.buttonCancel.Location = new System.Drawing.Point(269, 255);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 18;
@@ -218,21 +228,11 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// buttonSwapWres
-			// 
-			this.buttonSwapWres.Location = new System.Drawing.Point(106, 104);
-			this.buttonSwapWres.Name = "buttonSwapWres";
-			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
-			this.buttonSwapWres.TabIndex = 16;
-			this.buttonSwapWres.Text = "Swa&p Wrestler";
-			this.buttonSwapWres.UseVisualStyleBackColor = true;
-			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
-			// 
 			// StableDefs_NoMercy
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(351, 275);
+			this.ClientSize = new System.Drawing.Size(351, 290);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.gbWrestlers);
