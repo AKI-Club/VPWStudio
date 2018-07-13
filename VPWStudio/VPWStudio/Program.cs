@@ -196,6 +196,19 @@ namespace VPWStudio
 		}
 		#endregion
 
+		/// <summary>
+		/// Get a slice of ROM data.
+		/// </summary>
+		/// <param name="offset">Offset to grab data from.</param>
+		/// <param name="length">Length of data to grab.</param>
+		/// <returns>Byte array with the requested data.</returns>
+		public static byte[] GetRomSlice(int offset, int length)
+		{
+			byte[] slice = new byte[length];
+			Array.Copy(CurrentInputROM.Data, offset, slice, 0, length);
+			return slice;
+		}
+
 		#endregion // helpers
 
 		#region ROM Building
