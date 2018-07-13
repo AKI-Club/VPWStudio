@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace VPWStudio
 {
+	/// <summary>
+	/// Source of the data passed into the HexViewer.
+	/// </summary>
 	public enum HexViewerDataSource
 	{
 		/// <summary>
@@ -18,7 +16,7 @@ namespace VPWStudio
 		FileTable = 0,
 
 		/// <summary>
-		/// External data passed in
+		/// External data passed in.
 		/// </summary>
 		ExternalData
 	}
@@ -28,74 +26,63 @@ namespace VPWStudio
 	/// </summary>
 	public partial class HexViewer : Form
 	{
+		#region Class Members
 		/// <summary>
-		/// 
+		/// Source of the data passed into the hex viewer.
 		/// </summary>
 		public HexViewerDataSource ViewSource;
 
-		#region Constructors
 		/// <summary>
-		/// HexViewer constructor using FileTable ID.
+		/// FileTable ID of loaded file (-1 if not loading from FileTable).
 		/// </summary>
-		/// <param name="fileID"></param>
-		public HexViewer(int fileID)
-		{
-			InitializeComponent();
-			byteViewer.SetDisplayMode(DisplayMode.Hexdump);
-			ViewSource = HexViewerDataSource.FileTable;
-			LoadFile(fileID);
-		}
+		public int FileID = -1;
 
 		/// <summary>
-		/// HexViewer constructor using external data.
+		/// Data to be put in the HexViewer.
 		/// </summary>
-		/// <param name="data"></param>
-		public HexViewer(byte[] data)
+		public byte[] Data;
+		#endregion
+
+		#region Constructors
+		/// <summary>
+		/// HexViewer constructor.
+		/// </summary>
+		/// <param name="hvds">Viewer data source.</param>
+		/// <param name="data">Data to load.</param>
+		/// <param name="fileID">File ID, if loading from FileTable.</param>
+		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1)
 		{
 			InitializeComponent();
 			byteViewer.SetDisplayMode(DisplayMode.Hexdump);
-			ViewSource = HexViewerDataSource.ExternalData;
+			ViewSource = hvds;
 			byteViewer.SetBytes(data);
+			FileID = fileID;
+
+			if (FileID != -1)
+			{
+				Text = String.Format("Hex Viewer [{0:X4}]", fileID);
+			}
 		}
 		#endregion
 
-		public void RequestLoad(int fileID) => LoadFile(fileID);
+		/// <summary>
+		/// Get the SHA256 hash of the currently loaded data.
+		/// </summary>
+		/// <returns>SHA256 of the data as byte array.</returns>
+		public byte[] GetHash()
+		{
+			SHA256 sha256 = SHA256.Create();
+			return sha256.ComputeHash(byteViewer.GetBytes());
+		}
 
 		/// <summary>
-		/// Load a file from the current project's filetable.
+		/// Tell the hex viewer manager to remove this form.
 		/// </summary>
-		/// <param name="fileID"></param>
-		private void LoadFile(int fileID)
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void HexViewer_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (!Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(fileID))
-			{
-				MessageBox.Show(
-					String.Format("Error attempting to load file ID {0:X4}", fileID),
-					SharedStrings.MainForm_Title,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
-				return;
-			}
-
-			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader romReader = new BinaryReader(romStream);
-
-			MemoryStream extractStream = new MemoryStream();
-			BinaryWriter extractWriter = new BinaryWriter(extractStream);
-
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, extractWriter, fileID);
-			romReader.Close();
-
-			int size = (int)extractStream.Position;
-			extractStream.Seek(0, SeekOrigin.Begin);
-			BinaryReader br = new BinaryReader(extractStream);
-			byte[] data = br.ReadBytes(size);
-			br.Close();
-			extractWriter.Close();
-
-			byteViewer.SetBytes(data);
-			Text = String.Format("Hex Viewer [{0:X4}]", fileID);
+			Program.HexViewManager.FormClosed(this);
 		}
 	}
 }
