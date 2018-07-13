@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1352,12 +1353,20 @@ namespace VPWStudio
 
 		#region Help Menu Items
 		/// <summary>
-		/// eventually this will launch the manual.
-		/// but there is none right now.
+		/// Launch the manual (what little there is).
 		/// </summary>
 		private void manualToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("I can't yell at you to read the manual because it's not particularly helpful.\nThis program is very early into development and will change a lot.");
+			// attempt to find manual
+			string manualPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Manual/index.html";
+			if (!File.Exists(manualPath))
+			{
+				MessageBox.Show("this is awkward... I can't find the Manual.");
+			}
+			else
+			{
+				System.Diagnostics.Process.Start(manualPath);
+			}
 		}
 
 		/// <summary>
@@ -1397,7 +1406,7 @@ namespace VPWStudio
 				);
 			}
 
-			this.Text = titleBar;
+			Text = titleBar;
 		}
 
 		/// <summary>
@@ -1477,7 +1486,7 @@ namespace VPWStudio
 		/// </summary>
 		private void UpdateBackground()
 		{
-			this.BackgroundImage = GetMainMenuBG();
+			BackgroundImage = GetMainMenuBG();
 		}
 		#endregion
 
