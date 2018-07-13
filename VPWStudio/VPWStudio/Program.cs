@@ -65,6 +65,11 @@ namespace VPWStudio
 		/// </summary>
 		public static BuildLogEventPublisher BuildLogPub = new BuildLogEventPublisher();
 
+		/// <summary>
+		/// HexViewer Manager
+		/// </summary>
+		public static HexViewerManager HexViewManager = new HexViewerManager();
+
 		#endregion
 
 		/// <summary>

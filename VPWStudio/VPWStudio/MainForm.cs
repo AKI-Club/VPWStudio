@@ -182,35 +182,15 @@ namespace VPWStudio
 
 		#region Form Handling
 		/// <summary>
-		/// Request the use of the HexViewerForm.
+		/// Request a HexViewerForm using a FileTable entry.
 		/// </summary>
 		/// <param name="fileID">File ID to load.</param>
 		public void RequestHexViewer(int fileID)
 		{
-			if (HexViewerForm == null)
-			{
-				HexViewerForm = new HexViewer(fileID);
-				HexViewerForm.MdiParent = this;
-				HexViewerForm.Show();
-			}
-			else
-			{
-				if (HexViewerForm.IsDisposed)
-				{
-					HexViewerForm = new HexViewer(fileID);
-				}
-				else
-				{
-					HexViewerForm.RequestLoad(fileID);
-					HexViewerForm.Focus();
-				}
-				HexViewerForm.MdiParent = this;
-				HexViewerForm.Show();
-				if (HexViewerForm.WindowState == FormWindowState.Minimized)
-				{
-					HexViewerForm.WindowState = FormWindowState.Normal;
-				}
-			}
+			HexViewer newHV = Program.HexViewManager.NewViewerFileTable(fileID);
+			newHV.MdiParent = this;
+			newHV.Show();
+			newHV.BringToFront();
 		}
 
 		#endregion
