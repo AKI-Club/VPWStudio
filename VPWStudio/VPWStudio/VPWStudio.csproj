@@ -393,6 +393,12 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\RomSliceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\RomSliceDialog.Designer.cs">
+      <DependentUpon>RomSliceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\StableDefParseTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -535,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool.resx">
       <DependentUpon>ModelTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\RomSliceDialog.resx">
+      <DependentUpon>RomSliceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\StableDefParseTest.resx">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>

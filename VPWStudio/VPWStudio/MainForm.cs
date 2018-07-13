@@ -1824,5 +1824,37 @@ namespace VPWStudio
 			StableDefParseTest sdpt = new StableDefParseTest();
 			sdpt.ShowDialog();
 		}
+
+		private void romSliceTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("no project open to get a rom slice for");
+				return;
+			}
+
+			RomSliceDialog rsd = new RomSliceDialog();
+			if (rsd.ShowDialog() == DialogResult.OK)
+			{
+				byte[] romSlice;
+
+				if (rsd.EndValueIsOffset)
+				{
+					// calculate length
+					int len = rsd.EndValue - rsd.StartOffset;
+					romSlice = Program.GetRomSlice(rsd.StartOffset, len);
+				}
+				else
+				{
+					// length
+					romSlice = Program.GetRomSlice(rsd.StartOffset, rsd.EndValue);
+				}
+
+				HexViewer hv = Program.HexViewManager.NewViewerData(romSlice);
+				hv.MdiParent = this;
+				hv.Show();
+				hv.BringToFront();
+			}
+		}
 	}
 }
