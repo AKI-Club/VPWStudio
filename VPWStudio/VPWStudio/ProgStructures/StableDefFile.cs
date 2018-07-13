@@ -17,6 +17,10 @@ namespace VPWStudio
 		public VPWGames GameType;
 
 		#region Game-Specific
+		//public SortedList<int, GameSpecific.StableDef_Early> StableDefs_WorldTour;
+
+		//public SortedList<int, GameSpecific.StableDef_Early> StableDefs_VPW64;
+
 		/// <summary>
 		/// WCW/nWo Revenge Stable Definitions
 		/// </summary>
