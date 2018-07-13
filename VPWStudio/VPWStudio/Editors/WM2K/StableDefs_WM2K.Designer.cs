@@ -31,21 +31,22 @@
 			this.lbStables = new System.Windows.Forms.ListBox();
 			this.gbStables = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tbNamePointer = new System.Windows.Forms.TextBox();
 			this.labelWresDefPointer = new System.Windows.Forms.Label();
 			this.tbWrestlerDefPointer = new System.Windows.Forms.TextBox();
-			this.labelStableName = new System.Windows.Forms.Label();
-			this.tbStableName = new System.Windows.Forms.TextBox();
 			this.tbNumWrestlers = new System.Windows.Forms.TextBox();
 			this.labelNumWrestlers = new System.Windows.Forms.Label();
-			this.lbWresID2s = new System.Windows.Forms.ListBox();
+			this.tbStableName = new System.Windows.Forms.TextBox();
+			this.labelStableName = new System.Windows.Forms.Label();
 			this.labelNamePointer = new System.Windows.Forms.Label();
-			this.tbNamePointer = new System.Windows.Forms.TextBox();
+			this.lbWresID2s = new System.Windows.Forms.ListBox();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.buttonSwitchGroup = new System.Windows.Forms.Button();
 			this.buttonMoveUp = new System.Windows.Forms.Button();
 			this.buttonMoveDown = new System.Windows.Forms.Button();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.gbWrestlers.SuspendLayout();
@@ -93,6 +94,15 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 98);
 			this.tableLayoutPanel1.TabIndex = 5;
 			// 
+			// tbNamePointer
+			// 
+			this.tbNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbNamePointer.Location = new System.Drawing.Point(109, 27);
+			this.tbNamePointer.Name = "tbNamePointer";
+			this.tbNamePointer.ReadOnly = true;
+			this.tbNamePointer.Size = new System.Drawing.Size(89, 20);
+			this.tbNamePointer.TabIndex = 9;
+			// 
 			// labelWresDefPointer
 			// 
 			this.labelWresDefPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -111,25 +121,6 @@
 			this.tbWrestlerDefPointer.ReadOnly = true;
 			this.tbWrestlerDefPointer.Size = new System.Drawing.Size(89, 20);
 			this.tbWrestlerDefPointer.TabIndex = 3;
-			// 
-			// labelStableName
-			// 
-			this.labelStableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelStableName.AutoSize = true;
-			this.labelStableName.Location = new System.Drawing.Point(3, 53);
-			this.labelStableName.Name = "labelStableName";
-			this.labelStableName.Size = new System.Drawing.Size(100, 13);
-			this.labelStableName.TabIndex = 2;
-			this.labelStableName.Text = "Stable Name";
-			// 
-			// tbStableName
-			// 
-			this.tbStableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbStableName.Location = new System.Drawing.Point(109, 51);
-			this.tbStableName.Name = "tbStableName";
-			this.tbStableName.ReadOnly = true;
-			this.tbStableName.Size = new System.Drawing.Size(89, 20);
-			this.tbStableName.TabIndex = 5;
 			// 
 			// tbNumWrestlers
 			// 
@@ -150,13 +141,24 @@
 			this.labelNumWrestlers.TabIndex = 6;
 			this.labelNumWrestlers.Text = "Num. Wrestlers";
 			// 
-			// lbWresID2s
+			// tbStableName
 			// 
-			this.lbWresID2s.FormattingEnabled = true;
-			this.lbWresID2s.Location = new System.Drawing.Point(6, 19);
-			this.lbWresID2s.Name = "lbWresID2s";
-			this.lbWresID2s.Size = new System.Drawing.Size(93, 108);
-			this.lbWresID2s.TabIndex = 8;
+			this.tbStableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbStableName.Location = new System.Drawing.Point(109, 51);
+			this.tbStableName.Name = "tbStableName";
+			this.tbStableName.ReadOnly = true;
+			this.tbStableName.Size = new System.Drawing.Size(89, 20);
+			this.tbStableName.TabIndex = 5;
+			// 
+			// labelStableName
+			// 
+			this.labelStableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelStableName.AutoSize = true;
+			this.labelStableName.Location = new System.Drawing.Point(3, 53);
+			this.labelStableName.Name = "labelStableName";
+			this.labelStableName.Size = new System.Drawing.Size(100, 13);
+			this.labelStableName.TabIndex = 2;
+			this.labelStableName.Text = "Stable Name";
 			// 
 			// labelNamePointer
 			// 
@@ -168,17 +170,17 @@
 			this.labelNamePointer.TabIndex = 8;
 			this.labelNamePointer.Text = "Name Pointer";
 			// 
-			// tbNamePointer
+			// lbWresID2s
 			// 
-			this.tbNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNamePointer.Location = new System.Drawing.Point(109, 27);
-			this.tbNamePointer.Name = "tbNamePointer";
-			this.tbNamePointer.ReadOnly = true;
-			this.tbNamePointer.Size = new System.Drawing.Size(89, 20);
-			this.tbNamePointer.TabIndex = 9;
+			this.lbWresID2s.FormattingEnabled = true;
+			this.lbWresID2s.Location = new System.Drawing.Point(6, 19);
+			this.lbWresID2s.Name = "lbWresID2s";
+			this.lbWresID2s.Size = new System.Drawing.Size(93, 108);
+			this.lbWresID2s.TabIndex = 8;
 			// 
 			// gbWrestlers
 			// 
+			this.gbWrestlers.Controls.Add(this.buttonSwapWres);
 			this.gbWrestlers.Controls.Add(this.buttonSwitchGroup);
 			this.gbWrestlers.Controls.Add(this.buttonMoveUp);
 			this.gbWrestlers.Controls.Add(this.buttonMoveDown);
@@ -198,6 +200,7 @@
 			this.buttonSwitchGroup.TabIndex = 18;
 			this.buttonSwitchGroup.Text = "Switch &Group";
 			this.buttonSwitchGroup.UseVisualStyleBackColor = true;
+			this.buttonSwitchGroup.Click += new System.EventHandler(this.buttonSwitchGroup_Click);
 			// 
 			// buttonMoveUp
 			// 
@@ -207,6 +210,7 @@
 			this.buttonMoveUp.TabIndex = 16;
 			this.buttonMoveUp.Text = "Move &Up";
 			this.buttonMoveUp.UseVisualStyleBackColor = true;
+			this.buttonMoveUp.Click += new System.EventHandler(this.buttonMoveUp_Click);
 			// 
 			// buttonMoveDown
 			// 
@@ -216,6 +220,7 @@
 			this.buttonMoveDown.TabIndex = 17;
 			this.buttonMoveDown.Text = "Move &Down";
 			this.buttonMoveDown.UseVisualStyleBackColor = true;
+			this.buttonMoveDown.Click += new System.EventHandler(this.buttonMoveDown_Click);
 			// 
 			// buttonOK
 			// 
@@ -225,6 +230,7 @@
 			this.buttonOK.TabIndex = 10;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
 			// buttonCancel
 			// 
@@ -234,11 +240,24 @@
 			this.buttonCancel.TabIndex = 11;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// buttonSwapWres
+			// 
+			this.buttonSwapWres.Location = new System.Drawing.Point(105, 106);
+			this.buttonSwapWres.Name = "buttonSwapWres";
+			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
+			this.buttonSwapWres.TabIndex = 19;
+			this.buttonSwapWres.Text = "Swa&p Wrestler";
+			this.buttonSwapWres.UseVisualStyleBackColor = true;
+			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
 			// 
 			// StableDefs_WM2K
 			// 
+			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(351, 299);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
@@ -277,5 +296,6 @@
 		private System.Windows.Forms.Button buttonMoveDown;
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.Button buttonSwapWres;
 	}
 }
