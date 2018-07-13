@@ -286,6 +286,7 @@
     </Compile>
     <Compile Include="GameSpecific\BaseWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\BodyTypeDef_Early.cs" />
+    <Compile Include="GameSpecific\ChampionshipDef_Early.cs" />
     <Compile Include="GameSpecific\CostumeDef_Early.cs" />
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\CostumeDef.cs" />
@@ -296,6 +297,7 @@
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
+    <Compile Include="GameSpecific\StableDef_Early.cs" />
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="ProgStructures\GameDefinition.cs" />
     <Compile Include="ProgStructures\FileTypes.cs" />
     <Compile Include="ProgStructures\GameRegion.cs" />
+    <Compile Include="ProgStructures\HexViewerManager.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
     <Compile Include="ProgStructures\Project\ProjectFile.cs" />
     <Compile Include="Dialogs\Project\NewProjectDialog.cs">
