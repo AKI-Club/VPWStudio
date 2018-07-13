@@ -155,9 +155,9 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x40CA, 4) },
 
 					// data defs
-					{ "StableDefs", new DefaultLocationDataEntry(0x3B0F8, 104) },
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x36AA4, 592) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x3B0F8, 104) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0xDAC50, 0) },
@@ -171,9 +171,9 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x3FEA, 4) },
 
 					// data defs
-					{ "StableDefs", new DefaultLocationDataEntry(0x38548, 104) },
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FB40, 208) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x341F4, 592) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x38548, 104) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0xD81E0, 0) },
