@@ -74,7 +74,29 @@ namespace VPWStudio
 				tbOutROMPath.Text = Program.CurrentProject.Settings.OutputRomPath;
 				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
 				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
-				// todo: region
+
+				if (Program.CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
+				{
+					cbRegionCode.SelectedIndex = cbRegionCode.Items.Count - 1;
+				}
+				else
+				{
+					// selected index is based on game region
+					// there has to be a better way
+					bool foundRegion = false;
+					for (int i = 0; i < RegionList.Length; i++)
+					{
+						if (!foundRegion)
+						{
+							if (RegionList[i] == Program.CurrentProject.Settings.OutputRomRegion)
+							{
+								foundRegion = true;
+								cbRegionCode.SelectedIndex = i;
+								break;
+							}
+						}
+					}
+				}
 
 				// project files page
 				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
@@ -140,7 +162,7 @@ namespace VPWStudio
 				// empty string? replace with the game code for the current game.
 				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(1, 2);
 			}
-
+			// todo: check length of game code text
 			#endregion
 
 			// check for project type change
