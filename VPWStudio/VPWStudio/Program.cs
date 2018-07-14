@@ -526,22 +526,42 @@ namespace VPWStudio
 			}
 
 			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-			BuildLogPub.AddLine();
 			#endregion
 
 			#region Product/Game Code
-			// - game code
-			// todo: this section needs a redo
-
+			// 0x3B
 			string intCode = CurrentProject.Settings.OutputRomGameCode;
-			if (intCode.Length != 4)
+
+			// before pre-alpha preview 6, this was all four characters.
+			// as of pre-alpha preview 6, this is meant to be two characters.
+			// the "N" is automatically provided, and the region is taken from the project file.
+
+			if (intCode.Length == 2)
 			{
-				// error
+				// new format
+				intCode = "N" + intCode;
+				if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
+				{
+					intCode += CurrentProject.Settings.OutputRomCustomRegion;
+				}
+				else
+				{
+					intCode += (char)CurrentProject.Settings.OutputRomRegion;
+				}
+
+				BuildLogPub.AddLine(String.Format("Game Code: {0}", intCode), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
-			if (!intCode.StartsWith("N"))
+			else if (intCode.Length == 4)
 			{
-				// not error, but fix
+				// old format
+				BuildLogPub.AddLine("argh I need to implement fixes and junk", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
+			else
+			{
+				// what are you doing, you weirdo
+			}
+			BuildLogPub.AddLine();
+
 			#endregion
 
 			#region non-FileTable Changes
@@ -622,6 +642,7 @@ namespace VPWStudio
 							break;
 						default:
 							BuildLogPub.AddLine(String.Format("Stable rebuilding not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+							BuildLogPub.AddLine();
 							break;
 					}
 
@@ -635,6 +656,7 @@ namespace VPWStudio
 				else
 				{
 					BuildLogPub.AddLine(String.Format("Stable Definition file is for a different game. (Found '{0}', expected '{1}')", sdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+					BuildLogPub.AddLine();
 				}
 			}
 			#endregion
