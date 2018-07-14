@@ -41,12 +41,12 @@
 			this.labelNamePointer = new System.Windows.Forms.Label();
 			this.lbWresID2s = new System.Windows.Forms.ListBox();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
+			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.buttonSwitchGroup = new System.Windows.Forms.Button();
 			this.buttonMoveUp = new System.Windows.Forms.Button();
 			this.buttonMoveDown = new System.Windows.Forms.Button();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.gbWrestlers.SuspendLayout();
@@ -192,6 +192,16 @@
 			this.gbWrestlers.TabStop = false;
 			this.gbWrestlers.Text = "Wrestlers";
 			// 
+			// buttonSwapWres
+			// 
+			this.buttonSwapWres.Location = new System.Drawing.Point(105, 106);
+			this.buttonSwapWres.Name = "buttonSwapWres";
+			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
+			this.buttonSwapWres.TabIndex = 19;
+			this.buttonSwapWres.Text = "Swa&p Wrestler";
+			this.buttonSwapWres.UseVisualStyleBackColor = true;
+			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
+			// 
 			// buttonSwitchGroup
 			// 
 			this.buttonSwitchGroup.Location = new System.Drawing.Point(105, 77);
@@ -234,6 +244,7 @@
 			// 
 			// buttonCancel
 			// 
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Location = new System.Drawing.Point(264, 264);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -241,16 +252,6 @@
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-			// 
-			// buttonSwapWres
-			// 
-			this.buttonSwapWres.Location = new System.Drawing.Point(105, 106);
-			this.buttonSwapWres.Name = "buttonSwapWres";
-			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
-			this.buttonSwapWres.TabIndex = 19;
-			this.buttonSwapWres.Text = "Swa&p Wrestler";
-			this.buttonSwapWres.UseVisualStyleBackColor = true;
-			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
 			// 
 			// StableDefs_WM2K
 			// 
@@ -267,6 +268,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "StableDefs_WM2K";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.gbStables.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
