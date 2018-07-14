@@ -531,6 +531,8 @@ namespace VPWStudio
 
 			#region Product/Game Code
 			// - game code
+			// todo: this section needs a redo
+
 			string intCode = CurrentProject.Settings.OutputRomGameCode;
 			if (intCode.Length != 4)
 			{
