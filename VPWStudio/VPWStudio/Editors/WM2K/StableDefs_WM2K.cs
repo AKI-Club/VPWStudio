@@ -196,7 +196,34 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			Program.ErrorMessageBox("what do you mean freem has to implement the same thing a third time?");
+			int oldGroupNum = lbStables.SelectedIndex;
+			int oldIndex = lbWresID2s.SelectedIndex;
+			byte id2 = StableDefs[oldGroupNum].WrestlerID2s[oldIndex];
+			SwitchGroup_WM2K sg = new SwitchGroup_WM2K(id2, oldGroupNum, StableDefs);
+			if (sg.ShowDialog() == DialogResult.OK)
+			{
+				// there are two things that need to be done here:
+				// 1/easy: add the wrestler to the first empty slot of the new stable
+				int newIndex = StableDefs[sg.NewStableNum].GetFirstEmptySlot();
+				StableDefs[sg.NewStableNum].WrestlerID2s[newIndex] = id2;
+
+				// 2/hard: remove the wrestler from the old stable and re-order list to remove the gap
+				StableDefs[oldGroupNum].WrestlerID2s[oldIndex] = 0;
+
+				// if the old index is the last item, we don't need to do anything
+				if (oldIndex != StableDefs[oldGroupNum].WrestlerID2s.Length - 1)
+				{
+					// otherwise, we need to shift up all the entries after the old index
+					for (int i = oldIndex; i < StableDefs[oldGroupNum].WrestlerID2s.Length - 1; i++)
+					{
+						byte nextWres = StableDefs[oldGroupNum].WrestlerID2s[i + 1];
+						StableDefs[oldGroupNum].WrestlerID2s[i] = nextWres;
+						StableDefs[oldGroupNum].WrestlerID2s[i + 1] = 0;
+					}
+				}
+
+				UpdateWrestlerList();
+			}
 		}
 
 		private void buttonSwapWres_Click(object sender, EventArgs e)
@@ -206,7 +233,19 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			Program.ErrorMessageBox("well, if the other function doesn't work... what makes you think this will?");
+			// we need the first wrestler's stable and first wrestler's index within stable
+			int stable1 = lbStables.SelectedIndex;
+			int index1 = lbWresID2s.SelectedIndex;
+
+			SwapWrestler_WM2K sw = new SwapWrestler_WM2K(StableDefs, stable1, index1);
+			if (sw.ShowDialog() == DialogResult.OK)
+			{
+				// swap wrestlers at stable1[index1] and stable2[index2]
+				byte id2_first = StableDefs[stable1].WrestlerID2s[index1];
+				StableDefs[stable1].WrestlerID2s[index1] = StableDefs[sw.Wrestler2_CurStable].WrestlerID2s[sw.Wrestler2_CurIndex];
+				StableDefs[sw.Wrestler2_CurStable].WrestlerID2s[sw.Wrestler2_CurIndex] = id2_first;
+				UpdateWrestlerList();
+			}
 		}
 	}
 }

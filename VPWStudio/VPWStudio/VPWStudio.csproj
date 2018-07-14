@@ -194,6 +194,12 @@
     <Compile Include="Dialogs\StableDef\SwapWrestler_VPW2.Designer.cs">
       <DependentUpon>SwapWrestler_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_WM2K.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_WM2K.designer.cs">
+      <DependentUpon>SwapWrestler_WM2K.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\StableDef\SwitchGroup_NoMercy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     </Compile>
     <Compile Include="Dialogs\StableDef\SwitchGroup_VPW2.Designer.cs">
       <DependentUpon>SwitchGroup_VPW2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_WM2K.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_WM2K.designer.cs">
+      <DependentUpon>SwitchGroup_WM2K.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\AkiTextEditor.cs">
       <SubType>Form</SubType>
@@ -462,11 +474,17 @@
     <EmbeddedResource Include="Dialogs\StableDef\SwapWrestler_VPW2.resx">
       <DependentUpon>SwapWrestler_VPW2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwapWrestler_WM2K.resx">
+      <DependentUpon>SwapWrestler_WM2K.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_NoMercy.resx">
       <DependentUpon>SwitchGroup_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_VPW2.resx">
       <DependentUpon>SwitchGroup_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_WM2K.resx">
+      <DependentUpon>SwitchGroup_WM2K.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\AkiTextEditor.resx">
       <DependentUpon>AkiTextEditor.cs</DependentUpon>
