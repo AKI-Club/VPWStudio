@@ -235,10 +235,27 @@ namespace VPWStudio
 				byte[] gameName = br.ReadBytes(20);
 				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
 
-				ms.Seek(0x3B, SeekOrigin.Begin);
-				char[] gameCode = br.ReadChars(4);
-				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{0}{1}{2}{3}", gameCode[0], gameCode[1], gameCode[2], gameCode[3]);
+				ms.Seek(0x3C, SeekOrigin.Begin);
+				char[] gameCode = br.ReadChars(3);
 				br.Close();
+
+				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{1}{2}", gameCode[0], gameCode[1]);
+				Program.CurrentProject.Settings.OutputRomCustomRegion = gameCode[2];
+
+				bool foundRegion = false;
+				foreach (GameRegion gr in Enum.GetValues(typeof(GameRegion)))
+				{
+					if (gameCode[2] == (char)gr)
+					{
+						foundRegion = true;
+						Program.CurrentProject.Settings.OutputRomRegion = gr;
+						break;
+					}
+				}
+				if (!foundRegion)
+				{
+					Program.CurrentProject.Settings.OutputRomRegion = GameRegion.Custom;
+				}
 
 				if (Program.CurrentProject.Settings.UseCustomLocationFile)
 				{
