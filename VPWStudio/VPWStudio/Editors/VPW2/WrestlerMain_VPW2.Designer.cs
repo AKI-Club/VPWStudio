@@ -217,20 +217,20 @@
 			this.cbNameCall.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbNameCall.FormattingEnabled = true;
 			this.cbNameCall.Items.AddRange(new object[] {
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
+            "00 None",
+            "01 (Giant Baba)",
+            "02 (Mitsuharu Misawa)",
+            "03 (Toshiaki Kawada)",
+            "04 (Akira Taue)",
+            "05 (Kenta Kobashi)",
+            "06 (Jun Akiyama)",
+            "07 (Hiroshi Hase)",
             "08",
             "09",
             "0A",
             "0B",
             "0C",
-            "0D",
+            "0D (Yoshinari Ogawa)",
             "0E",
             "0F",
             "10",
@@ -243,14 +243,14 @@
             "17",
             "18",
             "19",
-            "1A",
-            "1B",
-            "1C",
-            "1D",
-            "1E",
-            "1F",
-            "20",
-            "21"});
+            "1A (Vader)",
+            "1B (Stan Hansen)",
+            "1C (Johnny Ace)",
+            "1D (Mike Barton)",
+            "1E (Gary Albright)",
+            "1F (Giant Kimala)",
+            "20 (Johnny Smith)",
+            "21 (Maunakea Mossman)"});
 			this.cbNameCall.Location = new System.Drawing.Point(106, 105);
 			this.cbNameCall.Name = "cbNameCall";
 			this.cbNameCall.Size = new System.Drawing.Size(237, 21);
