@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 namespace VPWStudio
 {
 	/// <summary>
-	/// 
+	/// A single open HexViewer.
 	/// </summary>
 	public struct HexViewerEntry
 	{
@@ -30,9 +30,9 @@ namespace VPWStudio
 	/// <summary>
 	/// Manager class for the HexViewer.
 	/// </summary>
+	/// The goal of this class is to handle multiple HexViewers while not summoning more views than needed.
 	public class HexViewerManager
 	{
-		// the goal of this class is to handle multiple hexviewers while not summoning more views than needed.
 		/// <summary>
 		/// List of active HexViewer windows.
 		/// </summary>
@@ -161,7 +161,6 @@ namespace VPWStudio
 		/// Attempt to remove a HexViewerEntry from the active hex viewers list.
 		/// </summary>
 		/// <param name="closing">Form being closed</param>
-		/// <returns>True if successful, false otherwise.</returns>
 		private void RemoveEntry(HexViewer closing)
 		{
 			foreach (HexViewerEntry hve in ActiveHexViewers)
