@@ -162,7 +162,14 @@ namespace VPWStudio
 				// empty string? replace with the game code for the current game.
 				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(1, 2);
 			}
+
 			// todo: check length of game code text
+
+			if (RegionList[cbRegionCode.SelectedIndex] == GameRegion.Custom && tbRegionCode.Text == String.Empty)
+			{
+				Program.ErrorMessageBox("Region code must be provided if using a custom region.");
+				return;
+			}
 			#endregion
 
 			// check for project type change
@@ -190,6 +197,15 @@ namespace VPWStudio
 			NewSettings.OutputRomPath = tbOutROMPath.Text;
 			NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
 			NewSettings.OutputRomGameCode = tbOutRomProductCode.Text;
+			NewSettings.OutputRomRegion = RegionList[cbRegionCode.SelectedIndex];
+			if (RegionList[cbRegionCode.SelectedIndex] == GameRegion.Custom)
+			{
+				NewSettings.OutputRomCustomRegion = tbRegionCode.Text[0];
+			}
+			else
+			{
+				NewSettings.OutputRomCustomRegion = (char)RegionList[cbRegionCode.SelectedIndex];
+			}
 
 			// project files tab
 			NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
