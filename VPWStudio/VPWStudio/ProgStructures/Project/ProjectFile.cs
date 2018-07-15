@@ -43,6 +43,19 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Constructor from existing file
+		/// </summary>
+		/// <param name="path"></param>
+		public ProjectFile(string path)
+		{
+			ProjectFileVersion = CUR_PROJECTFILE_VER;
+			Settings = new ProjectSettings();
+			ProjectFileTable = new FileTable();
+
+			LoadFile(path);
+		}
+
+		/// <summary>
 		/// Deep copy an existing ProjectFile instance.
 		/// </summary>
 		/// <param name="_src">Source ProjectFile to copy.</param>
