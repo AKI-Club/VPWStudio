@@ -555,9 +555,15 @@ namespace VPWStudio
 			}
 			else if (intCode.Length == 4)
 			{
-				// old format
+				// old format ("NxxR", where R is region)
 				string gameCode = intCode.Substring(1, 2);
+
+				// set code in project file so we don't have to do this again.
+				CurrentProject.Settings.OutputRomGameCode = gameCode;
+
+				// the user could've thrown in some other character that isn't "N".
 				intCode = "N" + gameCode;
+
 				if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
 				{
 					intCode += CurrentProject.Settings.OutputRomCustomRegion;
