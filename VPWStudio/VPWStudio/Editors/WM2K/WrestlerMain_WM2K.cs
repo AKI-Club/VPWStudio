@@ -15,13 +15,6 @@ namespace VPWStudio.Editors.WM2K
 	{
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 
-		public Dictionary<SpecificGame, int> DefaultWrestlerDefOffsets = new Dictionary<SpecificGame, int>()
-		{
-			{ SpecificGame.WM2K_NTSC_U, 0x41DB0 },
-			{ SpecificGame.WM2K_NTSC_J, 0x0 },
-			{ SpecificGame.WM2K_PAL, 0x0 },
-		};
-
 		public WrestlerMain_WM2K()
 		{
 			InitializeComponent();
@@ -51,11 +44,9 @@ namespace VPWStudio.Editors.WM2K
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
-				// depends on game
-				baseLocation = DefaultWrestlerDefOffsets[Program.CurrentProject.Settings.GameType];
-				br.BaseStream.Seek(baseLocation, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// xxx: default number of wrestler defs
@@ -70,7 +61,7 @@ namespace VPWStudio.Editors.WM2K
 				UInt32 wPtr = Z64Rom.PointerToRom(BitConverter.ToUInt32(ptrBytes, 0));
 				br.BaseStream.Seek(wPtr, SeekOrigin.Begin);
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
-				this.WrestlerDefs.Add(i, wdef);
+				WrestlerDefs.Add(i, wdef);
 				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
 
@@ -89,9 +80,9 @@ namespace VPWStudio.Editors.WM2K
 		private void PopulateList()
 		{
 			lbWrestlers.BeginUpdate();
-			for (int i = 0; i < this.WrestlerDefs.Count; i++)
+			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
-				WrestlerDefinition wd = this.WrestlerDefs[i];
+				WrestlerDefinition wd = WrestlerDefs[i];
 				lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
 			}
 			lbWrestlers.EndUpdate();
@@ -160,7 +151,7 @@ namespace VPWStudio.Editors.WM2K
 			}
 
 			// load data
-			LoadEntryData(this.WrestlerDefs[lbWrestlers.SelectedIndex]);
+			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
 		}
 
 		private void buttonMoveset_Click(object sender, EventArgs e)
@@ -170,7 +161,7 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
+			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
 		}
 
 		private void buttonParams_Click(object sender, EventArgs e)
@@ -180,7 +171,7 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			((MainForm)(this.MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
+			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 	}
 }
