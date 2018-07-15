@@ -187,6 +187,7 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48EA, 4) },
 
 					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
 					// filetable-related
@@ -201,6 +202,7 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x478A, 4) },
 
 					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3F850, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
 
 					// filetable-related
@@ -215,6 +217,7 @@ namespace VPWStudio
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x48EA, 4) },
 
 					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
 					// filetable-related
