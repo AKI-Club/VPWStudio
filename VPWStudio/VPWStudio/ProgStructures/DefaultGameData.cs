@@ -15,14 +15,14 @@ namespace VPWStudio
 
 			public DefaultLocationDataEntry()
 			{
-				this.Offset = 0;
-				this.Length = 0;
+				Offset = 0;
+				Length = 0;
 			}
 
 			public DefaultLocationDataEntry(UInt32 _off, UInt32 _len)
 			{
-				this.Offset = _off;
-				this.Length = _len;
+				Offset = _off;
+				Length = _len;
 			}
 		}
 
@@ -36,12 +36,12 @@ namespace VPWStudio
 
 			public DefaultLocationData()
 			{
-				this.Locations = new Dictionary<string, DefaultLocationDataEntry>();
+				Locations = new Dictionary<string, DefaultLocationDataEntry>();
 			}
 
 			public DefaultLocationData(Dictionary<string, DefaultLocationDataEntry> _entry)
 			{
-				this.Locations = _entry;
+				Locations = _entry;
 			}
 		}
 
