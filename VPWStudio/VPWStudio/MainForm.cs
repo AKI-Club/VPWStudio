@@ -239,7 +239,7 @@ namespace VPWStudio
 				char[] gameCode = br.ReadChars(3);
 				br.Close();
 
-				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{1}{2}", gameCode[0], gameCode[1]);
+				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{0}{1}", gameCode[0], gameCode[1]);
 				Program.CurrentProject.Settings.OutputRomCustomRegion = gameCode[2];
 
 				bool foundRegion = false;
