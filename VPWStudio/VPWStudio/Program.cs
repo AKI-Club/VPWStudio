@@ -536,6 +536,7 @@ namespace VPWStudio
 			// as of pre-alpha preview 6, this is meant to be two characters.
 			// the "N" is automatically provided, and the region is taken from the project file.
 
+			bool writeIntCode = false;
 			if (intCode.Length == 2)
 			{
 				// new format
@@ -550,16 +551,38 @@ namespace VPWStudio
 				}
 
 				BuildLogPub.AddLine(String.Format("Game Code: {0}", intCode), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				writeIntCode = true;
 			}
 			else if (intCode.Length == 4)
 			{
 				// old format
-				BuildLogPub.AddLine("argh I need to implement fixes and junk", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				string gameCode = intCode.Substring(1, 2);
+				intCode = "N" + gameCode;
+				if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
+				{
+					intCode += CurrentProject.Settings.OutputRomCustomRegion;
+				}
+				else
+				{
+					intCode += (char)CurrentProject.Settings.OutputRomRegion;
+				}
+
+				BuildLogPub.AddLine(String.Format("Game Code: {0}", intCode), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				writeIntCode = true;
 			}
 			else
 			{
 				// what are you doing, you weirdo
 			}
+
+			if (writeIntCode)
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					outRomData[0x3B + i] = (byte)intCode[i];
+				}
+			}
+
 			BuildLogPub.AddLine();
 
 			#endregion
