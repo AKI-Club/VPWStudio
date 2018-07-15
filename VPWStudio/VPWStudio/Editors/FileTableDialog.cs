@@ -373,12 +373,15 @@ namespace VPWStudio
 			{
 				// easy
 				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
-				((MainForm)this.MdiParent).RequestHexViewer(key);
+				((MainForm)MdiParent).RequestHexViewer(key);
 			}
 			else
 			{
-				// hard, since RequestHexViewer only allows for one dialog.
-				Program.ErrorMessageBox("multi select sucks, i haven't handled it yet");
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					((MainForm)MdiParent).RequestHexViewer(key);
+				}
 				return;
 			}
 		}
