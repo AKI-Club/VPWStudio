@@ -154,8 +154,7 @@ namespace VPWStudio
 		/// <param name="_path"></param>
 		public void LoadProject(string _path)
 		{
-			Program.CurrentProject = new ProjectFile();
-			Program.CurrentProject.LoadFile(_path);
+			Program.CurrentProject = new ProjectFile(_path);
 			Program.CurProjectPath = _path;
 		}
 		#endregion
@@ -235,6 +234,7 @@ namespace VPWStudio
 				byte[] gameName = br.ReadBytes(20);
 				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
 
+				// assume first letter at 0x3B is 'N'
 				ms.Seek(0x3C, SeekOrigin.Begin);
 				char[] gameCode = br.ReadChars(3);
 				br.Close();
@@ -369,6 +369,40 @@ namespace VPWStudio
 			{
 				LoadProject(ofd.FileName);
 				Program.UnsavedChanges = false;
+
+				/*
+				#region Upgrade fixing
+				// Game Code and Region
+				// In Pre-Alpha Preview 6, the Game Code changed from 4 characters (NxxR) to 2 (xx).
+				// Game Region was added to the Project File, and needs to be calculated from the previous game code.
+				if (Program.CurrentProject.Settings.OutputRomGameCode.Length == 4)
+				{
+					string oldCode = Program.CurrentProject.Settings.OutputRomGameCode;
+					Program.CurrentProject.Settings.OutputRomGameCode = oldCode.Substring(1, 2);
+
+					// determine region
+					bool customRegion = true;
+					char oldRegion = oldCode[3];
+					foreach (GameRegion gr in Enum.GetValues(typeof(GameRegion)))
+					{
+						if ((char)gr == oldRegion)
+						{
+							customRegion = false;
+							Program.CurrentProject.Settings.OutputRomRegion = gr;
+							break;
+						}
+					}
+
+					if (customRegion)
+					{
+						Program.CurrentProject.Settings.OutputRomRegion = GameRegion.Custom;
+						Program.CurrentProject.Settings.OutputRomCustomRegion = oldRegion;
+					}
+					Program.UnsavedChanges = true;
+				}
+				#endregion
+				*/
+
 				UpdateValidMenus();
 				UpdateStatusBar();
 				UpdateTitleBar();
@@ -530,7 +564,7 @@ namespace VPWStudio
 			Program.CurrentOutputROM = null;
 
 			// close any open dialogs
-			foreach (Form f in this.MdiChildren)
+			foreach (Form f in MdiChildren)
 			{
 				f.Close();
 			}
@@ -553,14 +587,7 @@ namespace VPWStudio
 				return;
 			}
 
-			if (ProjPropDialog == null)
-			{
-				ProjPropDialog = new ProjectPropertiesDialog();
-			}
-			else
-			{
-				ProjPropDialog.SetInitialTabPage();
-			}
+			ProjPropDialog = new ProjectPropertiesDialog();
 
 			if (ProjPropDialog.ShowDialog() == DialogResult.OK)
 			{
