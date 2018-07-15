@@ -530,7 +530,7 @@ namespace VPWStudio
 
 			#region Product/Game Code
 			// 0x3B
-			string intCode = CurrentProject.Settings.OutputRomGameCode;
+			string intCode = CurrentProject.GetGameCode();
 
 			// before pre-alpha preview 6, this was all four characters.
 			// as of pre-alpha preview 6, this is meant to be two characters.
