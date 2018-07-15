@@ -711,6 +711,15 @@
     <Content Include="Manual\img\stable_editor-wm2k.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Manual\img\wrestler_editor-nomercy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\wrestler_editor-vpw2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manual\img\wrestler_editor-wm2k.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
