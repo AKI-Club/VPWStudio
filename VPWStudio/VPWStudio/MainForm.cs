@@ -1922,5 +1922,38 @@ namespace VPWStudio
 				hv.BringToFront();
 			}
 		}
+
+		#region Drag and Drop (Project Files only!!)
+		private void MainForm_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void MainForm_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				if (files.Length > 1)
+				{
+					// todo: you can only drag one file, don't be dumb
+					Program.WarningMessageBox("More than one file dragged, only opening the first.");
+				}
+				LoadProject(files[0]);
+
+				UpdateTitleBar();
+				UpdateValidMenus();
+				UpdateStatusBar();
+				UpdateBackground();
+			}
+		}
+		#endregion
 	}
 }

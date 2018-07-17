@@ -79,10 +79,10 @@
 			this.pngToMenubgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.vpw2FaceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stableParseTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.romSliceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.romSliceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -454,6 +454,12 @@
 			resources.ApplyResources(this.stableParseTestToolStripMenuItem, "stableParseTestToolStripMenuItem");
 			this.stableParseTestToolStripMenuItem.Click += new System.EventHandler(this.stableParseTestToolStripMenuItem_Click);
 			// 
+			// romSliceTestToolStripMenuItem
+			// 
+			this.romSliceTestToolStripMenuItem.Name = "romSliceTestToolStripMenuItem";
+			resources.ApplyResources(this.romSliceTestToolStripMenuItem, "romSliceTestToolStripMenuItem");
+			this.romSliceTestToolStripMenuItem.Click += new System.EventHandler(this.romSliceTestToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -481,14 +487,9 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// romSliceTestToolStripMenuItem
-			// 
-			this.romSliceTestToolStripMenuItem.Name = "romSliceTestToolStripMenuItem";
-			resources.ApplyResources(this.romSliceTestToolStripMenuItem, "romSliceTestToolStripMenuItem");
-			this.romSliceTestToolStripMenuItem.Click += new System.EventHandler(this.romSliceTestToolStripMenuItem_Click);
-			// 
 			// MainForm
 			// 
+			this.AllowDrop = true;
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.StatusBar);
@@ -497,6 +498,8 @@
 			this.MainMenuStrip = this.MainMenu;
 			this.Name = "MainForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 			this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
 			this.Resize += new System.EventHandler(this.MainForm_Resize);
 			this.MainMenu.ResumeLayout(false);
