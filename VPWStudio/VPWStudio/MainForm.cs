@@ -136,6 +136,19 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 
+			// settings check
+			if (Properties.Settings.Default.GetPreviousVersion("ForceUpgrade") == null)
+			{
+				Properties.Settings.Default.ForceUpgrade = true;
+			}
+			if (Properties.Settings.Default.ForceUpgrade)
+			{
+				Properties.Settings.Default.Upgrade();
+				Properties.Settings.Default.Reload();
+				Properties.Settings.Default.ForceUpgrade = false;
+				Properties.Settings.Default.Save();
+			}
+
 			if (args.Length > 0)
 			{
 				// passed in command line arguments... probably a project file.
