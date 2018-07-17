@@ -121,6 +121,7 @@ namespace VPWStudio
 			DefaultImageSize = new Size((int)nudWidth.Value, (int)nudHeight.Value);
 			try
 			{
+				// todo: resize window if texture is too big for the current preview
 				CurrentBitmap = CurrentI4Tex.ToBitmap(DefaultImageSize.Width, DefaultImageSize.Height);
 				DrawImage();
 			}

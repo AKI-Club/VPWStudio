@@ -1943,9 +1943,15 @@ namespace VPWStudio
 				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 				if (files.Length > 1)
 				{
-					// todo: you can only drag one file, don't be dumb
 					Program.WarningMessageBox("More than one file dragged, only opening the first.");
 				}
+
+				// todo: this check should probably be more robust
+				//if (Path.GetExtension(files[0]) != ".vpwsproj")
+				//{
+				//	Program.ErrorMessageBox("");
+				//}
+
 				LoadProject(files[0]);
 
 				UpdateTitleBar();
