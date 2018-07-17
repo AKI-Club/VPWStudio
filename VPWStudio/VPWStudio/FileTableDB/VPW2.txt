@@ -5,7 +5,7 @@
 0004=Binary;kanji.txt
 0005=AkiText;(Edit Mode strings)
 0006=AkiText;Unlock messages?
-0007=AkiText;Match result phrases
+0007=AkiText;Match and Event result phrases
 0008=AkiText;AkiText 03
 0009=AkiText;AkiText 04
 000A=AkiText;AkiText 05
@@ -13,7 +13,7 @@
 000C=AkiText;AkiText 07
 000D=AkiText;AkiText 08
 000E=AkiText;Credits
-000F=Binary;buttons_12x256.i8
+000F=I4Texture;Buttons (24x256)
 0010=AkiTexture;VS Screen Control
 0011=AkiTexture;[Splash] Asmik Ace
 0012=AkiTexture;[Splash] AKI Corporation
