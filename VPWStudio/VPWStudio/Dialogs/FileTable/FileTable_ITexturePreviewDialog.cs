@@ -52,7 +52,7 @@ namespace VPWStudio
 			CurrentI4Tex = new I4Texture(outReader);
 			pbPreview.Width = 16;
 			pbPreview.Height = 16;
-			this.DefaultImageSize = new Size(16, 16);
+			DefaultImageSize = new Size(16, 16);
 
 			pbPreview.Image = null;
 
@@ -67,7 +67,7 @@ namespace VPWStudio
 		{
 			if (e.KeyCode == Keys.Escape)
 			{
-				this.Close();
+				Close();
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace VPWStudio
 			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				this.CurrentBitmap.Save(sfd.FileName);
+				CurrentBitmap.Save(sfd.FileName);
 			}
 		}
 
@@ -100,7 +100,7 @@ namespace VPWStudio
 
 		private void DrawImage()
 		{
-			Bitmap zoomed = new Bitmap(this.DefaultImageSize.Width, this.DefaultImageSize.Height);
+			Bitmap zoomed = new Bitmap(DefaultImageSize.Width, DefaultImageSize.Height);
 
 			Graphics g = Graphics.FromImage(zoomed);
 			g.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -108,8 +108,8 @@ namespace VPWStudio
 
 			g.DrawImage(
 				CurrentBitmap,
-				new Rectangle(0, 0, this.DefaultImageSize.Width, this.DefaultImageSize.Height),
-				new Rectangle(0, 0, this.DefaultImageSize.Width, this.DefaultImageSize.Height),
+				new Rectangle(0, 0, DefaultImageSize.Width, DefaultImageSize.Height),
+				new Rectangle(0, 0, DefaultImageSize.Width, DefaultImageSize.Height),
 				GraphicsUnit.Pixel
 			);
 			g.Dispose();
