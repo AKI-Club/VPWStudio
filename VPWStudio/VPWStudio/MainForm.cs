@@ -1952,6 +1952,15 @@ namespace VPWStudio
 				//	Program.ErrorMessageBox("");
 				//}
 
+				if (Program.CurrentProject != null && Program.UnsavedChanges)
+				{
+					// there are unsaved changes. discard and open new project file?
+					if (MessageBox.Show(SharedStrings.UnsavedProject_OpenProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+					{
+						return;
+					}
+				}
+
 				LoadProject(files[0]);
 
 				UpdateTitleBar();
