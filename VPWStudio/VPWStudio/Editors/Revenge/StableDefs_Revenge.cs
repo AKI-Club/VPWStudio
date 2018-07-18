@@ -169,8 +169,19 @@ namespace VPWStudio.Editors.Revenge
 
 			MessageBox.Show("not implemented yet");
 		}
+
+		/// <summary>
+		/// Swap two wrestlers.
+		/// </summary>
+		private void buttonSwapWres_Click(object sender, EventArgs e)
+		{
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			MessageBox.Show("not implemented yet");
+		}
 		#endregion
-
-
 	}
 }
