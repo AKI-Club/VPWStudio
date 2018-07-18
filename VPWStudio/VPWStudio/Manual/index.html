@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.6 (no date)<br />Program and Manual by freem<br />
+<p>Version 0.0.0.7 (no date)<br />Program and Manual by freem<br />
 <a href="http://vpw.ajworld.net/">http://vpw.ajworld.net/</a></p>
 </div>
 
@@ -58,10 +58,10 @@
 
 <hr />
 <h2><a name="Intro">Introduction</a></h2>
-<p>VPW Studio is a tool that assists in ROM hacking the games in AKI Corporation's
+<p>VPW Studio is a tool for ROM hacking the games in AKI Corporation's
 Virtual Pro-Wrestling series.</p>
 
-<p>This program was created because the current solutions for making changes to
+<p>This program was created because the primary solutions for making changes to
 AKI wrestling games are GameShark codes and emulator-only texture replacements.
 Anyone wanting to play projects using these methods on console could not fully do so.</p>
 
@@ -173,13 +173,19 @@ emulator to use for testing the changed ROM.</p>
 <p>The "Build" portion of the Program Options dialog currently only contains an
 option to modify the verbosity of the build log. The default option is "Normal".</p>
 
+<p>If you have an older computer, setting the Build Log Verbosity to "Minimal"
+can shorten build times.</p>
+
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
 <p>VPW Studio primarily operates on the concept of Project Files. This method of
 project management was chosen due to the number of total conversion hacks created
 by the AKI hacking communities.</p>
 
-<p>Project Files have the extension <code>.vpwsproj</code>. (more todo)</p>
+<p>Project Files have the extension <code>.vpwsproj</code>.</p>
+
+<h3>Project Structure</h3>
+<p>(todo)</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -199,7 +205,8 @@ custom Location File. Helpful if you've already made changes to the base ROM tha
 result in differences from the default Location File for the specified Game Type.</li>
 </ul>
 <p>All of these may be changed later in the <a href="#ProjectProperties">Project
-Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen.</p>
+Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen,
+with the main form updating to reflect the new project.</p>
 
 <h3>Open an Existing Project</h3>
 <p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.
@@ -267,10 +274,16 @@ If the changed ROM hasn't been built yet, it will build the ROM before playing i
 
 <hr />
 <h2><a name="Championships">Championships</a></h2>
-<p>(todo)</p>
+<p>The Championships editor differs for each game:</p>
+<ul>
+<li><strong>WCW vs. nWo World Tour</strong>, <strong>Virtual Pro-Wrestling 64</strong>, and <strong>WCW/nWo Revenge</strong> &ndash;
+This doubles as the Story Mode/Champion Road editor.</li>
+<li><strong>WWF WrestleMania 2000</strong> and <strong>Virtual Pro-Wrestling 2</strong> &ndash; Edit the possible designs
+available when making a new belt.</li>
+<li><strong>WWF No Mercy</strong> &ndash; Edit the default championship data.</li>
+</ul>
 
-<p>For WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, and WCW/nWo Revenge, this
-doubles as the Story Mode/Champion Road editor.</p>
+<p>(todo)</p>
 
 <hr />
 <h2><a name="Costumes">Costumes</a></h2>
@@ -324,6 +337,8 @@ textures, palettes, models, and more.</p>
 </tr>
 </table>
 <p>* Only supports WCW vs. nWo World Tour NTSC-U v1.1.</p>
+
+<p>(todo)</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
@@ -385,6 +400,13 @@ sounds.</p>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/stable_editor-revenge.png" title="Stable Editor - WCW/nWo Revenge" />
+<ul>
+<li><strong>Wrestler Definitions</strong> &ndash; Pointer to the wrestler definition data for this stable.</li>
+<li><strong>Wrestler Count</strong> &ndash; Number of wrestlers in this stable.</li>
+<li><strong>Header Graphic</strong> &ndash; File ID of the stable graphic.</li>
+</ul>
+
+<p>In WCW/nWo Revenge, the wrestler list is defined by pointers to the wrestler data.</p>
 
 <h3>WWF WrestleMania 2000, Virtual Pro-Wrestling 2, WWF No Mercy</h3>
 <p>Since the data structures in these three games are similar, they're grouped together.</p>
@@ -409,6 +431,8 @@ sounds.</p>
 <hr />
 <h2><a name="StoryMode">Story Mode</a></h2>
 <p>"Project &rarr; Story Mode" (todo)</p>
+
+<p>Please disregard the table below, as this is not implemented yet.</p>
 
 <h3>Game Support</h3>
 <table>
@@ -442,6 +466,8 @@ sounds.</p>
 </tr>
 </table>
 <p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the <a href="#Championships">Championships</a> section.</p>
+
+<p>(todo)</p>
 
 <hr />
 <h2><a name="Weapons">Weapons</a></h2>
@@ -485,6 +511,8 @@ the base for the final, more polished features.</p>
 <li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
 <li><strong>png to menubg</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
 <li><strong>vpw2 face test</strong> &ndash; Attempts to render faces from VPW2 given specific values. Requires an open VPW2 project.</li>
+<li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
+<li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
 </ul>
 
 <hr />
