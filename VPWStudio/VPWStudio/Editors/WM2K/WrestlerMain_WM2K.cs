@@ -138,6 +138,10 @@ namespace VPWStudio.Editors.WM2K
 			tbUnknown.Text = String.Format("{0:X4}", wdef.Unknown);
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
+			tbCosPointer1.Text = String.Format("{0:X8}", wdef.CostumePointers[0]);
+			tbCosPointer2.Text = String.Format("{0:X8}", wdef.CostumePointers[1]);
+			tbCosPointer3.Text = String.Format("{0:X8}", wdef.CostumePointers[2]);
+			tbCosPointer4.Text = String.Format("{0:X8}", wdef.CostumePointers[3]);
 		}
 
 		/// <summary>
