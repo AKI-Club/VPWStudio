@@ -58,6 +58,10 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.tbCosPointer1 = new System.Windows.Forms.TextBox();
+			this.tbCosPointer2 = new System.Windows.Forms.TextBox();
+			this.tbCosPointer3 = new System.Windows.Forms.TextBox();
+			this.tbCosPointer4 = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
@@ -106,6 +110,10 @@
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 11);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 12);
 			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 13);
+			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer1, 1, 10);
+			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer2, 1, 11);
+			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer3, 1, 12);
+			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer4, 1, 13);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(146, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 14;
@@ -502,6 +510,42 @@
 			this.label4.TabIndex = 33;
 			this.label4.Text = "Costume Pointer 4";
 			// 
+			// tbCosPointer1
+			// 
+			this.tbCosPointer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCosPointer1.Location = new System.Drawing.Point(106, 336);
+			this.tbCosPointer1.Name = "tbCosPointer1";
+			this.tbCosPointer1.ReadOnly = true;
+			this.tbCosPointer1.Size = new System.Drawing.Size(237, 20);
+			this.tbCosPointer1.TabIndex = 34;
+			// 
+			// tbCosPointer2
+			// 
+			this.tbCosPointer2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCosPointer2.Location = new System.Drawing.Point(106, 369);
+			this.tbCosPointer2.Name = "tbCosPointer2";
+			this.tbCosPointer2.ReadOnly = true;
+			this.tbCosPointer2.Size = new System.Drawing.Size(237, 20);
+			this.tbCosPointer2.TabIndex = 35;
+			// 
+			// tbCosPointer3
+			// 
+			this.tbCosPointer3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCosPointer3.Location = new System.Drawing.Point(106, 402);
+			this.tbCosPointer3.Name = "tbCosPointer3";
+			this.tbCosPointer3.ReadOnly = true;
+			this.tbCosPointer3.Size = new System.Drawing.Size(237, 20);
+			this.tbCosPointer3.TabIndex = 36;
+			// 
+			// tbCosPointer4
+			// 
+			this.tbCosPointer4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCosPointer4.Location = new System.Drawing.Point(106, 437);
+			this.tbCosPointer4.Name = "tbCosPointer4";
+			this.tbCosPointer4.ReadOnly = true;
+			this.tbCosPointer4.Size = new System.Drawing.Size(237, 20);
+			this.tbCosPointer4.TabIndex = 37;
+			// 
 			// WrestlerMain_WM2K
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,5 +600,9 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TextBox tbCosPointer1;
+		private System.Windows.Forms.TextBox tbCosPointer2;
+		private System.Windows.Forms.TextBox tbCosPointer3;
+		private System.Windows.Forms.TextBox tbCosPointer4;
 	}
 }
