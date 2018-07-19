@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VPWStudio
 {
@@ -15,10 +13,12 @@ namespace VPWStudio
 		/// Start address in the archive.
 		/// </summary>
 		public Int32 StartAddr;
+
 		/// <summary>
 		/// Size of this file entry.
 		/// </summary>
 		public Int32 Size;
+
 		/// <summary>
 		/// Data from this file entry.
 		/// </summary>
@@ -30,8 +30,8 @@ namespace VPWStudio
 		/// <param name="_addr">Address for this AkiArchiveEntry.</param>
 		public AkiArchiveEntry(Int32 _addr)
 		{
-			this.StartAddr = _addr;
-			this.Size = -1;
+			StartAddr = _addr;
+			Size = -1;
 		}
 	}
 
@@ -64,7 +64,7 @@ namespace VPWStudio
 
 		// routines in this section are incomplete.
 		#region Binary Read/Write
-		// incomplete
+		// somewhat implemented... not the best way of doing things?
 		public void ReadData(BinaryReader br)
 		{
 			// get number of files
@@ -86,7 +86,33 @@ namespace VPWStudio
 				FileEntries.Add(i, new AkiArchiveEntry(BitConverter.ToInt32(addr, 0)));
 			}
 
+			long curPos = br.BaseStream.Position;
+			br.BaseStream.Seek(0, SeekOrigin.End);
+			long arcLength = br.BaseStream.Position;
+			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
+
 			// todo: everything else
+			for (int i = 0; i < NumFiles; i++)
+			{
+				// go to location
+				br.BaseStream.Seek(FileEntries[i].StartAddr, SeekOrigin.Begin);
+
+				int fileSize = 0;
+				if (i < NumFiles - 1)
+				{
+					// find end point (start of next file)
+					fileSize = FileEntries[i + 1].StartAddr - FileEntries[i].StartAddr;
+				}
+				else
+				{
+					// note: last file will use arcLength - curPos
+					fileSize = (int)(arcLength - FileEntries[i].StartAddr);
+				}
+
+				// update size
+				FileEntries[i].Size = fileSize;
+				FileEntries[i].Data = br.ReadBytes(fileSize);
+			}
 		}
 
 		// todo: copy and pasted from the file path version
