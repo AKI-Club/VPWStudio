@@ -8,10 +8,10 @@
 0007=AkiText;Match and Event result phrases
 0008=AkiText;AkiText 03
 0009=AkiText;AkiText 04
-000A=AkiText;AkiText 05
+000A=AkiText;Options Help
 000B=AkiText;Parameters Help
 000C=AkiText;AkiText 07
-000D=AkiText;AkiText 08
+000D=AkiText;RRS Bulletin Board
 000E=AkiText;Credits
 000F=I4Texture;Buttons (24x256)
 0010=AkiTexture;VS Screen Control
