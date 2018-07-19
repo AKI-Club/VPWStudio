@@ -9,7 +9,7 @@
 0008=AkiText;AkiText 03
 0009=AkiText;AkiText 04
 000A=AkiText;AkiText 05
-000B=AkiText;AkiText 06
+000B=AkiText;Parameters Help
 000C=AkiText;AkiText 07
 000D=AkiText;AkiText 08
 000E=AkiText;Credits
