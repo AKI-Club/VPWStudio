@@ -850,11 +850,18 @@ namespace VPWStudio
 						t.ShowDialog();
 					}
 					break;
+
+				case FileTypes.AkiArchive:
+					{
+						AkiArchiveTool aat = new AkiArchiveTool(key);
+						aat.ShowDialog();
+					}
+					break;
 				// end temporary
 
 				// no default handler; show the hex viewer.
 				default:
-					((MainForm)this.MdiParent).RequestHexViewer(key);
+					((MainForm)MdiParent).RequestHexViewer(key);
 					break;
 			}
 		}
