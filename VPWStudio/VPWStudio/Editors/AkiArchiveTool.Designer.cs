@@ -87,7 +87,7 @@
 			this.buttonOK.Location = new System.Drawing.Point(464, 418);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 1;
+			this.buttonOK.TabIndex = 7;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -97,7 +97,7 @@
 			this.buttonCancel.Location = new System.Drawing.Point(545, 418);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 2;
+			this.buttonCancel.TabIndex = 8;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -122,14 +122,14 @@
 			this.tbSelItemInfo.Name = "tbSelItemInfo";
 			this.tbSelItemInfo.ReadOnly = true;
 			this.tbSelItemInfo.Size = new System.Drawing.Size(390, 346);
-			this.tbSelItemInfo.TabIndex = 0;
+			this.tbSelItemInfo.TabIndex = 5;
 			// 
 			// buttonViewHexEditor
 			// 
 			this.buttonViewHexEditor.Location = new System.Drawing.Point(297, 371);
 			this.buttonViewHexEditor.Name = "buttonViewHexEditor";
 			this.buttonViewHexEditor.Size = new System.Drawing.Size(99, 23);
-			this.buttonViewHexEditor.TabIndex = 1;
+			this.buttonViewHexEditor.TabIndex = 6;
 			this.buttonViewHexEditor.Text = "&Hex Viewer...";
 			this.buttonViewHexEditor.UseVisualStyleBackColor = true;
 			this.buttonViewHexEditor.Click += new System.EventHandler(this.buttonViewHexEditor_Click);
