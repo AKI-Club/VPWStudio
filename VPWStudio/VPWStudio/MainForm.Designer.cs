@@ -59,7 +59,6 @@
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.packedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -301,7 +300,6 @@
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modelDataToolStripMenuItem,
-            this.packedFileToolStripMenuItem,
             this.toolStripSeparator7,
             this.sharkTestToolStripMenuItem,
             this.toolStripSeparator6,
@@ -315,12 +313,6 @@
 			this.modelDataToolStripMenuItem.Name = "modelDataToolStripMenuItem";
 			resources.ApplyResources(this.modelDataToolStripMenuItem, "modelDataToolStripMenuItem");
 			this.modelDataToolStripMenuItem.Click += new System.EventHandler(this.modelDataToolStripMenuItem_Click);
-			// 
-			// packedFileToolStripMenuItem
-			// 
-			this.packedFileToolStripMenuItem.Name = "packedFileToolStripMenuItem";
-			resources.ApplyResources(this.packedFileToolStripMenuItem, "packedFileToolStripMenuItem");
-			this.packedFileToolStripMenuItem.Click += new System.EventHandler(this.packedFileToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator7
 			// 
@@ -542,7 +534,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem programOptionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem costumesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem packedFileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem sharkTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelGameType;
