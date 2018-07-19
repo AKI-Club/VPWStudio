@@ -218,6 +218,12 @@
     <Compile Include="Dialogs\StableDef\SwitchGroup_WM2K.designer.cs">
       <DependentUpon>SwitchGroup_WM2K.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\AkiArchiveTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\AkiArchiveTool.Designer.cs">
+      <DependentUpon>AkiArchiveTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\AkiTextEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +492,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_WM2K.resx">
       <DependentUpon>SwitchGroup_WM2K.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\AkiArchiveTool.resx">
+      <DependentUpon>AkiArchiveTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\AkiTextEditor.resx">
       <DependentUpon>AkiTextEditor.cs</DependentUpon>
