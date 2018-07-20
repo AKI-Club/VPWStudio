@@ -1,5 +1,11 @@
 midi tool notes
 
+WorldTour | "GEMidi"/Default Case?
+VPW64     | "GEMidi"/Default Case?
+Revenge   | Old Song Style
+WM2K      | Binary Song Style (00 00 02 15)
+VPW2      | Binary Song Style (00 00 02 15)
+NoMercy   | Binary Song Style (00 00 02 15)
 ================================================================================
 entries
 
@@ -338,3 +344,29 @@ if (gameName.CompareNoCase("LZSS_0BSng") == 0)
 		}
 	}
 }
+
+
+================================================================================
+Song Style Info
+================================================================================
+
+Old Song Style
+--------------
+unsigned long numberTracks = CharArrayToLong(&inputMID[0x0]);
+unsigned long trackPointer = CharArrayToLong(&inputMID[0x4]);
+unsigned long volumePointer = CharArrayToLong(&inputMID[0x8]);
+unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0xC]);
+unsigned long adsrPointer = CharArrayToLong(&inputMID[0x10]);
+unsigned long drumPointer = CharArrayToLong(&inputMID[0x14]);
+
+Binary Song Style
+-----------------
+unsigned long numberTracks = CharArrayToLong(&inputMID[0x4]);
+unsigned long totalInstruments = CharArrayToLong(&inputMID[0x8]);
+unsigned long trackPointer = CharArrayToLong(&inputMID[0xC]);
+unsigned long volumePointer = CharArrayToLong(&inputMID[0x10]);
+unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0x14]);
+unsigned long adsrPointer = CharArrayToLong(&inputMID[0x18]);
+unsigned long drumPointer = CharArrayToLong(&inputMID[0x1C]);
+unsigned long instrumentPointer = CharArrayToLong(&inputMID[0x20]);
+unsigned long masterTrackPointer = CharArrayToLong(&inputMID[0x24]);
