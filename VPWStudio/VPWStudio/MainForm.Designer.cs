@@ -59,7 +59,6 @@
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -300,7 +299,6 @@
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modelDataToolStripMenuItem,
-            this.toolStripSeparator7,
             this.sharkTestToolStripMenuItem,
             this.toolStripSeparator6,
             this.programOptionsToolStripMenuItem});
@@ -313,11 +311,6 @@
 			this.modelDataToolStripMenuItem.Name = "modelDataToolStripMenuItem";
 			resources.ApplyResources(this.modelDataToolStripMenuItem, "modelDataToolStripMenuItem");
 			this.modelDataToolStripMenuItem.Click += new System.EventHandler(this.modelDataToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator7
-			// 
-			this.toolStripSeparator7.Name = "toolStripSeparator7";
-			resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
 			// 
 			// sharkTestToolStripMenuItem
 			// 
@@ -535,7 +528,6 @@
 		private System.Windows.Forms.ToolStripMenuItem programOptionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem costumesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem sharkTestToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelGameType;
 		private System.Windows.Forms.ToolStripMenuItem playROMToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem asmikLzssTestToolStripMenuItem;
