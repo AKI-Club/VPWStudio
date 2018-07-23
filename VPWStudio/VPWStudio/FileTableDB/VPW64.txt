@@ -130,7 +130,10 @@
 0081=AkiTexture;Won Trophy BG
 0082=AkiTexture;Won Belt BG
 0083=AkiTexture;Created by AKI Corporation
-0087=Binary;(johnny ace moveset?)
+0085=Binary;(johnny ace params)
+0086=Binary;(johnny ace ??? 1)
+0087=Binary;(johnny ace moveset)
+0088=Binary;(johnny ace ??? 2)
 008B=Binary;(jun akiyama moveset?)
 008F=Binary;(andre the giant moveset?)
 0093=Binary;(yoji anjoh moveset?)
