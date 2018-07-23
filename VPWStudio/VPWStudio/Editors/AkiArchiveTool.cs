@@ -16,14 +16,32 @@ namespace VPWStudio
 
 		public AkiArchive CurArchive;
 
+		private const string FormTitle = "AKI Archive Tool [File {0:X4}]";
+
+		#region Constructors
 		public AkiArchiveTool(int _fileID)
 		{
 			CurArchive = new AkiArchive();
 			InitializeComponent();
 			LoadFromFileTable(_fileID);
 			PopulateFileList();
+			Text = String.Format(FormTitle, _fileID);
 		}
 
+		public AkiArchiveTool(string path)
+		{
+			CurArchive = new AkiArchive();
+			InitializeComponent();
+			LoadFromExternalFile(path);
+			PopulateFileList();
+		}
+		#endregion
+
+		#region Load
+		/// <summary>
+		/// Load AkiArchive from FileTable.
+		/// </summary>
+		/// <param name="_fileID">File ID of archive to open.</param>
 		private void LoadFromFileTable(int _fileID)
 		{
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -40,10 +58,18 @@ namespace VPWStudio
 			fr.Close();
 		}
 
+		/// <summary>
+		/// Load AkiArchive from external file.
+		/// </summary>
+		/// <param name="path">Path to AkiArchive file.</param>
 		private void LoadFromExternalFile(string path)
 		{
-
+			FileStream fs = new FileStream(path, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+			CurArchive.ReadData(br);
+			br.Close();
 		}
+		#endregion
 
 		private void PopulateFileList()
 		{
