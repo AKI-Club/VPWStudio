@@ -10,9 +10,24 @@ namespace VPWStudio
 	/// </summary>
 	public class WrestlerNameEntry
 	{
+		/// <summary>
+		/// Wrestler ID2
+		/// </summary>
 		public byte ID2;
+
+		/// <summary>
+		/// Wrestler ID4
+		/// </summary>
 		public UInt16 ID4;
+
+		/// <summary>
+		/// Wrestler long name
+		/// </summary>
 		public string LongName;
+
+		/// <summary>
+		/// Wrestler short name
+		/// </summary>
 		public string ShortName;
 
 		#region Constructors
@@ -30,10 +45,10 @@ namespace VPWStudio
 		/// <summary>
 		/// Specific constructor.
 		/// </summary>
-		/// <param name="_id2"></param>
-		/// <param name="_id4"></param>
-		/// <param name="_longName"></param>
-		/// <param name="_shortName"></param>
+		/// <param name="_id2">ID2 for this wrestler</param>
+		/// <param name="_id4">ID4 for this wrestler</param>
+		/// <param name="_longName">Wrestler long name</param>
+		/// <param name="_shortName">Wrestler Short Name</param>
 		public WrestlerNameEntry(byte _id2, UInt16 _id4, string _longName, string _shortName)
 		{
 			ID2 = _id2;
@@ -99,13 +114,24 @@ namespace VPWStudio
 	/// </summary>
 	public class WrestlerNameFile
 	{
+		/// <summary>
+		/// Wrestler names
+		/// </summary>
 		public List<WrestlerNameEntry> Names;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public WrestlerNameFile()
 		{
 			Names = new List<WrestlerNameEntry>();
 		}
 
+		#region Load/Save
+		/// <summary>
+		/// Load WrestlerNameEntry data from a file.
+		/// </summary>
+		/// <param name="path">Path to file with WrestlerNameEntry data.</param>
 		public void LoadFile(string path)
 		{
 			FileStream fs = new FileStream(path, FileMode.Open);
@@ -114,13 +140,57 @@ namespace VPWStudio
 			while (!sr.EndOfStream)
 			{
 				string line = sr.ReadLine();
+
+				// handle comments
+				if (line[0] == '#')
+				{
+					continue;
+				}
+
 				WrestlerNameEntry wne = new WrestlerNameEntry(line);
 				if (wne.ID2 != 0)
 				{
 					Names.Add(wne);
 				}
 			}
-
+			sr.Close();
 		}
+		#endregion
+
+		#region Helpers
+		/// <summary>
+		/// Find a WrestlerNameEntry by ID2 value.
+		/// </summary>
+		/// <param name="id2">ID2 of WrestlerNameEntry to find.</param>
+		/// <returns>WrestlerNameEntry with requested ID2, or null if not found.</returns>
+		public WrestlerNameEntry FindEntryByID2(byte id2)
+		{
+			foreach (WrestlerNameEntry name in Names)
+			{
+				if (name.ID2 == id2)
+				{
+					return name;
+				}
+			}
+			return null;
+		}
+
+		/// <summary>
+		/// Find a WrestlerNameEntry by ID4 value.
+		/// </summary>
+		/// <param name="id4">ID4 of WrestlerNameEntry to find.</param>
+		/// <returns>WrestlerNameEntry with requested ID4, or null if not found.</returns>
+		public WrestlerNameEntry FindEntryByID4(UInt16 id4)
+		{
+			foreach (WrestlerNameEntry name in Names)
+			{
+				if (name.ID4 == id4)
+				{
+					return name;
+				}
+			}
+			return null;
+		}
+		#endregion
 	}
 }
