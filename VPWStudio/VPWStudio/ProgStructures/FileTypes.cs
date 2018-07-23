@@ -99,6 +99,7 @@ namespace VPWStudio
 			FileTypes.AkiLargeFont
 		};
 
+		// todo: return List<FileTypes> and make callers convert it to strings
 		public static string[] GetValidFileTypesForGame(VPWGames gameType)
 		{
 			List<string> outTypes = new List<string>();
@@ -117,7 +118,7 @@ namespace VPWStudio
 				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.MenuBackground));
 			}
 
-			// NoMercyTexty is in... you guessed it, WWF No Mercy.
+			// NoMercyText is in... you guessed it, WWF No Mercy.
 			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
 			{
 				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.NoMercyText));
