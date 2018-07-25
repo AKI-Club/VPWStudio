@@ -32,8 +32,23 @@ namespace VPWStudio
 		// note: this section contains things like movesets, etc. that change per game.
 		// it also includes (possible) one-off formats.
 
+		#region WCW vs. nWo World Tour
+		// WrestlerParams_WorldTour
+		#endregion
+
+		#region Virtual Pro-Wrestling 64
+		// WrestlerParams_VPW64
+		#endregion
+
 		#region WCW/nWo Revenge
 		DoubleTex,  // two TEX files, one after another, no headers or anything.
+		// WrestlerParams_Revenge
+		#endregion
+
+		#region WWF WrestleMania 2000
+		#endregion
+
+		#region Virtual Pro-Wrestling 2
 		#endregion
 
 		#region WWF No Mercy
