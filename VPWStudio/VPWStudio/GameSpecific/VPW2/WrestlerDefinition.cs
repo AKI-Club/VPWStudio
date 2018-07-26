@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Globalization;
-using System.Xml;
 
 namespace VPWStudio.GameSpecific.VPW2
 {
@@ -9,7 +8,7 @@ namespace VPWStudio.GameSpecific.VPW2
 	/// Virtual Pro-Wrestling 2 Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : BaseWrestlerDefinition
+	public class WrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -220,63 +219,6 @@ namespace VPWStudio.GameSpecific.VPW2
 
 			// terminator
 			bw.Write((Int16)0);
-		}
-		#endregion
-
-		#region XML Read/Write
-		/// <summary>
-		/// Read VPW2 WrestlerDefinition from XML.
-		/// </summary>
-		/// <param name="xr">XmlReader instance to use.</param>
-		public override void ReadXml(XmlReader xr)
-		{
-			System.Windows.Forms.MessageBox.Show(xr.Name);
-
-			string id4 = xr.ReadElementContentAsString();
-			WrestlerID4 = ushort.Parse(id4, NumberStyles.HexNumber);
-
-			string id2 = xr.ReadElementContentAsString();
-			WrestlerID2 = ushort.Parse(id2, NumberStyles.HexNumber);
-
-			ThemeSong = (byte)xr.ReadContentAsInt();
-			NameCall = (byte)xr.ReadContentAsInt();
-			Height = (byte)xr.ReadContentAsInt();
-			Weight = (byte)xr.ReadContentAsInt();
-			Voice1 = (byte)xr.ReadContentAsInt();
-			Voice2 = (byte)xr.ReadContentAsInt();
-
-			string moveIndex = xr.ReadElementContentAsString();
-			MovesetFileIndex = UInt16.Parse(moveIndex, NumberStyles.HexNumber);
-			string paramIndex = xr.ReadElementContentAsString();
-			ParamsFileIndex = UInt16.Parse(paramIndex, NumberStyles.HexNumber);
-			string costumeIndex = xr.ReadElementContentAsString();
-			AppearanceIndex = UInt16.Parse(costumeIndex, NumberStyles.HexNumber);
-			string profileIndex = xr.ReadElementContentAsString();
-			ProfileIndex = UInt16.Parse(profileIndex, NumberStyles.HexNumber);
-		}
-
-		/// <summary>
-		/// Write VPW2 WrestlerDefinition to XML.
-		/// </summary>
-		/// <param name="xr">XmlWriter instance to use.</param>
-		public override void WriteXml(XmlWriter xr)
-		{
-			xr.WriteStartElement("WrestlerDefinition_VPW2");
-
-			xr.WriteElementString("WrestlerID4", String.Format("{0:X4}", WrestlerID4));
-			xr.WriteElementString("WrestlerID2", String.Format("{0:X2}", WrestlerID2));
-			xr.WriteElementString("ThemeSong", ThemeSong.ToString());
-			xr.WriteElementString("NameCall", NameCall.ToString());
-			xr.WriteElementString("Height", Height.ToString());
-			xr.WriteElementString("Weight", Weight.ToString());
-			xr.WriteElementString("Voice1", Voice1.ToString());
-			xr.WriteElementString("Voice2", Voice2.ToString());
-			xr.WriteElementString("MovesetFileIndex", String.Format("{0:X4}", MovesetFileIndex));
-			xr.WriteElementString("ParamsFileIndex", String.Format("{0:X4}", ParamsFileIndex));
-			xr.WriteElementString("AppearanceIndex", String.Format("{0:X4}", AppearanceIndex));
-			xr.WriteElementString("ProfileIndex", String.Format("{0:X4}", ProfileIndex));
-
-			xr.WriteEndElement();
 		}
 		#endregion
 	}

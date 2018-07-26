@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Xml;
 
 namespace VPWStudio.GameSpecific.NoMercy
 {
@@ -8,7 +7,7 @@ namespace VPWStudio.GameSpecific.NoMercy
 	/// WWF No Mercy Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : BaseWrestlerDefinition
+	public class WrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -218,18 +217,6 @@ namespace VPWStudio.GameSpecific.NoMercy
 			bw.Write(profileIdx);
 
 			bw.Write((Int16)0);
-		}
-		#endregion
-
-		#region XML Read/Write
-		public override void ReadXml(XmlReader xr)
-		{
-			// not implemented yet
-		}
-
-		public override void WriteXml(XmlWriter xr)
-		{
-			// not implemented yet
 		}
 		#endregion
 	}
