@@ -85,11 +85,16 @@ namespace VPWStudio
 		/// WCW/nWo Revenge Stable Editor
 		/// </summary>
 		public Editors.Revenge.StableDefs_Revenge StableDefs_Revenge = null;
+
+		/// <summary>
+		/// Revenge Wrestler Editor, main form
+		/// </summary>
+		public Editors.Revenge.WrestlerMain_Revenge WrestlerMain_Revenge = null;
 		#endregion
 
 		#region WM2K
 		/// <summary>
-		/// VPW2 Wrestler Editor, main form
+		/// WM2K Wrestler Editor, main form
 		/// </summary>
 		public Editors.WM2K.WrestlerMain_WM2K WrestlerMain_WM2K = null;
 
@@ -1070,6 +1075,29 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.Revenge:
+					if (WrestlerMain_Revenge == null)
+					{
+						WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
+						WrestlerMain_Revenge.MdiParent = this;
+						WrestlerMain_Revenge.Show();
+					}
+					else
+					{
+						if (WrestlerMain_Revenge.IsDisposed)
+						{
+							WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
+						}
+						// check for minimized
+						if (WrestlerMain_Revenge.WindowState == FormWindowState.Minimized)
+						{
+							WrestlerMain_Revenge.WindowState = FormWindowState.Normal;
+						}
+						WrestlerMain_Revenge.MdiParent = this;
+						WrestlerMain_Revenge.Show();
+					}
+					break;
+
 				case VPWGames.WM2K:
 					if (WrestlerMain_WM2K == null)
 					{

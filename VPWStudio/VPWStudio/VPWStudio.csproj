@@ -272,6 +272,12 @@
     <Compile Include="Editors\Revenge\StableDefs_Revenge.Designer.cs">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\Revenge\WrestlerMain_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\WrestlerMain_Revenge.designer.cs">
+      <DependentUpon>WrestlerMain_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\VPW2\CostumeDefs_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,7 @@
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
@@ -522,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\WrestlerMain_Revenge.resx">
+      <DependentUpon>WrestlerMain_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\CostumeDefs_VPW2.resx">
       <DependentUpon>CostumeDefs_VPW2.cs</DependentUpon>
