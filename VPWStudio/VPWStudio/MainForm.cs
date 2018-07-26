@@ -786,26 +786,17 @@ namespace VPWStudio
 				return;
 			}
 
-			if (FileTableEditor == null)
+			if (FileTableEditor == null || FileTableEditor.IsDisposed)
 			{
 				FileTableEditor = new FileTableDialog();
-				FileTableEditor.MdiParent = this;
-				FileTableEditor.Show();
 			}
-			else
+			// if it was minimized, show it again.
+			if (FileTableEditor.WindowState == FormWindowState.Minimized)
 			{
-				if (FileTableEditor.IsDisposed)
-				{
-					FileTableEditor = new FileTableDialog();
-				}
-				// if it was minimized, show it again.
-				if (FileTableEditor.WindowState == FormWindowState.Minimized)
-				{
-					FileTableEditor.WindowState = FormWindowState.Normal;
-				}
-				FileTableEditor.MdiParent = this;
-				FileTableEditor.Show();
+				FileTableEditor.WindowState = FormWindowState.Normal;
 			}
+			FileTableEditor.MdiParent = this;
+			FileTableEditor.Show();
 		}
 
 		/// <summary>
