@@ -308,7 +308,6 @@
     <Compile Include="Editors\WM2K\WrestlerMain_WM2K.Designer.cs">
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameSpecific\BaseWrestlerDefinition.cs" />
     <Compile Include="GameSpecific\BodyTypeDef_Early.cs" />
     <Compile Include="GameSpecific\ChampionshipDef_Early.cs" />
     <Compile Include="GameSpecific\CostumeDef_Early.cs" />

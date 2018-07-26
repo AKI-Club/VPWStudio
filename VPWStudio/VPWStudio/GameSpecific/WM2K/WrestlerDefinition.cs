@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Xml;
 
 namespace VPWStudio.GameSpecific.WM2K
 {
@@ -8,7 +7,7 @@ namespace VPWStudio.GameSpecific.WM2K
 	/// WWF WrestleMania 2000 Wrestler Definition.
 	/// </summary>
 	[Serializable]
-	public class WrestlerDefinition : BaseWrestlerDefinition
+	public class WrestlerDefinition
 	{
 		#region Class Members
 		/// <summary>
@@ -256,18 +255,6 @@ namespace VPWStudio.GameSpecific.WM2K
 				}
 				bw.Write(cosptr);
 			}
-		}
-		#endregion
-
-		#region XML Read/Write
-		public override void ReadXml(XmlReader xr)
-		{
-			// not implemented yet
-		}
-
-		public override void WriteXml(XmlWriter xr)
-		{
-			// not implemented yet
 		}
 		#endregion
 
