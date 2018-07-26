@@ -861,21 +861,11 @@ namespace VPWStudio
 			{
 				case VPWGames.Revenge:
 					{
-						if (StableDefs_Revenge == null)
+						if (StableDefs_Revenge == null || StableDefs_Revenge.IsDisposed)
 						{
 							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
 						}
-						else
-						{
-							if (StableDefs_Revenge.IsDisposed)
-							{
-								StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
-							}
-							if (StableDefs_Revenge.WindowState == FormWindowState.Minimized)
-							{
-								StableDefs_Revenge.WindowState = FormWindowState.Normal;
-							}
-						}
+						
 						StableDefs_Revenge.MdiParent = this;
 						StableDefs_Revenge.Show();
 					}
@@ -883,17 +873,11 @@ namespace VPWStudio
 
 				case VPWGames.WM2K:
 					{
-						if (StableDefs_WM2K == null)
+						if (StableDefs_WM2K == null || StableDefs_WM2K.IsDisposed)
 						{
 							StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
 						}
-						else
-						{
-							if (StableDefs_WM2K.IsDisposed)
-							{
-								StableDefs_WM2K = new Editors.WM2K.StableDefs_WM2K();
-							}
-						}
+
 						if (StableDefs_WM2K.ShowDialog() == DialogResult.OK)
 						{
 							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
@@ -933,17 +917,11 @@ namespace VPWStudio
 
 				case VPWGames.VPW2:
 					{
-						if (StableDefs_VPW2 == null)
+						if (StableDefs_VPW2 == null || StableDefs_VPW2.IsDisposed)
 						{
 							StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
 						}
-						else
-						{
-							if (StableDefs_VPW2.IsDisposed)
-							{
-								StableDefs_VPW2 = new Editors.VPW2.StableDefs_VPW2();
-							}
-						}
+
 						if (StableDefs_VPW2.ShowDialog() == DialogResult.OK)
 						{
 							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
@@ -983,17 +961,11 @@ namespace VPWStudio
 
 				case VPWGames.NoMercy:
 					{
-						if (StableDefs_NoMercy == null)
+						if (StableDefs_NoMercy == null || StableDefs_NoMercy.IsDisposed)
 						{
 							StableDefs_NoMercy = new Editors.NoMercy.StableDefs_NoMercy();
 						}
-						else
-						{
-							if (StableDefs_NoMercy.IsDisposed)
-							{
-								StableDefs_NoMercy = new Editors.NoMercy.StableDefs_NoMercy();
-							}
-						}
+
 						if (StableDefs_NoMercy.ShowDialog() == DialogResult.OK)
 						{
 							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
