@@ -1076,95 +1076,62 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.Revenge:
-					if (WrestlerMain_Revenge == null)
+					if (WrestlerMain_Revenge == null || WrestlerMain_Revenge.IsDisposed)
 					{
 						WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
-						WrestlerMain_Revenge.MdiParent = this;
-						WrestlerMain_Revenge.Show();
+						
 					}
-					else
+					// check for minimized
+					if (WrestlerMain_Revenge.WindowState == FormWindowState.Minimized)
 					{
-						if (WrestlerMain_Revenge.IsDisposed)
-						{
-							WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
-						}
-						// check for minimized
-						if (WrestlerMain_Revenge.WindowState == FormWindowState.Minimized)
-						{
-							WrestlerMain_Revenge.WindowState = FormWindowState.Normal;
-						}
-						WrestlerMain_Revenge.MdiParent = this;
-						WrestlerMain_Revenge.Show();
+						WrestlerMain_Revenge.WindowState = FormWindowState.Normal;
 					}
+					WrestlerMain_Revenge.MdiParent = this;
+					WrestlerMain_Revenge.Show();
 					break;
 
 				case VPWGames.WM2K:
-					if (WrestlerMain_WM2K == null)
+					if (WrestlerMain_WM2K == null || WrestlerMain_WM2K.IsDisposed)
 					{
 						WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
-						WrestlerMain_WM2K.MdiParent = this;
-						WrestlerMain_WM2K.Show();
+						
 					}
-					else
+					// check for minimized
+					if (WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
 					{
-						if (WrestlerMain_WM2K.IsDisposed)
-						{
-							WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
-						}
-						// check for minimized
-						if (WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
-						{
-							WrestlerMain_WM2K.WindowState = FormWindowState.Normal;
-						}
-						WrestlerMain_WM2K.MdiParent = this;
-						WrestlerMain_WM2K.Show();
+						WrestlerMain_WM2K.WindowState = FormWindowState.Normal;
 					}
+					WrestlerMain_WM2K.MdiParent = this;
+					WrestlerMain_WM2K.Show();
 					break;
 
 				case VPWGames.VPW2:
-					if (WrestlerMain_VPW2 == null)
+					if (WrestlerMain_VPW2 == null || WrestlerMain_VPW2.IsDisposed)
 					{
 						WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
-						WrestlerMain_VPW2.MdiParent = this;
-						WrestlerMain_VPW2.Show();
+						
 					}
-					else
+					// check for minimized
+					if (WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
 					{
-						if (WrestlerMain_VPW2.IsDisposed)
-						{
-							WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
-						}
-						// check for minimized
-						if (WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
-						{
-							WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
-						}
-						WrestlerMain_VPW2.MdiParent = this;
-						WrestlerMain_VPW2.Show();
+						WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
 					}
+					WrestlerMain_VPW2.MdiParent = this;
+					WrestlerMain_VPW2.Show();
 					break;
 
 				case VPWGames.NoMercy:
-					if (WrestlerMain_NoMercy == null)
+					if (WrestlerMain_NoMercy == null || WrestlerMain_NoMercy.IsDisposed)
 					{
 						WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
-						WrestlerMain_NoMercy.MdiParent = this;
-						WrestlerMain_NoMercy.Show();
 					}
-					else
+					// check for minimized
+					if (WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
 					{
-						if (WrestlerMain_NoMercy.IsDisposed)
-						{
-							WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
-						}
-						// check for minimized
-						if (WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
-						{
-							WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
-						}
-						WrestlerMain_NoMercy.MdiParent = this;
-						WrestlerMain_NoMercy.Show();
+						WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
 					}
+					WrestlerMain_NoMercy.MdiParent = this;
+					WrestlerMain_NoMercy.Show();
 					break;
 
 				default:
