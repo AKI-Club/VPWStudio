@@ -11,6 +11,6 @@ namespace VPWStudio.GameSpecific.VPW64
 	/// </summary>
 	public class WrestlerParams
 	{
-		// more than 32 bytes
+		// 40 bytes
 	}
 }
