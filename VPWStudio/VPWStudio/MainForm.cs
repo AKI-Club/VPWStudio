@@ -726,48 +726,30 @@ namespace VPWStudio
 				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
 				case VPWGames.Revenge:
-					if (CostumeDefs_Early == null)
+					if (CostumeDefs_Early == null || CostumeDefs_Early.IsDisposed)
 					{
 						CostumeDefs_Early = new Editors.CostumeDefs_Early();
-						CostumeDefs_Early.MdiParent = this;
-						CostumeDefs_Early.Show();
 					}
-					else
+					if (CostumeDefs_Early.WindowState == FormWindowState.Minimized)
 					{
-						if (CostumeDefs_Early.IsDisposed)
-						{
-							CostumeDefs_Early = new Editors.CostumeDefs_Early();
-						}
-						if (CostumeDefs_Early.WindowState == FormWindowState.Minimized)
-						{
-							CostumeDefs_Early.WindowState = FormWindowState.Normal;
-						}
-						CostumeDefs_Early.MdiParent = this;
-						CostumeDefs_Early.Show();
+						CostumeDefs_Early.WindowState = FormWindowState.Normal;
 					}
+					CostumeDefs_Early.MdiParent = this;
+					CostumeDefs_Early.Show();
 					break;
 
 				// WIP shite
 				case VPWGames.VPW2:
-					if (CostumeDefs_VPW2 == null)
+					if (CostumeDefs_VPW2 == null || CostumeDefs_VPW2.IsDisposed)
 					{
 						CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
-						CostumeDefs_VPW2.MdiParent = this;
-						CostumeDefs_VPW2.Show();
 					}
-					else
+					if (CostumeDefs_VPW2.WindowState == FormWindowState.Minimized)
 					{
-						if (CostumeDefs_VPW2.IsDisposed)
-						{
-							CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
-						}
-						if (CostumeDefs_VPW2.WindowState == FormWindowState.Minimized)
-						{
-							CostumeDefs_VPW2.WindowState = FormWindowState.Normal;
-						}
-						CostumeDefs_VPW2.MdiParent = this;
-						CostumeDefs_VPW2.Show();
+						CostumeDefs_VPW2.WindowState = FormWindowState.Normal;
 					}
+					CostumeDefs_VPW2.MdiParent = this;
+					CostumeDefs_VPW2.Show();
 					break;
 				
 				default:
