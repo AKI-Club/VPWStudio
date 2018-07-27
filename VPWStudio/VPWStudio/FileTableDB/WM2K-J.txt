@@ -7,6 +7,7 @@
 0006=AkiText;
 0007=AkiText;Credits
 0009=AkiTexture;
+0008=I4Texture;Buttons (24x256)
 000A=AkiTexture;Legal Info
 000B=AkiTexture;[Splash] WWF
 000C=AkiTexture;[Splash] THQ
