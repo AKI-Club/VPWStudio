@@ -266,6 +266,12 @@
     <Compile Include="Editors\CostumeDefs_Early.Designer.cs">
       <DependentUpon>CostumeDefs_Early.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\Revenge\ChampionshipDefs_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\ChampionshipDefs_Revenge.Designer.cs">
+      <DependentUpon>ChampionshipDefs_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\Revenge\StableDefs_Revenge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -525,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\CostumeDefs_Early.resx">
       <DependentUpon>CostumeDefs_Early.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\ChampionshipDefs_Revenge.resx">
+      <DependentUpon>ChampionshipDefs_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
