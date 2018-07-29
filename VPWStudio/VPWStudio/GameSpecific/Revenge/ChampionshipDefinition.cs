@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace VPWStudio.GameSpecific.Revenge
@@ -25,6 +26,9 @@ namespace VPWStudio.GameSpecific.Revenge
 		// [byte] unknown
 		public byte Unknown2;
 
+		// [byte] unknown
+		public byte Unknown3;
+
 		// [byte] flags 1 (cruiserweight; others?)
 		public byte Flags1;
 
@@ -32,22 +36,25 @@ namespace VPWStudio.GameSpecific.Revenge
 		public byte Flags2;
 
 		// [byte] unknown (this and the below may be a halfword)
-		public byte Unknown3;
-
-		// [byte] unknown (this and the above may be a halfword)
 		public byte Unknown4;
 
-		// [half] assumed halfword 1
-		public UInt16 Unknown5;
+		// [byte] unknown (this and the above may be a halfword)
+		public byte Unknown5;
 
-		// [half] assumed halfword 2
+		// [half] assumed halfword 1
 		public UInt16 Unknown6;
 
-		// [half] assumed halfword 3
+		// [half] assumed halfword 2
 		public UInt16 Unknown7;
+
+		// [half] assumed halfword 3
+		public UInt16 Unknown8;
 
 		// [word] Pointer to some ID2 list
 		public UInt32 RosterPointer;
+
+		// values in roster list
+		public List<byte> RosterID2s;
 
 		/// <summary>
 		/// Default constructor
@@ -59,14 +66,22 @@ namespace VPWStudio.GameSpecific.Revenge
 			ID2_Champion1 = 0;
 			ID2_Champion2 = 0;
 			Unknown2 = 0;
+			Unknown3 = 0;
 			Flags1 = 0;
 			Flags2 = 0;
-			Unknown3 = 0;
 			Unknown4 = 0;
 			Unknown5 = 0;
 			Unknown6 = 0;
 			Unknown7 = 0;
+			Unknown8 = 0;
 			RosterPointer = 0;
+			RosterID2s = new List<byte>();
+		}
+
+		public ChampionshipDefinition(BinaryReader br)
+		{
+			RosterID2s = new List<byte>();
+			ReadData(br);
 		}
 
 		#region Binary Read/Write
@@ -81,17 +96,11 @@ namespace VPWStudio.GameSpecific.Revenge
 			ID2_Champion1 = br.ReadByte();
 			ID2_Champion2 = br.ReadByte();
 			Unknown2 = br.ReadByte();
+			Unknown3 = br.ReadByte();
 			Flags1 = br.ReadByte();
 			Flags2 = br.ReadByte();
-			Unknown3 = br.ReadByte();
 			Unknown4 = br.ReadByte();
-
-			byte[] unk5 = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(unk5);
-			}
-			Unknown5 = BitConverter.ToUInt16(unk5, 0);
+			Unknown5 = br.ReadByte();
 
 			byte[] unk6 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
@@ -107,12 +116,30 @@ namespace VPWStudio.GameSpecific.Revenge
 			}
 			Unknown7 = BitConverter.ToUInt16(unk7, 0);
 
+			byte[] unk8 = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk8);
+			}
+			Unknown8 = BitConverter.ToUInt16(unk8, 0);
+
 			byte[] ptrRoster = br.ReadBytes(4);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(ptrRoster);
 			}
 			RosterPointer = BitConverter.ToUInt32(ptrRoster, 0);
+
+			// read roster data
+			long curPos = br.BaseStream.Position;
+			br.BaseStream.Seek(Z64Rom.PointerToRom(RosterPointer), SeekOrigin.Begin);
+			while (br.PeekChar() != 0)
+			{
+				RosterID2s.Add(br.ReadByte());
+			}
+
+			// restore position for next read
+			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 		#endregion
 	}
