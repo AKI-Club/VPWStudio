@@ -30,32 +30,30 @@
 		{
 			this.lbWrestlers = new System.Windows.Forms.ListBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.tbWrestlerNamePointer = new System.Windows.Forms.TextBox();
+			this.tbUnknown6 = new System.Windows.Forms.TextBox();
+			this.tbUnknown5 = new System.Windows.Forms.TextBox();
+			this.labelUnknown5 = new System.Windows.Forms.Label();
+			this.tbManagerID2 = new System.Windows.Forms.TextBox();
+			this.tbUnknown4 = new System.Windows.Forms.TextBox();
+			this.labelUnknown4 = new System.Windows.Forms.Label();
+			this.tbUnknown3 = new System.Windows.Forms.TextBox();
+			this.tbUnknown2 = new System.Windows.Forms.TextBox();
 			this.labelWrestlerID4 = new System.Windows.Forms.Label();
-			this.labelWrestlerNamePointer = new System.Windows.Forms.Label();
 			this.tbWrestlerID4 = new System.Windows.Forms.TextBox();
 			this.tbWrestlerID2 = new System.Windows.Forms.TextBox();
 			this.labelWrestlerID2 = new System.Windows.Forms.Label();
-			this.labelHeight = new System.Windows.Forms.Label();
-			this.tbHeightPointer = new System.Windows.Forms.TextBox();
-			this.tbWeightPointer = new System.Windows.Forms.TextBox();
-			this.labelWeight = new System.Windows.Forms.Label();
 			this.labelUnknown1 = new System.Windows.Forms.Label();
 			this.tbUnknown1 = new System.Windows.Forms.TextBox();
+			this.labelWeight = new System.Windows.Forms.Label();
+			this.tbWeightPointer = new System.Windows.Forms.TextBox();
+			this.tbHeightPointer = new System.Windows.Forms.TextBox();
+			this.labelHeight = new System.Windows.Forms.Label();
+			this.labelWrestlerNamePointer = new System.Windows.Forms.Label();
+			this.tbWrestlerNamePointer = new System.Windows.Forms.TextBox();
 			this.labelUnknown2 = new System.Windows.Forms.Label();
 			this.labelUnknown3 = new System.Windows.Forms.Label();
-			this.tbUnknown2 = new System.Windows.Forms.TextBox();
-			this.tbUnknown3 = new System.Windows.Forms.TextBox();
-			this.labelUnknown4 = new System.Windows.Forms.Label();
 			this.labelManagerID2 = new System.Windows.Forms.Label();
-			this.tbUnknown4 = new System.Windows.Forms.TextBox();
-			this.tbManagerID2 = new System.Windows.Forms.TextBox();
-			this.labelUnknown5 = new System.Windows.Forms.Label();
 			this.labelUnknown6 = new System.Windows.Forms.Label();
-			this.labelUnknown7 = new System.Windows.Forms.Label();
-			this.tbUnknown5 = new System.Windows.Forms.TextBox();
-			this.tbUnknown6 = new System.Windows.Forms.TextBox();
-			this.tbUnknown7 = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -78,7 +76,6 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown7, 1, 12);
 			this.tableLayoutPanel1.Controls.Add(this.tbUnknown6, 1, 11);
 			this.tableLayoutPanel1.Controls.Add(this.tbUnknown5, 1, 10);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown5, 0, 10);
@@ -102,61 +99,113 @@
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown2, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown3, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.labelManagerID2, 0, 9);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown7, 0, 12);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown6, 0, 11);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(146, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 13;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.RowCount = 12;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 465);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
-			// tbWrestlerNamePointer
+			// tbUnknown6
 			// 
-			this.tbWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerNamePointer.Location = new System.Drawing.Point(106, 182);
-			this.tbWrestlerNamePointer.Name = "tbWrestlerNamePointer";
-			this.tbWrestlerNamePointer.ReadOnly = true;
-			this.tbWrestlerNamePointer.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerNamePointer.TabIndex = 29;
+			this.tbUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown6.Location = new System.Drawing.Point(106, 431);
+			this.tbUnknown6.Name = "tbUnknown6";
+			this.tbUnknown6.ReadOnly = true;
+			this.tbUnknown6.Size = new System.Drawing.Size(237, 20);
+			this.tbUnknown6.TabIndex = 42;
+			// 
+			// tbUnknown5
+			// 
+			this.tbUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown5.Location = new System.Drawing.Point(106, 389);
+			this.tbUnknown5.Name = "tbUnknown5";
+			this.tbUnknown5.ReadOnly = true;
+			this.tbUnknown5.Size = new System.Drawing.Size(237, 20);
+			this.tbUnknown5.TabIndex = 41;
+			// 
+			// labelUnknown5
+			// 
+			this.labelUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown5.AutoSize = true;
+			this.labelUnknown5.Location = new System.Drawing.Point(3, 392);
+			this.labelUnknown5.Name = "labelUnknown5";
+			this.labelUnknown5.Size = new System.Drawing.Size(97, 13);
+			this.labelUnknown5.TabIndex = 38;
+			this.labelUnknown5.Text = "Unknown 5";
+			// 
+			// tbManagerID2
+			// 
+			this.tbManagerID2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbManagerID2.Location = new System.Drawing.Point(106, 351);
+			this.tbManagerID2.Name = "tbManagerID2";
+			this.tbManagerID2.ReadOnly = true;
+			this.tbManagerID2.Size = new System.Drawing.Size(237, 20);
+			this.tbManagerID2.TabIndex = 37;
+			// 
+			// tbUnknown4
+			// 
+			this.tbUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown4.Location = new System.Drawing.Point(106, 313);
+			this.tbUnknown4.Name = "tbUnknown4";
+			this.tbUnknown4.ReadOnly = true;
+			this.tbUnknown4.Size = new System.Drawing.Size(237, 20);
+			this.tbUnknown4.TabIndex = 36;
+			// 
+			// labelUnknown4
+			// 
+			this.labelUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown4.AutoSize = true;
+			this.labelUnknown4.Location = new System.Drawing.Point(3, 316);
+			this.labelUnknown4.Name = "labelUnknown4";
+			this.labelUnknown4.Size = new System.Drawing.Size(97, 13);
+			this.labelUnknown4.TabIndex = 34;
+			this.labelUnknown4.Text = "Unknown 4";
+			// 
+			// tbUnknown3
+			// 
+			this.tbUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown3.Location = new System.Drawing.Point(106, 161);
+			this.tbUnknown3.Name = "tbUnknown3";
+			this.tbUnknown3.ReadOnly = true;
+			this.tbUnknown3.Size = new System.Drawing.Size(237, 20);
+			this.tbUnknown3.TabIndex = 33;
+			// 
+			// tbUnknown2
+			// 
+			this.tbUnknown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown2.Location = new System.Drawing.Point(106, 123);
+			this.tbUnknown2.Name = "tbUnknown2";
+			this.tbUnknown2.ReadOnly = true;
+			this.tbUnknown2.Size = new System.Drawing.Size(237, 20);
+			this.tbUnknown2.TabIndex = 32;
 			// 
 			// labelWrestlerID4
 			// 
 			this.labelWrestlerID4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelWrestlerID4.AutoSize = true;
-			this.labelWrestlerID4.Location = new System.Drawing.Point(3, 11);
+			this.labelWrestlerID4.Location = new System.Drawing.Point(3, 12);
 			this.labelWrestlerID4.Name = "labelWrestlerID4";
 			this.labelWrestlerID4.Size = new System.Drawing.Size(97, 13);
 			this.labelWrestlerID4.TabIndex = 6;
 			this.labelWrestlerID4.Text = "Wrestler ID4";
 			// 
-			// labelWrestlerNamePointer
-			// 
-			this.labelWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelWrestlerNamePointer.AutoSize = true;
-			this.labelWrestlerNamePointer.Location = new System.Drawing.Point(3, 186);
-			this.labelWrestlerNamePointer.Name = "labelWrestlerNamePointer";
-			this.labelWrestlerNamePointer.Size = new System.Drawing.Size(97, 13);
-			this.labelWrestlerNamePointer.TabIndex = 28;
-			this.labelWrestlerNamePointer.Text = "Name Pointer";
-			// 
 			// tbWrestlerID4
 			// 
 			this.tbWrestlerID4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerID4.Location = new System.Drawing.Point(106, 7);
+			this.tbWrestlerID4.Location = new System.Drawing.Point(106, 9);
 			this.tbWrestlerID4.Name = "tbWrestlerID4";
 			this.tbWrestlerID4.ReadOnly = true;
 			this.tbWrestlerID4.Size = new System.Drawing.Size(237, 20);
@@ -165,7 +214,7 @@
 			// tbWrestlerID2
 			// 
 			this.tbWrestlerID2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerID2.Location = new System.Drawing.Point(106, 42);
+			this.tbWrestlerID2.Location = new System.Drawing.Point(106, 47);
 			this.tbWrestlerID2.Name = "tbWrestlerID2";
 			this.tbWrestlerID2.ReadOnly = true;
 			this.tbWrestlerID2.Size = new System.Drawing.Size(237, 20);
@@ -175,55 +224,17 @@
 			// 
 			this.labelWrestlerID2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelWrestlerID2.AutoSize = true;
-			this.labelWrestlerID2.Location = new System.Drawing.Point(3, 46);
+			this.labelWrestlerID2.Location = new System.Drawing.Point(3, 50);
 			this.labelWrestlerID2.Name = "labelWrestlerID2";
 			this.labelWrestlerID2.Size = new System.Drawing.Size(97, 13);
 			this.labelWrestlerID2.TabIndex = 7;
 			this.labelWrestlerID2.Text = "Wrestler ID2";
 			// 
-			// labelHeight
-			// 
-			this.labelHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelHeight.AutoSize = true;
-			this.labelHeight.Location = new System.Drawing.Point(3, 221);
-			this.labelHeight.Name = "labelHeight";
-			this.labelHeight.Size = new System.Drawing.Size(97, 13);
-			this.labelHeight.TabIndex = 22;
-			this.labelHeight.Text = "Height Pointer";
-			// 
-			// tbHeightPointer
-			// 
-			this.tbHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHeightPointer.Location = new System.Drawing.Point(106, 217);
-			this.tbHeightPointer.Name = "tbHeightPointer";
-			this.tbHeightPointer.ReadOnly = true;
-			this.tbHeightPointer.Size = new System.Drawing.Size(237, 20);
-			this.tbHeightPointer.TabIndex = 25;
-			// 
-			// tbWeightPointer
-			// 
-			this.tbWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWeightPointer.Location = new System.Drawing.Point(106, 252);
-			this.tbWeightPointer.Name = "tbWeightPointer";
-			this.tbWeightPointer.ReadOnly = true;
-			this.tbWeightPointer.Size = new System.Drawing.Size(237, 20);
-			this.tbWeightPointer.TabIndex = 27;
-			// 
-			// labelWeight
-			// 
-			this.labelWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelWeight.AutoSize = true;
-			this.labelWeight.Location = new System.Drawing.Point(3, 256);
-			this.labelWeight.Name = "labelWeight";
-			this.labelWeight.Size = new System.Drawing.Size(97, 13);
-			this.labelWeight.TabIndex = 24;
-			this.labelWeight.Text = "Weight Pointer";
-			// 
 			// labelUnknown1
 			// 
 			this.labelUnknown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUnknown1.AutoSize = true;
-			this.labelUnknown1.Location = new System.Drawing.Point(3, 81);
+			this.labelUnknown1.Location = new System.Drawing.Point(3, 88);
 			this.labelUnknown1.Name = "labelUnknown1";
 			this.labelUnknown1.Size = new System.Drawing.Size(97, 13);
 			this.labelUnknown1.TabIndex = 23;
@@ -232,17 +243,74 @@
 			// tbUnknown1
 			// 
 			this.tbUnknown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown1.Location = new System.Drawing.Point(106, 77);
+			this.tbUnknown1.Location = new System.Drawing.Point(106, 85);
 			this.tbUnknown1.Name = "tbUnknown1";
 			this.tbUnknown1.ReadOnly = true;
 			this.tbUnknown1.Size = new System.Drawing.Size(237, 20);
 			this.tbUnknown1.TabIndex = 26;
 			// 
+			// labelWeight
+			// 
+			this.labelWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelWeight.AutoSize = true;
+			this.labelWeight.Location = new System.Drawing.Point(3, 278);
+			this.labelWeight.Name = "labelWeight";
+			this.labelWeight.Size = new System.Drawing.Size(97, 13);
+			this.labelWeight.TabIndex = 24;
+			this.labelWeight.Text = "Weight Pointer";
+			// 
+			// tbWeightPointer
+			// 
+			this.tbWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWeightPointer.Location = new System.Drawing.Point(106, 275);
+			this.tbWeightPointer.Name = "tbWeightPointer";
+			this.tbWeightPointer.ReadOnly = true;
+			this.tbWeightPointer.Size = new System.Drawing.Size(237, 20);
+			this.tbWeightPointer.TabIndex = 27;
+			// 
+			// tbHeightPointer
+			// 
+			this.tbHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbHeightPointer.Location = new System.Drawing.Point(106, 237);
+			this.tbHeightPointer.Name = "tbHeightPointer";
+			this.tbHeightPointer.ReadOnly = true;
+			this.tbHeightPointer.Size = new System.Drawing.Size(237, 20);
+			this.tbHeightPointer.TabIndex = 25;
+			// 
+			// labelHeight
+			// 
+			this.labelHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelHeight.AutoSize = true;
+			this.labelHeight.Location = new System.Drawing.Point(3, 240);
+			this.labelHeight.Name = "labelHeight";
+			this.labelHeight.Size = new System.Drawing.Size(97, 13);
+			this.labelHeight.TabIndex = 22;
+			this.labelHeight.Text = "Height Pointer";
+			// 
+			// labelWrestlerNamePointer
+			// 
+			this.labelWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelWrestlerNamePointer.AutoSize = true;
+			this.labelWrestlerNamePointer.Location = new System.Drawing.Point(3, 202);
+			this.labelWrestlerNamePointer.Name = "labelWrestlerNamePointer";
+			this.labelWrestlerNamePointer.Size = new System.Drawing.Size(97, 13);
+			this.labelWrestlerNamePointer.TabIndex = 28;
+			this.labelWrestlerNamePointer.Text = "Name Pointer";
+			// 
+			// tbWrestlerNamePointer
+			// 
+			this.tbWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerNamePointer.Location = new System.Drawing.Point(106, 199);
+			this.tbWrestlerNamePointer.Name = "tbWrestlerNamePointer";
+			this.tbWrestlerNamePointer.ReadOnly = true;
+			this.tbWrestlerNamePointer.Size = new System.Drawing.Size(237, 20);
+			this.tbWrestlerNamePointer.TabIndex = 29;
+			// 
 			// labelUnknown2
 			// 
 			this.labelUnknown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUnknown2.AutoSize = true;
-			this.labelUnknown2.Location = new System.Drawing.Point(3, 116);
+			this.labelUnknown2.Location = new System.Drawing.Point(3, 126);
 			this.labelUnknown2.Name = "labelUnknown2";
 			this.labelUnknown2.Size = new System.Drawing.Size(97, 13);
 			this.labelUnknown2.TabIndex = 30;
@@ -252,124 +320,31 @@
 			// 
 			this.labelUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUnknown3.AutoSize = true;
-			this.labelUnknown3.Location = new System.Drawing.Point(3, 151);
+			this.labelUnknown3.Location = new System.Drawing.Point(3, 164);
 			this.labelUnknown3.Name = "labelUnknown3";
 			this.labelUnknown3.Size = new System.Drawing.Size(97, 13);
 			this.labelUnknown3.TabIndex = 31;
 			this.labelUnknown3.Text = "Unknown 3";
 			// 
-			// tbUnknown2
-			// 
-			this.tbUnknown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown2.Location = new System.Drawing.Point(106, 112);
-			this.tbUnknown2.Name = "tbUnknown2";
-			this.tbUnknown2.ReadOnly = true;
-			this.tbUnknown2.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown2.TabIndex = 32;
-			// 
-			// tbUnknown3
-			// 
-			this.tbUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown3.Location = new System.Drawing.Point(106, 147);
-			this.tbUnknown3.Name = "tbUnknown3";
-			this.tbUnknown3.ReadOnly = true;
-			this.tbUnknown3.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown3.TabIndex = 33;
-			// 
-			// labelUnknown4
-			// 
-			this.labelUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown4.AutoSize = true;
-			this.labelUnknown4.Location = new System.Drawing.Point(3, 291);
-			this.labelUnknown4.Name = "labelUnknown4";
-			this.labelUnknown4.Size = new System.Drawing.Size(97, 13);
-			this.labelUnknown4.TabIndex = 34;
-			this.labelUnknown4.Text = "Unknown 4";
-			// 
 			// labelManagerID2
 			// 
 			this.labelManagerID2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelManagerID2.AutoSize = true;
-			this.labelManagerID2.Location = new System.Drawing.Point(3, 326);
+			this.labelManagerID2.Location = new System.Drawing.Point(3, 354);
 			this.labelManagerID2.Name = "labelManagerID2";
 			this.labelManagerID2.Size = new System.Drawing.Size(97, 13);
 			this.labelManagerID2.TabIndex = 35;
 			this.labelManagerID2.Text = "Manager ID2";
 			// 
-			// tbUnknown4
-			// 
-			this.tbUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown4.Location = new System.Drawing.Point(106, 287);
-			this.tbUnknown4.Name = "tbUnknown4";
-			this.tbUnknown4.ReadOnly = true;
-			this.tbUnknown4.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown4.TabIndex = 36;
-			// 
-			// tbManagerID2
-			// 
-			this.tbManagerID2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbManagerID2.Location = new System.Drawing.Point(106, 322);
-			this.tbManagerID2.Name = "tbManagerID2";
-			this.tbManagerID2.ReadOnly = true;
-			this.tbManagerID2.Size = new System.Drawing.Size(237, 20);
-			this.tbManagerID2.TabIndex = 37;
-			// 
-			// labelUnknown5
-			// 
-			this.labelUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown5.AutoSize = true;
-			this.labelUnknown5.Location = new System.Drawing.Point(3, 361);
-			this.labelUnknown5.Name = "labelUnknown5";
-			this.labelUnknown5.Size = new System.Drawing.Size(97, 13);
-			this.labelUnknown5.TabIndex = 38;
-			this.labelUnknown5.Text = "Unknown 5";
-			// 
 			// labelUnknown6
 			// 
 			this.labelUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUnknown6.AutoSize = true;
-			this.labelUnknown6.Location = new System.Drawing.Point(3, 396);
+			this.labelUnknown6.Location = new System.Drawing.Point(3, 435);
 			this.labelUnknown6.Name = "labelUnknown6";
 			this.labelUnknown6.Size = new System.Drawing.Size(97, 13);
 			this.labelUnknown6.TabIndex = 39;
 			this.labelUnknown6.Text = "Unknown 6";
-			// 
-			// labelUnknown7
-			// 
-			this.labelUnknown7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown7.AutoSize = true;
-			this.labelUnknown7.Location = new System.Drawing.Point(3, 436);
-			this.labelUnknown7.Name = "labelUnknown7";
-			this.labelUnknown7.Size = new System.Drawing.Size(97, 13);
-			this.labelUnknown7.TabIndex = 40;
-			this.labelUnknown7.Text = "Unknown 7";
-			// 
-			// tbUnknown5
-			// 
-			this.tbUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown5.Location = new System.Drawing.Point(106, 357);
-			this.tbUnknown5.Name = "tbUnknown5";
-			this.tbUnknown5.ReadOnly = true;
-			this.tbUnknown5.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown5.TabIndex = 41;
-			// 
-			// tbUnknown6
-			// 
-			this.tbUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown6.Location = new System.Drawing.Point(106, 392);
-			this.tbUnknown6.Name = "tbUnknown6";
-			this.tbUnknown6.ReadOnly = true;
-			this.tbUnknown6.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown6.TabIndex = 42;
-			// 
-			// tbUnknown7
-			// 
-			this.tbUnknown7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown7.Location = new System.Drawing.Point(106, 432);
-			this.tbUnknown7.Name = "tbUnknown7";
-			this.tbUnknown7.ReadOnly = true;
-			this.tbUnknown7.Size = new System.Drawing.Size(237, 20);
-			this.tbUnknown7.TabIndex = 43;
 			// 
 			// WrestlerMain_Revenge
 			// 
@@ -414,9 +389,7 @@
 		private System.Windows.Forms.TextBox tbManagerID2;
 		private System.Windows.Forms.TextBox tbUnknown4;
 		private System.Windows.Forms.Label labelUnknown5;
-		private System.Windows.Forms.Label labelUnknown7;
 		private System.Windows.Forms.Label labelUnknown6;
-		private System.Windows.Forms.TextBox tbUnknown7;
 		private System.Windows.Forms.TextBox tbUnknown6;
 		private System.Windows.Forms.TextBox tbUnknown5;
 	}
