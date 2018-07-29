@@ -110,8 +110,11 @@ namespace VPWStudio.Editors.VPW2
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbNameCall.SelectedIndex = wdef.NameCall;
-			tbHeight.Text = String.Format("{0:X2}", wdef.Height);
-			tbWeight.Text = String.Format("{0:X2}", wdef.Weight);
+
+			// todo: handle "???" strings/values; 3 for height (small/medium/large), 1 for weight
+			tbHeight.Text = String.Format("0x{0:X2} ({1}cm)", wdef.Height, wdef.Height + 150);
+			tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", wdef.Weight, wdef.Weight + 70);
+
 			cbVoiceA.SelectedIndex = wdef.Voice1;
 			cbVoiceB.SelectedIndex = wdef.Voice2;
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
