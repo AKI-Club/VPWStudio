@@ -32,12 +32,12 @@ namespace VPWStudio.GameSpecific.VPW2
 		public byte NameCall;
 
 		/// <summary>
-		/// Height value (in cm; add 0x23 (35) for real value)
+		/// Height value (in cm; add 150 for real value)
 		/// </summary>
 		public byte Height;
 
 		/// <summary>
-		/// Weight value (in kg; add 0x2D (45) for real value)
+		/// Weight value (in kg; add 70 for real value)
 		/// </summary>
 		public byte Weight;
 
