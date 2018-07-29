@@ -49,7 +49,6 @@ namespace VPWStudio.GameSpecific.Revenge
 
 		public byte Unknown5;
 		public byte Unknown6;
-		public UInt16 Unknown7;
 		#endregion
 
 		/// <summary>
@@ -68,7 +67,6 @@ namespace VPWStudio.GameSpecific.Revenge
 			Unknown4 = 0;
 			Unknown5 = 0;
 			Unknown6 = 0;
-			Unknown7 = 0;
 		}
 
 		/// <summary>
@@ -137,12 +135,8 @@ namespace VPWStudio.GameSpecific.Revenge
 			Unknown5 = br.ReadByte();
 			Unknown6 = br.ReadByte();
 
-			byte[] unk7 = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(unk7);
-			}
-			Unknown7 = BitConverter.ToUInt16(unk7, 0);
+			// read and ignore terminator bytes
+			br.ReadBytes(2);
 		}
 
 		/// <summary>

@@ -106,7 +106,6 @@ namespace VPWStudio.Editors.Revenge
 			tbManagerID2.Text = String.Format("{0:X2}", wdef.ManagerID2);
 			tbUnknown5.Text = String.Format("{0:X2}", wdef.Unknown5);
 			tbUnknown6.Text = String.Format("{0:X2}", wdef.Unknown6);
-			tbUnknown7.Text = String.Format("{0:X4}", wdef.Unknown7);
 		}
 
 		/// <summary>
