@@ -82,6 +82,11 @@ namespace VPWStudio
 
 		#region Revenge
 		/// <summary>
+		/// WCW/nWo Revenge Championship Editor
+		/// </summary>
+		public Editors.Revenge.ChampionshipDefs_Revenge ChampDefs_Revenge = null;
+
+		/// <summary>
 		/// WCW/nWo Revenge Stable Editor
 		/// </summary>
 		public Editors.Revenge.StableDefs_Revenge StableDefs_Revenge = null;
@@ -707,7 +712,23 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Championships dialog not yet designed.");
+			if (Program.CurrentProject.Settings.BaseGame == VPWGames.Revenge)
+			{
+				if (ChampDefs_Revenge == null || ChampDefs_Revenge.IsDisposed)
+				{
+					ChampDefs_Revenge = new Editors.Revenge.ChampionshipDefs_Revenge();
+				}
+				if (ChampDefs_Revenge.WindowState == FormWindowState.Minimized)
+				{
+					ChampDefs_Revenge.WindowState = FormWindowState.Normal;
+				}
+				ChampDefs_Revenge.MdiParent = this;
+				ChampDefs_Revenge.Show();
+			}
+			else
+			{
+				Program.ErrorMessageBox("Championships dialog not yet designed for non-Revenge games.");
+			}
 		}
 
 		/// <summary>
