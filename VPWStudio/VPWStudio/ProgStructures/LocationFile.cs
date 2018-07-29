@@ -132,6 +132,7 @@ namespace VPWStudio
 			{ "BodyTypeDefs", "$BODYTYPEDEFS" }, // ROM location of body type definitions
 			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions (World Tour and Revenge only)
 			{ "HeadDefs", "$HEADDEFS" }, // ROM location of head/mask definitions
+			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 
 			// VPW64 costume definitions
 			{ "VPW64Costumes_Small", "$VPW64COSTUMES_SMALL" },
