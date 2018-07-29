@@ -6,7 +6,6 @@ namespace VPWStudio.GameSpecific
 	/// <summary>
 	/// Championship definition for WCW vs. nWo World Tour and Virtual Pro-Wrestling 64.
 	/// </summary>
-	/// I forget if Revenge uses something similar offhand and I'm too lazy to check right now.
 	public class ChampionshipDef_Early
 	{
 		// a single championship data is 16 bytes
