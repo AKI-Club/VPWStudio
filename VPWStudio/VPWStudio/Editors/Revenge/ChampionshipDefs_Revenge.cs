@@ -78,8 +78,8 @@ namespace VPWStudio.Editors.Revenge
 			tbUnknown1.Text = String.Format("0x{0:X2}", cdef.Unknown1);
 			tbChampID2_1.Text = String.Format("0x{0:X2}", cdef.ID2_Champion1);
 			tbChampID2_2.Text = String.Format("0x{0:X2}", cdef.ID2_Champion2);
-			tbUnknown2.Text = String.Format("0x{0:X2}", cdef.Unknown2);
-			tbUnknown3.Text = String.Format("0x{0:X2}", cdef.Unknown3);
+			tbUnknown2.Text = String.Format("0x{0:X2}", cdef.ID2_Defense1);
+			tbUnknown3.Text = String.Format("0x{0:X2}", cdef.ID2_Defense2);
 			tbFlags1.Text = String.Format("0x{0:X2}", cdef.Flags1);
 			tbFlags2.Text = String.Format("0x{0:X2}", cdef.Flags2);
 			tbUnknown4.Text = String.Format("0x{0:X2}", cdef.Unknown4);
