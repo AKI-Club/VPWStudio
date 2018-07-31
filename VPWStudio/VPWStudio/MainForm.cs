@@ -1844,8 +1844,6 @@ namespace VPWStudio
 			ft.ShowDialog();
 		}
 
-		#endregion
-
 		private void stableParseTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			StableDefParseTest sdpt = new StableDefParseTest();
@@ -1883,6 +1881,8 @@ namespace VPWStudio
 				hv.BringToFront();
 			}
 		}
+
+		#endregion
 
 		#region Drag and Drop (Project Files only!!)
 		private void MainForm_DragEnter(object sender, DragEventArgs e)
