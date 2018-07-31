@@ -23,11 +23,11 @@ namespace VPWStudio.GameSpecific.Revenge
 		// [byte] Initial Champion 2 ID2 (leave as 0 if not Tag Team)
 		public byte ID2_Champion2;
 
-		// [byte] unknown
-		public byte Unknown2;
+		// [byte] probably defending opponent 1 ID2
+		public byte ID2_Defense1;
 
-		// [byte] unknown
-		public byte Unknown3;
+		// [byte] probably defending opponent 2 ID2
+		public byte ID2_Defense2;
 
 		// [byte] flags 1 (cruiserweight; others?)
 		public byte Flags1;
@@ -65,8 +65,8 @@ namespace VPWStudio.GameSpecific.Revenge
 			Unknown1 = 7;
 			ID2_Champion1 = 0;
 			ID2_Champion2 = 0;
-			Unknown2 = 0;
-			Unknown3 = 0;
+			ID2_Defense1 = 0;
+			ID2_Defense2 = 0;
 			Flags1 = 0;
 			Flags2 = 0;
 			Unknown4 = 0;
@@ -95,8 +95,8 @@ namespace VPWStudio.GameSpecific.Revenge
 			Unknown1 = br.ReadByte();
 			ID2_Champion1 = br.ReadByte();
 			ID2_Champion2 = br.ReadByte();
-			Unknown2 = br.ReadByte();
-			Unknown3 = br.ReadByte();
+			ID2_Defense1 = br.ReadByte();
+			ID2_Defense2 = br.ReadByte();
 			Flags1 = br.ReadByte();
 			Flags2 = br.ReadByte();
 			Unknown4 = br.ReadByte();

@@ -213,7 +213,7 @@
 			this.labelUnknown2.Name = "labelUnknown2";
 			this.labelUnknown2.Size = new System.Drawing.Size(144, 13);
 			this.labelUnknown2.TabIndex = 4;
-			this.labelUnknown2.Text = "Unknown 2";
+			this.labelUnknown2.Text = "Defending ID2 #1";
 			// 
 			// labelFlags1
 			// 
@@ -243,7 +243,7 @@
 			this.labelUnknown3.Name = "labelUnknown3";
 			this.labelUnknown3.Size = new System.Drawing.Size(144, 13);
 			this.labelUnknown3.TabIndex = 7;
-			this.labelUnknown3.Text = "Unknown 3";
+			this.labelUnknown3.Text = "Defending ID2 #2";
 			// 
 			// labelUnknown4
 			// 
