@@ -15,6 +15,15 @@ namespace VPWStudio.Editors.Revenge
 	{
 		public List<ChampionshipDefinition> Championships = new List<ChampionshipDefinition>();
 
+		private string[] ChampionshipNames = new string[]
+		{
+			"US Heavyweight",
+			"Cruiserweight",
+			"Tag Team",
+			"World Heavyweight",
+			"TV Title"
+		};
+
 		public ChampionshipDefs_Revenge()
 		{
 			InitializeComponent();
@@ -23,7 +32,7 @@ namespace VPWStudio.Editors.Revenge
 			cbChampionships.BeginUpdate();
 			for (int i = 0; i < Championships.Count; i++)
 			{
-				cbChampionships.Items.Add(String.Format("Championship {0}", i+1));
+				cbChampionships.Items.Add(String.Format("Championship {0}: {1}", i+1, ChampionshipNames[i]));
 			}
 			cbChampionships.EndUpdate();
 			cbChampionships.SelectedIndex = 0;
