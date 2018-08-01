@@ -1070,7 +1070,7 @@
 054A=AkiModel;
 054B=AkiModel;
 054C=AkiModel;
-054D=AkiModel;
+054D=AkiModel;Main Ring Mat Model?
 054E=AkiModel;
 054F=AkiModel;
 0550=AkiModel;
@@ -1161,8 +1161,8 @@
 05A5=Ci4Texture;(AKI Hall wood floor)
 05A6=Ci4Palette;
 05A7=Ci4Texture;
-05A8=Ci4Palette;
-05A9=Ci4Texture;
+05A8=Ci4Palette;Main Ring Mat Texture
+05A9=Ci4Texture;Main Ring Mat Texture
 05AA=Ci4Palette;
 05AB=Ci4Texture;
 05AC=AkiModel;
@@ -1342,8 +1342,8 @@
 065A=Ci8Palette;
 065B=Ci8Texture;
 065C=AkiModel;
-0737=Ci4Palette;
-0738=Ci4Texture;
+0737=Ci4Palette;Kawasaki Ring Mat Texture
+0738=Ci4Texture;Kawasaki Ring Mat Texture
 0739=Ci4Palette;
 073A=Ci4Texture;
 073B=Ci4Palette;
@@ -1368,7 +1368,7 @@
 074E=AkiModel;
 074F=AkiModel;
 0750=AkiModel;
-0751=AkiModel;
+0751=AkiModel;Kawasaki Ring Mat Model
 0752=AkiModel;
 0753=AkiModel;
 078D=AkiModel;
