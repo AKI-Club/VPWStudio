@@ -157,6 +157,21 @@ namespace VPWStudio.Editors.VPW2
 			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
+		private void buttonAppearance_Click(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// get data slice from appearance file (ID 0x006B)
+			// file is 0x4BCC long. each wrestler has 4 costumes at 49 bytes each (total 196 bytes).
+			byte[] appearanceData = Program.GetFileSlice(0x006B, 196*lbWrestlers.SelectedIndex, 196);
+
+			// load in hex editor for now; make dialog later
+			((MainForm)(MdiParent)).RequestHexViewer(appearanceData);
+		}
+
 		private void buttonProfile_Click(object sender, EventArgs e)
 		{
 			if (lbWrestlers.SelectedIndex < 0)
@@ -168,5 +183,6 @@ namespace VPWStudio.Editors.VPW2
 			AkiTextEditor ate = new AkiTextEditor(0x006C, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
 			ate.ShowDialog();
 		}
+
 	}
 }
