@@ -167,6 +167,21 @@ namespace VPWStudio.Editors.NoMercy
 			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
+		private void buttonAppearance_Click(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// get data slice from appearance file (ID 0x0001?)
+			// file is ? long. each costume is 38 bytes
+			byte[] appearanceData = Program.GetFileSlice(0x0001, WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, DefaultCostumeData.COSTUME_DATA_LENGTH);
+
+			// load in hex editor for now; make dialog later
+			((MainForm)(MdiParent)).RequestHexViewer(appearanceData);
+		}
+
 		private void buttonProfile_Click(object sender, EventArgs e)
 		{
 			if (lbWrestlers.SelectedIndex < 0)
