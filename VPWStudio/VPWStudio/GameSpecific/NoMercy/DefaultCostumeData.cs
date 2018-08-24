@@ -8,6 +8,11 @@ namespace VPWStudio.GameSpecific.NoMercy
 	/// </summary>
 	public class DefaultCostumeData
 	{
+		/// <summary>
+		/// Number of bytes in a DefaultCostumeData entry.
+		/// </summary>
+		public static int COSTUME_DATA_LENGTH = 38;
+
 		#region Members
 		public byte BodyType;
 		public byte SkinColor;
