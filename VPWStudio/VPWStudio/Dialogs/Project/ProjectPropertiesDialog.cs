@@ -253,10 +253,13 @@ namespace VPWStudio
 		/// </summary>
 		private void buttonSetOutROM_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Title = "Set Output ROM File Path";
-			sfd.Filter = SharedStrings.FileFilter_N64Rom;
-			sfd.CheckFileExists = false;
+			SaveFileDialog sfd = new SaveFileDialog()
+			{
+				Title = "Set Output ROM File Path",
+				Filter = SharedStrings.FileFilter_N64Rom,
+				CheckFileExists = false,
+				OverwritePrompt = false
+			};
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				tbBaseROMPath.Text = Path.GetFullPath(sfd.FileName);
