@@ -216,6 +216,17 @@ namespace VPWStudio
 			newHV.BringToFront();
 		}
 
+		/// <summary>
+		/// Request a HexViewerForm using data passed in.
+		/// </summary>
+		/// <param name="data">Data to view in HexViewer.</param>
+		public void RequestHexViewer(byte[] data)
+		{
+			HexViewer newHV = Program.HexViewManager.NewViewerData(data);
+			newHV.MdiParent = this;
+			newHV.Show();
+			newHV.BringToFront();
+		}
 		#endregion
 
 		#region File Menu Items
