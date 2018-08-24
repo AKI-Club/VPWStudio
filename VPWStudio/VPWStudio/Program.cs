@@ -209,6 +209,32 @@ namespace VPWStudio
 			return slice;
 		}
 
+		/// <summary>
+		/// Get a slice of data from a FileTable entry.
+		/// </summary>
+		/// <param name="fileID">File ID to get data slice of.</param>
+		/// <param name="offset">Offset to grab data from.</param>
+		/// <param name="length">Length of data to grab.</param>
+		/// <returns>Byte array with the requested data.</returns>
+		public static byte[] GetFileSlice(int fileID, int offset, int length)
+		{
+			byte[] slice = new byte[length];
+
+			// need to extract file first
+			MemoryStream romStream = new MemoryStream(CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(romStream);
+			MemoryStream outData = new MemoryStream();
+			BinaryWriter bw = new BinaryWriter(outData);
+			CurrentProject.ProjectFileTable.ExtractFile(br, bw, fileID);
+			br.Close();
+
+			// then do the other thing
+			Array.Copy(outData.ToArray(), offset, slice, 0, length);
+			bw.Close();
+
+			return slice;
+		}
+
 		#endregion // helpers
 
 		#region ROM Building
