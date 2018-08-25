@@ -13,7 +13,7 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <summary>
 		/// AkiTextures in this DoubleTex.
 		/// </summary>
-		AkiTexture[] Textures;
+		public AkiTexture[] Textures;
 
 		/// <summary>
 		/// Default constructor.
