@@ -17,10 +17,15 @@ namespace VPWStudio.GameSpecific.Revenge
 		// [byte] ??? always 7
 		public byte Unknown1;
 
-		// [byte] Initial Champion 1 ID2
+		/// <summary>
+		/// Initial Champion 1 ID2 value.
+		/// </summary>
 		public byte ID2_Champion1;
 
-		// [byte] Initial Champion 2 ID2 (leave as 0 if not Tag Team)
+		/// <summary>
+		/// Initial Champion 2 ID2 value.
+		/// Leave as 0 if not a Tag Team title.
+		/// </summary>
 		public byte ID2_Champion2;
 
 		// [byte] probably defending opponent 1 ID2
@@ -57,7 +62,7 @@ namespace VPWStudio.GameSpecific.Revenge
 		public List<byte> RosterID2s;
 
 		/// <summary>
-		/// Default constructor
+		/// Default constructor.
 		/// </summary>
 		public ChampionshipDefinition()
 		{
@@ -78,6 +83,10 @@ namespace VPWStudio.GameSpecific.Revenge
 			RosterID2s = new List<byte>();
 		}
 
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public ChampionshipDefinition(BinaryReader br)
 		{
 			RosterID2s = new List<byte>();
