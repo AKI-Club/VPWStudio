@@ -248,6 +248,12 @@
     <Compile Include="Editors\FontDialog.Designer.cs">
       <DependentUpon>FontDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\DefaultCostume_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\DefaultCostume_NoMercy.Designer.cs">
+      <DependentUpon>DefaultCostume_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\NoMercy\StableDefs_NoMercy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FontDialog.resx">
       <DependentUpon>FontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\DefaultCostume_NoMercy.resx">
+      <DependentUpon>DefaultCostume_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\StableDefs_NoMercy.resx">
       <DependentUpon>StableDefs_NoMercy.cs</DependentUpon>
