@@ -3221,7 +3221,7 @@
 186A=Ci4Texture;[Front Hair] 013
 186B=Ci4Texture;[Front Hair] 014
 186C=Ci4Texture;[Front Hair] 015
-186D=Ci4Texture;[Front Hair] 016
+186D=Ci8Texture;[Front Hair] 016
 186E=Ci4Texture;[Front Hair] 017
 186F=Ci4Texture;[Front Hair] 018
 1870=Ci4Texture;[Front Hair] 019
