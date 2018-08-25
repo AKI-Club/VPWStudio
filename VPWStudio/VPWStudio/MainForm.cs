@@ -670,20 +670,17 @@ namespace VPWStudio
 				}
 
 				// check to see if Input ROM was changed
-				if (Program.CurrentInputROM == null)
+				if (Program.CurrentProject.Settings.InputRomPath != oldInRomPath)
 				{
-					if (Program.CurrentProject.Settings.InputRomPath != oldInRomPath)
+					// attempt to load
+					if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
 					{
-						// attempt to load
-						if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
-						{
-							Program.CurrentInputROM = new Z64Rom();
-							Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
-						}
-						else
-						{
-							Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath));
-						}
+						Program.CurrentInputROM = new Z64Rom();
+						Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+					}
+					else
+					{
+						Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath));
 					}
 				}
 
@@ -1157,6 +1154,14 @@ namespace VPWStudio
 			{
 				// invalid output ROM path
 				Program.ErrorMessageBox("Output ROM path not set.\nPlease set Output ROM path in Project Options.");
+				return;
+			}
+
+			if (!Directory.Exists(Path.GetDirectoryName(Program.CurrentProject.Settings.OutputRomPath)))
+			{
+				// output directory doesn't exist
+				// I mean we COULD make it, but...
+				Program.ErrorMessageBox("Output ROM directory does not exist.\nThis error sucks monkey nuts, because I could just ask if you want the directory made, but I don't.\nSorry. Maybe next time.");
 				return;
 			}
 
