@@ -46,13 +46,13 @@ code{
 }
 
 .notsupported{
-	background-color: #F88;
+	background-color: #f88;
 }
 
 .partialsupport{
-	background-color: #88F;
+	background-color: #a8f;
 }
 
 .supported{
-	background-color: #8F8;
+	background-color: #afa;
 }

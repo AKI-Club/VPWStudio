@@ -59,14 +59,15 @@
 <hr />
 <h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
-<u>Virtual Pro-Wrestling</u> series.</p>
+<em>Virtual Pro-Wrestling</em> series.</p>
 
-<p>This program was created because the primary solutions for making changes to
-AKI wrestling games are GameShark codes and emulator-only texture replacements.
-Anyone wanting to play projects using these methods on console could not fully do so.</p>
+<p>As of 2018, the primary accepted solution for making changes to the AKI
+wrestling games are GameShark codes and emulator-only plugin-based texture
+replacements. Anyone who wanted to play projects using these methods on
+console could not fully do so.</p>
 
-<p>The primary inspiration for VPW Studio is the Goldeneye Setup Editor, which
-works directly on game data.</p>
+<p>The primary inspiration for VPW Studio is the Goldeneye Setup Editor,
+which works directly on game data.</p>
 
 <h3>Supported Games</h3>
 <p>Currently, only the AKI wrestling games on the Nintendo 64 are supported:</p>
@@ -125,18 +126,18 @@ works directly on game data.</p>
 	<td>NTSC-U (GC, PS2), NTSC-J (PS2 only)</td>
 </tr>-->
 <!--<tr>
-	<td>Def Jam Fight for NY</td>
+	<td>Def Jam: Fight for NY</td>
 	<td>GameCube, PlayStation 2, XBox</td>
 	<td>NTSC-U (GC, PS2, XBox)</td>
 </tr>-->
 </tbody>
 </table>
-<p>Note that not every game supports every portion of VPW Studio. Supported games are
-listed in the specific sections for each tool.</p>
+<p>Note that not every game supports every portion of VPW Studio. Supported games
+are listed in the specific sections for each tool.</p>
 
 <p>Of the remaining AKI wrestling games, it's more likely the PlayStation 1 games
-(Virtual Pro-Wrestling and WCW vs. the World) will be supported before games on
-later systems.</p>
+(<em>Virtual Pro-Wrestling</em> and <em>WCW vs. the World</em>) will be supported
+before games on later systems.</p>
 
 <hr />
 <h2><a name="Requirements">Requirements and Notes</a></h2>
@@ -188,15 +189,14 @@ can shorten build times.</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
-<p>VPW Studio primarily operates on the concept of Project Files. This method of
-project management was chosen due to the number of total conversion hacks created
-by the AKI hacking communities.</p>
+<p>VPW Studio primarily operates on the concept of Project Files. This method was
+chosen due to the number of total conversion hacks created by the AKI hacking communities.</p>
 
 <p>Project Files have the extension <code>.vpwsproj</code>. Technical information
 about the Project File format can be found in Appendix B5.</p>
 
 <h3>Project Structure</h3>
-<p>(todo)</p>
+<p>(todo: Assets, ProjectFiles, etc.)</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -271,8 +271,9 @@ dialog.</p>
 <p>To build a ROM with the changes you've made, select "Build ROM" from the "Project" menu.
 This will bring up a build log window, which provides updates on the build process.</p>
 
-<p>Depending on the speed of your computer and the Build Log Verbosity setting,
-this process may be relatively short (~10 seconds) or long.</p>
+<p>Depending on the speed of your computer, the number of FileTable entries being
+modified, and the Build Log Verbosity setting, this process may be relatively short
+(~10 seconds) or long.</p>
 
 <h3>Play ROM</h3>
 <p>If you want to test the changes in an emulator, select "Play ROM" from the "Project" menu.
@@ -281,7 +282,7 @@ If the changed ROM hasn't been built yet, it will build the ROM before playing i
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
-<p>(todo: this portion of the program requires a 3D renderer)</p>
+<p>(todo: this portion of the program requires a 3D renderer, and I am not yet smart enough to do that -f)</p>
 
 <hr />
 <h2><a name="Championships">Championships</a></h2>
@@ -304,7 +305,7 @@ available when making a new belt.</li>
 
 <hr />
 <h2><a name="FileTable">File Table</a></h2>
-<p>The File Table editor, accessed from "Project &rarr; File Table", allows you to
+<p>The File Table editor, accessed from Project &rarr; File Table, allows you to
 view and edit the entries in the game's File Table. A large portion of the game's
 data is found in the File Table, including wrestler movesets, parameters, move data,
 textures, palettes, models, and more.</p>
@@ -367,7 +368,7 @@ are laid out on various game menus.</p>
 <hr />
 <h2><a name="SoundMusic">Sound/Music</a></h2>
 <p>The Sound and Music editor (Project &rarr; Sound/Music) will eventually allow you to preview and change
-sounds.</p>
+sounds. (This includes the theme music found in WM2K, VPW2, and No Mercy.)</p>
 
 <p>(todo)</p>
 
@@ -397,7 +398,7 @@ sounds.</p>
 </tr>
 <tr>
 <td>WWF WrestleMania 2000</td>
-<td class="supported">Partial</td>
+<td class="partialsupport">Partial</td>
 </tr>
 <tr>
 <td>Virtual Pro-Wrestling 2</td>
