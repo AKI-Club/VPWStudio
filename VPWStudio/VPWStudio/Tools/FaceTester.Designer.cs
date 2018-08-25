@@ -125,7 +125,7 @@
 			this.cbHairColor.Location = new System.Drawing.Point(117, 53);
 			this.cbHairColor.Name = "cbHairColor";
 			this.cbHairColor.Size = new System.Drawing.Size(260, 21);
-			this.cbHairColor.TabIndex = 13;
+			this.cbHairColor.TabIndex = 5;
 			this.cbHairColor.SelectedIndexChanged += new System.EventHandler(this.cbHairColor_SelectedIndexChanged);
 			// 
 			// labelSkinColor
@@ -136,7 +136,7 @@
 			this.labelSkinColor.Name = "labelSkinColor";
 			this.labelSkinColor.Size = new System.Drawing.Size(108, 13);
 			this.labelSkinColor.TabIndex = 0;
-			this.labelSkinColor.Text = "Skin Color";
+			this.labelSkinColor.Text = "&Skin Color";
 			// 
 			// labelFaceNum
 			// 
@@ -145,8 +145,8 @@
 			this.labelFaceNum.Location = new System.Drawing.Point(3, 31);
 			this.labelFaceNum.Name = "labelFaceNum";
 			this.labelFaceNum.Size = new System.Drawing.Size(108, 13);
-			this.labelFaceNum.TabIndex = 1;
-			this.labelFaceNum.Text = "Face";
+			this.labelFaceNum.TabIndex = 2;
+			this.labelFaceNum.Text = "&Face";
 			// 
 			// cbSkinColor
 			// 
@@ -161,7 +161,7 @@
 			this.cbSkinColor.Location = new System.Drawing.Point(117, 3);
 			this.cbSkinColor.Name = "cbSkinColor";
 			this.cbSkinColor.Size = new System.Drawing.Size(260, 21);
-			this.cbSkinColor.TabIndex = 6;
+			this.cbSkinColor.TabIndex = 1;
 			this.cbSkinColor.SelectedIndexChanged += new System.EventHandler(this.cbSkinColor_SelectedIndexChanged);
 			// 
 			// cbFace
@@ -172,7 +172,7 @@
 			this.cbFace.Location = new System.Drawing.Point(117, 28);
 			this.cbFace.Name = "cbFace";
 			this.cbFace.Size = new System.Drawing.Size(260, 21);
-			this.cbFace.TabIndex = 7;
+			this.cbFace.TabIndex = 3;
 			this.cbFace.SelectedIndexChanged += new System.EventHandler(this.cbFace_SelectedIndexChanged);
 			// 
 			// labelAccessory
@@ -182,8 +182,8 @@
 			this.labelAccessory.Location = new System.Drawing.Point(3, 158);
 			this.labelAccessory.Name = "labelAccessory";
 			this.labelAccessory.Size = new System.Drawing.Size(108, 13);
-			this.labelAccessory.TabIndex = 5;
-			this.labelAccessory.Text = "Accessory";
+			this.labelAccessory.TabIndex = 12;
+			this.labelAccessory.Text = "&Accessory";
 			// 
 			// cbAccessory
 			// 
@@ -226,7 +226,7 @@
 			this.cbAccessory.Location = new System.Drawing.Point(117, 154);
 			this.cbAccessory.Name = "cbAccessory";
 			this.cbAccessory.Size = new System.Drawing.Size(260, 21);
-			this.cbAccessory.TabIndex = 11;
+			this.cbAccessory.TabIndex = 13;
 			this.cbAccessory.SelectedIndexChanged += new System.EventHandler(this.cbAccessory_SelectedIndexChanged);
 			// 
 			// cbPaint
@@ -270,7 +270,7 @@
 			this.cbPaint.Location = new System.Drawing.Point(117, 128);
 			this.cbPaint.Name = "cbPaint";
 			this.cbPaint.Size = new System.Drawing.Size(260, 21);
-			this.cbPaint.TabIndex = 10;
+			this.cbPaint.TabIndex = 11;
 			this.cbPaint.SelectedIndexChanged += new System.EventHandler(this.cbPaint_SelectedIndexChanged);
 			// 
 			// labelPaint
@@ -280,8 +280,8 @@
 			this.labelPaint.Location = new System.Drawing.Point(3, 131);
 			this.labelPaint.Name = "labelPaint";
 			this.labelPaint.Size = new System.Drawing.Size(108, 13);
-			this.labelPaint.TabIndex = 4;
-			this.labelPaint.Text = "Paint";
+			this.labelPaint.TabIndex = 10;
+			this.labelPaint.Text = "&Paint";
 			// 
 			// cbFacialHair
 			// 
@@ -334,8 +334,8 @@
 			this.labelFacialHair.Location = new System.Drawing.Point(3, 106);
 			this.labelFacialHair.Name = "labelFacialHair";
 			this.labelFacialHair.Size = new System.Drawing.Size(108, 13);
-			this.labelFacialHair.TabIndex = 3;
-			this.labelFacialHair.Text = "Facial Hair";
+			this.labelFacialHair.TabIndex = 8;
+			this.labelFacialHair.Text = "Fac&ial Hair";
 			// 
 			// cbFrontHair
 			// 
@@ -345,7 +345,7 @@
 			this.cbFrontHair.Location = new System.Drawing.Point(117, 78);
 			this.cbFrontHair.Name = "cbFrontHair";
 			this.cbFrontHair.Size = new System.Drawing.Size(260, 21);
-			this.cbFrontHair.TabIndex = 8;
+			this.cbFrontHair.TabIndex = 7;
 			this.cbFrontHair.SelectedIndexChanged += new System.EventHandler(this.cbFrontHair_SelectedIndexChanged);
 			// 
 			// labelFrontHair
@@ -355,8 +355,8 @@
 			this.labelFrontHair.Location = new System.Drawing.Point(3, 81);
 			this.labelFrontHair.Name = "labelFrontHair";
 			this.labelFrontHair.Size = new System.Drawing.Size(108, 13);
-			this.labelFrontHair.TabIndex = 2;
-			this.labelFrontHair.Text = "Front Hair";
+			this.labelFrontHair.TabIndex = 6;
+			this.labelFrontHair.Text = "Front &Hair";
 			// 
 			// labelHairColor
 			// 
@@ -365,8 +365,8 @@
 			this.labelHairColor.Location = new System.Drawing.Point(3, 56);
 			this.labelHairColor.Name = "labelHairColor";
 			this.labelHairColor.Size = new System.Drawing.Size(108, 13);
-			this.labelHairColor.TabIndex = 12;
-			this.labelHairColor.Text = "Hair Color";
+			this.labelHairColor.TabIndex = 4;
+			this.labelHairColor.Text = "Hair &Color";
 			// 
 			// labelDValue
 			// 
