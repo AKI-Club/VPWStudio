@@ -337,6 +337,10 @@ namespace VPWStudio
 					displace = (sbyte)fDisplace - (sbyte)pDisplace;
 				}
 
+				labelFValue.Text = String.Format("{0}", fDisplace);
+				labelAValue.Text = String.Format("{0}", pDisplace);
+				labelDValue.Text = String.Format("{0}", displace);
+
 				g.DrawImage(FacePaintTex.ToBitmap(FacePaintPal), new Point(0, displace));
 			}
 
@@ -394,29 +398,58 @@ namespace VPWStudio
 			// front hair
 			if (FrontHair != 0)
 			{
-				Ci4Palette FrontHairPal = new Ci4Palette();
-				// front hair palette
-				MemoryStream fhpalStream = new MemoryStream();
-				BinaryWriter fhpalWriter = new BinaryWriter(fhpalStream);
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhpalWriter, HairColor);
-				fhpalStream.Seek(0, SeekOrigin.Begin);
-				BinaryReader br = new BinaryReader(fhpalStream);
-				FrontHairPal.ReadData(br);
-				br.Close();
-				fhpalWriter.Close();
+				// hack: file ID 0x186D is CI8 for some dumb reason
+				if (FrontHair == 0x186D)
+				{
+					// CI8 hair palette at file ID 0x192A
+					Ci8Palette FrontHairPal = new Ci8Palette();
+					MemoryStream fhpalStream = new MemoryStream();
+					BinaryWriter fhpalWriter = new BinaryWriter(fhpalStream);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhpalWriter, 0x192A);
+					fhpalStream.Seek(0, SeekOrigin.Begin);
+					BinaryReader br = new BinaryReader(fhpalStream);
+					FrontHairPal.ReadData(br);
+					br.Close();
+					fhpalWriter.Close();
 
-				Ci4Texture FrontHairTex = new Ci4Texture();
-				// front hair texture
-				MemoryStream fhtexStream = new MemoryStream();
-				BinaryWriter fhtexWriter = new BinaryWriter(fhtexStream);
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhtexWriter, FrontHair);
-				fhtexStream.Seek(0, SeekOrigin.Begin);
-				br = new BinaryReader(fhtexStream);
-				FrontHairTex.ReadData(br);
-				br.Close();
-				fhtexWriter.Close();
+					Ci8Texture FrontHairTex = new Ci8Texture();
+					MemoryStream fhtexStream = new MemoryStream();
+					BinaryWriter fhtexWriter = new BinaryWriter(fhtexStream);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhtexWriter, FrontHair);
+					fhtexStream.Seek(0, SeekOrigin.Begin);
+					br = new BinaryReader(fhtexStream);
+					FrontHairTex.ReadData(br);
+					br.Close();
+					fhtexWriter.Close();
 
-				g.DrawImage(FrontHairTex.ToBitmap(FrontHairPal), new Point(0, 0));
+					g.DrawImage(FrontHairTex.ToBitmap(FrontHairPal), new Point(0, 0));
+				}
+				else
+				{
+					Ci4Palette FrontHairPal = new Ci4Palette();
+					// front hair palette
+					MemoryStream fhpalStream = new MemoryStream();
+					BinaryWriter fhpalWriter = new BinaryWriter(fhpalStream);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhpalWriter, HairColor);
+					fhpalStream.Seek(0, SeekOrigin.Begin);
+					BinaryReader br = new BinaryReader(fhpalStream);
+					FrontHairPal.ReadData(br);
+					br.Close();
+					fhpalWriter.Close();
+
+					Ci4Texture FrontHairTex = new Ci4Texture();
+					// front hair texture
+					MemoryStream fhtexStream = new MemoryStream();
+					BinaryWriter fhtexWriter = new BinaryWriter(fhtexStream);
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fhtexWriter, FrontHair);
+					fhtexStream.Seek(0, SeekOrigin.Begin);
+					br = new BinaryReader(fhtexStream);
+					FrontHairTex.ReadData(br);
+					br.Close();
+					fhtexWriter.Close();
+
+					g.DrawImage(FrontHairTex.ToBitmap(FrontHairPal), new Point(0, 0));
+				}
 			}
 
 			romReader.Close();
