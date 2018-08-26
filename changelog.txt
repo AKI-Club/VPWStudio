@@ -99,7 +99,7 @@ Pre-Alpha Preview 4 (2018/05/23)
 * Added Stable Editor for WrestleMania 2000.
 
 * "Play ROM" will now build the ROM if it hasn't been built.
-  This makes the "Build and Play ROM" option redundant.
+  This makes the "Build and Play ROM" option (mostly) redundant.
 
 * AkiAnimation file type added, though not complete yet.
   However, you can view the Animation data... kind of.
