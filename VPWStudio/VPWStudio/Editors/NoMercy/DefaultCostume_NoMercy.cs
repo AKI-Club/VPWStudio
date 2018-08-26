@@ -16,10 +16,10 @@ namespace VPWStudio.Editors.NoMercy
 	/// </summary>
 	public partial class DefaultCostume_NoMercy : Form
 	{
-		// pass in an appearance index number
-		// read appearance data slice
-
-		DefaultCostumeData CostumeData = new DefaultCostumeData();
+		/// <summary>
+		/// Costume Data to view/edit.
+		/// </summary>
+		public DefaultCostumeData CostumeData = new DefaultCostumeData();
 
 		public DefaultCostume_NoMercy(int costumeNumber)
 		{
@@ -38,7 +38,7 @@ namespace VPWStudio.Editors.NoMercy
 		private void PopulateData()
 		{
 			tbBodyType.Text = String.Format("0x{0:X2}", CostumeData.BodyType);
-			tbSkinColor.Text = String.Format("0x{0:X2}", CostumeData.SkinColor);
+			cbSkinColor.SelectedIndex = CostumeData.SkinColor;
 			tbRingAttire.Text = String.Format("0x{0:X2}", CostumeData.RingAttire);
 			tbRingAttireColor1.Text = String.Format("0x{0:X2}", CostumeData.RingAttireColor1);
 			tbRingAttireColor2.Text = String.Format("0x{0:X2}", CostumeData.RingAttireColor2);
@@ -75,6 +75,20 @@ namespace VPWStudio.Editors.NoMercy
 			tbHatsCaps.Text = String.Format("0x{0:X2}", CostumeData.HatsCaps);
 			tbHatsCapsColor.Text = String.Format("0x{0:X2}", CostumeData.HatsCapsColor);
 			tbPortrait.Text = String.Format("0x{0:X2}", CostumeData.Portrait);
+		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			// make changes based on values
+
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 	}
 }
