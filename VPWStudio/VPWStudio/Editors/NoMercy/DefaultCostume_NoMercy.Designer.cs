@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -69,7 +68,6 @@
 			this.label37 = new System.Windows.Forms.Label();
 			this.label38 = new System.Windows.Forms.Label();
 			this.tbBodyType = new System.Windows.Forms.TextBox();
-			this.tbSkinColor = new System.Windows.Forms.TextBox();
 			this.tbRingAttire = new System.Windows.Forms.TextBox();
 			this.tbRingAttireColor1 = new System.Windows.Forms.TextBox();
 			this.tbRingAttireColor2 = new System.Windows.Forms.TextBox();
@@ -106,6 +104,10 @@
 			this.tbHatsCaps = new System.Windows.Forms.TextBox();
 			this.tbHatsCapsColor = new System.Windows.Forms.TextBox();
 			this.tbPortrait = new System.Windows.Forms.TextBox();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
+			this.cbSkinColor = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -154,7 +156,6 @@
 			this.tableLayoutPanel1.Controls.Add(this.label37, 0, 36);
 			this.tableLayoutPanel1.Controls.Add(this.label38, 0, 37);
 			this.tableLayoutPanel1.Controls.Add(this.tbBodyType, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.tbSkinColor, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.tbRingAttire, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.tbRingAttireColor1, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.tbRingAttireColor2, 1, 4);
@@ -191,6 +192,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.tbHatsCaps, 1, 35);
 			this.tableLayoutPanel1.Controls.Add(this.tbHatsCapsColor, 1, 36);
 			this.tableLayoutPanel1.Controls.Add(this.tbPortrait, 1, 37);
+			this.tableLayoutPanel1.Controls.Add(this.cbSkinColor, 1, 1);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 38;
@@ -234,15 +236,6 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(272, 918);
 			this.tableLayoutPanel1.TabIndex = 0;
-			// 
-			// panel1
-			// 
-			this.panel1.AutoScroll = true;
-			this.panel1.Controls.Add(this.tableLayoutPanel1);
-			this.panel1.Location = new System.Drawing.Point(7, 12);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(295, 191);
-			this.panel1.TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -633,15 +626,6 @@
 			this.tbBodyType.Size = new System.Drawing.Size(130, 20);
 			this.tbBodyType.TabIndex = 38;
 			// 
-			// tbSkinColor
-			// 
-			this.tbSkinColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSkinColor.Location = new System.Drawing.Point(139, 27);
-			this.tbSkinColor.Name = "tbSkinColor";
-			this.tbSkinColor.ReadOnly = true;
-			this.tbSkinColor.Size = new System.Drawing.Size(130, 20);
-			this.tbSkinColor.TabIndex = 39;
-			// 
 			// tbRingAttire
 			// 
 			this.tbRingAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -966,11 +950,61 @@
 			this.tbPortrait.Size = new System.Drawing.Size(130, 20);
 			this.tbPortrait.TabIndex = 75;
 			// 
+			// panel1
+			// 
+			this.panel1.AutoScroll = true;
+			this.panel1.Controls.Add(this.tableLayoutPanel1);
+			this.panel1.Location = new System.Drawing.Point(7, 12);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(295, 196);
+			this.panel1.TabIndex = 1;
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(146, 214);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 2;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(227, 214);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// cbSkinColor
+			// 
+			this.cbSkinColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbSkinColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbSkinColor.FormattingEnabled = true;
+			this.cbSkinColor.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7 "});
+			this.cbSkinColor.Location = new System.Drawing.Point(139, 27);
+			this.cbSkinColor.Name = "cbSkinColor";
+			this.cbSkinColor.Size = new System.Drawing.Size(130, 21);
+			this.cbSkinColor.TabIndex = 76;
+			// 
 			// DefaultCostume_NoMercy
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(314, 215);
+			this.ClientSize = new System.Drawing.Size(314, 249);
+			this.Controls.Add(this.buttonCancel);
+			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
@@ -1028,7 +1062,6 @@
 		private System.Windows.Forms.Label label37;
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.TextBox tbBodyType;
-		private System.Windows.Forms.TextBox tbSkinColor;
 		private System.Windows.Forms.TextBox tbRingAttire;
 		private System.Windows.Forms.TextBox tbRingAttireColor1;
 		private System.Windows.Forms.TextBox tbRingAttireColor2;
@@ -1065,5 +1098,8 @@
 		private System.Windows.Forms.TextBox tbHatsCaps;
 		private System.Windows.Forms.TextBox tbHatsCapsColor;
 		private System.Windows.Forms.TextBox tbPortrait;
+		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.ComboBox cbSkinColor;
 	}
 }
