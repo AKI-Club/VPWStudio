@@ -28,7 +28,32 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccLeftElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccWristbandColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccGlovesColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccEntranceAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccEntranceAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccUpperAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccUpperAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRingAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRingAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cbFaces = new System.Windows.Forms.ComboBox();
+			this.cbFrontHair = new System.Windows.Forms.ComboBox();
+			this.cbRingAttire = new System.Windows.Forms.ComboBox();
+			this.cbBoots = new System.Windows.Forms.ComboBox();
+			this.cbBodyType = new System.Windows.Forms.ComboBox();
+			this.cbGloves = new System.Windows.Forms.ComboBox();
+			this.cbWristband = new System.Windows.Forms.ComboBox();
+			this.cbRightElbowPad = new System.Windows.Forms.ComboBox();
+			this.cbLeftElbowPad = new System.Windows.Forms.ComboBox();
+			this.cbRightKneepad = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -67,56 +92,84 @@
 			this.label36 = new System.Windows.Forms.Label();
 			this.label37 = new System.Windows.Forms.Label();
 			this.label38 = new System.Windows.Forms.Label();
-			this.tbBodyType = new System.Windows.Forms.TextBox();
-			this.tbRingAttire = new System.Windows.Forms.TextBox();
-			this.tbRingAttireColor1 = new System.Windows.Forms.TextBox();
-			this.tbRingAttireColor2 = new System.Windows.Forms.TextBox();
 			this.tbUpperAttire = new System.Windows.Forms.TextBox();
-			this.tbUpperAttireColor1 = new System.Windows.Forms.TextBox();
-			this.tbUpperAttireColor2 = new System.Windows.Forms.TextBox();
-			this.tbEntranceAttire = new System.Windows.Forms.TextBox();
-			this.tbEntranceAttireColor1 = new System.Windows.Forms.TextBox();
-			this.tbEntranceAttireColor2 = new System.Windows.Forms.TextBox();
-			this.tbEntranceWeapon = new System.Windows.Forms.TextBox();
-			this.tbGloves = new System.Windows.Forms.TextBox();
-			this.tbGlovesColor = new System.Windows.Forms.TextBox();
 			this.tbTattoo = new System.Windows.Forms.TextBox();
-			this.tbWristband = new System.Windows.Forms.TextBox();
-			this.tbWristbandColor = new System.Windows.Forms.TextBox();
-			this.tbLeftElbowPad = new System.Windows.Forms.TextBox();
-			this.tbLeftElbowPadColor = new System.Windows.Forms.TextBox();
-			this.tbRightElbowPad = new System.Windows.Forms.TextBox();
-			this.tbRightElbowPadColor = new System.Windows.Forms.TextBox();
-			this.tbLeftKneepad = new System.Windows.Forms.TextBox();
-			this.tbLeftKneepadColor = new System.Windows.Forms.TextBox();
-			this.tbRightKneepad = new System.Windows.Forms.TextBox();
-			this.tbRightKneepadColor = new System.Windows.Forms.TextBox();
-			this.tbBoots = new System.Windows.Forms.TextBox();
-			this.tbBootsColor1 = new System.Windows.Forms.TextBox();
-			this.tbBootsColor2 = new System.Windows.Forms.TextBox();
-			this.tbHeadShape = new System.Windows.Forms.TextBox();
-			this.tbFaceNumber = new System.Windows.Forms.TextBox();
-			this.tbHairType = new System.Windows.Forms.TextBox();
-			this.tbHairColor = new System.Windows.Forms.TextBox();
-			this.tbFrontHair = new System.Windows.Forms.TextBox();
-			this.tbFacialHair = new System.Windows.Forms.TextBox();
-			this.tbMasksEtc = new System.Windows.Forms.TextBox();
-			this.tbHatsCaps = new System.Windows.Forms.TextBox();
-			this.tbHatsCapsColor = new System.Windows.Forms.TextBox();
-			this.tbPortrait = new System.Windows.Forms.TextBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
 			this.cbSkinColor = new System.Windows.Forms.ComboBox();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.cbHeadShape = new System.Windows.Forms.ComboBox();
+			this.cbHairType = new System.Windows.Forms.ComboBox();
+			this.cbHairColor = new System.Windows.Forms.ComboBox();
+			this.cbHatsCaps = new System.Windows.Forms.ComboBox();
+			this.cbEntranceAttire = new System.Windows.Forms.ComboBox();
+			this.cbEntranceWeapon = new System.Windows.Forms.ComboBox();
+			this.cbPortrait = new System.Windows.Forms.ComboBox();
+			this.cbMasksEtc = new System.Windows.Forms.ComboBox();
+			this.cbFacialHair = new System.Windows.Forms.ComboBox();
+			this.cbLeftKneepad = new System.Windows.Forms.ComboBox();
+			this.cccHatsCaps = new VPWStudio.Controls.CostumeColorControl();
+			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.panel1.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// panel1
+			// 
+			this.panel1.AutoScroll = true;
+			this.panel1.Controls.Add(this.tableLayoutPanel1);
+			this.panel1.Location = new System.Drawing.Point(7, 12);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(325, 222);
+			this.panel1.TabIndex = 1;
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(176, 240);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 2;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(257, 240);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tableLayoutPanel1.Controls.Add(this.cccBootsColor2, 1, 27);
+			this.tableLayoutPanel1.Controls.Add(this.cccBootsColor1, 1, 26);
+			this.tableLayoutPanel1.Controls.Add(this.cccRightKneePadColor, 1, 24);
+			this.tableLayoutPanel1.Controls.Add(this.cccLeftKneePadColor, 1, 22);
+			this.tableLayoutPanel1.Controls.Add(this.cccRightElbowPadColor, 1, 20);
+			this.tableLayoutPanel1.Controls.Add(this.cccLeftElbowPadColor, 1, 18);
+			this.tableLayoutPanel1.Controls.Add(this.cccWristbandColor, 1, 16);
+			this.tableLayoutPanel1.Controls.Add(this.cccGlovesColor, 1, 13);
+			this.tableLayoutPanel1.Controls.Add(this.cccEntranceAttireColor2, 1, 10);
+			this.tableLayoutPanel1.Controls.Add(this.cccEntranceAttireColor1, 1, 9);
+			this.tableLayoutPanel1.Controls.Add(this.cccUpperAttireColor2, 1, 7);
+			this.tableLayoutPanel1.Controls.Add(this.cccUpperAttireColor1, 1, 6);
+			this.tableLayoutPanel1.Controls.Add(this.cccRingAttireColor2, 1, 4);
+			this.tableLayoutPanel1.Controls.Add(this.cccRingAttireColor1, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.cbFaces, 1, 29);
+			this.tableLayoutPanel1.Controls.Add(this.cbFrontHair, 1, 32);
+			this.tableLayoutPanel1.Controls.Add(this.cbRingAttire, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.cbBoots, 1, 25);
+			this.tableLayoutPanel1.Controls.Add(this.cbBodyType, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.cbGloves, 1, 12);
+			this.tableLayoutPanel1.Controls.Add(this.cbWristband, 1, 15);
+			this.tableLayoutPanel1.Controls.Add(this.cbRightElbowPad, 1, 19);
+			this.tableLayoutPanel1.Controls.Add(this.cbLeftElbowPad, 1, 17);
+			this.tableLayoutPanel1.Controls.Add(this.cbRightKneepad, 1, 23);
 			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -155,95 +208,723 @@
 			this.tableLayoutPanel1.Controls.Add(this.label36, 0, 35);
 			this.tableLayoutPanel1.Controls.Add(this.label37, 0, 36);
 			this.tableLayoutPanel1.Controls.Add(this.label38, 0, 37);
-			this.tableLayoutPanel1.Controls.Add(this.tbBodyType, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.tbRingAttire, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.tbRingAttireColor1, 1, 3);
-			this.tableLayoutPanel1.Controls.Add(this.tbRingAttireColor2, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.tbUpperAttire, 1, 5);
-			this.tableLayoutPanel1.Controls.Add(this.tbUpperAttireColor1, 1, 6);
-			this.tableLayoutPanel1.Controls.Add(this.tbUpperAttireColor2, 1, 7);
-			this.tableLayoutPanel1.Controls.Add(this.tbEntranceAttire, 1, 8);
-			this.tableLayoutPanel1.Controls.Add(this.tbEntranceAttireColor1, 1, 9);
-			this.tableLayoutPanel1.Controls.Add(this.tbEntranceAttireColor2, 1, 10);
-			this.tableLayoutPanel1.Controls.Add(this.tbEntranceWeapon, 1, 11);
-			this.tableLayoutPanel1.Controls.Add(this.tbGloves, 1, 12);
-			this.tableLayoutPanel1.Controls.Add(this.tbGlovesColor, 1, 13);
 			this.tableLayoutPanel1.Controls.Add(this.tbTattoo, 1, 14);
-			this.tableLayoutPanel1.Controls.Add(this.tbWristband, 1, 15);
-			this.tableLayoutPanel1.Controls.Add(this.tbWristbandColor, 1, 16);
-			this.tableLayoutPanel1.Controls.Add(this.tbLeftElbowPad, 1, 17);
-			this.tableLayoutPanel1.Controls.Add(this.tbLeftElbowPadColor, 1, 18);
-			this.tableLayoutPanel1.Controls.Add(this.tbRightElbowPad, 1, 19);
-			this.tableLayoutPanel1.Controls.Add(this.tbRightElbowPadColor, 1, 20);
-			this.tableLayoutPanel1.Controls.Add(this.tbLeftKneepad, 1, 21);
-			this.tableLayoutPanel1.Controls.Add(this.tbLeftKneepadColor, 1, 22);
-			this.tableLayoutPanel1.Controls.Add(this.tbRightKneepad, 1, 23);
-			this.tableLayoutPanel1.Controls.Add(this.tbRightKneepadColor, 1, 24);
-			this.tableLayoutPanel1.Controls.Add(this.tbBoots, 1, 25);
-			this.tableLayoutPanel1.Controls.Add(this.tbBootsColor1, 1, 26);
-			this.tableLayoutPanel1.Controls.Add(this.tbBootsColor2, 1, 27);
-			this.tableLayoutPanel1.Controls.Add(this.tbHeadShape, 1, 28);
-			this.tableLayoutPanel1.Controls.Add(this.tbFaceNumber, 1, 29);
-			this.tableLayoutPanel1.Controls.Add(this.tbHairType, 1, 30);
-			this.tableLayoutPanel1.Controls.Add(this.tbHairColor, 1, 31);
-			this.tableLayoutPanel1.Controls.Add(this.tbFrontHair, 1, 32);
-			this.tableLayoutPanel1.Controls.Add(this.tbFacialHair, 1, 33);
-			this.tableLayoutPanel1.Controls.Add(this.tbMasksEtc, 1, 34);
-			this.tableLayoutPanel1.Controls.Add(this.tbHatsCaps, 1, 35);
-			this.tableLayoutPanel1.Controls.Add(this.tbHatsCapsColor, 1, 36);
-			this.tableLayoutPanel1.Controls.Add(this.tbPortrait, 1, 37);
 			this.tableLayoutPanel1.Controls.Add(this.cbSkinColor, 1, 1);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Controls.Add(this.cbHeadShape, 1, 28);
+			this.tableLayoutPanel1.Controls.Add(this.cbHairType, 1, 30);
+			this.tableLayoutPanel1.Controls.Add(this.cbHairColor, 1, 31);
+			this.tableLayoutPanel1.Controls.Add(this.cbHatsCaps, 1, 35);
+			this.tableLayoutPanel1.Controls.Add(this.cbEntranceAttire, 1, 8);
+			this.tableLayoutPanel1.Controls.Add(this.cbEntranceWeapon, 1, 11);
+			this.tableLayoutPanel1.Controls.Add(this.cbPortrait, 1, 37);
+			this.tableLayoutPanel1.Controls.Add(this.cbMasksEtc, 1, 34);
+			this.tableLayoutPanel1.Controls.Add(this.cbFacialHair, 1, 33);
+			this.tableLayoutPanel1.Controls.Add(this.cbLeftKneepad, 1, 21);
+			this.tableLayoutPanel1.Controls.Add(this.cccHatsCaps, 1, 36);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 38;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(272, 918);
-			this.tableLayoutPanel1.TabIndex = 0;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(303, 1328);
+			this.tableLayoutPanel1.TabIndex = 2;
+			// 
+			// cccRightKneePadColor
+			// 
+			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightKneePadColor.Location = new System.Drawing.Point(124, 844);
+			this.cccRightKneePadColor.Name = "cccRightKneePadColor";
+			this.cccRightKneePadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccRightKneePadColor.TabIndex = 109;
+			// 
+			// cccLeftKneePadColor
+			// 
+			this.cccLeftKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftKneePadColor.Location = new System.Drawing.Point(124, 774);
+			this.cccLeftKneePadColor.Name = "cccLeftKneePadColor";
+			this.cccLeftKneePadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccLeftKneePadColor.TabIndex = 108;
+			// 
+			// cccRightElbowPadColor
+			// 
+			this.cccRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightElbowPadColor.Location = new System.Drawing.Point(124, 704);
+			this.cccRightElbowPadColor.Name = "cccRightElbowPadColor";
+			this.cccRightElbowPadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccRightElbowPadColor.TabIndex = 107;
+			// 
+			// cccLeftElbowPadColor
+			// 
+			this.cccLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftElbowPadColor.Location = new System.Drawing.Point(124, 634);
+			this.cccLeftElbowPadColor.Name = "cccLeftElbowPadColor";
+			this.cccLeftElbowPadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccLeftElbowPadColor.TabIndex = 106;
+			// 
+			// cccWristbandColor
+			// 
+			this.cccWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccWristbandColor.Location = new System.Drawing.Point(124, 564);
+			this.cccWristbandColor.Name = "cccWristbandColor";
+			this.cccWristbandColor.Size = new System.Drawing.Size(176, 26);
+			this.cccWristbandColor.TabIndex = 105;
+			// 
+			// cccGlovesColor
+			// 
+			this.cccGlovesColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccGlovesColor.Location = new System.Drawing.Point(124, 459);
+			this.cccGlovesColor.Name = "cccGlovesColor";
+			this.cccGlovesColor.Size = new System.Drawing.Size(176, 26);
+			this.cccGlovesColor.TabIndex = 104;
+			// 
+			// cccEntranceAttireColor2
+			// 
+			this.cccEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(124, 354);
+			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
+			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccEntranceAttireColor2.TabIndex = 103;
+			// 
+			// cccEntranceAttireColor1
+			// 
+			this.cccEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(124, 319);
+			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
+			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccEntranceAttireColor1.TabIndex = 102;
+			// 
+			// cccUpperAttireColor2
+			// 
+			this.cccUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor2.Location = new System.Drawing.Point(124, 249);
+			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
+			this.cccUpperAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccUpperAttireColor2.TabIndex = 101;
+			// 
+			// cccUpperAttireColor1
+			// 
+			this.cccUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor1.Location = new System.Drawing.Point(124, 214);
+			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
+			this.cccUpperAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccUpperAttireColor1.TabIndex = 100;
+			// 
+			// cccRingAttireColor2
+			// 
+			this.cccRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor2.Location = new System.Drawing.Point(124, 144);
+			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
+			this.cccRingAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccRingAttireColor2.TabIndex = 99;
+			// 
+			// cccRingAttireColor1
+			// 
+			this.cccRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor1.Location = new System.Drawing.Point(124, 109);
+			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
+			this.cccRingAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccRingAttireColor1.TabIndex = 98;
+			// 
+			// cbFaces
+			// 
+			this.cbFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbFaces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbFaces.FormattingEnabled = true;
+			this.cbFaces.Items.AddRange(new object[] {
+            "00 Male 1",
+            "01 Male 2",
+            "02 Male 3",
+            "03 RROR (Big Show)",
+            "04 Male 4",
+            "05 Male 5",
+            "06 Male 6",
+            "07 Male 7",
+            "08 Male 8",
+            "09 Male 9",
+            "0A Male 10",
+            "0B Male 11",
+            "0C Male 12",
+            "0D Male 13",
+            "0E Male 14",
+            "0F Male 15",
+            "10 Male 16",
+            "11 Male 17",
+            "12 Male 18",
+            "13 Male 19",
+            "14 Male 20",
+            "15 Male 21",
+            "16 Male 22",
+            "17 Male 23",
+            "18 Male 24",
+            "19 Male 25",
+            "1A Male 26",
+            "1B Male 27",
+            "1C Male 28",
+            "1D Male 29",
+            "1E Male 30",
+            "1F Male 31",
+            "20 Male 32",
+            "21 Male 33",
+            "22 Male 34",
+            "23 Male 35",
+            "24 Male 36",
+            "25 Male 37",
+            "26 Male 38",
+            "27 Male 39",
+            "28 Male 40",
+            "29 Male 41",
+            "2A Male 42",
+            "2B Male 43",
+            "2C Male 44",
+            "2D Male 45",
+            "2E Male 46",
+            "2F Male 47",
+            "30 Male 48",
+            "31 Male 49",
+            "32 Male 50",
+            "33 Male 51",
+            "34 Male 52",
+            "35 Male 53",
+            "36 Male 54",
+            "37 Male 55",
+            "38 Male 67",
+            "39 Male 56",
+            "3A Male 57",
+            "3B Male 58",
+            "3C Female 1",
+            "3D Female 2",
+            "3E Female 3",
+            "3F Female 4",
+            "40 Female 5",
+            "41 Female 6",
+            "42 Female 7",
+            "43 Female 8",
+            "44 Female 9",
+            "45 Female 10",
+            "46 Female 11",
+            "47 Female 12",
+            "48 Female 13",
+            "49 Female 14",
+            "4A Female 15",
+            "4B Female 16",
+            "4C Female 17",
+            "4D Female 18",
+            "4E Male 61",
+            "4F Male 59",
+            "50 Male 60",
+            "51 Male 62",
+            "52 Male 63",
+            "53 Male 64",
+            "54 Male 65",
+            "55 Male 66",
+            "56 Male 68",
+            "57 Male 69",
+            "58 Male 70",
+            "59 Male 71",
+            "5A Male 72",
+            "5B Male 73",
+            "5C Male 74",
+            "5D Male 75",
+            "5E Male 76",
+            "5F Male 77",
+            "60 Male 78",
+            "61 Male 79",
+            "62 Male 80",
+            "63 Male 81",
+            "64 Male 82",
+            "65 Male 83",
+            "66 Male 84",
+            "67 Male 85",
+            "68 Male 86",
+            "69 Male 87",
+            "6A Male 88",
+            "6B Male 89",
+            "6C Male 90",
+            "6D Male 91",
+            "6E Male 92",
+            "6F Male 93",
+            "70 Male 94",
+            "71 Male 95",
+            "72 Male 96",
+            "73 Male 97",
+            "74 Female 19",
+            "75 Female 20",
+            "76 Male 98"});
+			this.cbFaces.Location = new System.Drawing.Point(124, 1022);
+			this.cbFaces.Name = "cbFaces";
+			this.cbFaces.Size = new System.Drawing.Size(176, 21);
+			this.cbFaces.TabIndex = 96;
+			// 
+			// cbFrontHair
+			// 
+			this.cbFrontHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbFrontHair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbFrontHair.FormattingEnabled = true;
+			this.cbFrontHair.Items.AddRange(new object[] {
+            "00 None",
+            "01 Front Hair 1",
+            "02 Front Hair 2",
+            "03 Front Hair 3",
+            "04 Front Hair 4",
+            "05 Front Hair 5",
+            "06 Front Hair 6",
+            "07 Front Hair 7",
+            "08 Front Hair 8",
+            "09 Front Hair 9",
+            "0A Front Hair 10",
+            "0B Front Hair 11",
+            "0C Front Hair 12",
+            "0D Front Hair 13",
+            "0E Front Hair 14",
+            "0F Front Hair 15",
+            "10 Front Hair 16",
+            "11 Front Hair 17",
+            "12 Front Hair 18",
+            "13 Front Hair 19",
+            "14 Front Hair 20",
+            "15 Front Hair 21",
+            "16 Front Hair 22",
+            "17 Front Hair 23",
+            "18 Front Hair 24",
+            "19 Front Hair 25",
+            "1A Front Hair 26",
+            "1B Front Hair 27",
+            "1C Front Hair 28",
+            "1D Front Hair 29",
+            "1E Front Hair 30",
+            "1F Front Hair 31",
+            "20 Front Hair 32",
+            "21 Front Hair 33",
+            "22 Front Hair 34",
+            "23 Front Hair 35",
+            "24 Front Hair 36",
+            "25 Front Hair 37",
+            "26 Front Hair 38",
+            "27 Front Hair 39",
+            "28 Front Hair 40",
+            "29 Front Hair 41",
+            "2A Front Hair 42",
+            "2B Front Hair 43",
+            "2C Front Hair 44",
+            "2D Front Hair 45",
+            "2E Front Hair 46",
+            "2F Front Hair 47",
+            "30 Front Hair 48",
+            "31 Front Hair 49",
+            "32 Front Hair 50",
+            "33 Front Hair 51",
+            "34 Front Hair 52",
+            "35 Front Hair 53",
+            "36 Front Hair 54",
+            "37 Front Hair 55",
+            "38 Front Hair 56",
+            "39 Front Hair 57",
+            "3A Front Hair 58",
+            "3B Front Hair 59",
+            "3C Front Hair 60",
+            "3D Front Hair 61",
+            "3E Front Hair 62",
+            "3F Front Hair 63"});
+			this.cbFrontHair.Location = new System.Drawing.Point(124, 1127);
+			this.cbFrontHair.Name = "cbFrontHair";
+			this.cbFrontHair.Size = new System.Drawing.Size(176, 21);
+			this.cbFrontHair.TabIndex = 95;
+			// 
+			// cbRingAttire
+			// 
+			this.cbRingAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbRingAttire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbRingAttire.FormattingEnabled = true;
+			this.cbRingAttire.Items.AddRange(new object[] {
+            "00 Short Tights",
+            "01 Rock 1",
+            "02 Rock 2",
+            "03 Triple H",
+            "04 Crash 2",
+            "05 Valbosky 1",
+            "06 Valbosky 2",
+            "07 Shamrock",
+            "08 Rikishi 1",
+            "09 Lita Pants 2",
+            "0A Saturn",
+            "0B Malenko",
+            "0C Semi-Short",
+            "0D Line Tights 1",
+            "0E Mr Ass",
+            "0F Original 1 (Short)",
+            "10 Hardcore",
+            "11 Crash 1",
+            "12 Half Tights",
+            "13 Eddie 1",
+            "14 Cut Jeans 1",
+            "15 Boxing 1",
+            "16 Long Tights",
+            "17 Cactus",
+            "18 Kane 1",
+            "19 Kane 2",
+            "1A Y2J 1",
+            "1B Y2J 2",
+            "1C Road Dogg 1",
+            "1D Road Dogg 2",
+            "1E X-Pac 1",
+            "1F X-Pac 2",
+            "20 Benoit",
+            "21 Original 2 (Short)",
+            "22 Eddie 2",
+            "23 Undertaker 1",
+            "24 Undertaker 2",
+            "25 HBK",
+            "26 HBK-DX",
+            "27 D\'lo",
+            "28 Rios",
+            "29 Dude Love",
+            "2A Edge",
+            "2B Christian",
+            "2C Original 3 (Long)",
+            "2D A.P.A.",
+            "2E Al Snow",
+            "2F Triple H-DX",
+            "30 King",
+            "31 TAKA",
+            "32 Dudleyz 1",
+            "33 Boss Man",
+            "34 Mankind",
+            "35 Triple H Pants",
+            "36 Rock Pants",
+            "37 Gi 1",
+            "38 Black Pants",
+            "39 Grandmaster 1",
+            "3A Grandmaster 2",
+            "3B Scotty 1",
+            "3C Scotty 2",
+            "3D Leather Pants 1",
+            "3E Test Pants",
+            "3F Jeans 1",
+            "40 Jeans 2",
+            "41 Jeans 3",
+            "42 Jeans 4",
+            "43 Hardyz Pants",
+            "44 Tazz",
+            "45 Angle 1",
+            "46 Henry",
+            "47 Funaki",
+            "48 Viscera",
+            "49 Suit 1",
+            "4A Suit 7",
+            "4B Suit 2",
+            "4C Suit 3",
+            "4D Suit 4",
+            "4E Original Pants",
+            "4F Leather Pants 2",
+            "50 Chyna 1",
+            "51 Chyna 2",
+            "52 Outfit 1",
+            "53 Kat",
+            "54 Swim Suit 1",
+            "55 Trish 2",
+            "56 Suit 6",
+            "57 Suit 5",
+            "58 Swim Suit 2",
+            "59 Swim Suit 3",
+            "5A Swim Suit 4",
+            "5B Swim Suit 5",
+            "5C Puppy",
+            "5D Tight Skirt 1",
+            "5E Terri Pants",
+            "5F Zebra Pants",
+            "60 Original 4",
+            "61 Lita Pants 1",
+            "62 Trish 1",
+            "63 Skirt",
+            "64 Angle 2",
+            "65 Val Ref.",
+            "66 Dudleyz 2",
+            "67 Tight Skirt 2",
+            "68 Ivory Pants",
+            "69 Gi (Full Body)",
+            "6A AKI Gi",
+            "6B Gi 3",
+            "6C Boxing 2",
+            "6D Original 1 (Long)",
+            "6E Mawashi",
+            "6F Basket Shorts",
+            "70 Outfit 2 (Full Body)",
+            "71 Outfit 3 (Full Body)",
+            "72 Outfit 4 (Full Body)",
+            "73 Cut Jeans",
+            "74 Cut Jeans 2",
+            "75 Cut Jeans 3",
+            "76 Line Tights 2",
+            "77 Original 2 (Long)",
+            "78 Gi 2",
+            "79 Martial Arts 1",
+            "7A Martial Arts 2",
+            "7B Wrestling",
+            "7C Tight Skirt 3",
+            "7D Commish",
+            "7E Cut Jeans 4",
+            "7F AKI Man"});
+			this.cbRingAttire.Location = new System.Drawing.Point(124, 77);
+			this.cbRingAttire.Name = "cbRingAttire";
+			this.cbRingAttire.Size = new System.Drawing.Size(176, 21);
+			this.cbRingAttire.TabIndex = 94;
+			// 
+			// cbBoots
+			// 
+			this.cbBoots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbBoots.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbBoots.FormattingEnabled = true;
+			this.cbBoots.Items.AddRange(new object[] {
+            "00 None",
+            "01 Boots 1",
+            "02 Boots 2",
+            "03 Boots 3",
+            "04 Boots 4",
+            "05 Pull-Ons 2",
+            "06 Boots 6",
+            "07 Boots 14",
+            "08 Boots 7",
+            "09 Boots 8",
+            "0A Boots 11",
+            "0B Boots 10",
+            "0C Boots 12",
+            "0D Boots 15",
+            "0E Pull-Ons 9",
+            "0F Padded 1",
+            "10 Padded 2",
+            "11 Padded 3",
+            "12 Padded 4",
+            "13 Padded 5",
+            "14 Padded 6",
+            "15 Padded 7",
+            "16 Boots 13",
+            "17 Padded 8",
+            "18 Pull-Ons 3",
+            "19 Pull-Ons 10",
+            "1A Pull-Ons 4",
+            "1B Pull-Ons 5",
+            "1C Pull-Ons 6",
+            "1D Pull-Ons 11",
+            "1E Pull-Ons 7",
+            "1F Pull-Ons 8",
+            "20 Athletic 1",
+            "21 Athletic 2",
+            "22 Athletic 3",
+            "23 Athletic 4",
+            "24 Athletic 5",
+            "25 Pull-Ons 12",
+            "26 Pull-Ons 14",
+            "27 Boots 17",
+            "28 Boots 21",
+            "29 Boots 20",
+            "2A Boots 19",
+            "2B Boots 18",
+            "2C Pull-Ons 18",
+            "2D Taped",
+            "2E Supporter",
+            "2F Pull-Ons 15",
+            "30 Kung Fu",
+            "31 Tabi",
+            "32 Pull-Ons 16",
+            "33 Pull-Ons 17",
+            "34 Padded 9",
+            "35 Heels 1",
+            "36 Heels 2",
+            "37 Heeled Boots",
+            "38 Knee Highs",
+            "39 Pull-Ons 13",
+            "3A Pull-Ons 1",
+            "3B Boots 16",
+            "3C Boots 5",
+            "3D Pull-Ons 19",
+            "3E Pull-Ons 20"});
+			this.cbBoots.Location = new System.Drawing.Point(124, 882);
+			this.cbBoots.Name = "cbBoots";
+			this.cbBoots.Size = new System.Drawing.Size(176, 21);
+			this.cbBoots.TabIndex = 93;
+			// 
+			// cbBodyType
+			// 
+			this.cbBodyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbBodyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbBodyType.FormattingEnabled = true;
+			this.cbBodyType.Items.AddRange(new object[] {
+            "00 [Male] Skinny 1",
+            "01 [Male] Skinny 2",
+            "02 [Male] Medium 1",
+            "03 [Male] Medium 2",
+            "04 [Male] Thick 1",
+            "05 [Male] Thick 2",
+            "06 [Male] Fat 1",
+            "07 [Male] Fat 2",
+            "08 [Male] Rock",
+            "09 [Male] Rikishi",
+            "0A [Male] Austin",
+            "0B [Male] HBK",
+            "0C [Male] Hairy 1",
+            "0D [Female] Chyna",
+            "0E [Female] Jackie",
+            "0F [Female] Petit 1",
+            "10 [Female] Petit 2",
+            "11 [Female] Fit 1",
+            "12 [Female] Fit 2",
+            "13 [Female] Fit 3",
+            "14 [Female] Fit 4",
+            "15 [Female] Grannie",
+            "16 [Female] Hairy 2"});
+			this.cbBodyType.Location = new System.Drawing.Point(124, 7);
+			this.cbBodyType.Name = "cbBodyType";
+			this.cbBodyType.Size = new System.Drawing.Size(176, 21);
+			this.cbBodyType.TabIndex = 92;
+			// 
+			// cbGloves
+			// 
+			this.cbGloves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbGloves.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbGloves.FormattingEnabled = true;
+			this.cbGloves.Items.AddRange(new object[] {
+            "00 None",
+            "01 Taping",
+            "02 Grappling",
+            "03 Dirt Bike",
+            "04 A.P.A.",
+            "05 Kane",
+            "06 Undertaker (Old)",
+            "07 Boxing"});
+			this.cbGloves.Location = new System.Drawing.Point(124, 427);
+			this.cbGloves.Name = "cbGloves";
+			this.cbGloves.Size = new System.Drawing.Size(176, 21);
+			this.cbGloves.TabIndex = 91;
+			// 
+			// cbWristband
+			// 
+			this.cbWristband.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbWristband.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbWristband.FormattingEnabled = true;
+			this.cbWristband.Items.AddRange(new object[] {
+            "00 None",
+            "01 Wrist Band 1",
+            "02 Wrist Band 2",
+            "03 Wrist Band 3",
+            "04 Taped",
+            "05 Kane",
+            "06 HBK-DX",
+            "07 HBK"});
+			this.cbWristband.Location = new System.Drawing.Point(124, 532);
+			this.cbWristband.Name = "cbWristband";
+			this.cbWristband.Size = new System.Drawing.Size(176, 21);
+			this.cbWristband.TabIndex = 90;
+			// 
+			// cbRightElbowPad
+			// 
+			this.cbRightElbowPad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbRightElbowPad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbRightElbowPad.FormattingEnabled = true;
+			this.cbRightElbowPad.Items.AddRange(new object[] {
+            "00 None",
+            "01 Pad",
+            "02 Supporter",
+            "03 People\'s Elbow",
+            "04 Hardyz 1",
+            "05 Angle",
+            "06 Elbow Brace",
+            "07 Hardyz 2"});
+			this.cbRightElbowPad.Location = new System.Drawing.Point(124, 672);
+			this.cbRightElbowPad.Name = "cbRightElbowPad";
+			this.cbRightElbowPad.Size = new System.Drawing.Size(176, 21);
+			this.cbRightElbowPad.TabIndex = 89;
+			// 
+			// cbLeftElbowPad
+			// 
+			this.cbLeftElbowPad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbLeftElbowPad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbLeftElbowPad.FormattingEnabled = true;
+			this.cbLeftElbowPad.Items.AddRange(new object[] {
+            "00 None",
+            "01 Pad",
+            "02 Supporter",
+            "03 People\'s Elbow",
+            "04 Hardyz 1",
+            "05 Angle",
+            "06 Elbow Brace",
+            "07 Hardyz 2"});
+			this.cbLeftElbowPad.Location = new System.Drawing.Point(124, 602);
+			this.cbLeftElbowPad.Name = "cbLeftElbowPad";
+			this.cbLeftElbowPad.Size = new System.Drawing.Size(176, 21);
+			this.cbLeftElbowPad.TabIndex = 88;
+			// 
+			// cbRightKneepad
+			// 
+			this.cbRightKneepad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbRightKneepad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbRightKneepad.FormattingEnabled = true;
+			this.cbRightKneepad.Items.AddRange(new object[] {
+            "00 None",
+            "01 Knee Pad 1",
+            "02 Supporter 1",
+            "03 Knee Pad 2",
+            "04 X-Pac",
+            "05 Supporter 2",
+            "06 Angle",
+            "07 Mr. Ass 1",
+            "08 Mr. Ass 2",
+            "09 HBK-DX",
+            "0A HBK",
+            "0B Tye Dyed",
+            "0C Knee Pad 3",
+            "0D Knee Brace 1",
+            "0E Knee Brace 2",
+            "0F Knee Brace 3"});
+			this.cbRightKneepad.Location = new System.Drawing.Point(124, 812);
+			this.cbRightKneepad.Name = "cbRightKneepad";
+			this.cbRightKneepad.Size = new System.Drawing.Size(176, 21);
+			this.cbRightKneepad.TabIndex = 87;
 			// 
 			// label1
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 5);
+			this.label1.Location = new System.Drawing.Point(3, 11);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(130, 13);
+			this.label1.Size = new System.Drawing.Size(115, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Body Type";
 			// 
@@ -251,9 +932,9 @@
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 29);
+			this.label2.Location = new System.Drawing.Point(3, 46);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(130, 13);
+			this.label2.Size = new System.Drawing.Size(115, 13);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Skin Color";
 			// 
@@ -261,9 +942,9 @@
 			// 
 			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 53);
+			this.label3.Location = new System.Drawing.Point(3, 81);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(130, 13);
+			this.label3.Size = new System.Drawing.Size(115, 13);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Ring Attire";
 			// 
@@ -271,9 +952,9 @@
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 77);
+			this.label4.Location = new System.Drawing.Point(3, 116);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(130, 13);
+			this.label4.Size = new System.Drawing.Size(115, 13);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Ring Attire Color 1";
 			// 
@@ -281,9 +962,9 @@
 			// 
 			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 101);
+			this.label5.Location = new System.Drawing.Point(3, 151);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(130, 13);
+			this.label5.Size = new System.Drawing.Size(115, 13);
 			this.label5.TabIndex = 4;
 			this.label5.Text = "Ring Attire Color 2";
 			// 
@@ -291,9 +972,9 @@
 			// 
 			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(3, 125);
+			this.label6.Location = new System.Drawing.Point(3, 186);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(130, 13);
+			this.label6.Size = new System.Drawing.Size(115, 13);
 			this.label6.TabIndex = 5;
 			this.label6.Text = "Upper Attire";
 			// 
@@ -301,9 +982,9 @@
 			// 
 			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(3, 149);
+			this.label7.Location = new System.Drawing.Point(3, 221);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(130, 13);
+			this.label7.Size = new System.Drawing.Size(115, 13);
 			this.label7.TabIndex = 6;
 			this.label7.Text = "Upper Attire Color 1";
 			// 
@@ -311,9 +992,9 @@
 			// 
 			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(3, 173);
+			this.label8.Location = new System.Drawing.Point(3, 256);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(130, 13);
+			this.label8.Size = new System.Drawing.Size(115, 13);
 			this.label8.TabIndex = 7;
 			this.label8.Text = "Upper Attire Color 2";
 			// 
@@ -321,9 +1002,9 @@
 			// 
 			this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(3, 197);
+			this.label9.Location = new System.Drawing.Point(3, 291);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(130, 13);
+			this.label9.Size = new System.Drawing.Size(115, 13);
 			this.label9.TabIndex = 8;
 			this.label9.Text = "Entrance Attire";
 			// 
@@ -331,9 +1012,9 @@
 			// 
 			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(3, 221);
+			this.label10.Location = new System.Drawing.Point(3, 326);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(130, 13);
+			this.label10.Size = new System.Drawing.Size(115, 13);
 			this.label10.TabIndex = 9;
 			this.label10.Text = "Entrance Attire Color 1";
 			// 
@@ -341,9 +1022,9 @@
 			// 
 			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(3, 245);
+			this.label11.Location = new System.Drawing.Point(3, 361);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(130, 13);
+			this.label11.Size = new System.Drawing.Size(115, 13);
 			this.label11.TabIndex = 10;
 			this.label11.Text = "Entrance Attire Color 2";
 			// 
@@ -351,9 +1032,9 @@
 			// 
 			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(3, 269);
+			this.label12.Location = new System.Drawing.Point(3, 396);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(130, 13);
+			this.label12.Size = new System.Drawing.Size(115, 13);
 			this.label12.TabIndex = 11;
 			this.label12.Text = "Entrance Weapon";
 			// 
@@ -361,9 +1042,9 @@
 			// 
 			this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(3, 293);
+			this.label13.Location = new System.Drawing.Point(3, 431);
 			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(130, 13);
+			this.label13.Size = new System.Drawing.Size(115, 13);
 			this.label13.TabIndex = 12;
 			this.label13.Text = "Gloves";
 			// 
@@ -371,9 +1052,9 @@
 			// 
 			this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(3, 317);
+			this.label14.Location = new System.Drawing.Point(3, 466);
 			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(130, 13);
+			this.label14.Size = new System.Drawing.Size(115, 13);
 			this.label14.TabIndex = 13;
 			this.label14.Text = "Gloves Color";
 			// 
@@ -381,9 +1062,9 @@
 			// 
 			this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(3, 341);
+			this.label15.Location = new System.Drawing.Point(3, 501);
 			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(130, 13);
+			this.label15.Size = new System.Drawing.Size(115, 13);
 			this.label15.TabIndex = 14;
 			this.label15.Text = "Tattoo";
 			// 
@@ -391,9 +1072,9 @@
 			// 
 			this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(3, 365);
+			this.label16.Location = new System.Drawing.Point(3, 536);
 			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(130, 13);
+			this.label16.Size = new System.Drawing.Size(115, 13);
 			this.label16.TabIndex = 15;
 			this.label16.Text = "Wristband";
 			// 
@@ -401,9 +1082,9 @@
 			// 
 			this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(3, 389);
+			this.label17.Location = new System.Drawing.Point(3, 571);
 			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(130, 13);
+			this.label17.Size = new System.Drawing.Size(115, 13);
 			this.label17.TabIndex = 16;
 			this.label17.Text = "Wristband Color";
 			// 
@@ -411,9 +1092,9 @@
 			// 
 			this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(3, 413);
+			this.label18.Location = new System.Drawing.Point(3, 606);
 			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(130, 13);
+			this.label18.Size = new System.Drawing.Size(115, 13);
 			this.label18.TabIndex = 17;
 			this.label18.Text = "Left Elbow Pad";
 			// 
@@ -421,9 +1102,9 @@
 			// 
 			this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(3, 437);
+			this.label19.Location = new System.Drawing.Point(3, 641);
 			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(130, 13);
+			this.label19.Size = new System.Drawing.Size(115, 13);
 			this.label19.TabIndex = 18;
 			this.label19.Text = "Left Elbow Pad Color";
 			// 
@@ -431,9 +1112,9 @@
 			// 
 			this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(3, 461);
+			this.label20.Location = new System.Drawing.Point(3, 676);
 			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(130, 13);
+			this.label20.Size = new System.Drawing.Size(115, 13);
 			this.label20.TabIndex = 19;
 			this.label20.Text = "Right Elbow Pad";
 			// 
@@ -441,9 +1122,9 @@
 			// 
 			this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(3, 485);
+			this.label21.Location = new System.Drawing.Point(3, 711);
 			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(130, 13);
+			this.label21.Size = new System.Drawing.Size(115, 13);
 			this.label21.TabIndex = 20;
 			this.label21.Text = "Right Elbow Pad Color";
 			// 
@@ -451,9 +1132,9 @@
 			// 
 			this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(3, 509);
+			this.label22.Location = new System.Drawing.Point(3, 746);
 			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(130, 13);
+			this.label22.Size = new System.Drawing.Size(115, 13);
 			this.label22.TabIndex = 21;
 			this.label22.Text = "Left Knee Pad";
 			// 
@@ -461,9 +1142,9 @@
 			// 
 			this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(3, 533);
+			this.label23.Location = new System.Drawing.Point(3, 781);
 			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(130, 13);
+			this.label23.Size = new System.Drawing.Size(115, 13);
 			this.label23.TabIndex = 22;
 			this.label23.Text = "Left Knee Pad Color";
 			// 
@@ -471,9 +1152,9 @@
 			// 
 			this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(3, 557);
+			this.label24.Location = new System.Drawing.Point(3, 816);
 			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(130, 13);
+			this.label24.Size = new System.Drawing.Size(115, 13);
 			this.label24.TabIndex = 23;
 			this.label24.Text = "Right Knee Pad";
 			// 
@@ -481,9 +1162,9 @@
 			// 
 			this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(3, 581);
+			this.label25.Location = new System.Drawing.Point(3, 851);
 			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(130, 13);
+			this.label25.Size = new System.Drawing.Size(115, 13);
 			this.label25.TabIndex = 24;
 			this.label25.Text = "Right Knee Pad Color";
 			// 
@@ -491,9 +1172,9 @@
 			// 
 			this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(3, 605);
+			this.label26.Location = new System.Drawing.Point(3, 886);
 			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(130, 13);
+			this.label26.Size = new System.Drawing.Size(115, 13);
 			this.label26.TabIndex = 25;
 			this.label26.Text = "Boots";
 			// 
@@ -501,9 +1182,9 @@
 			// 
 			this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(3, 629);
+			this.label27.Location = new System.Drawing.Point(3, 921);
 			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(130, 13);
+			this.label27.Size = new System.Drawing.Size(115, 13);
 			this.label27.TabIndex = 26;
 			this.label27.Text = "Boots Color 1";
 			// 
@@ -511,9 +1192,9 @@
 			// 
 			this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(3, 653);
+			this.label28.Location = new System.Drawing.Point(3, 956);
 			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(130, 13);
+			this.label28.Size = new System.Drawing.Size(115, 13);
 			this.label28.TabIndex = 27;
 			this.label28.Text = "Boots Color 2";
 			// 
@@ -521,9 +1202,9 @@
 			// 
 			this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label29.AutoSize = true;
-			this.label29.Location = new System.Drawing.Point(3, 677);
+			this.label29.Location = new System.Drawing.Point(3, 991);
 			this.label29.Name = "label29";
-			this.label29.Size = new System.Drawing.Size(130, 13);
+			this.label29.Size = new System.Drawing.Size(115, 13);
 			this.label29.TabIndex = 28;
 			this.label29.Text = "Head Shape";
 			// 
@@ -531,9 +1212,9 @@
 			// 
 			this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label30.AutoSize = true;
-			this.label30.Location = new System.Drawing.Point(3, 701);
+			this.label30.Location = new System.Drawing.Point(3, 1026);
 			this.label30.Name = "label30";
-			this.label30.Size = new System.Drawing.Size(130, 13);
+			this.label30.Size = new System.Drawing.Size(115, 13);
 			this.label30.TabIndex = 29;
 			this.label30.Text = "Face Number";
 			// 
@@ -541,9 +1222,9 @@
 			// 
 			this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label31.AutoSize = true;
-			this.label31.Location = new System.Drawing.Point(3, 725);
+			this.label31.Location = new System.Drawing.Point(3, 1061);
 			this.label31.Name = "label31";
-			this.label31.Size = new System.Drawing.Size(130, 13);
+			this.label31.Size = new System.Drawing.Size(115, 13);
 			this.label31.TabIndex = 30;
 			this.label31.Text = "Hair Type";
 			// 
@@ -551,9 +1232,9 @@
 			// 
 			this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label32.AutoSize = true;
-			this.label32.Location = new System.Drawing.Point(3, 749);
+			this.label32.Location = new System.Drawing.Point(3, 1096);
 			this.label32.Name = "label32";
-			this.label32.Size = new System.Drawing.Size(130, 13);
+			this.label32.Size = new System.Drawing.Size(115, 13);
 			this.label32.TabIndex = 31;
 			this.label32.Text = "Hair Color";
 			// 
@@ -561,9 +1242,9 @@
 			// 
 			this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label33.AutoSize = true;
-			this.label33.Location = new System.Drawing.Point(3, 773);
+			this.label33.Location = new System.Drawing.Point(3, 1131);
 			this.label33.Name = "label33";
-			this.label33.Size = new System.Drawing.Size(130, 13);
+			this.label33.Size = new System.Drawing.Size(115, 13);
 			this.label33.TabIndex = 32;
 			this.label33.Text = "Front Hair";
 			// 
@@ -571,9 +1252,9 @@
 			// 
 			this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label34.AutoSize = true;
-			this.label34.Location = new System.Drawing.Point(3, 797);
+			this.label34.Location = new System.Drawing.Point(3, 1166);
 			this.label34.Name = "label34";
-			this.label34.Size = new System.Drawing.Size(130, 13);
+			this.label34.Size = new System.Drawing.Size(115, 13);
 			this.label34.TabIndex = 33;
 			this.label34.Text = "Facial Hair";
 			// 
@@ -581,9 +1262,9 @@
 			// 
 			this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label35.AutoSize = true;
-			this.label35.Location = new System.Drawing.Point(3, 821);
+			this.label35.Location = new System.Drawing.Point(3, 1201);
 			this.label35.Name = "label35";
-			this.label35.Size = new System.Drawing.Size(130, 13);
+			this.label35.Size = new System.Drawing.Size(115, 13);
 			this.label35.TabIndex = 34;
 			this.label35.Text = "Masks, Etc.";
 			// 
@@ -591,9 +1272,9 @@
 			// 
 			this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label36.AutoSize = true;
-			this.label36.Location = new System.Drawing.Point(3, 845);
+			this.label36.Location = new System.Drawing.Point(3, 1236);
 			this.label36.Name = "label36";
-			this.label36.Size = new System.Drawing.Size(130, 13);
+			this.label36.Size = new System.Drawing.Size(115, 13);
 			this.label36.TabIndex = 35;
 			this.label36.Text = "Hats/Caps";
 			// 
@@ -601,9 +1282,9 @@
 			// 
 			this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label37.AutoSize = true;
-			this.label37.Location = new System.Drawing.Point(3, 869);
+			this.label37.Location = new System.Drawing.Point(3, 1271);
 			this.label37.Name = "label37";
-			this.label37.Size = new System.Drawing.Size(130, 13);
+			this.label37.Size = new System.Drawing.Size(115, 13);
 			this.label37.TabIndex = 36;
 			this.label37.Text = "Hats/Caps Color";
 			// 
@@ -611,373 +1292,29 @@
 			// 
 			this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label38.AutoSize = true;
-			this.label38.Location = new System.Drawing.Point(3, 896);
+			this.label38.Location = new System.Drawing.Point(3, 1306);
 			this.label38.Name = "label38";
-			this.label38.Size = new System.Drawing.Size(130, 13);
+			this.label38.Size = new System.Drawing.Size(115, 13);
 			this.label38.TabIndex = 37;
 			this.label38.Text = "Portrait";
-			// 
-			// tbBodyType
-			// 
-			this.tbBodyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBodyType.Location = new System.Drawing.Point(139, 3);
-			this.tbBodyType.Name = "tbBodyType";
-			this.tbBodyType.ReadOnly = true;
-			this.tbBodyType.Size = new System.Drawing.Size(130, 20);
-			this.tbBodyType.TabIndex = 38;
-			// 
-			// tbRingAttire
-			// 
-			this.tbRingAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRingAttire.Location = new System.Drawing.Point(139, 51);
-			this.tbRingAttire.Name = "tbRingAttire";
-			this.tbRingAttire.ReadOnly = true;
-			this.tbRingAttire.Size = new System.Drawing.Size(130, 20);
-			this.tbRingAttire.TabIndex = 40;
-			// 
-			// tbRingAttireColor1
-			// 
-			this.tbRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRingAttireColor1.Location = new System.Drawing.Point(139, 75);
-			this.tbRingAttireColor1.Name = "tbRingAttireColor1";
-			this.tbRingAttireColor1.ReadOnly = true;
-			this.tbRingAttireColor1.Size = new System.Drawing.Size(130, 20);
-			this.tbRingAttireColor1.TabIndex = 41;
-			// 
-			// tbRingAttireColor2
-			// 
-			this.tbRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRingAttireColor2.Location = new System.Drawing.Point(139, 99);
-			this.tbRingAttireColor2.Name = "tbRingAttireColor2";
-			this.tbRingAttireColor2.ReadOnly = true;
-			this.tbRingAttireColor2.Size = new System.Drawing.Size(130, 20);
-			this.tbRingAttireColor2.TabIndex = 42;
 			// 
 			// tbUpperAttire
 			// 
 			this.tbUpperAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUpperAttire.Location = new System.Drawing.Point(139, 123);
+			this.tbUpperAttire.Location = new System.Drawing.Point(124, 182);
 			this.tbUpperAttire.Name = "tbUpperAttire";
 			this.tbUpperAttire.ReadOnly = true;
-			this.tbUpperAttire.Size = new System.Drawing.Size(130, 20);
+			this.tbUpperAttire.Size = new System.Drawing.Size(176, 20);
 			this.tbUpperAttire.TabIndex = 43;
-			// 
-			// tbUpperAttireColor1
-			// 
-			this.tbUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUpperAttireColor1.Location = new System.Drawing.Point(139, 147);
-			this.tbUpperAttireColor1.Name = "tbUpperAttireColor1";
-			this.tbUpperAttireColor1.ReadOnly = true;
-			this.tbUpperAttireColor1.Size = new System.Drawing.Size(130, 20);
-			this.tbUpperAttireColor1.TabIndex = 44;
-			// 
-			// tbUpperAttireColor2
-			// 
-			this.tbUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUpperAttireColor2.Location = new System.Drawing.Point(139, 171);
-			this.tbUpperAttireColor2.Name = "tbUpperAttireColor2";
-			this.tbUpperAttireColor2.ReadOnly = true;
-			this.tbUpperAttireColor2.Size = new System.Drawing.Size(130, 20);
-			this.tbUpperAttireColor2.TabIndex = 45;
-			// 
-			// tbEntranceAttire
-			// 
-			this.tbEntranceAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEntranceAttire.Location = new System.Drawing.Point(139, 195);
-			this.tbEntranceAttire.Name = "tbEntranceAttire";
-			this.tbEntranceAttire.ReadOnly = true;
-			this.tbEntranceAttire.Size = new System.Drawing.Size(130, 20);
-			this.tbEntranceAttire.TabIndex = 46;
-			// 
-			// tbEntranceAttireColor1
-			// 
-			this.tbEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEntranceAttireColor1.Location = new System.Drawing.Point(139, 219);
-			this.tbEntranceAttireColor1.Name = "tbEntranceAttireColor1";
-			this.tbEntranceAttireColor1.ReadOnly = true;
-			this.tbEntranceAttireColor1.Size = new System.Drawing.Size(130, 20);
-			this.tbEntranceAttireColor1.TabIndex = 47;
-			// 
-			// tbEntranceAttireColor2
-			// 
-			this.tbEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEntranceAttireColor2.Location = new System.Drawing.Point(139, 243);
-			this.tbEntranceAttireColor2.Name = "tbEntranceAttireColor2";
-			this.tbEntranceAttireColor2.ReadOnly = true;
-			this.tbEntranceAttireColor2.Size = new System.Drawing.Size(130, 20);
-			this.tbEntranceAttireColor2.TabIndex = 48;
-			// 
-			// tbEntranceWeapon
-			// 
-			this.tbEntranceWeapon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEntranceWeapon.Location = new System.Drawing.Point(139, 267);
-			this.tbEntranceWeapon.Name = "tbEntranceWeapon";
-			this.tbEntranceWeapon.ReadOnly = true;
-			this.tbEntranceWeapon.Size = new System.Drawing.Size(130, 20);
-			this.tbEntranceWeapon.TabIndex = 49;
-			// 
-			// tbGloves
-			// 
-			this.tbGloves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbGloves.Location = new System.Drawing.Point(139, 291);
-			this.tbGloves.Name = "tbGloves";
-			this.tbGloves.ReadOnly = true;
-			this.tbGloves.Size = new System.Drawing.Size(130, 20);
-			this.tbGloves.TabIndex = 50;
-			// 
-			// tbGlovesColor
-			// 
-			this.tbGlovesColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbGlovesColor.Location = new System.Drawing.Point(139, 315);
-			this.tbGlovesColor.Name = "tbGlovesColor";
-			this.tbGlovesColor.ReadOnly = true;
-			this.tbGlovesColor.Size = new System.Drawing.Size(130, 20);
-			this.tbGlovesColor.TabIndex = 51;
 			// 
 			// tbTattoo
 			// 
 			this.tbTattoo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTattoo.Location = new System.Drawing.Point(139, 339);
+			this.tbTattoo.Location = new System.Drawing.Point(124, 497);
 			this.tbTattoo.Name = "tbTattoo";
 			this.tbTattoo.ReadOnly = true;
-			this.tbTattoo.Size = new System.Drawing.Size(130, 20);
+			this.tbTattoo.Size = new System.Drawing.Size(176, 20);
 			this.tbTattoo.TabIndex = 52;
-			// 
-			// tbWristband
-			// 
-			this.tbWristband.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWristband.Location = new System.Drawing.Point(139, 363);
-			this.tbWristband.Name = "tbWristband";
-			this.tbWristband.ReadOnly = true;
-			this.tbWristband.Size = new System.Drawing.Size(130, 20);
-			this.tbWristband.TabIndex = 53;
-			// 
-			// tbWristbandColor
-			// 
-			this.tbWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWristbandColor.Location = new System.Drawing.Point(139, 387);
-			this.tbWristbandColor.Name = "tbWristbandColor";
-			this.tbWristbandColor.ReadOnly = true;
-			this.tbWristbandColor.Size = new System.Drawing.Size(130, 20);
-			this.tbWristbandColor.TabIndex = 54;
-			// 
-			// tbLeftElbowPad
-			// 
-			this.tbLeftElbowPad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLeftElbowPad.Location = new System.Drawing.Point(139, 411);
-			this.tbLeftElbowPad.Name = "tbLeftElbowPad";
-			this.tbLeftElbowPad.ReadOnly = true;
-			this.tbLeftElbowPad.Size = new System.Drawing.Size(130, 20);
-			this.tbLeftElbowPad.TabIndex = 55;
-			// 
-			// tbLeftElbowPadColor
-			// 
-			this.tbLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLeftElbowPadColor.Location = new System.Drawing.Point(139, 435);
-			this.tbLeftElbowPadColor.Name = "tbLeftElbowPadColor";
-			this.tbLeftElbowPadColor.ReadOnly = true;
-			this.tbLeftElbowPadColor.Size = new System.Drawing.Size(130, 20);
-			this.tbLeftElbowPadColor.TabIndex = 56;
-			// 
-			// tbRightElbowPad
-			// 
-			this.tbRightElbowPad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRightElbowPad.Location = new System.Drawing.Point(139, 459);
-			this.tbRightElbowPad.Name = "tbRightElbowPad";
-			this.tbRightElbowPad.ReadOnly = true;
-			this.tbRightElbowPad.Size = new System.Drawing.Size(130, 20);
-			this.tbRightElbowPad.TabIndex = 57;
-			// 
-			// tbRightElbowPadColor
-			// 
-			this.tbRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRightElbowPadColor.Location = new System.Drawing.Point(139, 483);
-			this.tbRightElbowPadColor.Name = "tbRightElbowPadColor";
-			this.tbRightElbowPadColor.ReadOnly = true;
-			this.tbRightElbowPadColor.Size = new System.Drawing.Size(130, 20);
-			this.tbRightElbowPadColor.TabIndex = 58;
-			// 
-			// tbLeftKneepad
-			// 
-			this.tbLeftKneepad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLeftKneepad.Location = new System.Drawing.Point(139, 507);
-			this.tbLeftKneepad.Name = "tbLeftKneepad";
-			this.tbLeftKneepad.ReadOnly = true;
-			this.tbLeftKneepad.Size = new System.Drawing.Size(130, 20);
-			this.tbLeftKneepad.TabIndex = 59;
-			// 
-			// tbLeftKneepadColor
-			// 
-			this.tbLeftKneepadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLeftKneepadColor.Location = new System.Drawing.Point(139, 531);
-			this.tbLeftKneepadColor.Name = "tbLeftKneepadColor";
-			this.tbLeftKneepadColor.ReadOnly = true;
-			this.tbLeftKneepadColor.Size = new System.Drawing.Size(130, 20);
-			this.tbLeftKneepadColor.TabIndex = 60;
-			// 
-			// tbRightKneepad
-			// 
-			this.tbRightKneepad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRightKneepad.Location = new System.Drawing.Point(139, 555);
-			this.tbRightKneepad.Name = "tbRightKneepad";
-			this.tbRightKneepad.ReadOnly = true;
-			this.tbRightKneepad.Size = new System.Drawing.Size(130, 20);
-			this.tbRightKneepad.TabIndex = 61;
-			// 
-			// tbRightKneepadColor
-			// 
-			this.tbRightKneepadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRightKneepadColor.Location = new System.Drawing.Point(139, 579);
-			this.tbRightKneepadColor.Name = "tbRightKneepadColor";
-			this.tbRightKneepadColor.ReadOnly = true;
-			this.tbRightKneepadColor.Size = new System.Drawing.Size(130, 20);
-			this.tbRightKneepadColor.TabIndex = 62;
-			// 
-			// tbBoots
-			// 
-			this.tbBoots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBoots.Location = new System.Drawing.Point(139, 603);
-			this.tbBoots.Name = "tbBoots";
-			this.tbBoots.ReadOnly = true;
-			this.tbBoots.Size = new System.Drawing.Size(130, 20);
-			this.tbBoots.TabIndex = 63;
-			// 
-			// tbBootsColor1
-			// 
-			this.tbBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBootsColor1.Location = new System.Drawing.Point(139, 627);
-			this.tbBootsColor1.Name = "tbBootsColor1";
-			this.tbBootsColor1.ReadOnly = true;
-			this.tbBootsColor1.Size = new System.Drawing.Size(130, 20);
-			this.tbBootsColor1.TabIndex = 64;
-			// 
-			// tbBootsColor2
-			// 
-			this.tbBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBootsColor2.Location = new System.Drawing.Point(139, 651);
-			this.tbBootsColor2.Name = "tbBootsColor2";
-			this.tbBootsColor2.ReadOnly = true;
-			this.tbBootsColor2.Size = new System.Drawing.Size(130, 20);
-			this.tbBootsColor2.TabIndex = 65;
-			// 
-			// tbHeadShape
-			// 
-			this.tbHeadShape.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHeadShape.Location = new System.Drawing.Point(139, 675);
-			this.tbHeadShape.Name = "tbHeadShape";
-			this.tbHeadShape.ReadOnly = true;
-			this.tbHeadShape.Size = new System.Drawing.Size(130, 20);
-			this.tbHeadShape.TabIndex = 66;
-			// 
-			// tbFaceNumber
-			// 
-			this.tbFaceNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbFaceNumber.Location = new System.Drawing.Point(139, 699);
-			this.tbFaceNumber.Name = "tbFaceNumber";
-			this.tbFaceNumber.ReadOnly = true;
-			this.tbFaceNumber.Size = new System.Drawing.Size(130, 20);
-			this.tbFaceNumber.TabIndex = 67;
-			// 
-			// tbHairType
-			// 
-			this.tbHairType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHairType.Location = new System.Drawing.Point(139, 723);
-			this.tbHairType.Name = "tbHairType";
-			this.tbHairType.ReadOnly = true;
-			this.tbHairType.Size = new System.Drawing.Size(130, 20);
-			this.tbHairType.TabIndex = 68;
-			// 
-			// tbHairColor
-			// 
-			this.tbHairColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHairColor.Location = new System.Drawing.Point(139, 747);
-			this.tbHairColor.Name = "tbHairColor";
-			this.tbHairColor.ReadOnly = true;
-			this.tbHairColor.Size = new System.Drawing.Size(130, 20);
-			this.tbHairColor.TabIndex = 69;
-			// 
-			// tbFrontHair
-			// 
-			this.tbFrontHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbFrontHair.Location = new System.Drawing.Point(139, 771);
-			this.tbFrontHair.Name = "tbFrontHair";
-			this.tbFrontHair.ReadOnly = true;
-			this.tbFrontHair.Size = new System.Drawing.Size(130, 20);
-			this.tbFrontHair.TabIndex = 70;
-			// 
-			// tbFacialHair
-			// 
-			this.tbFacialHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbFacialHair.Location = new System.Drawing.Point(139, 795);
-			this.tbFacialHair.Name = "tbFacialHair";
-			this.tbFacialHair.ReadOnly = true;
-			this.tbFacialHair.Size = new System.Drawing.Size(130, 20);
-			this.tbFacialHair.TabIndex = 71;
-			// 
-			// tbMasksEtc
-			// 
-			this.tbMasksEtc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbMasksEtc.Location = new System.Drawing.Point(139, 819);
-			this.tbMasksEtc.Name = "tbMasksEtc";
-			this.tbMasksEtc.ReadOnly = true;
-			this.tbMasksEtc.Size = new System.Drawing.Size(130, 20);
-			this.tbMasksEtc.TabIndex = 72;
-			// 
-			// tbHatsCaps
-			// 
-			this.tbHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHatsCaps.Location = new System.Drawing.Point(139, 843);
-			this.tbHatsCaps.Name = "tbHatsCaps";
-			this.tbHatsCaps.ReadOnly = true;
-			this.tbHatsCaps.Size = new System.Drawing.Size(130, 20);
-			this.tbHatsCaps.TabIndex = 73;
-			// 
-			// tbHatsCapsColor
-			// 
-			this.tbHatsCapsColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHatsCapsColor.Location = new System.Drawing.Point(139, 867);
-			this.tbHatsCapsColor.Name = "tbHatsCapsColor";
-			this.tbHatsCapsColor.ReadOnly = true;
-			this.tbHatsCapsColor.Size = new System.Drawing.Size(130, 20);
-			this.tbHatsCapsColor.TabIndex = 74;
-			// 
-			// tbPortrait
-			// 
-			this.tbPortrait.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPortrait.Location = new System.Drawing.Point(139, 893);
-			this.tbPortrait.Name = "tbPortrait";
-			this.tbPortrait.ReadOnly = true;
-			this.tbPortrait.Size = new System.Drawing.Size(130, 20);
-			this.tbPortrait.TabIndex = 75;
-			// 
-			// panel1
-			// 
-			this.panel1.AutoScroll = true;
-			this.panel1.Controls.Add(this.tableLayoutPanel1);
-			this.panel1.Location = new System.Drawing.Point(7, 12);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(295, 196);
-			this.panel1.TabIndex = 1;
-			// 
-			// buttonOK
-			// 
-			this.buttonOK.Location = new System.Drawing.Point(146, 214);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 2;
-			this.buttonOK.Text = "&OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(227, 214);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 3;
-			this.buttonCancel.Text = "&Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// cbSkinColor
 			// 
@@ -993,16 +1330,434 @@
             "5",
             "6",
             "7 "});
-			this.cbSkinColor.Location = new System.Drawing.Point(139, 27);
+			this.cbSkinColor.Location = new System.Drawing.Point(124, 42);
 			this.cbSkinColor.Name = "cbSkinColor";
-			this.cbSkinColor.Size = new System.Drawing.Size(130, 21);
+			this.cbSkinColor.Size = new System.Drawing.Size(176, 21);
 			this.cbSkinColor.TabIndex = 76;
+			// 
+			// cbHeadShape
+			// 
+			this.cbHeadShape.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbHeadShape.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbHeadShape.FormattingEnabled = true;
+			this.cbHeadShape.Items.AddRange(new object[] {
+            "00 Male 1",
+            "01 Male 2",
+            "02 Male 3",
+            "03 Male 4",
+            "04 Male 5",
+            "05 Male 6",
+            "06 Male 7",
+            "07 Female 1",
+            "08 Female 2",
+            "09 Female 3"});
+			this.cbHeadShape.Location = new System.Drawing.Point(124, 987);
+			this.cbHeadShape.Name = "cbHeadShape";
+			this.cbHeadShape.Size = new System.Drawing.Size(176, 21);
+			this.cbHeadShape.TabIndex = 77;
+			// 
+			// cbHairType
+			// 
+			this.cbHairType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbHairType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbHairType.FormattingEnabled = true;
+			this.cbHairType.Items.AddRange(new object[] {
+            "00 Bald",
+            "01 Shaved",
+            "02 Short 1",
+            "03 Short 2",
+            "04 Short 3",
+            "05 Middle 1",
+            "06 Middle 2",
+            "07 Ponytail 2",
+            "08 Middle 4",
+            "09 Middle 3",
+            "0A Long 3",
+            "0B Long 1",
+            "0C Long 2",
+            "0D Curly Hair",
+            "0E Mohawk 1",
+            "0F Dreads",
+            "10 Afro",
+            "11 Ponytail 1",
+            "12 Mohawk 2",
+            "13 Cleancut",
+            "14 Braided",
+            "15 Shocked",
+            "16 Short 1 (Women)",
+            "17 Short 2 (Women)",
+            "18 Short 3 (Women)",
+            "19 Middle 1 (Women)",
+            "1A Middle 2 (Women)",
+            "1B Long 5 (Women)",
+            "1C Long 1 (Women)",
+            "1D Long 2 (Women)",
+            "1E Long 3 (Women)",
+            "1F Long 4 (Women)"});
+			this.cbHairType.Location = new System.Drawing.Point(124, 1057);
+			this.cbHairType.Name = "cbHairType";
+			this.cbHairType.Size = new System.Drawing.Size(176, 21);
+			this.cbHairType.TabIndex = 78;
+			// 
+			// cbHairColor
+			// 
+			this.cbHairColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbHairColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbHairColor.FormattingEnabled = true;
+			this.cbHairColor.Items.AddRange(new object[] {
+            "00 White",
+            "01 Light Blond",
+            "02 Blond",
+            "03 Light Brown",
+            "04 Brown",
+            "05 Black",
+            "06 Blue",
+            "07 Red"});
+			this.cbHairColor.Location = new System.Drawing.Point(124, 1092);
+			this.cbHairColor.Name = "cbHairColor";
+			this.cbHairColor.Size = new System.Drawing.Size(176, 21);
+			this.cbHairColor.TabIndex = 79;
+			// 
+			// cbHatsCaps
+			// 
+			this.cbHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbHatsCaps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbHatsCaps.FormattingEnabled = true;
+			this.cbHatsCaps.Items.AddRange(new object[] {
+            "00 None",
+            "01 Triple H",
+            "02 Austin Cap",
+            "03 Scotty Hat",
+            "04 Bandana 1",
+            "05 Grandmaster",
+            "06 Bandana 2",
+            "07 Trish Hat"});
+			this.cbHatsCaps.Location = new System.Drawing.Point(124, 1232);
+			this.cbHatsCaps.Name = "cbHatsCaps";
+			this.cbHatsCaps.Size = new System.Drawing.Size(176, 21);
+			this.cbHatsCaps.TabIndex = 80;
+			// 
+			// cbEntranceAttire
+			// 
+			this.cbEntranceAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbEntranceAttire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbEntranceAttire.FormattingEnabled = true;
+			this.cbEntranceAttire.Items.AddRange(new object[] {
+            "00 None",
+            "01 Shades 1",
+            "02 Shades 2",
+            "03 Boss Man",
+            "04 Buh Buh",
+            "05 D-Von",
+            "06 Cap",
+            "07 Too Cool",
+            "08 Godfather",
+            "09 Biker Vest",
+            "0A Jim Ross",
+            "0B Austin",
+            "0C Test",
+            "0D Jerichoholic",
+            "0E Showster",
+            "0F Biker Jacket",
+            "10 Biker Flannel",
+            "11 DX",
+            "12 Grandmaster",
+            "13 Y2J",
+            "14 Too Cool 1",
+            "15 Too Cool 2",
+            "16 Too Cool 3",
+            "17 Edge",
+            "18 Rikishi",
+            "19 Val Towel",
+            "1A HBK",
+            "1B Gold Medal",
+            "1C Tazz Towel",
+            "1D Trenchcoat",
+            "1E Taker Robe",
+            "1F Robe"});
+			this.cbEntranceAttire.Location = new System.Drawing.Point(124, 287);
+			this.cbEntranceAttire.Name = "cbEntranceAttire";
+			this.cbEntranceAttire.Size = new System.Drawing.Size(176, 21);
+			this.cbEntranceAttire.TabIndex = 81;
+			// 
+			// cbEntranceWeapon
+			// 
+			this.cbEntranceWeapon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbEntranceWeapon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbEntranceWeapon.FormattingEnabled = true;
+			this.cbEntranceWeapon.Items.AddRange(new object[] {
+            "00 None",
+            "01 Bat",
+            "02 Sledge Hammer",
+            "03 Night Stick",
+            "04 Barbed Wire 2x4",
+            "05 2x4",
+            "06 Kendo Stick",
+            "07 Microphone",
+            "08 Head",
+            "09 Water Bottle",
+            "0A Roses",
+            "0B Cane",
+            "0C Bazooka",
+            "0D Goblet",
+            "0E Scales"});
+			this.cbEntranceWeapon.Location = new System.Drawing.Point(124, 392);
+			this.cbEntranceWeapon.Name = "cbEntranceWeapon";
+			this.cbEntranceWeapon.Size = new System.Drawing.Size(176, 21);
+			this.cbEntranceWeapon.TabIndex = 82;
+			// 
+			// cbPortrait
+			// 
+			this.cbPortrait.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbPortrait.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbPortrait.FormattingEnabled = true;
+			this.cbPortrait.Items.AddRange(new object[] {
+            "00 The Rock",
+            "01 Steve Austin",
+            "02 The Undertaker",
+            "03 Kane",
+            "04 Mankind",
+            "05 Cactus Jack",
+            "06 Shawn Michaels",
+            "07 Triple H",
+            "08 X-Pac",
+            "09 Billy Gunn",
+            "0A Road Dogg",
+            "0B Chris Benoit",
+            "0C Dean Malenko",
+            "0D Perry Saturn",
+            "0E Eddie Guerrero",
+            "0F Chris Jericho",
+            "10 Kurt Angle",
+            "11 Tazz",
+            "12 Test",
+            "13 Godfather",
+            "14 D\'Lo Brown",
+            "15 Val Venis",
+            "16 Shamrock",
+            "17 Rikishi",
+            "18 Grandmaster Sexay",
+            "19 Scotty 2 Hotty",
+            "1A Edge",
+            "1B Christian",
+            "1C Matt Hardy",
+            "1D Jeff Hardy",
+            "1E Faarooq",
+            "1F Bradshaw",
+            "20 D\'Von Dudley",
+            "21 Buh Buh Dudley",
+            "22 Hardcore Holly",
+            "23 Crash",
+            "24 Big Boss Man",
+            "25 Albert",
+            "26 Al Snow",
+            "27 Steve Blackman",
+            "28 British Bulldog",
+            "29 Mark Henry",
+            "2A Viscera",
+            "2B Gangrel",
+            "2C Bull Buchanan",
+            "2D Essa Rios",
+            "2E Taka Michinoku",
+            "2F Funaki",
+            "30 Vince McMahon",
+            "31 Shane McMahon",
+            "32 Jerry Lawler",
+            "33 Jim Ross",
+            "34 Paul Bearer",
+            "35 Gerald Brisco",
+            "36 Pat Patterson",
+            "37 Chyna",
+            "38 Stephanie McMahon",
+            "39 Tori",
+            "3A Terri Runnels",
+            "3B The Kat",
+            "3C Lita",
+            "3D Ivory",
+            "3E Jacqueline",
+            "3F Linda McMahon",
+            "40 Debra",
+            "41 Trish Stratus",
+            "42 Mae Young",
+            "43 Moolah",
+            "44 Pete Gas",
+            "45 Rodney",
+            "46 Joey Abbs",
+            "47 Steven Richards",
+            "48 Mosh",
+            "49 Thrasher",
+            "4A Mideon",
+            "4B Andre the Giant",
+            "4C Howard Finkel",
+            "4D Earl Hebner",
+            "4E Michael Cole",
+            "4F Mick Foley",
+            "50 Dude Love",
+            "51 Ho Train",
+            "52 AKI Man",
+            "53 AKI Woman",
+            "54 Edit 1 (Generic Green 1)",
+            "55 Edit 2 (Generic Green 2)",
+            "56 Edit 3 (Generic Green 3)",
+            "57 Edit 4 (Generic Green 4)",
+            "58 Edit 5 (Generic Green 5)",
+            "59 Edit 6 (Generic Green 6)",
+            "5A Edit 7 (Generic Green 7)",
+            "5B Edit 8 (Generic Green 8)",
+            "5C Edit 9 (Generic Green 9)",
+            "5D Edit 10 (Mysterious Male)",
+            "5E Edit 11 (Mysterious Female)",
+            "5F Edit 12 (Jack-o-Lantern)",
+            "60 Edit 13 (Skull)",
+            "61 Edit 14 (Eyes)",
+            "62 Edit 15 (Tongue Out)",
+            "63 Edit 16 (Green Blob)"});
+			this.cbPortrait.Location = new System.Drawing.Point(124, 1302);
+			this.cbPortrait.Name = "cbPortrait";
+			this.cbPortrait.Size = new System.Drawing.Size(176, 21);
+			this.cbPortrait.TabIndex = 83;
+			// 
+			// cbMasksEtc
+			// 
+			this.cbMasksEtc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbMasksEtc.FormattingEnabled = true;
+			this.cbMasksEtc.Items.AddRange(new object[] {
+            "00 None",
+            "01 Kane 1",
+            "02 Kane 2",
+            "03 Mankind",
+            "04 Boss Man",
+            "05 Kanji",
+            "06 Serpant",
+            "07 Phantom",
+            "08 Bat",
+            "09 Beast",
+            "0A Gold Chain",
+            "0B Too Cool",
+            "0C Eye Patch",
+            "0D AKI Man",
+            "0E Rikishi",
+            "0F Edge",
+            "10 Matt",
+            "11 Kabuki Paint",
+            "12 Christian",
+            "13 Rock",
+            "14 Eye Glasses",
+            "15 T&A",
+            "16 Undertaker",
+            "17 X-Pac",
+            "18 Leather Mask",
+            "19 Bandana",
+            "1A Bat Mask",
+            "1B Buh Buh",
+            "1C D-Von",
+            "1D Undertaker",
+            "1E Hockey",
+            "1F Gold Medals"});
+			this.cbMasksEtc.Location = new System.Drawing.Point(124, 1197);
+			this.cbMasksEtc.Name = "cbMasksEtc";
+			this.cbMasksEtc.Size = new System.Drawing.Size(176, 21);
+			this.cbMasksEtc.TabIndex = 84;
+			// 
+			// cbFacialHair
+			// 
+			this.cbFacialHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbFacialHair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbFacialHair.FormattingEnabled = true;
+			this.cbFacialHair.Items.AddRange(new object[] {
+            "00 None",
+            "01 Facial Hair 1",
+            "02 Facial Hair 2",
+            "03 Facial Hair 3",
+            "04 Facial Hair 4",
+            "05 Facial Hair 5",
+            "06 Facial Hair 6",
+            "07 Facial Hair 7",
+            "08 Facial Hair 8",
+            "09 Facial Hair 9",
+            "0A Facial Hair 10",
+            "0B Facial Hair 11",
+            "0C Facial Hair 12",
+            "0D Facial Hair 13",
+            "0E Facial Hair 14",
+            "0F Facial Hair 15",
+            "10 Facial Hair 16",
+            "11 Facial Hair 17",
+            "12 Facial Hair 18",
+            "13 Facial Hair 19",
+            "14 Facial Hair 20",
+            "15 Facial Hair 21",
+            "16 Facial Hair 22",
+            "17 Facial Hair 23",
+            "18 Facial Hair 24",
+            "19 Facial Hair 25",
+            "1A Facial Hair 26",
+            "1B Facial Hair 27",
+            "1C Facial Hair 28",
+            "1D Facial Hair 29",
+            "1E Facial Hair 30",
+            "1F Facial Hair 31"});
+			this.cbFacialHair.Location = new System.Drawing.Point(124, 1162);
+			this.cbFacialHair.Name = "cbFacialHair";
+			this.cbFacialHair.Size = new System.Drawing.Size(176, 21);
+			this.cbFacialHair.TabIndex = 85;
+			// 
+			// cbLeftKneepad
+			// 
+			this.cbLeftKneepad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbLeftKneepad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbLeftKneepad.FormattingEnabled = true;
+			this.cbLeftKneepad.Items.AddRange(new object[] {
+            "00 None",
+            "01 Knee Pad 1",
+            "02 Supporter 1",
+            "03 Knee Pad 2",
+            "04 X-Pac",
+            "05 Supporter 2",
+            "06 Angle",
+            "07 Mr. Ass 1",
+            "08 Mr. Ass 2",
+            "09 HBK-DX",
+            "0A HBK",
+            "0B Tye Dyed",
+            "0C Knee Pad 3",
+            "0D Knee Brace 1",
+            "0E Knee Brace 2",
+            "0F Knee Brace 3"});
+			this.cbLeftKneepad.Location = new System.Drawing.Point(124, 742);
+			this.cbLeftKneepad.Name = "cbLeftKneepad";
+			this.cbLeftKneepad.Size = new System.Drawing.Size(176, 21);
+			this.cbLeftKneepad.TabIndex = 86;
+			// 
+			// cccHatsCaps
+			// 
+			this.cccHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccHatsCaps.Location = new System.Drawing.Point(124, 1264);
+			this.cccHatsCaps.Name = "cccHatsCaps";
+			this.cccHatsCaps.Size = new System.Drawing.Size(176, 26);
+			this.cccHatsCaps.TabIndex = 97;
+			// 
+			// cccBootsColor1
+			// 
+			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor1.Location = new System.Drawing.Point(124, 914);
+			this.cccBootsColor1.Name = "cccBootsColor1";
+			this.cccBootsColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor1.TabIndex = 111;
+			// 
+			// cccBootsColor2
+			// 
+			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor2.Location = new System.Drawing.Point(124, 949);
+			this.cccBootsColor2.Name = "cccBootsColor2";
+			this.cccBootsColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor2.TabIndex = 112;
 			// 
 			// DefaultCostume_NoMercy
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(314, 249);
+			this.ClientSize = new System.Drawing.Size(344, 275);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.panel1);
@@ -1012,17 +1767,40 @@
 			this.Name = "DefaultCostume_NoMercy";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Default Costume Data";
+			this.panel1.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private Controls.CostumeColorControl cccRightKneePadColor;
+		private Controls.CostumeColorControl cccLeftKneePadColor;
+		private Controls.CostumeColorControl cccRightElbowPadColor;
+		private Controls.CostumeColorControl cccLeftElbowPadColor;
+		private Controls.CostumeColorControl cccWristbandColor;
+		private Controls.CostumeColorControl cccGlovesColor;
+		private Controls.CostumeColorControl cccEntranceAttireColor2;
+		private Controls.CostumeColorControl cccEntranceAttireColor1;
+		private Controls.CostumeColorControl cccUpperAttireColor2;
+		private Controls.CostumeColorControl cccUpperAttireColor1;
+		private Controls.CostumeColorControl cccRingAttireColor2;
+		private Controls.CostumeColorControl cccRingAttireColor1;
+		private System.Windows.Forms.ComboBox cbFaces;
+		private System.Windows.Forms.ComboBox cbFrontHair;
+		private System.Windows.Forms.ComboBox cbRingAttire;
+		private System.Windows.Forms.ComboBox cbBoots;
+		private System.Windows.Forms.ComboBox cbBodyType;
+		private System.Windows.Forms.ComboBox cbGloves;
+		private System.Windows.Forms.ComboBox cbWristband;
+		private System.Windows.Forms.ComboBox cbRightElbowPad;
+		private System.Windows.Forms.ComboBox cbLeftElbowPad;
+		private System.Windows.Forms.ComboBox cbRightKneepad;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
@@ -1061,45 +1839,21 @@
 		private System.Windows.Forms.Label label36;
 		private System.Windows.Forms.Label label37;
 		private System.Windows.Forms.Label label38;
-		private System.Windows.Forms.TextBox tbBodyType;
-		private System.Windows.Forms.TextBox tbRingAttire;
-		private System.Windows.Forms.TextBox tbRingAttireColor1;
-		private System.Windows.Forms.TextBox tbRingAttireColor2;
 		private System.Windows.Forms.TextBox tbUpperAttire;
-		private System.Windows.Forms.TextBox tbUpperAttireColor1;
-		private System.Windows.Forms.TextBox tbUpperAttireColor2;
-		private System.Windows.Forms.TextBox tbEntranceAttire;
-		private System.Windows.Forms.TextBox tbEntranceAttireColor1;
-		private System.Windows.Forms.TextBox tbEntranceAttireColor2;
-		private System.Windows.Forms.TextBox tbEntranceWeapon;
-		private System.Windows.Forms.TextBox tbGloves;
-		private System.Windows.Forms.TextBox tbGlovesColor;
 		private System.Windows.Forms.TextBox tbTattoo;
-		private System.Windows.Forms.TextBox tbWristband;
-		private System.Windows.Forms.TextBox tbWristbandColor;
-		private System.Windows.Forms.TextBox tbLeftElbowPad;
-		private System.Windows.Forms.TextBox tbLeftElbowPadColor;
-		private System.Windows.Forms.TextBox tbRightElbowPad;
-		private System.Windows.Forms.TextBox tbRightElbowPadColor;
-		private System.Windows.Forms.TextBox tbLeftKneepad;
-		private System.Windows.Forms.TextBox tbLeftKneepadColor;
-		private System.Windows.Forms.TextBox tbRightKneepad;
-		private System.Windows.Forms.TextBox tbRightKneepadColor;
-		private System.Windows.Forms.TextBox tbBoots;
-		private System.Windows.Forms.TextBox tbBootsColor1;
-		private System.Windows.Forms.TextBox tbBootsColor2;
-		private System.Windows.Forms.TextBox tbHeadShape;
-		private System.Windows.Forms.TextBox tbFaceNumber;
-		private System.Windows.Forms.TextBox tbHairType;
-		private System.Windows.Forms.TextBox tbHairColor;
-		private System.Windows.Forms.TextBox tbFrontHair;
-		private System.Windows.Forms.TextBox tbFacialHair;
-		private System.Windows.Forms.TextBox tbMasksEtc;
-		private System.Windows.Forms.TextBox tbHatsCaps;
-		private System.Windows.Forms.TextBox tbHatsCapsColor;
-		private System.Windows.Forms.TextBox tbPortrait;
-		private System.Windows.Forms.Button buttonOK;
-		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.ComboBox cbSkinColor;
+		private System.Windows.Forms.ComboBox cbHeadShape;
+		private System.Windows.Forms.ComboBox cbHairType;
+		private System.Windows.Forms.ComboBox cbHairColor;
+		private System.Windows.Forms.ComboBox cbHatsCaps;
+		private System.Windows.Forms.ComboBox cbEntranceAttire;
+		private System.Windows.Forms.ComboBox cbEntranceWeapon;
+		private System.Windows.Forms.ComboBox cbPortrait;
+		private System.Windows.Forms.ComboBox cbMasksEtc;
+		private System.Windows.Forms.ComboBox cbFacialHair;
+		private System.Windows.Forms.ComboBox cbLeftKneepad;
+		private Controls.CostumeColorControl cccHatsCaps;
+		private Controls.CostumeColorControl cccBootsColor2;
+		private Controls.CostumeColorControl cccBootsColor1;
 	}
 }
