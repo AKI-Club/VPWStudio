@@ -1,6 +1,6 @@
 ﻿namespace VPWStudio
 {
-	partial class FileTable_ITexturePreviewDialog
+	partial class ITexturePreviewDialog
 	{
 		/// <summary>
 		/// Required designer variable.
