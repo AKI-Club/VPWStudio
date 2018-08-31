@@ -53,6 +53,12 @@ namespace VPWStudio
 			LoadFileID(fileID);
 		}
 
+		public TexPreviewDialog(byte[] data)
+		{
+			InitializeComponent();
+			LoadData(data);
+		}
+
 		/// <summary>
 		/// Load TEX file from a File ID.
 		/// </summary>
