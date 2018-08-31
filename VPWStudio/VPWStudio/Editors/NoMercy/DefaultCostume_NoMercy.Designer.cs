@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
 			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
@@ -106,8 +106,8 @@
 			this.cbFacialHair = new System.Windows.Forms.ComboBox();
 			this.cbLeftKneepad = new System.Windows.Forms.ComboBox();
 			this.cccHatsCaps = new VPWStudio.Controls.CostumeColorControl();
-			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -120,26 +120,6 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(325, 222);
 			this.panel1.TabIndex = 1;
-			// 
-			// buttonOK
-			// 
-			this.buttonOK.Location = new System.Drawing.Point(176, 240);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 2;
-			this.buttonOK.Text = "&OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(257, 240);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 3;
-			this.buttonCancel.Text = "&Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -222,7 +202,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.cbFacialHair, 1, 33);
 			this.tableLayoutPanel1.Controls.Add(this.cbLeftKneepad, 1, 21);
 			this.tableLayoutPanel1.Controls.Add(this.cccHatsCaps, 1, 36);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 0);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 38;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -267,6 +247,22 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(303, 1328);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
+			// cccBootsColor2
+			// 
+			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor2.Location = new System.Drawing.Point(124, 949);
+			this.cccBootsColor2.Name = "cccBootsColor2";
+			this.cccBootsColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor2.TabIndex = 112;
+			// 
+			// cccBootsColor1
+			// 
+			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor1.Location = new System.Drawing.Point(124, 914);
+			this.cccBootsColor1.Name = "cccBootsColor1";
+			this.cccBootsColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor1.TabIndex = 111;
+			// 
 			// cccRightKneePadColor
 			// 
 			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -305,7 +301,7 @@
 			this.cccWristbandColor.Location = new System.Drawing.Point(124, 564);
 			this.cccWristbandColor.Name = "cccWristbandColor";
 			this.cccWristbandColor.Size = new System.Drawing.Size(176, 26);
-			this.cccWristbandColor.TabIndex = 105;
+			this.cccWristbandColor.TabIndex = 33;
 			// 
 			// cccGlovesColor
 			// 
@@ -313,7 +309,7 @@
 			this.cccGlovesColor.Location = new System.Drawing.Point(124, 459);
 			this.cccGlovesColor.Name = "cccGlovesColor";
 			this.cccGlovesColor.Size = new System.Drawing.Size(176, 26);
-			this.cccGlovesColor.TabIndex = 104;
+			this.cccGlovesColor.TabIndex = 27;
 			// 
 			// cccEntranceAttireColor2
 			// 
@@ -321,7 +317,7 @@
 			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(124, 354);
 			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
 			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccEntranceAttireColor2.TabIndex = 103;
+			this.cccEntranceAttireColor2.TabIndex = 21;
 			// 
 			// cccEntranceAttireColor1
 			// 
@@ -329,7 +325,7 @@
 			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(124, 319);
 			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
 			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccEntranceAttireColor1.TabIndex = 102;
+			this.cccEntranceAttireColor1.TabIndex = 19;
 			// 
 			// cccUpperAttireColor2
 			// 
@@ -337,7 +333,7 @@
 			this.cccUpperAttireColor2.Location = new System.Drawing.Point(124, 249);
 			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
 			this.cccUpperAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccUpperAttireColor2.TabIndex = 101;
+			this.cccUpperAttireColor2.TabIndex = 15;
 			// 
 			// cccUpperAttireColor1
 			// 
@@ -345,7 +341,7 @@
 			this.cccUpperAttireColor1.Location = new System.Drawing.Point(124, 214);
 			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
 			this.cccUpperAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccUpperAttireColor1.TabIndex = 100;
+			this.cccUpperAttireColor1.TabIndex = 13;
 			// 
 			// cccRingAttireColor2
 			// 
@@ -353,7 +349,7 @@
 			this.cccRingAttireColor2.Location = new System.Drawing.Point(124, 144);
 			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
 			this.cccRingAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccRingAttireColor2.TabIndex = 99;
+			this.cccRingAttireColor2.TabIndex = 9;
 			// 
 			// cccRingAttireColor1
 			// 
@@ -361,7 +357,7 @@
 			this.cccRingAttireColor1.Location = new System.Drawing.Point(124, 109);
 			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
 			this.cccRingAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccRingAttireColor1.TabIndex = 98;
+			this.cccRingAttireColor1.TabIndex = 7;
 			// 
 			// cbFaces
 			// 
@@ -705,7 +701,7 @@
 			this.cbRingAttire.Location = new System.Drawing.Point(124, 77);
 			this.cbRingAttire.Name = "cbRingAttire";
 			this.cbRingAttire.Size = new System.Drawing.Size(176, 21);
-			this.cbRingAttire.TabIndex = 94;
+			this.cbRingAttire.TabIndex = 5;
 			// 
 			// cbBoots
 			// 
@@ -813,7 +809,7 @@
 			this.cbBodyType.Location = new System.Drawing.Point(124, 7);
 			this.cbBodyType.Name = "cbBodyType";
 			this.cbBodyType.Size = new System.Drawing.Size(176, 21);
-			this.cbBodyType.TabIndex = 92;
+			this.cbBodyType.TabIndex = 1;
 			// 
 			// cbGloves
 			// 
@@ -832,7 +828,7 @@
 			this.cbGloves.Location = new System.Drawing.Point(124, 427);
 			this.cbGloves.Name = "cbGloves";
 			this.cbGloves.Size = new System.Drawing.Size(176, 21);
-			this.cbGloves.TabIndex = 91;
+			this.cbGloves.TabIndex = 25;
 			// 
 			// cbWristband
 			// 
@@ -851,7 +847,7 @@
 			this.cbWristband.Location = new System.Drawing.Point(124, 532);
 			this.cbWristband.Name = "cbWristband";
 			this.cbWristband.Size = new System.Drawing.Size(176, 21);
-			this.cbWristband.TabIndex = 90;
+			this.cbWristband.TabIndex = 31;
 			// 
 			// cbRightElbowPad
 			// 
@@ -889,7 +885,7 @@
 			this.cbLeftElbowPad.Location = new System.Drawing.Point(124, 602);
 			this.cbLeftElbowPad.Name = "cbLeftElbowPad";
 			this.cbLeftElbowPad.Size = new System.Drawing.Size(176, 21);
-			this.cbLeftElbowPad.TabIndex = 88;
+			this.cbLeftElbowPad.TabIndex = 35;
 			// 
 			// cbRightKneepad
 			// 
@@ -935,7 +931,7 @@
 			this.label2.Location = new System.Drawing.Point(3, 46);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(115, 13);
-			this.label2.TabIndex = 1;
+			this.label2.TabIndex = 2;
 			this.label2.Text = "Skin Color";
 			// 
 			// label3
@@ -945,7 +941,7 @@
 			this.label3.Location = new System.Drawing.Point(3, 81);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(115, 13);
-			this.label3.TabIndex = 2;
+			this.label3.TabIndex = 4;
 			this.label3.Text = "Ring Attire";
 			// 
 			// label4
@@ -955,7 +951,7 @@
 			this.label4.Location = new System.Drawing.Point(3, 116);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(115, 13);
-			this.label4.TabIndex = 3;
+			this.label4.TabIndex = 6;
 			this.label4.Text = "Ring Attire Color 1";
 			// 
 			// label5
@@ -965,7 +961,7 @@
 			this.label5.Location = new System.Drawing.Point(3, 151);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(115, 13);
-			this.label5.TabIndex = 4;
+			this.label5.TabIndex = 8;
 			this.label5.Text = "Ring Attire Color 2";
 			// 
 			// label6
@@ -975,7 +971,7 @@
 			this.label6.Location = new System.Drawing.Point(3, 186);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(115, 13);
-			this.label6.TabIndex = 5;
+			this.label6.TabIndex = 10;
 			this.label6.Text = "Upper Attire";
 			// 
 			// label7
@@ -985,7 +981,7 @@
 			this.label7.Location = new System.Drawing.Point(3, 221);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(115, 13);
-			this.label7.TabIndex = 6;
+			this.label7.TabIndex = 12;
 			this.label7.Text = "Upper Attire Color 1";
 			// 
 			// label8
@@ -995,7 +991,7 @@
 			this.label8.Location = new System.Drawing.Point(3, 256);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(115, 13);
-			this.label8.TabIndex = 7;
+			this.label8.TabIndex = 14;
 			this.label8.Text = "Upper Attire Color 2";
 			// 
 			// label9
@@ -1005,7 +1001,7 @@
 			this.label9.Location = new System.Drawing.Point(3, 291);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(115, 13);
-			this.label9.TabIndex = 8;
+			this.label9.TabIndex = 16;
 			this.label9.Text = "Entrance Attire";
 			// 
 			// label10
@@ -1015,7 +1011,7 @@
 			this.label10.Location = new System.Drawing.Point(3, 326);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(115, 13);
-			this.label10.TabIndex = 9;
+			this.label10.TabIndex = 18;
 			this.label10.Text = "Entrance Attire Color 1";
 			// 
 			// label11
@@ -1025,7 +1021,7 @@
 			this.label11.Location = new System.Drawing.Point(3, 361);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(115, 13);
-			this.label11.TabIndex = 10;
+			this.label11.TabIndex = 20;
 			this.label11.Text = "Entrance Attire Color 2";
 			// 
 			// label12
@@ -1035,7 +1031,7 @@
 			this.label12.Location = new System.Drawing.Point(3, 396);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(115, 13);
-			this.label12.TabIndex = 11;
+			this.label12.TabIndex = 22;
 			this.label12.Text = "Entrance Weapon";
 			// 
 			// label13
@@ -1045,7 +1041,7 @@
 			this.label13.Location = new System.Drawing.Point(3, 431);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(115, 13);
-			this.label13.TabIndex = 12;
+			this.label13.TabIndex = 24;
 			this.label13.Text = "Gloves";
 			// 
 			// label14
@@ -1055,7 +1051,7 @@
 			this.label14.Location = new System.Drawing.Point(3, 466);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(115, 13);
-			this.label14.TabIndex = 13;
+			this.label14.TabIndex = 26;
 			this.label14.Text = "Gloves Color";
 			// 
 			// label15
@@ -1065,7 +1061,7 @@
 			this.label15.Location = new System.Drawing.Point(3, 501);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(115, 13);
-			this.label15.TabIndex = 14;
+			this.label15.TabIndex = 28;
 			this.label15.Text = "Tattoo";
 			// 
 			// label16
@@ -1075,7 +1071,7 @@
 			this.label16.Location = new System.Drawing.Point(3, 536);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(115, 13);
-			this.label16.TabIndex = 15;
+			this.label16.TabIndex = 30;
 			this.label16.Text = "Wristband";
 			// 
 			// label17
@@ -1085,7 +1081,7 @@
 			this.label17.Location = new System.Drawing.Point(3, 571);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(115, 13);
-			this.label17.TabIndex = 16;
+			this.label17.TabIndex = 32;
 			this.label17.Text = "Wristband Color";
 			// 
 			// label18
@@ -1095,7 +1091,7 @@
 			this.label18.Location = new System.Drawing.Point(3, 606);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(115, 13);
-			this.label18.TabIndex = 17;
+			this.label18.TabIndex = 34;
 			this.label18.Text = "Left Elbow Pad";
 			// 
 			// label19
@@ -1305,7 +1301,7 @@
 			this.tbUpperAttire.Name = "tbUpperAttire";
 			this.tbUpperAttire.ReadOnly = true;
 			this.tbUpperAttire.Size = new System.Drawing.Size(176, 20);
-			this.tbUpperAttire.TabIndex = 43;
+			this.tbUpperAttire.TabIndex = 11;
 			// 
 			// tbTattoo
 			// 
@@ -1314,7 +1310,7 @@
 			this.tbTattoo.Name = "tbTattoo";
 			this.tbTattoo.ReadOnly = true;
 			this.tbTattoo.Size = new System.Drawing.Size(176, 20);
-			this.tbTattoo.TabIndex = 52;
+			this.tbTattoo.TabIndex = 29;
 			// 
 			// cbSkinColor
 			// 
@@ -1333,7 +1329,7 @@
 			this.cbSkinColor.Location = new System.Drawing.Point(124, 42);
 			this.cbSkinColor.Name = "cbSkinColor";
 			this.cbSkinColor.Size = new System.Drawing.Size(176, 21);
-			this.cbSkinColor.TabIndex = 76;
+			this.cbSkinColor.TabIndex = 3;
 			// 
 			// cbHeadShape
 			// 
@@ -1478,7 +1474,7 @@
 			this.cbEntranceAttire.Location = new System.Drawing.Point(124, 287);
 			this.cbEntranceAttire.Name = "cbEntranceAttire";
 			this.cbEntranceAttire.Size = new System.Drawing.Size(176, 21);
-			this.cbEntranceAttire.TabIndex = 81;
+			this.cbEntranceAttire.TabIndex = 17;
 			// 
 			// cbEntranceWeapon
 			// 
@@ -1504,7 +1500,7 @@
 			this.cbEntranceWeapon.Location = new System.Drawing.Point(124, 392);
 			this.cbEntranceWeapon.Name = "cbEntranceWeapon";
 			this.cbEntranceWeapon.Size = new System.Drawing.Size(176, 21);
-			this.cbEntranceWeapon.TabIndex = 82;
+			this.cbEntranceWeapon.TabIndex = 23;
 			// 
 			// cbPortrait
 			// 
@@ -1737,21 +1733,25 @@
 			this.cccHatsCaps.Size = new System.Drawing.Size(176, 26);
 			this.cccHatsCaps.TabIndex = 97;
 			// 
-			// cccBootsColor1
+			// buttonOK
 			// 
-			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor1.Location = new System.Drawing.Point(124, 914);
-			this.cccBootsColor1.Name = "cccBootsColor1";
-			this.cccBootsColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccBootsColor1.TabIndex = 111;
+			this.buttonOK.Location = new System.Drawing.Point(176, 240);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 2;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
-			// cccBootsColor2
+			// buttonCancel
 			// 
-			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor2.Location = new System.Drawing.Point(124, 949);
-			this.cccBootsColor2.Name = "cccBootsColor2";
-			this.cccBootsColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccBootsColor2.TabIndex = 112;
+			this.buttonCancel.Location = new System.Drawing.Point(257, 240);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// DefaultCostume_NoMercy
 			// 
