@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
-	public partial class FileTable_TexPreviewDialog : Form
+	public partial class TexPreviewDialog : Form
 	{
 		#region Members
 		/// <summary>
@@ -47,11 +47,20 @@ namespace VPWStudio
 		private const int MaxZoom = 3;
 		#endregion
 
-		public FileTable_TexPreviewDialog(int fileID)
+		public TexPreviewDialog(int fileID)
 		{
 			InitializeComponent();
+			LoadFileID(fileID);
+		}
+
+		/// <summary>
+		/// Load TEX file from a File ID.
+		/// </summary>
+		/// <param name="fileID">File ID to load.</param>
+		private void LoadFileID(int fileID)
+		{
 			FileID = fileID;
-			this.Text = String.Format("Preview [0x{0:X4}]", FileID);
+			Text = String.Format("Preview [0x{0:X4}]", FileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -75,6 +84,26 @@ namespace VPWStudio
 
 			outReader.Close();
 			outWriter.Close();
+		}
+
+		/// <summary>
+		/// Load TEX file from data.
+		/// </summary>
+		/// <param name="data">Array of bytes to be treated as TEX file.</param>
+		private void LoadData(byte[] data)
+		{
+			MemoryStream ms = new MemoryStream(data);
+			BinaryReader br = new BinaryReader(ms);
+
+			CurrentTEX = new AkiTexture(br);
+			pbPreview.Width = CurrentTEX.Width;
+			pbPreview.Height = CurrentTEX.Height;
+			DefaultImageSize = new Size(CurrentTEX.Width, CurrentTEX.Height);
+
+			CurrentBitmap = CurrentTEX.ToBitmap();
+			pbPreview.Image = CurrentBitmap;
+
+			br.Close();
 		}
 
 		/// <summary>
