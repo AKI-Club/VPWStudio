@@ -158,11 +158,11 @@
     <Compile Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.Designer.cs">
       <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_TexPreviewDialog.cs">
+    <Compile Include="Dialogs\TexPreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_TexPreviewDialog.Designer.cs">
-      <DependentUpon>FileTable_TexPreviewDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\TexPreviewDialog.Designer.cs">
+      <DependentUpon>TexPreviewDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Program\AboutBox.cs">
       <SubType>Form</SubType>
@@ -487,8 +487,8 @@
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.resx">
       <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FileTable\FileTable_TexPreviewDialog.resx">
-      <DependentUpon>FileTable_TexPreviewDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\TexPreviewDialog.resx">
+      <DependentUpon>TexPreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Program\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>

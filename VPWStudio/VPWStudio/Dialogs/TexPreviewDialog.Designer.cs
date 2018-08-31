@@ -1,6 +1,6 @@
 ﻿namespace VPWStudio
 {
-	partial class FileTable_TexPreviewDialog
+	partial class TexPreviewDialog
 	{
 		/// <summary>
 		/// Required designer variable.
