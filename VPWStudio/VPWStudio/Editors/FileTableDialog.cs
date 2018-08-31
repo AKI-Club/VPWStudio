@@ -697,7 +697,7 @@ namespace VPWStudio
 				// "TEX" files
 				case FileTypes.AkiTexture:
 					{
-						FileTable_TexPreviewDialog tpd = new FileTable_TexPreviewDialog(key);
+						TexPreviewDialog tpd = new TexPreviewDialog(key);
 						tpd.ShowDialog();
 					}
 					break;
@@ -705,7 +705,7 @@ namespace VPWStudio
 				// I4 textures
 				case FileTypes.I4Texture:
 					{
-						FileTable_ITexturePreviewDialog ipd = new FileTable_ITexturePreviewDialog(key);
+						ITexturePreviewDialog ipd = new ITexturePreviewDialog(key);
 						ipd.ShowDialog();
 					}
 					break;

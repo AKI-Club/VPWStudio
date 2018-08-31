@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
-	public partial class FileTable_ITexturePreviewDialog : Form
+	public partial class ITexturePreviewDialog : Form
 	{
 		#region Members
 		/// <summary>
@@ -25,9 +25,24 @@ namespace VPWStudio
 		private Size DefaultImageSize;
 		#endregion
 
-		public FileTable_ITexturePreviewDialog(int fileID)
+		public ITexturePreviewDialog(int fileID)
 		{
 			InitializeComponent();
+			LoadFileID(fileID);
+		}
+
+		public ITexturePreviewDialog(byte[] data)
+		{
+			InitializeComponent();
+			LoadData(data);
+		}
+
+		/// <summary>
+		/// Load ITexture from a File ID.
+		/// </summary>
+		/// <param name="fileID">File ID to load.</param>
+		private void LoadFileID(int fileID)
+		{
 			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment != String.Empty)
 			{
 				Text = String.Format("Preview [0x{0:X4} - {1}]", fileID, Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment);
@@ -58,6 +73,24 @@ namespace VPWStudio
 
 			outReader.Close();
 			outWriter.Close();
+		}
+
+		/// <summary>
+		/// Load ITexture from data.
+		/// </summary>
+		/// <param name="data">Array of bytes to be treated as an ITexture.</param>
+		private void LoadData(byte[] data)
+		{
+			MemoryStream ms = new MemoryStream(data);
+			BinaryReader br = new BinaryReader(ms);
+
+			CurrentI4Tex = new I4Texture(br);
+			pbPreview.Width = 16;
+			pbPreview.Height = 16;
+			DefaultImageSize = new Size(16, 16);
+
+			pbPreview.Image = null;
+			br.Close();
 		}
 
 		/// <summary>

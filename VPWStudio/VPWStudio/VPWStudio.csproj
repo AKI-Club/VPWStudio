@@ -140,10 +140,10 @@
     <Compile Include="Dialogs\FileTable\FileTable_GoToDialog.Designer.cs">
       <DependentUpon>FileTable_GoToDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_ITexturePreviewDialog.cs">
+    <Compile Include="Dialogs\FileTable_ITexturePreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\FileTable\FileTable_ITexturePreviewDialog.Designer.cs">
+    <Compile Include="Dialogs\FileTable_ITexturePreviewDialog.Designer.cs">
       <DependentUpon>FileTable_ITexturePreviewDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.cs">
@@ -478,7 +478,7 @@
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_GoToDialog.resx">
       <DependentUpon>FileTable_GoToDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FileTable\FileTable_ITexturePreviewDialog.resx">
+    <EmbeddedResource Include="Dialogs\FileTable_ITexturePreviewDialog.resx">
       <DependentUpon>FileTable_ITexturePreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_MenuBackgroundPreviewDialog.resx">
