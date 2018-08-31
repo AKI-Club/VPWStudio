@@ -155,5 +155,35 @@ namespace VPWStudio
 			HexViewer hv = Program.HexViewManager.NewViewerData(CurArchive.FileEntries[lbFiles.SelectedIndex].Data);
 			hv.Show();
 		}
+
+		private void buttonOpenAs_Click(object sender, EventArgs e)
+		{
+			Button b = (Button)sender;
+			Point ptLowerLeft = new Point(0, b.Height);
+			ptLowerLeft = b.PointToScreen(ptLowerLeft);
+			cmsOpenAs.Show(ptLowerLeft);
+		}
+
+		private void akiTextureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lbFiles.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			TexPreviewDialog tpd = new TexPreviewDialog(CurArchive.FileEntries[lbFiles.SelectedIndex].Data);
+			tpd.Show();
+		}
+
+		private void iTextureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lbFiles.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			ITexturePreviewDialog ipd = new ITexturePreviewDialog(CurArchive.FileEntries[lbFiles.SelectedIndex].Data);
+			ipd.Show();
+		}
 	}
 }

@@ -28,17 +28,23 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.gbArchiveFiles = new System.Windows.Forms.GroupBox();
-			this.lbFiles = new System.Windows.Forms.ListBox();
-			this.buttonExtract = new System.Windows.Forms.Button();
 			this.buttonReplace = new System.Windows.Forms.Button();
+			this.buttonExtract = new System.Windows.Forms.Button();
+			this.lbFiles = new System.Windows.Forms.ListBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.gbSelItem = new System.Windows.Forms.GroupBox();
-			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
 			this.buttonViewHexEditor = new System.Windows.Forms.Button();
+			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
+			this.buttonOpenAs = new System.Windows.Forms.Button();
+			this.cmsOpenAs = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.akiTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.iTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbArchiveFiles.SuspendLayout();
 			this.gbSelItem.SuspendLayout();
+			this.cmsOpenAs.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbArchiveFiles
@@ -53,14 +59,15 @@
 			this.gbArchiveFiles.TabStop = false;
 			this.gbArchiveFiles.Text = "&Files";
 			// 
-			// lbFiles
+			// buttonReplace
 			// 
-			this.lbFiles.FormattingEnabled = true;
-			this.lbFiles.Location = new System.Drawing.Point(6, 19);
-			this.lbFiles.Name = "lbFiles";
-			this.lbFiles.Size = new System.Drawing.Size(188, 368);
-			this.lbFiles.TabIndex = 1;
-			this.lbFiles.SelectedIndexChanged += new System.EventHandler(this.lbFiles_SelectedIndexChanged);
+			this.buttonReplace.Location = new System.Drawing.Point(104, 400);
+			this.buttonReplace.Name = "buttonReplace";
+			this.buttonReplace.Size = new System.Drawing.Size(90, 23);
+			this.buttonReplace.TabIndex = 3;
+			this.buttonReplace.Text = "&Replace File...";
+			this.buttonReplace.UseVisualStyleBackColor = true;
+			this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
 			// 
 			// buttonExtract
 			// 
@@ -72,15 +79,14 @@
 			this.buttonExtract.UseVisualStyleBackColor = true;
 			this.buttonExtract.Click += new System.EventHandler(this.buttonExtract_Click);
 			// 
-			// buttonReplace
+			// lbFiles
 			// 
-			this.buttonReplace.Location = new System.Drawing.Point(104, 400);
-			this.buttonReplace.Name = "buttonReplace";
-			this.buttonReplace.Size = new System.Drawing.Size(90, 23);
-			this.buttonReplace.TabIndex = 3;
-			this.buttonReplace.Text = "&Replace File...";
-			this.buttonReplace.UseVisualStyleBackColor = true;
-			this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
+			this.lbFiles.FormattingEnabled = true;
+			this.lbFiles.Location = new System.Drawing.Point(6, 19);
+			this.lbFiles.Name = "lbFiles";
+			this.lbFiles.Size = new System.Drawing.Size(188, 368);
+			this.lbFiles.TabIndex = 1;
+			this.lbFiles.SelectedIndexChanged += new System.EventHandler(this.lbFiles_SelectedIndexChanged);
 			// 
 			// buttonOK
 			// 
@@ -104,6 +110,7 @@
 			// 
 			// gbSelItem
 			// 
+			this.gbSelItem.Controls.Add(this.buttonOpenAs);
 			this.gbSelItem.Controls.Add(this.buttonViewHexEditor);
 			this.gbSelItem.Controls.Add(this.tbSelItemInfo);
 			this.gbSelItem.Location = new System.Drawing.Point(218, 12);
@@ -112,6 +119,16 @@
 			this.gbSelItem.TabIndex = 4;
 			this.gbSelItem.TabStop = false;
 			this.gbSelItem.Text = "Selected &Item";
+			// 
+			// buttonViewHexEditor
+			// 
+			this.buttonViewHexEditor.Location = new System.Drawing.Point(6, 371);
+			this.buttonViewHexEditor.Name = "buttonViewHexEditor";
+			this.buttonViewHexEditor.Size = new System.Drawing.Size(99, 23);
+			this.buttonViewHexEditor.TabIndex = 6;
+			this.buttonViewHexEditor.Text = "&Hex Viewer...";
+			this.buttonViewHexEditor.UseVisualStyleBackColor = true;
+			this.buttonViewHexEditor.Click += new System.EventHandler(this.buttonViewHexEditor_Click);
 			// 
 			// tbSelItemInfo
 			// 
@@ -124,15 +141,38 @@
 			this.tbSelItemInfo.Size = new System.Drawing.Size(390, 346);
 			this.tbSelItemInfo.TabIndex = 5;
 			// 
-			// buttonViewHexEditor
+			// buttonOpenAs
 			// 
-			this.buttonViewHexEditor.Location = new System.Drawing.Point(297, 371);
-			this.buttonViewHexEditor.Name = "buttonViewHexEditor";
-			this.buttonViewHexEditor.Size = new System.Drawing.Size(99, 23);
-			this.buttonViewHexEditor.TabIndex = 6;
-			this.buttonViewHexEditor.Text = "&Hex Viewer...";
-			this.buttonViewHexEditor.UseVisualStyleBackColor = true;
-			this.buttonViewHexEditor.Click += new System.EventHandler(this.buttonViewHexEditor_Click);
+			this.buttonOpenAs.ContextMenuStrip = this.cmsOpenAs;
+			this.buttonOpenAs.Location = new System.Drawing.Point(307, 371);
+			this.buttonOpenAs.Name = "buttonOpenAs";
+			this.buttonOpenAs.Size = new System.Drawing.Size(89, 23);
+			this.buttonOpenAs.TabIndex = 9;
+			this.buttonOpenAs.Text = "Open As...";
+			this.buttonOpenAs.UseVisualStyleBackColor = true;
+			this.buttonOpenAs.Click += new System.EventHandler(this.buttonOpenAs_Click);
+			// 
+			// cmsOpenAs
+			// 
+			this.cmsOpenAs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.akiTextureToolStripMenuItem,
+            this.iTextureToolStripMenuItem});
+			this.cmsOpenAs.Name = "cmsOpenAs";
+			this.cmsOpenAs.Size = new System.Drawing.Size(181, 70);
+			// 
+			// akiTextureToolStripMenuItem
+			// 
+			this.akiTextureToolStripMenuItem.Name = "akiTextureToolStripMenuItem";
+			this.akiTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.akiTextureToolStripMenuItem.Text = "AkiTexture";
+			this.akiTextureToolStripMenuItem.Click += new System.EventHandler(this.akiTextureToolStripMenuItem_Click);
+			// 
+			// iTextureToolStripMenuItem
+			// 
+			this.iTextureToolStripMenuItem.Name = "iTextureToolStripMenuItem";
+			this.iTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.iTextureToolStripMenuItem.Text = "ITexture";
+			this.iTextureToolStripMenuItem.Click += new System.EventHandler(this.iTextureToolStripMenuItem_Click);
 			// 
 			// AkiArchiveTool
 			// 
@@ -150,6 +190,7 @@
 			this.gbArchiveFiles.ResumeLayout(false);
 			this.gbSelItem.ResumeLayout(false);
 			this.gbSelItem.PerformLayout();
+			this.cmsOpenAs.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -165,5 +206,9 @@
 		private System.Windows.Forms.GroupBox gbSelItem;
 		private System.Windows.Forms.Button buttonViewHexEditor;
 		private System.Windows.Forms.TextBox tbSelItemInfo;
+		private System.Windows.Forms.Button buttonOpenAs;
+		private System.Windows.Forms.ContextMenuStrip cmsOpenAs;
+		private System.Windows.Forms.ToolStripMenuItem akiTextureToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem iTextureToolStripMenuItem;
 	}
 }
