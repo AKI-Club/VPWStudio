@@ -82,6 +82,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CostumeColorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CostumeColorControl.Designer.cs">
+      <DependentUpon>CostumeColorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OptionsControl_Emulator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -451,6 +457,9 @@
     <Compile Include="Tools\Toki1TestDialog.Designer.cs">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\CostumeColorControl.resx">
+      <DependentUpon>CostumeColorControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionsControl_Emulator.resx">
       <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
     </EmbeddedResource>
