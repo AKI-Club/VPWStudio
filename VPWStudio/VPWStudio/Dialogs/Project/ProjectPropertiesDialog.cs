@@ -104,6 +104,7 @@ namespace VPWStudio
 				tbGSCodeFile.Text = Program.CurrentProject.Settings.ProjectGSCodeFilePath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
+				tbWrestlerNamesFile.Text = Program.CurrentProject.Settings.WrestlerNameFilePath;
 			}
 		}
 
@@ -219,6 +220,8 @@ namespace VPWStudio
 			{
 				NewSettings.CustomLocationFilePath = String.Empty;
 			}
+
+			NewSettings.WrestlerNameFilePath = tbWrestlerNamesFile.Text;
 
 			DialogResult = DialogResult.OK;
 			Close();
@@ -336,8 +339,17 @@ namespace VPWStudio
 				tbGSCodeFile.Text = ofd.FileName;
 			}
 		}
-		#endregion
 
-		
+		private void buttonSetWrestlerNameFile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Wrestler Names File";
+			ofd.Filter = SharedStrings.FileFilter_Text;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbWrestlerNamesFile.Text = ofd.FileName;
+			}
+		}
+		#endregion
 	}
 }
