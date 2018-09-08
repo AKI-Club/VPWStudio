@@ -13,6 +13,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Current Project File version.
 		/// </summary>
+		/// This will remain at 0 until an "official" first version is released.
 		public const uint CUR_PROJECTFILE_VER = 0;
 
 		#region Class Members
