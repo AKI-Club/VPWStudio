@@ -102,6 +102,11 @@ namespace VPWStudio
 		/// Path to custom Stable Definition file.
 		/// </summary>
 		public string StableDefinitionFilePath;
+
+		/// <summary>
+		/// Path to Wrestler Name mapping file.
+		/// </summary>
+		public string WrestlerNameFilePath;
 		#endregion
 
 		/// <summary>
@@ -126,6 +131,7 @@ namespace VPWStudio
 			OutputRomRegion = GameRegion.NorthAmerica;
 			OutputRomCustomRegion = '0';
 			StableDefinitionFilePath = String.Empty;
+			WrestlerNameFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -159,6 +165,7 @@ namespace VPWStudio
 			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
 			OutputRomCustomRegion = '0';
 			StableDefinitionFilePath = String.Empty;
+			WrestlerNameFilePath = String.Empty;
 		}
 
 		/// <summary>
@@ -193,6 +200,7 @@ namespace VPWStudio
 			OutputRomRegion = _src.OutputRomRegion;
 			OutputRomCustomRegion = _src.OutputRomCustomRegion;
 			StableDefinitionFilePath = _src.StableDefinitionFilePath;
+			WrestlerNameFilePath = _src.WrestlerNameFilePath;
 		}
 	}
 }
