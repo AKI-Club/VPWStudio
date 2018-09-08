@@ -330,7 +330,7 @@
     <Compile Include="GameSpecific\ChampionshipDef_Early.cs" />
     <Compile Include="GameSpecific\CostumeDef_Early.cs" />
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
-    <Compile Include="GameSpecific\NoMercy\CostumeDef.cs" />
+    <Compile Include="GameSpecific\NoMercy\CostumeTextures.cs" />
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\NoMercy\NoMercyText.cs" />
     <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
@@ -341,6 +341,7 @@
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
+    <Compile Include="GameSpecific\VPW2\CostumeTextures.cs" />
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
