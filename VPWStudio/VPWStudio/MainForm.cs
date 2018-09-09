@@ -717,6 +717,9 @@ namespace VPWStudio
 							Program.CurrentProject.ProjectFileTable.Entries.Add(entry.Value.FileID, fte);
 						}
 					}
+
+					// update valid menus, since they can change per game
+					UpdateValidMenus();
 				}
 
 				string oldInRomPath = Program.CurrentProject.Settings.InputRomPath;
