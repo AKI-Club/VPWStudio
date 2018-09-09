@@ -174,11 +174,120 @@ namespace VPWStudio
 		/// <summary>
 		/// Load the project file from the specified path.
 		/// </summary>
-		/// <param name="_path"></param>
+		/// <param name="_path">Path to VPW Studio Project File to load.</param>
 		public void LoadProject(string _path)
 		{
 			Program.CurrentProject = new ProjectFile(_path);
 			Program.CurProjectPath = _path;
+			Program.UnsavedChanges = false;
+
+			// load input ROM if it exists.
+			if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
+			{
+				Program.CurrentInputROM = new Z64Rom();
+				Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+			}
+			else
+			{
+				// unable to find input ROM, please see project settings.
+				MessageBox.Show(
+					String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+				Program.CurrentInputROM = null;
+			}
+
+			// load location file
+			Program.CurLocationFile = new LocationFile();
+			if (Program.CurrentProject.Settings.UseCustomLocationFile)
+			{
+				// custom locations
+				Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
+				Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
+			}
+			else
+			{
+				// default location file
+				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
+				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
+				Program.CurLocationFile.LoadFile(locPath);
+				Program.CurLocationFilePath = locPath;
+			}
+		}
+
+		// (re)Load project location file
+		// xxx: this version is not used and i came up with it when i was too tired to think properly
+		public void ReloadLocationFile()
+		{
+			Program.CurLocationFile = new LocationFile();
+			if (Program.CurrentProject.Settings.UseCustomLocationFile)
+			{
+				// custom locations
+				Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
+				Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
+			}
+			else
+			{
+				// default location file
+				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
+				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
+				Program.CurLocationFile.LoadFile(locPath);
+				Program.CurLocationFilePath = locPath;
+			}
+		}
+
+		/// <summary>
+		/// Drag and Drop, Drag portion.
+		/// </summary>
+		private void MainForm_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		/// <summary>
+		/// Drag and Drop, Drop portion.
+		/// </summary>
+		private void MainForm_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				if (files.Length > 1)
+				{
+					Program.WarningMessageBox("More than one file dragged, only opening the first.");
+				}
+
+				// todo: this check should probably be more robust
+				//if (Path.GetExtension(files[0]) != ".vpwsproj")
+				//{
+				//	Program.ErrorMessageBox("");
+				//}
+
+				if (Program.CurrentProject != null && Program.UnsavedChanges)
+				{
+					// there are unsaved changes. discard and open new project file?
+					if (MessageBox.Show(SharedStrings.UnsavedProject_OpenProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+					{
+						return;
+					}
+				}
+
+				LoadProject(files[0]);
+
+				UpdateTitleBar();
+				UpdateValidMenus();
+				UpdateStatusBar();
+				UpdateBackground();
+			}
 		}
 		#endregion
 
@@ -402,7 +511,6 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				LoadProject(ofd.FileName);
-				Program.UnsavedChanges = false;
 
 				/*
 				#region Upgrade fixing
@@ -441,41 +549,6 @@ namespace VPWStudio
 				UpdateStatusBar();
 				UpdateTitleBar();
 				UpdateBackground();
-
-				// load input ROM if it exists.
-				if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
-				{
-					Program.CurrentInputROM = new Z64Rom();
-					Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
-				}
-				else
-				{
-					// unable to find input ROM, please see project settings.
-					MessageBox.Show(
-						String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
-						SharedStrings.MainForm_Title,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error
-					);
-					Program.CurrentInputROM = null;
-				}
-
-				// load location file
-				Program.CurLocationFile = new LocationFile();
-				if (Program.CurrentProject.Settings.UseCustomLocationFile)
-				{
-					// custom locations
-					Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
-					Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
-				}
-				else
-				{
-					// default location file
-					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
-					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
-					Program.CurLocationFile.LoadFile(locPath);
-					Program.CurLocationFilePath = locPath;
-				}
 
 				// close any open dialogs
 				foreach (Form f in this.MdiChildren)
@@ -1900,52 +1973,5 @@ namespace VPWStudio
 
 		#endregion
 
-		#region Drag and Drop (Project Files only!!)
-		private void MainForm_DragEnter(object sender, DragEventArgs e)
-		{
-			if (e.Data.GetDataPresent(DataFormats.FileDrop))
-			{
-				e.Effect = DragDropEffects.Copy;
-			}
-			else
-			{
-				e.Effect = DragDropEffects.None;
-			}
-		}
-
-		private void MainForm_DragDrop(object sender, DragEventArgs e)
-		{
-			if (e.Data.GetDataPresent(DataFormats.FileDrop))
-			{
-				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-				if (files.Length > 1)
-				{
-					Program.WarningMessageBox("More than one file dragged, only opening the first.");
-				}
-
-				// todo: this check should probably be more robust
-				//if (Path.GetExtension(files[0]) != ".vpwsproj")
-				//{
-				//	Program.ErrorMessageBox("");
-				//}
-
-				if (Program.CurrentProject != null && Program.UnsavedChanges)
-				{
-					// there are unsaved changes. discard and open new project file?
-					if (MessageBox.Show(SharedStrings.UnsavedProject_OpenProject, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
-					{
-						return;
-					}
-				}
-
-				LoadProject(files[0]);
-
-				UpdateTitleBar();
-				UpdateValidMenus();
-				UpdateStatusBar();
-				UpdateBackground();
-			}
-		}
-		#endregion
 	}
 }
