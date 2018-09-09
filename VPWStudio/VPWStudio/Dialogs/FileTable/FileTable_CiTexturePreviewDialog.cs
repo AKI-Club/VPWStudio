@@ -249,8 +249,17 @@ namespace VPWStudio
 				this.CurBitmap.Save(sfd.FileName);
 			}
 		}
+
 		#endregion
 
-		
+		private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ColorDialog cd = new ColorDialog();
+			if (cd.ShowDialog() == DialogResult.OK)
+			{
+				pbPreview.BackColor = cd.Color;
+				UpdateImage(paletteIDs[cbPalettes.SelectedIndex]);
+			}
+		}
 	}
 }
