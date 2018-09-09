@@ -217,27 +217,6 @@ namespace VPWStudio
 			}
 		}
 
-		// (re)Load project location file
-		// xxx: this version is not used and i came up with it when i was too tired to think properly
-		public void ReloadLocationFile()
-		{
-			Program.CurLocationFile = new LocationFile();
-			if (Program.CurrentProject.Settings.UseCustomLocationFile)
-			{
-				// custom locations
-				Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
-				Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
-			}
-			else
-			{
-				// default location file
-				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
-				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
-				Program.CurLocationFile.LoadFile(locPath);
-				Program.CurLocationFilePath = locPath;
-			}
-		}
-
 		/// <summary>
 		/// Drag and Drop, Drag portion.
 		/// </summary>
