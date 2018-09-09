@@ -172,6 +172,28 @@ namespace VPWStudio
 
 		#region Project Load/Save
 		/// <summary>
+		/// Load LocationFile. Does not show errors if the file(s) do not exist.
+		/// </summary>
+		private void LoadLocationFile()
+		{
+			Program.CurLocationFile = new LocationFile();
+			if (Program.CurrentProject.Settings.UseCustomLocationFile)
+			{
+				// custom locations
+				Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
+				Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
+			}
+			else
+			{
+				// default location file
+				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
+				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
+				Program.CurLocationFile.LoadFile(locPath);
+				Program.CurLocationFilePath = locPath;
+			}
+		}
+
+		/// <summary>
 		/// Load the project file from the specified path.
 		/// </summary>
 		/// <param name="_path">Path to VPW Studio Project File to load.</param>
@@ -199,22 +221,7 @@ namespace VPWStudio
 				Program.CurrentInputROM = null;
 			}
 
-			// load location file
-			Program.CurLocationFile = new LocationFile();
-			if (Program.CurrentProject.Settings.UseCustomLocationFile)
-			{
-				// custom locations
-				Program.CurLocationFile.LoadFile(Program.CurrentProject.Settings.CustomLocationFilePath);
-				Program.CurLocationFilePath = Program.CurrentProject.Settings.CustomLocationFilePath;
-			}
-			else
-			{
-				// default location file
-				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
-				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
-				Program.CurLocationFile.LoadFile(locPath);
-				Program.CurLocationFilePath = locPath;
-			}
+			LoadLocationFile();
 		}
 
 		/// <summary>
@@ -691,7 +698,8 @@ namespace VPWStudio
 						f.Close();
 					}
 
-					// todo: reload locationfile, since the game type changed
+					// reload locationfile, since the game type changed
+					LoadLocationFile();
 
 					// reload filetable data
 					string ftdbPath = Program.GetFileTableDBPath();
