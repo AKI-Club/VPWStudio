@@ -106,6 +106,35 @@ namespace VPWStudio.Editors.Revenge
 			tbManagerID2.Text = String.Format("{0:X2}", wdef.ManagerID2);
 			tbUnknown5.Text = String.Format("{0:X2}", wdef.Unknown5);
 			tbUnknown6.Text = String.Format("{0:X2}", wdef.Unknown6);
+
+			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(ms);
+
+			ms.Seek(Z64Rom.PointerToRom(wdef.NamePointer), SeekOrigin.Begin);
+			string wName = "";
+			while (br.PeekChar() != 0)
+			{
+				wName += (char)br.ReadByte();
+			}
+			tbWrestlerName.Text = wName;
+
+			ms.Seek(Z64Rom.PointerToRom(wdef.HeightPointer), SeekOrigin.Begin);
+			string wHeight = "";
+			while (br.PeekChar() != 0)
+			{
+				wHeight += (char)br.ReadByte();
+			}
+			tbWrestlerHeight.Text = wHeight;
+
+			ms.Seek(Z64Rom.PointerToRom(wdef.WeightPointer), SeekOrigin.Begin);
+			string wWeight = "";
+			while (br.PeekChar() != 0)
+			{
+				wWeight += (char)br.ReadByte();
+			}
+			tbWrestlerWeight.Text = wWeight;
+
+			br.Close();
 		}
 
 		/// <summary>

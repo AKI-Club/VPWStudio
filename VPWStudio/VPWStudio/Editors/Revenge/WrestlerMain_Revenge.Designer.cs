@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.lbWrestlers = new System.Windows.Forms.ListBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpWrestlerInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.tbUnknown6 = new System.Windows.Forms.TextBox();
 			this.tbUnknown5 = new System.Windows.Forms.TextBox();
 			this.labelUnknown5 = new System.Windows.Forms.Label();
@@ -45,16 +45,25 @@
 			this.labelUnknown1 = new System.Windows.Forms.Label();
 			this.tbUnknown1 = new System.Windows.Forms.TextBox();
 			this.labelWeight = new System.Windows.Forms.Label();
-			this.tbWeightPointer = new System.Windows.Forms.TextBox();
-			this.tbHeightPointer = new System.Windows.Forms.TextBox();
 			this.labelHeight = new System.Windows.Forms.Label();
 			this.labelWrestlerNamePointer = new System.Windows.Forms.Label();
-			this.tbWrestlerNamePointer = new System.Windows.Forms.TextBox();
 			this.labelUnknown2 = new System.Windows.Forms.Label();
 			this.labelUnknown3 = new System.Windows.Forms.Label();
 			this.labelManagerID2 = new System.Windows.Forms.Label();
 			this.labelUnknown6 = new System.Windows.Forms.Label();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpNamePointer = new System.Windows.Forms.TableLayoutPanel();
+			this.tbWrestlerNamePointer = new System.Windows.Forms.TextBox();
+			this.tbWrestlerName = new System.Windows.Forms.TextBox();
+			this.tlpWrestlerHeight = new System.Windows.Forms.TableLayoutPanel();
+			this.tbHeightPointer = new System.Windows.Forms.TextBox();
+			this.tbWrestlerHeight = new System.Windows.Forms.TextBox();
+			this.tlpWrestlerWeight = new System.Windows.Forms.TableLayoutPanel();
+			this.tbWeightPointer = new System.Windows.Forms.TextBox();
+			this.tbWrestlerWeight = new System.Windows.Forms.TextBox();
+			this.tlpWrestlerInfo.SuspendLayout();
+			this.tlpNamePointer.SuspendLayout();
+			this.tlpWrestlerHeight.SuspendLayout();
+			this.tlpWrestlerWeight.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -69,54 +78,54 @@
 			this.lbWrestlers.TabIndex = 0;
 			this.lbWrestlers.SelectedIndexChanged += new System.EventHandler(this.lbWrestlers_SelectedIndexChanged);
 			// 
-			// tableLayoutPanel1
+			// tlpWrestlerInfo
 			// 
-			this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tlpWrestlerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown6, 1, 11);
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown5, 1, 10);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown5, 0, 10);
-			this.tableLayoutPanel1.Controls.Add(this.tbManagerID2, 1, 9);
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown4, 1, 8);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown4, 0, 8);
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown3, 1, 4);
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown2, 1, 3);
-			this.tableLayoutPanel1.Controls.Add(this.labelWrestlerID4, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.tbWrestlerID4, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.tbWrestlerID2, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.labelWrestlerID2, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown1, 0, 2);
-			this.tableLayoutPanel1.Controls.Add(this.tbUnknown1, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.labelWeight, 0, 7);
-			this.tableLayoutPanel1.Controls.Add(this.tbWeightPointer, 1, 7);
-			this.tableLayoutPanel1.Controls.Add(this.tbHeightPointer, 1, 6);
-			this.tableLayoutPanel1.Controls.Add(this.labelHeight, 0, 6);
-			this.tableLayoutPanel1.Controls.Add(this.labelWrestlerNamePointer, 0, 5);
-			this.tableLayoutPanel1.Controls.Add(this.tbWrestlerNamePointer, 1, 5);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown2, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown3, 0, 4);
-			this.tableLayoutPanel1.Controls.Add(this.labelManagerID2, 0, 9);
-			this.tableLayoutPanel1.Controls.Add(this.labelUnknown6, 0, 11);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(146, 12);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 12;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 465);
-			this.tableLayoutPanel1.TabIndex = 1;
+			this.tlpWrestlerInfo.ColumnCount = 2;
+			this.tlpWrestlerInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpWrestlerInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown6, 1, 11);
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown5, 1, 10);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown5, 0, 10);
+			this.tlpWrestlerInfo.Controls.Add(this.tbManagerID2, 1, 9);
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown4, 1, 8);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown4, 0, 8);
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown3, 1, 4);
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown2, 1, 3);
+			this.tlpWrestlerInfo.Controls.Add(this.labelWrestlerID4, 0, 0);
+			this.tlpWrestlerInfo.Controls.Add(this.tbWrestlerID4, 1, 0);
+			this.tlpWrestlerInfo.Controls.Add(this.tbWrestlerID2, 1, 1);
+			this.tlpWrestlerInfo.Controls.Add(this.labelWrestlerID2, 0, 1);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown1, 0, 2);
+			this.tlpWrestlerInfo.Controls.Add(this.tbUnknown1, 1, 2);
+			this.tlpWrestlerInfo.Controls.Add(this.labelWeight, 0, 7);
+			this.tlpWrestlerInfo.Controls.Add(this.labelHeight, 0, 6);
+			this.tlpWrestlerInfo.Controls.Add(this.labelWrestlerNamePointer, 0, 5);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown2, 0, 3);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown3, 0, 4);
+			this.tlpWrestlerInfo.Controls.Add(this.labelManagerID2, 0, 9);
+			this.tlpWrestlerInfo.Controls.Add(this.labelUnknown6, 0, 11);
+			this.tlpWrestlerInfo.Controls.Add(this.tlpNamePointer, 1, 5);
+			this.tlpWrestlerInfo.Controls.Add(this.tlpWrestlerHeight, 1, 6);
+			this.tlpWrestlerInfo.Controls.Add(this.tlpWrestlerWeight, 1, 7);
+			this.tlpWrestlerInfo.Location = new System.Drawing.Point(146, 12);
+			this.tlpWrestlerInfo.Name = "tlpWrestlerInfo";
+			this.tlpWrestlerInfo.RowCount = 12;
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+			this.tlpWrestlerInfo.Size = new System.Drawing.Size(346, 465);
+			this.tlpWrestlerInfo.TabIndex = 1;
 			// 
 			// tbUnknown6
 			// 
@@ -259,24 +268,6 @@
 			this.labelWeight.TabIndex = 24;
 			this.labelWeight.Text = "Weight Pointer";
 			// 
-			// tbWeightPointer
-			// 
-			this.tbWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWeightPointer.Location = new System.Drawing.Point(106, 275);
-			this.tbWeightPointer.Name = "tbWeightPointer";
-			this.tbWeightPointer.ReadOnly = true;
-			this.tbWeightPointer.Size = new System.Drawing.Size(237, 20);
-			this.tbWeightPointer.TabIndex = 27;
-			// 
-			// tbHeightPointer
-			// 
-			this.tbHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHeightPointer.Location = new System.Drawing.Point(106, 237);
-			this.tbHeightPointer.Name = "tbHeightPointer";
-			this.tbHeightPointer.ReadOnly = true;
-			this.tbHeightPointer.Size = new System.Drawing.Size(237, 20);
-			this.tbHeightPointer.TabIndex = 25;
-			// 
 			// labelHeight
 			// 
 			this.labelHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -296,15 +287,6 @@
 			this.labelWrestlerNamePointer.Size = new System.Drawing.Size(97, 13);
 			this.labelWrestlerNamePointer.TabIndex = 28;
 			this.labelWrestlerNamePointer.Text = "Name Pointer";
-			// 
-			// tbWrestlerNamePointer
-			// 
-			this.tbWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerNamePointer.Location = new System.Drawing.Point(106, 199);
-			this.tbWrestlerNamePointer.Name = "tbWrestlerNamePointer";
-			this.tbWrestlerNamePointer.ReadOnly = true;
-			this.tbWrestlerNamePointer.Size = new System.Drawing.Size(237, 20);
-			this.tbWrestlerNamePointer.TabIndex = 29;
 			// 
 			// labelUnknown2
 			// 
@@ -346,20 +328,128 @@
 			this.labelUnknown6.TabIndex = 39;
 			this.labelUnknown6.Text = "Unknown 6";
 			// 
+			// tlpNamePointer
+			// 
+			this.tlpNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpNamePointer.ColumnCount = 2;
+			this.tlpNamePointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpNamePointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpNamePointer.Controls.Add(this.tbWrestlerName, 0, 0);
+			this.tlpNamePointer.Controls.Add(this.tbWrestlerNamePointer, 0, 0);
+			this.tlpNamePointer.Location = new System.Drawing.Point(106, 193);
+			this.tlpNamePointer.Name = "tlpNamePointer";
+			this.tlpNamePointer.RowCount = 1;
+			this.tlpNamePointer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpNamePointer.Size = new System.Drawing.Size(237, 32);
+			this.tlpNamePointer.TabIndex = 43;
+			// 
+			// tbWrestlerNamePointer
+			// 
+			this.tbWrestlerNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerNamePointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.tbWrestlerNamePointer.Location = new System.Drawing.Point(3, 6);
+			this.tbWrestlerNamePointer.Name = "tbWrestlerNamePointer";
+			this.tbWrestlerNamePointer.ReadOnly = true;
+			this.tbWrestlerNamePointer.Size = new System.Drawing.Size(65, 20);
+			this.tbWrestlerNamePointer.TabIndex = 30;
+			// 
+			// tbWrestlerName
+			// 
+			this.tbWrestlerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerName.Location = new System.Drawing.Point(74, 6);
+			this.tbWrestlerName.Name = "tbWrestlerName";
+			this.tbWrestlerName.ReadOnly = true;
+			this.tbWrestlerName.Size = new System.Drawing.Size(160, 20);
+			this.tbWrestlerName.TabIndex = 31;
+			// 
+			// tlpWrestlerHeight
+			// 
+			this.tlpWrestlerHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpWrestlerHeight.ColumnCount = 2;
+			this.tlpWrestlerHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpWrestlerHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpWrestlerHeight.Controls.Add(this.tbWrestlerHeight, 0, 0);
+			this.tlpWrestlerHeight.Controls.Add(this.tbHeightPointer, 0, 0);
+			this.tlpWrestlerHeight.Location = new System.Drawing.Point(106, 231);
+			this.tlpWrestlerHeight.Name = "tlpWrestlerHeight";
+			this.tlpWrestlerHeight.RowCount = 1;
+			this.tlpWrestlerHeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpWrestlerHeight.Size = new System.Drawing.Size(237, 32);
+			this.tlpWrestlerHeight.TabIndex = 44;
+			// 
+			// tbHeightPointer
+			// 
+			this.tbHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbHeightPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.tbHeightPointer.Location = new System.Drawing.Point(3, 6);
+			this.tbHeightPointer.Name = "tbHeightPointer";
+			this.tbHeightPointer.ReadOnly = true;
+			this.tbHeightPointer.Size = new System.Drawing.Size(65, 20);
+			this.tbHeightPointer.TabIndex = 26;
+			// 
+			// tbWrestlerHeight
+			// 
+			this.tbWrestlerHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerHeight.Location = new System.Drawing.Point(74, 6);
+			this.tbWrestlerHeight.Name = "tbWrestlerHeight";
+			this.tbWrestlerHeight.ReadOnly = true;
+			this.tbWrestlerHeight.Size = new System.Drawing.Size(160, 20);
+			this.tbWrestlerHeight.TabIndex = 27;
+			// 
+			// tlpWrestlerWeight
+			// 
+			this.tlpWrestlerWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpWrestlerWeight.ColumnCount = 2;
+			this.tlpWrestlerWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpWrestlerWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpWrestlerWeight.Controls.Add(this.tbWrestlerWeight, 0, 0);
+			this.tlpWrestlerWeight.Controls.Add(this.tbWeightPointer, 0, 0);
+			this.tlpWrestlerWeight.Location = new System.Drawing.Point(106, 269);
+			this.tlpWrestlerWeight.Name = "tlpWrestlerWeight";
+			this.tlpWrestlerWeight.RowCount = 1;
+			this.tlpWrestlerWeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpWrestlerWeight.Size = new System.Drawing.Size(237, 32);
+			this.tlpWrestlerWeight.TabIndex = 45;
+			// 
+			// tbWeightPointer
+			// 
+			this.tbWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWeightPointer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.tbWeightPointer.Location = new System.Drawing.Point(3, 6);
+			this.tbWeightPointer.Name = "tbWeightPointer";
+			this.tbWeightPointer.ReadOnly = true;
+			this.tbWeightPointer.Size = new System.Drawing.Size(65, 20);
+			this.tbWeightPointer.TabIndex = 28;
+			// 
+			// tbWrestlerWeight
+			// 
+			this.tbWrestlerWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerWeight.Location = new System.Drawing.Point(74, 6);
+			this.tbWrestlerWeight.Name = "tbWrestlerWeight";
+			this.tbWrestlerWeight.ReadOnly = true;
+			this.tbWrestlerWeight.Size = new System.Drawing.Size(160, 20);
+			this.tbWrestlerWeight.TabIndex = 29;
+			// 
 			// WrestlerMain_Revenge
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(504, 494);
-			this.Controls.Add(this.tableLayoutPanel1);
+			this.Controls.Add(this.tlpWrestlerInfo);
 			this.Controls.Add(this.lbWrestlers);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "WrestlerMain_Revenge";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (WCW/nWo Revenge)";
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
+			this.tlpWrestlerInfo.ResumeLayout(false);
+			this.tlpWrestlerInfo.PerformLayout();
+			this.tlpNamePointer.ResumeLayout(false);
+			this.tlpNamePointer.PerformLayout();
+			this.tlpWrestlerHeight.ResumeLayout(false);
+			this.tlpWrestlerHeight.PerformLayout();
+			this.tlpWrestlerWeight.ResumeLayout(false);
+			this.tlpWrestlerWeight.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -367,7 +457,7 @@
 		#endregion
 
 		private System.Windows.Forms.ListBox lbWrestlers;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel tlpWrestlerInfo;
 		private System.Windows.Forms.TextBox tbWrestlerID4;
 		private System.Windows.Forms.TextBox tbWrestlerID2;
 		private System.Windows.Forms.Label labelWrestlerID4;
@@ -375,10 +465,7 @@
 		private System.Windows.Forms.Label labelHeight;
 		private System.Windows.Forms.Label labelUnknown1;
 		private System.Windows.Forms.Label labelWeight;
-		private System.Windows.Forms.TextBox tbWeightPointer;
 		private System.Windows.Forms.TextBox tbUnknown1;
-		private System.Windows.Forms.TextBox tbHeightPointer;
-		private System.Windows.Forms.TextBox tbWrestlerNamePointer;
 		private System.Windows.Forms.Label labelWrestlerNamePointer;
 		private System.Windows.Forms.TextBox tbUnknown3;
 		private System.Windows.Forms.TextBox tbUnknown2;
@@ -392,5 +479,14 @@
 		private System.Windows.Forms.Label labelUnknown6;
 		private System.Windows.Forms.TextBox tbUnknown6;
 		private System.Windows.Forms.TextBox tbUnknown5;
+		private System.Windows.Forms.TableLayoutPanel tlpNamePointer;
+		private System.Windows.Forms.TextBox tbWrestlerNamePointer;
+		private System.Windows.Forms.TextBox tbWrestlerName;
+		private System.Windows.Forms.TableLayoutPanel tlpWrestlerHeight;
+		private System.Windows.Forms.TextBox tbWrestlerHeight;
+		private System.Windows.Forms.TextBox tbHeightPointer;
+		private System.Windows.Forms.TableLayoutPanel tlpWrestlerWeight;
+		private System.Windows.Forms.TextBox tbWrestlerWeight;
+		private System.Windows.Forms.TextBox tbWeightPointer;
 	}
 }
