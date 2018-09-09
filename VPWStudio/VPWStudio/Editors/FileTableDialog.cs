@@ -225,6 +225,8 @@ namespace VPWStudio
 					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(entry.Value.FileID))
 					{
 						// only replace filetype if it doesn't match current
+						// todo: an entry's filetype might have been intentionally changed (e.g. to take advantage of unused IDs)
+						// the proposed solution is to use a dialog
 						if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
 						{
 							Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
