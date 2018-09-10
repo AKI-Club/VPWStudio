@@ -98,6 +98,12 @@ namespace VPWStudio
 					continue;
 				}
 
+				// Ci4Background is only used in WWF No Mercy
+				if (curType == FileTypes.Ci4Background && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
+				{
+					continue;
+				}
+
 				// NoMercyText is only available in No Mercy (<sarcasm>really???? you think?!</sarcasm>)
 				if (curType == FileTypes.NoMercyText && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
 				{
@@ -715,6 +721,7 @@ namespace VPWStudio
 				// CI4/CI8 textures
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
+				case FileTypes.Ci4Background:
 					{
 						FileTable_CiTexturePreviewDialog citd = new FileTable_CiTexturePreviewDialog(key);
 						citd.ShowDialog();

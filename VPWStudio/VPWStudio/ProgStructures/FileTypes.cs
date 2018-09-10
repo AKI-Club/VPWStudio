@@ -52,6 +52,7 @@ namespace VPWStudio
 		#endregion
 
 		#region WWF No Mercy
+		Ci4Background, // WWF No Mercy Smackdown Mall background
 		NoMercyText, // WWF No Mercy text archives (used for move names)
 		#endregion
 
