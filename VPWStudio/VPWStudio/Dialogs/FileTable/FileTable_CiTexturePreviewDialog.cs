@@ -90,6 +90,25 @@ namespace VPWStudio
 
 				CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
 			}
+			// special WWF No Mercy background case
+			else if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci4Background)
+			{
+				CurViewMode = CiViewerModes.Ci4;
+				CurCI8Palette = null;
+				CurCI8Texture = null;
+
+				paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
+				CurCI4Palette = new Ci4Palette();
+				CurCI4Texture = new Ci4Texture();
+
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
+				imgStream.Seek(8, SeekOrigin.Begin);
+				BinaryReader fr = new BinaryReader(imgStream);
+				CurCI4Texture.ReadRawData(320, 240, fr);
+				fr.Close();
+
+				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
+			}
 
 			imgWriter.Close();
 			romReader.Close();

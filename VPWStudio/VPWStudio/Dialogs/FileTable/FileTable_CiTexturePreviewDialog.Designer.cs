@@ -35,9 +35,9 @@
 			this.pbPreview = new System.Windows.Forms.PictureBox();
 			this.cmsImage = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.savePNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbSubPalettes = new System.Windows.Forms.GroupBox();
 			this.cbSubPalettes = new System.Windows.Forms.ComboBox();
-			this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbPalette.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
@@ -70,6 +70,9 @@
 			// 
 			// gbPreview
 			// 
+			this.gbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbPreview.Controls.Add(this.pbPreview);
 			this.gbPreview.Location = new System.Drawing.Point(12, 64);
 			this.gbPreview.Name = "gbPreview";
@@ -94,18 +97,26 @@
             this.savePNGToolStripMenuItem,
             this.backgroundColorToolStripMenuItem});
 			this.cmsImage.Name = "cmsImage";
-			this.cmsImage.Size = new System.Drawing.Size(181, 70);
+			this.cmsImage.Size = new System.Drawing.Size(171, 48);
 			// 
 			// savePNGToolStripMenuItem
 			// 
 			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
 			this.savePNGToolStripMenuItem.Text = "Save PNG...";
 			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
 			// 
+			// backgroundColorToolStripMenuItem
+			// 
+			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
+			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+			this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
+			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+			// 
 			// gbSubPalettes
 			// 
+			this.gbSubPalettes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbSubPalettes.Controls.Add(this.cbSubPalettes);
 			this.gbSubPalettes.Location = new System.Drawing.Point(199, 12);
 			this.gbSubPalettes.Name = "gbSubPalettes";
@@ -127,13 +138,6 @@
 			this.cbSubPalettes.SelectionChangeCommitted += new System.EventHandler(this.cbSubPalettes_SelectionChangeCommitted);
 			this.cbSubPalettes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_CiTexturePreviewDialog_KeyDown);
 			// 
-			// backgroundColorToolStripMenuItem
-			// 
-			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
-			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
-			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
-			// 
 			// FileTable_CiTexturePreviewDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,9 +146,10 @@
 			this.Controls.Add(this.gbSubPalettes);
 			this.Controls.Add(this.gbPreview);
 			this.Controls.Add(this.gbPalette);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(400, 317);
 			this.Name = "FileTable_CiTexturePreviewDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "(CI* image preview)";
