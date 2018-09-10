@@ -3232,11 +3232,11 @@
 4992=AkiTexture;[Titantron] Undertaker frame 7
 4993=I4Texture;Buttons (24x256)
 4994=Ci4Palette;Data Background
-4995=Binary;Data Background
+4995=Ci4Background;Data Background
 4996=Ci4Palette;Shop Background
-4997=Binary;Shop Background
+4997=Ci4Background;Shop Background
 4998=Ci4Palette;Superstar Options Background
-4999=Binary;Superstar Options Background
+4999=Ci4Background;Superstar Options Background
 499A=Ci4Palette;Armageddon logo left
 499B=Ci4Texture;Armageddon logo left
 499C=Ci4Palette;Armageddon logo right
@@ -3442,8 +3442,8 @@
 4A65=Binary;[Edit Mode] Upper Body
 4A66=Binary;[Edit Mode] Wrist Bands
 4A67=Binary;[Edit Mode] Weapons/Props
-4A71=Ci4Palette;
-4A72=Binary;
+4A71=Ci4Palette;Smackdown Mall Superstar Select Background
+4A72=Ci4Background;Smackdown Mall Superstar Select Background
 4A73=Ci4Palette;
 4A74=Ci4Texture;
 4A75=Ci4Palette;
