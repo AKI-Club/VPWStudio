@@ -623,7 +623,7 @@
 04C5=AkiModel;[Body Type 1] Right Fingers
 04C6=AkiModel;[Body Type 1] Right Upper Arm
 04C9=AkiModel;[Body Type 2] Pelvis
-04C9=AkiModel;[Body Type 2] Left Lower Leg
+04CA=AkiModel;[Body Type 2] Left Lower Leg
 04ED=Ci8Palette;Hogan neck
 04EE=AkiModel;Hogan neck
 04EF=Ci8Texture;Hogan neck
@@ -639,4 +639,6 @@
 0999=Ci4Texture;Upper Chest
 0A44=Ci4Palette;Hogan boots
 0A99=Ci4Texture;Hollywood (pelvis)
-0B55=AkiAnimation;(wrestling stance?)
+0B55=AkiAnimation;[Stance] Wrestling
+0B56=AkiAnimation;[Stance] Hannibal?
+0B57=AkiAnimation;[Stance] Boxing
