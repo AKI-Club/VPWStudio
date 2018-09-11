@@ -1225,5 +1225,13 @@
 0E36=Ci4Texture;
 0E37=Ci8Palette;[Face] Han Zo Mon (Yellow)
 0E38=Ci8Texture;[Face] Han Zo Mon (Yellow)
-0E39=AkiAnimation;(first animation data?)
-1DE9=AkiAnimation;(last animation data?)
+0E39=AkiAnimation;[Stance] Wrestling
+0E3A=AkiAnimation;[Stance] Han Zo Mon?
+0E3B=AkiAnimation;[Stance] Boxing
+0E3C=AkiAnimation;[Stance] Giant?
+0E3D=AkiAnimation;[Stance] Normal
+0E3E=AkiAnimation;?
+0E3F=AkiAnimation;[Stance] Women
+0E40=AkiAnimation;[Stance] Holding Head
+0E41=AkiAnimation;[Stance] Holding Head 2
+1DE9=AkiAnimation;[Apron Taunt] Hands going out from chest
