@@ -936,7 +936,11 @@ namespace VPWStudio
 		{
 			// save previous position
 			ListViewItem prevItem = lvFileList.FocusedItem;
-			int prevIndex = prevItem.Index;
+			int prevIndex = 0;
+			if (prevItem != null)
+			{
+				prevIndex = prevItem.Index;
+			}
 
 			ReloadFileTableDB();
 			UpdateEntryList();
