@@ -164,5 +164,25 @@ namespace VPWStudio
 			}
 			UpdateFrameData();
 		}
+
+		private void copyHexToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// copy hex values to clipboard
+			string hexVals = string.Empty;
+
+			// toki2
+			for (int i = 0; i < CurAnim.Toki2.Length; i++)
+			{
+				hexVals += string.Format("{0:X2} ", CurAnim.Toki2[i]);
+			}
+
+			// animation frame data
+			for (int i = 0; i < CurAnim.FrameData.Count; i++)
+			{
+				hexVals += CurAnim.FrameData[i].ToString();
+			}
+			Clipboard.SetText(hexVals);
+			Program.InfoMessageBox("Copied animation data to clipboard.\n\nPaste it into S.K. Stylez's Animation Editor at D3 (main) or D1 (secondary).");
+		}
 	}
 }
