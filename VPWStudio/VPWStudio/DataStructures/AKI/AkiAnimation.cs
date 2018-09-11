@@ -101,6 +101,25 @@ namespace VPWStudio
 			bw.Write((byte)((Rotation & 0x0F) << 4 | (pz[0] & 0x0F)));
 			bw.Write((pz[1]));
 		}
+
+		/// <summary>
+		/// Returns PivotRotation data as a hex string.
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			MemoryStream ms = new MemoryStream();
+			BinaryWriter bw = new BinaryWriter(ms);
+			WriteData(bw);
+			string output = string.Empty;
+			ms.Seek(0, SeekOrigin.Begin);
+			for (int i = 0; i < 4; i++)
+			{
+				output += string.Format("{0:X2} ", ms.ReadByte());
+			}
+			bw.Close();
+			return output;
+		}
 	}
 
 	/// <summary>
@@ -198,6 +217,25 @@ namespace VPWStudio
 			bw.Write((byte)((OverallY & 0x0F) << 4 | (oz[0] & 0x0F)));
 			bw.Write((oz[1]));
 		}
+
+		/// <summary>
+		/// Returns OverallMovementXYZ data as a hex string.
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			MemoryStream ms = new MemoryStream();
+			BinaryWriter bw = new BinaryWriter(ms);
+			WriteData(bw);
+			string output = string.Empty;
+			ms.Seek(0, SeekOrigin.Begin);
+			for (int i = 0; i < 4; i++)
+			{
+				output += string.Format("{0:X2} ", ms.ReadByte());
+			}
+			bw.Close();
+			return output;
+		}
 	}
 
 	/// <summary>
@@ -272,6 +310,15 @@ namespace VPWStudio
 			bw.Write(X);
 			bw.Write(Y);
 			bw.Write(Z);
+		}
+
+		/// <summary>
+		/// Returns MovementXYZ data as a hex string.
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			return string.Format("{0:X2} {1:X2} {2:X2} ", X, Y, Z);
 		}
 	}
 
@@ -409,6 +456,40 @@ namespace VPWStudio
 			RightFingers.WriteData(bw);
 			UpperRightArm.WriteData(bw);
 			RightArmMovement.WriteData(bw);
+		}
+
+		/// <summary>
+		/// Returns AnimationFrame data as a hex string.
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+		{
+			string output = Pelvis.ToString();
+			output += OverallMovement.ToString();
+			output += LowerAb.ToString();
+			output += LowerAbMovement.ToString();
+			output += UpperBody.ToString();
+			output += UpperBodyMovement.ToString();
+			output += Neck.ToString();
+			output += Head.ToString();
+			output += LowerLeftLeg.ToString();
+			output += UpperLeftLeg.ToString();
+			output += LeftLegMovement.ToString();
+			output += LeftFoot.ToString();
+			output += LeftHand.ToString();
+			output += LeftFingers.ToString();
+			output += LowerLeftArm.ToString();
+			output += UpperLeftArm.ToString();
+			output += LeftArmMovement.ToString();
+			output += LowerRightLeg.ToString();
+			output += UpperRightLeg.ToString();
+			output += RightLegMovement.ToString();
+			output += RightFoot.ToString();
+			output += LowerRightArm.ToString();
+			output += RightHand.ToString();
+			output += RightFingers.ToString();
+			output += UpperRightArm.ToString();
+			return output += RightArmMovement.ToString();
 		}
 	}
 
