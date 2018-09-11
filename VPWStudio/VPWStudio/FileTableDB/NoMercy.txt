@@ -1851,7 +1851,14 @@
 2DD6=Ci4Texture;[Lobby TV Screen] No Mercy Noise
 2DD7=Ci4Palette;[Lobby] Grey Wall
 2DD8=Ci4Texture;[Lobby] Grey Wall
-2DD9=AkiAnimation;(first animation data?)
+2DD9=AkiAnimation;[Stance] Wrestling?
+2DDA=AkiAnimation;[Stance] Shoot
+2DDB=AkiAnimation;[Stance] Martial Arts
+2DDC=AkiAnimation;[Stance] (old giant stance?)
+2DDD=AkiAnimation;[Stance] Normal/Giant
+2DDE=AkiAnimation;[Stance] Normal/Giant 2?
+2DDF=AkiAnimation;[Stance] Women
+2DE0=AkiAnimation;standing still?
 31C1=AkiAnimation;(championship mode animation)
 31C2=AkiAnimation;(championship mode animation)
 31C3=AkiAnimation;(championship mode animation)
