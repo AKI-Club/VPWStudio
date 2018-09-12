@@ -36,12 +36,12 @@
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.gbSelItem = new System.Windows.Forms.GroupBox();
-			this.buttonViewHexEditor = new System.Windows.Forms.Button();
-			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
 			this.buttonOpenAs = new System.Windows.Forms.Button();
 			this.cmsOpenAs = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.akiTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.iTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.buttonViewHexEditor = new System.Windows.Forms.Button();
+			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
 			this.gbArchiveFiles.SuspendLayout();
 			this.gbSelItem.SuspendLayout();
 			this.cmsOpenAs.SuspendLayout();
@@ -54,14 +54,14 @@
 			this.gbArchiveFiles.Controls.Add(this.lbFiles);
 			this.gbArchiveFiles.Location = new System.Drawing.Point(12, 12);
 			this.gbArchiveFiles.Name = "gbArchiveFiles";
-			this.gbArchiveFiles.Size = new System.Drawing.Size(200, 429);
+			this.gbArchiveFiles.Size = new System.Drawing.Size(200, 431);
 			this.gbArchiveFiles.TabIndex = 0;
 			this.gbArchiveFiles.TabStop = false;
 			this.gbArchiveFiles.Text = "&Files";
 			// 
 			// buttonReplace
 			// 
-			this.buttonReplace.Location = new System.Drawing.Point(104, 400);
+			this.buttonReplace.Location = new System.Drawing.Point(104, 402);
 			this.buttonReplace.Name = "buttonReplace";
 			this.buttonReplace.Size = new System.Drawing.Size(90, 23);
 			this.buttonReplace.TabIndex = 3;
@@ -71,7 +71,7 @@
 			// 
 			// buttonExtract
 			// 
-			this.buttonExtract.Location = new System.Drawing.Point(6, 400);
+			this.buttonExtract.Location = new System.Drawing.Point(6, 402);
 			this.buttonExtract.Name = "buttonExtract";
 			this.buttonExtract.Size = new System.Drawing.Size(90, 23);
 			this.buttonExtract.TabIndex = 2;
@@ -90,7 +90,7 @@
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(464, 418);
+			this.buttonOK.Location = new System.Drawing.Point(466, 420);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 7;
@@ -100,7 +100,7 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(545, 418);
+			this.buttonCancel.Location = new System.Drawing.Point(547, 420);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 8;
@@ -119,6 +119,39 @@
 			this.gbSelItem.TabIndex = 4;
 			this.gbSelItem.TabStop = false;
 			this.gbSelItem.Text = "Selected &Item";
+			// 
+			// buttonOpenAs
+			// 
+			this.buttonOpenAs.ContextMenuStrip = this.cmsOpenAs;
+			this.buttonOpenAs.Location = new System.Drawing.Point(307, 371);
+			this.buttonOpenAs.Name = "buttonOpenAs";
+			this.buttonOpenAs.Size = new System.Drawing.Size(89, 23);
+			this.buttonOpenAs.TabIndex = 9;
+			this.buttonOpenAs.Text = "Open As...";
+			this.buttonOpenAs.UseVisualStyleBackColor = true;
+			this.buttonOpenAs.Click += new System.EventHandler(this.buttonOpenAs_Click);
+			// 
+			// cmsOpenAs
+			// 
+			this.cmsOpenAs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.akiTextureToolStripMenuItem,
+            this.iTextureToolStripMenuItem});
+			this.cmsOpenAs.Name = "cmsOpenAs";
+			this.cmsOpenAs.Size = new System.Drawing.Size(127, 48);
+			// 
+			// akiTextureToolStripMenuItem
+			// 
+			this.akiTextureToolStripMenuItem.Name = "akiTextureToolStripMenuItem";
+			this.akiTextureToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+			this.akiTextureToolStripMenuItem.Text = "AkiTexture";
+			this.akiTextureToolStripMenuItem.Click += new System.EventHandler(this.akiTextureToolStripMenuItem_Click);
+			// 
+			// iTextureToolStripMenuItem
+			// 
+			this.iTextureToolStripMenuItem.Name = "iTextureToolStripMenuItem";
+			this.iTextureToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+			this.iTextureToolStripMenuItem.Text = "ITexture";
+			this.iTextureToolStripMenuItem.Click += new System.EventHandler(this.iTextureToolStripMenuItem_Click);
 			// 
 			// buttonViewHexEditor
 			// 
@@ -141,49 +174,17 @@
 			this.tbSelItemInfo.Size = new System.Drawing.Size(390, 346);
 			this.tbSelItemInfo.TabIndex = 5;
 			// 
-			// buttonOpenAs
-			// 
-			this.buttonOpenAs.ContextMenuStrip = this.cmsOpenAs;
-			this.buttonOpenAs.Location = new System.Drawing.Point(307, 371);
-			this.buttonOpenAs.Name = "buttonOpenAs";
-			this.buttonOpenAs.Size = new System.Drawing.Size(89, 23);
-			this.buttonOpenAs.TabIndex = 9;
-			this.buttonOpenAs.Text = "Open As...";
-			this.buttonOpenAs.UseVisualStyleBackColor = true;
-			this.buttonOpenAs.Click += new System.EventHandler(this.buttonOpenAs_Click);
-			// 
-			// cmsOpenAs
-			// 
-			this.cmsOpenAs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.akiTextureToolStripMenuItem,
-            this.iTextureToolStripMenuItem});
-			this.cmsOpenAs.Name = "cmsOpenAs";
-			this.cmsOpenAs.Size = new System.Drawing.Size(181, 70);
-			// 
-			// akiTextureToolStripMenuItem
-			// 
-			this.akiTextureToolStripMenuItem.Name = "akiTextureToolStripMenuItem";
-			this.akiTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.akiTextureToolStripMenuItem.Text = "AkiTexture";
-			this.akiTextureToolStripMenuItem.Click += new System.EventHandler(this.akiTextureToolStripMenuItem_Click);
-			// 
-			// iTextureToolStripMenuItem
-			// 
-			this.iTextureToolStripMenuItem.Name = "iTextureToolStripMenuItem";
-			this.iTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.iTextureToolStripMenuItem.Text = "ITexture";
-			this.iTextureToolStripMenuItem.Click += new System.EventHandler(this.iTextureToolStripMenuItem_Click);
-			// 
 			// AkiArchiveTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(632, 453);
+			this.ClientSize = new System.Drawing.Size(634, 455);
 			this.Controls.Add(this.gbSelItem);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.gbArchiveFiles);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "AkiArchiveTool";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "AKI Archive Tool";
