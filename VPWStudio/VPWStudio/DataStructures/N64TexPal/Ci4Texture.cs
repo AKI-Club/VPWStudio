@@ -157,6 +157,21 @@ namespace VPWStudio
 			// image data
 			bw.Write(Data);
 		}
+
+		/// <summary>
+		/// Write Ci4Background data using a BinaryWriter.
+		/// </summary>
+		/// Ci4Background is a variant of Ci4Texture used in WWF No Mercy for Smackdown Mall backgrounds.
+		/// All Ci4Backgrounds are 320x240, and the palette is stored in a separate file.
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteCi4BackgroundData(BinaryWriter bw)
+		{
+			// header has prefilled bytes
+			bw.Write(new byte[]{ 0x3F,0xEF,0x00,0x20,0x00,0x00,0x08,0x07 });
+
+			// then write image data as usual.
+			bw.Write(Data);
+		}
 		#endregion
 
 		#region Bitmap Read/Write
