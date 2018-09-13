@@ -3978,5 +3978,5 @@
 1AA1=AkiAnimation;Walking backward
 1AA2=AkiAnimation;Walking backward 2?
 1CDA=AkiAnimation;Waiting on Top of Turnbuckle
-2056=AkiAnimation;(default chop, first move animation)
+2056=AkiAnimation;(chop, first move animation)
 3164=AkiAnimation;[Move Animation] (abdullah the butcher taunt)
