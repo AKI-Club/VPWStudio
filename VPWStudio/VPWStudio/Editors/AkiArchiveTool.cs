@@ -78,7 +78,11 @@ namespace VPWStudio
 
 			for (int i = 0; i < CurArchive.NumFiles; i++)
 			{
-				lbFiles.Items.Add(String.Format("File {0}", i));
+				// only add valid entries
+				if (CurArchive.FileEntries[i].Size > 0)
+				{
+					lbFiles.Items.Add(String.Format("File {0}", i));
+				}
 			}
 
 			lbFiles.EndUpdate();
