@@ -46,6 +46,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Number of files in the archive, according to the header.
 		/// </summary>
+		/// How many files are actually in the archive is up for debate...
 		public int NumFiles;
 
 		/// <summary>
@@ -98,6 +99,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(FileEntries[i].StartAddr, SeekOrigin.Begin);
 
 				int fileSize = 0;
+				// todo: start address of next entry may be behind this entry (e.g. when next entry is all 0)
 				if (i < NumFiles - 1)
 				{
 					// find end point (start of next file)
@@ -107,6 +109,12 @@ namespace VPWStudio
 				{
 					// note: last file will use arcLength - curPos
 					fileSize = (int)(arcLength - FileEntries[i].StartAddr);
+				}
+
+				// don't bother with 0-sized or negative sized files.
+				if (fileSize <= 0)
+				{
+					continue;
 				}
 
 				// update size
