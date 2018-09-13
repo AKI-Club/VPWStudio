@@ -998,7 +998,13 @@ namespace VPWStudio
 			FileTable_SearchDialog sd = new FileTable_SearchDialog(CurrentSearchText);
 			if (sd.ShowDialog() == DialogResult.OK)
 			{
-				// set search term and do search
+				// Check if this is a new search term
+				if (!sd.SearchText.Equals(CurrentSearchText))
+				{
+					// search from beginning (is this a good idea?)
+					CurrentSearchItemNumber = -1;
+				}
+
 				CurrentSearchText = sd.SearchText;
 				int searchResult = SearchFile(CurrentSearchText);
 				if (searchResult != -1)
