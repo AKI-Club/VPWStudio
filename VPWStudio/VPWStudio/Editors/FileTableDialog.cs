@@ -24,6 +24,17 @@ namespace VPWStudio
 		private const int COMMENT_COLUMN = 5;
 		#endregion
 
+		/// <summary>
+		/// Current string to search for.
+		/// </summary>
+		/// Set via "Search" command, used for "Find Next" (F3?)
+		private string CurrentSearchText = String.Empty;
+
+		/// <summary>
+		/// Index of current search hit.
+		/// </summary>
+		private int CurrentSearchItemNumber = -1;
+
 		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
@@ -929,6 +940,91 @@ namespace VPWStudio
 			lvFileList.FocusedItem = lvFileList.Items[lvFileList.Items.Count-1];
 			lvFileList.EnsureVisible(lvFileList.Items.Count-1);
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="searchText"></param>
+		/// <returns>ID of </returns>
+		private int SearchFile(string searchText)
+		{
+			int startPoint = 1;
+			if (CurrentSearchItemNumber != -1)
+			{
+				// start from current search item number + 1, so "Find Next" works
+				startPoint = CurrentSearchItemNumber + 1;
+			}
+
+			// search file list for comment
+			for (int i = startPoint; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+			{
+				string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
+				if (fileComment.Contains(searchText.ToLower()))
+				{
+					CurrentSearchItemNumber = i;
+					return CurrentSearchItemNumber;
+				}
+			}
+
+			// todo: does not handle wrapping around to the beginning.
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Post-search action.
+		/// </summary>
+		private void PostSearch(int focus)
+		{
+			lvFileList.BeginUpdate();
+
+			lvFileList.FocusedItem = lvFileList.Items[focus - 1];
+			lvFileList.EnsureVisible(focus - 1);
+
+			foreach (ListViewItem lvi in lvFileList.SelectedItems)
+			{
+				lvi.Selected = false;
+			}
+			lvFileList.Items[focus - 1].Selected = true;
+
+			lvFileList.EndUpdate();
+		}
+
+		/// <summary>
+		/// Search for a file based on the comment text.
+		/// </summary>
+		private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FileTable_SearchDialog sd = new FileTable_SearchDialog(CurrentSearchText);
+			if (sd.ShowDialog() == DialogResult.OK)
+			{
+				// set search term and do search
+				CurrentSearchText = sd.SearchText;
+				int searchResult = SearchFile(CurrentSearchText);
+				if (searchResult != -1)
+				{
+					PostSearch(searchResult);
+				}
+				else
+				{
+					Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", sd.SearchText));
+				}
+			}
+		}
+
+		private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (CurrentSearchItemNumber == -1)
+			{
+				searchToolStripMenuItem_Click(sender, e);
+			}
+
+			int searchResult = SearchFile(CurrentSearchText);
+			if (searchResult != -1)
+			{
+				PostSearch(searchResult);
+			}
+		}
 		#endregion
 
 		#region Database Menu Items
@@ -970,5 +1066,6 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
 	}
 }
