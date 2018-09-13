@@ -182,7 +182,7 @@ namespace VPWStudio
 				hexVals += CurAnim.FrameData[i].ToString();
 			}
 			Clipboard.SetText(hexVals);
-			Program.InfoMessageBox("Copied animation data to clipboard.\n\nPaste it into S.K. Stylez's Animation Editor at D3 (main) or D1 (secondary).");
+			Program.InfoMessageBox("Copied animation data to clipboard.\n\nPaste it into S.K. Stylez's Animation Editor at D3 (main) or D43 (secondary).");
 		}
 	}
 }
