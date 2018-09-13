@@ -1914,6 +1914,7 @@
 31F5=AkiAnimation;(championship mode animation)
 31F6=AkiAnimation;(championship mode animation)
 31F7=AkiAnimation;(championship mode animation)
+3322=AkiAnimation;(chop, first move animation)
 333C=AkiAnimation;[Move Animation - Strike?] Front Kick 01
 3375=AkiAnimation;[Move Animation - Grapple] Slap (1/2)
 3376=AkiAnimation;[Move Animation - Grapple] Slap (2/2)
