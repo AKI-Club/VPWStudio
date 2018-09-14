@@ -133,7 +133,7 @@
 0084=AkiTexture;unused face 1?
 0085=AkiTexture;unused face 2?
 0086=AkiTexture;unused face 3?
-0087=AkiArchive;
+0087=AkiArchive;Referee Johnny H frames
 0088=AkiArchive;
 0089=AkiArchive;
 008A=AkiArchive;
@@ -181,7 +181,7 @@
 00B4=AkiArchive;
 00B5=AkiArchive;
 00B6=AkiArchive;
-00B7=AkiArchive;
+00B7=AkiArchive;Locker Room palettes and textures
 00B8=AkiArchive;
 00B9=I4Texture;[Intro] ALL JAPAN (128x32)
 00BA=I4Texture;[Intro] PRO WRESTLING (128x32)
