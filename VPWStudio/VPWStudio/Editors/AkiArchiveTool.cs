@@ -44,6 +44,8 @@ namespace VPWStudio
 		/// <param name="_fileID">File ID of archive to open.</param>
 		private void LoadFromFileTable(int _fileID)
 		{
+			FileID = _fileID;
+
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
@@ -112,8 +114,23 @@ namespace VPWStudio
 
 			SaveFileDialog sfd = new SaveFileDialog()
 			{
-				Title="Extract File"
+				Title="Extract File",
+				Filter = SharedStrings.FileFilter_None
 			};
+
+			// suggest filename for extracted file
+			if (FileID == -1)
+			{
+				// archive loaded from external file
+				sfd.FileName = String.Format("extracted{0}.bin", lbFiles.SelectedIndex);
+			}
+			else
+			{
+				// archive loaded from filetable
+				sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+			}
+
+
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
 				CurArchive.ExtractSingleFile(lbFiles.SelectedIndex, sfd.FileName);
