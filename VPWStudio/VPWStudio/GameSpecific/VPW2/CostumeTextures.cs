@@ -4,7 +4,7 @@ using System.IO;
 namespace VPWStudio.GameSpecific.VPW2
 {
 	/// <summary>
-	/// Virtual Pro-Wrestling 2 Costume Texture Definition.
+	/// Virtual Pro-Wrestling 2 Costume Texture Definition
 	/// </summary>
 	/// The models use a similar format...
 	public class CostumeTextures

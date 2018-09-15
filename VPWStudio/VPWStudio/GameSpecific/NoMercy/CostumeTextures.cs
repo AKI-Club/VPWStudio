@@ -4,7 +4,7 @@ using System.IO;
 namespace VPWStudio.GameSpecific.NoMercy
 {
 	/// <summary>
-	/// WWF No Mercy Costume Textures Definition.
+	/// WWF No Mercy Costume Textures Definition
 	/// </summary>
 	public class CostumeTextures
 	{
