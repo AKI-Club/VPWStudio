@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VPWStudio.GameSpecific.VPW2;
 
 namespace VPWStudio.Editors.VPW2
 {
@@ -15,6 +16,8 @@ namespace VPWStudio.Editors.VPW2
 	/// </summary>
 	public partial class CostumeDefs_VPW2 : Form
 	{
+		//public List<CostumeTextures> Textures;
+
 		public CostumeDefs_VPW2()
 		{
 			InitializeComponent();
@@ -23,6 +26,8 @@ namespace VPWStudio.Editors.VPW2
 		#region Body Types
 		private void LoadBodyTypes()
 		{
+			// $BODYTYPE_MODELS
+			// $BODYTYPE_TEXTURES
 		}
 
 		private void lbBodyTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,6 +44,16 @@ namespace VPWStudio.Editors.VPW2
 		#region Costumes
 		private void LoadCostumes()
 		{
+			// lower attire models, textures
+			// upper attire models, textures
+			// entrance attire models, textures
+			// glove models, textures
+			// textures for elbowpad, wristband, kneepad, boot
+		}
+
+		private void cbCostumeBodyType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
 		}
 
 		private void cbCostumeCategory_SelectedIndexChanged(object sender, EventArgs e)
