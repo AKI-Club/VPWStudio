@@ -357,6 +357,7 @@
     <Compile Include="GameSpecific\WorldTour\WrestlerParams.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
     <Compile Include="Helpers\BuildLogEvents.cs" />
+    <Compile Include="Helpers\BuildWarnErr.cs" />
     <Compile Include="Helpers\Crc32.cs" />
     <Compile Include="Helpers\N64Colors.cs" />
     <Compile Include="Helpers\NameHandler.cs" />
