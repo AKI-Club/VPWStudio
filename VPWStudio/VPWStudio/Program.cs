@@ -745,12 +745,14 @@ namespace VPWStudio
 					if (replaceFilePath == null)
 					{
 						// unable to convert relative path
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to convert '{1}' to relative path; skipping.", i, fte.ReplaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 						continue;
 					}
 
 					// ensure the file exists, otherwise we can't do anything.
 					if (!File.Exists(replaceFilePath))
 					{
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Replacement file '{1}' does not exist; skipping.", i, replaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 						continue;
 					}
 
@@ -822,7 +824,7 @@ namespace VPWStudio
 					// if we were unable to get output data, then there's no point in continuing.
 					if (outData == null)
 					{
-						BuildLogPub.AddLine("Unable to load replacement file data for this entry. Skipping.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to load replacement file data for this entry; skipping.", i), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 						continue;
 					}
 
