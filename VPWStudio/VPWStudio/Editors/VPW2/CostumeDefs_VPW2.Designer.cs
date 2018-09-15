@@ -91,7 +91,9 @@
 			this.lbBodyTypes = new System.Windows.Forms.ListBox();
 			this.tpCostumes = new System.Windows.Forms.TabPage();
 			this.panelCostumeData = new System.Windows.Forms.Panel();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.tlpCostumeData = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpBodyType = new System.Windows.Forms.TableLayoutPanel();
 			this.cbCostumeBodyType = new System.Windows.Forms.ComboBox();
 			this.labelCostumeBodyType = new System.Windows.Forms.Label();
 			this.cbUseAltPalette = new System.Windows.Forms.CheckBox();
@@ -116,7 +118,8 @@
 			this.tlpBodyTypeData.SuspendLayout();
 			this.tpCostumes.SuspendLayout();
 			this.panelCostumeData.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.panel1.SuspendLayout();
+			this.tlpBodyType.SuspendLayout();
 			this.panelCostumeEntries.SuspendLayout();
 			this.tpHeadMask.SuspendLayout();
 			this.tcHeadsMasks.SuspendLayout();
@@ -802,27 +805,52 @@
 			// panelCostumeData
 			// 
 			this.panelCostumeData.AutoScroll = true;
-			this.panelCostumeData.Controls.Add(this.tableLayoutPanel1);
+			this.panelCostumeData.Controls.Add(this.panel1);
+			this.panelCostumeData.Controls.Add(this.tlpBodyType);
 			this.panelCostumeData.Location = new System.Drawing.Point(168, 6);
 			this.panelCostumeData.Name = "panelCostumeData";
 			this.panelCostumeData.Size = new System.Drawing.Size(426, 351);
 			this.panelCostumeData.TabIndex = 1;
 			// 
-			// tableLayoutPanel1
+			// panel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.47619F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.95238F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.Controls.Add(this.cbCostumeBodyType, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.labelCostumeBodyType, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbUseAltPalette, 2, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 32);
-			this.tableLayoutPanel1.TabIndex = 1;
+			this.panel1.Controls.Add(this.tlpCostumeData);
+			this.panel1.Location = new System.Drawing.Point(3, 41);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(420, 305);
+			this.panel1.TabIndex = 2;
+			// 
+			// tlpCostumeData
+			// 
+			this.tlpCostumeData.ColumnCount = 4;
+			this.tlpCostumeData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpCostumeData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpCostumeData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpCostumeData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpCostumeData.Location = new System.Drawing.Point(3, 3);
+			this.tlpCostumeData.Name = "tlpCostumeData";
+			this.tlpCostumeData.RowCount = 3;
+			this.tlpCostumeData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpCostumeData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpCostumeData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tlpCostumeData.Size = new System.Drawing.Size(414, 100);
+			this.tlpCostumeData.TabIndex = 0;
+			// 
+			// tlpBodyType
+			// 
+			this.tlpBodyType.ColumnCount = 3;
+			this.tlpBodyType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.47619F));
+			this.tlpBodyType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.95238F));
+			this.tlpBodyType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpBodyType.Controls.Add(this.cbCostumeBodyType, 1, 0);
+			this.tlpBodyType.Controls.Add(this.labelCostumeBodyType, 0, 0);
+			this.tlpBodyType.Controls.Add(this.cbUseAltPalette, 2, 0);
+			this.tlpBodyType.Location = new System.Drawing.Point(3, 3);
+			this.tlpBodyType.Name = "tlpBodyType";
+			this.tlpBodyType.RowCount = 1;
+			this.tlpBodyType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpBodyType.Size = new System.Drawing.Size(420, 32);
+			this.tlpBodyType.TabIndex = 1;
 			// 
 			// cbCostumeBodyType
 			// 
@@ -843,6 +871,7 @@
 			this.cbCostumeBodyType.Name = "cbCostumeBodyType";
 			this.cbCostumeBodyType.Size = new System.Drawing.Size(208, 21);
 			this.cbCostumeBodyType.TabIndex = 0;
+			this.cbCostumeBodyType.SelectedIndexChanged += new System.EventHandler(this.cbCostumeBodyType_SelectedIndexChanged);
 			// 
 			// labelCostumeBodyType
 			// 
@@ -1026,8 +1055,9 @@
 			this.tlpBodyTypeData.PerformLayout();
 			this.tpCostumes.ResumeLayout(false);
 			this.panelCostumeData.ResumeLayout(false);
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.tlpBodyType.ResumeLayout(false);
+			this.tlpBodyType.PerformLayout();
 			this.panelCostumeEntries.ResumeLayout(false);
 			this.tpHeadMask.ResumeLayout(false);
 			this.tcHeadsMasks.ResumeLayout(false);
@@ -1050,7 +1080,7 @@
 		private System.Windows.Forms.TabPage tpHeads;
 		private System.Windows.Forms.TabPage tpMasks;
 		private System.Windows.Forms.Panel panelCostumeData;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel tlpBodyType;
 		private System.Windows.Forms.ComboBox cbCostumeBodyType;
 		private System.Windows.Forms.Panel panelCostumeEntries;
 		private System.Windows.Forms.ComboBox cbCostumeCategory;
@@ -1123,5 +1153,7 @@
 		private System.Windows.Forms.TextBox tbBodyTypeLeftUpperLegTexture;
 		private System.Windows.Forms.TextBox tbBodyTypeLeftFootModel;
 		private System.Windows.Forms.TextBox tbBodyTypeLeftFootTexture;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.TableLayoutPanel tlpCostumeData;
 	}
 }
