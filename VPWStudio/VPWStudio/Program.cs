@@ -66,6 +66,11 @@ namespace VPWStudio
 		public static BuildLogEventPublisher BuildLogPub = new BuildLogEventPublisher();
 
 		/// <summary>
+		/// Build Warning and Error messages.
+		/// </summary>
+		public static List<BuildWarnErr> BuildMessages = new List<BuildWarnErr>();
+
+		/// <summary>
 		/// HexViewer Manager
 		/// </summary>
 		public static HexViewerManager HexViewManager = new HexViewerManager();
@@ -353,12 +358,14 @@ namespace VPWStudio
 									else
 									{
 										bm.Dispose();
+										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to AkiTexture."));
 										return null;
 									}
 								}
 								else
 								{
 									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for AkiTexture conversion."));
 									return null;
 								}
 							}
@@ -375,6 +382,7 @@ namespace VPWStudio
 									if (!ci4tex.FromBitmap(bm))
 									{
 										bm.Dispose();
+										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci4Texture."));
 										return null;
 									}
 									ci4tex.WriteData(bw);
@@ -383,6 +391,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Texture conversion."));
 									return null;
 								}
 							}
@@ -399,6 +408,7 @@ namespace VPWStudio
 									if (!ci8tex.FromBitmap(bm))
 									{
 										bm.Dispose();
+										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci8Texture."));
 										return null;
 									}
 									ci8tex.WriteData(bw);
@@ -407,6 +417,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci8Texture conversion."));
 									return null;
 								}
 							}
@@ -426,6 +437,7 @@ namespace VPWStudio
 											Ci4Palette ci4pal = new Ci4Palette();
 											if (!ci4pal.ImportVpwsPal(sr))
 											{
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci4Palette."));
 												return null;
 											}
 											ci4pal.WriteData(bw);
@@ -444,6 +456,7 @@ namespace VPWStudio
 											Ci4Palette ci4pal = new Ci4Palette();
 											if (!ci4pal.ImportJasc(sr))
 											{
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci4Palette."));
 												return null;
 											}
 											ci4pal.WriteData(bw);
@@ -453,6 +466,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Palette conversion."));
 									return null;
 								}
 							}
@@ -471,6 +485,7 @@ namespace VPWStudio
 											Ci8Palette ci8pal = new Ci8Palette();
 											if (!ci8pal.ImportJasc(sr))
 											{
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci8Palette."));
 												return null;
 											}
 											ci8pal.WriteData(bw);
@@ -480,6 +495,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci8Palette conversion."));
 									return null;
 								}
 							}
@@ -503,6 +519,7 @@ namespace VPWStudio
 									return null;
 								}
 								*/
+								BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "AkiText conversion is currently not implemented."));
 								return null;
 							}
 							//break;
@@ -531,6 +548,9 @@ namespace VPWStudio
 			// The Input ROM could have changed since the previous build, so reload it.
 			CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
 			outRomData.AddRange(CurrentInputROM.Data);
+
+			// Reset any build messages from a previous build.
+			BuildMessages = new List<BuildWarnErr>();
 
 			#region Internal Game Name
 			string intName = CurrentProject.Settings.OutputRomInternalName;

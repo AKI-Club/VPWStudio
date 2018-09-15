@@ -1263,6 +1263,7 @@ namespace VPWStudio
 
 			Program.BuildRom();
 
+			// xxx: is every build successful?
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
 			buildLogPub.AddLine(
 				String.Format("[{0}] Successfully built '{1}' in {2} (min:sec.ms)",
@@ -1272,6 +1273,17 @@ namespace VPWStudio
 				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
 			);
 			BuildLogForm.BuildFinished = true;
+
+			// show any warnings and errors
+			if (Program.BuildMessages.Count > 0)
+			{
+				buildLogPub.AddLine();
+				foreach (BuildWarnErr bwe in Program.BuildMessages)
+				{
+					buildLogPub.AddLine(String.Format("[{0}] File ID {1:X4}: {2}", bwe.MessageType.ToString(), bwe.FileID, bwe.MessageText), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				}
+			}
+
 			BuildLogForm.MoveCursorToEnd();
 		}
 
