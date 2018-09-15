@@ -774,6 +774,9 @@
     <Content Include="Manual\img\wrestler_editor-nomercy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Manual\img\wrestler_editor-revenge.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\img\wrestler_editor-vpw2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
