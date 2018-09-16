@@ -744,6 +744,9 @@
     <None Include="Resources\menus.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\textarchives.png" />
+    <Content Include="Manual\img\filetable-main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\img\main_interface.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
