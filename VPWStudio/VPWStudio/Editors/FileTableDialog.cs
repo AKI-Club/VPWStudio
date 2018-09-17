@@ -241,20 +241,22 @@ namespace VPWStudio
 				{
 					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(entry.Value.FileID))
 					{
-						// only replace filetype if it doesn't match current
-						// todo: an entry's filetype might have been intentionally changed (e.g. to take advantage of unused IDs)
-						// the proposed solution is to use a dialog
-						if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+						// if OverrideFileType is set, then whatever's in the game's FileTableDB is not accurate for this project.
+						if (!Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].OverrideFileType)
 						{
-							Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
-							changesMade = true;
-						}
+							// only replace filetype if not being overridden to do something else.
+							if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+								changesMade = true;
+							}
 
-						// only replace comment if it's empty, or we were requested to.
-						if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
-						{
-							Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
-							changesMade = true;
+							// only replace comment if it's empty, or we were requested to.
+							if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+								changesMade = true;
+							}
 						}
 					}
 				}
