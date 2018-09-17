@@ -132,7 +132,6 @@ namespace VPWStudio
 			{ "BodyTypeDefs", "$BODYTYPEDEFS" }, // ROM location of body type definitions
 			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions (World Tour and Revenge only)
 			{ "HeadDefs", "$HEADDEFS" }, // ROM location of head/mask definitions
-			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 
 			// VPW64 costume definitions
 			{ "VPW64Costumes_Small", "$VPW64COSTUMES_SMALL" },
@@ -152,6 +151,10 @@ namespace VPWStudio
 			{ "FacePaint_Type", "$FACEPAINT_TYPE" },
 			{ "FaceAccessories_VertDisplacement", "$FACEACCESSORIES_VERTDISPLACEMENT" },
 			{ "FaceAccessories_Type", "$FACEACCESSORIES_TYPE" },
+
+			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
+			{ "StoryModeTeams", "$STORY_MODE_TEAMS" }, // ROM location of story mode teams
+			{ "DefaultChampions", "$DEFAULT_CHAMPIONS" }, // ROM location of default champions
 			#endregion
 
 			#region CodeChange
