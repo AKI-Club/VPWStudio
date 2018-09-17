@@ -57,7 +57,7 @@ namespace VPWStudio.Editors.NoMercy
 				}
 				if (!hasLocation)
 				{
-					// fallback to hardedcoded offset
+					// fallback to hardcoded offset
 					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
 					br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 				}

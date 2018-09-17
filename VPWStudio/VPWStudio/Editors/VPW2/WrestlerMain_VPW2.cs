@@ -63,7 +63,7 @@ namespace VPWStudio.Editors.VPW2
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
