@@ -64,7 +64,7 @@
 			this.buttonOK.Location = new System.Drawing.Point(318, 195);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 5;
+			this.buttonOK.TabIndex = 10;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -76,7 +76,7 @@
 			this.buttonCancel.Location = new System.Drawing.Point(399, 195);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 6;
+			this.buttonCancel.TabIndex = 11;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -110,7 +110,7 @@
 			this.tbComment.Location = new System.Drawing.Point(141, 51);
 			this.tbComment.Name = "tbComment";
 			this.tbComment.Size = new System.Drawing.Size(318, 20);
-			this.tbComment.TabIndex = 1;
+			this.tbComment.TabIndex = 4;
 			// 
 			// labelComment
 			// 
@@ -119,7 +119,7 @@
 			this.labelComment.Location = new System.Drawing.Point(3, 55);
 			this.labelComment.Name = "labelComment";
 			this.labelComment.Size = new System.Drawing.Size(132, 13);
-			this.labelComment.TabIndex = 1;
+			this.labelComment.TabIndex = 3;
 			this.labelComment.Text = "C&omment";
 			// 
 			// labelFileType
@@ -139,7 +139,7 @@
 			this.labelReplaceEncoding.Location = new System.Drawing.Point(3, 96);
 			this.labelReplaceEncoding.Name = "labelReplaceEncoding";
 			this.labelReplaceEncoding.Size = new System.Drawing.Size(132, 13);
-			this.labelReplaceEncoding.TabIndex = 2;
+			this.labelReplaceEncoding.TabIndex = 5;
 			this.labelReplaceEncoding.Text = "Replacement &Encoding";
 			// 
 			// labelReplaceFilePath
@@ -149,7 +149,7 @@
 			this.labelReplaceFilePath.Location = new System.Drawing.Point(3, 137);
 			this.labelReplaceFilePath.Name = "labelReplaceFilePath";
 			this.labelReplaceFilePath.Size = new System.Drawing.Size(132, 13);
-			this.labelReplaceFilePath.TabIndex = 3;
+			this.labelReplaceFilePath.TabIndex = 7;
 			this.labelReplaceFilePath.Text = "&Replacement File Path";
 			// 
 			// tlpReplaceFilePath
@@ -173,7 +173,7 @@
 			this.buttonReplaceFileBrowse.Location = new System.Drawing.Point(241, 6);
 			this.buttonReplaceFileBrowse.Name = "buttonReplaceFileBrowse";
 			this.buttonReplaceFileBrowse.Size = new System.Drawing.Size(74, 22);
-			this.buttonReplaceFileBrowse.TabIndex = 0;
+			this.buttonReplaceFileBrowse.TabIndex = 9;
 			this.buttonReplaceFileBrowse.Text = "Browse...";
 			this.buttonReplaceFileBrowse.UseVisualStyleBackColor = true;
 			this.buttonReplaceFileBrowse.Click += new System.EventHandler(this.buttonReplaceFileBrowse_Click);
@@ -184,7 +184,7 @@
 			this.tbReplaceFilePath.Location = new System.Drawing.Point(3, 7);
 			this.tbReplaceFilePath.Name = "tbReplaceFilePath";
 			this.tbReplaceFilePath.Size = new System.Drawing.Size(232, 20);
-			this.tbReplaceFilePath.TabIndex = 1;
+			this.tbReplaceFilePath.TabIndex = 8;
 			// 
 			// cbReplaceEncoding
 			// 
@@ -198,7 +198,7 @@
 			this.cbReplaceEncoding.Location = new System.Drawing.Point(141, 92);
 			this.cbReplaceEncoding.Name = "cbReplaceEncoding";
 			this.cbReplaceEncoding.Size = new System.Drawing.Size(318, 21);
-			this.cbReplaceEncoding.TabIndex = 2;
+			this.cbReplaceEncoding.TabIndex = 6;
 			// 
 			// cbForceFileType
 			// 
@@ -207,7 +207,7 @@
 			this.cbForceFileType.Location = new System.Drawing.Point(193, 9);
 			this.cbForceFileType.Name = "cbForceFileType";
 			this.cbForceFileType.Size = new System.Drawing.Size(122, 17);
-			this.cbForceFileType.TabIndex = 6;
+			this.cbForceFileType.TabIndex = 2;
 			this.cbForceFileType.Text = "Force File&Type";
 			this.cbForceFileType.UseVisualStyleBackColor = true;
 			// 
