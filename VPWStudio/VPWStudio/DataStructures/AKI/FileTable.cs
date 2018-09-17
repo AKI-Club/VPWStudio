@@ -213,6 +213,11 @@ namespace VPWStudio
 		/// </summary>
 		public string ReplaceFilePath;
 
+		/// <summary>
+		/// Does this entry specify a different filetype than the original FileTable entry?
+		/// </summary>
+		public bool OverrideFileType;
+
 		//public FileTableEntryExtraData ExtraData;
 		#endregion // program-specific
 		#endregion
@@ -230,6 +235,7 @@ namespace VPWStudio
 			Comment = String.Empty;
 			ReplaceEncoding = FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
+			OverrideFileType = false;
 			//ExtraData = new FileTableEntryExtraData();
 		}
 
@@ -247,6 +253,7 @@ namespace VPWStudio
 			Comment = String.Empty;
 			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
+			OverrideFileType = false;
 			//ExtraData = new FileTableEntryExtraData();
 		}
 
@@ -264,6 +271,7 @@ namespace VPWStudio
 			Comment = _comment;
 			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
+			OverrideFileType = false;
 			//ExtraData = new FileTableEntryExtraData();
 		}
 
@@ -299,6 +307,7 @@ namespace VPWStudio
 			Comment = _src.Comment;
 			ReplaceEncoding = _src.ReplaceEncoding;
 			ReplaceFilePath = _src.ReplaceFilePath;
+			OverrideFileType = _src.OverrideFileType;
 			//ExtraData = 
 		}
 
@@ -393,6 +402,12 @@ namespace VPWStudio
 					}
 				}
 
+				if (xr.Name == "OverrideFileType" && xr.NodeType == XmlNodeType.Element)
+				{
+					xr.Read();
+					OverrideFileType = bool.Parse(xr.Value);
+				}
+
 				/*
 				if (xr.Name == "ExtraData" && xr.NodeType == XmlNodeType.Element)
 				{
@@ -421,6 +436,7 @@ namespace VPWStudio
 			xw.WriteElementString("Comment", Comment);
 			xw.WriteElementString("ReplaceEncoding", ReplaceEncoding.ToString());
 			xw.WriteElementString("ReplaceFilePath", ReplaceFilePath);
+			xw.WriteElementString("OverrideFileType", OverrideFileType.ToString());
 
 			//ExtraData.WriteXml(xw);
 
