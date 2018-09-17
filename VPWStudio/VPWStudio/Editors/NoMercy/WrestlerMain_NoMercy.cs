@@ -68,7 +68,7 @@ namespace VPWStudio.Editors.NoMercy
 			}
 			if (!hasLocation)
 			{
-				// fallback to hardedcoded offset
+				// fallback to hardcoded offset
 				Program.InfoMessageBox("Wrestler Definition location not found; using hardcoded offset instead.");
 				// depends on game
 				long offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset;
