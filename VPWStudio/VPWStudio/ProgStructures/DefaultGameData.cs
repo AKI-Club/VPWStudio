@@ -238,6 +238,8 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3FBE4, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x408BC, 136) },
+					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 72) },
+					{ "DefaultChampions", new DefaultLocationDataEntry(0xDB544, 5) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x152DF0, 0) },
