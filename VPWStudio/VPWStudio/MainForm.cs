@@ -1086,9 +1086,15 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WM2K:
+					Program.ErrorMessageBox("Not implemented yet, but this will be a copy of the VPW2 editor, so it will exist sooner rather than later.");
+					break;
 				case VPWGames.VPW2:
 					Editors.VPW2.StoryMode_VPW2 sme = new Editors.VPW2.StoryMode_VPW2();
 					sme.ShowDialog();
+					break;
+				case VPWGames.NoMercy:
+					Program.ErrorMessageBox("No Mercy Story Mode Dialog will take some time, since the Story Mode is a lot more complex.");
 					break;
 				default:
 					Program.ErrorMessageBox("Story mode dialogs not yet designed for non-VPW2 games.");
