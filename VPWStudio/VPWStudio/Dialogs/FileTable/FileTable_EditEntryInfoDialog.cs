@@ -19,6 +19,7 @@ namespace VPWStudio
 
 			cbFileTypes.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
 			cbFileTypes.SelectedIndex = (int)CurEntry.FileType;
+			cbForceFileType.Checked = CurEntry.OverrideFileType;
 			tbComment.Text = fte.Comment;
 
 			cbReplaceEncoding.SelectedIndex = (int)CurEntry.ReplaceEncoding;
@@ -31,6 +32,7 @@ namespace VPWStudio
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+			CurEntry.OverrideFileType = cbForceFileType.Checked;
 			CurEntry.Comment = tbComment.Text;
 
 			// Attempt to convert absolute paths to relative, so the project files take up less space.
