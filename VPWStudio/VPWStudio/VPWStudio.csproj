@@ -314,6 +314,12 @@
     <Compile Include="Editors\VPW2\StableDefs_VPW2.Designer.cs">
       <DependentUpon>StableDefs_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\VPW2\StoryMode_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW2\StoryMode_VPW2.Designer.cs">
+      <DependentUpon>StoryMode_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\VPW2\WrestlerMain_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,7 @@
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
+    <Compile Include="GameSpecific\StoryModeTeam_Modern.cs" />
     <Compile Include="GameSpecific\VPW2\CostumeTextures.cs" />
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
@@ -575,6 +582,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\StableDefs_VPW2.resx">
       <DependentUpon>StableDefs_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW2\StoryMode_VPW2.resx">
+      <DependentUpon>StoryMode_VPW2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\WrestlerMain_VPW2.resx">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>

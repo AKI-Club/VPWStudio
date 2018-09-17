@@ -1084,7 +1084,16 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Story mode dialogs not yet designed.");
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.VPW2:
+					Editors.VPW2.StoryMode_VPW2 sme = new Editors.VPW2.StoryMode_VPW2();
+					sme.ShowDialog();
+					break;
+				default:
+					Program.ErrorMessageBox("Story mode dialogs not yet designed for non-VPW2 games.");
+					break;
+			}
 		}
 
 		/// <summary>
