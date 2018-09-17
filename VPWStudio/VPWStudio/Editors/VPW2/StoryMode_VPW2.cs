@@ -31,9 +31,25 @@ namespace VPWStudio.Editors.VPW2
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
-			// xxx: hardcoded
-			romStream.Seek(0xDB4F0, SeekOrigin.Begin);
+			bool hasTeamLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry smtEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StoryModeTeams"]);
+				if (smtEntry != null)
+				{
+					romReader.BaseStream.Seek(smtEntry.Address, SeekOrigin.Begin);
+					hasTeamLocation = true;
+				}
+			}
+			if (!hasTeamLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Story Mode Teams location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StoryModeTeams"].Offset, SeekOrigin.Begin);
+			}
+
 			lbTeams.BeginUpdate();
+			// xxx: hardcoded amount of teams
 			for (int i = 0; i < 18; i++)
 			{
 				StoryTeams.Add(new StoryModeTeam_Modern(romReader));
@@ -41,18 +57,33 @@ namespace VPWStudio.Editors.VPW2
 			}
 			lbTeams.EndUpdate();
 
+			bool hasChampionLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry dcEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["DefaultChampions"]);
+				if (dcEntry != null)
+				{
+					romReader.BaseStream.Seek(dcEntry.Address, SeekOrigin.Begin);
+					hasChampionLocation = true;
+				}
+			}
+			if (!hasChampionLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Story Mode Default Champions location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["DefaultChampions"].Offset, SeekOrigin.Begin);
+			}
+
 			// 5x champions (Z64 0xDB544)
-			// XXX: extremely hardcoded
-			romStream.Seek(0xDB544, SeekOrigin.Begin);
+			// xxx: hardcoded length
 			DefaultChampions = romReader.ReadBytes(5);
+			romReader.Close(); // we're done with this
 
 			tbTripleCrown.Text = String.Format("0x{0:X2}", DefaultChampions[0]);
 			tbWorldTag1.Text = String.Format("0x{0:X2}", DefaultChampions[1]);
 			tbAsiaTag1.Text = String.Format("0x{0:X2}", DefaultChampions[2]);
 			tbWorldTag2.Text = String.Format("0x{0:X2}", DefaultChampions[3]);
 			tbAsiaTag2.Text = String.Format("0x{0:X2}", DefaultChampions[4]);
-
-			romReader.Close();
 		}
 
 		private void UpdateTeamValues()
