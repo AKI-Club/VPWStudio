@@ -95,8 +95,8 @@
 			// tlpChampions
 			// 
 			this.tlpChampions.ColumnCount = 2;
-			this.tlpChampions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.49425F));
-			this.tlpChampions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.50575F));
+			this.tlpChampions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpChampions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
 			this.tlpChampions.Controls.Add(this.tlpAsiaTag, 1, 2);
 			this.tlpChampions.Controls.Add(this.labelTripleCrown, 0, 0);
 			this.tlpChampions.Controls.Add(this.labelWorldTag, 0, 1);
@@ -118,7 +118,7 @@
 			this.labelTripleCrown.AutoSize = true;
 			this.labelTripleCrown.Location = new System.Drawing.Point(3, 28);
 			this.labelTripleCrown.Name = "labelTripleCrown";
-			this.labelTripleCrown.Size = new System.Drawing.Size(120, 13);
+			this.labelTripleCrown.Size = new System.Drawing.Size(81, 13);
 			this.labelTripleCrown.TabIndex = 0;
 			this.labelTripleCrown.Text = "Triple Crown";
 			// 
@@ -128,7 +128,7 @@
 			this.labelWorldTag.AutoSize = true;
 			this.labelWorldTag.Location = new System.Drawing.Point(3, 98);
 			this.labelWorldTag.Name = "labelWorldTag";
-			this.labelWorldTag.Size = new System.Drawing.Size(120, 13);
+			this.labelWorldTag.Size = new System.Drawing.Size(81, 13);
 			this.labelWorldTag.TabIndex = 1;
 			this.labelWorldTag.Text = "World Tag";
 			// 
@@ -138,47 +138,47 @@
 			this.labelAsiaTag.AutoSize = true;
 			this.labelAsiaTag.Location = new System.Drawing.Point(3, 169);
 			this.labelAsiaTag.Name = "labelAsiaTag";
-			this.labelAsiaTag.Size = new System.Drawing.Size(120, 13);
+			this.labelAsiaTag.Size = new System.Drawing.Size(81, 13);
 			this.labelAsiaTag.TabIndex = 2;
 			this.labelAsiaTag.Text = "Asia Tag";
 			// 
 			// tbTripleCrown
 			// 
 			this.tbTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTripleCrown.Location = new System.Drawing.Point(129, 25);
+			this.tbTripleCrown.Location = new System.Drawing.Point(90, 25);
 			this.tbTripleCrown.Name = "tbTripleCrown";
 			this.tbTripleCrown.ReadOnly = true;
-			this.tbTripleCrown.Size = new System.Drawing.Size(216, 20);
+			this.tbTripleCrown.Size = new System.Drawing.Size(255, 20);
 			this.tbTripleCrown.TabIndex = 3;
 			// 
 			// tlpWorldTag
 			// 
-			this.tlpWorldTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpWorldTag.ColumnCount = 1;
 			this.tlpWorldTag.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpWorldTag.Controls.Add(this.tbWorldTag2, 0, 1);
 			this.tlpWorldTag.Controls.Add(this.tbWorldTag1, 0, 0);
-			this.tlpWorldTag.Location = new System.Drawing.Point(129, 73);
+			this.tlpWorldTag.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpWorldTag.Location = new System.Drawing.Point(90, 73);
 			this.tlpWorldTag.Name = "tlpWorldTag";
 			this.tlpWorldTag.RowCount = 2;
 			this.tlpWorldTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpWorldTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpWorldTag.Size = new System.Drawing.Size(216, 64);
+			this.tlpWorldTag.Size = new System.Drawing.Size(255, 64);
 			this.tlpWorldTag.TabIndex = 4;
 			// 
 			// tlpAsiaTag
 			// 
-			this.tlpAsiaTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpAsiaTag.ColumnCount = 1;
 			this.tlpAsiaTag.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpAsiaTag.Controls.Add(this.tbAsiaTag2, 0, 1);
 			this.tlpAsiaTag.Controls.Add(this.tbAsiaTag1, 0, 0);
-			this.tlpAsiaTag.Location = new System.Drawing.Point(129, 143);
+			this.tlpAsiaTag.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpAsiaTag.Location = new System.Drawing.Point(90, 143);
 			this.tlpAsiaTag.Name = "tlpAsiaTag";
 			this.tlpAsiaTag.RowCount = 2;
 			this.tlpAsiaTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpAsiaTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpAsiaTag.Size = new System.Drawing.Size(216, 64);
+			this.tlpAsiaTag.Size = new System.Drawing.Size(255, 65);
 			this.tlpAsiaTag.TabIndex = 5;
 			// 
 			// tbWorldTag1
@@ -187,7 +187,7 @@
 			this.tbWorldTag1.Location = new System.Drawing.Point(3, 6);
 			this.tbWorldTag1.Name = "tbWorldTag1";
 			this.tbWorldTag1.ReadOnly = true;
-			this.tbWorldTag1.Size = new System.Drawing.Size(210, 20);
+			this.tbWorldTag1.Size = new System.Drawing.Size(249, 20);
 			this.tbWorldTag1.TabIndex = 4;
 			// 
 			// tbWorldTag2
@@ -196,7 +196,7 @@
 			this.tbWorldTag2.Location = new System.Drawing.Point(3, 38);
 			this.tbWorldTag2.Name = "tbWorldTag2";
 			this.tbWorldTag2.ReadOnly = true;
-			this.tbWorldTag2.Size = new System.Drawing.Size(210, 20);
+			this.tbWorldTag2.Size = new System.Drawing.Size(249, 20);
 			this.tbWorldTag2.TabIndex = 5;
 			// 
 			// tbAsiaTag1
@@ -205,7 +205,7 @@
 			this.tbAsiaTag1.Location = new System.Drawing.Point(3, 6);
 			this.tbAsiaTag1.Name = "tbAsiaTag1";
 			this.tbAsiaTag1.ReadOnly = true;
-			this.tbAsiaTag1.Size = new System.Drawing.Size(210, 20);
+			this.tbAsiaTag1.Size = new System.Drawing.Size(249, 20);
 			this.tbAsiaTag1.TabIndex = 4;
 			// 
 			// tbAsiaTag2
@@ -214,7 +214,7 @@
 			this.tbAsiaTag2.Location = new System.Drawing.Point(3, 38);
 			this.tbAsiaTag2.Name = "tbAsiaTag2";
 			this.tbAsiaTag2.ReadOnly = true;
-			this.tbAsiaTag2.Size = new System.Drawing.Size(210, 20);
+			this.tbAsiaTag2.Size = new System.Drawing.Size(249, 20);
 			this.tbAsiaTag2.TabIndex = 5;
 			// 
 			// lbTeams
