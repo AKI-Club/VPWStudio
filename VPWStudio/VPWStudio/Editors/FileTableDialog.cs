@@ -713,6 +713,13 @@ namespace VPWStudio
 			int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 			FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[key];
 
+			// prevent crashes in a very lazy/hacky/bad way
+			if (fte.OverrideFileType)
+			{
+				Program.ErrorMessageBox("Previewing files with overridden FileTypes is currently disabled because I don't feel like debugging crashes at the moment.");
+				return;
+			}
+
 			switch (fte.FileType)
 			{
 				// "TEX" files
