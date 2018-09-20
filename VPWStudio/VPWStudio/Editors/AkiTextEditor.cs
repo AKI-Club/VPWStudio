@@ -35,6 +35,13 @@ namespace VPWStudio.Editors
 			OrigTextArchive.DeepCopy(CurTextArchive);
 			PopulateEntryList();
 
+			Text = String.Format("AKI Text Editor - [{0:X4}]", FileKey);
+			string comment = Program.CurrentProject.ProjectFileTable.Entries[FileKey].Comment;
+			if (comment != null && comment != String.Empty)
+			{
+				Text += String.Format(" {0}", comment);
+			}
+
 			if (selectEntry != -1)
 			{
 				cbTextEntries.SelectedIndex = selectEntry;
@@ -51,6 +58,8 @@ namespace VPWStudio.Editors
 			LoadFromFile(path);
 			OrigTextArchive.DeepCopy(CurTextArchive);
 			PopulateEntryList();
+
+			Text = String.Format("AKI Text Editor - {0}", Program.ShortenAbsolutePath(path));
 		}
 		#endregion
 
