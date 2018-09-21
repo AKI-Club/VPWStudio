@@ -61,6 +61,11 @@ namespace VPWStudio
 			if (FileID != -1)
 			{
 				Text = String.Format("Hex Viewer [{0:X4}]", fileID);
+				string comment = Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment;
+				if (comment != null && comment != string.Empty)
+				{
+					Text += " " + comment;
+				}
 			}
 		}
 		#endregion
