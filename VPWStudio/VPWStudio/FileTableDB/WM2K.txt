@@ -855,6 +855,7 @@
 03A9=AkiTexture;[Titantron] Mark Henry frame x
 03AA=AkiTexture;[Titantron] Mark Henry frame x
 03AB=AkiTexture;[Titantron] Mark Henry frame x
+03AD=Binary;Move damage values
 03B6=Binary;(Unknown text file)
 0435=Binary;Toki1 values
 0436=Binary;[Music Data] ?

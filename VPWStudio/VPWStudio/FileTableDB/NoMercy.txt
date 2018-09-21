@@ -273,7 +273,7 @@
 01EB=AkiText;[Story Mode] (light heavyweight story dialog)
 01EC=AkiText;[Story Mode] (women's story dialog)
 01ED=AkiText;[Story Mode] (GBC story dialog)
-01EF=Binary;(Move damage values?)
+01EF=Binary;Move damage values
 01F8=Binary;some weird text file
 01F9=Binary;Wrestler Params 0001
 01FA=Binary;Wrestler Moveset 0001
