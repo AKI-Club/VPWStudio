@@ -832,7 +832,7 @@
 0348=Binary;Edit Wrestler Moveset (Combo)
 0349=Binary;Edit Wrestler Params (Shoot)
 034A=Binary;Edit Wrestler Moveset (Shoot)
-034B=Binary;Toki1 data
+034B=Binary;Toki1 values
 034C=Binary;[Music Data] Main Menu Music
 034D=Binary;[Music Data] Edit Mode Music
 034E=Binary;[Music Data] Options Menu Music
