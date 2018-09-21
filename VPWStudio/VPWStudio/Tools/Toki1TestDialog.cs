@@ -14,37 +14,66 @@ namespace VPWStudio
 	{
 		private SortedList<int, Toki1Entry> Toki1Entries = new SortedList<int, Toki1Entry>();
 
+		private Dictionary<VPWGames, int> Toki1DataLength = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 0x20 },
+			{ VPWGames.VPW64, 0x20 },
+			{ VPWGames.Revenge, 0x24 },
+			{ VPWGames.WM2K, 0x24 },
+			{ VPWGames.VPW2, 0x24 },
+			{ VPWGames.NoMercy, 0x24 }
+		};
+
+		private Dictionary<VPWGames, int> Toki1FileIDs = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 0x026A },
+			{ VPWGames.VPW64, 0x0211 },
+			{ VPWGames.Revenge, 0x020F },
+			{ VPWGames.WM2K, 0x0435 },
+			{ VPWGames.VPW2, 0x034B },
+			{ VPWGames.NoMercy, 0x02BF }
+		};
+
 		public Toki1TestDialog()
 		{
 			InitializeComponent();
 
 			if (Program.CurrentProject != null)
 			{
-				if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+				if (Toki1FileIDs.ContainsKey(Program.CurrentProject.Settings.BaseGame))
 				{
-					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-					BinaryReader romReader = new BinaryReader(romStream);
-
-					MemoryStream extractStream = new MemoryStream();
-					BinaryWriter extractWriter = new BinaryWriter(extractStream);
-
-					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, extractWriter, 0x034B);
-					romReader.Close();
-
-					int fileSize = (int)extractStream.Position;
-					extractStream.Seek(0, SeekOrigin.Begin);
-					int numEntries = fileSize / 36;
-
-					BinaryReader br = new BinaryReader(extractStream);
-					for (int i = 0; i < numEntries; i++)
-					{
-						Toki1Entries.Add(i, new Toki1Entry(br));
-					}
-					br.Close();
-
+					LoadToki1(Toki1FileIDs[Program.CurrentProject.Settings.BaseGame], Toki1DataLength[Program.CurrentProject.Settings.BaseGame]);
 					PopulateEntries();
 				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Toki1 dialog not implemented for {0}.", Program.CurrentProject.Settings.BaseGame));
+					Close();
+				}
 			}
+		}
+
+		private void LoadToki1(int fileID, int dataLength)
+		{
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			MemoryStream extractStream = new MemoryStream();
+			BinaryWriter extractWriter = new BinaryWriter(extractStream);
+
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, extractWriter, fileID);
+			romReader.Close();
+
+			int fileSize = (int)extractStream.Position;
+			extractStream.Seek(0, SeekOrigin.Begin);
+			int numEntries = fileSize / dataLength;
+
+			BinaryReader br = new BinaryReader(extractStream);
+			for (int i = 0; i < numEntries; i++)
+			{
+				Toki1Entries.Add(i, new Toki1Entry(br, dataLength));
+			}
+			br.Close();
 		}
 
 		private void PopulateEntries()
@@ -59,6 +88,70 @@ namespace VPWStudio
 		}
 
 		private void ShowData(int index)
+		{
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.WorldTour:
+				case VPWGames.VPW64:
+					tbOutput.Text = "argh freem fix this";
+					break;
+				case VPWGames.Revenge:
+				case VPWGames.WM2K:
+				case VPWGames.VPW2:
+				case VPWGames.NoMercy:
+					ShowDataModern(index);
+					break;
+			}
+		}
+
+		/// <summary>
+		/// Show Toki1 data for early games.
+		/// </summary>
+		/// <param name="index">Index into Toki1 entries.</param>
+		private void ShowDataEarly(int index)
+		{
+			// from my old World Tour notes:
+			/*
+			+00 - End of move position modifier
+			+01 - 
+			+02 - 
+			+03 - 
+			+04 - 
+			+05 - 
+			+06 - 
+			+07 - 
+			+08 - 
+			+09 - 
+			+0A - 
+			+0B - 
+			+0C - 
+			+0D - 
+			+0E - 
+			+0F - 
+			+10 - Frame for Event 1
+			+11 - Event 1
+			+12 - Frame for Event 2
+			+13 - Event 2
+			+14 - Frame for Event 3
+			+15 - Event 3
+			+16 - Frame for Event 4
+			+17 - Event 4
+			+18 - Frame for Event 5
+			+19 - Event 5
+			+1A - Frame for Event 6
+			+1B - Event 6
+			+1C - Frame for Event 7
+			+1D - Event 7
+			+1E - Frame for Event 8
+			+1F - Event 8
+			 */
+		}
+
+		/// <summary>
+		/// Show Toki1 data for modern games.
+		/// </summary>
+		/// <param name="index">Index into Toki1 entries.</param>
+		private void ShowDataModern(int index)
 		{
 			Toki1Entry t = Toki1Entries[index];
 			StringBuilder sb = new StringBuilder();
@@ -106,15 +199,17 @@ namespace VPWStudio
 	public class Toki1Entry
 	{
 		public byte[] Data;
+		public int DataLength;
 
-		public Toki1Entry(BinaryReader br)
+		public Toki1Entry(BinaryReader br, int dataLength)
 		{
+			DataLength = dataLength;
 			ReadEntry(br);
 		}
 
 		public void ReadEntry(BinaryReader br)
 		{
-			Data = br.ReadBytes(36);
+			Data = br.ReadBytes(DataLength);
 		}
 	}
 }
