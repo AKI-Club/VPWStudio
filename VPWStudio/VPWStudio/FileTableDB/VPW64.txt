@@ -526,6 +526,7 @@
 020E=Binary;(k. yamazaki ??? 1)
 020F=Binary;(k. yamazaki moveset)
 0210=Binary;(k. yamazaki ??? 2)
+0211=Binary;Toki1 values
 0212=Ci4Palette;
 0213=Ci4Palette;
 0214=Ci4Palette;[Timer] Palette

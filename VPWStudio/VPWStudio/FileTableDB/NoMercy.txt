@@ -351,7 +351,7 @@
 02BC=Binary;(hidden wrestler moveset Great Sasuke?)
 02BD=Binary;(hidden wrestler moveset Shinjiro Ohtani?)
 02BE=Binary;(hidden wrestler moveset CIMA?)
-02BF=Binary;(Toki1 data?)
+02BF=Binary;Toki1 values
 02C0=Binary;(0x00000215 file - scratching music?)
 02C1=Binary;(0x00000215 file - Smackdown Mall music)
 02C2=Binary;(0x00000215 file - Smackdown Mall music)

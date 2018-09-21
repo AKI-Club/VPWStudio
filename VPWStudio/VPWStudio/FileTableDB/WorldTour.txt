@@ -344,6 +344,7 @@
 0263=Binary;(kim chee ??? 1)
 0264=Binary;(kim chee moveset)
 0265=Binary;(kim chee ??? 2)
+026A=Binary;Toki1 values
 026B=Ci4Texture;
 026C=Ci4Texture;
 026D=Ci4Texture;
