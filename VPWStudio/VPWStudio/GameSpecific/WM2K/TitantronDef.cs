@@ -26,14 +26,14 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt16 NameIndex;
 
 		/// <summary>
+		/// Unknown value 1
+		/// </summary>
+		public UInt16 Unknown1;
+
+		/// <summary>
 		/// Unknown value 2
 		/// </summary>
 		public UInt16 Unknown2;
-
-		/// <summary>
-		/// Unknown value 3
-		/// </summary>
-		public UInt16 Unknown3;
 
 		/// <summary>
 		/// List of frames used in this TitanTron.
@@ -50,8 +50,8 @@ namespace VPWStudio.GameSpecific.WM2K
 			FramePointer = 0;
 			ThemeSong = 0xFFFF;
 			NameIndex = 0;
+			Unknown1 = 0;
 			Unknown2 = 0;
-			Unknown3 = 0;
 			Frames = new SortedList<int, TitantronFrame>();
 		}
 		#endregion
@@ -86,14 +86,14 @@ namespace VPWStudio.GameSpecific.WM2K
 			{
 				Array.Reverse(unk2);
 			}
-			Unknown2 = BitConverter.ToUInt16(unk2, 0);
+			Unknown1 = BitConverter.ToUInt16(unk2, 0);
 
 			byte[] unk3 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(unk3);
 			}
-			Unknown3 = BitConverter.ToUInt16(unk3, 0);
+			Unknown2 = BitConverter.ToUInt16(unk3, 0);
 
 			// keep track of current position
 			long curPos = br.BaseStream.Position;
