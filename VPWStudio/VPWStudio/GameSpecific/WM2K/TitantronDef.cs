@@ -16,9 +16,9 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt32 FramePointer;
 
 		/// <summary>
-		/// Unknown value 1
+		/// Matching theme song index (or 0xFFFF if none)
 		/// </summary>
-		public UInt16 Unknown1;
+		public UInt16 ThemeSong;
 
 		/// <summary>
 		/// Name index used in menus.
@@ -48,7 +48,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		public TitantronDef()
 		{
 			FramePointer = 0;
-			Unknown1 = 0;
+			ThemeSong = 0xFFFF;
 			NameIndex = 0;
 			Unknown2 = 0;
 			Unknown3 = 0;
@@ -67,12 +67,12 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 			FramePointer = BitConverter.ToUInt32(ptr, 0);
 
-			byte[] unk1 = br.ReadBytes(2);
+			byte[] theme = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
-				Array.Reverse(unk1);
+				Array.Reverse(theme);
 			}
-			Unknown1 = BitConverter.ToUInt16(unk1, 0);
+			ThemeSong = BitConverter.ToUInt16(theme, 0);
 
 			byte[] nidx = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
