@@ -6,13 +6,88 @@ Pre-Alpha Preview 10 (2018/??/??)
 ---------------------------------
 I'm working on it.
 
-Pre-Alpha Preview 9 (2018/??/??)
+Pre-Alpha Preview 9 (2018/09/15)
 --------------------------------
-(todo: forgot to update changelog for this version)
+* [No Mercy Default Costume Editor] Fixed "Hairy 2" Body Type being listed as Female.
 
-Pre-Alpha Preview 8 (2018/??/??)
+* [No Mercy Default Costume Editor] Ring Attire list updated with sections.
+
+* Dragging and dropping a project file to open it now properly loads the
+  Input ROM and LocationFile data.
+
+* [WCW/nWo Revenge Wrestler Editor] Added string displays for Wrestler Name,
+  Height, and Weight Pointers.
+
+* Location file is re-loaded when changing an open project to a new game type.
+
+* Valid menus are reset when changing an open project to a new game type.
+
+* [CI Texture Previewer] Added ability to set preview image background color.
+
+* [FileTypes] Added Ci4Background, used in WWF No Mercy for the Smackdown Mall
+  background images. Currently read-only.
+
+* [CI Texture Previewer] Allowed dialog to be resized.
+
+* [Animation Tool] Add the ability to export animation values to the clipboard,
+  for use with S.K. Stylez's Animation Editor spreadsheet.
+
+* [FileTableDialog] Fix issue where reloading the FileTableDB multiple times
+  would cause an error.
+
+* [FileTableDialog] Added rudimentary Search and Find Next features.
+  Still not perfect.
+
+* [AkiArchiveTool] Suggest filenames for extracted files.
+
+* [ROM Building] Build log now displays error messages in the following cases:
+  - Unable to convert relative replacement path
+  - Requested replacement file does not exist
+
+* [ROM Building] Build log displays error messages for any files that were
+  unable to be converted.
+
+* Various updates to FileTableDBs, as usual. To update your project, open
+  the File Table dialog, then choose Database -> Reload File Table Database.
+
+  One note of importance with the FileTableDB update in Pre-Alpha Preview 9:
+  All of the WrestleMania 2000 and No Mercy Titantron frames are now marked.
+
+  Interestingly enough, Steve Blackman's Titantron in WM2K has four frames
+  that appear to go unused. The sequence depicts a leg sweep from a different
+  angle than the corresponding move in the version of his Titantron uploaded
+  to YouTube.
+
+  Another advancement of note is the beginning of documenting the Animation
+  File IDs.
+
+Pre-Alpha Preview 8 (2018/08/31)
 --------------------------------
-(todo: forgot to update changelog for this version)
+* [VPW2 Wrestler Editor] Height and Weight now show both hex and "real" values.
+  The special values ("???") still need to be handled.
+
+* [VPW2 Wrestler Editor] Fixed incorrect numbering of Voice B items.
+
+* Implemented first version of WCW/nWo Revenge Championship Editor.
+
+* [Project Properties] Disable "overwrite file?" prompt when setting the output
+  ROM path to an existing file.
+
+* [VPW2 Wrestler Editor] Added ability to view wrestler appearance data.
+  (Currently uses a hex editor view; custom dialog to come later.)
+
+* [No Mercy Wrestler Editor] Added ability to view wrestler appearance data.
+  (Uses a custom dialog, unlike VPW2. It's easier when you only have to deal
+  with one costume at a time versus four... The current design was quickly
+  hacked together just to get something working.)
+
+* [VPW2 Face Tester] Fixed tab order and added keyboard accelerators.
+
+* [VPW2 Face Tester] Added workaround for a CI8 Front Hair texture.
+
+* [AkiArchive Tool] Added ability to view TEX files and ITextures in archives.
+
+* Various updates to FileTableDBs, as usual.
 
 Pre-Alpha Preview 7 (2018/07/28)
 --------------------------------
