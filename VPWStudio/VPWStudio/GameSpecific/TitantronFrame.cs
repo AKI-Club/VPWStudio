@@ -11,6 +11,11 @@ namespace VPWStudio.GameSpecific
 	/// </summary>
 	public class TitantronFrame
 	{
+		/// <summary>
+		/// Value used to signify the end of the TitanTron script.
+		/// </summary>
+		public const UInt16 TITANTRON_END_FRAME_ID = 0xFFFF;
+
 		#region Class Members
 		/// <summary>
 		/// File ID to show during this frame.
