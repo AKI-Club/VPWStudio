@@ -1103,6 +1103,19 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Titantron editor
+		/// </summary>
+		private void titantronVideosToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			Program.ErrorMessageBox("need to design titantron dialog");
+		}
+
+		/// <summary>
 		/// Weapon editor
 		/// </summary>
 		private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1554,10 +1567,12 @@ namespace VPWStudio
 				}
 			}
 
-			// special case for Story Mode
+			// only handle special cases if a project is open
 			if (Program.CurrentProject != null)
 			{
 				VPWGames bg = Program.CurrentProject.Settings.BaseGame;
+
+				// special case for Story Mode
 				bool showStoryMode = (bg == VPWGames.WM2K || bg == VPWGames.VPW2 || bg == VPWGames.NoMercy);
 				storyModeToolStripMenuItem.Enabled = showStoryMode;
 				storyModeToolStripMenuItem.Visible = showStoryMode;
@@ -1574,6 +1589,11 @@ namespace VPWStudio
 						storyModeToolStripMenuItem.Image = null;
 						break;
 				}
+
+				// special case for Titantron
+				bool showTitantron = (bg == VPWGames.WM2K || bg == VPWGames.NoMercy);
+				titantronVideosToolStripMenuItem.Enabled = showTitantron;
+				titantronVideosToolStripMenuItem.Visible = showTitantron;
 			}
 		}
 
