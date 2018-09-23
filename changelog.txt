@@ -2,9 +2,17 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
+Pre-Alpha Preview 10 (2018/??/??)
+---------------------------------
+I'm working on it.
+
+Pre-Alpha Preview 9 (2018/??/??)
+--------------------------------
+(todo: forgot to update changelog for this version)
+
 Pre-Alpha Preview 8 (2018/??/??)
 --------------------------------
-I'm working on it.
+(todo: forgot to update changelog for this version)
 
 Pre-Alpha Preview 7 (2018/07/28)
 --------------------------------
