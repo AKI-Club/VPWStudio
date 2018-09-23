@@ -14,6 +14,9 @@ namespace VPWStudio
 	{
 		private SortedList<int, Toki1Entry> Toki1Entries = new SortedList<int, Toki1Entry>();
 
+		/// <summary>
+		/// Length of Toki1 data per game.
+		/// </summary>
 		private Dictionary<VPWGames, int> Toki1DataLength = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 0x20 },
@@ -24,6 +27,9 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 0x24 }
 		};
 
+		/// <summary>
+		/// File ID of Toki1 data.
+		/// </summary>
 		private Dictionary<VPWGames, int> Toki1FileIDs = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 0x026A },
@@ -32,6 +38,19 @@ namespace VPWStudio
 			{ VPWGames.WM2K, 0x0435 },
 			{ VPWGames.VPW2, 0x034B },
 			{ VPWGames.NoMercy, 0x02BF }
+		};
+
+		/// <summary>
+		/// First animation number in each game.
+		/// </summary>
+		private Dictionary<VPWGames, int> FirstAnimationNumber = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 0xB55 },
+			{ VPWGames.VPW64, 0x1347 },
+			{ VPWGames.Revenge, 0xE39 },
+			{ VPWGames.WM2K, 0x1609 },
+			{ VPWGames.VPW2, 0x1A90 },
+			{ VPWGames.NoMercy, 0x2DD9 }
 		};
 
 		public Toki1TestDialog()
@@ -82,7 +101,7 @@ namespace VPWStudio
 			cbToki1Entries.BeginUpdate();
 			foreach (KeyValuePair<int, Toki1Entry> t1e in Toki1Entries)
 			{
-				cbToki1Entries.Items.Add(String.Format("{0:X4}", t1e.Key));
+				cbToki1Entries.Items.Add(String.Format("{0:X4} [Anim. {1:X4}]", t1e.Key, t1e.Key + FirstAnimationNumber[Program.CurrentProject.Settings.BaseGame]));
 			}
 			cbToki1Entries.EndUpdate();
 		}
@@ -93,7 +112,7 @@ namespace VPWStudio
 			{
 				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
-					tbOutput.Text = "argh freem fix this";
+					ShowDataEarly(index);
 					break;
 				case VPWGames.Revenge:
 				case VPWGames.WM2K:
@@ -110,6 +129,9 @@ namespace VPWStudio
 		/// <param name="index">Index into Toki1 entries.</param>
 		private void ShowDataEarly(int index)
 		{
+			Toki1Entry t = Toki1Entries[index];
+			StringBuilder sb = new StringBuilder();
+
 			// from my old World Tour notes:
 			/*
 			+00 - End of move position modifier
@@ -145,6 +167,17 @@ namespace VPWStudio
 			+1E - Frame for Event 8
 			+1F - Event 8
 			 */
+			sb.AppendLine("(0x00-0x1F to be decoded later)");
+			sb.AppendLine(String.Format("Effect 1: frame {0}, value 0x{1:X2}", t.Data[16], t.Data[17]));
+			sb.AppendLine(String.Format("Effect 2: frame {0}, value 0x{1:X2}", t.Data[18], t.Data[19]));
+			sb.AppendLine(String.Format("Effect 3: frame {0}, value 0x{1:X2}", t.Data[20], t.Data[21]));
+			sb.AppendLine(String.Format("Effect 4: frame {0}, value 0x{1:X2}", t.Data[22], t.Data[23]));
+			sb.AppendLine(String.Format("Effect 5: frame {0}, value 0x{1:X2}", t.Data[24], t.Data[25]));
+			sb.AppendLine(String.Format("Effect 6: frame {0}, value 0x{1:X2}", t.Data[26], t.Data[27]));
+			sb.AppendLine(String.Format("Effect 7: frame {0}, value 0x{1:X2}", t.Data[28], t.Data[29]));
+			sb.AppendLine(String.Format("Effect 8: frame {0}, value 0x{1:X2}", t.Data[30], t.Data[31]));
+
+			tbOutput.Text = sb.ToString();
 		}
 
 		/// <summary>
