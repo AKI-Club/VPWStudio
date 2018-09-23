@@ -354,6 +354,7 @@
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
     <Compile Include="GameSpecific\StoryModeTeam_Modern.cs" />
+    <Compile Include="GameSpecific\TitantronFrame.cs" />
     <Compile Include="GameSpecific\VPW2\CostumeTextures.cs" />
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
