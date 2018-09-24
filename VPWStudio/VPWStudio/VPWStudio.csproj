@@ -361,7 +361,7 @@
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\VPW64\WrestlerParams.cs" />
     <Compile Include="GameSpecific\WM2K\StableDefinition.cs" />
-    <Compile Include="GameSpecific\WM2K\TitantronDef.cs" />
+    <Compile Include="GameSpecific\WM2K\EntranceDef.cs" />
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\WorldTour\WrestlerParams.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />

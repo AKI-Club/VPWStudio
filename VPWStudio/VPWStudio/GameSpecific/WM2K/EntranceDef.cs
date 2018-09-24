@@ -5,9 +5,9 @@ using System.IO;
 namespace VPWStudio.GameSpecific.WM2K
 {
 	/// <summary>
-	/// WWF WrestleMania 2000 TitanTron definition.
+	/// WWF WrestleMania 2000 entrance definition.
 	/// </summary>
-	public class TitantronDef
+	public class EntranceDef
 	{
 		#region Class Members
 		/// <summary>
@@ -52,7 +52,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public TitantronDef()
+		public EntranceDef()
 		{
 			FramePointer = 0;
 			ThemeSong = 0xFFFF;
