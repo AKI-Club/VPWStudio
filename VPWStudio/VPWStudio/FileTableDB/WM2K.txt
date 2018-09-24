@@ -1557,11 +1557,11 @@
 11F2=Ci8Texture;[Mask/etc.] 31 (gas mask)
 11F3=AkiModel;
 127E=Ci8Palette;[Face Palette] Dummy
-127F=Ci8Palette;[Face Texture] Dummy
+127F=Ci8Texture;[Face Texture] Dummy
 1280=Ci8Palette;(Dummy back/sides of head)
-1281=Ci8Palette;(Dummy back/sides of head)
+1281=Ci8Texture;(Dummy back/sides of head)
 1282=Ci8Palette;(Dummy neck)
-1283=Ci8Palette;(Dummy neck)
+1283=Ci8Texture;(Dummy neck)
 1284=Ci4Palette;(Dummy chest)
 1285=Ci4Texture;(Dummy chest)
 1286=Ci4Palette;(Dummy stomach)
@@ -1582,8 +1582,8 @@
 1295=Ci4Texture;(Dummy lower leg)
 1296=Ci4Palette;(Dummy foot)
 1297=Ci4Texture;(Dummy foot)
-1298=Ci4Palette;[Women Faces] xx
-1299=Ci4Texture;[Women Faces] xx
+1298=Ci8Palette;[Women Faces] xx
+1299=Ci8Texture;[Women Faces] xx
 1609=AkiAnimation;(first animation data?)
 160A=AkiAnimation;
 160B=AkiAnimation;
