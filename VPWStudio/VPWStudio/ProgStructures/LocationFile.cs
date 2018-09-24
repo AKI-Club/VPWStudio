@@ -155,6 +155,10 @@ namespace VPWStudio
 			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 			{ "StoryModeTeams", "$STORY_MODE_TEAMS" }, // ROM location of story mode teams
 			{ "DefaultChampions", "$DEFAULT_CHAMPIONS" }, // ROM location of default champions
+
+			// todo: WM2K and NoMercy EntranceDef and TitantronFrames
+			// $ENTRANCEDEFS
+			// $TITANTRON_FRAMES_START // ROM location of first Titantron script
 			#endregion
 
 			#region CodeChange
