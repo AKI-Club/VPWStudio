@@ -31,8 +31,10 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt16 Unknown1;
 
 		/// <summary>
-		/// Lighting type to use
+		/// Lighting type to use.
 		/// </summary>
+		/// First nibble  (____xxxx): in ring
+		/// Second nibble (xxxx____): on ramp
 		public byte Lighting;
 
 		/// <summary>
@@ -103,6 +105,10 @@ namespace VPWStudio.GameSpecific.WM2K
 			// part 2: frames
 			bool readFrames = true;
 			int frameNum = 0;
+
+			// todo: properly handle the seeking
+			//br.BaseStream.Seek(Z64Rom.PointerToRom(FramePointer), SeekOrigin.Begin);
+
 			while (readFrames)
 			{
 				TitantronFrame frame = new TitantronFrame(br);
