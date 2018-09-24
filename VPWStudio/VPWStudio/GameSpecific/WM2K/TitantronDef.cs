@@ -31,9 +31,14 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt16 Unknown1;
 
 		/// <summary>
-		/// Unknown value 2
+		/// Lighting type to use
 		/// </summary>
-		public UInt16 Unknown2;
+		public byte Lighting;
+
+		/// <summary>
+		/// How long the Titantron should run before the wrestler enters.
+		/// </summary>
+		public byte EntranceDelay;
 
 		/// <summary>
 		/// List of frames used in this TitanTron.
@@ -51,7 +56,8 @@ namespace VPWStudio.GameSpecific.WM2K
 			ThemeSong = 0xFFFF;
 			NameIndex = 0;
 			Unknown1 = 0;
-			Unknown2 = 0;
+			Lighting = 0;
+			EntranceDelay = 0;
 			Frames = new SortedList<int, TitantronFrame>();
 		}
 		#endregion
@@ -88,12 +94,8 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 			Unknown1 = BitConverter.ToUInt16(unk2, 0);
 
-			byte[] unk3 = br.ReadBytes(2);
-			if (BitConverter.IsLittleEndian)
-			{
-				Array.Reverse(unk3);
-			}
-			Unknown2 = BitConverter.ToUInt16(unk3, 0);
+			Lighting = br.ReadByte();
+			EntranceDelay = br.ReadByte();
 
 			// keep track of current position
 			long curPos = br.BaseStream.Position;
