@@ -1662,8 +1662,8 @@
 0686=AkiModel;[Arena - AKI Hall]
 0687=Ci4Palette;
 0688=Ci4Texture;
-0689=Ci4Palette;
-068A=Ci4Texture;
+0689=Ci4Palette;[Arena - ?] Green floor corner
+068A=Ci4Texture;[Arena - ?] Green floor corner
 068B=Ci4Palette;
 068C=Ci4Texture;
 068D=Ci4Palette;
@@ -1682,10 +1682,10 @@
 069A=Ci4Texture;
 069B=Ci8Palette;[Arena - Budokan] Japanese flag
 069C=Ci8Texture;[Arena - Budokan] Japanese flag
-069D=Ci4Palette;
-069E=Ci4Texture;
-069F=Ci4Palette;
-06A0=Ci4Texture;
+069D=Ci4Palette;[Arena - Budokan?] (red ? sign)
+069E=Ci4Texture;[Arena - Budokan?] (red ? sign)
+069F=Ci4Palette;[Arena - Budokan] (? sign)
+06A0=Ci4Texture;[Arena - Budokan] (? sign)
 06A1=Ci4Palette;[Arena - AKI Hall, Budokan]
 06A2=Ci4Texture;[Arena - AKI Hall, Budokan]
 06A3=Ci8Palette;
@@ -1772,8 +1772,8 @@
 0728=Ci4Texture;[Arena - Kawasaki] Scoreboard
 0729=Ci4Palette;[Arena - Kawasaki] Guardrail
 072A=Ci4Texture;[Arena - Kawasaki] Guardrail
-072B=Ci4Palette;
-072C=Ci4Texture;
+072B=Ci4Palette;[Arena - Kawasaki] Outside Mats
+072C=Ci4Texture;[Arena - Kawasaki] Outside Mats
 072D=Ci4Palette;
 072E=Ci4Texture;
 072F=Ci4Palette;[Arena - Kawasaki] Ring Skirt
@@ -1970,8 +1970,8 @@
 0827=Ci4Texture;
 0828=Ci4Palette;
 0829=Ci4Texture;
-082A=Ci8Palette;
-082B=Ci8Texture;
+082A=Ci8Palette;[Arena - Dome Road]
+082B=Ci8Texture;[Arena - Dome Road]
 082C=Ci4Palette;
 082D=Ci4Texture;
 082E=Ci4Palette;
