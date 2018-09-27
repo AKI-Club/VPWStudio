@@ -389,25 +389,32 @@ textures, palettes, models, and more.</p>
 
 <p>(todo)</p>
 
+<h3>Navigation Menu</h3>
+<p>(todo: goto ctrl+g; find ctrl+f; find next f3)</p>
+
+<h3>Database Menu</h3>
+<p>The Database menu only contains one option, but it's important if you've upgraded
+to a new version of VPW Studio. (todo: explain "Reload File Table Database")</p>
+
 <hr />
 <h2><a name="Menus">Menus</a></h2>
 <p>The Menus option (Project &rarr; Menus) allows you to change how the items
 are laid out on various game menus.</p>
 
-<p>(todo)</p>
+<p>(todo: haven't even designed this because I don't have the data mapped)</p>
 
 <hr />
 <h2><a name="Moves">Moves</a></h2>
 <p>The Moves section (Project &rarr; Moves) deals with every move and animation found in the game.</p>
 
-<p>(todo)</p>
+<p>(todo: this takes a lot of work to get right, considering moves are composed of multiple parts (toki1, damage, actual animation data))</p>
 
 <hr />
 <h2><a name="SoundMusic">Sound/Music</a></h2>
 <p>The Sound and Music editor (Project &rarr; Sound/Music) will eventually allow you to preview and change
 sounds. (This includes the theme music found in WM2K, VPW2, and No Mercy.)</p>
 
-<p>(todo)</p>
+<p>(todo: I haven't even begun to think about this; you're better off using SubDrag's N64 sound/music tools right now)</p>
 
 <hr />
 <h2><a name="Stables">Stables</a></h2>
@@ -476,6 +483,14 @@ sounds. (This includes the theme music found in WM2K, VPW2, and No Mercy.)</p>
 </tr>
 </tbody>
 </table>
+
+<ul>
+<li><strong>Wrestler Definitions</strong> &ndash; Pointer to the wrestler definition data for this stable.</li>
+<li><strong>Name Pointer</strong> (WM2K) &ndash; Pointer to the stable name.</li>
+<li><strong>Text Index</strong> (VPW2, No Mercy) &ndash; Index of the stable name in the relevant AkiText archive.</li>
+<li><strong>Stable Name</strong> &ndash; Stable name, either from ROM (WM2K) or AkiText (VPW2, No Mercy)</li>
+<li><strong>Wrestler Count</strong> (WM2K) &ndash; Number of wrestlers in this stable.</li>
+</ul>
 
 <hr />
 <h2><a name="StoryMode">Story Mode</a></h2>
@@ -558,7 +573,7 @@ the base for the final, more polished features.</p>
 <li><strong>lzss compress test</strong> &ndash; LZSS compress a file. File is exported as <code>(filename).lzss</code>.</li>
 <li><strong>lzss decompress test</strong> &ndash; Decompress an LZSS file. File is exported as <code>(filename).bin</code>.</li>
 <li><strong>name encoder/decoder</strong> &ndash; Work in progress tool for encoding and decoding the name format used from WCW vs. nWo World Tour through WWF WrestleMania 2000.</li>
-<li><strong>toki 1 test (vpw2 only)</strong> &ndash; Dumps Toki1 info. Requires an open VPW2 project.</li>
+<li><strong>toki 1 test</strong> &ndash; View Toki1 info. Requires an open project.</li>
 <li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format.</li>
 <li><strong>png to ci4</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
 <li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
