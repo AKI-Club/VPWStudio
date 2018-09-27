@@ -101,6 +101,16 @@ namespace VPWStudio
 
 		#region JASC Paint Shop Pro Palette Import/Export
 		/// <summary>
+		/// Helper for writing a Color to a JASC Paint Shop Pro palette file.
+		/// </summary>
+		/// <param name="c">Color to write.</param>
+		/// <returns>Palette data string</returns>
+		private string ColorToJascPalEntry(Color c)
+		{
+			return String.Format("{0} {1} {2}", c.R, c.G, c.B);
+		}
+
+		/// <summary>
 		/// Export Ci8Palette as a JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sw">StreamWriter to write Palette data to.</param>
@@ -112,8 +122,7 @@ namespace VPWStudio
 			// write colors as RGB
 			for (int i = 0; i < Entries.Length; i++)
 			{
-				Color c = N64Colors.Value5551ToColor(Entries[i]);
-				sw.WriteLine(String.Format("{0} {1} {2}", c.R, c.G, c.B));
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
 			}
 		}
 
@@ -204,6 +213,37 @@ namespace VPWStudio
 
 			return true;
 		}
+		#endregion
+
+		#region GIMP Palette Import/Export
+		/// <summary>
+		/// Write header data for a GIMP palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write header to.</param>
+		private void WriteGimpHeader(StreamWriter sw, string _name)
+		{
+			sw.WriteLine("GIMP Palette");
+			sw.WriteLine(String.Format("Name: {0}", _name));
+			sw.WriteLine("#");
+		}
+
+		/// <summary>
+		/// Export Ci8Palette as a GIMP palette file.
+		/// </summary>
+		/// <param name="sw"></param>
+		/// <param name="_name"></param>
+		public void ExportGimp(StreamWriter sw, string _name)
+		{
+			WriteGimpHeader(sw, _name);
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+			}
+		}
+
+		// todo: export subpal
+
+		// todo: all imports, which are going to be a pain
 		#endregion
 	}
 }
