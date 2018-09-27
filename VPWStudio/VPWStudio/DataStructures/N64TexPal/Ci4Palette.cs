@@ -440,5 +440,96 @@ namespace VPWStudio
 			return true;
 		}
 		#endregion
+
+		#region GIMP Palette Import/Export
+		/// <summary>
+		/// Write header data for a GIMP palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write header to.</param>
+		private void WriteGimpHeader(StreamWriter sw, string _name)
+		{
+			sw.WriteLine("GIMP Palette");
+			sw.WriteLine(String.Format("Name: {0}", _name));
+			sw.WriteLine("#");
+		}
+
+		/// <summary>
+		/// Export (main) Ci4Palette as a GIMP palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write Palette data to.</param>
+		public void ExportGimp(StreamWriter sw, string _name)
+		{
+			WriteGimpHeader(sw, _name);
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+			}
+		}
+
+		/// <summary>
+		/// Export a SubPalette as a GIMP palette file.
+		/// </summary>
+		/// <param name="sw">StreamWriter to write sub-palette data to.</param>
+		/// <param name="subPalNum">Sub-palette number to write.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool ExportGimpSubPal(StreamWriter sw, int subPalNum, string _name)
+		{
+			if (SubPalettes.Count == 0 || subPalNum < 0 || ((subPalNum + 1) > SubPalettes.Count))
+			{
+				// unable to deal with subpalette
+				return false;
+			}
+
+			WriteGimpHeader(sw, string.Format("File ID 0x{0} subpal {1}", _name, subPalNum));
+			Ci4Palette subpalette = SubPalettes[subPalNum];
+			for (int i = 0; i < subpalette.Entries.Length; i++)
+			{
+				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(subpalette.Entries[i])));
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Import (main) Ci4Palette data from a GIMP palette file.
+		/// </summary>
+		/// <param name="sr">StreamReader to read Palette data from.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool ImportGimp(StreamReader sr)
+		{
+			// check for "GIMP Palette"
+			string palType = sr.ReadLine();
+			if (!palType.Equals("GIMP Palette"))
+			{
+				// not GIMP Palette
+				return false;
+			}
+
+			// "Name: " name
+			string nameLine = sr.ReadLine();
+			if (!nameLine.StartsWith("Name:"))
+			{
+				return false;
+			}
+
+			// #
+			string separator = sr.ReadLine();
+			if (!separator.Equals("#"))
+			{
+				return false;
+			}
+
+			// color entries
+			// normally, read until end of file; however, we only want 16 colors.
+			// also, the numbers might be spaced out for formatting purposes,
+			// so we want to ignore that.
+
+			//while(!sr.EndOfStream){
+			//	string colorLine = sr.ReadLine();
+			//}
+
+			return true;
+		}
+		#endregion
 	}
 }
