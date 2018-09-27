@@ -534,6 +534,30 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								else if (Path.GetExtension(ofd.FileName) == ".gpl")
+								{
+									// import GIMP palette
+									ColorList.Clear();
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										if (cbPalettes.SelectedIndex > 0)
+										{
+											Program.ErrorMessageBox("Haven't implemented GIMP subpalette import yet, sorry.");
+											return;
+										}
+										else
+										{
+											Program.ErrorMessageBox("I do not trust GIMP palette import to work at the moment, sorry.");
+											return;
+											/*
+											import.ImportGimp(sr);
+											ColorList.RemoveRange(0, 16);
+											ColorList.InsertRange(0, import.Entries);
+											*/
+										}
+									}
+								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci4pal")
 								{
 									using (BinaryReader br = new BinaryReader(fs))
@@ -574,6 +598,10 @@ namespace VPWStudio.Editors
 									{
 										import.ImportJasc(sr);
 									}
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".gpl")
+								{
+									Program.ErrorMessageBox("GIMP CI8 palette import currently not implemented.");
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci8pal")
 								{
@@ -646,6 +674,22 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								else if (Path.GetExtension(sfd.FileName) == ".gpl")
+								{
+									// export GIMP palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										// export based on cbPalettes.SelectedIndex
+										if (cbPalettes.SelectedIndex > 0)
+										{
+											export.ExportGimpSubPal(sw, cbPalettes.SelectedIndex - 1, string.Format("{0:X4}", FileID));
+										}
+										else
+										{
+											export.ExportGimp(sw, String.Format("File ID 0x{0:X4}", FileID));
+										}
+									}
+								}
 								else
 								{
 									// export .ci4pal
@@ -675,6 +719,14 @@ namespace VPWStudio.Editors
 									using (StreamWriter sw = new StreamWriter(fs))
 									{
 										export.ExportJasc(sw);
+									}
+								}
+								else if (Path.GetExtension(sfd.FileName) == ".gpl")
+								{
+									// export GIMP palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportGimp(sw, String.Format("File ID 0x{0:X4}", FileID));
 									}
 								}
 								else
