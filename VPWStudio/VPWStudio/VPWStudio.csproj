@@ -326,6 +326,12 @@
     <Compile Include="Editors\VPW2\WrestlerMain_VPW2.Designer.cs">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WM2K\Entrance_WM2K.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WM2K\Entrance_WM2K.Designer.cs">
+      <DependentUpon>Entrance_WM2K.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WM2K\StableDefs_WM2K.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -590,6 +596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\WrestlerMain_VPW2.resx">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WM2K\Entrance_WM2K.resx">
+      <DependentUpon>Entrance_WM2K.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WM2K\StableDefs_WM2K.resx">
       <DependentUpon>StableDefs_WM2K.cs</DependentUpon>
