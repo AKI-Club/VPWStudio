@@ -153,6 +153,8 @@ namespace VPWStudio
 			{ "FaceAccessories_Type", "$FACEACCESSORIES_TYPE" },
 
 			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
+
+			// WM2K and VPW2:
 			{ "StoryModeTeams", "$STORY_MODE_TEAMS" }, // ROM location of story mode teams
 			{ "DefaultChampions", "$DEFAULT_CHAMPIONS" }, // ROM location of default champions
 
