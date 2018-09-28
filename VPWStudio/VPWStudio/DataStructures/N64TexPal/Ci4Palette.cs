@@ -450,7 +450,42 @@ namespace VPWStudio
 		{
 			sw.WriteLine("GIMP Palette");
 			sw.WriteLine(String.Format("Name: {0}", _name));
+			sw.WriteLine("Columns: 16");
 			sw.WriteLine("#");
+		}
+
+		private bool CheckGimpHeader()
+		{
+			// check for "GIMP Palette"
+			string palType = sr.ReadLine();
+			if (!palType.Equals("GIMP Palette"))
+			{
+				// not GIMP Palette
+				return false;
+			}
+
+			// "Name: " name
+			string nameLine = sr.ReadLine();
+			if (!nameLine.StartsWith("Name:"))
+			{
+				return false;
+			}
+
+			// "Columns: " number of columns
+			string columnsLine = sr.ReadLine();
+			if (!columnsLine.StartsWith("Columns:"))
+			{
+				return false;
+			}
+
+			// #
+			string separator = sr.ReadLine();
+			if (!separator.Equals("#"))
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		/// <summary>
@@ -462,7 +497,7 @@ namespace VPWStudio
 			WriteGimpHeader(sw, _name);
 			for (int i = 0; i < Entries.Length; i++)
 			{
-				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+				sw.WriteLine( String.Format("{0}\tUntitled", ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i]))) );
 			}
 		}
 
@@ -484,7 +519,7 @@ namespace VPWStudio
 			Ci4Palette subpalette = SubPalettes[subPalNum];
 			for (int i = 0; i < subpalette.Entries.Length; i++)
 			{
-				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(subpalette.Entries[i])));
+				sw.WriteLine( String.Format("{0}\tUntitled", ColorToJascPalEntry(N64Colors.Value5551ToColor(subpalette.Entries[i]))) );
 			}
 
 			return true;
@@ -497,24 +532,7 @@ namespace VPWStudio
 		/// <returns>True if successful, false otherwise.</returns>
 		public bool ImportGimp(StreamReader sr)
 		{
-			// check for "GIMP Palette"
-			string palType = sr.ReadLine();
-			if (!palType.Equals("GIMP Palette"))
-			{
-				// not GIMP Palette
-				return false;
-			}
-
-			// "Name: " name
-			string nameLine = sr.ReadLine();
-			if (!nameLine.StartsWith("Name:"))
-			{
-				return false;
-			}
-
-			// #
-			string separator = sr.ReadLine();
-			if (!separator.Equals("#"))
+			if (!CheckGimpHeader())
 			{
 				return false;
 			}
@@ -524,9 +542,25 @@ namespace VPWStudio
 			// also, the numbers might be spaced out for formatting purposes,
 			// so we want to ignore that.
 
-			//while(!sr.EndOfStream){
-			//	string colorLine = sr.ReadLine();
-			//}
+			int palEntry = 0;
+			while(!sr.EndOfStream){
+				string colorLine = sr.ReadLine().Trim(new char[] { ' ' });
+
+				// deal with possible color names
+				int tabLoc = colorLine.IndexOf('\t');
+				if (tabLoc > -1)
+				{
+					colorLine = colorLine.Substring(0, tabLoc);
+				}
+
+				// deal with extra spaces
+				colorLine = colorLine.Replace("  ", " ");
+				colorLine = colorLine.Replace("  ", " "); // one more time for good measure
+
+				string[] colorDef = colorLine.Split(' ');
+				Entries[palEntry] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+				palEntry++;
+			}
 
 			return true;
 		}
