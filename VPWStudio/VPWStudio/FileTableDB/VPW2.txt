@@ -135,9 +135,9 @@
 0086=AkiTexture;unused face 3?
 0087=AkiArchive;Referee Johnny H frames
 0088=AkiArchive;
-0089=AkiArchive;
-008A=AkiArchive;
-008B=AkiArchive;
+0089=AkiArchive;(?? textures)
+008A=AkiArchive;(?? textures)
+008B=AkiArchive;(budokan select model textures?)
 008C=AkiArchive;
 008D=AkiArchive;
 008E=AkiArchive;
