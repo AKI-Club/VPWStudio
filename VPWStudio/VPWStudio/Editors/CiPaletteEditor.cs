@@ -548,13 +548,15 @@ namespace VPWStudio.Editors
 										}
 										else
 										{
-											Program.ErrorMessageBox("I do not trust GIMP palette import to work at the moment, sorry.");
-											return;
-											/*
-											import.ImportGimp(sr);
-											ColorList.RemoveRange(0, 16);
-											ColorList.InsertRange(0, import.Entries);
-											*/
+											if (import.ImportGimp(sr))
+											{
+												ColorList.RemoveRange(0, 16);
+												ColorList.InsertRange(0, import.Entries);
+											}
+											else
+											{
+												Program.ErrorMessageBox("Unspecified error trying to import GIMP palette.");
+											}
 										}
 									}
 								}
