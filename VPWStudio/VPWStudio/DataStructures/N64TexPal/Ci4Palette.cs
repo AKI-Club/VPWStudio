@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace VPWStudio
 {
@@ -454,7 +455,12 @@ namespace VPWStudio
 			sw.WriteLine("#");
 		}
 
-		private bool CheckGimpHeader()
+		/// <summary>
+		/// Check header data for a GIMP palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <returns></returns>
+		private bool CheckGimpHeader(StreamReader sr)
 		{
 			// check for "GIMP Palette"
 			string palType = sr.ReadLine();
@@ -532,7 +538,7 @@ namespace VPWStudio
 		/// <returns>True if successful, false otherwise.</returns>
 		public bool ImportGimp(StreamReader sr)
 		{
-			if (!CheckGimpHeader())
+			if (!CheckGimpHeader(sr))
 			{
 				return false;
 			}
@@ -554,11 +560,54 @@ namespace VPWStudio
 				}
 
 				// deal with extra spaces
-				colorLine = colorLine.Replace("  ", " ");
-				colorLine = colorLine.Replace("  ", " "); // one more time for good measure
+				colorLine = Regex.Replace(colorLine, @"\s{2,}", " ");
 
 				string[] colorDef = colorLine.Split(' ');
 				Entries[palEntry] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+				palEntry++;
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Import SubPalette data from a GIMP palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <param name="subPalNum"></param>
+		/// <returns></returns>
+		public bool ImportGimpSubPal(StreamReader sr, int subPalNum)
+		{
+			if (!CheckGimpHeader(sr))
+			{
+				return false;
+			}
+
+			// color entries
+			// kind of like the above, but with subpalettes
+
+			if (SubPalettes[subPalNum] == null)
+			{
+				SubPalettes[subPalNum] = new Ci4Palette();
+			}
+
+			int palEntry = (subPalNum * 16);
+			while (!sr.EndOfStream)
+			{
+				string colorLine = sr.ReadLine().Trim(new char[] { ' ' });
+
+				// deal with possible color names
+				int tabLoc = colorLine.IndexOf('\t');
+				if (tabLoc > -1)
+				{
+					colorLine = colorLine.Substring(0, tabLoc);
+				}
+
+				// deal with extra spaces
+				colorLine = Regex.Replace(colorLine, @"\s{2,}", " ");
+
+				string[] colorDef = colorLine.Split(' ');
+				SubPalettes[subPalNum].Entries[palEntry] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
 				palEntry++;
 			}
 
