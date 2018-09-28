@@ -224,6 +224,7 @@ namespace VPWStudio
 		{
 			sw.WriteLine("GIMP Palette");
 			sw.WriteLine(String.Format("Name: {0}", _name));
+			sw.WriteLine("Columns: 16");
 			sw.WriteLine("#");
 		}
 
@@ -237,7 +238,7 @@ namespace VPWStudio
 			WriteGimpHeader(sw, _name);
 			for (int i = 0; i < Entries.Length; i++)
 			{
-				sw.WriteLine(ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i])));
+				sw.WriteLine( String.Format("{0}\tUntitled", ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i]))) );
 			}
 		}
 
