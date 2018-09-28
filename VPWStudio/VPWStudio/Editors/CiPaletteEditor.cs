@@ -543,8 +543,15 @@ namespace VPWStudio.Editors
 									{
 										if (cbPalettes.SelectedIndex > 0)
 										{
-											Program.ErrorMessageBox("Haven't implemented GIMP subpalette import yet, sorry.");
-											return;
+											if (import.ImportGimpSubPal(sr, cbPalettes.SelectedIndex - 1))
+											{
+												ColorList.RemoveRange((cbPalettes.SelectedIndex * 16), 16);
+												ColorList.InsertRange((cbPalettes.SelectedIndex * 16), import.SubPalettes[cbPalettes.SelectedIndex - 1].Entries);
+											}
+											else
+											{
+												Program.ErrorMessageBox("Unspecified error trying to import GIMP palette as sub-palette.");
+											}
 										}
 										else
 										{
