@@ -17,7 +17,7 @@
 0010=AkiTexture;[Menu] main rectangle cursor
 0011=AkiTexture;[UI] Stable bar
 0012=AkiTexture;[Splash] Title Logo
-0013=AkiArchive;
+0013=AkiArchive;(lightning)
 0014=AkiTexture;[Splash] Press Start
 0015=AkiTexture;[UI] League Result
 0016=AkiArchive;WCW/nWo Revenge Credits BG
