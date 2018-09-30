@@ -46,6 +46,7 @@
 			this.arenasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.championshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.titantronVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.movesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.titantronVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.moveDamageTestvpw2OnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -223,6 +224,12 @@
 			this.costumesToolStripMenuItem.Name = "costumesToolStripMenuItem";
 			resources.ApplyResources(this.costumesToolStripMenuItem, "costumesToolStripMenuItem");
 			this.costumesToolStripMenuItem.Click += new System.EventHandler(this.costumesToolStripMenuItem_Click);
+			// 
+			// titantronVideosToolStripMenuItem
+			// 
+			this.titantronVideosToolStripMenuItem.Name = "titantronVideosToolStripMenuItem";
+			resources.ApplyResources(this.titantronVideosToolStripMenuItem, "titantronVideosToolStripMenuItem");
+			this.titantronVideosToolStripMenuItem.Click += new System.EventHandler(this.titantronVideosToolStripMenuItem_Click);
 			// 
 			// fileTableToolStripMenuItem
 			// 
@@ -376,7 +383,8 @@
             this.pngToMenubgToolStripMenuItem,
             this.vpw2FaceTestToolStripMenuItem,
             this.stableParseTestToolStripMenuItem,
-            this.romSliceTestToolStripMenuItem});
+            this.romSliceTestToolStripMenuItem,
+            this.moveDamageTestvpw2OnlyToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -474,11 +482,11 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// titantronVideosToolStripMenuItem
+			// moveDamageTestvpw2OnlyToolStripMenuItem
 			// 
-			this.titantronVideosToolStripMenuItem.Name = "titantronVideosToolStripMenuItem";
-			resources.ApplyResources(this.titantronVideosToolStripMenuItem, "titantronVideosToolStripMenuItem");
-			this.titantronVideosToolStripMenuItem.Click += new System.EventHandler(this.titantronVideosToolStripMenuItem_Click);
+			this.moveDamageTestvpw2OnlyToolStripMenuItem.Name = "moveDamageTestvpw2OnlyToolStripMenuItem";
+			resources.ApplyResources(this.moveDamageTestvpw2OnlyToolStripMenuItem, "moveDamageTestvpw2OnlyToolStripMenuItem");
+			this.moveDamageTestvpw2OnlyToolStripMenuItem.Click += new System.EventHandler(this.moveDamageTestvpw2OnlyToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -559,6 +567,7 @@
 		private System.Windows.Forms.ToolStripMenuItem stableParseTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem romSliceTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem titantronVideosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem moveDamageTestvpw2OnlyToolStripMenuItem;
 	}
 }
 
