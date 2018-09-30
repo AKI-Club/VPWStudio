@@ -444,6 +444,12 @@
     <Compile Include="Tools\ModelTool2.Designer.cs">
       <DependentUpon>ModelTool2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\MoveDamageTestDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\MoveDamageTestDialog.Designer.cs">
+      <DependentUpon>MoveDamageTestDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\NameEncodeDecodeTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -631,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool2.resx">
       <DependentUpon>ModelTool2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\MoveDamageTestDialog.resx">
+      <DependentUpon>MoveDamageTestDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\NameEncodeDecodeTool.resx">
       <DependentUpon>NameEncodeDecodeTool.cs</DependentUpon>
