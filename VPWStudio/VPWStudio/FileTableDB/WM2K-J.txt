@@ -17,7 +17,7 @@
 0010=AkiTexture;[Menu] main rectangle cursor
 0011=AkiTexture;[UI] Stable bar
 0012=AkiTexture;[Splash] Title Logo
-0013=AkiArchive;
+0013=AkiArchive;(lightning)
 0014=AkiTexture;[Splash] Press Start
 0015=AkiTexture;[UI] League Result
 0016=AkiArchive;WCW/nWo Revenge Credits BG
@@ -447,3 +447,15 @@
 0489=Ci4Texture;[Timer] 8
 048A=Ci4Texture;[Timer] 9
 048B=Ci4Texture;[Timer] :
+1626=AkiModel;
+1627=Ci8Palette;
+1628=Ci8Texture;
+1629=Ci8Palette;
+162A=Ci8Texture;
+1637=Ci4Palette;
+1638=Ci4Texture;
+1639=Ci4Palette;
+163A=Ci4Texture;
+163B=Ci8Palette;Rock Revenge-style face
+163C=Ci8Texture;Rock Revenge-style face
+1643=AkiAnimation;[Stance] Wrestling
