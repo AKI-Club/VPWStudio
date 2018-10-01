@@ -2011,7 +2011,10 @@ namespace VPWStudio
 		private void moveDamageTestvpw2OnlyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MoveDamageTestDialog mdtd = new MoveDamageTestDialog();
-			mdtd.ShowDialog();
+			if (mdtd != null)
+			{
+				mdtd.ShowDialog();
+			}
 		}
 		#endregion
 	}
