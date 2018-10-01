@@ -34,7 +34,8 @@
 			// 
 			// tbOutput
 			// 
-			this.tbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.tbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbOutput.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbOutput.Location = new System.Drawing.Point(12, 39);
@@ -64,8 +65,8 @@
 			this.ClientSize = new System.Drawing.Size(492, 293);
 			this.Controls.Add(this.cbToki1Entries);
 			this.Controls.Add(this.tbOutput);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(500, 320);
 			this.Name = "Toki1TestDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Toki1 Test";

@@ -167,7 +167,22 @@ namespace VPWStudio
 			+1E - Frame for Event 8
 			+1F - Event 8
 			 */
-			sb.AppendLine("(0x00-0x1F to be decoded later)");
+			sb.AppendLine(String.Format("+00: 0x{0:X2}", t.Data[0]));
+			sb.AppendLine(String.Format("+01: 0x{0:X2}", t.Data[1]));
+			sb.AppendLine(String.Format("+02: 0x{0:X2}", t.Data[2]));
+			sb.AppendLine(String.Format("+03: 0x{0:X2}", t.Data[3]));
+			sb.AppendLine(String.Format("+04: 0x{0:X2}", t.Data[4]));
+			sb.AppendLine(String.Format("+05: 0x{0:X2}", t.Data[5]));
+			sb.AppendLine(String.Format("+06: 0x{0:X2}", t.Data[6]));
+			sb.AppendLine(String.Format("+07: 0x{0:X2}", t.Data[7]));
+			sb.AppendLine(String.Format("+08: 0x{0:X2}", t.Data[8]));
+			sb.AppendLine(String.Format("+09: 0x{0:X2}", t.Data[9]));
+			sb.AppendLine(String.Format("+0A: 0x{0:X2}", t.Data[10]));
+			sb.AppendLine(String.Format("+0B: 0x{0:X2}", t.Data[11]));
+			sb.AppendLine(String.Format("+0C: 0x{0:X2}", t.Data[12]));
+			sb.AppendLine(String.Format("+0D: 0x{0:X2}", t.Data[13]));
+			sb.AppendLine(String.Format("+0E: 0x{0:X2}", t.Data[14]));
+			sb.AppendLine(String.Format("+0F: 0x{0:X2}", t.Data[15]));
 			sb.AppendLine(String.Format("Effect 1: frame {0}, value 0x{1:X2}", t.Data[16], t.Data[17]));
 			sb.AppendLine(String.Format("Effect 2: frame {0}, value 0x{1:X2}", t.Data[18], t.Data[19]));
 			sb.AppendLine(String.Format("Effect 3: frame {0}, value 0x{1:X2}", t.Data[20], t.Data[21]));
