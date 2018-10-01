@@ -14,7 +14,25 @@ namespace VPWStudio
 	{
 		private SortedList<int, MoveDamageEntry> MoveDamageEntries = new SortedList<int, MoveDamageEntry>();
 
-		// currently only for VPW2 (0x20 length, file ID 0x0277)
+		/// <summary>
+		/// Length of Move Damage data per game.
+		/// </summary>
+		private Dictionary<VPWGames, int> MoveDamageDataLength = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WM2K, 0x20 },
+			{ VPWGames.VPW2, 0x20 },
+			{ VPWGames.NoMercy, 0x24 }
+		};
+
+		/// <summary>
+		/// File ID of (main) Move Damage data.
+		/// </summary>
+		private Dictionary<VPWGames, int> MoveDamageFileIDs = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WM2K, 0x03AD },
+			{ VPWGames.VPW2, 0x0277 },
+			{ VPWGames.NoMercy, 0x01EF }
+		};
 
 		public MoveDamageTestDialog()
 		{
@@ -22,9 +40,9 @@ namespace VPWStudio
 
 			if (Program.CurrentProject != null)
 			{
-				if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+				if (MoveDamageFileIDs.ContainsKey(Program.CurrentProject.Settings.BaseGame))
 				{
-					LoadDamageData(0x0277, 0x20);
+					LoadDamageData(MoveDamageFileIDs[Program.CurrentProject.Settings.BaseGame], MoveDamageDataLength[Program.CurrentProject.Settings.BaseGame]);
 					PopulateEntries();
 				}
 				else
@@ -81,7 +99,21 @@ namespace VPWStudio
 
 		private void ShowData(int index)
 		{
-			// vpw2 only
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.WM2K:
+				case VPWGames.VPW2:
+					ShowData_VPW2(index);
+					break;
+				case VPWGames.NoMercy:
+					ShowData_NoMercy(index);
+					break;
+			}
+		}
+
+		// xxx: works for VPW2 and WM2K, assumed.
+		private void ShowData_VPW2(int index)
+		{
 			MoveDamageEntry mde = MoveDamageEntries[index];
 			StringBuilder sb = new StringBuilder();
 
@@ -91,14 +123,13 @@ namespace VPWStudio
 			// A4AE2
 			sb.AppendLine(String.Format("+02: {0:X2}", mde.Data[2]));
 			sb.AppendLine(String.Format("+03: {0:X2}", mde.Data[3]));
-			// A4AE4(Link ?/ Link)
-			sb.AppendLine(String.Format("+04: {0:X2}", mde.Data[4]));
-			sb.AppendLine(String.Format("+05: {0:X2}", mde.Data[5]));
+			// A4AE4(Link)
+			sb.AppendLine(String.Format("+04: Link {0:X2}{1:X2}", mde.Data[4], mde.Data[5]));
 			// A4AE6(Damage / Spirit Gained)
 			sb.AppendLine(String.Format("+06: Damage {0:X2}", mde.Data[6]));
 			sb.AppendLine(String.Format("+07: Spirit Gain {0:X2}", mde.Data[7]));
 			// A4AE8(Spirit Drained / Blood)
-			sb.AppendLine(String.Format("+08: Spirit Drain {0:X2}", mde.Data[8]));
+			sb.AppendLine(String.Format("+08: Spirit Drain {0:X2} ({1})", mde.Data[8], (sbyte)mde.Data[8]));
 			sb.AppendLine(String.Format("+09: Blood Chance {0:X2}", mde.Data[9]));
 			// A4AEA(KO / Off.Parameter)
 			sb.AppendLine(String.Format("+0A: KO Chance {0:X2}", mde.Data[10]));
@@ -133,6 +164,17 @@ namespace VPWStudio
 			// A4AFE(Favorite / Pin / Submission)
 			sb.AppendLine(String.Format("+1E: {0:X2}", mde.Data[30]));
 			sb.AppendLine(String.Format("+1F: {0:X2}", mde.Data[31]));
+
+			tbOutput.Text = sb.ToString();
+		}
+
+		private void ShowData_NoMercy(int index)
+		{
+			MoveDamageEntry mde = MoveDamageEntries[index];
+			StringBuilder sb = new StringBuilder();
+
+			// mostly like VPW2 but with new entries
+			sb.AppendLine("ugh I haven't done this yet please leave me alone for now");
 
 			tbOutput.Text = sb.ToString();
 		}
