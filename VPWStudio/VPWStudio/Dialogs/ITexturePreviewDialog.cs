@@ -73,6 +73,18 @@ namespace VPWStudio
 
 			outReader.Close();
 			outWriter.Close();
+
+			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageWidth != -1 &&
+				Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageHeight != -1)
+			{
+				DefaultImageSize = new Size(
+					Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageWidth,
+					Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageHeight
+				);
+				nudWidth.Value = Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageWidth;
+				nudHeight.Value = Program.CurrentProject.ProjectFileTable.Entries[fileID].ExtraData.ImageHeight;
+				buttonRedraw_Click(this, null);
+			}
 		}
 
 		/// <summary>
