@@ -15,6 +15,10 @@ namespace VPWStudio
 		public FileTypes FileType;
 		public string Comment;
 
+		// (w:#),(h:#),(t:#),(p:#)
+		public string ExtraData;
+
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -23,6 +27,7 @@ namespace VPWStudio
 			FileID = 0;
 			FileType = FileTypes.Binary;
 			Comment = String.Empty;
+			ExtraData = String.Empty;
 		}
 
 		/// <summary>
@@ -36,6 +41,22 @@ namespace VPWStudio
 			FileID = _id;
 			FileType = _type;
 			Comment = _comment;
+			ExtraData = String.Empty;
+		}
+
+		/// <summary>
+		/// Specific constructor with ExtraData.
+		/// </summary>
+		/// <param name="_id">File ID.</param>
+		/// <param name="_type">File type.</param>
+		/// <param name="_comment">Comment for this entry.</param>
+		/// <param name="_extra">Extra Data string for this entry.</param>
+		public FileTableDBEntry(UInt16 _id, FileTypes _type, string _comment, string _extra)
+		{
+			FileID = _id;
+			FileType = _type;
+			Comment = _comment;
+			ExtraData = _extra;
 		}
 
 		/// <summary>
@@ -46,6 +67,7 @@ namespace VPWStudio
 		{
 			ReadString(_in);
 		}
+		#endregion
 
 		/// <summary>
 		/// Read values from a string.
@@ -53,10 +75,14 @@ namespace VPWStudio
 		/// <param name="_in"></param>
 		public void ReadString(string _in)
 		{
-			string[] tokens = _in.Split(new char[] { '=', ';' });
+			string[] tokens = _in.Split(new char[] { '=', ';', '|' });
 			FileID = UInt16.Parse(tokens[0], NumberStyles.HexNumber);
 			FileType = (FileTypes)Enum.Parse(typeof(FileTypes), tokens[1]);
 			Comment = tokens[2];
+			if (tokens.Length == 4)
+			{
+				ExtraData = tokens[3];
+			}
 		}
 
 		/// <summary>
@@ -65,7 +91,14 @@ namespace VPWStudio
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return String.Format("{0:X4}={1};{2}", FileID, FileType.ToString(), Comment );
+			string entryLine = String.Format("{0:X4}={1};{2}", FileID, FileType.ToString(), Comment);
+
+			if (ExtraData != string.Empty)
+			{
+				entryLine += String.Format("|{0}", ExtraData);
+			}
+
+			return entryLine;
 		}
 	}
 
