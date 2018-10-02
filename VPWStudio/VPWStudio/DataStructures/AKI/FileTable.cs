@@ -218,7 +218,10 @@ namespace VPWStudio
 		/// </summary>
 		public bool OverrideFileType;
 
-		//public FileTableEntryExtraData ExtraData;
+		/// <summary>
+		/// Extra Data about this FileTable entry.
+		/// </summary>
+		public FileTableEntryExtraData ExtraData;
 		#endregion // program-specific
 		#endregion
 
@@ -236,7 +239,7 @@ namespace VPWStudio
 			ReplaceEncoding = FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
 			OverrideFileType = false;
-			//ExtraData = new FileTableEntryExtraData();
+			ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -254,7 +257,7 @@ namespace VPWStudio
 			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
 			OverrideFileType = false;
-			//ExtraData = new FileTableEntryExtraData();
+			ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -272,7 +275,7 @@ namespace VPWStudio
 			ReplaceEncoding = (_enc == true) ? FileTableReplaceEncoding.ForceLzss : FileTableReplaceEncoding.PickBest;
 			ReplaceFilePath = String.Empty;
 			OverrideFileType = false;
-			//ExtraData = new FileTableEntryExtraData();
+			ExtraData = new FileTableEntryExtraData();
 		}
 
 		/// <summary>
@@ -308,7 +311,7 @@ namespace VPWStudio
 			ReplaceEncoding = _src.ReplaceEncoding;
 			ReplaceFilePath = _src.ReplaceFilePath;
 			OverrideFileType = _src.OverrideFileType;
-			//ExtraData = 
+			ExtraData = _src.ExtraData;
 		}
 
 		#region Binary Read/Write
@@ -408,16 +411,13 @@ namespace VPWStudio
 					OverrideFileType = bool.Parse(xr.Value);
 				}
 
-				/*
 				if (xr.Name == "ExtraData" && xr.NodeType == XmlNodeType.Element)
 				{
 					if (!xr.IsEmptyElement)
 					{
-						xr.Read();
 						ExtraData.ReadXml(xr);
 					}
 				}
-				*/
 			}
 		}
 
@@ -438,7 +438,7 @@ namespace VPWStudio
 			xw.WriteElementString("ReplaceFilePath", ReplaceFilePath);
 			xw.WriteElementString("OverrideFileType", OverrideFileType.ToString());
 
-			//ExtraData.WriteXml(xw);
+			ExtraData.WriteXml(xw);
 
 			xw.WriteEndElement();
 		}
