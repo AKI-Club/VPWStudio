@@ -204,6 +204,30 @@ namespace VPWStudio
 				{
 					Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
 					Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+
+					if (entry.Value.ExtraData != string.Empty)
+					{
+						string[] tokens = entry.Value.ExtraData.Split(',');
+						for (int i = 0; i < tokens.Length; i++)
+						{
+							if (tokens[i].StartsWith("w:"))
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
+							}
+							if (tokens[i].StartsWith("h:"))
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
+							}
+							if (tokens[i].StartsWith("t:"))
+							{
+								// transparent color index
+							}
+							if (tokens[i].StartsWith("p:"))
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -256,6 +280,31 @@ namespace VPWStudio
 							{
 								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
 								changesMade = true;
+							}
+
+							// handle ExtraData
+							if (entry.Value.ExtraData != null)
+							{
+								string[] tokens = entry.Value.ExtraData.Split(',');
+								for (int i = 0; i < tokens.Length; i++)
+								{
+									if (tokens[i].StartsWith("w:"))
+									{
+										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
+									}
+									if (tokens[i].StartsWith("h:"))
+									{
+										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
+									}
+									if (tokens[i].StartsWith("t:"))
+									{
+										// transparent color index
+									}
+									if (tokens[i].StartsWith("p:"))
+									{
+										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
+									}
+								}
 							}
 						}
 					}
