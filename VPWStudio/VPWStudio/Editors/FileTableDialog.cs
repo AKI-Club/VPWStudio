@@ -1011,7 +1011,7 @@ namespace VPWStudio
 				}
 			}
 
-			// todo: does not handle wrapping around to the beginning.
+			// todo: does not handle wrapping around to the beginning/end.
 
 			return -1;
 		}
