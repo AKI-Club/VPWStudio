@@ -912,6 +912,19 @@ namespace VPWStudio
 			{
 				LoadItemPreview();
 			}
+			if (e.KeyCode == Keys.F3 && e.Shift == true)
+			{
+				if (CurrentSearchItemNumber == -1)
+				{
+					searchToolStripMenuItem_Click(sender, e);
+				}
+
+				int searchResult = SearchFile(CurrentSearchText, true);
+				if (searchResult != -1)
+				{
+					PostSearch(searchResult);
+				}
+			}
 		}
 
 		#region Navigation Menu Items
@@ -955,23 +968,46 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="searchText"></param>
 		/// <returns>ID of </returns>
-		private int SearchFile(string searchText)
+		private int SearchFile(string searchText, bool _backwards = false)
 		{
 			int startPoint = 1;
 			if (CurrentSearchItemNumber != -1)
 			{
-				// start from current search item number + 1, so "Find Next" works
-				startPoint = CurrentSearchItemNumber + 1;
+				if (_backwards)
+				{
+					// start from current search item number - 1, so "Find Previous" (Shift+F3) works
+					startPoint = CurrentSearchItemNumber - 1;
+				}
+				else
+				{
+					// start from current search item number + 1, so "Find Next" works
+					startPoint = CurrentSearchItemNumber + 1;
+				}
 			}
 
 			// search file list for comment
-			for (int i = startPoint; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+			if (_backwards)
 			{
-				string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
-				if (fileComment.Contains(searchText.ToLower()))
+				for (int i = startPoint; i > 0; i--)
 				{
-					CurrentSearchItemNumber = i;
-					return CurrentSearchItemNumber;
+					string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
+					if (fileComment.Contains(searchText.ToLower()))
+					{
+						CurrentSearchItemNumber = i;
+						return CurrentSearchItemNumber;
+					}
+				}
+			}
+			else
+			{
+				for (int i = startPoint; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+				{
+					string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
+					if (fileComment.Contains(searchText.ToLower()))
+					{
+						CurrentSearchItemNumber = i;
+						return CurrentSearchItemNumber;
+					}
 				}
 			}
 
