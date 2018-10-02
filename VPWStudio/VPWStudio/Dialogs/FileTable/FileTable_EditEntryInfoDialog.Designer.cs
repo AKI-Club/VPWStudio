@@ -41,12 +41,32 @@
 			this.buttonReplaceFileBrowse = new System.Windows.Forms.Button();
 			this.tbReplaceFilePath = new System.Windows.Forms.TextBox();
 			this.cbReplaceEncoding = new System.Windows.Forms.ComboBox();
-			this.cbForceFileType = new System.Windows.Forms.CheckBox();
 			this.tlpFileType = new System.Windows.Forms.TableLayoutPanel();
 			this.cbFileTypes = new System.Windows.Forms.ComboBox();
+			this.cbForceFileType = new System.Windows.Forms.CheckBox();
+			this.tcEntryPages = new System.Windows.Forms.TabControl();
+			this.tpMain = new System.Windows.Forms.TabPage();
+			this.tpExtra = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.labelImageWidth = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.nudTransparentIndex = new System.Windows.Forms.NumericUpDown();
+			this.nudDefaultPaletteID = new System.Windows.Forms.NumericUpDown();
+			this.nudImageWidth = new System.Windows.Forms.NumericUpDown();
+			this.nudImageHeight = new System.Windows.Forms.NumericUpDown();
 			this.tlpEntryInfo.SuspendLayout();
 			this.tlpReplaceFilePath.SuspendLayout();
 			this.tlpFileType.SuspendLayout();
+			this.tcEntryPages.SuspendLayout();
+			this.tpMain.SuspendLayout();
+			this.tpExtra.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudTransparentIndex)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudDefaultPaletteID)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelEditingEntry
@@ -61,7 +81,7 @@
 			// buttonOK
 			// 
 			this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOK.Location = new System.Drawing.Point(318, 195);
+			this.buttonOK.Location = new System.Drawing.Point(346, 260);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 10;
@@ -73,7 +93,7 @@
 			// 
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(399, 195);
+			this.buttonCancel.Location = new System.Drawing.Point(427, 260);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 11;
@@ -94,31 +114,32 @@
 			this.tlpEntryInfo.Controls.Add(this.tlpReplaceFilePath, 1, 3);
 			this.tlpEntryInfo.Controls.Add(this.cbReplaceEncoding, 1, 2);
 			this.tlpEntryInfo.Controls.Add(this.tlpFileType, 1, 0);
-			this.tlpEntryInfo.Location = new System.Drawing.Point(12, 25);
+			this.tlpEntryInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpEntryInfo.Location = new System.Drawing.Point(3, 3);
 			this.tlpEntryInfo.Name = "tlpEntryInfo";
 			this.tlpEntryInfo.RowCount = 4;
 			this.tlpEntryInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpEntryInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpEntryInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpEntryInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpEntryInfo.Size = new System.Drawing.Size(462, 164);
+			this.tlpEntryInfo.Size = new System.Drawing.Size(476, 177);
 			this.tlpEntryInfo.TabIndex = 7;
 			// 
 			// tbComment
 			// 
 			this.tbComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbComment.Location = new System.Drawing.Point(141, 51);
+			this.tbComment.Location = new System.Drawing.Point(145, 56);
 			this.tbComment.Name = "tbComment";
-			this.tbComment.Size = new System.Drawing.Size(318, 20);
+			this.tbComment.Size = new System.Drawing.Size(328, 20);
 			this.tbComment.TabIndex = 4;
 			// 
 			// labelComment
 			// 
 			this.labelComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelComment.AutoSize = true;
-			this.labelComment.Location = new System.Drawing.Point(3, 55);
+			this.labelComment.Location = new System.Drawing.Point(3, 59);
 			this.labelComment.Name = "labelComment";
-			this.labelComment.Size = new System.Drawing.Size(132, 13);
+			this.labelComment.Size = new System.Drawing.Size(136, 13);
 			this.labelComment.TabIndex = 3;
 			this.labelComment.Text = "C&omment";
 			// 
@@ -126,9 +147,9 @@
 			// 
 			this.labelFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelFileType.AutoSize = true;
-			this.labelFileType.Location = new System.Drawing.Point(3, 14);
+			this.labelFileType.Location = new System.Drawing.Point(3, 15);
 			this.labelFileType.Name = "labelFileType";
-			this.labelFileType.Size = new System.Drawing.Size(132, 13);
+			this.labelFileType.Size = new System.Drawing.Size(136, 13);
 			this.labelFileType.TabIndex = 0;
 			this.labelFileType.Text = "&File Type";
 			// 
@@ -136,9 +157,9 @@
 			// 
 			this.labelReplaceEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelReplaceEncoding.AutoSize = true;
-			this.labelReplaceEncoding.Location = new System.Drawing.Point(3, 96);
+			this.labelReplaceEncoding.Location = new System.Drawing.Point(3, 103);
 			this.labelReplaceEncoding.Name = "labelReplaceEncoding";
-			this.labelReplaceEncoding.Size = new System.Drawing.Size(132, 13);
+			this.labelReplaceEncoding.Size = new System.Drawing.Size(136, 13);
 			this.labelReplaceEncoding.TabIndex = 5;
 			this.labelReplaceEncoding.Text = "Replacement &Encoding";
 			// 
@@ -146,9 +167,9 @@
 			// 
 			this.labelReplaceFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelReplaceFilePath.AutoSize = true;
-			this.labelReplaceFilePath.Location = new System.Drawing.Point(3, 137);
+			this.labelReplaceFilePath.Location = new System.Drawing.Point(3, 148);
 			this.labelReplaceFilePath.Name = "labelReplaceFilePath";
-			this.labelReplaceFilePath.Size = new System.Drawing.Size(132, 13);
+			this.labelReplaceFilePath.Size = new System.Drawing.Size(136, 13);
 			this.labelReplaceFilePath.TabIndex = 7;
 			this.labelReplaceFilePath.Text = "&Replacement File Path";
 			// 
@@ -160,19 +181,19 @@
 			this.tlpReplaceFilePath.Controls.Add(this.buttonReplaceFileBrowse, 1, 0);
 			this.tlpReplaceFilePath.Controls.Add(this.tbReplaceFilePath, 0, 0);
 			this.tlpReplaceFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpReplaceFilePath.Location = new System.Drawing.Point(141, 126);
+			this.tlpReplaceFilePath.Location = new System.Drawing.Point(145, 135);
 			this.tlpReplaceFilePath.Name = "tlpReplaceFilePath";
 			this.tlpReplaceFilePath.RowCount = 1;
 			this.tlpReplaceFilePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpReplaceFilePath.Size = new System.Drawing.Size(318, 35);
+			this.tlpReplaceFilePath.Size = new System.Drawing.Size(328, 39);
 			this.tlpReplaceFilePath.TabIndex = 4;
 			// 
 			// buttonReplaceFileBrowse
 			// 
 			this.buttonReplaceFileBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonReplaceFileBrowse.Location = new System.Drawing.Point(241, 6);
+			this.buttonReplaceFileBrowse.Location = new System.Drawing.Point(249, 8);
 			this.buttonReplaceFileBrowse.Name = "buttonReplaceFileBrowse";
-			this.buttonReplaceFileBrowse.Size = new System.Drawing.Size(74, 22);
+			this.buttonReplaceFileBrowse.Size = new System.Drawing.Size(76, 22);
 			this.buttonReplaceFileBrowse.TabIndex = 9;
 			this.buttonReplaceFileBrowse.Text = "Browse...";
 			this.buttonReplaceFileBrowse.UseVisualStyleBackColor = true;
@@ -181,9 +202,9 @@
 			// tbReplaceFilePath
 			// 
 			this.tbReplaceFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbReplaceFilePath.Location = new System.Drawing.Point(3, 7);
+			this.tbReplaceFilePath.Location = new System.Drawing.Point(3, 9);
 			this.tbReplaceFilePath.Name = "tbReplaceFilePath";
-			this.tbReplaceFilePath.Size = new System.Drawing.Size(232, 20);
+			this.tbReplaceFilePath.Size = new System.Drawing.Size(240, 20);
 			this.tbReplaceFilePath.TabIndex = 8;
 			// 
 			// cbReplaceEncoding
@@ -195,21 +216,10 @@
             "Pick Best",
             "Force Raw",
             "Force LZSS"});
-			this.cbReplaceEncoding.Location = new System.Drawing.Point(141, 92);
+			this.cbReplaceEncoding.Location = new System.Drawing.Point(145, 99);
 			this.cbReplaceEncoding.Name = "cbReplaceEncoding";
-			this.cbReplaceEncoding.Size = new System.Drawing.Size(318, 21);
+			this.cbReplaceEncoding.Size = new System.Drawing.Size(328, 21);
 			this.cbReplaceEncoding.TabIndex = 6;
-			// 
-			// cbForceFileType
-			// 
-			this.cbForceFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbForceFileType.AutoSize = true;
-			this.cbForceFileType.Location = new System.Drawing.Point(193, 9);
-			this.cbForceFileType.Name = "cbForceFileType";
-			this.cbForceFileType.Size = new System.Drawing.Size(122, 17);
-			this.cbForceFileType.TabIndex = 2;
-			this.cbForceFileType.Text = "Force File&Type";
-			this.cbForceFileType.UseVisualStyleBackColor = true;
 			// 
 			// tlpFileType
 			// 
@@ -219,11 +229,11 @@
 			this.tlpFileType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
 			this.tlpFileType.Controls.Add(this.cbFileTypes, 0, 0);
 			this.tlpFileType.Controls.Add(this.cbForceFileType, 1, 0);
-			this.tlpFileType.Location = new System.Drawing.Point(141, 3);
+			this.tlpFileType.Location = new System.Drawing.Point(145, 4);
 			this.tlpFileType.Name = "tlpFileType";
 			this.tlpFileType.RowCount = 1;
 			this.tlpFileType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpFileType.Size = new System.Drawing.Size(318, 35);
+			this.tlpFileType.Size = new System.Drawing.Size(328, 35);
 			this.tlpFileType.TabIndex = 7;
 			// 
 			// cbFileTypes
@@ -233,8 +243,192 @@
 			this.cbFileTypes.FormattingEnabled = true;
 			this.cbFileTypes.Location = new System.Drawing.Point(3, 7);
 			this.cbFileTypes.Name = "cbFileTypes";
-			this.cbFileTypes.Size = new System.Drawing.Size(184, 21);
+			this.cbFileTypes.Size = new System.Drawing.Size(190, 21);
 			this.cbFileTypes.TabIndex = 1;
+			// 
+			// cbForceFileType
+			// 
+			this.cbForceFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbForceFileType.AutoSize = true;
+			this.cbForceFileType.Location = new System.Drawing.Point(199, 9);
+			this.cbForceFileType.Name = "cbForceFileType";
+			this.cbForceFileType.Size = new System.Drawing.Size(126, 17);
+			this.cbForceFileType.TabIndex = 2;
+			this.cbForceFileType.Text = "Force File&Type";
+			this.cbForceFileType.UseVisualStyleBackColor = true;
+			// 
+			// tcEntryPages
+			// 
+			this.tcEntryPages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tcEntryPages.Controls.Add(this.tpMain);
+			this.tcEntryPages.Controls.Add(this.tpExtra);
+			this.tcEntryPages.Location = new System.Drawing.Point(12, 25);
+			this.tcEntryPages.Name = "tcEntryPages";
+			this.tcEntryPages.SelectedIndex = 0;
+			this.tcEntryPages.Size = new System.Drawing.Size(490, 229);
+			this.tcEntryPages.TabIndex = 12;
+			// 
+			// tpMain
+			// 
+			this.tpMain.Controls.Add(this.tlpEntryInfo);
+			this.tpMain.Location = new System.Drawing.Point(4, 22);
+			this.tpMain.Name = "tpMain";
+			this.tpMain.Padding = new System.Windows.Forms.Padding(3);
+			this.tpMain.Size = new System.Drawing.Size(482, 183);
+			this.tpMain.TabIndex = 0;
+			this.tpMain.Text = "Main";
+			this.tpMain.UseVisualStyleBackColor = true;
+			// 
+			// tpExtra
+			// 
+			this.tpExtra.Controls.Add(this.tableLayoutPanel1);
+			this.tpExtra.Location = new System.Drawing.Point(4, 22);
+			this.tpExtra.Name = "tpExtra";
+			this.tpExtra.Padding = new System.Windows.Forms.Padding(3);
+			this.tpExtra.Size = new System.Drawing.Size(482, 203);
+			this.tpExtra.TabIndex = 1;
+			this.tpExtra.Text = "Extra";
+			this.tpExtra.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.labelImageWidth, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+			this.tableLayoutPanel1.Controls.Add(this.nudTransparentIndex, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.nudDefaultPaletteID, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.nudImageWidth, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.nudImageHeight, 1, 1);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 4;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(476, 197);
+			this.tableLayoutPanel1.TabIndex = 8;
+			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 67);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(136, 13);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Image Height";
+			// 
+			// labelImageWidth
+			// 
+			this.labelImageWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelImageWidth.AutoSize = true;
+			this.labelImageWidth.Location = new System.Drawing.Point(3, 18);
+			this.labelImageWidth.Name = "labelImageWidth";
+			this.labelImageWidth.Size = new System.Drawing.Size(136, 13);
+			this.labelImageWidth.TabIndex = 0;
+			this.labelImageWidth.Text = "Image Width";
+			// 
+			// label3
+			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(3, 116);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(136, 13);
+			this.label3.TabIndex = 5;
+			this.label3.Text = "Transparent Color Index";
+			// 
+			// label4
+			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(3, 165);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(136, 13);
+			this.label4.TabIndex = 7;
+			this.label4.Text = "Default Palette ID";
+			// 
+			// nudTransparentIndex
+			// 
+			this.nudTransparentIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudTransparentIndex.Location = new System.Drawing.Point(145, 112);
+			this.nudTransparentIndex.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.nudTransparentIndex.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.nudTransparentIndex.Name = "nudTransparentIndex";
+			this.nudTransparentIndex.Size = new System.Drawing.Size(328, 20);
+			this.nudTransparentIndex.TabIndex = 9;
+			// 
+			// nudDefaultPaletteID
+			// 
+			this.nudDefaultPaletteID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudDefaultPaletteID.Hexadecimal = true;
+			this.nudDefaultPaletteID.Location = new System.Drawing.Point(145, 162);
+			this.nudDefaultPaletteID.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+			this.nudDefaultPaletteID.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.nudDefaultPaletteID.Name = "nudDefaultPaletteID";
+			this.nudDefaultPaletteID.Size = new System.Drawing.Size(328, 20);
+			this.nudDefaultPaletteID.TabIndex = 10;
+			// 
+			// nudImageWidth
+			// 
+			this.nudImageWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudImageWidth.Location = new System.Drawing.Point(145, 14);
+			this.nudImageWidth.Maximum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+			this.nudImageWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.nudImageWidth.Name = "nudImageWidth";
+			this.nudImageWidth.Size = new System.Drawing.Size(328, 20);
+			this.nudImageWidth.TabIndex = 11;
+			// 
+			// nudImageHeight
+			// 
+			this.nudImageHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudImageHeight.Location = new System.Drawing.Point(145, 63);
+			this.nudImageHeight.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+			this.nudImageHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.nudImageHeight.Name = "nudImageHeight";
+			this.nudImageHeight.Size = new System.Drawing.Size(328, 20);
+			this.nudImageHeight.TabIndex = 12;
 			// 
 			// FileTableEditEntryInfoDialog
 			// 
@@ -242,8 +436,8 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(486, 230);
-			this.Controls.Add(this.tlpEntryInfo);
+			this.ClientSize = new System.Drawing.Size(514, 295);
+			this.Controls.Add(this.tcEntryPages);
 			this.Controls.Add(this.labelEditingEntry);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
@@ -261,6 +455,15 @@
 			this.tlpReplaceFilePath.PerformLayout();
 			this.tlpFileType.ResumeLayout(false);
 			this.tlpFileType.PerformLayout();
+			this.tcEntryPages.ResumeLayout(false);
+			this.tpMain.ResumeLayout(false);
+			this.tpExtra.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudTransparentIndex)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudDefaultPaletteID)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -283,5 +486,17 @@
 		private System.Windows.Forms.TableLayoutPanel tlpFileType;
 		private System.Windows.Forms.ComboBox cbFileTypes;
 		private System.Windows.Forms.CheckBox cbForceFileType;
+		private System.Windows.Forms.TabControl tcEntryPages;
+		private System.Windows.Forms.TabPage tpMain;
+		private System.Windows.Forms.TabPage tpExtra;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label labelImageWidth;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.NumericUpDown nudTransparentIndex;
+		private System.Windows.Forms.NumericUpDown nudDefaultPaletteID;
+		private System.Windows.Forms.NumericUpDown nudImageWidth;
+		private System.Windows.Forms.NumericUpDown nudImageHeight;
 	}
 }

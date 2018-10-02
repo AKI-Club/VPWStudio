@@ -17,6 +17,7 @@ namespace VPWStudio
 
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
 
+			// Main page
 			cbFileTypes.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
 			cbFileTypes.SelectedIndex = (int)CurEntry.FileType;
 			cbForceFileType.Checked = CurEntry.OverrideFileType;
@@ -24,6 +25,12 @@ namespace VPWStudio
 
 			cbReplaceEncoding.SelectedIndex = (int)CurEntry.ReplaceEncoding;
 			tbReplaceFilePath.Text = CurEntry.ReplaceFilePath;
+
+			// Extra page
+			nudImageWidth.Value = CurEntry.ExtraData.ImageWidth;
+			nudImageHeight.Value = CurEntry.ExtraData.ImageHeight;
+			nudTransparentIndex.Value = CurEntry.ExtraData.TransparentColorIndex;
+			nudDefaultPaletteID.Value = CurEntry.ExtraData.IntendedPaletteFileID;
 		}
 
 		/// <summary>
@@ -31,6 +38,7 @@ namespace VPWStudio
 		/// </summary>
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
+			// Main page
 			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
 			CurEntry.OverrideFileType = cbForceFileType.Checked;
 			CurEntry.Comment = tbComment.Text;
@@ -47,6 +55,24 @@ namespace VPWStudio
 			}
 
 			CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
+
+			// Extra page
+			if (nudImageWidth.Value > 0)
+			{
+				CurEntry.ExtraData.ImageWidth = (int)nudImageWidth.Value;
+			}
+			if (nudImageHeight.Value > 0)
+			{
+				CurEntry.ExtraData.ImageHeight = (int)nudImageHeight.Value;
+			}
+			if (nudTransparentIndex.Value >= 0)
+			{
+				CurEntry.ExtraData.TransparentColorIndex = (int)nudTransparentIndex.Value;
+			}
+			if (nudDefaultPaletteID.Value > 0)
+			{
+				CurEntry.ExtraData.IntendedPaletteFileID = (int)nudDefaultPaletteID.Value;
+			}
 
 			DialogResult = DialogResult.OK;
 			Close();
