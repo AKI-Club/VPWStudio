@@ -2,9 +2,38 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 10 (2018/??/??)
+Pre-Alpha Preview 11 (2018/??/??)
 ---------------------------------
 I'm working on it.
+
+Pre-Alpha Preview 10 (2018/09/30)
+---------------------------------
+* Started work on VPW2 Story Mode/RRS Editor.
+
+* Added the ability to override a FileType for a specified entry.
+  Before this, reloading the FileTableDB comments would overwrite any changes
+  you made for files that didn't match the FileTableDB's entry. Useful when
+  replacing leftover files from previous games.
+
+* [AkiTextEditor] Add information about the current file to the title bar.
+
+* [Toki1 Test Tool] Added support for Revenge, WM2K, and No Mercy.
+  World Tour and VPW64 have shorter Toki1 values and are not "officially"
+  supported yet.
+
+* [Hex Viewer] Added comment in title bar when loading file from FileTable.
+
+* [Ci*Palette] Added support for exporting GIMP palette files.
+
+* Started work on Move Damage tool (WM2K and VPW2 only for now).
+
+* VERY LARGE update to FileTableDBs. All animation values should be marked, even
+  if most don't have a comment attached. (WrestleMania 2000 NTSC-J has not been
+  updated in this manner.) To update your project, open the File Table dialog,
+  then choose Database -> Reload File Table Database.
+
+  WrestleMania 2000 NTSC-J's Japanese messages are stored as AkiTextures.
+  These entries have been marked (but not translated).
 
 Pre-Alpha Preview 9 (2018/09/15)
 --------------------------------
