@@ -129,6 +129,23 @@ namespace VPWStudio
 				}
 			}
 			cbPalettes.EndUpdate();
+
+			if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData != null)
+			{
+				int intendedPal = Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData.IntendedPaletteFileID;
+				bool foundPal = false;
+				for (int i = 0; i < cbPalettes.Items.Count; i++)
+				{
+					if (!foundPal)
+					{
+						if (cbPalettes.Items[i].ToString().StartsWith(string.Format("{0:X4}", intendedPal)))
+						{
+							cbPalettes.SelectedIndex = i;
+							foundPal = true;
+						}
+					}
+				}
+			}
 		}
 
 		/// <summary>
