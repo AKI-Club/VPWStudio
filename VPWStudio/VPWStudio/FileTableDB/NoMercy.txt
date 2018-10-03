@@ -57,7 +57,7 @@
 0038=Ci8Texture;[Belt] Brahama Bull (right)|p:0037
 0039=AkiText;(VPW2 leftover)
 003A=AkiText;(VPW2 leftover)
-003B=I4Texture;Buttons (24x256)
+003B=I4Texture;Buttons|w:24,h:256
 003C=AkiTexture;(VPW2 leftover)
 003D=AkiTexture;
 003E=AkiTexture;
@@ -9893,7 +9893,7 @@
 4990=AkiTexture;[Titantron] Undertaker frame 5
 4991=AkiTexture;[Titantron] Undertaker frame 6
 4992=AkiTexture;[Titantron] Undertaker frame 7
-4993=I4Texture;Buttons (24x256)
+4993=I4Texture;Buttons|w:24,h:256
 4994=Ci4Palette;Data Background
 4995=Ci4Background;Data Background
 4996=Ci4Palette;Shop Background

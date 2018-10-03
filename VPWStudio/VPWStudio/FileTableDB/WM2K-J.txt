@@ -6,7 +6,7 @@
 0005=AkiText;Story Mode text
 0006=AkiText;
 0007=AkiText;Credits
-0008=I4Texture;Buttons (24x256)
+0008=I4Texture;Buttons|w:24,h:256
 0009=AkiTexture;VS Screen Control
 000A=AkiTexture;Legal Info
 000B=AkiTexture;[Splash] WWF
