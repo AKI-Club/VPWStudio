@@ -119,9 +119,16 @@ namespace VPWStudio
 			foreach (int i in paletteIDs)
 			{
 				string comment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment;
-				if (!comment.Equals(String.Empty))
+				if (comment != null)
 				{
-					cbPalettes.Items.Add(String.Format("{0:X4} ({1})", i, comment));
+					if (!comment.Equals(String.Empty))
+					{
+						cbPalettes.Items.Add(String.Format("{0:X4} ({1})", i, comment));
+					}
+					else
+					{
+						cbPalettes.Items.Add(String.Format("{0:X4}", i));
+					}
 				}
 				else
 				{
