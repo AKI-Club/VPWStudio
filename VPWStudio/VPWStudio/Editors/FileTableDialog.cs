@@ -202,31 +202,13 @@ namespace VPWStudio
 				ftdb = new FileTableDB(dbFilePath);
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
-					Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
-					Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+					int fileID = entry.Value.FileID;
+					Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType = entry.Value.FileType;
+					Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment = entry.Value.Comment;
 
 					if (entry.Value.ExtraData != string.Empty)
 					{
-						string[] tokens = entry.Value.ExtraData.Split(',');
-						for (int i = 0; i < tokens.Length; i++)
-						{
-							if (tokens[i].StartsWith("w:"))
-							{
-								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
-							}
-							if (tokens[i].StartsWith("h:"))
-							{
-								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
-							}
-							if (tokens[i].StartsWith("t:"))
-							{
-								// transparent color index
-							}
-							if (tokens[i].StartsWith("p:"))
-							{
-								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
-							}
-						}
+						Program.CurrentProject.ProjectFileTable.Entries[fileID].ParseExtraDataString(entry.Value.ExtraData);
 					}
 				}
 			}
@@ -263,47 +245,32 @@ namespace VPWStudio
 
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
-					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(entry.Value.FileID))
+					int fileID = entry.Value.FileID;
+					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(fileID))
 					{
 						// if OverrideFileType is set, then whatever's in the game's FileTableDB is not accurate for this project.
-						if (!Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].OverrideFileType)
+						if (!Program.CurrentProject.ProjectFileTable.Entries[fileID].OverrideFileType)
 						{
 							// only replace filetype if not being overridden to do something else.
-							if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType != entry.Value.FileType)
+							if (Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType != entry.Value.FileType)
 							{
-								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
+								Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType = entry.Value.FileType;
 								changesMade = true;
 							}
 
 							// only replace comment if it's empty, or we were requested to.
-							if (Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment == String.Empty || replaceComments == true)
+							if (Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment == String.Empty || replaceComments == true)
 							{
-								Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+								Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment = entry.Value.Comment;
 								changesMade = true;
 							}
 
 							// handle ExtraData
 							if (entry.Value.ExtraData != null)
 							{
-								string[] tokens = entry.Value.ExtraData.Split(',');
-								for (int i = 0; i < tokens.Length; i++)
+								if (entry.Value.ExtraData != string.Empty)
 								{
-									if (tokens[i].StartsWith("w:"))
-									{
-										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
-									}
-									if (tokens[i].StartsWith("h:"))
-									{
-										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
-									}
-									if (tokens[i].StartsWith("t:"))
-									{
-										// transparent color index
-									}
-									if (tokens[i].StartsWith("p:"))
-									{
-										Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
-									}
+									Program.CurrentProject.ProjectFileTable.Entries[fileID].ParseExtraDataString(entry.Value.ExtraData);
 								}
 							}
 						}

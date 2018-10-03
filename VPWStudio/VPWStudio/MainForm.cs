@@ -464,8 +464,17 @@ namespace VPWStudio
 					FileTableDB ftdb = new FileTableDB(ftdbPath);
 					foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 					{
-						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].FileType = entry.Value.FileType;
-						Program.CurrentProject.ProjectFileTable.Entries[entry.Value.FileID].Comment = entry.Value.Comment;
+						int fileID = entry.Value.FileID;
+						Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType = entry.Value.FileType;
+						Program.CurrentProject.ProjectFileTable.Entries[fileID].Comment = entry.Value.Comment;
+
+						if (entry.Value.ExtraData != null)
+						{
+							if (entry.Value.ExtraData != string.Empty)
+							{
+								Program.CurrentProject.ProjectFileTable.Entries[fileID].ParseExtraDataString(entry.Value.ExtraData);
+							}
+						}
 					}
 				}
 
