@@ -314,6 +314,36 @@ namespace VPWStudio
 			ExtraData = _src.ExtraData;
 		}
 
+		#region ExtraData helpers
+		/// <summary>
+		/// Parse an ExtraData format string and set the relevant ExtraData values for this FileTableEntry.
+		/// </summary>
+		/// <param name="_exdata">String in ExtraData format.</param>
+		public void ParseExtraDataString(string _exdata)
+		{
+			string[] tokens = _exdata.Split(',');
+			for (int i = 0; i < tokens.Length; i++)
+			{
+				if (tokens[i].StartsWith("w:"))
+				{
+					ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
+				}
+				if (tokens[i].StartsWith("h:"))
+				{
+					ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
+				}
+				if (tokens[i].StartsWith("t:"))
+				{
+					// transparent color index
+				}
+				if (tokens[i].StartsWith("p:"))
+				{
+					ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
+				}
+			}
+		}
+		#endregion
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read file table entry using a BinaryReader.
