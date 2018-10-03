@@ -38,9 +38,18 @@ namespace VPWStudio
 		{
 			PreviewImageFileID = fileID;
 			InitializeComponent();
-			if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].Comment != String.Empty)
+
+			string imgComment = Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].Comment;
+			if (imgComment != null)
 			{
-				Text = String.Format("Preview [0x{0:X4} - {1}]", PreviewImageFileID, Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].Comment);
+				if (imgComment != String.Empty)
+				{
+					Text = String.Format("Preview [0x{0:X4} - {1}]", PreviewImageFileID, imgComment);
+				}
+				else
+				{
+					Text = String.Format("Preview [0x{0:X4}]", PreviewImageFileID);
+				}
 			}
 			else
 			{
@@ -118,12 +127,12 @@ namespace VPWStudio
 			cbPalettes.BeginUpdate();
 			foreach (int i in paletteIDs)
 			{
-				string comment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment;
-				if (comment != null)
+				string palComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment;
+				if (palComment != null)
 				{
-					if (!comment.Equals(String.Empty))
+					if (!palComment.Equals(String.Empty))
 					{
-						cbPalettes.Items.Add(String.Format("{0:X4} ({1})", i, comment));
+						cbPalettes.Items.Add(String.Format("{0:X4} ({1})", i, palComment));
 					}
 					else
 					{
