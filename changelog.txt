@@ -251,3 +251,7 @@ CI* Editor Improvements:
 Pre-Alpha Preview 1 (2018/04/10)
 --------------------------------
 First release to testers.
+
+Origin Point (2018/02/11)
+-------------------------
+Project begins.

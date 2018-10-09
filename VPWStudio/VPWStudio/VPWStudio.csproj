@@ -88,6 +88,12 @@
     <Compile Include="Controls\CostumeColorControl.Designer.cs">
       <DependentUpon>CostumeColorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CostumeEditor_VPW2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CostumeEditor_VPW2.Designer.cs">
+      <DependentUpon>CostumeEditor_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OptionsControl_Emulator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -308,6 +314,12 @@
     <Compile Include="Editors\VPW2\CostumeDefs_VPW2.Designer.cs">
       <DependentUpon>CostumeDefs_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\VPW2\DefaultCostume_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW2\DefaultCostume_VPW2.Designer.cs">
+      <DependentUpon>DefaultCostume_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\VPW2\StableDefs_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,6 +501,9 @@
     <EmbeddedResource Include="Controls\CostumeColorControl.resx">
       <DependentUpon>CostumeColorControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CostumeEditor_VPW2.resx">
+      <DependentUpon>CostumeEditor_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionsControl_Emulator.resx">
       <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
     </EmbeddedResource>
@@ -593,6 +608,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\CostumeDefs_VPW2.resx">
       <DependentUpon>CostumeDefs_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW2\DefaultCostume_VPW2.resx">
+      <DependentUpon>DefaultCostume_VPW2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\StableDefs_VPW2.resx">
       <DependentUpon>StableDefs_VPW2.cs</DependentUpon>

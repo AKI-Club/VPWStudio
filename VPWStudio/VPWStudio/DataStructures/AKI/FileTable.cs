@@ -468,7 +468,10 @@ namespace VPWStudio
 			xw.WriteElementString("ReplaceFilePath", ReplaceFilePath);
 			xw.WriteElementString("OverrideFileType", OverrideFileType.ToString());
 
-			ExtraData.WriteXml(xw);
+			if (ExtraData != null)
+			{
+				ExtraData.WriteXml(xw);
+			}
 
 			xw.WriteEndElement();
 		}
