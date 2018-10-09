@@ -82,7 +82,7 @@ namespace VPWStudio
 			FileID = fileID;
 
 			LoadModel(FileID);
-			InitSharpDX();
+			//InitSharpDX();
 
 			tbFileID.Text = String.Format("{0:X4}", fileID);
 			tbModelScale.Text = String.Format("{0} (0x{0:X2})", CurModel.Scale);
@@ -99,9 +99,9 @@ namespace VPWStudio
 			int offsetV = (CurModel.OffsetTexture & 0x0F);
 			tbOffsetUV.Text = String.Format("{1}, {2} (0x{0:X2})", (byte)CurModel.OffsetTexture, offsetU, offsetV);
 
-			RenderModel();
+			//RenderModel();
 
-			DisposeSharpDX();
+			//DisposeSharpDX();
 		}
 
 		#region SharpDX Housekeeping

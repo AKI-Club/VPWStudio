@@ -18,7 +18,8 @@ namespace VPWStudio.Controls
 		{
 			VPW64,
 			Revenge,
-			Modern
+			Modern/*,
+			Hair*/
 		};
 
 		#region Color Palettes
@@ -66,33 +67,48 @@ namespace VPWStudio.Controls
 
 			Color.FromArgb(255,164,164,197),  // Color 1F: Silver
 		};
+
+		/* todo: Hair colors, I guess. */
 		#endregion
 
-		public ColorMode Mode;
+		/// <summary>
+		/// Color mode used by this CostumeColorControl.
+		/// </summary>
+		[Browsable(true)]
+		[DefaultValue(ColorMode.Modern)]
+		[Description("Color mode used by this CostumeColorControl."), Category("Behavior")]
+		public ColorMode ColorModeType { get; set; }
 
 		public CostumeColorControl()
 		{
 			InitializeComponent();
-			Mode = ColorMode.Modern;
 		}
 
-		public void ChangeMode(ColorMode newMode)
-		{
-			Mode = newMode;
-		}
-
+		/// <summary>
+		/// Update the color of the CostumeColorControl.
+		/// </summary>
+		/// <param name="color">New color value.</param>
 		public void SetColorNum(int color)
 		{
 			nudColor.Value = color;
 		}
 
+		/// <summary>
+		/// Update the color swatch preview.
+		/// </summary>
 		private void UpdateColor()
 		{
 			// update panelColorPreview based on nudColor.Value
 			// todo: different games have different color IDs.
 			// this currently assumes WM2K,VPW2,No Mercy; they have sane values.
 			// Revenge and VPW64 are different.
-			panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
+			switch (ColorModeType)
+			{
+				case ColorMode.Modern:
+				default:
+					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
+					break;
+			}
 		}
 
 		private void nudColor_ValueChanged(object sender, EventArgs e)

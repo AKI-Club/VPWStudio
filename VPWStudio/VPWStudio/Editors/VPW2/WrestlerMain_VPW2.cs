@@ -164,12 +164,18 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
+			// old stuff
+			/*
 			// get data slice from appearance file (ID 0x006B)
 			// file is 0x4BCC long. each wrestler has 4 costumes at 49 bytes each (total 196 bytes).
 			byte[] appearanceData = Program.GetFileSlice(0x006B, WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, DefaultCostumeData.COSTUME_DATA_LENGTH * 4);
 
 			// load in hex editor for now; make dialog later
 			((MainForm)(MdiParent)).RequestHexViewer(appearanceData);
+			*/
+
+			DefaultCostume_VPW2 dcEditor = new DefaultCostume_VPW2(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex);
+			dcEditor.ShowDialog();
 		}
 
 		private void buttonProfile_Click(object sender, EventArgs e)
