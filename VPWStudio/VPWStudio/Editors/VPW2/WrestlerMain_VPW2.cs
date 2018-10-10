@@ -19,7 +19,6 @@ namespace VPWStudio.Editors.VPW2
 		{
 			InitializeComponent();
 
-			// todo: check for replacement file
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
 
 			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
