@@ -16,6 +16,8 @@ namespace VPWStudio.Editors.VPW2
 	/// </summary>
 	public partial class DefaultCostume_VPW2 : Form
 	{
+		private const UInt16 VPW2_DEFAULT_COSTUME_FILE = 0x006B;
+
 		/// <summary>
 		/// First costume entry to show/edit. The remaining costumes are derived from this number.
 		/// </summary>
@@ -31,7 +33,7 @@ namespace VPWStudio.Editors.VPW2
 		/// </summary>
 		public DefaultCostumeData[] Costumes = new DefaultCostumeData[4];
 
-		public DefaultCostume_VPW2(int _costumeIndex)
+		public DefaultCostume_VPW2(int _costumeIndex, string _path = null)
 		{
 			InitializeComponent();
 			FirstCostumeEntry = _costumeIndex;
@@ -45,12 +47,49 @@ namespace VPWStudio.Editors.VPW2
 			CostumeEditors[2] = cosEditCostume3;
 			CostumeEditors[3] = cosEditCostume4;
 
+			if (_path != null)
+			{
+				LoadData_File(_path);
+			}
+			else
+			{
+				LoadData_ROM();
+			}
+		}
+
+		/// <summary>
+		/// Load default costume data from ROM.
+		/// </summary>
+		private void LoadData_ROM()
+		{
 			// costume data is in file 006B
 			// file is 0x4BCC long. each wrestler has 4 costumes at 49 bytes each (total 196 bytes).
 			// start reading at FirstCostumeEntry
-			byte[] appearanceData = Program.GetFileSlice(0x006B, FirstCostumeEntry * DefaultCostumeData.COSTUME_DATA_LENGTH, DefaultCostumeData.COSTUME_DATA_LENGTH * 4);
+			byte[] appearanceData = Program.GetFileSlice(VPW2_DEFAULT_COSTUME_FILE, FirstCostumeEntry * DefaultCostumeData.COSTUME_DATA_LENGTH, DefaultCostumeData.COSTUME_DATA_LENGTH * 4);
 			MemoryStream ms = new MemoryStream(appearanceData);
 			BinaryReader br = new BinaryReader(ms);
+
+			for (int i = 0; i < Costumes.Length; i++)
+			{
+				Costumes[i] = new DefaultCostumeData();
+				Costumes[i].ReadData(br);
+				UpdateDisplay(i);
+			}
+
+			br.Close();
+		}
+
+		/// <summary>
+		/// Load default costume data from an external file.
+		/// </summary>
+		/// <param name="_path">Path to default costume data file.</param>
+		private void LoadData_File(string _path)
+		{
+			FileStream fs = new FileStream(_path, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+
+			// advance forward to desired location
+			fs.Seek(FirstCostumeEntry * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
 
 			for (int i = 0; i < Costumes.Length; i++)
 			{
@@ -75,7 +114,11 @@ namespace VPWStudio.Editors.VPW2
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			// todo: handle changes once I figure out what I'm doing and how i'm doing it
+			for (int i = 0; i < CostumeEditors.Length; i++)
+			{
+				CostumeEditors[i].WriteValues();
+				Costumes[i] = CostumeEditors[i].Costume;
+			}
 
 			DialogResult = DialogResult.OK;
 			Close();
