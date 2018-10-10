@@ -93,6 +93,11 @@ namespace VPWStudio.Controls
 			nudColor.Value = color;
 		}
 
+		public int GetColorNum()
+		{
+			return (int)nudColor.Value;
+		}
+
 		/// <summary>
 		/// Update the color swatch preview.
 		/// </summary>
