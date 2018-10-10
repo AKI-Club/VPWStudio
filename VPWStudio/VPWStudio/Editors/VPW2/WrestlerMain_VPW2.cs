@@ -12,6 +12,8 @@ namespace VPWStudio.Editors.VPW2
 
 		private AkiText DefaultNames;
 
+		private const UInt16 VPW2_DEFAULT_COSTUME_FILE = 0x006B;
+
 		public WrestlerMain_VPW2()
 		{
 			InitializeComponent();
@@ -174,8 +176,84 @@ namespace VPWStudio.Editors.VPW2
 			((MainForm)(MdiParent)).RequestHexViewer(appearanceData);
 			*/
 
-			DefaultCostume_VPW2 dcEditor = new DefaultCostume_VPW2(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex);
-			dcEditor.ShowDialog();
+			DefaultCostume_VPW2 dcEditor;
+			FileTableEntry dCosEntry = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_COSTUME_FILE];
+			string dcosReplacePath = dCosEntry.ReplaceFilePath;
+
+			if (dcosReplacePath != null && dcosReplacePath != String.Empty)
+			{
+				dcEditor = new DefaultCostume_VPW2(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex, Program.ConvertRelativePath(dcosReplacePath));
+			}
+			else
+			{
+				dcEditor = new DefaultCostume_VPW2(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex);
+			}
+
+			if (dcEditor.ShowDialog() == DialogResult.OK)
+			{
+				if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+				{
+					// we need to have saved in order to actually... save.
+					Program.ErrorMessageBox("Can not save default costume changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+					return;
+				}
+
+				if (dCosEntry.ReplaceFilePath == null || dCosEntry.ReplaceFilePath == string.Empty)
+				{
+					// make new file for 0x006B
+					string filename = String.Format("{0}\\{1:X4}.bin", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), VPW2_DEFAULT_COSTUME_FILE);
+
+					// step 1: get original data from ROM
+					MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+					BinaryReader romReader = new BinaryReader(ms);
+
+					MemoryStream outStream = new MemoryStream();
+					BinaryWriter outWriter = new BinaryWriter(outStream);
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, VPW2_DEFAULT_COSTUME_FILE);
+					romReader.Close();
+
+					// step 2: write updated data
+					outStream.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
+					for (int i = 0; i < dcEditor.Costumes.Length; i++)
+					{
+						dcEditor.Costumes[i].WriteData(outWriter);
+					}
+					outStream.Seek(0, SeekOrigin.Begin);
+
+					// step 3: write to file
+					using (FileStream fs = new FileStream(filename, FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							bw.Write(outStream.ToArray());
+						}
+					}
+					outStream.Close();
+
+					// step 4: set ReplaceFilePath
+					dCosEntry.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+					Program.InfoMessageBox(String.Format("Wrote new Default Costume Data file to {0}.", filename));
+
+					Program.UnsavedChanges = true;
+					((MainForm)(MdiParent)).UpdateTitleBar();
+				}
+				else
+				{
+					// existing file.
+					using (FileStream fs = new FileStream(Program.ConvertRelativePath(dCosEntry.ReplaceFilePath), FileMode.Open))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							fs.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
+							for (int i = 0; i < dcEditor.Costumes.Length; i++)
+							{
+								dcEditor.Costumes[i].WriteData(bw);
+							}
+						}
+					}
+				}
+			}
 		}
 
 		private void buttonProfile_Click(object sender, EventArgs e)
