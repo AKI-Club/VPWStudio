@@ -100,5 +100,69 @@ namespace VPWStudio.Controls
 			nudMaskAccessory1.Value = Costume.MaskAccessory1;
 			nudMaskAccessory2.Value = Costume.MaskAccessory2;
 		}
+
+		public void WriteValues()
+		{
+			Costume.BodyType = (byte)nudBodyType.Value;
+			Costume.SkinColor = (byte)nudSkinColor.Value;
+
+			Costume.RingAttire = (byte)nudRingAttire.Value;
+			Costume.RingAttireColor1 = (byte)cccRingAttireColor1.GetColorNum();
+			Costume.RingAttireColor2 = (byte)cccRingAttireColor2.GetColorNum();
+
+			Costume.UpperAttire = (byte)nudUpperAttire.Value;
+			Costume.UpperAttireColor1 = (byte)cccUpperAttireColor1.GetColorNum();
+			Costume.UpperAttireColor2 = (byte)cccUpperAttireColor2.GetColorNum();
+
+			Costume.EntranceAttire = (byte)nudEntranceAttire.Value;
+			Costume.EntranceAttireColor1 = (byte)cccEntranceAttireColor1.GetColorNum();
+			Costume.EntranceAttireColor2 = (byte)cccEntranceAttireColor2.GetColorNum();
+			Costume.EntranceWeapon = (byte)nudEntranceWeapon.Value;
+
+			Costume.Gloves = (byte)nudGloves.Value;
+			Costume.GlovesColor1 = (byte)cccGlovesColor1.GetColorNum();
+			Costume.GlovesColor2 = (byte)cccGlovesColor2.GetColorNum();
+
+			Costume.Tattoo = (byte)nudTattoo.Value;
+
+			Costume.Wristband = (byte)nudWristband.Value;
+			Costume.WristbandColor = (byte)cccWristbandColor.GetColorNum();
+
+			Costume.LeftElbowPad = (byte)nudLeftElbowPad.Value;
+			Costume.LeftElbowPadColor = (byte)cccLeftElbowPadColor.GetColorNum();
+			Costume.RightElbowPad = (byte)nudRightElbowPad.Value;
+			Costume.RightElbowPadColor = (byte)cccRightElbowPadColor.GetColorNum();
+
+			Costume.LeftKneePad = (byte)nudLeftKneePad.Value;
+			Costume.LeftKneePadColor = (byte)cccLeftKneePadColor.GetColorNum();
+			Costume.RightKneePad = (byte)nudRightKneePad.Value;
+			Costume.RightKneePadColor = (byte)cccRightKneePadColor.GetColorNum();
+
+			Costume.Boots = (byte)nudBoots.Value;
+			Costume.BootsColor1 = (byte)cccBootsColor1.GetColorNum();
+			Costume.BootsColor2 = (byte)cccBootsColor2.GetColorNum();
+
+			Costume.Mask = (cbUsingMask.Checked == true) ? (byte)1 : (byte)0;
+
+			Costume.HeadShape = (byte)nudHeadShape.Value;
+			Costume.Unknown1 = (byte)nudUnknown1.Value;
+			Costume.FaceNumber = (byte)nudFaceNumber.Value;
+			Costume.HairType = (byte)nudHairType.Value;
+			Costume.HairColor = (byte)nudHairColor.Value;
+			Costume.FrontHair = (byte)nudFrontHair.Value;
+			Costume.Unknown2 = (byte)nudUnknown2.Value;
+			Costume.FacialHair = (byte)nudFacialHair.Value;
+			Costume.Facepaint = (byte)nudFacepaint.Value;
+			Costume.Accessory = (byte)nudAccessory.Value;
+
+			Costume.MaskNumber = (byte)nudMaskNumber.Value;
+			Costume.MaskColor1 = (byte)cccMaskColor1.GetColorNum();
+			Costume.MaskColor2 = (byte)cccMaskColor2.GetColorNum();
+			Costume.MaskColor3 = (byte)cccMaskColor3.GetColorNum();
+			Costume.MaskColor4 = (byte)cccMaskColor4.GetColorNum();
+			Costume.MaskHairType = (byte)nudMaskHairType.Value;
+			Costume.MaskAccessory1 = (byte)nudMaskAccessory1.Value;
+			Costume.MaskAccessory2 = (byte)nudMaskAccessory2.Value;
+		}
 	}
 }
