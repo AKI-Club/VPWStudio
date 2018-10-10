@@ -13,12 +13,24 @@ namespace VPWStudio.Editors.VPW2
 		private AkiText DefaultNames;
 
 		private const UInt16 VPW2_DEFAULT_COSTUME_FILE = 0x006B;
+		private const UInt16 VPW2_DEFAULT_NAMES_FILE = 0x006C;
 
 		public WrestlerMain_VPW2()
 		{
 			InitializeComponent();
 
-			LoadDefaultNames();
+			// todo: check for replacement file
+			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
+
+			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			{
+				LoadNames_File(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath));
+			}
+			else
+			{
+				LoadNames_ROM();
+			}
+
 			LoadDefs_Rom(); // temporary
 			PopulateList();
 		}
@@ -26,7 +38,7 @@ namespace VPWStudio.Editors.VPW2
 		/// <summary>
 		/// Load default names AkiText entry
 		/// </summary>
-		private void LoadDefaultNames()
+		private void LoadNames_ROM()
 		{
 			// default names are in file 006C
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -35,7 +47,7 @@ namespace VPWStudio.Editors.VPW2
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x006C);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, VPW2_DEFAULT_NAMES_FILE);
 			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);
@@ -44,6 +56,14 @@ namespace VPWStudio.Editors.VPW2
 
 			outReader.Close();
 			outWriter.Close();
+		}
+
+		private void LoadNames_File(string _path)
+		{
+			FileStream fs = new FileStream(_path, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+			DefaultNames = new AkiText(br);
+			br.Close();
 		}
 
 		#region Load Wrestler Definitions
@@ -263,9 +283,19 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
-			// request AkiText viewer, index 0x006C
-			AkiTextEditor ate = new AkiTextEditor(0x006C, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
-			ate.ShowDialog();
+			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
+
+			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			{
+				AkiTextEditor ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate.ShowDialog();
+			}
+			else
+			{
+				// request AkiText viewer, index 0x006C
+				AkiTextEditor ate = new AkiTextEditor(0x006C, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate.ShowDialog();
+			}
 		}
 
 	}
