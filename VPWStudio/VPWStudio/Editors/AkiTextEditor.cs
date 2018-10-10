@@ -52,7 +52,8 @@ namespace VPWStudio.Editors
 		/// Constructor using file path.
 		/// </summary>
 		/// <param name="path">Path to AkiText to load.</param>
-		public AkiTextEditor(string path)
+		/// <param name="selectEntry">(optional) Entry number to select.</param>
+		public AkiTextEditor(string path, int selectEntry = -1)
 		{
 			InitializeComponent();
 			LoadFromFile(path);
@@ -60,6 +61,11 @@ namespace VPWStudio.Editors
 			PopulateEntryList();
 
 			Text = String.Format("AKI Text Editor - {0}", Program.ShortenAbsolutePath(path));
+
+			if (selectEntry != -1)
+			{
+				cbTextEntries.SelectedIndex = selectEntry;
+			}
 		}
 		#endregion
 
