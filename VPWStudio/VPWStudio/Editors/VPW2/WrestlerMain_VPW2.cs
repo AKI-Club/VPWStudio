@@ -207,7 +207,22 @@ namespace VPWStudio.Editors.VPW2
 					return;
 				}
 
-				if (dCosEntry.ReplaceFilePath == null || dCosEntry.ReplaceFilePath == string.Empty)
+				if (dCosEntry.HasReplacementFile())
+				{
+					// use existing file.
+					using (FileStream fs = new FileStream(Program.ConvertRelativePath(dCosEntry.ReplaceFilePath), FileMode.Open))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							fs.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
+							for (int i = 0; i < dcEditor.Costumes.Length; i++)
+							{
+								dcEditor.Costumes[i].WriteData(bw);
+							}
+						}
+					}
+				}
+				else
 				{
 					// make new file for 0x006B
 					string filename = String.Format("{0}\\{1:X4}.bin", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), VPW2_DEFAULT_COSTUME_FILE);
@@ -245,22 +260,7 @@ namespace VPWStudio.Editors.VPW2
 					Program.InfoMessageBox(String.Format("Wrote new Default Costume Data file to {0}.", filename));
 
 					Program.UnsavedChanges = true;
-					((MainForm)(MdiParent)).UpdateTitleBar();
-				}
-				else
-				{
-					// existing file.
-					using (FileStream fs = new FileStream(Program.ConvertRelativePath(dCosEntry.ReplaceFilePath), FileMode.Open))
-					{
-						using (BinaryWriter bw = new BinaryWriter(fs))
-						{
-							fs.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
-							for (int i = 0; i < dcEditor.Costumes.Length; i++)
-							{
-								dcEditor.Costumes[i].WriteData(bw);
-							}
-						}
-					}
+					((MainForm)MdiParent).UpdateTitleBar();
 				}
 			}
 		}
