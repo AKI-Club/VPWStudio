@@ -53,7 +53,6 @@
 			// nudColor
 			// 
 			this.nudColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudColor.Hexadecimal = true;
 			this.nudColor.Location = new System.Drawing.Point(3, 4);
 			this.nudColor.Maximum = new decimal(new int[] {
             31,
