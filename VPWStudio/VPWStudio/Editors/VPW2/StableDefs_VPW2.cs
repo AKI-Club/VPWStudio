@@ -15,10 +15,16 @@ namespace VPWStudio.Editors.VPW2
 
 		private AkiText DefaultNames;
 
+		private const UInt16 VPW2_DEFAULT_NAMES_FILE = 0x006C;
+
 		public StableDefs_VPW2()
 		{
 			InitializeComponent();
 
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			// stable def file
 			if (Program.CurrentProject.Settings.StableDefinitionFilePath != null &&
 				Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
@@ -36,22 +42,19 @@ namespace VPWStudio.Editors.VPW2
 				// xxx2: the possibility of loading external AkiText...
 				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 				BinaryReader br = new BinaryReader(ms);
-				LoadDefaultNames(br);
+				LoadDefaultNames_ROM(br);
 				br.Close();
 			}
 			else
 			{
 				// load stable definitions from VPW2 ROM
-				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-				BinaryReader br = new BinaryReader(ms);
-
 				bool hasLocation = false;
 				if (Program.CurLocationFile != null)
 				{
 					LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
 					if (sdEntry != null)
 					{
-						br.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+						romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
 						hasLocation = true;
 					}
 				}
@@ -59,47 +62,61 @@ namespace VPWStudio.Editors.VPW2
 				{
 					// fallback to hardcoded offset
 					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-					br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
+					romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 				}
 
 				// xxx: default number of stable defs
 				for (int i = 0; i < 17; i++)
 				{
-					StableDefinition sdef = new StableDefinition(br);
+					StableDefinition sdef = new StableDefinition(romReader);
 					StableDefs.Add(i, sdef);
 				}
-
-				LoadDefaultNames(br);
-				br.Close();
 			}
 
+			// default names
+			string defNameReplacePath = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE].ReplaceFilePath;
+			if (defNameReplacePath != null && defNameReplacePath != String.Empty)
+			{
+				// load from external file
+				LoadDefaultNames_File(Program.ConvertRelativePath(defNameReplacePath));
+			}
+			else
+			{
+				// load from ROM
+				LoadDefaultNames_ROM(romReader);
+			}
+			romReader.Close();
 			PopulateList();
 		}
 
 		/// <summary>
 		/// Load default names from external AkiText file.
 		/// </summary>
-		private void LoadExternalNames()
+		private void LoadDefaultNames_File(string _path)
 		{
-			// todo
+			FileStream fs = new FileStream(_path, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+
+			DefaultNames = new AkiText(br);
+
+			br.Close();
 		}
 
 		/// <summary>
 		/// Load default names from AkiText in ROM.
 		/// </summary>
-		private void LoadDefaultNames(BinaryReader romReader)
+		private void LoadDefaultNames_ROM(BinaryReader romReader)
 		{
 			// default names are in file 006C
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x006C);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, VPW2_DEFAULT_NAMES_FILE);
 			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader outReader = new BinaryReader(outStream);
-			DefaultNames = new AkiText();
-			DefaultNames.ReadData(outReader);
+			DefaultNames = new AkiText(outReader);
 
 			outReader.Close();
 			outWriter.Close();
