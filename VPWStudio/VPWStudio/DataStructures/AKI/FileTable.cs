@@ -314,6 +314,20 @@ namespace VPWStudio
 			ExtraData = _src.ExtraData;
 		}
 
+		/// <summary>
+		/// Determine if this FileTableEntry has a replacement file path set.
+		/// </summary>
+		/// <returns>True if this FileTableEntry has a replacement file path set.</returns>
+		public bool HasReplacementFile()
+		{
+			if (ReplaceFilePath == null || ReplaceFilePath == String.Empty)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		#region ExtraData helpers
 		/// <summary>
 		/// Parse an ExtraData format string and set the relevant ExtraData values for this FileTableEntry.
