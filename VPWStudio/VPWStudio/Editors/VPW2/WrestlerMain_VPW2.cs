@@ -185,16 +185,6 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 
-			// old stuff
-			/*
-			// get data slice from appearance file (ID 0x006B)
-			// file is 0x4BCC long. each wrestler has 4 costumes at 49 bytes each (total 196 bytes).
-			byte[] appearanceData = Program.GetFileSlice(0x006B, WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, DefaultCostumeData.COSTUME_DATA_LENGTH * 4);
-
-			// load in hex editor for now; make dialog later
-			((MainForm)(MdiParent)).RequestHexViewer(appearanceData);
-			*/
-
 			DefaultCostume_VPW2 dcEditor;
 			FileTableEntry dCosEntry = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_COSTUME_FILE];
 			string dcosReplacePath = dCosEntry.ReplaceFilePath;
@@ -283,17 +273,21 @@ namespace VPWStudio.Editors.VPW2
 			}
 
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
+			AkiTextEditor ate;
 
 			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
 			{
-				AkiTextEditor ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
-				ate.ShowDialog();
+				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
 			}
 			else
 			{
 				// request AkiText viewer, index 0x006C
-				AkiTextEditor ate = new AkiTextEditor(0x006C, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
-				ate.ShowDialog();
+				ate = new AkiTextEditor(VPW2_DEFAULT_NAMES_FILE, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+			}
+
+			if (ate.ShowDialog() == DialogResult.OK)
+			{
+				// check to see if this file existed...
 			}
 		}
 
