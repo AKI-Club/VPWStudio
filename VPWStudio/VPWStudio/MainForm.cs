@@ -1257,7 +1257,7 @@ namespace VPWStudio
 				return;
 			}
 
-			if (!Directory.Exists(Path.GetDirectoryName(Program.CurrentProject.Settings.OutputRomPath)))
+			if (!Directory.Exists(Path.GetDirectoryName(Program.ConvertRelativePath(Program.CurrentProject.Settings.OutputRomPath))))
 			{
 				// output directory doesn't exist
 				// I mean we COULD make it, but...
