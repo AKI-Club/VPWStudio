@@ -2,9 +2,34 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 11 (2018/??/??)
+Pre-Alpha Preview 12 (2018/xx/yy)
 ---------------------------------
 I'm working on it.
+
+Pre-Alpha Preview 11 (2018/10/16)
+---------------------------------
+* [FileTableDialog] Implement "Find Previous" via Shift+F3 keyboard shortcut.
+
+* [FileTableDB] Added support for "Extra Data". This currently includes:
+  - Image Width and Height (for I*Textures)
+  - Intended Palette ID (for CI4 and CI8 textures)
+
+* [FileTable_CiTexturePreviewDialog] Fix crash related to palette comments,
+  or lack thereof.
+
+* VPW2 Default Costume Editor added and implemented.
+
+* [VPW2 Wrestler Editor] A few updates regarding wrestler names:
+  - Short names can now use data from replacement FileTable ID 006C.
+  - Wrestler profile data now also uses data from replacement FileTable ID 006C.
+
+* [VPW2 Stable Editor] Load custom group names from replacement FileTable ID 006C.
+
+* [ROM Build Process] Fixed issue where relative Output ROM paths
+  were seen as invalid during the directory check.
+
+* FileTableDB updates again. This time, a number of entries have "Extra Data".
+  This primarily concerns I4Textures, CI4Textures, and CI8Textures.
 
 Pre-Alpha Preview 10 (2018/09/30)
 ---------------------------------
