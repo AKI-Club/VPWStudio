@@ -8,6 +8,12 @@ namespace VPWStudio.Editors.VPW2
 {
 	public partial class WrestlerMain_VPW2 : Form
 	{
+		// height in edit mode 802B5635 (range 0x96-0xFD) (250cm max displayed + three "???")
+		// weight in edit mode 802B56BC (range 0x0046-0x012D) (300kg max displayed + one "???")
+
+		// height: 0x64 is the last valid value (250cm); 0x65-0x67 are the three "???" values.
+		// weight: 0xE6 is the last valid value (300kg); 0xE7 is the "???" value.
+
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 
 		private AkiText DefaultNames;
@@ -122,20 +128,17 @@ namespace VPWStudio.Editors.VPW2
 		}
 
 		/// <summary>
-		/// 
+		/// Load data for the selected wrestler.
 		/// </summary>
-		/// <param name="wdef"></param>
+		/// <param name="wdef">Wrestler data to read from.</param>
 		private void LoadEntryData(WrestlerDefinition wdef)
 		{
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbNameCall.SelectedIndex = wdef.NameCall;
-
-			// todo: handle "???" strings/values; 3 for height (small/medium/large), 1 for weight
-			tbHeight.Text = String.Format("0x{0:X2} ({1}cm)", wdef.Height, wdef.Height + 150);
-			tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", wdef.Weight, wdef.Weight + 70);
-
+			nudHeight.Value = wdef.Height;
+			nudWeight.Value = wdef.Weight;
 			cbVoiceA.SelectedIndex = wdef.Voice1;
 			cbVoiceB.SelectedIndex = wdef.Voice2;
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
@@ -291,5 +294,31 @@ namespace VPWStudio.Editors.VPW2
 			}
 		}
 
+		private void nudHeight_ValueChanged(object sender, EventArgs e)
+		{
+			int height = (int)nudHeight.Value;
+			if (height > 100)
+			{
+				int qmarknum = height - 100;
+				tbHeight.Text = String.Format("0x{0:X2} (??? {1})", height, qmarknum);
+			}
+			else
+			{
+				tbHeight.Text = String.Format("0x{0:X2} ({1}cm)", height, height + 150);
+			}
+		}
+
+		private void nudWeight_ValueChanged(object sender, EventArgs e)
+		{
+			int weight = (int)nudWeight.Value;
+			if (weight > 230)
+			{
+				tbWeight.Text = String.Format("0x{0:X2} (???)", weight);
+			}
+			else
+			{
+				tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", weight, weight);
+			}
+		}
 	}
 }
