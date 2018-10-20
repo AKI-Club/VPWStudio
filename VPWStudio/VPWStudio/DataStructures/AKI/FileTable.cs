@@ -336,6 +336,13 @@ namespace VPWStudio
 		public void ParseExtraDataString(string _exdata)
 		{
 			string[] tokens = _exdata.Split(',');
+
+			// damnit, freem.
+			if (ExtraData == null)
+			{
+				ExtraData = new FileTableEntryExtraData();
+			}
+
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				if (tokens[i].StartsWith("w:"))
