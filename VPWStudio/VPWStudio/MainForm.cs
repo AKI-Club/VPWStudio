@@ -1756,6 +1756,7 @@ namespace VPWStudio
 			t1td.ShowDialog();
 		}
 
+		// PNG to TEX
 		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
