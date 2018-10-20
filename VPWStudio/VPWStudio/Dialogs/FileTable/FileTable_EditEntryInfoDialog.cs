@@ -27,6 +27,10 @@ namespace VPWStudio
 			tbReplaceFilePath.Text = CurEntry.ReplaceFilePath;
 
 			// Extra page
+			if (CurEntry.ExtraData == null)
+			{
+				CurEntry.ExtraData = new FileTableEntryExtraData();
+			}
 			nudImageWidth.Value = CurEntry.ExtraData.ImageWidth;
 			nudImageHeight.Value = CurEntry.ExtraData.ImageHeight;
 			nudTransparentIndex.Value = CurEntry.ExtraData.TransparentColorIndex;
