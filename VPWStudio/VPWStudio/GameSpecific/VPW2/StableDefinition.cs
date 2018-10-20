@@ -114,6 +114,10 @@ namespace VPWStudio.GameSpecific.VPW2
 			{
 				bw.Write(WrestlerID2s[i]);
 			}
+
+			// todo: if wrestler ID2 count is max, add 00000000 at the end;
+			// this may require pointers to be rewritten.
+
 			bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 		#endregion
