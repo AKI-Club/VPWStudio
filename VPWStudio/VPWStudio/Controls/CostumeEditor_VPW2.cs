@@ -91,6 +91,7 @@ namespace VPWStudio.Controls
 			nudFacepaint.Value = Costume.Facepaint;
 			nudAccessory.Value = Costume.Accessory;
 
+			nudMaskHeadShape.Value = Costume.MaskHeadShape;
 			nudMaskNumber.Value = Costume.MaskNumber;
 			cccMaskColor1.SetColorNum(Costume.MaskColor1);
 			cccMaskColor2.SetColorNum(Costume.MaskColor2);
@@ -155,6 +156,7 @@ namespace VPWStudio.Controls
 			Costume.Facepaint = (byte)nudFacepaint.Value;
 			Costume.Accessory = (byte)nudAccessory.Value;
 
+			Costume.MaskHeadShape = (byte)nudMaskHeadShape.Value;
 			Costume.MaskNumber = (byte)nudMaskNumber.Value;
 			Costume.MaskColor1 = (byte)cccMaskColor1.GetColorNum();
 			Costume.MaskColor2 = (byte)cccMaskColor2.GetColorNum();
