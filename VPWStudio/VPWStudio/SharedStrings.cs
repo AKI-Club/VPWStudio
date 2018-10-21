@@ -13,14 +13,22 @@ namespace VPWStudio
 		public static string MainForm_Title = "VPW Studio";
 
 		#region Save/Load Dialog Filter Strings
+		// generic
 		public static string FileFilter_None = "All Files (*.*)|*.*";
+		public static string FileFilter_N64Rom = "Z64 format N64 ROMs (*.z64)|*.z64|All Files (*.*)|*.*";
+		public static string FileFilter_Project = "VPW Studio Project File (*.vpwsproj)|*.vpwsproj|All Files (*.*)|*.*";
+
+		// todo: split these out into save/load
+		// for example, we might want to have a filter that catches all relevant formats.
 		public static string FileFilter_CSV = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
 		public static string FileFilter_PNG = "PNG Files (*.png)|*.png|All Files (*.*)|*.*";
 		public static string FileFilter_Text = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-		public static string FileFilter_N64Rom = "Z64 format N64 ROMs (*.z64)|*.z64|All Files (*.*)|*.*";
-		public static string FileFilter_Project = "VPW Studio Project File (*.vpwsproj)|*.vpwsproj|All Files (*.*)|*.*";
 		public static string FileFilter_GameSharkCodes = "GameShark Code File (*.gscodes)|*.gscodes|All Files (*.*)|*.*";
 		public static string FileFilter_Palettes = "VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|GIMP Palette File (*.gpl)|*.gpl|All Files (*.*)|*.*";
+
+		// palette load/import
+		public static string FileLoadFilter_PaletteCi4 = "CI4 Palette (*.ci4pal)|*.ci4pal|VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|All Files (*.*)|*.*";
+		public static string FileLoadFilter_PaletteCi8 = "CI8 Palette (*.ci8pal)|*.ci8pal|VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|All Files (*.*)|*.*";
 		#endregion
 
 		#region Unsaved Project Strings
