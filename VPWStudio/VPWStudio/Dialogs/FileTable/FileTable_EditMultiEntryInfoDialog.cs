@@ -113,6 +113,10 @@ namespace VPWStudio
 				OpenFileDialog ofd = new OpenFileDialog();
 				FileTableEntry editing = Entries[e.RowIndex];
 				ofd.Title = String.Format("Select Replacement for File ID {0:X4}", editing.FileID);
+
+				// todo: set filter value based on current row's FileType??
+				ofd.Filter = SharedStrings.FileFilter_None;
+
 				if (ofd.ShowDialog() == DialogResult.OK)
 				{
 					dgvEditEntries.Rows[e.RowIndex].Cells[COLUMN_REPLACEFILE].Value = Program.ShortenAbsolutePath(ofd.FileName);
