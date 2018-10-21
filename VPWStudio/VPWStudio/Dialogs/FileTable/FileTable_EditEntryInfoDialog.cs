@@ -99,7 +99,21 @@ namespace VPWStudio
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select Replacement File";
-			ofd.Filter = SharedStrings.FileFilter_None;
+
+			// Set filter based on (FileTypes)cbFileTypes.SelectedIndex
+			switch ((FileTypes)cbFileTypes.SelectedIndex)
+			{
+				case FileTypes.Ci4Palette:
+					ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4;
+					break;
+				case FileTypes.Ci8Palette:
+					ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8;
+					break;
+				default:
+					ofd.Filter = SharedStrings.FileFilter_None;
+					break;
+			}
+
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				CurEntry.ReplaceFilePath = ofd.FileName;
