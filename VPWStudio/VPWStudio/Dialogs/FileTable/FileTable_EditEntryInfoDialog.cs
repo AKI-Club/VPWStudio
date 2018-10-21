@@ -103,15 +103,12 @@ namespace VPWStudio
 			// Set filter based on (FileTypes)cbFileTypes.SelectedIndex
 			switch ((FileTypes)cbFileTypes.SelectedIndex)
 			{
-				case FileTypes.Ci4Palette:
-					ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4;
-					break;
-				case FileTypes.Ci8Palette:
-					ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8;
-					break;
-				default:
-					ofd.Filter = SharedStrings.FileFilter_None;
-					break;
+				case FileTypes.Ci4Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4; break;
+				case FileTypes.Ci8Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8; break;
+				case FileTypes.Ci4Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi4; break;
+				case FileTypes.Ci8Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi8; break;
+				case FileTypes.AkiTexture: ofd.Filter = SharedStrings.FileLoadFilter_TextureAki; break;
+				default: ofd.Filter = SharedStrings.FileFilter_None; break;
 			}
 
 			if (ofd.ShowDialog() == DialogResult.OK)
