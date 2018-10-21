@@ -65,7 +65,7 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("As of now, this program should only be used by myself, RagDas, and the members of the AKI Wrestling Game Hacking Discord server. This is primarily because it's untested and can ruin your data. User discretion is advised.");
+			sb.AppendLine("As of now, this program should only be used by myself, WldFb, RagDas, and the members of the AKI Wrestling Game Hacking Discord server. This is primarily because it's untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
 
 			sb.AppendLine("This tool is dedicated to the memory of Maximo.");
