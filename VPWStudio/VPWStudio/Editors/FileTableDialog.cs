@@ -468,6 +468,9 @@ namespace VPWStudio
 						// reload previous position
 						lvFileList.EnsureVisible(prevIndex);
 						lvFileList.FocusedItem = prevItem;
+
+						Program.UnsavedChanges = true;
+						((MainForm)(MdiParent)).UpdateTitleBar();
 					}
 				}
 			}
