@@ -987,6 +987,7 @@ namespace VPWStudio
 		private int SearchFile(string searchText, bool _backwards = false)
 		{
 			int startPoint = 1;
+			int prevSearchNum = CurrentSearchItemNumber;
 			if (CurrentSearchItemNumber != -1)
 			{
 				if (_backwards)
@@ -1028,6 +1029,10 @@ namespace VPWStudio
 			}
 
 			// todo: does not handle wrapping around to the beginning/end.
+			if (CurrentSearchItemNumber == prevSearchNum)
+			{
+				return -2;
+			}
 
 			return -1;
 		}
@@ -1068,13 +1073,19 @@ namespace VPWStudio
 
 				CurrentSearchText = sd.SearchText;
 				int searchResult = SearchFile(CurrentSearchText);
-				if (searchResult != -1)
+				switch (searchResult)
 				{
-					PostSearch(searchResult);
-				}
-				else
-				{
-					Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", sd.SearchText));
+					case -1:
+						Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", sd.SearchText));
+						break;
+
+					case -2:
+						Program.InfoMessageBox(String.Format("No more entries matching '{0}'.", sd.SearchText));
+						break;
+
+					default:
+						PostSearch(searchResult);
+						break;
 				}
 			}
 		}
@@ -1087,9 +1098,19 @@ namespace VPWStudio
 			}
 
 			int searchResult = SearchFile(CurrentSearchText);
-			if (searchResult != -1)
+			switch (searchResult)
 			{
-				PostSearch(searchResult);
+				case -1:
+					Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", CurrentSearchText));
+					break;
+
+				case -2:
+					Program.InfoMessageBox(String.Format("No more entries matching '{0}'.", CurrentSearchText));
+					break;
+
+				default:
+					PostSearch(searchResult);
+					break;
 			}
 		}
 		#endregion
@@ -1111,6 +1132,15 @@ namespace VPWStudio
 			// reload previous position
 			lvFileList.EnsureVisible(prevIndex);
 			lvFileList.FocusedItem = prevItem;
+		}
+
+		// only update CurrentSearchItemNumber if one item has been selected
+		private void lvFileList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count == 1 && CurrentSearchItemNumber != -1)
+			{
+				CurrentSearchItemNumber = lvFileList.SelectedIndices[0] + 1;
+			}
 		}
 		#endregion
 
