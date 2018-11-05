@@ -53,11 +53,11 @@
 			this.goToBottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -86,6 +86,7 @@
 			this.lvFileList.TabIndex = 1;
 			this.lvFileList.UseCompatibleStateImageBehavior = false;
 			this.lvFileList.View = System.Windows.Forms.View.Details;
+			this.lvFileList.SelectedIndexChanged += new System.EventHandler(this.lvFileList_SelectedIndexChanged);
 			this.lvFileList.DoubleClick += new System.EventHandler(this.lvFileList_DoubleClick);
 			this.lvFileList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvFileList_KeyDown);
 			// 
@@ -220,41 +221,49 @@
 			// 
 			this.goToToolStripMenuItem.Name = "goToToolStripMenuItem";
 			this.goToToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-			this.goToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.goToToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
 			this.goToToolStripMenuItem.Text = "&Go to...";
 			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(154, 6);
 			// 
 			// goToTopToolStripMenuItem
 			// 
 			this.goToTopToolStripMenuItem.Name = "goToTopToolStripMenuItem";
-			this.goToTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.goToTopToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
 			this.goToTopToolStripMenuItem.Text = "Go to Top";
 			this.goToTopToolStripMenuItem.Click += new System.EventHandler(this.goToTopToolStripMenuItem_Click);
 			// 
 			// goToBottomToolStripMenuItem
 			// 
 			this.goToBottomToolStripMenuItem.Name = "goToBottomToolStripMenuItem";
-			this.goToBottomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.goToBottomToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
 			this.goToBottomToolStripMenuItem.Text = "Go to Bottom";
 			this.goToBottomToolStripMenuItem.Click += new System.EventHandler(this.goToBottomToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(154, 6);
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
 			this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
 			this.searchToolStripMenuItem.Text = "&Search...";
 			this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+			// 
+			// findNextToolStripMenuItem
+			// 
+			this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
+			this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+			this.findNextToolStripMenuItem.Text = "Find &Next";
+			this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
 			// 
 			// databaseToolStripMenuItem
 			// 
@@ -285,14 +294,6 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
-			// 
-			// findNextToolStripMenuItem
-			// 
-			this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
-			this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.findNextToolStripMenuItem.Text = "Find &Next";
-			this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
