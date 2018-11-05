@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.11 (October 16, 2018)<br />Program and Manual by freem<br />
+<p>Version 0.0.0.12 (? ??, 2018)<br />Program and Manual by freem<br />
 <a href="http://vpw.ajworld.net/">http://vpw.ajworld.net/</a></p>
 </div>
 
@@ -67,7 +67,9 @@ replacements. Anyone who wanted to play projects using these methods on
 console could not fully do so.</p>
 
 <p>The primary inspiration for VPW Studio is the Goldeneye Setup Editor,
-which works directly on game data.</p>
+which works directly on game data. This allows hacks to work on console,
+assuming you follow all of the internal "rules" of the game and the N64's
+supported data formats.</p>
 
 <h3>Supported Games</h3>
 <p>Currently, only the AKI wrestling games on the Nintendo 64 are supported:</p>
@@ -157,7 +159,7 @@ supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 <li>This program is currently a GIANT work in progress. As such, a lot of things are
 not implemented yet.</li>
 <li>Since the program is a work in progress, any and all file formats are subject
-to change.</li>
+to change. Don't get too attached to your projects.</li>
 </ul>
 
 <hr />
@@ -196,7 +198,19 @@ chosen due to the number of total conversion hacks created by the AKI hacking co
 about the Project File format can be found in Appendix B5.</p>
 
 <h3>Project Structure</h3>
-<p>(todo: Assets, ProjectFiles, etc.)</p>
+<p>Aside from the Project File itself, the project expects a specific structure.
+Upon saving a project for the first time, two directories will be made in the location
+the project was saved:</p>
+
+<ul>
+<li><strong>Assets</strong> &ndash; Assets are the raw files that get converted
+to various game formats. This is typically where your PNG textures live.</li>
+<li><strong>ProjectFiles</strong> &ndash; Anything in the ProjectFiles folder is
+meant to be ready to insert (a.k.a. already in formats the game is expecting).</li>
+</ul>
+
+<p>VPW Studio expects these folders to exist for any saved project. You can change
+their locations via the <a href="#ProjectProperties">Project Properties</a> dialog.</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -390,11 +404,24 @@ textures, palettes, models, and more.</p>
 <p>(todo)</p>
 
 <h3>Navigation Menu</h3>
-<p>(todo: goto ctrl+g; find ctrl+f; find next f3)</p>
+<p>The Navigation menu contains various functions to help you find entries in the FileTable.</p>
+
+<h4>Go To</h4>
+<p>The "Go To" option (keyboard shortcut Ctrl+G) allows you to jump to a specific file number.
+The value is in hexadecimal, so be aware of that.</p>
+
+<h4>Search and Find Next</h4>
+<p>You can search for a file based off of its comment text using the Search function
+(keyboard shortcut Ctrl+F). Once a search has begun, you can use "Find Next" (keyboard
+shortcut F3) to search for the next comment. Holding Shift while pressing F3 moves backwards.</p>
+
+<p>Note: Currently, the search can not be told to skip over item numbers.</p>
 
 <h3>Database Menu</h3>
 <p>The Database menu only contains one option, but it's important if you've upgraded
-to a new version of VPW Studio. (todo: explain "Reload File Table Database")</p>
+to a new version of VPW Studio. "Reload File Table Database" will let you update
+your project's FileTable with the current data in the FileTableDB file for the
+current game.</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
@@ -581,6 +608,7 @@ the base for the final, more polished features.</p>
 <li><strong>vpw2 face test</strong> &ndash; Attempts to render faces from VPW2 given specific values. Requires an open VPW2 project.</li>
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
+<li><strong>move damage test</strong> &ndash; Show move damage values. Requires an open VPW2 project.</li>
 </ul>
 
 <hr />
