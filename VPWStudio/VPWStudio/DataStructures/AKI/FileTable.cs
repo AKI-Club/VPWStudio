@@ -41,6 +41,16 @@ namespace VPWStudio
 		/// Intended palette file for an image.
 		/// </summary>
 		public int IntendedPaletteFileID;
+
+		/// <summary>
+		/// Should the image be mirrored horizontally?
+		/// </summary>
+		public bool HorizMirror;
+
+		/// <summary>
+		/// Should the image be mirrored vertically?
+		/// </summary>
+		public bool VertMirror;
 		#endregion
 
 		/// <summary>
@@ -52,6 +62,8 @@ namespace VPWStudio
 			ImageHeight = INVALID_DATA;
 			TransparentColorIndex = INVALID_DATA;
 			IntendedPaletteFileID = INVALID_DATA;
+			HorizMirror = false;
+			VertMirror = false;
 		}
 
 		#region XML Read/Write
@@ -110,6 +122,24 @@ namespace VPWStudio
 						this.IntendedPaletteFileID = int.Parse(xr.Value);
 					}
 				}
+
+				if (xr.Name == "HorizMirror" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.HorizMirror = bool.Parse(xr.Value);
+					}
+				}
+
+				if (xr.Name == "VertMirror" && xr.NodeType == XmlNodeType.Element)
+				{
+					if (!xr.IsEmptyElement)
+					{
+						xr.Read();
+						this.VertMirror = bool.Parse(xr.Value);
+					}
+				}
 			}
 		}
 
@@ -141,6 +171,8 @@ namespace VPWStudio
 			WriteElement(xw, "ImageHeight", ImageHeight);
 			WriteElement(xw, "TransparentColorIndex", TransparentColorIndex);
 			WriteElement(xw, "IntendedPaletteFile", IntendedPaletteFileID);
+			xw.WriteElementString("HorizMirror", HorizMirror.ToString());
+			xw.WriteElementString("VertMirror", VertMirror.ToString());
 
 			xw.WriteEndElement();
 		}
@@ -360,6 +392,14 @@ namespace VPWStudio
 				if (tokens[i].StartsWith("p:"))
 				{
 					ExtraData.IntendedPaletteFileID = int.Parse(tokens[i].Substring(2), NumberStyles.HexNumber);
+				}
+				if (tokens[i].StartsWith("mh:"))
+				{
+					ExtraData.HorizMirror = bool.Parse(tokens[i].Substring(3));
+				}
+				if (tokens[i].StartsWith("mv:"))
+				{
+					ExtraData.VertMirror = bool.Parse(tokens[i].Substring(3));
 				}
 			}
 		}
