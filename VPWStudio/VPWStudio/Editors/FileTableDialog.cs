@@ -266,6 +266,7 @@ namespace VPWStudio
 							}
 
 							// handle ExtraData
+							// todo: doesn't handle situation where ExtraData was null but FileTableDB has ExtraData.
 							if (entry.Value.ExtraData != null)
 							{
 								if (entry.Value.ExtraData != string.Empty)
