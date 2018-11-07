@@ -36,6 +36,8 @@ namespace VPWStudio
 			nudImageHeight.Value = CurEntry.ExtraData.ImageHeight;
 			nudTransparentIndex.Value = CurEntry.ExtraData.TransparentColorIndex;
 			nudDefaultPaletteID.Value = CurEntry.ExtraData.IntendedPaletteFileID;
+			cbHorizMirror.Checked = CurEntry.ExtraData.HorizMirror;
+			cbVertMirror.Checked = CurEntry.ExtraData.VertMirror;
 		}
 
 		/// <summary>
@@ -78,6 +80,8 @@ namespace VPWStudio
 			{
 				CurEntry.ExtraData.IntendedPaletteFileID = (int)nudDefaultPaletteID.Value;
 			}
+			CurEntry.ExtraData.HorizMirror = cbHorizMirror.Checked;
+			CurEntry.ExtraData.VertMirror = cbVertMirror.Checked;
 
 			DialogResult = DialogResult.OK;
 			Close();
