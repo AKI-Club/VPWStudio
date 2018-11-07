@@ -385,6 +385,17 @@ namespace VPWStudio
 										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci4Texture."));
 										return null;
 									}
+
+									// handle mirroring values
+									if (fte.ExtraData.HorizMirror)
+									{
+										ci4tex.HorizMirror = 1;
+									}
+									if (fte.ExtraData.VertMirror)
+									{
+										ci4tex.VertMirror = 1;
+									}
+
 									ci4tex.WriteData(bw);
 									bm.Dispose();
 								}
@@ -411,6 +422,17 @@ namespace VPWStudio
 										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci8Texture."));
 										return null;
 									}
+
+									// handle mirroring values
+									if (fte.ExtraData.HorizMirror)
+									{
+										ci8tex.HorizMirror = 1;
+									}
+									if (fte.ExtraData.VertMirror)
+									{
+										ci8tex.VertMirror = 1;
+									}
+
 									ci8tex.WriteData(bw);
 									bm.Dispose();
 								}
