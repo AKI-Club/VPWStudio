@@ -2,9 +2,38 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 12 (2018/xx/yy)
+Pre-Alpha Preview 13 (2018/xx/yy)
 ---------------------------------
 I'm working on it.
+
+Pre-Alpha Preview 12 (2018/11/07)
+---------------------------------
+* [VPW2 Wrestler Editor] Height and Weight values can now be changed.
+  (Data is not yet written back to ROM.)
+
+* [VPW2 Costume Editor control] Fix error where Mask Head Shape was ignored.
+
+* [FileTable] Fix issue related to ExtraData when creating a new project.
+
+* [FileTable EditEntryInfo Dialog] Fix an issue related to ExtraData.
+
+* [FileTable EditEntryInfo Dialog] Set Replacement File open dialog filter
+  based on selected FileType option. Currently only works for CI4/CI8 palettes
+  and CI4/CI8/AKI textures.
+
+* [FileTable Editor] Search now reports when you've reached the last requested item.
+
+* [FileTable EditMultiEntryInfoDialog] Set the unsaved changes flag if any changes
+  are made. (It wasn't doing so previously.)
+
+* [FileTableEntry ExtraData] Added Horizontal and Vertical Mirroring for textures.
+
+* [FileTable EditMultiEntryInfoDialog] Fix an error related to erasing a file's
+  replacement path.
+
+* More FileTableDB updates. A few more entries have ExtraData. To update your
+  project, open the File Table dialog, then choose Database -> Reload File
+  Table Database.
 
 Pre-Alpha Preview 11 (2018/10/16)
 ---------------------------------
@@ -227,7 +256,7 @@ Pre-Alpha Preview 4 (2018/05/23)
   This replaces the font image export as the default Aki*Font handler in the
   FileTable editor. If an AkiFontChars file is not defined in the FileTable,
   a fallback character set will be used. This fallback set may not be accurate
-  to what the font actually expects.
+  to what the font actually contains.
 
 * Implemented VPW Studio Palette format.
   This is similar to the JASC Paint Shop Pro palette format, but it also
