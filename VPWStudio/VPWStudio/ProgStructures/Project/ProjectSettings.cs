@@ -99,6 +99,11 @@ namespace VPWStudio
 		public char OutputRomCustomRegion;
 
 		/// <summary>
+		/// Path to custom Wrestler Definition file.
+		/// </summary>
+		//public string WrestlerDefinitionFilePath;
+
+		/// <summary>
 		/// Path to custom Stable Definition file.
 		/// </summary>
 		public string StableDefinitionFilePath;
