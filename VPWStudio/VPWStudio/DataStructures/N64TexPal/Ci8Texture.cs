@@ -28,14 +28,14 @@ namespace VPWStudio
 		public UInt16 NumPalEntries;
 
 		/// <summary>
-		/// Preferred palette number.
+		/// Define if the texture is mirrored horizontally.
 		/// </summary>
-		public byte PreferredPalette;
+		public byte HorizMirror;
 
 		/// <summary>
-		/// Number of palettes available.
+		/// Define if the texture is mirrored vertically.
 		/// </summary>
-		public byte NumPalettes;
+		public byte VertMirror;
 
 		/// <summary>
 		/// Bit length of Width value.
@@ -62,8 +62,8 @@ namespace VPWStudio
 			Width = 0;
 			Height = 0;
 			NumPalEntries = 256;
-			PreferredPalette = 0;
-			NumPalettes = 0;
+			HorizMirror = 0;
+			VertMirror = 0;
 			WidthBitLength = 0;
 			HeightBitLength = 0;
 			Data = null;
@@ -87,8 +87,8 @@ namespace VPWStudio
 			}
 			NumPalEntries = BitConverter.ToUInt16(npe, 0);
 
-			PreferredPalette = br.ReadByte();
-			NumPalettes = br.ReadByte();
+			HorizMirror = br.ReadByte();
+			VertMirror = br.ReadByte();
 			WidthBitLength = br.ReadByte();
 			HeightBitLength = br.ReadByte();
 
@@ -121,8 +121,8 @@ namespace VPWStudio
 			}
 			bw.Write(npe);
 
-			bw.Write(PreferredPalette);
-			bw.Write(NumPalettes);
+			bw.Write(HorizMirror);
+			bw.Write(VertMirror);
 			bw.Write(WidthBitLength);
 			bw.Write(HeightBitLength);
 
