@@ -1438,7 +1438,7 @@
 05A6=Ci4Palette;[Arena - AKI Hall, Dome Road] Main Outside Floor Pads
 05A7=Ci4Texture;[Arena - AKI Hall, Dome Road] Main Outside Floor Pads|p:05A6
 05A8=Ci4Palette;Main Ring Mat
-05A9=Ci4Texture;Main Ring Mat|p:05A8
+05A9=Ci4Texture;Main Ring Mat|p:05A8,mh:true,mv:true
 05AA=Ci4Palette;Main Ring Skirt
 05AB=Ci4Texture;Main Ring Skirt|p:05AA
 05AC=AkiModel;
@@ -1785,7 +1785,7 @@
 0735=Ci4Palette;[Arena - Kawasaki] Policemen
 0736=Ci4Texture;[Arena - Kawasaki] Policemen|p:0735
 0737=Ci4Palette;[Arena - Kawasaki] Ring Mat
-0738=Ci4Texture;[Arena - Kawasaki] Ring Mat|p:0737
+0738=Ci4Texture;[Arena - Kawasaki] Ring Mat|p:0737,mh:true,mv:true
 0739=Ci4Palette;[Arena - Kawasaki] Clouds and Moon
 073A=Ci4Texture;[Arena - Kawasaki] Clouds and Moon|p:0739
 073B=Ci4Palette;[Arena - Kawasaki] Building lights and adverts
