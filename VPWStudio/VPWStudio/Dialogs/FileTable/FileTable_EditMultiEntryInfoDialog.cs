@@ -88,11 +88,29 @@ namespace VPWStudio
 				}
 
 				// replace path
-				string newPath = dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value.ToString();
-				if (newPath != Entries[i].ReplaceFilePath)
+				if (dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value == null)
 				{
-					AnyChangesSubmitted = true;
-					Entries[i].ReplaceFilePath = Program.ShortenAbsolutePath(newPath);
+					if (Entries[i].ReplaceFilePath != null && Entries[i].ReplaceFilePath != string.Empty)
+					{
+						AnyChangesSubmitted = true;
+						Entries[i].ReplaceFilePath = string.Empty;
+					}
+				}
+				else
+				{
+					string newPath = dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value.ToString();
+					if (newPath != Entries[i].ReplaceFilePath)
+					{
+						AnyChangesSubmitted = true;
+						if (newPath == null)
+						{
+							Entries[i].ReplaceFilePath = string.Empty;
+						}
+						else
+						{
+							Entries[i].ReplaceFilePath = Program.ShortenAbsolutePath(newPath);
+						}
+					}
 				}
 			}
 
