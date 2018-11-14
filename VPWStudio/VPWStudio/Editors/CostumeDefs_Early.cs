@@ -632,7 +632,7 @@ namespace VPWStudio.Editors
 			int counter = 1;
 			foreach (BodyTypeDef_Early btdef in BodyTypeDefs)
 			{
-				lbBodyTypes.Items.Add(String.Format("Body Type {0}", counter));
+				lbBodyTypes.Items.Add(String.Format("Body Type {0:X2}", counter));
 				counter++;
 			}
 			lbBodyTypes.EndUpdate();
@@ -769,7 +769,7 @@ namespace VPWStudio.Editors
 		{
 			// lots of shit.
 			tbCostumeUnknown.Text = String.Format("{0:X2}", cdef.Unknown);
-			tbBodyType.Text = String.Format("{0:X2}", cdef.BodyType);
+			tbBodyType.Text = String.Format("{0:X2} ({1:X2})", cdef.BodyType, cdef.BodyType & 0x7F);
 
 			SetTextBoxContentsHex4(tbPelvisPalette, cdef.PelvisPalette);
 			SetTextBoxContentsHex4(tbPelvisTexture, cdef.PelvisTexture);
