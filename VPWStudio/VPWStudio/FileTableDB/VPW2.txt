@@ -1986,10 +1986,10 @@
 0837=Ci8Texture;[Arena - Dome Road] (Ramp)|p:0836
 0838=Ci8Palette;[Arena - Dome Road] (Ramp 2)
 0839=Ci8Texture;[Arena - Dome Road] (Ramp 2)|p:0838
-083A=Ci8Palette;blue banner?
-083B=Ci8Texture;blue banner?|p:083A
-083C=Ci8Palette;red banner?
-083D=Ci8Texture;red banner?|p:083C
+083A=Ci8Palette;[Arena - Dome Road] Blue Ramp (unused)
+083B=Ci8Texture;[Arena - Dome Road] Blue Ramp (unused)|p:083A
+083C=Ci8Palette;[Arena - Dome Road] Red Ramp (unused)
+083D=Ci8Texture;[Arena - Dome Road] Red Ramp (unused)|p:083C
 083E=Ci8Palette;three lights
 083F=Ci8Texture;three lights|p:083E
 0840=Ci8Palette;[Arena - Dome, Dome Road] Ads 1
