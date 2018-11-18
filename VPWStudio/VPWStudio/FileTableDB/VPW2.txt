@@ -1854,8 +1854,8 @@
 07B3=Ci4Texture;[Arena - Unused Halloween] Ring Mat|p:07B2
 07B4=Ci8Palette;[Arena - Unused Halloween] Pumpkin with sword
 07B5=Ci8Texture;[Arena - Unused Halloween] Pumpkin with sword|p:07B4
-07B6=Ci4Palette;[Arena - Unused Halloween] Magic and Swood
-07B7=Ci4Texture;[Arena - Unused Halloween] Magic and Swood|p:07B6
+07B6=Ci4Palette;[Arena - Unused Halloween] Ring Skirt
+07B7=Ci4Texture;[Arena - Unused Halloween] Ring Skirt|p:07B6
 07B8=Ci4Palette;[Arena - Unused Halloween] Welcome frame 1
 07B9=Ci4Texture;[Arena - Unused Halloween] Welcome frame 1|p:07B8
 07BA=Ci4Palette;[Arena - Unused Halloween] Welcome frame 2
