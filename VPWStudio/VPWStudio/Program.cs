@@ -498,7 +498,24 @@ namespace VPWStudio
 						#region Ci8Palette Conversion
 						case FileTypes.Ci8Palette:
 							{
-								if (ReplaceFileExtension == ".pal")
+								if (ReplaceFileExtension == ".vpwspal")
+								{
+									// VPW Studio Palette
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											Ci8Palette ci8pal = new Ci8Palette();
+											if (!ci8pal.ImportVpwsPal(sr))
+											{
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci8Palette."));
+												return null;
+											}
+											ci8pal.WriteData(bw);
+										}
+									}
+								}
+								else if (ReplaceFileExtension == ".pal")
 								{
 									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
 									{
