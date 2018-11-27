@@ -317,7 +317,7 @@ namespace VPWStudio.Editors.VPW2
 			}
 			else
 			{
-				tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", weight, weight);
+				tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", weight, weight + 70);
 			}
 		}
 	}
