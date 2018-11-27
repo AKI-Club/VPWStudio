@@ -145,6 +145,12 @@ namespace VPWStudio.Editors.VPW2
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
 			tbAppearanceIndex.Text = String.Format("{0:X4}", wdef.AppearanceIndex);
 			tbProfileIndex.Text = String.Format("{0:X4}", wdef.ProfileIndex);
+
+			// hacky crap for wrestlers who are 70kg
+			if (wdef.Weight == 0)
+			{
+				nudWeight_ValueChanged(this, null);
+			}
 		}
 
 		/// <summary>
