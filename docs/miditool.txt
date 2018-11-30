@@ -350,6 +350,12 @@ if (gameName.CompareNoCase("LZSS_0BSng") == 0)
 Song Style Info
 ================================================================================
 
+"GEMidi"
+--------
+MidiParse.cpp line 286: GEMidiToMidi
+MidiParse.cpp line 14138: GEMidiToDebugTextFile() 1
+MidiParse.cpp line 14750: GEMidiToDebugTextFile() 2
+
 Old Song Style
 --------------
 unsigned long numberTracks = CharArrayToLong(&inputMID[0x0]);
@@ -359,8 +365,11 @@ unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0xC]);
 unsigned long adsrPointer = CharArrayToLong(&inputMID[0x10]);
 unsigned long drumPointer = CharArrayToLong(&inputMID[0x14]);
 
+MidiParse.cpp line 3164
+
 Binary Song Style
 -----------------
+first four bytes: 0x00000215
 unsigned long numberTracks = CharArrayToLong(&inputMID[0x4]);
 unsigned long totalInstruments = CharArrayToLong(&inputMID[0x8]);
 unsigned long trackPointer = CharArrayToLong(&inputMID[0xC]);
@@ -370,3 +379,5 @@ unsigned long adsrPointer = CharArrayToLong(&inputMID[0x18]);
 unsigned long drumPointer = CharArrayToLong(&inputMID[0x1C]);
 unsigned long instrumentPointer = CharArrayToLong(&inputMID[0x20]);
 unsigned long masterTrackPointer = CharArrayToLong(&inputMID[0x24]);
+
+MidiParse.cpp line 2737
