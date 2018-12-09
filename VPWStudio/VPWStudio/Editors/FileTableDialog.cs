@@ -1048,6 +1048,7 @@ namespace VPWStudio
 		{
 			lvFileList.BeginUpdate();
 
+			// todo: issue with focus when trying to backwards search
 			lvFileList.FocusedItem = lvFileList.Items[focus - 1];
 			lvFileList.EnsureVisible(focus - 1);
 
