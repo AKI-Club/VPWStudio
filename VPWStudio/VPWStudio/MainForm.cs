@@ -852,7 +852,7 @@ namespace VPWStudio
 					CostumeDefs_VPW2.MdiParent = this;
 					CostumeDefs_VPW2.Show();
 					break;
-				
+
 				default:
 					Program.ErrorMessageBox(String.Format("Costumes dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
 					break;
@@ -939,7 +939,7 @@ namespace VPWStudio
 						{
 							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
 						}
-						
+
 						StableDefs_Revenge.MdiParent = this;
 						StableDefs_Revenge.Show();
 					}
@@ -1153,7 +1153,7 @@ namespace VPWStudio
 					if (WrestlerMain_Revenge == null || WrestlerMain_Revenge.IsDisposed)
 					{
 						WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
-						
+
 					}
 					// check for minimized
 					if (WrestlerMain_Revenge.WindowState == FormWindowState.Minimized)
@@ -1168,7 +1168,7 @@ namespace VPWStudio
 					if (WrestlerMain_WM2K == null || WrestlerMain_WM2K.IsDisposed)
 					{
 						WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
-						
+
 					}
 					// check for minimized
 					if (WrestlerMain_WM2K.WindowState == FormWindowState.Minimized)
@@ -1183,7 +1183,7 @@ namespace VPWStudio
 					if (WrestlerMain_VPW2 == null || WrestlerMain_VPW2.IsDisposed)
 					{
 						WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
-						
+
 					}
 					// check for minimized
 					if (WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
@@ -1355,6 +1355,13 @@ namespace VPWStudio
 
 			// check if output ROM exists
 			string romPath = String.Empty;
+			if (Program.CurrentProject.Settings.OutputRomPath == romPath)
+			{
+				// empty string
+				Program.ErrorMessageBox("ok i can't do things with an empty rom thanks argh");
+				return;
+			}
+
 			if (!Path.IsPathRooted(Program.CurrentProject.Settings.OutputRomPath))
 			{
 				// relative to project file
