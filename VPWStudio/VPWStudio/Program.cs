@@ -327,7 +327,7 @@ namespace VPWStudio
 		public static byte[] ConvertFile(int fileID)
 		{
 			// Get replacement file information
-			FileTableEntry fte = Program.CurrentProject.ProjectFileTable.Entries[fileID];
+			FileTableEntry fte = CurrentProject.ProjectFileTable.Entries[fileID];
 			string ReplaceFileExtension = Path.GetExtension(fte.ReplaceFilePath);
 			string ReplaceFilePath = fte.ReplaceFilePath;
 			if (!Path.IsPathRooted(fte.ReplaceFilePath))
@@ -385,6 +385,30 @@ namespace VPWStudio
 										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci4Texture."));
 										return null;
 									}
+
+									// todo: handle number of palette entries.
+									// this is tricky...
+									// we want to check if a replacement palette has been set
+									/*
+									if (fte.ExtraData.IntendedPaletteFileID != -1)
+									{
+										FileTableEntry palEntry = CurrentProject.ProjectFileTable.Entries[fte.ExtraData.IntendedPaletteFileID];
+										if (palEntry.FileType == FileTypes.Ci4Palette)
+										{
+											// check if the path is valid
+											string palPath = palEntry.ReplaceFilePath;
+											if (!Path.IsPathRooted(palPath))
+											{
+												palPath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), palEntry.ReplaceFilePath);
+											}
+										}
+										else
+										{
+											// entry pointed to is not CI4 palette...
+											// add warning, but don't stop build.
+										}
+									}
+									*/
 
 									// handle mirroring values
 									if (fte.ExtraData.HorizMirror)
