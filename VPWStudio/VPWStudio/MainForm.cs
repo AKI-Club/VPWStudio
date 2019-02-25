@@ -1321,6 +1321,7 @@ namespace VPWStudio
 				}
 			}
 
+			BuildLogForm.Focus();
 			BuildLogForm.MoveCursorToEnd();
 		}
 
@@ -1358,7 +1359,7 @@ namespace VPWStudio
 			if (Program.CurrentProject.Settings.OutputRomPath == romPath)
 			{
 				// empty string
-				Program.ErrorMessageBox("ok i can't do things with an empty rom thanks argh");
+				Program.ErrorMessageBox("The Output ROM path is empty. Please set it before continuing.");
 				return;
 			}
 
