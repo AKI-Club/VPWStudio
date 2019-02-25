@@ -2,9 +2,11 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 13 (2018/xx/yy)
+Pre-Alpha Preview 13 (2019/xx/yy)
 ---------------------------------
 I'm working on it.
+
+* [CiPalette Editor] Now loads data from replacement file if set.
 
 Pre-Alpha Preview 12 (2018/11/07)
 ---------------------------------
