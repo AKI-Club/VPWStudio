@@ -35,8 +35,14 @@ namespace VPWStudio.Editors
 		// I need this hack because of how NumericUpDown handles ValueChanged events...
 		private bool ChangingColors = false;
 
+		/// <summary>
+		/// File ID of this palette.
+		/// </summary>
 		private int FileID;
 
+		/// <summary>
+		/// Current active palette number.
+		/// </summary>
 		private int PaletteNumber = 0;
 
 		public CiPaletteEditor(int fileID)
@@ -52,13 +58,138 @@ namespace VPWStudio.Editors
 			string replaceFile = Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath;
 			if (replaceFile != null && replaceFile != String.Empty)
 			{
-				// load replacement file (might be raw, might be jasc psp palette)
+				// attempt to load replacement file
+				if (LoadPaletteFile(replaceFile) == false)
+				{
+					// loading replacement file failed, load from ROM instead
+					LoadPaletteRom();
+				}
 			}
 			else
 			{
-				// business as usual
+				// business as usual: load from ROM
+				LoadPaletteRom();
 			}
 
+			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
+
+			PopulateColorList();
+			UpdatePreview();
+
+			cbColorEntries.SelectedIndex = 0;
+			cbColorEntries_SelectionChangeCommitted(this, new EventArgs());
+		}
+
+		/// <summary>
+		/// Load palette data from an external file.
+		/// </summary>
+		/// <param name="path">Path to palette file to load.</param>
+		private bool LoadPaletteFile(string path)
+		{
+			// this depends on:
+			// 1) palette file type (raw, VPWStudio, JASC, GIMP...)
+			// 2) palette data type (CI4/CI8)
+			FileTypes palType = Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType;
+			string palExt = Path.GetExtension(path);
+			string fullPath = Program.ConvertRelativePath(path);
+
+			FileStream fs = new FileStream(fullPath, FileMode.Open);
+
+			if (palType == FileTypes.Ci4Palette)
+			{
+				CurEditMode = CiEditorModes.Ci4;
+				CurPaletteCI8 = null;
+				CurPaletteCI4 = new Ci4Palette();
+
+				if (palExt.Equals(".ci4pal"))
+				{
+					// raw
+					BinaryReader br = new BinaryReader(fs);
+					CurPaletteCI4.ReadData(br);
+					br.Close();
+				}
+				else if (palExt.Equals(".vpwspal"))
+				{
+					// VPW Studio
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI4.ImportVpwsPal(sr);
+					sr.Close();
+				}
+				else if (palExt.Equals(".pal"))
+				{
+					// JASC (does not support sub-palettes by default)
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI4.ImportJasc(sr);
+					sr.Close();
+				}
+				else if (palExt.Equals(".gpl"))
+				{
+					// GIMP (does not support sub-palettes by default)
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI4.ImportGimp(sr);
+					sr.Close();
+				}
+				else
+				{
+					// unsupported format for CI4
+					fs.Dispose();
+					return false;
+				}
+
+				LoadColorsCi4();
+			}
+			else if (palType == FileTypes.Ci8Palette)
+			{
+				CurEditMode = CiEditorModes.Ci8;
+				CurPaletteCI4 = null;
+				CurPaletteCI8 = new Ci8Palette();
+
+				if (palExt.Equals(".ci8pal"))
+				{
+					// raw
+					BinaryReader br = new BinaryReader(fs);
+					CurPaletteCI8.ReadData(br);
+					br.Close();
+				}
+				else if (palExt.Equals(".vpwspal"))
+				{
+					// VPW Studio
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI8.ImportVpwsPal(sr);
+					sr.Close();
+				}
+				else if (palExt.Equals(".pal"))
+				{
+					// JASC
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI8.ImportJasc(sr);
+					sr.Close();
+				}
+				else if (palExt.Equals(".gpl"))
+				{
+					// GIMP import for CI8 not yet supported
+					fs.Dispose();
+					return false;
+				}
+				else
+				{
+					// unsupported format for CI8
+					fs.Dispose();
+					return false;
+				}
+
+				LoadColorsCi8();
+			}
+
+			fs.Dispose();
+			return true;
+		}
+
+		/// <summary>
+		/// Load palette data from the ROM file.
+		/// </summary>
+		private void LoadPaletteRom()
+		{
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
@@ -76,22 +207,7 @@ namespace VPWStudio.Editors
 				BinaryReader fr = new BinaryReader(palStream);
 				CurPaletteCI4.ReadData(fr, true);
 				fr.Close();
-				ColorList.AddRange(CurPaletteCI4.Entries);
-
-				cbPalettes.Items.Add("Main Palette");
-				if (CurPaletteCI4.SubPalettes.Count > 0)
-				{
-					cbPalettes.BeginUpdate();
-					int subPalCount = 1;
-					foreach (Ci4Palette sub in CurPaletteCI4.SubPalettes)
-					{
-						cbPalettes.Items.Add(String.Format("Sub-Palette {0}", subPalCount));
-						ColorList.AddRange(sub.Entries);
-						subPalCount++;
-					}
-					cbPalettes.EndUpdate();
-				}
-				cbPalettes.SelectedIndex = 0;
+				LoadColorsCi4();
 			}
 			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.Ci8Palette)
 			{
@@ -104,9 +220,7 @@ namespace VPWStudio.Editors
 				BinaryReader fr = new BinaryReader(palStream);
 				CurPaletteCI8.ReadData(fr);
 				fr.Close();
-				ColorList.AddRange(CurPaletteCI8.Entries);
-
-				cbPalettes.Enabled = false;
+				LoadColorsCi8();
 			}
 			/*
 			else if (Program.CurrentProject.ProjectFileTable.Entries[FileID].FileType == FileTypes.AkiTexture)
@@ -143,14 +257,31 @@ namespace VPWStudio.Editors
 				}
 			}
 			*/
+		}
 
-			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
+		private void LoadColorsCi4()
+		{
+			ColorList.AddRange(CurPaletteCI4.Entries);
+			cbPalettes.Items.Add("Main Palette");
+			if (CurPaletteCI4.SubPalettes.Count > 0)
+			{
+				cbPalettes.BeginUpdate();
+				int subPalCount = 1;
+				foreach (Ci4Palette sub in CurPaletteCI4.SubPalettes)
+				{
+					cbPalettes.Items.Add(String.Format("Sub-Palette {0}", subPalCount));
+					ColorList.AddRange(sub.Entries);
+					subPalCount++;
+				}
+				cbPalettes.EndUpdate();
+			}
+			cbPalettes.SelectedIndex = 0;
+		}
 
-			PopulateColorList();
-			UpdatePreview();
-
-			cbColorEntries.SelectedIndex = 0;
-			cbColorEntries_SelectionChangeCommitted(this, new EventArgs());
+		private void LoadColorsCi8()
+		{
+			ColorList.AddRange(CurPaletteCI8.Entries);
+			cbPalettes.Enabled = false;
 		}
 
 		#region OK and Cancel
