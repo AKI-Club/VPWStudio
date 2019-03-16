@@ -36,7 +36,8 @@ namespace VPWStudio
 		/// made the textbox public, but where's the fun in that?
 		public void MoveCursorToEnd()
 		{
-			tbLogOutput.Select(tbLogOutput.Text.Length - 1, 0);
+			tbLogOutput.SelectionStart = tbLogOutput.Text.Length - 1;
+			tbLogOutput.SelectionLength = 0;
 		}
 
 		/// <summary>
