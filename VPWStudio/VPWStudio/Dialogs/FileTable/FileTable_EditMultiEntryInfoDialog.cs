@@ -26,6 +26,7 @@ namespace VPWStudio
 		{
 			{ "Ci4Palette", SharedStrings.FileFilter_Palettes },
 			{ "Ci8Palette", SharedStrings.FileFilter_Palettes },
+			{ "I4Texture", SharedStrings.FileLoadFilter_TextureI4 },
 			{ "Ci4Texture", SharedStrings.FileLoadFilter_TextureCi4 },
 			{ "Ci8Texture", SharedStrings.FileLoadFilter_TextureCi8 },
 			{ "AkiTexture", SharedStrings.FileLoadFilter_TextureAki },

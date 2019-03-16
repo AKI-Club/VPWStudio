@@ -108,6 +108,7 @@ namespace VPWStudio
 			{
 				case FileTypes.Ci4Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4; break;
 				case FileTypes.Ci8Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8; break;
+				case FileTypes.I4Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureI4; break;
 				case FileTypes.Ci4Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi4; break;
 				case FileTypes.Ci8Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi8; break;
 				case FileTypes.AkiTexture: ofd.Filter = SharedStrings.FileLoadFilter_TextureAki; break;
