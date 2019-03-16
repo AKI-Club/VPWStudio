@@ -18,9 +18,8 @@ namespace VPWStudio
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
 
 			// Main page
-			// todo: this causes issues if entries are removed
 			cbFileTypes.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
-			cbFileTypes.SelectedIndex = (int)CurEntry.FileType;
+			cbFileTypes.SelectedIndex = cbFileTypes.Items.IndexOf(CurEntry.FileType.ToString());
 			cbForceFileType.Checked = CurEntry.OverrideFileType;
 			tbComment.Text = fte.Comment;
 
