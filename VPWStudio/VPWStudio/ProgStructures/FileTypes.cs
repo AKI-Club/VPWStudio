@@ -134,10 +134,11 @@ namespace VPWStudio
 				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.MenuBackground));
 			}
 
-			// NoMercyText is in... you guessed it, WWF No Mercy.
+			// Ci4Background and NoMercyText are only used in WWF No Mercy.
 			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
 			{
 				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.NoMercyText));
+				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.Ci4Background));
 			}
 
 			return outTypes.ToArray();
