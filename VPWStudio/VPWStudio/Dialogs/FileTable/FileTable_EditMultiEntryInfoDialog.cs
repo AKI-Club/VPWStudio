@@ -21,17 +21,6 @@ namespace VPWStudio
 
 		public bool AnyChangesSubmitted = false;
 
-		// todo: this manual mapping sucks and probably belongs elsewhere?
-		private Dictionary<string, string> FileFilterTypes = new Dictionary<string, string>()
-		{
-			{ "Ci4Palette", SharedStrings.FileFilter_Palettes },
-			{ "Ci8Palette", SharedStrings.FileFilter_Palettes },
-			{ "I4Texture", SharedStrings.FileLoadFilter_TextureI4 },
-			{ "Ci4Texture", SharedStrings.FileLoadFilter_TextureCi4 },
-			{ "Ci8Texture", SharedStrings.FileLoadFilter_TextureCi8 },
-			{ "AkiTexture", SharedStrings.FileLoadFilter_TextureAki },
-		};
-
 		public FileTable_EditMultiEntryInfoDialog(List<FileTableEntry> entries)
 		{
 			Entries = entries;
@@ -145,9 +134,9 @@ namespace VPWStudio
 
 				// set filter value based on current row's FileType
 				string fileType = dgvEditEntries.Rows[e.RowIndex].Cells[COLUMN_FILETYPE].Value.ToString();
-				if (FileFilterTypes.ContainsKey(fileType))
+				if (SharedStrings.FileFilterTypes.ContainsKey(fileType))
 				{
-					ofd.Filter = FileFilterTypes[fileType];
+					ofd.Filter = SharedStrings.FileFilterTypes[fileType];
 				}
 				else
 				{
