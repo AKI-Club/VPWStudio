@@ -366,6 +366,15 @@ namespace VPWStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VPW Studio.
+        /// </summary>
+        internal static string MainForm_Title {
+            get {
+                return ResourceManager.GetString("MainForm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap MainMenuBG_NoMercy {
