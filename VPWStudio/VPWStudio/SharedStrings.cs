@@ -10,8 +10,7 @@ namespace VPWStudio
 	/// todo: these should really be in the per-language Resources
 	public static class SharedStrings
 	{
-		// [ja] バープロ スタジオ
-		public static string MainForm_Title = "VPW Studio";
+		public static string MainForm_Title = Properties.Resources.MainForm_Title;
 
 		#region Save/Load Dialog Filter Strings
 		// generic
