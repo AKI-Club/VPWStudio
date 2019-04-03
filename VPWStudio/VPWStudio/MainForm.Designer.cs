@@ -79,10 +79,10 @@
 			this.vpw2FaceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stableParseTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.romSliceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.moveDamageTestvpw2OnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.moveDamageTestvpw2OnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -455,6 +455,12 @@
 			resources.ApplyResources(this.romSliceTestToolStripMenuItem, "romSliceTestToolStripMenuItem");
 			this.romSliceTestToolStripMenuItem.Click += new System.EventHandler(this.romSliceTestToolStripMenuItem_Click);
 			// 
+			// moveDamageTestvpw2OnlyToolStripMenuItem
+			// 
+			this.moveDamageTestvpw2OnlyToolStripMenuItem.Name = "moveDamageTestvpw2OnlyToolStripMenuItem";
+			resources.ApplyResources(this.moveDamageTestvpw2OnlyToolStripMenuItem, "moveDamageTestvpw2OnlyToolStripMenuItem");
+			this.moveDamageTestvpw2OnlyToolStripMenuItem.Click += new System.EventHandler(this.moveDamageTestvpw2OnlyToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -481,12 +487,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// moveDamageTestvpw2OnlyToolStripMenuItem
-			// 
-			this.moveDamageTestvpw2OnlyToolStripMenuItem.Name = "moveDamageTestvpw2OnlyToolStripMenuItem";
-			resources.ApplyResources(this.moveDamageTestvpw2OnlyToolStripMenuItem, "moveDamageTestvpw2OnlyToolStripMenuItem");
-			this.moveDamageTestvpw2OnlyToolStripMenuItem.Click += new System.EventHandler(this.moveDamageTestvpw2OnlyToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
