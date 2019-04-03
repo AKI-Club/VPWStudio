@@ -8,6 +8,10 @@ I'm working on it.
 
 * [CiPalette Editor] Now loads data from replacement file if set.
 
+* More FileTableDB updates, including a large No Mercy update from randymanfoo.
+
+* [Program] New icon design.
+
 Pre-Alpha Preview 12 (2018/11/07)
 ---------------------------------
 * [VPW2 Wrestler Editor] Height and Weight values can now be changed.
