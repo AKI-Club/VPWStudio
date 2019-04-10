@@ -1208,7 +1208,7 @@
 131F=Ci4Palette;[Spirit Meter] Special
 1320=Ci4Texture;[Spirit Meter] Special|p:131F
 1321=Ci4Palette;[Spirit Meter] Danger
-1322=Ci4Texture;[Spirit Meter] Danger|p:1322
+1322=Ci4Texture;[Spirit Meter] Danger|p:1321
 1323=Ci4Texture;[Large Message] Rope Break blurry
 1324=Ci4Texture;[Large Message] Rope Break clear
 1325=Ci4Texture;[Large Message] Count 2 blurry
