@@ -19,7 +19,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Rotation
 		/// </summary>
-		public byte Rotation;
+		public sbyte Rotation;
 
 		/// <summary>
 		/// Z Pivot
@@ -42,7 +42,7 @@ namespace VPWStudio
 		/// <param name="_x">Pivot X</param>
 		/// <param name="_r">Rotation</param>
 		/// <param name="_z">Pivot Z</param>
-		public PivotRotation(short _x, byte _r, short _z)
+		public PivotRotation(short _x, sbyte _r, short _z)
 		{
 			PivotX = _x;
 			Rotation = _r;
@@ -73,7 +73,7 @@ namespace VPWStudio
 			PivotX = (short)(temp[0] << 4 | ((temp[1] & 0xF0) >> 4));
 
 			//Rotation: temp[1]&0x0F, temp[2]&0xF0
-			Rotation = (byte)((temp[1]&0x0F) << 4 | (temp[2]&0xF0) >> 4);
+			Rotation = (sbyte)((temp[1]&0x0F) << 4 | (temp[2]&0xF0) >> 4);
 
 			//PivotZ: temp[2]&0x0F, temp[3]
 			PivotZ = (short)((temp[2]&0x0F) << 8 | temp[3]);
