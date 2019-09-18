@@ -82,6 +82,7 @@ namespace VPWStudio
 			{ FileTypes.I4Texture, ".i4tex" },
 			{ FileTypes.DoubleTex, ".tex" }, // note: exports as two files
 			{ FileTypes.MenuBackground, ".menubg" }, // not really supported yet
+			{ FileTypes.Ci4Background, ".ci4bg" }, // this is awkward, freem
 		};
 
 		/// <summary>
