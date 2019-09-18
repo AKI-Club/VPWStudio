@@ -431,6 +431,39 @@ namespace VPWStudio
 								}
 							}
 							break;
+						
+						// Ci4Background is Ci4Texture with pre-set header values
+						case FileTypes.Ci4Background:
+							{
+								if (ReplaceFileExtension == ".png")
+								{
+									Ci4Texture ci4bg = new Ci4Texture();
+									System.Drawing.Bitmap bm = new System.Drawing.Bitmap(ReplaceFilePath);
+									if (bm.Width != 320 && bm.Height != 240)
+									{
+										bm.Dispose();
+										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Ci4Backgrounds must have a resolution of 320x240."));
+										return null;
+									}
+
+									if (!ci4bg.FromBitmap(bm))
+									{
+										bm.Dispose();
+										BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert image to Ci4Background."));
+										return null;
+									}
+
+									ci4bg.WriteCi4BackgroundData(bw);
+									bm.Dispose();
+								}
+								else
+								{
+									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Background conversion."));
+									return null;
+								}
+							}
+							break;
 						#endregion
 
 						#region Ci8Texture conversion
