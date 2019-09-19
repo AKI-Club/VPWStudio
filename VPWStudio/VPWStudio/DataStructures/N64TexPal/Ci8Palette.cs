@@ -246,5 +246,70 @@ namespace VPWStudio
 
 		// todo: all imports, which are going to be a pain
 		#endregion
+
+		#region Photoshop ACT Palette Import/Export
+		// If the file is 772 bytes long, there are 4 additional bytes remaining.
+		// Two bytes for the number of colors to use.
+		// Two bytes for the color index with the transparency color to use.
+
+		/// <summary>
+		/// Exports palette as Adobe ACT format.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void ExportAct(BinaryWriter bw)
+		{
+			// for the most part, you can dump out the RGB colors.
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				Color c = N64Colors.Value5551ToColor(Entries[i]);
+				bw.Write(c.R);
+				bw.Write(c.G);
+				bw.Write(c.B);
+			}
+
+			// something about number of colors and transparent index
+		}
+
+		/// <summary>
+		/// Import Ci4Palette from Adobe ACT format.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use</param>
+		/// <returns></returns>
+		public bool ImportAct(BinaryReader br)
+		{
+			int numColors = 256; // dumb assumption but ok
+			int transparentIndex = -1; // -1 means "none", but this could just be me making it up
+
+			// figure out file size first, 768 for generic or 772 for numcolors+transparency
+			if (br.BaseStream.Length == 772)
+			{
+				br.BaseStream.Seek(768, SeekOrigin.Begin);
+
+				// read number of colors, transparency index
+				numColors = br.ReadUInt16();
+				transparentIndex = br.ReadInt16();
+
+				br.BaseStream.Seek(0, SeekOrigin.Begin);
+			}
+
+			// read colors as normal
+			for (int i = 0; i < numColors; i++)
+			{
+				byte r = br.ReadByte();
+				byte g = br.ReadByte();
+				byte b = br.ReadByte();
+				if (i == transparentIndex && transparentIndex != -1)
+				{
+					Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(0, r, g, b));
+				}
+				else
+				{
+					Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(255, r, g, b));
+				}
+			}
+
+			return true;
+		}
+		#endregion
 	}
 }
