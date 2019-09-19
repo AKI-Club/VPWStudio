@@ -92,6 +92,7 @@ namespace VPWStudio
 		private void SetupSetTypeMenu()
 		{
 			SortedList<FileTypes, ToolStripMenuItem> types = new SortedList<FileTypes, ToolStripMenuItem>();
+			// todo: this shit is fucking garbage as fuck and I do not like it one bit.
 			for (int i = 0; i < Enum.GetValues(typeof(FileTypes)).Length; i++)
 			{
 				FileTypes curType = (FileTypes)i;
