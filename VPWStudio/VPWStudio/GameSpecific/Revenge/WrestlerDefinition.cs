@@ -153,6 +153,7 @@ namespace VPWStudio.GameSpecific.Revenge
 			bw.Write(id4);
 			bw.Write(WrestlerID2);
 			bw.Write(Unknown1);
+			// todo: the rest of it
 		}
 		#endregion
 	}
