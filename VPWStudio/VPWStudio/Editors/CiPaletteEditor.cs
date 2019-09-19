@@ -129,6 +129,13 @@ namespace VPWStudio.Editors
 					CurPaletteCI4.ImportGimp(sr);
 					sr.Close();
 				}
+				else if (palExt.Equals(".act"))
+				{
+					// Adobe ACT (does not support sub-palettes by default)
+					BinaryReader br = new BinaryReader(fs);
+					CurPaletteCI4.ImportAct(br);
+					br.Close();
+				}
 				else
 				{
 					// unsupported format for CI4
@@ -170,6 +177,13 @@ namespace VPWStudio.Editors
 					// GIMP import for CI8 not yet supported
 					fs.Dispose();
 					return false;
+				}
+				else if (palExt.Equals(".act"))
+				{
+					// Adobe ACT
+					BinaryReader br = new BinaryReader(fs);
+					CurPaletteCI8.ImportAct(br);
+					br.Close();
 				}
 				else
 				{
