@@ -153,6 +153,21 @@ namespace VPWStudio.GameSpecific.Revenge
 			bw.Write(id4);
 			bw.Write(WrestlerID2);
 			bw.Write(Unknown1);
+
+			byte[] unk2 = BitConverter.GetBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk2);
+			}
+			bw.Write(unk2);
+
+			byte[] unk3 = BitConverter.GetBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk3);
+			}
+			bw.Write(unk3);
+
 			// todo: the rest of it
 		}
 		#endregion
