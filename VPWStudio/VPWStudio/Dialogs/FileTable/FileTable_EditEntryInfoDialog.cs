@@ -45,7 +45,10 @@ namespace VPWStudio
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			// Main page
+
+			// xxx: I believe this is causing me some problems too
 			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+
 			CurEntry.OverrideFileType = cbForceFileType.Checked;
 			CurEntry.Comment = tbComment.Text;
 
