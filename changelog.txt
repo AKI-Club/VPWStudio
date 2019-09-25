@@ -2,9 +2,45 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 13 (2019/xx/yy)
+Pre-Alpha Preview 14 (2019/xx/yy)
 ---------------------------------
 I'm working on it.
+
+Pre-Alpha Preview 13 (2019/09/25)
+---------------------------------
+Wow, that's a long time between updates.
+
+* [CostumeDefs_Early] A few operational changes for consistency's sake:
+  - Use hex numbers for Body Types list.
+  - Show masked Body Type in the Costumes tab.
+
+* [File Conversion] Fix VPWStudio Palette files not being accepted for CI8Palette conversion.
+
+* [VPW2 Wrestler Editor] Fixed displayed weight values not being corrected.
+
+* [VPW2 Wrestler Editor] Fixed issue where a weight value of 0 would not update the
+  text display to the right.
+
+* [CiPalette Editor] Now loads data from replacement file if set.
+
+* [Program] New icon design.
+
+* [AkiAnimation] Rotation changed to signed byte. (Makes sense, really)
+
+* [ROM Build Process] Added support for Ci4Background conversion.
+
+* [Ci4Palette, Ci8Palette] Preliminary support for Adobe ACT palette import.
+  Does not support sub-palettes yet.
+
+* [CiPaletteEditor] Allow importing Adobe ACT palettes.
+
+* [FileTypes] Redid the logic that handles valid FileTypes for the specific games.
+
+* [FileTable Dialogs] Fixed errors related to FileTypes not being properly set.
+
+* More FileTableDB updates, including a large No Mercy update from randymanfoo.
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 12 (2018/11/07)
 ---------------------------------
