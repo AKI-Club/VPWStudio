@@ -30,7 +30,11 @@ namespace VPWStudio
 
 		private void AddFileTypes(DataGridViewComboBoxCell cb)
 		{
-			cb.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
+			List<FileTypes> validTypes = FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame);
+			for (int i = 0; i < validTypes.Count; i++)
+			{
+				cb.Items.Add(Enum.GetName(typeof(FileTypes), validTypes[i]));
+			}
 		}
 
 		private void AddEncodingEntries(DataGridViewComboBoxCell cb)

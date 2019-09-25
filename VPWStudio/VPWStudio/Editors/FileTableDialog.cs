@@ -92,37 +92,11 @@ namespace VPWStudio
 		private void SetupSetTypeMenu()
 		{
 			SortedList<FileTypes, ToolStripMenuItem> types = new SortedList<FileTypes, ToolStripMenuItem>();
-			// todo: this shit is fucking garbage as fuck and I do not like it one bit.
-			for (int i = 0; i < Enum.GetValues(typeof(FileTypes)).Length; i++)
+			List<FileTypes> validTypes = FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame);
+
+			for (int i = 0; i < validTypes.Count; i++)
 			{
-				FileTypes curType = (FileTypes)i;
-
-				#region Per-Game Hacks
-				// AkiText is only available in WM2K and later
-				if (curType == FileTypes.AkiText && Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K)
-				{
-					continue;
-				}
-
-				// MenuBackground is also only available in WM2K and later.
-				if (curType == FileTypes.MenuBackground && Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K)
-				{
-					continue;
-				}
-
-				// Ci4Background is only used in WWF No Mercy
-				if (curType == FileTypes.Ci4Background && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
-				{
-					continue;
-				}
-
-				// NoMercyText is only available in No Mercy (<sarcasm>really???? you think?!</sarcasm>)
-				if (curType == FileTypes.NoMercyText && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
-				{
-					continue;
-				}
-				#endregion
-
+				FileTypes curType = validTypes[i];
 				ToolStripMenuItem tsmi = new ToolStripMenuItem()
 				{
 					Name = String.Format("SetType{0}", curType),
@@ -136,6 +110,7 @@ namespace VPWStudio
 				}
 				types.Add(curType, tsmi);
 			}
+
 			foreach (KeyValuePair<FileTypes, ToolStripMenuItem> entry in types)
 			{
 				setTypeToolStripMenuItem.DropDownItems.Add(entry.Value);

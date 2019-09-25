@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace VPWStudio
@@ -18,7 +19,14 @@ namespace VPWStudio
 			labelEditingEntry.Text = String.Format("Editing File Table Entry ID {0:X4}", fte.FileID);
 
 			// Main page
-			cbFileTypes.Items.AddRange(FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame));
+			List<FileTypes> validTypes = FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame);
+			cbFileTypes.BeginUpdate();
+			for (int i = 0; i < validTypes.Count; i++)
+			{
+				cbFileTypes.Items.Add(Enum.GetName(typeof(FileTypes),validTypes[i]));
+			}
+			cbFileTypes.EndUpdate();
+
 			cbFileTypes.SelectedIndex = cbFileTypes.Items.IndexOf(CurEntry.FileType.ToString());
 			cbForceFileType.Checked = CurEntry.OverrideFileType;
 			tbComment.Text = fte.Comment;
