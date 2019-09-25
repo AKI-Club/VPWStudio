@@ -117,32 +117,38 @@ namespace VPWStudio
 		};
 
 		// todo: return List<FileTypes> and make callers convert it to strings
-		public static string[] GetValidFileTypesForGame(VPWGames gameType)
+		/// <summary>
+		/// Return a list of the valid FileTypes for the specified game.
+		/// </summary>
+		/// <param name="gameType">Base game type</param>
+		/// <returns>List of valid FileTypes objects for the specified game.</returns>
+		public static List<FileTypes> GetValidFileTypesForGame(VPWGames gameType)
 		{
-			List<string> outTypes = new List<string>();
-
-			outTypes.AddRange(Enum.GetNames(typeof(FileTypes)));
-
+			List<FileTypes> outTypes = new List<FileTypes>();
+			foreach (FileTypes ft in Enum.GetValues(typeof(FileTypes)))
+			{
+				outTypes.Add(ft);
+			}
 			// AkiText is in WM2K and later
 			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
 			{
-				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.AkiText));
+				outTypes.Remove(FileTypes.AkiText);
 			}
 
 			// MenuBackground is in WM2K and later
 			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
 			{
-				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.MenuBackground));
+				outTypes.Remove(FileTypes.MenuBackground);
 			}
 
 			// Ci4Background and NoMercyText are only used in WWF No Mercy.
 			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
 			{
-				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.NoMercyText));
-				outTypes.Remove(Enum.GetName(typeof(FileTypes), FileTypes.Ci4Background));
+				outTypes.Remove(FileTypes.NoMercyText);
+				outTypes.Remove(FileTypes.Ci4Background);
 			}
 
-			return outTypes.ToArray();
+			return outTypes;
 		}
 	}
 
