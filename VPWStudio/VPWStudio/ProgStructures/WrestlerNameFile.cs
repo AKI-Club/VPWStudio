@@ -38,8 +38,8 @@ namespace VPWStudio
 		{
 			ID2 = 0;
 			ID4 = 0;
-			LongName = String.Empty;
-			ShortName = String.Empty;
+			LongName = string.Empty;
+			ShortName = string.Empty;
 		}
 
 		/// <summary>
@@ -68,8 +68,8 @@ namespace VPWStudio
 				// fall back to default data
 				ID2 = 0;
 				ID4 = 0;
-				LongName = String.Empty;
-				ShortName = String.Empty;
+				LongName = string.Empty;
+				ShortName = string.Empty;
 			}
 		}
 
@@ -80,7 +80,7 @@ namespace VPWStudio
 		public override string ToString()
 		{
 			// line format: ID2/ID4=LongName|ShortName
-			return String.Format("{0:X2}/{1:X4}={2}|{3}", ID2, ID4, LongName, ShortName);
+			return string.Format("{0:X2}/{1:X4}={2}|{3}", ID2, ID4, LongName, ShortName);
 		}
 
 		/// <summary>
