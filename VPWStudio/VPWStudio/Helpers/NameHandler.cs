@@ -35,7 +35,7 @@ namespace VPWStudio
 		/// <returns>Encoded name.</returns>
 		public static string EncodeName(string _long, string _short)
 		{
-			string result = String.Empty;
+			string result = string.Empty;
 
 			// this is a lot tricker than decoding.
 			// general idea: search for the longest substring of the short name within the long name.
@@ -50,7 +50,7 @@ namespace VPWStudio
 				if (_long.StartsWith(_short))
 				{
 					// well that's even EASIER.
-					result = String.Format("<{0}>{1}", _short, _long.Substring(_short.Length));
+					result = string.Format("<{0}>{1}", _short, _long.Substring(_short.Length));
 				}
 				else
 				{
@@ -73,7 +73,7 @@ namespace VPWStudio
 				// * "Diamond Dallas Page{DDP}" (human intervention version: "<D>iamond <D>allas <P>age" uses more bytes)
 				// * "Konnan{K-Dawg}" (human intervention version: "<K>onnan{-Dawg}" uses more bytes)
 				// * "Juventud Guerrera{Juvi}" (human intervention version: "<Juv>entud Guerrera{i}" uses one less byte)
-				result = String.Format("{0}{{{1}}}", _long, _short);
+				result = string.Format("{0}{{{1}}}", _long, _short);
 			}
 
 			return result;
