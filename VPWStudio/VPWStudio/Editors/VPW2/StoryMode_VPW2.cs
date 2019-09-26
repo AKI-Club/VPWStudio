@@ -23,6 +23,8 @@ namespace VPWStudio.Editors.VPW2
 		/// </summary>
 		public byte[] DefaultChampions = new byte[5];
 
+		private AkiText DefaultNames;
+
 		public StoryMode_VPW2()
 		{
 			InitializeComponent();
@@ -77,20 +79,43 @@ namespace VPWStudio.Editors.VPW2
 			// 5x champions (Z64 0xDB544)
 			// xxx: hardcoded length
 			DefaultChampions = romReader.ReadBytes(5);
+
+			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[0x006C];
+			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			{
+				FileStream fs = new FileStream(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), FileMode.Open);
+				BinaryReader br = new BinaryReader(fs);
+				DefaultNames = new AkiText(br);
+				br.Close();
+			}
+			else
+			{
+				MemoryStream outStream = new MemoryStream();
+				BinaryWriter outWriter = new BinaryWriter(outStream);
+
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x006C);
+
+				outStream.Seek(0, SeekOrigin.Begin);
+				BinaryReader outReader = new BinaryReader(outStream);
+				DefaultNames = new AkiText(outReader);
+				outReader.Close();
+				outWriter.Close();
+			}
+
 			romReader.Close(); // we're done with this
 
-			tbTripleCrown.Text = String.Format("0x{0:X2}", DefaultChampions[0]);
-			tbWorldTag1.Text = String.Format("0x{0:X2}", DefaultChampions[1]);
-			tbAsiaTag1.Text = String.Format("0x{0:X2}", DefaultChampions[2]);
-			tbWorldTag2.Text = String.Format("0x{0:X2}", DefaultChampions[3]);
-			tbAsiaTag2.Text = String.Format("0x{0:X2}", DefaultChampions[4]);
+			tbTripleCrown.Text = String.Format("0x{0:X2} {1}", DefaultChampions[0], DefaultNames.Entries[DefaultChampions[0]*2].Text);
+			tbWorldTag1.Text = String.Format("0x{0:X2} {1}", DefaultChampions[1], DefaultNames.Entries[DefaultChampions[1]*2].Text);
+			tbAsiaTag1.Text = String.Format("0x{0:X2} {1}", DefaultChampions[2], DefaultNames.Entries[DefaultChampions[2]*2].Text);
+			tbWorldTag2.Text = String.Format("0x{0:X2} {1}", DefaultChampions[3], DefaultNames.Entries[DefaultChampions[3]*2].Text);
+			tbAsiaTag2.Text = String.Format("0x{0:X2} {1}", DefaultChampions[4], DefaultNames.Entries[DefaultChampions[4]*2].Text);
 		}
 
 		private void UpdateTeamValues()
 		{
 			StoryModeTeam_Modern curTeam = StoryTeams[lbTeams.SelectedIndex];
-			tbWrestler1.Text = String.Format("0x{0:X2}", curTeam.WrestlerID2_1);
-			tbWrestler2.Text = String.Format("0x{0:X2}", curTeam.WrestlerID2_2);
+			tbWrestler1.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_1, DefaultNames.Entries[curTeam.WrestlerID2_1 * 2].Text);
+			tbWrestler2.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_2, DefaultNames.Entries[curTeam.WrestlerID2_2 * 2].Text);
 			tbUnknown.Text = String.Format("0x{0:X4}", curTeam.Unknown);
 		}
 
