@@ -44,15 +44,7 @@
 <h3>Appendices</h3>
 <ol type='A'>
 <li><a href="#Glossary">Glossary</a></li>
-<li>Program Formats
-	<ol type="1">
-	<li><a href="#LocationFile">LocationFile Format</a></li>
-	<li><a href="#FileTableDB">FileTableDB Format</a></li>
-	<li><a href="#GameSharkCodeSet">GameShark CodeSet Format</a></li>
-	<li><a href="#StableDef">Stable Definition Format</a></li>
-	<li><a href="#ProjectFile">ProjectFile Format</a></li>
-	</ol>
-</li>
+<li><a href="./appendix_b.html">Program Formats</a></li>
 <li><a href="#GameDataFormats">Game Data Formats</a></li>
 </ol>
 
@@ -139,11 +131,12 @@ are listed in the specific sections for each tool.</p>
 
 <p>Of the remaining AKI wrestling games, it's more likely the PlayStation 1 games
 (<em>Virtual Pro-Wrestling</em> and <em>WCW vs. the World</em>) will be supported
-before games on later systems.</p>
+before games on later systems. These games are not considered the primary focus,
+however, so it will be a while before support is implemented.</p>
 
 <hr />
 <h2><a name="Requirements">Requirements and Notes</a></h2>
-<p>(todo)</p>
+<p>In order to use VPW Studio, you'll need a few things.</p>
 
 <h3>Requirements</h3>
 <ul>
@@ -165,9 +158,8 @@ to change. Don't get too attached to your projects.</li>
 <hr />
 <h2><a name="MainInterface">Main Interface</a></h2>
 <img src="./img/main_interface.png" title="Main Interface" />
-<p>The main form appears when you boot VPW Studio.</p>
-
-<p>(todo)</p>
+<p>The main form appears when you boot VPW Studio. Most of the functionality is disabled
+until a project file is opened, though there are a few tools that don't require a project.</p>
 
 <hr />
 <h2><a name="ProgramOptions">Program Options</a></h2>
@@ -195,7 +187,7 @@ can shorten build times.</p>
 chosen due to the number of total conversion hacks created by the AKI hacking communities.</p>
 
 <p>Project Files have the extension <code>.vpwsproj</code>. Technical information
-about the Project File format can be found in Appendix B5.</p>
+about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B, Section 5</a>.</p>
 
 <h3>Project Structure</h3>
 <p>Aside from the Project File itself, the project expects a specific structure.
@@ -221,7 +213,7 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 <p>The options presented are:</p>
 <ul>
 <li><strong>Project Name</strong> &ndash; The name of this project.</li>
-<li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional.</li>
+<li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional, but recommended.</li>
 <li><strong>Game Type</strong> &ndash; Set the game type.</li>
 <li><strong>Base ROM File</strong> &ndash; Set the location of the base Z64 ROM.</li>
 <li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
@@ -289,7 +281,7 @@ provides updates on the build process.</p>
 
 <p>Depending on the speed of your computer, the number of FileTable entries being
 modified, and the Build Log Verbosity setting, this process may be relatively short
-(~10 seconds) or long.</p>
+(around 10 seconds) or long.</p>
 
 <h3>Play ROM</h3>
 <p>If you want to test the changes in an emulator, select "Play ROM" from the "Project"
@@ -523,7 +515,8 @@ sounds. (This includes the theme music found in WM2K, VPW2, and No Mercy.)</p>
 <h2><a name="StoryMode">Story Mode</a></h2>
 <p>"Project &rarr; Story Mode" (todo)</p>
 
-<p>Please disregard the table below, as this is not implemented yet.</p>
+<p>This feature is not yet implemented. The table below shows what games will
+be supported once the feature is completed. For now, please disregard the table below.</p>
 
 <h3>Game Support</h3>
 <table>
@@ -568,7 +561,7 @@ as the Championships and Story Mode are intertwined in those games.</p>
 <hr />
 <h2><a name="Wrestlers">Wrestlers</a></h2>
 <p>The Wrestler Editor (Project &rarr; Wrestlers) allows you to view information
-about wrestlers. (todo)</p>
+about wrestlers. (todo: sometimes you can edit them too)</p>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/wrestler_editor-revenge.png" title="Wrestler Editor - WCW/nWo Revenge" />
@@ -677,191 +670,6 @@ a large number of parameters for moves.</dd>
 they're either the file IDs themselves, or the location of the data in the ROM (relative
 to the start location of the first file in the archive).</dd>
 </dl>
-
-<hr />
-<h2>Appendix B: Program Formats</h2>
-<p>(notes about program file formats)</p>
-
-<h3><a name="LocationFile">Appendix B1: LocationFile Format</a></h3>
-<p>The LocationFile format is a plain text database defining locations in ROM
-and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
-the LocationFile.</p>
-
-<p>Lines starting with the <code>#</code> character are comments, and will be
-ignored by the LocationFile loader.</p>
-
-<h4>Breakdown</h4>
-<p><code>LocationType:Location,Size;Comment</code></p>
-
-<h4>LocationType</h4>
-<p>This value is either <code>ROM</code> or <code>RAM</code>.
-ROM locations assume the Z64 file format (like the rest of the program).
-RAM locations are primarily for use with the GameShark code tool.</p>
-
-<h4>Location</h4>
-<p>The location for this entry, specified in hex. If this is a RAM entry,
-it must begin with <code>80</code>. Do not use <code>81</code> if you are
-converting a GameShark code to a LocationFile entry; the size is handled
-in the next section.</p>
-
-<h4>Size</h4>
-<p>The size of this entry, in decimal. For a normal entry, this is how many
-bytes to read/write.</p>
-
-<p>When handling a Code Change entry (see below), the Size value represents
-the number of bytes between the first and second change.</p>
-
-<h4>Comment</h4>
-<p>The comment section is typically used to provide a note about the location,
-but comments starting with special characters have different meanings.</p>
-
-<p>Special characters currently handled:</p>
-<ul>
-<li><code>$</code> &ndash; <strong>Data Location</strong>: Specific locations
-VPW Studio looks for to handle ROM reads/writes.</li>
-<li><code>%</code> &ndash; <strong>Code Change</strong>: Locations used for modifying game code.</li>
-</ul>
-
-<p>Special location strings are mapped in the program, so you can't make things up
-and expect VPW Studio to understand them. The current list of handled special
-location strings:</p>
-
-<strong>Data Locations</strong>
-<ul>
-<li><code>$FILETABLE</code> &ndash; Location of the FileTable in ROM.</li>
-<li><code>$FIRSTFILE</code> &ndash; Location of the first file described by the FileTable in ROM. (Size field does not matter.)</li>
-<li><code>$WRESTLERDEFS</code> &ndash; Location of Wrestler Definitions.</li>
-</ul>
-
-<strong>Code Changes</strong>
-<ul>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-</ul>
-
-<hr />
-<h3><a name="FileTableDB">Appendix B2: FileTableDB Format</a></h3>
-<p>The FileTableDB format is a plain text database mapping File IDs to types
-and notes.</p>
-
-<p>Lines starting with the <code>#</code> character are comments, and will be
-ignored by the FileTableDB loader.</p>
-
-<h4>Breakdown</h4>
-<p><code>FileID=Type;Notes</code></p>
-
-<h4>FileID</h4>
-<p>The ID file for this entry. Entries are in hex and should have 4 digits.
-Entries start from 0001, as 0000 is used as a "no file" index.</p>
-
-<h4>Type</h4>
-<p>(This is the challenging part.)</p>
-
-<p>Currently supported values:</p>
-<ul>
-<li><code>Binary</code> &ndash; Default file type.</li>
-<li><code>AkiAnimation</code> &ndash; Animation data.</li>
-<li><code>AkiArchive</code> &ndash; An archive of files. Zoinkity's Midwaydec
-uses "<code>TEXarchive</code>" for this format, but not all archives exclusively
-contain TEX files.</li>
-<li><code>AkiModel</code> &ndash; Model data.</li>
-<li><code>AkiTexture</code> &ndash; AKI texture wrapper (a.k.a. "TEX")</li>
-<li><code>AkiText</code> &ndash; AKI text archive.</li>
-<li><code>AkiLargeFont</code> &ndash; Large font data (24px wide)</li>
-<li><code>AkiSmallFont</code> &ndash; Small font data (16px wide)</li>
-<li><code>AkiFontChars</code> &ndash; Font Characters (typically Shift-JIS)</li>
-<li><code>MenuBackground</code> &ndash; Menu Background (use on first file in sequence only)</li>
-<li><code>Ci4Palette</code> &ndash; CI4 palette (16 colors * 2 bytes)</li>
-<li><code>Ci8Palette</code> &ndash; CI8 palette (256 colors * 2 bytes)</li>
-<li><code>I4Texture</code> &ndash; I4 texture (4BPP)</li>
-<li><code>Ci4Texture</code> &ndash; CI4 texture (4BPP)</li>
-<li><code>Ci8Texture</code> &ndash; CI8 texture (8BPP)</li>
-<li><code>DoubleTex</code> &ndash; WCW/nWo Revenge credits faces (two TEX files, one after another)</li>
-</ul>
-
-<h4>Notes</h4>
-<p>A note displayed in the FileTable dialog. Unlike the LocationFile format,
-there are no special tokens to deal with.</p>
-
-<hr />
-<h3><a name="GameSharkCodeSet">Appendix B3: GameShark CodeSet Format</a></h3>
-<p>(todo)</p>
-
-<hr />
-<h3><a name="StableDef">Appendix B4: Stable Definition Format</a></h3>
-<p>The Stable Definition file is a text file following a specific pattern.
-Each game in the series defines Stable data differently, requiring the creation
-of an intermediate format.</p>
-
-<p>Generally, the format consists of:</p>
-<ul>
-<li>Game identifier.</li>
-<li>One line per stable, defining all necessary data.</li>
-</ul>
-
-<h4>WCW vs. nWo World Tour</h4>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>WorldTour</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; ?</li>
-</ul>
-
-<h4>Virtual Pro-Wrestling 64</h4>
-<p>While the stable data is similar to World Tour, the wrestler select screen
-is laid out differently.</p>
-
-<p><strong>Game Identifiers</strong></p>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>VPW64</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; ?</li>
-</ul>
-
-<p>(todo)</p>
-
-<h4>WCW/nWo Revenge</h4>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>Revenge</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; 9</li>
-</ul>
-<p>(todo)</p>
-
-<h4>WWF WrestleMania 2000</h4>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>WM2K</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; 8</li>
-</ul>
-
-<p>(todo)</p>
-
-<h4>Virtual Pro-Wrestling 2</h4>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>VPW2</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; 8</li>
-</ul>
-
-<p>Stable Number@Wrestler ID2 list pointer={wrestlers},Stable Name text index</p>
-<p>Example stable definition: <code>0@8003FA0C={01,02,03,04,05,06,07,00},00E6</code></p>
-
-<h4>WWF No Mercy</h4>
-<ul>
-<li><strong>Game Identifier</strong> &ndash; <code>NoMercy</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; 9</li>
-</ul>
-
-<p>(todo)</p>
-
-<hr />
-<h3><a name="ProjectFile">Appendix B5: Project File Format</a></h3>
-<p>(todo)</p>
 
 <hr />
 <h2><a name="GameDataFormats">Appendix C: Game Data Formats</a></h2>
