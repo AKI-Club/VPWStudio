@@ -58,6 +58,7 @@
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.SuspendLayout();
@@ -283,7 +284,8 @@
 			// exportToolStripMenuItem
 			// 
 			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportMidwaydecFileListToolStripMenuItem});
+            this.exportMidwaydecFileListToolStripMenuItem,
+            this.exportCSVToolStripMenuItem});
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
 			this.exportToolStripMenuItem.Text = "&Export";
@@ -294,6 +296,13 @@
 			this.exportMidwaydecFileListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
 			this.exportMidwaydecFileListToolStripMenuItem.Text = "Export &Midwaydec File List...";
 			this.exportMidwaydecFileListToolStripMenuItem.Click += new System.EventHandler(this.exportMidwaydecFileListToolStripMenuItem_Click);
+			// 
+			// exportCSVToolStripMenuItem
+			// 
+			this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
+			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+			this.exportCSVToolStripMenuItem.Text = "Export &CSV...";
+			this.exportCSVToolStripMenuItem.Click += new System.EventHandler(this.exportCSVToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -344,5 +353,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem findNextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportCSVToolStripMenuItem;
 	}
 }

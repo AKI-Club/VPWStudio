@@ -1143,7 +1143,21 @@ namespace VPWStudio
 				sw.Close();
 			}
 		}
-		#endregion
 
+		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export CSV";
+			sfd.Filter = SharedStrings.FileFilter_CSV;
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+				StreamWriter sw = new StreamWriter(fs);
+				Program.CurrentProject.ProjectFileTable.WriteExtractScript(sw);
+				sw.Flush();
+				sw.Close();
+			}
+		}
+		#endregion
 	}
 }
