@@ -54,8 +54,9 @@ namespace VPWStudio
 		{
 			// Main page
 
-			// xxx: I believe this is causing me some problems too
-			CurEntry.FileType = (FileTypes)cbFileTypes.SelectedIndex;
+			// fuck the cocksucking piece of shit file types
+			List<FileTypes> validTypes = FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame);
+			CurEntry.FileType = validTypes[cbFileTypes.SelectedIndex];
 
 			CurEntry.OverrideFileType = cbForceFileType.Checked;
 			CurEntry.Comment = tbComment.Text;
