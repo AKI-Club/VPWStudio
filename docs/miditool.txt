@@ -356,6 +356,25 @@ MidiParse.cpp line 286: GEMidiToMidi
 MidiParse.cpp line 14138: GEMidiToDebugTextFile() 1
 MidiParse.cpp line 14750: GEMidiToDebugTextFile() 2
 
+New Song Style
+--------------
+unsigned long numberTracks = CharArrayToLong(&inputMID[0x4]);
+unsigned long totalInstruments = CharArrayToLong(&inputMID[0x8]);
+unsigned long trackPointer = CharArrayToLong(&inputMID[0xC]);
+unsigned long volumePointer = CharArrayToLong(&inputMID[0x10]);
+unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0x14]);
+unsigned long adsrPointer = CharArrayToLong(&inputMID[0x18]);
+unsigned long drumPointer = CharArrayToLong(&inputMID[0x1C]);
+unsigned long instrumentPointer = CharArrayToLong(&inputMID[0x20]);
+unsigned long masterTrackPointer = CharArrayToLong(&inputMID[0x24]);
+
+followed by instrument data, then
+
+unsigned long trackDataPointerFirst = CharArrayToLong(&inputMID[trackPointer]);
+
+MidiParse.cpp line 2712
+line 2736 for instrument parsing
+
 Old Song Style
 --------------
 unsigned long numberTracks = CharArrayToLong(&inputMID[0x0]);
@@ -366,6 +385,7 @@ unsigned long adsrPointer = CharArrayToLong(&inputMID[0x10]);
 unsigned long drumPointer = CharArrayToLong(&inputMID[0x14]);
 
 MidiParse.cpp line 3164
+line 3209 for track parsing
 
 Binary Song Style
 -----------------
@@ -381,3 +401,510 @@ unsigned long instrumentPointer = CharArrayToLong(&inputMID[0x20]);
 unsigned long masterTrackPointer = CharArrayToLong(&inputMID[0x24]);
 
 MidiParse.cpp line 2737
+
+================================================================================
+header writing code from MidiParse.cpp
+================================================================================
+// new style sng (VPW2, WM2K, No Mercy)
+if (sngStyle == SngStyle::Normal)
+{
+	WriteLongToBuffer(outputBuffer, outputPosition, 0x00000215);
+	outputPosition += 4;
+
+	WriteLongToBuffer(outputBuffer, outputPosition, numChannels);
+	outputPosition += 4;
+
+	WriteLongToBuffer(outputBuffer, outputPosition, instruments.size());
+	outputPosition += 4;
+
+	trackOffsetsPointersStart = 0x00000038;
+	WriteLongToBuffer(outputBuffer, outputPosition, trackOffsetsPointersStart);
+	outputPosition += 4;
+
+
+	outputPosition = 0x38;
+
+	// Track Offsets, 0x00000038
+	outputPosition += (numChannels * 0x4);
+
+	// Write Volume tracks
+	WriteLongToBuffer(outputBuffer, 0x10, outputPosition);
+	
+	volumePointersStart = outputPosition;
+	outputPosition += (numChannels * 0x4);
+
+	// Write PitchBend tracks
+	WriteLongToBuffer(outputBuffer, 0x14, outputPosition);
+
+	pitchBendPointersStart = outputPosition;
+	outputPosition += (numChannels * 0x4);
+
+	// Write Instruments
+	WriteLongToBuffer(outputBuffer, 0x20, outputPosition);
+
+	unsigned long instrumentsPointersStart = outputPosition;
+
+	for (int x = 0; x < instruments.size(); x++)
+	{
+		WriteShortToBuffer(outputBuffer, outputPosition, instruments[x]);
+		outputPosition += 2;
+	}
+
+	// Skip Drums
+	WriteLongToBuffer(outputBuffer, 0x1C, outputPosition);
+
+	
+
+	// Skip ADSR
+	WriteLongToBuffer(outputBuffer, 0x18, outputPosition);
+
+	// ADSR Rate
+	outputBuffer[outputPosition++] = 0x01;
+
+	// ADSR Start Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Attack Rate
+	outputBuffer[outputPosition++] = 0x01;
+
+	// ADSR Peak Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Decay Rate
+	outputBuffer[outputPosition++] = 0x20;
+
+	// ADSR Sustain Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Release Rate
+	outputBuffer[outputPosition++] = 0x03;
+}
+
+// old style sng (Revenge and prior)
+else if (sngStyle == SngStyle::Old)
+{
+	if ((numChannels % 8) != 0)
+		numChannels = numChannels + (8 - (numChannels % 8));
+
+	WriteLongToBuffer(outputBuffer, 0x0, numChannels);
+	outputPosition += 4;
+
+	// Track Offset
+	trackOffsetsPointersStart = 0x00000018;
+	WriteLongToBuffer(outputBuffer, 0x4, trackOffsetsPointersStart);
+
+	outputPosition = 0x18;
+	outputPosition += (numChannels * 0x4);
+
+	// Write Volume tracks
+	WriteLongToBuffer(outputBuffer, 0x8, outputPosition);
+
+	volumePointersStart = outputPosition;
+	outputPosition += (numChannels * 0x4);
+
+	// Write PitchBend tracks
+	WriteLongToBuffer(outputBuffer, 0xC, outputPosition);
+
+	pitchBendPointersStart = outputPosition;
+	outputPosition += (numChannels * 0x4);
+
+	// Skip Drums
+	WriteLongToBuffer(outputBuffer, 0x14, outputPosition);
+
+	// Skip ADSR
+	WriteLongToBuffer(outputBuffer, 0x10, outputPosition);
+
+	// ADSR Rate
+	outputBuffer[outputPosition++] = 0x01;
+
+	// ADSR Start Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Attack Rate
+	outputBuffer[outputPosition++] = 0x01;
+
+	// ADSR Peak Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Decay Rate
+	outputBuffer[outputPosition++] = 0x20;
+
+	// ADSR Sustain Level
+	outputBuffer[outputPosition++] = 0x7F;
+
+	// ADSR Release Rate
+	outputBuffer[outputPosition++] = 0x03;
+}
+
+================================================================================
+parsing original formats
+================================================================================
+// parse sng
+unsigned long numberTracks = CharArrayToLong(&inputMID[0x4]);
+unsigned long totalInstruments = CharArrayToLong(&inputMID[0x8]);
+unsigned long trackPointer = CharArrayToLong(&inputMID[0xC]);
+unsigned long volumePointer = CharArrayToLong(&inputMID[0x10]);
+unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0x14]);
+unsigned long adsrPointer = CharArrayToLong(&inputMID[0x18]);
+unsigned long drumPointer = CharArrayToLong(&inputMID[0x1C]);
+
+unsigned long instrumentPointer = CharArrayToLong(&inputMID[0x20]);
+unsigned long masterTrackPointer = CharArrayToLong(&inputMID[0x24]);
+
+unsigned short* instrumentLookup = new unsigned short[totalInstruments];
+for (int x = 0; x < totalInstruments; x++)
+{
+	instrumentLookup[x] = CharArrayToShort(&inputMID[instrumentPointer + (2 * x)]);
+
+	if (instrumentLookup[x] > numberInstruments)
+	{
+		numberInstruments = instrumentLookup[x] + 1;
+	}
+}
+
+std::vector<SngTimeValue> masterVolumeByAbsoluteTime;
+std::vector<SngTimeValue> masterPitchBendByAbsoluteTime;
+
+unsigned long trackDataPointerFirst = CharArrayToLong(&inputMID[trackPointer]);
+ParseSngTrack(-1, numberInstruments, tempoPositions, sngNoteList, inputMID, masterTrackPointer, trackDataPointerFirst, instrumentLookup, adsrPointer, drumPointer, masterVolumeByAbsoluteTime, masterPitchBendByAbsoluteTime, SngStyle::Normal, noteUniqueId, totalInstruments);
+
+
+for (int x = 0; x < numberTracks; x++)
+{
+	unsigned long volumeDataPointer = CharArrayToLong(&inputMID[volumePointer + (x * 4)]);
+	unsigned long volumeEnd = 0;
+
+	if (volumeDataPointer != 0)
+	{
+		for (int y = (x + 1); y < numberTracks; y++)
+		{
+			unsigned long volumeDataPointerTest = CharArrayToLong(&inputMID[volumePointer + (y * 4)]);
+	
+			if (volumeDataPointerTest != 0)
+			{
+				volumeEnd = volumeDataPointerTest;
+				break;
+			}
+		}
+
+		if (volumeEnd == 0)
+		{
+			volumeEnd = masterTrackPointer;
+		}
+	}
+
+	unsigned long pitchBendDataPointer = CharArrayToLong(&inputMID[pitchBendPointer + (x * 4)]);
+	unsigned long pitchBendEnd = 0;
+
+	if (pitchBendDataPointer != 0)
+	{
+		for (int y = (x + 1); y < numberTracks; y++)
+		{
+			unsigned long pitchBendDataPointerTest = CharArrayToLong(&inputMID[pitchBendPointer + (y * 4)]);
+	
+			if (pitchBendDataPointerTest != 0)
+			{
+				pitchBendEnd = pitchBendDataPointerTest;
+				break;
+			}
+		}
+
+		if (pitchBendEnd == 0)
+		{
+			pitchBendEnd = masterTrackPointer;
+		}
+	}
+
+	unsigned long trackDataPointer = CharArrayToLong(&inputMID[trackPointer + (x * 4)]);
+	unsigned long trackEnd = inputSize;
+	if (x < (numberTracks - 1))
+		trackEnd = CharArrayToLong(&inputMID[trackPointer + ((x + 1) * 4)]);
+
+
+	std::vector<SngTimeValue> volumeByAbsoluteTime;
+	if (volumeDataPointer != 0)
+	{
+		unsigned long absoluteTime = 0;
+		unsigned long spot = volumeDataPointer;
+		while (spot < volumeEnd)
+		{
+			unsigned char volume = inputMID[spot];
+			bool singleLength = !(volume & 0x80);
+
+			volume = volume & 0x7F;
+			spot++;
+
+			int length = 1;
+			if (!singleLength)
+			{
+				length = GetSngVariableLength(inputMID, spot) + 2;
+
+				if (length < 0x80)
+				{
+					//fprintf(outFile, "%08X Time: %08X Volume %02X Length %02X (%d)\n", spot-1, absoluteTime, volume, inputMID[spot], length);
+					spot++;
+				}
+				else
+				{
+					//fprintf(outFile, "%08X Time: %08X Volume %02X Length %02X%02X (%d)\n", spot-1, absoluteTime, volume, inputMID[spot], inputMID[spot+1], length);
+					spot += 2;
+				}
+			}
+			else
+			{
+				//fprintf(outFile, "%08X Time: %08X Volume %02X Length 01*\n", spot-1, absoluteTime, volume);
+			}
+
+			SngTimeValue volumePair;
+			volumePair.value = volume;
+			volumePair.startAbsoluteTime = absoluteTime;
+			volumePair.endAbsoluteTime = absoluteTime + length;
+			volumeByAbsoluteTime.push_back(volumePair);
+
+			absoluteTime += length;
+		}
+	}
+
+
+	std::vector<SngTimeValue> pitchBendByAbsoluteTime;
+	if (pitchBendDataPointer != 0)
+	{
+		//fprintf(outFile, "\nPitch Bend\n");
+		unsigned long absoluteTime = 0;
+		unsigned long spot = pitchBendDataPointer;
+		while (spot < pitchBendEnd)
+		{
+			unsigned char pitchBend = inputMID[spot];
+			bool singleLength = !(pitchBend & 0x80);
+
+			pitchBend = pitchBend & 0x7F;
+			spot++;
+
+			
+
+			int length = 1;
+			if (!singleLength)
+			{
+				length = GetSngVariableLength(inputMID, spot) + 2;
+
+				if (length < 0x80)
+				{
+					//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length %02X (%d)\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40), inputMID[spot], length);
+					spot++;
+				}
+				else
+				{
+					//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length %02X%02X (%d)\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40), inputMID[spot], inputMID[spot+1], length);
+					spot += 2;
+				}
+			}
+			else
+			{
+				//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length 01*\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40));
+			}
+
+			SngTimeValue pitchBendPair;
+			pitchBendPair.value = pitchBend;
+			pitchBendPair.startAbsoluteTime = absoluteTime;
+			pitchBendPair.endAbsoluteTime = pitchBendPair.startAbsoluteTime + length;
+			pitchBendByAbsoluteTime.push_back(pitchBendPair);
+
+			absoluteTime += length;
+		}
+	}
+
+	ParseSngTrack(x, numberInstruments, tempoPositions, sngNoteList, inputMID, trackDataPointer, trackEnd, instrumentLookup, adsrPointer, drumPointer, volumeByAbsoluteTime, pitchBendByAbsoluteTime, SngStyle::Normal, noteUniqueId, totalInstruments);
+}
+
+--------------------------------------------------------------------------------
+// Old Style
+{
+	unsigned long numberTracks = CharArrayToLong(&inputMID[0x0]);
+	unsigned long trackPointer = CharArrayToLong(&inputMID[0x4]);
+	unsigned long volumePointer = CharArrayToLong(&inputMID[0x8]);
+	unsigned long pitchBendPointer = CharArrayToLong(&inputMID[0xC]);
+	unsigned long drumPointer = CharArrayToLong(&inputMID[0x10]);
+	unsigned long adsrPointer = CharArrayToLong(&inputMID[0x14]);
+	unsigned long instrumentPointer = 0x00000000;
+
+	unsigned long tempo = 0;
+
+	for (int x = 0; x < numberTracks; x++)
+	{
+		unsigned long trackDataPointer = CharArrayToLong(&inputMID[trackPointer + (x * 4)]);
+
+		unsigned long volumeDataPointer = CharArrayToLong(&inputMID[volumePointer + (x * 4)]);
+		unsigned long volumeEnd = 0;
+
+		unsigned long pitchBendDataPointer = CharArrayToLong(&inputMID[pitchBendPointer + (x * 4)]);
+		unsigned long pitchBendEnd = 0;
+
+		std::vector<SngTimeValue> volumeByAbsoluteTime;
+		if (volumeDataPointer != 0)
+		{
+			for (int y = (x + 1); y < numberTracks; y++)
+			{
+				unsigned long volumeDataPointerTest = CharArrayToLong(&inputMID[volumePointer + (y * 4)]);
+		
+				if (volumeDataPointerTest != 0)
+				{
+					volumeEnd = volumeDataPointerTest;
+					break;
+				}
+			}
+
+			if (volumeEnd == 0)
+			{
+				if (pitchBendDataPointer != 0)
+				{
+					for (int y = 0; y < numberTracks; y++)
+					{
+						unsigned long pitchBendDataPointerTest = CharArrayToLong(&inputMID[pitchBendPointer + (y * 4)]);
+
+						if (pitchBendDataPointerTest != 0)
+						{
+							volumeEnd = pitchBendDataPointerTest;
+							break;
+						}
+					}
+				}
+
+				if (volumeEnd == 0)
+				{
+					// First track
+					volumeEnd = CharArrayToLong(&inputMID[trackPointer]);;
+				}
+			}
+		}
+
+		std::vector<SngTimeValue> pitchBendByAbsoluteTime;
+		if (pitchBendDataPointer != 0)
+		{
+			for (int y = (x + 1); y < numberTracks; y++)
+			{
+				unsigned long pitchBendDataPointerTest = CharArrayToLong(&inputMID[pitchBendPointer + (y * 4)]);
+		
+				if (pitchBendDataPointerTest != 0)
+				{
+					pitchBendEnd = pitchBendDataPointerTest;
+					break;
+				}
+			}
+
+			if (pitchBendEnd == 0)
+			{
+				pitchBendEnd = CharArrayToLong(&inputMID[trackPointer]);
+			}
+		}
+
+		unsigned long trackEnd = 0x00000000;
+		if (trackDataPointer != 0x00000000)
+		{
+			if (x < (numberTracks - 1))
+			{
+				trackEnd = CharArrayToLong(&inputMID[trackPointer + ((x + 1) * 4)]);
+
+				if (trackEnd == 0x00000000)
+					trackEnd = inputSize;
+			}
+			else
+			{
+				trackEnd = inputSize;
+			}
+		}
+
+		if (volumeDataPointer != 0)
+		{
+			//fprintf(outFile, "\nVolume\n");
+			unsigned long absoluteTime = 0;
+			unsigned long spot = volumeDataPointer;
+			while (spot < volumeEnd)
+			{
+				unsigned char volume = inputMID[spot];
+				bool singleLength = !(volume & 0x80);
+
+				volume = volume & 0x7F;
+				spot++;
+
+				int length = 1;
+				if (!singleLength)
+				{
+					length = GetSngVariableLength(inputMID, spot) + 2;
+
+					if (length < 0x82)
+					{
+						//fprintf(outFile, "%08X Time: %08X Volume %02X Length %02X (%d)\n", spot-1, absoluteTime, volume, inputMID[spot], length);
+						spot++;
+					}
+					else
+					{
+						//fprintf(outFile, "%08X Time: %08X Volume %02X Length %02X%02X (%d)\n", spot-1, absoluteTime, volume, inputMID[spot], inputMID[spot+1], length);
+						spot += 2;
+					}
+				}
+				else
+				{
+					//fprintf(outFile, "%08X Time: %08X Volume %02X Length 01*\n", spot-1, absoluteTime, volume);
+				}
+
+				SngTimeValue volumePair;
+				volumePair.value = volume;
+				volumePair.startAbsoluteTime = absoluteTime;
+				volumePair.endAbsoluteTime = absoluteTime + length;
+				volumeByAbsoluteTime.push_back(volumePair);
+
+				absoluteTime += length;
+			}
+		}
+
+
+
+		if (pitchBendDataPointer != 0)
+		{
+			//fprintf(outFile, "\nPitch Bend\n");
+			unsigned long absoluteTime = 0;
+			unsigned long spot = pitchBendDataPointer;
+			while (spot < pitchBendEnd)
+			{
+				unsigned char pitchBend = inputMID[spot];
+				bool singleLength = !(pitchBend & 0x80);
+
+				pitchBend = pitchBend & 0x7F;
+				spot++;
+
+				int length = 1;
+				if (!singleLength)
+				{
+					length = GetSngVariableLength(inputMID, spot) + 2;
+
+					if (length < 0x82)
+					{
+						//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length %02X (%d)\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40), inputMID[spot], length);
+						spot++;
+					}
+					else
+					{
+						//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length %02X%02X (%d)\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40), inputMID[spot], inputMID[spot+1], length);
+						spot += 2;
+					}
+				}
+				else
+				{
+					//fprintf(outFile, "%08X Time: %08X PitchBend %02X (%d) Length 01*\n", spot-1, absoluteTime, pitchBend, (signed char)(pitchBend - 0x40));
+				}
+
+				SngTimeValue pitchBendPair;
+				pitchBendPair.value = pitchBend;
+				pitchBendPair.startAbsoluteTime = absoluteTime;
+				pitchBendPair.endAbsoluteTime = pitchBendPair.startAbsoluteTime + length;
+				pitchBendByAbsoluteTime.push_back(pitchBendPair);
+
+				absoluteTime += length;
+			}
+		}
+
+		ParseSngTrack(x, numberInstruments, tempoPositions, sngNoteList, inputMID, trackDataPointer, trackEnd, NULL, adsrPointer, drumPointer, volumeByAbsoluteTime, pitchBendByAbsoluteTime, SngStyle::Old, noteUniqueId, -1);
+	}
+
+	//fclose(outFile);
+}
