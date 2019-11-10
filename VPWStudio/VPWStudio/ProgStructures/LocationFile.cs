@@ -143,6 +143,16 @@ namespace VPWStudio
 			{ "VPW64Costumes_Female", "$VPW64COSTUMES_FEMALE" },
 			{ "VPW64Costumes_Unused", "$VPW64COSTUMES_UNUSED" },
 
+			// game introduction stuff for World Tour and VPW64
+			// $INTRODEFS_EARLIER_ANIMS
+			// $INTRODEFS_EARLIER_IMAGES
+
+			// game introduction stuff for Revenge to No Mercy
+			{ "IntroDefs_Later_Anims", "$INTRODEFS_LATER_ANIMS" },
+			{ "IntroDefs_Later_Images", "$INTRODEFS_LATER_IMAGES" },
+			{ "IntroDefs_Later_Sequence", "$INTRODEFS_LATER_SEQUENCE" },
+			// todo: game ending sequences use same formats
+
 			// might be shared between WM2K, VPW2, No Mercy
 			{ "DefaultFace_FacialHair_VertDisplacement", "$DEFAULTFACE_FACIALHAIR_VERTDISPLACEMENT" },
 			{ "DefaultFace_PaintAccessories_VertDisplacement", "$DEFAULTFACE_PAINTACCESSORIES_VERTDISPLACEMENT" },

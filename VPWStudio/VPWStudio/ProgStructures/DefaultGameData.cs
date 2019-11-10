@@ -241,6 +241,10 @@ namespace VPWStudio
 					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 72) },
 					{ "DefaultChampions", new DefaultLocationDataEntry(0xDB544, 5) },
 
+					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7C710, 4360) },
+					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
+					{ "IntroDefs_Later_Sequence", new DefaultLocationDataEntry(0x7E098, 2292) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x152DF0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x1310F40, 52364) },
