@@ -1007,6 +1007,7 @@ namespace VPWStudio
 						break;
 
 					case FileTypes.AkiText:
+					case FileTypes.NoMercyText:
 						curDirectory = "text/";
 						break;
 
@@ -1033,7 +1034,7 @@ namespace VPWStudio
 
 				sw.WriteLine(string.Format(
 					"{0},{1},{2},{3},{4}",
-					fte.Value.Location + this.FirstFile,
+					fte.Value.Location + FirstFile,
 					GetEntrySize(fte.Key),
 					curFilename,
 					fte.Value.IsEncoded ? "1" : "0",
