@@ -48,7 +48,7 @@ namespace VPWStudio
 
 			for (int i = 0; i < Entries.Count; i++)
 			{
-				dgvEditEntries.Rows[i].Cells[COLUMN_FILEID].Value = String.Format("{0:X4}", Entries[i].FileID);
+				dgvEditEntries.Rows[i].Cells[COLUMN_FILEID].Value = string.Format("{0:X4}", Entries[i].FileID);
 
 				AddFileTypes((DataGridViewComboBoxCell)dgvEditEntries.Rows[i].Cells[COLUMN_FILETYPE]);
 				dgvEditEntries.Rows[i].Cells[COLUMN_FILETYPE].Value = Enum.GetName(typeof(FileTypes), Entries[i].FileType);
