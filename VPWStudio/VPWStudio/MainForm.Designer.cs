@@ -83,6 +83,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.gameIntroductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -180,6 +181,7 @@
             this.costumesToolStripMenuItem,
             this.titantronVideosToolStripMenuItem,
             this.fileTableToolStripMenuItem,
+            this.gameIntroductionToolStripMenuItem,
             this.menusToolStripMenuItem,
             this.movesToolStripMenuItem,
             this.soundsToolStripMenuItem,
@@ -488,6 +490,12 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// gameIntroductionToolStripMenuItem
+			// 
+			this.gameIntroductionToolStripMenuItem.Name = "gameIntroductionToolStripMenuItem";
+			resources.ApplyResources(this.gameIntroductionToolStripMenuItem, "gameIntroductionToolStripMenuItem");
+			this.gameIntroductionToolStripMenuItem.Click += new System.EventHandler(this.gameIntroductionToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -568,6 +576,7 @@
 		private System.Windows.Forms.ToolStripMenuItem romSliceTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem titantronVideosToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem moveDamageTestvpw2OnlyToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem gameIntroductionToolStripMenuItem;
 	}
 }
 

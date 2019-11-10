@@ -106,6 +106,13 @@
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
     <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="Editors\GameIntroEditor_Later.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\GameIntroEditor_Later.Designer.cs">
+      <DependentUpon>GameIntroEditor_Later.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameSpecific\IntroSequence_Later.cs" />
     <Compile Include="DataStructures\AKI\MenuBackground.cs" />
     <Compile Include="DataStructures\GameShark\GameSharkCode.cs" />
     <Compile Include="DataStructures\GameShark\GameSharkCodeFile.cs" />
@@ -585,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\FontDialog.resx">
       <DependentUpon>FontDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\GameIntroEditor_Later.resx">
+      <DependentUpon>GameIntroEditor_Later.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\DefaultCostume_NoMercy.resx">
       <DependentUpon>DefaultCostume_NoMercy.cs</DependentUpon>
