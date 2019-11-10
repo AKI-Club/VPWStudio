@@ -74,6 +74,8 @@ namespace VPWStudio
 		/// </summary>
 		public Editors.CostumeDefs_Early CostumeDefs_Early = null;
 
+		public GameIntroEditor_Later GameIntroEditor_Later = null;
+
 		#region World Tour
 		#endregion
 
@@ -880,6 +882,37 @@ namespace VPWStudio
 			}
 			FileTableEditor.MdiParent = this;
 			FileTableEditor.Show();
+		}
+
+		/// <summary>
+		/// Game intro editor
+		/// </summary>
+		private void gameIntroductionToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			{
+				MessageBox.Show("Game Intro Editor only works for VPW2 right now. Other modern games will be supported soon.", "Game Intro Editor");
+				return;
+			}
+
+			if (GameIntroEditor_Later == null || GameIntroEditor_Later.IsDisposed)
+			{
+				GameIntroEditor_Later = new GameIntroEditor_Later();
+			}
+			// if it was minimized, show it again.
+			if (GameIntroEditor_Later.WindowState == FormWindowState.Minimized)
+			{
+				GameIntroEditor_Later.WindowState = FormWindowState.Normal;
+			}
+			if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
+			{
+				// update intro data
+			}
 		}
 
 		/// <summary>

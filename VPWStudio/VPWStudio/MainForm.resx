@@ -227,6 +227,12 @@
   <data name="fileTableToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File Table</value>
   </data>
+  <data name="gameIntroductionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="gameIntroductionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Game &amp;Introduction</value>
+  </data>
   <data name="menusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -328,16 +334,16 @@
     <value>&amp;Tools</value>
   </data>
   <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="manualToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Manual...</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>158, 6</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About VPW Studio</value>
@@ -1998,6 +2004,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gameIntroductionToolStripMenuItem.Name" xml:space="preserve">
+    <value>gameIntroductionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;gameIntroductionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
