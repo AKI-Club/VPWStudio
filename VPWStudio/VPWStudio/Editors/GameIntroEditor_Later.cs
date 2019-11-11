@@ -25,8 +25,6 @@ namespace VPWStudio
 
 		private void LoadIntroData()
 		{
-			
-
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
@@ -111,25 +109,23 @@ namespace VPWStudio
 
 			br.Close();
 
+			dgvAnimations.Rows.Add(IntroAnimations.Count);
 			for (int i = 0; i < IntroAnimations.Count; i++)
 			{
 				IntroSequenceAnimation_Later curAnim = IntroAnimations[i];
-				tbAnimations.AppendText(string.Format("[anim {0:D3}]\n",i));
-				tbAnimations.AppendText(string.Format("wrestler ID4: 0x{0:X4}\n",curAnim.WrestlerID4));
-				tbAnimations.AppendText(string.Format("timing A: {0}\n",curAnim.TimingA));
-				tbAnimations.AppendText(string.Format("animation ID: 0x{0:X4}\n",curAnim.AnimationID));
-				tbAnimations.AppendText(string.Format("timing B: {0}\n",curAnim.TimingB));
-				tbAnimations.AppendText(string.Format("x pos: 0x{0:X4}\n",curAnim.XPosition));
-				tbAnimations.AppendText(string.Format("y pos: 0x{0:X4}\n",curAnim.YPosition));
-				tbAnimations.AppendText(string.Format("z pos: 0x{0:X4}\n",curAnim.ZPosition));
-				tbAnimations.AppendText(string.Format("rotation: 0x{0:X4}\n",curAnim.Rotation));
-				tbAnimations.AppendText(string.Format("flags: 0x{0:X2}\n", curAnim.AnimFlags));
-				tbAnimations.AppendText(string.Format("move speed: 0x{0:X2}\n", curAnim.MoveSpeed));
-				tbAnimations.AppendText(string.Format("unknown: 0x{0:X2}\n", curAnim.Unknown));
-				tbAnimations.AppendText(string.Format("costume number: 0x{0:X2}\n", curAnim.CostumeNum));
-				tbAnimations.AppendText("\n");
+				dgvAnimations.Rows[i].Cells[0].Value = string.Format("{0:X4}", curAnim.WrestlerID4);
+				dgvAnimations.Rows[i].Cells[1].Value = curAnim.TimingA;
+				dgvAnimations.Rows[i].Cells[2].Value = string.Format("{0:X4}", curAnim.AnimationID);
+				dgvAnimations.Rows[i].Cells[3].Value = curAnim.TimingB;
+				dgvAnimations.Rows[i].Cells[4].Value = curAnim.XPosition;
+				dgvAnimations.Rows[i].Cells[5].Value = curAnim.YPosition;
+				dgvAnimations.Rows[i].Cells[6].Value = curAnim.ZPosition;
+				dgvAnimations.Rows[i].Cells[7].Value = curAnim.Rotation;
+				dgvAnimations.Rows[i].Cells[8].Value = string.Format("{0:X2}", curAnim.AnimFlags);
+				dgvAnimations.Rows[i].Cells[9].Value = string.Format("{0:X2}", curAnim.MoveSpeed);
+				dgvAnimations.Rows[i].Cells[10].Value = string.Format("{0:X2}", curAnim.Unknown);
+				dgvAnimations.Rows[i].Cells[11].Value = string.Format("{0:X2}", curAnim.CostumeNum);
 			}
-			tbAnimations.ReadOnly = true;
 
 			dgvImages.Rows.Add(IntroImages.Count);
 			for (int i = 0; i < IntroImages.Count; i++)
@@ -143,48 +139,32 @@ namespace VPWStudio
 				dgvImages.Rows[i].Cells[5].Value = string.Format("{0:X2}", curImage.Flags1);
 				dgvImages.Rows[i].Cells[6].Value = curImage.ScrollSpeed;
 				dgvImages.Rows[i].Cells[7].Value = string.Format("{0:X2}", curImage.Unknown);
-
-				tbImages.AppendText(string.Format("[image {0}]\n", i));
-				tbImages.AppendText(string.Format("File ID: 0x{0:X4}\n", curImage.FileID));
-				tbImages.AppendText(string.Format("Width: {0}\n", curImage.Width));
-				tbImages.AppendText(string.Format("Height: {0}\n", curImage.Height));
-				tbImages.AppendText(string.Format("Vertical Displacement: {0}\n", curImage.VertDisplacement));
-				tbImages.AppendText(string.Format("Horizontal Stretch: {0}\n", curImage.HorizStretch));
-				tbImages.AppendText(string.Format("Flags: 0x{0:X2}\n", curImage.Flags1));
-				tbImages.AppendText(string.Format("Scroll Speed: 0x{0:X2}\n", curImage.ScrollSpeed));
-				tbImages.AppendText(string.Format("Unknown: 0x{0:X2}\n", curImage.Unknown));
-				tbImages.AppendText("\n");
-
-				
 			}
-			tbImages.ReadOnly = true;
 
+			dgvSequence.Rows.Add(IntroSequenceItems.Count);
 			for (int i = 0; i < IntroSequenceItems.Count; i++)
 			{
 				IntroSequence_Later curSeq = IntroSequenceItems[i];
-				tbSequence.AppendText(string.Format("[seq entry {0:D3}]\n", i));
-				tbSequence.AppendText(string.Format("main sequence number 0x{0:X2}\n", curSeq.MainSequence));
-				tbSequence.AppendText(string.Format("sub sequence number 0x{0:X2}\n", curSeq.SubSequence));
-				tbSequence.AppendText(string.Format("flags 0x{0:X2}\n", curSeq.Flags));
-				tbSequence.AppendText(string.Format("transition 0x{0:X2}\n", curSeq.Transition));
-				tbSequence.AppendText(string.Format("scene time {0}\n", curSeq.SceneTime));
-				tbSequence.AppendText(string.Format("camera motion 0x{0:X4}\n", curSeq.CameraMotion));
-				tbSequence.AppendText(string.Format("unknown 0x{0:X4}\n", curSeq.Unknown));
-				tbSequence.AppendText(string.Format("stage number 0x{0:X4}\n", curSeq.StageNum));
-				tbSequence.AppendText(string.Format("pointer 1 0x{0:X8}\n", curSeq.Pointer1));
-				tbSequence.AppendText(string.Format("pointer 2 0x{0:X8}\n", curSeq.Pointer2));
-				tbSequence.AppendText(string.Format("pointer 3 0x{0:X8}\n", curSeq.Pointer3));
-				tbSequence.AppendText(string.Format("pointer 4 0x{0:X8}\n", curSeq.Pointer4));
-				tbSequence.AppendText("\n");
+				dgvSequence.Rows[i].Cells[0].Value = curSeq.MainSequence;
+				dgvSequence.Rows[i].Cells[1].Value = curSeq.SubSequence;
+				dgvSequence.Rows[i].Cells[2].Value = string.Format("{0:X2}", curSeq.Flags);
+				dgvSequence.Rows[i].Cells[3].Value = string.Format("{0:X2}", curSeq.Transition);
+				dgvSequence.Rows[i].Cells[4].Value = curSeq.SceneTime;
+				dgvSequence.Rows[i].Cells[5].Value = string.Format("{0:X2}", curSeq.CameraMotion);
+				dgvSequence.Rows[i].Cells[6].Value = string.Format("{0:X4}", curSeq.Unknown);
+				dgvSequence.Rows[i].Cells[7].Value = string.Format("{0:X4}", curSeq.StageNum);
+				dgvSequence.Rows[i].Cells[8].Value = string.Format("{0:X8}", curSeq.Pointer1);
+				dgvSequence.Rows[i].Cells[9].Value = string.Format("{0:X8}", curSeq.Pointer2);
+				dgvSequence.Rows[i].Cells[10].Value = string.Format("{0:X8}", curSeq.Pointer3);
+				dgvSequence.Rows[i].Cells[11].Value = string.Format("{0:X8}", curSeq.Pointer4);
 			}
-			tbSequence.ReadOnly = true;
 		}
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
 
-			// ugh I have to parse a DataGridView again?? fuck.
+			// ugh I have to parse DataGridViews again?? fuck.
 
 			Close();
 		}
