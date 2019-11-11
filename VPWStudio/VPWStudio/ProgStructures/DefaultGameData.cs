@@ -103,8 +103,8 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
-					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 					//{ "CostumeDefs", new DefaultLocationDataEntry(0x336DC, ?) },
+					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x39490, 0) },
