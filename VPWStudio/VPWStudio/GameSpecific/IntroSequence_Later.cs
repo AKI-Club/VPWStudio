@@ -14,10 +14,10 @@ namespace VPWStudio.GameSpecific
 		public short TimingA;
 		public ushort AnimationID;
 		public short TimingB;
-		public ushort XPosition;
-		public ushort YPosition;
-		public ushort ZPosition;
-		public ushort Rotation;
+		public short XPosition;
+		public short YPosition;
+		public short ZPosition;
+		public short Rotation;
 		public byte AnimFlags;
 		public byte MoveSpeed;
 		public byte Unknown;
@@ -84,28 +84,28 @@ namespace VPWStudio.GameSpecific
 			{
 				Array.Reverse(xpos);
 			}
-			XPosition = BitConverter.ToUInt16(xpos, 0);
+			XPosition = BitConverter.ToInt16(xpos, 0);
 
 			byte[] ypos = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(ypos);
 			}
-			YPosition = BitConverter.ToUInt16(ypos, 0);
+			YPosition = BitConverter.ToInt16(ypos, 0);
 
 			byte[] zpos = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(zpos);
 			}
-			ZPosition = BitConverter.ToUInt16(zpos, 0);
+			ZPosition = BitConverter.ToInt16(zpos, 0);
 
 			byte[] rot = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(rot);
 			}
-			Rotation = BitConverter.ToUInt16(rot, 0);
+			Rotation = BitConverter.ToInt16(rot, 0);
 
 			AnimFlags = br.ReadByte();
 			MoveSpeed = br.ReadByte();
