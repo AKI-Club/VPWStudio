@@ -193,9 +193,21 @@ namespace VPWStudio.GameSpecific
 		public ushort Height;
 		public ushort VertDisplacement;
 		public ushort HorizStretch;
+
+		// top nibble of this determines image type,
+		// with the only valid values being the following:
+		// 8xxx - I4
+		// 9xxx - CI4
+		// Axxx - CI8 (found via hacking)
+		// Bxxx - CI4 again? (found via hacking)
+		// Cxxx - I4 sequence?
+
+		// second nibble determines priority?
+		// lower byte defines background type and behavior
 		public ushort Flags1;
-		public short ScrollSpeed;
-		public ushort Unknown;
+
+		public short ScrollSpeed; // horiz. displacement 2 (for I4 images)
+		public ushort Unknown; // vert displacement 2 (for I4 images)
 
 		public IntroSequenceGraphic_Later()
 		{
