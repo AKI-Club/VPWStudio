@@ -73,7 +73,8 @@ namespace VPWStudio.GameSpecific
 		/// Read TitantronFrame data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public void ReadData(BinaryReader br)
+		/// <returns>true if not the final frame, false if it is the final frame.</returns>
+		public bool ReadData(BinaryReader br)
 		{
 			byte[] fid = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
@@ -89,6 +90,8 @@ namespace VPWStudio.GameSpecific
 			}
 			FrameLength = (UInt16)(BitConverter.ToUInt16(flen,0) & 0x7FFF);
 			FadeFrame = (BitConverter.ToUInt16(flen, 0) & 0x8000) != 0;
+
+			return FrameID != TITANTRON_END_FRAME_ID;
 		}
 
 		/// <summary>

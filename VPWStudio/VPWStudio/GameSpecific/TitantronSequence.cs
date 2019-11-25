@@ -9,11 +9,32 @@ namespace VPWStudio.GameSpecific
 	public class TitantronSequence
 	{
 		// note: some of these values only make sense in WM2K because of course they changed EVERYTHING in no mercy
+
+		/// <summary>
+		/// Pointer to Titantron frames.
+		/// </summary>
+		/// (arguably the only thing common between the two formats)
 		public UInt32 Pointer;
+
+		/// <summary>
+		/// Music associated with this TitantronSequence.
+		/// </summary>
 		public ushort Music;
+
+		/// <summary>
+		/// Text associated with this TitantronSequence.
+		/// </summary>
 		public ushort Text;
+
+		/// <summary>
+		/// Lighting and delay values.
+		/// </summary>
 		public ushort LightingDelay;
 
+		/// <summary>
+		/// List of Titantron frames in this TitantronSequence.
+		/// </summary>
+		/// (program-specific)
 		public List<TitantronFrame> TronFrames;
 
 		public TitantronSequence()
@@ -66,6 +87,29 @@ namespace VPWStudio.GameSpecific
 			LightingDelay = BitConverter.ToUInt16(lighting, 0);
 
 			// fill TronFrames after following the pointer
+			TronFrames = new List<TitantronFrame>();
+
+			long curPos = br.BaseStream.Position;
+
+			// pointer values are going to be different for WM2K and No Mercy, aren't they... shit.
+			// I guess I could just throw the shit in the location file
+			//br.BaseStream.Seek(curPos, SeekOrigin.Begin);
+
+			// stop reading when the TronFrame.ReadData(br) returns false
+			/*
+			bool done = false;
+			while (!done)
+			{
+				TitantronFrame f = new TitantronFrame();
+				TronFrames.Add(f);
+				if (f.ReadData(br) == false)
+				{
+					done = true;
+				}
+			}
+			*/
+
+			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 
 		/// <summary>
@@ -101,6 +145,8 @@ namespace VPWStudio.GameSpecific
 				Array.Reverse(lighting);
 			}
 			bw.Write(lighting);
+
+			// something about following the pointer and writing the TronFrames
 		}
 		#endregion
 	}
