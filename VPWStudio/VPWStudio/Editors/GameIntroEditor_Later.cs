@@ -11,11 +11,28 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio
 {
+	/// <summary>
+	/// Game introduction sequence editor for WCW/nWo Revenge and later.
+	/// </summary>
+	/// todo: in the future, this may handle the ending sequence for WM2K, VPW2, and No Mercy?
 	public partial class GameIntroEditor_Later : Form
 	{
+		/// <summary>
+		/// Introduction animation entries
+		/// </summary>
 		public List<IntroSequenceAnimation_Later> IntroAnimations = new List<IntroSequenceAnimation_Later>();
+
+		/// <summary>
+		/// Introduction image entries
+		/// </summary>
 		public List<IntroSequenceGraphic_Later> IntroImages = new List<IntroSequenceGraphic_Later>();
+
+		/// <summary>
+		/// Introduction sequence entries
+		/// </summary>
 		public List<IntroSequence_Later> IntroSequenceItems = new List<IntroSequence_Later>();
+
+		public bool AnyChangesSubmitted = false;
 
 		public GameIntroEditor_Later()
 		{
@@ -72,20 +89,23 @@ namespace VPWStudio
 			// if no values were found in the location file, use hardcoded values
 			if (!hasAnimLocation)
 			{
-				animLocation = 0x7C710;
-				numAnims = 218;
+				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Anims");
+				animLocation = anims.Offset; // 0x7C710
+				numAnims = (int)(anims.Length / 20); // 218;
 			}
 
 			if (!hasImageLocation)
 			{
-				imgLocation = 0x7DEA8;
-				numImages = 12;
+				DefaultGameData.DefaultLocationDataEntry imgs = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Images");
+				imgLocation = imgs.Offset; // 0x7DEA8;
+				numImages = (int)(imgs.Length / 16); // 12;
 			}
 
 			if (!hasSeqLocation)
 			{
-				seqLocation = 0x7E098;
-				numSeqEntries = 81;
+				DefaultGameData.DefaultLocationDataEntry seqs = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Sequence");
+				seqLocation = seqs.Offset; // 0x7E098;
+				numSeqEntries = (int)(seqs.Length / 28); // 81;
 			}
 
 			// FINALLY get to reading the damned data
@@ -166,13 +186,54 @@ namespace VPWStudio
 
 			// ugh I have to parse DataGridViews again?? fuck.
 
+			for (int i = 0; i < dgvAnimations.Rows.Count; i++)
+			{
+				// wrestler id4
+				// timing a
+				// animation id
+				// timing b
+				// xpos, ypos, zpos, rotation
+				// flags, movespeed, unknown, costume
+			}
+
+			for (int i = 0; i < dgvImages.Rows.Count; i++)
+			{
+				// file id
+				// width, height
+				// vert. displacement
+				// horiz. stretch
+				// flags
+				// scroll speed
+				// unknown
+			}
+
+			for (int i = 0; i < dgvSequence.Rows.Count; i++)
+			{
+			}
+
 			Close();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
+			AnyChangesSubmitted = false; // shouldn't need this but just in case
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void dgvAnimations_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		{
+
+		}
+
+		private void dgvImages_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		{
+
+		}
+
+		private void dgvSequence_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		{
+
 		}
 	}
 }

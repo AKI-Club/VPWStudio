@@ -167,6 +167,7 @@
 			this.dgvImages.ShowEditingIcon = false;
 			this.dgvImages.Size = new System.Drawing.Size(710, 324);
 			this.dgvImages.TabIndex = 1;
+			this.dgvImages.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvImages_CellValidating);
 			// 
 			// dgvAnimations
 			// 
@@ -195,6 +196,7 @@
 			this.dgvAnimations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
 			this.dgvAnimations.Size = new System.Drawing.Size(713, 324);
 			this.dgvAnimations.TabIndex = 1;
+			this.dgvAnimations.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAnimations_CellValidating);
 			// 
 			// dgvSequence
 			// 
@@ -222,6 +224,7 @@
 			this.dgvSequence.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
 			this.dgvSequence.Size = new System.Drawing.Size(710, 324);
 			this.dgvSequence.TabIndex = 1;
+			this.dgvSequence.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSequence_CellValidating);
 			// 
 			// fileID
 			// 
@@ -516,6 +519,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "GameIntroEditor_Later";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Game Introduction Editor";
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
