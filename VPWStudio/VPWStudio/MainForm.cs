@@ -74,6 +74,9 @@ namespace VPWStudio
 		/// </summary>
 		public Editors.CostumeDefs_Early CostumeDefs_Early = null;
 
+		/// <summary>
+		/// Game introduction editor for Revenge and later.
+		/// </summary>
 		public GameIntroEditor_Later GameIntroEditor_Later = null;
 
 		#region World Tour
@@ -896,7 +899,7 @@ namespace VPWStudio
 
 			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
 			{
-				MessageBox.Show("Game Intro Editor only works for VPW2 right now. Other modern games will be supported soon.", "Game Intro Editor");
+				MessageBox.Show("Game Intro Editor only \"works\" for VPW2 right now. Other modern games will be supported soon.", "Game Intro Editor");
 				return;
 			}
 
@@ -904,11 +907,7 @@ namespace VPWStudio
 			{
 				GameIntroEditor_Later = new GameIntroEditor_Later();
 			}
-			// if it was minimized, show it again.
-			if (GameIntroEditor_Later.WindowState == FormWindowState.Minimized)
-			{
-				GameIntroEditor_Later.WindowState = FormWindowState.Normal;
-			}
+
 			if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
 			{
 				// update intro data
@@ -968,6 +967,7 @@ namespace VPWStudio
 			{
 				case VPWGames.Revenge:
 					{
+						// todo: convert to dialog style
 						if (StableDefs_Revenge == null || StableDefs_Revenge.IsDisposed)
 						{
 							StableDefs_Revenge = new Editors.Revenge.StableDefs_Revenge();
@@ -1151,6 +1151,12 @@ namespace VPWStudio
 		{
 			if (Program.CurrentProject == null)
 			{
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.WM2K && Program.CurrentProject.Settings.BaseGame != VPWGames.NoMercy)
+			{
+				Program.ErrorMessageBox("Titantrons don't exist in non-WWF games.");
 				return;
 			}
 
