@@ -1431,10 +1431,16 @@ namespace VPWStudio
 				emuArgs = romPath;
 			}
 
+			// latest project64 versions assume "$AppPath" is the currently active directory, which breaks things
+			string curWorkingDir = Environment.CurrentDirectory;
+			Environment.CurrentDirectory = Path.GetDirectoryName(Properties.Settings.Default.EmulatorPath);
 			System.Diagnostics.Process.Start(
 				Properties.Settings.Default.EmulatorPath,
 				emuArgs
 			);
+
+			// restore directory so to not break *our* program
+			Environment.CurrentDirectory = curWorkingDir;
 		}
 
 		#endregion
