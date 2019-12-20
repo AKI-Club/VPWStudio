@@ -36,6 +36,11 @@ namespace VPWStudio
 		/// Current output ROM file.
 		/// </summary>
 		public static Z64Rom CurrentOutputROM = null;
+
+		/// <summary>
+		/// Build cache for current project.
+		/// </summary>
+		public static BuildCache ProjectBuildCache = null;
 		#endregion
 
 		#region Project Sub-Files
@@ -240,6 +245,14 @@ namespace VPWStudio
 			return slice;
 		}
 
+		/// <summary>
+		/// Get the path to the build cache index file.
+		/// </summary>
+		/// <returns>Path to cache.idx file for the current project.</returns>
+		public static string GetCacheIndexPath()
+		{
+			return string.Format("{0}\\cache.idx", ConvertRelativePath(CurrentProject.Settings.CachePath));
+		}
 		#endregion // helpers
 
 		#region ROM Building
@@ -849,6 +862,7 @@ namespace VPWStudio
 				FileTableEntry fte = buildFileTable.Entries[i];
 				byte[] outData = null;
 				bool AlreadyCompressed = false;
+				bool LoadedFromCache = false;
 				string replaceFilePath = String.Empty;
 				int start = 0;
 				int end = 0;
@@ -918,8 +932,47 @@ namespace VPWStudio
 						}
 						else
 						{
+							if (ProjectBuildCache.IsEntryCached(i))
+							{
+								// check if we need to update the cache for this file
+								if (ProjectBuildCache.NeedCacheUpdate(i))
+								{
+									outData = ConvertFile(i);
+									ProjectBuildCache.WriteCachedFileData(i, outData);
+									ProjectBuildCache.UpdateCacheEntryTime(i);
+								}
+								else
+								{
+									// read from cached data file
+									using (FileStream fs = new FileStream(ProjectBuildCache.GetCachedFilePath(i), FileMode.Open))
+									{
+										using (BinaryReader br = new BinaryReader(fs))
+										{
+											fs.Seek(0, SeekOrigin.End);
+											int fileLen = (int)fs.Position;
+											fs.Seek(0, SeekOrigin.Begin);
+											outData = br.ReadBytes(fileLen);
+										}
+									}
+
+									LoadedFromCache = true;
+								}
+							}
+							else
+							{
+								// add cache entry
+								ProjectBuildCache.AddCacheEntry(i,fte.FileType,replaceFilePath);
+
+								// try conversion
+								outData = ConvertFile(i);
+
+								// write cached data output file (if not needed to be LZSS'd)
+								ProjectBuildCache.WriteCachedFileData(i, outData);
+								ProjectBuildCache.UpdateCacheEntryTime(i);
+							}
+
 							// try conversion
-							outData = ConvertFile(i);
+							//outData = ConvertFile(i);
 						}
 					}
 					else
@@ -1018,6 +1071,12 @@ namespace VPWStudio
 			outRomData.InsertRange((int)(CurrentProject.ProjectFileTable.Location + totalDifference), finalTableMS.ToArray());
 
 			finalTableBW.Close();
+
+			// write cache.idx
+			StreamWriter sw = new StreamWriter(GetCacheIndexPath());
+			ProjectBuildCache.WriteFile(sw);
+			sw.Flush();
+			sw.Dispose();
 			#endregion
 
 			#region Update Game Code
@@ -1170,6 +1229,9 @@ namespace VPWStudio
 			{
 				BuildLogPub.AddLine("WARNING: This ROM exceeds 512Mbits and *will not* run on console.", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
+
+			// BIG TODO: pad ROM to proper boundary
+			// ...how do we determine that, exactly?
 
 			// write outRomData to Program.CurrentOutputROM.Data
 			CurrentOutputROM.Data = outRomData.ToArray();

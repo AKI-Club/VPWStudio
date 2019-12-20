@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -167,7 +168,14 @@ namespace VPWStudio
 			if (args.Length > 0)
 			{
 				// passed in command line arguments... probably a project file.
-				LoadProject(args[0]);
+				if (Path.GetExtension(args[0]) == ".vpwsproj")
+				{
+					LoadProject(args[0]);
+				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("{0} does not appear to be a VPW Studio Project File.",args[0]));
+				}
 			}
 
 			UpdateTitleBar();
@@ -227,6 +235,7 @@ namespace VPWStudio
 			}
 
 			LoadLocationFile();
+			Program.ProjectBuildCache = new BuildCache();
 		}
 
 		/// <summary>
@@ -257,11 +266,12 @@ namespace VPWStudio
 					Program.WarningMessageBox("More than one file dragged, only opening the first.");
 				}
 
-				// todo: this check should probably be more robust
-				//if (Path.GetExtension(files[0]) != ".vpwsproj")
-				//{
-				//	Program.ErrorMessageBox("");
-				//}
+				// this check should probably be more robust
+				if (Path.GetExtension(files[0]) != ".vpwsproj")
+				{
+					Program.ErrorMessageBox(String.Format("{0} does not appear to be a VPW Studio Project File.", files[0]));
+					return;
+				}
 
 				if (Program.CurrentProject != null && Program.UnsavedChanges)
 				{
@@ -488,6 +498,8 @@ namespace VPWStudio
 				{
 					f.Close();
 				}
+
+				Program.ProjectBuildCache = new BuildCache();
 			}
 		}
 
@@ -555,6 +567,21 @@ namespace VPWStudio
 				{
 					f.Close();
 				}
+
+				if (Program.CurrentProject.Settings.CachePath != string.Empty)
+				{
+					if (!File.Exists(Program.GetCacheIndexPath()))
+					{
+						FileStream newIndex = File.Create(Program.GetCacheIndexPath());
+						newIndex.Flush();
+						newIndex.Dispose();
+					}
+					Program.ProjectBuildCache = new BuildCache(Program.GetCacheIndexPath());
+				}
+				else
+				{
+					Program.ProjectBuildCache = new BuildCache();
+				}
 			}
 		}
 
@@ -599,6 +626,11 @@ namespace VPWStudio
 			{
 				Directory.CreateDirectory(projPath + @"\Assets");
 				Program.CurrentProject.Settings.AssetsPath = "Assets";
+			}
+			if (Program.CurrentProject.Settings.CachePath == String.Empty)
+			{
+				Directory.CreateDirectory(projPath + @"\Cache");
+				Program.CurrentProject.Settings.CachePath = "Cache";
 			}
 
 			// do the actual saving
@@ -680,6 +712,8 @@ namespace VPWStudio
 			UpdateValidMenus();
 			UpdateStatusBar();
 			UpdateBackground();
+
+			Program.ProjectBuildCache = null;
 		}
 		#endregion
 
@@ -1337,6 +1371,7 @@ namespace VPWStudio
 				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
 			);
 
+			// todo: don't block the UI thread
 			Program.BuildRom();
 
 			// xxx: is every build successful?
