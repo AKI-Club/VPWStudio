@@ -392,6 +392,7 @@
     <Compile Include="GameSpecific\WM2K\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\WorldTour\WrestlerParams.cs" />
     <Compile Include="Helpers\AsmikLzss.cs" />
+    <Compile Include="Helpers\BuildCache.cs" />
     <Compile Include="Helpers\BuildLogEvents.cs" />
     <Compile Include="Helpers\BuildWarnErr.cs" />
     <Compile Include="Helpers\Crc32.cs" />

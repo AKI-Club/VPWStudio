@@ -72,6 +72,11 @@ namespace VPWStudio
 		public string ProjectGSCodeFilePath;
 
 		/// <summary>
+		/// Path to cache directory for this project.
+		/// </summary>
+		public string CachePath;
+
+		/// <summary>
 		/// Output ROM internal name.
 		/// </summary>
 		/// Typically copied from the input ROM
@@ -131,6 +136,7 @@ namespace VPWStudio
 			UseCustomLocationFile = false;
 			CustomLocationFilePath = String.Empty;
 			ProjectGSCodeFilePath = String.Empty;
+			CachePath = String.Empty;
 			OutputRomInternalName = String.Empty;
 			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameRegion.NorthAmerica;
@@ -165,6 +171,7 @@ namespace VPWStudio
 			UseCustomLocationFile = !_locPath.Equals(String.Empty);
 			CustomLocationFilePath = _locPath;
 			ProjectGSCodeFilePath = _gscPath;
+			CachePath = String.Empty;
 			OutputRomInternalName = String.Empty;
 			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
@@ -200,6 +207,7 @@ namespace VPWStudio
 			UseCustomLocationFile = _src.UseCustomLocationFile;
 			CustomLocationFilePath = _src.CustomLocationFilePath;
 			ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
+			CachePath = _src.CachePath;
 			OutputRomInternalName = _src.OutputRomInternalName;
 			OutputRomGameCode = _src.OutputRomGameCode;
 			OutputRomRegion = _src.OutputRomRegion;
