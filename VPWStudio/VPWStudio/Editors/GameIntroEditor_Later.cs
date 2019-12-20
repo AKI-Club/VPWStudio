@@ -20,23 +20,29 @@ namespace VPWStudio
 		/// <summary>
 		/// Introduction animation entries
 		/// </summary>
-		public List<IntroSequenceAnimation_Later> IntroAnimations = new List<IntroSequenceAnimation_Later>();
+		public List<IntroSequenceAnimation_Later> IntroAnimations;
 
 		/// <summary>
 		/// Introduction image entries
 		/// </summary>
-		public List<IntroSequenceGraphic_Later> IntroImages = new List<IntroSequenceGraphic_Later>();
+		public List<IntroSequenceGraphic_Later> IntroImages;
 
 		/// <summary>
 		/// Introduction sequence entries
 		/// </summary>
-		public List<IntroSequence_Later> IntroSequenceItems = new List<IntroSequence_Later>();
+		public List<IntroSequence_Later> IntroSequenceItems;
 
 		public bool AnyChangesSubmitted = false;
 
 		public GameIntroEditor_Later()
 		{
 			InitializeComponent();
+
+			IntroAnimations = new List<IntroSequenceAnimation_Later>();
+			IntroImages = new List<IntroSequenceGraphic_Later>();
+			IntroImages = new List<IntroSequenceGraphic_Later>();
+			IntroSequenceItems = new List<IntroSequence_Later>();
+
 			LoadIntroData();
 		}
 
