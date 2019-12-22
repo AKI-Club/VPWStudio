@@ -1395,6 +1395,8 @@ namespace VPWStudio
 				}
 			}
 
+			Program.ProjectBuildCache.LastBuildTime = startTime;
+
 			BuildLogForm.Focus();
 			BuildLogForm.MoveCursorToEnd();
 		}

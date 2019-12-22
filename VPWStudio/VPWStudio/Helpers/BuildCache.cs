@@ -186,17 +186,17 @@ namespace VPWStudio
 		/// <param name="fileID">File ID</param>
 		/// <param name="targetType">File type</param>
 		/// <param name="filePath">Path to file</param>
-		public void AddCacheEntry(int fileID, FileTypes targetType, string filePath)
+		public void AddCacheEntry(int fileID, FileTypes targetType, string filePath, bool lzss = false)
 		{
 			if (Entries.ContainsKey(fileID))
 			{
 				// overwrite existing
-				Entries[fileID] = new BuildCacheEntry(filePath, targetType);
+				Entries[fileID] = new BuildCacheEntry(filePath, targetType, lzss);
 			}
 			else
 			{
 				// make new
-				Entries.Add(fileID, new BuildCacheEntry(filePath, targetType));
+				Entries.Add(fileID, new BuildCacheEntry(filePath, targetType, lzss));
 			}
 			
 		}
