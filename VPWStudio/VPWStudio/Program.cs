@@ -932,6 +932,8 @@ namespace VPWStudio
 						}
 						else
 						{
+							/*
+							// check if this file has a cached version
 							if (ProjectBuildCache.IsEntryCached(i))
 							{
 								// check if we need to update the cache for this file
@@ -961,7 +963,9 @@ namespace VPWStudio
 							else
 							{
 								// add cache entry
+								// todo: deal with LZSS stuff
 								ProjectBuildCache.AddCacheEntry(i,fte.FileType,replaceFilePath);
+								//ProjectBuildCache.AddCacheEntry(i,fte.FileType,replaceFilePath,fte.IsEncoded);
 
 								// try conversion
 								outData = ConvertFile(i);
@@ -970,9 +974,10 @@ namespace VPWStudio
 								ProjectBuildCache.WriteCachedFileData(i, outData);
 								ProjectBuildCache.UpdateCacheEntryTime(i);
 							}
+							*/
 
 							// try conversion
-							//outData = ConvertFile(i);
+							outData = ConvertFile(i);
 						}
 					}
 					else

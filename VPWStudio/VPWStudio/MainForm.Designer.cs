@@ -48,6 +48,7 @@
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.titantronVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.gameIntroductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.movesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.soundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.gameIntroductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -239,6 +239,13 @@
 			this.fileTableToolStripMenuItem.Name = "fileTableToolStripMenuItem";
 			resources.ApplyResources(this.fileTableToolStripMenuItem, "fileTableToolStripMenuItem");
 			this.fileTableToolStripMenuItem.Click += new System.EventHandler(this.fileTableToolStripMenuItem_Click);
+			// 
+			// gameIntroductionToolStripMenuItem
+			// 
+			this.gameIntroductionToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_GameIntro;
+			this.gameIntroductionToolStripMenuItem.Name = "gameIntroductionToolStripMenuItem";
+			resources.ApplyResources(this.gameIntroductionToolStripMenuItem, "gameIntroductionToolStripMenuItem");
+			this.gameIntroductionToolStripMenuItem.Click += new System.EventHandler(this.gameIntroductionToolStripMenuItem_Click);
 			// 
 			// menusToolStripMenuItem
 			// 
@@ -489,12 +496,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// gameIntroductionToolStripMenuItem
-			// 
-			this.gameIntroductionToolStripMenuItem.Name = "gameIntroductionToolStripMenuItem";
-			resources.ApplyResources(this.gameIntroductionToolStripMenuItem, "gameIntroductionToolStripMenuItem");
-			this.gameIntroductionToolStripMenuItem.Click += new System.EventHandler(this.gameIntroductionToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 

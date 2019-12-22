@@ -1184,6 +1184,9 @@
   <data name="MenuIcon16_FileTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filetable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MenuIcon16_GameIntro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gameintro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MenuIcon16_GameShark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shark_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
