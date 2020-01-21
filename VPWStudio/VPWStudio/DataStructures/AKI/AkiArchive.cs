@@ -111,8 +111,14 @@ namespace VPWStudio
 					fileSize = (int)(arcLength - FileEntries[i].StartAddr);
 				}
 
-				// don't bother with 0-sized or negative sized files.
-				if (fileSize <= 0)
+				// attempt to fix up certain archives
+				if (fileSize < -1)
+				{
+					fileSize = (int)(arcLength - FileEntries[i].StartAddr);
+					//Console.WriteLine(string.Format("new filesize for file {0}: {1}", i, fileSize));
+				}
+				// don't bother with 0-sized files.
+				else if (fileSize == 0 || fileSize == -1)
 				{
 					continue;
 				}
