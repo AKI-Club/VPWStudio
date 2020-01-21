@@ -376,6 +376,7 @@ namespace VPWStudio
 				ExtraData = new FileTableEntryExtraData();
 			}
 
+			// todo: no error checking is done here
 			for (int i = 0; i < tokens.Length; i++)
 			{
 				if (tokens[i].StartsWith("w:"))
