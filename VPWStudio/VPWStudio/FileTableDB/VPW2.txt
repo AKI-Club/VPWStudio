@@ -254,11 +254,11 @@
 00FD=I4Texture;Fire? frame 19|w:64,h:64
 00FE=I4Texture;Fire? frame 20|w:64,h:64
 00FF=I4Texture;Fire? frame 21|w:64,h:64
-0100=AkiTexture;Unlock Message 1
-0101=AkiTexture;Unlock Message 2
-0102=AkiTexture;Unlock Message 3
-0103=AkiTexture;Unlock Message 4
-0104=AkiTexture;Unlock Fire
+0100=AkiTexture;Special Match
+0101=AkiTexture;Very Important Announcement
+0102=AkiTexture;Important Announcement
+0103=AkiTexture;Incident Occurred
+0104=AkiTexture;Announcement Message Fire
 0105=MenuBackground;[Main Menu BG] File 01
 0106=Binary;[Main Menu BG] File 02
 0107=Binary;[Main Menu BG] File 03
