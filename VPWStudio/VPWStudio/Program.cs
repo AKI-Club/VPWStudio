@@ -1238,6 +1238,35 @@ namespace VPWStudio
 			// BIG TODO: pad ROM to proper boundary
 			// ...how do we determine that, exactly?
 
+			// todo2: we don't properly support 64M ROMs because there weren't any AKI games released using 64M ROMs
+
+			// todo3: it's possible to build a ROM that goes past these limits, but shouldn't be doing so...
+
+			/*
+			if (outRomData.Count > 0x1000000 && outRomData.Count < 0x2000000)
+			{
+				// 32M (WM2K, VPW2, No Mercy) | 0x2000000
+				int diff = 0x2000000 - outRomData.Count;
+				for (int i = 0; i < diff; i++)
+				{
+					outRomData.Add(0xFF);
+				}
+			}
+			else if (outRomData.Count > 0xC00000 && outRomData.Count < 0x1000000)
+			{
+				// 16M (VPW64, Revenge) | 0x1000000
+				int diff = 0x1000000 - outRomData.Count;
+				for (int i = 0; i < diff; i++)
+				{
+					outRomData.Add(0xFF);
+				}
+			}
+			else if(outRomData.Count < 0xC00000)
+			{
+				// 12M (World Tour) | 0xC00000
+			}
+			*/
+
 			// write outRomData to Program.CurrentOutputROM.Data
 			CurrentOutputROM.Data = outRomData.ToArray();
 
