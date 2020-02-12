@@ -182,7 +182,7 @@
 00B5=AkiArchive;
 00B6=AkiArchive;
 00B7=AkiArchive;Locker Room palettes and textures
-00B8=AkiArchive;
+00B8=AkiArchive;Lightswitch texture
 00B9=I4Texture;[Intro] ALL JAPAN|w:128,h:32
 00BA=I4Texture;[Intro] PRO WRESTLING|w:128,h:32
 00BB=I4Texture;[Intro] VIRTUAL|w:128,h:32
