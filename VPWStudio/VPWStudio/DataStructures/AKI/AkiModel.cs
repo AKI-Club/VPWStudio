@@ -6,7 +6,6 @@ using System.Text;
 
 namespace VPWStudio
 {
-	// june 2018 note: the below assumption is wrong
 	/*
 	 * [excel.jpg]
 	 * So here you can see that the UV values have been converted to decimal.
@@ -14,15 +13,6 @@ namespace VPWStudio
 	 * under "U" by the highest value (which is equivalent to 1) in that
 	 * column. I did the same for the values under "V".
 	 */
-
-	// quick note on UV values:
-	// 0 = 0.0
-	// 31 = 1.0
-	// 32 = (closest negative value to 0)
-	// 63 = -1.0
-	// scale accordingly, I suppose.
-
-	// if UV > 31 then UV = (UV - 32) * -1;
 
 	/// <summary>
 	/// Vertex Data
@@ -45,11 +35,11 @@ namespace VPWStudio
 		/// <summary>
 		/// Texture horizontal offset
 		/// </summary>
-		public SByte U;
+		public byte U;
 		/// <summary>
 		/// Texture vertical offset
 		/// </summary>
-		public SByte V;
+		public byte V;
 		/// <summary>
 		/// Vertex color
 		/// </summary>
@@ -99,8 +89,8 @@ namespace VPWStudio
 			X = (SByte)x;
 			Y = (SByte)y;
 			Z = (SByte)z;
-			U = (SByte)u;
-			V = (SByte)v;
+			U = (byte)u;
+			V = (byte)v;
 			VertexColor = Color.White;
 		}
 
@@ -118,8 +108,8 @@ namespace VPWStudio
 			X = (SByte)x;
 			Y = (SByte)y;
 			Z = (SByte)z;
-			U = (SByte)u;
-			V = (SByte)v;
+			U = (byte)u;
+			V = (byte)v;
 			VertexColor = c;
 		}
 
@@ -139,9 +129,8 @@ namespace VPWStudio
 			X = (SByte)br.ReadByte();
 			Y = (SByte)br.ReadByte();
 			Z = (SByte)br.ReadByte();
-			// todo: convert UV values (63,0,31) -> (-1.0, 0.0, 1.0)
-			U = (SByte)br.ReadByte();
-			V = (SByte)br.ReadByte();
+			U = br.ReadByte();
+			V = br.ReadByte();
 			int red = br.ReadByte();
 			int green = br.ReadByte();
 			int blue = br.ReadByte();
@@ -157,9 +146,8 @@ namespace VPWStudio
 			bw.Write((byte)X);
 			bw.Write((byte)Y);
 			bw.Write((byte)Z);
-			// todo: convert UV values (-1.0, 0.0, 1.0) -> (63,0,31)
-			bw.Write((SByte)U);
-			bw.Write((SByte)V);
+			bw.Write(U);
+			bw.Write(V);
 			bw.Write(VertexColor.R);
 			bw.Write(VertexColor.G);
 			bw.Write(VertexColor.B);
@@ -171,6 +159,7 @@ namespace VPWStudio
 		{
 			float[] values = new float[2];
 
+			// todo: these assumptions are wrong
 			if (U > 31)
 			{
 				// negative
@@ -446,13 +435,27 @@ namespace VPWStudio
 			sw.WriteLine();
 
 			sw.WriteLine("# Texture/UV");
+
+			// find largest values for U and V from vertices and use those as 1.0
+			int maxValueU = 0;
+			int maxValueV = 0;
 			foreach (AkiVertex v in Vertices)
 			{
-				float[] fUV = v.UVToFloat();
+				if (v.U > maxValueU)
+				{
+					maxValueU = v.U;
+				}
+				if (v.V > maxValueV)
+				{
+					maxValueV = v.V;
+				}
+			}
 
+			foreach (AkiVertex v in Vertices)
+			{
 				sw.WriteLine(String.Format("vt {0} {1}",
-					fUV[0],
-					fUV[1]
+					(float)v.U/maxValueU,
+					(float)v.V/maxValueV
 					)
 				);
 			}
