@@ -40,7 +40,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Build cache for current project.
 		/// </summary>
-		public static BuildCache ProjectBuildCache = null;
+		//public static BuildCache ProjectBuildCache = null;
 		#endregion
 
 		#region Project Sub-Files
@@ -1078,10 +1078,12 @@ namespace VPWStudio
 			finalTableBW.Close();
 
 			// write cache.idx
+			/*
 			StreamWriter sw = new StreamWriter(GetCacheIndexPath());
 			ProjectBuildCache.WriteFile(sw);
 			sw.Flush();
 			sw.Dispose();
+			*/
 			#endregion
 
 			#region Update Game Code
