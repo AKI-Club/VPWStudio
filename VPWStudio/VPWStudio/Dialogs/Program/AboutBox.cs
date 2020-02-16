@@ -14,17 +14,17 @@ namespace VPWStudio
 		/// </summary>
 		private List<String> SpecialThanks = new List<string>()
 		{
-			"WldFb",         // "the godhand of VPW hacking", as proclaimed by freem
-			"Zoinkity",      // world's best N64 hacker (also as proclaimed by freem)
-			"Tokidoim",      // he's the "Toki" in Toki1, Toki2, Toki3... among other things.
-			"Kryogenics",    // many hacks and discoveries throughout the years
-			"JamStubbs",     // created utilities and hosted an influential archive board
-			"S.K. Stylez",   // AKI Club founder
-			"DOOMSDAY EWF",  // found many values (textures)
-			"The Pelican",   // also found many values
-			"Keson",         // keeping the future alive with AKI Evo and new tools
-			"jordyad",       // pushed me further when I needed it most, providing great info
-			"randymanfoo",   // has provided a lot of No Mercy FileTable updates
+			"WldFb",           // "the godhand of VPW hacking", as proclaimed by freem
+			"Zoinkity",        // world's best N64 hacker (also as proclaimed by freem)
+			"Tokidoim",        // he's the "Toki" in Toki1, Toki2, Toki3... among other things.
+			"Kryogenics",      // many hacks and discoveries throughout the years
+			"JamStubbs",       // created utilities and hosted an influential archive board
+			"S.K. Stylez",     // AKI Club founder
+			"DOOMSDAY EWF",    // found many values (textures)
+			"The Pelican",     // also found many values
+			"Keson",           // keeping the future alive with AKI Evo and new tools
+			"jordyad",         // pushed me further when I needed it most, providing great info
+			"randymanfoo",     // has provided a lot of No Mercy FileTable updates
 			"(and others I haven't gotten around to listing yet)"
 		};
 
@@ -37,8 +37,10 @@ namespace VPWStudio
 			"the Multitap community",
 			"Generation Hex",
 			"Nextwave 64",
+			"AKI Live",
 			"RagDas",
-			"WldFb"
+			"WldFb",
+			"Melly"
 		};
 
 		public AboutBox()
@@ -66,7 +68,7 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("As of now, this program should only be used by myself, WldFb, RagDas, Melly, and the members of the AKI Wrestling Game Hacking Discord server. This is primarily because it's untested and can ruin your data. User discretion is advised.");
+			sb.AppendLine("As of now, this program should only be used by myself, WldFb, RagDas, Melly, G.M.Spectre, and the members of the AKI Wrestling Game Hacking Discord server. This is primarily because it's untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
 
 			sb.AppendLine("This tool is dedicated to the memory of Maximo.");
