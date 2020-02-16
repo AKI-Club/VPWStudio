@@ -235,7 +235,7 @@ namespace VPWStudio
 			}
 
 			LoadLocationFile();
-			Program.ProjectBuildCache = new BuildCache();
+			//Program.ProjectBuildCache = new BuildCache();
 		}
 
 		/// <summary>
@@ -499,7 +499,7 @@ namespace VPWStudio
 					f.Close();
 				}
 
-				Program.ProjectBuildCache = new BuildCache();
+				//Program.ProjectBuildCache = new BuildCache();
 			}
 		}
 
@@ -568,6 +568,7 @@ namespace VPWStudio
 					f.Close();
 				}
 
+				/*
 				if (Program.CurrentProject.Settings.CachePath != string.Empty)
 				{
 					if (!File.Exists(Program.GetCacheIndexPath()))
@@ -582,6 +583,7 @@ namespace VPWStudio
 				{
 					Program.ProjectBuildCache = new BuildCache();
 				}
+				*/
 			}
 		}
 
@@ -713,7 +715,7 @@ namespace VPWStudio
 			UpdateStatusBar();
 			UpdateBackground();
 
-			Program.ProjectBuildCache = null;
+			//Program.ProjectBuildCache = null;
 		}
 		#endregion
 
@@ -1395,7 +1397,7 @@ namespace VPWStudio
 				}
 			}
 
-			Program.ProjectBuildCache.LastBuildTime = startTime;
+			//Program.ProjectBuildCache.LastBuildTime = startTime;
 
 			BuildLogForm.Focus();
 			BuildLogForm.MoveCursorToEnd();
