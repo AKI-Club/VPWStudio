@@ -153,43 +153,6 @@ namespace VPWStudio
 			bw.Write(VertexColor.B);
 		}
 		#endregion
-
-		#region Helpers
-		public float[] UVToFloat()
-		{
-			float[] values = new float[2];
-
-			// todo: these assumptions are wrong
-			if (U > 31)
-			{
-				// negative
-				values[0] = ((U - 32) / 31) * -1;
-			}
-			else
-			{
-				// positive
-				values[0] = (U / 31);
-			}
-
-			if (V > 31)
-			{
-				// negative
-				values[1] = ((V - 32) / 31) * -1;
-			}
-			else
-			{
-				// positive
-				values[1] = (V / 31);
-			}
-
-			return values;
-		}
-
-		public void FloatToUV(float _u, float _v)
-		{
-			// todo.
-		}
-		#endregion
 	}
 
 	/// <summary>
@@ -418,14 +381,14 @@ namespace VPWStudio
 			// todo: this does not apply texture map offset value
 			// todo: obj format doesn't officially support vertex colors
 
-			sw.WriteLine();
-			sw.WriteLine(String.Format("# Scale Value: {0}", Scale));
+			sw.WriteLine("# Wavefront OBJ file exported from VPW Studio");
+			sw.WriteLine(string.Format("# Scale Value: {0}", Scale));
 			sw.WriteLine();
 
-			sw.WriteLine(String.Format("# Vertices: {0}", Vertices.Count));
+			sw.WriteLine(string.Format("# Vertices: {0}", Vertices.Count));
 			foreach (AkiVertex v in Vertices)
 			{
-				sw.WriteLine(String.Format("v {0} {1} {2}",
+				sw.WriteLine(string.Format("v {0} {1} {2}",
 					(float)((v.X + OffsetX) * (Scale+1)),
 					(float)((v.Y + OffsetY) * (Scale+1)),
 					(float)((v.Z + OffsetZ) * (Scale+1))
@@ -436,7 +399,7 @@ namespace VPWStudio
 
 			sw.WriteLine("# Texture/UV");
 
-			// find largest values for U and V from vertices and use those as 1.0
+			// find largest values for U and V from vertices
 			int maxValueU = 0;
 			int maxValueV = 0;
 			foreach (AkiVertex v in Vertices)
@@ -451,9 +414,14 @@ namespace VPWStudio
 				}
 			}
 
+			// if max U/V values are not a power of two, find the closest power of two
+			// (subtract 1 so that the values fall between 0 and (power of 2-1))
+			maxValueU = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueU) / Math.Log(2)))-1;
+			maxValueV = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueV) / Math.Log(2)))-1;
+
 			foreach (AkiVertex v in Vertices)
 			{
-				sw.WriteLine(String.Format("vt {0} {1}",
+				sw.WriteLine(string.Format("vt {0} {1}",
 					(float)v.U/maxValueU,
 					(float)v.V/maxValueV
 					)
@@ -461,11 +429,11 @@ namespace VPWStudio
 			}
 			sw.WriteLine();
 
-			sw.WriteLine(String.Format("# Faces: {0}", Faces.Count));
+			sw.WriteLine(string.Format("# Faces: {0}", Faces.Count));
 			foreach (AkiFace f in Faces)
 			{
 				//sw.WriteLine(String.Format("f {0} {1} {2}", f.Vertex1+1, f.Vertex2+1, f.Vertex3+1));
-				sw.WriteLine(String.Format("f {0}/{0} {1}/{1} {2}/{2}", f.Vertex1 + 1, f.Vertex2 + 1, f.Vertex3 + 1));
+				sw.WriteLine(string.Format("f {0}/{0} {1}/{1} {2}/{2}", f.Vertex1 + 1, f.Vertex2 + 1, f.Vertex3 + 1));
 			}
 			sw.WriteLine();
 			sw.Flush();
