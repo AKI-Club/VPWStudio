@@ -2,9 +2,35 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 14 (2019/xx/yy)
+Pre-Alpha Preview 14 (2020/02/16)
 ---------------------------------
-I'm working on it.
+* [StoryMode_VPW2 "editor"] Display wrestler names next to ID2 values.
+
+* [FileTable_EditEntryInfoDialog] Fixed issue with file types being wrongly assigned.
+  (Yes, again.)
+
+* [General] Fixed issue where current development versions of Project64 were
+  treating the currently active directory in VPW Studio as the emulator's home
+  directory. You would only run into this issue if the PJ64 directory settings
+  were set to use "$AppPath", but better safe than sorry.
+
+* [General] Opening a project via command line argument or drag and drop should now
+  be a little more user-proof.
+  (In other words, only open files with a ".vpwsproj" extension.)
+
+* [Project Properties] Implemented changing the directory for Assets and
+  Project File paths.
+
+* [AkiArchive] Attempt to fix up certain archive entries.
+
+* [AkiModel] Updated Wavefront OBJ export texture mapping handling.
+
+* [Build Log Verbosity] Changed default value to "Normal" (was previously "Detailed").
+
+* Hey, don't be surprised by this one, but randymanfoo provided even more
+  FileTableDB updates for WWF No Mercy.
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 13 (2019/09/25)
 ---------------------------------
