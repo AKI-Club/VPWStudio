@@ -383,9 +383,18 @@ namespace VPWStudio
 
 			sw.WriteLine("# Wavefront OBJ file exported from VPW Studio");
 			sw.WriteLine(string.Format("# Scale Value: {0}", Scale));
+			sw.WriteLine(string.Format("# Model Type? (num verts top bit): 0x{0:X2}", ModelType));
+			sw.WriteLine(string.Format("# unknown value 1 (num faces top bit): 0x{0:X2}", UnknownFacesTopBit));
+			sw.WriteLine(string.Format("# unknown value 2: 0x{0:X2}", UnknownValue));
 			sw.WriteLine();
 
 			sw.WriteLine(string.Format("# Vertices: {0}", Vertices.Count));
+			// todo: X/Y/Z offset is shifted left and right on model load in-game
+			// do we need to do that here?
+			//int loadedOffsetX = (OffsetX << 0x18) >> 0x14;
+			//int loadedOffsetY = (OffsetY << 0x18) >> 0x14;
+			//int loadedOffsetZ = (OffsetZ << 0x18) >> 0x14;
+
 			foreach (AkiVertex v in Vertices)
 			{
 				sw.WriteLine(string.Format("v {0} {1} {2}",
