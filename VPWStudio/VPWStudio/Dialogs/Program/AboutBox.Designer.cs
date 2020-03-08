@@ -30,10 +30,10 @@
 			this.tbInformation = new System.Windows.Forms.TextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
+			this.labelVersion = new System.Windows.Forms.Label();
 			this.tlpBottomSection = new System.Windows.Forms.TableLayoutPanel();
 			this.okButton = new System.Windows.Forms.Button();
 			this.llWebsite = new System.Windows.Forms.LinkLabel();
-			this.labelVersion = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tlpMain.SuspendLayout();
 			this.tlpBottomSection.SuspendLayout();
@@ -84,6 +84,18 @@
 			this.tlpMain.Size = new System.Drawing.Size(506, 395);
 			this.tlpMain.TabIndex = 26;
 			// 
+			// labelVersion
+			// 
+			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelVersion.Location = new System.Drawing.Point(3, 82);
+			this.labelVersion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.labelVersion.Name = "labelVersion";
+			this.labelVersion.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+			this.labelVersion.Size = new System.Drawing.Size(500, 28);
+			this.labelVersion.TabIndex = 31;
+			this.labelVersion.Text = "(version string)";
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// tlpBottomSection
 			// 
 			this.tlpBottomSection.ColumnCount = 2;
@@ -118,20 +130,8 @@
 			this.llWebsite.Size = new System.Drawing.Size(314, 13);
 			this.llWebsite.TabIndex = 2;
 			this.llWebsite.TabStop = true;
-			this.llWebsite.Text = "http://vpw.ajworld.net/";
+			this.llWebsite.Text = "https://vpw.ajworld.net/";
 			this.llWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llWebsite_LinkClicked);
-			// 
-			// labelVersion
-			// 
-			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.labelVersion.Location = new System.Drawing.Point(3, 82);
-			this.labelVersion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.labelVersion.Name = "labelVersion";
-			this.labelVersion.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-			this.labelVersion.Size = new System.Drawing.Size(500, 28);
-			this.labelVersion.TabIndex = 31;
-			this.labelVersion.Text = "(version string)";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// AboutBox
 			// 

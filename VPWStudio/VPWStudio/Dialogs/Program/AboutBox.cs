@@ -158,7 +158,7 @@ namespace VPWStudio
 
 		private void llWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start("http://vpw.ajworld.net/");
+			System.Diagnostics.Process.Start("https://vpw.ajworld.net/");
 		}
 	}
 }
