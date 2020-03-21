@@ -408,6 +408,8 @@ namespace VPWStudio
 
 			sw.WriteLine("# Texture/UV");
 
+			// todo: there are still other issues with texture mapping possibly related to the "unknown" values
+
 			// find largest values for U and V from vertices
 			int maxValueU = 0;
 			int maxValueV = 0;
@@ -432,7 +434,7 @@ namespace VPWStudio
 			{
 				sw.WriteLine(string.Format("vt {0} {1}",
 					(float)v.U/maxValueU,
-					(float)v.V/maxValueV
+					(float)(maxValueV-v.V)/maxValueV
 					)
 				);
 			}
