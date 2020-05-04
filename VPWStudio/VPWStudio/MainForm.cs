@@ -41,11 +41,6 @@ namespace VPWStudio
 		public PackedFileTool PackFileTool = null;
 
 		/// <summary>
-		/// GameShark Tool form
-		/// </summary>
-		public GameSharkTool GSTool = null;
-
-		/// <summary>
 		/// Hex Viewer form
 		/// </summary>
 		public HexViewer HexViewerForm = null;
@@ -171,6 +166,9 @@ namespace VPWStudio
 				if (Path.GetExtension(args[0]) == ".vpwsproj")
 				{
 					LoadProject(args[0]);
+
+					// update working directory to project path
+					//Environment.CurrentDirectory = Path.GetDirectoryName(Program.CurProjectPath);
 				}
 				else
 				{
@@ -1556,35 +1554,6 @@ namespace VPWStudio
 				}
 				PackFileTool.MdiParent = this;
 				PackFileTool.Show();
-			}
-		}
-
-		/// <summary>
-		/// GameShark Code Tool
-		/// </summary>
-		/// currently a little broken, but not the form's fault...?
-		private void sharkTestToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (GSTool == null)
-			{
-				GSTool = new GameSharkTool();
-				GSTool.MdiParent = this;
-				GSTool.Show();
-			}
-			else
-			{
-				if (GSTool.IsDisposed)
-				{
-					GSTool = new GameSharkTool();
-				}
-
-				// if it was minimized, show it again.
-				if (GSTool.WindowState == FormWindowState.Minimized)
-				{
-					GSTool.WindowState = FormWindowState.Normal;
-				}
-				GSTool.MdiParent = this;
-				GSTool.Show();
 			}
 		}
 		#endregion

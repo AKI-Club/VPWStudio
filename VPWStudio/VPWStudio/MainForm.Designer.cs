@@ -55,13 +55,11 @@
 			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.storyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.sharkTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +82,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -287,13 +286,6 @@
 			resources.ApplyResources(this.weaponsToolStripMenuItem, "weaponsToolStripMenuItem");
 			this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.weaponsToolStripMenuItem_Click);
 			// 
-			// wrestlersToolStripMenuItem
-			// 
-			this.wrestlersToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Wrestlers;
-			this.wrestlersToolStripMenuItem.Name = "wrestlersToolStripMenuItem";
-			resources.ApplyResources(this.wrestlersToolStripMenuItem, "wrestlersToolStripMenuItem");
-			this.wrestlersToolStripMenuItem.Click += new System.EventHandler(this.wrestlersToolStripMenuItem_Click);
-			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -317,7 +309,6 @@
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modelDataToolStripMenuItem,
-            this.sharkTestToolStripMenuItem,
             this.toolStripSeparator6,
             this.programOptionsToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -329,13 +320,6 @@
 			this.modelDataToolStripMenuItem.Name = "modelDataToolStripMenuItem";
 			resources.ApplyResources(this.modelDataToolStripMenuItem, "modelDataToolStripMenuItem");
 			this.modelDataToolStripMenuItem.Click += new System.EventHandler(this.modelDataToolStripMenuItem_Click);
-			// 
-			// sharkTestToolStripMenuItem
-			// 
-			this.sharkTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_GameShark;
-			this.sharkTestToolStripMenuItem.Name = "sharkTestToolStripMenuItem";
-			resources.ApplyResources(this.sharkTestToolStripMenuItem, "sharkTestToolStripMenuItem");
-			this.sharkTestToolStripMenuItem.Click += new System.EventHandler(this.sharkTestToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator6
 			// 
@@ -497,6 +481,13 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// wrestlersToolStripMenuItem
+			// 
+			this.wrestlersToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Wrestlers;
+			this.wrestlersToolStripMenuItem.Name = "wrestlersToolStripMenuItem";
+			resources.ApplyResources(this.wrestlersToolStripMenuItem, "wrestlersToolStripMenuItem");
+			this.wrestlersToolStripMenuItem.Click += new System.EventHandler(this.wrestlersToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -545,14 +536,12 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem arenasToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem movesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem wrestlersToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem buildROMToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem fileTableToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem programOptionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem costumesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem sharkTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelGameType;
 		private System.Windows.Forms.ToolStripMenuItem playROMToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem asmikLzssTestToolStripMenuItem;
@@ -578,6 +567,7 @@
 		private System.Windows.Forms.ToolStripMenuItem titantronVideosToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem moveDamageTestvpw2OnlyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem gameIntroductionToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem wrestlersToolStripMenuItem;
 	}
 }
 
