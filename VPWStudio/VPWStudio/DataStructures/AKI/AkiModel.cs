@@ -422,20 +422,19 @@ namespace VPWStudio
 			int maxValueV = 0;
 			foreach (AkiVertex v in Vertices)
 			{
-				if (v.U > maxValueU && v.U < 128)
+				if (v.U > maxValueU && v.U <= 128)
 				{
 					maxValueU = v.U;
 				}
-				if (v.V > maxValueV && v.V < 128)
+				if (v.V > maxValueV && v.V <= 128)
 				{
 					maxValueV = v.V;
 				}
 			}
 
 			// if max U/V values are not a power of two, find the closest power of two
-			// (subtract 1 so that the values fall between 0 and (power of 2-1))
-			maxValueU = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueU) / Math.Log(2)))-1;
-			maxValueV = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueV) / Math.Log(2)))-1;
+			maxValueU = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueU) / Math.Log(2)));
+			maxValueV = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueV) / Math.Log(2)));
 
 			foreach (AkiVertex v in Vertices)
 			{
