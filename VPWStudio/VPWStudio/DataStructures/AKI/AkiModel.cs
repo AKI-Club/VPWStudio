@@ -356,9 +356,8 @@ namespace VPWStudio
 		public void WriteData(BinaryWriter bw)
 		{
 			bw.Write((byte)Scale);
-			// xxx: ignores ModelType, UnknownFacesTopBit
-			bw.Write((byte)Vertices.Count);
-			bw.Write((byte)Faces.Count);
+			bw.Write((byte)Vertices.Count | ModelType);
+			bw.Write((byte)Faces.Count | UnknownFacesTopBit);
 			bw.Write((byte)UnknownValue);
 			bw.Write((byte)OffsetX);
 			bw.Write((byte)OffsetY);
@@ -408,18 +407,26 @@ namespace VPWStudio
 
 			sw.WriteLine("# Texture/UV");
 
-			// todo: there are still other issues with texture mapping possibly related to the "unknown" values
+			// todo: there are still other issues with texture mapping, possibly related to the "unknown" values
+			/*
+			 * vpw2 file IDs and their unknown values
+			 * 0941 - 0x97 (pelvis - fat body type)
+			 * 0979 - 0x99 
+			 * 097A - 0x33 (pelvis)
+			 * 097E - 0x57 (left leg)
+			 * 0985 - 0x57 (right leg)
+			 */
 
 			// find largest values for U and V from vertices
 			int maxValueU = 0;
 			int maxValueV = 0;
 			foreach (AkiVertex v in Vertices)
 			{
-				if (v.U > maxValueU)
+				if (v.U > maxValueU && v.U < 128)
 				{
 					maxValueU = v.U;
 				}
-				if (v.V > maxValueV)
+				if (v.V > maxValueV && v.V < 128)
 				{
 					maxValueV = v.V;
 				}
