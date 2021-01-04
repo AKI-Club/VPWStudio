@@ -15464,7 +15464,7 @@
 49B7=Ci4Palette;[Moveset Edit] Power & KO Bar
 49B8=Ci4Texture;[Moveset Edit] Power & KO Bar|p:49B7
 49B9=Ci4Palette;[Moveset Edit] Bleed & Feature Bar
-49BA=Ci4Texture;[Moveset Edit] Bleed & Feature Bar|p:49D9
+49BA=Ci4Texture;[Moveset Edit] Bleed & Feature Bar|p:49B9
 49BB=Ci4Palette;HOLD
 49BC=Ci4Texture;HOLD|p:49BB
 49BD=Ci4Palette;TAP
