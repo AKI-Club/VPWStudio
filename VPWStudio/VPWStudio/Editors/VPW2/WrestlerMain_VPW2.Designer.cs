@@ -60,23 +60,23 @@
 			this.tlpAppearance = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonAppearance = new System.Windows.Forms.Button();
 			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
-			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.tlpHeight = new System.Windows.Forms.TableLayoutPanel();
 			this.tbHeight = new System.Windows.Forms.TextBox();
+			this.nudHeight = new System.Windows.Forms.NumericUpDown();
 			this.tlpWeight = new System.Windows.Forms.TableLayoutPanel();
 			this.tbWeight = new System.Windows.Forms.TextBox();
-			this.nudHeight = new System.Windows.Forms.NumericUpDown();
 			this.nudWeight = new System.Windows.Forms.NumericUpDown();
+			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.tlpWrestlerData.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
 			this.tlpProfile.SuspendLayout();
 			this.tlpAppearance.SuspendLayout();
-			this.gbWrestlers.SuspendLayout();
 			this.tlpHeight.SuspendLayout();
-			this.tlpWeight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+			this.tlpWeight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
+			this.gbWrestlers.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -637,16 +637,6 @@
 			this.tbAppearanceIndex.Size = new System.Drawing.Size(159, 20);
 			this.tbAppearanceIndex.TabIndex = 25;
 			// 
-			// gbWrestlers
-			// 
-			this.gbWrestlers.Controls.Add(this.lbWrestlers);
-			this.gbWrestlers.Location = new System.Drawing.Point(12, 12);
-			this.gbWrestlers.Name = "gbWrestlers";
-			this.gbWrestlers.Size = new System.Drawing.Size(131, 399);
-			this.gbWrestlers.TabIndex = 0;
-			this.gbWrestlers.TabStop = false;
-			this.gbWrestlers.Text = "&Wrestlers";
-			// 
 			// tlpHeight
 			// 
 			this.tlpHeight.ColumnCount = 2;
@@ -670,6 +660,20 @@
 			this.tbHeight.ReadOnly = true;
 			this.tbHeight.Size = new System.Drawing.Size(113, 20);
 			this.tbHeight.TabIndex = 11;
+			// 
+			// nudHeight
+			// 
+			this.nudHeight.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.nudHeight.Location = new System.Drawing.Point(3, 3);
+			this.nudHeight.Maximum = new decimal(new int[] {
+            103,
+            0,
+            0,
+            0});
+			this.nudHeight.Name = "nudHeight";
+			this.nudHeight.Size = new System.Drawing.Size(112, 20);
+			this.nudHeight.TabIndex = 12;
+			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
 			// 
 			// tlpWeight
 			// 
@@ -695,20 +699,6 @@
 			this.tbWeight.Size = new System.Drawing.Size(113, 20);
 			this.tbWeight.TabIndex = 13;
 			// 
-			// nudHeight
-			// 
-			this.nudHeight.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.nudHeight.Location = new System.Drawing.Point(3, 3);
-			this.nudHeight.Maximum = new decimal(new int[] {
-            103,
-            0,
-            0,
-            0});
-			this.nudHeight.Name = "nudHeight";
-			this.nudHeight.Size = new System.Drawing.Size(112, 20);
-			this.nudHeight.TabIndex = 12;
-			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
-			// 
 			// nudWeight
 			// 
 			this.nudWeight.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -722,6 +712,16 @@
 			this.nudWeight.Size = new System.Drawing.Size(112, 20);
 			this.nudWeight.TabIndex = 14;
 			this.nudWeight.ValueChanged += new System.EventHandler(this.nudWeight_ValueChanged);
+			// 
+			// gbWrestlers
+			// 
+			this.gbWrestlers.Controls.Add(this.lbWrestlers);
+			this.gbWrestlers.Location = new System.Drawing.Point(12, 12);
+			this.gbWrestlers.Name = "gbWrestlers";
+			this.gbWrestlers.Size = new System.Drawing.Size(131, 399);
+			this.gbWrestlers.TabIndex = 0;
+			this.gbWrestlers.TabStop = false;
+			this.gbWrestlers.Text = "&Wrestlers";
 			// 
 			// WrestlerMain_VPW2
 			// 
@@ -745,13 +745,13 @@
 			this.tlpProfile.PerformLayout();
 			this.tlpAppearance.ResumeLayout(false);
 			this.tlpAppearance.PerformLayout();
-			this.gbWrestlers.ResumeLayout(false);
 			this.tlpHeight.ResumeLayout(false);
 			this.tlpHeight.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			this.tlpWeight.ResumeLayout(false);
 			this.tlpWeight.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
+			this.gbWrestlers.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
