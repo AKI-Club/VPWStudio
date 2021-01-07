@@ -15647,7 +15647,7 @@
 4A6F=Binary;[Unlockable] Weapons
 4A70=Binary;[Unlockable] Wrestlers
 4A71=Ci4Palette;Smackdown Mall Superstar Select Background
-4A72=Ci4Background;Smackdown Mall Superstar Select Background
+4A72=Ci4Background;Smackdown Mall Superstar Select Background|p:4A72
 4A73=Ci4Palette;[SD Mall] Change Stable Header Glow
 4A74=Ci4Texture;[SD Mall] Change Stable Header Glow|p:4A73
 4A75=Ci4Palette;[SD Mall] Change Stable Header
