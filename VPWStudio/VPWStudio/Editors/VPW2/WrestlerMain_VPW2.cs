@@ -297,6 +297,7 @@ namespace VPWStudio.Editors.VPW2
 			if (ate.ShowDialog() == DialogResult.OK)
 			{
 				// check to see if this file existed...
+				// might want to update the list to show the updated names too
 			}
 		}
 
