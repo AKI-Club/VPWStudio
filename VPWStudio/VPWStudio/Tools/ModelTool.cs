@@ -45,7 +45,7 @@ namespace VPWStudio
 				tbInfoDump.Text += String.Format("X Offset: {0}\r\n", this.CurModel.OffsetX);
 				tbInfoDump.Text += String.Format("Y Offset: {0}\r\n", this.CurModel.OffsetY);
 				tbInfoDump.Text += String.Format("Z Offset: {0}\r\n", this.CurModel.OffsetZ);
-				tbInfoDump.Text += String.Format("Texture Offset: {0}\r\n", this.CurModel.OffsetTexture);
+				tbInfoDump.Text += String.Format("Texture Offset: {0}\r\n", this.CurModel.TextureSize);
 				tbInfoDump.Text += "\r\n";
 				// print verts
 				for (int v = 0; v < this.CurModel.Vertices.Count; v++)

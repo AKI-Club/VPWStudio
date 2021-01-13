@@ -230,7 +230,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Scale value
 		/// </summary>
-		/// todo: the top bit of this means something, but not sure what.
+		/// the top bit of this means U/V values are set in the vertex color data...
 		public int Scale;
 
 		/// <summary>
@@ -264,11 +264,15 @@ namespace VPWStudio
 		/// Z location offset
 		/// </summary>
 		public int OffsetZ;
+
 		/// <summary>
-		/// Texture Map location offset
+		/// Texture Size (multiplied by 8 in-game)
 		/// </summary>
-		/// possibly stored as nibbles (perhaps "uuuu vvvv" format?)
-		public int OffsetTexture;
+		/// stored as nibbles (perhaps "uuuu vvvv" format)
+		public int TextureSize;
+
+		private int TextureSizeX;
+		private int TextureSizeY;
 
 		/// <summary>
 		/// Collection of Vertices in this polygon.
@@ -300,12 +304,14 @@ namespace VPWStudio
 			OffsetX = 0;
 			OffsetY = 0;
 			OffsetZ = 0;
-			OffsetTexture = 0;
+			TextureSize = 0;
 			Vertices = new List<AkiVertex>();
 			Faces = new List<AkiFace>();
 
 			ModelType = 0;
 			UnknownFacesTopBit = 0;
+			TextureSizeX = 0;
+			TextureSizeY = 0;
 		}
 
 		/// <summary>
@@ -319,9 +325,10 @@ namespace VPWStudio
 		#endregion
 
 		#region Binary Read/Write
-		public void ReadData(BinaryReader br)
+		public void ReadData(BinaryReader br, bool isNoMercy = false)
 		{
 			Scale = br.ReadByte();
+
 			byte numVerts = br.ReadByte();
 			NumVertices = numVerts & 0x7F;
 			ModelType = (byte)(numVerts & 0x80);
@@ -334,7 +341,20 @@ namespace VPWStudio
 			OffsetX = (SByte)br.ReadByte();
 			OffsetY = (SByte)br.ReadByte();
 			OffsetZ = (SByte)br.ReadByte();
-			OffsetTexture = br.ReadByte();
+
+			TextureSize = br.ReadByte();
+
+			TextureSizeX = ((TextureSize & 0xF0)>>4) * 8;
+			if (TextureSizeX == 0)
+			{
+				TextureSizeX = isNoMercy ? 64 : 128;
+			}
+
+			TextureSizeY = ((TextureSize & 0x0F)) * 8;
+			if (TextureSizeY == 0)
+			{
+				TextureSizeY = isNoMercy ? 64 : 128;
+			}
 
 			Vertices = new List<AkiVertex>();
 			for (int v = 0; v < this.NumVertices; v++)
@@ -362,7 +382,7 @@ namespace VPWStudio
 			bw.Write((byte)OffsetX);
 			bw.Write((byte)OffsetY);
 			bw.Write((byte)OffsetZ);
-			bw.Write((byte)OffsetTexture);
+			bw.Write((byte)TextureSize);
 			foreach (AkiVertex v in Vertices)
 			{
 				v.WriteData(bw);
@@ -385,6 +405,7 @@ namespace VPWStudio
 			sw.WriteLine(string.Format("# Model Type? (num verts top bit): 0x{0:X2}", ModelType));
 			sw.WriteLine(string.Format("# unknown value 1 (num faces top bit): 0x{0:X2}", UnknownFacesTopBit));
 			sw.WriteLine(string.Format("# unknown value 2: 0x{0:X2}", UnknownValue));
+			sw.WriteLine(string.Format("# texture size: {0}x{1}", TextureSizeX, TextureSizeY));
 			sw.WriteLine();
 
 			sw.WriteLine(string.Format("# Vertices: {0}", Vertices.Count));
@@ -417,32 +438,29 @@ namespace VPWStudio
 			 * 0985 - 0x57 (right leg)
 			 */
 
-			// find largest values for U and V from vertices
-			int maxValueU = 0;
-			int maxValueV = 0;
-			foreach (AkiVertex v in Vertices)
+			// todo: figure out how the alternate UV style actually works
+			if (/*ModelType != 0*/ false)
 			{
-				if (v.U > maxValueU && v.U <= 128)
+				// use values from the vertex colors
+				foreach (AkiVertex v in Vertices)
 				{
-					maxValueU = v.U;
-				}
-				if (v.V > maxValueV && v.V <= 128)
-				{
-					maxValueV = v.V;
+					sw.WriteLine(string.Format("vt {0} {1}",
+						(float)v.VertexColor.R / TextureSizeX,
+						(float)(TextureSizeY - v.VertexColor.B) / TextureSizeY
+						)
+					);
 				}
 			}
-
-			// if max U/V values are not a power of two, find the closest power of two
-			maxValueU = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueU) / Math.Log(2)));
-			maxValueV = (int)Math.Pow(2, Math.Ceiling(Math.Log(maxValueV) / Math.Log(2)));
-
-			foreach (AkiVertex v in Vertices)
+			else
 			{
-				sw.WriteLine(string.Format("vt {0} {1}",
-					(float)v.U/maxValueU,
-					(float)(maxValueV-v.V)/maxValueV
-					)
-				);
+				foreach (AkiVertex v in Vertices)
+				{
+					sw.WriteLine(string.Format("vt {0} {1}",
+						(float)v.U / TextureSizeX,
+						(float)(TextureSizeY - v.V) / TextureSizeY
+						)
+					);
+				}
 			}
 			sw.WriteLine();
 

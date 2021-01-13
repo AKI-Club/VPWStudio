@@ -95,9 +95,17 @@ namespace VPWStudio
 			tbOffsetY.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetY);
 			tbOffsetZ.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetZ);
 
-			int offsetU = (CurModel.OffsetTexture & 0xF0) >> 4;
-			int offsetV = (CurModel.OffsetTexture & 0x0F);
-			tbOffsetUV.Text = String.Format("{1}, {2} (0x{0:X2})", (byte)CurModel.OffsetTexture, offsetU, offsetV);
+			int texSizeH = ((CurModel.TextureSize & 0xF0) >> 4) * 8;
+			int texSizeV = ((CurModel.TextureSize & 0x0F)) * 8;
+			if (texSizeH == 0)
+			{
+				texSizeH = Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy ? 64 : 128;
+			}
+			if (texSizeV == 0)
+			{
+				texSizeV = Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy ? 64 : 128;
+			}
+			tbTextureSize.Text = String.Format("{1}x{2} (0x{0:X2})", (byte)CurModel.TextureSize, texSizeH, texSizeV);
 
 			//RenderModel();
 
@@ -197,7 +205,7 @@ namespace VPWStudio
 			romReader.Close();
 			modelStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader modelReader = new BinaryReader(modelStream);
-			CurModel.ReadData(modelReader);
+			CurModel.ReadData(modelReader, Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy);
 			modelReader.Close();
 		}
 
