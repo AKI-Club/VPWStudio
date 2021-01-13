@@ -1008,7 +1008,7 @@ namespace VPWStudio
 						break;
 
 					case FileTypes.AkiText:
-					case FileTypes.NoMercyText:
+					case FileTypes.MenuItems_NoGroup:
 						curDirectory = "text/";
 						break;
 
