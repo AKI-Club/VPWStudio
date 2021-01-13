@@ -5,16 +5,13 @@ using System.Text;
 
 namespace VPWStudio.GameSpecific.NoMercy
 {
-	// todo: which format will this be used for?
-	// * single selection (music, titantron, pictures) - simplest
-	// * multiple selection (costume items, smackdown mall) - harder, can involve sections (costume items)
-	// * a shitton of files for moves, which need a different format from the above two.
+	// single selection (music, titantron, pictures) - simplest
 
 	// simple format reading:
 	// 1) read byte to get value
 	// 2) read null/0x00 terminated string
 
-	public class NoMercyText
+	public class MenuItems_NoGroup
 	{
 		// byte 00: number of categories or total entries
 		public byte NumCategories;
@@ -23,7 +20,7 @@ namespace VPWStudio.GameSpecific.NoMercy
 
 		public List<string> Entries;
 
-		public NoMercyText()
+		public MenuItems_NoGroup()
 		{
 			NumCategories = 0;
 			NumEntries = 0;
