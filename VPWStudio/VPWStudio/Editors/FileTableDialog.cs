@@ -761,7 +761,7 @@ namespace VPWStudio
 					{
 						// act upon working file if it exists
 						Editors.AkiTextEditor ate;
-						if (fte.ReplaceFilePath != null && fte.ReplaceFilePath != String.Empty)
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
 						{
 							// load file
 							ate = new Editors.AkiTextEditor(Program.ConvertRelativePath(fte.ReplaceFilePath));
@@ -857,6 +857,65 @@ namespace VPWStudio
 							// the easy way out
 							Editors.FontDialog fd = new Editors.FontDialog(key, fontCharFiles[0]);
 							fd.ShowDialog();
+						}
+					}
+					break;
+
+				// WWF No Mercy Groupless Menu Items
+				case FileTypes.MenuItems_NoGroup:
+					{
+						Editors.NoMercy.MenuItemsNoGroup_NoMercy gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(key);
+
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
+						{
+							// load file
+							gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else
+						{
+							// load rom
+							gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(key);
+						}
+
+						if (gme.ShowDialog() == DialogResult.OK)
+						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save MenuItems_NoGroup changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							if (fte.ReplaceFilePath == null || fte.ReplaceFilePath == String.Empty)
+							{
+								// make new file
+								string filename = String.Format("{0}\\{1:X4}{2}", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), key, FileTypeInfo.DefaultFileTypeExtensions[FileTypes.MenuItems_NoGroup]);
+								using (FileStream fs = new FileStream(filename, FileMode.Create))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										gme.MenuItemData.WriteData(bw);
+									}
+								}
+
+								// set new ReplaceFilePath
+								fte.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+								Program.InfoMessageBox(String.Format("Wrote new MenuItems_NoGroup archive to {0}.", filename));
+
+								Program.UnsavedChanges = true;
+								((MainForm)(MdiParent)).UpdateTitleBar();
+							}
+							else
+							{
+								// save existing file
+								using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										gme.MenuItemData.WriteData(bw);
+									}
+								}
+							}
 						}
 					}
 					break;
