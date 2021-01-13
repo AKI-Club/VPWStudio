@@ -81,7 +81,7 @@ namespace VPWStudio.Editors.VPW2
 			DefaultChampions = romReader.ReadBytes(5);
 
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[0x006C];
-			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
 			{
 				FileStream fs = new FileStream(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), FileMode.Open);
 				BinaryReader br = new BinaryReader(fs);

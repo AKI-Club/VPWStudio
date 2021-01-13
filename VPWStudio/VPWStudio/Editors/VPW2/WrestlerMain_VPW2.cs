@@ -27,7 +27,7 @@ namespace VPWStudio.Editors.VPW2
 
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
 
-			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
 			{
 				LoadNames_File(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath));
 			}
@@ -198,7 +198,7 @@ namespace VPWStudio.Editors.VPW2
 			FileTableEntry dCosEntry = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_COSTUME_FILE];
 			string dcosReplacePath = dCosEntry.ReplaceFilePath;
 
-			if (dcosReplacePath != null && dcosReplacePath != String.Empty)
+			if (!String.IsNullOrEmpty(dcosReplacePath))
 			{
 				dcEditor = new DefaultCostume_VPW2(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex, Program.ConvertRelativePath(dcosReplacePath));
 			}
@@ -284,7 +284,7 @@ namespace VPWStudio.Editors.VPW2
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
 			AkiTextEditor ate;
 
-			if (defWrestlerNames.ReplaceFilePath != null && defWrestlerNames.ReplaceFilePath != String.Empty)
+			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
 			{
 				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
 			}

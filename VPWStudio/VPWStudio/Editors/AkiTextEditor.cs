@@ -37,7 +37,7 @@ namespace VPWStudio.Editors
 
 			Text = String.Format("AKI Text Editor - [{0:X4}]", FileKey);
 			string comment = Program.CurrentProject.ProjectFileTable.Entries[FileKey].Comment;
-			if (comment != null && comment != String.Empty)
+			if (!String.IsNullOrEmpty(comment))
 			{
 				Text += String.Format(" {0}", comment);
 			}
