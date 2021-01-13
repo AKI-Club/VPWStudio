@@ -5,33 +5,52 @@ using System.Text;
 
 namespace VPWStudio.GameSpecific.NoMercy
 {
-	// single selection (music, titantron, pictures) - simplest
+	// single selection (music, titantron, pictures)
 
-	// simple format reading:
-	// 1) read byte to get value
-	// 2) read null/0x00 terminated string
-
+	/// <summary>
+	/// Groupless menu items (used for Music, Pictures, Titantron)
+	/// </summary>
 	public class MenuItems_NoGroup
 	{
-		// byte 00: number of categories or total entries
-		public byte NumCategories;
-		// byte 01: number of total entries if nonzero
+		// 0x00: number of total entries
 		public byte NumEntries;
 
-		public List<string> Entries;
+		public Dictionary<byte, string> Entries;
 
 		public MenuItems_NoGroup()
 		{
-			NumCategories = 0;
 			NumEntries = 0;
-			Entries = new List<string>();
+			Entries = new Dictionary<byte, string>();
 		}
 
 		#region Binary Read/Write
 		public void ReadData(BinaryReader br)
 		{
-			NumCategories = br.ReadByte();
 			NumEntries = br.ReadByte();
+
+			Entries.Clear();
+			for (int i = 0; i < NumEntries; i++)
+			{
+				byte key = br.ReadByte();
+				string name = string.Empty;
+				while (br.PeekChar() != 0)
+				{
+					name += br.ReadChar();
+				}
+				br.ReadByte();
+				Entries.Add(key, name);
+			}
+		}
+
+		public void WriteData(BinaryWriter bw)
+		{
+			bw.Write((byte)Entries.Count);
+			foreach (KeyValuePair<byte,string> entry in Entries)
+			{
+				bw.Write(entry.Key);
+				bw.Write(entry.Value.ToCharArray());
+				bw.Write((byte)0);
+			}
 		}
 		#endregion
 	}

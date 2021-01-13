@@ -53,7 +53,9 @@ namespace VPWStudio
 
 		#region WWF No Mercy
 		Ci4Background, // WWF No Mercy Smackdown Mall background
-		NoMercyText, // WWF No Mercy text archives (used for move names)
+		MenuItems_NoGroup, // WWF No Mercy groupless Items (pictures, titantrons, themes)
+		//MenuItems_Costume, // WWF No Mercy Costume Items
+		//MenuItems_Moves, // WWF No Mercy Move List Items
 		#endregion
 
 		#endregion
@@ -83,7 +85,9 @@ namespace VPWStudio
 			{ FileTypes.DoubleTex, ".tex" }, // note: exports as two files
 			{ FileTypes.MenuBackground, ".menubg" }, // not really supported yet
 			{ FileTypes.Ci4Background, ".ci4bg" }, // this is awkward, freem
-			{ FileTypes.NoMercyText, ".nmtext" },
+			{ FileTypes.MenuItems_NoGroup, ".nmitem0" },
+			//{ FileTypes.MenuItems_Costume, ".nmitem1" },
+			// moves will be .nmitem2
 		};
 
 		/// <summary>
@@ -142,10 +146,10 @@ namespace VPWStudio
 				outTypes.Remove(FileTypes.MenuBackground);
 			}
 
-			// Ci4Background and NoMercyText are only used in WWF No Mercy.
+			// Ci4Background and MenuItems_NoGroup are only used in WWF No Mercy.
 			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
 			{
-				outTypes.Remove(FileTypes.NoMercyText);
+				outTypes.Remove(FileTypes.MenuItems_NoGroup);
 				outTypes.Remove(FileTypes.Ci4Background);
 			}
 
