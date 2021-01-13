@@ -25,8 +25,7 @@ namespace VPWStudio.Editors.VPW2
 			BinaryReader romReader = new BinaryReader(romStream);
 
 			// stable def file
-			if (Program.CurrentProject.Settings.StableDefinitionFilePath != null &&
-				Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.StableDefinitionFilePath) &&
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
 			){
 				// load stable definitions from external file
@@ -75,7 +74,7 @@ namespace VPWStudio.Editors.VPW2
 
 			// default names
 			string defNameReplacePath = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE].ReplaceFilePath;
-			if (defNameReplacePath != null && defNameReplacePath != String.Empty)
+			if (!String.IsNullOrEmpty(defNameReplacePath))
 			{
 				// load from external file
 				LoadDefaultNames_File(Program.ConvertRelativePath(defNameReplacePath));

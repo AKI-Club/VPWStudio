@@ -19,8 +19,7 @@ namespace VPWStudio.Editors.NoMercy
 		{
 			InitializeComponent();
 
-			if (Program.CurrentProject.Settings.StableDefinitionFilePath != null &&
-				Program.CurrentProject.Settings.StableDefinitionFilePath != String.Empty &&
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.StableDefinitionFilePath) &&
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
 			){
 				// load stable definitions from external file

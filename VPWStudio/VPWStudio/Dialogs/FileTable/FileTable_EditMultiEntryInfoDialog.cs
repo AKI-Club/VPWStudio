@@ -94,7 +94,7 @@ namespace VPWStudio
 				// replace path
 				if (dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value == null)
 				{
-					if (Entries[i].ReplaceFilePath != null && Entries[i].ReplaceFilePath != string.Empty)
+					if (!String.IsNullOrEmpty(Entries[i].ReplaceFilePath))
 					{
 						AnyChangesSubmitted = true;
 						Entries[i].ReplaceFilePath = string.Empty;

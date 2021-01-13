@@ -56,7 +56,7 @@ namespace VPWStudio.Editors
 			//   - if not, load from ROM (see current code)
 
 			string replaceFile = Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath;
-			if (replaceFile != null && replaceFile != String.Empty)
+			if (!String.IsNullOrEmpty(replaceFile))
 			{
 				// attempt to load replacement file
 				if (LoadPaletteFile(replaceFile) == false)
