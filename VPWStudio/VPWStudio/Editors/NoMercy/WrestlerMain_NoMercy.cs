@@ -17,11 +17,24 @@ namespace VPWStudio.Editors.NoMercy
 
 		private AkiText DefaultNames;
 
+		private const UInt16 NOMERCY_DEFAULT_COSTUME_FILE = 1;
+		private const UInt16 NOMERCY_DEFAULT_NAMES_FILE = 2;
+
 		public WrestlerMain_NoMercy()
 		{
 			InitializeComponent();
 
-			LoadDefaultNames();
+			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[NOMERCY_DEFAULT_NAMES_FILE];
+
+			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
+			{
+				LoadNames_File(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath));
+			}
+			else
+			{
+				LoadNames_ROM();
+			}
+
 			LoadDefs_Rom(); // temporary
 			PopulateList(); // not so temporary
 		}
@@ -29,7 +42,7 @@ namespace VPWStudio.Editors.NoMercy
 		/// <summary>
 		/// Load default names AkiText entry
 		/// </summary>
-		private void LoadDefaultNames()
+		private void LoadNames_ROM()
 		{
 			// default names are in file 0002
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -38,7 +51,7 @@ namespace VPWStudio.Editors.NoMercy
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
-			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x0002);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, NOMERCY_DEFAULT_NAMES_FILE);
 			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);
@@ -47,6 +60,14 @@ namespace VPWStudio.Editors.NoMercy
 
 			outReader.Close();
 			outWriter.Close();
+		}
+
+		private void LoadNames_File(string _path)
+		{
+			FileStream fs = new FileStream(_path, FileMode.Open);
+			BinaryReader br = new BinaryReader(fs);
+			DefaultNames = new AkiText(br);
+			br.Close();
 		}
 
 		#region Load Wrestler Definitions
@@ -174,8 +195,78 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			DefaultCostume_NoMercy dced = new DefaultCostume_NoMercy(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex);
-			dced.ShowDialog();
+			DefaultCostume_NoMercy dcEditor;
+			FileTableEntry dCosEntry = Program.CurrentProject.ProjectFileTable.Entries[NOMERCY_DEFAULT_COSTUME_FILE];
+			string dcosReplacePath = dCosEntry.ReplaceFilePath;
+
+			if (!String.IsNullOrEmpty(dcosReplacePath))
+			{
+				dcEditor = new DefaultCostume_NoMercy(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex, Program.ConvertRelativePath(dcosReplacePath));
+			}
+			else
+			{
+				dcEditor = new DefaultCostume_NoMercy(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex);
+			}
+
+			if (dcEditor.ShowDialog() == DialogResult.OK)
+			{
+				if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+				{
+					// we need to have saved in order to actually... save.
+					Program.ErrorMessageBox("Can not save default costume changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+					return;
+				}
+
+				if (dCosEntry.HasReplacementFile())
+				{
+					// use existing file.
+					using (FileStream fs = new FileStream(Program.ConvertRelativePath(dCosEntry.ReplaceFilePath), FileMode.Open))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							fs.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
+							dcEditor.CostumeData.WriteData(bw);
+						}
+					}
+				}
+				else
+				{
+					// make new file for 1
+					string filename = String.Format("{0}\\{1:X4}.bin", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), NOMERCY_DEFAULT_COSTUME_FILE);
+
+					// step 1: get original data from ROM
+					MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+					BinaryReader romReader = new BinaryReader(ms);
+
+					MemoryStream outStream = new MemoryStream();
+					BinaryWriter outWriter = new BinaryWriter(outStream);
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, NOMERCY_DEFAULT_COSTUME_FILE);
+					romReader.Close();
+
+					// step 2: write updated data
+					outStream.Seek(WrestlerDefs[lbWrestlers.SelectedIndex].AppearanceIndex * DefaultCostumeData.COSTUME_DATA_LENGTH, SeekOrigin.Begin);
+					dcEditor.CostumeData.WriteData(outWriter);
+					outStream.Seek(0, SeekOrigin.Begin);
+
+					// step 3: write to file
+					using (FileStream fs = new FileStream(filename, FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							bw.Write(outStream.ToArray());
+						}
+					}
+					outStream.Close();
+
+					// step 4: set ReplaceFilePath
+					dCosEntry.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+					Program.InfoMessageBox(String.Format("Wrote new Default Costume Data file to {0}.", filename));
+
+					Program.UnsavedChanges = true;
+					((MainForm)MdiParent).UpdateTitleBar();
+				}
+			}
 		}
 
 		private void buttonProfile_Click(object sender, EventArgs e)
@@ -185,9 +276,24 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			// request AkiText viewer, index 2
-			AkiTextEditor ate = new AkiTextEditor(2, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
-			ate.ShowDialog();
+			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[NOMERCY_DEFAULT_NAMES_FILE];
+			AkiTextEditor ate;
+
+			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
+			{
+				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+			}
+			else
+			{
+				// request AkiText viewer, index 2
+				ate = new AkiTextEditor(NOMERCY_DEFAULT_NAMES_FILE, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+			}
+
+			if (ate.ShowDialog() == DialogResult.OK)
+			{
+				// check to see if this file existed...
+				// might want to update the list to show the updated names too
+			}
 		}
 	}
 }
