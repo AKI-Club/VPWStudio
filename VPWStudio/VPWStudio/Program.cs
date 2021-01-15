@@ -201,6 +201,14 @@ namespace VPWStudio
 		}
 		#endregion
 
+		public static void ReloadBaseRom()
+		{
+			if (CurrentProject != null)
+			{
+				CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
+			}
+		}
+
 		/// <summary>
 		/// Get a slice of ROM data.
 		/// </summary>

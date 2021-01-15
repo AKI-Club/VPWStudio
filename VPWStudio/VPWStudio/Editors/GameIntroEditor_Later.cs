@@ -48,6 +48,7 @@ namespace VPWStudio
 
 		private void LoadIntroData()
 		{
+			Program.ReloadBaseRom();
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
