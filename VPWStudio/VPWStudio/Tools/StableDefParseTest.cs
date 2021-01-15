@@ -9,11 +9,18 @@ namespace VPWStudio
 		public StableDefParseTest()
 		{
 			InitializeComponent();
+			cbGameType.SelectedIndex = 0;
 		}
 
 		private void buttonParse_Click(object sender, EventArgs e)
 		{
 			tbOutput.Clear();
+
+			if (String.IsNullOrEmpty(tbInput.Text))
+			{
+				MessageBox.Show("lol I can't do anything without input", "some bullshit", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
 			// take input and display in output
 			string[] tokens = tbInput.Text.Split(new char[] { '@', '=' });
@@ -27,6 +34,7 @@ namespace VPWStudio
 			}
 			tbOutput.AppendText("Text Index: " + data[2].Substring(1));
 
+			/*
 			GameSpecific.VPW2.StableDefinition sd = new GameSpecific.VPW2.StableDefinition();
 			sd.WrestlerPointerStart = UInt32.Parse(tokens[1], NumberStyles.HexNumber);
 			sd.StableNameIndex = UInt16.Parse(data[2].Substring(1), NumberStyles.HexNumber);
@@ -37,6 +45,7 @@ namespace VPWStudio
 			{
 				sd.WrestlerID2s[w] = byte.Parse(id2[w], NumberStyles.HexNumber);
 			}
+			*/
 		}
 	}
 }
