@@ -4647,9 +4647,9 @@
 1F55=Ci4Palette;[Hat] Bandana 1 Front
 1F56=Ci4Texture;[Hat] Bandana 1 Front|p:1F55
 1F57=Ci4Palette;[Hat] Grandmaster Back/Top
-1F58=Ci4Texture;[Hat] Grandmaster Back/Top|p:1F4B
+1F58=Ci4Texture;[Hat] Grandmaster Back/Top|p:1F57
 1F59=Ci4Palette;[Hat] Grandmaster Front
-1F5A=Ci4Texture;[Hat] Grandmaster Front|p:1F4B
+1F5A=Ci4Texture;[Hat] Grandmaster Front|p:1F59
 1F5B=Ci4Palette;[Hat] Bandana 2 Back/Top
 1F5C=Ci4Texture;[Hat] Bandana 2 Back/Top|p:1F5B
 1F5D=Ci4Palette;[Hat] Bandana 2 Front
