@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pbPreview = new System.Windows.Forms.PictureBox();
 			this.gbModelInfo = new System.Windows.Forms.GroupBox();
 			this.tlpModelInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.tbNumFacesTopBit = new System.Windows.Forms.TextBox();
@@ -54,19 +53,10 @@
 			this.labelNumFaces = new System.Windows.Forms.Label();
 			this.labelNumFacesTopBit = new System.Windows.Forms.Label();
 			this.buttonExportWavefrontOBJ = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
+			this.glControl1 = new OpenTK.GLControl();
 			this.gbModelInfo.SuspendLayout();
 			this.tlpModelInfo.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// pbPreview
-			// 
-			this.pbPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbPreview.Location = new System.Drawing.Point(366, 50);
-			this.pbPreview.Name = "pbPreview";
-			this.pbPreview.Size = new System.Drawing.Size(256, 256);
-			this.pbPreview.TabIndex = 0;
-			this.pbPreview.TabStop = false;
 			// 
 			// gbModelInfo
 			// 
@@ -342,21 +332,32 @@
 			this.buttonExportWavefrontOBJ.UseVisualStyleBackColor = true;
 			this.buttonExportWavefrontOBJ.Click += new System.EventHandler(this.buttonExportWavefrontOBJ_Click);
 			// 
+			// glControl1
+			// 
+			this.glControl1.BackColor = System.Drawing.Color.Black;
+			this.glControl1.Location = new System.Drawing.Point(366, 12);
+			this.glControl1.Name = "glControl1";
+			this.glControl1.Size = new System.Drawing.Size(256, 291);
+			this.glControl1.TabIndex = 3;
+			this.glControl1.VSync = false;
+			this.glControl1.Load += new System.EventHandler(this.glControl1_Load);
+			this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
+			this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
+			// 
 			// ModelTool2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(634, 347);
+			this.Controls.Add(this.glControl1);
 			this.Controls.Add(this.buttonExportWavefrontOBJ);
 			this.Controls.Add(this.gbModelInfo);
-			this.Controls.Add(this.pbPreview);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ModelTool2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
-			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
 			this.gbModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.PerformLayout();
@@ -365,8 +366,6 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.PictureBox pbPreview;
 		private System.Windows.Forms.GroupBox gbModelInfo;
 		private System.Windows.Forms.TableLayoutPanel tlpModelInfo;
 		private System.Windows.Forms.Label labelModelScale;
@@ -392,5 +391,6 @@
 		private System.Windows.Forms.Label labelNumVertsTopBit;
 		private System.Windows.Forms.TextBox tbNumFacesTopBit;
 		private System.Windows.Forms.Label labelNumFacesTopBit;
+		private OpenTK.GLControl glControl1;
 	}
 }
