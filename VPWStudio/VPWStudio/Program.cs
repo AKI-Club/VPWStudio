@@ -694,6 +694,9 @@ namespace VPWStudio
 			// as of pre-alpha preview 6, this is meant to be two characters.
 			// the "N" is automatically provided, and the region is taken from the project file.
 
+			// 2021/01/14 todo: disallow changing the game code, since emus and flashcarts use it
+			// to determine save type.
+
 			bool writeIntCode = false;
 			if (intCode.Length == 2)
 			{
