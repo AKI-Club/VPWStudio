@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("freemco")]
 [assembly: AssemblyProduct("VPW Studio")]
-[assembly: AssemblyCopyright("Copyright © freem 2018-2020")]
+[assembly: AssemblyCopyright("Copyright © freem 2018-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
