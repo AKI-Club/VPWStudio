@@ -138,7 +138,6 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = String.Empty;
 			CachePath = String.Empty;
 			OutputRomInternalName = String.Empty;
-			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameRegion.NorthAmerica;
 			OutputRomCustomRegion = '0';
 			StableDefinitionFilePath = String.Empty;
@@ -173,7 +172,6 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = _gscPath;
 			CachePath = String.Empty;
 			OutputRomInternalName = String.Empty;
-			OutputRomGameCode = String.Empty;
 			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
 			OutputRomCustomRegion = '0';
 			StableDefinitionFilePath = String.Empty;
@@ -209,7 +207,6 @@ namespace VPWStudio
 			ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
 			CachePath = _src.CachePath;
 			OutputRomInternalName = _src.OutputRomInternalName;
-			OutputRomGameCode = _src.OutputRomGameCode;
 			OutputRomRegion = _src.OutputRomRegion;
 			OutputRomCustomRegion = _src.OutputRomCustomRegion;
 			StableDefinitionFilePath = _src.StableDefinitionFilePath;

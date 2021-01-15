@@ -120,21 +120,5 @@ namespace VPWStudio
 				}
 			}
 		}
-
-		/// <summary>
-		/// Get the internal game code for this project.
-		/// </summary>
-		/// <returns>Internal game code (NxxR); xx = game code, R = region</returns>
-		public string GetGameCode()
-		{
-			if (Settings.OutputRomRegion == GameRegion.Custom)
-			{
-				return "N" + Settings.OutputRomGameCode + Settings.OutputRomCustomRegion;
-			}
-			else
-			{
-				return "N" + Settings.OutputRomGameCode + (char)Settings.OutputRomRegion;
-			}
-		}
 	}
 }

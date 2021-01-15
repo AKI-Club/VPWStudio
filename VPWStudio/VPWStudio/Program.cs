@@ -686,73 +686,7 @@ namespace VPWStudio
 			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			#endregion
 
-			#region Product/Game Code
-			// 0x3B
-			string intCode = CurrentProject.GetGameCode();
-
-			// before pre-alpha preview 6, this was all four characters.
-			// as of pre-alpha preview 6, this is meant to be two characters.
-			// the "N" is automatically provided, and the region is taken from the project file.
-
-			// 2021/01/14 todo: disallow changing the game code, since emus and flashcarts use it
-			// to determine save type.
-
-			bool writeIntCode = false;
-			if (intCode.Length == 2)
-			{
-				// new format
-				intCode = "N" + intCode;
-				if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
-				{
-					intCode += CurrentProject.Settings.OutputRomCustomRegion;
-				}
-				else
-				{
-					intCode += (char)CurrentProject.Settings.OutputRomRegion;
-				}
-
-				BuildLogPub.AddLine(String.Format("Game Code: {0}", intCode), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-				writeIntCode = true;
-			}
-			else if (intCode.Length == 4)
-			{
-				// old format ("NxxR", where R is region)
-				string gameCode = intCode.Substring(1, 2);
-
-				// set code in project file so we don't have to do this again.
-				CurrentProject.Settings.OutputRomGameCode = gameCode;
-
-				// the user could've thrown in some other character that isn't "N".
-				intCode = "N" + gameCode;
-
-				if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
-				{
-					intCode += CurrentProject.Settings.OutputRomCustomRegion;
-				}
-				else
-				{
-					intCode += (char)CurrentProject.Settings.OutputRomRegion;
-				}
-
-				BuildLogPub.AddLine(String.Format("Game Code: {0}", intCode), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-				writeIntCode = true;
-			}
-			else
-			{
-				// what are you doing, you weirdo
-			}
-
-			if (writeIntCode)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					outRomData[0x3B + i] = (byte)intCode[i];
-				}
-			}
-
 			BuildLogPub.AddLine();
-
-			#endregion
 
 			#region non-FileTable Changes
 			/*

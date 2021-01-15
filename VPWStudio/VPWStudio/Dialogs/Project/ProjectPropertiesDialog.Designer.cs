@@ -44,21 +44,22 @@
 			this.tbAuthors = new System.Windows.Forms.TextBox();
 			this.cbGameType = new System.Windows.Forms.ComboBox();
 			this.tpOutputRom = new System.Windows.Forms.TabPage();
+			this.tlpOutputRom = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpRegion = new System.Windows.Forms.TableLayoutPanel();
 			this.cbRegionCode = new System.Windows.Forms.ComboBox();
-			this.labelProductRegion = new System.Windows.Forms.Label();
 			this.tbRegionCode = new System.Windows.Forms.TextBox();
-			this.tlpOutputRom = new System.Windows.Forms.TableLayoutPanel();
-			this.tbOutRomProductCode = new System.Windows.Forms.TextBox();
+			this.labelProductRegion = new System.Windows.Forms.Label();
 			this.labelOutROM = new System.Windows.Forms.Label();
 			this.tlpOutROM = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetOutROM = new System.Windows.Forms.Button();
 			this.tbOutROMPath = new System.Windows.Forms.TextBox();
 			this.labelOutRomInternalName = new System.Windows.Forms.Label();
 			this.tbOutRomInternalName = new System.Windows.Forms.TextBox();
-			this.labelOutRomGameCode = new System.Windows.Forms.Label();
 			this.tpProjectFiles = new System.Windows.Forms.TabPage();
 			this.tlpProjFilesTab = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetCachePath = new System.Windows.Forms.Button();
+			this.tbCachePath = new System.Windows.Forms.TextBox();
 			this.tlpWrestlerNames = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetWrestlerNameFile = new System.Windows.Forms.Button();
 			this.tbWrestlerNamesFile = new System.Windows.Forms.TextBox();
@@ -80,25 +81,22 @@
 			this.labelAssetFilesPath = new System.Windows.Forms.Label();
 			this.labelWrestlerNamesFile = new System.Windows.Forms.Label();
 			this.labelCachePath = new System.Windows.Forms.Label();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetCachePath = new System.Windows.Forms.Button();
-			this.tbCachePath = new System.Windows.Forms.TextBox();
 			this.tcProjectProperties.SuspendLayout();
 			this.tpMainProperties.SuspendLayout();
 			this.tlpProjectOptions.SuspendLayout();
 			this.tlpBaseROM.SuspendLayout();
 			this.tpOutputRom.SuspendLayout();
-			this.tlpRegion.SuspendLayout();
 			this.tlpOutputRom.SuspendLayout();
+			this.tlpRegion.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
 			this.tpProjectFiles.SuspendLayout();
 			this.tlpProjFilesTab.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.tlpWrestlerNames.SuspendLayout();
 			this.tlpAssetFilesPath.SuspendLayout();
 			this.tlpProjFilesPath.SuspendLayout();
 			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -282,6 +280,26 @@
 			this.tpOutputRom.Text = "Output ROM";
 			this.tpOutputRom.UseVisualStyleBackColor = true;
 			// 
+			// tlpOutputRom
+			// 
+			this.tlpOutputRom.ColumnCount = 2;
+			this.tlpOutputRom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpOutputRom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpOutputRom.Controls.Add(this.labelOutROM, 0, 0);
+			this.tlpOutputRom.Controls.Add(this.tlpOutROM, 1, 0);
+			this.tlpOutputRom.Controls.Add(this.labelOutRomInternalName, 0, 1);
+			this.tlpOutputRom.Controls.Add(this.tbOutRomInternalName, 1, 1);
+			this.tlpOutputRom.Controls.Add(this.labelProductRegion, 0, 2);
+			this.tlpOutputRom.Controls.Add(this.tlpRegion, 1, 2);
+			this.tlpOutputRom.Location = new System.Drawing.Point(3, 3);
+			this.tlpOutputRom.Name = "tlpOutputRom";
+			this.tlpOutputRom.RowCount = 3;
+			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpOutputRom.Size = new System.Drawing.Size(496, 247);
+			this.tlpOutputRom.TabIndex = 0;
+			// 
 			// tlpRegion
 			// 
 			this.tlpRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -290,7 +308,7 @@
 			this.tlpRegion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
 			this.tlpRegion.Controls.Add(this.cbRegionCode, 0, 0);
 			this.tlpRegion.Controls.Add(this.tbRegionCode, 1, 0);
-			this.tlpRegion.Location = new System.Drawing.Point(127, 188);
+			this.tlpRegion.Location = new System.Drawing.Point(127, 179);
 			this.tlpRegion.Name = "tlpRegion";
 			this.tlpRegion.RowCount = 1;
 			this.tlpRegion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -308,16 +326,6 @@
 			this.cbRegionCode.TabIndex = 10;
 			this.cbRegionCode.SelectedIndexChanged += new System.EventHandler(this.cbRegionCode_SelectedIndexChanged);
 			// 
-			// labelProductRegion
-			// 
-			this.labelProductRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelProductRegion.AutoSize = true;
-			this.labelProductRegion.Location = new System.Drawing.Point(3, 208);
-			this.labelProductRegion.Name = "labelProductRegion";
-			this.labelProductRegion.Size = new System.Drawing.Size(118, 13);
-			this.labelProductRegion.TabIndex = 9;
-			this.labelProductRegion.Text = "Product &Region";
-			// 
 			// tbRegionCode
 			// 
 			this.tbRegionCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -328,43 +336,21 @@
 			this.tbRegionCode.Size = new System.Drawing.Size(246, 20);
 			this.tbRegionCode.TabIndex = 11;
 			// 
-			// tlpOutputRom
+			// labelProductRegion
 			// 
-			this.tlpOutputRom.ColumnCount = 2;
-			this.tlpOutputRom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutputRom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpOutputRom.Controls.Add(this.tlpRegion, 1, 3);
-			this.tlpOutputRom.Controls.Add(this.tbOutRomProductCode, 1, 2);
-			this.tlpOutputRom.Controls.Add(this.labelProductRegion, 0, 3);
-			this.tlpOutputRom.Controls.Add(this.labelOutROM, 0, 0);
-			this.tlpOutputRom.Controls.Add(this.tlpOutROM, 1, 0);
-			this.tlpOutputRom.Controls.Add(this.labelOutRomInternalName, 0, 1);
-			this.tlpOutputRom.Controls.Add(this.tbOutRomInternalName, 1, 1);
-			this.tlpOutputRom.Controls.Add(this.labelOutRomGameCode, 0, 2);
-			this.tlpOutputRom.Location = new System.Drawing.Point(3, 3);
-			this.tlpOutputRom.Name = "tlpOutputRom";
-			this.tlpOutputRom.RowCount = 4;
-			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutputRom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutputRom.Size = new System.Drawing.Size(496, 247);
-			this.tlpOutputRom.TabIndex = 0;
-			// 
-			// tbOutRomProductCode
-			// 
-			this.tbOutRomProductCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutRomProductCode.Location = new System.Drawing.Point(127, 142);
-			this.tbOutRomProductCode.MaxLength = 2;
-			this.tbOutRomProductCode.Name = "tbOutRomProductCode";
-			this.tbOutRomProductCode.Size = new System.Drawing.Size(366, 20);
-			this.tbOutRomProductCode.TabIndex = 8;
+			this.labelProductRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelProductRegion.AutoSize = true;
+			this.labelProductRegion.Location = new System.Drawing.Point(3, 199);
+			this.labelProductRegion.Name = "labelProductRegion";
+			this.labelProductRegion.Size = new System.Drawing.Size(118, 13);
+			this.labelProductRegion.TabIndex = 9;
+			this.labelProductRegion.Text = "Product &Region";
 			// 
 			// labelOutROM
 			// 
 			this.labelOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOutROM.AutoSize = true;
-			this.labelOutROM.Location = new System.Drawing.Point(3, 24);
+			this.labelOutROM.Location = new System.Drawing.Point(3, 34);
 			this.labelOutROM.Name = "labelOutROM";
 			this.labelOutROM.Size = new System.Drawing.Size(118, 13);
 			this.labelOutROM.TabIndex = 2;
@@ -382,13 +368,13 @@
 			this.tlpOutROM.Name = "tlpOutROM";
 			this.tlpOutROM.RowCount = 1;
 			this.tlpOutROM.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpOutROM.Size = new System.Drawing.Size(366, 55);
+			this.tlpOutROM.Size = new System.Drawing.Size(366, 76);
 			this.tlpOutROM.TabIndex = 7;
 			// 
 			// buttonSetOutROM
 			// 
 			this.buttonSetOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetOutROM.Location = new System.Drawing.Point(332, 12);
+			this.buttonSetOutROM.Location = new System.Drawing.Point(332, 23);
 			this.buttonSetOutROM.Name = "buttonSetOutROM";
 			this.buttonSetOutROM.Size = new System.Drawing.Size(31, 30);
 			this.buttonSetOutROM.TabIndex = 4;
@@ -399,7 +385,7 @@
 			// tbOutROMPath
 			// 
 			this.tbOutROMPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutROMPath.Location = new System.Drawing.Point(3, 17);
+			this.tbOutROMPath.Location = new System.Drawing.Point(3, 28);
 			this.tbOutROMPath.Name = "tbOutROMPath";
 			this.tbOutROMPath.Size = new System.Drawing.Size(323, 20);
 			this.tbOutROMPath.TabIndex = 3;
@@ -408,7 +394,7 @@
 			// 
 			this.labelOutRomInternalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOutRomInternalName.AutoSize = true;
-			this.labelOutRomInternalName.Location = new System.Drawing.Point(3, 85);
+			this.labelOutRomInternalName.Location = new System.Drawing.Point(3, 116);
 			this.labelOutRomInternalName.Name = "labelOutRomInternalName";
 			this.labelOutRomInternalName.Size = new System.Drawing.Size(118, 13);
 			this.labelOutRomInternalName.TabIndex = 5;
@@ -417,21 +403,11 @@
 			// tbOutRomInternalName
 			// 
 			this.tbOutRomInternalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutRomInternalName.Location = new System.Drawing.Point(127, 81);
+			this.tbOutRomInternalName.Location = new System.Drawing.Point(127, 113);
 			this.tbOutRomInternalName.MaxLength = 20;
 			this.tbOutRomInternalName.Name = "tbOutRomInternalName";
 			this.tbOutRomInternalName.Size = new System.Drawing.Size(366, 20);
 			this.tbOutRomInternalName.TabIndex = 6;
-			// 
-			// labelOutRomGameCode
-			// 
-			this.labelOutRomGameCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelOutRomGameCode.AutoSize = true;
-			this.labelOutRomGameCode.Location = new System.Drawing.Point(3, 146);
-			this.labelOutRomGameCode.Name = "labelOutRomGameCode";
-			this.labelOutRomGameCode.Size = new System.Drawing.Size(118, 13);
-			this.labelOutRomGameCode.TabIndex = 7;
-			this.labelOutRomGameCode.Text = "&Product Code";
 			// 
 			// tpProjectFiles
 			// 
@@ -473,6 +449,40 @@
 			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
 			this.tlpProjFilesTab.Size = new System.Drawing.Size(496, 250);
 			this.tlpProjFilesTab.TabIndex = 0;
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanel2.Controls.Add(this.buttonSetCachePath, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.tbCachePath, 0, 0);
+			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(141, 208);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 1;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 39);
+			this.tableLayoutPanel2.TabIndex = 25;
+			// 
+			// buttonSetCachePath
+			// 
+			this.buttonSetCachePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetCachePath.Location = new System.Drawing.Point(319, 6);
+			this.buttonSetCachePath.Name = "buttonSetCachePath";
+			this.buttonSetCachePath.Size = new System.Drawing.Size(30, 26);
+			this.buttonSetCachePath.TabIndex = 13;
+			this.buttonSetCachePath.Text = "...";
+			this.buttonSetCachePath.UseVisualStyleBackColor = true;
+			this.buttonSetCachePath.Click += new System.EventHandler(this.buttonSetCachePath_Click);
+			// 
+			// tbCachePath
+			// 
+			this.tbCachePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCachePath.Location = new System.Drawing.Point(3, 9);
+			this.tbCachePath.Name = "tbCachePath";
+			this.tbCachePath.Size = new System.Drawing.Size(310, 20);
+			this.tbCachePath.TabIndex = 12;
 			// 
 			// tlpWrestlerNames
 			// 
@@ -708,40 +718,6 @@
 			this.labelCachePath.TabIndex = 24;
 			this.labelCachePath.Text = "C&ache Path";
 			// 
-			// tableLayoutPanel2
-			// 
-			this.tableLayoutPanel2.ColumnCount = 2;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel2.Controls.Add(this.buttonSetCachePath, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.tbCachePath, 0, 0);
-			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(141, 208);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 1;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 39);
-			this.tableLayoutPanel2.TabIndex = 25;
-			// 
-			// buttonSetCachePath
-			// 
-			this.buttonSetCachePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetCachePath.Location = new System.Drawing.Point(319, 6);
-			this.buttonSetCachePath.Name = "buttonSetCachePath";
-			this.buttonSetCachePath.Size = new System.Drawing.Size(30, 26);
-			this.buttonSetCachePath.TabIndex = 13;
-			this.buttonSetCachePath.Text = "...";
-			this.buttonSetCachePath.UseVisualStyleBackColor = true;
-			this.buttonSetCachePath.Click += new System.EventHandler(this.buttonSetCachePath_Click);
-			// 
-			// tbCachePath
-			// 
-			this.tbCachePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCachePath.Location = new System.Drawing.Point(3, 9);
-			this.tbCachePath.Name = "tbCachePath";
-			this.tbCachePath.Size = new System.Drawing.Size(310, 20);
-			this.tbCachePath.TabIndex = 12;
-			// 
 			// ProjectPropertiesDialog
 			// 
 			this.AcceptButton = this.buttonOK;
@@ -766,15 +742,17 @@
 			this.tlpBaseROM.ResumeLayout(false);
 			this.tlpBaseROM.PerformLayout();
 			this.tpOutputRom.ResumeLayout(false);
-			this.tlpRegion.ResumeLayout(false);
-			this.tlpRegion.PerformLayout();
 			this.tlpOutputRom.ResumeLayout(false);
 			this.tlpOutputRom.PerformLayout();
+			this.tlpRegion.ResumeLayout(false);
+			this.tlpRegion.PerformLayout();
 			this.tlpOutROM.ResumeLayout(false);
 			this.tlpOutROM.PerformLayout();
 			this.tpProjectFiles.ResumeLayout(false);
 			this.tlpProjFilesTab.ResumeLayout(false);
 			this.tlpProjFilesTab.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.tlpWrestlerNames.ResumeLayout(false);
 			this.tlpWrestlerNames.PerformLayout();
 			this.tlpAssetFilesPath.ResumeLayout(false);
@@ -785,8 +763,6 @@
 			this.tlpGameSharkCodeFile.PerformLayout();
 			this.tlpCustomLoc.ResumeLayout(false);
 			this.tlpCustomLoc.PerformLayout();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -816,7 +792,6 @@
 		private System.Windows.Forms.TextBox tbOutROMPath;
 		private System.Windows.Forms.Label labelOutRomInternalName;
 		private System.Windows.Forms.TextBox tbOutRomInternalName;
-		private System.Windows.Forms.Label labelOutRomGameCode;
 		private System.Windows.Forms.TabPage tpProjectFiles;
 		private System.Windows.Forms.TableLayoutPanel tlpProjFilesTab;
 		private System.Windows.Forms.TableLayoutPanel tlpProjFilesPath;
@@ -831,7 +806,6 @@
 		private System.Windows.Forms.Button buttonSetGSCodefile;
 		private System.Windows.Forms.TextBox tbGSCodeFile;
 		private System.Windows.Forms.Label labelProjFilesPath;
-		private System.Windows.Forms.TextBox tbOutRomProductCode;
 		private System.Windows.Forms.Label labelAssetFilesPath;
 		private System.Windows.Forms.TableLayoutPanel tlpAssetFilesPath;
 		private System.Windows.Forms.Button buttonSetAssetFilesPath;

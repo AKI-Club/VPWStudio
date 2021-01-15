@@ -73,7 +73,6 @@ namespace VPWStudio
 				// output rom page
 				tbOutROMPath.Text = Program.CurrentProject.Settings.OutputRomPath;
 				tbOutRomInternalName.Text = Program.CurrentProject.Settings.OutputRomInternalName;
-				tbOutRomProductCode.Text = Program.CurrentProject.Settings.OutputRomGameCode;
 
 				if (Program.CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
 				{
@@ -159,14 +158,6 @@ namespace VPWStudio
 			// todo: output rom internal name must not be blank?
 			// length issues are ignored because they can be dealt with silently at build time.
 
-			if (tbOutRomProductCode.Text.Equals(String.Empty))
-			{
-				// empty string? replace with the game code for the current game.
-				tbOutRomProductCode.Text = GameInformation.GameDefs[(SpecificGame)cbGameType.SelectedIndex].GameCode.Substring(1, 2);
-			}
-
-			// todo: check length of game code text
-
 			if (RegionList[cbRegionCode.SelectedIndex] == GameRegion.Custom && tbRegionCode.Text == String.Empty)
 			{
 				Program.ErrorMessageBox("Region code must be provided if using a custom region.");
@@ -198,7 +189,6 @@ namespace VPWStudio
 			// output rom tab
 			NewSettings.OutputRomPath = tbOutROMPath.Text;
 			NewSettings.OutputRomInternalName = tbOutRomInternalName.Text;
-			NewSettings.OutputRomGameCode = tbOutRomProductCode.Text;
 			NewSettings.OutputRomRegion = RegionList[cbRegionCode.SelectedIndex];
 			if (RegionList[cbRegionCode.SelectedIndex] == GameRegion.Custom)
 			{
