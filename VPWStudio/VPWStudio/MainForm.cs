@@ -377,17 +377,16 @@ namespace VPWStudio
 				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
 
 				// assume first letter at 0x3B is 'N'
-				ms.Seek(0x3C, SeekOrigin.Begin);
-				char[] gameCode = br.ReadChars(3);
+				ms.Seek(0x3E, SeekOrigin.Begin);
+				char gameRegion = br.ReadChar();
 				br.Close();
 
-				Program.CurrentProject.Settings.OutputRomGameCode = String.Format("{0}{1}", gameCode[0], gameCode[1]);
-				Program.CurrentProject.Settings.OutputRomCustomRegion = gameCode[2];
+				Program.CurrentProject.Settings.OutputRomCustomRegion = gameRegion;
 
 				bool foundRegion = false;
 				foreach (GameRegion gr in Enum.GetValues(typeof(GameRegion)))
 				{
-					if (gameCode[2] == (char)gr)
+					if (gameRegion == (char)gr)
 					{
 						foundRegion = true;
 						Program.CurrentProject.Settings.OutputRomRegion = gr;
