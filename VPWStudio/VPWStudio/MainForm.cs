@@ -920,6 +920,12 @@ namespace VPWStudio
 			FileTableEditor.Show();
 		}
 
+		// temporary bullshit
+		private static List<VPWGames> IntroEditorSupported = new List<VPWGames>{
+			VPWGames.Revenge,
+			VPWGames.VPW2
+		};
+
 		/// <summary>
 		/// Game intro editor
 		/// </summary>
@@ -930,7 +936,7 @@ namespace VPWStudio
 				return;
 			}
 
-			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			if (!IntroEditorSupported.Contains(Program.CurrentProject.Settings.BaseGame))
 			{
 				MessageBox.Show("Game Intro Editor only \"works\" for VPW2 right now. Other modern games will be supported soon.", "Game Intro Editor");
 				return;
