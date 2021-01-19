@@ -295,5 +295,17 @@ namespace VPWStudio.Editors.NoMercy
 				// might want to update the list to show the updated names too
 			}
 		}
+
+		private void btnUpdateTheme_Click(object sender, EventArgs e)
+		{
+			WrestlerDefs[lbWrestlers.SelectedIndex].ThemeSong = (byte)cbThemeMusic.SelectedIndex;
+			// todo: doesn't write back to rom
+		}
+
+		private void btnUpdateVideo_Click(object sender, EventArgs e)
+		{
+			WrestlerDefs[lbWrestlers.SelectedIndex].EntranceVideo = (byte)cbEntranceVideo.SelectedIndex;
+			// todo: doesn't write back to rom
+		}
 	}
 }

@@ -57,16 +57,22 @@
 			this.tlpProfile = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonProfile = new System.Windows.Forms.Button();
 			this.tbProfileIndex = new System.Windows.Forms.TextBox();
-			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.tlpAppearance = new System.Windows.Forms.TableLayoutPanel();
-			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
 			this.buttonAppearance = new System.Windows.Forms.Button();
+			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
+			this.gbWrestlers = new System.Windows.Forms.GroupBox();
+			this.tlpTheme = new System.Windows.Forms.TableLayoutPanel();
+			this.btnUpdateTheme = new System.Windows.Forms.Button();
+			this.tlpEntranceVideo = new System.Windows.Forms.TableLayoutPanel();
+			this.btnUpdateVideo = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
 			this.tlpProfile.SuspendLayout();
-			this.gbWrestlers.SuspendLayout();
 			this.tlpAppearance.SuspendLayout();
+			this.gbWrestlers.SuspendLayout();
+			this.tlpTheme.SuspendLayout();
+			this.tlpEntranceVideo.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -88,6 +94,7 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.40244F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.59756F));
+			this.tableLayoutPanel1.Controls.Add(this.tlpTheme, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.tbWeight, 1, 6);
 			this.tableLayoutPanel1.Controls.Add(this.tbUnknown, 1, 5);
 			this.tableLayoutPanel1.Controls.Add(this.tbHeight, 1, 4);
@@ -95,10 +102,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.tbWrestlerID2, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.labelWrestlerID4, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelWrestlerID2, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.labelThemeMusic, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.labelEntranceVideo, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.cbThemeMusic, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.cbEntranceVideo, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.labelHeight, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.labelWeight, 0, 6);
@@ -110,6 +114,8 @@
 			this.tableLayoutPanel1.Controls.Add(this.label10, 0, 10);
 			this.tableLayoutPanel1.Controls.Add(this.tlpProfile, 1, 10);
 			this.tableLayoutPanel1.Controls.Add(this.tlpAppearance, 1, 9);
+			this.tableLayoutPanel1.Controls.Add(this.labelThemeMusic, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.tlpEntranceVideo, 1, 3);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(164, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 11;
@@ -276,9 +282,9 @@
             "37 Original 5",
             "38 Original 6",
             "39 Original 7"});
-			this.cbThemeMusic.Location = new System.Drawing.Point(106, 72);
+			this.cbThemeMusic.Location = new System.Drawing.Point(3, 3);
 			this.cbThemeMusic.Name = "cbThemeMusic";
-			this.cbThemeMusic.Size = new System.Drawing.Size(219, 21);
+			this.cbThemeMusic.Size = new System.Drawing.Size(147, 21);
 			this.cbThemeMusic.TabIndex = 6;
 			// 
 			// cbEntranceVideo
@@ -331,9 +337,9 @@
             "29 Eddy",
             "2A Saturn",
             "2B Right to Censor"});
-			this.cbEntranceVideo.Location = new System.Drawing.Point(106, 105);
+			this.cbEntranceVideo.Location = new System.Drawing.Point(3, 3);
 			this.cbEntranceVideo.Name = "cbEntranceVideo";
-			this.cbEntranceVideo.Size = new System.Drawing.Size(219, 21);
+			this.cbEntranceVideo.Size = new System.Drawing.Size(147, 21);
 			this.cbEntranceVideo.TabIndex = 8;
 			// 
 			// labelHeight
@@ -511,16 +517,6 @@
 			this.tbProfileIndex.Size = new System.Drawing.Size(142, 20);
 			this.tbProfileIndex.TabIndex = 24;
 			// 
-			// gbWrestlers
-			// 
-			this.gbWrestlers.Controls.Add(this.lbWrestlers);
-			this.gbWrestlers.Location = new System.Drawing.Point(12, 12);
-			this.gbWrestlers.Name = "gbWrestlers";
-			this.gbWrestlers.Size = new System.Drawing.Size(146, 372);
-			this.gbWrestlers.TabIndex = 0;
-			this.gbWrestlers.TabStop = false;
-			this.gbWrestlers.Text = "&Wrestlers";
-			// 
 			// tlpAppearance
 			// 
 			this.tlpAppearance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -536,15 +532,6 @@
 			this.tlpAppearance.Size = new System.Drawing.Size(219, 27);
 			this.tlpAppearance.TabIndex = 29;
 			// 
-			// tbAppearanceIndex
-			// 
-			this.tbAppearanceIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAppearanceIndex.Location = new System.Drawing.Point(3, 3);
-			this.tbAppearanceIndex.Name = "tbAppearanceIndex";
-			this.tbAppearanceIndex.ReadOnly = true;
-			this.tbAppearanceIndex.Size = new System.Drawing.Size(142, 20);
-			this.tbAppearanceIndex.TabIndex = 23;
-			// 
 			// buttonAppearance
 			// 
 			this.buttonAppearance.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -555,6 +542,77 @@
 			this.buttonAppearance.Text = "View/Edit";
 			this.buttonAppearance.UseVisualStyleBackColor = true;
 			this.buttonAppearance.Click += new System.EventHandler(this.buttonAppearance_Click);
+			// 
+			// tbAppearanceIndex
+			// 
+			this.tbAppearanceIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbAppearanceIndex.Location = new System.Drawing.Point(3, 3);
+			this.tbAppearanceIndex.Name = "tbAppearanceIndex";
+			this.tbAppearanceIndex.ReadOnly = true;
+			this.tbAppearanceIndex.Size = new System.Drawing.Size(142, 20);
+			this.tbAppearanceIndex.TabIndex = 23;
+			// 
+			// gbWrestlers
+			// 
+			this.gbWrestlers.Controls.Add(this.lbWrestlers);
+			this.gbWrestlers.Location = new System.Drawing.Point(12, 12);
+			this.gbWrestlers.Name = "gbWrestlers";
+			this.gbWrestlers.Size = new System.Drawing.Size(146, 372);
+			this.gbWrestlers.TabIndex = 0;
+			this.gbWrestlers.TabStop = false;
+			this.gbWrestlers.Text = "&Wrestlers";
+			// 
+			// tlpTheme
+			// 
+			this.tlpTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpTheme.ColumnCount = 2;
+			this.tlpTheme.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpTheme.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpTheme.Controls.Add(this.cbThemeMusic, 0, 0);
+			this.tlpTheme.Controls.Add(this.btnUpdateTheme, 1, 0);
+			this.tlpTheme.Location = new System.Drawing.Point(106, 69);
+			this.tlpTheme.Name = "tlpTheme";
+			this.tlpTheme.RowCount = 1;
+			this.tlpTheme.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpTheme.Size = new System.Drawing.Size(219, 27);
+			this.tlpTheme.TabIndex = 2;
+			// 
+			// btnUpdateTheme
+			// 
+			this.btnUpdateTheme.Enabled = false;
+			this.btnUpdateTheme.Location = new System.Drawing.Point(156, 3);
+			this.btnUpdateTheme.Name = "btnUpdateTheme";
+			this.btnUpdateTheme.Size = new System.Drawing.Size(60, 21);
+			this.btnUpdateTheme.TabIndex = 7;
+			this.btnUpdateTheme.Text = "Update";
+			this.btnUpdateTheme.UseVisualStyleBackColor = true;
+			this.btnUpdateTheme.Click += new System.EventHandler(this.btnUpdateTheme_Click);
+			// 
+			// tlpEntranceVideo
+			// 
+			this.tlpEntranceVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpEntranceVideo.ColumnCount = 2;
+			this.tlpEntranceVideo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpEntranceVideo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpEntranceVideo.Controls.Add(this.cbEntranceVideo, 0, 0);
+			this.tlpEntranceVideo.Controls.Add(this.btnUpdateVideo, 1, 0);
+			this.tlpEntranceVideo.Location = new System.Drawing.Point(106, 102);
+			this.tlpEntranceVideo.Name = "tlpEntranceVideo";
+			this.tlpEntranceVideo.RowCount = 1;
+			this.tlpEntranceVideo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpEntranceVideo.Size = new System.Drawing.Size(219, 27);
+			this.tlpEntranceVideo.TabIndex = 30;
+			// 
+			// btnUpdateVideo
+			// 
+			this.btnUpdateVideo.Enabled = false;
+			this.btnUpdateVideo.Location = new System.Drawing.Point(156, 3);
+			this.btnUpdateVideo.Name = "btnUpdateVideo";
+			this.btnUpdateVideo.Size = new System.Drawing.Size(60, 21);
+			this.btnUpdateVideo.TabIndex = 9;
+			this.btnUpdateVideo.Text = "Update";
+			this.btnUpdateVideo.UseVisualStyleBackColor = true;
+			this.btnUpdateVideo.Click += new System.EventHandler(this.btnUpdateVideo_Click);
 			// 
 			// WrestlerMain_NoMercy
 			// 
@@ -576,9 +634,11 @@
 			this.tlpMoveset.PerformLayout();
 			this.tlpProfile.ResumeLayout(false);
 			this.tlpProfile.PerformLayout();
-			this.gbWrestlers.ResumeLayout(false);
 			this.tlpAppearance.ResumeLayout(false);
 			this.tlpAppearance.PerformLayout();
+			this.gbWrestlers.ResumeLayout(false);
+			this.tlpTheme.ResumeLayout(false);
+			this.tlpEntranceVideo.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -618,5 +678,9 @@
 		private System.Windows.Forms.TableLayoutPanel tlpAppearance;
 		private System.Windows.Forms.Button buttonAppearance;
 		private System.Windows.Forms.TextBox tbAppearanceIndex;
+		private System.Windows.Forms.TableLayoutPanel tlpTheme;
+		private System.Windows.Forms.Button btnUpdateTheme;
+		private System.Windows.Forms.TableLayoutPanel tlpEntranceVideo;
+		private System.Windows.Forms.Button btnUpdateVideo;
 	}
 }
