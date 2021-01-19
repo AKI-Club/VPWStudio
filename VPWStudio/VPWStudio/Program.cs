@@ -686,6 +686,20 @@ namespace VPWStudio
 			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			#endregion
 
+			#region ROM Region
+			// offset 0x3E
+			if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
+			{
+				outRomData[0x3E] = (byte)CurrentProject.Settings.OutputRomCustomRegion;
+				BuildLogPub.AddLine(String.Format("Game Region: Custom ({0})", CurrentProject.Settings.OutputRomCustomRegion));
+			}
+			else
+			{
+				outRomData[0x3E] = (byte)((char)CurrentProject.Settings.OutputRomRegion);
+				BuildLogPub.AddLine(String.Format("Game Region: {0}", CurrentProject.Settings.OutputRomRegion));
+			}
+			#endregion
+
 			BuildLogPub.AddLine();
 
 			#region non-FileTable Changes
