@@ -613,6 +613,7 @@ namespace VPWStudio.Editors
 		#endregion
 
 		#region Import/Export
+		// todo: apparently jasc (and possibly gimp) imports are broken
 		private void buttonImport_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
