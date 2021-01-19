@@ -94,6 +94,7 @@ namespace VPWStudio
 			}
 
 			// if no values were found in the location file, use hardcoded values
+			// xxx: these are VPW2 specific!!
 			if (!hasAnimLocation)
 			{
 				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Anims");
