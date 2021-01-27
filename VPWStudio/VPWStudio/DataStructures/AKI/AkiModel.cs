@@ -268,7 +268,8 @@ namespace VPWStudio
 		/// <summary>
 		/// Texture Size (multiplied by 8 in-game)
 		/// </summary>
-		/// stored as nibbles (perhaps "uuuu vvvv" format)
+		/// stored as nibbles ("wwww hhhh" format)
+		/// a value of 0x00 probably means "use binded texture size"
 		public int TextureSize;
 
 		private int TextureSizeX;
