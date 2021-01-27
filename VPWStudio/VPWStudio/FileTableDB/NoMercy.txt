@@ -101,7 +101,7 @@
 0064=AkiTexture;
 0065=AkiTexture;
 0066=AkiTexture;
-0067=AkiTexture;
+0067=AkiTexture;[Tournament] MAN/COM indicators
 006A=AkiText;Move Names 1
 006B=AkiText;Move Names 2
 006C=AkiText;Move Names 3
@@ -15101,7 +15101,7 @@
 4845=AkiTexture;[PPV?] White Square
 4846=AkiTexture;[PPV] Category BG
 4847=AkiTexture;[PPV] Category BG 2
-4848=AkiTexture;[PPV?] VS Black
+4848=AkiTexture;[PPV] VS Black
 4849=AkiTexture;[PPV] Event
 484A=AkiTexture;[PPV] Arena
 484B=AkiTexture;[PPV] Place
@@ -15117,7 +15117,7 @@
 4855=AkiTexture;W (win/lose?)
 4856=AkiTexture;W Glow (win/lose?)
 4857=AkiTexture;L (win/lose?)
-4858=AkiTexture;Blue Rectangle?
+4858=AkiTexture;[PPV] Blue Rectangle
 4859=AkiTexture;[Titantron] Kurt Angle frame 1
 485A=AkiTexture;[Titantron] Kurt Angle frame 2
 485B=AkiTexture;[Titantron] Kurt Angle frame 3
