@@ -691,12 +691,12 @@ namespace VPWStudio
 			if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
 			{
 				outRomData[0x3E] = (byte)CurrentProject.Settings.OutputRomCustomRegion;
-				BuildLogPub.AddLine(String.Format("Game Region: Custom ({0})", CurrentProject.Settings.OutputRomCustomRegion));
+				BuildLogPub.AddLine(String.Format("Game Region: Custom ({0})", CurrentProject.Settings.OutputRomCustomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
 			else
 			{
 				outRomData[0x3E] = (byte)((char)CurrentProject.Settings.OutputRomRegion);
-				BuildLogPub.AddLine(String.Format("Game Region: {0}", CurrentProject.Settings.OutputRomRegion));
+				BuildLogPub.AddLine(String.Format("Game Region: {0}", CurrentProject.Settings.OutputRomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 			}
 			#endregion
 
