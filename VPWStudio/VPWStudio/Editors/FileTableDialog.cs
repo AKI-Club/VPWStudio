@@ -920,6 +920,28 @@ namespace VPWStudio
 					}
 					break;
 
+				// WWF No Mercy Smackdown Mall Shop menu items
+				case FileTypes.MenuItems_Shop:
+						{
+						Editors.NoMercy.MenuItemsShop_NoMercy gme = new Editors.NoMercy.MenuItemsShop_NoMercy(key);
+
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
+						{
+							// load file
+							gme = new Editors.NoMercy.MenuItemsShop_NoMercy(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else
+						{
+							// load rom
+							gme = new Editors.NoMercy.MenuItemsShop_NoMercy(key);
+						}
+
+						if (gme.ShowDialog() == DialogResult.OK)
+						{
+						}
+					}
+					break;
+
 				// TEMPORARY
 				case FileTypes.AkiModel:
 					{
