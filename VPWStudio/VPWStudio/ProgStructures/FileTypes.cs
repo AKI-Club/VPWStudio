@@ -56,6 +56,7 @@ namespace VPWStudio
 		MenuItems_NoGroup, // WWF No Mercy groupless Items (pictures, titantrons, themes)
 		//MenuItems_Costume, // WWF No Mercy Costume Items
 		//MenuItems_Moves, // WWF No Mercy Move List Items
+		MenuItems_Shop, // WWF No Mercy Smackdown Mall Shop Items
 		#endregion
 
 		#endregion
@@ -88,6 +89,7 @@ namespace VPWStudio
 			{ FileTypes.MenuItems_NoGroup, ".nmitem0" },
 			//{ FileTypes.MenuItems_Costume, ".nmitem1" },
 			// moves will be .nmitem2
+			{ FileTypes.MenuItems_Shop, ".nmitem3" },
 		};
 
 		/// <summary>

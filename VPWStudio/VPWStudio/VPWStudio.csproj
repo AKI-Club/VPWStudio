@@ -106,6 +106,12 @@
     <Compile Include="Editors\NoMercy\MenuItemsNoGroup_NoMercy.Designer.cs">
       <DependentUpon>MenuItemsNoGroup_NoMercy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\MenuItemsShop_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\MenuItemsShop_NoMercy.Designer.cs">
+      <DependentUpon>MenuItemsShop_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameSpecific\IntroSequence_Later.cs" />
     <Compile Include="DataStructures\AKI\MenuBackground.cs" />
     <Compile Include="DataStructures\AKI\AkiArchive.cs" />
@@ -362,6 +368,7 @@
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_Costume.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_NoGroup.cs" />
+    <Compile Include="GameSpecific\NoMercy\MenuItems_Shop.cs" />
     <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
@@ -590,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\MenuItemsNoGroup_NoMercy.resx">
       <DependentUpon>MenuItemsNoGroup_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\MenuItemsShop_NoMercy.resx">
+      <DependentUpon>MenuItemsShop_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\StableDefs_NoMercy.resx">
       <DependentUpon>StableDefs_NoMercy.cs</DependentUpon>
