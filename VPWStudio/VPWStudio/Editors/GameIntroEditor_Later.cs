@@ -40,7 +40,6 @@ namespace VPWStudio
 
 			IntroAnimations = new List<IntroSequenceAnimation_Later>();
 			IntroImages = new List<IntroSequenceGraphic_Later>();
-			IntroImages = new List<IntroSequenceGraphic_Later>();
 			IntroSequenceItems = new List<IntroSequence_Later>();
 
 			LoadIntroData();
@@ -94,7 +93,7 @@ namespace VPWStudio
 			}
 
 			// if no values were found in the location file, use hardcoded values
-			// xxx: these are VPW2 specific!!
+			// xxx: these are VPW2 specific!! use Program.CurrentProject.Settings.GameType
 			if (!hasAnimLocation)
 			{
 				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Anims");
