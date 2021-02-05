@@ -66,13 +66,6 @@ namespace VPWStudio
 		/// Image bytes.
 		/// </summary>
 		public byte[] Data;
-
-		/// <summary>
-		/// Cached Bitmap data.
-		/// </summary>
-		/*
-		public Bitmap CachedBitmap;
-		*/
 		#endregion
 
 		/// <summary>
@@ -87,7 +80,6 @@ namespace VPWStudio
 			PaletteNumColors = 0;
 			Palette = null;
 			Data = null;
-			//CachedBitmap = null;
 		}
 
 		/// <summary>
@@ -97,7 +89,6 @@ namespace VPWStudio
 		public AkiTexture(BinaryReader br)
 		{
 			ReadData(br);
-			//CachedBitmap = null;
 		}
 
 		#region Binary Read/Write
@@ -252,19 +243,12 @@ namespace VPWStudio
 		/// Convert this AkiTexture to a Bitmap.
 		/// </summary>
 		/// <returns></returns>
-		public Bitmap ToBitmap(bool _skipCache = false)
+		public Bitmap ToBitmap()
 		{
 			if (Data == null)
 			{
 				return null;
 			}
-
-			/*
-			if (!_skipCache && CachedBitmap != null)
-			{
-				return CachedBitmap;
-			}
-			*/
 
 			Bitmap bOut = new Bitmap(Width, Height);
 
@@ -279,7 +263,6 @@ namespace VPWStudio
 					break;
 			}
 
-			//CachedBitmap = bOut;
 			return bOut;
 		}
 
