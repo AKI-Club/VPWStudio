@@ -36,11 +36,6 @@ namespace VPWStudio
 		/// Current output ROM file.
 		/// </summary>
 		public static Z64Rom CurrentOutputROM = null;
-
-		/// <summary>
-		/// Build cache for current project.
-		/// </summary>
-		//public static BuildCache ProjectBuildCache = null;
 		#endregion
 
 		#region Project Sub-Files
@@ -246,15 +241,6 @@ namespace VPWStudio
 			bw.Close();
 
 			return slice;
-		}
-
-		/// <summary>
-		/// Get the path to the build cache index file.
-		/// </summary>
-		/// <returns>Path to cache.idx file for the current project.</returns>
-		public static string GetCacheIndexPath()
-		{
-			return string.Format("{0}\\cache.idx", ConvertRelativePath(CurrentProject.Settings.CachePath));
 		}
 		#endregion // helpers
 

@@ -104,7 +104,6 @@ namespace VPWStudio
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
 				tbWrestlerNamesFile.Text = Program.CurrentProject.Settings.WrestlerNameFilePath;
-				tbCachePath.Text = Program.CurrentProject.Settings.CachePath;
 			}
 		}
 
@@ -202,7 +201,6 @@ namespace VPWStudio
 			// project files tab
 			NewSettings.ProjectFilesPath = tbProjFilesPath.Text;
 			NewSettings.AssetsPath = tbAssetFilesPath.Text;
-			NewSettings.CachePath = tbCachePath.Text;
 			NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
 
 			NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
@@ -350,20 +348,6 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				tbWrestlerNamesFile.Text = ofd.FileName;
-			}
-		}
-
-		private void buttonSetCachePath_Click(object sender, EventArgs e)
-		{
-			FolderBrowserDialog fbd = new FolderBrowserDialog();
-			if (Program.CurrentProject.Settings.CachePath != String.Empty)
-			{
-				fbd.SelectedPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.CachePath);
-			}
-			fbd.Description = "Select the Cache Files directory.";
-			if (fbd.ShowDialog() == DialogResult.OK)
-			{
-				tbCachePath.Text = Program.ShortenAbsolutePath(fbd.SelectedPath);
 			}
 		}
 		#endregion

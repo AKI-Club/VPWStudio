@@ -233,7 +233,6 @@ namespace VPWStudio
 			}
 
 			LoadLocationFile();
-			//Program.ProjectBuildCache = new BuildCache();
 		}
 
 		/// <summary>
@@ -495,8 +494,6 @@ namespace VPWStudio
 				{
 					f.Close();
 				}
-
-				//Program.ProjectBuildCache = new BuildCache();
 			}
 		}
 
@@ -564,23 +561,6 @@ namespace VPWStudio
 				{
 					f.Close();
 				}
-
-				/*
-				if (Program.CurrentProject.Settings.CachePath != string.Empty)
-				{
-					if (!File.Exists(Program.GetCacheIndexPath()))
-					{
-						FileStream newIndex = File.Create(Program.GetCacheIndexPath());
-						newIndex.Flush();
-						newIndex.Dispose();
-					}
-					Program.ProjectBuildCache = new BuildCache(Program.GetCacheIndexPath());
-				}
-				else
-				{
-					Program.ProjectBuildCache = new BuildCache();
-				}
-				*/
 			}
 		}
 
@@ -625,11 +605,6 @@ namespace VPWStudio
 			{
 				Directory.CreateDirectory(projPath + @"\Assets");
 				Program.CurrentProject.Settings.AssetsPath = "Assets";
-			}
-			if (Program.CurrentProject.Settings.CachePath == String.Empty)
-			{
-				Directory.CreateDirectory(projPath + @"\Cache");
-				Program.CurrentProject.Settings.CachePath = "Cache";
 			}
 
 			// do the actual saving
@@ -711,8 +686,6 @@ namespace VPWStudio
 			UpdateValidMenus();
 			UpdateStatusBar();
 			UpdateBackground();
-
-			//Program.ProjectBuildCache = null;
 		}
 		#endregion
 
@@ -1399,8 +1372,6 @@ namespace VPWStudio
 					buildLogPub.AddLine(String.Format("[{0}] File ID {1:X4}: {2}", bwe.MessageType.ToString(), bwe.FileID, bwe.MessageText), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 				}
 			}
-
-			//Program.ProjectBuildCache.LastBuildTime = startTime;
 
 			BuildLogForm.Focus();
 			BuildLogForm.MoveCursorToEnd();
