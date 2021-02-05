@@ -15708,9 +15708,10 @@
 4AA6=Ci4Texture;[Mall] Superstar (unused?)|p:4AA5
 4AA7=Ci4Palette;[Shop] WWF$
 4AA8=Ci4Texture;[Shop] WWF$|p:4AA7
-4AA9=Binary;[Smackdown Mall] Shop Items 1 (Attire)
-4AAA=Binary;[Smackdown Mall] Shop Items 2 (Other)
-4AAB=Binary;[Smackdown Mall] Shop Items 3 (Moves)
+4AA9=MenuItems_Shop;[Smackdown Mall] Shop Items 1 (Attire)
+4AAA=MenuItems_Shop;[Smackdown Mall] Shop Items 2 (Other)
+4AAB=MenuItems_Shop;[Smackdown Mall] Shop Items 3 (Moves)
+4AAC=Binary;[Smackdown Mall] Attire and Weapon Items
 4AAD=Ci4Palette;[Character Icon] The Rock
 4AAE=Ci4Texture;[Character Icon] The Rock|p:4AAD
 4AAF=Ci4Palette;[Character Icon] Steve Austin
