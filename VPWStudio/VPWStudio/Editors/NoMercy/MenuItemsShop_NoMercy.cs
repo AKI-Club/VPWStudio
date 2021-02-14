@@ -68,36 +68,56 @@ namespace VPWStudio.Editors.NoMercy
 			cbEntries.BeginUpdate();
 			foreach (GameSpecific.NoMercy.ShopItemEntry entry in ShopItems.Entries)
 			{
-				cbEntries.Items.Add(entry.ItemName);
+				cbEntries.Items.Add(entry.Name);
 			}
 			cbEntries.EndUpdate();
+			cbEntries.SelectedIndex = 0;
 		}
 
 		private void cbEntries_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbEntries.SelectedIndex < 0 || cbEntries.SelectedIndex > ShopItems.Entries.Count)
 			{
-				tbHeaderData.Text = string.Empty;
 				tbName.Text = string.Empty;
 				tbDescription.Text = string.Empty;
+				nudPrice.Value = 0;
+				tbItemType.Text = string.Empty;
+				tbItemData.Text = string.Empty;
 				return;
 			}
 
 			GameSpecific.NoMercy.ShopItemEntry entry = ShopItems.Entries[cbEntries.SelectedIndex];
+			tbName.Text = entry.Name;
+			tbDescription.Text = entry.Description;
+			nudPrice.Value = entry.Price;
+			tbUnlockID.Text = String.Format("0x{0:X2}", entry.UnlockID);
+			tbItemType.Text = String.Format("0x{0:X2} ('{1}')", entry.ItemType, (char)entry.ItemType);
+			tbItemData.Text = String.Format("0x{0:X4}", entry.ItemData);
+		}
 
-			string s = string.Empty;
-			for (int i = 0; i < entry.HeaderData.Length; i++)
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		private void btnUpdateEntry_Click(object sender, EventArgs e)
+		{
+			// commit whatever changes have been made to the current item
+			if (cbEntries.SelectedIndex < 0)
 			{
-				s += string.Format("{0:X2}", entry.HeaderData[i]);
-				if (i < entry.HeaderData.Length - 1)
-				{
-					s += " ";
-				}
+				return;
 			}
-			tbHeaderData.Text = s;
 
-			tbName.Text = entry.ItemName;
-			tbDescription.Text = entry.ItemDescription;
+			//ShopItems.Entries[cbEntries.SelectedIndex]
+
+			// update dropdown with new item name
 		}
 	}
 }
