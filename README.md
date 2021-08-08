@@ -14,3 +14,13 @@ All known variants (region and revision) are supported for the following:
 - WWF WrestleMania 2000
 - Virtual Pro-Wrestling 2
 - WWF No Mercy
+
+Requirements
+------------
+- .NET Framework 4.6.1
+- patience and understanding, considering this program is incomplete
+
+Manual
+------
+Until GitHub Pages is set up for this repository, you can find the (incomplete)
+manual in the repository at [VPWStudio/VPWStudio/Manual/](VPWStudio/VPWStudio/Manual/).
