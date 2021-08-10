@@ -214,17 +214,24 @@ namespace VPWStudio
 			Program.CurProjectPath = _path;
 			Program.UnsavedChanges = false;
 
+			// allow for relative paths
+			string baseRomPath = Program.CurrentProject.Settings.InputRomPath;
+			if (!Path.IsPathRooted(baseRomPath))
+			{
+				baseRomPath = String.Format("{0}\\{1}", Path.GetDirectoryName(_path), baseRomPath);
+			}
+
 			// load input ROM if it exists.
-			if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
+			if (File.Exists(baseRomPath))
 			{
 				Program.CurrentInputROM = new Z64Rom();
-				Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+				Program.CurrentInputROM.LoadFile(baseRomPath);
 			}
 			else
 			{
 				// unable to find input ROM, please see project settings.
 				MessageBox.Show(
-					String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath),
+					String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", baseRomPath),
 					SharedStrings.MainForm_Title,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error
@@ -756,14 +763,20 @@ namespace VPWStudio
 				if (Program.CurrentProject.Settings.InputRomPath != oldInRomPath)
 				{
 					// attempt to load
-					if (File.Exists(Program.CurrentProject.Settings.InputRomPath))
+					string baseRomPath = Program.CurrentProject.Settings.InputRomPath;
+					if (!Path.IsPathRooted(baseRomPath))
+					{
+						baseRomPath = String.Format("{0}\\{1}", Path.GetDirectoryName(Program.CurProjectPath), baseRomPath);
+					}
+
+					if (File.Exists(baseRomPath))
 					{
 						Program.CurrentInputROM = new Z64Rom();
-						Program.CurrentInputROM.LoadFile(Program.CurrentProject.Settings.InputRomPath);
+						Program.CurrentInputROM.LoadFile(baseRomPath);
 					}
 					else
 					{
-						Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", Program.CurrentProject.Settings.InputRomPath));
+						Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", baseRomPath));
 					}
 				}
 
