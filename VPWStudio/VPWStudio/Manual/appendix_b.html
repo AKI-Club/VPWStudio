@@ -13,11 +13,15 @@
 </div>
 
 <hr />
+<h2>Notice</h2>
+<p>As VPW Studio is still under development, changes to program formats are
+likely to happen.</p>
+
+<hr />
 <h2>Table of Contents</h2>
 <ol type="1">
 	<li><a href="#LocationFile">LocationFile Format</a></li>
 	<li><a href="#FileTableDB">FileTableDB Format</a></li>
-	<li><a href="#GameSharkCodeSet">GameShark CodeSet Format</a></li>
 	<li><a href="#StableDef">Stable Definition Format</a></li>
 	<li><a href="#ProjectFile">ProjectFile Format</a></li>
 </ol>
@@ -100,7 +104,7 @@ and notes.</p>
 ignored by the FileTableDB loader.</p>
 
 <h4>Breakdown</h4>
-<p><code>FileID=Type;Notes</code></p>
+<p><code>FileID=Type;Notes|Settings</code></p>
 
 <h4>FileID</h4>
 <p>The ID file for this entry. Entries are in hex and should have 4 digits.
@@ -131,19 +135,35 @@ contain TEX files.</li>
 <li><code>DoubleTex</code> &ndash; WCW/nWo Revenge credits faces (two TEX files, one after another)</li>
 <li><code>MenuBackground</code> &ndash; Used for the first file of a multi-part background image.</li>
 <li><code>Ci4Background</code> &ndash; Raw CI4 image used for some backgrounds in WWF No Mercy.</li>
-<li><code>NoMercyText</code> &ndash; Text archives specific to WWF No Mercy.</li>
+<li><code>MenuItems_NoGroup</code> &ndash; WWF No Mercy-specific menu item text (no groups).</li>
+<li><code>MenuItems_Shop</code> &ndash; WWF No Mercy-specific menu item text (Smackdown Mall Shop items).</li>
 </ul>
 
 <h4>Notes</h4>
-<p>A note displayed in the FileTable dialog. Unlike the LocationFile format,
-there are no special tokens to deal with.</p>
+<p>A note displayed in the FileTable dialog. If you are not adding any Settings
+to this item, you do not need to do anything special, aside from avoiding the
+"<code>|</code>" character in your description.</p>
+
+<h4>Settings</h4>
+<p>Settings are optional, but are recommended for some file types. The beginning
+of the Settings string is denoted by a "<code>|</code>" at the end of the Note.</p>
+
+<p>Currently supported values:</p>
+<ul>
+<li><code>w:</code> (number) &ndash; Image width</li>
+<li><code>h:</code> (number) &ndash; Image height</li>
+<li><code>p:</code> (hex number) &ndash; Intended Palette File ID</li>
+<li><code>mh:</code> (<code>true</code> or <code>false</code>) &ndash; Horizontally mirror image</li>
+<li><code>mv:</code> (<code>true</code> or <code>false</code>) &ndash; Vertically mirror image</li>
+</ul>
+
+<p>Currently unsupported values:</p>
+<ul>
+<li><code>t:</code> (number) &ndash; Transparent color index (not implemented)</li>
+</ul>
 
 <hr />
-<h3><a name="GameSharkCodeSet">Appendix B3: GameShark CodeSet Format</a></h3>
-<p>(todo)</p>
-
-<hr />
-<h3><a name="StableDef">Appendix B4: Stable Definition Format</a></h3>
+<h3><a name="StableDef">Appendix B3: Stable Definition Format</a></h3>
 <p>The Stable Definition file is a text file following a specific pattern.
 Each game in the series defines Stable data differently, requiring the creation
 of an intermediate format.</p>
@@ -205,8 +225,9 @@ is laid out differently.</p>
 <p>(todo)</p>
 
 <hr />
-<h3><a name="ProjectFile">Appendix B5: Project File Format</a></h3>
-<p>(todo)</p>
+<h3><a name="ProjectFile">Appendix B4: Project File Format</a></h3>
+<p>(todo: this is perpetually changing and is not worth documenting until it's
+reached a stable state.)</p>
 
 <hr />
 
