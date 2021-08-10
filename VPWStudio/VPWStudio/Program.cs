@@ -200,7 +200,12 @@ namespace VPWStudio
 		{
 			if (CurrentProject != null)
 			{
-				CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
+				string baseRomPath = CurrentProject.Settings.InputRomPath;
+				if (!Path.IsPathRooted(baseRomPath))
+				{
+					baseRomPath = String.Format("{0}\\{1}", Path.GetDirectoryName(Program.CurProjectPath), baseRomPath);
+				}
+				CurrentInputROM.LoadFile(baseRomPath);
 			}
 		}
 
@@ -644,7 +649,12 @@ namespace VPWStudio
 			// The Output ROM may be bigger (or smaller!) than the Input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
 			// The Input ROM could have changed since the previous build, so reload it.
-			CurrentInputROM.LoadFile(CurrentProject.Settings.InputRomPath);
+			string baseRomPath = CurrentProject.Settings.InputRomPath;
+			if (!Path.IsPathRooted(baseRomPath))
+			{
+				baseRomPath = String.Format("{0}\\{1}", Path.GetDirectoryName(CurProjectPath), baseRomPath);
+			}
+			CurrentInputROM.LoadFile(baseRomPath);
 			outRomData.AddRange(CurrentInputROM.Data);
 
 			// Reset any build messages from a previous build.
