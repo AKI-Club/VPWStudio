@@ -60,7 +60,7 @@
 			this.tbEmulatorArguments.Location = new System.Drawing.Point(68, 7);
 			this.tbEmulatorArguments.Name = "tbEmulatorArguments";
 			this.tbEmulatorArguments.Size = new System.Drawing.Size(243, 20);
-			this.tbEmulatorArguments.TabIndex = 0;
+			this.tbEmulatorArguments.TabIndex = 2;
 			// 
 			// labelEmuArguments
 			// 
@@ -69,7 +69,7 @@
 			this.labelEmuArguments.Location = new System.Drawing.Point(3, 10);
 			this.labelEmuArguments.Name = "labelEmuArguments";
 			this.labelEmuArguments.Size = new System.Drawing.Size(59, 13);
-			this.labelEmuArguments.TabIndex = 1;
+			this.labelEmuArguments.TabIndex = 2;
 			this.labelEmuArguments.Text = "&Arguments";
 			// 
 			// tlpEmuPath
@@ -78,7 +78,7 @@
 			this.tlpEmuPath.ColumnCount = 3;
 			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.02469F));
 			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.97531F));
-			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+			this.tlpEmuPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
 			this.tlpEmuPath.Controls.Add(this.labelEmuPath, 0, 0);
 			this.tlpEmuPath.Controls.Add(this.tbEmuPath, 1, 0);
 			this.tlpEmuPath.Controls.Add(this.buttonBrowse, 2, 0);
@@ -105,15 +105,15 @@
 			this.tbEmuPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbEmuPath.Location = new System.Drawing.Point(44, 7);
 			this.tbEmuPath.Name = "tbEmuPath";
-			this.tbEmuPath.Size = new System.Drawing.Size(184, 20);
+			this.tbEmuPath.Size = new System.Drawing.Size(183, 20);
 			this.tbEmuPath.TabIndex = 0;
 			// 
 			// buttonBrowse
 			// 
 			this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonBrowse.Location = new System.Drawing.Point(234, 5);
+			this.buttonBrowse.Location = new System.Drawing.Point(233, 5);
 			this.buttonBrowse.Name = "buttonBrowse";
-			this.buttonBrowse.Size = new System.Drawing.Size(77, 23);
+			this.buttonBrowse.Size = new System.Drawing.Size(78, 23);
 			this.buttonBrowse.TabIndex = 1;
 			this.buttonBrowse.Text = "&Browse...";
 			this.buttonBrowse.UseVisualStyleBackColor = true;

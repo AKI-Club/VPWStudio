@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Emulator");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Build");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Emulator");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Build");
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tlpBuildLogVerbosity = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +45,7 @@
 			this.buttonOK.Location = new System.Drawing.Point(338, 180);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 2;
+			this.buttonOK.TabIndex = 1;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -56,7 +56,7 @@
 			this.buttonCancel.Location = new System.Drawing.Point(419, 180);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.TabIndex = 2;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -66,14 +66,14 @@
 			this.tlpBuildLogVerbosity.ColumnCount = 2;
 			this.tlpBuildLogVerbosity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.57747F));
 			this.tlpBuildLogVerbosity.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.42254F));
-			this.tlpBuildLogVerbosity.Controls.Add(this.labelBuildLogVerbosity, 0, 0);
 			this.tlpBuildLogVerbosity.Controls.Add(this.cbBuildLogVerbosity, 1, 0);
+			this.tlpBuildLogVerbosity.Controls.Add(this.labelBuildLogVerbosity, 0, 0);
 			this.tlpBuildLogVerbosity.Location = new System.Drawing.Point(139, 12);
 			this.tlpBuildLogVerbosity.Name = "tlpBuildLogVerbosity";
 			this.tlpBuildLogVerbosity.RowCount = 1;
 			this.tlpBuildLogVerbosity.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpBuildLogVerbosity.Size = new System.Drawing.Size(355, 26);
-			this.tlpBuildLogVerbosity.TabIndex = 5;
+			this.tlpBuildLogVerbosity.TabIndex = 4;
 			// 
 			// labelBuildLogVerbosity
 			// 
@@ -101,15 +101,15 @@
 			this.tvOptions.HideSelection = false;
 			this.tvOptions.Location = new System.Drawing.Point(12, 12);
 			this.tvOptions.Name = "tvOptions";
-			treeNode1.Name = "Emulator";
-			treeNode1.Text = "Emulator";
-			treeNode2.Name = "Build";
-			treeNode2.Text = "Build";
+			treeNode3.Name = "Emulator";
+			treeNode3.Text = "Emulator";
+			treeNode4.Name = "Build";
+			treeNode4.Text = "Build";
 			this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            treeNode3,
+            treeNode4});
 			this.tvOptions.Size = new System.Drawing.Size(121, 191);
-			this.tvOptions.TabIndex = 6;
+			this.tvOptions.TabIndex = 0;
 			this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
 			// 
 			// optionControlEmu
@@ -117,7 +117,7 @@
 			this.optionControlEmu.Location = new System.Drawing.Point(139, 12);
 			this.optionControlEmu.Name = "optionControlEmu";
 			this.optionControlEmu.Size = new System.Drawing.Size(355, 80);
-			this.optionControlEmu.TabIndex = 7;
+			this.optionControlEmu.TabIndex = 3;
 			// 
 			// ProgramOptionsDialog
 			// 
