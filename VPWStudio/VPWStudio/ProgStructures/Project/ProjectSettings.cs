@@ -67,11 +67,6 @@ namespace VPWStudio
 		public string CustomLocationFilePath;
 
 		/// <summary>
-		/// Path to GameSharkCodeFile for this project.
-		/// </summary>
-		public string ProjectGSCodeFilePath;
-
-		/// <summary>
 		/// Output ROM internal name.
 		/// </summary>
 		/// Typically copied from the input ROM
@@ -121,7 +116,6 @@ namespace VPWStudio
 			AssetsPath = String.Empty;
 			UseCustomLocationFile = false;
 			CustomLocationFilePath = String.Empty;
-			ProjectGSCodeFilePath = String.Empty;
 			OutputRomInternalName = String.Empty;
 			OutputRomRegion = GameRegion.NorthAmerica;
 			OutputRomCustomRegion = '0';
@@ -141,7 +135,7 @@ namespace VPWStudio
 		/// <param name="_outROM">Output ROM path</param>
 		/// <param name="_locPath">Custom Location File path</param>
 		/// <param name="_gscPath">GameShark Code File path</param>
-		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath, string _gscPath)
+		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath)
 		{
 			ProjectName = _name;
 			BaseGame = _baseGame;
@@ -154,7 +148,6 @@ namespace VPWStudio
 			AssetsPath = String.Empty;
 			UseCustomLocationFile = !_locPath.Equals(String.Empty);
 			CustomLocationFilePath = _locPath;
-			ProjectGSCodeFilePath = _gscPath;
 			OutputRomInternalName = String.Empty;
 			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
 			OutputRomCustomRegion = '0';
@@ -188,7 +181,6 @@ namespace VPWStudio
 			AssetsPath = _src.AssetsPath;
 			UseCustomLocationFile = _src.UseCustomLocationFile;
 			CustomLocationFilePath = _src.CustomLocationFilePath;
-			ProjectGSCodeFilePath = _src.ProjectGSCodeFilePath;
 			OutputRomInternalName = _src.OutputRomInternalName;
 			OutputRomRegion = _src.OutputRomRegion;
 			OutputRomCustomRegion = _src.OutputRomCustomRegion;
