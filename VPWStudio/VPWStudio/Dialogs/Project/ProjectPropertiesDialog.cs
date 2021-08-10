@@ -100,7 +100,6 @@ namespace VPWStudio
 				// project files page
 				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
 				tbAssetFilesPath.Text = Program.CurrentProject.Settings.AssetsPath;
-				tbGSCodeFile.Text = Program.CurrentProject.Settings.ProjectGSCodeFilePath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
 				tbWrestlerNamesFile.Text = Program.CurrentProject.Settings.WrestlerNameFilePath;
@@ -201,7 +200,6 @@ namespace VPWStudio
 			// project files tab
 			NewSettings.ProjectFilesPath = tbProjFilesPath.Text;
 			NewSettings.AssetsPath = tbAssetFilesPath.Text;
-			NewSettings.ProjectGSCodeFilePath = tbGSCodeFile.Text;
 
 			NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
 			if (chbCustomLocation.Checked)
@@ -326,17 +324,6 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				tbCustomLocationFile.Text = ofd.FileName;
-			}
-		}
-
-		private void buttonSetGSCodefile_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Select GameShark Code File";
-			ofd.Filter = SharedStrings.FileFilter_GameSharkCodes;
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				tbGSCodeFile.Text = ofd.FileName;
 			}
 		}
 

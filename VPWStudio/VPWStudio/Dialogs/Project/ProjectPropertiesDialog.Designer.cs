@@ -67,10 +67,6 @@
 			this.buttonSetProjFilesPath = new System.Windows.Forms.Button();
 			this.tbProjFilesPath = new System.Windows.Forms.TextBox();
 			this.labelProjFilesPath = new System.Windows.Forms.Label();
-			this.labelGSCodeFile = new System.Windows.Forms.Label();
-			this.tlpGameSharkCodeFile = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetGSCodefile = new System.Windows.Forms.Button();
-			this.tbGSCodeFile = new System.Windows.Forms.TextBox();
 			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
 			this.tlpCustomLoc = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetCustomLocFile = new System.Windows.Forms.Button();
@@ -90,7 +86,6 @@
 			this.tlpWrestlerNames.SuspendLayout();
 			this.tlpAssetFilesPath.SuspendLayout();
 			this.tlpProjFilesPath.SuspendLayout();
-			this.tlpGameSharkCodeFile.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -420,25 +415,22 @@
 			this.tlpProjFilesTab.ColumnCount = 2;
 			this.tlpProjFilesTab.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
 			this.tlpProjFilesTab.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72F));
-			this.tlpProjFilesTab.Controls.Add(this.tlpWrestlerNames, 1, 4);
 			this.tlpProjFilesTab.Controls.Add(this.tlpAssetFilesPath, 1, 1);
 			this.tlpProjFilesTab.Controls.Add(this.tlpProjFilesPath, 1, 0);
 			this.tlpProjFilesTab.Controls.Add(this.labelProjFilesPath, 0, 0);
-			this.tlpProjFilesTab.Controls.Add(this.labelGSCodeFile, 0, 3);
-			this.tlpProjFilesTab.Controls.Add(this.tlpGameSharkCodeFile, 1, 3);
 			this.tlpProjFilesTab.Controls.Add(this.chbCustomLocation, 0, 2);
 			this.tlpProjFilesTab.Controls.Add(this.tlpCustomLoc, 1, 2);
 			this.tlpProjFilesTab.Controls.Add(this.labelAssetFilesPath, 0, 1);
-			this.tlpProjFilesTab.Controls.Add(this.labelWrestlerNamesFile, 0, 4);
+			this.tlpProjFilesTab.Controls.Add(this.labelWrestlerNamesFile, 0, 3);
+			this.tlpProjFilesTab.Controls.Add(this.tlpWrestlerNames, 1, 3);
 			this.tlpProjFilesTab.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlpProjFilesTab.Location = new System.Drawing.Point(3, 3);
 			this.tlpProjFilesTab.Name = "tlpProjFilesTab";
-			this.tlpProjFilesTab.RowCount = 5;
-			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpProjFilesTab.RowCount = 4;
+			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpProjFilesTab.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tlpProjFilesTab.Size = new System.Drawing.Size(496, 250);
 			this.tlpProjFilesTab.TabIndex = 0;
 			// 
@@ -450,17 +442,17 @@
 			this.tlpWrestlerNames.Controls.Add(this.buttonSetWrestlerNameFile, 1, 0);
 			this.tlpWrestlerNames.Controls.Add(this.tbWrestlerNamesFile, 0, 0);
 			this.tlpWrestlerNames.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpWrestlerNames.Location = new System.Drawing.Point(141, 203);
+			this.tlpWrestlerNames.Location = new System.Drawing.Point(141, 189);
 			this.tlpWrestlerNames.Name = "tlpWrestlerNames";
 			this.tlpWrestlerNames.RowCount = 1;
 			this.tlpWrestlerNames.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpWrestlerNames.Size = new System.Drawing.Size(352, 44);
+			this.tlpWrestlerNames.Size = new System.Drawing.Size(352, 58);
 			this.tlpWrestlerNames.TabIndex = 23;
 			// 
 			// buttonSetWrestlerNameFile
 			// 
 			this.buttonSetWrestlerNameFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetWrestlerNameFile.Location = new System.Drawing.Point(319, 7);
+			this.buttonSetWrestlerNameFile.Location = new System.Drawing.Point(319, 14);
 			this.buttonSetWrestlerNameFile.Name = "buttonSetWrestlerNameFile";
 			this.buttonSetWrestlerNameFile.Size = new System.Drawing.Size(30, 29);
 			this.buttonSetWrestlerNameFile.TabIndex = 13;
@@ -471,7 +463,7 @@
 			// tbWrestlerNamesFile
 			// 
 			this.tbWrestlerNamesFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerNamesFile.Location = new System.Drawing.Point(3, 12);
+			this.tbWrestlerNamesFile.Location = new System.Drawing.Point(3, 19);
 			this.tbWrestlerNamesFile.Name = "tbWrestlerNamesFile";
 			this.tbWrestlerNamesFile.Size = new System.Drawing.Size(310, 20);
 			this.tbWrestlerNamesFile.TabIndex = 12;
@@ -484,17 +476,17 @@
 			this.tlpAssetFilesPath.Controls.Add(this.buttonSetAssetFilesPath, 1, 0);
 			this.tlpAssetFilesPath.Controls.Add(this.tbAssetFilesPath, 0, 0);
 			this.tlpAssetFilesPath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpAssetFilesPath.Location = new System.Drawing.Point(141, 53);
+			this.tlpAssetFilesPath.Location = new System.Drawing.Point(141, 65);
 			this.tlpAssetFilesPath.Name = "tlpAssetFilesPath";
 			this.tlpAssetFilesPath.RowCount = 1;
 			this.tlpAssetFilesPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpAssetFilesPath.Size = new System.Drawing.Size(352, 44);
+			this.tlpAssetFilesPath.Size = new System.Drawing.Size(352, 56);
 			this.tlpAssetFilesPath.TabIndex = 20;
 			// 
 			// buttonSetAssetFilesPath
 			// 
 			this.buttonSetAssetFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetAssetFilesPath.Location = new System.Drawing.Point(319, 7);
+			this.buttonSetAssetFilesPath.Location = new System.Drawing.Point(319, 13);
 			this.buttonSetAssetFilesPath.Name = "buttonSetAssetFilesPath";
 			this.buttonSetAssetFilesPath.Size = new System.Drawing.Size(30, 29);
 			this.buttonSetAssetFilesPath.TabIndex = 7;
@@ -505,7 +497,7 @@
 			// tbAssetFilesPath
 			// 
 			this.tbAssetFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAssetFilesPath.Location = new System.Drawing.Point(3, 12);
+			this.tbAssetFilesPath.Location = new System.Drawing.Point(3, 18);
 			this.tbAssetFilesPath.Name = "tbAssetFilesPath";
 			this.tbAssetFilesPath.Size = new System.Drawing.Size(310, 20);
 			this.tbAssetFilesPath.TabIndex = 6;
@@ -522,13 +514,13 @@
 			this.tlpProjFilesPath.Name = "tlpProjFilesPath";
 			this.tlpProjFilesPath.RowCount = 1;
 			this.tlpProjFilesPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpProjFilesPath.Size = new System.Drawing.Size(352, 44);
+			this.tlpProjFilesPath.Size = new System.Drawing.Size(352, 56);
 			this.tlpProjFilesPath.TabIndex = 18;
 			// 
 			// buttonSetProjFilesPath
 			// 
 			this.buttonSetProjFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetProjFilesPath.Location = new System.Drawing.Point(319, 7);
+			this.buttonSetProjFilesPath.Location = new System.Drawing.Point(319, 13);
 			this.buttonSetProjFilesPath.Name = "buttonSetProjFilesPath";
 			this.buttonSetProjFilesPath.Size = new System.Drawing.Size(30, 29);
 			this.buttonSetProjFilesPath.TabIndex = 4;
@@ -539,7 +531,7 @@
 			// tbProjFilesPath
 			// 
 			this.tbProjFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbProjFilesPath.Location = new System.Drawing.Point(3, 12);
+			this.tbProjFilesPath.Location = new System.Drawing.Point(3, 18);
 			this.tbProjFilesPath.Name = "tbProjFilesPath";
 			this.tbProjFilesPath.Size = new System.Drawing.Size(310, 20);
 			this.tbProjFilesPath.TabIndex = 3;
@@ -548,61 +540,17 @@
 			// 
 			this.labelProjFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelProjFilesPath.AutoSize = true;
-			this.labelProjFilesPath.Location = new System.Drawing.Point(3, 18);
+			this.labelProjFilesPath.Location = new System.Drawing.Point(3, 24);
 			this.labelProjFilesPath.Name = "labelProjFilesPath";
 			this.labelProjFilesPath.Size = new System.Drawing.Size(132, 13);
 			this.labelProjFilesPath.TabIndex = 2;
 			this.labelProjFilesPath.Text = "&Project Files Path";
 			// 
-			// labelGSCodeFile
-			// 
-			this.labelGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelGSCodeFile.AutoSize = true;
-			this.labelGSCodeFile.Location = new System.Drawing.Point(3, 168);
-			this.labelGSCodeFile.Name = "labelGSCodeFile";
-			this.labelGSCodeFile.Size = new System.Drawing.Size(132, 13);
-			this.labelGSCodeFile.TabIndex = 11;
-			this.labelGSCodeFile.Text = "Game&Shark Code File";
-			// 
-			// tlpGameSharkCodeFile
-			// 
-			this.tlpGameSharkCodeFile.ColumnCount = 2;
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tlpGameSharkCodeFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tlpGameSharkCodeFile.Controls.Add(this.buttonSetGSCodefile, 1, 0);
-			this.tlpGameSharkCodeFile.Controls.Add(this.tbGSCodeFile, 0, 0);
-			this.tlpGameSharkCodeFile.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpGameSharkCodeFile.Location = new System.Drawing.Point(141, 153);
-			this.tlpGameSharkCodeFile.Name = "tlpGameSharkCodeFile";
-			this.tlpGameSharkCodeFile.RowCount = 1;
-			this.tlpGameSharkCodeFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpGameSharkCodeFile.Size = new System.Drawing.Size(352, 44);
-			this.tlpGameSharkCodeFile.TabIndex = 14;
-			// 
-			// buttonSetGSCodefile
-			// 
-			this.buttonSetGSCodefile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetGSCodefile.Location = new System.Drawing.Point(319, 7);
-			this.buttonSetGSCodefile.Name = "buttonSetGSCodefile";
-			this.buttonSetGSCodefile.Size = new System.Drawing.Size(30, 29);
-			this.buttonSetGSCodefile.TabIndex = 13;
-			this.buttonSetGSCodefile.Text = "...";
-			this.buttonSetGSCodefile.UseVisualStyleBackColor = true;
-			this.buttonSetGSCodefile.Click += new System.EventHandler(this.buttonSetGSCodefile_Click);
-			// 
-			// tbGSCodeFile
-			// 
-			this.tbGSCodeFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbGSCodeFile.Location = new System.Drawing.Point(3, 12);
-			this.tbGSCodeFile.Name = "tbGSCodeFile";
-			this.tbGSCodeFile.Size = new System.Drawing.Size(310, 20);
-			this.tbGSCodeFile.TabIndex = 12;
-			// 
 			// chbCustomLocation
 			// 
 			this.chbCustomLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.chbCustomLocation.AutoSize = true;
-			this.chbCustomLocation.Location = new System.Drawing.Point(3, 116);
+			this.chbCustomLocation.Location = new System.Drawing.Point(3, 146);
 			this.chbCustomLocation.Name = "chbCustomLocation";
 			this.chbCustomLocation.Size = new System.Drawing.Size(132, 17);
 			this.chbCustomLocation.TabIndex = 8;
@@ -618,18 +566,18 @@
 			this.tlpCustomLoc.Controls.Add(this.buttonSetCustomLocFile, 1, 0);
 			this.tlpCustomLoc.Controls.Add(this.tbCustomLocationFile, 0, 0);
 			this.tlpCustomLoc.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpCustomLoc.Location = new System.Drawing.Point(141, 103);
+			this.tlpCustomLoc.Location = new System.Drawing.Point(141, 127);
 			this.tlpCustomLoc.Name = "tlpCustomLoc";
 			this.tlpCustomLoc.RowCount = 1;
 			this.tlpCustomLoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpCustomLoc.Size = new System.Drawing.Size(352, 44);
+			this.tlpCustomLoc.Size = new System.Drawing.Size(352, 56);
 			this.tlpCustomLoc.TabIndex = 16;
 			// 
 			// buttonSetCustomLocFile
 			// 
 			this.buttonSetCustomLocFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonSetCustomLocFile.Enabled = false;
-			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(319, 7);
+			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(319, 13);
 			this.buttonSetCustomLocFile.Name = "buttonSetCustomLocFile";
 			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(30, 29);
 			this.buttonSetCustomLocFile.TabIndex = 10;
@@ -641,7 +589,7 @@
 			// 
 			this.tbCustomLocationFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbCustomLocationFile.Enabled = false;
-			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 12);
+			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 18);
 			this.tbCustomLocationFile.Name = "tbCustomLocationFile";
 			this.tbCustomLocationFile.Size = new System.Drawing.Size(310, 20);
 			this.tbCustomLocationFile.TabIndex = 9;
@@ -650,7 +598,7 @@
 			// 
 			this.labelAssetFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelAssetFilesPath.AutoSize = true;
-			this.labelAssetFilesPath.Location = new System.Drawing.Point(3, 68);
+			this.labelAssetFilesPath.Location = new System.Drawing.Point(3, 86);
 			this.labelAssetFilesPath.Name = "labelAssetFilesPath";
 			this.labelAssetFilesPath.Size = new System.Drawing.Size(132, 13);
 			this.labelAssetFilesPath.TabIndex = 5;
@@ -660,7 +608,7 @@
 			// 
 			this.labelWrestlerNamesFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelWrestlerNamesFile.AutoSize = true;
-			this.labelWrestlerNamesFile.Location = new System.Drawing.Point(3, 218);
+			this.labelWrestlerNamesFile.Location = new System.Drawing.Point(3, 211);
 			this.labelWrestlerNamesFile.Name = "labelWrestlerNamesFile";
 			this.labelWrestlerNamesFile.Size = new System.Drawing.Size(132, 13);
 			this.labelWrestlerNamesFile.TabIndex = 22;
@@ -705,8 +653,6 @@
 			this.tlpAssetFilesPath.PerformLayout();
 			this.tlpProjFilesPath.ResumeLayout(false);
 			this.tlpProjFilesPath.PerformLayout();
-			this.tlpGameSharkCodeFile.ResumeLayout(false);
-			this.tlpGameSharkCodeFile.PerformLayout();
 			this.tlpCustomLoc.ResumeLayout(false);
 			this.tlpCustomLoc.PerformLayout();
 			this.ResumeLayout(false);
@@ -744,13 +690,9 @@
 		private System.Windows.Forms.Button buttonSetProjFilesPath;
 		private System.Windows.Forms.TextBox tbProjFilesPath;
 		private System.Windows.Forms.CheckBox chbCustomLocation;
-		private System.Windows.Forms.Label labelGSCodeFile;
 		private System.Windows.Forms.TableLayoutPanel tlpCustomLoc;
 		private System.Windows.Forms.Button buttonSetCustomLocFile;
 		private System.Windows.Forms.TextBox tbCustomLocationFile;
-		private System.Windows.Forms.TableLayoutPanel tlpGameSharkCodeFile;
-		private System.Windows.Forms.Button buttonSetGSCodefile;
-		private System.Windows.Forms.TextBox tbGSCodeFile;
 		private System.Windows.Forms.Label labelProjFilesPath;
 		private System.Windows.Forms.Label labelAssetFilesPath;
 		private System.Windows.Forms.TableLayoutPanel tlpAssetFilesPath;
