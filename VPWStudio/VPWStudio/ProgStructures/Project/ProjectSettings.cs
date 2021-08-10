@@ -78,15 +78,6 @@ namespace VPWStudio
 		public string OutputRomInternalName;
 
 		/// <summary>
-		/// Output ROM game code.
-		/// </summary>
-		/// Four characters total: 'N' + game code + region code
-		/// 
-		/// todo: this should only be two characters;
-		/// 'N' should be hardcoded, and the last letter set from OutputRomRegion and/or OutputRomCustomRegion
-		public string OutputRomGameCode;
-
-		/// <summary>
 		/// Output ROM game region.
 		/// </summary>
 		/// Intended use: cast to char to get the letter necessary.
