@@ -51,6 +51,15 @@ namespace VPWStudio
 				return;
 			}
 
+			// input ROM path cannot be relative on project creation
+			// (this is because relative paths are relative to the project file path,
+			// which doesn't exist until the project file is saved for the first time.)
+			if (!Path.IsPathRooted(tbRomFile.Text))
+			{
+				MessageBox.Show("ROM file path must be absolute on new project creation.\nYou may change the ROM path to a relative one once the project file is saved for the first time.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			// input ROM must exist
 			if (!File.Exists(tbRomFile.Text))
 			{
