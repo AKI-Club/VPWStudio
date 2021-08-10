@@ -10,7 +10,7 @@
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
 <p>Version 0.0.0.14 (February 16th, 2020)<br />Program and Manual by freem<br />
-<a href="http://vpw.ajworld.net/">http://vpw.ajworld.net/</a></p>
+<a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a></p>
 </div>
 
 <hr />
@@ -25,6 +25,20 @@
 <li><a href="#Championships">Championships</a></li>
 <li><a href="#Costumes">Costumes</a></li>
 <li><a href="#FileTable">File Table</a></li>
+<li><a href="#Editors">Viewers and Editors</a>
+	<ol>
+	<li><a href="#HexViewer">Hex Viewer</a></li>
+	<li><a href="#CIPaletteEdit">CI4/CI8 Palettes</a></li>
+	<li><a href="#CITexturePreview">CI4/CI8 Textures</a></li>
+	<li><a href="#I4TexturePreview">I4 Textures</a></li>
+	<li><a href="#AKITexturePreview">"TEX" Textures</a></li>
+	<li><a href="#AKITextEdit">AKIText</a></li>
+	<li><a href="#ModelTool2">ModelTool2</a></li>
+	<!-- Fonts -->
+	<!-- MenuItems_NoGroup -->
+	<!-- MenuItems_Shop -->
+	</ol>
+</li>
 <li><a href="#Menus">Menus</a></li>
 <li><a href="#Moves">Moves</a></li>
 <li><a href="#SoundMusic">Sound/Music</a></li>
@@ -32,19 +46,27 @@
 <li><a href="#StoryMode">Story Mode</a></li>
 <li><a href="#Weapons">Weapons</a></li>
 <li><a href="#Wrestlers">Wrestlers</a></li>
-<li><a href="#Tools">Tools</a>
-	<ol>
-	<li><a href="#GameSharkCodeTool">GameShark Code Tool</a></li>
-	</ol>
-</li>
+<li><a href="#Tools">Tools</a></li>
 <li><a href="#DangerZone">Danger Zone</a></li>
 <li><a href="#Credits">Credits</a></li>
+</ol>
+
+<h3>Game-Specific Documentation</h3>
+<p>(All game-specific sections are external (i.e. separate from the main manual).)</p>
+<ol>
+<!--<li>Virtual Pro-Wrestling and WCW vs. the World</li> -->
+<li>WCW vs. nWo World Tour</li>
+<li>Virtual Pro-Wrestling 64</li>
+<li>WCW/nWo Revenge</li>
+<li>WWF WrestleMania 2000</li>
+<li><a href="./vpw2.html">Virtual Pro-Wrestling 2</a></li>
+<li>WWF No Mercy</li>
 </ol>
 
 <h3>Appendices</h3>
 <ol type='A'>
 <li><a href="#Glossary">Glossary</a></li>
-<li><a href="./appendix_b.html">Program Formats</a></li>
+<li><a href="./appendix_b.html">Program Formats</a> (external section)</li>
 <li><a href="#GameDataFormats">Game Data Formats</a></li>
 </ol>
 
@@ -187,7 +209,7 @@ can shorten build times.</p>
 chosen due to the number of total conversion hacks created by the AKI hacking communities.</p>
 
 <p>Project Files have the extension <code>.vpwsproj</code>. Technical information
-about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B, Section 5</a>.</p>
+about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B, Section 4</a>.</p>
 
 <h3>Project Structure</h3>
 <p>Aside from the Project File itself, the project expects a specific structure.
@@ -219,7 +241,8 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 <li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
 <li><strong>Custom Location File</strong> &ndash; When checked, allows you to use a
 custom Location File. Helpful if you've already made changes to the base ROM that
-result in differences from the default Location File for the specified Game Type.</li>
+result in differences from the default Location File for the specified Game Type.
+<em>Most people will not need to use this.</em></li>
 </ul>
 <p>All of these may be changed later in the <a href="#ProjectProperties">Project
 Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen,
@@ -269,8 +292,8 @@ dialog.</p>
 <ul>
 <li><strong>Project Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
 <li><strong>Asset Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
-<li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes.</li>
-<li><strong>GameShark Code File</strong> &ndash; Path to the GameShark code file for this project.</li>
+<li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes. <em>Most people will not need to use this.</em></li>
+<li><strong>GameShark Code File</strong> &ndash; Path to the GameShark code file for this project. (No longer used as of pre-alpha preview 15.)</li>
 <li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused)</li>
 </ul>
 
@@ -283,10 +306,14 @@ provides updates on the build process.</p>
 modified, and the Build Log Verbosity setting, this process may be relatively short
 (around 10 seconds) or long.</p>
 
+<p>Currently, building the ROM will lock the UI thread, meaning the program will
+look like it's frozen. Fear not, as it's still working in the background.
+This will be changed in the future.</p>
+
 <h3>Play ROM</h3>
 <p>If you want to test the changes in an emulator, select "Play ROM" from the "Project"
 menu (Keyboard shortcut: F5). If the changed ROM hasn't been built yet, it will build
-the ROM before playing it.</p>
+the ROM before playing it. Otherwise, it will load the last built version of the ROM.</p>
 <p>For this to work, you must set up the emulator details in the <a href="#ProgramOptions">Program Options</a> section.</p>
 
 <hr />
@@ -393,7 +420,24 @@ textures, palettes, models, and more.</p>
 
 <img src="./img/filetable-main.png" title="FileTable Editor - Main" />
 
-<p>(todo)</p>
+<p>Double left clicking on a single File Table entry will attempt to preview
+or edit the selected item. This does not always work, and you may be presented
+with a Hex Viewer instead. The preview and/or editor dialog that comes up
+depends on the entry's File Type. More information about these tools can be
+found in the "<a href="#Editors">Viewers and Editors</a>" section of the manual.</p>
+
+<p>Right clicking on a File Table entry will bring up a context menu with a few options:</p>
+
+<ul>
+<li><strong>Set Type</strong> &ndash; Change the File Type for the selected entry.
+Available options depend on what game you're editing, and will be mentioned in
+game-specific documentation.</li>
+<li><strong>Edit Information</strong> &ndash; Opens the File Table Entry Information dialog for the selected entry.</li>
+<li><strong>View Hex</strong> &ndash; Opens a Hex Viewer with the selected entry's data.</li>
+<li><strong>Extract File</strong> &ndash; Extracts the selected entry to a file, decompressing it if necessary.</li>
+<li><strong>Extract Raw</strong> &ndash; Extracts the compressed version of the selected
+entry without decompressing it. (Only available if "LZSS" is set to "True" for this entry.)</li>
+</ul>
 
 <h3>Navigation Menu</h3>
 <p>The Navigation menu contains various functions to help you find entries in the FileTable.</p>
@@ -411,14 +455,117 @@ shortcut F3) to search for the next comment. Holding Shift while pressing F3 mov
 
 <h3>Database Menu</h3>
 <p>The Database menu only contains one option, but it's important if you've upgraded
-to a new version of VPW Studio. "Reload File Table Database" will let you update
-your project's FileTable with the current data in the FileTableDB file for the
-current game.</p>
+to a new version of VPW Studio or updated the FileTableDB for the game you're editing.
+"Reload File Table Database" will let you update your project's FileTable with the
+current data in the FileTableDB file for the current game.</p>
 
 <h3>Export Menu</h3>
 <p>The Export Menu is something most people won't ever need to touch. Despite being
 able to export a list for Midwaydec, Zoinkity has said that program is dead.
 The "Export CSV" option is only of use for people dealing with disassemblies.</p>
+
+<h3>File Table Entry Information</h3>
+<p>There are two version of the File Table Entry Information dialog, depending
+on how many entries are selected.</p>
+
+<h4>Single Entry</h4>
+<p>(todo: screenshot)</p>
+
+<p>The "Main" tab contains the following settings:</p>
+<ul>
+<li><strong>File Type</strong> &ndash; File type for this entry. Like the context menu, the available options depend on the game being edited.</li>
+<li><strong>Comment</strong> &ndash; Comment for this entry.</li>
+<li><strong>Replacement Encoding</strong> &ndash; Choose the encoding for this entry. Only the "Force" options work as intended. ("Pick Best" is meant to test both options and select the smallest one, but it's not implemented yet.)</li>
+<li><strong>Replacement File Path</strong> &ndash; Path to the replacement file for this entry. You can use the "Browse" button to pick a file.</li>
+</ul>
+
+<p>The single entry dialog has an "Extra" tab, which includes a few options
+for specific file types.</p>
+<ul>
+<li><strong>Image Width</strong> &ndash; Set the width of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
+<li><strong>Image Height</strong> &ndash; Set the height of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
+<li><strong>Transparent Color Index</strong> &ndash; asdf. "Unset" value is -1.</li>
+<li><strong>Default Palette ID</strong> &ndash; Set the default palette ID, used for
+previewing images. The value corresponds to an index in the File Table, and is
+hexadecimal. "Unset" value is <code>FFFFFFFFFFFFFFFF</code>, since File Table IDs
+are unsigned.</li>
+<li><strong>Horizontal Mirroring</strong> &ndash; Force horizontal mirroring for a texture. Primarily used with <code>CI*Texture</code>s.</li>
+<li><strong>Vertical Mirroring</strong> &ndash; Force vertical mirroring for a texture. Primarily used with <code>CI*Texture</code>s.</li>
+</ul>
+<p>These options are <em><strong>not</strong> disabled</em> based on the entry's file type, so be careful
+when using them.</p>
+
+<h4>Multiple Entries</h4>
+<p>(todo: screenshot)</p>
+
+<p>If multiple entries are selected, the multi-entry version of the dialog is displayed.
+Each file table entry is given its own row in a grid, with the following columns:</p>
+<ul>
+<li><strong>File ID</strong> &ndash; The index/ID of this file table entry. Read-only.</li>
+<li><strong>File Type</strong> &ndash; File type for this entry. Like the context menu and single entry dialog, the available options depend on the game being edited.</li>
+<li><strong>Encoding</strong> &ndash; (currently broken, don't touch it!)</li>
+<li><strong>Comment</strong> &ndash; Comment for this entry.</li>
+<li><strong>Replacement File</strong> &ndash; Path to the replacement file for this entry.</li>
+<li><strong>Browse</strong> &ndash; Browse for a replacement file.</li>
+</ul>
+
+<p>Since various types of files can be selected, the contents of the "Extra" tab
+from the single entry dialog do not appear here.</p>
+
+<hr />
+<h2><a name="Editors">Viewers and Editors</a></h2>
+<p>(todo)</p>
+
+<h3><a name="HexViewer">Hex Viewer</a></h3>
+<p>(todo: screenshot)</p>
+
+<p>The Hex Viewer is used to display data for "Binary" file types, but it can also
+be requested via the File Table context menu ("View Hex..."). Data is read-only,
+and the ByteViewer control doesn't allow for selecting and copying values.</p>
+
+<h3><a name="CIPaletteEdit">CI4/CI8 Palettes</a></h3>
+<p>(todo: screenshots)</p>
+
+<p>The CI4 and CI8 Palette Editor allows you to view and change palette values.</p>
+
+<h3><a name="CITexturePreview">CI4/CI8 Textures</a></h3>
+<p>(todo: screenshot)</p>
+
+<p>CI4 and CI8 Textures use a similar viewer.</p>
+
+<h3><a name="I4TexturePreview">I4 Textures</a></h3>
+<p>(todo: screenshot)</p>
+
+<p>(todo: I4 textures don't inherently have a width/height; this is what the
+extra options in the File Table are for)</p>
+
+<h3><a name="AKITexturePreview">"TEX" Textures</a></h3>
+<p>(todo: screenshot?)</p>
+
+<p>A simple previewer for the "TEX"/AkiTexture format. Since this format is
+a container for multiple image types (and their palette data, if applicable),
+the available options are limited.</p>
+
+<p>Scroll the mouse wheel to change the zoom level. Right clicking on the image
+brings up a context menu with two options:</p>
+<ul>
+<li><strong>Save PNG</strong> &ndash; Exports the texture as a 32-bit (RGBA) PNG.</li>
+<li><strong>Background Color</strong> &ndash; Change the background color, useful for images with transparency.</li>
+</ul>
+
+<h3><a name="AKITextEdit">AKIText</a></h3>
+<p>(todo: screenshot)</p>
+
+<p>The AKIText editor is used for text archives. These archives were first used
+in WWF WrestleMania 2000, and can also be found in Virtual Pro-Wrestling 2 and
+WWF No Mercy. (todo: more info)</p>
+
+<h3><a name="ModelTool2">ModelTool2</a></h3>
+<p>(todo: screenshot)</p>
+
+<p>This is a very incomplete tool for dealing with 3D model data. Not to be confused
+with the Model Tool found via Tools &rarr; Model Data. The end goal of this viewer is
+to display 3D model data, but that probably isn't happening for a while.</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
@@ -587,31 +734,40 @@ about wrestlers. (todo: sometimes you can edit them too)</p>
 
 <hr />
 <h2><a name="Tools">Tools</a></h2>
-<p>VPW Studio also provides tools that aren't tied to the concept of Projects. (todo)</p>
+<p>VPW Studio also provides tools that aren't tied to the concept of Projects.</p>
 
-<h3><a name="GameSharkCodeTool">GameShark Code Tool</a></h3>
-<p>(todo)</p>
+<h3>Model Tool</h3>
+<p>(todo: original version of model tool)</p>
 
 <hr />
 <h2><a name="DangerZone">Danger Zone</a></h2>
 <p>The Danger Zone is a collection of tools that is not necessarily meant for
 end users. These tools are typically rough and unfinished, and usually serve as
-the base for the final, more polished features.</p>
+the base for the final, more polished features. Starting with pre-alpha preview
+15, items are grouped by their general purpose.</p>
 
-<p>The list of items and what they do, since it's not always obvious:</p>
+<h3>Image Conversion</h3>
 <ul>
-<li><strong>lzss compress test</strong> &ndash; LZSS compress a file. File is exported as <code>(filename).lzss</code>.</li>
-<li><strong>lzss decompress test</strong> &ndash; Decompress an LZSS file. File is exported as <code>(filename).bin</code>.</li>
-<li><strong>name encoder/decoder</strong> &ndash; Work in progress tool for encoding and decoding the name format used from <em>WCW vs. nWo World Tour</em> through <em>WWF WrestleMania 2000</em>.</li>
-<li><strong>toki 1 test</strong> &ndash; View Toki1 info. Requires an open project.</li>
 <li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format.</li>
 <li><strong>png to ci4</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
 <li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
 <li><strong>png to menubg</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
+</ul>
+
+<h3>LZSS-related</h3>
+<ul>
+<li><strong>lzss compress test</strong> &ndash; LZSS compress a file. File is exported as <code>(filename).lzss</code>.</li>
+<li><strong>lzss decompress test</strong> &ndash; Decompress an LZSS file. File is exported as <code>(filename).bin</code>.</li>
+</ul>
+
+<h3>Others</h3>
+<ul>
+<li><strong>name encoder/decoder</strong> &ndash; Work in progress tool for encoding and decoding the name format used from <em>WCW vs. nWo World Tour</em> through <em>WWF WrestleMania 2000</em>.</li>
+<li><strong>toki 1 test</strong> &ndash; View Toki1 info. Requires an open project.</li>
 <li><strong>vpw2 face test</strong> &ndash; Attempts to render faces from VPW2 given specific values. Requires an open VPW2 project.</li>
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
-<li><strong>move damage test</strong> &ndash; Show move damage values. Requires an open VPW2 project.</li>
+<li><strong>move damage test (vpw2 only)</strong> &ndash; Show move damage values. Requires an open VPW2 project.</li>
 </ul>
 
 <hr />
@@ -683,7 +839,8 @@ to the start location of the first file in the archive).</dd>
 
 <hr />
 <h2><a name="GameDataFormats">Appendix C: Game Data Formats</a></h2>
-<p>(notes about data structures used in the games)</p>
+<p>(notes about data structures used in the games; this is for shared stuff.
+game-specific formats go in the game-specific documents)</p>
 
 <hr />
 <div id="footer">(footer content todo)</div>
