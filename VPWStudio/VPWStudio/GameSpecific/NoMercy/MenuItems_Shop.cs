@@ -112,7 +112,12 @@ namespace VPWStudio.GameSpecific.NoMercy
 
 			bw.Write(UnlockID);
 			bw.Write(ItemType);
-			bw.Write(ItemData);
+			byte[] idata = BitConverter.GetBytes(ItemData);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(idata);
+			}
+			bw.Write(idata);
 			bw.Write((UInt16)0);
 
 			bw.Write(Name.ToCharArray());
