@@ -6,7 +6,7 @@ VPW64     | 0x?? bytes; file ID xxxx
 Revenge   | 0x?? bytes; file ID xxxx
 WM2K      | 0x20 bytes (unconfirmed); file ID 03AD
 VPW2      | 0x20 bytes; file ID 0277?
-NoMercy   | 0x24 bytes; file ID xxxx
+NoMercy   | 0x24 bytes; file ID 01EF
 
 VPW2
 ====
@@ -45,8 +45,8 @@ VPW2
 
 No Mercy
 ========
-AKI Man
-http://s4.zetaboards.com/Old_Skool_Reunion/topic/8676443/1/
+The Pelican
+http://oldskoolreunion.com/forum/threads/pelicans-move-damage-guide.1838/
 
 00 - ??
 01 - ??
