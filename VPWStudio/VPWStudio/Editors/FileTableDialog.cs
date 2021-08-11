@@ -864,7 +864,7 @@ namespace VPWStudio
 				// WWF No Mercy Groupless Menu Items
 				case FileTypes.MenuItems_NoGroup:
 					{
-						Editors.NoMercy.MenuItemsNoGroup_NoMercy gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(key);
+						Editors.NoMercy.MenuItemsNoGroup_NoMercy gme;
 
 						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
 						{
@@ -923,7 +923,7 @@ namespace VPWStudio
 				// WWF No Mercy Smackdown Mall Shop menu items
 				case FileTypes.MenuItems_Shop:
 						{
-						Editors.NoMercy.MenuItemsShop_NoMercy gme = new Editors.NoMercy.MenuItemsShop_NoMercy(key);
+						Editors.NoMercy.MenuItemsShop_NoMercy gme;
 
 						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
 						{
@@ -938,6 +938,43 @@ namespace VPWStudio
 
 						if (gme.ShowDialog() == DialogResult.OK)
 						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save MenuItems_Shop changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							if (fte.ReplaceFilePath == null || fte.ReplaceFilePath == String.Empty)
+							{
+								// make new file
+								string filename = String.Format("{0}\\{1:X4}{2}", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), key, FileTypeInfo.DefaultFileTypeExtensions[FileTypes.MenuItems_Shop]);
+								using (FileStream fs = new FileStream(filename, FileMode.Create))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										gme.ShopItems.WriteData(bw);
+									}
+								}
+
+								// set new ReplaceFilePath
+								fte.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+								Program.InfoMessageBox(String.Format("Wrote new MenuItems_Shop archive to {0}.", filename));
+
+								Program.UnsavedChanges = true;
+								((MainForm)(MdiParent)).UpdateTitleBar();
+							}
+							else
+							{
+								// save existing file
+								using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										gme.ShopItems.WriteData(bw);
+									}
+								}
+							}
 						}
 					}
 					break;
