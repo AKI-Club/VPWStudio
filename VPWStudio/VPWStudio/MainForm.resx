@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="newProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New Project...</value>
@@ -135,19 +135,19 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="openProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open Project...</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 6</value>
+    <value>232, 6</value>
   </data>
   <data name="saveProjectToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="saveProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="saveProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save Project</value>
@@ -156,109 +156,109 @@
     <value>Ctrl+Shift+S</value>
   </data>
   <data name="saveProjectAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="saveProjectAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Project As...</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 6</value>
+    <value>232, 6</value>
   </data>
   <data name="closeProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="closeProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Close Project</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 6</value>
+    <value>232, 6</value>
   </data>
   <data name="exitToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+F4</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 22</value>
+    <value>235, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Properties</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 6</value>
+    <value>201, 6</value>
   </data>
   <data name="arenasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="arenasToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Arenas</value>
   </data>
   <data name="championshipsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="championshipsToolStripMenuItem.Text" xml:space="preserve">
     <value>C&amp;hampionships</value>
   </data>
   <data name="costumesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="costumesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Costumes</value>
   </data>
   <data name="titantronVideosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="titantronVideosToolStripMenuItem.Text" xml:space="preserve">
     <value>En&amp;trances</value>
   </data>
   <data name="fileTableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="fileTableToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File Table</value>
   </data>
   <data name="gameIntroductionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="gameIntroductionToolStripMenuItem.Text" xml:space="preserve">
     <value>Game &amp;Introduction</value>
   </data>
   <data name="menusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="menusToolStripMenuItem.Text" xml:space="preserve">
     <value>Me&amp;nus</value>
   </data>
   <data name="movesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="movesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Moves</value>
   </data>
   <data name="soundsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="soundsToolStripMenuItem.Text" xml:space="preserve">
     <value>So&amp;und/Music</value>
   </data>
   <data name="stablesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="stablesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Stables</value>
   </data>
   <data name="storyModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="storyModeToolStripMenuItem.Text" xml:space="preserve">
     <value>St&amp;ory Mode</value>
@@ -268,25 +268,25 @@
     <value>False</value>
   </data>
   <data name="weaponsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="weaponsToolStripMenuItem.Text" xml:space="preserve">
     <value>W&amp;eapons</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="wrestlersToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Wrestlers</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 6</value>
+    <value>201, 6</value>
   </data>
   <data name="buildROMToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+B</value>
   </data>
   <data name="buildROMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="buildROMToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Build ROM</value>
@@ -295,55 +295,55 @@
     <value>F5</value>
   </data>
   <data name="playROMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>204, 22</value>
   </data>
   <data name="playROMToolStripMenuItem.Text" xml:space="preserve">
     <value>Pla&amp;y ROM</value>
   </data>
   <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>56, 20</value>
   </data>
   <data name="projectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Project</value>
   </data>
   <data name="modelDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>165, 22</value>
   </data>
   <data name="modelDataToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Model Data</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
+    <value>162, 6</value>
   </data>
   <data name="programOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>165, 22</value>
   </data>
   <data name="programOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>Program &amp;Options</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>46, 20</value>
   </data>
   <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Tools</value>
   </data>
   <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+    <value>172, 22</value>
   </data>
   <data name="manualToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Manual...</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 6</value>
+    <value>169, 6</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+    <value>172, 22</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About VPW Studio</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>44, 20</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Help</value>
@@ -352,82 +352,82 @@
     <value>Danger Zone</value>
   </data>
   <data name="pngTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="pngTestToolStripMenuItem.Text" xml:space="preserve">
     <value>png to &amp;tex</value>
   </data>
   <data name="pngToCi4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="pngToCi4ToolStripMenuItem.Text" xml:space="preserve">
     <value>png to ci&amp;4</value>
   </data>
   <data name="pngToCi8ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="pngToCi8ToolStripMenuItem.Text" xml:space="preserve">
     <value>png to ci&amp;8</value>
   </data>
   <data name="pngToMenubgToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="pngToMenubgToolStripMenuItem.Text" xml:space="preserve">
     <value>png to &amp;menubg</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 6</value>
+    <value>305, 6</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;compress test</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;decompress test</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 6</value>
+    <value>305, 6</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Text" xml:space="preserve">
     <value>name e&amp;ncoder/decoder</value>
   </data>
   <data name="toki1Testvpw2OnlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="toki1Testvpw2OnlyToolStripMenuItem.Text" xml:space="preserve">
     <value>toki &amp;1 test</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw2 &amp;face test</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Text" xml:space="preserve">
     <value>s&amp;table parse test</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>rom &amp;slice test</value>
   </data>
   <data name="moveDamageTestvpw2OnlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
+    <value>308, 22</value>
   </data>
   <data name="moveDamageTestvpw2OnlyToolStripMenuItem.Text" xml:space="preserve">
-    <value>m&amp;ove damage test (vpw2 only)</value>
+    <value>m&amp;ove damage test (WM2K/VPW2/No Mercy only)</value>
   </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -466,7 +466,7 @@
     <value>126, 17</value>
   </metadata>
   <data name="tssLabelCurFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>777, 18</value>
+    <value>777, 20</value>
   </data>
   <data name="tssLabelCurFile.Text" xml:space="preserve">
     <value>No project file opened.</value>
@@ -478,7 +478,7 @@
     <value>None</value>
   </data>
   <data name="tssLabelGameType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 17</value>
+    <value>10, 19</value>
   </data>
   <data name="tssLabelGameType.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -487,10 +487,10 @@
     <value>False</value>
   </data>
   <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 591</value>
+    <value>0, 589</value>
   </data>
   <data name="StatusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 22</value>
+    <value>792, 24</value>
   </data>
   <data name="StatusBar.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
