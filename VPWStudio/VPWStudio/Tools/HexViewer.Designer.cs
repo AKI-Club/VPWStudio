@@ -28,33 +28,35 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.byteViewer = new System.ComponentModel.Design.ByteViewer();
+			this.hexBox1 = new Be.Windows.Forms.HexBox();
 			this.SuspendLayout();
 			// 
-			// byteViewer
+			// hexBox1
 			// 
-			this.byteViewer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-			this.byteViewer.ColumnCount = 1;
-			this.byteViewer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.byteViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.byteViewer.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.byteViewer.Location = new System.Drawing.Point(0, 0);
-			this.byteViewer.Name = "byteViewer";
-			this.byteViewer.RowCount = 1;
-			this.byteViewer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.byteViewer.Size = new System.Drawing.Size(634, 348);
-			this.byteViewer.TabIndex = 0;
+			this.hexBox1.ColumnInfoVisible = true;
+			this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.hexBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.hexBox1.LineInfoVisible = true;
+			this.hexBox1.Location = new System.Drawing.Point(0, 0);
+			this.hexBox1.Name = "hexBox1";
+			this.hexBox1.ReadOnly = true;
+			this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+			this.hexBox1.Size = new System.Drawing.Size(624, 341);
+			this.hexBox1.StringViewVisible = true;
+			this.hexBox1.TabIndex = 0;
+			this.hexBox1.UseFixedBytesPerLine = true;
+			this.hexBox1.VScrollBarVisible = true;
 			// 
 			// HexViewer
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(634, 348);
-			this.Controls.Add(this.byteViewer);
+			this.ClientSize = new System.Drawing.Size(624, 341);
+			this.Controls.Add(this.hexBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(640, 373);
-			this.MinimumSize = new System.Drawing.Size(640, 373);
+			this.MaximumSize = new System.Drawing.Size(640, 380);
+			this.MinimumSize = new System.Drawing.Size(640, 380);
 			this.Name = "HexViewer";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
 			this.Text = "Hex Viewer";
@@ -65,6 +67,6 @@
 
 		#endregion
 
-		private System.ComponentModel.Design.ByteViewer byteViewer;
+		private Be.Windows.Forms.HexBox hexBox1;
 	}
 }

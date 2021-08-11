@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using Be.Windows.Forms;
 
 namespace VPWStudio
 {
@@ -38,9 +39,9 @@ namespace VPWStudio
 		public int FileID = -1;
 
 		/// <summary>
-		/// Data to be put in the HexViewer.
+		/// Byte provider for the Be HexBox
 		/// </summary>
-		public byte[] Data;
+		private DynamicByteProvider HexBoxByteProvider;
 		#endregion
 
 		#region Constructors
@@ -53,10 +54,11 @@ namespace VPWStudio
 		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1)
 		{
 			InitializeComponent();
-			byteViewer.SetDisplayMode(DisplayMode.Hexdump);
 			ViewSource = hvds;
-			byteViewer.SetBytes(data);
 			FileID = fileID;
+
+			HexBoxByteProvider = new DynamicByteProvider(data);
+			hexBox1.ByteProvider = HexBoxByteProvider;
 
 			if (FileID != -1)
 			{
@@ -77,7 +79,7 @@ namespace VPWStudio
 		public byte[] GetHash()
 		{
 			SHA256 sha256 = SHA256.Create();
-			return sha256.ComputeHash(byteViewer.GetBytes());
+			return sha256.ComputeHash(HexBoxByteProvider.Bytes.ToArray());
 		}
 
 		/// <summary>
@@ -87,6 +89,13 @@ namespace VPWStudio
 		/// <param name="e"></param>
 		private void HexViewer_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			IDisposable hbp = HexBoxByteProvider as IDisposable;
+			if (hbp != null)
+			{
+				hbp.Dispose();
+			}
+			hexBox1.ByteProvider = null;
+
 			Program.HexViewManager.FormClosed(this);
 		}
 	}
