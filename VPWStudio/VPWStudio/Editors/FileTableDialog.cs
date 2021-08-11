@@ -761,10 +761,16 @@ namespace VPWStudio
 					{
 						// act upon working file if it exists
 						Editors.AkiTextEditor ate;
-						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
 						{
 							// load file
 							ate = new Editors.AkiTextEditor(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && !File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
+						{
+							// replacement file defined but nonexistent
+							Program.InfoMessageBox(String.Format("Unable to open replacement file {0}, using data from ROM instead.",fte.ReplaceFilePath));
+							ate = new Editors.AkiTextEditor(key);
 						}
 						else
 						{
@@ -866,10 +872,16 @@ namespace VPWStudio
 					{
 						Editors.NoMercy.MenuItemsNoGroup_NoMercy gme;
 
-						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
 						{
 							// load file
 							gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && !File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
+						{
+							// replacement file defined but nonexistent
+							Program.InfoMessageBox(String.Format("Unable to open replacement file {0}, using data from ROM instead.", fte.ReplaceFilePath));
+							gme = new Editors.NoMercy.MenuItemsNoGroup_NoMercy(key);
 						}
 						else
 						{
@@ -925,10 +937,16 @@ namespace VPWStudio
 						{
 						Editors.NoMercy.MenuItemsShop_NoMercy gme;
 
-						if (!String.IsNullOrEmpty(fte.ReplaceFilePath))
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
 						{
 							// load file
 							gme = new Editors.NoMercy.MenuItemsShop_NoMercy(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && !File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
+						{
+							// replacement file defined but nonexistent
+							Program.InfoMessageBox(String.Format("Unable to open replacement file {0}, using data from ROM instead.", fte.ReplaceFilePath));
+							gme = new Editors.NoMercy.MenuItemsShop_NoMercy(key);
 						}
 						else
 						{
