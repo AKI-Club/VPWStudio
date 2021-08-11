@@ -132,10 +132,23 @@ namespace VPWStudio
 				return;
 			}
 
-			// input ROM must exist
-			if (!File.Exists(tbBaseROMPath.Text))
+			// input ROM path must be rooted if the project has not been saved yet
+			if (Program.CurProjectPath == String.Empty && !Path.IsPathRooted(tbBaseROMPath.Text))
 			{
-				Program.ErrorMessageBox(String.Format("Input ROM file not found at\n{0}", Path.GetFullPath(tbBaseROMPath.Text)));
+				Program.ErrorMessageBox("Input ROM cannot use a relative path until the project file is saved for the first time.");
+				return;
+			}
+
+			// input ROM must exist
+			string baseRomPath = tbBaseROMPath.Text;
+			if (!Path.IsPathRooted(baseRomPath))
+			{
+				baseRomPath = String.Format("{0}\\{1}", Path.GetDirectoryName(Program.CurProjectPath), baseRomPath);
+			}
+
+			if (!File.Exists(baseRomPath))
+			{
+				Program.ErrorMessageBox(String.Format("Input ROM file not found at\n{0}", Path.GetFullPath(baseRomPath)));
 				return;
 			}
 
