@@ -62,7 +62,7 @@ namespace VPWStudio.Editors.NoMercy
 			UpdateDropdown();
 		}
 
-		private void UpdateDropdown()
+		private void UpdateDropdown(bool resetIndex = true)
 		{
 			cbEntries.Items.Clear();
 			cbEntries.BeginUpdate();
@@ -71,7 +71,10 @@ namespace VPWStudio.Editors.NoMercy
 				cbEntries.Items.Add(entry.Name);
 			}
 			cbEntries.EndUpdate();
-			cbEntries.SelectedIndex = 0;
+			if (resetIndex)
+			{
+				cbEntries.SelectedIndex = 0;
+			}
 		}
 
 		private void cbEntries_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,9 +118,15 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			//ShopItems.Entries[cbEntries.SelectedIndex]
+			GameSpecific.NoMercy.ShopItemEntry curEntry = ShopItems.Entries[cbEntries.SelectedIndex];
+			curEntry.Name = tbName.Text;
+			curEntry.Description = tbDescription.Text;
+			curEntry.Price = (uint)nudPrice.Value;
+			// the other values can't be edited at the moment
+			ShopItems.Entries[cbEntries.SelectedIndex] = curEntry;
 
 			// update dropdown with new item name
+			cbEntries.Items[cbEntries.SelectedIndex] = tbName.Text;
 		}
 	}
 }
