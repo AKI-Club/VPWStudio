@@ -174,7 +174,41 @@ namespace VPWStudio
 			StringBuilder sb = new StringBuilder();
 
 			// mostly like VPW2 but with new entries
-			sb.AppendLine("ugh I haven't done this yet please leave me alone for now");
+			sb.AppendLine(String.Format("+00: {0:X2}", mde.Data[0]));
+			sb.AppendLine(String.Format("+01: {0:X2}", mde.Data[1]));
+			sb.AppendLine(String.Format("+02: {0:X2}", mde.Data[2]));
+			sb.AppendLine(String.Format("+03: {0:X2}", mde.Data[3]));
+			sb.AppendLine(String.Format("+04: Link {0:X2}{1:X2}", mde.Data[4], mde.Data[5]));
+			sb.AppendLine(String.Format("+06: Damage {0:X2}", mde.Data[6]));
+			sb.AppendLine(String.Format("+07: Spirit Gain {0:X2}", mde.Data[7]));
+			sb.AppendLine(String.Format("+08: Spirit Drain {0:X2} ({1})", mde.Data[8], (sbyte)mde.Data[8]));
+			sb.AppendLine(String.Format("+09: Blood Chance {0:X2}", mde.Data[9]));
+			sb.AppendLine(String.Format("+0A: KO Chance {0:X2}", mde.Data[10]));
+			sb.AppendLine(String.Format("+0B: Offensive Param. {0:X2}", mde.Data[11]));
+			sb.AppendLine(String.Format("+0C: Defensive Param. {0:X2}", mde.Data[12]));
+			sb.AppendLine(String.Format("+0D: {0:X2}", mde.Data[13]));
+			sb.AppendLine(String.Format("+0E: {0:X2}", mde.Data[14]));
+			sb.AppendLine(String.Format("+0F: {0:X2}", mde.Data[15]));
+			sb.AppendLine(String.Format("+10: {0:X2}", mde.Data[16]));
+			sb.AppendLine(String.Format("+11: {0:X2}", mde.Data[17]));
+			sb.AppendLine(String.Format("+12: Head Damage {0:X2}", mde.Data[18]));
+			sb.AppendLine(String.Format("+13: Body Damage {0:X2}", mde.Data[19]));
+			sb.AppendLine(String.Format("+14: Arm Damage {0:X2}", mde.Data[20]));
+			sb.AppendLine(String.Format("+15: Leg Damage {0:X2}", mde.Data[21]));
+			sb.AppendLine(String.Format("+16: Speed/Flying Damage {0:X2}", mde.Data[22]));
+			sb.AppendLine(String.Format("+17: Strike Reaction {0:X2}", mde.Data[23]));
+			sb.AppendLine(String.Format("+18: {0:X2}", mde.Data[24]));
+			sb.AppendLine(String.Format("+19: {0:X2}", mde.Data[25]));
+			sb.AppendLine(String.Format("+1A: {0:X2}", mde.Data[26]));
+			sb.AppendLine(String.Format("+1B: Special Damage {0:X2}", mde.Data[27]));
+			sb.AppendLine(String.Format("+1C: Previous Move {0:X2}", mde.Data[28]));
+			sb.AppendLine(String.Format("+1D: {0:X2}", mde.Data[29]));
+			sb.AppendLine(String.Format("+1E: {0:X2}", mde.Data[30]));
+			sb.AppendLine(String.Format("+1F: {0:X2}", mde.Data[31]));
+			sb.AppendLine(String.Format("+20: Move Type {0:X2}", mde.Data[32]));
+			sb.AppendLine(String.Format("+21: Additional Properties {0:X2}", mde.Data[33]));
+			sb.AppendLine(String.Format("+22: {0:X2}", mde.Data[34]));
+			sb.AppendLine(String.Format("+23: {0:X2}", mde.Data[35]));
 
 			tbOutput.Text = sb.ToString();
 		}
