@@ -773,6 +773,8 @@
     <Content Include="LocationFiles\NWXP.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\DefaultShader.frag" />
+    <EmbeddedResource Include="Resources\DefaultShader.vert" />
     <None Include="Resources\vpw64_16px.png" />
     <None Include="Resources\wm2000_16px.png" />
     <None Include="Resources\worldtour_16px.png" />
@@ -856,7 +858,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\font.ico" />
-    <EmbeddedResource Include="Resources\DefaultShader.fx" />
     <Content Include="Resources\FileTypes\AkiArchive.png" />
     <Content Include="Resources\FileTypes\AkiLargeFont.png" />
     <Content Include="Resources\FileTypes\AkiModel.png" />
