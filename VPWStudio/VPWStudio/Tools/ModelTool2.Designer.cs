@@ -358,6 +358,7 @@
 			this.Name = "ModelTool2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelTool2_FormClosing);
 			this.gbModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.PerformLayout();
