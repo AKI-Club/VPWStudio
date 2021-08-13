@@ -53,8 +53,6 @@ namespace VPWStudio
 			FileID = fileID;
 
 			LoadModel(FileID);
-			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
-			RedrawTimer.Tick += new EventHandler(RenderScene);
 
 			// do the simple shit first
 			tbFileID.Text = String.Format("{0:X4}", fileID);
@@ -79,6 +77,9 @@ namespace VPWStudio
 				texSizeV = Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy ? 64 : 128;
 			}
 			tbTextureSize.Text = String.Format("{1}x{2} (0x{0:X2})", (byte)CurModel.TextureSize, texSizeH, texSizeV);
+
+			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
+			RedrawTimer.Tick += new EventHandler(RenderScene);
 		}
 
 		/// <summary>
@@ -102,7 +103,7 @@ namespace VPWStudio
 			modelWriter.Close();
 		}
 
-		private void buttonExportWavefrontOBJ_Click(object sender, EventArgs e)
+		private void exportWavefrontOBJToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
 			sfd.Title = "Export Wavefront OBJ";
@@ -224,7 +225,7 @@ namespace VPWStudio
 			GL.UseProgram(ShaderProgram);
 
 			// todo: that last number will probably change
-			GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+			GL.DrawArrays(PrimitiveType.Triangles, 0, ExampleData.Length/4);
 
 			GL.Flush();
 			glControl1.SwapBuffers();
