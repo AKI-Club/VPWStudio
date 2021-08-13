@@ -24,22 +24,27 @@ namespace VPWStudio
 		/// X position
 		/// </summary>
 		public SByte X;
+
 		/// <summary>
 		/// Y position
 		/// </summary>
 		public SByte Y;
+		
 		/// <summary>
 		/// Z position
 		/// </summary>
 		public SByte Z;
+		
 		/// <summary>
 		/// Texture horizontal offset
 		/// </summary>
 		public byte U;
+		
 		/// <summary>
 		/// Texture vertical offset
 		/// </summary>
 		public byte V;
+		
 		/// <summary>
 		/// Vertex color
 		/// </summary>
@@ -323,6 +328,10 @@ namespace VPWStudio
 		{
 			ReadData(br);
 		}
+		#endregion
+
+		#region Utility Routines
+		// todo: routine for making an array of floats from vertex positions
 		#endregion
 
 		#region Binary Read/Write
