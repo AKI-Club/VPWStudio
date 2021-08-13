@@ -52,18 +52,25 @@
 			this.tbUnknown = new System.Windows.Forms.TextBox();
 			this.labelNumFaces = new System.Windows.Forms.Label();
 			this.labelNumFacesTopBit = new System.Windows.Forms.Label();
-			this.buttonExportWavefrontOBJ = new System.Windows.Forms.Button();
 			this.glControl1 = new OpenTK.GLControl();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.exportWavefrontOBJToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbModelInfo.SuspendLayout();
 			this.tlpModelInfo.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbModelInfo
 			// 
+			this.gbModelInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbModelInfo.Controls.Add(this.tlpModelInfo);
-			this.gbModelInfo.Location = new System.Drawing.Point(12, 12);
+			this.gbModelInfo.Location = new System.Drawing.Point(3, 3);
 			this.gbModelInfo.Name = "gbModelInfo";
-			this.gbModelInfo.Size = new System.Drawing.Size(348, 294);
+			this.gbModelInfo.Size = new System.Drawing.Size(311, 309);
 			this.gbModelInfo.TabIndex = 1;
 			this.gbModelInfo.TabStop = false;
 			this.gbModelInfo.Text = "Model Information";
@@ -71,8 +78,8 @@
 			// tlpModelInfo
 			// 
 			this.tlpModelInfo.ColumnCount = 2;
-			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31F));
-			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69F));
+			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.08197F));
+			this.tlpModelInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.91803F));
 			this.tlpModelInfo.Controls.Add(this.tbNumFacesTopBit, 1, 5);
 			this.tlpModelInfo.Controls.Add(this.tbNumVertsTopBit, 1, 3);
 			this.tlpModelInfo.Controls.Add(this.tbNumVerts, 1, 2);
@@ -99,52 +106,52 @@
 			this.tlpModelInfo.Location = new System.Drawing.Point(3, 16);
 			this.tlpModelInfo.Name = "tlpModelInfo";
 			this.tlpModelInfo.RowCount = 11;
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-			this.tlpModelInfo.Size = new System.Drawing.Size(342, 275);
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+			this.tlpModelInfo.Size = new System.Drawing.Size(305, 290);
 			this.tlpModelInfo.TabIndex = 0;
 			// 
 			// tbNumFacesTopBit
 			// 
 			this.tbNumFacesTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumFacesTopBit.Location = new System.Drawing.Point(109, 123);
+			this.tbNumFacesTopBit.Location = new System.Drawing.Point(109, 133);
 			this.tbNumFacesTopBit.Name = "tbNumFacesTopBit";
 			this.tbNumFacesTopBit.ReadOnly = true;
-			this.tbNumFacesTopBit.Size = new System.Drawing.Size(230, 20);
+			this.tbNumFacesTopBit.Size = new System.Drawing.Size(193, 20);
 			this.tbNumFacesTopBit.TabIndex = 12;
 			// 
 			// tbNumVertsTopBit
 			// 
 			this.tbNumVertsTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumVertsTopBit.Location = new System.Drawing.Point(109, 75);
+			this.tbNumVertsTopBit.Location = new System.Drawing.Point(109, 81);
 			this.tbNumVertsTopBit.Name = "tbNumVertsTopBit";
 			this.tbNumVertsTopBit.ReadOnly = true;
-			this.tbNumVertsTopBit.Size = new System.Drawing.Size(230, 20);
+			this.tbNumVertsTopBit.Size = new System.Drawing.Size(193, 20);
 			this.tbNumVertsTopBit.TabIndex = 10;
 			// 
 			// tbNumVerts
 			// 
 			this.tbNumVerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumVerts.Location = new System.Drawing.Point(109, 51);
+			this.tbNumVerts.Location = new System.Drawing.Point(109, 55);
 			this.tbNumVerts.Name = "tbNumVerts";
 			this.tbNumVerts.ReadOnly = true;
-			this.tbNumVerts.Size = new System.Drawing.Size(230, 20);
+			this.tbNumVerts.Size = new System.Drawing.Size(193, 20);
 			this.tbNumVerts.TabIndex = 2;
 			// 
 			// labelNumVerts
 			// 
 			this.labelNumVerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumVerts.AutoSize = true;
-			this.labelNumVerts.Location = new System.Drawing.Point(3, 53);
+			this.labelNumVerts.Location = new System.Drawing.Point(3, 58);
 			this.labelNumVerts.Name = "labelNumVerts";
 			this.labelNumVerts.Size = new System.Drawing.Size(100, 13);
 			this.labelNumVerts.TabIndex = 2;
@@ -153,17 +160,17 @@
 			// tbModelScale
 			// 
 			this.tbModelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbModelScale.Location = new System.Drawing.Point(109, 27);
+			this.tbModelScale.Location = new System.Drawing.Point(109, 29);
 			this.tbModelScale.Name = "tbModelScale";
 			this.tbModelScale.ReadOnly = true;
-			this.tbModelScale.Size = new System.Drawing.Size(230, 20);
+			this.tbModelScale.Size = new System.Drawing.Size(193, 20);
 			this.tbModelScale.TabIndex = 1;
 			// 
 			// labelModelScale
 			// 
 			this.labelModelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelModelScale.AutoSize = true;
-			this.labelModelScale.Location = new System.Drawing.Point(3, 29);
+			this.labelModelScale.Location = new System.Drawing.Point(3, 32);
 			this.labelModelScale.Name = "labelModelScale";
 			this.labelModelScale.Size = new System.Drawing.Size(100, 13);
 			this.labelModelScale.TabIndex = 1;
@@ -173,7 +180,7 @@
 			// 
 			this.labelFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelFileID.AutoSize = true;
-			this.labelFileID.Location = new System.Drawing.Point(3, 5);
+			this.labelFileID.Location = new System.Drawing.Point(3, 6);
 			this.labelFileID.Name = "labelFileID";
 			this.labelFileID.Size = new System.Drawing.Size(100, 13);
 			this.labelFileID.TabIndex = 0;
@@ -185,23 +192,23 @@
 			this.tbFileID.Location = new System.Drawing.Point(109, 3);
 			this.tbFileID.Name = "tbFileID";
 			this.tbFileID.ReadOnly = true;
-			this.tbFileID.Size = new System.Drawing.Size(230, 20);
+			this.tbFileID.Size = new System.Drawing.Size(193, 20);
 			this.tbFileID.TabIndex = 0;
 			// 
 			// tbNumFaces
 			// 
 			this.tbNumFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumFaces.Location = new System.Drawing.Point(109, 99);
+			this.tbNumFaces.Location = new System.Drawing.Point(109, 107);
 			this.tbNumFaces.Name = "tbNumFaces";
 			this.tbNumFaces.ReadOnly = true;
-			this.tbNumFaces.Size = new System.Drawing.Size(230, 20);
+			this.tbNumFaces.Size = new System.Drawing.Size(193, 20);
 			this.tbNumFaces.TabIndex = 3;
 			// 
 			// labelNumVertsTopBit
 			// 
 			this.labelNumVertsTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumVertsTopBit.AutoSize = true;
-			this.labelNumVertsTopBit.Location = new System.Drawing.Point(3, 77);
+			this.labelNumVertsTopBit.Location = new System.Drawing.Point(3, 84);
 			this.labelNumVertsTopBit.Name = "labelNumVertsTopBit";
 			this.labelNumVertsTopBit.Size = new System.Drawing.Size(100, 13);
 			this.labelNumVertsTopBit.TabIndex = 9;
@@ -210,17 +217,17 @@
 			// tbTextureSize
 			// 
 			this.tbTextureSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTextureSize.Location = new System.Drawing.Point(109, 247);
+			this.tbTextureSize.Location = new System.Drawing.Point(109, 265);
 			this.tbTextureSize.Name = "tbTextureSize";
 			this.tbTextureSize.ReadOnly = true;
-			this.tbTextureSize.Size = new System.Drawing.Size(230, 20);
+			this.tbTextureSize.Size = new System.Drawing.Size(193, 20);
 			this.tbTextureSize.TabIndex = 8;
 			// 
 			// labelTextureSize
 			// 
 			this.labelTextureSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTextureSize.AutoSize = true;
-			this.labelTextureSize.Location = new System.Drawing.Point(3, 251);
+			this.labelTextureSize.Location = new System.Drawing.Point(3, 268);
 			this.labelTextureSize.Name = "labelTextureSize";
 			this.labelTextureSize.Size = new System.Drawing.Size(100, 13);
 			this.labelTextureSize.TabIndex = 8;
@@ -229,17 +236,17 @@
 			// tbOffsetZ
 			// 
 			this.tbOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetZ.Location = new System.Drawing.Point(109, 219);
+			this.tbOffsetZ.Location = new System.Drawing.Point(109, 237);
 			this.tbOffsetZ.Name = "tbOffsetZ";
 			this.tbOffsetZ.ReadOnly = true;
-			this.tbOffsetZ.Size = new System.Drawing.Size(230, 20);
+			this.tbOffsetZ.Size = new System.Drawing.Size(193, 20);
 			this.tbOffsetZ.TabIndex = 7;
 			// 
 			// labelOffsetZ
 			// 
 			this.labelOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOffsetZ.AutoSize = true;
-			this.labelOffsetZ.Location = new System.Drawing.Point(3, 221);
+			this.labelOffsetZ.Location = new System.Drawing.Point(3, 240);
 			this.labelOffsetZ.Name = "labelOffsetZ";
 			this.labelOffsetZ.Size = new System.Drawing.Size(100, 13);
 			this.labelOffsetZ.TabIndex = 7;
@@ -249,7 +256,7 @@
 			// 
 			this.labelOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOffsetY.AutoSize = true;
-			this.labelOffsetY.Location = new System.Drawing.Point(3, 197);
+			this.labelOffsetY.Location = new System.Drawing.Point(3, 214);
 			this.labelOffsetY.Name = "labelOffsetY";
 			this.labelOffsetY.Size = new System.Drawing.Size(100, 13);
 			this.labelOffsetY.TabIndex = 6;
@@ -258,26 +265,26 @@
 			// tbOffsetY
 			// 
 			this.tbOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetY.Location = new System.Drawing.Point(109, 195);
+			this.tbOffsetY.Location = new System.Drawing.Point(109, 211);
 			this.tbOffsetY.Name = "tbOffsetY";
 			this.tbOffsetY.ReadOnly = true;
-			this.tbOffsetY.Size = new System.Drawing.Size(230, 20);
+			this.tbOffsetY.Size = new System.Drawing.Size(193, 20);
 			this.tbOffsetY.TabIndex = 6;
 			// 
 			// tbOffsetX
 			// 
 			this.tbOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetX.Location = new System.Drawing.Point(109, 171);
+			this.tbOffsetX.Location = new System.Drawing.Point(109, 185);
 			this.tbOffsetX.Name = "tbOffsetX";
 			this.tbOffsetX.ReadOnly = true;
-			this.tbOffsetX.Size = new System.Drawing.Size(230, 20);
+			this.tbOffsetX.Size = new System.Drawing.Size(193, 20);
 			this.tbOffsetX.TabIndex = 5;
 			// 
 			// labelOffsetX
 			// 
 			this.labelOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOffsetX.AutoSize = true;
-			this.labelOffsetX.Location = new System.Drawing.Point(3, 173);
+			this.labelOffsetX.Location = new System.Drawing.Point(3, 188);
 			this.labelOffsetX.Name = "labelOffsetX";
 			this.labelOffsetX.Size = new System.Drawing.Size(100, 13);
 			this.labelOffsetX.TabIndex = 5;
@@ -287,7 +294,7 @@
 			// 
 			this.labelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUnknown.AutoSize = true;
-			this.labelUnknown.Location = new System.Drawing.Point(3, 149);
+			this.labelUnknown.Location = new System.Drawing.Point(3, 162);
 			this.labelUnknown.Name = "labelUnknown";
 			this.labelUnknown.Size = new System.Drawing.Size(100, 13);
 			this.labelUnknown.TabIndex = 4;
@@ -296,17 +303,17 @@
 			// tbUnknown
 			// 
 			this.tbUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown.Location = new System.Drawing.Point(109, 147);
+			this.tbUnknown.Location = new System.Drawing.Point(109, 159);
 			this.tbUnknown.Name = "tbUnknown";
 			this.tbUnknown.ReadOnly = true;
-			this.tbUnknown.Size = new System.Drawing.Size(230, 20);
+			this.tbUnknown.Size = new System.Drawing.Size(193, 20);
 			this.tbUnknown.TabIndex = 4;
 			// 
 			// labelNumFaces
 			// 
 			this.labelNumFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumFaces.AutoSize = true;
-			this.labelNumFaces.Location = new System.Drawing.Point(3, 101);
+			this.labelNumFaces.Location = new System.Drawing.Point(3, 110);
 			this.labelNumFaces.Name = "labelNumFaces";
 			this.labelNumFaces.Size = new System.Drawing.Size(100, 13);
 			this.labelNumFaces.TabIndex = 3;
@@ -316,45 +323,68 @@
 			// 
 			this.labelNumFacesTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelNumFacesTopBit.AutoSize = true;
-			this.labelNumFacesTopBit.Location = new System.Drawing.Point(3, 125);
+			this.labelNumFacesTopBit.Location = new System.Drawing.Point(3, 136);
 			this.labelNumFacesTopBit.Name = "labelNumFacesTopBit";
 			this.labelNumFacesTopBit.Size = new System.Drawing.Size(100, 13);
 			this.labelNumFacesTopBit.TabIndex = 11;
 			this.labelNumFacesTopBit.Text = "NumFaces Top Bit";
 			// 
-			// buttonExportWavefrontOBJ
-			// 
-			this.buttonExportWavefrontOBJ.Location = new System.Drawing.Point(12, 312);
-			this.buttonExportWavefrontOBJ.Name = "buttonExportWavefrontOBJ";
-			this.buttonExportWavefrontOBJ.Size = new System.Drawing.Size(157, 23);
-			this.buttonExportWavefrontOBJ.TabIndex = 2;
-			this.buttonExportWavefrontOBJ.Text = "&Export Wavefront OBJ...";
-			this.buttonExportWavefrontOBJ.UseVisualStyleBackColor = true;
-			this.buttonExportWavefrontOBJ.Click += new System.EventHandler(this.buttonExportWavefrontOBJ_Click);
-			// 
 			// glControl1
 			// 
 			this.glControl1.BackColor = System.Drawing.Color.Black;
-			this.glControl1.Location = new System.Drawing.Point(366, 12);
+			this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.glControl1.Location = new System.Drawing.Point(320, 3);
 			this.glControl1.Name = "glControl1";
-			this.glControl1.Size = new System.Drawing.Size(256, 291);
+			this.glControl1.Size = new System.Drawing.Size(311, 309);
 			this.glControl1.TabIndex = 3;
 			this.glControl1.VSync = false;
 			this.glControl1.Load += new System.EventHandler(this.glControl1_Load);
 			this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
 			this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
 			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Controls.Add(this.gbModelInfo, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.glControl1, 1, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(634, 315);
+			this.tableLayoutPanel1.TabIndex = 4;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportWavefrontOBJToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(634, 24);
+			this.menuStrip1.TabIndex = 5;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// exportWavefrontOBJToolStripMenuItem
+			// 
+			this.exportWavefrontOBJToolStripMenuItem.Name = "exportWavefrontOBJToolStripMenuItem";
+			this.exportWavefrontOBJToolStripMenuItem.Size = new System.Drawing.Size(143, 20);
+			this.exportWavefrontOBJToolStripMenuItem.Text = "&Export Wavefront OBJ...";
+			this.exportWavefrontOBJToolStripMenuItem.Click += new System.EventHandler(this.exportWavefrontOBJToolStripMenuItem_Click);
+			// 
 			// ModelTool2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(634, 347);
-			this.Controls.Add(this.glControl1);
-			this.Controls.Add(this.buttonExportWavefrontOBJ);
-			this.Controls.Add(this.gbModelInfo);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.ClientSize = new System.Drawing.Size(634, 339);
+			this.Controls.Add(this.tableLayoutPanel1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(650, 378);
 			this.Name = "ModelTool2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
@@ -362,7 +392,11 @@
 			this.gbModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -387,11 +421,13 @@
 		private System.Windows.Forms.TextBox tbTextureSize;
 		private System.Windows.Forms.Label labelFileID;
 		private System.Windows.Forms.TextBox tbFileID;
-		private System.Windows.Forms.Button buttonExportWavefrontOBJ;
 		private System.Windows.Forms.TextBox tbNumVertsTopBit;
 		private System.Windows.Forms.Label labelNumVertsTopBit;
 		private System.Windows.Forms.TextBox tbNumFacesTopBit;
 		private System.Windows.Forms.Label labelNumFacesTopBit;
 		private OpenTK.GLControl glControl1;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem exportWavefrontOBJToolStripMenuItem;
 	}
 }
