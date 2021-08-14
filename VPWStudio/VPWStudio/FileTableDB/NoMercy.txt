@@ -1250,10 +1250,10 @@
 04EC=Ci8Palette;N64 controller
 04ED=Ci8Texture;N64 controller|p:04EC
 04EE=AkiModel;[Arena] Front Inner Cage Piece Polygon
-04EF=AkiModel;[Arena] Left Outter Cage Piece Polygon
-04F0=AkiModel;[Arena] Back Outter Cage Piece Polygon
-04F1=AkiModel;[Arena] Right Outter Cage Piece Polygon
-04F2=AkiModel;[Arena] Front Outter Cage Piece Polygon
+04EF=AkiModel;[Arena] Left Outer Cage Piece Polygon
+04F0=AkiModel;[Arena] Back Outer Cage Piece Polygon
+04F1=AkiModel;[Arena] Right Outer Cage Piece Polygon
+04F2=AkiModel;[Arena] Front Outer Cage Piece Polygon
 04F3=AkiModel;[Arena] Left Inner Cage Piece Polygon
 04F4=AkiModel;[Arena] Back Inner Cage Piece Polygon
 04F5=AkiModel;[Arena] Right Inner Cage Piece Polygon
@@ -1345,8 +1345,8 @@
 054B=AkiModel;[Arena] Normal Match Ring Post Polygon
 054C=AkiModel;[Arena] Normal Match Turnbuckle Pad Polygon
 054D=AkiModel;[Arena] Normal Match Turnbuckle Polygon
-054E=AkiModel;[Arena] Left Ailse Barricade Polygon
-054F=AkiModel;[Arena] Right Ailse Barricade Polygon
+054E=AkiModel;[Arena] Left Aisle Barricade Polygon
+054F=AkiModel;[Arena] Right Aisle Barricade Polygon
 0550=AkiModel;[Arena] Back Right Barricade Polygon
 0551=AkiModel;[Arena] Right Barricade Lower Side Polygon
 0552=AkiModel;[Arena] Right Barricade Upper Side Polygon
