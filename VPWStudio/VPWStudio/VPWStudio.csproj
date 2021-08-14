@@ -98,6 +98,12 @@
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
     <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="Dialogs\SelectTextureDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SelectTextureDialog.Designer.cs">
+      <DependentUpon>SelectTextureDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\GameIntroEditor_Later.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.resx">
       <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SelectTextureDialog.resx">
+      <DependentUpon>SelectTextureDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\TexPreviewDialog.resx">
       <DependentUpon>TexPreviewDialog.cs</DependentUpon>
