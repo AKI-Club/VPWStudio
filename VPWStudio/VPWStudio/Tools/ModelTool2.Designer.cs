@@ -56,6 +56,7 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.exportWavefrontOBJToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbModelInfo.SuspendLayout();
 			this.tlpModelInfo.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -123,28 +124,28 @@
 			// tbNumFacesTopBit
 			// 
 			this.tbNumFacesTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumFacesTopBit.Location = new System.Drawing.Point(109, 133);
+			this.tbNumFacesTopBit.Location = new System.Drawing.Point(110, 133);
 			this.tbNumFacesTopBit.Name = "tbNumFacesTopBit";
 			this.tbNumFacesTopBit.ReadOnly = true;
-			this.tbNumFacesTopBit.Size = new System.Drawing.Size(193, 20);
+			this.tbNumFacesTopBit.Size = new System.Drawing.Size(192, 20);
 			this.tbNumFacesTopBit.TabIndex = 12;
 			// 
 			// tbNumVertsTopBit
 			// 
 			this.tbNumVertsTopBit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumVertsTopBit.Location = new System.Drawing.Point(109, 81);
+			this.tbNumVertsTopBit.Location = new System.Drawing.Point(110, 81);
 			this.tbNumVertsTopBit.Name = "tbNumVertsTopBit";
 			this.tbNumVertsTopBit.ReadOnly = true;
-			this.tbNumVertsTopBit.Size = new System.Drawing.Size(193, 20);
+			this.tbNumVertsTopBit.Size = new System.Drawing.Size(192, 20);
 			this.tbNumVertsTopBit.TabIndex = 10;
 			// 
 			// tbNumVerts
 			// 
 			this.tbNumVerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumVerts.Location = new System.Drawing.Point(109, 55);
+			this.tbNumVerts.Location = new System.Drawing.Point(110, 55);
 			this.tbNumVerts.Name = "tbNumVerts";
 			this.tbNumVerts.ReadOnly = true;
-			this.tbNumVerts.Size = new System.Drawing.Size(193, 20);
+			this.tbNumVerts.Size = new System.Drawing.Size(192, 20);
 			this.tbNumVerts.TabIndex = 2;
 			// 
 			// labelNumVerts
@@ -153,17 +154,17 @@
 			this.labelNumVerts.AutoSize = true;
 			this.labelNumVerts.Location = new System.Drawing.Point(3, 58);
 			this.labelNumVerts.Name = "labelNumVerts";
-			this.labelNumVerts.Size = new System.Drawing.Size(100, 13);
+			this.labelNumVerts.Size = new System.Drawing.Size(101, 13);
 			this.labelNumVerts.TabIndex = 2;
 			this.labelNumVerts.Text = "Number of Vertices";
 			// 
 			// tbModelScale
 			// 
 			this.tbModelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbModelScale.Location = new System.Drawing.Point(109, 29);
+			this.tbModelScale.Location = new System.Drawing.Point(110, 29);
 			this.tbModelScale.Name = "tbModelScale";
 			this.tbModelScale.ReadOnly = true;
-			this.tbModelScale.Size = new System.Drawing.Size(193, 20);
+			this.tbModelScale.Size = new System.Drawing.Size(192, 20);
 			this.tbModelScale.TabIndex = 1;
 			// 
 			// labelModelScale
@@ -172,7 +173,7 @@
 			this.labelModelScale.AutoSize = true;
 			this.labelModelScale.Location = new System.Drawing.Point(3, 32);
 			this.labelModelScale.Name = "labelModelScale";
-			this.labelModelScale.Size = new System.Drawing.Size(100, 13);
+			this.labelModelScale.Size = new System.Drawing.Size(101, 13);
 			this.labelModelScale.TabIndex = 1;
 			this.labelModelScale.Text = "Scale";
 			// 
@@ -182,26 +183,26 @@
 			this.labelFileID.AutoSize = true;
 			this.labelFileID.Location = new System.Drawing.Point(3, 6);
 			this.labelFileID.Name = "labelFileID";
-			this.labelFileID.Size = new System.Drawing.Size(100, 13);
+			this.labelFileID.Size = new System.Drawing.Size(101, 13);
 			this.labelFileID.TabIndex = 0;
 			this.labelFileID.Text = "File ID";
 			// 
 			// tbFileID
 			// 
 			this.tbFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbFileID.Location = new System.Drawing.Point(109, 3);
+			this.tbFileID.Location = new System.Drawing.Point(110, 3);
 			this.tbFileID.Name = "tbFileID";
 			this.tbFileID.ReadOnly = true;
-			this.tbFileID.Size = new System.Drawing.Size(193, 20);
+			this.tbFileID.Size = new System.Drawing.Size(192, 20);
 			this.tbFileID.TabIndex = 0;
 			// 
 			// tbNumFaces
 			// 
 			this.tbNumFaces.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumFaces.Location = new System.Drawing.Point(109, 107);
+			this.tbNumFaces.Location = new System.Drawing.Point(110, 107);
 			this.tbNumFaces.Name = "tbNumFaces";
 			this.tbNumFaces.ReadOnly = true;
-			this.tbNumFaces.Size = new System.Drawing.Size(193, 20);
+			this.tbNumFaces.Size = new System.Drawing.Size(192, 20);
 			this.tbNumFaces.TabIndex = 3;
 			// 
 			// labelNumVertsTopBit
@@ -210,17 +211,17 @@
 			this.labelNumVertsTopBit.AutoSize = true;
 			this.labelNumVertsTopBit.Location = new System.Drawing.Point(3, 84);
 			this.labelNumVertsTopBit.Name = "labelNumVertsTopBit";
-			this.labelNumVertsTopBit.Size = new System.Drawing.Size(100, 13);
+			this.labelNumVertsTopBit.Size = new System.Drawing.Size(101, 13);
 			this.labelNumVertsTopBit.TabIndex = 9;
 			this.labelNumVertsTopBit.Text = "NumVerts Top Bit";
 			// 
 			// tbTextureSize
 			// 
 			this.tbTextureSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTextureSize.Location = new System.Drawing.Point(109, 265);
+			this.tbTextureSize.Location = new System.Drawing.Point(110, 265);
 			this.tbTextureSize.Name = "tbTextureSize";
 			this.tbTextureSize.ReadOnly = true;
-			this.tbTextureSize.Size = new System.Drawing.Size(193, 20);
+			this.tbTextureSize.Size = new System.Drawing.Size(192, 20);
 			this.tbTextureSize.TabIndex = 8;
 			// 
 			// labelTextureSize
@@ -229,17 +230,17 @@
 			this.labelTextureSize.AutoSize = true;
 			this.labelTextureSize.Location = new System.Drawing.Point(3, 268);
 			this.labelTextureSize.Name = "labelTextureSize";
-			this.labelTextureSize.Size = new System.Drawing.Size(100, 13);
+			this.labelTextureSize.Size = new System.Drawing.Size(101, 13);
 			this.labelTextureSize.TabIndex = 8;
 			this.labelTextureSize.Text = "Texture Size";
 			// 
 			// tbOffsetZ
 			// 
 			this.tbOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetZ.Location = new System.Drawing.Point(109, 237);
+			this.tbOffsetZ.Location = new System.Drawing.Point(110, 237);
 			this.tbOffsetZ.Name = "tbOffsetZ";
 			this.tbOffsetZ.ReadOnly = true;
-			this.tbOffsetZ.Size = new System.Drawing.Size(193, 20);
+			this.tbOffsetZ.Size = new System.Drawing.Size(192, 20);
 			this.tbOffsetZ.TabIndex = 7;
 			// 
 			// labelOffsetZ
@@ -248,7 +249,7 @@
 			this.labelOffsetZ.AutoSize = true;
 			this.labelOffsetZ.Location = new System.Drawing.Point(3, 240);
 			this.labelOffsetZ.Name = "labelOffsetZ";
-			this.labelOffsetZ.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetZ.Size = new System.Drawing.Size(101, 13);
 			this.labelOffsetZ.TabIndex = 7;
 			this.labelOffsetZ.Text = "Offset Z";
 			// 
@@ -258,26 +259,26 @@
 			this.labelOffsetY.AutoSize = true;
 			this.labelOffsetY.Location = new System.Drawing.Point(3, 214);
 			this.labelOffsetY.Name = "labelOffsetY";
-			this.labelOffsetY.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetY.Size = new System.Drawing.Size(101, 13);
 			this.labelOffsetY.TabIndex = 6;
 			this.labelOffsetY.Text = "Offset Y";
 			// 
 			// tbOffsetY
 			// 
 			this.tbOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetY.Location = new System.Drawing.Point(109, 211);
+			this.tbOffsetY.Location = new System.Drawing.Point(110, 211);
 			this.tbOffsetY.Name = "tbOffsetY";
 			this.tbOffsetY.ReadOnly = true;
-			this.tbOffsetY.Size = new System.Drawing.Size(193, 20);
+			this.tbOffsetY.Size = new System.Drawing.Size(192, 20);
 			this.tbOffsetY.TabIndex = 6;
 			// 
 			// tbOffsetX
 			// 
 			this.tbOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOffsetX.Location = new System.Drawing.Point(109, 185);
+			this.tbOffsetX.Location = new System.Drawing.Point(110, 185);
 			this.tbOffsetX.Name = "tbOffsetX";
 			this.tbOffsetX.ReadOnly = true;
-			this.tbOffsetX.Size = new System.Drawing.Size(193, 20);
+			this.tbOffsetX.Size = new System.Drawing.Size(192, 20);
 			this.tbOffsetX.TabIndex = 5;
 			// 
 			// labelOffsetX
@@ -286,7 +287,7 @@
 			this.labelOffsetX.AutoSize = true;
 			this.labelOffsetX.Location = new System.Drawing.Point(3, 188);
 			this.labelOffsetX.Name = "labelOffsetX";
-			this.labelOffsetX.Size = new System.Drawing.Size(100, 13);
+			this.labelOffsetX.Size = new System.Drawing.Size(101, 13);
 			this.labelOffsetX.TabIndex = 5;
 			this.labelOffsetX.Text = "Offset X";
 			// 
@@ -296,17 +297,17 @@
 			this.labelUnknown.AutoSize = true;
 			this.labelUnknown.Location = new System.Drawing.Point(3, 162);
 			this.labelUnknown.Name = "labelUnknown";
-			this.labelUnknown.Size = new System.Drawing.Size(100, 13);
+			this.labelUnknown.Size = new System.Drawing.Size(101, 13);
 			this.labelUnknown.TabIndex = 4;
 			this.labelUnknown.Text = "(unknown)";
 			// 
 			// tbUnknown
 			// 
 			this.tbUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown.Location = new System.Drawing.Point(109, 159);
+			this.tbUnknown.Location = new System.Drawing.Point(110, 159);
 			this.tbUnknown.Name = "tbUnknown";
 			this.tbUnknown.ReadOnly = true;
-			this.tbUnknown.Size = new System.Drawing.Size(193, 20);
+			this.tbUnknown.Size = new System.Drawing.Size(192, 20);
 			this.tbUnknown.TabIndex = 4;
 			// 
 			// labelNumFaces
@@ -315,7 +316,7 @@
 			this.labelNumFaces.AutoSize = true;
 			this.labelNumFaces.Location = new System.Drawing.Point(3, 110);
 			this.labelNumFaces.Name = "labelNumFaces";
-			this.labelNumFaces.Size = new System.Drawing.Size(100, 13);
+			this.labelNumFaces.Size = new System.Drawing.Size(101, 13);
 			this.labelNumFaces.TabIndex = 3;
 			this.labelNumFaces.Text = "Number of Faces";
 			// 
@@ -325,7 +326,7 @@
 			this.labelNumFacesTopBit.AutoSize = true;
 			this.labelNumFacesTopBit.Location = new System.Drawing.Point(3, 136);
 			this.labelNumFacesTopBit.Name = "labelNumFacesTopBit";
-			this.labelNumFacesTopBit.Size = new System.Drawing.Size(100, 13);
+			this.labelNumFacesTopBit.Size = new System.Drawing.Size(101, 13);
 			this.labelNumFacesTopBit.TabIndex = 11;
 			this.labelNumFacesTopBit.Text = "NumFaces Top Bit";
 			// 
@@ -360,7 +361,8 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportWavefrontOBJToolStripMenuItem});
+            this.exportWavefrontOBJToolStripMenuItem,
+            this.loadTextureToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(634, 24);
@@ -373,6 +375,13 @@
 			this.exportWavefrontOBJToolStripMenuItem.Size = new System.Drawing.Size(143, 20);
 			this.exportWavefrontOBJToolStripMenuItem.Text = "&Export Wavefront OBJ...";
 			this.exportWavefrontOBJToolStripMenuItem.Click += new System.EventHandler(this.exportWavefrontOBJToolStripMenuItem_Click);
+			// 
+			// loadTextureToolStripMenuItem
+			// 
+			this.loadTextureToolStripMenuItem.Name = "loadTextureToolStripMenuItem";
+			this.loadTextureToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+			this.loadTextureToolStripMenuItem.Text = "Load &Texture...";
+			this.loadTextureToolStripMenuItem.Click += new System.EventHandler(this.loadTextureToolStripMenuItem_Click);
 			// 
 			// ModelTool2
 			// 
@@ -429,5 +438,6 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exportWavefrontOBJToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadTextureToolStripMenuItem;
 	}
 }

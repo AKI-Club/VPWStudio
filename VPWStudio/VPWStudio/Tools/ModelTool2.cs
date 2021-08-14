@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 
 namespace VPWStudio
 {
@@ -38,14 +38,22 @@ namespace VPWStudio
 		public int VertexBufferObject;
 		public int VertexArrayObject;
 
-		// test bullshit
-		readonly float[] ExampleData =
-		{
-			// X, Y, Z, W
-			-0.5f, 0.0f, 0.0f, 1.0f,
-			 0.5f, 0.0f, 0.0f, 1.0f,
-			 0.0f, 0.5f, 0.0f, 1.0f
-		};
+		// Element Buffer Object (read: list of vertices that define faces)
+		public int ElementBufferObject;
+
+		// gl texture unit
+		//public int TextureObject;
+
+		/// <summary>
+		/// Model coordinate values, converted to Normalized Device Coordinates.
+		/// Also stores some other information, because shaders.
+		/// </summary>
+		private float[] ModelCoords;
+
+		/// <summary>
+		/// Yes I could just use CurModel.GetFacesList, but we need to have this info in multiple places
+		/// </summary>
+		private int[] ModelFaces;
 
 		public ModelTool2(int fileID)
 		{ 
@@ -119,7 +127,7 @@ namespace VPWStudio
 			}
 		}
 
-		private void LoadShaders()
+		private void SetupGLResources()
 		{
 			Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.Resources.DefaultShader.vert");
 			if (s != null)
@@ -136,6 +144,7 @@ namespace VPWStudio
 			{
 				Program.ErrorMessageBox("Unable to load default vertex shader.");
 			}
+			// todo: GL.GetShaderInfoLog
 
 			s = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.Resources.DefaultShader.frag");
 			if (s != null)
@@ -152,6 +161,7 @@ namespace VPWStudio
 			{
 				Program.ErrorMessageBox("Unable to load default fragment shader.");
 			}
+			// todo: GL.GetShaderInfoLog
 
 			ShaderProgram = GL.CreateProgram();
 			GL.AttachShader(ShaderProgram, VertexShader);
@@ -161,19 +171,32 @@ namespace VPWStudio
 			// do the VBO and VAO stuff too
 			VertexBufferObject = GL.GenBuffer();
 			GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
-			// todo: next one depends on how many points are in the model
+			ModelCoords = CurModel.GetNormalizedCoords();
+			GL.BufferData(BufferTarget.ArrayBuffer, ModelCoords.Length * sizeof(float), ModelCoords, BufferUsageHint.StaticDraw);
 
-			// test bullshit
-			GL.BufferData(BufferTarget.ArrayBuffer, ExampleData.Length * sizeof(float), ExampleData, BufferUsageHint.StaticDraw);
-
-			// grab position from shader
+			// grab params from vertex shader
 			var positionLocation = GL.GetAttribLocation(ShaderProgram, "position");
+			var uvCoordsLocation = GL.GetAttribLocation(ShaderProgram, "uvCoords");
+			var colorDataLocation = GL.GetAttribLocation(ShaderProgram, "colorData");
 
 			// VAO schwartz
 			VertexArrayObject = GL.GenVertexArray();
 			GL.BindVertexArray(VertexArrayObject);
-			GL.VertexAttribPointer(positionLocation, 4, VertexAttribPointerType.Float, false, 0, 0);
+			GL.VertexAttribPointer(positionLocation, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
 			GL.EnableVertexAttribArray(positionLocation);
+			GL.VertexAttribPointer(uvCoordsLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
+			GL.EnableVertexAttribArray(uvCoordsLocation);
+			GL.VertexAttribPointer(colorDataLocation, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
+			GL.EnableVertexAttribArray(colorDataLocation);
+
+			// EBO
+			ElementBufferObject = GL.GenBuffer();
+			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
+			ModelFaces = CurModel.GetFacesList();
+			GL.BufferData(BufferTarget.ElementArrayBuffer, ModelFaces.Length * sizeof(uint), ModelFaces, BufferUsageHint.StaticDraw);
+
+			//TextureObject = GL.GenTexture();
+			//GL.BindTexture(TextureTarget.Texture2D, TextureObject);
 		}
 
 		private void glControl1_Load(object sender, EventArgs e)
@@ -182,7 +205,7 @@ namespace VPWStudio
 			GL.ClearColor(Color.CornflowerBlue);
 			ValidGL = true;
 
-			LoadShaders();
+			SetupGLResources();
 			GL.Viewport(0, 0, glControl1.Width, glControl1.Height);
 			RedrawTimer.Start();
 		}
@@ -221,11 +244,10 @@ namespace VPWStudio
 
 			// bind necessary resources
 			GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
-			GL.BindVertexArray(VertexArrayObject);
 			GL.UseProgram(ShaderProgram);
-
-			// todo: that last number will probably change
-			GL.DrawArrays(PrimitiveType.Triangles, 0, ExampleData.Length/4);
+			GL.BindVertexArray(VertexArrayObject);
+			// and draw that sucker
+			GL.DrawElements(PrimitiveType.Triangles, ModelFaces.Length, DrawElementsType.UnsignedInt, 0);
 
 			GL.Flush();
 			glControl1.SwapBuffers();
@@ -242,10 +264,21 @@ namespace VPWStudio
 
 				GL.DeleteBuffer(VertexBufferObject);
 				GL.DeleteVertexArray(VertexArrayObject);
+				GL.DeleteBuffer(ElementBufferObject);
 
 				GL.DeleteProgram(ShaderProgram);
 				GL.DeleteShader(FragmentShader);
 				GL.DeleteShader(VertexShader);
+			}
+		}
+
+		private void loadTextureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// new dialog for super bullshittery
+			Dialogs.SelectTextureDialog std = new Dialogs.SelectTextureDialog();
+			if (std.ShowDialog() == DialogResult.OK)
+			{
+				MessageBox.Show("oh I was only kidding; actually setting a texture takes work");
 			}
 		}
 	}
