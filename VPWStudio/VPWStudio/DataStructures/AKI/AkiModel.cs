@@ -295,6 +295,8 @@ namespace VPWStudio
 
 		// top bit of NumFaces
 		public byte UnknownFacesTopBit;
+
+		private bool FromNoMercy = false;
 		#endregion
 
 		#region Constructors
@@ -331,12 +333,78 @@ namespace VPWStudio
 		#endregion
 
 		#region Utility Routines
+		/// <summary>
+		/// Convert the List of AkiFaces to an array of the actual indices.
+		/// </summary>
+		/// <returns>Array of integers with the indices for face mappings</returns>
+		public int[] GetFacesList()
+		{
+			List<int> faces = new List<int>();
+			foreach (AkiFace f in Faces)
+			{
+				faces.Add(f.Vertex1);
+				faces.Add(f.Vertex2);
+				faces.Add(f.Vertex3);
+			}
+			return faces.ToArray();
+		}
+
+		static float Map(float a1, float a2, float b1, float b2, float s) => b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+
 		// todo: routine for making an array of floats from vertex positions
+		/// <summary>
+		/// Get a normalized (-1.0 .. 1.0) list of vertices, as well as their UV and vertex color values.
+		/// </summary>
+		/// <returns>Array of floats</returns>
+		public float[] GetNormalizedCoords()
+		{
+			List<float> result = new List<float>();
+
+			// get min/max values
+			int minX = 0;
+			int maxX = 0;
+			int minY = 0;
+			int maxY = 0;
+			int minZ = 0;
+			int maxZ = 0;
+
+			foreach (AkiVertex v in Vertices)
+			{
+				minX = Math.Min(v.X, minX);
+				minY = Math.Min(v.Y, minY);
+				minZ = Math.Min(v.Z, minZ);
+
+				maxX = Math.Max(v.X, maxX);
+				maxY = Math.Max(v.Y, maxY);
+				maxZ = Math.Max(v.Z, maxZ);
+			}
+
+			// get actual verts
+			foreach (AkiVertex v in Vertices)
+			{
+				// XYZ
+				result.Add(Map(minX,maxX, -0.5f,0.5f, v.X));
+				result.Add(Map(minY,maxY, -0.5f,0.5f, v.Y));
+				result.Add(Map(minZ,maxZ, -0.5f,0.5f, v.Z));
+
+				// UV
+				result.Add((float)v.U / TextureSizeX);
+				result.Add((float)(TextureSizeY - v.V) / TextureSizeY);
+
+				// Vertex color
+				result.Add(v.VertexColor.R/255.0f);
+				result.Add(v.VertexColor.G/255.0f);
+				result.Add(v.VertexColor.B/255.0f);
+			}
+
+			return result.ToArray();
+		}
 		#endregion
 
 		#region Binary Read/Write
 		public void ReadData(BinaryReader br, bool isNoMercy = false)
 		{
+			FromNoMercy = isNoMercy;
 			Scale = br.ReadByte();
 
 			byte numVerts = br.ReadByte();
@@ -446,9 +514,15 @@ namespace VPWStudio
 			 * 097A - 0x33 (pelvis)
 			 * 097E - 0x57 (left leg)
 			 * 0985 - 0x57 (right leg)
+			 * 
+			 * no mercy file IDs and their unknown values
+			 * 10F6 - 0x60 (skinny chest)
 			 */
 
 			// todo: figure out how the alternate UV style actually works
+			// VPW2 (also VPW64 and Revenge; presumably World Tour and WM2K): number of vertices top bit?
+			// No Mercy: related to the Unknown value, but not sure which bit(s) controls it
+
 			if (/*ModelType != 0*/ false)
 			{
 				// use values from the vertex colors
