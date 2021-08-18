@@ -351,7 +351,6 @@ namespace VPWStudio
 
 		static float Map(float a1, float a2, float b1, float b2, float s) => b1 + (s - a1) * (b2 - b1) / (a2 - a1);
 
-		// todo: routine for making an array of floats from vertex positions
 		/// <summary>
 		/// Get a normalized (-1.0 .. 1.0) list of vertices, as well as their UV and vertex color values.
 		/// </summary>
@@ -361,31 +360,27 @@ namespace VPWStudio
 			List<float> result = new List<float>();
 
 			// get min/max values
-			int minX = 0;
-			int maxX = 0;
-			int minY = 0;
-			int maxY = 0;
-			int minZ = 0;
-			int maxZ = 0;
+			int minValue = 0;
+			int maxValue = 0;
 
 			foreach (AkiVertex v in Vertices)
 			{
-				minX = Math.Min(v.X, minX);
-				minY = Math.Min(v.Y, minY);
-				minZ = Math.Min(v.Z, minZ);
+				minValue = Math.Min(v.X, minValue);
+				minValue = Math.Min(v.Y, minValue);
+				minValue = Math.Min(v.Z, minValue);
 
-				maxX = Math.Max(v.X, maxX);
-				maxY = Math.Max(v.Y, maxY);
-				maxZ = Math.Max(v.Z, maxZ);
+				maxValue = Math.Max(v.X, maxValue);
+				maxValue = Math.Max(v.Y, maxValue);
+				maxValue = Math.Max(v.Z, maxValue);
 			}
 
 			// get actual verts
 			foreach (AkiVertex v in Vertices)
 			{
 				// XYZ
-				result.Add(Map(minX,maxX, -0.5f,0.5f, v.X));
-				result.Add(Map(minY,maxY, -0.5f,0.5f, v.Y));
-				result.Add(Map(minZ,maxZ, -0.5f,0.5f, v.Z));
+				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.X));
+				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.Y));
+				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.Z));
 
 				// UV
 				result.Add((float)v.U / TextureSizeX);
