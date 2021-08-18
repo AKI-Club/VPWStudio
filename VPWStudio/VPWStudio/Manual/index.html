@@ -73,14 +73,16 @@
 <hr />
 <h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
-<em>Virtual Pro-Wrestling</em> series.</p>
+<em>Virtual Pro-Wrestling</em> series. The initial focus is on AKI's
+Nintendo 64 games, though support for most non-N64 AKI wrestling games
+is planned.</p>
 
-<p>As of 2018, the primary accepted solution for making changes to the AKI
-wrestling games are GameShark codes and emulator-only plugin-based texture
-replacements. Anyone who wanted to play projects using these methods on
-console could not fully do so.</p>
+<p>As of 2018, the primary accepted solution for making changes to the
+N64 AKI wrestling games are GameShark codes and emulator-only plugin-based
+texture replacements. Anyone who wanted to play projects using these methods
+on console could not fully do so.</p>
 
-<p>The primary inspiration for VPW Studio is the Goldeneye Setup Editor,
+<p>The primary inspiration for VPW Studio is the <a href="http://n64vault.com/wiki:setup-editor-global">Goldeneye Setup Editor</a>,
 which works directly on game data. This allows hacks to work on console,
 assuming you follow all of the internal "rules" of the game and the N64's
 supported data formats.</p>
@@ -165,7 +167,10 @@ however, so it will be a while before support is implemented.</p>
 <li>.NET Framework 4.6.1 or higher.</li>
 <li>Any of the above listed games in Z64 ROM format. No other N64 ROM formats are
 supported at this time. Please convert non-Z64 format ROMs with a tool, such as
-<a href="http://ucon64.sourceforge.net/">uCON64</a>.</li>
+<a href="https://ucon64.sourceforge.net/">uCON64</a>.</li>
+<li>A hex editor, to do things that aren't easily available in VPW Studio yet.
+(If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
+is recommended.)</li>
 <li>Patience. (This program is not yet complete, and has a long way to go.)</li>
 </ul>
 
@@ -180,8 +185,9 @@ to change. Don't get too attached to your projects.</li>
 <hr />
 <h2><a name="MainInterface">Main Interface</a></h2>
 <img src="./img/main_interface.png" title="Main Interface" />
-<p>The main form appears when you boot VPW Studio. Most of the functionality is disabled
-until a project file is opened, though there are a few tools that don't require a project.</p>
+<p>The main form appears when you boot VPW Studio. Most of the functionality
+is disabled until a project file is opened or created, though there are a few tools
+that don't require a project.</p>
 
 <hr />
 <h2><a name="ProgramOptions">Program Options</a></h2>
@@ -200,8 +206,8 @@ emulator to use for testing the changed ROM.</p>
 <p>The "Build" portion of the Program Options dialog currently only contains an
 option to modify the verbosity of the build log. The default option is "Normal".</p>
 
-<p>If you have an older computer, setting the Build Log Verbosity to "Minimal"
-can shorten build times.</p>
+<p>Setting the Build Log Verbosity to "Minimal" can shorten build times, especially
+on older and/or slower computers.</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
@@ -212,18 +218,18 @@ chosen due to the number of total conversion hacks created by the AKI hacking co
 about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B, Section 4</a>.</p>
 
 <h3>Project Structure</h3>
-<p>Aside from the Project File itself, the project expects a specific structure.
-Upon saving a project for the first time, two directories will be made in the location
-the project was saved:</p>
+<p>Aside from the Project File itself, the project expects a specific directory
+structure for storing files. Upon saving a project for the first time, two
+directories will be made in the location the project was saved:</p>
 
 <ul>
 <li><strong>Assets</strong> &ndash; Assets are the raw files that get converted
 to various game formats. This is typically where your PNG textures live.</li>
-<li><strong>ProjectFiles</strong> &ndash; Anything in the ProjectFiles folder is
-meant to be ready to insert (a.k.a. already in formats the game is expecting).</li>
+<li><strong>ProjectFiles</strong> &ndash; Anything in the ProjectFiles directory
+is meant to be ready to insert (i.e. already in formats the game is expecting).</li>
 </ul>
 
-<p>VPW Studio expects these folders to exist for any saved project. You can change
+<p>VPW Studio expects these directories to exist for any saved project. You can change
 their locations via the <a href="#ProjectProperties">Project Properties</a> dialog.</p>
 
 <h3>Creating a New Project</h3>
@@ -236,13 +242,13 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 <ul>
 <li><strong>Project Name</strong> &ndash; The name of this project.</li>
 <li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional, but recommended.</li>
-<li><strong>Game Type</strong> &ndash; Set the game type.</li>
-<li><strong>Base ROM File</strong> &ndash; Set the location of the base Z64 ROM.</li>
-<li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
+<li><strong>Game Type</strong> &ndash; Select the game your project is based on. Be sure to match the proper region and revision.</li>
+<li><strong>Base ROM File</strong> &ndash; Set the location of the base/input Z64 ROM.</li>
+<li><strong>Output ROM File</strong> &ndash; Set the location of the built/output Z64 ROM.</li>
 <li><strong>Custom Location File</strong> &ndash; When checked, allows you to use a
 custom Location File. Helpful if you've already made changes to the base ROM that
 result in differences from the default Location File for the specified Game Type.
-<em>Most people will not need to use this.</em></li>
+<strong><em>Most people will not need to use this.</em></strong></li>
 </ul>
 <p>All of these may be changed later in the <a href="#ProjectProperties">Project
 Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen,
@@ -318,7 +324,7 @@ the ROM before playing it. Otherwise, it will load the last built version of the
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
-<p>(todo: this portion of the program requires a 3D renderer, and I am not yet smart enough to do that -f)</p>
+<p>(todo: this portion of the program requires a proper 3D renderer, and I am not yet smart enough to do that -f)</p>
 
 <hr />
 <h2><a name="Championships">Championships</a></h2>
@@ -369,7 +375,7 @@ available when making a new belt.</li>
 <h2><a name="Costumes">Costumes</a></h2>
 <p>The costume viewer allows you to view the values used for each costume in the game.</p>
 
-<p>(todo)</p>
+<p>(todo: this is different per game and isn't fully designed)</p>
 
 <hr />
 <h2><a name="FileTable">File Table</a></h2>
@@ -432,7 +438,7 @@ found in the "<a href="#Editors">Viewers and Editors</a>" section of the manual.
 <li><strong>Set Type</strong> &ndash; Change the File Type for the selected entry.
 Available options depend on what game you're editing, and will be mentioned in
 game-specific documentation.</li>
-<li><strong>Edit Information</strong> &ndash; Opens the File Table Entry Information dialog for the selected entry.</li>
+<li><strong>Edit Information</strong> &ndash; Opens the <a href="#FileTableEntryInfo">File Table Entry Information dialog</a> for the selected entry.</li>
 <li><strong>View Hex</strong> &ndash; Opens a Hex Viewer with the selected entry's data.</li>
 <li><strong>Extract File</strong> &ndash; Extracts the selected entry to a file, decompressing it if necessary.</li>
 <li><strong>Extract Raw</strong> &ndash; Extracts the compressed version of the selected
@@ -464,7 +470,7 @@ current data in the FileTableDB file for the current game.</p>
 able to export a list for Midwaydec, Zoinkity has said that program is dead.
 The "Export CSV" option is only of use for people dealing with disassemblies.</p>
 
-<h3>File Table Entry Information</h3>
+<h3><a name="FileTableEntryInfo">File Table Entry Information</a></h3>
 <p>There are two version of the File Table Entry Information dialog, depending
 on how many entries are selected.</p>
 
@@ -517,11 +523,11 @@ from the single entry dialog do not appear here.</p>
 <p>(todo)</p>
 
 <h3><a name="HexViewer">Hex Viewer</a></h3>
-<p>(todo: screenshot)</p>
+<img src="./img/hexviewer.png" title="Hex Viewer" />
 
 <p>The Hex Viewer is used to display data for "Binary" file types, but it can also
-be requested via the File Table context menu ("View Hex..."). Data is read-only,
-and the ByteViewer control doesn't allow for selecting and copying values.</p>
+be requested via the File Table context menu ("View Hex..."). The data is read-only,
+so an external hex editor must be used to make changes.</p>
 
 <h3><a name="CIPaletteEdit">CI4/CI8 Palettes</a></h3>
 <p>(todo: screenshots)</p>
@@ -543,8 +549,7 @@ extra options in the File Table are for)</p>
 <p>(todo: screenshot?)</p>
 
 <p>A simple previewer for the "TEX"/AkiTexture format. Since this format is
-a container for multiple image types (and their palette data, if applicable),
-the available options are limited.</p>
+a container for multiple image types, the available options are limited.</p>
 
 <p>Scroll the mouse wheel to change the zoom level. Right clicking on the image
 brings up a context menu with two options:</p>
@@ -554,36 +559,48 @@ brings up a context menu with two options:</p>
 </ul>
 
 <h3><a name="AKITextEdit">AKIText</a></h3>
-<p>(todo: screenshot)</p>
+<img src="./img/akitext.png" title="AKIText Editor" />
 
 <p>The AKIText editor is used for text archives. These archives were first used
-in WWF WrestleMania 2000, and can also be found in Virtual Pro-Wrestling 2 and
-WWF No Mercy. (todo: more info)</p>
+<em>in WWF WrestleMania 2000</em>, and can also be found in <em>Virtual Pro-Wrestling 2</em>
+and <em>WWF No Mercy</em>. (todo: more info)</p>
+
+<ul>
+<li><strong>Import CSV...</strong> &ndash; Import an existing CSV file, replacing all entries with the data.</li>
+<li><strong>Export CSV...</strong> &ndash; Export the current AKIText archive to a CSV file.</li>
+<li><strong>Control Codes</strong> &ndash; Shows a dialog box with the various control
+codes (typically) available for text display.</li>
+</ul>
 
 <h3><a name="ModelTool2">ModelTool2</a></h3>
-<p>(todo: screenshot)</p>
+<img src="./img/modeltool2.png" title="ModelTool2" />
 
 <p>This is a very incomplete tool for dealing with 3D model data. Not to be confused
-with the Model Tool found via Tools &rarr; Model Data. The end goal of this viewer is
-to display 3D model data, but that probably isn't happening for a while.</p>
+with the <a href="#ModelTool">Model Tool</a> found via Tools &rarr; Model Data.
+The end goal is to be a quick and dirty 3D model previewer, so you don't need to
+export the model to OBJ format to figure out what it is.</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
 <p>The Menus option (Project &rarr; Menus) allows you to change how the items
 are laid out on various game menus.</p>
 
-<p>(todo: haven't even designed this because I don't have the data mapped)</p>
+<p>(todo: haven't even designed this because I don't have the data mapped,
+plus it's pretty different for each of the games)</p>
 
 <hr />
 <h2><a name="Moves">Moves</a></h2>
 <p>The Moves section (Project &rarr; Moves) deals with every move and animation found in the game.</p>
 
-<p>(todo: this takes a lot of work to get right, considering moves are composed of multiple parts (toki1, damage, actual animation data))</p>
+<p>(todo: this takes a lot of work to get right, considering moves are composed
+of multiple parts (toki1, damage, actual animation data, data required for things
+to be selectable in menus...))</p>
 
 <hr />
 <h2><a name="SoundMusic">Sound/Music</a></h2>
-<p>The Sound and Music editor (Project &rarr; Sound/Music) will eventually allow you to preview and change
-sounds. (This includes the theme music found in WM2K, VPW2, and No Mercy.)</p>
+<p>The Sound and Music editor (Project &rarr; Sound/Music) will eventually allow you
+to preview and change sounds. (This includes the theme music found in WM2K, VPW2,
+and No Mercy.)</p>
 
 <p>(todo: I haven't even begun to think about this; you're better off using SubDrag's N64 sound/music tools right now)</p>
 
@@ -634,7 +651,7 @@ The stable data controls how the wrestlers are grouped and displayed in the menu
 <li><strong>Header Graphic</strong> &ndash; File ID of the stable graphic.</li>
 </ul>
 
-<p>In WCW/nWo Revenge, the wrestler list is defined by pointers to the wrestler data.</p>
+<p>In <em>WCW/nWo Revenge</em>, the wrestler list is defined by pointers to the wrestler data.</p>
 
 <h3>WWF WrestleMania 2000, Virtual Pro-Wrestling 2, WWF No Mercy</h3>
 <p>Since the data structures in these three games are similar, they're grouped together.</p>
@@ -712,7 +729,7 @@ as the Championships and Story Mode are intertwined in those games.</p>
 <p>"Project &rarr; Weapons" (todo)</p>
 
 <p>This feature is not yet implemented. Weapon data consists of models, textures, and
-damage values. WWF No Mercy is different from the other games in this regard, due to
+damage values. <em>WWF No Mercy</em> is different from the other games in this regard, due to
 its upgraded weapon system.</p>
 
 <hr />
@@ -734,10 +751,17 @@ about wrestlers. (todo: sometimes you can edit them too)</p>
 
 <hr />
 <h2><a name="Tools">Tools</a></h2>
-<p>VPW Studio also provides tools that aren't tied to the concept of Projects.</p>
+<p>VPW Studio also provides tools that aren't tied to the concept of Projects.
+The tools in this section can be used without needing an open Project.</p>
 
-<h3>Model Tool</h3>
-<p>(todo: original version of model tool)</p>
+<h3><a name="#ModelTool">Model Tool</a></h3>
+<img src="./img/modeltool.png" title="The original Model Tool" />
+<p>The original Model Tool (not to be confused with <a href="#ModelTool2">ModelTool2</a>)
+was the first attempt at providing model data information. Unlike ModelTool 2, it shows
+the list of vertices and faces.</p>
+
+<p>Much like ModelTool2, you can export the model to Wavefront OBJ format via the
+"Export OBJ..." button.</p>
 
 <hr />
 <h2><a name="DangerZone">Danger Zone</a></h2>
@@ -772,12 +796,15 @@ the base for the final, more polished features. Starting with pre-alpha preview
 
 <hr />
 <h2><a name="Credits">Credits</a></h2>
+<p>(todo)</p>
 <ul>
 <li><strong>Main Programming</strong> &ndash; freem</li>
 <li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Styles, Keson, jordyad, randymanfoo</li>
 </ul>
 
-<p>(todo)</p>
+<p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>.</p>
+
+<p>This tool is dedicated to the memory of Maximo.</p>
 
 <hr />
 <h2><a name="Glossary">Appendix A: Glossary</a></h2>
