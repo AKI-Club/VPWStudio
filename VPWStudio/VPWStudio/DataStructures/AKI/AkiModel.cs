@@ -323,6 +323,15 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Constructor that allows setting the FromNoMercy value
+		/// </summary>
+		/// <param name="_noMercy">True if this model is from WWF No Mercy</param>
+		public AkiModel(bool _noMercy) : base()
+		{
+			FromNoMercy = _noMercy;
+		}
+
+		/// <summary>
 		/// Constructor from BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
@@ -352,7 +361,7 @@ namespace VPWStudio
 		static float Map(float a1, float a2, float b1, float b2, float s) => b1 + (s - a1) * (b2 - b1) / (a2 - a1);
 
 		/// <summary>
-		/// Get a normalized (-1.0 .. 1.0) list of vertices, as well as their UV and vertex color values.
+		/// Get a list of normalized vertices, as well as their UV and vertex color values.
 		/// </summary>
 		/// <returns>Array of floats</returns>
 		public float[] GetNormalizedCoords()
@@ -377,7 +386,7 @@ namespace VPWStudio
 			// get actual verts
 			foreach (AkiVertex v in Vertices)
 			{
-				// XYZ
+				// XYZ (the clamping to -0.5f/0.5f is intentional)
 				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.X));
 				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.Y));
 				result.Add(Map(minValue,maxValue, -0.5f,0.5f, v.Z));
