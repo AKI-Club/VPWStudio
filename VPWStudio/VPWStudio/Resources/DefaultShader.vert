@@ -9,7 +9,7 @@ out vec3 vertexColor;
 
 void main(void)
 {
-    gl_Position = vec4(position, 1.0);
     texCoords = uvCoords;
     vertexColor = colorData;
+    gl_Position = vec4(position, 1.0);
 }
