@@ -42,7 +42,7 @@ namespace VPWStudio
 		public int ElementBufferObject;
 
 		// gl texture unit
-		//public int TextureObject;
+		public int TextureObject;
 
 		/// <summary>
 		/// Model coordinate values, converted to Normalized Device Coordinates.
@@ -197,6 +197,11 @@ namespace VPWStudio
 			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
 			ModelFaces = CurModel.GetFacesList();
 			GL.BufferData(BufferTarget.ElementArrayBuffer, ModelFaces.Length * sizeof(uint), ModelFaces, BufferUsageHint.StaticDraw);
+
+			// Texture object (actual texture set later)
+			TextureObject = GL.GenTexture();
+			GL.ActiveTexture(TextureUnit.Texture0);
+			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
 		}
 
 		private void UpdateTexture()
@@ -219,21 +224,15 @@ namespace VPWStudio
 				}
 			}
 
-			/*
 			// todo: this might be wrong
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
 			// todo: allow setting the repeat mode
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
 
-			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, CurTexture.Width, CurTexture.Width, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelData.ToArray());
-
-			TextureObject = GL.GenTexture();
-			GL.ActiveTexture(TextureUnit.Texture0);
-			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
-			*/
+			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, CurTexture.Width, CurTexture.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelData.ToArray());
 		}
 
 		private void glControl1_Load(object sender, EventArgs e)
@@ -302,7 +301,7 @@ namespace VPWStudio
 				GL.DeleteBuffer(VertexBufferObject);
 				GL.DeleteVertexArray(VertexArrayObject);
 				GL.DeleteBuffer(ElementBufferObject);
-				//GL.DeleteTexture(TextureObject);
+				GL.DeleteTexture(TextureObject);
 
 				GL.DeleteProgram(ShaderProgram);
 				GL.DeleteShader(FragmentShader);
@@ -316,11 +315,11 @@ namespace VPWStudio
 			Dialogs.SelectTextureDialog std = new Dialogs.SelectTextureDialog();
 			if (std.ShowDialog() == DialogResult.OK)
 			{
-				MessageBox.Show("oh, I was only kidding; actually setting a texture takes work", "VPW Studio | ModelTool2");
+				//MessageBox.Show("oh, I was only kidding; actually setting a texture takes work", "VPW Studio | ModelTool2");
 
-				//CurTexture = std.OutputBitmap;
-				//UpdateTexture();
-				//glControl1.Invalidate();
+				CurTexture = std.OutputBitmap;
+				UpdateTexture();
+				glControl1.Invalidate();
 			}
 		}
 	}
