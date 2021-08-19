@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,11 +18,18 @@ namespace VPWStudio.Dialogs
 		{
 			CI4Texture = 0,
 			CI8Texture,
-			AkiTexture
+			AkiTexture // not likely, but just in case
 		}
 
+		/// <summary>
+		/// File ID for the selected Texture.
+		/// </summary>
 		public uint TextureFileID = 0;
 
+		/// <summary>
+		/// File ID for the selected Palette.
+		/// Only used if CurTextureType is not AkiTexture.
+		/// </summary>
 		public uint PaletteFileID = 0;
 
 		private ValidTextureTypes CurTextureType;
@@ -46,10 +55,10 @@ namespace VPWStudio.Dialogs
 		/// </summary>
 		private Bitmap CurrentBitmap;
 
-		/// <summary>
-		/// Default image size
-		/// </summary>
-		private Size DefaultImageSize;
+		public Bitmap OutputBitmap
+		{
+			get { return CurrentBitmap; }
+		}
 
 		public SelectTextureDialog()
 		{
@@ -57,6 +66,8 @@ namespace VPWStudio.Dialogs
 
 			GenerateTextureLists();
 
+			CurTextureType = ValidTextureTypes.CI4Texture;
+			UpdateComboBoxLists();
 			cbTextureType.SelectedIndex = 0;
 		}
 
@@ -162,17 +173,109 @@ namespace VPWStudio.Dialogs
 				return;
 			}
 
+			int texFileID = Convert.ToInt32(cbTextureFileIDs.Items[cbTextureFileIDs.SelectedIndex].ToString(), 16);
 			if (CurTextureType == ValidTextureTypes.AkiTexture)
 			{
+				MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader romReader = new BinaryReader(romStream);
 
+				MemoryStream outStream = new MemoryStream();
+				BinaryWriter outWriter = new BinaryWriter(outStream);
+
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, texFileID);
+				romReader.Close();
+
+				BinaryReader outReader = new BinaryReader(outStream);
+				outStream.Seek(0, SeekOrigin.Begin);
+
+				CurrentTEX = new AkiTexture(outReader);
+				pbPreview.Width = CurrentTEX.Width;
+				pbPreview.Height = CurrentTEX.Height;
+
+				CurrentBitmap = CurrentTEX.ToBitmap();
+				pbPreview.Image = CurrentBitmap;
+
+				outReader.Close();
+				outWriter.Close();
 			}
 			else
 			{
+				// CI*Texture and Palette
+				if (cbPaletteFileIDs.SelectedIndex < 0 || cbTextureFileIDs.SelectedIndex < 0)
+				{
+					return;
+				}
 
+				int palFileID = Convert.ToInt32(cbPaletteFileIDs.Items[cbPaletteFileIDs.SelectedIndex].ToString(), 16);
+
+				MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader romReader = new BinaryReader(romStream);
+
+				MemoryStream imgStream = new MemoryStream();
+				BinaryWriter imgWriter = new BinaryWriter(imgStream);
+
+				if (CurTextureType == ValidTextureTypes.CI4Texture)
+				{
+					CurrentCI8Pal = null;
+					CurrentCI8Tex = null;
+
+					CurrentCI4Pal = new Ci4Palette();
+					CurrentCI4Tex = new Ci4Texture();
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, texFileID);
+					imgStream.Seek(0, SeekOrigin.Begin);
+					BinaryReader texfr = new BinaryReader(imgStream);
+					CurrentCI4Tex.ReadData(texfr);
+					texfr.Close();
+
+					CurrentBitmap = new Bitmap(CurrentCI4Tex.Width, CurrentCI4Tex.Height, PixelFormat.Format4bppIndexed);
+				}
+				else if (CurTextureType == ValidTextureTypes.CI8Texture)
+				{
+					CurrentCI4Pal = null;
+					CurrentCI4Tex = null;
+
+					CurrentCI8Pal = new Ci8Palette();
+					CurrentCI8Tex = new Ci8Texture();
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, texFileID);
+					imgStream.Seek(0, SeekOrigin.Begin);
+					BinaryReader texfr = new BinaryReader(imgStream);
+					CurrentCI8Tex.ReadData(texfr);
+					texfr.Close();
+
+					CurrentBitmap = new Bitmap(CurrentCI8Tex.Width, CurrentCI8Tex.Height, PixelFormat.Format8bppIndexed);
+				}
+
+				imgWriter.Close();
+				romReader.Close();
+
+				romStream = new MemoryStream(Program.CurrentInputROM.Data);
+				romReader = new BinaryReader(romStream);
+
+				MemoryStream palStream = new MemoryStream();
+				BinaryWriter palWriter = new BinaryWriter(palStream);
+
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, palFileID);
+				palStream.Seek(0, SeekOrigin.Begin);
+				BinaryReader palfr = new BinaryReader(palStream);
+				if (CurTextureType == ValidTextureTypes.CI4Texture)
+				{
+					CurrentCI4Pal = new Ci4Palette();
+					CurrentCI4Pal.ReadData(palfr, false);
+					CurrentBitmap = CurrentCI4Tex.ToBitmap(CurrentCI4Pal);
+					pbPreview.Image = CurrentBitmap;
+				}
+				else if (CurTextureType == ValidTextureTypes.CI8Texture)
+				{
+					CurrentCI8Pal = new Ci8Palette(palfr);
+					CurrentBitmap = CurrentCI8Tex.ToBitmap(CurrentCI8Pal);
+					pbPreview.Image = CurrentBitmap;
+				}
 			}
 		}
 
-		private void cbTextureType_SelectedIndexChanged(object sender, EventArgs e)
+		private void UpdateTextureType()
 		{
 			if (cbTextureType.SelectedIndex < 0)
 			{
@@ -183,9 +286,35 @@ namespace VPWStudio.Dialogs
 			// update boxes for texture and palette
 			UpdateComboBoxLists();
 			cbTextureFileIDs.SelectedIndex = 0;
-			cbPaletteFileIDs.SelectedIndex = 0;
+			if (CurTextureType != ValidTextureTypes.AkiTexture)
+			{
+				cbPaletteFileIDs.SelectedIndex = 0;
+			}
 
-			// update preview display
+			UpdatePreview();
+		}
+
+		private void cbTextureType_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			UpdateTextureType();
+		}
+
+		private void cbTextureType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateTextureType();
+		}
+
+		private void cbTextureFileIDs_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			if (cbTextureType.SelectedIndex < 0)
+			{
+				return;
+			}
+			if (cbTextureFileIDs.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			UpdatePreview();
 		}
 
@@ -205,7 +334,7 @@ namespace VPWStudio.Dialogs
 
 		private void cbPaletteFileIDs_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbTextureType.SelectedIndex <= 0)
+			if (cbTextureType.SelectedIndex < 0)
 			{
 				return;
 			}
@@ -213,6 +342,8 @@ namespace VPWStudio.Dialogs
 			{
 				return;
 			}
+
+			UpdatePreview();
 		}
 	}
 }
