@@ -393,7 +393,7 @@ namespace VPWStudio
 
 				// UV
 				result.Add((float)v.U / TextureSizeX);
-				result.Add((float)(TextureSizeY - v.V) / TextureSizeY);
+				result.Add((float)v.V / TextureSizeY);
 
 				// Vertex color
 				result.Add(v.VertexColor.R/255.0f);
