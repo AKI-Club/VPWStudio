@@ -56,7 +56,12 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.exportWavefrontOBJToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.textureEnabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.horizontalMirrorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.verticalMirrorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbModelInfo.SuspendLayout();
 			this.tlpModelInfo.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -362,7 +367,7 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportWavefrontOBJToolStripMenuItem,
-            this.loadTextureToolStripMenuItem});
+            this.textureToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(634, 24);
@@ -376,12 +381,52 @@
 			this.exportWavefrontOBJToolStripMenuItem.Text = "&Export Wavefront OBJ...";
 			this.exportWavefrontOBJToolStripMenuItem.Click += new System.EventHandler(this.exportWavefrontOBJToolStripMenuItem_Click);
 			// 
+			// textureToolStripMenuItem
+			// 
+			this.textureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadTextureToolStripMenuItem,
+            this.textureEnabledToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.horizontalMirrorToolStripMenuItem,
+            this.verticalMirrorToolStripMenuItem});
+			this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
+			this.textureToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+			this.textureToolStripMenuItem.Text = "&Texture";
+			// 
 			// loadTextureToolStripMenuItem
 			// 
 			this.loadTextureToolStripMenuItem.Name = "loadTextureToolStripMenuItem";
-			this.loadTextureToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-			this.loadTextureToolStripMenuItem.Text = "Load &Texture...";
+			this.loadTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadTextureToolStripMenuItem.Text = "&Load Texture...";
 			this.loadTextureToolStripMenuItem.Click += new System.EventHandler(this.loadTextureToolStripMenuItem_Click);
+			// 
+			// textureEnabledToolStripMenuItem
+			// 
+			this.textureEnabledToolStripMenuItem.CheckOnClick = true;
+			this.textureEnabledToolStripMenuItem.Name = "textureEnabledToolStripMenuItem";
+			this.textureEnabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.textureEnabledToolStripMenuItem.Text = "Texture Enabled";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// horizontalMirrorToolStripMenuItem
+			// 
+			this.horizontalMirrorToolStripMenuItem.CheckOnClick = true;
+			this.horizontalMirrorToolStripMenuItem.Name = "horizontalMirrorToolStripMenuItem";
+			this.horizontalMirrorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.horizontalMirrorToolStripMenuItem.Text = "Horizontal Mirror";
+			this.horizontalMirrorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.horizontalMirrorToolStripMenuItem_CheckedChanged);
+			// 
+			// verticalMirrorToolStripMenuItem
+			// 
+			this.verticalMirrorToolStripMenuItem.CheckOnClick = true;
+			this.verticalMirrorToolStripMenuItem.Name = "verticalMirrorToolStripMenuItem";
+			this.verticalMirrorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.verticalMirrorToolStripMenuItem.Text = "Vertical Mirror";
+			this.verticalMirrorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.verticalMirrorToolStripMenuItem_CheckedChanged);
 			// 
 			// ModelTool2
 			// 
@@ -438,6 +483,11 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exportWavefrontOBJToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem textureToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadTextureToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem textureEnabledToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem horizontalMirrorToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem verticalMirrorToolStripMenuItem;
 	}
 }
