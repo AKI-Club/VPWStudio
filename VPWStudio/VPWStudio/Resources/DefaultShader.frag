@@ -10,5 +10,6 @@ uniform sampler2D texture0;
 void main(void)
 {
     //outputColor = vec4(vertexColor, 1.0); // RGBA
-    outputColor = texture(texture0, texCoords);
+    //outputColor = texture(texture0, texCoords);
+    outputColor = texture(texture0, texCoords) * vec4(vertexColor, 1.0);
 }
