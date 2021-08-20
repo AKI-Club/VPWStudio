@@ -57,6 +57,11 @@ namespace VPWStudio
 
 		private Bitmap CurTexture;
 
+		/// <summary>
+		/// A 1x1 full brightness fallback texture.
+		/// </summary>
+		private readonly byte[] FallbackTexture = new byte[]{ 0xFF, 0xFF, 0xFF, 0xFF };
+
 		public ModelTool2(int fileID)
 		{ 
 			InitializeComponent();
@@ -92,9 +97,8 @@ namespace VPWStudio
 			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
 			RedrawTimer.Tick += new EventHandler(RenderScene);
 
-			// for the time being, this is enabled by default.
+			// enable texture display by default
 			textureEnabledToolStripMenuItem.Checked = true;
-			textureEnabledToolStripMenuItem.Enabled = false;
 		}
 
 		/// <summary>
@@ -222,16 +226,23 @@ namespace VPWStudio
 			ModelFaces = CurModel.GetFacesList();
 			GL.BufferData(BufferTarget.ElementArrayBuffer, ModelFaces.Length * sizeof(uint), ModelFaces, BufferUsageHint.StaticDraw);
 
-			// Texture object (actual texture set later)
+			// Texture object
 			TextureObject = GL.GenTexture();
 			GL.ActiveTexture(TextureUnit.Texture0);
 			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
+			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
 		}
 
 		private void UpdateTexture()
 		{
 			if (CurTexture == null)
 			{
+				return;
+			}
+
+			if (!textureEnabledToolStripMenuItem.Checked)
+			{
+				GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
 				return;
 			}
 
@@ -341,6 +352,12 @@ namespace VPWStudio
 				UpdateTexture();
 				glControl1.Invalidate();
 			}
+		}
+
+		private void textureEnabledToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UpdateTexture();
+			glControl1.Invalidate();
 		}
 	}
 }
