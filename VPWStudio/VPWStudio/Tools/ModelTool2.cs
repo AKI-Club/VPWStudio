@@ -91,6 +91,10 @@ namespace VPWStudio
 
 			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
 			RedrawTimer.Tick += new EventHandler(RenderScene);
+
+			// for the time being, this is enabled by default.
+			textureEnabledToolStripMenuItem.Checked = true;
+			textureEnabledToolStripMenuItem.Enabled = false;
 		}
 
 		/// <summary>
@@ -129,6 +133,26 @@ namespace VPWStudio
 				}
 			}
 		}
+		private int GetTextureRepeatMode(ToolStripMenuItem menuItem)
+		{
+			if (menuItem.Checked)
+			{
+				return (int)TextureWrapMode.MirroredRepeat;
+			}
+			return (int)TextureWrapMode.Repeat;
+		}
+
+		private void horizontalMirrorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+		{
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
+			glControl1.Invalidate();
+		}
+
+		private void verticalMirrorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+		{
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
+			glControl1.Invalidate();
+		}
 
 		private void SetupGLResources()
 		{
@@ -147,7 +171,7 @@ namespace VPWStudio
 			{
 				Program.ErrorMessageBox("Unable to load default vertex shader.");
 			}
-			// todo: GL.GetShaderInfoLog
+			// todo: GL.GetShaderInfoLog(VertexShader, output string)
 
 			s = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.Resources.DefaultShader.frag");
 			if (s != null)
@@ -164,7 +188,7 @@ namespace VPWStudio
 			{
 				Program.ErrorMessageBox("Unable to load default fragment shader.");
 			}
-			// todo: GL.GetShaderInfoLog
+			// todo: GL.GetShaderInfoLog(FragmentShader, output string)
 
 			ShaderProgram = GL.CreateProgram();
 			GL.AttachShader(ShaderProgram, VertexShader);
@@ -228,9 +252,8 @@ namespace VPWStudio
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
-			// todo: allow setting the repeat mode
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
 
 			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, CurTexture.Width, CurTexture.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelData.ToArray());
 		}
@@ -311,12 +334,9 @@ namespace VPWStudio
 
 		private void loadTextureToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// new dialog for super bullshittery
 			Dialogs.SelectTextureDialog std = new Dialogs.SelectTextureDialog();
 			if (std.ShowDialog() == DialogResult.OK)
 			{
-				//MessageBox.Show("oh, I was only kidding; actually setting a texture takes work", "VPW Studio | ModelTool2");
-
 				CurTexture = std.OutputBitmap;
 				UpdateTexture();
 				glControl1.Invalidate();
