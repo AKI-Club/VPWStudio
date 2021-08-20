@@ -406,6 +406,7 @@
 			this.textureEnabledToolStripMenuItem.Name = "textureEnabledToolStripMenuItem";
 			this.textureEnabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.textureEnabledToolStripMenuItem.Text = "Texture Enabled";
+			this.textureEnabledToolStripMenuItem.Click += new System.EventHandler(this.textureEnabledToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
