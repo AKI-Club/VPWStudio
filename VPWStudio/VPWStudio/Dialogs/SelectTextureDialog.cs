@@ -60,6 +60,23 @@ namespace VPWStudio.Dialogs
 			get { return CurrentBitmap; }
 		}
 
+		/// <summary>
+		/// If true, this texture is mirrored horizontally when repeating.
+		/// Only valid for Ci4Texture and Ci8Texture.
+		/// </summary>
+		public bool HorizontalMirror = false;
+
+		/// <summary>
+		/// If true, this texture is mirrored vertically when repeating.
+		/// Only valid for Ci4Texture and Ci8Texture.
+		/// </summary>
+		public bool VerticalMirror = false;
+
+		/// <summary>
+		/// Only set to true when changing the mirroring values
+		/// </summary>
+		public bool MirroringValuesSet = false;
+
 		public SelectTextureDialog()
 		{
 			InitializeComponent();
@@ -149,6 +166,19 @@ namespace VPWStudio.Dialogs
 			if (CurTextureType != ValidTextureTypes.AkiTexture)
 			{
 				PaletteFileID = Convert.ToUInt32(cbPaletteFileIDs.Items[cbPaletteFileIDs.SelectedIndex].ToString(), 16);
+
+				if (CurTextureType == ValidTextureTypes.CI4Texture)
+				{
+					HorizontalMirror = CurrentCI4Tex.HorizMirror != 0;
+					VerticalMirror = CurrentCI4Tex.VertMirror != 0;
+					MirroringValuesSet = true;
+				}
+				else if (CurTextureType == ValidTextureTypes.CI8Texture)
+				{
+					HorizontalMirror = CurrentCI8Tex.HorizMirror != 0;
+					VerticalMirror = CurrentCI8Tex.VertMirror != 0;
+					MirroringValuesSet = true;
+				}
 			}
 
 			DialogResult = DialogResult.OK;
