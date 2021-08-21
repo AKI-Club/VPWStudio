@@ -349,6 +349,13 @@ namespace VPWStudio
 			if (std.ShowDialog() == DialogResult.OK)
 			{
 				CurTexture = std.OutputBitmap;
+
+				if (std.MirroringValuesSet)
+				{
+					horizontalMirrorToolStripMenuItem.Checked = std.HorizontalMirror;
+					verticalMirrorToolStripMenuItem.Checked = std.VerticalMirror;
+				}
+
 				UpdateTexture();
 				glControl1.Invalidate();
 			}
