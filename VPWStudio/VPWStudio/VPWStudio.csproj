@@ -127,11 +127,11 @@
     <Compile Include="GameSpecific\IntroSequence_Later.cs" />
     <Compile Include="DataStructures\AKI\MenuBackground.cs" />
     <Compile Include="DataStructures\AKI\AkiArchive.cs" />
-    <Compile Include="DataStructures\N64TexPal\Ci4Texture.cs" />
-    <Compile Include="DataStructures\N64TexPal\Ci4Palette.cs" />
-    <Compile Include="DataStructures\N64TexPal\Ci8Texture.cs" />
-    <Compile Include="DataStructures\N64TexPal\Ci8Palette.cs" />
-    <Compile Include="DataStructures\N64TexPal\I4Texture.cs" />
+    <Compile Include="DataStructures\N64\Ci4Texture.cs" />
+    <Compile Include="DataStructures\N64\Ci4Palette.cs" />
+    <Compile Include="DataStructures\N64\Ci8Texture.cs" />
+    <Compile Include="DataStructures\N64\Ci8Palette.cs" />
+    <Compile Include="DataStructures\N64\I4Texture.cs" />
     <Compile Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,6 +507,12 @@
     <Compile Include="Tools\StableDefParseTest.Designer.cs">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\TimTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\TimTester.Designer.cs">
+      <DependentUpon>TimTester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Toki1TestDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -698,6 +704,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\StableDefParseTest.resx">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\TimTester.resx">
+      <DependentUpon>TimTester.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Toki1TestDialog.resx">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
