@@ -83,8 +83,31 @@ namespace VPWStudio
 
 			foreach (UInt16 c in Data)
 			{
-				// assuming little endian...
-				colors.Add(Color.FromArgb((c & 0x8000) == 0 ? 255 : 128, (c & 0x1F) * 8, ((c & 0x3E0) >> 5) * 8, ((c & 0x7C00) >> 10) * 8));
+				int r = (c & 0x1F) * 8;
+				int g = ((c & 0x3E0) >> 5) * 8;
+				int b = ((c & 0x7C00) >> 10) * 8;
+
+				// alpha/transparency calculation is a bit more complicated than just checking the top bit
+				bool isBlack = (r==0 && g==0 && b==0);
+				bool topBitSet = (c & 0x8000) != 0;
+				int a = 0;
+
+				if (isBlack && !topBitSet)
+				{
+					// if r,g,b are 0 and stp/transparency is also 0, it's fully transparent.
+					a = 0;
+				}
+				else if ((isBlack && topBitSet) || (!isBlack && !topBitSet))
+				{
+					a = 255;
+				}
+				else if (!isBlack && topBitSet)
+				{
+					// if stp/transparency is 1 and r,g,b, are not all 0, it's semi-transparent.
+					a = 128;
+				}
+
+				colors.Add(Color.FromArgb(a, r, g, b));
 			}
 
 			return colors;
