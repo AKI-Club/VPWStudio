@@ -98,6 +98,8 @@
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
     <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="DataStructures\PS1\ClutData.cs" />
+    <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="Dialogs\SelectTextureDialog.cs">
       <SubType>Form</SubType>
     </Compile>
