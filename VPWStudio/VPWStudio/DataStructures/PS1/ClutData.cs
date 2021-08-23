@@ -155,7 +155,8 @@ namespace VPWStudio
 			}
 			DataHeight = BitConverter.ToUInt16(dataHeight, 0);
 
-			for (int i = 0; i < (DataLength - 12) / 2; i++)
+			Data = new List<ushort>();
+			for (int i = 0; i < (DataWidth * DataHeight); i++)
 			{
 				byte[] color = br.ReadBytes(2);
 				if (!BitConverter.IsLittleEndian)
