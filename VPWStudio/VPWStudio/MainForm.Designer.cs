@@ -85,6 +85,8 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+			this.timTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -388,7 +390,9 @@
             this.vpw2FaceTestToolStripMenuItem,
             this.stableParseTestToolStripMenuItem,
             this.romSliceTestToolStripMenuItem,
-            this.moveDamageTestvpw2OnlyToolStripMenuItem});
+            this.moveDamageTestvpw2OnlyToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.timTestToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -502,6 +506,17 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// toolStripSeparator10
+			// 
+			this.toolStripSeparator10.Name = "toolStripSeparator10";
+			resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
+			// 
+			// timTestToolStripMenuItem
+			// 
+			this.timTestToolStripMenuItem.Name = "timTestToolStripMenuItem";
+			resources.ApplyResources(this.timTestToolStripMenuItem, "timTestToolStripMenuItem");
+			this.timTestToolStripMenuItem.Click += new System.EventHandler(this.timTestToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -584,6 +599,8 @@
 		private System.Windows.Forms.ToolStripMenuItem wrestlersToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+		private System.Windows.Forms.ToolStripMenuItem timTestToolStripMenuItem;
 	}
 }
 
