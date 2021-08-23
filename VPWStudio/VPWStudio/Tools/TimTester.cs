@@ -61,6 +61,11 @@ namespace VPWStudio
 
 		private void nextPaletteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (CurrentTim == null)
+			{
+				return;
+			}
+
 			CurPaletteNumber++;
 			if (CurPaletteNumber >= NumPalettes)
 			{
@@ -71,6 +76,11 @@ namespace VPWStudio
 
 		private void previousPaletteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (CurrentTim == null)
+			{
+				return;
+			}
+
 			CurPaletteNumber--;
 			if (CurPaletteNumber < 0)
 			{
