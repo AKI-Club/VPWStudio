@@ -12,7 +12,19 @@ namespace VPWStudio
 {
 	public partial class TimTester : Form
 	{
+		/// <summary>
+		/// Current TIM file being previewed.
+		/// </summary>
 		public TimFile CurrentTim;
+
+		public ClutData ExternalClut = null;
+
+		/// <summary>
+		/// Current active palette number (only useful in 4bpp)
+		/// </summary>
+		public int CurPaletteNumber = 0;
+
+		public int NumPalettes = 0;
 
 		public TimTester()
 		{
@@ -30,17 +42,41 @@ namespace VPWStudio
 				BinaryReader br = new BinaryReader(fs);
 				CurrentTim = new TimFile(br);
 				pictureBox1.Image = CurrentTim.ToBitmap();
+
+				nextPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4;
+				previousPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4;
+				if ((TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4)
+				{
+					if (ExternalClut != null)
+					{
+						NumPalettes = ExternalClut.DataHeight;
+					}
+					else
+					{
+						NumPalettes = CurrentTim.CLUT.DataHeight;
+					}
+				}
 			}
 		}
 
 		private void nextPaletteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			CurPaletteNumber++;
+			if (CurPaletteNumber >= NumPalettes)
+			{
+				CurPaletteNumber = 0;
+			}
+			pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
 		}
 
 		private void previousPaletteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			CurPaletteNumber--;
+			if (CurPaletteNumber < 0)
+			{
+				CurPaletteNumber = NumPalettes-1;
+			}
+			pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
 		}
 	}
 }
