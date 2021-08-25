@@ -17,7 +17,7 @@ All known variants (region and revision) are supported for the following:
 
 Requirements
 ------------
-- .NET Framework 4.6.1
+- .NET Framework 4.7.2
 - patience and understanding, considering this program is incomplete
 
 Manual
