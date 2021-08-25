@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace VPWStudio
 {
 	/// <summary>
-	/// ModelTool2, an attempt to test OpenTK
+	/// ModelTool2, a quick and dirty model previewer
 	/// </summary>
 	public partial class ModelTool2 : Form
 	{
@@ -137,13 +138,15 @@ namespace VPWStudio
 				}
 			}
 		}
+
+		/// <summary>
+		/// Get a texture repeat/wrap mode based on the Checked value of a specific menu item.
+		/// </summary>
+		/// <param name="menuItem">ToolStripMenuItem being queried for its Checked status.</param>
+		/// <returns>The proper TextureWrapMode, cast to an int (as required by GL.TexParameter).</returns>
 		private int GetTextureRepeatMode(ToolStripMenuItem menuItem)
 		{
-			if (menuItem.Checked)
-			{
-				return (int)TextureWrapMode.MirroredRepeat;
-			}
-			return (int)TextureWrapMode.Repeat;
+			return menuItem.Checked ? (int)TextureWrapMode.MirroredRepeat : (int)TextureWrapMode.Repeat;
 		}
 
 		private void horizontalMirrorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -259,7 +262,7 @@ namespace VPWStudio
 				}
 			}
 
-			// todo: this might be wrong
+			// todo: allow changing filtering styles? linear is more faithful to the N64 compared to nearest
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
@@ -345,7 +348,7 @@ namespace VPWStudio
 
 		private void loadTextureToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Dialogs.SelectTextureDialog std = new Dialogs.SelectTextureDialog();
+			SelectTextureDialog std = new SelectTextureDialog();
 			if (std.ShowDialog() == DialogResult.OK)
 			{
 				CurTexture = std.OutputBitmap;
