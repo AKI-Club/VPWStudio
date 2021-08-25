@@ -580,6 +580,32 @@ with the <a href="#ModelTool">Model Tool</a> found via Tools &rarr; Model Data.
 The end goal is to be a quick and dirty 3D model previewer, so you don't need to
 export the model to OBJ format to figure out what it is.</p>
 
+<ul>
+<li><strong>Export Wavefront OBJ</strong> &ndash; Exports the model to Wavefront OBJ format, for importing into other tools.</li>
+<li><strong>Load Texture</strong> &ndash; Brings up a texture selection dialog, further explained below.</li>
+<li><strong>Texture Enabled</strong> &ndash; Enable/disable texture mapping. Only really works if a texture has been loaded.</li>
+<li><strong>Horizontal Mirroring</strong> &ndash; Change the horizontal texture repeat style. Loading a Ci4/Ci8 texture can set this option as well, depending on the value in the texture header.</li>
+<li><strong>Vertical Mirroring</strong> &ndash; Change the vertical texture repeat style. Loading a Ci4/Ci8 texture can set this option as well, depending on the value in the texture header.</li>
+</ul>
+
+<h4>Load Texture</h4>
+<img src="./img/select_texture.png" title="ModelTool2's Texture Selection Dialog" />
+
+<p>The "Load Texture" dialog does what it suggests, allowing you to choose
+a texture to map to the model. The available choices depend on what's in the
+FileTable, so any texture file without a specific file type set won't show up
+in here.</p>
+
+<p>The three Texture Type options are:</p>
+<ul>
+<li><strong>Ci4Texture</strong> &ndash; 4bpp/16 color images</li>
+<li><strong>Ci8Texture</strong> &ndash; 8bpp/256 color images</li>
+<li><strong>AkiTexture</strong> &ndash; Typically used for user interface stuff, but provided here just in case.</li>
+</ul>
+
+<p>Texture File ID works for all modes, while Palette File ID can only be set
+with Ci4Texture or Ci8Texture. Sub-palettes are not supported in this menu.</p>
+
 <hr />
 <h2><a name="Menus">Menus</a></h2>
 <p>The Menus option (Project &rarr; Menus) allows you to change how the items
