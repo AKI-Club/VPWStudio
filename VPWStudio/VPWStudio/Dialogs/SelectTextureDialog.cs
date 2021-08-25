@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VPWStudio.Dialogs
+namespace VPWStudio
 {
 	public partial class SelectTextureDialog : Form
 	{
