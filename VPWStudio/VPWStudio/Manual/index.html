@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.14 (February 16th, 2020)<br />Program and Manual by freem<br />
+<p>Version 0.0.0.15 (August 25th, 2021)<br />Program and Manual by freem<br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a></p>
 </div>
 
@@ -51,16 +51,16 @@
 <li><a href="#Credits">Credits</a></li>
 </ol>
 
-<h3>Game-Specific Documentation</h3>
+<h3><a name="GameSpecificDocs">Game-Specific Documentation</a></h3>
 <p>(All game-specific sections are external (i.e. separate from the main manual).)</p>
 <ol>
 <!--<li>Virtual Pro-Wrestling and WCW vs. the World</li> -->
-<li>WCW vs. nWo World Tour</li>
-<li>Virtual Pro-Wrestling 64</li>
-<li>WCW/nWo Revenge</li>
-<li>WWF WrestleMania 2000</li>
+<li><a href="./worldtour.html">WCW vs. nWo World Tour</a></li>
+<li><a href="./vpw64.html">Virtual Pro-Wrestling 64</a></li>
+<li><a href="./revenge.html">WCW/nWo Revenge</a></li>
+<li><a href="./wm2k.html">WWF WrestleMania 2000</a></li>
 <li><a href="./vpw2.html">Virtual Pro-Wrestling 2</a></li>
-<li>WWF No Mercy</li>
+<li><a href="./nomercy.html">WWF No Mercy</a></li>
 </ol>
 
 <h3>Appendices</h3>
@@ -164,10 +164,12 @@ however, so it will be a while before support is implemented.</p>
 
 <h3>Requirements</h3>
 <ul>
-<li>.NET Framework 4.6.1 or higher.</li>
+<li>.NET Framework 4.7.2 or higher.</li>
 <li>Any of the above listed games in Z64 ROM format. No other N64 ROM formats are
 supported at this time. Please convert non-Z64 format ROMs with a tool, such as
-<a href="https://ucon64.sourceforge.net/">uCON64</a>.</li>
+<a href="https://ucon64.sourceforge.net/">uCON64</a>.<br />More information about
+<a href="http://n64dev.org/romformats.html">N64 ROM formats</a> can be found on n64dev.org.</li>
+<li>OpenGL 3.3 support (for ModelView2 dialog and any future 3D-displaying stuff)</li>
 <li>A hex editor, to do things that aren't easily available in VPW Studio yet.
 (If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
 is recommended.)</li>
@@ -176,10 +178,10 @@ is recommended.)</li>
 
 <h3>Notes</h3>
 <ul>
-<li>This program is currently a GIANT work in progress. As such, a lot of things are
-not implemented yet.</li>
-<li>Since the program is a work in progress, any and all file formats are subject
-to change. Don't get too attached to your projects.</li>
+<li>This program is currently a GIANT work in progress. Many features are not
+implemented yet.</li>
+<li>Since the program is a work in progress, any and all VPW Studio-originated
+file formats are subject to change. Don't get too attached to your projects.</li>
 </ul>
 
 <hr />
@@ -289,7 +291,6 @@ dialog.</p>
 <ul>
 <li><strong>Output ROM File</strong> &ndash; Set the location of the built Z64 ROM.</li>
 <li><strong>Internal Game Name</strong> &ndash; Set the internal game name.</li>
-<li><strong>Product Code</strong> &ndash; The two letter code for the game ID. Leave this alone unless you know what you're doing.</li>
 <li><strong>Product Region</strong> &ndash; Pick a pre-set region, or set a custom letter.</li>
 </ul>
 
@@ -299,7 +300,6 @@ dialog.</p>
 <li><strong>Project Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
 <li><strong>Asset Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
 <li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes. <em>Most people will not need to use this.</em></li>
-<li><strong>GameShark Code File</strong> &ndash; Path to the GameShark code file for this project. (No longer used as of pre-alpha preview 15.)</li>
 <li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused)</li>
 </ul>
 
@@ -324,7 +324,7 @@ the ROM before playing it. Otherwise, it will load the last built version of the
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
-<p>(todo: this portion of the program requires a proper 3D renderer, and I am not yet smart enough to do that -f)</p>
+<p>(todo: this portion of the program requires a 3D renderer handling multiple objects, and I'm not fully there yet. -f)</p>
 
 <hr />
 <h2><a name="Championships">Championships</a></h2>
@@ -437,9 +437,9 @@ found in the "<a href="#Editors">Viewers and Editors</a>" section of the manual.
 <ul>
 <li><strong>Set Type</strong> &ndash; Change the File Type for the selected entry.
 Available options depend on what game you're editing, and will be mentioned in
-game-specific documentation.</li>
+<a href="#GameSpecificDocs">game-specific documentation</a>.</li>
 <li><strong>Edit Information</strong> &ndash; Opens the <a href="#FileTableEntryInfo">File Table Entry Information dialog</a> for the selected entry.</li>
-<li><strong>View Hex</strong> &ndash; Opens a Hex Viewer with the selected entry's data.</li>
+<li><strong>View Hex</strong> &ndash; Opens a <a href="#HexViewer">Hex Viewer</a> with the selected entry's data.</li>
 <li><strong>Extract File</strong> &ndash; Extracts the selected entry to a file, decompressing it if necessary.</li>
 <li><strong>Extract Raw</strong> &ndash; Extracts the compressed version of the selected
 entry without decompressing it. (Only available if "LZSS" is set to "True" for this entry.)</li>
@@ -475,7 +475,7 @@ The "Export CSV" option is only of use for people dealing with disassemblies.</p
 on how many entries are selected.</p>
 
 <h4>Single Entry</h4>
-<p>(todo: screenshot)</p>
+<img src="./img/filetable_entry_single-main.png" title="File Table Entry Information (single file selected) - Main" />
 
 <p>The "Main" tab contains the following settings:</p>
 <ul>
@@ -485,12 +485,13 @@ on how many entries are selected.</p>
 <li><strong>Replacement File Path</strong> &ndash; Path to the replacement file for this entry. You can use the "Browse" button to pick a file.</li>
 </ul>
 
+<img src="./img/filetable_entry_single-extra.png" title="File Table Entry Information (single file selected) - Extra" />
 <p>The single entry dialog has an "Extra" tab, which includes a few options
 for specific file types.</p>
 <ul>
 <li><strong>Image Width</strong> &ndash; Set the width of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
 <li><strong>Image Height</strong> &ndash; Set the height of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
-<li><strong>Transparent Color Index</strong> &ndash; asdf. "Unset" value is -1.</li>
+<li><strong>Transparent Color Index</strong> &ndash; Currently unused. "Unset" value is -1.</li>
 <li><strong>Default Palette ID</strong> &ndash; Set the default palette ID, used for
 previewing images. The value corresponds to an index in the File Table, and is
 hexadecimal. "Unset" value is <code>FFFFFFFFFFFFFFFF</code>, since File Table IDs
@@ -502,7 +503,7 @@ are unsigned.</li>
 when using them.</p>
 
 <h4>Multiple Entries</h4>
-<p>(todo: screenshot)</p>
+<img src="./img/filetable_entry_multiple.png" title="File Table Entry Information (multiple files selected) - Main" />
 
 <p>If multiple entries are selected, the multi-entry version of the dialog is displayed.
 Each file table entry is given its own row in a grid, with the following columns:</p>
@@ -818,6 +819,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
 <li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
+<li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values.</li>
 </ul>
 
 <hr />
@@ -834,26 +836,35 @@ the base for the final, more polished features. Starting with pre-alpha preview
 
 <hr />
 <h2><a name="Glossary">Appendix A: Glossary</a></h2>
-<p>The Virtual Pro-Wrestling series hacking communities use jargon to refer to
-some items and concepts. These terms can be confusing when first encountered.
-In addition, certain programs are involved whose name and function are not
-immediately obvious.</p>
+<p>Various communities create and use jargon to refer to ideas and concepts.
+The Virtual Pro-Wrestling series hacking communities are no exception.
+In addition, terms from other communities need to be borrowed or referenced
+from time to time, and they may not be familiar to everyone. This even
+extends to programs whose name and function are not immediately obvious.</p>
 
 <dl>
 <dt>Addy</dt>
 <dd>Short for "address", as in "memory address".</dd>
 
 <dt>Broad Action</dt>
-<dd>The general action the wrestler is performing.</dd>
+<dd>The general action the wrestler is performing. A Broad Action can have several
+"Sub-Actions" (or "action states", if you prefer).</dd>
 
 <dt>CI4</dt>
-<dd>Nintendo 64's 16 color texture format.</dd>
+<dd>16 color texture format used on Nintendo 64.</dd>
 
 <dt>CI8</dt>
-<dd>Nintendo 64's 256 color texture format.</dd>
+<dd>256 color texture format used on Nintendo 64.</dd>
+
+<dt>CLUT</dt>
+<dd>Color Look-Up Table; PlayStation palette format.</dd>
+
+<dt>Doctor V64</dt>
+<dd>Unofficial Nintendo 64 development tool and backup device that connects under
+the N64. Also allows for loading games off of a CD-ROM. Origin of the V64 ROM format.</dd>
 
 <dt>I4</dt>
-<dd>Nintendo 64's 16 value intensity texture format.</dd>
+<dd>16 value intensity texture format used on Nintendo 64.</dd>
 
 <dt>ID2</dt>
 <dd>One of the two ways of identifying a wrestler. This value is one byte
@@ -866,10 +877,18 @@ being used as a unique identifier (not necessarily matching the ID2 order).
 ID4 values are always given in hex.</dd>
 
 <dt>Midwaydec</dt>
-<dd>A tool by Zoinkity that handles various N64 archive formats.</dd>
+<dd>A "dead" tool by Zoinkity that handles various N64 archive formats.</dd>
+
+<dt>Mr. Backup Z64</dt>
+<dd>Unofficial Nintendo 64 backup device that connects to the N64's cartridge
+slot. Originally shipped with a Zip drive, but can be modified to use other
+storage mediums. Origin of the Z64 ROM format.</dd>
 
 <dt>Offsetter</dt>
 <dd>Another Zoinkity-created tool for inserting files into a VPW2 ROM and fixing the relevant offsets.</dd>
+
+<dt>TIM</dt>
+<dd>PlayStation texture format.</dd>
 
 <dt>Toki 1</dt>
 <dd>Originally known as "Animation Stat Mods 1", the Toki 1 values control
@@ -888,6 +907,14 @@ a large number of parameters for moves.</dd>
 <dd>Toki 3 values are related to items in the FileTable. Depending on who you ask,
 they're either the file IDs themselves, or the location of the data in the ROM (relative
 to the start location of the first file in the archive).</dd>
+
+<dt>V64</dt>
+<dd>One of the primary ROM formats used for Nintendo 64 games, typically dumped
+using a Doctor V64.</dd>
+
+<dt>Z64</dt>
+<dd>One of the primary ROM formats used for Nintendo 64 games, typically dumped
+using a Mr. Backup Z64.</dd>
 </dl>
 
 <hr />
