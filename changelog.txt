@@ -30,8 +30,8 @@ Pre-Alpha Preview 15 (2021/08/25)
 
 * Renamed NoMercyText to MenuItems_NoGroup and added an editor for it.
 
-* [No Mercy Costume Editor] Properly save changes, added missing items, and made
-  remaining options editable.
+* [No Mercy Default Costume Editor] Properly save changes, added missing items,
+  and made remaining options editable.
 
 * [Project Settings] Removed ability to set Game/Product Code, as emulators and
   flashcarts use this to determine what save data type is required. You can still
