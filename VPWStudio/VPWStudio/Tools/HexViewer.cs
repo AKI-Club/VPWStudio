@@ -98,5 +98,10 @@ namespace VPWStudio
 
 			Program.HexViewManager.FormClosed(this);
 		}
+
+		private void hexBox1_Copied(object sender, EventArgs e)
+		{
+			hexBox1.CopyHex();
+		}
 	}
 }
