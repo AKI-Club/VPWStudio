@@ -24,7 +24,8 @@ namespace VPWStudio
 			"The Pelican",     // also found many values
 			"Keson",           // keeping the future alive with AKI Evo and new tools
 			"jordyad",         // pushed me further when I needed it most, providing great info
-			"randymanfoo",     // has provided a lot of No Mercy FileTable updates
+			"randymanfoo",     // has provided a lot of No Mercy FileTable updates, among other things
+			"Melonbread",      // new (circa 2020-2021) VPW2 findings
 			"(and others I haven't gotten around to listing yet)"
 		};
 
@@ -36,11 +37,12 @@ namespace VPWStudio
 			"the SSC",
 			"the Multitap community",
 			"Generation Hex",
-			"Nextwave 64",
+			"Old Skool Reunion",
 			"AKI Live",
 			"RagDas",
 			"WldFb",
-			"Melly"
+			"Melly",
+			"CurdleGames"
 		};
 
 		public AboutBox()
@@ -68,7 +70,13 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("As of now, this program should only be used by myself, WldFb, RagDas, Melly, G.M.Spectre, and the members of the AKI Wrestling Game Hacking Discord server. This is primarily because it's untested and can ruin your data. User discretion is advised.");
+			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of August 2021, this includes:");
+			sb.AppendLine();
+			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
+			sb.AppendLine("- RagDas");
+			sb.AppendLine("- GameGenie720");
+			sb.AppendLine();
+			sb.AppendLine("VPW Studio is largely untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
 
 			sb.AppendLine("This tool is dedicated to the memory of Maximo.");
@@ -97,6 +105,11 @@ namespace VPWStudio
 					sb.Append(", ");
 				}
 			}
+			sb.AppendLine();
+
+			sb.AppendLine("This program uses the following libraries:");
+			sb.AppendLine("- OpenTK (https://opentk.net/)");
+			sb.AppendLine("- Be.HexBox (https://sourceforge.net/projects/hexbox/)");
 			sb.AppendLine();
 
 			tbInformation.Text = sb.ToString();
