@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.15 (August 25th, 2021)<br />Program and Manual by freem<br />
+<p>Version 0.0.0.15 (August 26th, 2021)<br />Program and Manual by freem<br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a></p>
 </div>
 
@@ -74,7 +74,7 @@
 <h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
 <em>Virtual Pro-Wrestling</em> series. The initial focus is on AKI's
-Nintendo 64 games, though support for most non-N64 AKI wrestling games
+Nintendo 64 games, though support for the PlayStation 1 AKI wrestling games
 is planned.</p>
 
 <p>As of 2018, the primary accepted solution for making changes to the
@@ -138,25 +138,28 @@ supported data formats.</p>
 	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U v1.0, NTSC-U v1.1, PAL v1.0, PAL v1.1</td>
 </tr>
-<!--<tr>
-	<td>Def Jam Vendetta</td>
-	<td>GameCube, PlayStation 2</td>
-	<td>NTSC-U (GC, PS2), NTSC-J (PS2 only)</td>
-</tr>-->
-<!--<tr>
-	<td>Def Jam: Fight for NY</td>
-	<td>GameCube, PlayStation 2, XBox</td>
-	<td>NTSC-U (GC, PS2, XBox)</td>
-</tr>-->
 </tbody>
 </table>
 <p>Note that not every game supports every portion of VPW Studio. Supported games
 are listed in the specific sections for each tool.</p>
 
-<p>Of the remaining AKI wrestling games, it's more likely the PlayStation 1 games
-(<em>Virtual Pro-Wrestling</em> and <em>WCW vs. the World</em>) will be supported
-before games on later systems. These games are not considered the primary focus,
-however, so it will be a while before support is implemented.</p>
+<p>Nintendo 64 games are relatively easier to edit and rebuild, being a single
+ROM image. When it comes to hacking games on disc-based systems (e.g. PlayStation,
+GameCube, XBox), extra challenges are added (such as building a proper disc image
+so the game can run on real hardware).</p>
+
+<p>Support for AKI's PS1 wrestling games (<em>Virtual Pro-Wrestling</em> and
+<em>WCW vs. the World</em>) is not the primary focus at the moment, but small
+steps are being taken towards supporting formats the PS1 games use. Adding
+proper support for hacking the PS1 games in VPW Studio would require a number
+of UI changes, as well as Project File differences and various other under-the-hood
+details that need changing.</p>
+
+<p>Originally, the plan was to eventually support the AKI-developed Def Jam games
+(primarily <em>Def Jam Vendetta</em> and <em>Def Jam: Fight for NY</em>) after
+adding support for the two PlayStation 1 games. As of August 2021, the Def Jam
+games are officially out of scope for VPW Studio. A new, purpose-built tool
+would be a better solution for the Def Jam games.</p>
 
 <hr />
 <h2><a name="Requirements">Requirements and Notes</a></h2>
