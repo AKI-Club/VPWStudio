@@ -46,6 +46,7 @@
 			this.hexBox1.TabIndex = 0;
 			this.hexBox1.UseFixedBytesPerLine = true;
 			this.hexBox1.VScrollBarVisible = true;
+			this.hexBox1.Copied += new System.EventHandler(this.hexBox1_Copied);
 			// 
 			// HexViewer
 			// 
