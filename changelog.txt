@@ -2,9 +2,69 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 15 (202x/yy/zz)
+Pre-Alpha Preview 16 (202x/yy/zz)
 ---------------------------------
-I'm working on it.
+I'm working on it, but now I have some friends who might help?
+
+Pre-Alpha Preview 15 (2021/08/25)
+---------------------------------
+* Target .NET Framework version changed from 4.6.1 to 4.7.2.
+
+* Replaced SharpDX with OpenTK.
+  Please delete any SharpDX .dll files in the VPW Studio program directory.
+  Specifically, these files are no longer necessary:
+  - SharpDX.D3DCompiler.dll
+  - SharpDX.Desktop.dll
+  - SharpDX.Direct3D11.dll
+  - SharpDX.dll
+  - SharpDX.DXGI.dll
+  - SharpDX.Mathematics.dll
+
+* [AkiModel] Fixed vertical texture map offsets in Wavefront OBJ export.
+
+* Removed incomplete GameShark Tool.
+  It will be replaced with a stand-alone tool, available sometime in the future.
+  Hopefully.
+
+* [No Mercy Wrestler Editor] Allow the use of an edited AkiText for Profile data.
+
+* Renamed NoMercyText to MenuItems_NoGroup and added an editor for it.
+
+* [No Mercy Costume Editor] Properly save changes, added missing items, and made
+  remaining options editable.
+
+* [Project Settings] Removed ability to set Game/Product Code, as emulators and
+  flashcarts use this to determine what save data type is required. You can still
+  set the region code, though.
+  (Filing this under "things I had to learn the hard way, so you don't have to".)
+
+* Rearranged Danger menu to put the most useful (read: PNG conversion) tools
+  at the top.
+
+* Added No Mercy MenuItems_Shop data editor.
+  It's a bit cumbersome, as you have to press a "make changes" button for data
+  to be written back. This will likely change in the future.
+
+* [Project File] Allow relative path for the input/base ROM file.
+  (This is only possible once the project file has been saved.)
+
+* [Hex Viewer] Replaced ByteViewer control with Be.Windows.Forms.HexBox.
+  Contents are still read-only, but can be selected and copied now.
+
+* [Move Damage Test] Actually show values for WWF No Mercy.
+
+* [File Table Dialog] Perform "does file exist?" checks for AkiText,
+  MenuItems_NoGroup, and MenuItems_Shop filetypes.
+
+* ModelTool2 dialog upgraded and slightly redesigned.
+  Now features a static 3D preview, with the ability to load textures from ROM.
+
+* Added TIM Tester (PS1 texture format) to Danger menu, as part of initial steps
+  towards supporting the PS1 AKI wrestling games.
+
+* As usual, there's a few FileTableDB updates.
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 14 (2020/02/16)
 ---------------------------------
