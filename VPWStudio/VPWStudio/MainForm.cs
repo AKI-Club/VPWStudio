@@ -1722,6 +1722,8 @@ namespace VPWStudio
 				case VPWGames.WM2K: return Properties.Resources.GameIcon16_WM2K;
 				case VPWGames.VPW2: return Properties.Resources.GameIcon16_VPW2;
 				case VPWGames.NoMercy: return Properties.Resources.GameIcon16_NoMercy;
+				case VPWGames.VPW: return Properties.Resources.GameIcon16_VPW;
+				case VPWGames.WCWvsWorld: return Properties.Resources.GameIcon16_WCWvsWorld;
 				default:
 					return null;
 			}
@@ -1746,6 +1748,8 @@ namespace VPWStudio
 				case VPWGames.WM2K: return Properties.Resources.MainMenuBG_WM2K;
 				case VPWGames.VPW2: return Properties.Resources.MainMenuBG_VPW2;
 				case VPWGames.NoMercy: return Properties.Resources.MainMenuBG_NoMercy;
+				case VPWGames.VPW: return Properties.Resources.MainMenuBG_VPW;
+				case VPWGames.WCWvsWorld: return Properties.Resources.MainMenuBG_WCWvsWorld;
 				default:
 					return null;
 			}
