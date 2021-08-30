@@ -123,7 +123,6 @@ namespace VPWStudio
 			FileTypes.AkiLargeFont
 		};
 
-		// todo: return List<FileTypes> and make callers convert it to strings
 		/// <summary>
 		/// Return a list of the valid FileTypes for the specified game.
 		/// </summary>
