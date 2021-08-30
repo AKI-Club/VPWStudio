@@ -31,7 +31,11 @@ namespace VPWStudio
 			cbGameType.BeginUpdate();
 			foreach (KeyValuePair<SpecificGame, GameDefinition> def in GameInformation.GameDefs)
 			{
-				cbGameType.Items.Add(GameInformation.GetSpecificGameName(def.Key));
+				// xxx hack: don't add PS1 games, since support still needs to be coded
+				if (def.Value.TargetConsole != PlatformType.PlayStation1)
+				{
+					cbGameType.Items.Add(GameInformation.GetSpecificGameName(def.Key));
+				}
 			}
 			cbGameType.EndUpdate();
 
