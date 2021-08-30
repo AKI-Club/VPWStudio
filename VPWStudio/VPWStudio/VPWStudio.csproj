@@ -100,6 +100,7 @@
     <Compile Include="DataStructures\AKI\FileTable.cs" />
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
+    <Compile Include="DataStructures\PS1\TmdFile.cs" />
     <Compile Include="Dialogs\SelectTextureDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -898,8 +899,10 @@
     <Content Include="Resources\gameintro.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_VPW.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_VPW2.png" />
     <None Include="Resources\MainMenuBG\MainMenuBG_VPW64.png" />
+    <Content Include="Resources\MainMenuBG\MainMenuBG_WCWvsWorld.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WM2K.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
     <None Include="Resources\sounds.png" />
