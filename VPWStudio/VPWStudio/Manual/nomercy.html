@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>VPW Studio Manual - WWF No Mercy Notes</title>
+<title>WWF No Mercy Notes - VPW Studio Manual</title>
 <link rel="stylesheet" href="./manual.css">
 </head>
 
@@ -15,7 +15,109 @@
 <hr />
 <h2>Table of Contents</h2>
 <ol type="1">
+<li><a href="#RomInfo">Supported Versions/ROMs</a></li>
+<li><a href="#GeneralNotes">General Notes</a></li>
+<li><a href="#FileTypes">Notable File Types</a></li>
+<li><a href="#WrestlerData">Wrestler Data</a>
+<ol>
+<li>Profile</li>
+<li>Moves and Parameters</li>
+<li>Default Costumes</li>
+</ol></li>
 </ol>
+
+<hr />
+
+<h2><a name="RomInfo">Supported Versions/ROMs</a></h2>
+<p>All data is for Z64 format ROMs only.</p>
+
+<table>
+<thead>
+<tr>
+<th>Friendly Name</th>
+<th>Product Code</th>
+<th>Region</th>
+<th>Revision</th>
+<th>MD5</th>
+<th>SHA-1</th>
+<th>Internal Checksums</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WWF No Mercy (U) v1.0</td>
+<td>NW4E</td>
+<td>NTSC-U (North America)</td>
+<td>0</td>
+<td><code>04c492be7f89fc6f425238bd67629544</code></td>
+<td><code>3566d9b5723291937582453ad0453ce517cfc358</code></td>
+<td><code>4E4B0640</code><br/><code>1B49BCFB</code></td>
+</tr>
+<tr>
+<td>WWF No Mercy (U) v1.1/Rev A</td>
+<td>NW4E</td>
+<td>NTSC-U (North America)</td>
+<td>1</td>
+<td><code>66b8ec24557a50514a814f15429bd559</code></td>
+<td><code>91cee3d096f4a76644d8b35b9aead6448909abd1</code></td>
+<td><code>6C80F13B</code><br/><code>427EDEAA</code></td>
+</tr>
+<tr>
+<td>WWF No Mercy (E) v1.0</td>
+<td>NW4P</td>
+<td>PAL (Europe, Australia)</td>
+<td>0</td>
+<td><code>f58f64a8ad952459b2ee37f07004272b</code></td>
+<td><code>cadbcd5361dffaf2aa17f0cb4c4cc799bdc8350a</code></td>
+<td><code>6D8DF08E</code><br/><code>D008C3CF</code></td>
+</tr>
+<tr>
+<td>WWF No Mercy (E) v1.1/Rev A</td>
+<td>NW4P</td>
+<td>PAL (Europe, Australia)</td>
+<td>1</td>
+<td><code>685ba168af8b7d4a9d31b17a1b432405</code></td>
+<td><code>f49217cb9039212d2d779acb00222fb73c454f56</code></td>
+<td><code>8CDB94C2</code><br/><code>CB46C6F0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Most of the modern No Mercy hacking community's efforts have been put towards
+NTSC-U v1.0, despite it having a major save-erasing glitch. There are a few
+reasons why this particular revision is the focus of hacking efforts:</p>
+
+<ol>
+<li>To obtain a bugfixed (v1.1/Rev A) version, you had to send in your WWF No
+Mercy cartridge to THQ. It's currently unknown how many people took THQ up on
+their offer.</li>
+<li>The No Mercy GameShark hacking community of the early 2000s focused their
+efforts on NTSC-U v1.0, which meant anyone who wanted to use the "cool" codes
+(e.g. Hell in a Cell match, among various others) needed to use the original/bugged
+revision. Codes for NTSC-U v1.0 do not work on NTSC-U v1.1, and vice versa.</li>
+</ol>
+
+<p>VPW Studio attempts to support all known revisions of WWF No Mercy equally.</p>
+
+<hr />
+
+<h2><a name="GeneralNotes">General Notes</a></h2>
+<p>WWF No Mercy features multiple internal changes that make porting data
+backwards a little tricky. This primarily concerns textures, as the character
+models were changed to allow more texture variety.</p>
+
+<p>There is a hidden Game Boy Color championship path that can be unlocked with
+the use of a GameShark. Other Game Boy-related screens and data may still exist,
+but have yet to be fully found and/or restored.</p>
+
+<hr />
+
+<h2><a name="FileTypes">Notable File Types</a></h2>
+<p>todo: a few</p>
+
+<hr />
+
+<h2><a name="WrestlerData">Wrestler Data</a></h2>
 
 <hr />
 

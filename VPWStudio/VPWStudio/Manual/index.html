@@ -55,7 +55,7 @@
 <p>(All game-specific sections are external (i.e. separate from the main manual).)</p>
 <ol>
 <!--<li>Virtual Pro-Wrestling and WCW vs. the World</li> -->
-<li><a href="./worldtour.html">WCW vs. nWo World Tour</a></li>
+<li><a href="./worldtour.html">WCW vs. nWo: World Tour</a></li>
 <li><a href="./vpw64.html">Virtual Pro-Wrestling 64</a></li>
 <li><a href="./revenge.html">WCW/nWo Revenge</a></li>
 <li><a href="./wm2k.html">WWF WrestleMania 2000</a></li>
@@ -75,7 +75,7 @@
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
 <em>Virtual Pro-Wrestling</em> series. The initial focus is on AKI's
 Nintendo 64 games, though support for the PlayStation 1 AKI wrestling games
-is planned.</p>
+is planned for later.</p>
 
 <p>As of 2018, the primary accepted solution for making changes to the
 N64 AKI wrestling games are GameShark codes and emulator-only plugin-based
@@ -109,7 +109,7 @@ supported data formats.</p>
 	<td>NTSC-U</td>
 </tr>-->
 <tr>
-	<td>WCW vs. nWo World Tour</td>
+	<td>WCW vs. nWo: World Tour</td>
 	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U v1.0, NTSC-U v1.1, PAL</td>
 </tr>
@@ -153,9 +153,10 @@ so the game can run on real hardware).</p>
 steps are being taken towards supporting formats the PS1 games use. Adding
 proper support for hacking the PS1 games in VPW Studio would require a number
 of UI changes, as well as Project File differences and various other under-the-hood
-details that need changing.</p>
+details that need changing. There will probably be a reliance on external programs
+to handle the disc image creation as well.</p>
 
-<p>Originally, the plan was to eventually support the AKI-developed Def Jam games
+<p>Originally, support was also planned for the AKI-developed Def Jam games
 (primarily <em>Def Jam Vendetta</em> and <em>Def Jam: Fight for NY</em>) after
 adding support for the two PlayStation 1 games. As of August 2021, the Def Jam
 games are officially out of scope for VPW Studio. A new, purpose-built tool
@@ -173,6 +174,7 @@ supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 <a href="https://ucon64.sourceforge.net/">uCON64</a>.<br />More information about
 <a href="http://n64dev.org/romformats.html">N64 ROM formats</a> can be found on n64dev.org.</li>
 <li>OpenGL 3.3 support (for ModelView2 dialog and any future 3D-displaying stuff)</li>
+<li>An image editor that can create and edit paletted PNG images. (Ideally, one that allows for exporting palettes in Paint Shop Pro format.)</li>
 <li>A hex editor, to do things that aren't easily available in VPW Studio yet.
 (If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
 is recommended.)</li>
@@ -182,9 +184,10 @@ is recommended.)</li>
 <h3>Notes</h3>
 <ul>
 <li>This program is currently a GIANT work in progress. Many features are not
-implemented yet.</li>
+implemented yet, various safeguards are not put in place, and so on.</li>
 <li>Since the program is a work in progress, any and all VPW Studio-originated
 file formats are subject to change. Don't get too attached to your projects.</li>
+<li>Knowledge of hexadecimal is assumed.</li>
 </ul>
 
 <hr />
@@ -220,7 +223,7 @@ on older and/or slower computers.</p>
 chosen due to the number of total conversion hacks created by the AKI hacking communities.</p>
 
 <p>Project Files have the extension <code>.vpwsproj</code>. Technical information
-about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B, Section 4</a>.</p>
+about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B</a>.</p>
 
 <h3>Project Structure</h3>
 <p>Aside from the Project File itself, the project expects a specific directory

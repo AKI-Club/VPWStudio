@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>VPW Studio Manual - WWF WrestleMania 2000 Notes</title>
+<title>WWF WrestleMania 2000 Notes - VPW Studio Manual</title>
 <link rel="stylesheet" href="./manual.css">
 </head>
 
@@ -15,7 +15,92 @@
 <hr />
 <h2>Table of Contents</h2>
 <ol type="1">
+<li><a href="#RomInfo">Supported Versions/ROMs</a></li>
+<li><a href="#GeneralNotes">General Notes</a></li>
+<li><a href="#WrestlerData">Wrestler Data</a>
+<ol>
+<li>Profile</li>
+<li>Moves and Parameters</li>
+<li>Default Costumes</li>
+</ol></li>
 </ol>
+
+<hr />
+
+<h2><a name="RomInfo">Supported Versions/ROMs</a></h2>
+<p>All data is for Z64 format ROMs only.</p>
+
+<table>
+<thead>
+<tr>
+<th>Friendly Name</th>
+<th>Product Code</th>
+<th>Region</th>
+<th>Revision</th>
+<th>MD5</th>
+<th>SHA-1</th>
+<th>Internal Checksums</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WWF WrestleMania 2000 (U)</td>
+<td>NWXE</td>
+<td>NTSC-U (North America)</td>
+<td>0</td>
+<td><code>d9030ca30e4d1af805acce1bfed988cc</code></td>
+<td><code>442d417a52ed672ca1a47e7261a5414debb1e27a</code></td>
+<td><code>90A59003</code><br/><code>31089864</code></td>
+</tr>
+<tr>
+<td>WWF WrestleMania 2000 (E)</td>
+<td>NWXP</td>
+<td>PAL (Europe, Australia)</td>
+<td>0</td>
+<td><code>b75149f87cc5f3a508643ac377f2fcc9</code></td>
+<td><code>d37c4100d967cb8b71852993b947619467ffcaf7</code></td>
+<td><code>C71353BE</code><br /><code>AA09A6EE</code></td>
+</tr>
+<tr>
+<td>WWF WrestleMania 2000 (J)</td>
+<td>NWXJ</td>
+<td>NTSC-J (Japan)</td>
+<td>0</td>
+<td><code>11eee2f34bf8da05a1b8f4fb9fe9f74c</code></td>
+<td><code>e020c26dede0c349181cf08a3541816dc47f63a8</code></td>
+<td><code>12737DA5</code><br/><code>23969159</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>The Japanese version of WrestleMania 2000 is slightly different from the
+NTSC-U and PAL releases. All wrestlers are unlocked at the start, and a few
+system messages have been translated into Japanese (using textures instead
+of adding proper Japanese text support). The NTSC-J release also appears to
+have been a test-bed for some internal code updates, though this is not really
+visible to players.</p>
+
+<hr />
+
+<h2><a name="GeneralNotes">General Notes</a></h2>
+<p>WrestleMania 2000 is based on an earlier version of Virtual Pro-Wrestling 2.
+This is supported by GameShark codes that enable the use of a few VPW2 features:
+an incomplete version of the shootfighting style, and the Computer Intelligence
+menu in Edit Mode. Furthermore, older VPW2 graphics exist in the WM2K game data,
+including a set of numbers that match the graphical style seen in an old VPW2
+preview video.</p>
+
+<p>The FileTable database for the NTSC-J version of WrestleMania 2000 is not
+considered a priority at this time, as it is likely similar to the NTSC-U
+FileTable (minus some shifting for the additional Japanese messages).</p>
+
+<p>This is the last game to use the special formatting for handling Short
+and Long Wrestler Names. Future games store wrestler names in an AkiText
+archive.</p>
+
+<hr />
+
+<h2><a name="WrestlerData">Wrestler Data</a></h2>
 
 <hr />
 
