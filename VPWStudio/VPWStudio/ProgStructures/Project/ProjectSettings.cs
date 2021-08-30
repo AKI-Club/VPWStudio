@@ -8,7 +8,7 @@ namespace VPWStudio
 	[Serializable]
 	public class ProjectSettings
 	{
-		#region Class Members
+		#region Class Members - Common
 		/// <summary>
 		/// Name of the project.
 		/// </summary>
@@ -18,6 +18,11 @@ namespace VPWStudio
 		/// List of authors on this project.
 		/// </summary>
 		public string Authors;
+
+		/// <summary>
+		/// Notes about the project.
+		/// </summary>
+		public string Notes;
 
 		/// <summary>
 		/// Base Game Type
@@ -30,21 +35,6 @@ namespace VPWStudio
 		public SpecificGame GameType;
 
 		/// <summary>
-		/// Notes about the project.
-		/// </summary>
-		public string Notes;
-
-		/// <summary>
-		/// ROM file to use with this project.
-		/// </summary>
-		public string InputRomPath;
-
-		/// <summary>
-		/// Path to exported ROM file.
-		/// </summary>
-		public string OutputRomPath;
-
-		/// <summary>
 		/// Path to files in the project.
 		/// </summary>
 		/// This typically means "data (almost) ready for insertion".
@@ -55,16 +45,18 @@ namespace VPWStudio
 		/// </summary>
 		/// This typically means "formats normal human beings use".
 		public string AssetsPath;
+		#endregion
+
+		#region Class Members - N64-Specific
+		/// <summary>
+		/// ROM file to use with this project.
+		/// </summary>
+		public string InputRomPath;
 
 		/// <summary>
-		/// Use a custom location file?
+		/// Path to exported ROM file.
 		/// </summary>
-		public bool UseCustomLocationFile;
-
-		/// <summary>
-		/// Path to custom location file.
-		/// </summary>
-		public string CustomLocationFilePath;
+		public string OutputRomPath;
 
 		/// <summary>
 		/// Output ROM internal name.
@@ -83,6 +75,18 @@ namespace VPWStudio
 		/// </summary>
 		/// Only used if OutputRomRegion is set to GameRegion.Custom
 		public char OutputRomCustomRegion;
+		#endregion
+
+		#region Class Members - unsorted
+		/// <summary>
+		/// Use a custom location file?
+		/// </summary>
+		public bool UseCustomLocationFile;
+
+		/// <summary>
+		/// Path to custom location file.
+		/// </summary>
+		public string CustomLocationFilePath;
 
 		/// <summary>
 		/// Path to custom Wrestler Definition file.
