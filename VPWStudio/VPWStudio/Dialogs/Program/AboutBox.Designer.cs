@@ -33,7 +33,8 @@
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.tlpBottomSection = new System.Windows.Forms.TableLayoutPanel();
 			this.okButton = new System.Windows.Forms.Button();
-			this.llWebsite = new System.Windows.Forms.LinkLabel();
+			this.linkLabelAJWorld = new System.Windows.Forms.LinkLabel();
+			this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tlpMain.SuspendLayout();
 			this.tlpBottomSection.SuspendLayout();
@@ -48,7 +49,7 @@
 			this.tbInformation.Name = "tbInformation";
 			this.tbInformation.ReadOnly = true;
 			this.tbInformation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.tbInformation.Size = new System.Drawing.Size(497, 243);
+			this.tbInformation.Size = new System.Drawing.Size(575, 243);
 			this.tbInformation.TabIndex = 1;
 			this.tbInformation.TabStop = false;
 			// 
@@ -59,7 +60,7 @@
 			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(506, 80);
+			this.pictureBox1.Size = new System.Drawing.Size(584, 80);
 			this.pictureBox1.TabIndex = 25;
 			this.pictureBox1.TabStop = false;
 			// 
@@ -81,7 +82,7 @@
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.98305F));
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.50847F));
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tlpMain.Size = new System.Drawing.Size(506, 395);
+			this.tlpMain.Size = new System.Drawing.Size(584, 395);
 			this.tlpMain.TabIndex = 26;
 			// 
 			// labelVersion
@@ -91,47 +92,61 @@
 			this.labelVersion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.labelVersion.Name = "labelVersion";
 			this.labelVersion.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-			this.labelVersion.Size = new System.Drawing.Size(500, 28);
+			this.labelVersion.Size = new System.Drawing.Size(578, 28);
 			this.labelVersion.TabIndex = 31;
 			this.labelVersion.Text = "(version string)";
 			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// tlpBottomSection
 			// 
-			this.tlpBottomSection.ColumnCount = 2;
-			this.tlpBottomSection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.2F));
-			this.tlpBottomSection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.8F));
-			this.tlpBottomSection.Controls.Add(this.okButton, 1, 0);
-			this.tlpBottomSection.Controls.Add(this.llWebsite, 0, 0);
+			this.tlpBottomSection.ColumnCount = 3;
+			this.tlpBottomSection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpBottomSection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tlpBottomSection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tlpBottomSection.Controls.Add(this.linkLabelAJWorld, 0, 0);
+			this.tlpBottomSection.Controls.Add(this.okButton, 2, 0);
+			this.tlpBottomSection.Controls.Add(this.linkLabelGitHub, 1, 0);
 			this.tlpBottomSection.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tlpBottomSection.Location = new System.Drawing.Point(3, 364);
 			this.tlpBottomSection.Name = "tlpBottomSection";
 			this.tlpBottomSection.RowCount = 1;
-			this.tlpBottomSection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpBottomSection.Size = new System.Drawing.Size(500, 28);
+			this.tlpBottomSection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpBottomSection.Size = new System.Drawing.Size(578, 28);
 			this.tlpBottomSection.TabIndex = 30;
 			// 
 			// okButton
 			// 
 			this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.okButton.Location = new System.Drawing.Point(323, 3);
+			this.okButton.Location = new System.Drawing.Point(378, 3);
 			this.okButton.Name = "okButton";
-			this.okButton.Size = new System.Drawing.Size(174, 22);
+			this.okButton.Size = new System.Drawing.Size(197, 22);
 			this.okButton.TabIndex = 0;
 			this.okButton.Text = "&OK, sure, just get me out of here.";
 			// 
-			// llWebsite
+			// linkLabelAJWorld
 			// 
-			this.llWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.llWebsite.AutoSize = true;
-			this.llWebsite.Location = new System.Drawing.Point(3, 7);
-			this.llWebsite.Name = "llWebsite";
-			this.llWebsite.Size = new System.Drawing.Size(314, 13);
-			this.llWebsite.TabIndex = 2;
-			this.llWebsite.TabStop = true;
-			this.llWebsite.Text = "https://vpw.ajworld.net/";
-			this.llWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llWebsite_LinkClicked);
+			this.linkLabelAJWorld.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.linkLabelAJWorld.AutoSize = true;
+			this.linkLabelAJWorld.Location = new System.Drawing.Point(3, 7);
+			this.linkLabelAJWorld.Name = "linkLabelAJWorld";
+			this.linkLabelAJWorld.Size = new System.Drawing.Size(138, 13);
+			this.linkLabelAJWorld.TabIndex = 2;
+			this.linkLabelAJWorld.TabStop = true;
+			this.linkLabelAJWorld.Text = "https://vpw.ajworld.net/";
+			this.linkLabelAJWorld.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAJWorld_LinkClicked);
+			// 
+			// linkLabelGitHub
+			// 
+			this.linkLabelGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.linkLabelGitHub.AutoSize = true;
+			this.linkLabelGitHub.Location = new System.Drawing.Point(147, 7);
+			this.linkLabelGitHub.Name = "linkLabelGitHub";
+			this.linkLabelGitHub.Size = new System.Drawing.Size(225, 13);
+			this.linkLabelGitHub.TabIndex = 3;
+			this.linkLabelGitHub.TabStop = true;
+			this.linkLabelGitHub.Text = "https://github.com/AKI-Club/VPWStudio";
+			this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
 			// 
 			// AboutBox
 			// 
@@ -139,7 +154,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.okButton;
-			this.ClientSize = new System.Drawing.Size(506, 395);
+			this.ClientSize = new System.Drawing.Size(584, 395);
 			this.Controls.Add(this.tlpMain);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
@@ -164,7 +179,8 @@
 		private System.Windows.Forms.TableLayoutPanel tlpMain;
 		private System.Windows.Forms.TableLayoutPanel tlpBottomSection;
 		private System.Windows.Forms.Button okButton;
-		private System.Windows.Forms.LinkLabel llWebsite;
+		private System.Windows.Forms.LinkLabel linkLabelAJWorld;
 		private System.Windows.Forms.Label labelVersion;
+		private System.Windows.Forms.LinkLabel linkLabelGitHub;
 	}
 }
