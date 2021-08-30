@@ -273,6 +273,16 @@ namespace VPWStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GameIcon16_VPW {
+            get {
+                object obj = ResourceManager.GetObject("GameIcon16_VPW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GameIcon16_VPW2 {
             get {
                 object obj = ResourceManager.GetObject("GameIcon16_VPW2", resourceCulture);
@@ -286,6 +296,16 @@ namespace VPWStudio.Properties {
         internal static System.Drawing.Bitmap GameIcon16_VPW64 {
             get {
                 object obj = ResourceManager.GetObject("GameIcon16_VPW64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GameIcon16_WCWvsWorld {
+            get {
+                object obj = ResourceManager.GetObject("GameIcon16_WCWvsWorld", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
