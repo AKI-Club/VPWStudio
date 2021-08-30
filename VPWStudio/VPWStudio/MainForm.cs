@@ -1553,16 +1553,7 @@ namespace VPWStudio
 		/// </summary>
 		private void manualToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// attempt to find manual
-			string manualPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Manual/index.html";
-			if (!File.Exists(manualPath))
-			{
-				MessageBox.Show("this is awkward... I can't find the Manual.");
-			}
-			else
-			{
-				System.Diagnostics.Process.Start(manualPath);
-			}
+			Program.LaunchManual();
 		}
 
 		/// <summary>

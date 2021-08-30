@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -192,6 +193,25 @@ namespace VPWStudio
 
 			// if we've made it here, it SHOULD work.
 			return absPath.Remove(0, Path.GetDirectoryName(CurProjectPath).Length+1);
+
+		}
+		#endregion
+
+		#region Manual Helpers
+		/// <summary>
+		/// Attempt to launch the program Manual.
+		/// </summary>
+		/// <param name="_section">(Optional) Section to jump to in the manual. Currently doesn't work.</param>
+		public static void LaunchManual(string _section = null)
+		{
+			string manualPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Manual/index.html";
+			if (!File.Exists(manualPath))
+			{
+				ErrorMessageBox("This is awkward... I can't find the Manual.\nIt should be located in the \"Manual\" folder as \"index.html\".");
+				return;
+			}
+
+			System.Diagnostics.Process.Start(manualPath);
 
 		}
 		#endregion
