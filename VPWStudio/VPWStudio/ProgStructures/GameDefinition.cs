@@ -343,9 +343,9 @@ namespace VPWStudio
 				#endregion
 
 				#region PlayStation
-				case SpecificGame.VPW_NTSC_J:          return GetBaseGameName(VPWGames.VPW) + String.Format("NTSC-J ({0})", GameDefs[sg].GameCode);
-				case SpecificGame.WCWvsWorld_NTSC_U:   return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format("NTSC-U ({0})", GameDefs[sg].GameCode);
-				case SpecificGame.WCWvsWorld_PAL:      return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format("PAL ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.VPW_NTSC_J:          return GetBaseGameName(VPWGames.VPW) + String.Format(" NTSC-J ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WCWvsWorld_NTSC_U:   return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WCWvsWorld_PAL:      return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format(" PAL ({0})", GameDefs[sg].GameCode);
 				#endregion
 			}
 			return "(unknown game)";
