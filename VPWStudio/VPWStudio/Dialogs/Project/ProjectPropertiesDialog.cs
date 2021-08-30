@@ -81,19 +81,10 @@ namespace VPWStudio
 				else
 				{
 					// selected index is based on game region
-					// there has to be a better way
-					bool foundRegion = false;
-					for (int i = 0; i < RegionList.Length; i++)
+					int regionIndex = Array.IndexOf(RegionList, Program.CurrentProject.Settings.OutputRomRegion);
+					if (regionIndex != -1)
 					{
-						if (!foundRegion)
-						{
-							if (RegionList[i] == Program.CurrentProject.Settings.OutputRomRegion)
-							{
-								foundRegion = true;
-								cbRegionCode.SelectedIndex = i;
-								break;
-							}
-						}
+						cbRegionCode.SelectedIndex = regionIndex;
 					}
 				}
 
