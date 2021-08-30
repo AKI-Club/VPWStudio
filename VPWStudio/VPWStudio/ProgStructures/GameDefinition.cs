@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 namespace VPWStudio
 {
 	/// <summary>
+	/// Target console type.
+	/// </summary>
+	public enum PlatformType
+	{
+		Invalid = -1,
+		Nintendo64 = 0,
+		PlayStation1 = 1
+	}
+
+	/// <summary>
 	/// Base VPW series game list.
 	/// </summary>
 	public enum VPWGames
@@ -14,6 +24,7 @@ namespace VPWStudio
 		/// invalid entry
 		/// </summary>
 		Invalid = -1,
+		#region Nintendo 64
 		/// <summary>
 		/// WCW vs. nWo World Tour
 		/// </summary>
@@ -37,7 +48,19 @@ namespace VPWStudio
 		/// <summary>
 		/// WWF No Mercy
 		/// </summary>
-		NoMercy
+		NoMercy,
+		#endregion
+
+		#region PlayStation
+		/// <summary>
+		/// Virtual Pro-Wrestling
+		/// </summary>
+		VPW,
+		/// <summary>
+		/// WCW vs. the World
+		/// </summary>
+		WCWvsWorld,
+		#endregion
 	}
 
 	/// <summary>
@@ -49,6 +72,8 @@ namespace VPWStudio
 		/// invalid entry
 		/// </summary>
 		Invalid = -1,
+
+		#region Nintendo 64
 		/// <summary>
 		/// WCW vs. nWo World Tour (NTSC-U v1.0) [NWNE]
 		/// </summary>
@@ -105,6 +130,22 @@ namespace VPWStudio
 		/// WWF No Mercy (PAL v1.1) [NW4P-1]
 		/// </summary>
 		NoMercy_PAL_11,
+		#endregion
+
+		#region PlayStation
+		/// <summary>
+		/// Virtual Pro-Wrestling (NTSC-J); SLPS-00449
+		/// </summary>
+		VPW_NTSC_J,
+		/// <summary>
+		/// WCW vs. the World (NTSC-U); SLUS-00455
+		/// </summary>
+		WCWvsWorld_NTSC_U,
+		/// <summary>
+		/// WCW vs. the World (PAL); SLES-00763
+		/// </summary>
+		WCWvsWorld_PAL,
+		#endregion
 	}
 
 	/// <summary>
@@ -124,6 +165,11 @@ namespace VPWStudio
 		public SpecificGame GameType;
 
 		/// <summary>
+		/// Target console for this game.
+		/// </summary>
+		public PlatformType TargetConsole;
+
+		/// <summary>
 		/// Game version; 1.0 in most instances.
 		/// </summary>
 		/// todo: perhaps this should be a byte so it can be written in the mask rom version field.
@@ -131,8 +177,9 @@ namespace VPWStudio
 
 		/// <summary>
 		/// Game/program code name.
+		/// N64 game format: "Nxxy" (xx = program code, y = region)
+		/// PS1 game format: typically "SxyS-00000" (x = release type ('L' for third-party games), y = region, 00000 = release number or something like that)
 		/// </summary>
-		/// Only meant to be two characters, but was originally set to 4 characters...
 		public string GameCode;
 
 		/// <summary>
@@ -141,18 +188,20 @@ namespace VPWStudio
 		public GameRegion Region;
 		#endregion
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, string _codeName, GameRegion _region)
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, string _codeName, GameRegion _region)
 		{
 			BaseGame = _baseGame;
 			GameType = _specific;
+			TargetConsole = _console;
 			GameVersion = 1.0f;
 			GameCode = _codeName;
 			Region = _region;
 		}
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, float _ver, string _codeName, GameRegion _region){
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, float _ver, string _codeName, GameRegion _region){
 			BaseGame = _baseGame;
 			GameType = _specific;
+			TargetConsole = _console;
 			GameVersion = _ver;
 			GameCode = _codeName;
 			Region = _region;
@@ -166,62 +215,79 @@ namespace VPWStudio
 		/// </summary>
 		public static Dictionary<SpecificGame, GameDefinition> GameDefs = new Dictionary<SpecificGame, GameDefinition>()
 		{
+			#region Nintendo 64
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, 1.0f, "NWNE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, PlatformType.Nintendo64, 1.0f, "NWNE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_NTSC_U_11,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, 1.1f, "NWNE-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, PlatformType.Nintendo64, 1.1f, "NWNE-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_PAL,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, 1.0f, "NWNP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, PlatformType.Nintendo64, 1.0f, "NWNP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW64_NTSC_J,
-				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, 1.0f, "NVPJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, PlatformType.Nintendo64, 1.0f, "NVPJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.Revenge_NTSC_U,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, 1.0f, "NW2E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, PlatformType.Nintendo64, 1.0f, "NW2E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.Revenge_PAL,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, 1.0f, "NW2P", GameRegion.Europe)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, PlatformType.Nintendo64, 1.0f, "NW2P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.WM2K_NTSC_U,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, 1.0f, "NWXE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, PlatformType.Nintendo64, 1.0f, "NWXE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WM2K_NTSC_J,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, 1.0f, "NWXJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, PlatformType.Nintendo64, 1.0f, "NWXJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.WM2K_PAL,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, 1.0f, "NWXP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, PlatformType.Nintendo64, 1.0f, "NWXP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW2_NTSC_J,
-				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, 1.0f, "NA2J", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, PlatformType.Nintendo64, 1.0f, "NA2J", GameRegion.Japan)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, 1.0f, "NW4E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, PlatformType.Nintendo64, 1.0f, "NW4E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, 1.1f, "NW4E-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, PlatformType.Nintendo64, 1.1f, "NW4E-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_PAL_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, 1.0f, "NW4P", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, PlatformType.Nintendo64, 1.0f, "NW4P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.NoMercy_PAL_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, 1.1f, "NW4P-1", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1.1f, "NW4P-1", GameRegion.Europe)
+			},
+			#endregion
+
+			#region PlayStation
+			{
+				SpecificGame.VPW_NTSC_J,
+				new GameDefinition(VPWGames.VPW, SpecificGame.VPW_NTSC_J, PlatformType.PlayStation1, 1.0f, "SLPS-00449", GameRegion.Japan)
+			},
+			{
+				SpecificGame.WCWvsWorld_NTSC_U,
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_NTSC_U, PlatformType.PlayStation1, 1.0f, "SLUS-00455", GameRegion.NorthAmerica)
+			},
+			{
+				SpecificGame.WCWvsWorld_PAL,
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_PAL, PlatformType.PlayStation1, 1.0f, "SLES-00763", GameRegion.Europe)
 			}
+			#endregion
 		};
 
 		/// <summary>
@@ -233,12 +299,19 @@ namespace VPWStudio
 		{
 			switch (bg)
 			{
+				#region Nintendo 64
 				case VPWGames.WorldTour: return "WCW vs. nWo World Tour";
 				case VPWGames.VPW64: return "Virtual Pro-Wrestling 64";
 				case VPWGames.Revenge: return "WCW/nWo Revenge";
 				case VPWGames.WM2K: return "WWF WrestleMania 2000";
 				case VPWGames.VPW2: return "Virtual Pro-Wrestling 2";
 				case VPWGames.NoMercy: return "WWF No Mercy";
+				#endregion
+
+				#region PlayStation
+				case VPWGames.VPW: return "Virtual Pro-Wrestling";
+				case VPWGames.WCWvsWorld: return "WCW vs. the World";
+				#endregion
 			}
 			return "(unknown game)";
 		}
@@ -252,6 +325,7 @@ namespace VPWStudio
 		{
 			switch (sg)
 			{
+				#region Nintendo 64
 				case SpecificGame.WorldTour_NTSC_U_10: return GetBaseGameName(VPWGames.WorldTour) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.WorldTour_NTSC_U_11: return GetBaseGameName(VPWGames.WorldTour) + String.Format(" NTSC-U ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.WorldTour_PAL:       return GetBaseGameName(VPWGames.WorldTour) + String.Format(" PAL ({0})", GameDefs[sg].GameCode);
@@ -266,6 +340,13 @@ namespace VPWStudio
 				case SpecificGame.NoMercy_NTSC_U_11:   return GetBaseGameName(VPWGames.NoMercy) + String.Format(" NTSC-U v1.1 ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.NoMercy_PAL_10:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.0 ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.NoMercy_PAL_11:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.1 ({0})", GameDefs[sg].GameCode);
+				#endregion
+
+				#region PlayStation
+				case SpecificGame.VPW_NTSC_J:          return GetBaseGameName(VPWGames.VPW) + String.Format("NTSC-J ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WCWvsWorld_NTSC_U:   return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format("NTSC-U ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.WCWvsWorld_PAL:      return GetBaseGameName(VPWGames.WCWvsWorld) + String.Format("PAL ({0})", GameDefs[sg].GameCode);
+				#endregion
 			}
 			return "(unknown game)";
 		}
@@ -278,6 +359,7 @@ namespace VPWStudio
 		public static VPWGames GetBaseGameFromSpecificGame(SpecificGame sg)
 		{
 			switch (sg) {
+				#region Nintendo 64
 				case SpecificGame.WorldTour_NTSC_U_10:
 				case SpecificGame.WorldTour_NTSC_U_11:
 				case SpecificGame.WorldTour_PAL:
@@ -303,6 +385,16 @@ namespace VPWStudio
 				case SpecificGame.NoMercy_PAL_10:
 				case SpecificGame.NoMercy_PAL_11:
 					return VPWGames.NoMercy;
+				#endregion
+
+				#region PlayStation
+				case SpecificGame.VPW_NTSC_J:
+					return VPWGames.VPW;
+
+				case SpecificGame.WCWvsWorld_NTSC_U:
+				case SpecificGame.WCWvsWorld_PAL:
+					return VPWGames.WCWvsWorld;
+				#endregion
 			}
 			return VPWGames.Invalid;
 		}
