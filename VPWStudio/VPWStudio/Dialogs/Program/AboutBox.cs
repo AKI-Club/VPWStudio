@@ -106,6 +106,7 @@ namespace VPWStudio
 				}
 			}
 			sb.AppendLine();
+			sb.AppendLine();
 
 			sb.AppendLine("This program uses the following libraries:");
 			sb.AppendLine("- OpenTK (https://opentk.net/)");
@@ -169,9 +170,14 @@ namespace VPWStudio
 		}
 		#endregion
 
-		private void llWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		private void linkLabelAJWorld_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start("https://vpw.ajworld.net/");
+		}
+
+		private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("https://github.com/AKI-Club/VPWStudio");
 		}
 	}
 }
