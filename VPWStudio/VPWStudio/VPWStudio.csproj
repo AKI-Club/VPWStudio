@@ -907,6 +907,8 @@
     <Content Include="Resources\MainMenuBG\MainMenuBG_WorldTour.png" />
     <None Include="Resources\sounds.png" />
     <None Include="Resources\weapons.png" />
+    <Content Include="Resources\vpw_16px.png" />
+    <Content Include="Resources\wcwvsworld_16px.png" />
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
