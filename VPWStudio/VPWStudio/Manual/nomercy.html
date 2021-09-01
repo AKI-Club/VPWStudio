@@ -18,12 +18,15 @@
 <li><a href="#RomInfo">Supported Versions/ROMs</a></li>
 <li><a href="#GeneralNotes">General Notes</a></li>
 <li><a href="#FileTypes">Notable File Types</a></li>
+<li><a href="#WrestlerID">Default Wrestler IDs</a></li>
 <li><a href="#WrestlerData">Wrestler Data</a>
 <ol>
-<li>Profile</li>
-<li>Moves and Parameters</li>
-<li>Default Costumes</li>
+<li><a href="#WrestlerProfile">Profile</a></li>
+<li><a href="#WrestlerMoves">Moves and Parameters</a></li>
+<li><a href="#WrestlerCostumes">Default Costumes</a></li>
 </ol></li>
+<li><a href="#StableData">Stable Data</a></li>
+<li><a href="#CostumeData">Costume Data</a></li>
 </ol>
 
 <hr />
@@ -113,11 +116,132 @@ but have yet to be fully found and/or restored.</p>
 <hr />
 
 <h2><a name="FileTypes">Notable File Types</a></h2>
-<p>todo: a few</p>
+<p>WWF No Mercy introduces a few new file types to deal with.</p>
+
+<h3><code>Ci4Background</code></h3>
+<p>A variant of <code>Ci4Texture</code> used for Smackdown Mall backgrounds.
+Image resolution is always 320x240, and the palette is stored in a separate file.</p>
+
+<h3><code>MenuItems_NoGroup</code></h3>
+<p>Defines a list of menu items that doesn't contain multiple groups.
+Primarily used for the Titantron and Theme Music lists in the wrestler
+profile editor.</p>
+
+<h3><code>MenuItems_Shop</code></h3>
+<p>Defines menu items for the Shop in the Smackdown Mall.</p>
+
+<hr />
+
+<h2><a name="WrestlerID">Default Wrestler IDs</a></h2>
+<table>
+<tbody>
+<tr>
+<th>Wrestler</th>
+<th>ID2</th>
+<th>ID4</th>
+</tr>
+<tr>
+<td>The Rock</td>
+<td>01</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>Steve Austin</td>
+<td>02</td>
+<td>0002</td>
+</tr>
+<tr>
+<td>Undertaker</td>
+<td>03</td>
+<td>0003</td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
 <h2><a name="WrestlerData">Wrestler Data</a></h2>
+<table>
+<thead>
+<tr>
+<th>Game Variant &rarr;</th>
+<th>NTSC-U v1.0</th>
+<th>NTSC-U v1.1</th>
+<th>PAL v1.0</th>
+<th>PAL v1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Z64 ROM address</th>
+<td><code>0x46658</code></td>
+<td><code>0x465B8</code></td>
+<td><code>0x46658</code></td>
+<td><code>0x464B8</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a name="WrestlerProfile">Profile</a></h3>
+<p>Most Profile data is stored in the ROM, but wrestler names are stored in the
+FileTable as an <code>AkiText</code> archive (file ID <code>0002</code>).
+It's currently recommended to edit the names from the FileTable viewer, as the
+names in the Wrestler dialog are not always guaranteed to be written. This
+will be fixed in the future.</p>
+
+<p>Wrestler names are stored in the following order:</p>
+<ol>
+<li>Long Name</li>
+<li>Short Name</li>
+<li>Nickname</li>
+</ol>
+
+<p>Make sure the first three entries in the Wrestler Name <code>AkiText</code>
+archive remain blank. If you need to change a wrestler's Profile Index value,
+remember that the index should be a multiple of 3.</p>
+
+<h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
+<p>Moves and Parameters are found in the FileTable, and are mapped to wrestlers
+via data in the ROM ("Moveset Index" and "Params Index" in the Wrestlers dialog).
+The data formats are not fully understood, but you can make a wrestler in Edit
+Mode and export the Moves and Parameters in the formats required.</p>
+
+<h3><a name="WrestlerCostumes">Default Costumes</a></h3>
+<p>Default costume data is also stored in the FileTable (file ID <code>0001</code>),
+and can be edited via the Wrestlers dialog. The "Appearance Index" in the Wrestler
+dialog maps to the entries in the default costume data.</p>
+
+<hr />
+
+<h2><a name="StableData">Stable Data</a></h2>
+<table>
+<thead>
+<tr>
+<th>Game Variant &rarr;</th>
+<th>NTSC-U v1.0</th>
+<th>NTSC-U v1.1</th>
+<th>PAL v1.0</th>
+<th>PAL v1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Z64 ROM address</th>
+<td><code>0x48424</code></td>
+<td><code>0x48384</code></td>
+<td><code>0x48424</code></td>
+<td><code>0x48284</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Stables in WWF No Mercy hold up to 9 wrestlers maximum.</p>
+
+<p>Default stable names are found in the same <code>AkiText</code> archive
+that holds the default character names (file ID <code>0002</code>). The stable
+names start at entry number 295 by default. The two blank lines after each stable
+name should not be touched. (That's what happens when the original developers use
+the same file for multiple purposes.)</p>
 
 <hr />
 
