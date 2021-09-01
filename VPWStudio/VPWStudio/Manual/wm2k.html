@@ -17,12 +17,15 @@
 <ol type="1">
 <li><a href="#RomInfo">Supported Versions/ROMs</a></li>
 <li><a href="#GeneralNotes">General Notes</a></li>
+<li><a href="#WrestlerID">Default Wrestler IDs</a></li>
 <li><a href="#WrestlerData">Wrestler Data</a>
 <ol>
-<li>Profile</li>
-<li>Moves and Parameters</li>
-<li>Default Costumes</li>
+<li><a href="#WrestlerProfile">Profile</a></li>
+<li><a href="#WrestlerMoves">Moves and Parameters</a></li>
+<li><a href="#WrestlerCostumes">Default Costumes</a></li>
 </ol></li>
+<li><a href="#StableData">Stable Data</a></li>
+<li><a href="#CostumeData">Costume Data</a></li>
 </ol>
 
 <hr />
@@ -100,7 +103,74 @@ archive.</p>
 
 <hr />
 
+<h2><a name="WrestlerID">Default Wrestler IDs</a></h2>
+<table>
+<tbody>
+<tr>
+<th>Wrestler</th>
+<th>ID2</th>
+<th>ID4</th>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
 <h2><a name="WrestlerData">Wrestler Data</a></h2>
+<table>
+<thead>
+<tr>
+<th>Game Variant &rarr;</th>
+<th>NTSC-U</th>
+<th>NTSC-J</th>
+<th>PAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Z64 ROM address</th>
+<td><code>0x41DB0</code></td>
+<td><code>0x3F850</code></td>
+<td><code>0x41DB0</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a name="WrestlerProfile">Profile</a></h3>
+<p>Profile data is stored in the ROM.</p>
+
+<h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
+<p>Moves and Parameters are found in the FileTable. The data formats are not
+fully understood, but you can make a wrestler in Edit Mode and export the Moves
+and Parameters in the formats required.</p>
+
+<h3><a name="WrestlerCostumes">Default Costumes</a></h3>
+
+<hr />
+
+<h2><a name="StableData">Stable Data</a></h2>
+<table>
+<thead>
+<tr>
+<th>Game Variant &rarr;</th>
+<th>NTSC-U</th>
+<th>NTSC-J</th>
+<th>PAL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Z64 ROM address</th>
+<td><code>0x41EE0</code></td>
+<td><code>0x3F980</code></td>
+<td><code>0x41EE0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Stables in WWF WrestleMania 2000 hold up to 8 wrestlers maximum. If all
+eight slots are used, a terminating value (four bytes of 0x00) must be written
+to separate the stables. VPW Studio does not always handle this case correctly.</p>
 
 <hr />
 
