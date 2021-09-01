@@ -1328,13 +1328,6 @@ namespace VPWStudio
 				Program.ErrorMessageBox("Output ROM directory does not exist.\nThis error sucks monkey nuts, because I could just ask if you want the directory made, but I don't.\nSorry. Maybe next time.");
 				return;
 			}
-
-			// Most everything works... WCW vs. nWo World Tour NTSC-U v1.0 and PAL don't...
-			if (Program.CurrentProject.Settings.BaseGame == VPWGames.WorldTour && Program.CurrentProject.Settings.GameType != SpecificGame.WorldTour_NTSC_U_11)
-			{
-				Program.ErrorMessageBox(String.Format("Sorry, this doesn't work with {0} at the moment.", Program.CurrentProject.Settings.GameType));
-				return;
-			}
 			#endregion
 
 			// set up logging
