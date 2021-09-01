@@ -141,6 +141,20 @@ namespace VPWStudio
 		{
 			MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
+
+		/// <summary>
+		/// Show a Yes/No question dialog.
+		/// </summary>
+		/// <param name="msg">Question to ask.</param>
+		/// <returns>True if the reply to the question was "Yes", false otherwise.</returns>
+		public static bool QuestionMessageBox_YesNo(string msg, MessageBoxIcon icon)
+		{
+			if (MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, icon) == DialogResult.Yes)
+			{
+				return true;
+			}
+			return false;
+		}
 		#endregion
 
 		#region Relative and Absolute Paths
@@ -201,8 +215,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Attempt to launch the program Manual.
 		/// </summary>
-		/// <param name="_section">(Optional) Section to jump to in the manual. Currently doesn't work.</param>
-		public static void LaunchManual(string _section = null)
+		public static void LaunchManual()
 		{
 			string manualPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Manual/index.html";
 			if (!File.Exists(manualPath))
