@@ -526,7 +526,9 @@ from the single entry dialog do not appear here.</p>
 
 <hr />
 <h2><a name="Editors">Viewers and Editors</a></h2>
-<p>(todo)</p>
+<p>When double left clicking on a single entry in the <a href="#FileTable">File
+Table editor</a>, VPW Studio will attempt to show an editor or previewing tool
+for the file in question. This section covers the various tools available.</p>
 
 <h3><a name="HexViewer">Hex Viewer</a></h3>
 <img src="./img/hexviewer.png" title="Hex Viewer" />
@@ -541,15 +543,25 @@ so an external hex editor must be used to make changes.</p>
 <p>The CI4 and CI8 Palette Editor allows you to view and change palette values.</p>
 
 <h3><a name="CITexturePreview">CI4/CI8 Textures</a></h3>
-<p>(todo: screenshot)</p>
+<p>(todo: screenshots)</p>
 
 <p>CI4 and CI8 Textures use a similar viewer.</p>
 
 <h3><a name="I4TexturePreview">I4 Textures</a></h3>
 <p>(todo: screenshot)</p>
 
-<p>(todo: I4 textures don't inherently have a width/height; this is what the
-extra options in the File Table are for)</p>
+<p>The viewer for I4 textures is a bit more complicated than the CI4/CI8 texture
+viewer, as I4 textures don't have a width or height set in the file. Unless the
+file you're previewing has set up the required Extra Data values (see the "File
+Table Entry Information" section), you'll need to play with the width and height
+values to find the proper settings. Be sure to press the Refresh button to update
+the image preview.</p>
+
+<p>Right clicking on the image brings up a context menu with two options:</p>
+<ul>
+<li><strong>Save PNG</strong> &ndash; Exports the texture as a 32-bit (RGBA) PNG.</li>
+<li><strong>Background Color</strong> &ndash; Change the background color, useful for seeing things better.</li>
+</ul>
 
 <h3><a name="AKITexturePreview">"TEX" Textures</a></h3>
 <p>(todo: screenshot?)</p>
@@ -586,6 +598,7 @@ with the <a href="#ModelTool">Model Tool</a> found via Tools &rarr; Model Data.
 The end goal is to be a quick and dirty 3D model previewer, so you don't need to
 export the model to OBJ format to figure out what it is.</p>
 
+<p>The available menu items:</p>
 <ul>
 <li><strong>Export Wavefront OBJ</strong> &ndash; Exports the model to Wavefront OBJ format, for importing into other tools.</li>
 <li><strong>Load Texture</strong> &ndash; Brings up a texture selection dialog, further explained below.</li>
@@ -804,7 +817,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 
 <h3>Image Conversion</h3>
 <ul>
-<li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format.</li>
+<li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format. PNG must be 16 or 256 colors.</li>
 <li><strong>png to ci4</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
 <li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
 <li><strong>png to menubg</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
@@ -824,7 +837,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
 <li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
-<li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values.</li>
+<li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values. Currently only handles the first image in multi-image archives.</li>
 </ul>
 
 <hr />
@@ -835,7 +848,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 <li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Styles, Keson, jordyad, randymanfoo</li>
 </ul>
 
-<p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>.</p>
+<p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>, both of which are MIT licensed.</p>
 
 <p>This tool is dedicated to the memory of Maximo.</p>
 
