@@ -143,6 +143,8 @@
 			this.Controls.Add(this.dgvEditEntries);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(640, 300);
 			this.Name = "FileTable_EditMultiEntryInfoDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
