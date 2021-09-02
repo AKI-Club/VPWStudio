@@ -1123,11 +1123,14 @@ namespace VPWStudio
 			{
 				for (int i = startPoint; i > 0; i--)
 				{
-					string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
-					if (fileComment.Contains(searchText.ToLower()))
+					if (!String.IsNullOrEmpty(Program.CurrentProject.ProjectFileTable.Entries[i].Comment))
 					{
-						CurrentSearchItemNumber = i;
-						return CurrentSearchItemNumber;
+						string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
+						if (fileComment.Contains(searchText.ToLower()))
+						{
+							CurrentSearchItemNumber = i;
+							return CurrentSearchItemNumber;
+						}
 					}
 				}
 			}
@@ -1135,11 +1138,14 @@ namespace VPWStudio
 			{
 				for (int i = startPoint; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
 				{
-					string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
-					if (fileComment.Contains(searchText.ToLower()))
+					if (!String.IsNullOrEmpty(Program.CurrentProject.ProjectFileTable.Entries[i].Comment))
 					{
-						CurrentSearchItemNumber = i;
-						return CurrentSearchItemNumber;
+						string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
+						if (fileComment.Contains(searchText.ToLower()))
+						{
+							CurrentSearchItemNumber = i;
+							return CurrentSearchItemNumber;
+						}
 					}
 				}
 			}
