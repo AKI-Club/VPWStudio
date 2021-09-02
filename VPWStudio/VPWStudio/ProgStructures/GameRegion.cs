@@ -32,6 +32,7 @@ namespace VPWStudio
 
 	public static class GameRegionInfo
 	{
+		#region Nintendo 64 Region Codes
 		/// <summary>
 		/// Convert a GameRegion value to a Nintendo 64 region code.
 		/// </summary>
@@ -95,6 +96,7 @@ namespace VPWStudio
 				default: return GameRegion.Custom;
 			}
 		}
+		#endregion
 
 		/// <summary>
 		/// Map GameRegion values to human-readable strings.
