@@ -17,6 +17,7 @@
 <ol type="1">
 <li><a href="#RomInfo">Supported Versions/ROMs</a></li>
 <li><a href="#GeneralNotes">General Notes</a></li>
+<li><a href="#FileTypes">Notable File Types</a></li>
 <li><a href="#WrestlerID">Default Wrestler IDs</a></li>
 <li><a href="#WrestlerData">Wrestler Data</a>
 <ol>
@@ -77,6 +78,15 @@ in <code>AkiText</code> archives.</p>
 
 <hr />
 
+<h2><a name="FileTypes">Notable File Types</a></h2>
+<p>todo</p>
+
+<h3><code>MenuBackground</code></h3>
+<p>In Virtual Pro-Wrestling 2, <code>MenuBackground</code> objects consist of
+multiple 64x30 chunks of an image, with a total of 5 columns and 8 rows.</p>
+
+<hr />
+
 <h2><a name="WrestlerID">Default Wrestler IDs</a></h2>
 <table>
 <tbody>
@@ -94,8 +104,11 @@ in <code>AkiText</code> archives.</p>
 <p>Z64 ROM address: <code>0x3FBE4</code></p>
 
 <h3><a name="WrestlerProfile">Profile</a></h3>
-<p>Most Profile data is stored in the ROM, but wrestler names are stored in an
-<code>AkiText</code> file.</p>
+<p>Most Profile data is stored in the ROM, but wrestler names are stored in the
+FileTable as an <code>AkiText</code> archive (file ID <code>006C</code>). It's
+currently recommended to edit the names from the FileTable viewer, as the names
+in the Wrestler dialog are not always guaranteed to be written. This will be fixed
+in the future.</p>
 
 <h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
 <p>Moves and Parameters are found in the FileTable, and are mapped to wrestlers
@@ -104,6 +117,9 @@ The data formats are not fully understood, but you can make a wrestler in Edit
 Mode and export the Moves and Parameters in the formats required.</p>
 
 <h3><a name="WrestlerCostumes">Default Costumes</a></h3>
+<p>Default costume data is also stored in the FileTable (file ID <code>006B</code>),
+and can be edited via the Wrestlers dialog. The "Appearance Index" in the Wrestler
+dialog maps to the entries in the default costume data.</p>
 
 <hr />
 

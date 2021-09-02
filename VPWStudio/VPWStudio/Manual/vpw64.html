@@ -101,6 +101,14 @@ fully understood yet.</p>
 <h2><a name="StableData">Stable Data</a></h2>
 <p>Z64 ROM address: <code>0x4989C</code></p>
 
+<p>Each stable entry contains multiple values:</p>
+<ul>
+<li>Offset <code>0x00</code>: Pointer to wrestler definitions for this stable (4 bytes)</li>
+<li>Offset <code>0x04</code>: Number of wrestlers in stable (4 bytes)</li>
+<li>Offset <code>0x08</code>: Pointer to championship definitions for this stable (4 bytes)</li>
+<li>Offset <code>0x0C</code>: Number of championships in stable (4 bytes)</li>
+</ul>
+
 <hr />
 
 </body>

@@ -106,8 +106,8 @@ revision. Codes for NTSC-U v1.0 do not work on NTSC-U v1.1, and vice versa.</li>
 
 <h2><a name="GeneralNotes">General Notes</a></h2>
 <p>WWF No Mercy features multiple internal changes that make porting data
-backwards a little tricky. This primarily concerns textures, as the character
-models were changed to allow more texture variety.</p>
+between games a little tricky. This primarily concerns textures, as the
+character models were changed to allow more texture variety.</p>
 
 <p>There is a hidden Game Boy Color championship path that can be unlocked with
 the use of a GameShark. Other Game Boy-related screens and data may still exist,
@@ -116,7 +116,12 @@ but have yet to be fully found and/or restored.</p>
 <hr />
 
 <h2><a name="FileTypes">Notable File Types</a></h2>
-<p>WWF No Mercy introduces a few new file types to deal with.</p>
+<p>WWF No Mercy introduces a few new file types to deal with, and changes a
+few formats from previous games.</p>
+
+<h3><code>MenuBackground</code></h3>
+<p>In WWF No Mercy, <code>MenuBackground</code> objects consist of multiple
+64x30 chunks of an image, with a total of 5 columns and 8 rows.</p>
 
 <h3><code>Ci4Background</code></h3>
 <p>A variant of <code>Ci4Texture</code> used for Smackdown Mall backgrounds.
