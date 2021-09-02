@@ -41,7 +41,7 @@
 			this.hexBox1.Name = "hexBox1";
 			this.hexBox1.ReadOnly = true;
 			this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-			this.hexBox1.Size = new System.Drawing.Size(624, 341);
+			this.hexBox1.Size = new System.Drawing.Size(624, 361);
 			this.hexBox1.StringViewVisible = true;
 			this.hexBox1.TabIndex = 0;
 			this.hexBox1.UseFixedBytesPerLine = true;
@@ -52,12 +52,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(624, 341);
+			this.ClientSize = new System.Drawing.Size(624, 361);
 			this.Controls.Add(this.hexBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(640, 380);
-			this.MinimumSize = new System.Drawing.Size(640, 380);
+			this.MaximumSize = new System.Drawing.Size(640, 600);
+			this.MinimumSize = new System.Drawing.Size(640, 400);
 			this.Name = "HexViewer";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
 			this.Text = "Hex Viewer";
