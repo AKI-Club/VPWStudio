@@ -633,9 +633,9 @@
 027E=Ci4Texture;[Spirit Meter] COM Left
 027F=Ci4Texture;[Spirit Meter] COM Right
 0280=Ci4Palette;[Spirit Meter] Special
-0281=Ci4Texture;[Spirit Meter] Special
+0281=Ci4Texture;[Spirit Meter] Special|p:0280
 0282=Ci4Palette;[Spirit Meter] Danger
-0283=Ci4Texture;[Spirit Meter] Danger
+0283=Ci4Texture;[Spirit Meter] Danger|p:0282
 0284=Ci4Texture;[Message] Rope Break (1)
 0285=Ci4Texture;[Message] Rope Break (2)
 0286=Ci4Texture;[Message] Two Count (1)
@@ -1182,6 +1182,9 @@
 0A68=Ci8Palette;[Face] Sting (white paint)
 0A69=AkiModel;[Face] Sting (white paint)
 0A6A=Ci8Texture;[Face] Sting (white paint)
+0A6B=Ci4Palette;
+0A6C=AkiModel;
+0A6D=Ci4Texture;
 0A6E=Ci4Palette;[Neck] Sting (red paint)
 0A6F=AkiModel;[Neck] Sting (red paint)
 0A70=Ci4Texture;[Neck] Sting (red paint)
@@ -1200,9 +1203,9 @@
 0A7D=Ci8Palette;[Head] Giant
 0A7E=AkiModel;[Head] Giant
 0A7F=Ci8Texture;[Head] Giant
-0A80=Ci8Palette;[Neck] Giant
+0A80=Ci4Palette;[Neck] Giant
 0A81=AkiModel;[Neck] Giant
-0A82=Ci8Texture;[Neck] Giant
+0A82=Ci4Texture;[Neck] Giant
 0A83=Ci8Palette;[Face] Giant
 0A84=AkiModel;[Face] Giant
 0A85=Ci8Texture;[Face] Giant
