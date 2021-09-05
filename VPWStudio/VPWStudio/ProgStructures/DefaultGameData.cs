@@ -299,7 +299,6 @@ namespace VPWStudio
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BD220, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x16C32A8, 77848) },
-					
 				})
 			},
 			{
@@ -357,12 +356,12 @@ namespace VPWStudio
 		#endregion
 
 		#region Sound Offsets
+		// I'm honestly not sure why this is in a separate dictionary from the default data above.
 		public static Dictionary<SpecificGame, DefaultLocationData> SoundOffsets = new Dictionary<SpecificGame, DefaultLocationData>()
 		{
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-					/*
 					{ "Sound01", new DefaultLocationDataEntry(0x450A,8) },
 					{ "Sound02", new DefaultLocationDataEntry(0x450E,8) },
 					{ "Sound03", new DefaultLocationDataEntry(0x4556,4) },
@@ -372,7 +371,6 @@ namespace VPWStudio
 					{ "Sound07", new DefaultLocationDataEntry(0x485A,8) },
 					{ "Sound08", new DefaultLocationDataEntry(0x48A2,8) },
 					{ "Sound09", new DefaultLocationDataEntry(0x48BA,4) }
-					*/
 				})
 			},
 			{
@@ -392,7 +390,6 @@ namespace VPWStudio
 			{
 				SpecificGame.WorldTour_PAL,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
-					/*
 					{ "Sound01", new DefaultLocationDataEntry(0x44EA,8) },
 					{ "Sound02", new DefaultLocationDataEntry(0x44EE,8) },
 					{ "Sound03", new DefaultLocationDataEntry(0x4536,4) },
@@ -402,7 +399,6 @@ namespace VPWStudio
 					{ "Sound07", new DefaultLocationDataEntry(0x483A,8) },
 					{ "Sound08", new DefaultLocationDataEntry(0x4882,8) },
 					{ "Sound09", new DefaultLocationDataEntry(0x489A,4) }
-					*/
 				})
 			},
 			{
