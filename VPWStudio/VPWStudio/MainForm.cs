@@ -2064,12 +2064,12 @@ namespace VPWStudio
 				mdtd.ShowDialog();
 			}
 		}
-		#endregion
 
 		private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			TimTester t = new TimTester();
 			t.ShowDialog();
 		}
+		#endregion
 	}
 }
