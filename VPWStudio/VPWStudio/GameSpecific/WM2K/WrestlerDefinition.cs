@@ -70,9 +70,12 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// Costume pointers (4x)
 		/// </summary>
 		public UInt32[] CostumePointers;
-		#endregion
 
-		// todo: store wrestler name string?
+		/// <summary>
+		/// Wrestler name string, including the special characters.
+		/// </summary>
+		public string Name;
+		#endregion
 
 		#region Constructors
 		/// <summary>
@@ -91,6 +94,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			EntranceVideo = 0;
 			Unknown = 0;
 			CostumePointers = new UInt32[4];
+			Name = String.Empty;
 		}
 
 		/// <summary>
@@ -179,6 +183,11 @@ namespace VPWStudio.GameSpecific.WM2K
 				}
 				CostumePointers[i] = BitConverter.ToUInt32(cosptr, 0);
 			}
+
+			// getting name data interferes with trying to read wrestler data sequentially
+			long previousPos = br.BaseStream.Position;
+			Name = GetName(br);
+			br.BaseStream.Seek(previousPos, SeekOrigin.Begin);
 		}
 
 		/// <summary>
@@ -255,6 +264,8 @@ namespace VPWStudio.GameSpecific.WM2K
 				}
 				bw.Write(cosptr);
 			}
+
+			// todo: does not handle name, because the string could be longer than what's defined in the ROM
 		}
 		#endregion
 
@@ -262,8 +273,8 @@ namespace VPWStudio.GameSpecific.WM2K
 		/// <summary>
 		/// Get wrestler name from ROM.
 		/// </summary>
-		/// <param name="br"></param>
-		/// <returns></returns>
+		/// <param name="br">BinaryReader instance to use</param>
+		/// <returns>A string with the wrestler's name</returns>
 		public string GetName(BinaryReader br)
 		{
 			UInt32 nameAddr = Z64Rom.PointerToRom(NamePointer);
