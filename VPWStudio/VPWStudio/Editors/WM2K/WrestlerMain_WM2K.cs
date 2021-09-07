@@ -83,7 +83,7 @@ namespace VPWStudio.Editors.WM2K
 			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
 				WrestlerDefinition wd = WrestlerDefs[i];
-				lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
+				lbWrestlers.Items.Add(String.Format("{0:X4} {1}", wd.WrestlerID4, NameHandler.DecodeName(wd.Name)[1]));
 			}
 			lbWrestlers.EndUpdate();
 		}
@@ -94,11 +94,7 @@ namespace VPWStudio.Editors.WM2K
 		/// <param name="wdef"></param>
 		private void LoadEntryData(WrestlerDefinition wdef)
 		{
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-			tbWrestlerName.Text = wdef.GetName(br);
-			br.Close();
-
+			tbWrestlerName.Text = wdef.Name;
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 
