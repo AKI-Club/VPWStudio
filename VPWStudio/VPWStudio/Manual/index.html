@@ -22,7 +22,13 @@
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
-<li><a href="#TextureWorkflow">Texture and Palette Workflow</a></li>
+<li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
+<ol>
+<li><a href="#CostumeColorChanging">Costume Color Changing</a></li>
+<li><a href="#SkinColorChanging">Skin Color Changing</a></li>
+<li><a href="#TextureLayering">Texture Layering</a></li>
+<li><a href="#TexTransparency">AkiTexture Transparency Fix</a></li>
+</ol></li>
 <li><a href="#Arenas">Arenas</a></li>
 <li><a href="#Championships">Championships</a></li>
 <li><a href="#Costumes">Costumes</a></li>
@@ -33,8 +39,8 @@
 	<li><a href="#CIPaletteEdit">CI4/CI8 Palettes</a></li>
 	<li><a href="#CITexturePreview">CI4/CI8 Textures</a></li>
 	<li><a href="#I4TexturePreview">I4 Textures</a></li>
-	<li><a href="#AKITexturePreview">"TEX" Textures</a></li>
-	<li><a href="#AKITextEdit">AKIText</a></li>
+	<li><a href="#AKITexturePreview">AkiTexture/"TEX"</a></li>
+	<li><a href="#AKITextEdit">AkiText</a></li>
 	<li><a href="#ModelTool2">ModelTool2</a></li>
 	<li><a href="#AnimTest">AnimTest</a></li>
 	<!-- Fonts -->
@@ -72,6 +78,7 @@ are external (i.e. separate from the main manual).)</p>
 <ol type='A'>
 <li><a href="#Glossary">Glossary</a></li>
 <li><a href="./appendix_b.html">Program Formats</a> (external section)</li>
+<li><a href="./appendix_c.html">Common Data Formats</a> (external section)</li>
 </ol>
 
 <hr />
@@ -220,6 +227,8 @@ supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 <li>A hex editor, to do things that aren't easily possible in VPW Studio yet.
 (If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
 is recommended for Windows.)</li>
+<li>A calculator that can work in hex and binary modes. Your operating system's calculator
+may fit the bill (guaranteed on Windows, though you might need to switch to Programmer view).</li>
 <li>Patience. (This program is not yet complete, and has a long way to go.)</li>
 </ul>
 
@@ -392,6 +401,9 @@ formats is essential for navigating the various entries in the <a href="#FileTab
 if implementation details may differ between games). For game-specific formats,
 please see <a href="#GameSpecificDocs">the documentation for the corresponding game</a>.</p>
 
+<p>If you are looking for specific format information (e.g. how the files are laid
+out, binary-wise), please refer to <a href="./appendix_c.html">Appendix C</a>.</p>
+
 <h3><code>AkiAnimation</code></h3>
 <p><code>AkiAnimation</code> defines animation data, as you might expect from the name.
 Animation data is largely the same across all 6 of AKI's N64 titles.</p>
@@ -524,7 +536,7 @@ in the <a href="#GameSpecificDocs">game-specific documentation</a>.</p>
 
 <p>(todo: this is a very important subject and requires detailed information!)</p>
 
-<h3>Costume Color Changing</h3>
+<h3><a name="CostumeColorChanging">Costume Color Changing</a></h3>
 <p>The ability to change the colors on costumes was first implemented in
 <em>Virtual Pro-Wrestling 64</em>. The developers at AKI decided to use "pure"
 red, green, and blue colors to signify different color-able parts of the texture.
@@ -549,11 +561,36 @@ In this case, you will need to find the location of the default custom colors fo
 the costume item. This is somewhere in ROM, and is in a different location for
 each game.</p>
 
-<h3>Skin Color Changing</h3>
+<h3><a name="SkinColorChanging">Skin Color Changing</a></h3>
 <p>(todo: revenge and later)</p>
 
-<h3>Texture Layering</h3>
+<h3><a name="TextureLayering">Texture Layering</a></h3>
 <p>Costume items are often layered on top of other textures.</p>
+
+<p>(todo: how it works, focusing on wm2k and later)</p>
+
+<h3><a name="TexTransparency"><code>AkiTexture</code> Transparency Fix</a></h3>
+<p>Since the .NET Framework has issues with transparent PNG files (namely, assuming
+they can't possibly be paletted), you have to manually fix the transparency in any
+<code>AkiTexture</code> formatted texture. To do this, you'll need to manually
+change a palette entry to be transparent via a hex editor.</p>
+
+<p>TEX files start with 16 bytes of header data, which is followed by the palette
+data (starting at file offset <code>0x10</code>). Each color takes up two bytes in
+the palette. If it's a 16-color texture, there will be 32 bytes of palette data.
+If it's a 256-color texture, there will be 512 bytes of palette data. The key to
+transparency is the least significant bit of the <em>second</em> byte. For example,
+non-transparent full black would have the hex values <code>00 01</code>. To make
+this transparent, you would change it to <code>00 00</code>. For other colors,
+it's best to throw the second byte into a hex-capable calculator, then switch to
+binary mode and modify the least significant bit to be 0.</p>
+
+<p>If you're having trouble determining which palette entry represents the color
+that needs to be transparent, check the pixel data for the most common value.
+In a 256-color picture, each byte represents a single color, which is simple
+enough. For 16-color pictures, each byte represents two colors, packing the
+color index into a "nibble". For example, a hex value of <code>23</code>
+would draw two pixels using palette index 2 and 3.</p>
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
