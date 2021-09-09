@@ -13,13 +13,18 @@
 </div>
 
 <hr />
-<h2>Notice</h2>
-<p>As VPW Studio is still under development, changes to program formats are
-likely to happen.</p>
+<h2>Notices</h2>
+<ul>
+<li>As VPW Studio is still under development, changes to program formats are
+likely to happen.</li>
+<li>The source code is likely to have more accurate and up-to-date information.</li>
+</ul>
+<p></p>
 
 <hr />
 <h2>Table of Contents</h2>
 <ol type="1">
+	<li><a href="#VPWSPal">VPW Studio Palette Format</a></li>
 	<li><a href="#LocationFile">LocationFile Format</a></li>
 	<li><a href="#FileTableDB">FileTableDB Format</a></li>
 	<li><a href="#StableDef">Stable Definition Format</a></li>
@@ -28,7 +33,125 @@ likely to happen.</p>
 
 <hr />
 
-<h3><a name="LocationFile">Appendix B1: LocationFile Format</a></h3>
+<h3><a name="VPWSPal">VPW Studio Palette Format</a></h3>
+<p>The VPW Studio Palette format (henceforth "VPWSPal", based on its file extension:
+<code>.vpwspal</code>) is a modification of the text-based JASC Paint Shop Pro
+palette format. This format was created to handle transparency and "sub-palettes"
+in a relatively simple manner.</p>
+
+<p>The first line of the file <em><strong>must</strong></em> be <code>VPWStudio-PAL</code>.
+This is what identifies the palette as VPWSPal format, in comparison to the JASC format.</p>
+
+<p>Below that is a four digit number. The first two digits <em><strong>must</strong></em>
+be <code>01</code>, but the two digits after that determine how many sub-palettes
+are defined. This is currently only used for 16-color palette files. For 256-color
+palette files, set the last two digits to <code>00</code>.</p>
+
+<p>The third line represents the number of colors in the palette, and <em><strong>must</strong></em>
+be <code>16</code> (targeting <code>Ci4Palette</code>) or <code>256</code> (targeting
+<code>Ci8Palette</code>). Ignore the number of entries added by the existence of sub-palettes.</p>
+
+<p>All remaining lines define the colors in the palette. The order is: <code>red green blue alpha</code></p>
+
+<p>Where <code>red</code>, <code>green</code>, and <code>blue</code> have
+values between <code>0</code> and <code>255</code> (inclusive). <code>alpha</code>
+must either be <code>0</code> (representing transparent) or <code>255</code>
+(representing opaque).</p>
+
+<p>All colors will be converted from 8 bits (<code>0</code>-<code>255</code>)
+to 5 bits (<code>0</code>-<code>31</code>), for hardware compatibility purposes.
+It is recommended to use multiples of 8 when choosing palette colors during the
+design phase.</p>
+
+<p>If the VPWSPal file contains any sub-palettes, their palette entries continue
+after the first set of colors.</p>
+
+<h4>Example Files</h4>
+
+<p>16 colors, no sub-palettes:</p>
+<pre>VPWStudio-PAL
+0100
+16
+0 0 0 0
+16 16 16 255
+66 57 66 255
+111 65 61 255
+99 90 99 255
+144 57 78 255
+144 83 32 255
+150 86 75 255
+193 118 85 255
+206 148 123 255
+210 168 71 255
+255 248 96 255
+0 0 0 255
+0 0 0 255
+0 0 0 255
+0 0 0 255
+</pre>
+
+<h4>Comparison between JASC PSP Palette and VPWSPal</h4>
+<p>In case you'd prefer to see the differences visually, here are some side-by-side
+comparisons of JASC Paint Shop Pro palette format and the VPW Studio palette format.</p>
+
+<table>
+<thead>
+<tr>
+<th colspan=2>16 colors, no sub-palettes</th>
+</tr>
+<tr>
+<th>JASC PSP</th>
+<th>VPW Studio Palette</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre>JASC-PAL
+0100
+16
+0 0 0
+16 16 16
+66 57 66
+111 65 61
+99 90 99
+144 57 78
+144 83 32
+150 86 75
+193 118 85
+206 148 123
+210 168 71
+255 248 96
+0 0 0
+0 0 0
+0 0 0
+0 0 0</pre></td>
+<td><pre>VPWStudio-PAL
+0100
+16
+0 0 0 0
+16 16 16 255
+66 57 66 255
+111 65 61 255
+99 90 99 255
+144 57 78 255
+144 83 32 255
+150 86 75 255
+193 118 85 255
+206 148 123 255
+210 168 71 255
+255 248 96 255
+0 0 0 255
+0 0 0 255
+0 0 0 255
+0 0 0 255
+</pre></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3><a name="LocationFile">LocationFile Format</a></h3>
 <p>The LocationFile format is a plain text database defining locations in ROM
 and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
 the LocationFile.</p>
@@ -97,7 +220,7 @@ location strings:</p>
 </ul>
 
 <hr />
-<h3><a name="FileTableDB">Appendix B2: FileTableDB Format</a></h3>
+<h3><a name="FileTableDB">FileTableDB Format</a></h3>
 <p>The FileTableDB format is a plain text database mapping File IDs to types
 and notes.</p>
 
@@ -164,7 +287,7 @@ of the Settings string is denoted by a "<code>|</code>" at the end of the Note.<
 </ul>
 
 <hr />
-<h3><a name="StableDef">Appendix B3: Stable Definition Format</a></h3>
+<h3><a name="StableDef">Stable Definition Format</a></h3>
 <p>The Stable Definition file is a text file following a specific pattern.
 Each game in the series defines Stable data differently, requiring the creation
 of an intermediate format.</p>
