@@ -412,9 +412,10 @@ Animation data is largely the same across all 6 of AKI's N64 titles.</p>
 the World</em>) has not been located or figured out. It does not appear to be standard
 "TOD" format, as scanning the data files has produced 0 such animations.</p>
 
-<p>Currently, there are no animation editing facilities in VPW Studio. Creating
-new animations from scratch (as opposed to splicing together existing animations)
-is still considered relatively "new" technology in 2021.</p>
+<p>Currently, there are no animation editing or creation facilities in VPW Studio.
+Creating new animations from scratch (as opposed to splicing together existing
+animations via GameShark codes) is still considered relatively "new" technology
+in 2021.</p>
 
 <h3><code>AkiArchive</code></h3>
 <p>An <code>AkiArchive</code> contains multiple files packed into a single File Table
@@ -493,13 +494,15 @@ when dealing with palettes, so this doesn't explain the full story.</p>
 VPW Studio handles these extra color sets as "sub-palettes".</p>
 
 <p>In <em>WWF No Mercy</em>, AKI pulled a similar trick with <code>Ci8Palette</code>
-files, but <code>Ci8Palette</code> sub-palettes are not currently supported.</p>
+files, but <code>Ci8Palette</code> sub-palettes are not currently supported in
+VPW Studio.</p>
 
 <p>To facilitate user editing, <code>Ci4Palette</code> and <code>Ci8Palette</code>
 data can be converted from other palette formats. The primary non-binary palette
 format supported by VPW Studio (<code>.vpwspal</code>) is a modification of the
 text-based JASC Paint Shop Pro palette format, allowing for sub-palettes and
-transparent values.</p>
+transparent values. More information on this format can be found in
+<a href="./appendix_b.html#VPWSPal">Appendix B</a>.</p>
 
 <h3><code>Ci4Texture</code> and <code>Ci8Texture</code></h3>
 <p>Nintendo 64-specific texture formats. Much like the corresponding palette types,
@@ -515,8 +518,8 @@ specific rules about palette indices, which can be found in the <a href="#GameSp
 
 <h3><code>I4Texture</code></h3>
 <p>Nintendo 64-specific "intensity" texture format. Allows for 16 steps of intensity.
-There are other "intensity"-based texture formats used on the N64, but so far, I have
-only found the "I4" format in AKI's games.</p>
+There are other "intensity"-based texture formats used on the N64, but so far, only
+the "I4" format has been found in AKI's games.</p>
 
 <p>VPW Studio provides no support for converting images to <code>I4Texture</code>.
 The current recommended workflow is to use Texture64 to save the I4 format texture
@@ -548,26 +551,50 @@ file.</p>
 
 <p>As mentioned in the Common Data Formats section, a <code>Ci4Palette</code>
 can have multiple "sub-palettes", and this is key to allowing the costume color
-changing system to work. The first 16 colors of a costume texture's palette is
-dedicated to the colors you'd see if you set the custom color to 0 (WM2K/VPW2/No Mercy).
-The colors used in the first set <em>do not</em> need to be found in the custom
-color palette. The second set of 16 colors should use the "pure" green and blue
-values that define the changeable colors. (The handling of "pure" red values is
-game-specific.)</p>
+changing system to work (in all games after VPW64). The first 16 colors of a
+costume texture's palette is dedicated to the colors you'd see if you set the
+custom color to 0 (WM2K/VPW2/No Mercy). The colors used in the first set <em>do
+not</em> need to be found in the custom color palette. The second set of 16 colors
+should use the "pure" green and blue values that define the changeable colors.
+(The handling of "pure" red values is game-specific.)</p>
 
 <p>Some of the original textures in the games don't bother with a custom palette
-in the first set, and just use the "pure" green/blue values in both sub-palettes.
-In this case, you will need to find the location of the default custom colors for
-the costume item. This is somewhere in ROM, and is in a different location for
-each game.</p>
+in the first set, and just use the "pure" green/blue values in both the main and
+sub-palettes. In this case, you will need to find the location of the default
+custom colors for the costume item. This is somewhere in ROM, and is in a different
+location for each game.</p>
 
 <h3><a name="SkinColorChanging">Skin Color Changing</a></h3>
 <p>(todo: revenge and later)</p>
 
 <h3><a name="TextureLayering">Texture Layering</a></h3>
-<p>Costume items are often layered on top of other textures.</p>
+<p>Costume items are often layered on top of other textures. This includes
+regular costume items, as well as various facial features (fringe hair,
+facial hair, facepaint). In games before <em>WWF WrestleMania 2000</em>, this
+was a non-issue, as all face and costume textures are pre-composed, and there
+was no Edit Mode to allow for customization.</p>
 
-<p>(todo: how it works, focusing on wm2k and later)</p>
+<h4>Body</h4>
+<p>The textures for the body are comprised of the skin, any tattoos, and the
+costume items, generally displayed in that order.</p>
+
+<h4>Face</h4>
+<p>Faces are a bit more complex, with the following components:</p>
+<ul>
+<li>The base face texture</li>
+<li>Fringe/"front" hair</li>
+<li>Facial hair</li>
+<li>Facepaint and Accessories</li>
+</ul>
+
+<p>The ordering and location of these elements is not always obvious. For
+example, accessories can be positioned over or under the facial and fringe
+hair layers. Accessories can also wrap around the back of the head, requiring
+an additional texture. The base vertical locations of facial hair can be set both
+per-face and per-facial hair item.</p>
+
+<p>Mask editing is exclusive to <em>Virtual Pro-Wrestling 2</em>, and is explained in
+<a href="./vpw2.html">its game-specific documentation</a>.</p>
 
 <h3><a name="TexTransparency"><code>AkiTexture</code> Transparency Fix</a></h3>
 <p>Since the .NET Framework has issues with transparent PNG files (namely, assuming
