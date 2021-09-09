@@ -470,7 +470,7 @@
 01D7=AkiTexture;[Title Match Logo] Championship (white)
 01D8=AkiTexture;[Title Match Logo] Championship (gold)
 01D9=AkiTexture;WWF $
-01DA=Binary;(raw CI4 texture) Story Mode title font?
+01DA=Binary;(raw CI4 texture; 24px wide) Story Mode title font
 01DB=AkiTexture;[Story Mode] Chapter Blocks, Paths
 01DC=AkiText;[Story Mode] Main Page
 01DD=AkiText;[Story Mode] Chapter Titles
