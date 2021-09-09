@@ -22,6 +22,7 @@
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
+<li><a href="#TextureWorkflow">Texture and Palette Workflow</a></li>
 <li><a href="#Arenas">Arenas</a></li>
 <li><a href="#Championships">Championships</a></li>
 <li><a href="#Costumes">Costumes</a></li>
@@ -54,7 +55,9 @@
 </ol>
 
 <h3><a name="GameSpecificDocs">Game-Specific Documentation</a></h3>
-<p>(All game-specific sections are external (i.e. separate from the main manual).)</p>
+<p>Though each game shares a similar design, the implementation, data structures,
+and other details can be different for each game.<br />(All game-specific sections
+are external (i.e. separate from the main manual).)</p>
 <ol>
 <!--<li>Virtual Pro-Wrestling and WCW vs. the World</li> -->
 <li><a href="./worldtour.html">WCW vs. nWo: World Tour</a></li>
@@ -112,13 +115,19 @@ replace all the features of a GameShark, as it works on the ROM level, and
 doesn't interact with the game while it's running. This means you should not
 expect VPW Studio to let you create new match types or AI behavior, among other
 things. Another key point is the term "change", as adding <em>new</em> items to
-the game can require editing multiple sections, and is likely 99% to require
+the game can require editing multiple sections, and is 99% likely to require
 various pointers to be rewritten to point to new locations. That's even
 <em>before</em> you account changing the game code to deal with file ID assumptions
 (e.g. the games assume that the animation file IDs lie in certain ranges),
 which are different per game, and not all the same, either. VPW Studio is not
 equipped to handle this situation, which is better handled by a full disassembly
 of the game(s).</p>
+
+<p>Even with these limitations, it's possible to use VPW Studio (along with some
+other tools) to create a ROM hack of AKI's wrestling games on Nintendo 64 that will
+work on real hardware. In fact, VPW Studio largely owes its existence to the
+<a href="https://vpw.ajworld.net/vpw2freem/">Virtual Pro-Wrestling 2 freem Edition</a>
+hack, and vice versa.</p>
 
 <h3>Supported Games</h3>
 <p>Currently, only the AKI wrestling games on the Nintendo 64 are supported:</p>
@@ -388,22 +397,40 @@ please see <a href="#GameSpecificDocs">the documentation for the corresponding g
 Animation data is largely the same across all 6 of AKI's N64 titles.</p>
 
 <p>The format used for the PS1 games (<em>Virtual Pro-Wrestling</em> and <em>WCW vs.
-the World</em>) has not been located or figured out.</p>
+the World</em>) has not been located or figured out. It does not appear to be standard
+"TOD" format, as scanning the data files has produced 0 such animations.</p>
+
+<p>Currently, there are no animation editing facilities in VPW Studio. Creating
+new animations from scratch (as opposed to splicing together existing animations)
+is still considered relatively "new" technology in 2021.</p>
 
 <h3><code>AkiArchive</code></h3>
 <p>An <code>AkiArchive</code> contains multiple files packed into a single File Table
 entry. The game code is responsible for handling the data inside of the archive,
-so VPW Studio's support is limited. This file type first appeared in <em>WCW/nWo Revenge</em>.</p>
+so it's tricky to provide automatic support. This file type first appeared in
+<em>WCW/nWo Revenge</em>.</p>
 
-<p>Zoinkity originally called these <code>TEXArchive</code>, since the examples he
+<p>Zoinkity originally called these <code>TEXarchive</code>, since the examples he
 found primarily contained TEX (<code>AkiTexture</code>) files. Further review has
 shown that other file types can appear inside of these archives, hence the change
 to a more generic name.</p>
+
+<p>VPW Studio has read-only support for <code>AkiArchive</code> files, but there
+are a number of corner cases that are not properly handled. There is also no error
+handling for opening an entry as the wrong type, so be sure to view the target
+file in the hex editor before attempting to view it as a specific type.</p>
 
 <h3><code>AkiModel</code></h3>
 <p><code>AkiModel</code> defines data for a single 3D mesh. This includes vertex
 location, texture positioning (U/V) values, and three other values which either
 mean "vertex color" or "normal vector", depending on certain header values.</p>
+
+<p>There is currently no workflow for importing models into the game. Where
+possible, tools in VPW Studio allows for export to Wavefront OBJ format, despite
+the fact that it does not officially support vertex colors. The ideal path going
+forward would be to have import/export plugins for <code>AkiModel</code> format
+for various 3D tools, and then VPW Studio only has to handle changes on the
+binary level.</p>
 
 <h3><code>AkiTexture</code></h3>
 <p><code>AkiTexture</code> files start with the magic word "<code>TEX</code>",
@@ -412,8 +439,8 @@ around the CI4 and CI8 texture and palette formats.</p>
 
 <p>VPW Studio can convert PNG images to <code>AkiTexture</code>, but they must have
 a 16 or 256-color palette. Furthermore, images with transparency need to be
-manually converted and modified with a hex editor, due to assumptions .NET makes
-about transparent images.</p>
+<a href="#DangerZone">manually converted</a> and modified with a hex editor,
+due to assumptions .NET makes about transparent images.</p>
 
 <h3><code>AkiText</code></h3>
 <p><code>AkiText</code> files contain multiple strings used for text display.</p>
@@ -478,6 +505,55 @@ specific rules about palette indices, which can be found in the <a href="#GameSp
 <p>Nintendo 64-specific "intensity" texture format. Allows for 16 steps of intensity.
 There are other "intensity"-based texture formats used on the N64, but so far, I have
 only found the "I4" format in AKI's games.</p>
+
+<p>VPW Studio provides no support for converting images to <code>I4Texture</code>.
+The current recommended workflow is to use Texture64 to save the I4 format texture
+and import that data via the File Table.</p>
+
+<hr />
+<h2><a name="TextureWorkflow">Texture and Palette Workflow</a></h2>
+<p>(Notice: This section primarily deals with workflows targeting the Nintendo 64.
+Information on targeting PlayStation 1 will be added once VPW Studio is capable
+of handling it.)</p>
+
+<p>Dealing with textures in a ROM-based project is very different from using
+replacement textures with emulator plugins. This is due to various tricks that
+AKI uses to handle layered items and color changing. Each game handles these
+systems slightly differently, and implementation-specific details are found
+in the <a href="#GameSpecificDocs">game-specific documentation</a>.</p>
+
+<p>(todo: this is a very important subject and requires detailed information!)</p>
+
+<h3>Costume Color Changing</h3>
+<p>The ability to change the colors on costumes was first implemented in
+<em>Virtual Pro-Wrestling 64</em>. The developers at AKI decided to use "pure"
+red, green, and blue colors to signify different color-able parts of the texture.
+By "pure" colors, we mean that the values for other channel components are set
+to 0. All colors that are not related to costume color changing can be set as
+you like (making sure they're not "pure" colors). The "pure" colors are then
+replaced with the custom color by looking up the corresponding value in a palette
+file.</p>
+
+<p>As mentioned in the Common Data Formats section, a <code>Ci4Palette</code>
+can have multiple "sub-palettes", and this is key to allowing the costume color
+changing system to work. The first 16 colors of a costume texture's palette is
+dedicated to the colors you'd see if you set the custom color to 0 (WM2K/VPW2/No Mercy).
+The colors used in the first set <em>do not</em> need to be found in the custom
+color palette. The second set of 16 colors should use the "pure" green and blue
+values that define the changeable colors. (The handling of "pure" red values is
+game-specific.)</p>
+
+<p>Some of the original textures in the games don't bother with a custom palette
+in the first set, and just use the "pure" green/blue values in both sub-palettes.
+In this case, you will need to find the location of the default custom colors for
+the costume item. This is somewhere in ROM, and is in a different location for
+each game.</p>
+
+<h3>Skin Color Changing</h3>
+<p>(todo: revenge and later)</p>
+
+<h3>Texture Layering</h3>
+<p>Costume items are often layered on top of other textures.</p>
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
@@ -1119,7 +1195,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 
 <hr />
 <h2><a name="Credits">Credits</a></h2>
-<p>(todo)</p>
+<p>(todo: very incomplete)</p>
 <ul>
 <li><strong>Main Programming</strong> &ndash; freem</li>
 <li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Styles, Keson, jordyad, randymanfoo</li>
