@@ -227,6 +227,48 @@ namespace VPWStudio
 			System.Diagnostics.Process.Start(manualPath);
 
 		}
+
+		/// <summary>
+		/// Launch game-specific documentation based on the currently opened project.
+		/// </summary>
+		public static void LaunchGameDoc()
+		{
+			if (CurrentProject != null)
+			{
+				string manualBasePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Manual/";
+				string gameDocFile = string.Empty;
+				switch (CurrentProject.Settings.BaseGame)
+				{
+					case VPWGames.WorldTour: gameDocFile = "worldtour.html"; break;
+					case VPWGames.VPW64:     gameDocFile = "vpw64.html"; break;
+					case VPWGames.Revenge:   gameDocFile = "revenge.html"; break;
+					case VPWGames.WM2K:      gameDocFile = "wm2k.html"; break;
+					case VPWGames.VPW2:      gameDocFile = "vpw2.html"; break;
+					case VPWGames.NoMercy:   gameDocFile = "nomercy.html"; break;
+
+					case VPWGames.VPW:
+					case VPWGames.WCWvsWorld:
+						gameDocFile = "vpw_ps1.html";
+						break;
+
+					default:
+						ErrorMessageBox(String.Format("Unknown BaseGame type {0}; no game-specific documentation available", CurrentProject.Settings.BaseGame.ToString()));
+						break;
+				}
+
+				if (!gameDocFile.Equals(string.Empty))
+				{
+					string gameDocPath = Path.Combine(manualBasePath, gameDocFile);
+					if (!File.Exists(gameDocPath))
+					{
+						ErrorMessageBox(string.Format("This is awkward... I can't find the game-specific documentation for {0}.\nIt should be located in the \"Manual\" folder as \"{1}\".", CurrentProject.Settings.BaseGame.ToString(), gameDocPath));
+						return;
+					}
+
+					System.Diagnostics.Process.Start(manualBasePath + gameDocFile);
+				}
+			}
+		}
 		#endregion
 
 		public static void ReloadBaseRom()
