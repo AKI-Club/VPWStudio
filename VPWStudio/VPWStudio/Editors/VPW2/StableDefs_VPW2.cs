@@ -35,14 +35,6 @@ namespace VPWStudio.Editors.VPW2
 				sdf.ReadFile(sr);
 				sr.Close();
 				StableDefs = sdf.StableDefs_VPW2;
-
-				// load default names
-				// xxx1: this check should be outside this conditional
-				// xxx2: the possibility of loading external AkiText...
-				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-				BinaryReader br = new BinaryReader(ms);
-				LoadDefaultNames_ROM(br);
-				br.Close();
 			}
 			else
 			{
@@ -129,7 +121,7 @@ namespace VPWStudio.Editors.VPW2
 			lbStables.BeginUpdate();
 			for (int i = 0; i < StableDefs.Count; i++)
 			{
-				lbStables.Items.Add(i);
+				lbStables.Items.Add(string.Format("{0:X2} {1}",i,DefaultNames.Entries[(int)StableDefs[i].StableNameIndex].Text));
 			}
 			lbStables.EndUpdate();
 		}
