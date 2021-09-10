@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Reflection;
+
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -1580,6 +1580,12 @@ namespace VPWStudio
 			Program.LaunchManual();
 		}
 
+		private void gameSpecificInformationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// attempt to launch the game-specific documentation for the project currently being edited.
+			Program.LaunchGameDoc();
+		}
+
 		/// <summary>
 		/// About
 		/// </summary>
@@ -1631,6 +1637,9 @@ namespace VPWStudio
 			saveProjectToolStripMenuItem.Enabled = projFileOpen;
 			saveProjectAsToolStripMenuItem.Enabled = projFileOpen;
 			closeProjectToolStripMenuItem.Enabled = projFileOpen;
+
+			// Help menu
+			gameSpecificInformationToolStripMenuItem.Enabled = projFileOpen;
 
 			// Project menu
 			foreach (ToolStripItem tsi in projectToolStripMenuItem.DropDownItems)
@@ -2102,5 +2111,6 @@ namespace VPWStudio
 			t.ShowDialog();
 		}
 		#endregion
+
 	}
 }
