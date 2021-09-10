@@ -145,7 +145,7 @@
 			this.labelComment.Name = "labelComment";
 			this.labelComment.Size = new System.Drawing.Size(136, 13);
 			this.labelComment.TabIndex = 3;
-			this.labelComment.Text = "C&omment";
+			this.labelComment.Text = "Co&mment";
 			// 
 			// labelFileType
 			// 
@@ -199,7 +199,7 @@
 			this.buttonReplaceFileBrowse.Name = "buttonReplaceFileBrowse";
 			this.buttonReplaceFileBrowse.Size = new System.Drawing.Size(76, 22);
 			this.buttonReplaceFileBrowse.TabIndex = 9;
-			this.buttonReplaceFileBrowse.Text = "Browse...";
+			this.buttonReplaceFileBrowse.Text = "&Browse...";
 			this.buttonReplaceFileBrowse.UseVisualStyleBackColor = true;
 			this.buttonReplaceFileBrowse.Click += new System.EventHandler(this.buttonReplaceFileBrowse_Click);
 			// 
@@ -334,7 +334,7 @@
 			this.labelImageHeight.Name = "labelImageHeight";
 			this.labelImageHeight.Size = new System.Drawing.Size(136, 13);
 			this.labelImageHeight.TabIndex = 3;
-			this.labelImageHeight.Text = "Image Height";
+			this.labelImageHeight.Text = "Image &Height";
 			// 
 			// labelImageWidth
 			// 
@@ -344,7 +344,7 @@
 			this.labelImageWidth.Name = "labelImageWidth";
 			this.labelImageWidth.Size = new System.Drawing.Size(136, 13);
 			this.labelImageWidth.TabIndex = 0;
-			this.labelImageWidth.Text = "Image Width";
+			this.labelImageWidth.Text = "Image &Width";
 			// 
 			// labelTransparentColorIndex
 			// 
@@ -364,7 +364,7 @@
 			this.labelDefaultPaletteID.Name = "labelDefaultPaletteID";
 			this.labelDefaultPaletteID.Size = new System.Drawing.Size(136, 13);
 			this.labelDefaultPaletteID.TabIndex = 7;
-			this.labelDefaultPaletteID.Text = "Default Palette ID";
+			this.labelDefaultPaletteID.Text = "Default &Palette ID";
 			// 
 			// nudTransparentIndex
 			// 
@@ -469,7 +469,7 @@
 			this.labelHorizMirror.Name = "labelHorizMirror";
 			this.labelHorizMirror.Size = new System.Drawing.Size(136, 13);
 			this.labelHorizMirror.TabIndex = 15;
-			this.labelHorizMirror.Text = "Horizontal Mirror";
+			this.labelHorizMirror.Text = "Horizontal &Mirror";
 			// 
 			// labelVerticalMirror
 			// 
@@ -479,7 +479,7 @@
 			this.labelVerticalMirror.Name = "labelVerticalMirror";
 			this.labelVerticalMirror.Size = new System.Drawing.Size(136, 13);
 			this.labelVerticalMirror.TabIndex = 16;
-			this.labelVerticalMirror.Text = "Vertical Mirror";
+			this.labelVerticalMirror.Text = "&Vertical Mirror";
 			// 
 			// FileTableEditEntryInfoDialog
 			// 
