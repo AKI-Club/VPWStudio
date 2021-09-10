@@ -8,41 +8,57 @@ namespace VPWStudio.Editors.Revenge
 {
 	public partial class StableDefs_Revenge : Form
 	{
-		private SortedList<int, StableDefinition> StableDefs = new SortedList<int, StableDefinition>();
+		public SortedList<int, StableDefinition> StableDefs = new SortedList<int, StableDefinition>();
 
 		public StableDefs_Revenge()
 		{
 			InitializeComponent();
 
-			// load stable definitions from Revenge ROM
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
-			bool hasLocation = false;
-			if (Program.CurLocationFile != null)
+			// stable def file
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.StableDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
+			)
 			{
-				LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
-				if (sdEntry != null)
+				// load stable definitions from external file
+				StableDefFile sdf = new StableDefFile(VPWGames.Revenge);
+				FileStream fs = new FileStream(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
+				StreamReader sr = new StreamReader(fs);
+				sdf.ReadFile(sr);
+				sr.Close();
+				StableDefs = sdf.StableDefs_Revenge;
+			}
+			else
+			{
+				// load stable definitions from Revenge ROM
+				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+				BinaryReader br = new BinaryReader(ms);
+
+				bool hasLocation = false;
+				if (Program.CurLocationFile != null)
 				{
-					br.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
-					hasLocation = true;
+					LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+					if (sdEntry != null)
+					{
+						br.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+						hasLocation = true;
+					}
 				}
-			}
-			if (!hasLocation)
-			{
-				// fallback to hardcoded offset
-				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
-			}
+				if (!hasLocation)
+				{
+					// fallback to hardcoded offset
+					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
+					br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
+				}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < 13; i++)
-			{
-				StableDefinition sdef = new StableDefinition(br);
-				StableDefs.Add(i, sdef);
-			}
+				// xxx: default number of stable defs
+				for (int i = 0; i < 13; i++)
+				{
+					StableDefinition sdef = new StableDefinition(br);
+					StableDefs.Add(i, sdef);
+				}
 
-			br.Close();
+				br.Close();
+			}
 
 			PopulateList();
 		}
@@ -60,6 +76,17 @@ namespace VPWStudio.Editors.Revenge
 			lbStables.EndUpdate();
 		}
 
+		private void PopulateWrestlerList(StableDefinition _sdef)
+		{
+			lbWresPointers.Items.Clear();
+			lbWresPointers.BeginUpdate();
+			for (int i = 0; i < _sdef.NumWrestlers; i++)
+			{
+				lbWresPointers.Items.Add(String.Format("{0:X8}", _sdef.WrestlerPointers[i]));
+			}
+			lbWresPointers.EndUpdate();
+		}
+
 		/// <summary>
 		/// Load stable data.
 		/// </summary>
@@ -70,13 +97,7 @@ namespace VPWStudio.Editors.Revenge
 			tbNumWrestlers.Text = _sdef.NumWrestlers.ToString();
 			tbHeaderGraphic.Text = String.Format("{0:X4}", _sdef.HeaderGraphicFile);
 
-			lbWresPointers.Items.Clear();
-			lbWresPointers.BeginUpdate();
-			for (int i = 0; i < _sdef.NumWrestlers; i++)
-			{
-				lbWresPointers.Items.Add(String.Format("{0:X8}", _sdef.WrestlerPointers[i]));
-			}
-			lbWresPointers.EndUpdate();
+			PopulateWrestlerList(_sdef);
 
 			// try loading stable header graphic
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
@@ -117,6 +138,11 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonViewWrestler_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresPointers.SelectedIndex < 0)
 			{
 				return;
@@ -130,13 +156,25 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonMoveUp_Click(object sender, EventArgs e)
 		{
-			// handle both invalid index and "already at top of list"
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresPointers.SelectedIndex <= 0)
 			{
 				return;
 			}
 
-			MessageBox.Show("not implemented yet");
+			int newIndex = lbWresPointers.SelectedIndex - 1;
+			uint oldWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex - 1];
+			uint moveWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex - 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex] = oldWres;
+
+			PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			lbWresPointers.SelectedIndex = newIndex;
 		}
 
 		/// <summary>
@@ -144,17 +182,31 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonMoveDown_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresPointers.SelectedIndex < 0)
 			{
 				return;
 			}
+
 			// xxx: should this compare use the current stable's wrestler amount instead?
 			if (lbWresPointers.SelectedIndex == lbWresPointers.Items.Count - 1)
 			{
 				return;
 			}
 
-			MessageBox.Show("not implemented yet");
+			int newIndex = lbWresPointers.SelectedIndex + 1;
+			uint oldWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex + 1];
+			uint moveWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex + 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex] = oldWres;
+
+			PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			lbWresPointers.SelectedIndex = newIndex;
 		}
 
 		/// <summary>
@@ -162,10 +214,51 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonSwitchGroup_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresPointers.SelectedIndex < 0)
 			{
 				return;
 			}
+
+			/*
+			int oldGroupNum = lbStables.SelectedIndex;
+			int oldIndex = lbWresPointers.SelectedIndex;
+			uint wresPtr = StableDefs[oldGroupNum].WrestlerPointers[oldIndex];
+			SwitchGroup_Revenge sg = new SwitchGroup_Revenge(wresPtr, oldGroupNum, StableDefs);
+			if (sg.ShowDialog() == DialogResult.OK)
+			{
+				// add the wrestler to the first empty slot of the new stable
+				int newIndex = StableDefs[sg.NewStableNum].GetFirstEmptySlot();
+				StableDefs[sg.NewStableNum].WrestlerPointers[newIndex] = wresPtr;
+
+				// increment the wrestler count in the new stable
+				StableDefs[sg.NewStableNum].NumWrestlers++;
+
+				// 3: remove the wrestler from the old stable and re-order list to remove the gap
+				StableDefs[oldGroupNum].WrestlerPointers[oldIndex] = 0;
+
+				// if the old index is the last item, we don't need to do anything
+				if (oldIndex != StableDefs[oldGroupNum].WrestlerPointers.Length - 1)
+				{
+					// otherwise, we need to shift up all the entries after the old index
+					for (int i = oldIndex; i < StableDefs[oldGroupNum].WrestlerPointers.Length - 1; i++)
+					{
+						uint nextWres = StableDefs[oldGroupNum].WrestlerPointers[i + 1];
+						StableDefs[oldGroupNum].WrestlerPointers[i] = nextWres;
+						StableDefs[oldGroupNum].WrestlerPointers[i + 1] = 0;
+					}
+				}
+
+				// decrement the wrestler count in the old stable.
+				StableDefs[oldGroupNum].NumWrestlers--;
+
+				PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			}
+			*/
 
 			MessageBox.Show("not implemented yet");
 		}
@@ -175,13 +268,41 @@ namespace VPWStudio.Editors.Revenge
 		/// </summary>
 		private void buttonSwapWres_Click(object sender, EventArgs e)
 		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
 			if (lbWresPointers.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			MessageBox.Show("not implemented yet");
+			// we need the first wrestler's stable and first wrestler's index within stable
+			int stable1 = lbStables.SelectedIndex;
+			int index1 = lbWresPointers.SelectedIndex;
+			SwapWrestler_Revenge sw = new SwapWrestler_Revenge(StableDefs, stable1, index1);
+			if (sw.ShowDialog() == DialogResult.OK)
+			{
+				// swap wrestlers at stable1[index1] and stable2[index2]
+				uint ptr_first = StableDefs[stable1].WrestlerPointers[index1];
+				StableDefs[stable1].WrestlerPointers[index1] = StableDefs[sw.Wrestler2_CurStable].WrestlerPointers[sw.Wrestler2_CurIndex];
+				StableDefs[sw.Wrestler2_CurStable].WrestlerPointers[sw.Wrestler2_CurIndex] = ptr_first;
+				PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			}
 		}
 		#endregion
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
 	}
 }
