@@ -72,7 +72,7 @@ namespace VPWStudio.Editors.WM2K
 			lbStables.BeginUpdate();
 			for (int i = 0; i < this.StableDefs.Count; i++)
 			{
-				lbStables.Items.Add(i);
+				lbStables.Items.Add(string.Format("{0:X2} {1}", i, StableDefs[i].StableName));
 			}
 			lbStables.EndUpdate();
 		}
