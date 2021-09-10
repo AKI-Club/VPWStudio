@@ -30,8 +30,9 @@ the main portion of the manual.</p>
 </ol>
 
 <h3>Nintendo 64-specific</h3>
-<p>These formats specifically target Nintendo 64 hardware.</p>
-<ol type="1">
+<p>These formats specifically target Nintendo 64 hardware. All formats in this
+section are big endian, unless otherwise stated.</p>
+<ol type="1" start="6">
 <li><a href="#Ci4Palette">Ci4Palette</a></li>
 <li><a href="#Ci8Palette">Ci8Palette</a></li>
 <li><a href="#Ci4Texture">Ci4Texture</a></li>
@@ -40,20 +41,113 @@ the main portion of the manual.</p>
 </ol>
 
 <h3>PlayStation 1-specific</h3>
-<p>These formats specifically target PlayStation 1 hardware.</p>
-<ol type="1">
-<li>TIM</li>
-<li>CLUT</li>
-<li>TMD</li>
+<p>These formats specifically target PlayStation 1 hardware. All formats in this
+section are little endian, unless otherwise stated.</p>
+<ol type="1" start="11">
+<li><a href="#TIM">TIM</a></li>
+<li><a href="#CLUT">CLUT</a></li>
 </ol>
+<p>TMD, being a highly complex format, is outside the scope of this document.</p>
 
 <h3>Game-specific Formats</h3>
-<h4>WWF No Mercy</h4>
+<p><strong>WCW/nWo Revenge</strong></p>
+<ol type="1">
+<li>DoubleTex</li>
+</ol>
+
+<p><strong>WWF No Mercy</strong></p>
 <ol type="1">
 <li>MenuItems_NoGroup</li>
 <li>MenuItems_Shop</li>
 <li>MenuItems_Costume</li>
 </ol>
+
+<hr />
+
+<h2><a name="AkiAnimation">AkiAnimation</a></h2>
+
+<hr />
+
+<h2><a name="AkiAnimation">AkiArchive</a></h2>
+<p>AkiArchive packs multiple files into a single file. It is up to the game to
+determine how the contents are handled, meaning it's not easy to figure out
+what each entry is meant to be.</p>
+
+<h3>Data Format</h3>
+<ul>
+<li>Offset 0x00: Number of files (4 bytes)</li>
+<li>Offset 0x04: List of offsets into this file for file data (4 bytes * number of files)</li>
+<li>File data follows the offset list.</li>
+</ul>
+
+<hr />
+
+<h2><a name="AkiAnimation">AkiModel</a></h2>
+
+<hr />
+
+<h2><a name="AkiAnimation">AkiText</a></h2>
+
+<hr />
+
+<h2><a name="AkiAnimation">AkiTexture</a></h2>
+<p>AkiTexture is a wrapper around CI4/CI8 texture and palette data.</p>
+
+<hr />
+
+<h2><a name="Ci4Palette">Ci4Palette</a></h2>
+<p>Nintendo 64-specific format for defining a 16-color palette. These files
+only contain palette data, no headers or anything else.</p>
+
+<h3>Data Format</h3>
+<p>Each palette entry consists of two bytes, stored in big endian format.</p>
+
+<pre>
+byte #1   byte #2
+FEDCBA98 76543210
+|___||____||___||
+  |     |    |  +-- Alpha (0 or 1)
+  |     |    +----- Blue (0-31)
+  |     +---------- Green (0-31)
+  +---------------- Red (0-31
+</pre>
+
+<p>The developers sometimes stored multiple sets of 16-color palettes in a single
+Ci4Palette file, so some extracted palettes may have more than 16 colors.</p>
+
+<hr />
+
+<h2><a name="Ci8Palette">Ci8Palette</a></h2>
+<p>Similar to <a href="#Ci4Palette">Ci4Palette</a>, but with 256 color entries
+instead of 16. Color format is the same as Ci4Palette.</p>
+
+<hr />
+
+<h2><a name="Ci4Texture">Ci4Texture</a></h2>
+<p>Nintendo 64-specific format for defining a 16-color texture. Often paired
+with a <a href="#Ci4Palette">Ci4Palette</a> to show desired colors.</p>
+
+<hr />
+
+<h2><a name="Ci8Texture">Ci8Texture</a></h2>
+<p>Nintendo 64-specific format for defining a 256-color texture. Often paired
+with a <a href="#Ci8Palette">Ci8Palette</a> to show desired colors.</p>
+
+<hr />
+
+<h2><a name="I4Texture">I4Texture</a></h2>
+
+<hr />
+
+<h2><a name="TIM">TIM</a></h2>
+<p>PlayStation 1-specific texture format. Often paired with a <a href="#CLUT">CLUT</a>,
+either externally or internally.</p>
+
+<hr />
+
+<h2><a name="CLUT">CLUT</a></h2>
+<p><strong>Note</strong>: This only describes CLUT data as found in <a href="#TIM">TIM</a>
+files. Standalone CLUT files exist, but have a slightly different format.</p>
 
 <hr />
 
