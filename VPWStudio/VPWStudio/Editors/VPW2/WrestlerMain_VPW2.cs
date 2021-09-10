@@ -117,6 +117,7 @@ namespace VPWStudio.Editors.VPW2
 		/// </summary>
 		private void PopulateList()
 		{
+			lbWrestlers.Items.Clear();
 			lbWrestlers.BeginUpdate();
 			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
@@ -296,8 +297,47 @@ namespace VPWStudio.Editors.VPW2
 
 			if (ate.ShowDialog() == DialogResult.OK)
 			{
-				// check to see if this file existed...
+				if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+				{
+					// we need to have saved in order to actually... save.
+					Program.ErrorMessageBox("Can not save AkiText changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+					return;
+				}
+
+				if (defWrestlerNames.ReplaceFilePath == null || defWrestlerNames.ReplaceFilePath == String.Empty)
+				{
+					// editing for the first time (make new file)
+					string filename = String.Format("{0}\\{1:X4}.akitext", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), VPW2_DEFAULT_NAMES_FILE);
+					using (FileStream fs = new FileStream(filename, FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							ate.CurTextArchive.WriteData(bw);
+						}
+					}
+
+					// set new ReplaceFilePath
+					defWrestlerNames.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+					Program.InfoMessageBox(String.Format("Wrote new AkiText archive to {0}.", filename));
+
+					Program.UnsavedChanges = true;
+					((MainForm)(MdiParent)).UpdateTitleBar();
+				}
+				else if (Path.GetExtension(defWrestlerNames.ReplaceFilePath) == ".akitext")
+				{
+					// akitext binary in ReplaceFilePath (overwrite existing file)
+					using (FileStream fs = new FileStream(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), FileMode.Open))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							ate.CurTextArchive.WriteData(bw);
+						}
+					}
+				}
+
 				// might want to update the list to show the updated names too
+				DefaultNames.DeepCopy(ate.CurTextArchive);
+				PopulateList();
 			}
 		}
 
