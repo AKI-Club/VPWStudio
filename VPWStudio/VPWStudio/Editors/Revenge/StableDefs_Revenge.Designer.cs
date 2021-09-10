@@ -45,10 +45,14 @@
 			this.buttonMoveDown = new System.Windows.Forms.Button();
 			this.buttonSwitchGroup = new System.Windows.Forms.Button();
 			this.buttonSwapWres = new System.Windows.Forms.Button();
+			this.gbWrestlers = new System.Windows.Forms.GroupBox();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbHeaderGraphic)).BeginInit();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
+			this.gbWrestlers.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbStables
@@ -56,7 +60,7 @@
 			this.lbStables.FormattingEnabled = true;
 			this.lbStables.Location = new System.Drawing.Point(6, 19);
 			this.lbStables.Name = "lbStables";
-			this.lbStables.Size = new System.Drawing.Size(108, 225);
+			this.lbStables.Size = new System.Drawing.Size(108, 251);
 			this.lbStables.TabIndex = 0;
 			this.lbStables.SelectedIndexChanged += new System.EventHandler(this.lbStables_SelectedIndexChanged);
 			// 
@@ -77,16 +81,16 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 80);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(223, 80);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// tbHeaderGraphic
 			// 
 			this.tbHeaderGraphic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbHeaderGraphic.Location = new System.Drawing.Point(113, 56);
+			this.tbHeaderGraphic.Location = new System.Drawing.Point(125, 56);
 			this.tbHeaderGraphic.Name = "tbHeaderGraphic";
 			this.tbHeaderGraphic.ReadOnly = true;
-			this.tbHeaderGraphic.Size = new System.Drawing.Size(85, 20);
+			this.tbHeaderGraphic.Size = new System.Drawing.Size(95, 20);
 			this.tbHeaderGraphic.TabIndex = 5;
 			// 
 			// labelHeader
@@ -95,7 +99,7 @@
 			this.labelHeader.AutoSize = true;
 			this.labelHeader.Location = new System.Drawing.Point(3, 59);
 			this.labelHeader.Name = "labelHeader";
-			this.labelHeader.Size = new System.Drawing.Size(104, 13);
+			this.labelHeader.Size = new System.Drawing.Size(116, 13);
 			this.labelHeader.TabIndex = 2;
 			this.labelHeader.Text = "Header Graphic";
 			// 
@@ -105,7 +109,7 @@
 			this.labelWresDefPointer.AutoSize = true;
 			this.labelWresDefPointer.Location = new System.Drawing.Point(3, 6);
 			this.labelWresDefPointer.Name = "labelWresDefPointer";
-			this.labelWresDefPointer.Size = new System.Drawing.Size(104, 13);
+			this.labelWresDefPointer.Size = new System.Drawing.Size(116, 13);
 			this.labelWresDefPointer.TabIndex = 0;
 			this.labelWresDefPointer.Text = "Wrestler Definitions";
 			// 
@@ -115,32 +119,32 @@
 			this.labelNumWrestlers.AutoSize = true;
 			this.labelNumWrestlers.Location = new System.Drawing.Point(3, 32);
 			this.labelNumWrestlers.Name = "labelNumWrestlers";
-			this.labelNumWrestlers.Size = new System.Drawing.Size(104, 13);
+			this.labelNumWrestlers.Size = new System.Drawing.Size(116, 13);
 			this.labelNumWrestlers.TabIndex = 1;
 			this.labelNumWrestlers.Text = "Wrestler Count";
 			// 
 			// tbWrestlerDefPointer
 			// 
 			this.tbWrestlerDefPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerDefPointer.Location = new System.Drawing.Point(113, 3);
+			this.tbWrestlerDefPointer.Location = new System.Drawing.Point(125, 3);
 			this.tbWrestlerDefPointer.Name = "tbWrestlerDefPointer";
 			this.tbWrestlerDefPointer.ReadOnly = true;
-			this.tbWrestlerDefPointer.Size = new System.Drawing.Size(85, 20);
+			this.tbWrestlerDefPointer.Size = new System.Drawing.Size(95, 20);
 			this.tbWrestlerDefPointer.TabIndex = 3;
 			// 
 			// tbNumWrestlers
 			// 
 			this.tbNumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbNumWrestlers.Location = new System.Drawing.Point(113, 29);
+			this.tbNumWrestlers.Location = new System.Drawing.Point(125, 29);
 			this.tbNumWrestlers.Name = "tbNumWrestlers";
 			this.tbNumWrestlers.ReadOnly = true;
-			this.tbNumWrestlers.Size = new System.Drawing.Size(85, 20);
+			this.tbNumWrestlers.Size = new System.Drawing.Size(95, 20);
 			this.tbNumWrestlers.TabIndex = 4;
 			// 
 			// pbHeaderGraphic
 			// 
 			this.pbHeaderGraphic.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.pbHeaderGraphic.Location = new System.Drawing.Point(36, 3);
+			this.pbHeaderGraphic.Location = new System.Drawing.Point(47, 3);
 			this.pbHeaderGraphic.MaximumSize = new System.Drawing.Size(128, 16);
 			this.pbHeaderGraphic.Name = "pbHeaderGraphic";
 			this.pbHeaderGraphic.Size = new System.Drawing.Size(128, 16);
@@ -152,7 +156,7 @@
 			this.gbStables.Controls.Add(this.lbStables);
 			this.gbStables.Location = new System.Drawing.Point(12, 12);
 			this.gbStables.Name = "gbStables";
-			this.gbStables.Size = new System.Drawing.Size(120, 253);
+			this.gbStables.Size = new System.Drawing.Size(120, 280);
 			this.gbStables.TabIndex = 3;
 			this.gbStables.TabStop = false;
 			this.gbStables.Text = "Stables";
@@ -166,20 +170,20 @@
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.93939F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(201, 22);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(223, 22);
 			this.tableLayoutPanel3.TabIndex = 6;
 			// 
 			// lbWresPointers
 			// 
 			this.lbWresPointers.FormattingEnabled = true;
-			this.lbWresPointers.Location = new System.Drawing.Point(138, 126);
+			this.lbWresPointers.Location = new System.Drawing.Point(6, 16);
 			this.lbWresPointers.Name = "lbWresPointers";
-			this.lbWresPointers.Size = new System.Drawing.Size(106, 134);
+			this.lbWresPointers.Size = new System.Drawing.Size(116, 134);
 			this.lbWresPointers.TabIndex = 7;
 			// 
 			// buttonViewWrestler
 			// 
-			this.buttonViewWrestler.Location = new System.Drawing.Point(250, 126);
+			this.buttonViewWrestler.Location = new System.Drawing.Point(128, 16);
 			this.buttonViewWrestler.Name = "buttonViewWrestler";
 			this.buttonViewWrestler.Size = new System.Drawing.Size(89, 23);
 			this.buttonViewWrestler.TabIndex = 8;
@@ -189,7 +193,7 @@
 			// 
 			// buttonMoveUp
 			// 
-			this.buttonMoveUp.Location = new System.Drawing.Point(250, 155);
+			this.buttonMoveUp.Location = new System.Drawing.Point(128, 45);
 			this.buttonMoveUp.Name = "buttonMoveUp";
 			this.buttonMoveUp.Size = new System.Drawing.Size(89, 23);
 			this.buttonMoveUp.TabIndex = 10;
@@ -199,7 +203,7 @@
 			// 
 			// buttonMoveDown
 			// 
-			this.buttonMoveDown.Location = new System.Drawing.Point(250, 184);
+			this.buttonMoveDown.Location = new System.Drawing.Point(128, 74);
 			this.buttonMoveDown.Name = "buttonMoveDown";
 			this.buttonMoveDown.Size = new System.Drawing.Size(89, 23);
 			this.buttonMoveDown.TabIndex = 11;
@@ -209,7 +213,7 @@
 			// 
 			// buttonSwitchGroup
 			// 
-			this.buttonSwitchGroup.Location = new System.Drawing.Point(250, 213);
+			this.buttonSwitchGroup.Location = new System.Drawing.Point(128, 103);
 			this.buttonSwitchGroup.Name = "buttonSwitchGroup";
 			this.buttonSwitchGroup.Size = new System.Drawing.Size(89, 23);
 			this.buttonSwitchGroup.TabIndex = 12;
@@ -219,7 +223,7 @@
 			// 
 			// buttonSwapWres
 			// 
-			this.buttonSwapWres.Location = new System.Drawing.Point(250, 242);
+			this.buttonSwapWres.Location = new System.Drawing.Point(128, 132);
 			this.buttonSwapWres.Name = "buttonSwapWres";
 			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
 			this.buttonSwapWres.TabIndex = 17;
@@ -227,17 +231,49 @@
 			this.buttonSwapWres.UseVisualStyleBackColor = true;
 			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
 			// 
+			// gbWrestlers
+			// 
+			this.gbWrestlers.Controls.Add(this.lbWresPointers);
+			this.gbWrestlers.Controls.Add(this.buttonSwapWres);
+			this.gbWrestlers.Controls.Add(this.buttonSwitchGroup);
+			this.gbWrestlers.Controls.Add(this.buttonViewWrestler);
+			this.gbWrestlers.Controls.Add(this.buttonMoveUp);
+			this.gbWrestlers.Controls.Add(this.buttonMoveDown);
+			this.gbWrestlers.Location = new System.Drawing.Point(138, 126);
+			this.gbWrestlers.Name = "gbWrestlers";
+			this.gbWrestlers.Size = new System.Drawing.Size(223, 166);
+			this.gbWrestlers.TabIndex = 18;
+			this.gbWrestlers.TabStop = false;
+			this.gbWrestlers.Text = "Wrestlers";
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(205, 298);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 19;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(286, 298);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 20;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
 			// StableDefs_Revenge
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(351, 277);
-			this.Controls.Add(this.buttonSwapWres);
-			this.Controls.Add(this.buttonSwitchGroup);
-			this.Controls.Add(this.buttonMoveDown);
-			this.Controls.Add(this.buttonMoveUp);
-			this.Controls.Add(this.buttonViewWrestler);
-			this.Controls.Add(this.lbWresPointers);
+			this.ClientSize = new System.Drawing.Size(373, 333);
+			this.Controls.Add(this.buttonCancel);
+			this.Controls.Add(this.buttonOK);
+			this.Controls.Add(this.gbWrestlers);
 			this.Controls.Add(this.tableLayoutPanel3);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.gbStables);
@@ -251,6 +287,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pbHeaderGraphic)).EndInit();
 			this.gbStables.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
+			this.gbWrestlers.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -274,5 +311,8 @@
 		private System.Windows.Forms.Button buttonMoveDown;
 		private System.Windows.Forms.Button buttonSwitchGroup;
 		private System.Windows.Forms.Button buttonSwapWres;
+		private System.Windows.Forms.GroupBox gbWrestlers;
+		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.Button buttonCancel;
 	}
 }
