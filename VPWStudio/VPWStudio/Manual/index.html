@@ -32,7 +32,8 @@
 <li><a href="#Arenas">Arenas</a></li>
 <li><a href="#Championships">Championships</a></li>
 <li><a href="#Costumes">Costumes</a></li>
-<li><a href="#FileTable">File Table</a></li>
+<li><a href="#FileTable">File Table</a><ol>
+<li><a href="#FileTableEntryInfo">File Table Entry Information</a></li>
 <li><a href="#Editors">Viewers and Editors</a>
 	<ol>
 	<li><a href="#HexViewer">Hex Viewer</a></li>
@@ -47,6 +48,7 @@
 	<!-- MenuItems_NoGroup -->
 	<!-- MenuItems_Shop -->
 	</ol>
+</li></ol>
 </li>
 <li><a href="#Menus">Menus</a></li>
 <li><a href="#Moves">Moves</a></li>
@@ -564,6 +566,9 @@ sub-palettes. In this case, you will need to find the location of the default
 custom colors for the costume item. This is somewhere in ROM, and is in a different
 location for each game.</p>
 
+<p>Mask editing, while using a similar system, is exclusive to <em>Virtual Pro-Wrestling
+2</em>, and is explained in <a href="./vpw2.html">its game-specific documentation</a>.</p>
+
 <h3><a name="SkinColorChanging">Skin Color Changing</a></h3>
 <p>(todo: revenge and later)</p>
 
@@ -592,9 +597,6 @@ example, accessories can be positioned over or under the facial and fringe
 hair layers. Accessories can also wrap around the back of the head, requiring
 an additional texture. The base vertical locations of facial hair can be set both
 per-face and per-facial hair item.</p>
-
-<p>Mask editing is exclusive to <em>Virtual Pro-Wrestling 2</em>, and is explained in
-<a href="./vpw2.html">its game-specific documentation</a>.</p>
 
 <h3><a name="TexTransparency"><code>AkiTexture</code> Transparency Fix</a></h3>
 <p>Since the .NET Framework has issues with transparent PNG files (namely, assuming
@@ -745,6 +747,13 @@ entry without decompressing it. (Only available if "LZSS" is set to "True" for t
 <em>Most people will not need to use this.</em>)</li>
 </ul>
 
+<p>If you right click on an entry that is set as <code>MenuBackground</code>, an
+additional option, "MenuBackground Replacement..." will appear. This option converts
+a 320x240 16-color PNG file into the requisite menu background files, and set the
+relevant entries in the File Table. The output files are put in the ProjectFiles
+directory, in a sub-directory called "Backgrounds". Each converted <code>MenuBackground</code>
+creates a sub-directory based on the original PNG's filename.</p>
+
 <h3>Navigation Menu</h3>
 <p>The Navigation menu contains various functions to help you find entries in the File Table.</p>
 
@@ -778,7 +787,7 @@ The "Export CSV" option is only of use for people dealing with disassemblies,
 and presumes that freem (or someone else) has written the corresponding tool that
 uses said format (which hasn't happened yet, as of this writing).</p>
 
-<h3><a name="FileTableEntryInfo">File Table Entry Information</a></h3>
+<h2><a name="FileTableEntryInfo">File Table Entry Information</a></h2>
 <p>There are two versions of the File Table Entry Information dialog, depending
 on how many entries are selected.</p>
 
@@ -828,7 +837,6 @@ Each file table entry is given its own row in a grid, with the following columns
 <p>Since various types of files can be selected, the contents of the "Extra" tab
 from the single entry dialog do not appear here.</p>
 
-<hr />
 <h2><a name="Editors">Viewers and Editors</a></h2>
 <p>When double left clicking on a single entry in the <a href="#FileTable">File
 Table editor</a>, VPW Studio will attempt to show an editor or previewing tool
