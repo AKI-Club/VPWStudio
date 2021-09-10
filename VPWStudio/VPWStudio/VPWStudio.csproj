@@ -107,6 +107,18 @@
     <Compile Include="Dialogs\SelectTextureDialog.Designer.cs">
       <DependentUpon>SelectTextureDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwapWrestler_Revenge.designer.cs">
+      <DependentUpon>SwapWrestler_Revenge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\StableDef\SwitchGroup_Revenge.designer.cs">
+      <DependentUpon>SwitchGroup_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\GameIntroEditor_Later.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -558,6 +570,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SelectTextureDialog.resx">
       <DependentUpon>SelectTextureDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwapWrestler_Revenge.resx">
+      <DependentUpon>SwapWrestler_Revenge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\StableDef\SwitchGroup_Revenge.resx">
+      <DependentUpon>SwitchGroup_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\TexPreviewDialog.resx">
       <DependentUpon>TexPreviewDialog.cs</DependentUpon>
