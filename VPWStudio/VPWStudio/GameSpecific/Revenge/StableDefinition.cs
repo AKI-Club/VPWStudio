@@ -9,6 +9,11 @@ namespace VPWStudio.GameSpecific.Revenge
 	/// </summary>
 	public class StableDefinition
 	{
+		/// <summary>
+		/// Maximum number of wrestlers in a stable.
+		/// </summary>
+		private const int MAX_WRESTLERS_IN_STABLE = 9;
+
 		#region Class Members
 		/// <summary>
 		/// Pointer to Wrestler Definitions for this Stable.
@@ -189,6 +194,34 @@ namespace VPWStudio.GameSpecific.Revenge
 				}
 				WrestlerPointers[i] = BitConverter.ToUInt32(ptr, 0);
 			}
+		}
+
+		/// <summary>
+		/// Determine if this group has the maximum amount of wrestlers.
+		/// </summary>
+		/// <returns>True if all slots are used in this group, false otherwise.</returns>
+		public bool IsGroupFull()
+		{
+			return NumWrestlers == MAX_WRESTLERS_IN_STABLE;
+		}
+
+		/// <summary>
+		/// Gets the index of the first empty slot in this stable.
+		/// </summary>
+		/// <returns>Positive integer if found empty, -1 if group is full.</returns>
+		public int GetFirstEmptySlot()
+		{
+			int slot = -1;
+			for (int i = 0; i < WrestlerPointers.Length; i++)
+			{
+				if (WrestlerPointers[i] == 0)
+				{
+					slot = i;
+					break;
+				}
+			}
+
+			return slot;
 		}
 		#endregion
 	}
