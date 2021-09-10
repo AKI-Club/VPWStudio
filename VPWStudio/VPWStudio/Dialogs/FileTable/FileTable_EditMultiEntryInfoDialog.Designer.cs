@@ -104,10 +104,6 @@
 			// 
 			this.Encoding.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Encoding.HeaderText = "Encoding";
-			this.Encoding.Items.AddRange(new object[] {
-            "Pick Best",
-            "Force Raw",
-            "Force LZSS"});
 			this.Encoding.Name = "Encoding";
 			this.Encoding.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.Encoding.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
