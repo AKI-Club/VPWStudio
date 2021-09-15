@@ -39,6 +39,7 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 			SetupSetTypeMenu();
+			tssLabelSelectedItems.Text = "0 items selected"; // xxx: hardcoded english
 
 			if (Program.CurrentProject != null)
 			{
@@ -1301,5 +1302,12 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		private void lvFileList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			// xxx: hardcoded english and many assumptions
+			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
+			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
+		}
 	}
 }
