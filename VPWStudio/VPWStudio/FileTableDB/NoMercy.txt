@@ -2069,7 +2069,7 @@
 081F=Ci4Palette;[Arena] Raw - Truss Below Tron
 0820=Ci4Texture;[Arena] Raw - Truss Below Tron|p:081F
 0821=Ci4Palette;[Arena] Raw - Stage Floor
-0822=Ci4Texture;[Arena] Raw - Stage Floor|p:0811
+0822=Ci4Texture;[Arena] Raw - Stage Floor|p:0821
 0823=Ci4Palette;[Arena] Raw - WWF Logo (Entrance)
 0824=Ci4Texture;[Arena] Raw - WWF Logo (Entrance)|p:0823
 0825=Ci4Palette;[Arena] Raw - Curtain Behind Lower Truss
