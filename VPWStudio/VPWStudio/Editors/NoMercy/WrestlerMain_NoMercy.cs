@@ -20,6 +20,22 @@ namespace VPWStudio.Editors.NoMercy
 		private const UInt16 NOMERCY_DEFAULT_COSTUME_FILE = 1;
 		private const UInt16 NOMERCY_DEFAULT_NAMES_FILE = 2;
 
+		private Dictionary<int, string> CustomHeightValues = new Dictionary<int, string>()
+		{
+			{ 0x24, "??"  },
+			{ 0x25, "???" },
+			{ 0x26, "!!!" },
+			{ 0x27, "6'6\" (Crash Holly)" }
+		};
+
+		private Dictionary<int, string> CustomWeightValues = new Dictionary<int, string>()
+		{
+			{ 0x01F4, "?? (Light Heavy)" },
+			{ 0x01F5, "??? (Heavy)" },
+			{ 0x01F6, "!!! (Super Heavy)" },
+			{ 0x01F7, "400 lbs. (Crash Holly)" },
+		};
+
 		public WrestlerMain_NoMercy()
 		{
 			InitializeComponent();
@@ -146,9 +162,30 @@ namespace VPWStudio.Editors.NoMercy
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbEntranceVideo.SelectedIndex = wdef.EntranceVideo;
-			tbHeight.Text = String.Format("{0:X2}", wdef.Height);
+
+			if (CustomHeightValues.ContainsKey(wdef.Height))
+			{
+				tbHeight.Text = String.Format("{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
+			}
+			else
+			{
+				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
+				int inches = wdef.Height % 12;
+				int feet = (wdef.Height / 12) + 5;
+				tbHeight.Text = String.Format("{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
+			}
+
 			tbUnknown.Text = String.Format("{0:X2}", wdef.Unknown);
-			tbWeight.Text = String.Format("{0:X4}", wdef.Weight);
+
+			if (CustomWeightValues.ContainsKey(wdef.Weight))
+			{
+				tbWeight.Text = String.Format("{0:X4} ({1})", wdef.Weight, CustomWeightValues[wdef.Weight]);
+			}
+			else
+			{
+				tbWeight.Text = String.Format("{0:X4} ({1} lbs.)", wdef.Weight, wdef.Weight + 100);
+			}
+
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
 			tbAppearanceIndex.Text = String.Format("{0:X4}", wdef.AppearanceIndex);
