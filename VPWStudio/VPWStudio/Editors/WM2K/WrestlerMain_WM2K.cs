@@ -15,6 +15,13 @@ namespace VPWStudio.Editors.WM2K
 	{
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 
+		private Dictionary<int, string> CustomHeightValues = new Dictionary<int, string>()
+		{
+			{ 0x24, "??? 1 (Short)"  },
+			{ 0x25, "??? 2 (Medium)" },
+			{ 0x26, "??? 3 (Tall)" }
+		};
+
 		public WrestlerMain_WM2K()
 		{
 			InitializeComponent();
@@ -98,27 +105,16 @@ namespace VPWStudio.Editors.WM2K
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
 
-			if (wdef.Height > 0x23)
+			if (CustomHeightValues.ContainsKey(wdef.Height))
 			{
-				string hDesc = String.Empty;
-				switch (wdef.Height)
-				{
-					case 0x24:
-						hDesc = "1 (Short)";
-						break;
-					case 0x25:
-						hDesc = "2 (Medium)";
-						break;
-					case 0x26:
-						hDesc = "3 (Tall)";
-						break;
-				}
-				tbHeight.Text = String.Format("0x{0:X2} ('???' {1})", wdef.Height, hDesc);
+				tbHeight.Text = String.Format("0x{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
 			}
 			else
 			{
-				// todo: add actual height value
-				tbHeight.Text = String.Format("0x{0:X2}", wdef.Height);
+				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
+				int inches = wdef.Height % 12;
+				int feet = (wdef.Height / 12) + 5;
+				tbHeight.Text = String.Format("0x{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
 			}
 
 			if (wdef.Weight + 100 > 699)
@@ -131,7 +127,7 @@ namespace VPWStudio.Editors.WM2K
 			}
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbEntranceVideo.SelectedIndex = wdef.EntranceVideo;
-			tbUnknown.Text = String.Format("{0:X4}", wdef.Unknown);
+			tbUnknown.Text = String.Format("0x{0:X4}", wdef.Unknown);
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
 			tbCosPointer1.Text = String.Format("{0:X8}", wdef.CostumePointers[0]);
