@@ -58,13 +58,25 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.tlpCostumePointer1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCosPointer1 = new System.Windows.Forms.TextBox();
+			this.buttonCostume1 = new System.Windows.Forms.Button();
+			this.tlpCostume2 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCosPointer2 = new System.Windows.Forms.TextBox();
+			this.buttonCostume2 = new System.Windows.Forms.Button();
+			this.tlpCostume3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCosPointer3 = new System.Windows.Forms.TextBox();
+			this.buttonCostume3 = new System.Windows.Forms.Button();
+			this.tlpCostume4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCosPointer4 = new System.Windows.Forms.TextBox();
+			this.buttonCostume4 = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
+			this.tlpCostumePointer1.SuspendLayout();
+			this.tlpCostume2.SuspendLayout();
+			this.tlpCostume3.SuspendLayout();
+			this.tlpCostume4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -86,6 +98,10 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel1.Controls.Add(this.tlpCostume4, 1, 13);
+			this.tableLayoutPanel1.Controls.Add(this.tlpCostume3, 1, 12);
+			this.tableLayoutPanel1.Controls.Add(this.tlpCostume2, 1, 11);
+			this.tableLayoutPanel1.Controls.Add(this.tlpCostumePointer1, 1, 10);
 			this.tableLayoutPanel1.Controls.Add(this.tbWrestlerName, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tbUnknown, 1, 9);
 			this.tableLayoutPanel1.Controls.Add(this.labelUnknown, 0, 9);
@@ -110,10 +126,6 @@
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 11);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 12);
 			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 13);
-			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer1, 1, 10);
-			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer2, 1, 11);
-			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer3, 1, 12);
-			this.tableLayoutPanel1.Controls.Add(this.tbCosPointer4, 1, 13);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(146, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 14;
@@ -510,41 +522,145 @@
 			this.label4.TabIndex = 33;
 			this.label4.Text = "Costume Pointer 4";
 			// 
+			// tlpCostumePointer1
+			// 
+			this.tlpCostumePointer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCostumePointer1.ColumnCount = 2;
+			this.tlpCostumePointer1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpCostumePointer1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpCostumePointer1.Controls.Add(this.tbCosPointer1, 0, 0);
+			this.tlpCostumePointer1.Controls.Add(this.buttonCostume1, 1, 0);
+			this.tlpCostumePointer1.Location = new System.Drawing.Point(106, 333);
+			this.tlpCostumePointer1.Name = "tlpCostumePointer1";
+			this.tlpCostumePointer1.RowCount = 1;
+			this.tlpCostumePointer1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCostumePointer1.Size = new System.Drawing.Size(237, 27);
+			this.tlpCostumePointer1.TabIndex = 2;
+			// 
 			// tbCosPointer1
 			// 
 			this.tbCosPointer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCosPointer1.Location = new System.Drawing.Point(106, 336);
+			this.tbCosPointer1.Location = new System.Drawing.Point(3, 3);
 			this.tbCosPointer1.Name = "tbCosPointer1";
 			this.tbCosPointer1.ReadOnly = true;
-			this.tbCosPointer1.Size = new System.Drawing.Size(237, 20);
-			this.tbCosPointer1.TabIndex = 34;
+			this.tbCosPointer1.Size = new System.Drawing.Size(159, 20);
+			this.tbCosPointer1.TabIndex = 35;
+			// 
+			// buttonCostume1
+			// 
+			this.buttonCostume1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCostume1.Location = new System.Drawing.Point(168, 3);
+			this.buttonCostume1.Name = "buttonCostume1";
+			this.buttonCostume1.Size = new System.Drawing.Size(66, 21);
+			this.buttonCostume1.TabIndex = 36;
+			this.buttonCostume1.Text = "View/Edit";
+			this.buttonCostume1.UseVisualStyleBackColor = true;
+			this.buttonCostume1.Click += new System.EventHandler(this.buttonCostume1_Click);
+			// 
+			// tlpCostume2
+			// 
+			this.tlpCostume2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCostume2.ColumnCount = 2;
+			this.tlpCostume2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpCostume2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpCostume2.Controls.Add(this.tbCosPointer2, 0, 0);
+			this.tlpCostume2.Controls.Add(this.buttonCostume2, 1, 0);
+			this.tlpCostume2.Location = new System.Drawing.Point(106, 366);
+			this.tlpCostume2.Name = "tlpCostume2";
+			this.tlpCostume2.RowCount = 1;
+			this.tlpCostume2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCostume2.Size = new System.Drawing.Size(237, 27);
+			this.tlpCostume2.TabIndex = 2;
 			// 
 			// tbCosPointer2
 			// 
 			this.tbCosPointer2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCosPointer2.Location = new System.Drawing.Point(106, 369);
+			this.tbCosPointer2.Location = new System.Drawing.Point(3, 3);
 			this.tbCosPointer2.Name = "tbCosPointer2";
 			this.tbCosPointer2.ReadOnly = true;
-			this.tbCosPointer2.Size = new System.Drawing.Size(237, 20);
-			this.tbCosPointer2.TabIndex = 35;
+			this.tbCosPointer2.Size = new System.Drawing.Size(159, 20);
+			this.tbCosPointer2.TabIndex = 36;
+			// 
+			// buttonCostume2
+			// 
+			this.buttonCostume2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCostume2.Location = new System.Drawing.Point(168, 3);
+			this.buttonCostume2.Name = "buttonCostume2";
+			this.buttonCostume2.Size = new System.Drawing.Size(66, 21);
+			this.buttonCostume2.TabIndex = 37;
+			this.buttonCostume2.Text = "View/Edit";
+			this.buttonCostume2.UseVisualStyleBackColor = true;
+			this.buttonCostume2.Click += new System.EventHandler(this.buttonCostume2_Click);
+			// 
+			// tlpCostume3
+			// 
+			this.tlpCostume3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCostume3.ColumnCount = 2;
+			this.tlpCostume3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpCostume3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpCostume3.Controls.Add(this.tbCosPointer3, 0, 0);
+			this.tlpCostume3.Controls.Add(this.buttonCostume3, 1, 0);
+			this.tlpCostume3.Location = new System.Drawing.Point(106, 399);
+			this.tlpCostume3.Name = "tlpCostume3";
+			this.tlpCostume3.RowCount = 1;
+			this.tlpCostume3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCostume3.Size = new System.Drawing.Size(237, 27);
+			this.tlpCostume3.TabIndex = 2;
 			// 
 			// tbCosPointer3
 			// 
 			this.tbCosPointer3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCosPointer3.Location = new System.Drawing.Point(106, 402);
+			this.tbCosPointer3.Location = new System.Drawing.Point(3, 3);
 			this.tbCosPointer3.Name = "tbCosPointer3";
 			this.tbCosPointer3.ReadOnly = true;
-			this.tbCosPointer3.Size = new System.Drawing.Size(237, 20);
-			this.tbCosPointer3.TabIndex = 36;
+			this.tbCosPointer3.Size = new System.Drawing.Size(159, 20);
+			this.tbCosPointer3.TabIndex = 37;
+			// 
+			// buttonCostume3
+			// 
+			this.buttonCostume3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCostume3.Location = new System.Drawing.Point(168, 3);
+			this.buttonCostume3.Name = "buttonCostume3";
+			this.buttonCostume3.Size = new System.Drawing.Size(66, 21);
+			this.buttonCostume3.TabIndex = 38;
+			this.buttonCostume3.Text = "View/Edit";
+			this.buttonCostume3.UseVisualStyleBackColor = true;
+			this.buttonCostume3.Click += new System.EventHandler(this.buttonCostume3_Click);
+			// 
+			// tlpCostume4
+			// 
+			this.tlpCostume4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCostume4.ColumnCount = 2;
+			this.tlpCostume4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpCostume4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tlpCostume4.Controls.Add(this.tbCosPointer4, 0, 0);
+			this.tlpCostume4.Controls.Add(this.buttonCostume4, 1, 0);
+			this.tlpCostume4.Location = new System.Drawing.Point(106, 432);
+			this.tlpCostume4.Name = "tlpCostume4";
+			this.tlpCostume4.RowCount = 1;
+			this.tlpCostume4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCostume4.Size = new System.Drawing.Size(237, 30);
+			this.tlpCostume4.TabIndex = 2;
 			// 
 			// tbCosPointer4
 			// 
 			this.tbCosPointer4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbCosPointer4.Location = new System.Drawing.Point(106, 437);
+			this.tbCosPointer4.Location = new System.Drawing.Point(3, 5);
 			this.tbCosPointer4.Name = "tbCosPointer4";
 			this.tbCosPointer4.ReadOnly = true;
-			this.tbCosPointer4.Size = new System.Drawing.Size(237, 20);
-			this.tbCosPointer4.TabIndex = 37;
+			this.tbCosPointer4.Size = new System.Drawing.Size(159, 20);
+			this.tbCosPointer4.TabIndex = 38;
+			// 
+			// buttonCostume4
+			// 
+			this.buttonCostume4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCostume4.Location = new System.Drawing.Point(168, 3);
+			this.buttonCostume4.Name = "buttonCostume4";
+			this.buttonCostume4.Size = new System.Drawing.Size(66, 23);
+			this.buttonCostume4.TabIndex = 39;
+			this.buttonCostume4.Text = "View/Edit";
+			this.buttonCostume4.UseVisualStyleBackColor = true;
+			this.buttonCostume4.Click += new System.EventHandler(this.buttonCostume4_Click);
 			// 
 			// WrestlerMain_WM2K
 			// 
@@ -564,6 +680,14 @@
 			this.tlpParams.PerformLayout();
 			this.tlpMoveset.ResumeLayout(false);
 			this.tlpMoveset.PerformLayout();
+			this.tlpCostumePointer1.ResumeLayout(false);
+			this.tlpCostumePointer1.PerformLayout();
+			this.tlpCostume2.ResumeLayout(false);
+			this.tlpCostume2.PerformLayout();
+			this.tlpCostume3.ResumeLayout(false);
+			this.tlpCostume3.PerformLayout();
+			this.tlpCostume4.ResumeLayout(false);
+			this.tlpCostume4.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -600,9 +724,17 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TableLayoutPanel tlpCostumePointer1;
 		private System.Windows.Forms.TextBox tbCosPointer1;
+		private System.Windows.Forms.Button buttonCostume1;
+		private System.Windows.Forms.TableLayoutPanel tlpCostume2;
 		private System.Windows.Forms.TextBox tbCosPointer2;
+		private System.Windows.Forms.Button buttonCostume2;
+		private System.Windows.Forms.TableLayoutPanel tlpCostume3;
 		private System.Windows.Forms.TextBox tbCosPointer3;
+		private System.Windows.Forms.Button buttonCostume3;
+		private System.Windows.Forms.TableLayoutPanel tlpCostume4;
 		private System.Windows.Forms.TextBox tbCosPointer4;
+		private System.Windows.Forms.Button buttonCostume4;
 	}
 }
