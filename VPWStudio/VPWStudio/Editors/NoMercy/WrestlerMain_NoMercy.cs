@@ -165,17 +165,17 @@ namespace VPWStudio.Editors.NoMercy
 
 			if (CustomHeightValues.ContainsKey(wdef.Height))
 			{
-				tbHeight.Text = String.Format("{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
+				tbHeight.Text = String.Format("0x{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
 			}
 			else
 			{
 				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
 				int inches = wdef.Height % 12;
 				int feet = (wdef.Height / 12) + 5;
-				tbHeight.Text = String.Format("{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
+				tbHeight.Text = String.Format("0x{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
 			}
 
-			tbUnknown.Text = String.Format("{0:X2}", wdef.Unknown);
+			tbUnknown.Text = String.Format("0x{0:X2}", wdef.Unknown);
 
 			if (CustomWeightValues.ContainsKey(wdef.Weight))
 			{
