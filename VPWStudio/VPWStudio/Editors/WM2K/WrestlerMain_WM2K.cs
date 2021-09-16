@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,6 +169,52 @@ namespace VPWStudio.Editors.WM2K
 			}
 
 			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
+		}
+
+		private void LoadCostumeEditor(int buttonNum)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			string pointerText = String.Empty;
+			switch (buttonNum)
+			{
+				case 1: pointerText = tbCosPointer1.Text; break;
+				case 2: pointerText = tbCosPointer2.Text; break;
+				case 3: pointerText = tbCosPointer3.Text; break;
+				case 4: pointerText = tbCosPointer4.Text; break;
+				default:
+					Program.ErrorMessageBox(String.Format("Hang on a minute, how did you pass button number {0}? There's no code to handle that.",buttonNum));
+					return;
+			}
+			uint pointerValue = uint.Parse(pointerText, NumberStyles.HexNumber);
+			DefaultCostume_WM2K dcEditor = new DefaultCostume_WM2K(pointerValue);
+			if (dcEditor.ShowDialog() == DialogResult.OK)
+			{
+				Program.ErrorMessageBox("Nothing gets written back yet, sorry.");
+			}
+		}
+
+		private void buttonCostume1_Click(object sender, EventArgs e)
+		{
+			LoadCostumeEditor(1);
+		}
+
+		private void buttonCostume2_Click(object sender, EventArgs e)
+		{
+			LoadCostumeEditor(2);
+		}
+
+		private void buttonCostume3_Click(object sender, EventArgs e)
+		{
+			LoadCostumeEditor(3);
+		}
+
+		private void buttonCostume4_Click(object sender, EventArgs e)
+		{
+			LoadCostumeEditor(4);
 		}
 	}
 }
