@@ -15948,7 +15948,7 @@
 4A4C=Ci4Texture;[SD Mall] Purple Message Box|p:4A4B
 4A4D=Ci4Palette;[SD Mall] Red Message Box
 4A4E=Ci4Texture;[SD Mall] Red Message Box|p:4A4D
-4A4F=Ci4Palette;Smackdown Mall Large font
+4A4F=Ci4Palette;Smackdown Mall Large font (256x264px)
 4A50=Ci4Texture;Smackdown Mall Large font|p:4A4F
 4A51=Ci4Palette;Smackdown Mall Small font
 4A52=Ci4Texture;Smackdown Mall Small font|p:4A51
