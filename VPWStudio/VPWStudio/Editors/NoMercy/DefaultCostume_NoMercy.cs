@@ -28,7 +28,7 @@ namespace VPWStudio.Editors.NoMercy
 			InitializeComponent();
 			Text = String.Format("Default Costume Data - Entry {0}", _costumeIndex);
 
-			if (_path != null)
+			if (!String.IsNullOrEmpty(_path))
 			{
 				LoadData_File(_path, _costumeIndex);
 			}
