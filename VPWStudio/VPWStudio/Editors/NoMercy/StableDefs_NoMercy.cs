@@ -28,42 +28,12 @@ namespace VPWStudio.Editors.NoMercy
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
 			){
 				// load stable definitions from external file
-				StableDefFile sdf = new StableDefFile(VPWGames.NoMercy);
-				FileStream fs = new FileStream(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
-				StreamReader sr = new StreamReader(fs);
-				sdf.ReadFile(sr);
-				sr.Close();
-				StableDefs = sdf.StableDefs_NoMercy;
+				LoadData_File(Program.CurrentProject.Settings.StableDefinitionFilePath);
 			}
 			else
 			{
 				// load stable definitions from No Mercy ROM
-				MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-				BinaryReader br = new BinaryReader(ms);
-
-				bool hasLocation = false;
-				if (Program.CurLocationFile != null)
-				{
-					LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
-					if (sdEntry != null)
-					{
-						romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
-						hasLocation = true;
-					}
-				}
-				if (!hasLocation)
-				{
-					// fallback to hardcoded offset
-					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-					romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
-				}
-
-				// xxx: default number of stable defs
-				for (int i = 0; i < 12; i++)
-				{
-					StableDefinition sdef = new StableDefinition(romReader);
-					StableDefs.Add(i, sdef);
-				}
+				LoadData_ROM(romReader);
 			}
 
 			// default names
@@ -81,6 +51,46 @@ namespace VPWStudio.Editors.NoMercy
 			romReader.Close();
 
 			PopulateList();
+		}
+
+		private void LoadData_File(string _path)
+		{
+			StableDefFile sdf = new StableDefFile(VPWGames.NoMercy);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			sdf.ReadFile(sr);
+			sr.Close();
+			StableDefs = sdf.StableDefs_NoMercy;
+		}
+
+		private void LoadData_ROM(BinaryReader romReader)
+		{
+			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(ms);
+
+			bool hasLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+				if (sdEntry != null)
+				{
+					romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+					hasLocation = true;
+				}
+			}
+			if (!hasLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
+			}
+
+			// xxx: default number of stable defs
+			for (int i = 0; i < 12; i++)
+			{
+				StableDefinition sdef = new StableDefinition(romReader);
+				StableDefs.Add(i, sdef);
+			}
 		}
 
 		/// <summary>

@@ -29,39 +29,12 @@ namespace VPWStudio.Editors.VPW2
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
 			){
 				// load stable definitions from external file
-				StableDefFile sdf = new StableDefFile(VPWGames.VPW2);
-				FileStream fs = new FileStream(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath), FileMode.Open);
-				StreamReader sr = new StreamReader(fs);
-				sdf.ReadFile(sr);
-				sr.Close();
-				StableDefs = sdf.StableDefs_VPW2;
+				LoadData_File(Program.CurrentProject.Settings.StableDefinitionFilePath);
 			}
 			else
 			{
 				// load stable definitions from VPW2 ROM
-				bool hasLocation = false;
-				if (Program.CurLocationFile != null)
-				{
-					LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
-					if (sdEntry != null)
-					{
-						romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
-						hasLocation = true;
-					}
-				}
-				if (!hasLocation)
-				{
-					// fallback to hardcoded offset
-					Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
-					romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
-				}
-
-				// xxx: default number of stable defs
-				for (int i = 0; i < 17; i++)
-				{
-					StableDefinition sdef = new StableDefinition(romReader);
-					StableDefs.Add(i, sdef);
-				}
+				LoadData_ROM(romReader);
 			}
 
 			// default names
@@ -78,6 +51,43 @@ namespace VPWStudio.Editors.VPW2
 			}
 			romReader.Close();
 			PopulateList();
+		}
+
+		private void LoadData_File(string _path)
+		{
+			StableDefFile sdf = new StableDefFile(VPWGames.VPW2);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			sdf.ReadFile(sr);
+			sr.Close();
+			StableDefs = sdf.StableDefs_VPW2;
+		}
+
+		private void LoadData_ROM(BinaryReader romReader)
+		{
+			bool hasLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StableDefs"]);
+				if (sdEntry != null)
+				{
+					romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+					hasLocation = true;
+				}
+			}
+			if (!hasLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Stable Definition location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
+			}
+
+			// xxx: default number of stable defs
+			for (int i = 0; i < 17; i++)
+			{
+				StableDefinition sdef = new StableDefinition(romReader);
+				StableDefs.Add(i, sdef);
+			}
 		}
 
 		/// <summary>
