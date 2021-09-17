@@ -30,18 +30,18 @@ namespace VPWStudio.Editors.VPW64
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
 			this.lbStables = new System.Windows.Forms.ListBox();
-			this.lbWresPointers = new System.Windows.Forms.ListBox();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbWrestlerCount = new System.Windows.Forms.TextBox();
 			this.tbChampTextPointer = new System.Windows.Forms.TextBox();
 			this.tbChampionshipCount = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.lbWresPointers = new System.Windows.Forms.ListBox();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -56,6 +56,15 @@ namespace VPWStudio.Editors.VPW64
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "&Stables";
+			// 
+			// lbStables
+			// 
+			this.lbStables.FormattingEnabled = true;
+			this.lbStables.Location = new System.Drawing.Point(6, 19);
+			this.lbStables.Name = "lbStables";
+			this.lbStables.Size = new System.Drawing.Size(115, 238);
+			this.lbStables.TabIndex = 0;
+			this.lbStables.SelectedIndexChanged += new System.EventHandler(this.lbStables_SelectedIndexChanged);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -76,53 +85,6 @@ namespace VPWStudio.Editors.VPW64
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(247, 100);
 			this.tableLayoutPanel1.TabIndex = 1;
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.lbWresPointers);
-			this.groupBox2.Location = new System.Drawing.Point(150, 127);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(242, 153);
-			this.groupBox2.TabIndex = 2;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "&Wrestlers";
-			// 
-			// buttonOK
-			// 
-			this.buttonOK.Location = new System.Drawing.Point(236, 286);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 3;
-			this.buttonOK.Text = "&OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(317, 286);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 4;
-			this.buttonCancel.Text = "&Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-			// 
-			// lbStables
-			// 
-			this.lbStables.FormattingEnabled = true;
-			this.lbStables.Location = new System.Drawing.Point(6, 19);
-			this.lbStables.Name = "lbStables";
-			this.lbStables.Size = new System.Drawing.Size(115, 238);
-			this.lbStables.TabIndex = 0;
-			this.lbStables.SelectedIndexChanged += new System.EventHandler(this.lbStables_SelectedIndexChanged);
-			// 
-			// lbWresPointers
-			// 
-			this.lbWresPointers.FormattingEnabled = true;
-			this.lbWresPointers.Location = new System.Drawing.Point(6, 19);
-			this.lbWresPointers.Name = "lbWresPointers";
-			this.lbWresPointers.Size = new System.Drawing.Size(105, 121);
-			this.lbWresPointers.TabIndex = 0;
 			// 
 			// tbWrestlerCount
 			// 
@@ -180,6 +142,44 @@ namespace VPWStudio.Editors.VPW64
 			this.label3.Size = new System.Drawing.Size(117, 13);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Championship Count";
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.lbWresPointers);
+			this.groupBox2.Location = new System.Drawing.Point(150, 127);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(242, 153);
+			this.groupBox2.TabIndex = 2;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "&Wrestlers";
+			// 
+			// lbWresPointers
+			// 
+			this.lbWresPointers.FormattingEnabled = true;
+			this.lbWresPointers.Location = new System.Drawing.Point(6, 19);
+			this.lbWresPointers.Name = "lbWresPointers";
+			this.lbWresPointers.Size = new System.Drawing.Size(105, 121);
+			this.lbWresPointers.TabIndex = 0;
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(236, 286);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 3;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(317, 286);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 4;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// StableDefs_VPW64
 			// 
