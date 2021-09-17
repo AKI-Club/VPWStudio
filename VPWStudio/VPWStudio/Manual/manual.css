@@ -69,6 +69,10 @@ kbd{
 	white-space: nowrap;
 }
 
+.center{
+	text-align:center;
+}
+
 .notsupported{
 	background-color: #f88;
 }
