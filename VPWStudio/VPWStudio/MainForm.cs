@@ -79,6 +79,10 @@ namespace VPWStudio
 		#endregion
 
 		#region VPW64
+		/// <summary>
+		/// Virtual Pro-Wrestling 64 Stable Editor
+		/// </summary>
+		public Editors.VPW64.StableDefs_VPW64 StableDefs_VPW64 = null;
 		#endregion
 
 		#region Revenge
@@ -990,6 +994,27 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.VPW64:
+					{
+						if (StableDefs_VPW64 == null || StableDefs_VPW64.IsDisposed)
+						{
+							StableDefs_VPW64 = new Editors.VPW64.StableDefs_VPW64();
+						}
+
+						if (StableDefs_VPW64.ShowDialog() == DialogResult.OK)
+						{
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save Stable Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							Program.ErrorMessageBox("VPW64 stable saving not actually implemented yet, sorry");
+						}
+					}
+					break;
+
 				case VPWGames.Revenge:
 					{
 						if (StableDefs_Revenge == null || StableDefs_Revenge.IsDisposed)
