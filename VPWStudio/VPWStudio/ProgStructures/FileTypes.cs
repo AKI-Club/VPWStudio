@@ -88,7 +88,7 @@ namespace VPWStudio
 			{ FileTypes.Ci4Background, ".ci4bg" }, // this is awkward, freem
 			{ FileTypes.MenuItems_NoGroup, ".nmitem0" },
 			//{ FileTypes.MenuItems_Costume, ".nmitem1" },
-			// moves will be .nmitem2
+			//{ FileTypes.MenuItems_Moves, ".nmitem2" },
 			{ FileTypes.MenuItems_Shop, ".nmitem3" },
 		};
 
@@ -135,22 +135,25 @@ namespace VPWStudio
 			{
 				outTypes.Add(ft);
 			}
+
 			// AkiText is in WM2K and later
-			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
+			if (gameType <= VPWGames.Revenge)
 			{
 				outTypes.Remove(FileTypes.AkiText);
 			}
 
 			// MenuBackground is in WM2K and later
-			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
+			if (gameType <= VPWGames.Revenge)
 			{
 				outTypes.Remove(FileTypes.MenuBackground);
 			}
 
-			// Ci4Background and MenuItems_NoGroup are only used in WWF No Mercy.
-			if (Program.CurrentProject.Settings.BaseGame < VPWGames.NoMercy)
+			// FileTypes only found in WWF No Mercy
+			if (gameType < VPWGames.NoMercy)
 			{
 				outTypes.Remove(FileTypes.MenuItems_NoGroup);
+				// eventually MenuItems_Costume and MenuItems_Moves
+				outTypes.Remove(FileTypes.MenuItems_Shop);
 				outTypes.Remove(FileTypes.Ci4Background);
 			}
 
