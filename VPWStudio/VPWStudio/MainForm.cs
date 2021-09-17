@@ -1010,7 +1010,30 @@ namespace VPWStudio
 								return;
 							}
 
-							Program.ErrorMessageBox("VPW64 stable saving not actually implemented yet, sorry");
+							// check if StableDef file exists.
+							string stableDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath);
+							bool writePath = false;
+
+							if (!File.Exists(stableDefPath))
+							{
+								stableDefPath = Program.ConvertRelativePath(@"ProjectFiles\StableDefs.txt");
+								writePath = true;
+							}
+
+							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
+							StreamWriter sw = new StreamWriter(fs);
+							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
+							sdefs.StableDefs_VPW64 = StableDefs_VPW64.StableDefs;
+							sdefs.WriteFile(sw);
+							sw.Close();
+
+							if (writePath)
+							{
+								Program.CurrentProject.Settings.StableDefinitionFilePath = stableDefPath;
+								Program.UnsavedChanges = true;
+								UpdateTitleBar();
+								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
+							}
 						}
 					}
 					break;
