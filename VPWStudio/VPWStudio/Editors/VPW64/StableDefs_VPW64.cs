@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using VPWStudio.GameSpecific.VPW64;
+using VPWStudio.GameSpecific;
 
 namespace VPWStudio.Editors.VPW64
 {
 	public partial class StableDefs_VPW64 : Form
 	{
-		public SortedList<int, StableDefinition> StableDefs = new SortedList<int, StableDefinition>();
+		public SortedList<int, StableDef_Early> StableDefs = new SortedList<int, StableDef_Early>();
 
 		public StableDefs_VPW64()
 		{
@@ -45,7 +45,7 @@ namespace VPWStudio.Editors.VPW64
 			// xxx: default number of stable defs
 			for (int i = 0; i < 11; i++)
 			{
-				StableDefinition sdef = new StableDefinition(br);
+				StableDef_Early sdef = new StableDef_Early(br);
 				StableDefs.Add(i, sdef);
 			}
 
@@ -65,7 +65,7 @@ namespace VPWStudio.Editors.VPW64
 			lbStables.EndUpdate();
 		}
 
-		private void PopulateWrestlerList(StableDefinition _sdef)
+		private void PopulateWrestlerList(StableDef_Early _sdef)
 		{
 			lbWresPointers.Items.Clear();
 			lbWresPointers.BeginUpdate();
@@ -80,10 +80,10 @@ namespace VPWStudio.Editors.VPW64
 		/// Load stable data.
 		/// </summary>
 		/// <param name="_sdef"></param>
-		public void LoadData(StableDefinition _sdef)
+		public void LoadData(StableDef_Early _sdef)
 		{
 			tbWrestlerCount.Text = _sdef.NumWrestlers.ToString();
-			tbChampTextPointer.Text = String.Format("{0:X8}", _sdef.ChampionshipTextPointer);
+			tbChampTextPointer.Text = String.Format("{0:X8}", _sdef.ChampionshipPointerStart);
 			tbChampionshipCount.Text = _sdef.NumChampionships.ToString();
 
 			PopulateWrestlerList(_sdef);
