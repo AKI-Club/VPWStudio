@@ -57,6 +57,15 @@ namespace VPWStudio.GameSpecific
 			ChampionshipData = null;
 		}
 
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public StableDef_Early(BinaryReader br)
+		{
+			ReadData(br);
+		}
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read StableDef_Early data using a BinaryReader.
