@@ -8,6 +8,10 @@ namespace VPWStudio.GameSpecific
 	/// </summary>
 	public class StableDef_Early
 	{
+		// todo: max number of wrestlers per stable differs between games
+		// VPW64 has 16
+		// World Tour has ???
+
 		#region Class Members
 		/// <summary>
 		/// Pointer to Wrestler Definitions for this Stable.

@@ -17,9 +17,15 @@ namespace VPWStudio
 		public VPWGames GameType;
 
 		#region Game-Specific
-		//public SortedList<int, GameSpecific.StableDef_Early> StableDefs_WorldTour;
+		/// <summary>
+		/// WCW vs. nWo World Tour Stable Definitions
+		/// </summary>
+		public SortedList<int, GameSpecific.StableDef_Early> StableDefs_WorldTour;
 
-		//public SortedList<int, GameSpecific.StableDef_Early> StableDefs_VPW64;
+		/// <summary>
+		/// Virtual Pro-Wrestling 64 Stable Definitions
+		/// </summary>
+		public SortedList<int, GameSpecific.StableDef_Early> StableDefs_VPW64;
 
 		/// <summary>
 		/// WCW/nWo Revenge Stable Definitions
@@ -85,6 +91,35 @@ namespace VPWStudio
 
 			switch (GameType)
 			{
+				case VPWGames.WorldTour:
+					{
+						StableDefs_WorldTour = new SortedList<int, GameSpecific.StableDef_Early>();
+						while (!sr.EndOfStream)
+						{
+							string line = sr.ReadLine();
+							if (!line.Equals(String.Empty))
+							{
+								GameSpecific.StableDef_Early sd = ReadData_Early(line, out int stableNum);
+								StableDefs_WorldTour.Add(stableNum, sd);
+							}
+						}
+					}
+					break;
+				case VPWGames.VPW64:
+					{
+						StableDefs_VPW64 = new SortedList<int, GameSpecific.StableDef_Early>();
+						while (!sr.EndOfStream)
+						{
+							string line = sr.ReadLine();
+							if (!line.Equals(String.Empty))
+							{
+								GameSpecific.StableDef_Early sd = ReadData_Early(line, out int stableNum);
+								StableDefs_VPW64.Add(stableNum, sd);
+							}
+						}
+					}
+					break;
+
 				case VPWGames.Revenge:
 					{
 						StableDefs_Revenge = new SortedList<int, GameSpecific.Revenge.StableDefinition>();
@@ -143,12 +178,57 @@ namespace VPWStudio
 					break;
 
 				default:
+					StableDefs_WorldTour = null;
+					StableDefs_VPW64 = null;
 					StableDefs_Revenge = null;
 					StableDefs_WM2K = null;
 					StableDefs_VPW2 = null;
 					StableDefs_NoMercy = null;
 					break;
 			}
+		}
+
+		public GameSpecific.StableDef_Early ReadData_Early(string input, out int stableNum)
+		{
+			GameSpecific.StableDef_Early sd = new GameSpecific.StableDef_Early();
+
+			// Early games (World Tour and VPW64) line format:
+			// #@P={wrespointers},cPointers,numChamps
+			// # - stable number
+			// P - pointer to wrestler pointers
+			// {wrespointers} - list of pointers to wrestler data
+			// cPointers - pointers to championship text data
+			// numChamps - number of championships
+
+			string[] tokens = input.Split(new char[] { '@', '=' });
+			// tokens[0] = stable num
+			// tokens[1] = wrestler data pointer
+			// tokens[2] = everything after '='; needs further parsing
+
+			string[] data = tokens[2].Split(new char[] { '{', '}' });
+			// data[0] = fuck all
+			// data[1] = wrestler pointers
+			// data[2] = further data; needs further parsing
+
+			string[] wresPointers = data[1].Split(',');
+
+			stableNum = int.Parse(tokens[0]);
+			sd.WrestlerPointerStart = UInt32.Parse(tokens[1], NumberStyles.HexNumber);
+
+			// wrestler pointers
+			sd.NumWrestlers = (ushort)wresPointers.Length;
+			sd.WrestlerPointers = new uint[sd.NumWrestlers];
+			for (int w = 0; w < wresPointers.Length; w++)
+			{
+				sd.WrestlerPointers[w] = uint.Parse(wresPointers[w], NumberStyles.HexNumber);
+			}
+
+			// championship stuff
+			string[] championshipData = data[2].Split(new char[] { ',' });
+			sd.ChampionshipPointerStart = uint.Parse(championshipData[1], NumberStyles.HexNumber);
+			sd.NumChampionships = uint.Parse(championshipData[2]);
+
+			return sd;
 		}
 
 		/// <summary>
@@ -170,12 +250,12 @@ namespace VPWStudio
 
 			string[] tokens = input.Split(new char[] { '@', '=' });
 			// tokens[0] = stable num
-			// tokens[1] = id2 pointer
+			// tokens[1] = location of wrestler pointers
 			// tokens[2] = everything after '='; needs further parsing
 
 			string[] data = tokens[2].Split(new char[] { '{', '}' });
 			// data[0] = fuck all
-			// data[1] = wrestlers ID2s
+			// data[1] = wrestler pointers
 			// data[2] = ',' stable name ID
 
 			string[] wresPointers = data[1].Split(',');
@@ -332,6 +412,18 @@ namespace VPWStudio
 
 			switch (GameType)
 			{
+				case VPWGames.WorldTour:
+					foreach (KeyValuePair<int, GameSpecific.StableDef_Early> sd in StableDefs_WorldTour)
+					{
+						sw.WriteLine(WriteData_Early(sd));
+					}
+					break;
+				case VPWGames.VPW64:
+					foreach(KeyValuePair<int, GameSpecific.StableDef_Early> sd in StableDefs_VPW64)
+					{
+						sw.WriteLine(WriteData_Early(sd));
+					}
+					break;
 				case VPWGames.Revenge:
 					foreach (KeyValuePair<int, GameSpecific.Revenge.StableDefinition> sd in StableDefs_Revenge)
 					{
@@ -359,6 +451,26 @@ namespace VPWStudio
 			}
 
 			sw.Flush();
+		}
+
+		public string WriteData_Early(KeyValuePair<int,GameSpecific.StableDef_Early> sd)
+		{
+			string outData = String.Format("{0}@{1:X8}={{",sd.Key, sd.Value.WrestlerPointerStart);
+
+			// wrestlers
+			for (int wres = 0; wres < sd.Value.WrestlerPointers.Length; wres++)
+			{
+				outData += String.Format("{0:X8}", sd.Value.WrestlerPointers[wres]);
+				if (wres < sd.Value.WrestlerPointers.Length - 1)
+				{
+					outData += ',';
+				}
+			}
+
+			// end wrestlers, championship stuff
+			outData += String.Format("}},{0:X8},{1}", sd.Value.ChampionshipPointerStart, sd.Value.NumChampionships);
+
+			return outData;
 		}
 
 		public string WriteData_Revenge(KeyValuePair<int, GameSpecific.Revenge.StableDefinition> sd)
