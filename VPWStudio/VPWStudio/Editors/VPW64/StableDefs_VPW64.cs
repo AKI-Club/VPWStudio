@@ -14,10 +14,28 @@ namespace VPWStudio.Editors.VPW64
 		{
 			InitializeComponent();
 
-			// stable def file not yet handled
-			LoadData_ROM();
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.StableDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
+			)
+			{
+				LoadData_File(Program.CurrentProject.Settings.StableDefinitionFilePath);
+			}
+			else
+			{
+				LoadData_ROM();
+			}
 
 			PopulateList();
+		}
+
+		private void LoadData_File(string _path)
+		{
+			StableDefFile sdf = new StableDefFile(VPWGames.VPW64);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			sdf.ReadFile(sr);
+			sr.Close();
+			StableDefs = sdf.StableDefs_VPW64;
 		}
 
 		private void LoadData_ROM()
