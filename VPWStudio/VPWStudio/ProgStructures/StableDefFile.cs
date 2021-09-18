@@ -18,14 +18,9 @@ namespace VPWStudio
 
 		#region Game-Specific
 		/// <summary>
-		/// WCW vs. nWo World Tour Stable Definitions
+		/// WCW vs. nWo World Tour and Virtual Pro-Wrestling 64 Stable Definitions
 		/// </summary>
-		public SortedList<int, GameSpecific.StableDef_Early> StableDefs_WorldTour;
-
-		/// <summary>
-		/// Virtual Pro-Wrestling 64 Stable Definitions
-		/// </summary>
-		public SortedList<int, GameSpecific.StableDef_Early> StableDefs_VPW64;
+		public SortedList<int, GameSpecific.StableDef_Early> StableDefs_Early;
 
 		/// <summary>
 		/// WCW/nWo Revenge Stable Definitions
@@ -92,29 +87,16 @@ namespace VPWStudio
 			switch (GameType)
 			{
 				case VPWGames.WorldTour:
-					{
-						StableDefs_WorldTour = new SortedList<int, GameSpecific.StableDef_Early>();
-						while (!sr.EndOfStream)
-						{
-							string line = sr.ReadLine();
-							if (!line.Equals(String.Empty))
-							{
-								GameSpecific.StableDef_Early sd = ReadData_Early(line, out int stableNum);
-								StableDefs_WorldTour.Add(stableNum, sd);
-							}
-						}
-					}
-					break;
 				case VPWGames.VPW64:
 					{
-						StableDefs_VPW64 = new SortedList<int, GameSpecific.StableDef_Early>();
+						StableDefs_Early = new SortedList<int, GameSpecific.StableDef_Early>();
 						while (!sr.EndOfStream)
 						{
 							string line = sr.ReadLine();
 							if (!line.Equals(String.Empty))
 							{
 								GameSpecific.StableDef_Early sd = ReadData_Early(line, out int stableNum);
-								StableDefs_VPW64.Add(stableNum, sd);
+								StableDefs_Early.Add(stableNum, sd);
 							}
 						}
 					}
@@ -178,8 +160,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					StableDefs_WorldTour = null;
-					StableDefs_VPW64 = null;
+					StableDefs_Early = null;
 					StableDefs_Revenge = null;
 					StableDefs_WM2K = null;
 					StableDefs_VPW2 = null;
@@ -188,6 +169,12 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Read data as "Early" (World Tour and VPW64) Stable Definition Data.
+		/// </summary>
+		/// <param name="input">Input string to parse.</param>
+		/// <param name="stableNum">(output) Stable number.</param>
+		/// <returns>an Early StableDefinition.</returns>
 		public GameSpecific.StableDef_Early ReadData_Early(string input, out int stableNum)
 		{
 			GameSpecific.StableDef_Early sd = new GameSpecific.StableDef_Early();
@@ -413,13 +400,8 @@ namespace VPWStudio
 			switch (GameType)
 			{
 				case VPWGames.WorldTour:
-					foreach (KeyValuePair<int, GameSpecific.StableDef_Early> sd in StableDefs_WorldTour)
-					{
-						sw.WriteLine(WriteData_Early(sd));
-					}
-					break;
 				case VPWGames.VPW64:
-					foreach(KeyValuePair<int, GameSpecific.StableDef_Early> sd in StableDefs_VPW64)
+					foreach (KeyValuePair<int, GameSpecific.StableDef_Early> sd in StableDefs_Early)
 					{
 						sw.WriteLine(WriteData_Early(sd));
 					}
