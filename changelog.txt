@@ -2,9 +2,90 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 16 (202x/yy/zz)
+Pre-Alpha Preview 17 (202x/yy/zz)
 ---------------------------------
 I'm working on it, but now I have some friends who might help?
+
+Pre-Alpha Preview 16 (2021/09/18)
+---------------------------------
+* The manual has been updated considerably, compared to previous versions.
+
+* [Manual] Added game-specific pages.
+  Much like the rest of the Manual, these are incomplete, but will be filled
+  with more information as time passes.
+
+* [Hex Viewer] Actually implement copying of hex values to clipboard.
+  (I thought it was built-in to the new control, but it turns out I still
+  needed to handle some stuff manually.)
+
+* [Location Files] Added support for WCW vs. nWo: World Tour NTSC-U v1.0 and PAL.
+  Yes, finally, after 3 years of being unsupported.
+
+* [Hex Viewer] Allow Hex Viewer to be resized vertically.
+
+* [File Table Dialog] Fixed an issue related to searching after creating
+  a new project.
+
+* [WM2K Wrestler Dialog] Add short names to wrestler list, so it's not just
+  a bunch of ID4 values. This brings it in line with the VPW2 and No Mercy
+  wrestler dialogs.
+
+* [VPW2 and No Mercy Wrestler Dialogs] Save changes when editing the AkiText
+  archive with the default wrestler names. You are no longer required to make
+  these changes from the File Table editor.
+
+* [VPW2, No Mercy, WM2K Stable Dialogs] Added stable names to list, so it's not
+  just a bunch of numbers.
+
+* [Main Form] Added Help -> Game Specific Documentation, which opens a HTML
+  document with information for the game you're currently editing.
+
+* [File Table Entry Information (single)] Changed keyboard accelerator for
+  "Comment" from 'O' to 'M'. Yes, it was the same as the OK button before.
+  Ouch.
+
+* [File Table Entry Information (single)] Added keyboard accelerators for
+  "Browse" button, Image Width/Height, Default Palette ID, Horizontal Mirror,
+  and Vertical Mirror.
+
+* [File Table Dialog] Added Hex Viewer keyboard shortcut (Control+H).
+
+* [File Table Dialog] Added status bar, containing the number of items
+  currently selected. Probably of limited utility.
+
+* [No Mercy Wrestler Dialog] Show converted weight values (including ??, ???,
+  !!!, and the Crash Holly "400 lbs." entries).
+
+* [No Mercy Wrestler Dialog] Show converted height values (including ??, ???,
+  !!! and the Crash Holly 6'6" entries).
+
+* [WM2K Wrestler Dialog] Show converted height values.
+  ("???" values were already supported.)
+
+* [WM2K Wrestler Dialog] Added ability to view default costume data.
+  (No editing yet.)
+
+* Added World Tour and VPW64 Stable viewer. (No editing yet.)
+
+* Added Adobe .act format to the palette Open/Save filetype filter string.
+  (.act import/export support was added back in 2019, but the filter string
+  wasn't updated to show it as an option. Oops.)
+
+* Added World Tour and VPW64 Wrestler Dialog. (No editing yet, of course.)
+
+* Various behind-the-scenes changes to prepare for supporting the AKI
+  PlayStation 1 wrestling games (Virtual Pro-Wrestling and WCW vs. the World).
+
+  These games are not currently supported in VPW Studio, and there is no
+  planned timeframe for support to be added. Lots of information still needs
+  to be figured out, and many N64-only assumptions need to be fixed.
+
+* As expected, more FileTableDB changes were made. Aside from more files being
+  labeled in WWF No Mercy, Virtual Pro-Wrestling 64, WrestleMania 2000, and
+  WCW/nWo Revenge, there were a few bugged entries. These issues have been fixed.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 15 (2021/08/25)
 ---------------------------------

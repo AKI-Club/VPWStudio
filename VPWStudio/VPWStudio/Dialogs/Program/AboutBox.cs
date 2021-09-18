@@ -70,7 +70,7 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of August 2021, this includes:");
+			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of September 2021, this includes:");
 			sb.AppendLine();
 			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
 			sb.AppendLine("- RagDas");
@@ -110,8 +110,7 @@ namespace VPWStudio
 
 			sb.AppendLine("This program uses the following libraries:");
 			sb.AppendLine("- OpenTK (https://opentk.net/)");
-			sb.AppendLine("- Be.HexBox (https://sourceforge.net/projects/hexbox/)");
-			sb.AppendLine();
+			sb.Append("- Be.HexBox (https://sourceforge.net/projects/hexbox/)");
 
 			tbInformation.Text = sb.ToString();
 		}
