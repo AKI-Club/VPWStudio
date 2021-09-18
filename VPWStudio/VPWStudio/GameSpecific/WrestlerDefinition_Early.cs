@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 
-namespace VPWStudio.GameSpecific.VPW64
+namespace VPWStudio.GameSpecific
 {
 	/// <summary>
-	/// Virtual Pro-Wrestling 64 Wrestler Definition
+	/// WCW vs. nWo World Tour and Virtual Pro-Wrestling 64 Wrestler Definition
 	/// </summary>
-	public class WrestlerDefinition
+	public class WrestlerDefinition_Early
 	{
 		#region Class Members
 		/// <summary>
@@ -58,7 +58,7 @@ namespace VPWStudio.GameSpecific.VPW64
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public WrestlerDefinition()
+		public WrestlerDefinition_Early()
 		{
 			Unknown1 = 0;
 			WrestlerID4 = 0;
@@ -71,14 +71,18 @@ namespace VPWStudio.GameSpecific.VPW64
 			WeightPointer = 0;
 		}
 
-		public WrestlerDefinition(BinaryReader br)
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public WrestlerDefinition_Early(BinaryReader br)
 		{
 			ReadData(br);
 		}
 
 		#region Binary Read/Write
 		/// <summary>
-		/// Read WrestlerDefinition data with a BinaryReader.
+		/// Read WrestlerDefinition_Early data with a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)

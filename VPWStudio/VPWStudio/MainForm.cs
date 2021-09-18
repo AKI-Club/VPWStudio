@@ -80,14 +80,15 @@ namespace VPWStudio
 		/// </summary>
 		public Editors.StableDefs_Early StableDefs_Early = null;
 
+		/// <summary>
+		/// Wrestler Editor, main form for WCW vs. nWo World Tour and Virtual Pro-Wrestling 64
+		/// </summary>
+		public Editors.WrestlerMain_Early WrestlerMain_Early = null;
+
 		#region World Tour
 		#endregion
 
 		#region VPW64
-		/// <summary>
-		/// Virtual Pro-Wrestling 64 Wrestler Editor, main form
-		/// </summary>
-		public Editors.VPW64.WrestlerMain_VPW64 WrestlerMain_VPW64 = null;
 		#endregion
 
 		#region Revenge
@@ -1301,18 +1302,19 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
-					if (WrestlerMain_VPW64 == null || WrestlerMain_VPW64.IsDisposed)
+					if (WrestlerMain_Early == null || WrestlerMain_Early.IsDisposed)
 					{
-						WrestlerMain_VPW64 = new Editors.VPW64.WrestlerMain_VPW64();
+						WrestlerMain_Early = new Editors.WrestlerMain_Early();
 					}
 					// check for minimized
-					if (WrestlerMain_VPW64.WindowState == FormWindowState.Minimized)
+					if (WrestlerMain_Early.WindowState == FormWindowState.Minimized)
 					{
-						WrestlerMain_VPW64.WindowState = FormWindowState.Normal;
+						WrestlerMain_Early.WindowState = FormWindowState.Normal;
 					}
-					WrestlerMain_VPW64.MdiParent = this;
-					WrestlerMain_VPW64.Show();
+					WrestlerMain_Early.MdiParent = this;
+					WrestlerMain_Early.Show();
 					break;
 
 				case VPWGames.Revenge:
