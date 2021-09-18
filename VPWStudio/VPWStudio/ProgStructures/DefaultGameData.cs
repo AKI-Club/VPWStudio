@@ -125,6 +125,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x49438, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x4989C, 176) },
 
 					// costume definitions

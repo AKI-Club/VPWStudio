@@ -84,6 +84,10 @@ namespace VPWStudio
 		#endregion
 
 		#region VPW64
+		/// <summary>
+		/// Virtual Pro-Wrestling 64 Wrestler Editor, main form
+		/// </summary>
+		public Editors.VPW64.WrestlerMain_VPW64 WrestlerMain_VPW64 = null;
 		#endregion
 
 		#region Revenge
@@ -1297,6 +1301,20 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.VPW64:
+					if (WrestlerMain_VPW64 == null || WrestlerMain_VPW64.IsDisposed)
+					{
+						WrestlerMain_VPW64 = new Editors.VPW64.WrestlerMain_VPW64();
+					}
+					// check for minimized
+					if (WrestlerMain_VPW64.WindowState == FormWindowState.Minimized)
+					{
+						WrestlerMain_VPW64.WindowState = FormWindowState.Normal;
+					}
+					WrestlerMain_VPW64.MdiParent = this;
+					WrestlerMain_VPW64.Show();
+					break;
+
 				case VPWGames.Revenge:
 					if (WrestlerMain_Revenge == null || WrestlerMain_Revenge.IsDisposed)
 					{
