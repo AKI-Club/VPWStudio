@@ -4,13 +4,19 @@ using System.IO;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific;
 
-namespace VPWStudio.Editors.VPW64
+namespace VPWStudio.Editors
 {
-	public partial class StableDefs_VPW64 : Form
+	public partial class StableDefs_Early : Form
 	{
 		public SortedList<int, StableDef_Early> StableDefs = new SortedList<int, StableDef_Early>();
 
-		public StableDefs_VPW64()
+		private Dictionary<VPWGames, int> NumStables = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 5 },
+			{ VPWGames.VPW64, 11 }
+		};
+
+		public StableDefs_Early()
 		{
 			InitializeComponent();
 
@@ -30,12 +36,12 @@ namespace VPWStudio.Editors.VPW64
 
 		private void LoadData_File(string _path)
 		{
-			StableDefFile sdf = new StableDefFile(VPWGames.VPW64);
+			StableDefFile sdf = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
 			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
 			StreamReader sr = new StreamReader(fs);
 			sdf.ReadFile(sr);
 			sr.Close();
-			StableDefs = sdf.StableDefs_VPW64;
+			StableDefs = sdf.StableDefs_Early;
 		}
 
 		private void LoadData_ROM()
@@ -61,7 +67,7 @@ namespace VPWStudio.Editors.VPW64
 			}
 
 			// xxx: default number of stable defs
-			for (int i = 0; i < 11; i++)
+			for (int i = 0; i < NumStables[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				StableDef_Early sdef = new StableDef_Early(br);
 				StableDefs.Add(i, sdef);
@@ -100,6 +106,7 @@ namespace VPWStudio.Editors.VPW64
 		/// <param name="_sdef"></param>
 		public void LoadData(StableDef_Early _sdef)
 		{
+			tbWrestlerDefPointer.Text = String.Format("{0:X8}", _sdef.WrestlerPointerStart);
 			tbWrestlerCount.Text = _sdef.NumWrestlers.ToString();
 			tbChampTextPointer.Text = String.Format("{0:X8}", _sdef.ChampionshipPointerStart);
 			tbChampionshipCount.Text = _sdef.NumChampionships.ToString();
@@ -127,6 +134,101 @@ namespace VPWStudio.Editors.VPW64
 		{
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void buttonViewWrestler_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+		}
+
+		private void buttonMoveUp_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (lbWresPointers.SelectedIndex <= 0)
+			{
+				return;
+			}
+
+			int newIndex = lbWresPointers.SelectedIndex - 1;
+			uint oldWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex - 1];
+			uint moveWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex - 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex] = oldWres;
+
+			PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			lbWresPointers.SelectedIndex = newIndex;
+		}
+
+		private void buttonMoveDown_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// xxx: should this compare use the current stable's wrestler amount instead?
+			if (lbWresPointers.SelectedIndex == lbWresPointers.Items.Count - 1)
+			{
+				return;
+			}
+
+			int newIndex = lbWresPointers.SelectedIndex + 1;
+			uint oldWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex + 1];
+			uint moveWres = StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex];
+
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex + 1] = moveWres;
+			StableDefs[lbStables.SelectedIndex].WrestlerPointers[lbWresPointers.SelectedIndex] = oldWres;
+
+			PopulateWrestlerList(StableDefs[lbStables.SelectedIndex]);
+			lbWresPointers.SelectedIndex = newIndex;
+		}
+
+		private void buttonSwitchGroup_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			MessageBox.Show("not implemented yet");
+		}
+
+		private void buttonSwapWrestler_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			if (lbWresPointers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			MessageBox.Show("not implemented yet");
 		}
 	}
 }
