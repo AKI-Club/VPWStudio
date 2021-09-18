@@ -137,11 +137,11 @@
     <Compile Include="Editors\NoMercy\MenuItemsShop_NoMercy.Designer.cs">
       <DependentUpon>MenuItemsShop_NoMercy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editors\VPW64\StableDefs_VPW64.cs">
+    <Compile Include="Editors\StableDefs_Early.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editors\VPW64\StableDefs_VPW64.Designer.cs">
-      <DependentUpon>StableDefs_VPW64.cs</DependentUpon>
+    <Compile Include="Editors\StableDefs_Early.Designer.cs">
+      <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\WM2K\DefaultCostume_WM2K.cs">
       <SubType>Form</SubType>
@@ -686,8 +686,8 @@
     <EmbeddedResource Include="Editors\VPW2\WrestlerMain_VPW2.resx">
       <DependentUpon>WrestlerMain_VPW2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editors\VPW64\StableDefs_VPW64.resx">
-      <DependentUpon>StableDefs_VPW64.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\StableDefs_Early.resx">
+      <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WM2K\DefaultCostume_WM2K.resx">
       <DependentUpon>DefaultCostume_WM2K.cs</DependentUpon>
@@ -1003,6 +1003,7 @@
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
   </ItemGroup>
   <ItemGroup>

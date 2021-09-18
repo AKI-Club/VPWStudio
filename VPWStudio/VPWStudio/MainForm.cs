@@ -75,14 +75,15 @@ namespace VPWStudio
 		/// </summary>
 		public GameIntroEditor_Later GameIntroEditor_Later = null;
 
+		/// <summary>
+		/// Stable Editor for WCW vs. nWo World Tour and Virtual Pro-Wrestling 64
+		/// </summary>
+		public Editors.StableDefs_Early StableDefs_Early = null;
+
 		#region World Tour
 		#endregion
 
 		#region VPW64
-		/// <summary>
-		/// Virtual Pro-Wrestling 64 Stable Editor
-		/// </summary>
-		public Editors.VPW64.StableDefs_VPW64 StableDefs_VPW64 = null;
 		#endregion
 
 		#region Revenge
@@ -994,14 +995,15 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
 					{
-						if (StableDefs_VPW64 == null || StableDefs_VPW64.IsDisposed)
+						if (StableDefs_Early == null || StableDefs_Early.IsDisposed)
 						{
-							StableDefs_VPW64 = new Editors.VPW64.StableDefs_VPW64();
+							StableDefs_Early = new Editors.StableDefs_Early();
 						}
 
-						if (StableDefs_VPW64.ShowDialog() == DialogResult.OK)
+						if (StableDefs_Early.ShowDialog() == DialogResult.OK)
 						{
 							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
 							{
@@ -1023,7 +1025,7 @@ namespace VPWStudio
 							FileStream fs = new FileStream(stableDefPath, FileMode.OpenOrCreate);
 							StreamWriter sw = new StreamWriter(fs);
 							StableDefFile sdefs = new StableDefFile(Program.CurrentProject.Settings.BaseGame);
-							sdefs.StableDefs_VPW64 = StableDefs_VPW64.StableDefs;
+							sdefs.StableDefs_Early = StableDefs_Early.StableDefs;
 							sdefs.WriteFile(sw);
 							sw.Close();
 
@@ -1035,6 +1037,9 @@ namespace VPWStudio
 								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
 							}
 						}
+
+						// manually kill this dialog to prevent issues when switching between World Tour and VPW64 projects
+						StableDefs_Early = null;
 					}
 					break;
 
