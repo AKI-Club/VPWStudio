@@ -1,7 +1,7 @@
 ﻿
-namespace VPWStudio.Editors.VPW64
+namespace VPWStudio.Editors
 {
-	partial class WrestlerMain_VPW64
+	partial class WrestlerMain_Early
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -46,15 +46,15 @@ namespace VPWStudio.Editors.VPW64
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.tlpNamePointer = new System.Windows.Forms.TableLayoutPanel();
-			this.tlpHeightPointer = new System.Windows.Forms.TableLayoutPanel();
-			this.tlpWeightPointer = new System.Windows.Forms.TableLayoutPanel();
 			this.tbNamePointer = new System.Windows.Forms.TextBox();
 			this.tbNameString = new System.Windows.Forms.TextBox();
-			this.tbProfilePointer = new System.Windows.Forms.TextBox();
+			this.tlpHeightPointer = new System.Windows.Forms.TableLayoutPanel();
 			this.tbHeightPointer = new System.Windows.Forms.TextBox();
 			this.tbHeightString = new System.Windows.Forms.TextBox();
+			this.tlpWeightPointer = new System.Windows.Forms.TableLayoutPanel();
 			this.tbWeightPointer = new System.Windows.Forms.TextBox();
 			this.tbWeightString = new System.Windows.Forms.TextBox();
+			this.tbProfilePointer = new System.Windows.Forms.TextBox();
 			this.gbProfile = new System.Windows.Forms.GroupBox();
 			this.tbProfileText = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -264,36 +264,6 @@ namespace VPWStudio.Editors.VPW64
 			this.tlpNamePointer.Size = new System.Drawing.Size(217, 25);
 			this.tlpNamePointer.TabIndex = 14;
 			// 
-			// tlpHeightPointer
-			// 
-			this.tlpHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpHeightPointer.ColumnCount = 2;
-			this.tlpHeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-			this.tlpHeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-			this.tlpHeightPointer.Controls.Add(this.tbHeightPointer, 0, 0);
-			this.tlpHeightPointer.Controls.Add(this.tbHeightString, 1, 0);
-			this.tlpHeightPointer.Location = new System.Drawing.Point(151, 220);
-			this.tlpHeightPointer.Name = "tlpHeightPointer";
-			this.tlpHeightPointer.RowCount = 1;
-			this.tlpHeightPointer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpHeightPointer.Size = new System.Drawing.Size(217, 25);
-			this.tlpHeightPointer.TabIndex = 15;
-			// 
-			// tlpWeightPointer
-			// 
-			this.tlpWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpWeightPointer.ColumnCount = 2;
-			this.tlpWeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-			this.tlpWeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-			this.tlpWeightPointer.Controls.Add(this.tbWeightPointer, 0, 0);
-			this.tlpWeightPointer.Controls.Add(this.tbWeightString, 1, 0);
-			this.tlpWeightPointer.Location = new System.Drawing.Point(151, 251);
-			this.tlpWeightPointer.Name = "tlpWeightPointer";
-			this.tlpWeightPointer.RowCount = 1;
-			this.tlpWeightPointer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpWeightPointer.Size = new System.Drawing.Size(217, 32);
-			this.tlpWeightPointer.TabIndex = 16;
-			// 
 			// tbNamePointer
 			// 
 			this.tbNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -312,14 +282,20 @@ namespace VPWStudio.Editors.VPW64
 			this.tbNameString.Size = new System.Drawing.Size(136, 20);
 			this.tbNameString.TabIndex = 1;
 			// 
-			// tbProfilePointer
+			// tlpHeightPointer
 			// 
-			this.tbProfilePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbProfilePointer.Location = new System.Drawing.Point(151, 191);
-			this.tbProfilePointer.Name = "tbProfilePointer";
-			this.tbProfilePointer.ReadOnly = true;
-			this.tbProfilePointer.Size = new System.Drawing.Size(217, 20);
-			this.tbProfilePointer.TabIndex = 17;
+			this.tlpHeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpHeightPointer.ColumnCount = 2;
+			this.tlpHeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tlpHeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+			this.tlpHeightPointer.Controls.Add(this.tbHeightPointer, 0, 0);
+			this.tlpHeightPointer.Controls.Add(this.tbHeightString, 1, 0);
+			this.tlpHeightPointer.Location = new System.Drawing.Point(151, 220);
+			this.tlpHeightPointer.Name = "tlpHeightPointer";
+			this.tlpHeightPointer.RowCount = 1;
+			this.tlpHeightPointer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpHeightPointer.Size = new System.Drawing.Size(217, 25);
+			this.tlpHeightPointer.TabIndex = 15;
 			// 
 			// tbHeightPointer
 			// 
@@ -339,6 +315,21 @@ namespace VPWStudio.Editors.VPW64
 			this.tbHeightString.Size = new System.Drawing.Size(136, 20);
 			this.tbHeightString.TabIndex = 1;
 			// 
+			// tlpWeightPointer
+			// 
+			this.tlpWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpWeightPointer.ColumnCount = 2;
+			this.tlpWeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tlpWeightPointer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+			this.tlpWeightPointer.Controls.Add(this.tbWeightPointer, 0, 0);
+			this.tlpWeightPointer.Controls.Add(this.tbWeightString, 1, 0);
+			this.tlpWeightPointer.Location = new System.Drawing.Point(151, 251);
+			this.tlpWeightPointer.Name = "tlpWeightPointer";
+			this.tlpWeightPointer.RowCount = 1;
+			this.tlpWeightPointer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpWeightPointer.Size = new System.Drawing.Size(217, 32);
+			this.tlpWeightPointer.TabIndex = 16;
+			// 
 			// tbWeightPointer
 			// 
 			this.tbWeightPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -356,6 +347,15 @@ namespace VPWStudio.Editors.VPW64
 			this.tbWeightString.ReadOnly = true;
 			this.tbWeightString.Size = new System.Drawing.Size(136, 20);
 			this.tbWeightString.TabIndex = 1;
+			// 
+			// tbProfilePointer
+			// 
+			this.tbProfilePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbProfilePointer.Location = new System.Drawing.Point(151, 191);
+			this.tbProfilePointer.Name = "tbProfilePointer";
+			this.tbProfilePointer.ReadOnly = true;
+			this.tbProfilePointer.Size = new System.Drawing.Size(217, 20);
+			this.tbProfilePointer.TabIndex = 17;
 			// 
 			// gbProfile
 			// 
@@ -378,7 +378,7 @@ namespace VPWStudio.Editors.VPW64
 			this.tbProfileText.Size = new System.Drawing.Size(365, 159);
 			this.tbProfileText.TabIndex = 0;
 			// 
-			// WrestlerMain_VPW64
+			// WrestlerMain_Early
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -388,9 +388,9 @@ namespace VPWStudio.Editors.VPW64
 			this.Controls.Add(this.lbWrestlers);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "WrestlerMain_VPW64";
+			this.Name = "WrestlerMain_Early";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Wrestler Editor (VPW64)";
+			this.Text = "Wrestler Editor (World Tour/VPW64)";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tlpNamePointer.ResumeLayout(false);

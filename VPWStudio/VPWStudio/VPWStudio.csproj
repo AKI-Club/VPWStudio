@@ -143,11 +143,11 @@
     <Compile Include="Editors\StableDefs_Early.Designer.cs">
       <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editors\VPW64\WrestlerMain_VPW64.cs">
+    <Compile Include="Editors\WrestlerMain_Early.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editors\VPW64\WrestlerMain_VPW64.Designer.cs">
-      <DependentUpon>WrestlerMain_VPW64.cs</DependentUpon>
+    <Compile Include="Editors\WrestlerMain_Early.Designer.cs">
+      <DependentUpon>WrestlerMain_Early.cs</DependentUpon>
     </Compile>
     <Compile Include="Editors\WM2K\DefaultCostume_WM2K.cs">
       <SubType>Form</SubType>
@@ -427,7 +427,7 @@
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
-    <Compile Include="GameSpecific\VPW64\WrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\WrestlerDefinition_Early.cs" />
     <Compile Include="GameSpecific\VPW64\WrestlerParams.cs" />
     <Compile Include="GameSpecific\WM2K\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\WM2K\StableDefinition.cs" />
@@ -695,8 +695,8 @@
     <EmbeddedResource Include="Editors\StableDefs_Early.resx">
       <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editors\VPW64\WrestlerMain_VPW64.resx">
-      <DependentUpon>WrestlerMain_VPW64.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\WrestlerMain_Early.resx">
+      <DependentUpon>WrestlerMain_Early.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WM2K\DefaultCostume_WM2K.resx">
       <DependentUpon>DefaultCostume_WM2K.cs</DependentUpon>
@@ -1012,6 +1012,7 @@
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
   </ItemGroup>
   <ItemGroup>

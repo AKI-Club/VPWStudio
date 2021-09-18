@@ -7,15 +7,22 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VPWStudio.GameSpecific.VPW64;
+using VPWStudio.GameSpecific;
 
-namespace VPWStudio.Editors.VPW64
+namespace VPWStudio.Editors
 {
-	public partial class WrestlerMain_VPW64 : Form
+	public partial class WrestlerMain_Early : Form
 	{
-		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
+		public SortedList<int, WrestlerDefinition_Early> WrestlerDefs = new SortedList<int, WrestlerDefinition_Early>();
 
-		public WrestlerMain_VPW64()
+		// Note: skips duplicate entries used for junior heavyweight roster
+		private Dictionary<VPWGames, int> NumWrestlers = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 43 },
+			{ VPWGames.VPW64, 99 }
+		};
+
+		public WrestlerMain_Early()
 		{
 			InitializeComponent();
 			LoadDefs_Rom();
@@ -48,8 +55,7 @@ namespace VPWStudio.Editors.VPW64
 			}
 
 			// xxx: default number of wrestler defs
-			// xxx2: skips duplicate entries used for junior heavyweight roster
-			for (int i = 0; i < 99; i++)
+			for (int i = 0; i < NumWrestlers[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i * 4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);
@@ -59,7 +65,7 @@ namespace VPWStudio.Editors.VPW64
 				}
 				UInt32 wPtr = Z64Rom.PointerToRom(BitConverter.ToUInt32(ptrBytes, 0));
 				br.BaseStream.Seek(wPtr, SeekOrigin.Begin);
-				WrestlerDefinition wdef = new WrestlerDefinition(br);
+				WrestlerDefinition_Early wdef = new WrestlerDefinition_Early(br);
 				WrestlerDefs.Add(i, wdef);
 				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
@@ -75,7 +81,7 @@ namespace VPWStudio.Editors.VPW64
 			lbWrestlers.BeginUpdate();
 			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
-				WrestlerDefinition wd = WrestlerDefs[i];
+				WrestlerDefinition_Early wd = WrestlerDefs[i];
 				lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
 			}
 			lbWrestlers.EndUpdate();
@@ -88,7 +94,7 @@ namespace VPWStudio.Editors.VPW64
 				return;
 			}
 
-			WrestlerDefinition wdef = WrestlerDefs[lbWrestlers.SelectedIndex];
+			WrestlerDefinition_Early wdef = WrestlerDefs[lbWrestlers.SelectedIndex];
 
 			tbUnknown1.Text = String.Format("{0:X4}", wdef.Unknown1);
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
