@@ -49,11 +49,6 @@ namespace VPWStudio
 		/// Path to Current Location File.
 		/// </summary>
 		public static string CurLocationFilePath = String.Empty;
-
-		/// <summary>
-		/// Path to currently loaded GameSharkCodeFile.
-		/// </summary>
-		public static string CurGSCFPath = String.Empty;
 		#endregion
 
 		/// <summary>
@@ -821,6 +816,7 @@ namespace VPWStudio
 					MemoryStream ms = new MemoryStream(outRomData.ToArray());
 					BinaryWriter bw = new BinaryWriter(ms);
 					bw.Seek(stableDefLoc, SeekOrigin.Begin);
+					BuildLogPub.AddLine("Re-building stables...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 
 					// temporary bullshit
 					bool writeData = false;
@@ -849,7 +845,7 @@ namespace VPWStudio
 							writeData = true;
 							break;
 						default:
-							BuildLogPub.AddLine(String.Format("Stable rebuilding not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+							BuildLogPub.AddLine(String.Format("Stable re-building not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 							BuildLogPub.AddLine();
 							break;
 					}
