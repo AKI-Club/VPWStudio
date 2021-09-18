@@ -241,7 +241,7 @@ probably want some other tools on hand.</p>
 <ul>
 <li>A Nintendo 64 emulator, for testing builds of your projects. An emulator with debugging tools is highly recommended, and currently required for some changes.</li>
 <li>A 3D modeler, for viewing models exported in Wavefront OBJ format. If you haven't already bought into a specific 3D editor ecosystem, <a href="https://www.blender.org/">Blender</a> is free and supported on multiple platforms.
-<ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/dotGrix/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins from dotGrix</a>.</li></ul></li>
+<ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/dotGrix/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins by Grix</a>.</li></ul></li>
 <li><a href="https://github.com/queueRAM/Texture64">Texture64</a> by queueRAM &ndash; handles various Nintendo 64 texture formats.</li>
 <li><a href="https://github.com/jombo23/N64-Tools">N64 Midi Tool and N64 Sound Tool</a>, originally by SubDrag and Ice Mario. As the names suggest, these handle sequenced and streaming sounds.</li>
 </ul>
@@ -445,12 +445,12 @@ file in the hex editor before attempting to view it as a specific type.</p>
 location, texture positioning (U/V) values, and three other values which either
 mean "vertex color" or "normal vector", depending on certain header values.</p>
 
-<p>There is currently no workflow for importing models into the game. Where
-possible, tools in VPW Studio allows for export to Wavefront OBJ format, despite
-the fact that it does not officially support vertex colors. The ideal path going
-forward would be to have import/export plugins for <code>AkiModel</code> format
-for various 3D tools, and then VPW Studio only has to handle changes on the
-binary level.</p>
+<p>Where possible, tools in VPW Studio allows for export to Wavefront OBJ
+format, despite the fact that it does not officially support vertex colors.</p>
+
+<p>Until recently (September 2021), there was no workflow for importing models
+back into the game. The release of <a href="https://github.com/dotGrix/AKI-Model-Blender-IO-Addon"><code>AkiModel</code>
+import/export plugins for Blender by Grix</a> has changed this situation significantly.</p>
 
 <h3><code>AkiTexture</code></h3>
 <p><code>AkiTexture</code> files start with the magic word "<code>TEX</code>",
@@ -582,7 +582,7 @@ location for each game.</p>
 regular costume items, as well as various facial features (fringe hair,
 facial hair, facepaint). In games before <em>WWF WrestleMania 2000</em>, this
 was a non-issue, as all face and costume textures are pre-composed, and there
-was no Edit Mode to allow for customization.</p>
+was no full-featured Edit Mode to allow for customization.</p>
 
 <h4>Body</h4>
 <p>The textures for the body are comprised of the skin, any tattoos, and the
@@ -645,10 +645,13 @@ available when making a new belt.</li>
 
 <h3>Game Support</h3>
 <table>
+<thead>
 <tr>
 <th>Game</th>
 <th>Support</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>WCW vs. nWo World Tour</td>
 <td class="notsupported">No</td>
@@ -673,11 +676,14 @@ available when making a new belt.</li>
 <td>WWF No Mercy</td>
 <td class="notsupported">No</td>
 </tr>
+</tbody>
 </table>
 
 <hr />
 <h2><a name="Costumes">Costumes</a></h2>
-<p>The costume viewer allows you to view the values used for each costume in the game.</p>
+<p>The costume viewer allows you to view the values used for each costume in the game.
+This is not to be confused with default wrestler costumes in <em>WrestleMania 2000</em>
+and later, which can be found in the <a href="#Wrestlers">Wrestlers</a> section.</p>
 
 <p>(todo: this is different per game and isn't fully designed)</p>
 
@@ -690,11 +696,14 @@ textures, palettes, models, and more.</p>
 
 <h3>Game Support</h3>
 <table>
+<thead>
 <tr>
 <th>Game</th>
 <th>Read</th>
 <th>Write</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>WCW vs. nWo World Tour</td>
 <td class="supported">Yes</td>
@@ -725,6 +734,7 @@ textures, palettes, models, and more.</p>
 <td class="supported">Yes</td>
 <td class="supported">Yes</td>
 </tr>
+</tbody>
 </table>
 
 <br />
@@ -855,10 +865,27 @@ be requested via the File Table context menu ("View Hex..."). The data is read-o
 so an external hex editor must be used to make changes.</p>
 
 <h3><a name="CIPaletteEdit">CI4/CI8 Palettes</a></h3>
-<p>(todo: screenshots)</p>
+<img src="./img/ci4palette_editor.png" title="Ci4Palette Editor" />&nbsp;
+<img src="./img/ci8palette_editor.png" title="Ci8Palette Editor" />
 <p>Target Filetypes: <code>Ci4Palette</code>, <code>Ci8Palette</code></p>
 
 <p>The CI4 and CI8 Palette Editor allows you to view and change palette values.</p>
+
+<p>Select the color to change using the Current Color drop-down box. Modify the
+values using the Red, Green, and Blue numeric boxes on the upper right hand side.
+You can also toggle the transparency of a color with the "Transparent" checkbox.</p>
+
+<p>The Palette Set option is only available with CI4 palettes, and only usable if
+the CI4 palette has a sub-palette.</p>
+
+<h4>Supported Palette Formats</h4>
+<p>There are multiple palette formats available for import and export:</p>
+<ul>
+<li>The game-native formats, "CI4 Palette"/<code>.ci4pal</code> and "CI8 Palette"/<code>.ci8pal</code>. Supports sub-palettes.</li>
+<li>The VPW Studio palette format/<code>.vpwspal</code> (recommended for editing). Supports sub-palettes.</li>
+<li>JASC Paint Shop Pro palette format/<code>.pal</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported.</li>
+<li>GIMP palette format/<code>.gpl</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported.</li>
+</ul>
 
 <h3><a name="CITexturePreview">CI4/CI8 Textures</a></h3>
 <p>(todo: screenshots)</p>
@@ -924,7 +951,7 @@ codes (typically) available for text display.</li>
 <p>This is a very incomplete tool for dealing with 3D model data (File Type
 <code>AkiModel</code>). Not to be confused with the <a href="#ModelTool">Model Tool</a>
 found via Tools &rarr; Model Data. The end goal is to be a quick and dirty 3D model
-previewer, so you don't need to export the model to OBJ format to figure out what it is.</p>
+previewer, so you don't need to export the model to figure out what it is.</p>
 
 <p>The available menu items:</p>
 <ul>
@@ -997,17 +1024,20 @@ The stable data controls how the wrestlers are grouped and displayed in the menu
 
 <h3>Game Support</h3>
 <table>
+<thead>
 <tr>
 <th>Game</th>
 <th>Support</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>WCW vs. nWo World Tour</td>
-<td class="notsupported">No</td>
+<td class="partialsupport">Partial</td>
 </tr>
 <tr>
 <td>Virtual Pro-Wrestling 64</td>
-<td class="notsupported">No</td>
+<td class="partialsupport">Partial</td>
 </tr>
 <tr>
 <td>WCW/nWo Revenge</td>
@@ -1025,7 +1055,11 @@ The stable data controls how the wrestlers are grouped and displayed in the menu
 <td>WWF No Mercy</td>
 <td class="supported">Yes</td>
 </tr>
+</tbody>
 </table>
+
+<h3>WCW vs. nWo World Tour, Virtual Pro-Wrestling 64</h3>
+<p>Since the Stable data structures in these two games are the same, they're grouped together.</p>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/stable_editor-revenge.png" title="Stable Editor - WCW/nWo Revenge" />
@@ -1035,9 +1069,10 @@ The stable data controls how the wrestlers are grouped and displayed in the menu
 <li><strong>Header Graphic</strong> &ndash; File ID of the stable graphic.</li>
 </ul>
 
-<p>In <em>WCW/nWo Revenge</em>, the wrestler list is defined by pointers to the wrestler data.
-Due to this, none of the displayed features (View Wrestler, Move Up/Down, Switch Group)
-work at this time.</p>
+<p>In <em>WCW/nWo Revenge</em>, the wrestler list is defined by pointers to
+the wrestler data. Due to this, not all features work at this time. Some
+features may appear to work, but data is not written back to ROM during the
+build process.</p>
 
 <h3>WWF WrestleMania 2000, Virtual Pro-Wrestling 2, WWF No Mercy</h3>
 <p>Since the data structures in these three games are similar, they're grouped together.</p>
@@ -1099,10 +1134,13 @@ For now, please disregard the table below.</p>
 
 <h3>Game Support</h3>
 <table>
+<thead>
 <tr>
 <th>Game</th>
 <th>Support</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>WCW vs. nWo World Tour</td>
 <td class="notsupported">No*</td>
@@ -1127,6 +1165,7 @@ For now, please disregard the table below.</p>
 <td>WWF No Mercy</td>
 <td class="supported">Yes</td>
 </tr>
+</tbody>
 </table>
 <p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the <a href="#Championships">Championships</a> section,
 as the Championships and Story Mode are intertwined in those games.</p>
@@ -1145,6 +1184,50 @@ its upgraded weapon system.</p>
 <h2><a name="Wrestlers">Wrestlers</a></h2>
 <p>The Wrestler Editor (Project &rarr; Wrestlers) allows you to view information
 about wrestlers. (todo: sometimes you can edit them too)</p>
+
+<h3>Game Support</h3>
+<table>
+<thead>
+<tr>
+<th>Game</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WCW vs. nWo World Tour</td>
+<td class="notsupported">No</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 64</td>
+<td class="notsupported">No</td>
+</tr>
+<tr>
+<td>WCW/nWo Revenge</td>
+<td class="partialsupport">Partial</td>
+</tr>
+<tr>
+<td>WWF WrestleMania 2000</td>
+<td class="partialsupport">Partial</td>
+</tr>
+<tr>
+<td>Virtual Pro-Wrestling 2</td>
+<td class="partialsupport">Partial</td>
+</tr>
+<tr>
+<td>WWF No Mercy</td>
+<td class="partialsupport">Partial</td>
+</tr>
+</tbody>
+</table>
+
+<p>Most wrestler data is currently read-only. The exceptions to this are the
+Appearance and Profile settings for <em>Virtual Pro-Wrestling 2</em> and
+<em>WWF No Mercy</em>.</p>
+
+<p>Proper wrestler editing support requires creating a system similar to the
+Stable Definition format, to handle the per-game variations in wrestler data
+formats. This will be fixed in the future.</p>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/wrestler_editor-revenge.png" title="Wrestler Editor - WCW/nWo Revenge" />
@@ -1264,8 +1347,8 @@ the base for the final, more polished features. Starting with pre-alpha preview
 <li><strong>name encoder/decoder</strong> &ndash; Work in progress tool for encoding and decoding the name format used from <em>WCW vs. nWo World Tour</em> through <em>WWF WrestleMania 2000</em>.</li>
 <li><strong>toki 1 test</strong> &ndash; View Toki1 info. Requires an open project.</li>
 <li><strong>vpw2 face test</strong> &ndash; Attempts to render faces from VPW2 given specific values. Requires an open VPW2 project.</li>
-<li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format.</li>
-<li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM. Requires an open project.</li>
+<li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format. Only properly handles VPW2 and No Mercy formats.</li>
+<li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM data. Requires an open project.</li>
 <li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
 <li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values. Currently only handles the first image in multi-image archives.</li>
 </ul>
