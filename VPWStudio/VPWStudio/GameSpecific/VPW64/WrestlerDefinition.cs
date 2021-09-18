@@ -71,6 +71,11 @@ namespace VPWStudio.GameSpecific.VPW64
 			WeightPointer = 0;
 		}
 
+		public WrestlerDefinition(BinaryReader br)
+		{
+			ReadData(br);
+		}
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read WrestlerDefinition data with a BinaryReader.
