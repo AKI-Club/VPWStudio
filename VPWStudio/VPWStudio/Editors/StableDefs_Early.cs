@@ -12,7 +12,7 @@ namespace VPWStudio.Editors
 
 		private Dictionary<VPWGames, int> NumStables = new Dictionary<VPWGames, int>()
 		{
-			{ VPWGames.WorldTour, 5 },
+			{ VPWGames.WorldTour, 6 },
 			{ VPWGames.VPW64, 11 }
 		};
 
