@@ -166,7 +166,7 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// Write WrestlerDefinition data using a BinaryWriter.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>
-		private void WriteData(BinaryWriter bw)
+		public void WriteData(BinaryWriter bw)
 		{
 			byte[] id4 = BitConverter.GetBytes(WrestlerID4);
 			if (BitConverter.IsLittleEndian)
