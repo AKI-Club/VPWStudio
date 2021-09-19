@@ -55,6 +55,7 @@ namespace VPWStudio.GameSpecific
 		public UInt32 WeightPointer;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -79,6 +80,7 @@ namespace VPWStudio.GameSpecific
 		{
 			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
@@ -140,15 +142,63 @@ namespace VPWStudio.GameSpecific
 			WeightPointer = BitConverter.ToUInt32(wPtr, 0);
 		}
 
+		/// <summary>
+		/// Write WrestlerDefinition_Early data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
+			byte[] unk1 = BitConverter.GetBytes(Unknown1);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk1);
+			}
+			bw.Write(unk1);
+
 			byte[] id4 = BitConverter.GetBytes(WrestlerID4);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(id4);
 			}
 			bw.Write(id4);
-			// todo: the rest of it
+
+			bw.Write(WrestlerID2);
+			bw.Write(Flags1);
+
+			byte[] unk2 = BitConverter.GetBytes(Unknown2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(unk2);
+			}
+			bw.Write(unk2);
+
+			byte[] namePtr = BitConverter.GetBytes(NamePointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(namePtr);
+			}
+			bw.Write(namePtr);
+
+			byte[] profPtr = BitConverter.GetBytes(ProfilePointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(profPtr);
+			}
+			bw.Write(profPtr);
+
+			byte[] heightPtr = BitConverter.GetBytes(HeightPointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(heightPtr);
+			}
+			bw.Write(heightPtr);
+
+			byte[] weightPtr = BitConverter.GetBytes(WeightPointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(weightPtr);
+			}
+			bw.Write(weightPtr);
 		}
 		#endregion
 	}
