@@ -102,6 +102,8 @@ namespace VPWStudio
 		private void hexBox1_Copied(object sender, EventArgs e)
 		{
 			hexBox1.CopyHex();
+			string hex = Clipboard.GetText().Replace(" ",String.Empty);
+			Clipboard.SetText(hex);
 		}
 	}
 }
