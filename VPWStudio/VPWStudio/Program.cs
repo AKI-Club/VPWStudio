@@ -782,6 +782,142 @@ namespace VPWStudio
 			 * and anything else not involving the FileTable.
 			 */
 
+			#region Wrestler Definitions
+			if (!String.IsNullOrEmpty(CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(ConvertRelativePath(CurrentProject.Settings.WrestlerDefinitionFilePath))
+			){
+				WrestlerDefFile wdf = new WrestlerDefFile();
+				FileStream wdStream = new FileStream(ConvertRelativePath(CurrentProject.Settings.WrestlerDefinitionFilePath), FileMode.Open);
+				StreamReader wdReader = new StreamReader(wdStream);
+				wdf.ReadFile(wdReader);
+				wdReader.Close();
+
+				// make sure the external wrestlerdefs are for the right game
+				if (wdf.GameType == CurrentProject.Settings.BaseGame)
+				{
+					// get wrestler def location in ROM
+					bool hasLocation = false;
+					int wrestlerDefLoc = 0;
+					if (CurLocationFile != null)
+					{
+						LocationFileEntry wdEntry = CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["WrestlerDefs"]);
+						if (wdEntry != null)
+						{
+							wrestlerDefLoc = (int)wdEntry.Address;
+							hasLocation = true;
+						}
+					}
+					if (!hasLocation)
+					{
+						// fallback to hardcoded offset
+						wrestlerDefLoc = (int)DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset;
+					}
+
+					// the per-game nightmare.
+					MemoryStream ms = new MemoryStream(outRomData.ToArray());
+					BinaryWriter bw = new BinaryWriter(ms);
+					bw.Seek(wrestlerDefLoc, SeekOrigin.Begin);
+					BuildLogPub.AddLine("Re-building wrestler data...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+
+					bool writeData = false;
+
+					// "WrestlerDefs" means something different based on the game.
+					if (CurrentProject.Settings.BaseGame == VPWGames.VPW2 || CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
+					{
+						// linear wrestler data: vpw2, no mercy
+						switch (CurrentProject.Settings.BaseGame)
+						{
+							case VPWGames.VPW2:
+								foreach (KeyValuePair<int, GameSpecific.VPW2.WrestlerDefinition> wdef in wdf.WrestlerDefs_VPW2)
+								{
+									wdef.Value.WriteData(bw);
+								}
+								writeData = true;
+								break;
+
+							case VPWGames.NoMercy:
+								foreach (KeyValuePair<int, GameSpecific.NoMercy.WrestlerDefinition> wdef in wdf.WrestlerDefs_NoMercy)
+								{
+									wdef.Value.WriteData(bw);
+								}
+								writeData = true;
+								break;
+						}
+					}
+					else
+					{
+						// list of pointers to wrestler data: worldtour, vpw64, revenge, wm2k
+						long curPos;
+						int wrestlerCount = 0;
+						switch (CurrentProject.Settings.BaseGame)
+						{
+							case VPWGames.WorldTour:
+							case VPWGames.VPW64:
+								wrestlerCount = wdf.WrestlerDefs_Early.Count;
+								break;
+
+							case VPWGames.Revenge:
+								wrestlerCount = wdf.WrestlerDefs_Revenge.Count;
+								break;
+
+							case VPWGames.WM2K:
+								wrestlerCount = wdf.WrestlerDefs_WM2K.Count;
+								break;
+						}
+
+						for (int i = 0; i < wrestlerCount; i++)
+						{
+							// 1) get pointer value
+							byte[] wPtr = new byte[4];
+							bw.BaseStream.Read(wPtr, 0, 4);
+							if (BitConverter.IsLittleEndian)
+							{
+								Array.Reverse(wPtr);
+							}
+
+							// 2) save current location in stream
+							curPos = bw.BaseStream.Position;
+
+							// 3) follow pointer
+							bw.BaseStream.Seek(Z64Rom.PointerToRom(BitConverter.ToUInt32(wPtr,0)), SeekOrigin.Begin);
+
+							// 4) write data
+							switch (CurrentProject.Settings.BaseGame)
+							{
+								case VPWGames.WorldTour:
+								case VPWGames.VPW64:
+									wdf.WrestlerDefs_Early[i].WriteData(bw);
+									break;
+
+								case VPWGames.Revenge:
+									wdf.WrestlerDefs_Revenge[i].WriteData(bw);
+									break;
+
+								case VPWGames.WM2K:
+									wdf.WrestlerDefs_WM2K[i].WriteData(bw);
+									break;
+							}
+
+							// 5) restore location from step 2 before going back to step 1
+							bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
+						}
+						writeData = true;
+					}
+
+					if (writeData)
+					{
+						outRomData = new List<byte>(ms.ToArray());
+					}
+					bw.Close();
+				}
+				else
+				{
+					BuildLogPub.AddLine(String.Format("Wrestler Definition file is for a different game. (Found '{0}', expected '{1}')", wdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+					BuildLogPub.AddLine();
+				}
+			}
+			#endregion
+
 			#region Stable Definitions
 			if (!String.IsNullOrEmpty(CurrentProject.Settings.StableDefinitionFilePath) &&
 				File.Exists(ConvertRelativePath(CurrentProject.Settings.StableDefinitionFilePath))
@@ -818,7 +954,6 @@ namespace VPWStudio
 					bw.Seek(stableDefLoc, SeekOrigin.Begin);
 					BuildLogPub.AddLine("Re-building stables...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 
-					// temporary bullshit
 					bool writeData = false;
 
 					switch (CurrentProject.Settings.BaseGame)
@@ -850,7 +985,6 @@ namespace VPWStudio
 							break;
 					}
 
-					// temporary bullshit part 2
 					if (writeData)
 					{
 						outRomData = new List<byte>(ms.ToArray());
