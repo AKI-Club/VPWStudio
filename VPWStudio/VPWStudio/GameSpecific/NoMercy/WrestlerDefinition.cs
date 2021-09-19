@@ -30,13 +30,30 @@ namespace VPWStudio.GameSpecific.NoMercy
 		/// </summary>
 		public byte EntranceVideo;
 
-		// height (byte)
+		/// <summary>
+		/// Height value
+		/// </summary>
+		/// 0x00 = 5'0"
+		/// 0x23 = 7'11"
+		/// 0x24 = ?? (Short)
+		/// 0x25 = ??? (Medium)
+		/// 0x26 = !!! (Tall)
+		/// 0x27 = fake 6'6" (Crash Holly)
 		public byte Height;
 
-		// byte with unknown purpose
+		/// <summary>
+		/// Byte with currently unknown purpose
+		/// </summary>
 		public byte Unknown;
 
-		// weight (word)
+		/// <summary>
+		/// Weight value (in pounds; add 0x64 (100) for real value)
+		/// </summary>
+		/// Special case values starting at 600lbs:
+		/// 0x01F4 = ?? (Light Heavy)
+		/// 0x01F5 = ??? (Heavy)
+		/// 0x01F6 = !!! (Super Heavy)
+		/// 0x01F7 = fake 400 lbs. (Crash Holly)
 		public UInt16 Weight;
 
 		// todo: missing items between here and there

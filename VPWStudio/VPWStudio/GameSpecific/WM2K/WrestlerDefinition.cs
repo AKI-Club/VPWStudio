@@ -26,7 +26,7 @@ namespace VPWStudio.GameSpecific.WM2K
 		public UInt16 WrestlerID2;
 
 		/// <summary>
-		/// Height value (in ?; add 0x?? (?) for real value)
+		/// Height value
 		/// </summary>
 		/// 0x00 = 5'0"
 		/// 0x23 = 7'11"
@@ -129,6 +129,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 			WrestlerID4 = BitConverter.ToUInt16(id4, 0);
 
+			// yes, even though this is used as a one-byte value, it takes up two bytes in the data.
 			byte[] id2 = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
