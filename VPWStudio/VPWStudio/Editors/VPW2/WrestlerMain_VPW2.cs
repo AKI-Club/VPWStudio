@@ -25,6 +25,23 @@ namespace VPWStudio.Editors.VPW2
 		{
 			InitializeComponent();
 
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
+			)
+			{
+				// load stable definitions from external file
+				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+			}
+			else
+			{
+				// load stable definitions from VPW2 ROM
+				LoadDefs_Rom(romReader);
+			}
+
+			// wrestler names
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[VPW2_DEFAULT_NAMES_FILE];
 
 			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
@@ -33,27 +50,24 @@ namespace VPWStudio.Editors.VPW2
 			}
 			else
 			{
-				LoadNames_ROM();
+				LoadNames_ROM(romReader);
 			}
+			romReader.Close();
 
-			LoadDefs_Rom(); // temporary
 			PopulateList();
 		}
 
+		#region Load Wrestler Names
 		/// <summary>
 		/// Load default names AkiText entry
 		/// </summary>
-		private void LoadNames_ROM()
+		private void LoadNames_ROM(BinaryReader romReader)
 		{
 			// default names are in file 006C
-			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader romReader = new BinaryReader(romStream);
-
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, VPW2_DEFAULT_NAMES_FILE);
-			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader outReader = new BinaryReader(outStream);
@@ -70,14 +84,12 @@ namespace VPWStudio.Editors.VPW2
 			DefaultNames = new AkiText(br);
 			br.Close();
 		}
+		#endregion
 
 		#region Load Wrestler Definitions
-		private void LoadDefs_Rom()
+		private void LoadDefs_Rom(BinaryReader br)
 		{
 			// load from rom
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
 			bool hasLocation = false;
 			if (Program.CurLocationFile != null)
 			{
@@ -100,15 +112,17 @@ namespace VPWStudio.Editors.VPW2
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);
-				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
-
-			br.Close();
 		}
 
-		private void LoadDefs_Project()
+		private void LoadDefs_File(string _path)
 		{
-			// load from project file
+			WrestlerDefFile wdf = new WrestlerDefFile(VPWGames.VPW2);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			wdf.ReadFile(sr);
+			sr.Close();
+			WrestlerDefs = wdf.WrestlerDefs_VPW2;
 		}
 		#endregion
 
@@ -145,7 +159,7 @@ namespace VPWStudio.Editors.VPW2
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
 			tbAppearanceIndex.Text = String.Format("{0:X4}", wdef.AppearanceIndex);
-			tbProfileIndex.Text = String.Format("{0:X4}", wdef.ProfileIndex);
+			nudProfileIndex.Value = wdef.ProfileIndex;
 
 			// hacky crap for wrestlers who are 70kg
 			if (wdef.Weight == 0)
@@ -166,6 +180,103 @@ namespace VPWStudio.Editors.VPW2
 
 			// load data
 			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
+		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		#region Wrestler Definition Value Editors
+		private void cbThemeMusic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].ThemeSong = (byte)cbThemeMusic.SelectedIndex;
+		}
+
+		private void cbNameCall_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].NameCall = (byte)cbNameCall.SelectedIndex;
+		}
+
+		private void nudHeight_ValueChanged(object sender, EventArgs e)
+		{
+			int height = (int)nudHeight.Value;
+			if (height > 100)
+			{
+				labelHeightValue.Text = String.Format("??? {0}", height - 100);
+			}
+			else
+			{
+				labelHeightValue.Text = String.Format("{0}cm", height + 150);
+			}
+			WrestlerDefs[lbWrestlers.SelectedIndex].Height = (byte)nudHeight.Value;
+		}
+
+		private void nudHeight_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void nudWeight_ValueChanged(object sender, EventArgs e)
+		{
+			int weight = (int)nudWeight.Value;
+			if (weight > 230)
+			{
+				labelWeightValue.Text = "???";
+			}
+			else
+			{
+				labelWeightValue.Text = String.Format("{0}kg", weight + 70);
+			}
+			WrestlerDefs[lbWrestlers.SelectedIndex].Weight = (byte)nudWeight.Value;
+		}
+
+		private void nudWeight_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void cbVoiceA_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Voice1 = (byte)cbVoiceA.SelectedIndex;
+		}
+
+		private void cbVoiceB_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Voice2 = (byte)cbVoiceB.SelectedIndex;
 		}
 
 		private void buttonMoveset_Click(object sender, EventArgs e)
@@ -275,6 +386,24 @@ namespace VPWStudio.Editors.VPW2
 			}
 		}
 
+		private void nudProfileIndex_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex = (ushort)nudProfileIndex.Value;
+		}
+
+		private void nudProfileIndex_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+		}
+
 		private void buttonProfile_Click(object sender, EventArgs e)
 		{
 			if (lbWrestlers.SelectedIndex < 0)
@@ -287,12 +416,12 @@ namespace VPWStudio.Editors.VPW2
 
 			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
 			{
-				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), (ushort)nudProfileIndex.Value);
 			}
 			else
 			{
 				// request AkiText viewer, index 0x006C
-				ate = new AkiTextEditor(VPW2_DEFAULT_NAMES_FILE, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate = new AkiTextEditor(VPW2_DEFAULT_NAMES_FILE, (ushort)nudProfileIndex.Value);
 			}
 
 			if (ate.ShowDialog() == DialogResult.OK)
@@ -340,32 +469,13 @@ namespace VPWStudio.Editors.VPW2
 				PopulateList();
 			}
 		}
+		#endregion
 
-		private void nudHeight_ValueChanged(object sender, EventArgs e)
+		private void buttonRefreshList_Click(object sender, EventArgs e)
 		{
-			int height = (int)nudHeight.Value;
-			if (height > 100)
-			{
-				int qmarknum = height - 100;
-				tbHeight.Text = String.Format("0x{0:X2} (??? {1})", height, qmarknum);
-			}
-			else
-			{
-				tbHeight.Text = String.Format("0x{0:X2} ({1}cm)", height, height + 150);
-			}
-		}
-
-		private void nudWeight_ValueChanged(object sender, EventArgs e)
-		{
-			int weight = (int)nudWeight.Value;
-			if (weight > 230)
-			{
-				tbWeight.Text = String.Format("0x{0:X2} (???)", weight);
-			}
-			else
-			{
-				tbWeight.Text = String.Format("0x{0:X2} ({1}kg)", weight, weight + 70);
-			}
+			int oldIndex = lbWrestlers.SelectedIndex;
+			PopulateList();
+			lbWrestlers.SelectedIndex = oldIndex;
 		}
 	}
 }

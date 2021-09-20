@@ -1353,13 +1353,41 @@ namespace VPWStudio
 						WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
 
 					}
-					// check for minimized
-					if (WrestlerMain_VPW2.WindowState == FormWindowState.Minimized)
+
+					if (WrestlerMain_VPW2.ShowDialog() == DialogResult.OK)
 					{
-						WrestlerMain_VPW2.WindowState = FormWindowState.Normal;
+						if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+						{
+							// we need to have saved in order to actually... save.
+							Program.ErrorMessageBox("Can not save Wrestler Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+							return;
+						}
+
+						// check if WrestlerDef file exists.
+						string wrestlerDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+						bool writePath = false;
+
+						if (!File.Exists(wrestlerDefPath))
+						{
+							wrestlerDefPath = Program.ConvertRelativePath(@"ProjectFiles\WrestlerDefs.txt");
+							writePath = true;
+						}
+
+						FileStream fs = new FileStream(wrestlerDefPath, FileMode.OpenOrCreate);
+						StreamWriter sw = new StreamWriter(fs);
+						WrestlerDefFile wdefs = new WrestlerDefFile(Program.CurrentProject.Settings.BaseGame);
+						wdefs.WrestlerDefs_VPW2 = WrestlerMain_VPW2.WrestlerDefs;
+						wdefs.WriteFile(sw);
+						sw.Close();
+
+						if (writePath)
+						{
+							Program.CurrentProject.Settings.WrestlerDefinitionFilePath = wrestlerDefPath;
+							Program.UnsavedChanges = true;
+							UpdateTitleBar();
+							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
+						}
 					}
-					WrestlerMain_VPW2.MdiParent = this;
-					WrestlerMain_VPW2.Show();
 					break;
 
 				case VPWGames.NoMercy:
@@ -1367,13 +1395,41 @@ namespace VPWStudio
 					{
 						WrestlerMain_NoMercy = new Editors.NoMercy.WrestlerMain_NoMercy();
 					}
-					// check for minimized
-					if (WrestlerMain_NoMercy.WindowState == FormWindowState.Minimized)
+
+					if (WrestlerMain_NoMercy.ShowDialog() == DialogResult.OK)
 					{
-						WrestlerMain_NoMercy.WindowState = FormWindowState.Normal;
+						if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+						{
+							// we need to have saved in order to actually... save.
+							Program.ErrorMessageBox("Can not save Wrestler Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+							return;
+						}
+
+						// check if WrestlerDef file exists.
+						string wrestlerDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+						bool writePath = false;
+
+						if (!File.Exists(wrestlerDefPath))
+						{
+							wrestlerDefPath = Program.ConvertRelativePath(@"ProjectFiles\WrestlerDefs.txt");
+							writePath = true;
+						}
+
+						FileStream fs = new FileStream(wrestlerDefPath, FileMode.OpenOrCreate);
+						StreamWriter sw = new StreamWriter(fs);
+						WrestlerDefFile wdefs = new WrestlerDefFile(Program.CurrentProject.Settings.BaseGame);
+						wdefs.WrestlerDefs_NoMercy = WrestlerMain_NoMercy.WrestlerDefs;
+						wdefs.WriteFile(sw);
+						sw.Close();
+
+						if (writePath)
+						{
+							Program.CurrentProject.Settings.WrestlerDefinitionFilePath = wrestlerDefPath;
+							Program.UnsavedChanges = true;
+							UpdateTitleBar();
+							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
+						}
 					}
-					WrestlerMain_NoMercy.MdiParent = this;
-					WrestlerMain_NoMercy.Show();
 					break;
 
 				default:
