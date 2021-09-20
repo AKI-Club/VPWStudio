@@ -14,13 +14,24 @@ namespace VPWStudio.Editors.Revenge
 	public partial class WrestlerMain_Revenge : Form
 	{
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
-
 		public WrestlerMain_Revenge()
 		{
 			InitializeComponent();
 
-			LoadDefs_Rom(); // temporary
-			PopulateList(); // not so temporary
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
+			)
+			{
+				// load stable definitions from external file
+				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+			}
+			else
+			{
+				// load stable definitions from Revenge ROM
+				LoadDefs_Rom();
+			}
+
+			PopulateList();
 		}
 
 		#region Load Wrestler Definitions
@@ -62,15 +73,19 @@ namespace VPWStudio.Editors.Revenge
 				br.BaseStream.Seek(wPtr, SeekOrigin.Begin);
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);
-				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
 
 			br.Close();
 		}
 
-		private void LoadDefs_Project()
+		private void LoadDefs_File(string _path)
 		{
-			// load from project file
+			WrestlerDefFile wdf = new WrestlerDefFile(VPWGames.Revenge);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			wdf.ReadFile(sr);
+			sr.Close();
+			WrestlerDefs = wdf.WrestlerDefs_Revenge;
 		}
 		#endregion
 
@@ -99,42 +114,20 @@ namespace VPWStudio.Editors.Revenge
 			tbUnknown1.Text = String.Format("{0:X2}", wdef.Unknown1);
 			tbUnknown2.Text = String.Format("{0:X4}", wdef.Unknown2);
 			tbUnknown3.Text = String.Format("{0:X4}", wdef.Unknown3);
+
 			tbWrestlerNamePointer.Text = String.Format("{0:X8}", wdef.NamePointer);
+			tbWrestlerName.Text = wdef.Name;
+
 			tbHeightPointer.Text = String.Format("{0:X8}", wdef.HeightPointer);
+			tbWrestlerHeight.Text = wdef.HeightString;
+
 			tbWeightPointer.Text = String.Format("{0:X8}", wdef.WeightPointer);
+			tbWrestlerWeight.Text = wdef.WeightString;
+
 			tbUnknown4.Text = String.Format("{0:X2}", wdef.Unknown4);
 			tbManagerID2.Text = String.Format("{0:X2}", wdef.ManagerID2);
 			tbUnknown5.Text = String.Format("{0:X2}", wdef.Unknown5);
 			tbUnknown6.Text = String.Format("{0:X2}", wdef.Unknown6);
-
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
-			ms.Seek(Z64Rom.PointerToRom(wdef.NamePointer), SeekOrigin.Begin);
-			string wName = "";
-			while (br.PeekChar() != 0)
-			{
-				wName += (char)br.ReadByte();
-			}
-			tbWrestlerName.Text = wName;
-
-			ms.Seek(Z64Rom.PointerToRom(wdef.HeightPointer), SeekOrigin.Begin);
-			string wHeight = "";
-			while (br.PeekChar() != 0)
-			{
-				wHeight += (char)br.ReadByte();
-			}
-			tbWrestlerHeight.Text = wHeight;
-
-			ms.Seek(Z64Rom.PointerToRom(wdef.WeightPointer), SeekOrigin.Begin);
-			string wWeight = "";
-			while (br.PeekChar() != 0)
-			{
-				wWeight += (char)br.ReadByte();
-			}
-			tbWrestlerWeight.Text = wWeight;
-
-			br.Close();
 		}
 
 		/// <summary>
@@ -151,5 +144,16 @@ namespace VPWStudio.Editors.Revenge
 			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
 		}
 
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
 	}
 }
