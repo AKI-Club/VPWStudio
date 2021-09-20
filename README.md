@@ -18,6 +18,7 @@ All known variants (region and revision) are supported for the following:
 Requirements
 ------------
 - .NET Framework 4.7.2
+- OpenGL 3 support (for ModelTool2 and any future features using 3D rendering)
 - patience and understanding, considering this program is incomplete
 
 Manual
