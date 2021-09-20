@@ -865,43 +865,46 @@ namespace VPWStudio
 								break;
 						}
 
-						for (int i = 0; i < wrestlerCount; i++)
+						if (wrestlerCount > 0)
 						{
-							// 1) get pointer value
-							byte[] wPtr = new byte[4];
-							bw.BaseStream.Read(wPtr, 0, 4);
-							if (BitConverter.IsLittleEndian)
+							for (int i = 0; i < wrestlerCount; i++)
 							{
-								Array.Reverse(wPtr);
+								// 1) get pointer value
+								byte[] wPtr = new byte[4];
+								bw.BaseStream.Read(wPtr, 0, 4);
+								if (BitConverter.IsLittleEndian)
+								{
+									Array.Reverse(wPtr);
+								}
+
+								// 2) save current location in stream
+								curPos = bw.BaseStream.Position;
+
+								// 3) follow pointer
+								bw.BaseStream.Seek(Z64Rom.PointerToRom(BitConverter.ToUInt32(wPtr, 0)), SeekOrigin.Begin);
+
+								// 4) write data
+								switch (CurrentProject.Settings.BaseGame)
+								{
+									case VPWGames.WorldTour:
+									case VPWGames.VPW64:
+										wdf.WrestlerDefs_Early[i].WriteData(bw);
+										break;
+
+									case VPWGames.Revenge:
+										wdf.WrestlerDefs_Revenge[i].WriteData(bw);
+										break;
+
+									case VPWGames.WM2K:
+										wdf.WrestlerDefs_WM2K[i].WriteData(bw);
+										break;
+								}
+
+								// 5) restore location from step 2 before going back to step 1
+								bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
 							}
-
-							// 2) save current location in stream
-							curPos = bw.BaseStream.Position;
-
-							// 3) follow pointer
-							bw.BaseStream.Seek(Z64Rom.PointerToRom(BitConverter.ToUInt32(wPtr,0)), SeekOrigin.Begin);
-
-							// 4) write data
-							switch (CurrentProject.Settings.BaseGame)
-							{
-								case VPWGames.WorldTour:
-								case VPWGames.VPW64:
-									wdf.WrestlerDefs_Early[i].WriteData(bw);
-									break;
-
-								case VPWGames.Revenge:
-									wdf.WrestlerDefs_Revenge[i].WriteData(bw);
-									break;
-
-								case VPWGames.WM2K:
-									wdf.WrestlerDefs_WM2K[i].WriteData(bw);
-									break;
-							}
-
-							// 5) restore location from step 2 before going back to step 1
-							bw.BaseStream.Seek(curPos, SeekOrigin.Begin);
+							writeData = true;
 						}
-						writeData = true;
 					}
 
 					if (writeData)
