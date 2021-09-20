@@ -49,6 +49,10 @@ namespace VPWStudio.GameSpecific.Revenge
 
 		public byte Unknown5;
 		public byte Unknown6;
+
+		public string Name;
+		public string HeightString;
+		public string WeightString;
 		#endregion
 
 		/// <summary>
@@ -67,6 +71,10 @@ namespace VPWStudio.GameSpecific.Revenge
 			Unknown4 = 0;
 			Unknown5 = 0;
 			Unknown6 = 0;
+
+			Name = "";
+			HeightString = "";
+			WeightString = "";
 		}
 
 		/// <summary>
@@ -137,6 +145,13 @@ namespace VPWStudio.GameSpecific.Revenge
 
 			// read and ignore terminator bytes
 			br.ReadBytes(2);
+
+			// getting name, height, and weight strings interferes with trying to read wrestler data sequentially
+			long previousPos = br.BaseStream.Position;
+			Name = GetName(br);
+			HeightString = GetHeightString(br);
+			WeightString = GetWeightString(br);
+			br.BaseStream.Seek(previousPos, SeekOrigin.Begin);
 		}
 
 		/// <summary>
@@ -154,21 +169,91 @@ namespace VPWStudio.GameSpecific.Revenge
 			bw.Write(WrestlerID2);
 			bw.Write(Unknown1);
 
-			byte[] unk2 = BitConverter.GetBytes(2);
+			byte[] unk2 = BitConverter.GetBytes(Unknown2);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(unk2);
 			}
 			bw.Write(unk2);
 
-			byte[] unk3 = BitConverter.GetBytes(2);
+			byte[] unk3 = BitConverter.GetBytes(Unknown3);
 			if (BitConverter.IsLittleEndian)
 			{
 				Array.Reverse(unk3);
 			}
 			bw.Write(unk3);
 
-			// todo: the rest of it
+			byte[] namePtr = BitConverter.GetBytes(NamePointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(namePtr);
+			}
+			bw.Write(namePtr);
+
+			byte[] heightPtr = BitConverter.GetBytes(HeightPointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(heightPtr);
+			}
+			bw.Write(heightPtr);
+
+			byte[] weightPtr = BitConverter.GetBytes(WeightPointer);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(weightPtr);
+			}
+			bw.Write(weightPtr);
+
+			bw.Write(Unknown4);
+			bw.Write(ManagerID2);
+			bw.Write(Unknown5);
+			bw.Write(Unknown6);
+
+			// terminator bytes
+			bw.Write((ushort)0);
+		}
+		#endregion
+
+		#region Helpers
+		/// <summary>
+		/// Get wrestler name from ROM.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use</param>
+		/// <returns>A string with the wrestler's name</returns>
+		public string GetName(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(NamePointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
+		public string GetHeightString(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(HeightPointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
+		public string GetWeightString(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(WeightPointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
 		}
 		#endregion
 	}
