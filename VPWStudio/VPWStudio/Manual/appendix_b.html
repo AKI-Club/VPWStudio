@@ -28,12 +28,13 @@ likely to happen.</li>
 	<li><a href="#LocationFile">LocationFile Format</a></li>
 	<li><a href="#FileTableDB">FileTableDB Format</a></li>
 	<li><a href="#StableDef">Stable Definition Format</a></li>
-	<li><a href="#ProjectFile">ProjectFile Format</a></li>
+	<li><a href="#WrestlerDef">Wrestler Definition Format</a></li>
+	<li><a href="#ProjectFile">Project File Format</a></li>
 </ol>
 
 <hr />
 
-<h3><a name="VPWSPal">VPW Studio Palette Format</a></h3>
+<h2><a name="VPWSPal">VPW Studio Palette Format</a></h2>
 <p>The VPW Studio Palette format (henceforth "VPWSPal", based on its file extension:
 <code>.vpwspal</code>) is a modification of the text-based JASC Paint Shop Pro
 palette format. This format was created to handle transparency and "sub-palettes"
@@ -66,7 +67,7 @@ design phase.</p>
 <p>If the VPWSPal file contains any sub-palettes, their palette entries continue
 after the first set of colors.</p>
 
-<h4>Example Files</h4>
+<h3>Example Files</h3>
 
 <p>16 colors, no sub-palettes:</p>
 <pre>VPWStudio-PAL
@@ -90,7 +91,7 @@ after the first set of colors.</p>
 0 0 0 255
 </pre>
 
-<h4>Comparison between JASC PSP Palette and VPWSPal</h4>
+<h3>Comparison between JASC PSP Palette and VPWSPal</h3>
 <p>In case you'd prefer to see the differences visually, here are some side-by-side
 comparisons of JASC Paint Shop Pro palette format and the VPW Studio palette format.</p>
 
@@ -151,7 +152,7 @@ comparisons of JASC Paint Shop Pro palette format and the VPW Studio palette for
 
 <hr />
 
-<h3><a name="LocationFile">LocationFile Format</a></h3>
+<h2><a name="LocationFile">LocationFile Format</a></h2>
 <p>The LocationFile format is a plain text database defining locations in ROM
 and RAM to be used by VPW Studio. Each non-comment line consists of a entry in
 the LocationFile.</p>
@@ -159,29 +160,34 @@ the LocationFile.</p>
 <p>Lines starting with the <code>#</code> character are comments, and will be
 ignored by the LocationFile loader.</p>
 
-<h4>Breakdown</h4>
+<h3>Breakdown</h3>
 <p><code>LocationType:Location,Size;Comment</code></p>
 
-<h4>LocationType</h4>
+<h3>LocationType</h3>
 <p>This value is either <code>ROM</code> or <code>RAM</code>.
 ROM locations assume the Z64 file format (like the rest of the program).
 RAM locations are primarily for use with the GameShark code tool,
 which is no longer a part of the program.</p>
 
-<h4>Location</h4>
+<h3>Location</h3>
 <p>The location for this entry, specified in hex. If this is a RAM entry,
 it must begin with <code>80</code>. Do not use <code>81</code> if you are
 converting a GameShark code to a LocationFile entry; the size is handled
 in the next section.</p>
 
-<h4>Size</h4>
+<h3>Size</h3>
 <p>The size of this entry, in decimal. For a normal entry, this is how many
 bytes to read/write.</p>
 
 <p>When handling a Code Change entry (see below), the Size value represents
 the number of bytes between the first and second change.</p>
 
-<h4>Comment</h4>
+<p>In some games, the <code>$WRESTLERDEFS</code> size is set to 1. This is
+often the case when the wrestler definitions are a list of pointers. VPW Studio
+manually handles the "list of pointers" case in the code (which is admittedly
+not the best option).</p>
+
+<h3>Comment</h3>
 <p>The comment section is typically used to provide a note about the location,
 but comments starting with special characters have different meanings.</p>
 
@@ -201,40 +207,84 @@ location strings:</p>
 <li><code>$FILETABLE</code> &ndash; Location of the FileTable in ROM.</li>
 <li><code>$FIRSTFILE</code> &ndash; Location of the first file described by the FileTable in ROM. (Size field does not matter.)</li>
 <li><code>$WRESTLERDEFS</code> &ndash; Location of Wrestler Definitions.</li>
+<li><code>$STABLEDEFS</code> &ndash; Location of Stable Definitions.</li>
+<li><code>$BODYTYPEDEFS</code> &ndash; Location of Body Type Definitions. (World Tour, VPW64, Revenge)</li>
+<li><code>$COSTUMEDEFS</code> &ndash; Location of Costume Definitions. (World Tour, Revenge)</li>
+<li><code>$HEADDEFS</code> &ndash; Location of Head/Mask Definitions. (World Tour, VPW64, Revenge)</li>
+<li><code>$CHAMPIONSHIPDEFS</code> &ndash; ??? (Revenge only for now?)</li>
+</ul>
+
+<strong>VPW64 Costume Definitions</strong>
+<ul>
+<li><code>$VPW64COSTUMES_SMALL</code> &ndash; Location of costumes for the "Small" body type.</li>
+<li><code>$VPW64COSTUMES_MED</code> &ndash; Location of costumes for the "Medium" body type.</li>
+<li><code>$VPW64COSTUMES_LARGE</code> &ndash; Location of costumes for the "Large" body type.</li>
+<li><code>$VPW64COSTUMES_SALADIN</code> &ndash; Location of costumes for Saladin/Abdullah the Butcher.</li>
+<li><code>$VPW64COSTUMES_BABA</code> &ndash; Location of costumes for Giant Baba.</li>
+<li><code>$VPW64COSTUMES_JUDOKA</code> &ndash; Location of costumes for the Judoka body type.</li>
+<li><code>$VPW64COSTUMES_FEMALE</code> &ndash; Location of costumes for BlackWidow/Pretty Tomoko/Manami Toyota.</li>
+<li><code>$VPW64COSTUMES_UNUSED</code> &ndash; Location of costumes for an unused(?) body type.</li>
+</ul>
+
+<strong>Introduction Sequence Locations</strong>
+<p><em>WCW/nWo Revenge</em> and later only. Ending sequences use the same formats,
+but are not yet handled.</p>
+<ul>
+<li><code>$INTRODEFS_LATER_ANIMS</code> &ndash; </li>
+<li><code>$INTRODEFS_LATER_IMAGES</code> &ndash; </li>
+<li><code>$INTRODEFS_LATER_SEQUENCE</code> &ndash; </li>
+</ul>
+
+<strong>Facial Hair, Facepaint, and Face Accessories</strong>
+<p>"Might be shared between WM2K, VPW2, No Mercy"</p>
+<ul>
+<li><code>$DEFAULTFACE_FACIALHAIR_VERTDISPLACEMENT</code> &ndash; Location of per-face table for facial hair vertical displacement.</li>
+<li><code>$DEFAULTFACE_PAINTACCESSORIES_VERTDISPLACEMENT</code> &ndash; Location of per-face table for facepaint and accessory vertical displacement.</li>
+<li><code>$FACIALHAIR_VERTDISPLACEMENT</code> &ndash; Location of per-facial hair item vertical displacement.</li>
+<li><code>$FACEPAINT_VERTDISPLACEMENT</code> &ndash; Location of per-facepaint item vertical displacement.</li>
+<li><code>$FACEPAINT_TYPE</code> &ndash; Location of per-facepaint item type/display flags.</li>
+<li><code>$FACEACCESSORIES_VERTDISPLACEMENT</code> &ndash; Location of per-face accessory item vertical displacement.</li>
+<li><code>$FACEACCESSORIES_TYPE</code> &ndash; Location of per-face accessory item type/display flags.</li>
+</ul>
+
+<strong>WrestleMania 2000 and VPW2 Story Mode</strong>
+<ul>
+<li><code>$STORY_MODE_TEAMS</code> &ndash; Location of available story mode teams.</li>
+<li><code>$DEFAULT_CHAMPIONS</code> &ndash; Location of default champions.</li>
 </ul>
 
 <strong>Code Changes</strong>
 <ul>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
+<li><code>%SETUPFT_FTSIZE1</code> &ndash; </li>
+<li><code>%SETUPFT_FTLOCATION</code> &ndash; </li>
+<li><code>%SETUPFT_FTSIZE2</code> &ndash; </li>
+<li><code>%SETUPFT_FTSIZE2_MINUS1</code> &ndash; </li>
+<li><code>%SETUPFT_FTBEGINS</code> &ndash; </li>
+<li><code>%SETUPFT_MAXFILES_MINUS1</code> &ndash; </li>
 
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
+<li><code>%GETFILELOC_MAXFILES</code> &ndash; </li>
+<li><code>%GETFILELOC_FTBEGINS</code> &ndash; </li>
 
-<li><code></code> &ndash; </li>
-<li><code></code> &ndash; </li>
+<li><code>%LOADFILE_MAXFILES</code> &ndash; </li>
+<li><code>%LOADFILE_FTBEGINS</code> &ndash; </li>
 </ul>
 
 <hr />
-<h3><a name="FileTableDB">FileTableDB Format</a></h3>
+<h2><a name="FileTableDB">FileTableDB Format</a></h2>
 <p>The FileTableDB format is a plain text database mapping File IDs to types
 and notes.</p>
 
 <p>Lines starting with the <code>#</code> character are comments, and will be
 ignored by the FileTableDB loader.</p>
 
-<h4>Breakdown</h4>
+<h3>Breakdown</h3>
 <p><code>FileID=Type;Notes|Settings</code></p>
 
-<h4>FileID</h4>
+<h3>FileID</h3>
 <p>The ID file for this entry. Entries are in hex and should have 4 digits.
 Entries start from 0001, as 0000 is used as a "no file" index.</p>
 
-<h4>Type</h4>
+<h3>Type</h3>
 <p>(This is the challenging part.)</p>
 
 <p>Currently supported values:</p>
@@ -263,14 +313,15 @@ contain TEX files.</li>
 <li><code>MenuItems_Shop</code> &ndash; WWF No Mercy-specific menu item text (Smackdown Mall Shop items).</li>
 </ul>
 
-<h4>Notes</h4>
+<h3>Notes</h3>
 <p>A note displayed in the FileTable dialog. If you are not adding any Settings
 to this item, you do not need to do anything special, aside from avoiding the
 "<code>|</code>" character in your description.</p>
 
-<h4>Settings</h4>
-<p>Settings are optional, but are recommended for some file types. The beginning
-of the Settings string is denoted by a "<code>|</code>" at the end of the Note.</p>
+<h3>Settings</h3>
+<p>Settings (also known as "ExtraData") are optional, but are recommended for some
+file types. The beginning of the Settings string is denoted by a "<code>|</code>"
+at the end of the Note.</p>
 
 <p>Currently supported values:</p>
 <ul>
@@ -287,51 +338,54 @@ of the Settings string is denoted by a "<code>|</code>" at the end of the Note.<
 </ul>
 
 <hr />
-<h3><a name="StableDef">Stable Definition Format</a></h3>
+<h2><a name="StableDef">Stable Definition Format</a></h2>
 <p>The Stable Definition file is a text file following a specific pattern.
 Each game in the series defines Stable data differently, requiring the creation
 of an intermediate format.</p>
 
 <p>Generally, the format consists of:</p>
 <ul>
-<li>Game identifier.</li>
+<li>Game identifier on the first line.</li>
 <li>One line per stable, defining all necessary data.</li>
 </ul>
 
-<h4>WCW vs. nWo World Tour</h4>
+<h3>WCW vs. nWo World Tour</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>WorldTour</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; ?</li>
+<li><strong>Max Wrestlers in Stable</strong> &ndash; 16 (theoretically, based on wrestler select screen layout)</li>
 </ul>
 
-<h4>Virtual Pro-Wrestling 64</h4>
-<p>While the stable data is similar to World Tour, the wrestler select screen
-is laid out differently.</p>
+<p>Stable Number@Wrestler pointer list location={wrestler pointers},Championship text pointer,Number of Championships</p>
+<p>Example stable definition: <code>0@80037068={80036444,80036498,800364EC,80036558,800365C8,80036624,80036688,800366E8,8003674C,800367B4,80036818,80036878,800368E8},80037278,3</code></p>
 
-<p><strong>Game Identifiers</strong></p>
+<h3>Virtual Pro-Wrestling 64</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>VPW64</code></li>
-<li><strong>Max Wrestlers in Stable</strong> &ndash; ?</li>
+<li><strong>Max Wrestlers in Stable</strong> &ndash; 16</li>
 </ul>
 
-<p>(todo)</p>
+<p>Stable Number@Wrestler pointer list location={wrestler pointers},Championship text pointer,Number of Championships</p>
+<p>Example stable definition: <code>0@80048920={80047298,800473A4,8004828C,80048308,8004742C,800474B4,80048380,80048410,80048494,80048520,80048070,80045B2C},80048C8C,1</code></p>
 
-<h4>WCW/nWo Revenge</h4>
+<h3>WCW/nWo Revenge</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>Revenge</code></li>
 <li><strong>Max Wrestlers in Stable</strong> &ndash; 9</li>
 </ul>
-<p>(todo)</p>
 
-<h4>WWF WrestleMania 2000</h4>
+<p>Stable Number@Wrestler pointer list location={wrestler pointers},Stable graphic File ID</p>
+<p>Example stable definition: <code>0@8003A1EC={80039390,80038EBC,800395E4,8003945C,800395A4,8003949C,80039628,800394E4,80039524},00BE</code></p>
+
+<h3>WWF WrestleMania 2000</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>WM2K</code></li>
 <li><strong>Max Wrestlers in Stable</strong> &ndash; 8</li>
 </ul>
 
-<p>(todo)</p>
+<p>Stable Number@Wrestler ID2 list pointer={wrestlers},Stable Name pointer</p>
+<p>Example stable definition: <code>0@8004115C={01,02,07,11,06,17,10,00},8004AC20</code></p>
 
-<h4>Virtual Pro-Wrestling 2</h4>
+<h3>Virtual Pro-Wrestling 2</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>VPW2</code></li>
 <li><strong>Max Wrestlers in Stable</strong> &ndash; 8</li>
@@ -340,16 +394,68 @@ is laid out differently.</p>
 <p>Stable Number@Wrestler ID2 list pointer={wrestlers},Stable Name text index</p>
 <p>Example stable definition: <code>0@8003FA0C={01,02,03,04,05,06,07,00},00E6</code></p>
 
-<h4>WWF No Mercy</h4>
+<h3>WWF No Mercy</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>NoMercy</code></li>
 <li><strong>Max Wrestlers in Stable</strong> &ndash; 9</li>
 </ul>
 
-<p>(todo)</p>
+<p>Stable Number@Wrestler ID2 list pointer={wrestlers},Stable Name text index</p>
+<p>Example stable definition: <code>0@80047150={01,0A,02,03,04,06,12,13,0E},0126</code></p>
 
 <hr />
-<h3><a name="ProjectFile">Appendix B4: Project File Format</a></h3>
+<h2><a name="WrestlerDef">Wrestler Definition Format</a></h2>
+<p>The Wrestler Definition file is a text file that stores game-specific
+information about wrestler definitions. If this sounds similar to the Stable
+Definition format, that's because it is. Much like stables, each game stores
+wrestler data differently.</p>
+
+<p>The format consists of:</p>
+<ul>
+<li>Game identifier on the first line.</li>
+<li>One line per wrestler, defining all necessary data.</li>
+</ul>
+
+<h3>WCW vs. nWo World Tour</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>WorldTour</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>(todo)</p>
+
+<h3>Virtual Pro-Wrestling 64</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>VPW64</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>(todo)</p>
+
+<h3>WCW/nWo Revenge</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>Revenge</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>(todo)</p>
+
+<h3>WWF WrestleMania 2000</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>WM2K</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>(todo)</p>
+
+<h3>Virtual Pro-Wrestling 2</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>VPW2</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Example wrestler definition: <code>0001/01=02,02,23,2D,01,00,02EE,02ED,0000,0002</code></p>
+
+<h3>WWF No Mercy</h3>
+<p><strong>Game Identifier</strong> &ndash; <code>NoMercy</code></p>
+
+<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Example wrestler definition: <code>0001/01=25,1D,11,00,00AF,01FA,01F9,0000,0003</code></p>
+
+<hr />
+<h2><a name="ProjectFile">Project File Format</a></h2>
+<p><code>.vpwsproj</code> is an XML file.</p>
+
 <p>(todo: this is perpetually changing and is not worth documenting until it's
 reached a stable state.)</p>
 
