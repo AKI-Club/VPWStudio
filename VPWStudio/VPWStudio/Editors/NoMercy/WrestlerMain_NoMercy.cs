@@ -16,6 +16,7 @@ namespace VPWStudio.Editors.NoMercy
 		public SortedList<int, WrestlerDefinition> WrestlerDefs = new SortedList<int, WrestlerDefinition>();
 
 		private AkiText DefaultNames;
+		private AkiTextEditor ate;
 
 		private const UInt16 NOMERCY_DEFAULT_COSTUME_FILE = 1;
 		private const UInt16 NOMERCY_DEFAULT_NAMES_FILE = 2;
@@ -40,6 +41,23 @@ namespace VPWStudio.Editors.NoMercy
 		{
 			InitializeComponent();
 
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
+			)
+			{
+				// load stable definitions from external file
+				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+			}
+			else
+			{
+				// load stable definitions from No Mercy ROM
+				LoadDefs_Rom(romReader);
+			}
+
+			// wrestler names
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[NOMERCY_DEFAULT_NAMES_FILE];
 
 			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
@@ -48,27 +66,25 @@ namespace VPWStudio.Editors.NoMercy
 			}
 			else
 			{
-				LoadNames_ROM();
+				LoadNames_ROM(romReader);
 			}
+			romReader.Close();
 
-			LoadDefs_Rom(); // temporary
-			PopulateList(); // not so temporary
+			PopulateList();
 		}
 
+		#region Load Wrestler Names
 		/// <summary>
-		/// Load default names AkiText entry
+		/// Load default names AkiText entry using a BinaryReader.
 		/// </summary>
-		private void LoadNames_ROM()
+		/// <param name="romReader">BinaryReader instance to use.</param>
+		private void LoadNames_ROM(BinaryReader romReader)
 		{
 			// default names are in file 0002
-			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader romReader = new BinaryReader(romStream);
-
 			MemoryStream outStream = new MemoryStream();
 			BinaryWriter outWriter = new BinaryWriter(outStream);
 
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, NOMERCY_DEFAULT_NAMES_FILE);
-			romReader.Close();
 
 			outStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader outReader = new BinaryReader(outStream);
@@ -78,6 +94,10 @@ namespace VPWStudio.Editors.NoMercy
 			outWriter.Close();
 		}
 
+		/// <summary>
+		/// Load default names from an external AkiText file.
+		/// </summary>
+		/// <param name="_path">Path to AkiText file with wrestler names.</param>
 		private void LoadNames_File(string _path)
 		{
 			FileStream fs = new FileStream(_path, FileMode.Open);
@@ -85,14 +105,12 @@ namespace VPWStudio.Editors.NoMercy
 			DefaultNames = new AkiText(br);
 			br.Close();
 		}
+		#endregion
 
 		#region Load Wrestler Definitions
-		private void LoadDefs_Rom()
+		private void LoadDefs_Rom(BinaryReader br)
 		{
 			// load from rom
-			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
-
 			bool hasLocation = false;
 			if (Program.CurLocationFile != null)
 			{
@@ -117,20 +135,22 @@ namespace VPWStudio.Editors.NoMercy
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);
-				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
-
-			br.Close();
 		}
 
-		private void LoadDefs_Project()
+		private void LoadDefs_File(string _path)
 		{
-			// load from project file
+			WrestlerDefFile wdf = new WrestlerDefFile(VPWGames.NoMercy);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			wdf.ReadFile(sr);
+			sr.Close();
+			WrestlerDefs = wdf.WrestlerDefs_NoMercy;
 		}
 		#endregion
 
 		/// <summary>
-		/// Populate the list of wrestler definitions
+		/// Populate the list of wrestler definitions.
 		/// </summary>
 		private void PopulateList()
 		{
@@ -153,9 +173,9 @@ namespace VPWStudio.Editors.NoMercy
 		}
 
 		/// <summary>
-		/// 
+		/// Show a wrestler's data in the form's controls.
 		/// </summary>
-		/// <param name="wdef"></param>
+		/// <param name="wdef">Wrestler to show data for.</param>
 		private void LoadEntryData(WrestlerDefinition wdef)
 		{
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
@@ -163,33 +183,14 @@ namespace VPWStudio.Editors.NoMercy
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbEntranceVideo.SelectedIndex = wdef.EntranceVideo;
 
-			if (CustomHeightValues.ContainsKey(wdef.Height))
-			{
-				tbHeight.Text = String.Format("0x{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
-			}
-			else
-			{
-				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
-				int inches = wdef.Height % 12;
-				int feet = (wdef.Height / 12) + 5;
-				tbHeight.Text = String.Format("0x{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
-			}
-
+			nudHeight.Value = wdef.Height;
 			tbUnknown.Text = String.Format("0x{0:X2}", wdef.Unknown);
-
-			if (CustomWeightValues.ContainsKey(wdef.Weight))
-			{
-				tbWeight.Text = String.Format("{0:X4} ({1})", wdef.Weight, CustomWeightValues[wdef.Weight]);
-			}
-			else
-			{
-				tbWeight.Text = String.Format("{0:X4} ({1} lbs.)", wdef.Weight, wdef.Weight + 100);
-			}
+			nudWeight.Value = wdef.Weight;
 
 			tbMovesetIndex.Text = String.Format("{0:X4}", wdef.MovesetFileIndex);
 			tbParamsIndex.Text = String.Format("{0:X4}", wdef.ParamsFileIndex);
 			tbAppearanceIndex.Text = String.Format("{0:X4}", wdef.AppearanceIndex);
-			tbProfileIndex.Text = String.Format("{0:X4}", wdef.ProfileIndex);
+			nudProfileIndex.Value = wdef.ProfileIndex;
 		}
 
 		/// <summary>
@@ -204,6 +205,96 @@ namespace VPWStudio.Editors.NoMercy
 
 			// load data
 			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
+		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		#region Wrestler Definition Value Editors
+		private void cbThemeMusic_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].ThemeSong = (byte)cbThemeMusic.SelectedIndex;
+		}
+
+		private void cbEntranceVideo_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].EntranceVideo = (byte)cbEntranceVideo.SelectedIndex;
+		}
+
+		private void nudHeight_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Height = (byte)nudHeight.Value;
+			if (CustomHeightValues.ContainsKey(WrestlerDefs[lbWrestlers.SelectedIndex].Height))
+			{
+				labelHeightValue.Text = CustomHeightValues[WrestlerDefs[lbWrestlers.SelectedIndex].Height];
+			}
+			else
+			{
+				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
+				int inches = WrestlerDefs[lbWrestlers.SelectedIndex].Height % 12;
+				int feet = (WrestlerDefs[lbWrestlers.SelectedIndex].Height / 12) + 5;
+				labelHeightValue.Text = String.Format("{0}'{1}\"", feet, inches);
+			}
+		}
+
+		private void nudHeight_Validating(object sender, CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+				return;
+			}
+		}
+
+		private void nudWeight_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Weight = (ushort)nudWeight.Value;
+			if (CustomWeightValues.ContainsKey(WrestlerDefs[lbWrestlers.SelectedIndex].Weight))
+			{
+				labelWeightValue.Text = CustomWeightValues[WrestlerDefs[lbWrestlers.SelectedIndex].Weight];
+			}
+			else
+			{
+				labelWeightValue.Text = String.Format("{0} lbs.", WrestlerDefs[lbWrestlers.SelectedIndex].Weight + 100);
+			}
+		}
+
+		private void nudWeight_Validating(object sender, CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+				return;
+			}
 		}
 
 		private void buttonMoveset_Click(object sender, EventArgs e)
@@ -313,18 +404,18 @@ namespace VPWStudio.Editors.NoMercy
 			{
 				return;
 			}
+			int oldIndex = lbWrestlers.SelectedIndex;
 
 			FileTableEntry defWrestlerNames = Program.CurrentProject.ProjectFileTable.Entries[NOMERCY_DEFAULT_NAMES_FILE];
-			AkiTextEditor ate;
 
 			if (!String.IsNullOrEmpty(defWrestlerNames.ReplaceFilePath))
 			{
-				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate = new AkiTextEditor(Program.ConvertRelativePath(defWrestlerNames.ReplaceFilePath), (int)nudProfileIndex.Value);
 			}
 			else
 			{
 				// request AkiText viewer, index 2
-				ate = new AkiTextEditor(NOMERCY_DEFAULT_NAMES_FILE, WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex);
+				ate = new AkiTextEditor(NOMERCY_DEFAULT_NAMES_FILE, (int)nudProfileIndex.Value);
 			}
 
 			if (ate.ShowDialog() == DialogResult.OK)
@@ -370,19 +461,37 @@ namespace VPWStudio.Editors.NoMercy
 				// might want to update the list to show the updated names too
 				DefaultNames.DeepCopy(ate.CurTextArchive);
 				PopulateList();
+				lbWrestlers.SelectedIndex = oldIndex;
+			}
+			ate = null;
+		}
+
+		private void nudProfileIndex_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].ProfileIndex = (ushort)nudProfileIndex.Value;
+		}
+
+		private void nudProfileIndex_Validating(object sender, CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+				return;
 			}
 		}
 
-		private void btnUpdateTheme_Click(object sender, EventArgs e)
-		{
-			WrestlerDefs[lbWrestlers.SelectedIndex].ThemeSong = (byte)cbThemeMusic.SelectedIndex;
-			// todo: doesn't write back to rom
-		}
+		#endregion
 
-		private void btnUpdateVideo_Click(object sender, EventArgs e)
+		private void buttonRefreshList_Click(object sender, EventArgs e)
 		{
-			WrestlerDefs[lbWrestlers.SelectedIndex].EntranceVideo = (byte)cbEntranceVideo.SelectedIndex;
-			// todo: doesn't write back to rom
+			int oldIndex = lbWrestlers.SelectedIndex;
+			PopulateList();
+			lbWrestlers.SelectedIndex = oldIndex;
 		}
 	}
 }
