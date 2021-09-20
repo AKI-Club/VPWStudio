@@ -30,8 +30,7 @@ namespace VPWStudio.Editors.VPW2
 
 			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
-			)
-			{
+			){
 				// load stable definitions from external file
 				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
 			}
