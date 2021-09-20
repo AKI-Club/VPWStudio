@@ -27,8 +27,20 @@ namespace VPWStudio.Editors.WM2K
 		{
 			InitializeComponent();
 
-			LoadDefs_Rom(); // temporary
-			PopulateList(); // not so temporary
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
+			)
+			{
+				// load stable definitions from external file
+				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+			}
+			else
+			{
+				// load stable definitions from WM2K ROM
+				LoadDefs_Rom();
+			}
+
+			PopulateList();
 		}
 
 		#region Load Wrestler Definitions
@@ -70,15 +82,19 @@ namespace VPWStudio.Editors.WM2K
 				br.BaseStream.Seek(wPtr, SeekOrigin.Begin);
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);
-				//Program.CurrentProject.WrestlerDefs.Entries.Add(wdef);
 			}
 
 			br.Close();
 		}
 
-		private void LoadDefs_Project()
+		private void LoadDefs_File(string _path)
 		{
-			// load from project file
+			WrestlerDefFile wdf = new WrestlerDefFile(VPWGames.WM2K);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			wdf.ReadFile(sr);
+			sr.Close();
+			WrestlerDefs = wdf.WrestlerDefs_WM2K;
 		}
 		#endregion
 
@@ -102,30 +118,12 @@ namespace VPWStudio.Editors.WM2K
 		/// <param name="wdef"></param>
 		private void LoadEntryData(WrestlerDefinition wdef)
 		{
+			tbNamePointer.Text = String.Format("{0:X8}", wdef.NamePointer);
 			tbWrestlerName.Text = wdef.Name;
 			tbWrestlerID4.Text = String.Format("{0:X4}", wdef.WrestlerID4);
 			tbWrestlerID2.Text = String.Format("{0:X2}", wdef.WrestlerID2);
-
-			if (CustomHeightValues.ContainsKey(wdef.Height))
-			{
-				tbHeight.Text = String.Format("0x{0:X2} ({1})", wdef.Height, CustomHeightValues[wdef.Height]);
-			}
-			else
-			{
-				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
-				int inches = wdef.Height % 12;
-				int feet = (wdef.Height / 12) + 5;
-				tbHeight.Text = String.Format("0x{0:X2} ({1}'{2}\")", wdef.Height, feet, inches);
-			}
-
-			if (wdef.Weight + 100 > 699)
-			{
-				tbWeight.Text = String.Format("0x{0:X2} ('???')", wdef.Weight);
-			}
-			else
-			{
-				tbWeight.Text = String.Format("0x{0:X2} ({1} lbs.)", wdef.Weight, wdef.Weight + 100);
-			}
+			nudHeight.Value = wdef.Height;
+			nudWeight.Value = wdef.Weight;
 			cbThemeMusic.SelectedIndex = wdef.ThemeSong;
 			cbEntranceVideo.SelectedIndex = wdef.EntranceVideo;
 			tbUnknown.Text = String.Format("0x{0:X4}", wdef.Unknown);
@@ -151,6 +149,74 @@ namespace VPWStudio.Editors.WM2K
 			LoadEntryData(WrestlerDefs[lbWrestlers.SelectedIndex]);
 		}
 
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		#region Wrestler Definition Value Editors
+		private void nudHeight_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Height = (ushort)nudHeight.Value;
+			if (CustomHeightValues.ContainsKey(WrestlerDefs[lbWrestlers.SelectedIndex].Height))
+			{
+				labelHeightValue.Text = CustomHeightValues[WrestlerDefs[lbWrestlers.SelectedIndex].Height];
+			}
+			else
+			{
+				// 0x00 = 5'0"; 0x0C = 6'0"; 0x18 = 7'0"; 0x23 = 7'11"
+				int inches = WrestlerDefs[lbWrestlers.SelectedIndex].Height % 12;
+				int feet = (WrestlerDefs[lbWrestlers.SelectedIndex].Height / 12) + 5;
+				labelHeightValue.Text = String.Format("{0}'{1}\"", feet, inches);
+			}
+		}
+
+		private void nudHeight_Validating(object sender, CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void nudWeight_ValueChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].Weight = (ushort)nudWeight.Value;
+			if (WrestlerDefs[lbWrestlers.SelectedIndex].Weight + 100 > 699)
+			{
+				labelWeightValue.Text = "???";
+			}
+			else
+			{
+				labelWeightValue.Text = String.Format("{0} lbs.", WrestlerDefs[lbWrestlers.SelectedIndex].Weight + 100);
+			}
+		}
+
+		private void nudWeight_Validating(object sender, CancelEventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				e.Cancel = true;
+			}
+		}
+
 		private void buttonMoveset_Click(object sender, EventArgs e)
 		{
 			if (lbWrestlers.SelectedIndex < 0)
@@ -171,6 +237,26 @@ namespace VPWStudio.Editors.WM2K
 			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
+		private void cbThemeMusic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].ThemeSong = (byte)cbThemeMusic.SelectedIndex;
+		}
+
+		private void cbEntranceVideo_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbWrestlers.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			WrestlerDefs[lbWrestlers.SelectedIndex].EntranceVideo = (byte)cbEntranceVideo.SelectedIndex;
+		}
+
 		private void LoadCostumeEditor(int buttonNum)
 		{
 			if (lbWrestlers.SelectedIndex < 0)
@@ -178,7 +264,7 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			string pointerText = String.Empty;
+			string pointerText;
 			switch (buttonNum)
 			{
 				case 1: pointerText = tbCosPointer1.Text; break;
@@ -216,5 +302,6 @@ namespace VPWStudio.Editors.WM2K
 		{
 			LoadCostumeEditor(4);
 		}
+		#endregion
 	}
 }
