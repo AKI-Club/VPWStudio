@@ -818,6 +818,7 @@ namespace VPWStudio
 					BinaryWriter bw = new BinaryWriter(ms);
 					bw.Seek(wrestlerDefLoc, SeekOrigin.Begin);
 					BuildLogPub.AddLine("Re-building wrestler data...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+					BuildLogPub.AddLine();
 
 					bool writeData = false;
 
@@ -956,6 +957,7 @@ namespace VPWStudio
 					BinaryWriter bw = new BinaryWriter(ms);
 					bw.Seek(stableDefLoc, SeekOrigin.Begin);
 					BuildLogPub.AddLine("Re-building stables...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+					BuildLogPub.AddLine();
 
 					bool writeData = false;
 
