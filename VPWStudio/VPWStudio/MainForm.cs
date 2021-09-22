@@ -1321,7 +1321,6 @@ namespace VPWStudio
 					if (WrestlerMain_Revenge == null || WrestlerMain_Revenge.IsDisposed)
 					{
 						WrestlerMain_Revenge = new Editors.Revenge.WrestlerMain_Revenge();
-
 					}
 
 					if (WrestlerMain_Revenge.ShowDialog() == DialogResult.OK)
@@ -1368,7 +1367,6 @@ namespace VPWStudio
 					if (WrestlerMain_WM2K == null || WrestlerMain_WM2K.IsDisposed)
 					{
 						WrestlerMain_WM2K = new Editors.WM2K.WrestlerMain_WM2K();
-
 					}
 
 					if(WrestlerMain_WM2K.ShowDialog() == DialogResult.OK)
@@ -1415,7 +1413,6 @@ namespace VPWStudio
 					if (WrestlerMain_VPW2 == null || WrestlerMain_VPW2.IsDisposed)
 					{
 						WrestlerMain_VPW2 = new Editors.VPW2.WrestlerMain_VPW2();
-
 					}
 
 					if (WrestlerMain_VPW2.ShowDialog() == DialogResult.OK)
