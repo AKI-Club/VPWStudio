@@ -80,6 +80,14 @@ namespace VPWStudio
 			Width = (br.ReadByte() + 1);
 			Height = (br.ReadByte() + 1);
 
+			// ugly hack for Large Smackdown Mall font in No Mercy (file ID 4A50)
+			/*
+			if (Width == 256 && Height-1 < 8)
+			{
+				Height += 256;
+			}
+			*/
+
 			byte[] npe = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
