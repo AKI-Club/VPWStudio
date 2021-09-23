@@ -23,9 +23,14 @@ namespace VPWStudio
 		ROM = 0,
 
 		/// <summary>
-		/// Found in RAM. (GameShark code)
+		/// Found in RAM. (originally intended for GameShark code support; deprecated)
 		/// </summary>
 		RAM,
+
+		/// <summary>
+		/// File Table ID. A four digit hex value representing an index into the File Table.
+		/// </summary>
+		FTID,
 	}
 
 	/// <summary>
@@ -218,6 +223,7 @@ namespace VPWStudio
 		{
 			{ "ROM", LocationType.ROM },
 			{ "RAM", LocationType.RAM },
+			{ "FTID", LocationType.FTID }
 		};
 		#endregion
 
