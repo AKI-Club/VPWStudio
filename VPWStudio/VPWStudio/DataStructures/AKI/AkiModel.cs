@@ -252,10 +252,9 @@ namespace VPWStudio
 		public int NumFaces;
 
 		/// <summary>
-		/// Currently unknown purpose.
+		/// "Vertex Influence"
 		/// </summary>
-		/// Most models seem to have 0x00 here. Some don't.
-		public int UnknownValue;
+		public int VertexInfluence;
 
 		/// <summary>
 		/// X location offset
@@ -308,7 +307,7 @@ namespace VPWStudio
 			Scale = 1;
 			NumVertices = 0;
 			NumFaces = 0;
-			UnknownValue = 0;
+			VertexInfluence = 0;
 			OffsetX = 0;
 			OffsetY = 0;
 			OffsetZ = 0;
@@ -419,7 +418,7 @@ namespace VPWStudio
 			NumFaces = numFaces & 0x7F;
 			UnknownFacesTopBit = (byte)(numFaces & 0x80);
 
-			UnknownValue = br.ReadByte();
+			VertexInfluence = br.ReadByte();
 			OffsetX = (SByte)br.ReadByte();
 			OffsetY = (SByte)br.ReadByte();
 			OffsetZ = (SByte)br.ReadByte();
@@ -460,7 +459,7 @@ namespace VPWStudio
 			bw.Write((byte)Scale);
 			bw.Write((byte)Vertices.Count | ModelType);
 			bw.Write((byte)Faces.Count | UnknownFacesTopBit);
-			bw.Write((byte)UnknownValue);
+			bw.Write((byte)VertexInfluence);
 			bw.Write((byte)OffsetX);
 			bw.Write((byte)OffsetY);
 			bw.Write((byte)OffsetZ);
@@ -486,7 +485,7 @@ namespace VPWStudio
 			sw.WriteLine(string.Format("# Scale Value: {0}", Scale));
 			sw.WriteLine(string.Format("# Model Type? (num verts top bit): 0x{0:X2}", ModelType));
 			sw.WriteLine(string.Format("# unknown value 1 (num faces top bit): 0x{0:X2}", UnknownFacesTopBit));
-			sw.WriteLine(string.Format("# unknown value 2: 0x{0:X2}", UnknownValue));
+			sw.WriteLine(string.Format("# vertex influence value: 0x{0:X2}", VertexInfluence));
 			sw.WriteLine(string.Format("# texture size: {0}x{1}", TextureSizeX, TextureSizeY));
 			sw.WriteLine();
 

@@ -41,7 +41,7 @@ namespace VPWStudio
 				tbInfoDump.Text += String.Format("Model Type: {0}\r\n", this.CurModel.ModelType == 0x80 ? "Costume Part?" : "Normal");
 				tbInfoDump.Text += String.Format("Num Verts: {0}\r\n", this.CurModel.Vertices.Count);
 				tbInfoDump.Text += String.Format("Num Faces: {0}\r\n", this.CurModel.Faces.Count);
-				tbInfoDump.Text += String.Format("Unknown: 0x{0:X2}\r\n", this.CurModel.UnknownValue);
+				tbInfoDump.Text += String.Format("Unknown: 0x{0:X2}\r\n", this.CurModel.VertexInfluence);
 				tbInfoDump.Text += String.Format("X Offset: {0}\r\n", this.CurModel.OffsetX);
 				tbInfoDump.Text += String.Format("Y Offset: {0}\r\n", this.CurModel.OffsetY);
 				tbInfoDump.Text += String.Format("Z Offset: {0}\r\n", this.CurModel.OffsetZ);
