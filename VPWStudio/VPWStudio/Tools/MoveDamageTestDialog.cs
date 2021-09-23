@@ -24,25 +24,15 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 0x24 }
 		};
 
-		/// <summary>
-		/// File ID of (main) Move Damage data.
-		/// </summary>
-		private Dictionary<VPWGames, int> MoveDamageFileIDs = new Dictionary<VPWGames, int>()
-		{
-			{ VPWGames.WM2K, 0x03AD },
-			{ VPWGames.VPW2, 0x0277 },
-			{ VPWGames.NoMercy, 0x01EF }
-		};
-
 		public MoveDamageTestDialog()
 		{
 			InitializeComponent();
 
 			if (Program.CurrentProject != null)
 			{
-				if (MoveDamageFileIDs.ContainsKey(Program.CurrentProject.Settings.BaseGame))
+				if (MoveDamageDataLength.ContainsKey(Program.CurrentProject.Settings.BaseGame))
 				{
-					LoadDamageData(MoveDamageFileIDs[Program.CurrentProject.Settings.BaseGame], MoveDamageDataLength[Program.CurrentProject.Settings.BaseGame]);
+					LoadDamageData();
 					PopulateEntries();
 				}
 				else
@@ -53,13 +43,16 @@ namespace VPWStudio
 			}
 		}
 
-		private void LoadDamageData(int fileID, int dataLength)
+		private void LoadDamageData()
 		{
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
 			MemoryStream extractStream = new MemoryStream();
 			BinaryWriter extractWriter = new BinaryWriter(extractStream);
+
+			int fileID = DefaultGameData.DefaultFileTableIDs["MoveDamageFileID"][Program.CurrentProject.Settings.GameType];
+			int dataLength = MoveDamageDataLength[Program.CurrentProject.Settings.BaseGame];
 
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, extractWriter, fileID);
 			romReader.Close();

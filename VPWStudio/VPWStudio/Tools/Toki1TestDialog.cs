@@ -27,31 +27,7 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 0x24 }
 		};
 
-		/// <summary>
-		/// File ID of Toki1 data.
-		/// </summary>
-		private Dictionary<VPWGames, int> Toki1FileIDs = new Dictionary<VPWGames, int>()
-		{
-			{ VPWGames.WorldTour, 0x026A },
-			{ VPWGames.VPW64, 0x0211 },
-			{ VPWGames.Revenge, 0x020F },
-			{ VPWGames.WM2K, 0x0435 },
-			{ VPWGames.VPW2, 0x034B },
-			{ VPWGames.NoMercy, 0x02BF }
-		};
-
-		/// <summary>
-		/// First animation number in each game.
-		/// </summary>
-		private Dictionary<VPWGames, int> FirstAnimationNumber = new Dictionary<VPWGames, int>()
-		{
-			{ VPWGames.WorldTour, 0xB55 },
-			{ VPWGames.VPW64, 0x1347 },
-			{ VPWGames.Revenge, 0xE39 },
-			{ VPWGames.WM2K, 0x1609 },
-			{ VPWGames.VPW2, 0x1A90 },
-			{ VPWGames.NoMercy, 0x2DD9 }
-		};
+		readonly int firstAnimNumber = DefaultGameData.DefaultFileTableIDs["FirstAnimationFileID"][Program.CurrentProject.Settings.GameType];
 
 		public Toki1TestDialog()
 		{
@@ -59,26 +35,21 @@ namespace VPWStudio
 
 			if (Program.CurrentProject != null)
 			{
-				if (Toki1FileIDs.ContainsKey(Program.CurrentProject.Settings.BaseGame))
-				{
-					LoadToki1(Toki1FileIDs[Program.CurrentProject.Settings.BaseGame], Toki1DataLength[Program.CurrentProject.Settings.BaseGame]);
-					PopulateEntries();
-				}
-				else
-				{
-					Program.ErrorMessageBox(String.Format("Toki1 dialog not implemented for {0}.", Program.CurrentProject.Settings.BaseGame));
-					Close();
-				}
+				LoadToki1();
+				PopulateEntries();
 			}
 		}
 
-		private void LoadToki1(int fileID, int dataLength)
+		private void LoadToki1()
 		{
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
 			MemoryStream extractStream = new MemoryStream();
 			BinaryWriter extractWriter = new BinaryWriter(extractStream);
+
+			int fileID = DefaultGameData.DefaultFileTableIDs["Toki1FileID"][Program.CurrentProject.Settings.GameType];
+			int dataLength = Toki1DataLength[Program.CurrentProject.Settings.BaseGame];
 
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, extractWriter, fileID);
 			romReader.Close();
@@ -101,7 +72,7 @@ namespace VPWStudio
 			cbToki1Entries.BeginUpdate();
 			foreach (KeyValuePair<int, Toki1Entry> t1e in Toki1Entries)
 			{
-				cbToki1Entries.Items.Add(String.Format("{0:X4} [Anim. {1:X4}]", t1e.Key, t1e.Key + FirstAnimationNumber[Program.CurrentProject.Settings.BaseGame]));
+				cbToki1Entries.Items.Add(String.Format("{0:X4} [Anim. {1:X4}]", t1e.Key, t1e.Key + firstAnimNumber));
 			}
 			cbToki1Entries.EndUpdate();
 		}
