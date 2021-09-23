@@ -434,7 +434,9 @@
 03E3=AkiTexture;[Japanese]
 03E4=AkiTexture;[Japanese]
 03E5=AkiTexture;[Japanese]
+03E7=Binary;Move damage values
 03F0=Binary;(Unknown text file)
+046F=Binary;Toki1 values
 0480=Ci4Palette;Timer
 0481=Ci4Texture;[Timer] 0
 0482=Ci4Texture;[Timer] 1
@@ -447,6 +449,7 @@
 0489=Ci4Texture;[Timer] 8
 048A=Ci4Texture;[Timer] 9
 048B=Ci4Texture;[Timer] :
+0A9D=(default costume colors)
 1626=AkiModel;
 1627=Ci8Palette;
 1628=Ci8Texture;
