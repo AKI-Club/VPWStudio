@@ -5,6 +5,7 @@ namespace VPWStudio
 {
 	public class DefaultGameData
 	{
+		#region Default Locations
 		/// <summary>
 		/// An entry in DefaultLocationData.
 		/// </summary>
@@ -614,5 +615,198 @@ namespace VPWStudio
 		#endregion
 
 		// rethink how you want to handle the rest of this.
+		#endregion
+
+		#region Default File Table Entries
+		/// <summary>
+		/// Dictionary of specific game types to default relevant File Table IDs.
+		/// </summary>
+		/// This has to be SpecificGame because WrestleMania 2000 NTSC-J has different IDs from WM2K NTSC-U/PAL.
+		public static Dictionary<string, Dictionary<SpecificGame, int>> DefaultFileTableIDs = new Dictionary<string, Dictionary<SpecificGame, int>>()
+		{
+			{
+				"CostumeColorPalette",
+				new Dictionary<SpecificGame, int>()
+				{
+					// World Tour: no Costume Edit mode, so no file.
+					// VPW64: Not sure if this is in the filetable; could be hardcoded
+
+					#region WCW/nWo Revenge
+					{SpecificGame.Revenge_NTSC_U, 0x0A51 },
+					{SpecificGame.Revenge_PAL, 0x0A51 },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0A63 },
+					{ SpecificGame.WM2K_PAL, 0x0A63 },
+					{ SpecificGame.WM2K_NTSC_J, 0x0A9D },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0E50 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x10F5 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x10F5 },
+					{ SpecificGame.NoMercy_PAL_10, 0x10F5 },
+					{ SpecificGame.NoMercy_PAL_11, 0x10F5 }
+					#endregion
+				}
+			},
+
+			{
+				"FirstAnimationFileID",
+				new Dictionary<SpecificGame, int>()
+				{
+					#region WCW/nWo World Tour
+					{ SpecificGame.WorldTour_NTSC_U_10, 0x0B55 },
+					{ SpecificGame.WorldTour_NTSC_U_11, 0x0B55 },
+					{ SpecificGame.WorldTour_PAL, 0x0B55 },
+					#endregion
+
+					{ SpecificGame.VPW64_NTSC_J, 0x1347 },
+
+					#region WCW/nWo Revenge
+					{ SpecificGame.Revenge_NTSC_U, 0x0E39 },
+					{ SpecificGame.Revenge_PAL, 0x0E39 },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x1609 },
+					{ SpecificGame.WM2K_PAL, 0x1609 },
+					{ SpecificGame.WM2K_NTSC_J, 0x1643 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x1A90 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x2DD9 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x2DD9 },
+					{ SpecificGame.NoMercy_PAL_10, 0x2DD9 },
+					{ SpecificGame.NoMercy_PAL_11, 0x2DD9 }
+					#endregion
+				}
+			},
+
+			// "LastAnimationFileID"
+
+			{
+				"Toki1FileID",
+				new Dictionary<SpecificGame, int>()
+				{
+					#region WCW/nWo World Tour
+					{ SpecificGame.WorldTour_NTSC_U_10, 0x026A },
+					{ SpecificGame.WorldTour_NTSC_U_11, 0x026A },
+					{ SpecificGame.WorldTour_PAL, 0x026A },
+					#endregion
+
+					{ SpecificGame.VPW64_NTSC_J, 0x0211 },
+
+					#region WCW/nWo Revenge
+					{ SpecificGame.Revenge_NTSC_U, 0x020F },
+					{ SpecificGame.Revenge_PAL, 0x020F },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0435 },
+					{ SpecificGame.WM2K_PAL, 0x0435 },
+					{ SpecificGame.WM2K_NTSC_J, 0x046F },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x034B },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x02BF },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x02BF },
+					{ SpecificGame.NoMercy_PAL_10, 0x02BF },
+					{ SpecificGame.NoMercy_PAL_11, 0x02BF }
+					#endregion
+				}
+			},
+
+			{
+				"MoveDamageFileID",
+				new Dictionary<SpecificGame, int>()
+				{
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x03AD },
+					{ SpecificGame.WM2K_PAL, 0x03AD },
+					{ SpecificGame.WM2K_NTSC_J, 0x03E7 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0277 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x01EF },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x01EF },
+					{ SpecificGame.NoMercy_PAL_10, 0x01EF },
+					{ SpecificGame.NoMercy_PAL_11, 0x01EF }
+					#endregion
+				}
+			},
+
+			{
+				"DefaultLargeFont",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WorldTour_NTSC_U_10, 0x0002 },
+					{ SpecificGame.WorldTour_NTSC_U_11, 0x0002 },
+					{ SpecificGame.WorldTour_PAL, 0x0002 },
+
+					{ SpecificGame.VPW64_NTSC_J, 0x0002 },
+
+					#region WCW/nWo Revenge
+					{ SpecificGame.Revenge_NTSC_U, 0x0002 },
+					{ SpecificGame.Revenge_PAL, 0x0002 },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0001 },
+					{ SpecificGame.WM2K_PAL, 0x0001 },
+					{ SpecificGame.WM2K_NTSC_J, 0x0001 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0001 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x4477 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x4477 },
+					{ SpecificGame.NoMercy_PAL_10, 0x4477 },
+					{ SpecificGame.NoMercy_PAL_11, 0x4477 }
+				}
+			},
+
+			{
+				"DefaultSmallFont",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WorldTour_NTSC_U_10, 0x0001 },
+					{ SpecificGame.WorldTour_NTSC_U_11, 0x0001 },
+					{ SpecificGame.WorldTour_PAL, 0x0001 },
+
+					{ SpecificGame.VPW64_NTSC_J, 0x0001 },
+
+					#region WCW/nWo Revenge
+					{ SpecificGame.Revenge_NTSC_U, 0x0001 },
+					{ SpecificGame.Revenge_PAL, 0x0001 },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0002 },
+					{ SpecificGame.WM2K_PAL, 0x0002 },
+					{ SpecificGame.WM2K_NTSC_J, 0x0002 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0002 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x4478 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x4478 },
+					{ SpecificGame.NoMercy_PAL_10, 0x4478 },
+					{ SpecificGame.NoMercy_PAL_11, 0x4478 }
+					#endregion
+				}
+			}
+		};
+		#endregion
 	}
 }
