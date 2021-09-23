@@ -653,6 +653,7 @@ namespace VPWStudio
 				}
 			},
 
+			#region Animations
 			{
 				"FirstAnimationFileID",
 				new Dictionary<SpecificGame, int>()
@@ -688,6 +689,7 @@ namespace VPWStudio
 			},
 
 			// "LastAnimationFileID"
+			#endregion
 
 			{
 				"Toki1FileID",
@@ -745,12 +747,39 @@ namespace VPWStudio
 			},
 
 			{
+				"WrestlerDefaultCostumeData",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.VPW2_NTSC_J, 0x006B },
+					{ SpecificGame.NoMercy_NTSC_U_10, 1 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 1 },
+					{ SpecificGame.NoMercy_PAL_10, 1 },
+					{ SpecificGame.NoMercy_PAL_11, 1 }
+				}
+			},
+
+			{
+				"DefaultNameData",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.VPW2_NTSC_J, 0x006C },
+					{ SpecificGame.NoMercy_NTSC_U_10, 2 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
+					{ SpecificGame.NoMercy_PAL_10, 2 },
+					{ SpecificGame.NoMercy_PAL_11, 2 }
+				}
+			},
+
+			#region Fonts
+			{
 				"DefaultLargeFont",
 				new Dictionary<SpecificGame, int>()
 				{
+					#region WCW vs. nWo World Tour
 					{ SpecificGame.WorldTour_NTSC_U_10, 0x0002 },
 					{ SpecificGame.WorldTour_NTSC_U_11, 0x0002 },
 					{ SpecificGame.WorldTour_PAL, 0x0002 },
+					#endregion
 
 					{ SpecificGame.VPW64_NTSC_J, 0x0002 },
 
@@ -772,6 +801,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x4477 },
 					{ SpecificGame.NoMercy_PAL_10, 0x4477 },
 					{ SpecificGame.NoMercy_PAL_11, 0x4477 }
+					#endregion
 				}
 			},
 
@@ -779,9 +809,11 @@ namespace VPWStudio
 				"DefaultSmallFont",
 				new Dictionary<SpecificGame, int>()
 				{
+					#region WCW vs. nWo World Tour
 					{ SpecificGame.WorldTour_NTSC_U_10, 0x0001 },
 					{ SpecificGame.WorldTour_NTSC_U_11, 0x0001 },
 					{ SpecificGame.WorldTour_PAL, 0x0001 },
+					#endregion
 
 					{ SpecificGame.VPW64_NTSC_J, 0x0001 },
 
@@ -806,6 +838,7 @@ namespace VPWStudio
 					#endregion
 				}
 			}
+			#endregion
 		};
 		#endregion
 	}
