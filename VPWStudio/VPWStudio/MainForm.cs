@@ -1407,6 +1407,9 @@ namespace VPWStudio
 						}
 						*/
 					}
+
+					// manually kill this dialog to prevent issues when switching between WM2K NTSC-U/PAL and NTSC-J projects
+					WrestlerMain_WM2K = null;
 					break;
 
 				case VPWGames.VPW2:
