@@ -212,6 +212,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = global::VPWStudio.Properties.Resources.Font;
 			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "FontDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Fonts";
