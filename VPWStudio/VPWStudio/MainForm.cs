@@ -1452,6 +1452,7 @@ namespace VPWStudio
 							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
 						}
 					}
+					WrestlerMain_VPW2 = null;
 					break;
 
 				case VPWGames.NoMercy:
@@ -1494,6 +1495,7 @@ namespace VPWStudio
 							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
 						}
 					}
+					WrestlerMain_NoMercy = null;
 					break;
 
 				default:
