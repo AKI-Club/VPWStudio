@@ -65,6 +65,7 @@
 			this.programOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.gameSpecificInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutVPWStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.dangerZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.gameSpecificInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -361,6 +361,12 @@
 			resources.ApplyResources(this.manualToolStripMenuItem, "manualToolStripMenuItem");
 			this.manualToolStripMenuItem.Click += new System.EventHandler(this.manualToolStripMenuItem_Click);
 			// 
+			// gameSpecificInformationToolStripMenuItem
+			// 
+			this.gameSpecificInformationToolStripMenuItem.Name = "gameSpecificInformationToolStripMenuItem";
+			resources.ApplyResources(this.gameSpecificInformationToolStripMenuItem, "gameSpecificInformationToolStripMenuItem");
+			this.gameSpecificInformationToolStripMenuItem.Click += new System.EventHandler(this.gameSpecificInformationToolStripMenuItem_Click);
+			// 
 			// toolStripSeparator8
 			// 
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -401,24 +407,28 @@
 			// 
 			// pngTestToolStripMenuItem
 			// 
+			this.pngTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_AkiTexture;
 			this.pngTestToolStripMenuItem.Name = "pngTestToolStripMenuItem";
 			resources.ApplyResources(this.pngTestToolStripMenuItem, "pngTestToolStripMenuItem");
 			this.pngTestToolStripMenuItem.Click += new System.EventHandler(this.pngTestToolStripMenuItem_Click);
 			// 
 			// pngToCi4ToolStripMenuItem
 			// 
+			this.pngToCi4ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci4Texture;
 			this.pngToCi4ToolStripMenuItem.Name = "pngToCi4ToolStripMenuItem";
 			resources.ApplyResources(this.pngToCi4ToolStripMenuItem, "pngToCi4ToolStripMenuItem");
 			this.pngToCi4ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi4ToolStripMenuItem_Click);
 			// 
 			// pngToCi8ToolStripMenuItem
 			// 
+			this.pngToCi8ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci8Texture;
 			this.pngToCi8ToolStripMenuItem.Name = "pngToCi8ToolStripMenuItem";
 			resources.ApplyResources(this.pngToCi8ToolStripMenuItem, "pngToCi8ToolStripMenuItem");
 			this.pngToCi8ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi8ToolStripMenuItem_Click);
 			// 
 			// pngToMenubgToolStripMenuItem
 			// 
+			this.pngToMenubgToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_MenuBackground;
 			this.pngToMenubgToolStripMenuItem.Name = "pngToMenubgToolStripMenuItem";
 			resources.ApplyResources(this.pngToMenubgToolStripMenuItem, "pngToMenubgToolStripMenuItem");
 			this.pngToMenubgToolStripMenuItem.Click += new System.EventHandler(this.pngToMenubgToolStripMenuItem_Click);
@@ -465,6 +475,7 @@
 			// 
 			// stableParseTestToolStripMenuItem
 			// 
+			this.stableParseTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Stables;
 			this.stableParseTestToolStripMenuItem.Name = "stableParseTestToolStripMenuItem";
 			resources.ApplyResources(this.stableParseTestToolStripMenuItem, "stableParseTestToolStripMenuItem");
 			this.stableParseTestToolStripMenuItem.Click += new System.EventHandler(this.stableParseTestToolStripMenuItem_Click);
@@ -518,12 +529,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// gameSpecificInformationToolStripMenuItem
-			// 
-			this.gameSpecificInformationToolStripMenuItem.Name = "gameSpecificInformationToolStripMenuItem";
-			resources.ApplyResources(this.gameSpecificInformationToolStripMenuItem, "gameSpecificInformationToolStripMenuItem");
-			this.gameSpecificInformationToolStripMenuItem.Click += new System.EventHandler(this.gameSpecificInformationToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
