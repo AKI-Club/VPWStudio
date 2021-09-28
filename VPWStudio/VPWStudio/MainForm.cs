@@ -985,7 +985,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Sounds dialog not yet designed.");
+			Program.ErrorMessageBox("Sound/Music dialog not yet designed.");
 		}
 
 		/// <summary>
