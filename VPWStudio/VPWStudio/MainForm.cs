@@ -934,7 +934,7 @@ namespace VPWStudio
 
 			if (!IntroEditorSupported.Contains(Program.CurrentProject.Settings.BaseGame))
 			{
-				MessageBox.Show("Game Intro Editor only \"works\" for VPW2 right now. Other modern games will be supported soon.", "Game Intro Editor");
+				MessageBox.Show("Game Intro Editor only \"works\" for VPW2 and Revenge right now. Other modern games will be supported soon.", "Game Intro Editor");
 				return;
 			}
 
@@ -1133,6 +1133,9 @@ namespace VPWStudio
 								Program.InfoMessageBox(String.Format("Wrote new Stable Definition file to {0}.", Program.ShortenAbsolutePath(stableDefPath)));
 							}
 						}
+
+						// manually kill this dialog to prevent issues when switching between different region WM2K projects
+						StableDefs_WM2K = null;
 					}
 					break;
 
@@ -1308,13 +1311,43 @@ namespace VPWStudio
 					{
 						WrestlerMain_Early = new Editors.WrestlerMain_Early();
 					}
-					// check for minimized
-					if (WrestlerMain_Early.WindowState == FormWindowState.Minimized)
+
+					if (WrestlerMain_Early.ShowDialog() == DialogResult.OK)
 					{
-						WrestlerMain_Early.WindowState = FormWindowState.Normal;
+						if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+						{
+							// we need to have saved in order to actually... save.
+							Program.ErrorMessageBox("Can not save Wrestler Definition changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+							return;
+						}
+
+						// check if WrestlerDef file exists.
+						string wrestlerDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+						bool writePath = false;
+
+						if (!File.Exists(wrestlerDefPath))
+						{
+							wrestlerDefPath = Program.ConvertRelativePath(@"ProjectFiles\WrestlerDefs.txt");
+							writePath = true;
+						}
+
+						FileStream fs = new FileStream(wrestlerDefPath, FileMode.OpenOrCreate);
+						StreamWriter sw = new StreamWriter(fs);
+						WrestlerDefFile wdefs = new WrestlerDefFile(Program.CurrentProject.Settings.BaseGame);
+						wdefs.WrestlerDefs_Early = WrestlerMain_Early.WrestlerDefs;
+						wdefs.WriteFile(sw);
+						sw.Close();
+
+						if (writePath)
+						{
+							Program.CurrentProject.Settings.WrestlerDefinitionFilePath = wrestlerDefPath;
+							Program.UnsavedChanges = true;
+							UpdateTitleBar();
+							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
+						}
 					}
-					WrestlerMain_Early.MdiParent = this;
-					WrestlerMain_Early.Show();
+					// manually kill this dialog to prevent issues when switching between World Tour and VPW64 projects
+					WrestlerMain_Early = null;
 					break;
 
 				case VPWGames.Revenge:
@@ -1332,9 +1365,6 @@ namespace VPWStudio
 							return;
 						}
 
-						Program.ErrorMessageBox("Not yet implemented because I'm afraid of the build process breaking for pre-VPW2 games");
-
-						/*
 						// check if WrestlerDef file exists.
 						string wrestlerDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
 						bool writePath = false;
@@ -1359,7 +1389,6 @@ namespace VPWStudio
 							UpdateTitleBar();
 							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
 						}
-						*/
 					}
 					break;
 
@@ -1378,9 +1407,6 @@ namespace VPWStudio
 							return;
 						}
 
-						Program.ErrorMessageBox("Not yet implemented because I'm afraid of the build process breaking for pre-VPW2 games");
-
-						/*
 						// check if WrestlerDef file exists.
 						string wrestlerDefPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
 						bool writePath = false;
@@ -1405,7 +1431,6 @@ namespace VPWStudio
 							UpdateTitleBar();
 							Program.InfoMessageBox(String.Format("Wrote new Wrestler Definition file to {0}.", Program.ShortenAbsolutePath(wrestlerDefPath)));
 						}
-						*/
 					}
 
 					// manually kill this dialog to prevent issues when switching between WM2K NTSC-U/PAL and NTSC-J projects
