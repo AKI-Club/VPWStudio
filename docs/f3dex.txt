@@ -3,6 +3,7 @@ https://wiki.cloudmodding.com/oot/F3DZEX
 https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX
 https://github.com/RenaKunisaki/mariokart64/wiki/F3DEX-Instruction-Set
 https://jul.rustedlogic.net/thread.php?id=3489
+https://hack64.net/wiki/doku.php?id=f3dex2
 
 ================================================================================
 ucodes by game
