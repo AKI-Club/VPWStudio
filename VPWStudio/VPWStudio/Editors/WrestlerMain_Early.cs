@@ -25,10 +25,24 @@ namespace VPWStudio.Editors
 		public WrestlerMain_Early()
 		{
 			InitializeComponent();
-			LoadDefs_Rom();
+
+			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.WrestlerDefinitionFilePath) &&
+				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.WrestlerDefinitionFilePath))
+			)
+			{
+				// load stable definitions from external file
+				LoadDefs_File(Program.CurrentProject.Settings.WrestlerDefinitionFilePath);
+			}
+			else
+			{
+				// load stable definitions from Revenge ROM
+				LoadDefs_Rom();
+			}
+
 			PopulateList();
 		}
 
+		#region Load Wrestler Definitions
 		private void LoadDefs_Rom()
 		{
 			// load from rom
@@ -72,6 +86,17 @@ namespace VPWStudio.Editors
 
 			br.Close();
 		}
+
+		private void LoadDefs_File(string _path)
+		{
+			WrestlerDefFile wdf = new WrestlerDefFile(Program.CurrentProject.Settings.BaseGame);
+			FileStream fs = new FileStream(Program.ConvertRelativePath(_path), FileMode.Open);
+			StreamReader sr = new StreamReader(fs);
+			wdf.ReadFile(sr);
+			sr.Close();
+			WrestlerDefs = wdf.WrestlerDefs_Early;
+		}
+		#endregion
 
 		/// <summary>
 		/// Populate the list of wrestler definitions
@@ -148,6 +173,18 @@ namespace VPWStudio.Editors
 			tbWeightString.Text = euc.GetString(wWeight.ToArray());
 
 			br.Close();
+		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
 		}
 	}
 }
