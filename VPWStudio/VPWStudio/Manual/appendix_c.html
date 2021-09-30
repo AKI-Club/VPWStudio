@@ -14,8 +14,8 @@
 
 <hr />
 <h2>Introduction</h2>
-<p>This appendix contains detailed descriptions about the formats described in
-the main portion of the manual.</p>
+<p>This appendix contains detailed information about the non-program specific
+formats used in VPW Studio and described in the main portion of the manual.</p>
 
 <hr />
 <h2>Table of Contents</h2>
@@ -65,6 +65,98 @@ section are little endian, unless otherwise stated.</p>
 <hr />
 
 <h2><a name="AkiAnimation">AkiAnimation</a></h2>
+<p>AkiAnimation defines animation frames, and is used in all six of AKI's
+Nintendo 64 wrestling games. It is a relatively complex format to explain.</p>
+
+<h3>Header Data</h3>
+<p>The animation header data is often called "Toki 2" in the hacking community.
+Tokidoim originally called it "Animation stats mods 2".</p>
+<ul>
+<li>Offset 0x00: Ending animation type and facing direction (2 bytes)</li>
+<li>Offset 0x02: Number of frames in the animation (2 bytes)</li>
+</ul>
+
+<p>The VPW Studio source code mentions "divide by 2 and add 1 to get actual number
+of frames".</p>
+
+<h3>Animation Frame Components</h3>
+<p>Each frame of animation consists of multiple components. These components
+are represented using one of three possible data types:</p>
+<ul>
+<li>Pivot/Rotation</li>
+<li>Overall Movement XYZ</li>
+<li>Movement XYZ</li>
+</ul>
+
+<h4>Pivot/Rotation</h4>
+<p>The Pivot/Rotation values are four bytes long, but read in a non-standard manner.
+Pivot/Rotation data consists of three components:</p>
+<ul>
+<li>Pivot X (12 bits)</li>
+<li>Rotation (8 bits)</li>
+<li>Pivot Z (12 bits)</li>
+</ul>
+<p>To understand the data format, start by thinking of the values as four bytes,
+as they exist in the animation data:</p>
+<pre>
+00 00 00 00
+|__||_||__|
+ |   |   |
+ |   |   +--- Pivot Z
+ |   +------- Rotation
+ +----------- Pivot X
+</pre>
+<p>Next, re-arrange the values to account for the number of bits used by each
+component, to make it easier on your eyes:</p>
+<pre>
+000 00 000
+|_| || |_|
+ |  ||  |
+ |  ||  +--- Pivot Z
+ |  ++------ Rotation
+ +---------- Pivot X
+</pre>
+<p>This data layout is mentioned in the VPW Studio source code as "3/2/3", which
+represents the number of nibbles (groups of 4 bits) each value has.</p>
+
+<h4>Overall Movement XYZ</h4>
+<p>The Overall Movement XYZ values are four bytes long. They possibly define
+a shared displacement for all body parts. Like the Pivot/Rotation data,
+they are stored in "3/2/3" format, and consist of three components:</p>
+<ul>
+<li>Overall X (12 bits)</li>
+<li>Overall Y (8 bits)</li>
+<li>Overall Z (12 bits)</li>
+</ul>
+<p>As they would appear in the animation data:</p>
+<pre>
+00 00 00 00
+|__||_||__|
+ |   |   |
+ |   |   +--- Overall Z
+ |   +------- Overall Y
+ +----------- Overall X
+</pre>
+<p>And split out based on the number of bits used:</p>
+<pre>
+000 00 000
+|_| || |_|
+ |  ||  |
+ |  ||  +--- Overall Z
+ |  ++------ Overall Y
+ +---------- Overall X
+</pre>
+
+<h4>Movement XYZ</h4>
+<p>The Movement XYZ values are three bytes long, and mercifully, map out that way:</p>
+<ul>
+<li>Offset 0: X</li>
+<li>Offset 1: Y</li>
+<li>Offset 2: Z</li>
+</ul>
+
+<h3>Animation Frame Data</h3>
+<p>The actual animation frame data follows the header.</p>
 
 <hr />
 
@@ -83,15 +175,61 @@ what each entry is meant to be.</p>
 <hr />
 
 <h2><a name="AkiAnimation">AkiModel</a></h2>
+<p>AkiModel stores mesh data. The format is largely the same between the six
+AKI N64 wrestling games, though some implementation details may differ.</p>
 
 <hr />
 
 <h2><a name="AkiAnimation">AkiText</a></h2>
+<p>AkiText is an archive of strings with a table at the beginning, pointing to
+the location of the strings in the file. It is only used in the last three
+AKI N64 wrestling games (<em>WWF WrestleMania 2000</em>, <em>Virtual Pro-Wrestling
+2</em>, and <em>WWF No Mercy</em>.)</p>
+
+<p>The location table starts at the very first byte (offset 0x00). Values are
+two bytes, big-endian, and represent the offset in the file where the relevant
+string is located.</p>
+
+<p>Strings in AkiText files typically end with a null/0x00 byte, but if a string
+is at the end of the file, it may not have a terminating byte.</p>
 
 <hr />
 
 <h2><a name="AkiAnimation">AkiTexture</a></h2>
-<p>AkiTexture is a wrapper around CI4/CI8 texture and palette data.</p>
+<p>AkiTexture is a wrapper around CI4/CI8 texture and palette data. It is
+typically used for user interface graphics in the menus.</p>
+
+<h3>Header Format</h3>
+<ul>
+<li>Offset 0x00: Magic number (4 bytes): "TEX",<code>0x00</code> (0x54, 0x45, 0x58, 0x00)</li>
+<li>Offset 0x04: Width (2 bytes)</li>
+<li>Offset 0x06: Height (2 bytes)</li>
+<li>Offset 0x08: Image Format (1 byte)</li>
+<li>Offset 0x09: Color Width (1 byte)</li>
+<li>Offset 0x0A: Number of colors in palette (2 bytes)</li>
+<li>Offsets 0x0C to 0x0F appear to be unused, or inserted for padding purposes. Typically set to <code>0x00</code>.</li>
+</ul>
+
+<h4>Image Format</h4>
+<p>Image Format has only two known values:</p>
+<ul>
+<li><code>0x04</code> &ndash; CI4</li>
+<li><code>0x08</code> &ndash; CI8</li>
+</ul>
+
+<h4>Color Width</h4>
+<p>Number of bytes per color. (Description might not be accurate, but it seems
+to work for existing files. Perhaps 32bpp color modes were planned to be supported,
+but this is not confirmed, since only two known Image Format values are known.)</p>
+
+<h3>Palette Data</h3>
+<p>Palette Data starts at offset 0x10. Colors are the same format mentioned in
+the <a href="#Ci4Palette">Ci4Palette</a> section.</p>
+
+<h3>Image Data</h3>
+<p>Image Data directly follows the Palette Data. In CI4 mode, one byte is equal
+to two pixels. In CI8 mode, one byte is one pixel. This is the same as the
+relevant CI4/CI8Texture format(s).</p>
 
 <hr />
 
@@ -124,18 +262,51 @@ instead of 16. Color format is the same as Ci4Palette.</p>
 <hr />
 
 <h2><a name="Ci4Texture">Ci4Texture</a></h2>
-<p>Nintendo 64-specific format for defining a 16-color texture. Often paired
-with a <a href="#Ci4Palette">Ci4Palette</a> to show desired colors.</p>
+<p>Nintendo 64-specific format for defining a 16-color texture. Paired with a
+<a href="#Ci4Palette">Ci4Palette</a> to show desired colors.</p>
+
+<h3>Header Format</h3>
+<ul>
+<li>Offset 0x00: Width (1 byte)</li>
+<li>Offset 0x01: Height (1 byte)</li>
+<li>Offset 0x02: Number of Palette Entries (2 bytes)</li>
+<li>Offset 0x04: Horizontal Mirroring Flag (1 byte)</li>
+<li>Offset 0x05: Vertical Mirroring Flag (1 byte)</li>
+<li>Offset 0x06: Width Bit Length (1 byte)</li>
+<li>Offset 0x07: Height Bit Length (1 byte)</li>
+</ul>
+
+<h3>Image Data</h3>
+<p>Image Data uses one byte for two pixels. Values represent the palette entry,
+and range from <code>0x0</code> to <code>0xF</code>.</p>
+
+<pre>
+76543210
+|__||__|
+  |  |
+  |  +---- Second palette entry
+  +------- First palette entry
+</pre>
 
 <hr />
 
 <h2><a name="Ci8Texture">Ci8Texture</a></h2>
-<p>Nintendo 64-specific format for defining a 256-color texture. Often paired
-with a <a href="#Ci8Palette">Ci8Palette</a> to show desired colors.</p>
+<p>Nintendo 64-specific format for defining a 256-color texture. Paired with a
+<a href="#Ci8Palette">Ci8Palette</a> to show desired colors.</p>
+
+<p>This format is largely similar to Ci4Texture, but image data uses one byte
+per pixel, since there are 256 possible colors instead of 16.</p>
 
 <hr />
 
 <h2><a name="I4Texture">I4Texture</a></h2>
+<p>Nintendo 64-specific format for defining a 16-step "intensity" texture.</p>
+
+<p>Unlike the CI texture formats, I*Texture does not use a header. It is up to
+the game to use the correct width and height values when loading the texture.</p>
+
+<p>Other intensity formats exist (I8, IA4, IA8), but it's unsure if any of them
+are used in AKI's N64 games.</p>
 
 <hr />
 
