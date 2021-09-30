@@ -96,6 +96,7 @@ namespace VPWStudio
 		/// Read AkiTexture data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
+		/// <returns>True if this is an AkiTexture, false otherwise.</returns>
 		public bool ReadData(BinaryReader br)
 		{
 			// make sure we have "TEX",0x00 header
@@ -166,20 +167,11 @@ namespace VPWStudio
 					break;
 				case AkiTextureFormat.Ci8:
 					// one byte = one pixel
-					{
-						int numPixels = Width * Height;
-						Data = new byte[numPixels];
-						int i = 0;
-						while (i < numPixels)
-						{
-							Data[i] = br.ReadByte();
-							i++;
-						}
-					}
+					Data = br.ReadBytes(Width * Height);
 					break;
 			}
 
-			return true; // ok
+			return true;
 		}
 
 		/// <summary>
