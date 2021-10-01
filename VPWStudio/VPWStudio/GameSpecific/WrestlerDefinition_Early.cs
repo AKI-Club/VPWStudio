@@ -53,6 +53,11 @@ namespace VPWStudio.GameSpecific
 		/// Pointer to separate Weight string
 		/// </summary>
 		public UInt32 WeightPointer;
+
+		public string Name;
+		public string ProfileString;
+		public string HeightString;
+		public string WeightString;
 		#endregion
 
 		#region Constructors
@@ -70,6 +75,11 @@ namespace VPWStudio.GameSpecific
 			ProfilePointer = 0;
 			HeightPointer = 0;
 			WeightPointer = 0;
+
+			Name = String.Empty;
+			ProfileString = String.Empty;
+			HeightString = String.Empty;
+			WeightString = String.Empty;
 		}
 
 		/// <summary>
@@ -79,6 +89,61 @@ namespace VPWStudio.GameSpecific
 		public WrestlerDefinition_Early(BinaryReader br)
 		{
 			ReadData(br);
+		}
+		#endregion
+
+		#region Helpers
+		/// <summary>
+		/// Get wrestler name from ROM.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use</param>
+		/// <returns>A string with the wrestler's name.</returns>
+		public string GetName(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(NamePointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
+		public string GetProfileString(BinaryReader br)
+		{
+			UInt32 profileAddr = Z64Rom.PointerToRom(ProfilePointer);
+			br.BaseStream.Seek(profileAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
+		public string GetHeightString(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(HeightPointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
+		public string GetWeightString(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(WeightPointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
 		}
 		#endregion
 
@@ -140,6 +205,16 @@ namespace VPWStudio.GameSpecific
 				Array.Reverse(wPtr);
 			}
 			WeightPointer = BitConverter.ToUInt32(wPtr, 0);
+
+			long curPos = br.BaseStream.Position;
+
+			// get strings
+			Name = GetName(br);
+			ProfileString = GetProfileString(br);
+			HeightString = GetHeightString(br);
+			WeightString = GetWeightString(br);
+
+			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 		}
 
 		/// <summary>
