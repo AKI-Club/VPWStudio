@@ -77,15 +77,52 @@ namespace VPWStudio
 		/// </summary>
 		public bool MirroringValuesSet = false;
 
-		public SelectTextureDialog()
+		public SelectTextureDialog(uint texFileID, uint palFileID)
 		{
 			InitializeComponent();
 
 			GenerateTextureLists();
-
-			CurTextureType = ValidTextureTypes.CI4Texture;
 			UpdateComboBoxLists();
-			cbTextureType.SelectedIndex = 0;
+
+			if (texFileID != 0)
+			{
+				// try finding ID in texture file IDs
+				if (Ci4TexFileIDs.Contains((int)texFileID))
+				{
+					CurTextureType = ValidTextureTypes.CI4Texture;
+					cbTextureType.SelectedIndex = (int)CurTextureType;
+					cbTextureFileIDs.SelectedIndex = Ci4TexFileIDs.IndexOf((int)texFileID);
+				}
+				else if (Ci8TexFileIDs.Contains((int)texFileID))
+				{
+					CurTextureType = ValidTextureTypes.CI8Texture;
+					cbTextureType.SelectedIndex = (int)CurTextureType;
+					cbTextureFileIDs.SelectedIndex = Ci8TexFileIDs.IndexOf((int)texFileID);
+				}
+				else if (AkiTexFileIDs.Contains((int)texFileID))
+				{
+					CurTextureType = ValidTextureTypes.AkiTexture;
+					cbTextureType.SelectedIndex = (int)CurTextureType;
+					cbTextureFileIDs.SelectedIndex = AkiTexFileIDs.IndexOf((int)texFileID);
+				}
+			}
+			else
+			{
+				CurTextureType = ValidTextureTypes.CI4Texture;
+				cbTextureType.SelectedIndex = 0;
+			}
+
+			if (palFileID != 0 && CurTextureType != ValidTextureTypes.AkiTexture)
+			{
+				if (CurTextureType == ValidTextureTypes.CI4Texture)
+				{
+					cbPaletteFileIDs.SelectedIndex = Ci4PalFileIDs.IndexOf((int)palFileID);
+				}
+				else if (CurTextureType == ValidTextureTypes.CI8Texture)
+				{
+					cbPaletteFileIDs.SelectedIndex = Ci8PalFileIDs.IndexOf((int)palFileID);
+				}
+			}
 		}
 
 		private void GenerateTextureLists()
