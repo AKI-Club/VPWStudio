@@ -95,6 +95,17 @@ namespace VPWStudio.Editors.WM2K
 			wdf.ReadFile(sr);
 			sr.Close();
 			WrestlerDefs = wdf.WrestlerDefs_WM2K;
+
+			// wrestler names are not stored in WrestlerDefs file, read them from ROM instead
+			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(ms);
+
+			foreach (KeyValuePair<int, WrestlerDefinition> wdef in WrestlerDefs)
+			{
+				wdef.Value.Name = wdef.Value.GetName(br);
+			}
+
+			br.Close();
 		}
 		#endregion
 
