@@ -156,7 +156,122 @@ they are stored in "3/2/3" format, and consist of three components:</p>
 </ul>
 
 <h3>Animation Frame Data</h3>
-<p>The actual animation frame data follows the header.</p>
+<p>The actual animation frame data follows the header, in this order:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pelvis</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Overall Movement</td>
+<td>Overall Movement XYZ</td>
+</tr>
+<tr>
+<td>Lower Abs</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Lower Abs Movement</td>
+<td>Movement XYZ</td>
+</tr>
+<tr>
+<td>Upper Body</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Upper Body Movement</td>
+<td>Movement XYZ</td>
+</tr>
+<tr>
+<td>Neck</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Head</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Lower Left Leg</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Upper Left Leg</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Left Leg Movement</td>
+<td>Movement XYZ</td>
+</tr>
+<tr>
+<td>Left Foot</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Left Hand</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Left Fingers</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Lower Left Arm</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Upper Left Arm</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Left Arm Movement</td>
+<td>Movement XYZ</td>
+</tr>
+<tr>
+<td>Lower Right Leg</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Upper Right Leg</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Right Leg Movement</td>
+<td>Movement XYZ</td>
+</tr>
+<tr>
+<td>Right Foot</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Lower Right Arm</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Right Hand</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Right Fingers</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Upper Right Arm</td>
+<td>Pivot/Rotation</td>
+</tr>
+<tr>
+<td>Right Arm Movement</td>
+<td>Movement XYZ</td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
@@ -177,6 +292,45 @@ what each entry is meant to be.</p>
 <h2><a name="AkiAnimation">AkiModel</a></h2>
 <p>AkiModel stores mesh data. The format is largely the same between the six
 AKI N64 wrestling games, though some implementation details may differ.</p>
+
+<h3>Header Data</h3>
+<ul>
+<li>Offset 0x00: Scale (1 byte)</li>
+<li>Offset 0x01: Number of Vertices (1 byte)</li>
+<li>Offset 0x02: Number of Faces (1 byte)</li>
+<li>Offset 0x03: Vertex Influence (1 byte)</li>
+<li>Offset 0x04: Offset X (1 byte)</li>
+<li>Offset 0x05: Offset Y (1 byte)</li>
+<li>Offset 0x06: Offset Z (1 byte)</li>
+<li>Offset 0x07: Texture Size (1 byte)</li>
+</ul>
+ 
+<h4>Number of Vertices</h4>
+<p>The topmost bit of this value has meaning, so the actual maximum amount of vertices
+you can have in a single AkiModel is 127.</p>
+
+<h4>Number of Faces</h4>
+<p>The topmost bit of this value also has meaning, so the actual maximum amount of
+faces you can have in a single AkiModel is 127.</p>
+ 
+<h3>Vertex Data</h3>
+<p>Vertex Data immediately follows the header.</p>
+<ul>
+<li>Offset 0x00: X position (1 byte)</li>
+<li>Offset 0x01: Y position (1 byte)</li>
+<li>Offset 0x02: Z position (1 byte)</li>
+<li>Offset 0x03: Texture U value (1 byte)</li>
+<li>Offset 0x04: Texture V value (1 byte)</li>
+<li>Offset 0x05: Vertex Color Red value OR Normal Vector X value (1 byte)</li>
+<li>Offset 0x06: Vertex Color Green value OR Normal Vector Y value (1 byte)</li>
+<li>Offset 0x07: Vertex Color Blue value OR Normal Vector Z value (1 byte)</li>
+</ul>
+<p>Whether or not the last three values represent Vertex Colors or Normal Vectors
+is dependent on the top bit in either Number of Vertices or Number of Faces... probably.</p>
+
+<h3>Face Data</h3>
+<p>After the Vertex Data comes a list of vertices that make up the polygon faces.
+Each face consists of three bytes, representing vertex indices.</p>
 
 <hr />
 
