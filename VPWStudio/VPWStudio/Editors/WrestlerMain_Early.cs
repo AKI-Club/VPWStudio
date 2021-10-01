@@ -95,6 +95,20 @@ namespace VPWStudio.Editors
 			wdf.ReadFile(sr);
 			sr.Close();
 			WrestlerDefs = wdf.WrestlerDefs_Early;
+
+			// various strings are not stored in WrestlerDefs file, read them from ROM instead
+			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(ms);
+
+			foreach (KeyValuePair<int, WrestlerDefinition_Early> wdef in WrestlerDefs)
+			{
+				wdef.Value.Name = wdef.Value.GetName(br);
+				wdef.Value.ProfileString = wdef.Value.GetProfileString(br);
+				wdef.Value.HeightString = wdef.Value.GetHeightString(br);
+				wdef.Value.WeightString = wdef.Value.GetWeightString(br);
+			}
+
+			br.Close();
 		}
 		#endregion
 
