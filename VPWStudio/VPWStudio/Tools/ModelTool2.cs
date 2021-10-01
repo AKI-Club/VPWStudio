@@ -23,7 +23,20 @@ namespace VPWStudio
 
 		private AkiModel CurModel = new AkiModel();
 
+		/// <summary>
+		/// Model file ID
+		/// </summary>
 		private int FileID;
+
+		/// <summary>
+		/// Current texture file ID.
+		/// </summary>
+		private uint TextureFileID;
+
+		/// <summary>
+		/// Current palette file ID.
+		/// </summary>
+		private uint PaletteFileID;
 
 		/// <summary>
 		/// Determine if the GL context is valid. True if we can issue GL commands.
@@ -68,6 +81,9 @@ namespace VPWStudio
 			InitializeComponent();
 			FileID = fileID;
 			CurTexture = null;
+
+			TextureFileID = 0;
+			PaletteFileID = 0;
 
 			LoadModel(FileID);
 
@@ -348,7 +364,7 @@ namespace VPWStudio
 
 		private void loadTextureToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SelectTextureDialog std = new SelectTextureDialog();
+			SelectTextureDialog std = new SelectTextureDialog(TextureFileID, PaletteFileID);
 			if (std.ShowDialog() == DialogResult.OK)
 			{
 				CurTexture = std.OutputBitmap;
@@ -358,6 +374,9 @@ namespace VPWStudio
 					horizontalMirrorToolStripMenuItem.Checked = std.HorizontalMirror;
 					verticalMirrorToolStripMenuItem.Checked = std.VerticalMirror;
 				}
+
+				TextureFileID = std.TextureFileID;
+				PaletteFileID = std.PaletteFileID;
 
 				UpdateTexture();
 				glControl1.Invalidate();
