@@ -1237,9 +1237,21 @@ about wrestlers. Editing support is slowly being added as the program progresses
 Definition file (similar to the Stable Definition file), this situation is changing.</p>
 
 <h3>WCW vs. nWo World Tour, Virtual Pro-Wrestling 64</h3>
-<p>(todo: screenshot)</p>
+<img src="./img/wrestler_editor-early.png" title="Wrestler Editor - World Tour, VPW64" />
 
 <p>Currently read-only.</p>
+
+<ul>
+<li><strong>Unknown 1</strong> &ndash; Two-byte value with unknown purpose.</li>
+<li><strong>Wrestler ID4</strong> &ndash; Two-byte wrestler identifier.</li>
+<li><strong>Wrestler ID2</strong> &ndash; One-byte wrestler identifier.</li>
+<li><strong>Flags 1</strong> &ndash; One-byte value defining some flags.</li>
+<li><strong>Unknown 2</strong> &ndash; Two-byte value with unknown purpose.</li>
+<li><strong>Name Pointer</strong> &ndash; Pointer to a string with the wrestler's name.</li>
+<li><strong>Profile Pointer</strong> &ndash; Pointer to a string with the wrestler's profile text.</li>
+<li><strong>Height String Pointer</strong> &ndash; Pointer to a string with the wrestler's height.</li>
+<li><strong>Weight String Pointer</strong> &ndash; Pointer to a string with the wrestler's Weight.</li>
+</ul>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/wrestler_editor-revenge.png" title="Wrestler Editor - WCW/nWo Revenge" />
@@ -1264,20 +1276,20 @@ Definition file (similar to the Stable Definition file), this situation is chang
 <h3>WWF WrestleMania 2000</h3>
 <img src="./img/wrestler_editor-wm2k.png" title="Wrestler Editor - WWF WrestleMania 2000" />
 
-<p>Currently read-only.</p>
+<p>Largely read-only.</p>
 
 <ul>
-<li><strong>Wrestler Name</strong> &ndash; The wrestler's name, including control characters for defining the short name.</li>
-<li><strong>Wrestler ID4</strong> &ndash; Two-byte wrestler identifier.</li>
-<li><strong>Wrestler ID2</strong> &ndash; One-byte wrestler identifier.</li>
-<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex because lol imperial height measurements.</li>
-<li><strong>Weight</strong> &ndash; Wrestler's weight, displayed in hex and in (more reasonable) pounds.</li>
-<li><strong>Moveset Index</strong> &ndash; File ID of the wrestler's moveset.</li>
-<li><strong>Params Index</strong> &ndash; File ID of the wrestler's parameters.</li>
+<li><strong>Wrestler Name</strong> &ndash; The wrestler's name, including control characters for defining the short name. (read-only)</li>
+<li><strong>Wrestler ID4</strong> &ndash; Two-byte wrestler identifier. (read-only)</li>
+<li><strong>Wrestler ID2</strong> &ndash; One-byte wrestler identifier. (read-only)</li>
+<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex and in feet/inches.</li>
+<li><strong>Weight</strong> &ndash; Wrestler's weight, displayed in hex and in pounds.</li>
+<li><strong>Moveset Index</strong> &ndash; File ID of the wrestler's moveset. (read-only)</li>
+<li><strong>Params Index</strong> &ndash; File ID of the wrestler's parameters. (read-only)</li>
 <li><strong>Theme Music</strong> &ndash; Theme song used by this wrestler.</li>
 <li><strong>Entrance Video</strong> &ndash; Titantron "video" used by this wrestler.</li>
-<li><strong>Unknown</strong> &ndash; Two-byte value with unknown purpose.</li>
-<li><strong>Costume Pointer 1-4</strong> &ndash; Pointers to the default costume data for this wrestler.</li>
+<li><strong>Unknown</strong> &ndash; Two-byte value with unknown purpose. (read-only)</li>
+<li><strong>Costume Pointer 1-4</strong> &ndash; Pointers to the default costume data for this wrestler. Pressing "View/Edit" will bring up the WM2K default costume editor. (read-only, including the costume "editor")</li>
 </ul>
 
 <h3>Virtual Pro-Wrestling 2</h3>
@@ -1290,8 +1302,8 @@ Definition file (similar to the Stable Definition file), this situation is chang
 <li><strong>Wrestler ID2</strong> &ndash; One-byte wrestler identifier. (read-only)</li>
 <li><strong>Theme Music</strong> &ndash; Theme song used by this wrestler.</li>
 <li><strong>Name Call</strong> &ndash; The name the ring announcer uses during introductions.</li>
-<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex and in (more reasonable) centimeters.</li>
-<li><strong>Weiight</strong> &ndash; Wrestler's weight, displayed in hex and in (more reasonable) kilograms.</li>
+<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex and in centimeters.</li>
+<li><strong>Weiight</strong> &ndash; Wrestler's weight, displayed in hex and in kilograms.</li>
 <li><strong>Voice A</strong> &ndash; Voice used for (attack or taunt).</li>
 <li><strong>Voice B</strong> &ndash; Voice used for (attack or taunt).</li>
 <li><strong>Moveset Index</strong> &ndash; File ID of the wrestler's moveset. (read-only)</li>
@@ -1310,9 +1322,9 @@ Definition file (similar to the Stable Definition file), this situation is chang
 <li><strong>Wrestler ID2</strong> &ndash; One-byte wrestler identifier. (read-only)</li>
 <li><strong>Theme Music</strong> &ndash; Theme song used by this wrestler.</li>
 <li><strong>Entrance Video</strong> &ndash; Titantron "video" used by this wrestler.</li>
-<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex.</li>
+<li><strong>Height</strong> &ndash; Wrestler's height, displayed in hex and in feet/inches.</li>
 <li><strong>Unknown</strong> &ndash; One-byte value with unknown purpose. (read-only)</li>
-<li><strong>Weight</strong> &ndash; Wrestler's weight, displayed in hex. Unlike previous games, uses two bytes.</li>
+<li><strong>Weight</strong> &ndash; Wrestler's weight, displayed in hex and in pounds. Unlike previous games, uses two bytes.</li>
 <li><strong>Moveset Index</strong> &ndash; File ID of the wrestler's moveset. (read-only)</li>
 <li><strong>Params Index</strong> &ndash; File ID of the wrestler's parameters. (read-only)</li>
 <li><strong>Appearance Index</strong> &ndash; Index of the wrestler's first costume in the default costume data. Value is read-only. Pressing "View/Edit" will bring up the No Mercy default costume editor.</li>
