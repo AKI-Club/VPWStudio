@@ -463,6 +463,7 @@
 			this.Controls.Add(this.lbWrestlers);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_Revenge";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (WCW/nWo Revenge)";
