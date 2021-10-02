@@ -41,6 +41,17 @@ namespace VPWStudio.Editors.WM2K
 			sdf.ReadFile(sr);
 			sr.Close();
 			StableDefs = sdf.StableDefs_WM2K;
+
+			// load stable names from ROM, since they're not stored in StableDefs file
+			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader br = new BinaryReader(ms);
+
+			foreach (KeyValuePair<int, StableDefinition> sdef in StableDefs)
+			{
+				sdef.Value.StableName = sdef.Value.GetName(br);
+			}
+
+			br.Close();
 		}
 
 		private void LoadData_ROM()
