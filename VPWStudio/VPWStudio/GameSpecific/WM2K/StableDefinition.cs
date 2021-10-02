@@ -116,13 +116,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			}
 
 			// obtain stable name
-			br.BaseStream.Seek(Z64Rom.PointerToRom(StableNamePointer), SeekOrigin.Begin);
-
-			StableName = String.Empty;
-			while (br.PeekChar() != 0)
-			{
-				StableName += br.ReadChar();
-			}
+			StableName = GetName(br);
 
 			// restore position
 			br.BaseStream.Seek(curPos, SeekOrigin.Begin);
@@ -183,6 +177,23 @@ namespace VPWStudio.GameSpecific.WM2K
 		#endregion
 
 		#region Helpers
+		/// <summary>
+		/// Get stable name from ROM.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use</param>
+		/// <returns>A string with the stable's name</returns>
+		public string GetName(BinaryReader br)
+		{
+			UInt32 nameAddr = Z64Rom.PointerToRom(StableNamePointer);
+			br.BaseStream.Seek(nameAddr, SeekOrigin.Begin);
+			string s = String.Empty;
+			while (br.PeekChar() != 0)
+			{
+				s += br.ReadChar();
+			}
+			return s;
+		}
+
 		/// <summary>
 		/// Get the number of used wrestler slots in this Stable.
 		/// </summary>
