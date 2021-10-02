@@ -94,7 +94,7 @@ namespace VPWStudio
 			tbNumVertsTopBit.Text = String.Format("{0}", CurModel.ModelType >> 7);
 			tbNumFaces.Text = String.Format("{0} (0x{0:X2})", CurModel.NumFaces);
 			tbNumFacesTopBit.Text = String.Format("{0}", CurModel.UnknownFacesTopBit >> 7);
-			tbUnknown.Text = String.Format("{0} (0x{0:X2})", CurModel.VertexInfluence);
+			tbVertexInfluence.Text = String.Format("{0} (0x{0:X2})", CurModel.VertexInfluence);
 			tbOffsetX.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetX);
 			tbOffsetY.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetY);
 			tbOffsetZ.Text = String.Format("{0} (0x{0:X2})", (sbyte)CurModel.OffsetZ);
