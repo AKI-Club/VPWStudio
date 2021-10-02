@@ -394,10 +394,22 @@ namespace VPWStudio
 				result.Add((float)v.U / TextureSizeX);
 				result.Add((float)v.V / TextureSizeY);
 
-				// Vertex color
-				result.Add(v.VertexColor.R/255.0f);
-				result.Add(v.VertexColor.G/255.0f);
-				result.Add(v.VertexColor.B/255.0f);
+				// Vertex color OR Normal vector values
+				if (ModelType != 0)
+				{
+					// don't apply vertex colors
+					// (todo: actually properly handle the values)
+					result.Add(0.5f);
+					result.Add(0.5f);
+					result.Add(0.5f);
+				}
+				else
+				{
+					// treat as vertex color
+					result.Add(v.VertexColor.R / 255.0f);
+					result.Add(v.VertexColor.G / 255.0f);
+					result.Add(v.VertexColor.B / 255.0f);
+				}
 			}
 
 			return result.ToArray();
