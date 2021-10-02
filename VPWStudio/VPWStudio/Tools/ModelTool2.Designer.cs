@@ -48,8 +48,8 @@
 			this.tbOffsetY = new System.Windows.Forms.TextBox();
 			this.tbOffsetX = new System.Windows.Forms.TextBox();
 			this.labelOffsetX = new System.Windows.Forms.Label();
-			this.labelUnknown = new System.Windows.Forms.Label();
-			this.tbUnknown = new System.Windows.Forms.TextBox();
+			this.labelVertexInfluence = new System.Windows.Forms.Label();
+			this.tbVertexInfluence = new System.Windows.Forms.TextBox();
 			this.labelNumFaces = new System.Windows.Forms.Label();
 			this.labelNumFacesTopBit = new System.Windows.Forms.Label();
 			this.glControl1 = new OpenTK.GLControl();
@@ -104,8 +104,8 @@
 			this.tlpModelInfo.Controls.Add(this.tbOffsetY, 1, 8);
 			this.tlpModelInfo.Controls.Add(this.tbOffsetX, 1, 7);
 			this.tlpModelInfo.Controls.Add(this.labelOffsetX, 0, 7);
-			this.tlpModelInfo.Controls.Add(this.labelUnknown, 0, 6);
-			this.tlpModelInfo.Controls.Add(this.tbUnknown, 1, 6);
+			this.tlpModelInfo.Controls.Add(this.labelVertexInfluence, 0, 6);
+			this.tlpModelInfo.Controls.Add(this.tbVertexInfluence, 1, 6);
 			this.tlpModelInfo.Controls.Add(this.labelNumFaces, 0, 4);
 			this.tlpModelInfo.Controls.Add(this.labelNumFacesTopBit, 0, 5);
 			this.tlpModelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,24 +296,24 @@
 			this.labelOffsetX.TabIndex = 5;
 			this.labelOffsetX.Text = "Offset X";
 			// 
-			// labelUnknown
+			// labelVertexInfluence
 			// 
-			this.labelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown.AutoSize = true;
-			this.labelUnknown.Location = new System.Drawing.Point(3, 162);
-			this.labelUnknown.Name = "labelUnknown";
-			this.labelUnknown.Size = new System.Drawing.Size(101, 13);
-			this.labelUnknown.TabIndex = 4;
-			this.labelUnknown.Text = "(unknown)";
+			this.labelVertexInfluence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelVertexInfluence.AutoSize = true;
+			this.labelVertexInfluence.Location = new System.Drawing.Point(3, 162);
+			this.labelVertexInfluence.Name = "labelVertexInfluence";
+			this.labelVertexInfluence.Size = new System.Drawing.Size(101, 13);
+			this.labelVertexInfluence.TabIndex = 4;
+			this.labelVertexInfluence.Text = "Vertex Influence";
 			// 
-			// tbUnknown
+			// tbVertexInfluence
 			// 
-			this.tbUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown.Location = new System.Drawing.Point(110, 159);
-			this.tbUnknown.Name = "tbUnknown";
-			this.tbUnknown.ReadOnly = true;
-			this.tbUnknown.Size = new System.Drawing.Size(192, 20);
-			this.tbUnknown.TabIndex = 4;
+			this.tbVertexInfluence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbVertexInfluence.Location = new System.Drawing.Point(110, 159);
+			this.tbVertexInfluence.Name = "tbVertexInfluence";
+			this.tbVertexInfluence.ReadOnly = true;
+			this.tbVertexInfluence.Size = new System.Drawing.Size(192, 20);
+			this.tbVertexInfluence.TabIndex = 4;
 			// 
 			// labelNumFaces
 			// 
@@ -396,7 +396,7 @@
 			// loadTextureToolStripMenuItem
 			// 
 			this.loadTextureToolStripMenuItem.Name = "loadTextureToolStripMenuItem";
-			this.loadTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadTextureToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.loadTextureToolStripMenuItem.Text = "&Load Texture...";
 			this.loadTextureToolStripMenuItem.Click += new System.EventHandler(this.loadTextureToolStripMenuItem_Click);
 			// 
@@ -404,20 +404,20 @@
 			// 
 			this.textureEnabledToolStripMenuItem.CheckOnClick = true;
 			this.textureEnabledToolStripMenuItem.Name = "textureEnabledToolStripMenuItem";
-			this.textureEnabledToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.textureEnabledToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.textureEnabledToolStripMenuItem.Text = "Texture Enabled";
 			this.textureEnabledToolStripMenuItem.Click += new System.EventHandler(this.textureEnabledToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
 			// 
 			// horizontalMirrorToolStripMenuItem
 			// 
 			this.horizontalMirrorToolStripMenuItem.CheckOnClick = true;
 			this.horizontalMirrorToolStripMenuItem.Name = "horizontalMirrorToolStripMenuItem";
-			this.horizontalMirrorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.horizontalMirrorToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.horizontalMirrorToolStripMenuItem.Text = "Horizontal Mirror";
 			this.horizontalMirrorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.horizontalMirrorToolStripMenuItem_CheckedChanged);
 			// 
@@ -425,7 +425,7 @@
 			// 
 			this.verticalMirrorToolStripMenuItem.CheckOnClick = true;
 			this.verticalMirrorToolStripMenuItem.Name = "verticalMirrorToolStripMenuItem";
-			this.verticalMirrorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.verticalMirrorToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.verticalMirrorToolStripMenuItem.Text = "Vertical Mirror";
 			this.verticalMirrorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.verticalMirrorToolStripMenuItem_CheckedChanged);
 			// 
@@ -461,7 +461,7 @@
 		private System.Windows.Forms.Label labelModelScale;
 		private System.Windows.Forms.Label labelNumVerts;
 		private System.Windows.Forms.Label labelNumFaces;
-		private System.Windows.Forms.Label labelUnknown;
+		private System.Windows.Forms.Label labelVertexInfluence;
 		private System.Windows.Forms.Label labelOffsetX;
 		private System.Windows.Forms.Label labelOffsetY;
 		private System.Windows.Forms.Label labelOffsetZ;
@@ -469,7 +469,7 @@
 		private System.Windows.Forms.TextBox tbModelScale;
 		private System.Windows.Forms.TextBox tbNumVerts;
 		private System.Windows.Forms.TextBox tbNumFaces;
-		private System.Windows.Forms.TextBox tbUnknown;
+		private System.Windows.Forms.TextBox tbVertexInfluence;
 		private System.Windows.Forms.TextBox tbOffsetX;
 		private System.Windows.Forms.TextBox tbOffsetY;
 		private System.Windows.Forms.TextBox tbOffsetZ;
