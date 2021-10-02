@@ -47,7 +47,7 @@ namespace VPWStudio.Editors
 		{
 			// load from rom
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
-			BinaryReader br = new BinaryReader(ms);
+			BinaryReader br = new BinaryReader(ms, Encoding.GetEncoding("EUC-JP"));
 
 			bool hasLocation = false;
 			int baseLocation = -1;
