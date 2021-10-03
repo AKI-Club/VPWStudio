@@ -2,9 +2,81 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 17 (202x/yy/zz)
+Pre-Alpha Preview 18 (202x/yy/zz)
 ---------------------------------
 I'm working on it, but now I have some friends who might help?
+
+Pre-Alpha Preview 17 (2021/10/03)
+---------------------------------
+* [Hex Viewer] Fixed issue where copied data could not be pasted into external
+  hex editors. As a consequence, all spaces are removed from copied byte data.
+
+* [Project] Added Wrestler Definition file.
+  This acts similar to the Stable Definition file, and allows for editing of
+  various wrestler data that previously required a hex editor.
+
+  Writing wrestler data back to the ROM has been tested for:
+  - WWF No Mercy
+  - Virtual Pro-Wrestling 2
+  - WWF WrestleMania 2000
+
+  The other three games have yet to be tested.
+
+* [No Mercy Wrestler Dialog] Various updates:
+  - Read Wrestler Definition file if it exists
+  - Write Wrestler Definition file if it doesn't exist
+  - Allow for editing Titantron, Theme Music, Height, Weight, and Profile Index
+
+* [VPW2 Wrestler Dialog] Various updates:
+  - Read Wrestler Definition file if it exists
+  - Write Wrestler Definition file if it doesn't exist
+  - Allow for editing Theme Music, Name Call, Height, Weight, Voices,
+    and Profile Index
+
+* [WM2K Wrestler Dialog] Various updates:
+  - Read Wrestler Definition file if it exists
+  - Write Wrestler Definition file if it doesn't exist
+  - Allow for editing Titantron, Theme Music, Height, and Weight
+
+* [Revenge Wrestler Dialog] Read Wrestler Definition file if it exists.
+
+* [LocationFile] Added support for "FTID" entries, which map to IDs in the FileTable.
+  
+* [LocationFile] "RAM" entry type is now considered deprecated.
+
+* [DefaultGameData] Added a dictionary of relevant file IDs per-game.
+  This is meant to solve a few design issues in the code, as well as allow
+  for proper handling of WrestleMania 2000 NTSC-J in various dialogs.
+
+* [Toki 1 Test Dialog] Add support for WM2K NTSC-J.
+
+* [Move Damage Test Dialog] Add support for WM2K NTSC-J.
+
+* [Wrestler Dialog] Fixed issue related to loading a WrestleMania 2000 NTSC-U or
+  PAL project, then loading a WrestleMania 2000 NTSC-J project (or vice versa).
+
+* [Font Dialog] Added proper fallback character sets for World Tour and Revenge.
+
+* [World Tour/VPW64 Wrestler Dialog] Read Wrestler Definition file if it exists.
+
+* [ModelTool2] Texture and palette file IDs are now remembered upon selection,
+  and will be restored when entering the Load Texture dialog.
+
+* [AkiModel] Ignore vertex colors in GetNormalizedCoords if the top bit of
+  Number of Vertices is set.
+
+* [ModelTool2] Replaced (unknown) label with Vertex Influence.
+
+* More FileTableDB updates again. It's a long battle, but we're getting there.
+  Very large updates have been made to the VPW2 and No Mercy FileTableDBs.
+  VPW2 and No Mercy are almost 100% marked now (!).
+
+  Of course, some entries still need proper comments/explanations, but marking
+  them with the correct filetype (or Binary, when support for something isn't
+  currently available) is a very important step in figuring everything out.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 16 (2021/09/18)
 ---------------------------------
