@@ -125,10 +125,15 @@ namespace VPWStudio
 		/// Convert a pointer value to its location in ROM.
 		/// </summary>
 		/// <param name="_ptr">Pointer value</param>
+		/// <param name="_offset">(optional) Offset to add to value</param>
 		/// <returns>ROM location of pointer value.</returns>
-		public static UInt32 PointerToRom(UInt32 _ptr)
+		public static UInt32 PointerToRom(UInt32 _ptr, int _offset = 0)
 		{
 			_ptr &= 0x0FFFFFFF;
+			if (_offset != 0)
+			{
+				_ptr = (UInt32)(_ptr + _offset);
+			}
 			return (_ptr + 0xC00);
 		}
 
@@ -136,10 +141,15 @@ namespace VPWStudio
 		/// Convert a ROM location to a pointer value.
 		/// </summary>
 		/// <param name="_rom">ROM location of pointer value.</param>
+		/// <param name="_offset">(optional) Offset to add to value</param>
 		/// <returns>Pointer value</returns>
-		public static UInt32 RomToPointer(UInt32 _rom)
+		public static UInt32 RomToPointer(UInt32 _rom, int _offset = 0)
 		{
 			_rom |= 0x80000000;
+			if (_offset != 0)
+			{
+				_rom = (UInt32)(_rom + _offset);
+			}
 			return (_rom - 0xC00);
 		}
 		#endregion
