@@ -461,11 +461,55 @@ archive.</p>
 <p>Profile data is stored in the ROM.</p>
 
 <h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
-<p>Moves and Parameters are found in the FileTable. The data formats are not
-fully understood, but you can make a wrestler in Edit Mode and export the Moves
-and Parameters in the formats required.</p>
+<p>Moves and Parameters are found in the FileTable, and are mapped to wrestlers
+via data in the ROM ("Moveset Index" and "Params Index" in the Wrestlers dialog).
+The data formats are not fully understood, but you can make a wrestler in Edit
+Mode and export the Moves and Parameters in the formats required.</p>
 
 <h3><a name="WrestlerCostumes">Default Costumes</a></h3>
+<p>Default costume data exists in the ROM, and each wrestler's definition
+contains four pointers to their default costumes. Each default costume is 36
+(decimal) bytes long, and all values are bytes.</p>
+
+<h4>Data Format</h4>
+<ul>
+<li>Offset 0x00: Head Shape</li>
+<li>Offset 0x01: Hair Color</li>
+<li>Offset 0x02: Unknown 1</li>
+<li>Offset 0x03: Face Number</li>
+<li>Offset 0x04: Hair 1</li>
+<li>Offset 0x05: Hair 2</li>
+<li>Offset 0x06: Facial Hair</li>
+<li>Offset 0x07: Masks Etc</li>
+<li>Offset 0x08: Body Size</li>
+<li>Offset 0x09: Skin Color</li>
+<li>Offset 0x0A: Ring Attire</li>
+<li>Offset 0x0B: Ring Attire Color 1</li>
+<li>Offset 0x0C: Ring Attire Color 2</li>
+<li>Offset 0x0D: Upper Attire</li>
+<li>Offset 0x0E: Upper Attire Color 1</li>
+<li>Offset 0x0F: Upper Attire Color 2</li>
+<li>Offset 0x10: Gloves</li>
+<li>Offset 0x11: Gloves Color 1</li>
+<li>Offset 0x12: Gloves Color 2</li>
+<li>Offset 0x13: Tattoo</li>
+<li>Offset 0x14: Unknown 2</li>
+<li>Offset 0x15: Wristband</li>
+<li>Offset 0x16: Wristband Color</li>
+<li>Offset 0x17: Left Elbow Pad</li>
+<li>Offset 0x18: Left Elbow Pad Color</li>
+<li>Offset 0x19: Right Elbow Pad</li>
+<li>Offset 0x1A: Right Elbow Pad Color</li>
+<li>Offset 0x1B: Left Knee Pad</li>
+<li>Offset 0x1C: Left Knee Pad Color</li>
+<li>Offset 0x1D: Right Knee Pad</li>
+<li>Offset 0x1E: Right Knee Pad Color</li>
+<li>Offset 0x1F: Boots</li>
+<li>Offset 0x20: Boots Color 1</li>
+<li>Offset 0x21: Boots Color 2</li>
+<li>Offset 0x22: Entrance Attire</li>
+<li>Offset 0x23: Entrance Weapon</li>
+</ul>
 
 <hr />
 
@@ -492,6 +536,10 @@ and Parameters in the formats required.</p>
 <p>Stables in WWF WrestleMania 2000 hold up to 8 wrestlers maximum. If all
 eight slots are used, a terminating value (four bytes of 0x00) must be written
 to separate the stables. VPW Studio does not always handle this case correctly.</p>
+
+<hr />
+
+<h2><a name="CostumeData">Costume Data</a></h2>
 
 <hr />
 
