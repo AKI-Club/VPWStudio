@@ -13842,8 +13842,8 @@
 361E=AkiAnimation;
 361F=AkiAnimation;
 3620=AkiAnimation;
-3621=AkiAnimation;[Front Strong Grapple] Stong Sambo Suplex
-3622=AkiAnimation;[Front Strong Grapple] Stong Sambo Suplex
+3621=AkiAnimation;[Front Strong Grapple] Strong Sambo Suplex
+3622=AkiAnimation;[Front Strong Grapple] Strong Sambo Suplex
 3623=AkiAnimation;
 3624=AkiAnimation;
 3625=AkiAnimation;[Front Strong Grapple] Front Face Pancake
@@ -19310,7 +19310,7 @@
 4B7C=Binary;[Move Names] Front Grapple Special
 4B7D=Binary;("no name OK"?)
 4B7E=Binary;[Move Names] Back Grapple Weak
-4B7F=Binary;[Move Names] Back Grapple Stong
+4B7F=Binary;[Move Names] Back Grapple Strong
 4B80=Binary;[Move Names] Back Grapple Counter Weak
 4B81=Binary;[Move Names] (Irish Whip) Front Grapple Weak
 4B82=Binary;[Move Names] (Irish Whip) Front Grapple Special
