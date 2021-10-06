@@ -24,6 +24,7 @@
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
 <li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
 <ol>
+<li><a href="#ColorFormat">Color Format</a></li>
 <li><a href="#CostumeColorChanging">Costume Color Changing</a></li>
 <li><a href="#SkinColorChanging">Skin Color Changing</a></li>
 <li><a href="#TextureLayering">Texture Layering</a></li>
@@ -82,7 +83,7 @@ are external (i.e. separate from the main manual).)</p>
 <ol type='A'>
 <li><a href="#Glossary">Glossary</a></li>
 <li><a href="./appendix_b.html">Program Formats</a> (external section)</li>
-<li><a href="./appendix_c.html">Common Data Formats</a> (external section)</li>
+<li><a href="./appendix_c.html">Common Data Format Details</a> (external section)</li>
 </ol>
 
 <hr />
@@ -552,6 +553,18 @@ in the <a href="#GameSpecificDocs">game-specific documentation</a>.</p>
 
 <p>(todo: this is a very important subject and requires detailed information!)</p>
 
+<h3><a name="ColorFormat">Color Format</a></h3>
+<p>The Nintendo 64 and PlayStation 1 both use a 16bpp color format for most
+purposes. This gives a range of 0-31 for each of the red, green, and blue values,
+which can be converted to 0-255 by multiplying the value by 8. It is important
+to know this information when making textures and palettes, as some colors from
+the 0-255 range can't be properly represented. Furthermore, it's imperative to
+notice and merge perceptually similar colors when creating 16-color textures/palettes,
+as palette space is limited.</p>
+
+<p>For the Nintendo 64 games, a full black color (RGB 0,0,0) is often considered
+transparent. To get a non-transparent black, use RGB 8,8,8.</p>
+
 <h3><a name="CostumeColorChanging">Costume Color Changing</a></h3>
 <p>The ability to change the colors on costumes was first implemented in
 <em>Virtual Pro-Wrestling 64</em>. The developers at AKI decided to use "pure"
@@ -581,7 +594,16 @@ location for each game.</p>
 2</em>, and is explained in <a href="./vpw2.html">its game-specific documentation</a>.</p>
 
 <h3><a name="SkinColorChanging">Skin Color Changing</a></h3>
-<p>(todo: revenge and later)</p>
+<p>Even though you are not able to change the skin color of a wrestler in
+<em>WCW/nWo Revenge</em> in-game, the costume textures take skin color into
+account using the red channel.</p>
+
+<p>Starting with <em>WWF WrestleMania 2000</em> and <em>Virtual Pro-Wrestling 2</em>,
+you can customize the skin color of wrestlers. This is handled with multiple
+CI4 sub-palettes.</p>
+
+<p>In <em>WWF No Mercy</em>, each face has its own palette, which can be a pro
+and a con for people who want to edit them.</p>
 
 <h3><a name="TextureLayering">Texture Layering</a></h3>
 <p>Costume items are often layered on top of other textures. This includes

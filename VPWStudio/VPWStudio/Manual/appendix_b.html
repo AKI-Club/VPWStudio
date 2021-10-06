@@ -13,7 +13,10 @@
 </div>
 
 <hr />
-<h2>Notices</h2>
+<h2>Introduction</h2>
+<p>This appendix explains file formats that originate from VPW Studio.</p>
+
+<h3>Notes</h3>
 <ul>
 <li>As VPW Studio is still under development, changes to program formats are
 likely to happen.</li>
@@ -164,16 +167,21 @@ ignored by the LocationFile loader.</p>
 <p><code>LocationType:Location,Size;Comment</code></p>
 
 <h3>LocationType</h3>
-<p>This value is either <code>ROM</code> or <code>RAM</code>.
-ROM locations assume the Z64 file format (like the rest of the program).
-RAM locations are primarily for use with the GameShark code tool,
-which is no longer a part of the program.</p>
+<p>Location type can be one of three values:</p>
+<ul>
+<li><code>ROM</code>, representing a ROM location (Z64 format assumed).</li>
+<li><code>RAM</code>, representing a RAM location.</li>
+<li><code>FTID</code>, representing a File Table ID.</li>
+</ul>
 
 <h3>Location</h3>
 <p>The location for this entry, specified in hex. If this is a RAM entry,
 it must begin with <code>80</code>. Do not use <code>81</code> if you are
 converting a GameShark code to a LocationFile entry; the size is handled
 in the next section.</p>
+
+<p>For File Table ID entries, this is a four digit hex number representing
+an index into the File Table.</p>
 
 <h3>Size</h3>
 <p>The size of this entry, in decimal. For a normal entry, this is how many
@@ -186,6 +194,9 @@ the number of bytes between the first and second change.</p>
 often the case when the wrestler definitions are a list of pointers. VPW Studio
 manually handles the "list of pointers" case in the code (which is admittedly
 not the best option).</p>
+
+<p>All <code>FTID</code> entry types have this value set to 1. It is currently
+ignored by the program.</p>
 
 <h3>Comment</h3>
 <p>The comment section is typically used to provide a note about the location,
@@ -262,11 +273,11 @@ but are not yet handled.</p>
 <li><code>%SETUPFT_FTBEGINS</code> &ndash; </li>
 <li><code>%SETUPFT_MAXFILES_MINUS1</code> &ndash; </li>
 
-<li><code>%GETFILELOC_MAXFILES</code> &ndash; </li>
-<li><code>%GETFILELOC_FTBEGINS</code> &ndash; </li>
+<li><code>%GETFILELOC_MAXFILES</code> &ndash; Location of the maximum file count in the game's "Get File Location" routine.</li>
+<li><code>%GETFILELOC_FTBEGINS</code> &ndash; Location of the beginning address of the file table in the game's "Get File Location" routine.</li>
 
-<li><code>%LOADFILE_MAXFILES</code> &ndash; </li>
-<li><code>%LOADFILE_FTBEGINS</code> &ndash; </li>
+<li><code>%LOADFILE_MAXFILES</code> &ndash; Location of the maximum file count in the game's <code>LoadFile</code> routine.</li>
+<li><code>%LOADFILE_FTBEGINS</code> &ndash; Location of the beginning address of the file table in the game's <code>LoadFile</code> routine.</li>
 </ul>
 
 <hr />
