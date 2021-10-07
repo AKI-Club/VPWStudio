@@ -18,11 +18,10 @@
 
 <h3>Notes</h3>
 <ul>
-<li>As VPW Studio is still under development, changes to program formats are
+<li>As VPW Studio is still under development, changes to these formats are
 likely to happen.</li>
-<li>The source code is likely to have more accurate and up-to-date information.</li>
+<li>The source code possibly has more accurate and up-to-date information.</li>
 </ul>
-<p></p>
 
 <hr />
 <h2>Table of Contents</h2>
@@ -266,12 +265,12 @@ but are not yet handled.</p>
 
 <strong>Code Changes</strong>
 <ul>
-<li><code>%SETUPFT_FTSIZE1</code> &ndash; </li>
+<li><code>%SETUPFT_FTSIZE1</code> &ndash; Location of the first filetable size value in the game's <code>SetupFiletable</code> routine.</li>
 <li><code>%SETUPFT_FTLOCATION</code> &ndash; </li>
-<li><code>%SETUPFT_FTSIZE2</code> &ndash; </li>
+<li><code>%SETUPFT_FTSIZE2</code> &ndash; Location of the second filetable size value in the game's <code>SetupFiletable</code> routine.</li>
 <li><code>%SETUPFT_FTSIZE2_MINUS1</code> &ndash; </li>
-<li><code>%SETUPFT_FTBEGINS</code> &ndash; </li>
-<li><code>%SETUPFT_MAXFILES_MINUS1</code> &ndash; </li>
+<li><code>%SETUPFT_FTBEGINS</code> &ndash; Location of the beginning address of the file table in the game's <code>SetupFiletable</code> routine.</li>
+<li><code>%SETUPFT_MAXFILES_MINUS1</code> &ndash; Location of "maximum file count minus 1" in the game's <code>SetupFiletable</code> routine.</li>
 
 <li><code>%GETFILELOC_MAXFILES</code> &ndash; Location of the maximum file count in the game's "Get File Location" routine.</li>
 <li><code>%GETFILELOC_FTBEGINS</code> &ndash; Location of the beginning address of the file table in the game's "Get File Location" routine.</li>
@@ -360,6 +359,11 @@ of an intermediate format.</p>
 <li>One line per stable, defining all necessary data.</li>
 </ul>
 
+<p>The stable number is decimal. Most other values are hexadecimal, with the
+exception of "Number of Championships" for World Tour and VPW64, which is decimal.<br />
+"Max Wrestlers in Stable" assumes that the wrestler select screen(s) have not been
+hacked to display more wrestlers.</p>
+
 <h3>WCW vs. nWo World Tour</h3>
 <ul>
 <li><strong>Game Identifier</strong> &ndash; <code>WorldTour</code></li>
@@ -427,41 +431,104 @@ wrestler data differently.</p>
 <li>One line per wrestler, defining all necessary data.</li>
 </ul>
 
+<p>All values are hexadecimal.</p>
+
 <h3>WCW vs. nWo World Tour</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>WorldTour</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=unknown1,flags1,unknown2,namePointer,profilePointer,heightPointer,weightPointer</p>
 <p>(todo)</p>
+
+<ul>
+<li><strong>namePointer</strong> &ndash; Pointer to wrestler's name. (4 bytes)</li>
+<li><strong>profilePointer</strong> &ndash; Pointer to wrestler's profile string. (4 bytes)</li>
+<li><strong>heightPointer</strong> &ndash; Pointer to wrestler's height string. (4 bytes)</li>
+<li><strong>weightPointer</strong> &ndash; Pointer to wrestler's weight string. (4 bytes)</li>
+</ul>
 
 <h3>Virtual Pro-Wrestling 64</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>VPW64</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=unknown1,flags1,unknown2,namePointer,profilePointer,heightPointer,weightPointer</p>
 <p>(todo)</p>
+
+<ul>
+<li><strong>namePointer</strong> &ndash; Pointer to wrestler's name. (4 bytes)</li>
+<li><strong>profilePointer</strong> &ndash; Pointer to wrestler's profile string. (4 bytes)</li>
+<li><strong>heightPointer</strong> &ndash; Pointer to wrestler's height string. (4 bytes)</li>
+<li><strong>weightPointer</strong> &ndash; Pointer to wrestler's weight string. (4 bytes)</li>
+</ul>
 
 <h3>WCW/nWo Revenge</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>Revenge</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=unknown1,unknown2,unknown3,namePointer,heightPointer,weightPointer,unknown4,managerID2,unknown5,unknown6</p>
 <p>(todo)</p>
+
+<ul>
+<li><strong>namePointer</strong> &ndash; Pointer to wrestler's name. (4 bytes)</li>
+<li><strong>heightPointer</strong> &ndash; Pointer to wrestler's height string. (4 bytes)</li>
+<li><strong>weightPointer</strong> &ndash; Pointer to wrestler's weight string. (4 bytes)</li>
+<li><strong>managerID2</strong> &ndash; ID2 value of the wrestler's manager. (1 byte)</li>
+</ul>
 
 <h3>WWF WrestleMania 2000</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>WM2K</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=namePointer,height,weight,movesetIndex,paramsIndex,theme,video,unknown,costumePointer1,costumePointer2,costumePointer3,costumePointer4</p>
 <p>(todo)</p>
+
+<ul>
+<li><strong>namePointer</strong> &ndash; Pointer to wrestler's name. (4 bytes)</li>
+<li><strong>height</strong> &ndash; Wrestler height. (1 byte)</li>
+<li><strong>weight</strong> &ndash; Wrestler weight. (1 byte)</li>
+<li><strong>movesetIndex</strong> &ndash; File ID of the wrestler's moveset. (2 bytes)</li>
+<li><strong>paramsIndex</strong> &ndash; File ID of the wrestler's parameters. (2 bytes)</li>
+<li><strong>theme</strong> &ndash; Theme song for this wrestler. (1 byte)</li>
+<li><strong>video</strong> &ndash; Titantron video for this wrestler. (1 byte)</li>
+<li><strong>unknown</strong> &ndash; </li>
+<li><strong>costumePointer1</strong> &ndash; Pointer to costume data for the wrestler's first costume slot. (4 bytes)</li>
+<li><strong>costumePointer2</strong> &ndash; Pointer to costume data for the wrestler's second costume slot. (4 bytes)</li>
+<li><strong>costumePointer3</strong> &ndash; Pointer to costume data for the wrestler's third costume slot. (4 bytes)</li>
+<li><strong>costumePointer4</strong> &ndash; Pointer to costume data for the wrestler's fourth costume slot. (4 bytes)</li>
+</ul>
 
 <h3>Virtual Pro-Wrestling 2</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>VPW2</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=theme,namecall,height,weight,voiceA,voiceB,movesetIndex,paramsIndex,appearanceIndex,profileIndex</p>
 <p>Example wrestler definition: <code>0001/01=02,02,23,2D,01,00,02EE,02ED,0000,0002</code></p>
+
+<ul>
+<li><strong>theme</strong> &ndash; Theme song for this wrestler. (1 byte)</li>
+<li><strong>namecall</strong> &ndash; </li>
+<li><strong>height</strong> &ndash; Wrestler height. (1 byte)</li>
+<li><strong>weight</strong> &ndash; Wrestler weight. (1 byte)</li>
+<li><strong>voiceA</strong> &ndash; </li>
+<li><strong>voiceB</strong> &ndash; </li>
+<li><strong>movesetIndex</strong> &ndash; File ID of the wrestler's moveset. (2 bytes)</li>
+<li><strong>paramsIndex</strong> &ndash; File ID of the wrestler's parameters. (2 bytes)</li>
+<li><strong>appearanceIndex</strong> &ndash; Starting index for wrestler's costume in the default costumes file. (2 bytes)</li>
+<li><strong>profileIndex</strong> &ndash; Index of the wrestler's profile information in the default names file. (2 bytes)</li>
+</ul>
 
 <h3>WWF No Mercy</h3>
 <p><strong>Game Identifier</strong> &ndash; <code>NoMercy</code></p>
 
-<p>Wrestler ID4/Wrestler ID2=</p>
+<p>Wrestler ID4/Wrestler ID2=theme,video,height,unknown,weight,movesetIndex,paramsIndex,appearanceIndex,profileIndex</p>
 <p>Example wrestler definition: <code>0001/01=25,1D,11,00,00AF,01FA,01F9,0000,0003</code></p>
+
+<ul>
+<li><strong>theme</strong> &ndash; Theme song for this wrestler. (1 byte)</li>
+<li><strong>video</strong> &ndash; Titantron video for this wrestler. (1 byte)</li>
+<li><strong>height</strong> &ndash; Wrestler height. (1 byte)</li>
+<li><strong>unknown</strong> &ndash; Unknown value, possibly for alignment. (1 byte)</li>
+<li><strong>weight</strong> &ndash; Wrestler weight. (2 bytes)</li>
+<li><strong>movesetIndex</strong> &ndash; File ID of the wrestler's moveset. (2 bytes)</li>
+<li><strong>paramsIndex</strong> &ndash; File ID of the wrestler's parameters. (2 bytes)</li>
+<li><strong>appearanceIndex</strong> &ndash; Index of the wrestler's costume in the default costume data for this slot. (2 bytes)</li>
+<li><strong>profileIndex</strong> &ndash; Index of the wrestler's profile information in the default names file for this slot. (2 bytes)</li>
+</ul>
 
 <hr />
 <h2><a name="ProjectFile">Project File Format</a></h2>
