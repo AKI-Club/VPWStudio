@@ -101,6 +101,12 @@
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="DataStructures\PS1\TmdFile.cs" />
+    <Compile Include="Dialogs\SelectFileTableIdDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SelectFileTableIdDialog.Designer.cs">
+      <DependentUpon>SelectFileTableIdDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SelectTextureDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -587,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_SelectFontCharsDialog.resx">
       <DependentUpon>FileTable_SelectFontCharsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SelectFileTableIdDialog.resx">
+      <DependentUpon>SelectFileTableIdDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SelectTextureDialog.resx">
       <DependentUpon>SelectTextureDialog.cs</DependentUpon>
