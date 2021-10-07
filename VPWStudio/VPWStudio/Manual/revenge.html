@@ -563,6 +563,316 @@ fully understood yet.</p>
 <hr />
 
 <h2><a name="CostumeData">Costume Data</a></h2>
+<h3>Costume Colors</h3>
+<p>Costume colors in Edit Mode are defined in file ID <code>0A51</code>.</p>
+
+<p>The default values from the NTSC-U version of <em>WCW/nWo Revenge</em> are
+displayed in the table below. Each table cell contains three values.<br />
+The first line represents the hex value of the color as it appears in the palette file.<br />
+The second line represents the amount of Red, Green, and Blue in the range 0-31.<br />
+The third line represents the amount of Red, Green, and Blue in the range 0-255,
+as interpreted by VPW Studio (circa pre-Alpha Preview 18). These values are used
+for the background color of each cell.</p>
+
+<table>
+<thead>
+<tr>
+<th>Color Set</th>
+<th colspan=16>Colors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1 (Red)</th>
+<td class="center" style="background-color:rgba(238,90,90,255);color:#000">0xEAD7<br/><small>29,11,11<br/>238,90,90</small></td>
+<td class="center" style="background-color:rgba(230,82,82,255);color:#fff">0xE295<br/><small>28,10,10<br/>230,82,82</small></td>
+<td class="center" style="background-color:rgba(222,74,74,255);color:#fff">0xDA53<br/><small>27,9,9<br/>222,74,74</small></td>
+<td class="center" style="background-color:rgba(222,65,65,255);color:#fff">0xDA11<br/><small>27,8,8<br/>222,65,65</small></td>
+<td class="center" style="background-color:rgba(213,57,57,255);color:#fff">0xD1CF<br/><small>26,7,7<br/>213,57,57</small></td>
+<td class="center" style="background-color:rgba(213,49,49,255);color:#fff">0xD18D<br/><small>26,6,6<br/>213,49,49</small></td>
+<td class="center" style="background-color:rgba(205,41,41,255);color:#fff">0xC94B<br/><small>25,5,5<br/>205,41,41</small></td>
+<td class="center" style="background-color:rgba(205,32,32,255);color:#fff">0xC909<br/><small>25,4,4<br/>205,32,32</small></td>
+<td class="center" style="background-color:rgba(189,32,32,255);color:#fff">0xB909<br/><small>23,4,4<br/>189,32,32</small></td>
+<td class="center" style="background-color:rgba(180,32,32,255);color:#fff">0xB109<br/><small>22,4,4<br/>180,32,32</small></td>
+<td class="center" style="background-color:rgba(164,32,32,255);color:#fff">0xA109<br/><small>20,4,4<br/>164,32,32</small></td>
+<td class="center" style="background-color:rgba(156,32,32,255);color:#fff">0x9909<br/><small>19,4,4<br/>156,32,32</small></td>
+<td class="center" style="background-color:rgba(148,32,32,255);color:#fff">0x9109<br/><small>18,4,4<br/>148,32,32</small></td>
+<td class="center" style="background-color:rgba(131,32,32,255);color:#fff">0x8109<br/><small>16,4,4<br/>131,32,32</small></td>
+<td class="center" style="background-color:rgba(123,32,32,255);color:#fff">0x7909<br/><small>15,4,4<br/>123,32,32</small></td>
+<td class="center" style="background-color:rgba(115,32,32,255);color:#fff">0x7109<br/><small>14,4,4<br/>115,32,32</small></td>
+</tr>
+<tr>
+<th>2 (Blue)</th>
+<td class="center" style="background-color:rgba(115,164,197,255);color:#000">0x7531<br/><small>14,20,24<br/>115,164,197</small></td>
+<td class="center" style="background-color:rgba(106,148,189,255);color:#fff">0x6CAF<br/><small>13,18,23<br/>106,148,189</small></td>
+<td class="center" style="background-color:rgba(98,139,189,255);color:#fff">0x646F<br/><small>12,17,23<br/>98,139,189</small></td>
+<td class="center" style="background-color:rgba(98,123,189,255);color:#fff">0x63EF<br/><small>12,15,23<br/>98,123,189</small></td>
+<td class="center" style="background-color:rgba(90,115,180,255);color:#fff">0x5BAD<br/><small>11,14,22<br/>90,115,180</small></td>
+<td class="center" style="background-color:rgba(90,98,180,255);color:#fff">0x5B2D<br/><small>11,12,22<br/>90,98,180</small></td>
+<td class="center" style="background-color:rgba(82,90,180,255);color:#fff">0x52ED<br/><small>10,11,22<br/>82,90,180</small></td>
+<td class="center" style="background-color:rgba(82,82,180,255);color:#fff">0x52AD<br/><small>10,10,22<br/>82,82,180</small></td>
+<td class="center" style="background-color:rgba(74,74,164,255);color:#fff">0x4A69<br/><small>9,9,20<br/>74,74,164</small></td>
+<td class="center" style="background-color:rgba(74,65,156,255);color:#fff">0x4A27<br/><small>9,8,19<br/>74,65,156</small></td>
+<td class="center" style="background-color:rgba(65,57,148,255);color:#fff">0x41E5<br/><small>8,7,18<br/>65,57,148</small></td>
+<td class="center" style="background-color:rgba(65,57,139,255);color:#fff">0x41E3<br/><small>8,7,17<br/>65,57,139</small></td>
+<td class="center" style="background-color:rgba(65,49,131,255);color:#fff">0x41A1<br/><small>8,6,16<br/>65,49,131</small></td>
+<td class="center" style="background-color:rgba(57,41,123,255);color:#fff">0x395F<br/><small>7,5,15<br/>57,41,123</small></td>
+<td class="center" style="background-color:rgba(57,32,115,255);color:#fff">0x391D<br/><small>7,4,14<br/>57,32,115</small></td>
+<td class="center" style="background-color:rgba(57,32,106,255);color:#fff">0x391B<br/><small>7,4,13<br/>57,32,106</small></td>
+</tr>
+<tr>
+<th>3 (Green)</th>
+<td class="center" style="background-color:rgba(106,205,148,255);color:#000">0x6E65<br/><small>13,25,18<br/>106,205,148</small></td>
+<td class="center" style="background-color:rgba(90,189,131,255);color:#000">0x5DE1<br/><small>11,23,16<br/>90,189,131</small></td>
+<td class="center" style="background-color:rgba(74,180,115,255);color:#fff">0x4D9D<br/><small>9,22,14<br/>74,180,115</small></td>
+<td class="center" style="background-color:rgba(57,172,98,255);color:#fff">0x3D59<br/><small>7,21,12<br/>57,172,98</small></td>
+<td class="center" style="background-color:rgba(49,164,90,255);color:#fff">0x3517<br/><small>6,20,11<br/>49,164,90</small></td>
+<td class="center" style="background-color:rgba(32,156,74,255);color:#fff">0x24D3<br/><small>4,19,9<br/>32,156,74</small></td>
+<td class="center" style="background-color:rgba(16,148,57,255);color:#fff">0x148F<br/><small>2,18,7<br/>16,148,57</small></td>
+<td class="center" style="background-color:rgba(8,139,49,255);color:#fff">0x0C4D<br/><small>1,17,6<br/>8,139,49</small></td>
+<td class="center" style="background-color:rgba(8,131,49,255);color:#fff">0x0C0D<br/><small>1,16,6<br/>8,131,49</small></td>
+<td class="center" style="background-color:rgba(8,123,49,255);color:#fff">0x0BCD<br/><small>1,15,6<br/>8,123,49</small></td>
+<td class="center" style="background-color:rgba(16,115,57,255);color:#fff">0x138F<br/><small>2,14,7<br/>16,115,57</small></td>
+<td class="center" style="background-color:rgba(16,106,57,255);color:#fff">0x134F<br/><small>2,13,7<br/>16,106,57</small></td>
+<td class="center" style="background-color:rgba(16,98,57,255);color:#fff">0x130F<br/><small>2,12,7<br/>16,98,57</small></td>
+<td class="center" style="background-color:rgba(24,90,65,255);color:#fff">0x1AD1<br/><small>3,11,8<br/>24,90,65</small></td>
+<td class="center" style="background-color:rgba(24,82,65,255);color:#fff">0x1A91<br/><small>3,10,8<br/>24,82,65</small></td>
+<td class="center" style="background-color:rgba(32,74,74,255);color:#fff">0x2253<br/><small>4,9,9<br/>32,74,74</small></td>
+</tr>
+<tr>
+<th>4 (Yellow)</th>
+<td class="center" style="background-color:rgb(255,222,139,255);color:#000">0xFEE3<br/><small>31,27,17<br/>255,222,139</small></td>
+<td class="center" style="background-color:rgb(255,213,115,255);color:#000">0xFE9D<br/><small>31,26,14<br/>255,213,115</small></td>
+<td class="center" style="background-color:rgb(255,205,90,255);color:#000">0xFE57<br/><small>31,25,11<br/>255,205,90</small></td>
+<td class="center" style="background-color:rgb(255,197,65,255);color:#000">0xFE11<br/><small>31,24,8<br/>255,197,65</small></td>
+<td class="center" style="background-color:rgb(255,189,41,255);color:#000">0xFDCB<br/><small>31,23,5<br/>255,189,41</small></td>
+<td class="center" style="background-color:rgb(255,180,16,255);color:#000">0xFD85<br/><small>31,22,2<br/>255,180,16</small></td>
+<td class="center" style="background-color:rgb(255,180,0,255);color:#000">0xFD81<br/><small>31,22,0<br/>255,180,0</small></td>
+<td class="center" style="background-color:rgb(238,164,0,255);color:#000">0xED01<br/><small>29,20,0<br/>238,164,0</small></td>
+<td class="center" style="background-color:rgb(230,148,0,255);color:#000">0xE481<br/><small>28,18,0<br/>230,148,0</small></td>
+<td class="center" style="background-color:rgb(213,131,0,255);color:#fff">0xD401<br/><small>26,16,0<br/>213,131,0</small></td>
+<td class="center" style="background-color:rgb(197,123,0,255);color:#fff">0xC3C1<br/><small>24,15,0<br/>197,123,0</small></td>
+<td class="center" style="background-color:rgb(180,115,0,255);color:#fff">0xB381<br/><small>22,14,0<br/>180,115,0</small></td>
+<td class="center" style="background-color:rgb(172,98,0,255);color:#fff">0xAB01<br/><small>21,12,0<br/>172,98,0</small></td>
+<td class="center" style="background-color:rgb(156,90,0,255);color:#fff">0x9AC1<br/><small>19,11,0<br/>156,90,0</small></td>
+<td class="center" style="background-color:rgb(139,82,0,255);color:#fff">0x8A81<br/><small>17,10,0<br/>139,82,0</small></td>
+<td class="center" style="background-color:rgb(131,74,8,255);color:#fff">0x8243<br/><small>16,9,1<br/>131,74,8</small></td>
+</tr>
+<tr>
+<th>5 (Orange)</th>
+<td class="center" style="background-color:rgb(255,164,148,255);color:#000">0xFD25<br/><small>31,20,18<br/>255,164,148</small></td>
+<td class="center" style="background-color:rgb(255,156,131,255);color:#000">0xFCE1<br/><small>31,19,16<br/>255,156,131</small></td>
+<td class="center" style="background-color:rgb(255,148,115,255);color:#000">0xFC9D<br/><small>31,18,14<br/>255,148,115</small></td>
+<td class="center" style="background-color:rgb(255,139,98,255);color:#000">0xFC59<br/><small>31,17,12<br/>255,139,98</small></td>
+<td class="center" style="background-color:rgb(255,131,90,255);color:#000">0xFC17<br/><small>31,16,11<br/>255,131,90</small></td>
+<td class="center" style="background-color:rgb(255,123,74,255);color:#000">0xFBD3<br/><small>31,15,9<br/>255,123,74</small></td>
+<td class="center" style="background-color:rgb(255,115,57,255);color:#000">0xFB8F<br/><small>31,14,7<br/>255,115,57</small></td>
+<td class="center" style="background-color:rgb(255,106,49,255);color:#000">0xFB4D<br/><small>31,13,6<br/>255,106,49</small></td>
+<td class="center" style="background-color:rgb(238,98,41,255);color:#000">0xEB0B<br/><small>29,12,5<br/>238,98,41</small></td>
+<td class="center" style="background-color:rgb(222,90,32,255);color:#fff">0xDAC9<br/><small>27,11,4<br/>222,90,32</small></td>
+<td class="center" style="background-color:rgb(205,82,32,255);color:#fff">0xCA89<br/><small>25,10,4<br/>205,82,32</small></td>
+<td class="center" style="background-color:rgb(197,74,32,255);color:#fff">0xC249<br/><small>24,9,4<br/>197,74,32</small></td>
+<td class="center" style="background-color:rgb(180,65,32,255);color:#fff">0xB209<br/><small>22,8,4<br/>180,65,32</small></td>
+<td class="center" style="background-color:rgb(172,57,32,255);color:#fff">0xA9C9<br/><small>21,7,4<br/>172,57,32</small></td>
+<td class="center" style="background-color:rgb(156,49,32,255);color:#fff">0x9989<br/><small>19,6,4<br/>156,49,32</small></td>
+<td class="center" style="background-color:rgb(148,49,32,255);color:#fff">0x9189<br/><small>18,6,4<br/>148,49,32</small></td>
+</tr>
+<tr>
+<th>6 (Purple)</th>
+<td class="center" style="background-color:rgba(172,139,205,255);color:#000">0xAC73<br/><small>21,17,25<br/>172,139,205</small></td>
+<td class="center" style="background-color:rgba(164,123,189,255);color:#000">0xA3EF<br/><small>20,15,23<br/>164,123,189</small></td>
+<td class="center" style="background-color:rgba(156,106,180,255);color:#000">0x9B6D<br/><small>19,13,22<br/>156,106,180</small></td>
+<td class="center" style="background-color:rgba(156,90,172,255);color:#000">0x9AEB<br/><small>19,11,21<br/>156,90,172</small></td>
+<td class="center" style="background-color:rgba(148,82,164,255);color:#000">0x92A9<br/><small>18,10,20<br/>148,82,164</small></td>
+<td class="center" style="background-color:rgba(148,65,156,255);color:#fff">0x9227<br/><small>18,8,19<br/>148,65,156</small></td>
+<td class="center" style="background-color:rgba(139,49,148,255);color:#fff">0x89A5<br/><small>17,6,18<br/>139,49,148</small></td>
+<td class="center" style="background-color:rgba(139,41,139,255);color:#fff">0x8963<br/><small>17,5,17<br/>139,41,139</small></td>
+<td class="center" style="background-color:rgba(123,32,131,255);color:#fff">0x7921<br/><small>15,4,16<br/>123,32,131</small></td>
+<td class="center" style="background-color:rgba(115,32,123,255);color:#fff">0x711F<br/><small>14,4,15<br/>115,32,123</small></td>
+<td class="center" style="background-color:rgba(98,24,115,255);color:#fff">0x60DD<br/><small>12,3,14<br/>98,24,115</small></td>
+<td class="center" style="background-color:rgba(90,24,106,255);color:#fff">0x58DB<br/><small>11,3,13<br/>90,24,106</small></td>
+<td class="center" style="background-color:rgba(74,16,98,255);color:#fff">0x4899<br/><small>9,2,12<br/>74,16,98</small></td>
+<td class="center" style="background-color:rgba(65,16,90,255);color:#fff">0x4097<br/><small>8,2,11<br/>65,16,90</small></td>
+<td class="center" style="background-color:rgba(49,8,82,255);color:#fff">0x3055<br/><small>6,1,10<br/>49,8,82</small></td>
+<td class="center" style="background-color:rgba(41,8,82,255);color:#fff">0x2855<br/><small>5,1,10<br/>41,8,82</small></td>
+</tr>
+<tr>
+<th>7 (Pink)</th>
+<td class="center" style="background-color:rgba(246,164,180,255);color:#000">0xF52D<br/><small>30,20,22<br/>246,164,180</small></td>
+<td class="center" style="background-color:rgba(246,156,172,255);color:#000">0xF4EB<br/><small>30,19,21<br/>246,156,172</small></td>
+<td class="center" style="background-color:rgba(246,148,164,255);color:#000">0xF4A9<br/><small>30,18,20<br/>246,148,164</small></td>
+<td class="center" style="background-color:rgba(246,139,164,255);color:#000">0xF469<br/><small>30,17,20<br/>246,139,164</small></td>
+<td class="center" style="background-color:rgba(246,131,156,255);color:#000">0xF427<br/><small>30,16,19<br/>246,131,156</small></td>
+<td class="center" style="background-color:rgba(246,123,156,255);color:#000">0xF3E7<br/><small>30,15,19<br/>246,123,156</small></td>
+<td class="center" style="background-color:rgba(246,115,148,255);color:#000">0xF3A5<br/><small>30,14,18<br/>246,115,148</small></td>
+<td class="center" style="background-color:rgba(255,106,148,255);color:#000">0xFB65<br/><small>31,13,18<br/>255,106,148</small></td>
+<td class="center" style="background-color:rgba(230,90,131,255);color:#fff">0xE2E1<br/><small>28,11,16<br/>230,90,131</small></td>
+<td class="center" style="background-color:rgba(213,82,123,255);color:#fff">0xD29F<br/><small>26,10,15<br/>213,82,123</small></td>
+<td class="center" style="background-color:rgba(197,74,106,255);color:#fff">0xC25B<br/><small>24,9,13<br/>197,74,106</small></td>
+<td class="center" style="background-color:rgba(180,65,98,255);color:#fff">0xB219<br/><small>22,8,12<br/>180,65,98</small></td>
+<td class="center" style="background-color:rgba(156,49,90,255);color:#fff">0x9997<br/><small>19,6,11<br/>156,49,90</small></td>
+<td class="center" style="background-color:rgba(139,41,74,255);color:#fff">0x8953<br/><small>17,5,9<br/>139,41,74</small></td>
+<td class="center" style="background-color:rgba(123,32,65,255);color:#fff">0x7911<br/><small>15,4,8<br/>123,32,65</small></td>
+<td class="center" style="background-color:rgba(106,24,57,255);color:#fff">0x68CF<br/><small>13,3,7<br/>106,24,57</small></td>
+</tr>
+<tr>
+<th>8 (Teal/Cyan)</th>
+<td class="center" style="background-color:rgba(172,180,180,255);color:#000">0xADAD<br/><small>21,22,22<br/>172,180,180</small></td>
+<td class="center" style="background-color:rgba(148,164,172,255);color:#000">0x952B<br/><small>18,20,21<br/>148,164,172</small></td>
+<td class="center" style="background-color:rgba(123,156,164,255);color:#000">0x7CE9<br/><small>15,19,20<br/>123,156,164</small></td>
+<td class="center" style="background-color:rgba(98,148,156,255);color:#000">0x64A7<br/><small>12,18,19<br/>98,148,156</small></td>
+<td class="center" style="background-color:rgba(74,131,156,255);color:#000">0x4C27<br/><small>9,16,19<br/>74,131,156</small></td>
+<td class="center" style="background-color:rgba(49,123,148,255);color:#fff">0x33E5<br/><small>6,15,18<br/>49,123,148</small></td>
+<td class="center" style="background-color:rgba(24,115,139,255);color:#fff">0x1BA3<br/><small>3,14,17<br/>24,115,139</small></td>
+<td class="center" style="background-color:rgba(0,106,139,255);color:#fff">0x0363<br/><small>0,13,17<br/>0,106,139</small></td>
+<td class="center" style="background-color:rgba(0,98,131,255);color:#fff">0x0321<br/><small>0,12,16<br/>0,98,131</small></td>
+<td class="center" style="background-color:rgba(0,90,123,255);color:#fff">0x02DF<br/><small>0,11,15<br/>0,90,123</small></td>
+<td class="center" style="background-color:rgba(0,82,115,255);color:#fff">0x029D<br/><small>0,10,14<br/>0,82,115</small></td>
+<td class="center" style="background-color:rgba(0,74,106,255);color:#fff">0x025B<br/><small>0,9,13<br/>0,74,106</small></td>
+<td class="center" style="background-color:rgba(0,65,98,255);color:#fff">0x0219<br/><small>0,8,12<br/>0,65,98</small></td>
+<td class="center" style="background-color:rgba(0,57,90,255);color:#fff">0x01D7<br/><small>0,7,11<br/>0,57,90</small></td>
+<td class="center" style="background-color:rgba(0,49,82,255);color:#fff">0x0195<br/><small>0,6,10<br/>0,49,82</small></td>
+<td class="center" style="background-color:rgba(0,41,82,255);color:#fff">0x0155<br/><small>0,5,10<br/>0,41,82</small></td>
+</tr>
+<tr>
+<th>9 (Dark Purple)</th>
+<td class="center" style="background-color:rgba(115,98,164,255);color:#fff">0x7329<br/><small>14,12,20<br/>115,98,164</small></td>
+<td class="center" style="background-color:rgba(106,90,156,255);color:#fff">0x6AE7<br/><small>13,11,19<br/>106,90,156</small></td>
+<td class="center" style="background-color:rgba(98,82,148,255);color:#fff">0x62A5<br/><small>12,10,18<br/>98,82,148</small></td>
+<td class="center" style="background-color:rgba(90,74,139,255);color:#fff">0x5A63<br/><small>11,9,17<br/>90,74,139</small></td>
+<td class="center" style="background-color:rgba(82,74,131,255);color:#fff">0x5261<br/><small>10,9,16<br/>82,74,131</small></td>
+<td class="center" style="background-color:rgba(74,65,131,255);color:#fff">0x4A21<br/><small>9,8,16<br/>74,65,131</small></td>
+<td class="center" style="background-color:rgba(65,57,123,255);color:#fff">0x41DF<br/><small>8,7,15<br/>65,57,123</small></td>
+<td class="center" style="background-color:rgba(65,49,115,255);color:#fff">0x419D<br/><small>8,6,14<br/>65,49,115</small></td>
+<td class="center" style="background-color:rgba(57,49,106,255);color:#fff">0x399B<br/><small>7,6,13<br/>57,49,106</small></td>
+<td class="center" style="background-color:rgba(49,41,98,255);color:#fff">0x3159<br/><small>6,5,12<br/>49,41,98</small></td>
+<td class="center" style="background-color:rgba(41,32,98,255);color:#fff">0x2919<br/><small>5,4,12<br/>41,32,98</small></td>
+<td class="center" style="background-color:rgba(32,32,90,255);color:#fff">0x2117<br/><small>4,4,11<br/>32,32,90</small></td>
+<td class="center" style="background-color:rgba(24,24,82,255);color:#fff">0x18D5<br/><small>3,3,10<br/>24,24,82</small></td>
+<td class="center" style="background-color:rgba(16,16,74,255);color:#fff">0x1093<br/><small>2,2,9<br/>16,16,74</small></td>
+<td class="center" style="background-color:rgba(8,8,65,255);color:#fff">0x0851<br/><small>1,1,8<br/>8,8,65</small></td>
+<td class="center" style="background-color:rgba(8,8,65,255);color:#fff">0x0851<br/><small>1,1,8<br/>8,8,65</small></td>
+</tr>
+<tr>
+<th>10 (Mint Green)</th>
+<td class="center" style="background-color:rgba(180,255,172,255);color:#000">0xB7EB<br/><small>22,31,21<br/>180,255,172</small></td>
+<td class="center" style="background-color:rgba(156,238,164,255);color:#000">0x9F69<br/><small>19,29,20<br/>156,238,164</small></td>
+<td class="center" style="background-color:rgba(139,230,156,255);color:#000">0x8F27<br/><small>17,28,19<br/>139,230,156</small></td>
+<td class="center" style="background-color:rgba(123,213,148,255);color:#000">0x7EA5<br/><small>15,26,18<br/>123,213,148</small></td>
+<td class="center" style="background-color:rgba(98,205,139,255);color:#000">0x6663<br/><small>12,25,17<br/>98,205,139</small></td>
+<td class="center" style="background-color:rgba(82,189,131,255);color:#000">0x55E1<br/><small>10,23,16<br/>82,189,131</small></td>
+<td class="center" style="background-color:rgba(65,180,123,255);color:#000">0x459F<br/><small>8,22,15<br/>65,180,123</small></td>
+<td class="center" style="background-color:rgba(49,172,115,255);color:#000">0x355D<br/><small>6,21,14<br/>49,172,115</small></td>
+<td class="center" style="background-color:rgba(41,156,98,255);color:#fff">0x2CD9<br/><small>5,19,12<br/>41,156,98</small></td>
+<td class="center" style="background-color:rgba(41,139,90,255);color:#fff">0x2C57<br/><small>5,17,11<br/>41,139,90</small></td>
+<td class="center" style="background-color:rgba(32,123,82,255);color:#fff">0x23D5<br/><small>4,15,10<br/>32,123,82</small></td>
+<td class="center" style="background-color:rgba(32,115,74,255);color:#fff">0x2393<br/><small>4,14,9<br/>32,115,74</small></td>
+<td class="center" style="background-color:rgba(24,98,65,255);color:#fff">0x1B11<br/><small>3,12,8<br/>24,98,65</small></td>
+<td class="center" style="background-color:rgba(24,82,57,255);color:#fff">0x1A8F<br/><small>3,10,7<br/>24,82,57</small></td>
+<td class="center" style="background-color:rgba(16,65,49,255);color:#fff">0x120D<br/><small>2,8,6<br/>16,65,49</small></td>
+<td class="center" style="background-color:rgba(16,57,41,255);color:#fff">0x11CB<br/><small>2,7,5<br/>16,57,41</small></td>
+</tr>
+<tr>
+<th>11 (Yellow-Green)</th>
+<td class="center" style="background-color:rgba(180,230,98,255);color:#000">0xB719<br/><small>22,28,12<br/>180,230,98</small></td>
+<td class="center" style="background-color:rgba(172,222,90,255);color:#000">0xAED7<br/><small>21,27,11<br/>172,222,90</small></td>
+<td class="center" style="background-color:rgba(164,213,90,255);color:#000">0xA697<br/><small>20,26,11<br/>164,213,90</small></td>
+<td class="center" style="background-color:rgba(156,213,90,255);color:#000">0x9E97<br/><small>19,26,11<br/>156,213,90</small></td>
+<td class="center" style="background-color:rgba(148,205,82,255);color:#000">0x9655<br/><small>18,25,10<br/>148,205,82</small></td>
+<td class="center" style="background-color:rgba(139,197,82,255);color:#000">0x8E15<br/><small>17,24,10<br/>139,197,82</small></td>
+<td class="center" style="background-color:rgba(139,197,82,255);color:#000">0x8E15<br/><small>17,24,10<br/>139,197,82</small></td>
+<td class="center" style="background-color:rgba(131,189,82,255);color:#000">0x85D5<br/><small>16,23,10<br/>131,189,82</small></td>
+<td class="center" style="background-color:rgba(123,180,82,255);color:#000">0x7D95<br/><small>15,22,10<br/>123,180,82</small></td>
+<td class="center" style="background-color:rgba(115,172,74,255);color:#000">0x7553<br/><small>14,21,9<br/>115,172,74</small></td>
+<td class="center" style="background-color:rgba(106,164,74,255);color:#000">0x6D13<br/><small>13,20,9<br/>106,164,74</small></td>
+<td class="center" style="background-color:rgba(98,156,74,255);color:#fff">0x64D3<br/><small>12,19,9<br/>98,156,74</small></td>
+<td class="center" style="background-color:rgba(90,148,65,255);color:#fff">0x5C91<br/><small>11,18,8<br/>90,148,65</small></td>
+<td class="center" style="background-color:rgba(82,139,65,255);color:#fff">0x5451<br/><small>10,17,8<br/>82,139,65</small></td>
+<td class="center" style="background-color:rgba(74,131,65,255);color:#fff">0x4C11<br/><small>9,16,8<br/>74,131,65</small></td>
+<td class="center" style="background-color:rgba(74,131,65,255);color:#fff">0x4C11<br/><small>9,16,8<br/>74,131,65</small></td>
+</tr>
+<tr>
+<th>12 (Light Blue)</th>
+<td class="center" style="background-color:rgba(148,213,230,255);color:#000">0x96B9<br/><small>18,26,28<br/>148,213,230</small></td>
+<td class="center" style="background-color:rgba(123,205,230,255);color:#000">0x7E79<br/><small>15,25,28<br/>123,205,230</small></td>
+<td class="center" style="background-color:rgba(98,197,230,255);color:#000">0x6639<br/><small>12,24,28<br/>98,197,230</small></td>
+<td class="center" style="background-color:rgba(82,189,238,255);color:#000">0x55FB<br/><small>10,23,29<br/>82,189,238</small></td>
+<td class="center" style="background-color:rgba(57,180,238,255);color:#000">0x3DBB<br/><small>7,22,29<br/>57,180,238</small></td>
+<td class="center" style="background-color:rgba(41,172,246,255);color:#000">0x2D7D<br/><small>5,21,30<br/>41,172,246</small></td>
+<td class="center" style="background-color:rgba(16,164,246,255);color:#000">0x153D<br/><small>2,20,30<br/>16,164,246</small></td>
+<td class="center" style="background-color:rgba(0,156,255,255);color:#000">0x04FF<br/><small>0,19,31<br/>0,156,255</small></td>
+<td class="center" style="background-color:rgba(0,148,238,255);color:#000">0x04BB<br/><small>0,18,29<br/>0,148,238</small></td>
+<td class="center" style="background-color:rgba(0,139,230,255);color:#000">0x0479<br/><small>0,17,28<br/>0,139,230</small></td>
+<td class="center" style="background-color:rgba(0,123,213,255);color:#000">0x03F5<br/><small>0,15,26<br/>0,123,213</small></td>
+<td class="center" style="background-color:rgba(0,115,197,255);color:#fff">0x03B1<br/><small>0,14,24<br/>0,115,197</small></td>
+<td class="center" style="background-color:rgba(0,106,180,255);color:#fff">0x036D<br/><small>0,13,22<br/>0,106,180</small></td>
+<td class="center" style="background-color:rgba(0,98,164,255);color:#fff">0x0329<br/><small>0,12,20<br/>0,98,164</small></td>
+<td class="center" style="background-color:rgba(0,90,148,255);color:#fff">0x02E5<br/><small>0,11,18<br/>0,90,148</small></td>
+<td class="center" style="background-color:rgba(0,82,139,255);color:#fff">0x02A3<br/><small>0,10,17<br/>0,82,139</small></td>
+</tr>
+<tr>
+<th>13 (Gold/Brown)</th>
+<td class="center" style="background-color:rgba(255,246,172,255);color:#000">0xFFAB<br/><small>31,30,21<br/>255,246,172</small></td>
+<td class="center" style="background-color:rgba(238,230,156,255);color:#000">0xEF27<br/><small>29,28,19<br/>238,230,156</small></td>
+<td class="center" style="background-color:rgba(230,213,139,255);color:#000">0xE6A3<br/><small>28,26,17<br/>230,213,139</small></td>
+<td class="center" style="background-color:rgba(222,197,123,255);color:#000">0xDE1F<br/><small>27,24,15<br/>222,197,123</small></td>
+<td class="center" style="background-color:rgba(205,189,106,255);color:#000">0xCDDB<br/><small>25,23,13<br/>205,189,106</small></td>
+<td class="center" style="background-color:rgba(197,172,90,255);color:#000">0xC557<br/><small>24,21,11<br/>197,172,90</small></td>
+<td class="center" style="background-color:rgba(189,156,74,255);color:#000">0xBCD3<br/><small>23,19,9<br/>189,156,74</small></td>
+<td class="center" style="background-color:rgba(180,148,65,255);color:#000">0xB491<br/><small>22,18,8<br/>180,148,65</small></td>
+<td class="center" style="background-color:rgba(164,131,57,255);color:#fff">0xA40F<br/><small>20,16,7<br/>164,131,57</small></td>
+<td class="center" style="background-color:rgba(148,115,49,255);color:#fff">0x938D<br/><small>18,14,6<br/>148,115,49</small></td>
+<td class="center" style="background-color:rgba(131,106,41,255);color:#fff">0x834B<br/><small>16,13,5<br/>131,106,41</small></td>
+<td class="center" style="background-color:rgba(115,90,32,255);color:#fff">0x72C9<br/><small>14,11,4<br/>115,90,32</small></td>
+<td class="center" style="background-color:rgba(98,74,24,255);color:#fff">0x6247<br/><small>12,9,3<br/>98,74,24</small></td>
+<td class="center" style="background-color:rgba(82,65,16,255);color:#fff">0x5205<br/><small>10,8,2<br/>82,65,16</small></td>
+<td class="center" style="background-color:rgba(65,49,8,255);color:#fff">0x4183<br/><small>8,6,1<br/>65,49,8</small></td>
+<td class="center" style="background-color:rgba(57,41,8,255);color:#fff">0x3943<br/><small>7,5,1<br/>57,41,8</small></td>
+</tr>
+<tr>
+<th>14 (White)</th>
+<td class="center" style="background-color:rgba(255,255,255,255);color:#000">0xFFFF<br/><small>31,31,31<br/>255,255,255</small></td>
+<td class="center" style="background-color:rgba(246,246,246,255);color:#000">0xF7BD<br/><small>30,30,30<br/>246,246,246</small></td>
+<td class="center" style="background-color:rgba(238,238,238,255);color:#000">0xEF7B<br/><small>29,29,29<br/>238,238,238</small></td>
+<td class="center" style="background-color:rgba(230,230,238,255);color:#000">0xE73B<br/><small>28,28,29<br/>230,230,238</small></td>
+<td class="center" style="background-color:rgba(230,230,230,255);color:#000">0xE739<br/><small>28,28,28<br/>230,230,230</small></td>
+<td class="center" style="background-color:rgba(222,222,222,255);color:#000">0xDEF7<br/><small>27,27,27<br/>222,222,222</small></td>
+<td class="center" style="background-color:rgba(213,213,222,255);color:#000">0xD6B7<br/><small>26,26,27<br/>213,213,222</small></td>
+<td class="center" style="background-color:rgba(205,205,213,255);color:#000">0xCE75<br/><small>25,25,26<br/>205,205,213</small></td>
+<td class="center" style="background-color:rgba(205,205,205,255);color:#000">0xCE73<br/><small>25,25,25<br/>205,205,205</small></td>
+<td class="center" style="background-color:rgba(197,197,205,255);color:#000">0xC633<br/><small>24,24,25<br/>197,197,205</small></td>
+<td class="center" style="background-color:rgba(189,189,197,255);color:#000">0xBDF1<br/><small>23,23,24<br/>189,189,197</small></td>
+<td class="center" style="background-color:rgba(180,180,189,255);color:#000">0xB5AF<br/><small>22,22,23<br/>180,180,189</small></td>
+<td class="center" style="background-color:rgba(172,172,180,255);color:#000">0xAD6D<br/><small>21,21,22<br/>172,172,180</small></td>
+<td class="center" style="background-color:rgba(164,164,172,255);color:#000">0xA52B<br/><small>20,20,21<br/>164,164,172</small></td>
+<td class="center" style="background-color:rgba(156,156,164,255);color:#000">0x9CE9<br/><small>19,19,20<br/>156,156,164</small></td>
+<td class="center" style="background-color:rgba(148,148,156,255);color:#000">0x94A7<br/><small>18,18,19<br/>148,148,156</small></td>
+</tr>
+<tr>
+<th>15 (Black)</th>
+<td class="center" style="background-color:rgba(82,82,82,255);color:#fff">0x5295<br/><small>10,10,10<br/>82,82,82</small></td>
+<td class="center" style="background-color:rgba(74,74,74,255);color:#fff">0x4A53<br/><small>9,9,9<br/>74,74,74</small></td>
+<td class="center" style="background-color:rgba(65,65,65,255);color:#fff">0x4211<br/><small>8,8,8<br/>65,65,65</small></td>
+<td class="center" style="background-color:rgba(57,57,57,255);color:#fff">0x39CF<br/><small>7,7,7<br/>57,57,57</small></td>
+<td class="center" style="background-color:rgba(57,57,57,255);color:#fff">0x39CF<br/><small>7,7,7<br/>57,57,57</small></td>
+<td class="center" style="background-color:rgba(49,49,49,255);color:#fff">0x318D<br/><small>6,6,6<br/>49,49,49</small></td>
+<td class="center" style="background-color:rgba(41,41,41,255);color:#fff">0x294B<br/><small>5,5,5<br/>41,41,41</small></td>
+<td class="center" style="background-color:rgba(32,32,32,255);color:#fff">0x2109<br/><small>4,4,4<br/>32,32,32</small></td>
+<td class="center" style="background-color:rgba(32,32,32,255);color:#fff">0x2109<br/><small>4,4,4<br/>32,32,32</small></td>
+<td class="center" style="background-color:rgba(24,24,24,255);color:#fff">0x18C7<br/><small>3,3,3<br/>24,24,24</small></td>
+<td class="center" style="background-color:rgba(24,24,24,255);color:#fff">0x18C7<br/><small>3,3,3<br/>24,24,24</small></td>
+<td class="center" style="background-color:rgba(16,16,16,255);color:#fff">0x1085<br/><small>2,2,2<br/>16,16,16</small></td>
+<td class="center" style="background-color:rgba(16,16,16,255);color:#fff">0x1085<br/><small>2,2,2<br/>16,16,16</small></td>
+<td class="center" style="background-color:rgba(16,16,16,255);color:#fff">0x1085<br/><small>2,2,2<br/>16,16,16</small></td>
+<td class="center" style="background-color:rgba(8,8,8,255);color:#fff">0x0843<br/><small>1,1,1<br/>8,8,8</small></td>
+<td class="center" style="background-color:rgba(8,8,8,255);color:#fff">0x0843<br/><small>1,1,1<br/>8,8,8</small></td>
+</tr>
+<tr>
+<th>16<br/>(use first texture palette)</th>
+<td colspan=16 class="center" style="background-color:#000;color:#fff">0x0001<br/><small>0,0,0<br/>0,0,0</small></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
