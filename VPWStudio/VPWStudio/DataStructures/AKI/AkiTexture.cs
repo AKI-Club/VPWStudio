@@ -351,22 +351,17 @@ namespace VPWStudio
 							}
 						}
 					}
-					for (int i = 0; i < pixels.Count; i++)
-					{
-						Data[i] = pixels[i];
-					}
+					Data = pixels.ToArray();
 					break;
 
 				case AkiTextureFormat.Ci8:
 					// one pixel = one byte
-					Data = new byte[Width * Height];
-					for (int y = 0; y < Height; y++)
-					{
-						for (int x = 0; x < Width; x++)
-						{
-							Data[(y*Width) + x] = (byte)BitmapColors.IndexOfValue(bm.GetPixel(x, y));
-						}
-					}
+					BitmapData bData = bm.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+					IntPtr imageDataPtr = bData.Scan0;
+					int numBytes = Math.Abs(bData.Stride) * Height;
+					Data = new byte[numBytes];
+					Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+					bm.UnlockBits(bData);
 					break;
 			}
 			return true;
