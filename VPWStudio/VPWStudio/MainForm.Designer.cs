@@ -58,6 +58,7 @@
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.buildROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cancelBuildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.playROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modelDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,6 +196,7 @@
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
             this.buildROMToolStripMenuItem,
+            this.cancelBuildToolStripMenuItem,
             this.playROMToolStripMenuItem});
 			this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
 			resources.ApplyResources(this.projectToolStripMenuItem, "projectToolStripMenuItem");
@@ -309,6 +311,13 @@
 			this.buildROMToolStripMenuItem.Name = "buildROMToolStripMenuItem";
 			resources.ApplyResources(this.buildROMToolStripMenuItem, "buildROMToolStripMenuItem");
 			this.buildROMToolStripMenuItem.Click += new System.EventHandler(this.buildROMToolStripMenuItem_Click);
+			// 
+			// cancelBuildToolStripMenuItem
+			// 
+			this.cancelBuildToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_CancelBuild;
+			this.cancelBuildToolStripMenuItem.Name = "cancelBuildToolStripMenuItem";
+			resources.ApplyResources(this.cancelBuildToolStripMenuItem, "cancelBuildToolStripMenuItem");
+			this.cancelBuildToolStripMenuItem.Click += new System.EventHandler(this.cancelBuildToolStripMenuItem_Click);
 			// 
 			// playROMToolStripMenuItem
 			// 
@@ -615,6 +624,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
 		private System.Windows.Forms.ToolStripMenuItem timTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem gameSpecificInformationToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem cancelBuildToolStripMenuItem;
 	}
 }
 
