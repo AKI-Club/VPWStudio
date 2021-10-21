@@ -52,6 +52,11 @@ namespace VPWStudio
 		#endregion
 
 		/// <summary>
+		/// Are we in the process of building a ROM?
+		/// </summary>
+		public static bool RomBuildActive = false;
+
+		/// <summary>
 		/// Build log publisher.
 		/// </summary>
 		public static BuildLogEventPublisher BuildLogPub = new BuildLogEventPublisher();
@@ -715,6 +720,8 @@ namespace VPWStudio
 		/// a.k.a. the giant fuckoff routine
 		public static void BuildRom()
 		{
+			RomBuildActive = true;
+
 			CurrentOutputROM = new Z64Rom();
 			// The Output ROM may be bigger (or smaller!) than the Input ROM, so use a List.
 			List<byte> outRomData = new List<byte>();
@@ -1403,6 +1410,8 @@ namespace VPWStudio
 				Environment.CurrentDirectory = prevWorkDir;
 			}
 			#endregion
+
+			RomBuildActive = false;
 		}
 		#endregion
 
