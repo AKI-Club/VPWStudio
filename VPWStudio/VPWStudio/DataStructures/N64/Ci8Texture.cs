@@ -219,15 +219,12 @@ namespace VPWStudio
 			}
 
 			// one pixel = one byte
-			Data = new byte[Width * Height];
-			for (int y = 0; y < Height; y++)
-			{
-				for (int x = 0; x < Width; x++)
-				{
-					Data[(y * Width) + x] = (byte)BitmapColors.IndexOfValue(inBmp.GetPixel(x, y));
-				}
-			}
-
+			BitmapData bData = inBmp.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * Height;
+			Data = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+			inBmp.UnlockBits(bData);
 			return true;
 		}
 		#endregion
