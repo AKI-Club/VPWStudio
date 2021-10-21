@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace VPWStudio
 {
@@ -234,7 +235,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Convert this AkiTexture to a Bitmap.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Bitmap representing this AkiTexture.</returns>
 		public Bitmap ToBitmap()
 		{
 			if (Data == null)
@@ -261,18 +262,30 @@ namespace VPWStudio
 		/// <summary>
 		/// Convert CI8 format image to Bitmap pixels.
 		/// </summary>
-		/// <param name="bOut"></param>
+		/// <param name="bOut">Bitmap that the pixels get written to.</param>
 		private void ToBitmap_CI(Bitmap bOut)
 		{
+			BitmapData bData = bOut.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * Height;
+			byte[] bPixels = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, bPixels, 0, numBytes);
+
 			for (int y = 0; y < Height; y++)
 			{
 				for (int x = 0; x < Width; x++)
 				{
 					byte palIdx = Data[(y * Width) + x];
 					Color c = N64Colors.Value5551ToColor(Palette[palIdx]);
-					bOut.SetPixel(x, y, c);
+					bPixels[(((y * Width) + x) * 4)] = c.B;
+					bPixels[(((y * Width) + x) * 4) + 1] = c.G;
+					bPixels[(((y * Width) + x) * 4) + 2] = c.R;
+					bPixels[(((y * Width) + x) * 4) + 3] = c.A;
 				}
 			}
+
+			Marshal.Copy(bPixels, 0, imageDataPtr, numBytes);
+			bOut.UnlockBits(bData);
 		}
 
 		/// <summary>
