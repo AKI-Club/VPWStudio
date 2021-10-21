@@ -314,6 +314,8 @@ namespace VPWStudio
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			// todo: handle closing while Program.RomBuildActive is true
+
 			if (Program.CurrentProject != null && Program.UnsavedChanges)
 			{
 				// todo: seriously what the fuck do I need to do here?
@@ -1531,6 +1533,10 @@ namespace VPWStudio
 		#endregion
 
 		#region Project Build section
+		private void PostBuildAction()
+		{
+
+		}
 
 		/// <summary>
 		/// Build ROM
@@ -1608,6 +1614,7 @@ namespace VPWStudio
 
 			// todo: don't block the UI thread
 			Program.BuildRom();
+			UpdateBuildMenuItems();
 
 			// xxx: is every build successful?
 			TimeSpan buildTimeTaken = (DateTime.Now - startTime);
@@ -1632,6 +1639,19 @@ namespace VPWStudio
 
 			BuildLogForm.Focus();
 			BuildLogForm.MoveCursorToEnd();
+			UpdateBuildMenuItems();
+		}
+
+		/// <summary>
+		/// Cancels the currently active ROM build
+		/// </summary>
+		private void cancelBuildToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.RomBuildActive)
+			{
+				Program.RomBuildActive = false;
+				Program.BuildLogPub.AddLine(string.Format("[{0}] Canceled build", DateTime.Now.ToString()));
+			}
 		}
 
 		/// <summary>
@@ -1869,6 +1889,7 @@ namespace VPWStudio
 					tsi.Enabled = projFileOpen;
 				}
 			}
+			UpdateBuildMenuItems();
 
 			// only handle special cases if a project is open
 			if (Program.CurrentProject != null)
@@ -1897,6 +1918,27 @@ namespace VPWStudio
 				bool showTitantron = (bg == VPWGames.WM2K || bg == VPWGames.NoMercy);
 				titantronVideosToolStripMenuItem.Enabled = showTitantron;
 				titantronVideosToolStripMenuItem.Visible = showTitantron;
+			}
+		}
+
+		/// <summary>
+		/// Update valid build/cancel menu items
+		/// </summary>
+		private void UpdateBuildMenuItems()
+		{
+			if (Program.RomBuildActive)
+			{
+				buildROMToolStripMenuItem.Enabled = false;
+				buildROMToolStripMenuItem.Visible = false;
+				cancelBuildToolStripMenuItem.Enabled = true;
+				cancelBuildToolStripMenuItem.Visible = true;
+			}
+			else
+			{
+				buildROMToolStripMenuItem.Enabled = true;
+				buildROMToolStripMenuItem.Visible = true;
+				cancelBuildToolStripMenuItem.Enabled = false;
+				cancelBuildToolStripMenuItem.Visible = false;
 			}
 		}
 
@@ -2331,6 +2373,5 @@ namespace VPWStudio
 			t.ShowDialog();
 		}
 		#endregion
-
 	}
 }
