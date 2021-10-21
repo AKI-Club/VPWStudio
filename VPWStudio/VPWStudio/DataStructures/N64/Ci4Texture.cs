@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace VPWStudio
 {
@@ -184,7 +185,7 @@ namespace VPWStudio
 
 		#region Bitmap Read/Write
 		/// <summary>
-		/// Convert this Ci4Image to a Bitmap.
+		/// Convert this Ci4Texture to a Bitmap.
 		/// </summary>
 		/// <param name="pal">CI4 Palette data to use.</param>
 		/// <param name="subPalette">Optional sub-palette number to use.</param>
@@ -209,6 +210,11 @@ namespace VPWStudio
 			}
 
 			Bitmap bOut = new Bitmap(Width, Height);
+			BitmapData bData = bOut.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * Height;
+			byte[] bPixels = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, bPixels, 0, numBytes);
 
 			for (int y = 0; y < Height; y++)
 			{
@@ -224,10 +230,14 @@ namespace VPWStudio
 					{
 						c = N64Colors.Value5551ToColor(pal.Entries[palIdx]);
 					}
-					bOut.SetPixel(x, y, c);
+					bPixels[(((y * Width) + x) * 4)] = c.B;
+					bPixels[(((y * Width) + x) * 4) + 1] = c.G;
+					bPixels[(((y * Width) + x) * 4) + 2] = c.R;
+					bPixels[(((y * Width) + x) * 4) + 3] = c.A;
 				}
 			}
-
+			Marshal.Copy(bPixels, 0, imageDataPtr, numBytes);
+			bOut.UnlockBits(bData);
 			return bOut;
 		}
 

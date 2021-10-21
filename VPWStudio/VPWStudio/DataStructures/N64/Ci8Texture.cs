@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace VPWStudio
 {
@@ -133,10 +134,10 @@ namespace VPWStudio
 
 		#region Bitmap Read/Write
 		/// <summary>
-		/// Convert this Ci8Image to a Bitmap.
+		/// Convert this Ci8Texture to a Bitmap.
 		/// </summary>
 		/// <param name="pal">CI8 Palette data to use.</param>
-		/// <returns></returns>
+		/// <returns>Bitmap representing the CI8Texture.</returns>
 		public Bitmap ToBitmap(Ci8Palette pal)
 		{
 			if (Data == null)
@@ -151,6 +152,11 @@ namespace VPWStudio
 			}
 
 			Bitmap bOut = new Bitmap(Width, Height);
+			BitmapData bData = bOut.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * Height;
+			byte[] bPixels = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, bPixels, 0, numBytes);
 
 			for (int y = 0; y < Height; y++)
 			{
@@ -158,10 +164,14 @@ namespace VPWStudio
 				{
 					byte palIdx = Data[(y * Width) + x];
 					Color c = N64Colors.Value5551ToColor(pal.Entries[palIdx]);
-					bOut.SetPixel(x, y, c);
+					bPixels[(((y * Width) + x) * 4)] = c.B;
+					bPixels[(((y * Width) + x) * 4) + 1] = c.G;
+					bPixels[(((y * Width) + x) * 4) + 2] = c.R;
+					bPixels[(((y * Width) + x) * 4) + 3] = c.A;
 				}
 			}
-
+			Marshal.Copy(bPixels, 0, imageDataPtr, numBytes);
+			bOut.UnlockBits(bData);
 			return bOut;
 		}
 
