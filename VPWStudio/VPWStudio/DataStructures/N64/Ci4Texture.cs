@@ -284,7 +284,7 @@ namespace VPWStudio
 				Palette[i] = N64Colors.ColorToValue5551(inBmp.Palette.Entries[i]);
 			}
 
-			// one pixel = two bytes
+			// two pixels = one byte
 			Data = new byte[(Width * Height) / 2];
 			for (int y = 0; y < Height; y++)
 			{
