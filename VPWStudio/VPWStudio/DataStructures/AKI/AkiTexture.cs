@@ -332,7 +332,7 @@ namespace VPWStudio
 			switch (ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
-					// one pixel = two bytes
+					// two pixels = one byte
 					Data = new byte[(Width/2) * Height];
 					List<byte> pixels = new List<byte>();
 					byte build = 0;
