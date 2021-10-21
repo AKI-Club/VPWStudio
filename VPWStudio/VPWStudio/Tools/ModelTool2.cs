@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -249,7 +251,7 @@ namespace VPWStudio
 			TextureObject = GL.GenTexture();
 			GL.ActiveTexture(TextureUnit.Texture0);
 			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
-			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
+			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
 		}
 
 		private void UpdateTexture()
@@ -261,22 +263,16 @@ namespace VPWStudio
 
 			if (!textureEnabledToolStripMenuItem.Checked)
 			{
-				GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
+				GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
 				return;
 			}
 
-			List<byte> pixelData = new List<byte>();
-			for (int y = 0; y < CurTexture.Height; y++)
-			{
-				for (int x = 0; x < CurTexture.Width; x++)
-				{
-					Color curPixel = CurTexture.GetPixel(x, y);
-					pixelData.Add(curPixel.R);
-					pixelData.Add(curPixel.G);
-					pixelData.Add(curPixel.B);
-					pixelData.Add(curPixel.A);
-				}
-			}
+			BitmapData textureData = CurTexture.LockBits(new Rectangle(0,0, CurTexture.Width, CurTexture.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = textureData.Scan0;
+			int numBytes = Math.Abs(textureData.Stride) * CurTexture.Height;
+			byte[] pixelData = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, pixelData, 0, numBytes);
+			CurTexture.UnlockBits(textureData);
 
 			// todo: allow changing filtering styles? linear is more faithful to the N64 compared to nearest
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
@@ -285,7 +281,7 @@ namespace VPWStudio
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
 
-			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, CurTexture.Width, CurTexture.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelData.ToArray());
+			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, CurTexture.Width, CurTexture.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, pixelData);
 		}
 
 		private void glControl1_Load(object sender, EventArgs e)
