@@ -332,36 +332,27 @@ namespace VPWStudio
 			switch (ImageFormat)
 			{
 				case AkiTextureFormat.Ci4:
-					// two pixels = one byte
-					Data = new byte[(Width/2) * Height];
-					List<byte> pixels = new List<byte>();
-					byte build = 0;
-					for (int y = 0; y < Height; y++)
 					{
-						for (int x = 0; x < Width; x++)
-						{
-							if (x % 2 == 0)
-							{
-								build = (byte)((BitmapColors.IndexOfValue(bm.GetPixel(x, y)) & 0x0F) << 4);
-							}
-							else
-							{
-								build |= (byte)(BitmapColors.IndexOfValue(bm.GetPixel(x, y)) & 0x0F);
-								pixels.Add(build);
-							}
-						}
+						// two pixels = one byte
+						BitmapData bData = bm.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format4bppIndexed);
+						IntPtr imageDataPtr = bData.Scan0;
+						int numBytes = Math.Abs(bData.Stride) * Height;
+						Data = new byte[numBytes];
+						Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+						bm.UnlockBits(bData);
 					}
-					Data = pixels.ToArray();
 					break;
 
 				case AkiTextureFormat.Ci8:
-					// one pixel = one byte
-					BitmapData bData = bm.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
-					IntPtr imageDataPtr = bData.Scan0;
-					int numBytes = Math.Abs(bData.Stride) * Height;
-					Data = new byte[numBytes];
-					Marshal.Copy(imageDataPtr, Data, 0, numBytes);
-					bm.UnlockBits(bData);
+					{
+						// one pixel = one byte
+						BitmapData bData = bm.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+						IntPtr imageDataPtr = bData.Scan0;
+						int numBytes = Math.Abs(bData.Stride) * Height;
+						Data = new byte[numBytes];
+						Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+						bm.UnlockBits(bData);
+					}
 					break;
 			}
 			return true;
