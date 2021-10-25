@@ -285,26 +285,12 @@ namespace VPWStudio
 			}
 
 			// two pixels = one byte
-			Data = new byte[(Width * Height) / 2];
-			for (int y = 0; y < Height; y++)
-			{
-				for (int x = 0; x < Width; x++)
-				{
-					Color thisCol = inBmp.GetPixel(x, y);
-					int pixIndex = (y * Width) + x;
-					int palIndex = BitmapColors.IndexOfValue(thisCol);
-
-					byte old = Data[pixIndex / 2];
-					if ((pixIndex % 2) > 0)
-					{
-						Data[pixIndex / 2] = (byte)((old & 0xF0) | (byte)palIndex);
-					}
-					else
-					{
-						Data[pixIndex / 2] = (byte)((old & 0x0F) | ((byte)palIndex << 4));
-					}
-				}
-			}
+			BitmapData bData = inBmp.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.WriteOnly, PixelFormat.Format4bppIndexed);
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * Height;
+			Data = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+			inBmp.UnlockBits(bData);
 
 			return true;
 		}
