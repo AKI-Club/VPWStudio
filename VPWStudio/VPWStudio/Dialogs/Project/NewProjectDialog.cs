@@ -78,11 +78,48 @@ namespace VPWStudio
 				return;
 			}
 
-			// custom location file must exist
+			// if using custom location file, the custom location file must exist
 			if (chbCustomLocation.Checked && !File.Exists(tbCustomLocationFile.Text))
 			{
 				MessageBox.Show(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
+			}
+
+			GameDefinition gd = GameInformation.GameDefs[(SpecificGame)cbGameVersion.SelectedIndex];
+			// N64-specific checks
+			if (gd.TargetConsole == PlatformType.Nintendo64)
+			{
+				// check input rom against selected project type
+				Z64Rom romTemp = new Z64Rom(tbRomFile.Text);
+				if (!string.Equals(romTemp.GameCode, gd.GameCode))
+				{
+					if (!string.Equals(romTemp.GameCode.Substring(1, 2), gd.GameCode.Substring(1, 2)))
+					{
+						// game code is outright wrong
+						Program.ErrorMessageBox(String.Format("The project expects a game code of '{0}', but the selected base ROM has a game code of '{1}'.\n\nPlease select a valid {2} ROM file, or change the Game Type.",
+							gd.GameCode.Substring(1, 2), romTemp.GameCode.Substring(1, 2), GameInformation.GetBaseGameName(gd.BaseGame)
+						));
+						return;
+					}
+					else if (romTemp.GameCode[3] != gd.GameCode[3])
+					{
+						// region mismatch
+						Program.ErrorMessageBox(String.Format("The project's selected game variant is for region {0} ('{1}'), but the selected base ROM has a region value of '{2}' ({3}). Ensure that you have the correct ROM, or change the Game Type.",
+							gd.Region, (char)gd.Region, romTemp.GameCode[3], ((GameRegion)romTemp.GameCode[3]).ToString()
+						));
+						return;
+					}
+				}
+
+				// freem had the "smart" idea of making the GameDefinition GameVersion value a float, when it's actually a byte in the N64 ROM.
+				if (1.0f + romTemp.GameVersion != gd.GameVersion)
+				{
+					// game revision mismatch (only really necessary for World Tour NTSC-U and WWF No Mercy all regions)
+					Program.ErrorMessageBox(String.Format("The project expects a game revision value of {0} (0x{1:X2}), but the selected base ROM has a game revision value of 0x{2:X2}. Ensure that you have the correct version of the game, or change the Game Type.",
+						gd.GameVersion, (byte)((gd.GameVersion - 1.0f) * 10), romTemp.GameVersion
+					));
+					return;
+				}
 			}
 			#endregion
 
