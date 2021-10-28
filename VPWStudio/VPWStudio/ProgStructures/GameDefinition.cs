@@ -352,7 +352,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// if you are a lazy asshole... idk.
+		/// Get the base game from a specific game variant.
 		/// </summary>
 		/// <param name="sg">SpecificGame to get the base game value for.</param>
 		/// <returns>VPWGames value representing the base game.</returns>
