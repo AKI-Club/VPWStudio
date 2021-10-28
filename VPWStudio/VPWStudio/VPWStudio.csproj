@@ -101,6 +101,12 @@
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="DataStructures\PS1\TmdFile.cs" />
+    <Compile Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.Designer.cs">
+      <DependentUpon>FileTable_SearchFileTypeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SelectFileTableIdDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_SearchDialog.resx">
       <DependentUpon>FileTable_SearchDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.resx">
+      <DependentUpon>FileTable_SearchFileTypeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ITexturePreviewDialog.resx">
       <DependentUpon>ITexturePreviewDialog.cs</DependentUpon>
