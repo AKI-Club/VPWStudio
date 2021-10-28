@@ -260,6 +260,7 @@ implemented yet, various safeguards are not put in place, and so on.</li>
 <li>Since the program is a work in progress, any and all VPW Studio-originated
 file formats are subject to change. Don't get too attached to your projects.</li>
 <li>Knowledge of hexadecimal is assumed.</li>
+<li>Some general knowledge of at least one of the supported games is also assumed.</li>
 <li>This program has not been tested on non-Windows OSes. Your mileage may vary.</li>
 </ul>
 
@@ -337,6 +338,64 @@ with the main form updating to reflect the new project.</p>
 
 <p>After creating a new project, the first thing you should do is save it. This is
 required for various functions of VPW Studio to work correctly.</p>
+
+<h4>Base ROM and Game Type</h4>
+<p>The Base ROM must match the selected Game Type. VPW Studio checks a few
+values to ensure the correct ROM has been selected: the two letter game code,
+the region, and the version/revision value.</p>
+
+<p>Each Nintendo 64 game is identified by a two letter "game code". VPW Studio
+makes a cursory check to ensure you're loading something that even remotely
+resembles the game you're trying to edit. Unless you're intentionally trying
+to use the wrong ROM, you shouldn't run into any issues here.</p>
+
+<p>For the region, it's important to note that the region codes used by
+various popular ROM renaming tools/datfile providers do not match the
+internal region codes used by Nintendo 64 games. A small conversion chart
+is provided below.</p>
+<table>
+<thead>
+<tr>
+<th>Region Name</th>
+<th>TV Standard</th>
+<th>N64 Region Code</th>
+<th>GoodTools</th>
+<th>No-Intro</th>
+<th>TOSEC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North America</td>
+<td>NTSC-U</td>
+<td>E</td>
+<td>U</td>
+<td>USA</td>
+<td>US</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>PAL</td>
+<td>P</td>
+<td>E</td>
+<td>Europe</td>
+<td>EU</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>NTSC-J</td>
+<td>J</td>
+<td>J</td>
+<td>Japan</td>
+<td>JP</td>
+</tr>
+</tbody>
+</table>
+
+<p>The game version/revision value is only relevant for two games, but since
+data and code locations change between versions, it is important to specify and
+use the correct revision. You should only run into this when editing <em>WWF
+No Mercy</em> (all regions) and the NTSC-U version of <em>WCW vs. nWo World Tour</em>.</p>
 
 <h3>Open an Existing Project</h3>
 <p>To open a VPW Studio Project File, choose "Open Project..." from the File menu.
@@ -477,7 +536,7 @@ due to assumptions .NET makes about transparent images.</p>
 game has moved away from <code>AkiText</code> for most purposes).</p>
 
 <h3>Font-Related Formats</h3>
-<p>The <code>AkiLargeFont</code>, <code>AkiSmallFont</code>, <code>AkiFontChars</code>
+<p>The <code>AkiLargeFont</code>, <code>AkiSmallFont</code>, and <code>AkiFontChars</code>
 formats are grouped together:</p>
 
 <ul>
@@ -486,7 +545,8 @@ formats are grouped together:</p>
 <li><code>AkiFontChars</code> defines what characters show up in the font.</li>
 </ul>
 
-<p>Each font glyph is defined as a 1bpp image.</p>
+<p>Each font glyph is defined as a 1bpp image. An <code>AkiFontChars</code> entry
+may not always exist in the file table; it only seems to be used in certain games.</p>
 
 <h3><code>MenuBackground</code></h3>
 <p>A <code>MenuBackground</code> is a collection of unheadered <code>Ci4Palette</code>
@@ -1483,6 +1543,9 @@ storage mediums. Origin of the Z64 ROM format.</dd>
 <dd>Another Zoinkity-created tool for inserting files into a VPW2 ROM and fixing
 the relevant offsets. VPW Studio largely owes its existence to this program,
 particularly the File Table portion.</dd>
+
+<dt>Pointer</dt>
+<dd>A value that points to a specific location/address in memory.</dd>
 
 <dt>TIM</dt>
 <dd>PlayStation texture format.</dd>
