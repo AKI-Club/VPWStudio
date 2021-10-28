@@ -327,7 +327,7 @@ namespace VPWStudio
 			}
 
 			// get game version (0x3F)
-			ms.Seek(0x3B, SeekOrigin.Begin);
+			ms.Seek(0x3F, SeekOrigin.Begin);
 			this.GameVersion = (byte)ms.ReadByte();
 
 			// determine CIC type via checksumming
