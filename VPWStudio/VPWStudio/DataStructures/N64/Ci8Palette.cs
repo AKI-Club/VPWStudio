@@ -133,8 +133,20 @@ namespace VPWStudio
 		/// <returns>True if successful, false otherwise.</returns>
 		public bool ImportJasc(StreamReader sr)
 		{
-			sr.ReadLine(); // "JASC-PAL"
-			sr.ReadLine(); // version number
+			string palType = sr.ReadLine();
+			if (!palType.Equals("JASC-PAL"))
+			{
+				// not JASC PAL
+				return false;
+			}
+
+			// version number
+			string version = sr.ReadLine();
+			if (!version.Equals("0100"))
+			{
+				// unsupported format
+				return false;
+			}
 
 			// number of colors
 			int numColors = int.Parse(sr.ReadLine());
