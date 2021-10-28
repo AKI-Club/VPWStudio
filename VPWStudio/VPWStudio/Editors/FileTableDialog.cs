@@ -24,6 +24,30 @@ namespace VPWStudio
 		private const int COMMENT_COLUMN = 5;
 		#endregion
 
+		#region Search values
+		/// <summary>
+		/// Possible search types.
+		/// </summary>
+		public enum SearchType
+		{
+			/// <summary>
+			/// FileTableEntry comment text
+			/// </summary>
+			Text = 0,
+
+			/// <summary>
+			/// FileTableEntry file type
+			/// </summary>
+			FileType,
+
+			Invalid = -1
+		};
+
+		/// <summary>
+		/// Current active search type.
+		/// </summary>
+		public SearchType CurrentSearchType = SearchType.Invalid;
+
 		/// <summary>
 		/// Current string to search for.
 		/// </summary>
@@ -34,6 +58,7 @@ namespace VPWStudio
 		/// Index of current search hit.
 		/// </summary>
 		private int CurrentSearchItemNumber = -1;
+		#endregion
 
 		public FileTableDialog(int focusEntry = 0)
 		{
@@ -1097,10 +1122,10 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// 
+		/// Search for a file ID based on comment text.
 		/// </summary>
-		/// <param name="searchText"></param>
-		/// <returns>ID of </returns>
+		/// <param name="searchText">String to search for in the comment field.</param>
+		/// <returns>file ID of matching entry if found; -1 if not found; -2 for some weird edge case I never resolved</returns>
 		private int SearchFile(string searchText, bool _backwards = false)
 		{
 			int startPoint = 1;
@@ -1188,6 +1213,8 @@ namespace VPWStudio
 			FileTable_SearchDialog sd = new FileTable_SearchDialog(CurrentSearchText);
 			if (sd.ShowDialog() == DialogResult.OK)
 			{
+				CurrentSearchType = SearchType.Text;
+
 				// Check if this is a new search term
 				if (!sd.SearchText.Equals(CurrentSearchText))
 				{
@@ -1216,24 +1243,37 @@ namespace VPWStudio
 
 		private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (CurrentSearchItemNumber == -1)
+			switch (CurrentSearchType)
 			{
-				searchToolStripMenuItem_Click(sender, e);
-			}
+				case SearchType.Text:
+					{
+						if (CurrentSearchItemNumber == -1)
+						{
+							searchToolStripMenuItem_Click(sender, e);
+						}
 
-			int searchResult = SearchFile(CurrentSearchText);
-			switch (searchResult)
-			{
-				case -1:
-					Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", CurrentSearchText));
+						int searchResult = SearchFile(CurrentSearchText);
+						switch (searchResult)
+						{
+							case -1:
+								Program.InfoMessageBox(String.Format("Unable to find any entries matching '{0}'.", CurrentSearchText));
+								break;
+
+							case -2:
+								Program.InfoMessageBox(String.Format("No more entries matching '{0}'.", CurrentSearchText));
+								break;
+
+							default:
+								PostSearch(searchResult);
+								break;
+						}
+					}
 					break;
 
-				case -2:
-					Program.InfoMessageBox(String.Format("No more entries matching '{0}'.", CurrentSearchText));
-					break;
-
-				default:
-					PostSearch(searchResult);
+				case SearchType.FileType:
+					{
+						// todo: implement me
+					}
 					break;
 			}
 		}
