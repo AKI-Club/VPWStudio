@@ -275,6 +275,7 @@ namespace VPWStudio.Editors
 
 		private void LoadColorsCi4()
 		{
+			ColorList.Clear();
 			ColorList.AddRange(CurPaletteCI4.Entries);
 			cbPalettes.Items.Add("Main Palette");
 			if (CurPaletteCI4.SubPalettes.Count > 0)
@@ -294,6 +295,7 @@ namespace VPWStudio.Editors
 
 		private void LoadColorsCi8()
 		{
+			ColorList.Clear();
 			ColorList.AddRange(CurPaletteCI8.Entries);
 			cbPalettes.Enabled = false;
 		}
@@ -658,10 +660,29 @@ namespace VPWStudio.Editors
 											}
 										}
 									}
+									UpdateCurColorSwatch();
+									UpdatePreview();
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
 									// import JASC Paint Shop Pro palette
+
+									// ensure this is actually a JASC Paint Shop Pro palette and not a Windows palette
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										byte[] header = br.ReadBytes(4);
+										if (BitConverter.IsLittleEndian)
+										{
+											Array.Reverse(header);
+										}
+										if (string.Equals(BitConverter.ToString(header,0), "RIFF"))
+										{
+											// not a JASC format .pal file
+											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
+											return;
+										}
+									}
+
 									ColorList.Clear();
 									ColorList.AddRange(import.Entries);
 									using (StreamReader sr = new StreamReader(fs))
@@ -679,6 +700,8 @@ namespace VPWStudio.Editors
 											ColorList.InsertRange(0, import.Entries);
 										}
 									}
+									UpdateCurColorSwatch();
+									UpdatePreview();
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
@@ -713,8 +736,27 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								else if (Path.GetExtension(ofd.FileName) == ".act")
+								{
+									// import Adobe ACT palette
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										import = new Ci4Palette();
+										import.ImportAct(br);
+										ColorList.Clear();
+										ColorList.AddRange(import.Entries);
+										if (import.SubPalettes.Count > 0)
+										{
+											foreach (Ci4Palette sub in import.SubPalettes)
+											{
+												ColorList.AddRange(sub.Entries);
+											}
+										}
+									}
+								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci4pal")
 								{
+									// import raw CI4 palette
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										import = new Ci4Palette();
@@ -730,11 +772,13 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								
 								CurPaletteCI4 = import;
 								UpdateCurColorSwatch();
 								UpdatePreview();
 							}
 							break;
+
 						case CiEditorModes.Ci8:
 							{
 								Ci8Palette import = new Ci8Palette();
@@ -749,6 +793,23 @@ namespace VPWStudio.Editors
 								else if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
 									// import JASC Paint Shop Pro palette
+
+									// ensure this is actually a JASC Paint Shop Pro palette and not a Windows palette
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										byte[] header = br.ReadBytes(4);
+										if (BitConverter.IsLittleEndian)
+										{
+											Array.Reverse(header);
+										}
+										if (string.Equals(BitConverter.ToString(header, 0), "RIFF"))
+										{
+											// not a JASC format .pal file
+											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
+											return;
+										}
+									}
+
 									using (StreamReader sr = new StreamReader(fs))
 									{
 										import.ImportJasc(sr);
@@ -756,10 +817,20 @@ namespace VPWStudio.Editors
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
+									// import GIMP palette
 									Program.ErrorMessageBox("GIMP CI8 palette import currently not implemented.");
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".act")
+								{
+									// import Adobe ACT palette
+									using (BinaryReader br = new BinaryReader(fs))
+									{
+										import.ImportAct(br);
+									}
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".ci8pal")
 								{
+									// import raw CI8 palette
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										import.ReadData(br);
