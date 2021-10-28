@@ -261,6 +261,15 @@ namespace VPWStudio
 			this.GameVersion = 0;
 		}
 
+		/// <summary>
+		/// Default constructor using a path to a ROM file.
+		/// </summary>
+		/// <param name="_path">Path to Z64 ROM file to load.</param>
+		public Z64Rom(string _path)
+		{
+			LoadFile(_path);
+		}
+
 		#region Load/Save
 		/// <summary>
 		/// Read data from a Z64 format ROM.
