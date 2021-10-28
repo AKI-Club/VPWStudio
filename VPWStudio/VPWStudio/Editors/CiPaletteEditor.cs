@@ -671,11 +671,11 @@ namespace VPWStudio.Editors
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										byte[] header = br.ReadBytes(4);
-										if (BitConverter.IsLittleEndian)
+										if (!BitConverter.IsLittleEndian)
 										{
 											Array.Reverse(header);
 										}
-										if (string.Equals(BitConverter.ToString(header,0), "RIFF"))
+										if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
 										{
 											// not a JASC format .pal file
 											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
@@ -798,11 +798,11 @@ namespace VPWStudio.Editors
 									using (BinaryReader br = new BinaryReader(fs))
 									{
 										byte[] header = br.ReadBytes(4);
-										if (BitConverter.IsLittleEndian)
+										if (!BitConverter.IsLittleEndian)
 										{
 											Array.Reverse(header);
 										}
-										if (string.Equals(BitConverter.ToString(header, 0), "RIFF"))
+										if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
 										{
 											// not a JASC format .pal file
 											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
