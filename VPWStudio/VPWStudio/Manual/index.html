@@ -605,13 +605,33 @@ and import that data via the File Table.</p>
 Information on targeting PlayStation 1 will be added once VPW Studio is capable
 of handling it.)</p>
 
-<p>Dealing with textures in a ROM-based project is very different from using
-replacement textures with emulator plugins. This is due to various tricks that
-AKI uses to handle layered items and color changing. Each game handles these
-systems slightly differently, and implementation-specific details are found
-in the <a href="#GameSpecificDocs">game-specific documentation</a>.</p>
+<p>Replace textures in a ROM hack-based project is different from using replacement
+textures with emulator plugins. This is due to various techniques used by AKI
+to handle costume layering and color changing. Each game handles these systems
+slightly differently, and implementation-specific details are found in the
+<a href="#GameSpecificDocs">game-specific documentation</a>. This section covers
+general information applicable to multiple games.</p>
 
-<p>(todo: this is a very important subject and requires detailed information!)</p>
+<p>The program you use to edit textures also matters. Most modern image editing
+programs are focused on supporting 8bpp (bits per pixel) and higher color depths,
+and are ill-suited to creating paletted textures. Some programs will claim to make
+a 16 color (4bpp) paletted image, but actually store 256 colors in the palette,
+making it an 8bpp image. Due to VPW Studio's current setup, it is <em>required</em>
+to have proper 4bpp images when replacing a Ci4Texture. This may change in the future,
+but results cannot be guaranteed.</p>
+
+<p>Programs known to properly support 16 color/4bpp textures:</p>
+<ul>
+<li><strong>JASC Paint Shop Pro 7</strong> &ndash; Colors &rarr; Decrease Color Depth &rarr; 16 Colors (4 bit)</li>
+<li><strong>GIMP</strong> &ndash; Image &rarr; Mode &rarr; Indexed; ensure "Generate optimum palette" is selected, set "Maximum number of colors" to 16.</li>
+</ul>
+<p>There are likely other programs that support proper 4bpp images, but these
+are the two that have been tested with VPW Studio and known to work.</p>
+
+<p>Do not save images using an "optimize" feature, as this may cause palette
+order to be changed, resulting in textures that look wrong. The order of the
+colors in the palette is <em>very important</em>, and should be the same between the
+texture and corresponding palette file (if necessary).</p>
 
 <h3><a name="ColorFormat">Color Format</a></h3>
 <p>The Nintendo 64 and PlayStation 1 both use a 16bpp color format for most
@@ -663,7 +683,8 @@ you can customize the skin color of wrestlers. This is handled with multiple
 CI4 sub-palettes.</p>
 
 <p>In <em>WWF No Mercy</em>, each face has its own palette, which can be a pro
-and a con for people who want to edit them.</p>
+and a con for people who want to edit them. If you are working on a <em>No Mercy</em>
+project, it is recommended to set up a shared face palette for most faces.</p>
 
 <h3><a name="TextureLayering">Texture Layering</a></h3>
 <p>Costume items are often layered on top of other textures. This includes
@@ -716,7 +737,9 @@ would draw two pixels using palette index 2 and 3.</p>
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
-<p>(todo: this portion of the program requires a 3D renderer handling multiple objects, and I'm not fully there yet. -f)</p>
+<p>(todo: this portion of the program requires a 3D renderer capable of handling
+multiple objects, along with being able to select and move them, and I'm not fully
+there yet. -f)</p>
 
 <hr />
 <h2><a name="Championships">Championships</a></h2>
@@ -770,14 +793,14 @@ available when making a new belt.</li>
 <hr />
 <h2><a name="Costumes">Costumes</a></h2>
 <p>The costume viewer allows you to view the values used for each costume in the game.
-This is not to be confused with default wrestler costumes in <em>WrestleMania 2000</em>
+This is not to be confused with <em>default</em> wrestler costumes in <em>WrestleMania 2000</em>
 and later, which can be found in the <a href="#Wrestlers">Wrestlers</a> section.</p>
 
 <p>(todo: this is different per game and isn't fully designed)</p>
 
 <hr />
 <h2><a name="Entrances">Entrances</a></h2>
-<p>(todo: Titantron-related; not yet designed)</p>
+<p>(todo: primarily Titantron-related; not yet designed)</p>
 
 <hr />
 <h2><a name="FileTable">File Table</a></h2>
@@ -1501,15 +1524,19 @@ extends to programs whose name and function are not immediately obvious.</p>
 <dt>Addy</dt>
 <dd>Short for "address", as in "memory address".</dd>
 
+<dt>BPP</dt>
+<dd>Short for "bits per pixel", the number of bits required to represent
+a single pixel in an image.</dd>
+
 <dt>Broad Action</dt>
 <dd>The general action the wrestler is performing. A Broad Action can have several
 "Sub-Actions" (or "action states", if you prefer).</dd>
 
 <dt>CI4</dt>
-<dd>16 color texture format used on Nintendo 64.</dd>
+<dd>16 color (4bpp) texture format used on Nintendo 64.</dd>
 
 <dt>CI8</dt>
-<dd>256 color texture format used on Nintendo 64.</dd>
+<dd>256 color (8bpp) texture format used on Nintendo 64.</dd>
 
 <dt>CLUT</dt>
 <dd>Color Look-Up Table; PlayStation palette format.</dd>
@@ -1519,7 +1546,7 @@ extends to programs whose name and function are not immediately obvious.</p>
 the N64. Also allows for loading games off of a CD-ROM. Origin of the V64 ROM format.</dd>
 
 <dt>I4</dt>
-<dd>16 value intensity texture format used on Nintendo 64.</dd>
+<dd>16 value (4bpp) intensity texture format used on Nintendo 64.</dd>
 
 <dt>ID2</dt>
 <dd>One of the two ways of identifying a wrestler. This value is one byte
