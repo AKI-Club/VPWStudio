@@ -105,5 +105,13 @@ namespace VPWStudio
 			string hex = Clipboard.GetText().Replace(" ",String.Empty);
 			Clipboard.SetText(hex);
 		}
+
+		private void hexBox1_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
+			{
+				hexBox1.SelectAll();
+			}
+		}
 	}
 }
