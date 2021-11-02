@@ -2128,7 +2128,7 @@ namespace VPWStudio
 					// dealing with a transparent image, which is possibly paletted.
 					HashSet<Color> usedColors = new HashSet<Color>();
 					UInt16 alphaColor = 0;
-					// xxx: this could be done with LockBits but eh, I'm lazy as fuck.
+					// todo: use LockBits/UnlockBits
 					for (int y = 0; y < b.Height; y++)
 					{
 						for (int x = 0; x < b.Width; x++)
@@ -2148,7 +2148,7 @@ namespace VPWStudio
 
 					AkiTexture test = new AkiTexture();
 					Bitmap converted;
-					// xxx: this conversion sucks
+					// xxx: this conversion sucks (specifically, the way the number of colors is checked)
 					if (usedColors.Count <= 16)
 					{
 						// ci4
@@ -2179,7 +2179,7 @@ namespace VPWStudio
 				}
 				else
 				{
-					Program.ErrorMessageBox(String.Format("Unsupported PixelFormat {0}", b.PixelFormat));
+					Program.ErrorMessageBox(String.Format("Input image has unsupported PixelFormat {0}", b.PixelFormat));
 				}
 				b.Dispose();
 			}
@@ -2206,9 +2206,15 @@ namespace VPWStudio
 						}
 					}
 				}
+				else if (b.PixelFormat == PixelFormat.Format8bppIndexed)
+				{
+					// in theory, this can be converted, but the results will probably not be good
+					// UNLESS the input image only uses the first 16 palette indices.
+					Program.ErrorMessageBox("Input image is 256 colors/PixelFormat.Format8bppIndexed, expected 16 colors/PixelFormat.Format4bppIndexed");
+				}
 				else
 				{
-					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI4", b.PixelFormat));
+					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI4/PixelFormat.Format4bppIndexed", b.PixelFormat));
 				}
 				b.Dispose();
 			}
@@ -2235,9 +2241,14 @@ namespace VPWStudio
 						}
 					}
 				}
+				else if (b.PixelFormat == PixelFormat.Format4bppIndexed)
+				{
+					// in theory, this can be converted, but I have to write the code for it.
+					Program.ErrorMessageBox("Input image is 16 colors/PixelFormat.Format4bppIndexed, expected 256 colors/PixelFormat.Format8bppIndexed");
+				}
 				else
 				{
-					Program.ErrorMessageBox(String.Format("Can not convert PixelFormat {0} to CI8", b.PixelFormat));
+					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI8/PixelFormat.Format8bppIndexed", b.PixelFormat));
 				}
 				b.Dispose();
 			}
