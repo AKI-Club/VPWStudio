@@ -18,7 +18,7 @@ namespace VPWStudio
 
 			if (String.IsNullOrEmpty(tbInput.Text))
 			{
-				MessageBox.Show("lol I can't do anything without input", "some bullshit", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Program.ErrorMessageBox("I can't do anything without input.");
 				return;
 			}
 
