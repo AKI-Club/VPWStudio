@@ -47,6 +47,7 @@
 			this.hexBox1.UseFixedBytesPerLine = true;
 			this.hexBox1.VScrollBarVisible = true;
 			this.hexBox1.Copied += new System.EventHandler(this.hexBox1_Copied);
+			this.hexBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.hexBox1_KeyUp);
 			// 
 			// HexViewer
 			// 
