@@ -100,7 +100,9 @@ efforts on NTSC-U v1.0, which meant anyone who wanted to use the "cool" codes
 revision. Codes for NTSC-U v1.0 do not work on NTSC-U v1.1, and vice versa.</li>
 </ol>
 
-<p>VPW Studio attempts to support all known revisions of WWF No Mercy equally.</p>
+<p>VPW Studio attempts to support all known revisions of WWF No Mercy equally,
+though until all known information is ported over to v1.1, you are recommended
+to use v1.0 in order to take advantage of the community's existing knowledge base.</p>
 
 <hr />
 
@@ -148,14 +150,14 @@ profile editor.</p>
 </thead>
 <tbody>
 <tr>
-<td>The Rock</td>
-<td>01</td>
-<td>0001</td>
+<td class="postmatchwrestler">The Rock</td>
+<td class="postmatchwrestler">01</td>
+<td class="postmatchwrestler">0001</td>
 </tr>
 <tr>
-<td>Steve Austin</td>
-<td>02</td>
-<td>0002</td>
+<td class="postmatchwrestler">Steve Austin</td>
+<td class="postmatchwrestler">02</td>
+<td class="postmatchwrestler">0002</td>
 </tr>
 <tr>
 <td>Undertaker</td>
@@ -163,9 +165,9 @@ profile editor.</p>
 <td>0003</td>
 </tr>
 <tr>
-<td>Kane</td>
-<td>04</td>
-<td>0004</td>
+<td class="postmatchwrestler">Kane</td>
+<td class="postmatchwrestler">04</td>
+<td class="postmatchwrestler">0004</td>
 </tr>
 <tr>
 <td>Steven Richards</td>
@@ -273,19 +275,19 @@ profile editor.</p>
 <td>0308</td>
 </tr>
 <tr>
-<td>Rikishi</td>
-<td>1A</td>
-<td>0401</td>
+<td class="postmatchwrestler">Rikishi</td>
+<td class="postmatchwrestler">1A</td>
+<td class="postmatchwrestler">0401</td>
 </tr>
 <tr>
-<td>Grandmaster Sexay</td>
-<td>1B</td>
-<td>0402</td>
+<td class="postmatchwrestler">Grandmaster Sexay</td>
+<td class="postmatchwrestler">1B</td>
+<td class="postmatchwrestler">0402</td>
 </tr>
 <tr>
-<td>Scotty 2 Hotty</td>
-<td>1C</td>
-<td>0403</td>
+<td class="postmatchwrestler">Scotty 2 Hotty</td>
+<td class="postmatchwrestler">1C</td>
+<td class="postmatchwrestler">0403</td>
 </tr>
 <tr>
 <td>Edge</td>
@@ -496,8 +498,13 @@ profile editor.</p>
 </tr>
 </tbody>
 </table>
-
 <p>A few of these entries deserve further explanation.</p>
+
+<h3>Post-Match Celebrations</h3>
+<p>Some slots (signified in the above table with a <span class="postmatchwrestler">specific
+background color</span>) have post-match celebrations tied to them. It is important to
+keep them in mind when creating a hack, if you don't plan on removing post-match
+celebrations entirely. (todo: how?)</p>
 
 <h3>Controller Pak Edit Slot</h3>
 <p>These wrestlers are not normally available for use in matches. By default,
@@ -505,7 +512,14 @@ they are only loaded when visiting the "Data" section of the Smackdown Mall,
 and are unloaded upon exiting.</p>
 
 <h3>Game Boy Color Championship Mode Wrestler</h3>
-<p>(todo: explain)</p>
+<p>This slot is the most complex and interesting of all, as it is tied to the
+removed GBC Championship Mode. If the Game Boy Color version of WWF No Mercy had
+been completed and released, you would have been able to bring your GBC character
+over to the N64 game via the Transfer Pak. There is an unused Championship path
+that can be accessed via GameShark codes, and upon completing it, the character
+you used becomes a permanent member of the roster under this slot.
+(And yes, even though it appears before the Controller Pak Edit slots in the
+normal/ID2 ordering, it has a higher ID4 value.)</p>
 
 <hr />
 
@@ -532,6 +546,8 @@ and are unloaded upon exiting.</p>
 </table>
 
 <h3><a name="WrestlerProfile">Profile</a></h3>
+<p>(todo: explain ROM profile data)</p>
+
 <p>Most Profile data is stored in the ROM, but wrestler names are stored in the
 FileTable as an <code>AkiText</code> archive (file ID <code>0002</code>).</p>
 
@@ -545,6 +561,13 @@ FileTable as an <code>AkiText</code> archive (file ID <code>0002</code>).</p>
 <p>Make sure the first three entries in the Wrestler Name <code>AkiText</code>
 archive remain blank. If you need to change a wrestler's Profile Index value,
 remember that the index should be a multiple of 3.</p>
+
+<h4>Portraits</h4>
+<p>When creating a No Mercy hack, it is very important to deal with <em>both</em> sets
+of portrait graphics. There are <code>Ci4Texture</code>/<code>Ci4Palette</code>
+and <code>AkiTexture</code> versions of the portraits. The <code>Ci4Texture</code>
+version is used in the Smackdown Mall/Edit Mode, and the <code>AkiTexture</code>
+version is used during the main wrestler selection.</p>
 
 <h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
 <p>Moves and Parameters are found in the FileTable, and are mapped to wrestlers
