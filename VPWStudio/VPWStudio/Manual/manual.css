@@ -73,6 +73,11 @@ kbd{
 	white-space: nowrap;
 }
 
+.huge{
+	font-size: 300%;
+	font-weight: bold;
+}
+
 .center{
 	text-align:center;
 }
