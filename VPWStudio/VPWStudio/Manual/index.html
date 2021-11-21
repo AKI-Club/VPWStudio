@@ -469,7 +469,10 @@ is meant for unconverted items (such as <code>.png</code> images), while
 
 <h4>Save Project As</h4>
 <p>"Save Project As" is similar to saving normally, but it always asks for a filename
-and <em><strong>doesn't</strong></em> automatically create the "Assets" and "ProjectFiles" directories.</p>
+and <em><strong>doesn't</strong></em> automatically create the "Assets" and
+"ProjectFiles" directories. Therefore, you should only use this option after
+saving the project normally. This option is most useful when adapting the same
+project for multiple input ROMs (e.g. different regions and/or revisions).</p>
 
 <h3><a name="ProjectProperties">Project Properties</a></h3>
 <p>If you need to edit any of the project's properties, you can do so from
@@ -488,6 +491,29 @@ dialog.</p>
 <li><strong>Internal Game Name</strong> &ndash; Set the internal game name. 20 characters maximum; anything shorter will be padded with spaces. (Japanese characters are converted to Shift-JIS encoding when building the project.)</li>
 <li><strong>Product Region</strong> &ndash; Pick a pre-set region, or set a custom letter.</li>
 </ul>
+
+<p>The Internal Game Name is only meant to use a limited set of characters.
+For non-Japanese games, this is a subset of ASCII, from character IDs
+<code>0x20</code> to <code>0x7E</code> (inclusive). Some emulators will attempt
+to use the Internal Game Name as the filename for any save data (e.g. EEPROM/Flash,
+Controller Pak). On some platforms, valid characters for the Internal Character
+Name are not allowed in file names.</p>
+
+<p>For Windows, the following "allowed" Internal Game Name characters
+are not valid:</p>
+<ul>
+<li>&lt; (less than, often used for redirecting input/output on the command line)</li>
+<li>&gt; (greater than, often used for redirecting input/output on the command line)</li>
+<li>: (colon, used for drive names in Windows)</li>
+<li>" (double quote, which causes enough nightmares for programmers as is)</li>
+<li>/ (forward slash, the default directory separator on most non-Windows platforms; often used as an "option switch" on Windows command line applications)</li>
+<li>\ (backslash, the default directory separator on Windows)</li>
+<li>| (vertical bar/pipe)</li>
+<li>? (question mark, sometimes used as a wildcard character)</li>
+<li>* (asterisk, often used as a wildcard character)</li>
+</ul>
+<p>If any of these characters are used in your project's Internal Game Name,
+you will likely run into issues when saving data.</p>
 
 <h4>Project Files</h4>
 <img src="./img/project_properties-projectfiles.png" title="Project Properties - Project Files Tab" />
@@ -579,8 +605,8 @@ around the CI4 and CI8 texture and palette formats.</p>
 
 <p>VPW Studio can convert PNG images to <code>AkiTexture</code>, but they must have
 a 16 or 256-color palette. Furthermore, images with transparency need to be
-<a href="#DangerZone">manually converted</a> and modified with a hex editor,
-due to assumptions .NET makes about transparent images.</p>
+<a href="#DangerZone">manually converted</a> and <a href="#TexTransparency">modified
+with a hex editor</a>, due to assumptions .NET makes about transparent images.</p>
 
 <h3><code>AkiText</code></h3>
 <p><code>AkiText</code> files contain multiple strings used for text display.</p>
