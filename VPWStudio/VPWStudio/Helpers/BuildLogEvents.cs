@@ -46,7 +46,12 @@ namespace VPWStudio
 			/// <summary>
 			/// Only "required" items
 			/// </summary>
-			Minimal = 0,
+			Quiet = 0,
+
+			/// <summary>
+			/// Log files being replaced, but not much else extra.
+			/// </summary>
+			Minimal,
 
 			/// <summary>
 			/// Default logging level.
