@@ -756,7 +756,7 @@ namespace VPWStudio
 				outRomData[0x20 + i] = nameBytes[i];
 			}
 
-			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+			BuildLogPub.AddLine(String.Format("Internal Name: {0}", intName), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 			#endregion
 
 			#region ROM Region
@@ -764,12 +764,12 @@ namespace VPWStudio
 			if (CurrentProject.Settings.OutputRomRegion == GameRegion.Custom)
 			{
 				outRomData[0x3E] = (byte)CurrentProject.Settings.OutputRomCustomRegion;
-				BuildLogPub.AddLine(String.Format("Game Region: Custom ({0})", CurrentProject.Settings.OutputRomCustomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				BuildLogPub.AddLine(String.Format("Game Region: Custom ({0})", CurrentProject.Settings.OutputRomCustomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 			}
 			else
 			{
 				outRomData[0x3E] = (byte)((char)CurrentProject.Settings.OutputRomRegion);
-				BuildLogPub.AddLine(String.Format("Game Region: {0}", CurrentProject.Settings.OutputRomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+				BuildLogPub.AddLine(String.Format("Game Region: {0}", CurrentProject.Settings.OutputRomRegion), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 			}
 			#endregion
 
@@ -825,7 +825,7 @@ namespace VPWStudio
 					BinaryWriter bw = new BinaryWriter(ms);
 					bw.Seek(wrestlerDefLoc, SeekOrigin.Begin);
 					BuildLogPub.AddLine("Re-building wrestler data...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-					BuildLogPub.AddLine();
+					BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 
 					bool writeData = false;
 
@@ -923,8 +923,8 @@ namespace VPWStudio
 				}
 				else
 				{
-					BuildLogPub.AddLine(String.Format("Wrestler Definition file is for a different game. (Found '{0}', expected '{1}')", wdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-					BuildLogPub.AddLine();
+					BuildLogPub.AddLine(String.Format("Wrestler Definition file is for a different game. (Found '{0}', expected '{1}')", wdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
+					BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 				}
 			}
 			#endregion
@@ -964,7 +964,7 @@ namespace VPWStudio
 					BinaryWriter bw = new BinaryWriter(ms);
 					bw.Seek(stableDefLoc, SeekOrigin.Begin);
 					BuildLogPub.AddLine("Re-building stables...", true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-					BuildLogPub.AddLine();
+					BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 
 					bool writeData = false;
 
@@ -992,8 +992,8 @@ namespace VPWStudio
 							writeData = true;
 							break;
 						default:
-							BuildLogPub.AddLine(String.Format("Stable re-building not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-							BuildLogPub.AddLine();
+							BuildLogPub.AddLine(String.Format("Stable re-building not yet implemented for {0}.", CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
+							BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 							break;
 					}
 
@@ -1005,8 +1005,8 @@ namespace VPWStudio
 				}
 				else
 				{
-					BuildLogPub.AddLine(String.Format("Stable Definition file is for a different game. (Found '{0}', expected '{1}')", sdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-					BuildLogPub.AddLine();
+					BuildLogPub.AddLine(String.Format("Stable Definition file is for a different game. (Found '{0}', expected '{1}')", sdf.GameType, CurrentProject.Settings.BaseGame), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
+					BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 				}
 			}
 			#endregion
@@ -1040,20 +1040,19 @@ namespace VPWStudio
 					if (replaceFilePath == null)
 					{
 						// unable to convert relative path
-						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to convert '{1}' to relative path; skipping.", i, fte.ReplaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to convert '{1}' to relative path; skipping.", i, fte.ReplaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 						continue;
 					}
 
 					// ensure the file exists, otherwise we can't do anything.
 					if (!File.Exists(replaceFilePath))
 					{
-						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Replacement file '{1}' does not exist; skipping.", i, replaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Replacement file '{1}' does not exist; skipping.", i, replaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 						continue;
 					}
 
 					BuildLogPub.AddLine(String.Format("[File {0:X4}] Replace with {1}", i, replaceFilePath), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
-					BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}",
-						fte.FileType, fte.IsEncoded, fte.ReplaceEncoding));
+					BuildLogPub.AddLine(String.Format("Target FileType: {0} | LZSS = {1} | ReplaceEncoding = {2}", fte.FileType, fte.IsEncoded, fte.ReplaceEncoding), true, BuildLogEventPublisher.BuildLogVerbosity.Normal);
 
 					// get the start and end points of this entry
 					// xxx: some files in WWF No Mercy's filetable break this assumption
@@ -1119,7 +1118,7 @@ namespace VPWStudio
 					// if we were unable to get output data, then there's no point in continuing.
 					if (outData == null)
 					{
-						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to load replacement file data for this entry; skipping.", i), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+						BuildLogPub.AddLine(String.Format("[File {0:X4}] Error: Unable to load replacement file data for this entry; skipping.", i), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 						continue;
 					}
 
@@ -1178,7 +1177,7 @@ namespace VPWStudio
 					outRomData.RemoveRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), oldFileSize);
 					outRomData.InsertRange((int)(start + CurrentProject.ProjectFileTable.FirstFile), finalOutData);
 
-					BuildLogPub.AddLine();
+					BuildLogPub.AddLine(BuildLogEventPublisher.BuildLogVerbosity.Minimal);
 				}
 			}
 

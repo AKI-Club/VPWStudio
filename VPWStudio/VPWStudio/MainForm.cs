@@ -1609,7 +1609,7 @@ namespace VPWStudio
 				String.Format("[{0}] Beginning build process for '{1}'",
 					startTime.ToString(),
 					Program.CurrentProject.Settings.ProjectName
-				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
+				), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet
 			);
 
 			// todo: don't block the UI thread
@@ -1623,7 +1623,7 @@ namespace VPWStudio
 					DateTime.Now.ToString(),
 					Program.CurrentProject.Settings.OutputRomPath,
 					buildTimeTaken.ToString(@"mm\:ss\.fffff")
-				), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal
+				), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet
 			);
 			BuildLogForm.BuildFinished = true;
 
@@ -1633,7 +1633,7 @@ namespace VPWStudio
 				buildLogPub.AddLine();
 				foreach (BuildWarnErr bwe in Program.BuildMessages)
 				{
-					buildLogPub.AddLine(String.Format("[{0}] File ID {1:X4}: {2}", bwe.MessageType.ToString(), bwe.FileID, bwe.MessageText), true, BuildLogEventPublisher.BuildLogVerbosity.Minimal);
+					buildLogPub.AddLine(String.Format("[{0}] File ID {1:X4}: {2}", bwe.MessageType.ToString(), bwe.FileID, bwe.MessageText), true, BuildLogEventPublisher.BuildLogVerbosity.Quiet);
 				}
 			}
 
