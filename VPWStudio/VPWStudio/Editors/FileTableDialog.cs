@@ -1064,12 +1064,13 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Pressing Enter on an item
+		/// Handle various keyboard inputs
 		/// </summary>
 		private void lvFileList_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
+				// Pressing Enter on an item
 				LoadItemPreview();
 			}
 			if (e.KeyCode == Keys.F3 && e.Shift == true)
