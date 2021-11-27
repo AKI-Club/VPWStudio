@@ -264,20 +264,20 @@ file formats are subject to change. Don't get too attached to your projects.</li
 <li>This program has not been tested on non-Windows OSes. Your mileage may vary.</li>
 </ul>
 
-<h3>Technical Support</h3>
+<h3>Technical Support (or lack thereof)</h3>
 <p>This program is provided as-is, with no warranties or technical support given.
-The program is primarily the work of one person, and that person does not have the
-bandwidth to be both the primary developer <em>and</em> personal/private technical
-support.</p>
+Currently, the program is primarily the work of one person, and they do not have
+the bandwidth to be both the primary developer <em>and</em> personal/private
+technical support.</p>
 
 <p>Since there is no "official" technical support channel, you will have to turn
-to the community. Though a large number of gaming communities have abandoned forums
-as a communication/information source, the AKI hacking community has too much of a
-history with forums ("HACKERS CLUB", "The No Mercy Zone", JamStubbs' archive, and
-many more) to just abandon them for the "fancy new thing". Or, to put it another way,
-Discord didn't exist back in 2000, and ezBoard was a decent enough free forum host,
-so we all just went with that. Fast forward two decades, and we're still primarily
-using forums, because information rot is a very real problem.</p>
+to the community. Though a large number of gaming communities have abandoned web
+forums as a communication/information source, the AKI hacking community has too much
+of a history with them ("HACKERS CLUB", "The No Mercy Zone", JamStubbs' archive,
+and many more) to just abandon them for the "fancy new thing". Or, to put it another
+way, Discord didn't exist back in 2000, and ezBoard was a decent enough free forum
+host, so we all just went with that. Fast forward two decades, and we're still
+primarily using forums, because information rot is a very real problem.</p>
 
 <p>With all of that said, here are some community locations where you can ask for
 VPW Studio technical support:</p>
@@ -289,19 +289,16 @@ VPW Studio technical support:</p>
 <li><a href="https://www.tapatalk.com/groups/vpw2dojo/">VPW2 Dojo</a></li>
 </ul>
 
-<p>Even with the above, I do feel the need to reiterate: please <strong><em>do not
-contact me directly for technical support</em></strong>. This includes, but is not
-limited to, e-mails and direct messages. Yes, I made the program, but that does not
-mean I have the time to solve everyone's problems.</p>
+<p>Even with the above, I (freem) do feel the need to jump out of the "technical
+writing voice" to reiterate: please <strong><em>do not contact me directly for
+technical support</em></strong>. This includes, but is not limited to, e-mails
+and direct/private messages. Yes, I made the program, but that does not mean I
+have the time to solve everyone's problems.</p>
 
 <p>I have also considered paid technical support as an option, but that will
 inevitably lead to one specific question being asked...</p>
 
-<h3>"Why can't freem just do everything for me?"</h3>
-<p>If you use this program for any amount of time, a thought might appear in your head:</p>
-
-<blockquote>"Can't I just get freem to do it for me?"</blockquote>
-
+<h3>"Can't freem just do everything for me?"</h3>
 <p>The answer is no. Actually, that's the <em>nice</em> version of the answer.
 The <em>real</em> answer is:</p>
 
@@ -310,13 +307,29 @@ The <em>real</em> answer is:</p>
 <p>It took long enough to make this program (starting in 2018), a hack to go along
 with it (spanning 2018-the beginning of 2021), <em>and</em> an abandoned hack (that
 my heart wasn't completely in) to get this far. I am <em>completely uninterested</em>
-in doing all of the work for you, having <em>already</em> done it 1.5 times.</p>
+in doing all of the work for you, having <em>already</em> done it 1¼ times. Offering
+money will not change this, either, as money can't magically do the work for me.</p>
 
-<p>If, for some reason, this section does not resonate with you and you
-<em><strong>STILL</strong></em> want me to make your entire hack for you,
-the minimum asking price is <strong>$100,000 USD</strong>. Yes, that's a lot,
-but I'm going to <em>need</em> a lot to put up with your requests, as I could
-be spending that time making VPW Studio better for everyone.</p>
+<p>Please respect my wishes on these matters.</p>
+
+<h3>"What about program bugs?"</h3>
+<p>That's what the <a href="https://github.com/AKI-Club/VPWStudio/issues">GitHub Issues page</a> is for.
+When filing a bug report, please make it a point to note the following:</p>
+<ul>
+<li>The version of VPW Studio being used</li>
+<li>The game being edited, <strong><em>including region and revision information</em></strong> (important!!)</li>
+<li>What you're attempting to do (please provide as much detail as reasonably possible)</li>
+<li>What you expect to happen</li>
+<li>What actually happens</li>
+</ul>
+<p>Also, if what you're trying to do worked in a previous version of VPW Studio,
+please note that, along with the last known version where it worked.</p>
+
+<p>You may be asked to provide an example project (and files) if the problem can
+not be easily replicated by the development team. To prevent various issues on
+all ends, please make a new project demonstrating the issue, and submit that if
+requested. We do not want to be responsible for anyone's project being "leaked"
+via bug reports.</p>
 
 <hr />
 <h2><a name="MainInterface">Main Interface</a></h2>
@@ -390,8 +403,8 @@ result in differences from the default Location File for the specified Game Type
 Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen,
 with the main form updating to reflect the new project.</p>
 
-<p>After creating a new project, the first thing you should do is save it. This is
-required for various functions of VPW Studio to work correctly.</p>
+<p>After creating a new project, the first thing you should do is <a href="#Saving">save
+it</a>. This is <strong>required</strong> for various functions of VPW Studio to work correctly.</p>
 
 <h4>Base ROM and Game Type</h4>
 <p>The Base ROM must match the selected Game Type. VPW Studio checks a few
@@ -456,7 +469,7 @@ No Mercy</em> (all regions) and the NTSC-U version of <em>WCW vs. nWo World Tour
 After selecting a project file, the program interface will update to reflect what
 game is being edited.</p>
 
-<h3>Save, Save As</h3>
+<h3><a name="Saving">Save, Save As</a></h3>
 <p>When you want to save changes to a project, there are two options: "Save Project",
 and "Save Project As". Both are available from the File menu.</p>
 
@@ -521,7 +534,7 @@ you will likely run into issues when saving data.</p>
 <li><strong>Project Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
 <li><strong>Asset Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
 <li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes. <em>Most people will not need to use this.</em></li>
-<li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused, and only reasonable for VPW64 and VPW2)</li>
+<li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused/unimplemented; not particularly "needed" for No Mercy)</li>
 </ul>
 
 <h3>Build ROM</h3>
@@ -613,7 +626,7 @@ with a hex editor</a>, due to assumptions .NET makes about transparent images.</
 
 <p>AkiText archives only appear in <em>WWF WrestleMania 2000</em>,
 <em>Virtual Pro-Wrestling 2</em>, and <em>WWF No Mercy</em> (though the latter
-game has moved away from <code>AkiText</code> for most purposes).</p>
+game has moved away from <code>AkiText</code> for some purposes).</p>
 
 <h3>Font-Related Formats</h3>
 <p>The <code>AkiLargeFont</code>, <code>AkiSmallFont</code>, and <code>AkiFontChars</code>
@@ -700,7 +713,7 @@ making it an 8bpp image. Due to VPW Studio's current setup, it is <em>required</
 to have proper 4bpp images when replacing a Ci4Texture. This may change in the future,
 but results cannot be guaranteed.</p>
 
-<p>Programs known to properly support 16 color/4bpp textures:</p>
+<p>Programs known to properly support 16 color/4bpp textures, and the steps needed to create them:</p>
 <ul>
 <li><strong>JASC Paint Shop Pro 7</strong> &ndash; Colors &rarr; Decrease Color Depth &rarr; 16 Colors (4 bit)</li>
 <li><strong>GIMP</strong> &ndash; Image &rarr; Mode &rarr; Indexed; ensure "Generate optimum palette" is selected, set "Maximum number of colors" to 16.</li>
@@ -1071,7 +1084,7 @@ values using the Red, Green, and Blue numeric boxes on the upper right hand side
 You can also toggle the transparency of a color with the "Transparent" checkbox.</p>
 
 <p>The Palette Set option is only available with CI4 palettes, and only usable if
-the CI4 palette has a sub-palette.</p>
+the CI4 palette has any sub-palettes.</p>
 
 <h4>Supported Palette Formats</h4>
 <p>There are multiple palette formats available for import and export:</p>
@@ -1102,10 +1115,11 @@ Table Entry Information" section), you'll need to play with the width and height
 values to find the proper settings. Be sure to press the Refresh button to update
 the image preview.</p>
 
-<p>Right clicking on the image brings up a context menu with two options:</p>
+<p>Right clicking on the image brings up a context menu with three options:</p>
 <ul>
 <li><strong>Save PNG</strong> &ndash; Exports the texture as a 32-bit (RGBA) PNG.</li>
 <li><strong>Background Color</strong> &ndash; Change the background color. Useful for seeing things better.</li>
+<li><strong>Foreground Color</strong> &ndash; Change the foreground/drawing color, which defaults to white.</li>
 </ul>
 
 <h3><a name="AKITexturePreview">"TEX" Textures</a></h3>
@@ -1165,6 +1179,10 @@ previewer, so you don't need to export the model to figure out what it is.</p>
 a texture to map to the model. The available choices depend on what's in the
 File Table, so any texture file without a specific file type set won't show up
 in here.</p>
+
+<p>It is also important to note that the replacement path is not checked for
+the selected File Table entries, so it's currently not possible to preview your
+custom textures with this tool.</p>
 
 <p>The three Texture Type options are:</p>
 <ul>
@@ -1552,7 +1570,7 @@ the list of vertices and faces.</p>
 <h2><a name="DangerZone">Danger Zone</a></h2>
 <p>The Danger Zone is a collection of tools that is not necessarily meant for
 end users. These tools are typically rough and unfinished, and usually serve as
-the base for the final, more polished features. Starting with pre-alpha preview
+the base for the final, more polished features. Starting with Pre-Alpha Preview
 15, items are grouped by their general purpose.</p>
 
 <h3>Image Conversion</h3>
@@ -1585,7 +1603,7 @@ the base for the final, more polished features. Starting with pre-alpha preview
 <p>(todo: very incomplete)</p>
 <ul>
 <li><strong>Main Programming</strong> &ndash; freem</li>
-<li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Styles, Keson, jordyad, randymanfoo</li>
+<li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Stylez, Keson, jordyad, randymanfoo</li>
 </ul>
 
 <p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>, both of which are MIT licensed.</p>
