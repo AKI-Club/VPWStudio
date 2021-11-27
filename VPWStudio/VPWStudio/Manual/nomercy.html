@@ -604,7 +604,16 @@ dialog maps to the entries in the default costume data.</p>
 </tbody>
 </table>
 
-<p>Stables in WWF No Mercy hold up to 9 wrestlers maximum.</p>
+<p>Each stable entry consists of two values:</p>
+<ul>
+<li>Offset <code>0x00</code>: Pointer to wrestler definitions for this stable (4 bytes)</li>
+<li>Offset <code>0x04</code>: Stable name index (4 bytes)</li>
+</ul>
+
+<p>Wrestler definitions are given as a list of ID2 values. Stables in WWF No Mercy
+hold up to 9 wrestlers maximum. As this is an odd number of values, three padding
+bytes (<code>0x00</code>) are always written after the last entry to ensure the
+next set of data falls on a four byte boundary.</p>
 
 <p>Default stable names are found in the same <code>AkiText</code> archive
 that holds the default character names (file ID <code>0002</code>). The stable
