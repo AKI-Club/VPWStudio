@@ -24,6 +24,7 @@
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
 <li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
 <ol>
+<li><a href="#TextureSources">Texture Sources</a></li>
 <li><a href="#ColorFormat">Color Format</a></li>
 <li><a href="#CostumeColorChanging">Costume Color Changing</a></li>
 <li><a href="#SkinColorChanging">Skin Color Changing</a></li>
@@ -725,6 +726,18 @@ are the two that have been tested with VPW Studio and known to work.</p>
 order to be changed, resulting in textures that look wrong. The order of the
 colors in the palette is <em>very important</em>, and should be the same between the
 texture and corresponding palette file (if necessary).</p>
+
+<h3><a name="TextureSources">Texture Sources</a></h3>
+<p>Dumping the game's original textures using an emulator is often a starting point
+for modders. If you attempt to do this with VPW Studio, however, you're going to
+end up having a lot of trouble.</p>
+
+<p>An emulator texture dump represents the FINAL result after running through all
+the pre-processing steps (e.g. skin color, costume color, hair color, and so on).
+When you use VPW Studio or do texture changes via ROM hacking, you're not working
+from the final result, you're working from the composite parts that end up making
+the final result. this means you'll have to get your textures and palettes from
+VPW Studio, then work from there.</p>
 
 <h3><a name="ColorFormat">Color Format</a></h3>
 <p>The Nintendo 64 and PlayStation 1 both use a 16bpp color format for most
