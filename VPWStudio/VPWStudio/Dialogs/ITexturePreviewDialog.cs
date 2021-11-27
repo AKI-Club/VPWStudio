@@ -23,6 +23,11 @@ namespace VPWStudio
 		/// Default image size
 		/// </summary>
 		private Size DefaultImageSize;
+
+		/// <summary>
+		/// Foreground color to draw with.
+		/// </summary>
+		private Color ForegroundColor = Color.White;
 		#endregion
 
 		public ITexturePreviewDialog(int fileID)
@@ -143,6 +148,19 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Change foreground color.
+		/// </summary>
+		private void foregroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ColorDialog cd = new ColorDialog();
+			if (cd.ShowDialog() == DialogResult.OK)
+			{
+				ForegroundColor = cd.Color;
+				buttonRedraw_Click(sender, e);
+			}
+		}
+
 		private void DrawImage()
 		{
 			Bitmap zoomed = new Bitmap(DefaultImageSize.Width, DefaultImageSize.Height);
@@ -167,7 +185,7 @@ namespace VPWStudio
 			try
 			{
 				// todo: resize window if texture is too big for the current preview
-				CurrentBitmap = CurrentI4Tex.ToBitmap(DefaultImageSize.Width, DefaultImageSize.Height);
+				CurrentBitmap = CurrentI4Tex.ToBitmap(DefaultImageSize.Width, DefaultImageSize.Height, ForegroundColor);
 				DrawImage();
 			}
 			catch (Exception ex)
