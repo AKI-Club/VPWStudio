@@ -66,12 +66,18 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="width">I4Texture Width</param>
 		/// <param name="height">I4Texture Height</param>
+		/// <param name="drawColor">Color to draw with (optional; defaults to White)</param>
 		/// <returns>Bitmap representing the I4Texture.</returns>
-		public Bitmap ToBitmap(int width, int height)
+		public Bitmap ToBitmap(int width, int height, Color? drawColor = null)
 		{
 			if (Data == null)
 			{
 				return null;
+			}
+
+			if (drawColor == null)
+			{
+				drawColor = Color.White;
 			}
 
 			Bitmap bOut = new Bitmap(width, height);
@@ -84,7 +90,7 @@ namespace VPWStudio
 					// I am not sure if alpha is meant to be calculated like this,
 					// but it matches how most I4 textures look in game.
 					// Whether or not the game performs this transform is unknown.
-					bOut.SetPixel(x, y, Color.FromArgb((15 - palIdx) * 16, 255, 255, 255));
+					bOut.SetPixel(x, y, Color.FromArgb((15 - palIdx) * 16, drawColor.Value.R, drawColor.Value.G, drawColor.Value.B));
 				}
 			}
 
