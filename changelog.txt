@@ -2,9 +2,69 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 18 (202x/yy/zz)
+Pre-Alpha Preview 19 (202x/yy/zz)
 ---------------------------------
 I'm working on it, but now I have some friends who might help?
+
+Pre-Alpha Preview 18 (2021/11/28)
+---------------------------------
+* Replaced GetPixel/SetPixel with LockBits/UnlockBits in various places:
+  - [AkiTexture] ToBitmap_CI, FromBitmap
+  - [Ci8Texture] ToBitmap, FromBitmap
+  - [Ci4Texture] ToBitmap, FromBitmap
+  - [ModelTool2] UpdateTexture
+  In theory, using LockBits/UnlockBits should be faster than iterating over
+  each pixel. In practice, project build times seem relatively unchanged.
+  Maybe memory usage is slightly better, I'm not sure.
+
+  There are still portions of the program that can benefit from this change.
+  They will be rewritten to do so in the future.
+
+* [Z64Rom] Fix an error where GameVersion would be set using one of the game
+  code bytes instead of the proper value.
+
+* [NewProjectDialog] Add safeguards for input ROM selection.
+  The following values are checked to ensure the correct ROM is being used
+  for the project settings:
+  - two-letter game code
+  - region
+  - revision/version
+
+* [CI Palette Editor] Allow importing/exporting Adobe ACT format palettes.
+  (The code existed, but it was not hooked up in the Palette Editor.)
+
+* [CI Palette Editor] Display an error when importing a .pal file that is not
+  JASC Paint Shop Pro format, since the Windows palette format uses the same
+  file extension.
+
+* [Hex Viewer] Implement "Select All" feature (Control+A).
+
+* [FileTableDialog] Suggest a file name when using "Extract Raw".
+
+* Rewrote a few image conversion error dialog messages.
+
+* [Settings] "Quiet" Build Log Verbosity level added, and is now the default setting.
+  This setting only logs important events (e.g. warnings and errors), and cuts
+  down build times for larger projects considerably. (For example, a project
+  replacing just under 1,200 files used to take anywhere from 55 seconds to
+  1 minute to build on one of the testing machines. With the new "Quiet" setting,
+  the same project took 12 seconds to build on the same machine.)
+
+  It is *HIGHLY* recommended you change the Build Log Verbosity setting
+  to "Quiet" if you have used the program before.
+
+  This is merely a band-aid fix for a larger problem, as logging should not be
+  adding excessive time to the build process.
+
+* [I4Texture Viewer] Allow changing foreground/drawing color.
+
+* [No Mercy FileTableDB] Made the Tournament background image entries a bit
+  more obvious, instead of just being labeled "KOR" and possibly being confused
+  for the pre-match KOTR background.
+  (I made this error myself, so I have a vested interest in fixing it.)
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 17 (2021/10/03)
 ---------------------------------

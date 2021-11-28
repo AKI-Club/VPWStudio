@@ -70,11 +70,12 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of October 2021, this includes:");
+			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of November 2021, this includes:");
 			sb.AppendLine();
 			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
 			sb.AppendLine("- RagDas");
 			sb.AppendLine("- GameGenie720");
+			sb.AppendLine("- AshVPW");
 			sb.AppendLine();
 			sb.AppendLine("VPW Studio is largely untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
