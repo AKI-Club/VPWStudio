@@ -358,10 +358,13 @@ emulator to use for testing the changed ROM.</p>
 
 <h3>Build</h3>
 <p>The "Build" portion of the Program Options dialog currently only contains an
-option to modify the verbosity of the build log. The default option is "Normal".</p>
+option to modify the verbosity of the build log. The default option is "Quiet"
+(as of Pre-Alpha Preview 18).</p>
 
-<p>Setting the Build Log Verbosity to "Minimal" can shorten build times, especially
-on older and/or slower computers.</p>
+<p>Setting the Build Log Verbosity to "Quiet" can significantly shorten build times,
+especially on older and/or slower computers. If you have used VPW Studio before
+Pre-Alpha Preview 18 (v0.0.0.18), it is highly recommended to change the Build
+Log Verbosity option to "Quiet".</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
@@ -383,8 +386,10 @@ to various game formats. This is typically where your PNG textures live.</li>
 is meant to be ready to insert (i.e. already in formats the game is expecting).</li>
 </ul>
 
-<p>VPW Studio expects these directories to exist for any saved project. You can change
-their locations via the <a href="#ProjectProperties">Project Properties</a> dialog.</p>
+<p>VPW Studio expects these directories to exist for any saved project. By default,
+the program looks for the directories in the same directory as the Project File.
+You can change their locations via the <a href="#ProjectProperties">Project
+Properties</a> dialog.</p>
 
 <h3>Creating a New Project</h3>
 <p>Getting started with the main portion of the program requires creating a new project.
@@ -409,17 +414,23 @@ Properties</a> dialog. Upon pressing OK, you will be sent back to the main scree
 with the main form updating to reflect the new project.</p>
 
 <p>After creating a new project, the first thing you should do is <a href="#Saving">save
-it</a>. This is <strong>required</strong> for various functions of VPW Studio to work correctly.</p>
+it</a>. This is <strong>required</strong> for various functions of VPW Studio to work
+correctly.</p>
 
 <h4>Base ROM and Game Type</h4>
 <p>The Base ROM must match the selected Game Type. VPW Studio checks a few
 values to ensure the correct ROM has been selected: the two letter game code,
 the region, and the version/revision value.</p>
 
-<p>Each Nintendo 64 game is identified by a two letter "game code". VPW Studio
+<p>Each Nintendo 64 game is identified by a two letter game code. VPW Studio
 makes a cursory check to ensure you're loading something that even remotely
 resembles the game you're trying to edit. Unless you're intentionally trying
 to use the wrong ROM, you shouldn't run into any issues here.</p>
+
+<p>It is also important to note that the two letter game code is often used
+by emulators and flash carts to determine the save type, so modifying it is not
+recommended. This goes quintuple for <em>WWF No Mercy</em>, which is the only
+game in the series to save to Flash memory.</p>
 
 <p>For the region, it's important to note that the region codes used by
 various popular ROM renaming tools/datfile providers do not match the
@@ -513,7 +524,7 @@ dialog.</p>
 <p>The Internal Game Name is only meant to use a limited set of characters.
 For non-Japanese games, this is a subset of ASCII, from character IDs
 <code>0x20</code> to <code>0x7E</code> (inclusive). Some emulators will attempt
-to use the Internal Game Name as the filename for any save data (e.g. EEPROM/Flash,
+to use the Internal Game Name as the filename for any save data (e.g. EEPROM, Flash,
 Controller Pak). On some platforms, valid characters for the Internal Character
 Name are not allowed in file names.</p>
 
@@ -992,7 +1003,9 @@ additional option, "MenuBackground Replacement..." will appear. This option conv
 a 320x240 16-color PNG file into the requisite menu background files, and set the
 relevant entries in the File Table. The output files are put in the ProjectFiles
 directory, in a sub-directory called "Backgrounds". Each converted <code>MenuBackground</code>
-creates a sub-directory based on the original PNG's filename.</p>
+creates a sub-directory based on the original PNG's filename, so be careful when
+converting a background with the same file name as another <code>MenuBackground</code>
+replacement.</p>
 
 <h3>Navigation Menu</h3>
 <p>The Navigation menu contains various functions to help you find entries in the File Table.</p>
@@ -1122,7 +1135,7 @@ palette is being used. <code>CI4Texture</code>s additionally support sub-palette
 which are alternate sets of 16 colors.</p>
 
 <h3><a name="I4TexturePreview">I4 Textures</a></h3>
-<p>(todo: screenshot)</p>
+<img src="./img/i4texture_preview.png" title="I4Texture Previewer" />
 <p>Target Filetype: <code>I4Texture</code></p>
 
 <p>The viewer for I4 textures is a bit more complicated than the CI4/CI8 texture
