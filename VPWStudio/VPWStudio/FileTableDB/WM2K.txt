@@ -1371,7 +1371,7 @@
 05B6=AkiModel;
 05B7=AkiModel;
 05B8=AkiModel;
-05B9=AkiModel;
+05B9=AkiModel;[Ring] Turnbuckle Pads
 05BA=AkiModel;
 05BB=AkiModel;
 05BC=AkiModel;
