@@ -16,11 +16,13 @@
 <hr />
 
 <h2>Table of Contents</h2>
+<h3>Chapter 1: Introductory Material</h3>
 <ol>
 <li><a href="#Intro">Introduction</a></li>
 <li><a href="#Requirements">Requirements and Notes</a></li>
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
+<li><a href="#WhichGameToHack">Which Game To Hack?</a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
 <li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
 <ol>
@@ -30,7 +32,13 @@
 <li><a href="#SkinColorChanging">Skin Color Changing</a></li>
 <li><a href="#TextureLayering">Texture Layering</a></li>
 <li><a href="#TexTransparency">AkiTexture Transparency Fix</a></li>
+<li><a href="#FontWorkflow">Fonts</a></li>
 </ol></li>
+<li><a href="#CodeDataPointers">Code, Data, and Pointers</a></li>
+</ol>
+
+<h3>Chapter 2: Program Functionality</h3>
+<ol>
 <li><a href="#Arenas">Arenas</a></li>
 <li><a href="#Championships">Championships</a></li>
 <li><a href="#Costumes">Costumes</a></li>
@@ -63,6 +71,10 @@
 <li><a href="#Wrestlers">Wrestlers</a></li>
 <li><a href="#Tools">Tools</a></li>
 <li><a href="#DangerZone">Danger Zone</a></li>
+</ol>
+
+<h3>Chapter 3: Everything Else</h3>
+<ol>
 <li><a href="#Credits">Credits</a></li>
 </ol>
 
@@ -234,7 +246,7 @@ More information about <a href="http://n64dev.org/romformats.html">N64 ROM forma
 can be found on n64dev.org.</li>
 <li>OpenGL 3.3 support (for <a href="#ModelTool2">ModelTool2</a> dialog and any future 3D-displaying stuff)</li>
 <li>An image editor that can create and edit <em>paletted</em> PNG images. (Ideally, one that allows for exporting palettes in JASC Paint Shop Pro format.)</li>
-<li>A hex editor, to do things that aren't easily possible in VPW Studio yet.
+<li>A hex editor, to do things that aren't (easily) possible in VPW Studio yet.
 (If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
 is recommended for Windows.)</li>
 <li>A calculator that can work in hex and binary modes. Your operating system's calculator
@@ -263,6 +275,8 @@ file formats are subject to change. Don't get too attached to your projects.</li
 <li>Knowledge of hexadecimal is assumed.</li>
 <li>Some general knowledge of at least one of the supported games is also assumed.</li>
 <li>This program has not been tested on non-Windows OSes. Your mileage may vary.</li>
+<li>Make sure to check the documentation of your emulator and/or flash cart for other
+important information.</li>
 </ul>
 
 <h3>Technical Support (or lack thereof)</h3>
@@ -350,7 +364,7 @@ and playing process. Select Tools &rarr; Program Options to open the dialog.</p>
 
 <h3>Emulator</h3>
 <p>The "Emulator" section of the Program Options dialog allows you to set up an
-emulator to use for testing the changed ROM.</p>
+emulator to use for testing the changed ROM. Currently assumes Nintendo 64.</p>
 <ul>
 <li><strong>Path</strong> &ndash; Path to the emulator executable file.</li>
 <li><strong>Arguments</strong> &ndash; Any additional arguments to be passed to the emulator.</li>
@@ -361,10 +375,10 @@ emulator to use for testing the changed ROM.</p>
 option to modify the verbosity of the build log. The default option is "Quiet"
 (as of Pre-Alpha Preview 18).</p>
 
-<p>Setting the Build Log Verbosity to "Quiet" can significantly shorten build times,
-especially on older and/or slower computers. If you have used VPW Studio before
-Pre-Alpha Preview 18 (v0.0.0.18), it is highly recommended to change the Build
-Log Verbosity option to "Quiet".</p>
+<p>Setting the Build Log Verbosity to "Quiet" can <strong>significantly</strong>
+shorten build times, especially on older and/or slower computers. If you have
+used VPW Studio before Pre-Alpha Preview 18 (v0.0.0.18), it is highly recommended
+to change the Build Log Verbosity option to "Quiet".</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
@@ -422,20 +436,21 @@ correctly.</p>
 values to ensure the correct ROM has been selected: the two letter game code,
 the region, and the version/revision value.</p>
 
-<p>Each Nintendo 64 game is identified by a two letter game code. VPW Studio
-makes a cursory check to ensure you're loading something that even remotely
-resembles the game you're trying to edit. Unless you're intentionally trying
-to use the wrong ROM, you shouldn't run into any issues here.</p>
+<p>Each Nintendo 64 game is identified by a two letter game code (as a part
+of a four letter product code). VPW Studio makes a cursory check to ensure
+you're loading something that even remotely resembles the game you're trying
+to edit. Unless you're intentionally trying to use the wrong ROM, you shouldn't
+run into any issues here.</p>
 
 <p>It is also important to note that the two letter game code is often used
-by emulators and flash carts to determine the save type, so modifying it is not
-recommended. This goes quintuple for <em>WWF No Mercy</em>, which is the only
-game in the series to save to Flash memory.</p>
+by emulators and flash carts to determine the save type, so modifying it is
+<strong><em>not recommended</em></strong>. This goes quintuple for <em>WWF No
+Mercy</em>, which is the only game in the series to save to Flash memory.</p>
 
 <p>For the region, it's important to note that the region codes used by
-various popular ROM renaming tools/datfile providers do not match the
+various popular ROM renaming tools/datfile providers <em>do not</em> match the
 internal region codes used by Nintendo 64 games. A small conversion chart
-is provided below.</p>
+is provided below:</p>
 <table>
 <thead>
 <tr>
@@ -474,6 +489,8 @@ is provided below.</p>
 </tr>
 </tbody>
 </table>
+<p>(Other regions and TV standards exist, but all six of the N64 games AKI
+Corporation released only use these three regions, as far as we're aware.)</p>
 
 <p>The game version/revision value is only relevant for two games, but since
 data and code locations change between versions, it is important to specify and
@@ -524,7 +541,7 @@ dialog.</p>
 <p>The Internal Game Name is only meant to use a limited set of characters.
 For non-Japanese games, this is a subset of ASCII, from character IDs
 <code>0x20</code> to <code>0x7E</code> (inclusive). Some emulators will attempt
-to use the Internal Game Name as the filename for any save data (e.g. EEPROM, Flash,
+to use the Internal Game Name as the filename for any save data (e.g. SRAM, Flash,
 Controller Pak). On some platforms, valid characters for the Internal Character
 Name are not allowed in file names.</p>
 
@@ -571,6 +588,175 @@ This will be changed in the future.</p>
 menu (Keyboard shortcut: <kbd>F5</kbd>). If the changed ROM hasn't been built yet, it will build
 the ROM before playing it. Otherwise, it will load the last built version of the ROM.</p>
 <p>For this to work, you must set up the emulator details in the <a href="#ProgramOptions">Program Options</a> section.</p>
+
+<hr />
+<h2><a name="WhichGameToHack">Which Game To Hack?</a></h2>
+<p>If you are not already familiar with the capabilities of each of the supported
+games, you may have trouble picking a base game to start your project. Some features
+only exist in certain games, and if you are banking on the presence of one of those
+features, you need to pick your game wisely.</p>
+
+<p>The <a href="#GameSpecificDocs">Game-Specific documentation</a> can also give you
+insights into what game to pick, as well as issues you might run into. It also
+goes into more detail into some of the points mentioned below.</p>
+
+<h3>WCW vs. nWo World Tour</h3>
+<p>Largely superseded by <em>Virtual Pro-Wrestling 64</em>, though the fact that it's in
+English means you don't have to do any translation work on top of the hacking.</p>
+<ul>
+<li>43 wrestler slots available.</li>
+<li>Only game in series to require Controller Pak for saving.</li>
+<li>Short in-ring introductions, no theme music.</li>
+<li>Allows for two-out tag match elimination format.</li>
+<li>Boxing fighting style available. (Joe Bruiser)</li>
+<li>One woman character available. (BlackWidow)</li>
+<li>Moveset format largely unknown.</li>
+<li>Parameters format largely unknown.</li>
+<li>Four arenas available. Arena data largely unknown.</li>
+<li>Text largely resides in ROM, mostly ASCII encoded (some EUC-JP).</li>
+<li>Text and graphics are in English.</li>
+<li>Wrestler face textures are mirrored, and represent half of the head (including the hair).</li>
+</ul>
+
+<h3>Virtual Pro-Wrestling 64</h3>
+<p>Superior to <em>WCW vs. nWo World Tour</em> in most ways, despite only being released
+a month after it. (The truth is that development on this game started first, and World
+Tour was based off an earlier version of this game.)</p>
+<ul>
+<li>99 wrestler slots available, including most of World Tour's roster.
+(Glacier, Wrath, and "Sting"/nWo Sting do not appear in VPW64.)</li>
+<li>Wrestler Edit mode (costume changing, name editing) available.</li>
+<li>Only game in series to allow for changing three colors in Edit Mode for costumes.</li>
+<li>Primary game save is on SRAM. Controller Pak saving is optional (used for match results).</li>
+<li>Only game in series to have a detailed post-match statistics interface.</li>
+<li>Short in-ring introductions, no theme music.</li>
+<li>Allows for two-out tag match elimination format.</li>
+<li>Combo fighting style introduced in this game.</li>
+<li>Boxing and Kickboxing fighting styles available.</li>
+<li>One woman character available. (Pretty Tomoko, the equivalent of BlackWidow in World Tour)</li>
+<li>Only N64 game in the series to hide secret characters on the wrestler selection screen. (Accessed via holding the Z button on certain wrestlers.)</li>
+<li>Moveset format largely unknown.</li>
+<li>Parameters format largely unknown.</li>
+<li>Eight arenas available (one forces a monochrome display; must be unlocked to be used). Arena data largely unknown.</li>
+<li>Text largely resides in ROM, mostly EUC-JP encoded (some ASCII in non-critical locations).</li>
+<li>Most text and graphics are in Japanese. Some elements are in English, but these are
+usually secondary.</li>
+<li>Wrestler face textures are mirrored, and represent half of the head (including the hair).</li>
+</ul>
+
+<h3>WCW/nWo Revenge</h3>
+<p>A substantial upgrade of World Tour and VPW64.</p>
+<ul>
+<li>63 wrestler slots available.</li>
+<li>16 manager slots available.</li>
+<li>Wrestler Edit mode (costume changing, name editing) available.</li>
+<li>Primary game save is on SRAM. No Controller Pak saving.</li>
+<li>Has a post-match scoring screen, different from VPW64's statistics.</li>
+<li>Extended pre-match introductions (both on stage and in the ring), but only
+two sequenced theme songs (assigned by the game based on entrance order).</li>
+<li>First game in series with elimination Battle Royal matches.</li>
+<li>Combo fighting style available. (Goldberg, AKI man, and a few others)</li>
+<li>Kickboxing fighting style available. (Eric Bischoff)</li>
+<li>Women only available in manager slots.</li>
+<li>Moveset format mostly unknown; some progress is being made.</li>
+<li>Parameters format mostly unknown.</li>
+<li>Six arenas available. Arena data semi-known.</li>
+<li>Text largely resides in ROM, ASCII encoded.</li>
+<li>Text and graphics are in English.</li>
+<li>Wrestler face textures only take up the facial area.</li>
+<li>Corner and Irish Whip Special Grapples added.</li>
+</ul>
+
+<h3>WWF WrestleMania 2000</h3>
+<p>The first of two WWF (now WWE) licensed games.</p>
+<ul>
+<li>50 male wrestler slots available.</li>
+<li>9 female wrestler slots available, with caveats.</li>
+<li>Wrestler Edit mode ("full-featured") available.</li>
+<li>Primary game save is on SRAM. Controller Pak saving is optional, used for custom belts and wrestlers.</li>
+<li>Pre-match introduction sequence now includes Titantron "videos" and streamed theme songs,
+along with the on-stage and in-ring portions of the introduction sequence from Revenge.</li>
+<li>Neither Boxing nor Kickboxing styles are available.</li>
+<li>Combo fighting style not available.</li>
+<li>Moveset and Parameters formats are largely unknown. This is somewhat mitigated
+by being able to create a character, then putting them in a match and dumping
+their data.</li>
+<li>Seven arenas available. Arena data semi-known.</li>
+<li>Some text is in ROM, while others are in <code>AkiText</code> archives in the File Table. Most text is ASCII encoded. The rest is Shift-JIS.</li>
+<li>Text and graphics are in English. The Japanese release contains some Japanese
+messages, but they are implemented as textures.</li>
+<li>Wrestler face textures only take up the facial area.</li>
+<li>Wrestler CPU Logic editor only available via GameShark code.</li>
+<li>Cage match introduced in this game.</li>
+</ul>
+
+<h3>Virtual Pro-Wrestling 2</h3>
+<p>A Japanese-only direct descendant of <em>WCW/nWo Revenge</em> that ended up
+inheriting (or possibly originating) a number of features from WrestleMania 2000.</p>
+<ul>
+<li>98 wrestler slots available.</li>
+<li>Wrestler Edit mode ("full-featured") available.</li>
+<li>Primary game save is on SRAM. Controller Pak saving is optional, used for custom belts and wrestlers.</li>
+<li>Pre-match introduction sequence includes streamed theme songs (at higher quality than
+WM2000, but with less songs included) and a walk to the ring. All arenas have a
+multi-stage entrance, where wrestlers start in the locker room, then head to the ring.
+Unlike WM2000, only one arena (Dome Road) contains a "traditional" stage.</li>
+<li>Combo fighting style available.</li>
+<li>Only game in the series with MMA fighting style.</li>
+<li>Only game in the series with MMA match rules.</li>
+<li>Women not available.</li>
+<li>Only game in the series with customizable masks.</li>
+<li>Moveset and Parameters formats are largely unknown. This is somewhat mitigated
+by being able to create a character, then putting them in a match and dumping
+their data. However, VPW2's extra fighting styles means you have to be careful
+how you dump the moveset data.</li>
+<li>Five arenas available (one is unlockable). Arena data semi-known.</li>
+<li>Some text is in ROM, while others are in <code>AkiText</code> archives in the
+File Table. Most text is Shift-JIS encoded. There are a few ASCII strings, mainly
+in the "Global" text area.</li>
+<li>Text and graphics are mainly Japanese.</li>
+<li>Wrestler face textures only take up the facial area.</li>
+<li>Running grapples are introduced in this game.</li>
+<li>Wrestler CPU Logic editor available by default, though lacking the first option
+found in WM2000.</li>
+<li>Cage match not available.</li>
+<li>Only game in the series with second-level Special grapples.</li>
+</ul>
+
+<h3>WWF No Mercy</h3>
+<p>The last of AKI's six N64 wrestling games. Porting some content to and from
+No Mercy is slightly harder, due to a number of internal changes made.</p>
+<ul>
+<li>64 wrestler slots available. (A 65th slot is available, but with caveats towards its usage.)</li>
+<li>Wrestler Edit mode ("full-featured") available.</li>
+<li>Primary game save is on Flash. Controller Pak saving is optional, used for custom wrestlers.</li>
+<li>The only game in the series where dropped weapons don't disappear and can be picked up.</li>
+<li>Pre-match introduction sequence still includes Titantron "videos" and streamed theme songs,
+along with the on-stage introduction portion. The in-ring section has been removed, though
+it was included in earlier development versions of the game.</li>
+<li>The only game in the series with post-match celebration scenes (for certain wrestlers).</li>
+<li>Combo fighting style not available.</li>
+<li>Women available as first-class wrestler slots.</li>
+<li>Moveset and Parameters formats are largely unknown. This is somewhat mitigated
+by being able to create a character, then putting them in a match and dumping
+their data.</li>
+<li>Costume and body part models have been modified to make texture mapping easier.
+Porting costume textures from previous games is harder, as a result.</li>
+<li>Text is in ROM, <code>AkiText</code> archives, and some new No Mercy-specific
+text archives. All relevant/visible text is ASCII encoded. Some unused/non-visible
+strings are Shift-JIS.</li>
+<li>Text is 99.9% English; the only Japanese text appears in normally non-visible
+areas.</li>
+<li>Wrestler face textures take up the facial area and some of the adjacent edges of the head.</li>
+<li>Double Team Irish Whip Specials (read: Dudley Death Drop) added.</li>
+<li>Running grapples can now connect when an opponent is in the corner.</li>
+<li>Wrestler CPU Logic editor not available.</li>
+<li>Cage match available.</li>
+<li>Only game in the series to contain Ladder, Guest Referee, and Ironman match types.</li>
+<li>Only game in the series with ground grapple Specials.</li>
+<li>Only game in the series with breakable tables.</li>
+<li>Introduced "Losing It" downed-but-not-TKO'd state.</li>
+</ul>
 
 <hr />
 <h2><a name="CommonDataFormats">Common Data Formats</a></h2>
@@ -751,7 +937,7 @@ end up having a lot of trouble.</p>
 the pre-processing steps (e.g. skin color, costume color, hair color, and so on).
 When you use VPW Studio or do texture changes via ROM hacking, you're not working
 from the final result, you're working from the composite parts that end up making
-the final result. this means you'll have to get your textures and palettes from
+the final result. This means you'll have to get your textures and palettes from
 VPW Studio, then work from there.</p>
 
 <h3><a name="ColorFormat">Color Format</a></h3>
@@ -767,8 +953,8 @@ as palette space is limited.</p>
 transparent. To get a non-transparent black, use RGB 8,8,8.</p>
 
 <h3><a name="CostumeColorChanging">Costume Color Changing</a></h3>
-<p>The ability to change the colors on costumes was first implemented in
-<em>Virtual Pro-Wrestling 64</em>. The developers at AKI decided to use "pure"
+<p>The ability for players to change the colors on costumes was first implemented
+in <em>Virtual Pro-Wrestling 64</em>. The developers at AKI decided to use "pure"
 red, green, and blue colors to signify different color-able parts of the texture.
 By "pure" colors, we mean that the values for other channel components are set
 to 0. All colors that are not related to costume color changing can be set as
@@ -855,6 +1041,75 @@ In a 256-color picture, each byte represents a single color, which is simple
 enough. For 16-color pictures, each byte represents two colors, packing the
 color index into a "nibble". For example, a hex value of <code>23</code>
 would draw two pixels using palette index 2 and 3.</p>
+
+<h3><a name="FontWorkflow">Fonts</a></h3>
+<p>Both the Large and Small font types are 1bpp format. VPW Studio currently
+has no workflow for handling font replacement, but they can be edited using a
+program that understands 1bpp format tiles. <a href="http://www.romhacking.net/utilities/109/">Tile
+Molester</a> is one such program.</p>
+
+<p>While a complete guide to using Tile Molester is out of the scope of this
+manual, the steps required to load and edit font data are as follows:</p>
+<ol>
+<li>Export the Font using the File Table editor. If the File Type has been set
+correctly, this will export a <code>.smallfont</code> or <code>.largefont</code>
+file.</li>
+<li>Open the extracted file in Tile Molester.</li>
+<li>View &rarr; Codec &rarr; 1bpp Planar</li>
+<li>View &rarr; Mode &rarr; 2-Dimensional</li>
+<li>Press the "Decrease Width" button (found on the top toolbar; an arrow pointing
+left into three vertical lines) until you only see one "column" of the font data.</li>
+</ol>
+
+<p>You can start editing at this point, but the default colors are slightly odd,
+so you may want to change them. Double click on each color swatch (between the large
+arrow buttons) to set the color.</p>
+
+<p>Do not edit the line of pixels separating each character. While the purpose of
+this data is currently unknown, it is highly likely related to character rendering
+and/or identification.</p>
+
+<hr />
+<h2><a name="CodeDataPointers">Code, Data, and Pointers</a></h2>
+<p>Having low level knowledge is not 100% required to get use out of VPW Studio,
+but it is helpful to know how things work when making certain types of changes.</p>
+
+<p>Cartridge-based video game consoles from the fourth generation and earlier
+typically execute code from ROM. Games for the fifth generation of consoles
+(Nintendo 64, PlayStation 1, and Saturn) load code into RAM and execute it.
+For the disc-based systems, this was required, as accessing the disc constantly
+is bad for the lifespan of the CD-ROM drive. However, for the cartridge-based
+Nintendo 64, code execution in RAM may seem like an odd choice.</p>
+
+<p>Consoles from the fifth generation are not typically immediately able to
+access anything at any time, as their available memory does not allow for
+the maximum size of their storage medium. For CD-based games, you would need
+at least 650 megabytes of RAM. For the Nintendo 64, you would need around
+64 megabytes of RAM for the largest games. Therefore, games have to
+specifically load what they need when they want to use it.</p>
+
+<p>For AKI's Nintendo 64 games, the game code is generally split up into a
+few sections:</p>
+<ul>
+<li><strong>Global</strong>; code and data that's always loaded.</li>
+<li><strong>"Cutscene"</strong> (e.g. game introduction and ending sequences, wrestler entrances)</li>
+<li><strong>Menus</strong> (sometimes multiple segments)</li>
+<li><strong>Gameplay</strong>; the code and data used during matches.</li>
+</ul>
+<p>As you might expect, the non-Global segments aren't loaded/run at the same time,
+so they're not always in memory. This is why some GameShark codes have "activators"
+to ensure the correct region of memory is loaded.</p>
+
+<p>The game code needs access to data loaded into RAM, but it may not always be
+in a static location. This is where "pointers" come in. A pointer is a value that
+points to a location in memory. Pointers are used for both code and data locations.
+Since code and data needs to be loaded into RAM, ROM locations may not always map
+cleanly to RAM locations. Thus, some care is required when trying to edit pointers,
+especially outside of the Global segment. It is also important to note that pointers
+can be different between different regions and versions/revisions of a game.</p>
+
+<p>Specific information on how each game handles this can be found in the
+<a href="#GameSpecificDocs">Game-Specific Information</a> section.</p>
 
 <hr />
 <h2><a name="Arenas">Arenas</a></h2>
