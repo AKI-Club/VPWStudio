@@ -629,11 +629,9 @@ namespace VPWStudio.Editors
 		{
 			lbBodyTypes.Items.Clear();
 			lbBodyTypes.BeginUpdate();
-			int counter = 1;
-			foreach (BodyTypeDef_Early btdef in BodyTypeDefs)
+			for (int i = 0; i < BodyTypeDefs.Count; i++)
 			{
-				lbBodyTypes.Items.Add(String.Format("Body Type {0:X2}", counter));
-				counter++;
+				lbBodyTypes.Items.Add(String.Format("Body Type {0:X2}", i));
 			}
 			lbBodyTypes.EndUpdate();
 		}
@@ -645,28 +643,27 @@ namespace VPWStudio.Editors
 		{
 			lbCostumes.Items.Clear();
 			lbCostumes.BeginUpdate();
-			int counter = 1;
 			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW64)
 			{
 				// VPW64 special case
+				int counter = 0;
 				int costumeType = 0;
 				foreach (CostumeDef_Early cdef in CostumeDefs)
 				{
-					lbCostumes.Items.Add(String.Format("{0} {1}", CostumeTypes_VPW64[costumeType], counter));
+					lbCostumes.Items.Add(String.Format("{0} {1:X2}", CostumeTypes_VPW64[costumeType], counter));
 					counter++;
 					if (counter > NumCostumes_VPW64[costumeType])
 					{
-						counter = 1;
+						counter = 0;
 						costumeType++;
 					}
 				}
 			}
 			else
 			{
-				foreach (CostumeDef_Early cdef in CostumeDefs)
+				for (int i = 0; i < CostumeDefs.Count; i++)
 				{
-					lbCostumes.Items.Add(String.Format("Costume {0}", counter));
-					counter++;
+					lbCostumes.Items.Add(String.Format("Costume {0:X2}", i));
 				}
 			}
 			lbCostumes.EndUpdate();
@@ -679,11 +676,9 @@ namespace VPWStudio.Editors
 		{
 			lbHeadsMasks.Items.Clear();
 			lbHeadsMasks.BeginUpdate();
-			int counter = 1;
-			foreach (MaskDef_Early mdef in MaskDefs)
+			for (int i = 0; i < MaskDefs.Count; i++)
 			{
-				lbHeadsMasks.Items.Add(String.Format("Mask {0}", counter));
-				counter++;
+				lbHeadsMasks.Items.Add(String.Format("Mask {0:X2}", i));
 			}
 			lbHeadsMasks.EndUpdate();
 		}
