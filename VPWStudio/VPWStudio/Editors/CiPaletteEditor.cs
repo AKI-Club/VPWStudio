@@ -668,23 +668,26 @@ namespace VPWStudio.Editors
 									// import JASC Paint Shop Pro palette
 
 									// ensure this is actually a JASC Paint Shop Pro palette and not a Windows palette
-									using (BinaryReader br = new BinaryReader(fs))
+									BinaryReader br = new BinaryReader(fs);
+									// "why not using()?" if I dispose of the BinaryReader, it'll kill the underlying file stream,
+									// and I *need* that stream for *actually* handling the palette file.
+									byte[] header = br.ReadBytes(4);
+									if (!BitConverter.IsLittleEndian)
 									{
-										byte[] header = br.ReadBytes(4);
-										if (!BitConverter.IsLittleEndian)
-										{
-											Array.Reverse(header);
-										}
-										if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
-										{
-											// not a JASC format .pal file
-											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
-											return;
-										}
+										Array.Reverse(header);
+									}
+									if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
+									{
+										// not a JASC format .pal file
+										Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
+										br.Dispose(); // it's ok to dispose of it here, though.
+										return;
 									}
 
 									ColorList.Clear();
 									ColorList.AddRange(import.Entries);
+
+									fs.Seek(0, SeekOrigin.Begin);
 									using (StreamReader sr = new StreamReader(fs))
 									{
 										if (cbPalettes.SelectedIndex > 0)
@@ -700,6 +703,8 @@ namespace VPWStudio.Editors
 											ColorList.InsertRange(0, import.Entries);
 										}
 									}
+									br.Dispose();
+
 									UpdateCurColorSwatch();
 									UpdatePreview();
 								}
