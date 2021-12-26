@@ -800,25 +800,26 @@ namespace VPWStudio.Editors
 									// import JASC Paint Shop Pro palette
 
 									// ensure this is actually a JASC Paint Shop Pro palette and not a Windows palette
-									using (BinaryReader br = new BinaryReader(fs))
+									// please see the CI4 portion (above) for relevant commentary on why I'm not using "using()" here.
+									BinaryReader br = new BinaryReader(fs);
+									byte[] header = br.ReadBytes(4);
+									if (!BitConverter.IsLittleEndian)
 									{
-										byte[] header = br.ReadBytes(4);
-										if (!BitConverter.IsLittleEndian)
-										{
-											Array.Reverse(header);
-										}
-										if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
-										{
-											// not a JASC format .pal file
-											Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
-											return;
-										}
+										Array.Reverse(header);
+									}
+									if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
+									{
+										// not a JASC format .pal file
+										Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
+										br.Dispose();
+										return;
 									}
 
 									using (StreamReader sr = new StreamReader(fs))
 									{
 										import.ImportJasc(sr);
 									}
+									br.Dispose();
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
