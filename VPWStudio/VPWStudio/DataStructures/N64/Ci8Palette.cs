@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace VPWStudio
 {
@@ -241,6 +242,45 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Check header data for a GIMP palette file.
+		/// </summary>
+		/// <param name="sr"></param>
+		/// <returns></returns>
+		private bool CheckGimpHeader(StreamReader sr)
+		{
+			// check for "GIMP Palette"
+			string palType = sr.ReadLine();
+			if (!palType.Equals("GIMP Palette"))
+			{
+				// not GIMP Palette
+				return false;
+			}
+
+			// "Name: " name
+			string nameLine = sr.ReadLine();
+			if (!nameLine.StartsWith("Name:"))
+			{
+				return false;
+			}
+
+			// "Columns: " number of columns
+			string columnsLine = sr.ReadLine();
+			if (!columnsLine.StartsWith("Columns:"))
+			{
+				return false;
+			}
+
+			// #
+			string separator = sr.ReadLine();
+			if (!separator.Equals("#"))
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		/// <summary>
 		/// Export Ci8Palette as a GIMP palette file.
 		/// </summary>
 		/// <param name="sw"></param>
@@ -256,7 +296,42 @@ namespace VPWStudio
 
 		// todo: export subpal
 
-		// todo: all imports, which are going to be a pain
+		/// <summary>
+		/// Import Ci8Palette data from a GIMP palette file.
+		/// </summary>
+		/// <param name="sr">StreamReader to read Palette data from.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool ImportGimp(StreamReader sr)
+		{
+			if (!CheckGimpHeader(sr))
+			{
+				return false;
+			}
+
+			// color entries
+			// unlike CI4, we want all the colors. hopefully there are 256 of them in this file.
+			int palEntry = 0;
+			while (!sr.EndOfStream)
+			{
+				string colorLine = sr.ReadLine().Trim(new char[] { ' ' });
+
+				// deal with possible color names
+				int tabLoc = colorLine.IndexOf('\t');
+				if (tabLoc > -1)
+				{
+					colorLine = colorLine.Substring(0, tabLoc);
+				}
+
+				// deal with extra spaces
+				colorLine = Regex.Replace(colorLine, @"\s{2,}", " ");
+
+				string[] colorDef = colorLine.Split(' ');
+				Entries[palEntry] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+				palEntry++;
+			}
+
+			return true;
+		}
 		#endregion
 
 		#region Photoshop ACT Palette Import/Export
