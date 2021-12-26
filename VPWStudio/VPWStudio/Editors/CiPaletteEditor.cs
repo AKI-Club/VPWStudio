@@ -660,8 +660,6 @@ namespace VPWStudio.Editors
 											}
 										}
 									}
-									UpdateCurColorSwatch();
-									UpdatePreview();
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".pal")
 								{
@@ -704,9 +702,6 @@ namespace VPWStudio.Editors
 										}
 									}
 									br.Dispose();
-
-									UpdateCurColorSwatch();
-									UpdatePreview();
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
@@ -824,7 +819,16 @@ namespace VPWStudio.Editors
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
 									// import GIMP palette
-									Program.ErrorMessageBox("GIMP CI8 palette import currently not implemented.");
+									ColorList.Clear();
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										if (!import.ImportGimp(sr))
+										{
+											Program.ErrorMessageBox("Unspecified error trying to import GIMP palette.");
+											return;
+										}
+									}
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".act")
 								{
@@ -842,6 +846,7 @@ namespace VPWStudio.Editors
 										import.ReadData(br);
 									}
 								}
+
 								CurPaletteCI8 = import;
 								ColorList.Clear();
 								ColorList.AddRange(import.Entries);
