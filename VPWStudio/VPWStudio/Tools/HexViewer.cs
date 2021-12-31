@@ -112,6 +112,11 @@ namespace VPWStudio
 			{
 				hexBox1.SelectAll();
 			}
+
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
 		}
 	}
 }
