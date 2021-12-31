@@ -32,6 +32,7 @@
 			this.cmsPreview = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.savePNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.foregroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tlpMainContainer = new System.Windows.Forms.TableLayoutPanel();
 			this.pbPreview = new System.Windows.Forms.PictureBox();
 			this.tlpImageControls = new System.Windows.Forms.TableLayoutPanel();
@@ -40,7 +41,6 @@
 			this.labelHeight = new System.Windows.Forms.Label();
 			this.nudWidth = new System.Windows.Forms.NumericUpDown();
 			this.nudHeight = new System.Windows.Forms.NumericUpDown();
-			this.foregroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsPreview.SuspendLayout();
 			this.tlpMainContainer.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
@@ -56,22 +56,29 @@
             this.backgroundColorToolStripMenuItem,
             this.foregroundColorToolStripMenuItem});
 			this.cmsPreview.Name = "cmsPreview";
-			this.cmsPreview.Size = new System.Drawing.Size(181, 92);
+			this.cmsPreview.Size = new System.Drawing.Size(180, 70);
 			// 
 			// savePNGToolStripMenuItem
 			// 
 			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
 			this.savePNGToolStripMenuItem.Text = "Save &PNG...";
 			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
 			// 
 			// backgroundColorToolStripMenuItem
 			// 
 			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
-			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
 			this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
 			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+			// 
+			// foregroundColorToolStripMenuItem
+			// 
+			this.foregroundColorToolStripMenuItem.Name = "foregroundColorToolStripMenuItem";
+			this.foregroundColorToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+			this.foregroundColorToolStripMenuItem.Text = "&Foreground Color...";
+			this.foregroundColorToolStripMenuItem.Click += new System.EventHandler(this.foregroundColorToolStripMenuItem_Click);
 			// 
 			// tlpMainContainer
 			// 
@@ -204,13 +211,6 @@
             0});
 			this.nudHeight.Enter += new System.EventHandler(this.nudHeight_Enter);
 			// 
-			// foregroundColorToolStripMenuItem
-			// 
-			this.foregroundColorToolStripMenuItem.Name = "foregroundColorToolStripMenuItem";
-			this.foregroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.foregroundColorToolStripMenuItem.Text = "&Foreground Color...";
-			this.foregroundColorToolStripMenuItem.Click += new System.EventHandler(this.foregroundColorToolStripMenuItem_Click);
-			// 
 			// ITexturePreviewDialog
 			// 
 			this.AcceptButton = this.buttonRedraw;
@@ -219,6 +219,7 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(314, 218);
 			this.Controls.Add(this.tlpMainContainer);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(1024, 768);
 			this.MinimizeBox = false;
