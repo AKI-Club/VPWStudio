@@ -808,5 +808,13 @@ namespace VPWStudio.Editors
 				CurFont.ToBitmap().Save(sfd.FileName);
 			}
 		}
+
+		private void FontDialog_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
