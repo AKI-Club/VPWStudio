@@ -138,11 +138,11 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("+0C: Defensive Param. {0:X2} ({1})", mde.Data[12], Enum.GetName(typeof(DamageParamBodyTypes), mde.Data[12])));
 			sb.AppendLine(String.Format("+0D: Attack With {0:X2}", mde.Data[13]));
 			// A4AEE
-			sb.AppendLine(String.Format("+0E: {0:X2}", mde.Data[14]));
-			sb.AppendLine(String.Format("+0F: {0:X2}", mde.Data[15]));
+			sb.AppendLine(String.Format("+0E: (more body part target) {0:X2}", mde.Data[14]));
+			sb.AppendLine(String.Format("+0F: (more body part target) {0:X2}", mde.Data[15]));
 			// A4AF0(Attack to /)
 			sb.AppendLine(String.Format("+10: Attack To {0:X2}", mde.Data[16]));
-			sb.AppendLine(String.Format("+11: {0:X2}", mde.Data[17]));
+			sb.AppendLine(String.Format("+11: Strike Reaction 1? {0:X2}", mde.Data[17]));
 			// A4AF2(Head Damage / Body Damage)
 			sb.AppendLine(String.Format("+12: Head Damage {0:X2}", mde.Data[18]));
 			sb.AppendLine(String.Format("+13: Body Damage {0:X2}", mde.Data[19]));
@@ -151,9 +151,9 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("+15: Leg Damage {0:X2}", mde.Data[21]));
 			// A4AF6(Speed Damage / Sell)
 			sb.AppendLine(String.Format("+16: Speed/Flying Damage {0:X2}", mde.Data[22]));
-			sb.AppendLine(String.Format("+17: Strike Reaction {0:X2}", mde.Data[23]));
+			sb.AppendLine(String.Format("+17: Strike Reaction 2? {0:X2}", mde.Data[23]));
 			// A4AF8
-			sb.AppendLine(String.Format("+18: {0:X2}", mde.Data[24]));
+			sb.AppendLine(String.Format("+18: Missed Attack Spirit Drain {0:X2}", mde.Data[24]));
 			sb.AppendLine(String.Format("+19: {0:X2}", mde.Data[25]));
 			// A4AFA / ?
 			sb.AppendLine(String.Format("+1A: {0:X2}", mde.Data[26]));
