@@ -52,13 +52,13 @@
 			this.cmsMenuBG.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportPNGToolStripMenuItem});
 			this.cmsMenuBG.Name = "cmsMenuBG";
-			this.cmsMenuBG.Size = new System.Drawing.Size(142, 26);
+			this.cmsMenuBG.Size = new System.Drawing.Size(145, 26);
 			// 
 			// exportPNGToolStripMenuItem
 			// 
 			this.exportPNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.exportPNGToolStripMenuItem.Name = "exportPNGToolStripMenuItem";
-			this.exportPNGToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.exportPNGToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.exportPNGToolStripMenuItem.Text = "&Export PNG...";
 			this.exportPNGToolStripMenuItem.Click += new System.EventHandler(this.exportPNGToolStripMenuItem_Click);
 			// 
@@ -69,6 +69,7 @@
 			this.ClientSize = new System.Drawing.Size(344, 264);
 			this.Controls.Add(this.pbMenuBG);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FileTable_MenuBackgoundPreviewDialog";
