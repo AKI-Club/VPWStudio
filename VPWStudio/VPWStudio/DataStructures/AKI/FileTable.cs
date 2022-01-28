@@ -985,8 +985,7 @@ namespace VPWStudio
 
 			// "offset,size,name,compressed,extract"
 
-			string curDirectory = "";
-			string curFilename = "";
+			string curDirectory;
 			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
 			{
 				switch (fte.Value.FileType)
@@ -1031,7 +1030,7 @@ namespace VPWStudio
 						break;
 				}
 
-				curFilename = string.Format("assets/{0}{1:X4}{2}", curDirectory, fte.Key, FileTypeInfo.DefaultFileTypeExtensions[fte.Value.FileType]);
+				string curFilename = string.Format("assets/{0}{1:X4}{2}", curDirectory, fte.Key, FileTypeInfo.DefaultFileTypeExtensions[fte.Value.FileType]);
 
 				sw.WriteLine(string.Format(
 					"{0},{1},{2},{3},{4}",
