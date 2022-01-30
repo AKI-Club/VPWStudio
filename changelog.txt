@@ -2,9 +2,33 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 19 (202x/yy/zz)
+Pre-Alpha Preview 20 (202x/yy/zz)
 ---------------------------------
-I'm working on it, but now I have some friends who might help?
+Currently being worked on...
+
+Pre-Alpha Preview 19 (2022/01/29)
+---------------------------------
+* [Costumes Viewer] All lists now start counting from 0 and use hex instead of decimal.
+  This change is mainly for consistency with the Costumes tab, which showed
+  a different value than expected for the Body Type.
+
+* [CI Palette Editor] Fix issue with importing JASC Paint Shop Pro palettes that
+  was introduced when adding the .pal format sanity check.
+
+* [Hex Viewer] Add Escape button shortcut for closing the Hex Viewer.
+
+* [Font Viewer] Add Escape button shortcut for closing the form.
+
+* [I4Texture Viewer, MenuBackground Preview] Fix Escape button not closing the form.
+  (Unlike the others, the functionality was already coded, but the forms
+  themselves were missing the necessary property to make it work.)
+
+* [Select Font Characters Dialog] Add Enter/Escape keyboard shortcuts.
+
+* [FileTableDB] Various updates to WrestleMania 2000 and World Tour FileTableDBs.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 18 (2021/11/28)
 ---------------------------------
