@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VPW Studio")]
 [assembly: AssemblyDescription("Virtual Pro-Wrestling game series hacking tool.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("freemco")]
+[assembly: AssemblyCompany("freemco, AKI Club")]
 [assembly: AssemblyProduct("VPW Studio")]
-[assembly: AssemblyCopyright("Copyright © freem 2018-2021")]
+[assembly: AssemblyCopyright("Copyright © freem 2018-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.0.18")]
-[assembly: AssemblyFileVersion("0.0.0.18")]
+[assembly: AssemblyVersion("0.0.0.19")]
+[assembly: AssemblyFileVersion("0.0.0.19")]
