@@ -249,8 +249,13 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3FBE4, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x408BC, 136) },
-					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 72) },
+					{ "StoryModeSinglesParticipants", new DefaultLocationDataEntry(0xDB43C, 160) },
+					{ "StoryModeSingleGroups", new DefaultLocationDataEntry(0xDB4DC, 8) },
+					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 74) },
+					{ "StoryModeTeamGroups", new DefaultLocationDataEntry(0xDB538, 6) },
 					{ "DefaultChampions", new DefaultLocationDataEntry(0xDB544, 5) },
+					// StoryModeSchedule
+					// StoryModeBookingInstructions
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7C710, 4360) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
