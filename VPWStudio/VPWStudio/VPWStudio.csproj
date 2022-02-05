@@ -432,6 +432,7 @@
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
+    <Compile Include="GameSpecific\StoryModeSingle_Modern.cs" />
     <Compile Include="GameSpecific\StoryModeTeam_Modern.cs" />
     <Compile Include="GameSpecific\TitantronFrame.cs" />
     <Compile Include="GameSpecific\TitantronSequence.cs" />
