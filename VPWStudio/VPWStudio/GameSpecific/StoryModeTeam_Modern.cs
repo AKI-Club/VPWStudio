@@ -23,9 +23,9 @@ namespace VPWStudio.GameSpecific
 		public byte WrestlerID2_2;
 
 		/// <summary>
-		/// Value with currently unknown purpose.
+		/// Percentage chance for title shots.
 		/// </summary>
-		public UInt16 Unknown;
+		public UInt16 TitleShotPercent;
 		#endregion
 
 		#region Constructors
@@ -36,7 +36,7 @@ namespace VPWStudio.GameSpecific
 		{
 			WrestlerID2_1 = 0;
 			WrestlerID2_2 = 0;
-			Unknown = 0;
+			TitleShotPercent = 0;
 		}
 
 		/// <summary>
@@ -44,12 +44,12 @@ namespace VPWStudio.GameSpecific
 		/// </summary>
 		/// <param name="_wrestler1">Wrestler 1</param>
 		/// <param name="_wrestler2">Wrestler 2</param>
-		/// <param name="_unk">Unknown</param>
-		public StoryModeTeam_Modern(byte _wrestler1, byte _wrestler2, UInt16 _unk)
+		/// <param name="_chance">Title Shot Chance</param>
+		public StoryModeTeam_Modern(byte _wrestler1, byte _wrestler2, UInt16 _chance)
 		{
 			WrestlerID2_1 = _wrestler1;
 			WrestlerID2_2 = _wrestler2;
-			Unknown = _unk;
+			TitleShotPercent = _chance;
 		}
 
 		/// <summary>
@@ -72,12 +72,12 @@ namespace VPWStudio.GameSpecific
 			WrestlerID2_1 = br.ReadByte();
 			WrestlerID2_2 = br.ReadByte();
 
-			byte[] unk = br.ReadBytes(2);
+			byte[] titleShot = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
 			{
-				Array.Reverse(unk);
+				Array.Reverse(titleShot);
 			}
-			Unknown = BitConverter.ToUInt16(unk, 0);
+			TitleShotPercent = BitConverter.ToUInt16(titleShot, 0);
 		}
 
 		/// <summary>
@@ -89,12 +89,12 @@ namespace VPWStudio.GameSpecific
 			bw.Write(WrestlerID2_1);
 			bw.Write(WrestlerID2_2);
 
-			byte[] unk = BitConverter.GetBytes(Unknown);
+			byte[] titleShot = BitConverter.GetBytes(TitleShotPercent);
 			if (BitConverter.IsLittleEndian)
 			{
-				Array.Reverse(unk);
+				Array.Reverse(titleShot);
 			}
-			bw.Write(unk);
+			bw.Write(titleShot);
 		}
 		#endregion
 	}
