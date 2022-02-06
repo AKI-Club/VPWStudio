@@ -13,6 +13,7 @@ namespace VPWStudio.Editors.VPW2
 {
 	public partial class StoryMode_VPW2 : Form
 	{
+		#region Participant Members
 		/// <summary>
 		/// Story Mode singles participants
 		/// </summary>
@@ -26,7 +27,7 @@ namespace VPWStudio.Editors.VPW2
 		/// <summary>
 		/// Story Mode teams
 		/// </summary>
-		public List<StoryModeTeam_Modern> StoryTeams = new List<StoryModeTeam_Modern>();
+		public List<StoryModeTeamEntry> StoryTeams = new List<StoryModeTeamEntry>();
 
 		// todo: story mode tag tier groupings (two bytes per entry; 3 entries)
 		public byte[] StoryTagTierGroupings = new byte[6];
@@ -37,8 +38,19 @@ namespace VPWStudio.Editors.VPW2
 		/// Default Champions
 		/// </summary>
 		public byte[] DefaultChampions = new byte[5];
+		#endregion
 
+		#region Event Schedule
+		public List<GameSpecific.VPW2.StoryModeEvent> EventSchedule = new List<GameSpecific.VPW2.StoryModeEvent>();
+		#endregion
+
+		/// <summary>
+		/// Default wrestler names.
+		/// </summary>
 		private AkiText DefaultNames;
+
+		// file ID 0x000C
+		// private AkiText 
 
 		public StoryMode_VPW2()
 		{
@@ -73,6 +85,7 @@ namespace VPWStudio.Editors.VPW2
 			LoadSingles(romReader);
 			LoadTeams(romReader);
 			LoadChampions(romReader);
+			LoadEvents(romReader);
 
 			romReader.Close();
 		}
@@ -163,7 +176,7 @@ namespace VPWStudio.Editors.VPW2
 			// xxx: hardcoded amount of teams
 			for (int i = 0; i < 18; i++)
 			{
-				StoryTeams.Add(new StoryModeTeam_Modern(romReader));
+				StoryTeams.Add(new StoryModeTeamEntry(romReader));
 				lbTeams.Items.Add(String.Format("Team {0}", i));
 			}
 			lbTeams.EndUpdate();
@@ -229,6 +242,58 @@ namespace VPWStudio.Editors.VPW2
 			tbAsiaTag2.Text = String.Format("0x{0:X2} {1}", DefaultChampions[4], DefaultNames.Entries[DefaultChampions[4] * 2].Text);
 		}
 
+		private void LoadEvents(BinaryReader romReader)
+		{
+			bool hasEventLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry eventEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StoryModeSchedule"]);
+				if (eventEntry != null)
+				{
+					romReader.BaseStream.Seek(eventEntry.Address, SeekOrigin.Begin);
+					hasEventLocation = true;
+				}
+			}
+			if (!hasEventLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Story Mode Event Schedule location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StoryModeSchedule"].Offset, SeekOrigin.Begin);
+			}
+
+			// 45 entries (Z64 0x6AED0)
+			// xxx: hardcoded length
+			cbEvents.BeginUpdate();
+			for (int i = 0; i < 45; i++)
+			{
+				EventSchedule.Add(new GameSpecific.VPW2.StoryModeEvent(romReader));
+				cbEvents.Items.Add(string.Format("Event {0}{1}", i, i==0 ? " do not edit":string.Empty));
+			}
+			cbEvents.EndUpdate();
+		}
+
+		private void LoadBookingInstructions(BinaryReader romReader)
+		{
+			bool hasBookingInstructionLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry biEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["StoryModeBookingInstructions"]);
+				if (biEntry != null)
+				{
+					romReader.BaseStream.Seek(biEntry.Address, SeekOrigin.Begin);
+					hasBookingInstructionLocation = true;
+				}
+			}
+			if (!hasBookingInstructionLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Story Mode Booking Instructions location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StoryModeBookingInstructions"].Offset, SeekOrigin.Begin);
+			}
+
+			// 24 sets of booking instructions, 20 bytes per set (Z64 0xDB5A0)
+		}
+
 		private void btnOK_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
@@ -263,7 +328,7 @@ namespace VPWStudio.Editors.VPW2
 		#region Teams
 		private void UpdateTeamValues()
 		{
-			StoryModeTeam_Modern curTeam = StoryTeams[lbTeams.SelectedIndex];
+			StoryModeTeamEntry curTeam = StoryTeams[lbTeams.SelectedIndex];
 			tbTeamWrestler1.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_1, DefaultNames.Entries[curTeam.WrestlerID2_1 * 2].Text);
 			tbTeamWrestler2.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_2, DefaultNames.Entries[curTeam.WrestlerID2_2 * 2].Text);
 			tbTeamTitleShotPercent.Text = String.Format("{0}", curTeam.TitleShotPercent);
@@ -277,15 +342,56 @@ namespace VPWStudio.Editors.VPW2
 			}
 			UpdateTeamValues();
 		}
+
+
+
+
+
 		#endregion
 
 		#region Default Champions
 		#endregion
 
+		#region Event Schedule
+		private void UpdateEventValues()
+		{
+			GameSpecific.VPW2.StoryModeEvent eventData = EventSchedule[cbEvents.SelectedIndex];
+			tbBulletinBoardMessage.Text = string.Format("{0}", eventData.BulletinBoardMessage);
+			cbPromotionRelegation.Checked = eventData.HandlePromotionRelegation;
+			cbShowTourScene.Checked = eventData.ShowTourOpeningScene;
+			cbQualifyingRequirement.Checked = eventData.HasQualifyingRequirement;
+			tbEventLocation.Text = string.Format("{0}", eventData.EventLocation);
+			tbArenaType.Text = string.Format("{0}", eventData.ArenaType);
+			tbPlayerParticipation.Text = string.Format("{0}", eventData.PlayerParticipation);
+			tbShowNumber.Text = string.Format("{0}", eventData.ShowNumber);
+			tbBookingInstructions.Text = string.Format("{0}", eventData.BookingInstructions);
+			tbEventName.Text = string.Format("{0}", eventData.EventName);
+			tbMonthNumber.Text = string.Format("{0}", eventData.MonthNumber);
+		}
 
+		private void cbEvents_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbEvents.SelectedIndex < 0)
+			{
+				return;
+			}
+			UpdateEventValues();
+		}
+		#endregion
 
-	
+		#region Booking Instructions
+		private void UpdateBookingValues()
+		{
 
-		
+		}
+
+		private void cbBookingInstructions_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbBookingInstructions.SelectedIndex < 0)
+			{
+				return;
+			}
+		}
+		#endregion
 	}
 }

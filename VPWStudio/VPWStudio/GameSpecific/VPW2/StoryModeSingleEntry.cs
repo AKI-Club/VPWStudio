@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace VPWStudio.GameSpecific
+namespace VPWStudio.GameSpecific.VPW2
 {
 	/// <summary>
-	/// Story Mode Team used in WrestleMania 2000 and Virtual Pro-Wrestling 2.
+	/// Story Mode Singles Participant used in Virtual Pro-Wrestling 2.
 	/// </summary>
-	public class StoryModeTeam_Modern
+	public class StoryModeSingleEntry
 	{
 		#region Members
 		/// <summary>
-		/// First wrestler on team.
+		/// Wrestler ID2 value for this slot.
 		/// </summary>
-		public byte WrestlerID2_1;
+		public byte WrestlerID2;
 
 		/// <summary>
-		/// Second wrestler on team.
+		/// Wrestler skill level. Valid values are 0-4.
 		/// </summary>
-		public byte WrestlerID2_2;
+		public byte SkillLevel;
 
 		/// <summary>
 		/// Percentage chance for title shots.
@@ -28,27 +27,26 @@ namespace VPWStudio.GameSpecific
 		public UInt16 TitleShotPercent;
 		#endregion
 
-		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public StoryModeTeam_Modern()
+		public StoryModeSingleEntry()
 		{
-			WrestlerID2_1 = 0;
-			WrestlerID2_2 = 0;
+			WrestlerID2 = 0;
+			SkillLevel = 0;
 			TitleShotPercent = 0;
 		}
 
 		/// <summary>
 		/// Specific constructor.
 		/// </summary>
-		/// <param name="_wrestler1">Wrestler 1</param>
-		/// <param name="_wrestler2">Wrestler 2</param>
+		/// <param name="_id2">Wrestler ID2</param>
+		/// <param name="_skill">Skill Level</param>
 		/// <param name="_chance">Title Shot Chance</param>
-		public StoryModeTeam_Modern(byte _wrestler1, byte _wrestler2, UInt16 _chance)
+		public StoryModeSingleEntry(byte _id2, byte _skill, UInt16 _chance)
 		{
-			WrestlerID2_1 = _wrestler1;
-			WrestlerID2_2 = _wrestler2;
+			WrestlerID2 = _id2;
+			SkillLevel = _skill;
 			TitleShotPercent = _chance;
 		}
 
@@ -56,21 +54,20 @@ namespace VPWStudio.GameSpecific
 		/// Constructor using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public StoryModeTeam_Modern(BinaryReader br)
+		public StoryModeSingleEntry(BinaryReader br)
 		{
 			ReadData(br);
 		}
-		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
-		/// Read StoryModeTeam_Modern data using a BinaryReader.
+		/// Read StoryModeSingle_Modern data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
-			WrestlerID2_1 = br.ReadByte();
-			WrestlerID2_2 = br.ReadByte();
+			WrestlerID2 = br.ReadByte();
+			SkillLevel = br.ReadByte();
 
 			byte[] titleShot = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
@@ -81,13 +78,13 @@ namespace VPWStudio.GameSpecific
 		}
 
 		/// <summary>
-		/// Write StoryModeTeam_Modern data using a BinaryWriter.
+		/// Write StoryModeSingle_Modern data using a BinaryReader.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>
 		public void WriteData(BinaryWriter bw)
 		{
-			bw.Write(WrestlerID2_1);
-			bw.Write(WrestlerID2_2);
+			bw.Write(WrestlerID2);
+			bw.Write(SkillLevel);
 
 			byte[] titleShot = BitConverter.GetBytes(TitleShotPercent);
 			if (BitConverter.IsLittleEndian)
