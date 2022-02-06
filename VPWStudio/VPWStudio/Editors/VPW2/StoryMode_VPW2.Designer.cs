@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabCtrlParticipants = new System.Windows.Forms.TabControl();
 			this.tpSinglesParticipants = new System.Windows.Forms.TabPage();
 			this.tlpSingleParticipant = new System.Windows.Forms.TableLayoutPanel();
 			this.lblSinglesWrestler = new System.Windows.Forms.Label();
@@ -90,13 +90,9 @@
 			this.tbWorldTag1 = new System.Windows.Forms.TextBox();
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
-			this.tabControl2 = new System.Windows.Forms.TabControl();
+			this.tabCtrlMain = new System.Windows.Forms.TabControl();
 			this.tpParticipants = new System.Windows.Forms.TabPage();
 			this.tpEvents = new System.Windows.Forms.TabPage();
-			this.tpBookingInstructions = new System.Windows.Forms.TabPage();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.lblEvent = new System.Windows.Forms.Label();
-			this.cbEvents = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.lblBulletinBoardMessage = new System.Windows.Forms.Label();
 			this.lblPromotionRelegation = new System.Windows.Forms.Label();
@@ -120,9 +116,11 @@
 			this.cbPromotionRelegation = new System.Windows.Forms.CheckBox();
 			this.cbShowTourScene = new System.Windows.Forms.CheckBox();
 			this.cbQualifyingRequirement = new System.Windows.Forms.CheckBox();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblEvent = new System.Windows.Forms.Label();
+			this.cbEvents = new System.Windows.Forms.ComboBox();
+			this.tpBookingInstructions = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.lblInstructionSet = new System.Windows.Forms.Label();
 			this.lblMatch1 = new System.Windows.Forms.Label();
 			this.lblMatch2 = new System.Windows.Forms.Label();
 			this.lblMatch3 = new System.Windows.Forms.Label();
@@ -133,7 +131,6 @@
 			this.lblMatch8 = new System.Windows.Forms.Label();
 			this.lblMatch9 = new System.Windows.Forms.Label();
 			this.lblMatch10 = new System.Windows.Forms.Label();
-			this.cbBookingInstructions = new System.Windows.Forms.ComboBox();
 			this.tbMatch1 = new System.Windows.Forms.TextBox();
 			this.tbMatch2 = new System.Windows.Forms.TextBox();
 			this.tbMatch3 = new System.Windows.Forms.TextBox();
@@ -144,7 +141,12 @@
 			this.tbMatch8 = new System.Windows.Forms.TextBox();
 			this.tbMatch9 = new System.Windows.Forms.TextBox();
 			this.tbMatch10 = new System.Windows.Forms.TextBox();
-			this.tabControl1.SuspendLayout();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblInstructionSet = new System.Windows.Forms.Label();
+			this.cbBookingInstructions = new System.Windows.Forms.ComboBox();
+			this.tlpEventBooking = new System.Windows.Forms.TableLayoutPanel();
+			this.btnViewBooking = new System.Windows.Forms.Button();
+			this.tabCtrlParticipants.SuspendLayout();
 			this.tpSinglesParticipants.SuspendLayout();
 			this.tlpSingleParticipant.SuspendLayout();
 			this.tpSinglesGroupings.SuspendLayout();
@@ -157,29 +159,30 @@
 			this.tlpChampions.SuspendLayout();
 			this.tlpAsiaTag.SuspendLayout();
 			this.tlpWorldTag.SuspendLayout();
-			this.tabControl2.SuspendLayout();
+			this.tabCtrlMain.SuspendLayout();
 			this.tpParticipants.SuspendLayout();
 			this.tpEvents.SuspendLayout();
-			this.tpBookingInstructions.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
-			this.tableLayoutPanel3.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.tpBookingInstructions.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
+			this.tableLayoutPanel3.SuspendLayout();
+			this.tlpEventBooking.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// tabControl1
+			// tabCtrlParticipants
 			// 
-			this.tabControl1.Controls.Add(this.tpSinglesParticipants);
-			this.tabControl1.Controls.Add(this.tpSinglesGroupings);
-			this.tabControl1.Controls.Add(this.tpTeams);
-			this.tabControl1.Controls.Add(this.tpTeamGroupings);
-			this.tabControl1.Controls.Add(this.tpChamps);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(3, 3);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(586, 383);
-			this.tabControl1.TabIndex = 0;
+			this.tabCtrlParticipants.Controls.Add(this.tpSinglesParticipants);
+			this.tabCtrlParticipants.Controls.Add(this.tpSinglesGroupings);
+			this.tabCtrlParticipants.Controls.Add(this.tpTeams);
+			this.tabCtrlParticipants.Controls.Add(this.tpTeamGroupings);
+			this.tabCtrlParticipants.Controls.Add(this.tpChamps);
+			this.tabCtrlParticipants.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabCtrlParticipants.Location = new System.Drawing.Point(3, 3);
+			this.tabCtrlParticipants.Name = "tabCtrlParticipants";
+			this.tabCtrlParticipants.SelectedIndex = 0;
+			this.tabCtrlParticipants.Size = new System.Drawing.Size(586, 403);
+			this.tabCtrlParticipants.TabIndex = 1;
 			// 
 			// tpSinglesParticipants
 			// 
@@ -187,7 +190,7 @@
 			this.tpSinglesParticipants.Controls.Add(this.lbSinglesParticipants);
 			this.tpSinglesParticipants.Location = new System.Drawing.Point(4, 22);
 			this.tpSinglesParticipants.Name = "tpSinglesParticipants";
-			this.tpSinglesParticipants.Size = new System.Drawing.Size(578, 357);
+			this.tpSinglesParticipants.Size = new System.Drawing.Size(578, 377);
 			this.tpSinglesParticipants.TabIndex = 2;
 			this.tpSinglesParticipants.Text = "Singles Participants";
 			this.tpSinglesParticipants.UseVisualStyleBackColor = true;
@@ -477,13 +480,13 @@
 			this.tlpTeams.Controls.Add(this.tbTeamWrestler1, 1, 0);
 			this.tlpTeams.Controls.Add(this.tbTeamWrestler2, 1, 1);
 			this.tlpTeams.Controls.Add(this.tbTeamTitleShotPercent, 1, 2);
-			this.tlpTeams.Location = new System.Drawing.Point(108, 6);
+			this.tlpTeams.Location = new System.Drawing.Point(152, 6);
 			this.tlpTeams.Name = "tlpTeams";
 			this.tlpTeams.RowCount = 3;
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tlpTeams.Size = new System.Drawing.Size(464, 342);
+			this.tlpTeams.Size = new System.Drawing.Size(420, 342);
 			this.tlpTeams.TabIndex = 1;
 			// 
 			// labelTeamWrestler1
@@ -492,7 +495,7 @@
 			this.labelTeamWrestler1.AutoSize = true;
 			this.labelTeamWrestler1.Location = new System.Drawing.Point(3, 50);
 			this.labelTeamWrestler1.Name = "labelTeamWrestler1";
-			this.labelTeamWrestler1.Size = new System.Drawing.Size(133, 13);
+			this.labelTeamWrestler1.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamWrestler1.TabIndex = 0;
 			this.labelTeamWrestler1.Text = "Wrestler 1";
 			// 
@@ -502,7 +505,7 @@
 			this.labelTeamWrestler2.AutoSize = true;
 			this.labelTeamWrestler2.Location = new System.Drawing.Point(3, 164);
 			this.labelTeamWrestler2.Name = "labelTeamWrestler2";
-			this.labelTeamWrestler2.Size = new System.Drawing.Size(133, 13);
+			this.labelTeamWrestler2.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamWrestler2.TabIndex = 1;
 			this.labelTeamWrestler2.Text = "Wrestler 2";
 			// 
@@ -512,35 +515,35 @@
 			this.labelTeamTitleShotPercent.AutoSize = true;
 			this.labelTeamTitleShotPercent.Location = new System.Drawing.Point(3, 278);
 			this.labelTeamTitleShotPercent.Name = "labelTeamTitleShotPercent";
-			this.labelTeamTitleShotPercent.Size = new System.Drawing.Size(133, 13);
+			this.labelTeamTitleShotPercent.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamTitleShotPercent.TabIndex = 2;
 			this.labelTeamTitleShotPercent.Text = "Title Shot Percent";
 			// 
 			// tbTeamWrestler1
 			// 
 			this.tbTeamWrestler1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamWrestler1.Location = new System.Drawing.Point(142, 47);
+			this.tbTeamWrestler1.Location = new System.Drawing.Point(129, 47);
 			this.tbTeamWrestler1.Name = "tbTeamWrestler1";
 			this.tbTeamWrestler1.ReadOnly = true;
-			this.tbTeamWrestler1.Size = new System.Drawing.Size(319, 20);
+			this.tbTeamWrestler1.Size = new System.Drawing.Size(288, 20);
 			this.tbTeamWrestler1.TabIndex = 3;
 			// 
 			// tbTeamWrestler2
 			// 
 			this.tbTeamWrestler2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamWrestler2.Location = new System.Drawing.Point(142, 161);
+			this.tbTeamWrestler2.Location = new System.Drawing.Point(129, 161);
 			this.tbTeamWrestler2.Name = "tbTeamWrestler2";
 			this.tbTeamWrestler2.ReadOnly = true;
-			this.tbTeamWrestler2.Size = new System.Drawing.Size(319, 20);
+			this.tbTeamWrestler2.Size = new System.Drawing.Size(288, 20);
 			this.tbTeamWrestler2.TabIndex = 4;
 			// 
 			// tbTeamTitleShotPercent
 			// 
 			this.tbTeamTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(142, 275);
+			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(129, 275);
 			this.tbTeamTitleShotPercent.Name = "tbTeamTitleShotPercent";
 			this.tbTeamTitleShotPercent.ReadOnly = true;
-			this.tbTeamTitleShotPercent.Size = new System.Drawing.Size(319, 20);
+			this.tbTeamTitleShotPercent.Size = new System.Drawing.Size(288, 20);
 			this.tbTeamTitleShotPercent.TabIndex = 5;
 			// 
 			// lbTeams
@@ -548,7 +551,7 @@
 			this.lbTeams.FormattingEnabled = true;
 			this.lbTeams.Location = new System.Drawing.Point(6, 6);
 			this.lbTeams.Name = "lbTeams";
-			this.lbTeams.Size = new System.Drawing.Size(96, 342);
+			this.lbTeams.Size = new System.Drawing.Size(140, 342);
 			this.lbTeams.TabIndex = 0;
 			this.lbTeams.SelectedIndexChanged += new System.EventHandler(this.lbTeams_SelectedIndexChanged);
 			// 
@@ -836,7 +839,7 @@
 			// btnOK
 			// 
 			this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnOK.Location = new System.Drawing.Point(456, 438);
+			this.btnOK.Location = new System.Drawing.Point(456, 458);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(75, 23);
 			this.btnOK.TabIndex = 1;
@@ -847,7 +850,8 @@
 			// btnCancel
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCancel.Location = new System.Drawing.Point(537, 438);
+			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnCancel.Location = new System.Drawing.Point(537, 458);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 2;
@@ -855,24 +859,24 @@
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
-			// tabControl2
+			// tabCtrlMain
 			// 
-			this.tabControl2.Controls.Add(this.tpParticipants);
-			this.tabControl2.Controls.Add(this.tpEvents);
-			this.tabControl2.Controls.Add(this.tpBookingInstructions);
-			this.tabControl2.Location = new System.Drawing.Point(12, 17);
-			this.tabControl2.Name = "tabControl2";
-			this.tabControl2.SelectedIndex = 0;
-			this.tabControl2.Size = new System.Drawing.Size(600, 415);
-			this.tabControl2.TabIndex = 3;
+			this.tabCtrlMain.Controls.Add(this.tpParticipants);
+			this.tabCtrlMain.Controls.Add(this.tpEvents);
+			this.tabCtrlMain.Controls.Add(this.tpBookingInstructions);
+			this.tabCtrlMain.Location = new System.Drawing.Point(12, 17);
+			this.tabCtrlMain.Name = "tabCtrlMain";
+			this.tabCtrlMain.SelectedIndex = 0;
+			this.tabCtrlMain.Size = new System.Drawing.Size(600, 435);
+			this.tabCtrlMain.TabIndex = 0;
 			// 
 			// tpParticipants
 			// 
-			this.tpParticipants.Controls.Add(this.tabControl1);
+			this.tpParticipants.Controls.Add(this.tabCtrlParticipants);
 			this.tpParticipants.Location = new System.Drawing.Point(4, 22);
 			this.tpParticipants.Name = "tpParticipants";
 			this.tpParticipants.Padding = new System.Windows.Forms.Padding(3);
-			this.tpParticipants.Size = new System.Drawing.Size(592, 389);
+			this.tpParticipants.Size = new System.Drawing.Size(592, 409);
 			this.tpParticipants.TabIndex = 0;
 			this.tpParticipants.Text = "Participants";
 			this.tpParticipants.UseVisualStyleBackColor = true;
@@ -884,21 +888,275 @@
 			this.tpEvents.Location = new System.Drawing.Point(4, 22);
 			this.tpEvents.Name = "tpEvents";
 			this.tpEvents.Padding = new System.Windows.Forms.Padding(3);
-			this.tpEvents.Size = new System.Drawing.Size(592, 389);
+			this.tpEvents.Size = new System.Drawing.Size(592, 409);
 			this.tpEvents.TabIndex = 1;
 			this.tpEvents.Text = "Event Schedule";
 			this.tpEvents.UseVisualStyleBackColor = true;
 			// 
-			// tpBookingInstructions
+			// tableLayoutPanel2
 			// 
-			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel4);
-			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel3);
-			this.tpBookingInstructions.Location = new System.Drawing.Point(4, 22);
-			this.tpBookingInstructions.Name = "tpBookingInstructions";
-			this.tpBookingInstructions.Size = new System.Drawing.Size(592, 389);
-			this.tpBookingInstructions.TabIndex = 2;
-			this.tpBookingInstructions.Text = "Booking Instructions";
-			this.tpBookingInstructions.UseVisualStyleBackColor = true;
+			this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tableLayoutPanel2.Controls.Add(this.lblBulletinBoardMessage, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.lblPromotionRelegation, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lblTourOpening, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.lblQualifyingRequirement, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.lblEventLocation, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.lblArenaType, 0, 5);
+			this.tableLayoutPanel2.Controls.Add(this.lblPlayerParticipation, 0, 6);
+			this.tableLayoutPanel2.Controls.Add(this.lblShowNumber, 0, 7);
+			this.tableLayoutPanel2.Controls.Add(this.lblBookingInstructions, 0, 8);
+			this.tableLayoutPanel2.Controls.Add(this.lblEventName, 0, 9);
+			this.tableLayoutPanel2.Controls.Add(this.lblMonthNumber, 0, 10);
+			this.tableLayoutPanel2.Controls.Add(this.tbBulletinBoardMessage, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.tbEventLocation, 1, 4);
+			this.tableLayoutPanel2.Controls.Add(this.tbArenaType, 1, 5);
+			this.tableLayoutPanel2.Controls.Add(this.tbPlayerParticipation, 1, 6);
+			this.tableLayoutPanel2.Controls.Add(this.tbShowNumber, 1, 7);
+			this.tableLayoutPanel2.Controls.Add(this.tbEventName, 1, 9);
+			this.tableLayoutPanel2.Controls.Add(this.tbMonthNumber, 1, 10);
+			this.tableLayoutPanel2.Controls.Add(this.cbPromotionRelegation, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.cbShowTourScene, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.cbQualifyingRequirement, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.tlpEventBooking, 1, 8);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 41);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 11;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(580, 362);
+			this.tableLayoutPanel2.TabIndex = 1;
+			// 
+			// lblBulletinBoardMessage
+			// 
+			this.lblBulletinBoardMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblBulletinBoardMessage.AutoSize = true;
+			this.lblBulletinBoardMessage.Location = new System.Drawing.Point(3, 9);
+			this.lblBulletinBoardMessage.Name = "lblBulletinBoardMessage";
+			this.lblBulletinBoardMessage.Size = new System.Drawing.Size(226, 13);
+			this.lblBulletinBoardMessage.TabIndex = 0;
+			this.lblBulletinBoardMessage.Text = "Bulletin Board Message";
+			// 
+			// lblPromotionRelegation
+			// 
+			this.lblPromotionRelegation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromotionRelegation.AutoSize = true;
+			this.lblPromotionRelegation.Location = new System.Drawing.Point(3, 41);
+			this.lblPromotionRelegation.Name = "lblPromotionRelegation";
+			this.lblPromotionRelegation.Size = new System.Drawing.Size(226, 13);
+			this.lblPromotionRelegation.TabIndex = 1;
+			this.lblPromotionRelegation.Text = "Promotion/Relegation after Event";
+			// 
+			// lblTourOpening
+			// 
+			this.lblTourOpening.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTourOpening.AutoSize = true;
+			this.lblTourOpening.Location = new System.Drawing.Point(3, 73);
+			this.lblTourOpening.Name = "lblTourOpening";
+			this.lblTourOpening.Size = new System.Drawing.Size(226, 13);
+			this.lblTourOpening.TabIndex = 2;
+			this.lblTourOpening.Text = "Show Tour Opening Scene";
+			// 
+			// lblQualifyingRequirement
+			// 
+			this.lblQualifyingRequirement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblQualifyingRequirement.AutoSize = true;
+			this.lblQualifyingRequirement.Location = new System.Drawing.Point(3, 105);
+			this.lblQualifyingRequirement.Name = "lblQualifyingRequirement";
+			this.lblQualifyingRequirement.Size = new System.Drawing.Size(226, 13);
+			this.lblQualifyingRequirement.TabIndex = 3;
+			this.lblQualifyingRequirement.Text = "Has Qualifying Requirement";
+			// 
+			// lblEventLocation
+			// 
+			this.lblEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblEventLocation.AutoSize = true;
+			this.lblEventLocation.Location = new System.Drawing.Point(3, 137);
+			this.lblEventLocation.Name = "lblEventLocation";
+			this.lblEventLocation.Size = new System.Drawing.Size(226, 13);
+			this.lblEventLocation.TabIndex = 4;
+			this.lblEventLocation.Text = "Event Location";
+			// 
+			// lblArenaType
+			// 
+			this.lblArenaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblArenaType.AutoSize = true;
+			this.lblArenaType.Location = new System.Drawing.Point(3, 169);
+			this.lblArenaType.Name = "lblArenaType";
+			this.lblArenaType.Size = new System.Drawing.Size(226, 13);
+			this.lblArenaType.TabIndex = 5;
+			this.lblArenaType.Text = "Arena Type";
+			// 
+			// lblPlayerParticipation
+			// 
+			this.lblPlayerParticipation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPlayerParticipation.AutoSize = true;
+			this.lblPlayerParticipation.Location = new System.Drawing.Point(3, 201);
+			this.lblPlayerParticipation.Name = "lblPlayerParticipation";
+			this.lblPlayerParticipation.Size = new System.Drawing.Size(226, 13);
+			this.lblPlayerParticipation.TabIndex = 6;
+			this.lblPlayerParticipation.Text = "Player Participation";
+			// 
+			// lblShowNumber
+			// 
+			this.lblShowNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblShowNumber.AutoSize = true;
+			this.lblShowNumber.Location = new System.Drawing.Point(3, 233);
+			this.lblShowNumber.Name = "lblShowNumber";
+			this.lblShowNumber.Size = new System.Drawing.Size(226, 13);
+			this.lblShowNumber.TabIndex = 7;
+			this.lblShowNumber.Text = "Show Number";
+			// 
+			// lblBookingInstructions
+			// 
+			this.lblBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblBookingInstructions.AutoSize = true;
+			this.lblBookingInstructions.Location = new System.Drawing.Point(3, 265);
+			this.lblBookingInstructions.Name = "lblBookingInstructions";
+			this.lblBookingInstructions.Size = new System.Drawing.Size(226, 13);
+			this.lblBookingInstructions.TabIndex = 8;
+			this.lblBookingInstructions.Text = "Booking Instructions";
+			// 
+			// lblEventName
+			// 
+			this.lblEventName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblEventName.AutoSize = true;
+			this.lblEventName.Location = new System.Drawing.Point(3, 297);
+			this.lblEventName.Name = "lblEventName";
+			this.lblEventName.Size = new System.Drawing.Size(226, 13);
+			this.lblEventName.TabIndex = 9;
+			this.lblEventName.Text = "Event Name";
+			// 
+			// lblMonthNumber
+			// 
+			this.lblMonthNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblMonthNumber.AutoSize = true;
+			this.lblMonthNumber.Location = new System.Drawing.Point(3, 334);
+			this.lblMonthNumber.Name = "lblMonthNumber";
+			this.lblMonthNumber.Size = new System.Drawing.Size(226, 13);
+			this.lblMonthNumber.TabIndex = 10;
+			this.lblMonthNumber.Text = "Month Number";
+			// 
+			// tbBulletinBoardMessage
+			// 
+			this.tbBulletinBoardMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbBulletinBoardMessage.Location = new System.Drawing.Point(235, 6);
+			this.tbBulletinBoardMessage.Name = "tbBulletinBoardMessage";
+			this.tbBulletinBoardMessage.ReadOnly = true;
+			this.tbBulletinBoardMessage.Size = new System.Drawing.Size(342, 20);
+			this.tbBulletinBoardMessage.TabIndex = 11;
+			// 
+			// tbEventLocation
+			// 
+			this.tbEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbEventLocation.Location = new System.Drawing.Point(235, 134);
+			this.tbEventLocation.Name = "tbEventLocation";
+			this.tbEventLocation.ReadOnly = true;
+			this.tbEventLocation.Size = new System.Drawing.Size(342, 20);
+			this.tbEventLocation.TabIndex = 15;
+			// 
+			// tbArenaType
+			// 
+			this.tbArenaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbArenaType.Location = new System.Drawing.Point(235, 166);
+			this.tbArenaType.Name = "tbArenaType";
+			this.tbArenaType.ReadOnly = true;
+			this.tbArenaType.Size = new System.Drawing.Size(342, 20);
+			this.tbArenaType.TabIndex = 16;
+			// 
+			// tbPlayerParticipation
+			// 
+			this.tbPlayerParticipation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbPlayerParticipation.Location = new System.Drawing.Point(235, 198);
+			this.tbPlayerParticipation.Name = "tbPlayerParticipation";
+			this.tbPlayerParticipation.ReadOnly = true;
+			this.tbPlayerParticipation.Size = new System.Drawing.Size(342, 20);
+			this.tbPlayerParticipation.TabIndex = 17;
+			// 
+			// tbShowNumber
+			// 
+			this.tbShowNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbShowNumber.Location = new System.Drawing.Point(235, 230);
+			this.tbShowNumber.Name = "tbShowNumber";
+			this.tbShowNumber.ReadOnly = true;
+			this.tbShowNumber.Size = new System.Drawing.Size(342, 20);
+			this.tbShowNumber.TabIndex = 18;
+			// 
+			// tbBookingInstructions
+			// 
+			this.tbBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbBookingInstructions.Location = new System.Drawing.Point(3, 5);
+			this.tbBookingInstructions.Name = "tbBookingInstructions";
+			this.tbBookingInstructions.ReadOnly = true;
+			this.tbBookingInstructions.Size = new System.Drawing.Size(210, 20);
+			this.tbBookingInstructions.TabIndex = 19;
+			// 
+			// tbEventName
+			// 
+			this.tbEventName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbEventName.Location = new System.Drawing.Point(235, 294);
+			this.tbEventName.Name = "tbEventName";
+			this.tbEventName.ReadOnly = true;
+			this.tbEventName.Size = new System.Drawing.Size(342, 20);
+			this.tbEventName.TabIndex = 20;
+			// 
+			// tbMonthNumber
+			// 
+			this.tbMonthNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbMonthNumber.Location = new System.Drawing.Point(235, 331);
+			this.tbMonthNumber.Name = "tbMonthNumber";
+			this.tbMonthNumber.ReadOnly = true;
+			this.tbMonthNumber.Size = new System.Drawing.Size(342, 20);
+			this.tbMonthNumber.TabIndex = 21;
+			// 
+			// cbPromotionRelegation
+			// 
+			this.cbPromotionRelegation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbPromotionRelegation.AutoSize = true;
+			this.cbPromotionRelegation.Enabled = false;
+			this.cbPromotionRelegation.Location = new System.Drawing.Point(235, 39);
+			this.cbPromotionRelegation.Name = "cbPromotionRelegation";
+			this.cbPromotionRelegation.Size = new System.Drawing.Size(342, 17);
+			this.cbPromotionRelegation.TabIndex = 22;
+			this.cbPromotionRelegation.Text = "True";
+			this.cbPromotionRelegation.UseVisualStyleBackColor = true;
+			// 
+			// cbShowTourScene
+			// 
+			this.cbShowTourScene.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbShowTourScene.AutoSize = true;
+			this.cbShowTourScene.Enabled = false;
+			this.cbShowTourScene.Location = new System.Drawing.Point(235, 71);
+			this.cbShowTourScene.Name = "cbShowTourScene";
+			this.cbShowTourScene.Size = new System.Drawing.Size(342, 17);
+			this.cbShowTourScene.TabIndex = 23;
+			this.cbShowTourScene.Text = "True";
+			this.cbShowTourScene.UseVisualStyleBackColor = true;
+			// 
+			// cbQualifyingRequirement
+			// 
+			this.cbQualifyingRequirement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbQualifyingRequirement.AutoSize = true;
+			this.cbQualifyingRequirement.Enabled = false;
+			this.cbQualifyingRequirement.Location = new System.Drawing.Point(235, 103);
+			this.cbQualifyingRequirement.Name = "cbQualifyingRequirement";
+			this.cbQualifyingRequirement.Size = new System.Drawing.Size(342, 17);
+			this.cbQualifyingRequirement.TabIndex = 24;
+			this.cbQualifyingRequirement.Text = "True";
+			this.cbQualifyingRequirement.UseVisualStyleBackColor = true;
 			// 
 			// tableLayoutPanel1
 			// 
@@ -935,281 +1193,16 @@
 			this.cbEvents.TabIndex = 1;
 			this.cbEvents.SelectedIndexChanged += new System.EventHandler(this.cbEvents_SelectedIndexChanged);
 			// 
-			// tableLayoutPanel2
+			// tpBookingInstructions
 			// 
-			this.tableLayoutPanel2.ColumnCount = 2;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-			this.tableLayoutPanel2.Controls.Add(this.lblBulletinBoardMessage, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.lblPromotionRelegation, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.lblTourOpening, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.lblQualifyingRequirement, 0, 3);
-			this.tableLayoutPanel2.Controls.Add(this.lblEventLocation, 0, 4);
-			this.tableLayoutPanel2.Controls.Add(this.lblArenaType, 0, 5);
-			this.tableLayoutPanel2.Controls.Add(this.lblPlayerParticipation, 0, 6);
-			this.tableLayoutPanel2.Controls.Add(this.lblShowNumber, 0, 7);
-			this.tableLayoutPanel2.Controls.Add(this.lblBookingInstructions, 0, 8);
-			this.tableLayoutPanel2.Controls.Add(this.lblEventName, 0, 9);
-			this.tableLayoutPanel2.Controls.Add(this.lblMonthNumber, 0, 10);
-			this.tableLayoutPanel2.Controls.Add(this.tbBulletinBoardMessage, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.tbEventLocation, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.tbArenaType, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.tbPlayerParticipation, 1, 6);
-			this.tableLayoutPanel2.Controls.Add(this.tbShowNumber, 1, 7);
-			this.tableLayoutPanel2.Controls.Add(this.tbBookingInstructions, 1, 8);
-			this.tableLayoutPanel2.Controls.Add(this.tbEventName, 1, 9);
-			this.tableLayoutPanel2.Controls.Add(this.tbMonthNumber, 1, 10);
-			this.tableLayoutPanel2.Controls.Add(this.cbPromotionRelegation, 1, 1);
-			this.tableLayoutPanel2.Controls.Add(this.cbShowTourScene, 1, 2);
-			this.tableLayoutPanel2.Controls.Add(this.cbQualifyingRequirement, 1, 3);
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 41);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 11;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(580, 342);
-			this.tableLayoutPanel2.TabIndex = 1;
-			// 
-			// lblBulletinBoardMessage
-			// 
-			this.lblBulletinBoardMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblBulletinBoardMessage.AutoSize = true;
-			this.lblBulletinBoardMessage.Location = new System.Drawing.Point(3, 9);
-			this.lblBulletinBoardMessage.Name = "lblBulletinBoardMessage";
-			this.lblBulletinBoardMessage.Size = new System.Drawing.Size(226, 13);
-			this.lblBulletinBoardMessage.TabIndex = 0;
-			this.lblBulletinBoardMessage.Text = "Bulletin Board Message";
-			// 
-			// lblPromotionRelegation
-			// 
-			this.lblPromotionRelegation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblPromotionRelegation.AutoSize = true;
-			this.lblPromotionRelegation.Location = new System.Drawing.Point(3, 40);
-			this.lblPromotionRelegation.Name = "lblPromotionRelegation";
-			this.lblPromotionRelegation.Size = new System.Drawing.Size(226, 13);
-			this.lblPromotionRelegation.TabIndex = 1;
-			this.lblPromotionRelegation.Text = "Promotion/Relegation after Event";
-			// 
-			// lblTourOpening
-			// 
-			this.lblTourOpening.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTourOpening.AutoSize = true;
-			this.lblTourOpening.Location = new System.Drawing.Point(3, 71);
-			this.lblTourOpening.Name = "lblTourOpening";
-			this.lblTourOpening.Size = new System.Drawing.Size(226, 13);
-			this.lblTourOpening.TabIndex = 2;
-			this.lblTourOpening.Text = "Show Tour Opening Scene";
-			// 
-			// lblQualifyingRequirement
-			// 
-			this.lblQualifyingRequirement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblQualifyingRequirement.AutoSize = true;
-			this.lblQualifyingRequirement.Location = new System.Drawing.Point(3, 102);
-			this.lblQualifyingRequirement.Name = "lblQualifyingRequirement";
-			this.lblQualifyingRequirement.Size = new System.Drawing.Size(226, 13);
-			this.lblQualifyingRequirement.TabIndex = 3;
-			this.lblQualifyingRequirement.Text = "Has Qualifying Requirement";
-			// 
-			// lblEventLocation
-			// 
-			this.lblEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblEventLocation.AutoSize = true;
-			this.lblEventLocation.Location = new System.Drawing.Point(3, 133);
-			this.lblEventLocation.Name = "lblEventLocation";
-			this.lblEventLocation.Size = new System.Drawing.Size(226, 13);
-			this.lblEventLocation.TabIndex = 4;
-			this.lblEventLocation.Text = "Event Location";
-			// 
-			// lblArenaType
-			// 
-			this.lblArenaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblArenaType.AutoSize = true;
-			this.lblArenaType.Location = new System.Drawing.Point(3, 164);
-			this.lblArenaType.Name = "lblArenaType";
-			this.lblArenaType.Size = new System.Drawing.Size(226, 13);
-			this.lblArenaType.TabIndex = 5;
-			this.lblArenaType.Text = "Arena Type";
-			// 
-			// lblPlayerParticipation
-			// 
-			this.lblPlayerParticipation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblPlayerParticipation.AutoSize = true;
-			this.lblPlayerParticipation.Location = new System.Drawing.Point(3, 195);
-			this.lblPlayerParticipation.Name = "lblPlayerParticipation";
-			this.lblPlayerParticipation.Size = new System.Drawing.Size(226, 13);
-			this.lblPlayerParticipation.TabIndex = 6;
-			this.lblPlayerParticipation.Text = "Player Participation";
-			// 
-			// lblShowNumber
-			// 
-			this.lblShowNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblShowNumber.AutoSize = true;
-			this.lblShowNumber.Location = new System.Drawing.Point(3, 226);
-			this.lblShowNumber.Name = "lblShowNumber";
-			this.lblShowNumber.Size = new System.Drawing.Size(226, 13);
-			this.lblShowNumber.TabIndex = 7;
-			this.lblShowNumber.Text = "Show Number";
-			// 
-			// lblBookingInstructions
-			// 
-			this.lblBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblBookingInstructions.AutoSize = true;
-			this.lblBookingInstructions.Location = new System.Drawing.Point(3, 257);
-			this.lblBookingInstructions.Name = "lblBookingInstructions";
-			this.lblBookingInstructions.Size = new System.Drawing.Size(226, 13);
-			this.lblBookingInstructions.TabIndex = 8;
-			this.lblBookingInstructions.Text = "Booking Instructions";
-			// 
-			// lblEventName
-			// 
-			this.lblEventName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblEventName.AutoSize = true;
-			this.lblEventName.Location = new System.Drawing.Point(3, 288);
-			this.lblEventName.Name = "lblEventName";
-			this.lblEventName.Size = new System.Drawing.Size(226, 13);
-			this.lblEventName.TabIndex = 9;
-			this.lblEventName.Text = "Event Name";
-			// 
-			// lblMonthNumber
-			// 
-			this.lblMonthNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblMonthNumber.AutoSize = true;
-			this.lblMonthNumber.Location = new System.Drawing.Point(3, 319);
-			this.lblMonthNumber.Name = "lblMonthNumber";
-			this.lblMonthNumber.Size = new System.Drawing.Size(226, 13);
-			this.lblMonthNumber.TabIndex = 10;
-			this.lblMonthNumber.Text = "Month Number";
-			// 
-			// tbBulletinBoardMessage
-			// 
-			this.tbBulletinBoardMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBulletinBoardMessage.Location = new System.Drawing.Point(235, 5);
-			this.tbBulletinBoardMessage.Name = "tbBulletinBoardMessage";
-			this.tbBulletinBoardMessage.ReadOnly = true;
-			this.tbBulletinBoardMessage.Size = new System.Drawing.Size(342, 20);
-			this.tbBulletinBoardMessage.TabIndex = 11;
-			// 
-			// tbEventLocation
-			// 
-			this.tbEventLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEventLocation.Location = new System.Drawing.Point(235, 129);
-			this.tbEventLocation.Name = "tbEventLocation";
-			this.tbEventLocation.ReadOnly = true;
-			this.tbEventLocation.Size = new System.Drawing.Size(342, 20);
-			this.tbEventLocation.TabIndex = 15;
-			// 
-			// tbArenaType
-			// 
-			this.tbArenaType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbArenaType.Location = new System.Drawing.Point(235, 160);
-			this.tbArenaType.Name = "tbArenaType";
-			this.tbArenaType.ReadOnly = true;
-			this.tbArenaType.Size = new System.Drawing.Size(342, 20);
-			this.tbArenaType.TabIndex = 16;
-			// 
-			// tbPlayerParticipation
-			// 
-			this.tbPlayerParticipation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPlayerParticipation.Location = new System.Drawing.Point(235, 191);
-			this.tbPlayerParticipation.Name = "tbPlayerParticipation";
-			this.tbPlayerParticipation.ReadOnly = true;
-			this.tbPlayerParticipation.Size = new System.Drawing.Size(342, 20);
-			this.tbPlayerParticipation.TabIndex = 17;
-			// 
-			// tbShowNumber
-			// 
-			this.tbShowNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbShowNumber.Location = new System.Drawing.Point(235, 222);
-			this.tbShowNumber.Name = "tbShowNumber";
-			this.tbShowNumber.ReadOnly = true;
-			this.tbShowNumber.Size = new System.Drawing.Size(342, 20);
-			this.tbShowNumber.TabIndex = 18;
-			// 
-			// tbBookingInstructions
-			// 
-			this.tbBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbBookingInstructions.Location = new System.Drawing.Point(235, 253);
-			this.tbBookingInstructions.Name = "tbBookingInstructions";
-			this.tbBookingInstructions.ReadOnly = true;
-			this.tbBookingInstructions.Size = new System.Drawing.Size(342, 20);
-			this.tbBookingInstructions.TabIndex = 19;
-			// 
-			// tbEventName
-			// 
-			this.tbEventName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbEventName.Location = new System.Drawing.Point(235, 284);
-			this.tbEventName.Name = "tbEventName";
-			this.tbEventName.ReadOnly = true;
-			this.tbEventName.Size = new System.Drawing.Size(342, 20);
-			this.tbEventName.TabIndex = 20;
-			// 
-			// tbMonthNumber
-			// 
-			this.tbMonthNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbMonthNumber.Location = new System.Drawing.Point(235, 316);
-			this.tbMonthNumber.Name = "tbMonthNumber";
-			this.tbMonthNumber.ReadOnly = true;
-			this.tbMonthNumber.Size = new System.Drawing.Size(342, 20);
-			this.tbMonthNumber.TabIndex = 21;
-			// 
-			// cbPromotionRelegation
-			// 
-			this.cbPromotionRelegation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbPromotionRelegation.AutoSize = true;
-			this.cbPromotionRelegation.Enabled = false;
-			this.cbPromotionRelegation.Location = new System.Drawing.Point(235, 38);
-			this.cbPromotionRelegation.Name = "cbPromotionRelegation";
-			this.cbPromotionRelegation.Size = new System.Drawing.Size(342, 17);
-			this.cbPromotionRelegation.TabIndex = 22;
-			this.cbPromotionRelegation.Text = "True";
-			this.cbPromotionRelegation.UseVisualStyleBackColor = true;
-			// 
-			// cbShowTourScene
-			// 
-			this.cbShowTourScene.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbShowTourScene.AutoSize = true;
-			this.cbShowTourScene.Enabled = false;
-			this.cbShowTourScene.Location = new System.Drawing.Point(235, 69);
-			this.cbShowTourScene.Name = "cbShowTourScene";
-			this.cbShowTourScene.Size = new System.Drawing.Size(342, 17);
-			this.cbShowTourScene.TabIndex = 23;
-			this.cbShowTourScene.Text = "True";
-			this.cbShowTourScene.UseVisualStyleBackColor = true;
-			// 
-			// cbQualifyingRequirement
-			// 
-			this.cbQualifyingRequirement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbQualifyingRequirement.AutoSize = true;
-			this.cbQualifyingRequirement.Enabled = false;
-			this.cbQualifyingRequirement.Location = new System.Drawing.Point(235, 100);
-			this.cbQualifyingRequirement.Name = "cbQualifyingRequirement";
-			this.cbQualifyingRequirement.Size = new System.Drawing.Size(342, 17);
-			this.cbQualifyingRequirement.TabIndex = 24;
-			this.cbQualifyingRequirement.Text = "True";
-			this.cbQualifyingRequirement.UseVisualStyleBackColor = true;
-			// 
-			// tableLayoutPanel3
-			// 
-			this.tableLayoutPanel3.ColumnCount = 2;
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tableLayoutPanel3.Controls.Add(this.lblInstructionSet, 0, 0);
-			this.tableLayoutPanel3.Controls.Add(this.cbBookingInstructions, 1, 0);
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 6);
-			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 1;
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 29);
-			this.tableLayoutPanel3.TabIndex = 0;
+			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel4);
+			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel3);
+			this.tpBookingInstructions.Location = new System.Drawing.Point(4, 22);
+			this.tpBookingInstructions.Name = "tpBookingInstructions";
+			this.tpBookingInstructions.Size = new System.Drawing.Size(592, 389);
+			this.tpBookingInstructions.TabIndex = 2;
+			this.tpBookingInstructions.Text = "Booking Instructions";
+			this.tpBookingInstructions.UseVisualStyleBackColor = true;
 			// 
 			// tableLayoutPanel4
 			// 
@@ -1251,16 +1244,6 @@
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(580, 345);
 			this.tableLayoutPanel4.TabIndex = 1;
-			// 
-			// lblInstructionSet
-			// 
-			this.lblInstructionSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblInstructionSet.AutoSize = true;
-			this.lblInstructionSet.Location = new System.Drawing.Point(3, 8);
-			this.lblInstructionSet.Name = "lblInstructionSet";
-			this.lblInstructionSet.Size = new System.Drawing.Size(139, 13);
-			this.lblInstructionSet.TabIndex = 0;
-			this.lblInstructionSet.Text = "Instruction Set";
 			// 
 			// lblMatch1
 			// 
@@ -1362,17 +1345,6 @@
 			this.lblMatch10.TabIndex = 9;
 			this.lblMatch10.Text = "Match 10";
 			// 
-			// cbBookingInstructions
-			// 
-			this.cbBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbBookingInstructions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbBookingInstructions.FormattingEnabled = true;
-			this.cbBookingInstructions.Location = new System.Drawing.Point(148, 4);
-			this.cbBookingInstructions.Name = "cbBookingInstructions";
-			this.cbBookingInstructions.Size = new System.Drawing.Size(429, 21);
-			this.cbBookingInstructions.TabIndex = 1;
-			this.cbBookingInstructions.SelectedIndexChanged += new System.EventHandler(this.cbBookingInstructions_SelectedIndexChanged);
-			// 
 			// tbMatch1
 			// 
 			this.tbMatch1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1463,12 +1435,76 @@
 			this.tbMatch10.Size = new System.Drawing.Size(458, 20);
 			this.tbMatch10.TabIndex = 19;
 			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.ColumnCount = 2;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tableLayoutPanel3.Controls.Add(this.lblInstructionSet, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.cbBookingInstructions, 1, 0);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 6);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 1;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 29);
+			this.tableLayoutPanel3.TabIndex = 0;
+			// 
+			// lblInstructionSet
+			// 
+			this.lblInstructionSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblInstructionSet.AutoSize = true;
+			this.lblInstructionSet.Location = new System.Drawing.Point(3, 8);
+			this.lblInstructionSet.Name = "lblInstructionSet";
+			this.lblInstructionSet.Size = new System.Drawing.Size(139, 13);
+			this.lblInstructionSet.TabIndex = 0;
+			this.lblInstructionSet.Text = "Instruction Set";
+			// 
+			// cbBookingInstructions
+			// 
+			this.cbBookingInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbBookingInstructions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbBookingInstructions.FormattingEnabled = true;
+			this.cbBookingInstructions.Location = new System.Drawing.Point(148, 4);
+			this.cbBookingInstructions.Name = "cbBookingInstructions";
+			this.cbBookingInstructions.Size = new System.Drawing.Size(429, 21);
+			this.cbBookingInstructions.TabIndex = 1;
+			this.cbBookingInstructions.SelectedIndexChanged += new System.EventHandler(this.cbBookingInstructions_SelectedIndexChanged);
+			// 
+			// tlpEventBooking
+			// 
+			this.tlpEventBooking.ColumnCount = 2;
+			this.tlpEventBooking.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.5731F));
+			this.tlpEventBooking.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.4269F));
+			this.tlpEventBooking.Controls.Add(this.tbBookingInstructions, 0, 0);
+			this.tlpEventBooking.Controls.Add(this.btnViewBooking, 1, 0);
+			this.tlpEventBooking.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpEventBooking.Location = new System.Drawing.Point(233, 257);
+			this.tlpEventBooking.Margin = new System.Windows.Forms.Padding(1);
+			this.tlpEventBooking.Name = "tlpEventBooking";
+			this.tlpEventBooking.RowCount = 1;
+			this.tlpEventBooking.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpEventBooking.Size = new System.Drawing.Size(346, 30);
+			this.tlpEventBooking.TabIndex = 25;
+			// 
+			// btnViewBooking
+			// 
+			this.btnViewBooking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnViewBooking.Location = new System.Drawing.Point(219, 3);
+			this.btnViewBooking.Name = "btnViewBooking";
+			this.btnViewBooking.Size = new System.Drawing.Size(124, 23);
+			this.btnViewBooking.TabIndex = 20;
+			this.btnViewBooking.Text = "&View";
+			this.btnViewBooking.UseVisualStyleBackColor = true;
+			this.btnViewBooking.Click += new System.EventHandler(this.btnViewBooking_Click);
+			// 
 			// StoryMode_VPW2
 			// 
+			this.AcceptButton = this.btnOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(624, 473);
-			this.Controls.Add(this.tabControl2);
+			this.CancelButton = this.btnCancel;
+			this.ClientSize = new System.Drawing.Size(624, 493);
+			this.Controls.Add(this.tabCtrlMain);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOK);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1476,7 +1512,7 @@
 			this.Name = "StoryMode_VPW2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "VPW2 Royal Road/King\'s Road Succession";
-			this.tabControl1.ResumeLayout(false);
+			this.tabCtrlParticipants.ResumeLayout(false);
 			this.tpSinglesParticipants.ResumeLayout(false);
 			this.tlpSingleParticipant.ResumeLayout(false);
 			this.tlpSingleParticipant.PerformLayout();
@@ -1496,25 +1532,27 @@
 			this.tlpAsiaTag.PerformLayout();
 			this.tlpWorldTag.ResumeLayout(false);
 			this.tlpWorldTag.PerformLayout();
-			this.tabControl2.ResumeLayout(false);
+			this.tabCtrlMain.ResumeLayout(false);
 			this.tpParticipants.ResumeLayout(false);
 			this.tpEvents.ResumeLayout(false);
-			this.tpBookingInstructions.ResumeLayout(false);
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
-			this.tableLayoutPanel3.ResumeLayout(false);
-			this.tableLayoutPanel3.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
+			this.tpBookingInstructions.ResumeLayout(false);
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
+			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel3.PerformLayout();
+			this.tlpEventBooking.ResumeLayout(false);
+			this.tlpEventBooking.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl tabCtrlParticipants;
 		private System.Windows.Forms.TabPage tpTeams;
 		private System.Windows.Forms.TabPage tpChamps;
 		private System.Windows.Forms.TableLayoutPanel tlpChampions;
@@ -1576,7 +1614,7 @@
 		private System.Windows.Forms.TextBox tbTagTier2InitialRank;
 		private System.Windows.Forms.TextBox tbTagGuestNumTeams;
 		private System.Windows.Forms.TextBox tbTagGuestInitialRank;
-		private System.Windows.Forms.TabControl tabControl2;
+		private System.Windows.Forms.TabControl tabCtrlMain;
 		private System.Windows.Forms.TabPage tpParticipants;
 		private System.Windows.Forms.TabPage tpEvents;
 		private System.Windows.Forms.TabPage tpBookingInstructions;
@@ -1630,5 +1668,7 @@
 		private System.Windows.Forms.TextBox tbMatch8;
 		private System.Windows.Forms.TextBox tbMatch9;
 		private System.Windows.Forms.TextBox tbMatch10;
+		private System.Windows.Forms.TableLayoutPanel tlpEventBooking;
+		private System.Windows.Forms.Button btnViewBooking;
 	}
 }

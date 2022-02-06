@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VPWStudio.GameSpecific;
+using VPWStudio.GameSpecific.VPW2;
 
 namespace VPWStudio.Editors.VPW2
 {
@@ -17,7 +17,7 @@ namespace VPWStudio.Editors.VPW2
 		/// <summary>
 		/// Story Mode singles participants
 		/// </summary>
-		public List<StoryModeSingle_Modern> StorySinglesParticipants = new List<StoryModeSingle_Modern>();
+		public List<StoryModeSingleEntry> StorySinglesParticipants = new List<StoryModeSingleEntry>();
 
 		// todo: story mode singles tier groupings (two bytes per entry; 4 entries)
 		public byte[] StorySingleTierGroupings = new byte[8];
@@ -41,7 +41,11 @@ namespace VPWStudio.Editors.VPW2
 		#endregion
 
 		#region Event Schedule
-		public List<GameSpecific.VPW2.StoryModeEvent> EventSchedule = new List<GameSpecific.VPW2.StoryModeEvent>();
+		public List<StoryModeEvent> EventSchedule = new List<StoryModeEvent>();
+		#endregion
+
+		#region Booking Instructions
+		public List<StoryModeBookingInstruction> BookingInstructions = new List<StoryModeBookingInstruction>();
 		#endregion
 
 		/// <summary>
@@ -50,7 +54,7 @@ namespace VPWStudio.Editors.VPW2
 		private AkiText DefaultNames;
 
 		// file ID 0x000C
-		// private AkiText 
+		private AkiText EventText;
 
 		public StoryMode_VPW2()
 		{
@@ -82,10 +86,34 @@ namespace VPWStudio.Editors.VPW2
 				outWriter.Close();
 			}
 
+			// load event text
+			FileTableEntry eventTextEntry = Program.CurrentProject.ProjectFileTable.Entries[0x000C];
+			if (!String.IsNullOrEmpty(eventTextEntry.ReplaceFilePath))
+			{
+				FileStream fs = new FileStream(Program.ConvertRelativePath(eventTextEntry.ReplaceFilePath), FileMode.Open);
+				BinaryReader br = new BinaryReader(fs);
+				EventText = new AkiText(br);
+				br.Close();
+			}
+			else
+			{
+				MemoryStream outStream = new MemoryStream();
+				BinaryWriter outWriter = new BinaryWriter(outStream);
+
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, 0x000C);
+
+				outStream.Seek(0, SeekOrigin.Begin);
+				BinaryReader outReader = new BinaryReader(outStream);
+				EventText = new AkiText(outReader);
+				outReader.Close();
+				outWriter.Close();
+			}
+
 			LoadSingles(romReader);
 			LoadTeams(romReader);
 			LoadChampions(romReader);
 			LoadEvents(romReader);
+			LoadBookingInstructions(romReader);
 
 			romReader.Close();
 		}
@@ -114,8 +142,9 @@ namespace VPWStudio.Editors.VPW2
 			// xxx: hardcoded amount of participants
 			for (int i = 0; i < 40; i++)
 			{
-				StorySinglesParticipants.Add(new StoryModeSingle_Modern(romReader));
-				lbSinglesParticipants.Items.Add(String.Format("Wrestler {0}", i));
+				StoryModeSingleEntry entrant = new StoryModeSingleEntry(romReader);
+				StorySinglesParticipants.Add(entrant);
+				lbSinglesParticipants.Items.Add(String.Format("{0:D2} {1}", i, DefaultNames.Entries[entrant.WrestlerID2 * 2 + 1].Text));
 			}
 			lbSinglesParticipants.EndUpdate();
 
@@ -176,8 +205,12 @@ namespace VPWStudio.Editors.VPW2
 			// xxx: hardcoded amount of teams
 			for (int i = 0; i < 18; i++)
 			{
-				StoryTeams.Add(new StoryModeTeamEntry(romReader));
-				lbTeams.Items.Add(String.Format("Team {0}", i));
+				StoryModeTeamEntry teamEntry = new StoryModeTeamEntry(romReader);
+				StoryTeams.Add(teamEntry);
+				lbTeams.Items.Add(String.Format("{0:D2} {1}/{2}", i,
+					DefaultNames.Entries[teamEntry.WrestlerID2_1 * 2 + 1].Text,
+					DefaultNames.Entries[teamEntry.WrestlerID2_2 * 2 + 1].Text
+				));
 			}
 			lbTeams.EndUpdate();
 
@@ -266,7 +299,7 @@ namespace VPWStudio.Editors.VPW2
 			cbEvents.BeginUpdate();
 			for (int i = 0; i < 45; i++)
 			{
-				EventSchedule.Add(new GameSpecific.VPW2.StoryModeEvent(romReader));
+				EventSchedule.Add(new StoryModeEvent(romReader));
 				cbEvents.Items.Add(string.Format("Event {0}{1}", i, i==0 ? " do not edit":string.Empty));
 			}
 			cbEvents.EndUpdate();
@@ -292,6 +325,13 @@ namespace VPWStudio.Editors.VPW2
 			}
 
 			// 24 sets of booking instructions, 20 bytes per set (Z64 0xDB5A0)
+			cbBookingInstructions.BeginUpdate();
+			for (int i = 0; i < 24; i++)
+			{
+				BookingInstructions.Add(new StoryModeBookingInstruction(romReader));
+				cbBookingInstructions.Items.Add(string.Format("Set {0}", i));
+			}
+			cbBookingInstructions.EndUpdate();
 		}
 
 		private void btnOK_Click(object sender, EventArgs e)
@@ -309,7 +349,7 @@ namespace VPWStudio.Editors.VPW2
 		#region Singles Participants
 		private void UpdateSinglesValues()
 		{
-			StoryModeSingle_Modern curWrestler = StorySinglesParticipants[lbSinglesParticipants.SelectedIndex];
+			StoryModeSingleEntry curWrestler = StorySinglesParticipants[lbSinglesParticipants.SelectedIndex];
 			tbSingleWrestler.Text = String.Format("0x{0:X2} {1}", curWrestler.WrestlerID2, DefaultNames.Entries[curWrestler.WrestlerID2 * 2].Text);
 			tbSingleSkillLevel.Text = String.Format("0x{0:X2}", curWrestler.SkillLevel);
 			tbSingleTitleShotPercent.Text = String.Format("{0}", curWrestler.TitleShotPercent);
@@ -342,11 +382,6 @@ namespace VPWStudio.Editors.VPW2
 			}
 			UpdateTeamValues();
 		}
-
-
-
-
-
 		#endregion
 
 		#region Default Champions
@@ -355,12 +390,25 @@ namespace VPWStudio.Editors.VPW2
 		#region Event Schedule
 		private void UpdateEventValues()
 		{
-			GameSpecific.VPW2.StoryModeEvent eventData = EventSchedule[cbEvents.SelectedIndex];
+			StoryModeEvent eventData = EventSchedule[cbEvents.SelectedIndex];
 			tbBulletinBoardMessage.Text = string.Format("{0}", eventData.BulletinBoardMessage);
 			cbPromotionRelegation.Checked = eventData.HandlePromotionRelegation;
 			cbShowTourScene.Checked = eventData.ShowTourOpeningScene;
 			cbQualifyingRequirement.Checked = eventData.HasQualifyingRequirement;
-			tbEventLocation.Text = string.Format("{0}", eventData.EventLocation);
+
+			if (eventData.EventLocation == 0)
+			{
+				tbEventLocation.Text = string.Format("{0} (arena)", eventData.EventLocation);
+			}
+			else if (eventData.EventLocation <= 0x15)
+			{
+				tbEventLocation.Text = string.Format("{0} - {1}", eventData.EventLocation, EventText.GetEntry(209 + eventData.EventLocation));
+			}
+			else
+			{
+				tbEventLocation.Text = string.Format("{0}", eventData.EventLocation);
+			}
+
 			tbArenaType.Text = string.Format("{0}", eventData.ArenaType);
 			tbPlayerParticipation.Text = string.Format("{0}", eventData.PlayerParticipation);
 			tbShowNumber.Text = string.Format("{0}", eventData.ShowNumber);
@@ -377,12 +425,73 @@ namespace VPWStudio.Editors.VPW2
 			}
 			UpdateEventValues();
 		}
+
+		private void btnViewBooking_Click(object sender, EventArgs e)
+		{
+			if (cbEvents.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			cbBookingInstructions.SelectedIndex = EventSchedule[cbEvents.SelectedIndex].BookingInstructions;
+			tabCtrlMain.SelectedTab = tabCtrlMain.TabPages["tpBookingInstructions"];
+		}
 		#endregion
 
 		#region Booking Instructions
+		private string GetMatchString(ushort values)
+		{
+			if (values == StoryModeBookingInstruction.NO_MATCH)
+			{
+				return string.Format("0x{0:X4} (no match)", values);
+			}
+
+			// handle special cases
+			if (values == 7)
+			{
+				return string.Format("0x{0:X4} Champion Carnival Final", values);
+			}
+			else if (values == 8)
+			{
+				return string.Format("0x{0:X4} Tag League Final", values);
+			}
+			else if (values == 9)
+			{
+				return string.Format("0x{0:X4} Battle Royal", values);
+			}
+			else if (values == 0xA)
+			{
+				return string.Format("0x{0:X4} Singles Tournament", values);
+			}
+			else if (values == 0xB)
+			{
+				return string.Format("0x{0:X4} Tag Tournament", values);
+			}
+			else if (values == 0xC)
+			{
+				return string.Format("0x{0:X4} Champion Carnival League", values);
+			}
+			else if (values == 0xD)
+			{
+				return string.Format("0x{0:X4} Tag League", values);
+			}
+
+			return string.Format("0x{0:X4}", values);
+		}
+
 		private void UpdateBookingValues()
 		{
-
+			StoryModeBookingInstruction set = BookingInstructions[cbBookingInstructions.SelectedIndex];
+			tbMatch1.Text = GetMatchString(set.Values[0]);
+			tbMatch2.Text = GetMatchString(set.Values[1]);
+			tbMatch3.Text = GetMatchString(set.Values[2]);
+			tbMatch4.Text = GetMatchString(set.Values[3]);
+			tbMatch5.Text = GetMatchString(set.Values[4]);
+			tbMatch6.Text = GetMatchString(set.Values[5]);
+			tbMatch7.Text = GetMatchString(set.Values[6]);
+			tbMatch8.Text = GetMatchString(set.Values[7]);
+			tbMatch9.Text = GetMatchString(set.Values[8]);
+			tbMatch10.Text = GetMatchString(set.Values[9]);
 		}
 
 		private void cbBookingInstructions_SelectedIndexChanged(object sender, EventArgs e)
@@ -391,6 +500,7 @@ namespace VPWStudio.Editors.VPW2
 			{
 				return;
 			}
+			UpdateBookingValues();
 		}
 		#endregion
 	}
