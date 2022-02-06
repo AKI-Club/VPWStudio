@@ -174,6 +174,8 @@ namespace VPWStudio
 			{ "StoryModeSingleGroups", "$STORY_MODE_SINGLE_GROUPS" }, // ROM location of story mode singles groupings
 			{ "StoryModeTeams", "$STORY_MODE_TEAMS" }, // ROM location of story mode teams
 			{ "StoryModeTeamGroups", "$STORY_MODE_TEAM_GROUPS" }, // ROM location of story mode team groupings
+			{ "StoryModeSchedule", "$STORY_MODE_SCHEDULE" }, // ROM location of story mode schedule
+			{ "StoryModeBookingInstructions", "$STORY_MODE_BOOKING_INSTRUCTIONS" }, // ROM location of story mode booking instructions
 			{ "DefaultChampions", "$DEFAULT_CHAMPIONS" }, // ROM location of default champions
 
 			// todo: WM2K and NoMercy EntranceDef and TitantronFrames

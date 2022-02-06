@@ -254,8 +254,8 @@ namespace VPWStudio
 					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 74) },
 					{ "StoryModeTeamGroups", new DefaultLocationDataEntry(0xDB538, 6) },
 					{ "DefaultChampions", new DefaultLocationDataEntry(0xDB544, 5) },
-					// StoryModeSchedule
-					// StoryModeBookingInstructions
+					{ "StoryModeSchedule", new DefaultLocationDataEntry(0x6AED0, 180) },
+					{ "StoryModeBookingInstructions", new DefaultLocationDataEntry(0xDB5A0, 480) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7C710, 4360) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
