@@ -38,22 +38,6 @@
 			this.tbSingleSkillLevel = new System.Windows.Forms.TextBox();
 			this.tbSingleTitleShotPercent = new System.Windows.Forms.TextBox();
 			this.lbSinglesParticipants = new System.Windows.Forms.ListBox();
-			this.tpSinglesGroupings = new System.Windows.Forms.TabPage();
-			this.tlpSingleGroupings = new System.Windows.Forms.TableLayoutPanel();
-			this.lblSingleGuestCharacters = new System.Windows.Forms.Label();
-			this.lblSingleTier3 = new System.Windows.Forms.Label();
-			this.lblSingleTier2 = new System.Windows.Forms.Label();
-			this.lblSingleTier1 = new System.Windows.Forms.Label();
-			this.lblSingleNumWrestlers = new System.Windows.Forms.Label();
-			this.lblSingleFirstRank = new System.Windows.Forms.Label();
-			this.tbSingleTier1NumWrestlers = new System.Windows.Forms.TextBox();
-			this.tbSingleTier1InitialRank = new System.Windows.Forms.TextBox();
-			this.tbSingleTier2NumWrestlers = new System.Windows.Forms.TextBox();
-			this.tbSingleTier2InitialRank = new System.Windows.Forms.TextBox();
-			this.tbSingleTier3NumWrestlers = new System.Windows.Forms.TextBox();
-			this.tbSingleTier3InitialRank = new System.Windows.Forms.TextBox();
-			this.tbSingleGuestNumWrestlers = new System.Windows.Forms.TextBox();
-			this.tbSingleGuestInitialRank = new System.Windows.Forms.TextBox();
 			this.tpTeams = new System.Windows.Forms.TabPage();
 			this.tlpTeams = new System.Windows.Forms.TableLayoutPanel();
 			this.labelTeamWrestler1 = new System.Windows.Forms.Label();
@@ -63,19 +47,6 @@
 			this.tbTeamWrestler2 = new System.Windows.Forms.TextBox();
 			this.tbTeamTitleShotPercent = new System.Windows.Forms.TextBox();
 			this.lbTeams = new System.Windows.Forms.ListBox();
-			this.tpTeamGroupings = new System.Windows.Forms.TabPage();
-			this.tlpTagGroupings = new System.Windows.Forms.TableLayoutPanel();
-			this.lblTagTier1 = new System.Windows.Forms.Label();
-			this.lblTagTier2 = new System.Windows.Forms.Label();
-			this.lblTagGuestTeams = new System.Windows.Forms.Label();
-			this.lblTagNumTeams = new System.Windows.Forms.Label();
-			this.lblTagFirstRank = new System.Windows.Forms.Label();
-			this.tbTagTier1NumTeams = new System.Windows.Forms.TextBox();
-			this.tbTagTier1InitialRank = new System.Windows.Forms.TextBox();
-			this.tbTagTier2NumTeams = new System.Windows.Forms.TextBox();
-			this.tbTagTier2InitialRank = new System.Windows.Forms.TextBox();
-			this.tbTagGuestNumTeams = new System.Windows.Forms.TextBox();
-			this.tbTagGuestInitialRank = new System.Windows.Forms.TextBox();
 			this.tpChamps = new System.Windows.Forms.TabPage();
 			this.tlpChampions = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpAsiaTag = new System.Windows.Forms.TableLayoutPanel();
@@ -93,7 +64,7 @@
 			this.tabCtrlMain = new System.Windows.Forms.TabControl();
 			this.tpParticipants = new System.Windows.Forms.TabPage();
 			this.tpEvents = new System.Windows.Forms.TabPage();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpEventSettings = new System.Windows.Forms.TableLayoutPanel();
 			this.lblBulletinBoardMessage = new System.Windows.Forms.Label();
 			this.lblPromotionRelegation = new System.Windows.Forms.Label();
 			this.lblTourOpening = new System.Windows.Forms.Label();
@@ -116,11 +87,11 @@
 			this.cbPromotionRelegation = new System.Windows.Forms.CheckBox();
 			this.cbShowTourScene = new System.Windows.Forms.CheckBox();
 			this.cbQualifyingRequirement = new System.Windows.Forms.CheckBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpEventList = new System.Windows.Forms.TableLayoutPanel();
 			this.lblEvent = new System.Windows.Forms.Label();
 			this.cbEvents = new System.Windows.Forms.ComboBox();
 			this.tpBookingInstructions = new System.Windows.Forms.TabPage();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpBookingInstructions = new System.Windows.Forms.TableLayoutPanel();
 			this.lblMatch1 = new System.Windows.Forms.Label();
 			this.lblMatch2 = new System.Windows.Forms.Label();
 			this.lblMatch3 = new System.Windows.Forms.Label();
@@ -141,20 +112,66 @@
 			this.tbMatch8 = new System.Windows.Forms.TextBox();
 			this.tbMatch9 = new System.Windows.Forms.TextBox();
 			this.tbMatch10 = new System.Windows.Forms.TextBox();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpBookingSet = new System.Windows.Forms.TableLayoutPanel();
 			this.lblInstructionSet = new System.Windows.Forms.Label();
 			this.cbBookingInstructions = new System.Windows.Forms.ComboBox();
 			this.tlpEventBooking = new System.Windows.Forms.TableLayoutPanel();
 			this.btnViewBooking = new System.Windows.Forms.Button();
+			this.tlpSingleGroupings = new System.Windows.Forms.TableLayoutPanel();
+			this.lblSingleGuestCharacters = new System.Windows.Forms.Label();
+			this.lblSingleTier3 = new System.Windows.Forms.Label();
+			this.lblSingleTier2 = new System.Windows.Forms.Label();
+			this.lblSingleTier1 = new System.Windows.Forms.Label();
+			this.lblSingleNumWrestlers = new System.Windows.Forms.Label();
+			this.lblSingleFirstRank = new System.Windows.Forms.Label();
+			this.tbSingleTier1NumWrestlers = new System.Windows.Forms.TextBox();
+			this.tbSingleTier1InitialRank = new System.Windows.Forms.TextBox();
+			this.tbSingleTier2NumWrestlers = new System.Windows.Forms.TextBox();
+			this.tbSingleTier2InitialRank = new System.Windows.Forms.TextBox();
+			this.tbSingleTier3NumWrestlers = new System.Windows.Forms.TextBox();
+			this.tbSingleTier3InitialRank = new System.Windows.Forms.TextBox();
+			this.tbSingleGuestNumWrestlers = new System.Windows.Forms.TextBox();
+			this.tbSingleGuestInitialRank = new System.Windows.Forms.TextBox();
+			this.tlpTagGroupings = new System.Windows.Forms.TableLayoutPanel();
+			this.lblTagTier1 = new System.Windows.Forms.Label();
+			this.lblTagTier2 = new System.Windows.Forms.Label();
+			this.lblTagGuestTeams = new System.Windows.Forms.Label();
+			this.lblTagNumTeams = new System.Windows.Forms.Label();
+			this.lblTagFirstRank = new System.Windows.Forms.Label();
+			this.tbTagTier1NumTeams = new System.Windows.Forms.TextBox();
+			this.tbTagTier1InitialRank = new System.Windows.Forms.TextBox();
+			this.tbTagTier2NumTeams = new System.Windows.Forms.TextBox();
+			this.tbTagTier2InitialRank = new System.Windows.Forms.TextBox();
+			this.tbTagGuestNumTeams = new System.Windows.Forms.TextBox();
+			this.tbTagGuestInitialRank = new System.Windows.Forms.TextBox();
+			this.tpPromoRelegate = new System.Windows.Forms.TabPage();
+			this.gbPromoRelegateSingles = new System.Windows.Forms.GroupBox();
+			this.gbPromoRelegateTag = new System.Windows.Forms.GroupBox();
+			this.tlpPromoRelegateSingle = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpPromoRelegateTag = new System.Windows.Forms.TableLayoutPanel();
+			this.lblRelegateSingle = new System.Windows.Forms.Label();
+			this.lblPromoSingle = new System.Windows.Forms.Label();
+			this.lblRelegateTag = new System.Windows.Forms.Label();
+			this.lblPromoTag = new System.Windows.Forms.Label();
+			this.tbSingleRelegate1 = new System.Windows.Forms.TextBox();
+			this.tbSinglePromote1 = new System.Windows.Forms.TextBox();
+			this.tbSingleRelegate2 = new System.Windows.Forms.TextBox();
+			this.tbSinglePromote2 = new System.Windows.Forms.TextBox();
+			this.tbSingleRelegate3 = new System.Windows.Forms.TextBox();
+			this.tbSinglePromote3 = new System.Windows.Forms.TextBox();
+			this.tbSingleRelegate4 = new System.Windows.Forms.TextBox();
+			this.tbSinglePromote4 = new System.Windows.Forms.TextBox();
+			this.tbTagRelegate = new System.Windows.Forms.TextBox();
+			this.tbTagPromote = new System.Windows.Forms.TextBox();
+			this.lblPromoRelegate1 = new System.Windows.Forms.Label();
+			this.lblPromoRelegate2 = new System.Windows.Forms.Label();
+			this.lblPromoRelegate3 = new System.Windows.Forms.Label();
+			this.lblPromoRelegate4 = new System.Windows.Forms.Label();
 			this.tabCtrlParticipants.SuspendLayout();
 			this.tpSinglesParticipants.SuspendLayout();
 			this.tlpSingleParticipant.SuspendLayout();
-			this.tpSinglesGroupings.SuspendLayout();
-			this.tlpSingleGroupings.SuspendLayout();
 			this.tpTeams.SuspendLayout();
 			this.tlpTeams.SuspendLayout();
-			this.tpTeamGroupings.SuspendLayout();
-			this.tlpTagGroupings.SuspendLayout();
 			this.tpChamps.SuspendLayout();
 			this.tlpChampions.SuspendLayout();
 			this.tlpAsiaTag.SuspendLayout();
@@ -162,20 +179,26 @@
 			this.tabCtrlMain.SuspendLayout();
 			this.tpParticipants.SuspendLayout();
 			this.tpEvents.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpEventSettings.SuspendLayout();
+			this.tlpEventList.SuspendLayout();
 			this.tpBookingInstructions.SuspendLayout();
-			this.tableLayoutPanel4.SuspendLayout();
-			this.tableLayoutPanel3.SuspendLayout();
+			this.tlpBookingInstructions.SuspendLayout();
+			this.tlpBookingSet.SuspendLayout();
 			this.tlpEventBooking.SuspendLayout();
+			this.tlpSingleGroupings.SuspendLayout();
+			this.tlpTagGroupings.SuspendLayout();
+			this.tpPromoRelegate.SuspendLayout();
+			this.gbPromoRelegateSingles.SuspendLayout();
+			this.gbPromoRelegateTag.SuspendLayout();
+			this.tlpPromoRelegateSingle.SuspendLayout();
+			this.tlpPromoRelegateTag.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabCtrlParticipants
 			// 
 			this.tabCtrlParticipants.Controls.Add(this.tpSinglesParticipants);
-			this.tabCtrlParticipants.Controls.Add(this.tpSinglesGroupings);
 			this.tabCtrlParticipants.Controls.Add(this.tpTeams);
-			this.tabCtrlParticipants.Controls.Add(this.tpTeamGroupings);
+			this.tabCtrlParticipants.Controls.Add(this.tpPromoRelegate);
 			this.tabCtrlParticipants.Controls.Add(this.tpChamps);
 			this.tabCtrlParticipants.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabCtrlParticipants.Location = new System.Drawing.Point(3, 3);
@@ -186,13 +209,14 @@
 			// 
 			// tpSinglesParticipants
 			// 
+			this.tpSinglesParticipants.Controls.Add(this.tlpSingleGroupings);
 			this.tpSinglesParticipants.Controls.Add(this.tlpSingleParticipant);
 			this.tpSinglesParticipants.Controls.Add(this.lbSinglesParticipants);
 			this.tpSinglesParticipants.Location = new System.Drawing.Point(4, 22);
 			this.tpSinglesParticipants.Name = "tpSinglesParticipants";
 			this.tpSinglesParticipants.Size = new System.Drawing.Size(578, 377);
 			this.tpSinglesParticipants.TabIndex = 2;
-			this.tpSinglesParticipants.Text = "Singles Participants";
+			this.tpSinglesParticipants.Text = "Singles";
 			this.tpSinglesParticipants.UseVisualStyleBackColor = true;
 			// 
 			// tlpSingleParticipant
@@ -206,22 +230,22 @@
 			this.tlpSingleParticipant.Controls.Add(this.tbSingleWrestler, 1, 0);
 			this.tlpSingleParticipant.Controls.Add(this.tbSingleSkillLevel, 1, 1);
 			this.tlpSingleParticipant.Controls.Add(this.tbSingleTitleShotPercent, 1, 2);
-			this.tlpSingleParticipant.Location = new System.Drawing.Point(113, 6);
+			this.tlpSingleParticipant.Location = new System.Drawing.Point(152, 6);
 			this.tlpSingleParticipant.Name = "tlpSingleParticipant";
 			this.tlpSingleParticipant.RowCount = 3;
 			this.tlpSingleParticipant.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpSingleParticipant.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpSingleParticipant.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tlpSingleParticipant.Size = new System.Drawing.Size(462, 342);
+			this.tlpSingleParticipant.Size = new System.Drawing.Size(423, 186);
 			this.tlpSingleParticipant.TabIndex = 1;
 			// 
 			// lblSinglesWrestler
 			// 
 			this.lblSinglesWrestler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSinglesWrestler.AutoSize = true;
-			this.lblSinglesWrestler.Location = new System.Drawing.Point(3, 50);
+			this.lblSinglesWrestler.Location = new System.Drawing.Point(3, 24);
 			this.lblSinglesWrestler.Name = "lblSinglesWrestler";
-			this.lblSinglesWrestler.Size = new System.Drawing.Size(132, 13);
+			this.lblSinglesWrestler.Size = new System.Drawing.Size(120, 13);
 			this.lblSinglesWrestler.TabIndex = 0;
 			this.lblSinglesWrestler.Text = "Wrestler";
 			// 
@@ -229,9 +253,9 @@
 			// 
 			this.lblSingleSkillLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSingleSkillLevel.AutoSize = true;
-			this.lblSingleSkillLevel.Location = new System.Drawing.Point(3, 164);
+			this.lblSingleSkillLevel.Location = new System.Drawing.Point(3, 86);
 			this.lblSingleSkillLevel.Name = "lblSingleSkillLevel";
-			this.lblSingleSkillLevel.Size = new System.Drawing.Size(132, 13);
+			this.lblSingleSkillLevel.Size = new System.Drawing.Size(120, 13);
 			this.lblSingleSkillLevel.TabIndex = 1;
 			this.lblSingleSkillLevel.Text = "Skill Level";
 			// 
@@ -239,37 +263,37 @@
 			// 
 			this.lblSingleTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSingleTitleShotPercent.AutoSize = true;
-			this.lblSingleTitleShotPercent.Location = new System.Drawing.Point(3, 278);
+			this.lblSingleTitleShotPercent.Location = new System.Drawing.Point(3, 148);
 			this.lblSingleTitleShotPercent.Name = "lblSingleTitleShotPercent";
-			this.lblSingleTitleShotPercent.Size = new System.Drawing.Size(132, 13);
+			this.lblSingleTitleShotPercent.Size = new System.Drawing.Size(120, 13);
 			this.lblSingleTitleShotPercent.TabIndex = 2;
 			this.lblSingleTitleShotPercent.Text = "Title Shot Percent";
 			// 
 			// tbSingleWrestler
 			// 
 			this.tbSingleWrestler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleWrestler.Location = new System.Drawing.Point(141, 47);
+			this.tbSingleWrestler.Location = new System.Drawing.Point(129, 21);
 			this.tbSingleWrestler.Name = "tbSingleWrestler";
 			this.tbSingleWrestler.ReadOnly = true;
-			this.tbSingleWrestler.Size = new System.Drawing.Size(318, 20);
+			this.tbSingleWrestler.Size = new System.Drawing.Size(291, 20);
 			this.tbSingleWrestler.TabIndex = 3;
 			// 
 			// tbSingleSkillLevel
 			// 
 			this.tbSingleSkillLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleSkillLevel.Location = new System.Drawing.Point(141, 161);
+			this.tbSingleSkillLevel.Location = new System.Drawing.Point(129, 83);
 			this.tbSingleSkillLevel.Name = "tbSingleSkillLevel";
 			this.tbSingleSkillLevel.ReadOnly = true;
-			this.tbSingleSkillLevel.Size = new System.Drawing.Size(318, 20);
+			this.tbSingleSkillLevel.Size = new System.Drawing.Size(291, 20);
 			this.tbSingleSkillLevel.TabIndex = 4;
 			// 
 			// tbSingleTitleShotPercent
 			// 
 			this.tbSingleTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTitleShotPercent.Location = new System.Drawing.Point(141, 275);
+			this.tbSingleTitleShotPercent.Location = new System.Drawing.Point(129, 145);
 			this.tbSingleTitleShotPercent.Name = "tbSingleTitleShotPercent";
 			this.tbSingleTitleShotPercent.ReadOnly = true;
-			this.tbSingleTitleShotPercent.Size = new System.Drawing.Size(318, 20);
+			this.tbSingleTitleShotPercent.Size = new System.Drawing.Size(291, 20);
 			this.tbSingleTitleShotPercent.TabIndex = 5;
 			// 
 			// lbSinglesParticipants
@@ -277,196 +301,22 @@
 			this.lbSinglesParticipants.FormattingEnabled = true;
 			this.lbSinglesParticipants.Location = new System.Drawing.Point(6, 6);
 			this.lbSinglesParticipants.Name = "lbSinglesParticipants";
-			this.lbSinglesParticipants.Size = new System.Drawing.Size(104, 342);
+			this.lbSinglesParticipants.ScrollAlwaysVisible = true;
+			this.lbSinglesParticipants.Size = new System.Drawing.Size(140, 186);
 			this.lbSinglesParticipants.TabIndex = 0;
 			this.lbSinglesParticipants.SelectedIndexChanged += new System.EventHandler(this.lbSinglesParticipants_SelectedIndexChanged);
 			// 
-			// tpSinglesGroupings
-			// 
-			this.tpSinglesGroupings.Controls.Add(this.tlpSingleGroupings);
-			this.tpSinglesGroupings.Location = new System.Drawing.Point(4, 22);
-			this.tpSinglesGroupings.Name = "tpSinglesGroupings";
-			this.tpSinglesGroupings.Size = new System.Drawing.Size(578, 357);
-			this.tpSinglesGroupings.TabIndex = 3;
-			this.tpSinglesGroupings.Text = "Singles Groupings";
-			this.tpSinglesGroupings.UseVisualStyleBackColor = true;
-			// 
-			// tlpSingleGroupings
-			// 
-			this.tlpSingleGroupings.ColumnCount = 3;
-			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleGuestCharacters, 0, 4);
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier3, 0, 3);
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier2, 0, 2);
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier1, 0, 1);
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleNumWrestlers, 1, 0);
-			this.tlpSingleGroupings.Controls.Add(this.lblSingleFirstRank, 2, 0);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier1NumWrestlers, 1, 1);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier1InitialRank, 2, 1);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier2NumWrestlers, 1, 2);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier2InitialRank, 2, 2);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier3NumWrestlers, 1, 3);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier3InitialRank, 2, 3);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleGuestNumWrestlers, 1, 4);
-			this.tlpSingleGroupings.Controls.Add(this.tbSingleGuestInitialRank, 2, 4);
-			this.tlpSingleGroupings.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpSingleGroupings.Location = new System.Drawing.Point(0, 0);
-			this.tlpSingleGroupings.Name = "tlpSingleGroupings";
-			this.tlpSingleGroupings.RowCount = 5;
-			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
-			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
-			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
-			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
-			this.tlpSingleGroupings.Size = new System.Drawing.Size(578, 357);
-			this.tlpSingleGroupings.TabIndex = 0;
-			// 
-			// lblSingleGuestCharacters
-			// 
-			this.lblSingleGuestCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleGuestCharacters.AutoSize = true;
-			this.lblSingleGuestCharacters.Location = new System.Drawing.Point(3, 311);
-			this.lblSingleGuestCharacters.Name = "lblSingleGuestCharacters";
-			this.lblSingleGuestCharacters.Size = new System.Drawing.Size(138, 13);
-			this.lblSingleGuestCharacters.TabIndex = 3;
-			this.lblSingleGuestCharacters.Text = "Guest Characters";
-			// 
-			// lblSingleTier3
-			// 
-			this.lblSingleTier3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleTier3.AutoSize = true;
-			this.lblSingleTier3.Location = new System.Drawing.Point(3, 234);
-			this.lblSingleTier3.Name = "lblSingleTier3";
-			this.lblSingleTier3.Size = new System.Drawing.Size(138, 13);
-			this.lblSingleTier3.TabIndex = 2;
-			this.lblSingleTier3.Text = "Tier 3";
-			// 
-			// lblSingleTier2
-			// 
-			this.lblSingleTier2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleTier2.AutoSize = true;
-			this.lblSingleTier2.Location = new System.Drawing.Point(3, 159);
-			this.lblSingleTier2.Name = "lblSingleTier2";
-			this.lblSingleTier2.Size = new System.Drawing.Size(138, 13);
-			this.lblSingleTier2.TabIndex = 1;
-			this.lblSingleTier2.Text = "Tier 2";
-			// 
-			// lblSingleTier1
-			// 
-			this.lblSingleTier1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleTier1.AutoSize = true;
-			this.lblSingleTier1.Location = new System.Drawing.Point(3, 84);
-			this.lblSingleTier1.Name = "lblSingleTier1";
-			this.lblSingleTier1.Size = new System.Drawing.Size(138, 13);
-			this.lblSingleTier1.TabIndex = 0;
-			this.lblSingleTier1.Text = "Tier 1";
-			// 
-			// lblSingleNumWrestlers
-			// 
-			this.lblSingleNumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleNumWrestlers.AutoSize = true;
-			this.lblSingleNumWrestlers.Location = new System.Drawing.Point(147, 20);
-			this.lblSingleNumWrestlers.Name = "lblSingleNumWrestlers";
-			this.lblSingleNumWrestlers.Size = new System.Drawing.Size(210, 13);
-			this.lblSingleNumWrestlers.TabIndex = 4;
-			this.lblSingleNumWrestlers.Text = "Number of Wrestlers";
-			this.lblSingleNumWrestlers.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// lblSingleFirstRank
-			// 
-			this.lblSingleFirstRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblSingleFirstRank.AutoSize = true;
-			this.lblSingleFirstRank.Location = new System.Drawing.Point(363, 20);
-			this.lblSingleFirstRank.Name = "lblSingleFirstRank";
-			this.lblSingleFirstRank.Size = new System.Drawing.Size(212, 13);
-			this.lblSingleFirstRank.TabIndex = 5;
-			this.lblSingleFirstRank.Text = "Rank for First Wrestler";
-			this.lblSingleFirstRank.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// tbSingleTier1NumWrestlers
-			// 
-			this.tbSingleTier1NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier1NumWrestlers.Location = new System.Drawing.Point(147, 80);
-			this.tbSingleTier1NumWrestlers.Name = "tbSingleTier1NumWrestlers";
-			this.tbSingleTier1NumWrestlers.ReadOnly = true;
-			this.tbSingleTier1NumWrestlers.Size = new System.Drawing.Size(210, 20);
-			this.tbSingleTier1NumWrestlers.TabIndex = 6;
-			// 
-			// tbSingleTier1InitialRank
-			// 
-			this.tbSingleTier1InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier1InitialRank.Location = new System.Drawing.Point(363, 80);
-			this.tbSingleTier1InitialRank.Name = "tbSingleTier1InitialRank";
-			this.tbSingleTier1InitialRank.ReadOnly = true;
-			this.tbSingleTier1InitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbSingleTier1InitialRank.TabIndex = 7;
-			// 
-			// tbSingleTier2NumWrestlers
-			// 
-			this.tbSingleTier2NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier2NumWrestlers.Location = new System.Drawing.Point(147, 155);
-			this.tbSingleTier2NumWrestlers.Name = "tbSingleTier2NumWrestlers";
-			this.tbSingleTier2NumWrestlers.ReadOnly = true;
-			this.tbSingleTier2NumWrestlers.Size = new System.Drawing.Size(210, 20);
-			this.tbSingleTier2NumWrestlers.TabIndex = 8;
-			// 
-			// tbSingleTier2InitialRank
-			// 
-			this.tbSingleTier2InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier2InitialRank.Location = new System.Drawing.Point(363, 155);
-			this.tbSingleTier2InitialRank.Name = "tbSingleTier2InitialRank";
-			this.tbSingleTier2InitialRank.ReadOnly = true;
-			this.tbSingleTier2InitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbSingleTier2InitialRank.TabIndex = 9;
-			// 
-			// tbSingleTier3NumWrestlers
-			// 
-			this.tbSingleTier3NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier3NumWrestlers.Location = new System.Drawing.Point(147, 230);
-			this.tbSingleTier3NumWrestlers.Name = "tbSingleTier3NumWrestlers";
-			this.tbSingleTier3NumWrestlers.ReadOnly = true;
-			this.tbSingleTier3NumWrestlers.Size = new System.Drawing.Size(210, 20);
-			this.tbSingleTier3NumWrestlers.TabIndex = 10;
-			// 
-			// tbSingleTier3InitialRank
-			// 
-			this.tbSingleTier3InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTier3InitialRank.Location = new System.Drawing.Point(363, 230);
-			this.tbSingleTier3InitialRank.Name = "tbSingleTier3InitialRank";
-			this.tbSingleTier3InitialRank.ReadOnly = true;
-			this.tbSingleTier3InitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbSingleTier3InitialRank.TabIndex = 11;
-			// 
-			// tbSingleGuestNumWrestlers
-			// 
-			this.tbSingleGuestNumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleGuestNumWrestlers.Location = new System.Drawing.Point(147, 307);
-			this.tbSingleGuestNumWrestlers.Name = "tbSingleGuestNumWrestlers";
-			this.tbSingleGuestNumWrestlers.ReadOnly = true;
-			this.tbSingleGuestNumWrestlers.Size = new System.Drawing.Size(210, 20);
-			this.tbSingleGuestNumWrestlers.TabIndex = 12;
-			// 
-			// tbSingleGuestInitialRank
-			// 
-			this.tbSingleGuestInitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleGuestInitialRank.Location = new System.Drawing.Point(363, 307);
-			this.tbSingleGuestInitialRank.Name = "tbSingleGuestInitialRank";
-			this.tbSingleGuestInitialRank.ReadOnly = true;
-			this.tbSingleGuestInitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbSingleGuestInitialRank.TabIndex = 13;
-			// 
 			// tpTeams
 			// 
+			this.tpTeams.Controls.Add(this.tlpTagGroupings);
 			this.tpTeams.Controls.Add(this.tlpTeams);
 			this.tpTeams.Controls.Add(this.lbTeams);
 			this.tpTeams.Location = new System.Drawing.Point(4, 22);
 			this.tpTeams.Name = "tpTeams";
 			this.tpTeams.Padding = new System.Windows.Forms.Padding(3);
-			this.tpTeams.Size = new System.Drawing.Size(578, 357);
+			this.tpTeams.Size = new System.Drawing.Size(578, 377);
 			this.tpTeams.TabIndex = 0;
-			this.tpTeams.Text = "Teams";
+			this.tpTeams.Text = "Tag Teams";
 			this.tpTeams.UseVisualStyleBackColor = true;
 			// 
 			// tlpTeams
@@ -486,14 +336,14 @@
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpTeams.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tlpTeams.Size = new System.Drawing.Size(420, 342);
+			this.tlpTeams.Size = new System.Drawing.Size(420, 212);
 			this.tlpTeams.TabIndex = 1;
 			// 
 			// labelTeamWrestler1
 			// 
 			this.labelTeamWrestler1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTeamWrestler1.AutoSize = true;
-			this.labelTeamWrestler1.Location = new System.Drawing.Point(3, 50);
+			this.labelTeamWrestler1.Location = new System.Drawing.Point(3, 28);
 			this.labelTeamWrestler1.Name = "labelTeamWrestler1";
 			this.labelTeamWrestler1.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamWrestler1.TabIndex = 0;
@@ -503,7 +353,7 @@
 			// 
 			this.labelTeamWrestler2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTeamWrestler2.AutoSize = true;
-			this.labelTeamWrestler2.Location = new System.Drawing.Point(3, 164);
+			this.labelTeamWrestler2.Location = new System.Drawing.Point(3, 98);
 			this.labelTeamWrestler2.Name = "labelTeamWrestler2";
 			this.labelTeamWrestler2.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamWrestler2.TabIndex = 1;
@@ -513,7 +363,7 @@
 			// 
 			this.labelTeamTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTeamTitleShotPercent.AutoSize = true;
-			this.labelTeamTitleShotPercent.Location = new System.Drawing.Point(3, 278);
+			this.labelTeamTitleShotPercent.Location = new System.Drawing.Point(3, 169);
 			this.labelTeamTitleShotPercent.Name = "labelTeamTitleShotPercent";
 			this.labelTeamTitleShotPercent.Size = new System.Drawing.Size(120, 13);
 			this.labelTeamTitleShotPercent.TabIndex = 2;
@@ -522,7 +372,7 @@
 			// tbTeamWrestler1
 			// 
 			this.tbTeamWrestler1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamWrestler1.Location = new System.Drawing.Point(129, 47);
+			this.tbTeamWrestler1.Location = new System.Drawing.Point(129, 25);
 			this.tbTeamWrestler1.Name = "tbTeamWrestler1";
 			this.tbTeamWrestler1.ReadOnly = true;
 			this.tbTeamWrestler1.Size = new System.Drawing.Size(288, 20);
@@ -531,7 +381,7 @@
 			// tbTeamWrestler2
 			// 
 			this.tbTeamWrestler2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamWrestler2.Location = new System.Drawing.Point(129, 161);
+			this.tbTeamWrestler2.Location = new System.Drawing.Point(129, 95);
 			this.tbTeamWrestler2.Name = "tbTeamWrestler2";
 			this.tbTeamWrestler2.ReadOnly = true;
 			this.tbTeamWrestler2.Size = new System.Drawing.Size(288, 20);
@@ -540,7 +390,7 @@
 			// tbTeamTitleShotPercent
 			// 
 			this.tbTeamTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(129, 275);
+			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(129, 166);
 			this.tbTeamTitleShotPercent.Name = "tbTeamTitleShotPercent";
 			this.tbTeamTitleShotPercent.ReadOnly = true;
 			this.tbTeamTitleShotPercent.Size = new System.Drawing.Size(288, 20);
@@ -551,153 +401,10 @@
 			this.lbTeams.FormattingEnabled = true;
 			this.lbTeams.Location = new System.Drawing.Point(6, 6);
 			this.lbTeams.Name = "lbTeams";
-			this.lbTeams.Size = new System.Drawing.Size(140, 342);
+			this.lbTeams.ScrollAlwaysVisible = true;
+			this.lbTeams.Size = new System.Drawing.Size(140, 212);
 			this.lbTeams.TabIndex = 0;
 			this.lbTeams.SelectedIndexChanged += new System.EventHandler(this.lbTeams_SelectedIndexChanged);
-			// 
-			// tpTeamGroupings
-			// 
-			this.tpTeamGroupings.Controls.Add(this.tlpTagGroupings);
-			this.tpTeamGroupings.Location = new System.Drawing.Point(4, 22);
-			this.tpTeamGroupings.Name = "tpTeamGroupings";
-			this.tpTeamGroupings.Size = new System.Drawing.Size(578, 357);
-			this.tpTeamGroupings.TabIndex = 4;
-			this.tpTeamGroupings.Text = "Team Groupings";
-			this.tpTeamGroupings.UseVisualStyleBackColor = true;
-			// 
-			// tlpTagGroupings
-			// 
-			this.tlpTagGroupings.ColumnCount = 3;
-			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-			this.tlpTagGroupings.Controls.Add(this.lblTagTier1, 0, 1);
-			this.tlpTagGroupings.Controls.Add(this.lblTagTier2, 0, 2);
-			this.tlpTagGroupings.Controls.Add(this.lblTagGuestTeams, 0, 3);
-			this.tlpTagGroupings.Controls.Add(this.lblTagNumTeams, 1, 0);
-			this.tlpTagGroupings.Controls.Add(this.lblTagFirstRank, 2, 0);
-			this.tlpTagGroupings.Controls.Add(this.tbTagTier1NumTeams, 1, 1);
-			this.tlpTagGroupings.Controls.Add(this.tbTagTier1InitialRank, 2, 1);
-			this.tlpTagGroupings.Controls.Add(this.tbTagTier2NumTeams, 1, 2);
-			this.tlpTagGroupings.Controls.Add(this.tbTagTier2InitialRank, 2, 2);
-			this.tlpTagGroupings.Controls.Add(this.tbTagGuestNumTeams, 1, 3);
-			this.tlpTagGroupings.Controls.Add(this.tbTagGuestInitialRank, 2, 3);
-			this.tlpTagGroupings.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpTagGroupings.Location = new System.Drawing.Point(0, 0);
-			this.tlpTagGroupings.Name = "tlpTagGroupings";
-			this.tlpTagGroupings.RowCount = 4;
-			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.004F));
-			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
-			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
-			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
-			this.tlpTagGroupings.Size = new System.Drawing.Size(578, 357);
-			this.tlpTagGroupings.TabIndex = 0;
-			// 
-			// lblTagTier1
-			// 
-			this.lblTagTier1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTagTier1.AutoSize = true;
-			this.lblTagTier1.Location = new System.Drawing.Point(3, 112);
-			this.lblTagTier1.Name = "lblTagTier1";
-			this.lblTagTier1.Size = new System.Drawing.Size(138, 13);
-			this.lblTagTier1.TabIndex = 0;
-			this.lblTagTier1.Text = "Tier 1";
-			// 
-			// lblTagTier2
-			// 
-			this.lblTagTier2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTagTier2.AutoSize = true;
-			this.lblTagTier2.Location = new System.Drawing.Point(3, 207);
-			this.lblTagTier2.Name = "lblTagTier2";
-			this.lblTagTier2.Size = new System.Drawing.Size(138, 13);
-			this.lblTagTier2.TabIndex = 1;
-			this.lblTagTier2.Text = "Tier 2";
-			// 
-			// lblTagGuestTeams
-			// 
-			this.lblTagGuestTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTagGuestTeams.AutoSize = true;
-			this.lblTagGuestTeams.Location = new System.Drawing.Point(3, 302);
-			this.lblTagGuestTeams.Name = "lblTagGuestTeams";
-			this.lblTagGuestTeams.Size = new System.Drawing.Size(138, 13);
-			this.lblTagGuestTeams.TabIndex = 2;
-			this.lblTagGuestTeams.Text = "Guest Teams";
-			// 
-			// lblTagNumTeams
-			// 
-			this.lblTagNumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTagNumTeams.AutoSize = true;
-			this.lblTagNumTeams.Location = new System.Drawing.Point(147, 29);
-			this.lblTagNumTeams.Name = "lblTagNumTeams";
-			this.lblTagNumTeams.Size = new System.Drawing.Size(210, 13);
-			this.lblTagNumTeams.TabIndex = 3;
-			this.lblTagNumTeams.Text = "Number of Teams";
-			this.lblTagNumTeams.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// lblTagFirstRank
-			// 
-			this.lblTagFirstRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblTagFirstRank.AutoSize = true;
-			this.lblTagFirstRank.Location = new System.Drawing.Point(363, 29);
-			this.lblTagFirstRank.Name = "lblTagFirstRank";
-			this.lblTagFirstRank.Size = new System.Drawing.Size(212, 13);
-			this.lblTagFirstRank.TabIndex = 4;
-			this.lblTagFirstRank.Text = "Rank for First Team";
-			this.lblTagFirstRank.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			// 
-			// tbTagTier1NumTeams
-			// 
-			this.tbTagTier1NumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagTier1NumTeams.Location = new System.Drawing.Point(147, 108);
-			this.tbTagTier1NumTeams.Name = "tbTagTier1NumTeams";
-			this.tbTagTier1NumTeams.ReadOnly = true;
-			this.tbTagTier1NumTeams.Size = new System.Drawing.Size(210, 20);
-			this.tbTagTier1NumTeams.TabIndex = 5;
-			// 
-			// tbTagTier1InitialRank
-			// 
-			this.tbTagTier1InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagTier1InitialRank.Location = new System.Drawing.Point(363, 108);
-			this.tbTagTier1InitialRank.Name = "tbTagTier1InitialRank";
-			this.tbTagTier1InitialRank.ReadOnly = true;
-			this.tbTagTier1InitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbTagTier1InitialRank.TabIndex = 6;
-			// 
-			// tbTagTier2NumTeams
-			// 
-			this.tbTagTier2NumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagTier2NumTeams.Location = new System.Drawing.Point(147, 203);
-			this.tbTagTier2NumTeams.Name = "tbTagTier2NumTeams";
-			this.tbTagTier2NumTeams.ReadOnly = true;
-			this.tbTagTier2NumTeams.Size = new System.Drawing.Size(210, 20);
-			this.tbTagTier2NumTeams.TabIndex = 7;
-			// 
-			// tbTagTier2InitialRank
-			// 
-			this.tbTagTier2InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagTier2InitialRank.Location = new System.Drawing.Point(363, 203);
-			this.tbTagTier2InitialRank.Name = "tbTagTier2InitialRank";
-			this.tbTagTier2InitialRank.ReadOnly = true;
-			this.tbTagTier2InitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbTagTier2InitialRank.TabIndex = 8;
-			// 
-			// tbTagGuestNumTeams
-			// 
-			this.tbTagGuestNumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagGuestNumTeams.Location = new System.Drawing.Point(147, 299);
-			this.tbTagGuestNumTeams.Name = "tbTagGuestNumTeams";
-			this.tbTagGuestNumTeams.ReadOnly = true;
-			this.tbTagGuestNumTeams.Size = new System.Drawing.Size(210, 20);
-			this.tbTagGuestNumTeams.TabIndex = 9;
-			// 
-			// tbTagGuestInitialRank
-			// 
-			this.tbTagGuestInitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTagGuestInitialRank.Location = new System.Drawing.Point(363, 299);
-			this.tbTagGuestInitialRank.Name = "tbTagGuestInitialRank";
-			this.tbTagGuestInitialRank.ReadOnly = true;
-			this.tbTagGuestInitialRank.Size = new System.Drawing.Size(212, 20);
-			this.tbTagGuestInitialRank.TabIndex = 10;
 			// 
 			// tpChamps
 			// 
@@ -705,7 +412,7 @@
 			this.tpChamps.Location = new System.Drawing.Point(4, 22);
 			this.tpChamps.Name = "tpChamps";
 			this.tpChamps.Padding = new System.Windows.Forms.Padding(3);
-			this.tpChamps.Size = new System.Drawing.Size(578, 357);
+			this.tpChamps.Size = new System.Drawing.Size(578, 377);
 			this.tpChamps.TabIndex = 1;
 			this.tpChamps.Text = "Default Champions";
 			this.tpChamps.UseVisualStyleBackColor = true;
@@ -728,7 +435,7 @@
 			this.tlpChampions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpChampions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tlpChampions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tlpChampions.Size = new System.Drawing.Size(572, 351);
+			this.tlpChampions.Size = new System.Drawing.Size(572, 371);
 			this.tlpChampions.TabIndex = 0;
 			// 
 			// tlpAsiaTag
@@ -738,18 +445,18 @@
 			this.tlpAsiaTag.Controls.Add(this.tbAsiaTag2, 0, 1);
 			this.tlpAsiaTag.Controls.Add(this.tbAsiaTag1, 0, 0);
 			this.tlpAsiaTag.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpAsiaTag.Location = new System.Drawing.Point(146, 237);
+			this.tlpAsiaTag.Location = new System.Drawing.Point(146, 249);
 			this.tlpAsiaTag.Name = "tlpAsiaTag";
 			this.tlpAsiaTag.RowCount = 2;
 			this.tlpAsiaTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpAsiaTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpAsiaTag.Size = new System.Drawing.Size(423, 111);
+			this.tlpAsiaTag.Size = new System.Drawing.Size(423, 119);
 			this.tlpAsiaTag.TabIndex = 5;
 			// 
 			// tbAsiaTag2
 			// 
 			this.tbAsiaTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAsiaTag2.Location = new System.Drawing.Point(3, 73);
+			this.tbAsiaTag2.Location = new System.Drawing.Point(3, 79);
 			this.tbAsiaTag2.Name = "tbAsiaTag2";
 			this.tbAsiaTag2.ReadOnly = true;
 			this.tbAsiaTag2.Size = new System.Drawing.Size(417, 20);
@@ -758,7 +465,7 @@
 			// tbAsiaTag1
 			// 
 			this.tbAsiaTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAsiaTag1.Location = new System.Drawing.Point(3, 17);
+			this.tbAsiaTag1.Location = new System.Drawing.Point(3, 19);
 			this.tbAsiaTag1.Name = "tbAsiaTag1";
 			this.tbAsiaTag1.ReadOnly = true;
 			this.tbAsiaTag1.Size = new System.Drawing.Size(417, 20);
@@ -768,7 +475,7 @@
 			// 
 			this.labelTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTripleCrown.AutoSize = true;
-			this.labelTripleCrown.Location = new System.Drawing.Point(3, 52);
+			this.labelTripleCrown.Location = new System.Drawing.Point(3, 55);
 			this.labelTripleCrown.Name = "labelTripleCrown";
 			this.labelTripleCrown.Size = new System.Drawing.Size(137, 13);
 			this.labelTripleCrown.TabIndex = 0;
@@ -778,7 +485,7 @@
 			// 
 			this.labelWorldTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelWorldTag.AutoSize = true;
-			this.labelWorldTag.Location = new System.Drawing.Point(3, 169);
+			this.labelWorldTag.Location = new System.Drawing.Point(3, 178);
 			this.labelWorldTag.Name = "labelWorldTag";
 			this.labelWorldTag.Size = new System.Drawing.Size(137, 13);
 			this.labelWorldTag.TabIndex = 1;
@@ -788,7 +495,7 @@
 			// 
 			this.labelAsiaTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelAsiaTag.AutoSize = true;
-			this.labelAsiaTag.Location = new System.Drawing.Point(3, 286);
+			this.labelAsiaTag.Location = new System.Drawing.Point(3, 302);
 			this.labelAsiaTag.Name = "labelAsiaTag";
 			this.labelAsiaTag.Size = new System.Drawing.Size(137, 13);
 			this.labelAsiaTag.TabIndex = 2;
@@ -797,7 +504,7 @@
 			// tbTripleCrown
 			// 
 			this.tbTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTripleCrown.Location = new System.Drawing.Point(146, 48);
+			this.tbTripleCrown.Location = new System.Drawing.Point(146, 51);
 			this.tbTripleCrown.Name = "tbTripleCrown";
 			this.tbTripleCrown.ReadOnly = true;
 			this.tbTripleCrown.Size = new System.Drawing.Size(423, 20);
@@ -810,18 +517,18 @@
 			this.tlpWorldTag.Controls.Add(this.tbWorldTag2, 0, 1);
 			this.tlpWorldTag.Controls.Add(this.tbWorldTag1, 0, 0);
 			this.tlpWorldTag.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpWorldTag.Location = new System.Drawing.Point(146, 120);
+			this.tlpWorldTag.Location = new System.Drawing.Point(146, 126);
 			this.tlpWorldTag.Name = "tlpWorldTag";
 			this.tlpWorldTag.RowCount = 2;
 			this.tlpWorldTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpWorldTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpWorldTag.Size = new System.Drawing.Size(423, 111);
+			this.tlpWorldTag.Size = new System.Drawing.Size(423, 117);
 			this.tlpWorldTag.TabIndex = 4;
 			// 
 			// tbWorldTag2
 			// 
 			this.tbWorldTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWorldTag2.Location = new System.Drawing.Point(3, 73);
+			this.tbWorldTag2.Location = new System.Drawing.Point(3, 77);
 			this.tbWorldTag2.Name = "tbWorldTag2";
 			this.tbWorldTag2.ReadOnly = true;
 			this.tbWorldTag2.Size = new System.Drawing.Size(417, 20);
@@ -830,7 +537,7 @@
 			// tbWorldTag1
 			// 
 			this.tbWorldTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWorldTag1.Location = new System.Drawing.Point(3, 17);
+			this.tbWorldTag1.Location = new System.Drawing.Point(3, 19);
 			this.tbWorldTag1.Name = "tbWorldTag1";
 			this.tbWorldTag1.ReadOnly = true;
 			this.tbWorldTag1.Size = new System.Drawing.Size(417, 20);
@@ -883,8 +590,8 @@
 			// 
 			// tpEvents
 			// 
-			this.tpEvents.Controls.Add(this.tableLayoutPanel2);
-			this.tpEvents.Controls.Add(this.tableLayoutPanel1);
+			this.tpEvents.Controls.Add(this.tlpEventSettings);
+			this.tpEvents.Controls.Add(this.tlpEventList);
 			this.tpEvents.Location = new System.Drawing.Point(4, 22);
 			this.tpEvents.Name = "tpEvents";
 			this.tpEvents.Padding = new System.Windows.Forms.Padding(3);
@@ -893,52 +600,52 @@
 			this.tpEvents.Text = "Event Schedule";
 			this.tpEvents.UseVisualStyleBackColor = true;
 			// 
-			// tableLayoutPanel2
+			// tlpEventSettings
 			// 
-			this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tlpEventSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel2.ColumnCount = 2;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-			this.tableLayoutPanel2.Controls.Add(this.lblBulletinBoardMessage, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.lblPromotionRelegation, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.lblTourOpening, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.lblQualifyingRequirement, 0, 3);
-			this.tableLayoutPanel2.Controls.Add(this.lblEventLocation, 0, 4);
-			this.tableLayoutPanel2.Controls.Add(this.lblArenaType, 0, 5);
-			this.tableLayoutPanel2.Controls.Add(this.lblPlayerParticipation, 0, 6);
-			this.tableLayoutPanel2.Controls.Add(this.lblShowNumber, 0, 7);
-			this.tableLayoutPanel2.Controls.Add(this.lblBookingInstructions, 0, 8);
-			this.tableLayoutPanel2.Controls.Add(this.lblEventName, 0, 9);
-			this.tableLayoutPanel2.Controls.Add(this.lblMonthNumber, 0, 10);
-			this.tableLayoutPanel2.Controls.Add(this.tbBulletinBoardMessage, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.tbEventLocation, 1, 4);
-			this.tableLayoutPanel2.Controls.Add(this.tbArenaType, 1, 5);
-			this.tableLayoutPanel2.Controls.Add(this.tbPlayerParticipation, 1, 6);
-			this.tableLayoutPanel2.Controls.Add(this.tbShowNumber, 1, 7);
-			this.tableLayoutPanel2.Controls.Add(this.tbEventName, 1, 9);
-			this.tableLayoutPanel2.Controls.Add(this.tbMonthNumber, 1, 10);
-			this.tableLayoutPanel2.Controls.Add(this.cbPromotionRelegation, 1, 1);
-			this.tableLayoutPanel2.Controls.Add(this.cbShowTourScene, 1, 2);
-			this.tableLayoutPanel2.Controls.Add(this.cbQualifyingRequirement, 1, 3);
-			this.tableLayoutPanel2.Controls.Add(this.tlpEventBooking, 1, 8);
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 41);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 11;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(580, 362);
-			this.tableLayoutPanel2.TabIndex = 1;
+			this.tlpEventSettings.ColumnCount = 2;
+			this.tlpEventSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tlpEventSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tlpEventSettings.Controls.Add(this.lblBulletinBoardMessage, 0, 0);
+			this.tlpEventSettings.Controls.Add(this.lblPromotionRelegation, 0, 1);
+			this.tlpEventSettings.Controls.Add(this.lblTourOpening, 0, 2);
+			this.tlpEventSettings.Controls.Add(this.lblQualifyingRequirement, 0, 3);
+			this.tlpEventSettings.Controls.Add(this.lblEventLocation, 0, 4);
+			this.tlpEventSettings.Controls.Add(this.lblArenaType, 0, 5);
+			this.tlpEventSettings.Controls.Add(this.lblPlayerParticipation, 0, 6);
+			this.tlpEventSettings.Controls.Add(this.lblShowNumber, 0, 7);
+			this.tlpEventSettings.Controls.Add(this.lblBookingInstructions, 0, 8);
+			this.tlpEventSettings.Controls.Add(this.lblEventName, 0, 9);
+			this.tlpEventSettings.Controls.Add(this.lblMonthNumber, 0, 10);
+			this.tlpEventSettings.Controls.Add(this.tbBulletinBoardMessage, 1, 0);
+			this.tlpEventSettings.Controls.Add(this.tbEventLocation, 1, 4);
+			this.tlpEventSettings.Controls.Add(this.tbArenaType, 1, 5);
+			this.tlpEventSettings.Controls.Add(this.tbPlayerParticipation, 1, 6);
+			this.tlpEventSettings.Controls.Add(this.tbShowNumber, 1, 7);
+			this.tlpEventSettings.Controls.Add(this.tbEventName, 1, 9);
+			this.tlpEventSettings.Controls.Add(this.tbMonthNumber, 1, 10);
+			this.tlpEventSettings.Controls.Add(this.cbPromotionRelegation, 1, 1);
+			this.tlpEventSettings.Controls.Add(this.cbShowTourScene, 1, 2);
+			this.tlpEventSettings.Controls.Add(this.cbQualifyingRequirement, 1, 3);
+			this.tlpEventSettings.Controls.Add(this.tlpEventBooking, 1, 8);
+			this.tlpEventSettings.Location = new System.Drawing.Point(6, 41);
+			this.tlpEventSettings.Name = "tlpEventSettings";
+			this.tlpEventSettings.RowCount = 11;
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+			this.tlpEventSettings.Size = new System.Drawing.Size(580, 362);
+			this.tlpEventSettings.TabIndex = 1;
 			// 
 			// lblBulletinBoardMessage
 			// 
@@ -1158,19 +865,19 @@
 			this.cbQualifyingRequirement.Text = "True";
 			this.cbQualifyingRequirement.UseVisualStyleBackColor = true;
 			// 
-			// tableLayoutPanel1
+			// tlpEventList
 			// 
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tableLayoutPanel1.Controls.Add(this.lblEvent, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.cbEvents, 1, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(580, 29);
-			this.tableLayoutPanel1.TabIndex = 0;
+			this.tlpEventList.ColumnCount = 2;
+			this.tlpEventList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpEventList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpEventList.Controls.Add(this.lblEvent, 0, 0);
+			this.tlpEventList.Controls.Add(this.cbEvents, 1, 0);
+			this.tlpEventList.Location = new System.Drawing.Point(6, 6);
+			this.tlpEventList.Name = "tlpEventList";
+			this.tlpEventList.RowCount = 1;
+			this.tlpEventList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpEventList.Size = new System.Drawing.Size(580, 29);
+			this.tlpEventList.TabIndex = 0;
 			// 
 			// lblEvent
 			// 
@@ -1195,55 +902,55 @@
 			// 
 			// tpBookingInstructions
 			// 
-			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel4);
-			this.tpBookingInstructions.Controls.Add(this.tableLayoutPanel3);
+			this.tpBookingInstructions.Controls.Add(this.tlpBookingInstructions);
+			this.tpBookingInstructions.Controls.Add(this.tlpBookingSet);
 			this.tpBookingInstructions.Location = new System.Drawing.Point(4, 22);
 			this.tpBookingInstructions.Name = "tpBookingInstructions";
-			this.tpBookingInstructions.Size = new System.Drawing.Size(592, 389);
+			this.tpBookingInstructions.Size = new System.Drawing.Size(592, 409);
 			this.tpBookingInstructions.TabIndex = 2;
 			this.tpBookingInstructions.Text = "Booking Instructions";
 			this.tpBookingInstructions.UseVisualStyleBackColor = true;
 			// 
-			// tableLayoutPanel4
+			// tlpBookingInstructions
 			// 
-			this.tableLayoutPanel4.ColumnCount = 2;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch1, 0, 0);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch2, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch3, 0, 2);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch4, 0, 3);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch5, 0, 4);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch6, 0, 5);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch7, 0, 6);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch8, 0, 7);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch9, 0, 8);
-			this.tableLayoutPanel4.Controls.Add(this.lblMatch10, 0, 9);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch1, 1, 0);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch2, 1, 1);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch3, 1, 2);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch4, 1, 3);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch5, 1, 4);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch6, 1, 5);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch7, 1, 6);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch8, 1, 7);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch9, 1, 8);
-			this.tableLayoutPanel4.Controls.Add(this.tbMatch10, 1, 9);
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 41);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 10;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(580, 345);
-			this.tableLayoutPanel4.TabIndex = 1;
+			this.tlpBookingInstructions.ColumnCount = 2;
+			this.tlpBookingInstructions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpBookingInstructions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch1, 0, 0);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch2, 0, 1);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch3, 0, 2);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch4, 0, 3);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch5, 0, 4);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch6, 0, 5);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch7, 0, 6);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch8, 0, 7);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch9, 0, 8);
+			this.tlpBookingInstructions.Controls.Add(this.lblMatch10, 0, 9);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch1, 1, 0);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch2, 1, 1);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch3, 1, 2);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch4, 1, 3);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch5, 1, 4);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch6, 1, 5);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch7, 1, 6);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch8, 1, 7);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch9, 1, 8);
+			this.tlpBookingInstructions.Controls.Add(this.tbMatch10, 1, 9);
+			this.tlpBookingInstructions.Location = new System.Drawing.Point(6, 41);
+			this.tlpBookingInstructions.Name = "tlpBookingInstructions";
+			this.tlpBookingInstructions.RowCount = 10;
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpBookingInstructions.Size = new System.Drawing.Size(580, 345);
+			this.tlpBookingInstructions.TabIndex = 1;
 			// 
 			// lblMatch1
 			// 
@@ -1435,19 +1142,19 @@
 			this.tbMatch10.Size = new System.Drawing.Size(458, 20);
 			this.tbMatch10.TabIndex = 19;
 			// 
-			// tableLayoutPanel3
+			// tlpBookingSet
 			// 
-			this.tableLayoutPanel3.ColumnCount = 2;
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tableLayoutPanel3.Controls.Add(this.lblInstructionSet, 0, 0);
-			this.tableLayoutPanel3.Controls.Add(this.cbBookingInstructions, 1, 0);
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 6);
-			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 1;
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 29);
-			this.tableLayoutPanel3.TabIndex = 0;
+			this.tlpBookingSet.ColumnCount = 2;
+			this.tlpBookingSet.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpBookingSet.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpBookingSet.Controls.Add(this.lblInstructionSet, 0, 0);
+			this.tlpBookingSet.Controls.Add(this.cbBookingInstructions, 1, 0);
+			this.tlpBookingSet.Location = new System.Drawing.Point(6, 6);
+			this.tlpBookingSet.Name = "tlpBookingSet";
+			this.tlpBookingSet.RowCount = 1;
+			this.tlpBookingSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpBookingSet.Size = new System.Drawing.Size(580, 29);
+			this.tlpBookingSet.TabIndex = 0;
 			// 
 			// lblInstructionSet
 			// 
@@ -1497,6 +1204,570 @@
 			this.btnViewBooking.UseVisualStyleBackColor = true;
 			this.btnViewBooking.Click += new System.EventHandler(this.btnViewBooking_Click);
 			// 
+			// tlpSingleGroupings
+			// 
+			this.tlpSingleGroupings.ColumnCount = 3;
+			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+			this.tlpSingleGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleGuestCharacters, 0, 4);
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier3, 0, 3);
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier2, 0, 2);
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleTier1, 0, 1);
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleNumWrestlers, 1, 0);
+			this.tlpSingleGroupings.Controls.Add(this.lblSingleFirstRank, 2, 0);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier1NumWrestlers, 1, 1);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier1InitialRank, 2, 1);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier2NumWrestlers, 1, 2);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier2InitialRank, 2, 2);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier3NumWrestlers, 1, 3);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleTier3InitialRank, 2, 3);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleGuestNumWrestlers, 1, 4);
+			this.tlpSingleGroupings.Controls.Add(this.tbSingleGuestInitialRank, 2, 4);
+			this.tlpSingleGroupings.Location = new System.Drawing.Point(3, 206);
+			this.tlpSingleGroupings.Name = "tlpSingleGroupings";
+			this.tlpSingleGroupings.RowCount = 5;
+			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
+			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
+			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
+			this.tlpSingleGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.25F));
+			this.tlpSingleGroupings.Size = new System.Drawing.Size(572, 168);
+			this.tlpSingleGroupings.TabIndex = 2;
+			// 
+			// lblSingleGuestCharacters
+			// 
+			this.lblSingleGuestCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleGuestCharacters.AutoSize = true;
+			this.lblSingleGuestCharacters.Location = new System.Drawing.Point(3, 142);
+			this.lblSingleGuestCharacters.Name = "lblSingleGuestCharacters";
+			this.lblSingleGuestCharacters.Size = new System.Drawing.Size(137, 13);
+			this.lblSingleGuestCharacters.TabIndex = 3;
+			this.lblSingleGuestCharacters.Text = "Guest Characters";
+			// 
+			// lblSingleTier3
+			// 
+			this.lblSingleTier3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleTier3.AutoSize = true;
+			this.lblSingleTier3.Location = new System.Drawing.Point(3, 106);
+			this.lblSingleTier3.Name = "lblSingleTier3";
+			this.lblSingleTier3.Size = new System.Drawing.Size(137, 13);
+			this.lblSingleTier3.TabIndex = 2;
+			this.lblSingleTier3.Text = "Tier 3";
+			// 
+			// lblSingleTier2
+			// 
+			this.lblSingleTier2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleTier2.AutoSize = true;
+			this.lblSingleTier2.Location = new System.Drawing.Point(3, 71);
+			this.lblSingleTier2.Name = "lblSingleTier2";
+			this.lblSingleTier2.Size = new System.Drawing.Size(137, 13);
+			this.lblSingleTier2.TabIndex = 1;
+			this.lblSingleTier2.Text = "Tier 2";
+			// 
+			// lblSingleTier1
+			// 
+			this.lblSingleTier1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleTier1.AutoSize = true;
+			this.lblSingleTier1.Location = new System.Drawing.Point(3, 36);
+			this.lblSingleTier1.Name = "lblSingleTier1";
+			this.lblSingleTier1.Size = new System.Drawing.Size(137, 13);
+			this.lblSingleTier1.TabIndex = 0;
+			this.lblSingleTier1.Text = "Tier 1";
+			// 
+			// lblSingleNumWrestlers
+			// 
+			this.lblSingleNumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleNumWrestlers.AutoSize = true;
+			this.lblSingleNumWrestlers.Location = new System.Drawing.Point(146, 6);
+			this.lblSingleNumWrestlers.Name = "lblSingleNumWrestlers";
+			this.lblSingleNumWrestlers.Size = new System.Drawing.Size(208, 13);
+			this.lblSingleNumWrestlers.TabIndex = 4;
+			this.lblSingleNumWrestlers.Text = "Number of Wrestlers";
+			this.lblSingleNumWrestlers.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblSingleFirstRank
+			// 
+			this.lblSingleFirstRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblSingleFirstRank.AutoSize = true;
+			this.lblSingleFirstRank.Location = new System.Drawing.Point(360, 6);
+			this.lblSingleFirstRank.Name = "lblSingleFirstRank";
+			this.lblSingleFirstRank.Size = new System.Drawing.Size(209, 13);
+			this.lblSingleFirstRank.TabIndex = 5;
+			this.lblSingleFirstRank.Text = "Rank for First Wrestler";
+			this.lblSingleFirstRank.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// tbSingleTier1NumWrestlers
+			// 
+			this.tbSingleTier1NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier1NumWrestlers.Location = new System.Drawing.Point(146, 32);
+			this.tbSingleTier1NumWrestlers.Name = "tbSingleTier1NumWrestlers";
+			this.tbSingleTier1NumWrestlers.ReadOnly = true;
+			this.tbSingleTier1NumWrestlers.Size = new System.Drawing.Size(208, 20);
+			this.tbSingleTier1NumWrestlers.TabIndex = 6;
+			// 
+			// tbSingleTier1InitialRank
+			// 
+			this.tbSingleTier1InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier1InitialRank.Location = new System.Drawing.Point(360, 32);
+			this.tbSingleTier1InitialRank.Name = "tbSingleTier1InitialRank";
+			this.tbSingleTier1InitialRank.ReadOnly = true;
+			this.tbSingleTier1InitialRank.Size = new System.Drawing.Size(209, 20);
+			this.tbSingleTier1InitialRank.TabIndex = 7;
+			// 
+			// tbSingleTier2NumWrestlers
+			// 
+			this.tbSingleTier2NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier2NumWrestlers.Location = new System.Drawing.Point(146, 67);
+			this.tbSingleTier2NumWrestlers.Name = "tbSingleTier2NumWrestlers";
+			this.tbSingleTier2NumWrestlers.ReadOnly = true;
+			this.tbSingleTier2NumWrestlers.Size = new System.Drawing.Size(208, 20);
+			this.tbSingleTier2NumWrestlers.TabIndex = 8;
+			// 
+			// tbSingleTier2InitialRank
+			// 
+			this.tbSingleTier2InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier2InitialRank.Location = new System.Drawing.Point(360, 67);
+			this.tbSingleTier2InitialRank.Name = "tbSingleTier2InitialRank";
+			this.tbSingleTier2InitialRank.ReadOnly = true;
+			this.tbSingleTier2InitialRank.Size = new System.Drawing.Size(209, 20);
+			this.tbSingleTier2InitialRank.TabIndex = 9;
+			// 
+			// tbSingleTier3NumWrestlers
+			// 
+			this.tbSingleTier3NumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier3NumWrestlers.Location = new System.Drawing.Point(146, 102);
+			this.tbSingleTier3NumWrestlers.Name = "tbSingleTier3NumWrestlers";
+			this.tbSingleTier3NumWrestlers.ReadOnly = true;
+			this.tbSingleTier3NumWrestlers.Size = new System.Drawing.Size(208, 20);
+			this.tbSingleTier3NumWrestlers.TabIndex = 10;
+			// 
+			// tbSingleTier3InitialRank
+			// 
+			this.tbSingleTier3InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleTier3InitialRank.Location = new System.Drawing.Point(360, 102);
+			this.tbSingleTier3InitialRank.Name = "tbSingleTier3InitialRank";
+			this.tbSingleTier3InitialRank.ReadOnly = true;
+			this.tbSingleTier3InitialRank.Size = new System.Drawing.Size(209, 20);
+			this.tbSingleTier3InitialRank.TabIndex = 11;
+			// 
+			// tbSingleGuestNumWrestlers
+			// 
+			this.tbSingleGuestNumWrestlers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleGuestNumWrestlers.Location = new System.Drawing.Point(146, 139);
+			this.tbSingleGuestNumWrestlers.Name = "tbSingleGuestNumWrestlers";
+			this.tbSingleGuestNumWrestlers.ReadOnly = true;
+			this.tbSingleGuestNumWrestlers.Size = new System.Drawing.Size(208, 20);
+			this.tbSingleGuestNumWrestlers.TabIndex = 12;
+			// 
+			// tbSingleGuestInitialRank
+			// 
+			this.tbSingleGuestInitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleGuestInitialRank.Location = new System.Drawing.Point(360, 139);
+			this.tbSingleGuestInitialRank.Name = "tbSingleGuestInitialRank";
+			this.tbSingleGuestInitialRank.ReadOnly = true;
+			this.tbSingleGuestInitialRank.Size = new System.Drawing.Size(209, 20);
+			this.tbSingleGuestInitialRank.TabIndex = 13;
+			// 
+			// tlpTagGroupings
+			// 
+			this.tlpTagGroupings.ColumnCount = 3;
+			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+			this.tlpTagGroupings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+			this.tlpTagGroupings.Controls.Add(this.lblTagTier1, 0, 1);
+			this.tlpTagGroupings.Controls.Add(this.lblTagTier2, 0, 2);
+			this.tlpTagGroupings.Controls.Add(this.lblTagGuestTeams, 0, 3);
+			this.tlpTagGroupings.Controls.Add(this.lblTagNumTeams, 1, 0);
+			this.tlpTagGroupings.Controls.Add(this.lblTagFirstRank, 2, 0);
+			this.tlpTagGroupings.Controls.Add(this.tbTagTier1NumTeams, 1, 1);
+			this.tlpTagGroupings.Controls.Add(this.tbTagTier1InitialRank, 2, 1);
+			this.tlpTagGroupings.Controls.Add(this.tbTagTier2NumTeams, 1, 2);
+			this.tlpTagGroupings.Controls.Add(this.tbTagTier2InitialRank, 2, 2);
+			this.tlpTagGroupings.Controls.Add(this.tbTagGuestNumTeams, 1, 3);
+			this.tlpTagGroupings.Controls.Add(this.tbTagGuestInitialRank, 2, 3);
+			this.tlpTagGroupings.Location = new System.Drawing.Point(6, 225);
+			this.tlpTagGroupings.Name = "tlpTagGroupings";
+			this.tlpTagGroupings.RowCount = 4;
+			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.004F));
+			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
+			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
+			this.tlpTagGroupings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.66533F));
+			this.tlpTagGroupings.Size = new System.Drawing.Size(566, 146);
+			this.tlpTagGroupings.TabIndex = 2;
+			// 
+			// lblTagTier1
+			// 
+			this.lblTagTier1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTagTier1.AutoSize = true;
+			this.lblTagTier1.Location = new System.Drawing.Point(3, 41);
+			this.lblTagTier1.Name = "lblTagTier1";
+			this.lblTagTier1.Size = new System.Drawing.Size(135, 13);
+			this.lblTagTier1.TabIndex = 0;
+			this.lblTagTier1.Text = "Tier 1";
+			// 
+			// lblTagTier2
+			// 
+			this.lblTagTier2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTagTier2.AutoSize = true;
+			this.lblTagTier2.Location = new System.Drawing.Point(3, 79);
+			this.lblTagTier2.Name = "lblTagTier2";
+			this.lblTagTier2.Size = new System.Drawing.Size(135, 13);
+			this.lblTagTier2.TabIndex = 1;
+			this.lblTagTier2.Text = "Tier 2";
+			// 
+			// lblTagGuestTeams
+			// 
+			this.lblTagGuestTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTagGuestTeams.AutoSize = true;
+			this.lblTagGuestTeams.Location = new System.Drawing.Point(3, 119);
+			this.lblTagGuestTeams.Name = "lblTagGuestTeams";
+			this.lblTagGuestTeams.Size = new System.Drawing.Size(135, 13);
+			this.lblTagGuestTeams.TabIndex = 2;
+			this.lblTagGuestTeams.Text = "Guest Teams";
+			// 
+			// lblTagNumTeams
+			// 
+			this.lblTagNumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTagNumTeams.AutoSize = true;
+			this.lblTagNumTeams.Location = new System.Drawing.Point(144, 8);
+			this.lblTagNumTeams.Name = "lblTagNumTeams";
+			this.lblTagNumTeams.Size = new System.Drawing.Size(206, 13);
+			this.lblTagNumTeams.TabIndex = 3;
+			this.lblTagNumTeams.Text = "Number of Teams";
+			this.lblTagNumTeams.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblTagFirstRank
+			// 
+			this.lblTagFirstRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblTagFirstRank.AutoSize = true;
+			this.lblTagFirstRank.Location = new System.Drawing.Point(356, 8);
+			this.lblTagFirstRank.Name = "lblTagFirstRank";
+			this.lblTagFirstRank.Size = new System.Drawing.Size(207, 13);
+			this.lblTagFirstRank.TabIndex = 4;
+			this.lblTagFirstRank.Text = "Rank for First Team";
+			this.lblTagFirstRank.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// tbTagTier1NumTeams
+			// 
+			this.tbTagTier1NumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagTier1NumTeams.Location = new System.Drawing.Point(144, 38);
+			this.tbTagTier1NumTeams.Name = "tbTagTier1NumTeams";
+			this.tbTagTier1NumTeams.ReadOnly = true;
+			this.tbTagTier1NumTeams.Size = new System.Drawing.Size(206, 20);
+			this.tbTagTier1NumTeams.TabIndex = 5;
+			// 
+			// tbTagTier1InitialRank
+			// 
+			this.tbTagTier1InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagTier1InitialRank.Location = new System.Drawing.Point(356, 38);
+			this.tbTagTier1InitialRank.Name = "tbTagTier1InitialRank";
+			this.tbTagTier1InitialRank.ReadOnly = true;
+			this.tbTagTier1InitialRank.Size = new System.Drawing.Size(207, 20);
+			this.tbTagTier1InitialRank.TabIndex = 6;
+			// 
+			// tbTagTier2NumTeams
+			// 
+			this.tbTagTier2NumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagTier2NumTeams.Location = new System.Drawing.Point(144, 76);
+			this.tbTagTier2NumTeams.Name = "tbTagTier2NumTeams";
+			this.tbTagTier2NumTeams.ReadOnly = true;
+			this.tbTagTier2NumTeams.Size = new System.Drawing.Size(206, 20);
+			this.tbTagTier2NumTeams.TabIndex = 7;
+			// 
+			// tbTagTier2InitialRank
+			// 
+			this.tbTagTier2InitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagTier2InitialRank.Location = new System.Drawing.Point(356, 76);
+			this.tbTagTier2InitialRank.Name = "tbTagTier2InitialRank";
+			this.tbTagTier2InitialRank.ReadOnly = true;
+			this.tbTagTier2InitialRank.Size = new System.Drawing.Size(207, 20);
+			this.tbTagTier2InitialRank.TabIndex = 8;
+			// 
+			// tbTagGuestNumTeams
+			// 
+			this.tbTagGuestNumTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagGuestNumTeams.Location = new System.Drawing.Point(144, 115);
+			this.tbTagGuestNumTeams.Name = "tbTagGuestNumTeams";
+			this.tbTagGuestNumTeams.ReadOnly = true;
+			this.tbTagGuestNumTeams.Size = new System.Drawing.Size(206, 20);
+			this.tbTagGuestNumTeams.TabIndex = 9;
+			// 
+			// tbTagGuestInitialRank
+			// 
+			this.tbTagGuestInitialRank.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagGuestInitialRank.Location = new System.Drawing.Point(356, 115);
+			this.tbTagGuestInitialRank.Name = "tbTagGuestInitialRank";
+			this.tbTagGuestInitialRank.ReadOnly = true;
+			this.tbTagGuestInitialRank.Size = new System.Drawing.Size(207, 20);
+			this.tbTagGuestInitialRank.TabIndex = 10;
+			// 
+			// tpPromoRelegate
+			// 
+			this.tpPromoRelegate.Controls.Add(this.gbPromoRelegateTag);
+			this.tpPromoRelegate.Controls.Add(this.gbPromoRelegateSingles);
+			this.tpPromoRelegate.Location = new System.Drawing.Point(4, 22);
+			this.tpPromoRelegate.Name = "tpPromoRelegate";
+			this.tpPromoRelegate.Padding = new System.Windows.Forms.Padding(3);
+			this.tpPromoRelegate.Size = new System.Drawing.Size(578, 377);
+			this.tpPromoRelegate.TabIndex = 3;
+			this.tpPromoRelegate.Text = "Promotion/Relegation";
+			this.tpPromoRelegate.UseVisualStyleBackColor = true;
+			// 
+			// gbPromoRelegateSingles
+			// 
+			this.gbPromoRelegateSingles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbPromoRelegateSingles.Controls.Add(this.tlpPromoRelegateSingle);
+			this.gbPromoRelegateSingles.Location = new System.Drawing.Point(6, 6);
+			this.gbPromoRelegateSingles.Name = "gbPromoRelegateSingles";
+			this.gbPromoRelegateSingles.Size = new System.Drawing.Size(566, 231);
+			this.gbPromoRelegateSingles.TabIndex = 0;
+			this.gbPromoRelegateSingles.TabStop = false;
+			this.gbPromoRelegateSingles.Text = "Singles";
+			// 
+			// gbPromoRelegateTag
+			// 
+			this.gbPromoRelegateTag.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbPromoRelegateTag.Controls.Add(this.tlpPromoRelegateTag);
+			this.gbPromoRelegateTag.Location = new System.Drawing.Point(6, 243);
+			this.gbPromoRelegateTag.Name = "gbPromoRelegateTag";
+			this.gbPromoRelegateTag.Size = new System.Drawing.Size(566, 128);
+			this.gbPromoRelegateTag.TabIndex = 1;
+			this.gbPromoRelegateTag.TabStop = false;
+			this.gbPromoRelegateTag.Text = "Tag Teams";
+			// 
+			// tlpPromoRelegateSingle
+			// 
+			this.tlpPromoRelegateSingle.ColumnCount = 3;
+			this.tlpPromoRelegateSingle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpPromoRelegateSingle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpPromoRelegateSingle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblPromoSingle, 2, 0);
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblRelegateSingle, 1, 0);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSinglePromote1, 2, 1);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSingleRelegate1, 1, 1);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSinglePromote2, 2, 2);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSingleRelegate2, 1, 2);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSinglePromote3, 2, 3);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSinglePromote4, 2, 4);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSingleRelegate3, 1, 3);
+			this.tlpPromoRelegateSingle.Controls.Add(this.tbSingleRelegate4, 1, 4);
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblPromoRelegate1, 0, 1);
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblPromoRelegate2, 0, 2);
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblPromoRelegate3, 0, 3);
+			this.tlpPromoRelegateSingle.Controls.Add(this.lblPromoRelegate4, 0, 4);
+			this.tlpPromoRelegateSingle.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpPromoRelegateSingle.Location = new System.Drawing.Point(3, 16);
+			this.tlpPromoRelegateSingle.Name = "tlpPromoRelegateSingle";
+			this.tlpPromoRelegateSingle.RowCount = 5;
+			this.tlpPromoRelegateSingle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpPromoRelegateSingle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpPromoRelegateSingle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpPromoRelegateSingle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpPromoRelegateSingle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpPromoRelegateSingle.Size = new System.Drawing.Size(560, 212);
+			this.tlpPromoRelegateSingle.TabIndex = 0;
+			// 
+			// tlpPromoRelegateTag
+			// 
+			this.tlpPromoRelegateTag.ColumnCount = 2;
+			this.tlpPromoRelegateTag.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpPromoRelegateTag.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpPromoRelegateTag.Controls.Add(this.lblRelegateTag, 0, 0);
+			this.tlpPromoRelegateTag.Controls.Add(this.lblPromoTag, 1, 0);
+			this.tlpPromoRelegateTag.Controls.Add(this.tbTagRelegate, 0, 1);
+			this.tlpPromoRelegateTag.Controls.Add(this.tbTagPromote, 1, 1);
+			this.tlpPromoRelegateTag.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpPromoRelegateTag.Location = new System.Drawing.Point(3, 16);
+			this.tlpPromoRelegateTag.Name = "tlpPromoRelegateTag";
+			this.tlpPromoRelegateTag.RowCount = 2;
+			this.tlpPromoRelegateTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpPromoRelegateTag.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpPromoRelegateTag.Size = new System.Drawing.Size(560, 109);
+			this.tlpPromoRelegateTag.TabIndex = 0;
+			// 
+			// lblRelegateSingle
+			// 
+			this.lblRelegateSingle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblRelegateSingle.AutoSize = true;
+			this.lblRelegateSingle.Location = new System.Drawing.Point(189, 14);
+			this.lblRelegateSingle.Name = "lblRelegateSingle";
+			this.lblRelegateSingle.Size = new System.Drawing.Size(180, 13);
+			this.lblRelegateSingle.TabIndex = 0;
+			this.lblRelegateSingle.Text = "Relegated Downward";
+			this.lblRelegateSingle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblPromoSingle
+			// 
+			this.lblPromoSingle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoSingle.AutoSize = true;
+			this.lblPromoSingle.Location = new System.Drawing.Point(375, 14);
+			this.lblPromoSingle.Name = "lblPromoSingle";
+			this.lblPromoSingle.Size = new System.Drawing.Size(182, 13);
+			this.lblPromoSingle.TabIndex = 1;
+			this.lblPromoSingle.Text = "Promoted Upward";
+			this.lblPromoSingle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblRelegateTag
+			// 
+			this.lblRelegateTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblRelegateTag.AutoSize = true;
+			this.lblRelegateTag.Location = new System.Drawing.Point(3, 20);
+			this.lblRelegateTag.Name = "lblRelegateTag";
+			this.lblRelegateTag.Size = new System.Drawing.Size(274, 13);
+			this.lblRelegateTag.TabIndex = 0;
+			this.lblRelegateTag.Text = "Relegated Downward";
+			this.lblRelegateTag.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblPromoTag
+			// 
+			this.lblPromoTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoTag.AutoSize = true;
+			this.lblPromoTag.Location = new System.Drawing.Point(283, 20);
+			this.lblPromoTag.Name = "lblPromoTag";
+			this.lblPromoTag.Size = new System.Drawing.Size(274, 13);
+			this.lblPromoTag.TabIndex = 1;
+			this.lblPromoTag.Text = "Promoted Upward";
+			this.lblPromoTag.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// tbSingleRelegate1
+			// 
+			this.tbSingleRelegate1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleRelegate1.Location = new System.Drawing.Point(189, 53);
+			this.tbSingleRelegate1.Name = "tbSingleRelegate1";
+			this.tbSingleRelegate1.ReadOnly = true;
+			this.tbSingleRelegate1.Size = new System.Drawing.Size(180, 20);
+			this.tbSingleRelegate1.TabIndex = 2;
+			// 
+			// tbSinglePromote1
+			// 
+			this.tbSinglePromote1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSinglePromote1.Location = new System.Drawing.Point(375, 53);
+			this.tbSinglePromote1.Name = "tbSinglePromote1";
+			this.tbSinglePromote1.ReadOnly = true;
+			this.tbSinglePromote1.Size = new System.Drawing.Size(182, 20);
+			this.tbSinglePromote1.TabIndex = 3;
+			// 
+			// tbSingleRelegate2
+			// 
+			this.tbSingleRelegate2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleRelegate2.Location = new System.Drawing.Point(189, 95);
+			this.tbSingleRelegate2.Name = "tbSingleRelegate2";
+			this.tbSingleRelegate2.ReadOnly = true;
+			this.tbSingleRelegate2.Size = new System.Drawing.Size(180, 20);
+			this.tbSingleRelegate2.TabIndex = 4;
+			// 
+			// tbSinglePromote2
+			// 
+			this.tbSinglePromote2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSinglePromote2.Location = new System.Drawing.Point(375, 95);
+			this.tbSinglePromote2.Name = "tbSinglePromote2";
+			this.tbSinglePromote2.ReadOnly = true;
+			this.tbSinglePromote2.Size = new System.Drawing.Size(182, 20);
+			this.tbSinglePromote2.TabIndex = 5;
+			// 
+			// tbSingleRelegate3
+			// 
+			this.tbSingleRelegate3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleRelegate3.Location = new System.Drawing.Point(189, 137);
+			this.tbSingleRelegate3.Name = "tbSingleRelegate3";
+			this.tbSingleRelegate3.ReadOnly = true;
+			this.tbSingleRelegate3.Size = new System.Drawing.Size(180, 20);
+			this.tbSingleRelegate3.TabIndex = 6;
+			// 
+			// tbSinglePromote3
+			// 
+			this.tbSinglePromote3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSinglePromote3.Location = new System.Drawing.Point(375, 137);
+			this.tbSinglePromote3.Name = "tbSinglePromote3";
+			this.tbSinglePromote3.ReadOnly = true;
+			this.tbSinglePromote3.Size = new System.Drawing.Size(182, 20);
+			this.tbSinglePromote3.TabIndex = 7;
+			// 
+			// tbSingleRelegate4
+			// 
+			this.tbSingleRelegate4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleRelegate4.Location = new System.Drawing.Point(189, 180);
+			this.tbSingleRelegate4.Name = "tbSingleRelegate4";
+			this.tbSingleRelegate4.ReadOnly = true;
+			this.tbSingleRelegate4.Size = new System.Drawing.Size(180, 20);
+			this.tbSingleRelegate4.TabIndex = 8;
+			// 
+			// tbSinglePromote4
+			// 
+			this.tbSinglePromote4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSinglePromote4.Location = new System.Drawing.Point(375, 180);
+			this.tbSinglePromote4.Name = "tbSinglePromote4";
+			this.tbSinglePromote4.ReadOnly = true;
+			this.tbSinglePromote4.Size = new System.Drawing.Size(182, 20);
+			this.tbSinglePromote4.TabIndex = 9;
+			// 
+			// tbTagRelegate
+			// 
+			this.tbTagRelegate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagRelegate.Location = new System.Drawing.Point(3, 71);
+			this.tbTagRelegate.Name = "tbTagRelegate";
+			this.tbTagRelegate.ReadOnly = true;
+			this.tbTagRelegate.Size = new System.Drawing.Size(274, 20);
+			this.tbTagRelegate.TabIndex = 2;
+			// 
+			// tbTagPromote
+			// 
+			this.tbTagPromote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTagPromote.Location = new System.Drawing.Point(283, 71);
+			this.tbTagPromote.Name = "tbTagPromote";
+			this.tbTagPromote.ReadOnly = true;
+			this.tbTagPromote.Size = new System.Drawing.Size(274, 20);
+			this.tbTagPromote.TabIndex = 3;
+			// 
+			// lblPromoRelegate1
+			// 
+			this.lblPromoRelegate1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoRelegate1.AutoSize = true;
+			this.lblPromoRelegate1.Location = new System.Drawing.Point(3, 56);
+			this.lblPromoRelegate1.Name = "lblPromoRelegate1";
+			this.lblPromoRelegate1.Size = new System.Drawing.Size(180, 13);
+			this.lblPromoRelegate1.TabIndex = 10;
+			this.lblPromoRelegate1.Text = "Groups 1 and 2";
+			this.lblPromoRelegate1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblPromoRelegate2
+			// 
+			this.lblPromoRelegate2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoRelegate2.AutoSize = true;
+			this.lblPromoRelegate2.Location = new System.Drawing.Point(3, 98);
+			this.lblPromoRelegate2.Name = "lblPromoRelegate2";
+			this.lblPromoRelegate2.Size = new System.Drawing.Size(180, 13);
+			this.lblPromoRelegate2.TabIndex = 11;
+			this.lblPromoRelegate2.Text = "Groups 1 and 2";
+			this.lblPromoRelegate2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblPromoRelegate3
+			// 
+			this.lblPromoRelegate3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoRelegate3.AutoSize = true;
+			this.lblPromoRelegate3.Location = new System.Drawing.Point(3, 140);
+			this.lblPromoRelegate3.Name = "lblPromoRelegate3";
+			this.lblPromoRelegate3.Size = new System.Drawing.Size(180, 13);
+			this.lblPromoRelegate3.TabIndex = 12;
+			this.lblPromoRelegate3.Text = "Groups 3 and 4";
+			this.lblPromoRelegate3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// lblPromoRelegate4
+			// 
+			this.lblPromoRelegate4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPromoRelegate4.AutoSize = true;
+			this.lblPromoRelegate4.Location = new System.Drawing.Point(3, 183);
+			this.lblPromoRelegate4.Name = "lblPromoRelegate4";
+			this.lblPromoRelegate4.Size = new System.Drawing.Size(180, 13);
+			this.lblPromoRelegate4.TabIndex = 13;
+			this.lblPromoRelegate4.Text = "Groups 3 and 4";
+			this.lblPromoRelegate4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
 			// StoryMode_VPW2
 			// 
 			this.AcceptButton = this.btnOK;
@@ -1516,15 +1787,9 @@
 			this.tpSinglesParticipants.ResumeLayout(false);
 			this.tlpSingleParticipant.ResumeLayout(false);
 			this.tlpSingleParticipant.PerformLayout();
-			this.tpSinglesGroupings.ResumeLayout(false);
-			this.tlpSingleGroupings.ResumeLayout(false);
-			this.tlpSingleGroupings.PerformLayout();
 			this.tpTeams.ResumeLayout(false);
 			this.tlpTeams.ResumeLayout(false);
 			this.tlpTeams.PerformLayout();
-			this.tpTeamGroupings.ResumeLayout(false);
-			this.tlpTagGroupings.ResumeLayout(false);
-			this.tlpTagGroupings.PerformLayout();
 			this.tpChamps.ResumeLayout(false);
 			this.tlpChampions.ResumeLayout(false);
 			this.tlpChampions.PerformLayout();
@@ -1535,17 +1800,28 @@
 			this.tabCtrlMain.ResumeLayout(false);
 			this.tpParticipants.ResumeLayout(false);
 			this.tpEvents.ResumeLayout(false);
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
+			this.tlpEventSettings.ResumeLayout(false);
+			this.tlpEventSettings.PerformLayout();
+			this.tlpEventList.ResumeLayout(false);
+			this.tlpEventList.PerformLayout();
 			this.tpBookingInstructions.ResumeLayout(false);
-			this.tableLayoutPanel4.ResumeLayout(false);
-			this.tableLayoutPanel4.PerformLayout();
-			this.tableLayoutPanel3.ResumeLayout(false);
-			this.tableLayoutPanel3.PerformLayout();
+			this.tlpBookingInstructions.ResumeLayout(false);
+			this.tlpBookingInstructions.PerformLayout();
+			this.tlpBookingSet.ResumeLayout(false);
+			this.tlpBookingSet.PerformLayout();
 			this.tlpEventBooking.ResumeLayout(false);
 			this.tlpEventBooking.PerformLayout();
+			this.tlpSingleGroupings.ResumeLayout(false);
+			this.tlpSingleGroupings.PerformLayout();
+			this.tlpTagGroupings.ResumeLayout(false);
+			this.tlpTagGroupings.PerformLayout();
+			this.tpPromoRelegate.ResumeLayout(false);
+			this.gbPromoRelegateSingles.ResumeLayout(false);
+			this.gbPromoRelegateTag.ResumeLayout(false);
+			this.tlpPromoRelegateSingle.ResumeLayout(false);
+			this.tlpPromoRelegateSingle.PerformLayout();
+			this.tlpPromoRelegateTag.ResumeLayout(false);
+			this.tlpPromoRelegateTag.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1585,8 +1861,62 @@
 		private System.Windows.Forms.TextBox tbSingleWrestler;
 		private System.Windows.Forms.TextBox tbSingleSkillLevel;
 		private System.Windows.Forms.TextBox tbSingleTitleShotPercent;
-		private System.Windows.Forms.TabPage tpSinglesGroupings;
-		private System.Windows.Forms.TabPage tpTeamGroupings;
+		private System.Windows.Forms.TabControl tabCtrlMain;
+		private System.Windows.Forms.TabPage tpParticipants;
+		private System.Windows.Forms.TabPage tpEvents;
+		private System.Windows.Forms.TabPage tpBookingInstructions;
+		private System.Windows.Forms.TableLayoutPanel tlpEventList;
+		private System.Windows.Forms.Label lblEvent;
+		private System.Windows.Forms.ComboBox cbEvents;
+		private System.Windows.Forms.TableLayoutPanel tlpEventSettings;
+		private System.Windows.Forms.Label lblBulletinBoardMessage;
+		private System.Windows.Forms.Label lblPromotionRelegation;
+		private System.Windows.Forms.Label lblTourOpening;
+		private System.Windows.Forms.Label lblQualifyingRequirement;
+		private System.Windows.Forms.Label lblEventLocation;
+		private System.Windows.Forms.Label lblArenaType;
+		private System.Windows.Forms.Label lblPlayerParticipation;
+		private System.Windows.Forms.Label lblShowNumber;
+		private System.Windows.Forms.Label lblBookingInstructions;
+		private System.Windows.Forms.Label lblEventName;
+		private System.Windows.Forms.Label lblMonthNumber;
+		private System.Windows.Forms.TextBox tbBulletinBoardMessage;
+		private System.Windows.Forms.TextBox tbEventLocation;
+		private System.Windows.Forms.TextBox tbArenaType;
+		private System.Windows.Forms.TextBox tbPlayerParticipation;
+		private System.Windows.Forms.TextBox tbShowNumber;
+		private System.Windows.Forms.TextBox tbBookingInstructions;
+		private System.Windows.Forms.TextBox tbEventName;
+		private System.Windows.Forms.TextBox tbMonthNumber;
+		private System.Windows.Forms.CheckBox cbPromotionRelegation;
+		private System.Windows.Forms.CheckBox cbShowTourScene;
+		private System.Windows.Forms.CheckBox cbQualifyingRequirement;
+		private System.Windows.Forms.TableLayoutPanel tlpBookingInstructions;
+		private System.Windows.Forms.TableLayoutPanel tlpBookingSet;
+		private System.Windows.Forms.Label lblMatch1;
+		private System.Windows.Forms.Label lblMatch2;
+		private System.Windows.Forms.Label lblMatch3;
+		private System.Windows.Forms.Label lblMatch4;
+		private System.Windows.Forms.Label lblMatch5;
+		private System.Windows.Forms.Label lblMatch6;
+		private System.Windows.Forms.Label lblMatch7;
+		private System.Windows.Forms.Label lblMatch8;
+		private System.Windows.Forms.Label lblMatch9;
+		private System.Windows.Forms.Label lblMatch10;
+		private System.Windows.Forms.Label lblInstructionSet;
+		private System.Windows.Forms.ComboBox cbBookingInstructions;
+		private System.Windows.Forms.TextBox tbMatch1;
+		private System.Windows.Forms.TextBox tbMatch2;
+		private System.Windows.Forms.TextBox tbMatch3;
+		private System.Windows.Forms.TextBox tbMatch4;
+		private System.Windows.Forms.TextBox tbMatch5;
+		private System.Windows.Forms.TextBox tbMatch6;
+		private System.Windows.Forms.TextBox tbMatch7;
+		private System.Windows.Forms.TextBox tbMatch8;
+		private System.Windows.Forms.TextBox tbMatch9;
+		private System.Windows.Forms.TextBox tbMatch10;
+		private System.Windows.Forms.TableLayoutPanel tlpEventBooking;
+		private System.Windows.Forms.Button btnViewBooking;
 		private System.Windows.Forms.TableLayoutPanel tlpSingleGroupings;
 		private System.Windows.Forms.Label lblSingleGuestCharacters;
 		private System.Windows.Forms.Label lblSingleTier3;
@@ -1614,61 +1944,28 @@
 		private System.Windows.Forms.TextBox tbTagTier2InitialRank;
 		private System.Windows.Forms.TextBox tbTagGuestNumTeams;
 		private System.Windows.Forms.TextBox tbTagGuestInitialRank;
-		private System.Windows.Forms.TabControl tabCtrlMain;
-		private System.Windows.Forms.TabPage tpParticipants;
-		private System.Windows.Forms.TabPage tpEvents;
-		private System.Windows.Forms.TabPage tpBookingInstructions;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Label lblEvent;
-		private System.Windows.Forms.ComboBox cbEvents;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Label lblBulletinBoardMessage;
-		private System.Windows.Forms.Label lblPromotionRelegation;
-		private System.Windows.Forms.Label lblTourOpening;
-		private System.Windows.Forms.Label lblQualifyingRequirement;
-		private System.Windows.Forms.Label lblEventLocation;
-		private System.Windows.Forms.Label lblArenaType;
-		private System.Windows.Forms.Label lblPlayerParticipation;
-		private System.Windows.Forms.Label lblShowNumber;
-		private System.Windows.Forms.Label lblBookingInstructions;
-		private System.Windows.Forms.Label lblEventName;
-		private System.Windows.Forms.Label lblMonthNumber;
-		private System.Windows.Forms.TextBox tbBulletinBoardMessage;
-		private System.Windows.Forms.TextBox tbEventLocation;
-		private System.Windows.Forms.TextBox tbArenaType;
-		private System.Windows.Forms.TextBox tbPlayerParticipation;
-		private System.Windows.Forms.TextBox tbShowNumber;
-		private System.Windows.Forms.TextBox tbBookingInstructions;
-		private System.Windows.Forms.TextBox tbEventName;
-		private System.Windows.Forms.TextBox tbMonthNumber;
-		private System.Windows.Forms.CheckBox cbPromotionRelegation;
-		private System.Windows.Forms.CheckBox cbShowTourScene;
-		private System.Windows.Forms.CheckBox cbQualifyingRequirement;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-		private System.Windows.Forms.Label lblMatch1;
-		private System.Windows.Forms.Label lblMatch2;
-		private System.Windows.Forms.Label lblMatch3;
-		private System.Windows.Forms.Label lblMatch4;
-		private System.Windows.Forms.Label lblMatch5;
-		private System.Windows.Forms.Label lblMatch6;
-		private System.Windows.Forms.Label lblMatch7;
-		private System.Windows.Forms.Label lblMatch8;
-		private System.Windows.Forms.Label lblMatch9;
-		private System.Windows.Forms.Label lblMatch10;
-		private System.Windows.Forms.Label lblInstructionSet;
-		private System.Windows.Forms.ComboBox cbBookingInstructions;
-		private System.Windows.Forms.TextBox tbMatch1;
-		private System.Windows.Forms.TextBox tbMatch2;
-		private System.Windows.Forms.TextBox tbMatch3;
-		private System.Windows.Forms.TextBox tbMatch4;
-		private System.Windows.Forms.TextBox tbMatch5;
-		private System.Windows.Forms.TextBox tbMatch6;
-		private System.Windows.Forms.TextBox tbMatch7;
-		private System.Windows.Forms.TextBox tbMatch8;
-		private System.Windows.Forms.TextBox tbMatch9;
-		private System.Windows.Forms.TextBox tbMatch10;
-		private System.Windows.Forms.TableLayoutPanel tlpEventBooking;
-		private System.Windows.Forms.Button btnViewBooking;
+		private System.Windows.Forms.TabPage tpPromoRelegate;
+		private System.Windows.Forms.GroupBox gbPromoRelegateTag;
+		private System.Windows.Forms.GroupBox gbPromoRelegateSingles;
+		private System.Windows.Forms.TableLayoutPanel tlpPromoRelegateTag;
+		private System.Windows.Forms.TableLayoutPanel tlpPromoRelegateSingle;
+		private System.Windows.Forms.Label lblRelegateTag;
+		private System.Windows.Forms.Label lblPromoTag;
+		private System.Windows.Forms.TextBox tbTagRelegate;
+		private System.Windows.Forms.TextBox tbTagPromote;
+		private System.Windows.Forms.Label lblRelegateSingle;
+		private System.Windows.Forms.Label lblPromoSingle;
+		private System.Windows.Forms.TextBox tbSingleRelegate1;
+		private System.Windows.Forms.TextBox tbSinglePromote1;
+		private System.Windows.Forms.TextBox tbSingleRelegate2;
+		private System.Windows.Forms.TextBox tbSinglePromote2;
+		private System.Windows.Forms.TextBox tbSingleRelegate3;
+		private System.Windows.Forms.TextBox tbSinglePromote3;
+		private System.Windows.Forms.TextBox tbSingleRelegate4;
+		private System.Windows.Forms.TextBox tbSinglePromote4;
+		private System.Windows.Forms.Label lblPromoRelegate1;
+		private System.Windows.Forms.Label lblPromoRelegate2;
+		private System.Windows.Forms.Label lblPromoRelegate3;
+		private System.Windows.Forms.Label lblPromoRelegate4;
 	}
 }

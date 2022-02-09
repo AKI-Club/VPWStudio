@@ -19,20 +19,22 @@ namespace VPWStudio.Editors.VPW2
 		/// </summary>
 		public List<StoryModeSingleEntry> StorySinglesParticipants = new List<StoryModeSingleEntry>();
 
-		// todo: story mode singles tier groupings (two bytes per entry; 4 entries)
+		// story mode singles tier groupings (two bytes per entry; 4 entries)
 		public byte[] StorySingleTierGroupings = new byte[8];
 
-		// todo: story mode singles promotion/relegation values (two bytes per entry; terminated by 0xFF, 0xFF)
+		// story mode singles promotion/relegation values (two bytes per entry; terminated by 0xFF, 0xFF)
+		public byte[] StorySinglePromoRelegate = new byte[8];
 
 		/// <summary>
 		/// Story Mode teams
 		/// </summary>
 		public List<StoryModeTeamEntry> StoryTeams = new List<StoryModeTeamEntry>();
 
-		// todo: story mode tag tier groupings (two bytes per entry; 3 entries)
+		// story mode tag tier groupings (two bytes per entry; 3 entries)
 		public byte[] StoryTagTierGroupings = new byte[6];
 
-		// todo: story mode tag promotion/relegation values (two bytes per entry; terminated by 0xFF, 0xFF)
+		// story mode tag promotion/relegation values (two bytes per entry; terminated by 0xFF, 0xFF)
+		public byte[] StoryTagPromoRelegate = new byte[2];
 
 		/// <summary>
 		/// Default Champions
@@ -179,6 +181,17 @@ namespace VPWStudio.Editors.VPW2
 			tbSingleGuestInitialRank.Text = string.Format("{0}", StorySingleTierGroupings[7]);
 
 			// promotion/relegation values
+			// xxx: also hardcoded amount
+			StorySinglePromoRelegate = romReader.ReadBytes(8);
+
+			tbSingleRelegate1.Text = string.Format("{0}", StorySinglePromoRelegate[0]);
+			tbSinglePromote1.Text = string.Format("{0}", StorySinglePromoRelegate[1]);
+			tbSingleRelegate2.Text = string.Format("{0}", StorySinglePromoRelegate[2]);
+			tbSinglePromote2.Text = string.Format("{0}", StorySinglePromoRelegate[3]);
+			tbSingleRelegate3.Text = string.Format("{0}", StorySinglePromoRelegate[4]);
+			tbSinglePromote3.Text = string.Format("{0}", StorySinglePromoRelegate[5]);
+			tbSingleRelegate4.Text = string.Format("{0}", StorySinglePromoRelegate[6]);
+			tbSinglePromote4.Text = string.Format("{0}", StorySinglePromoRelegate[7]);
 		}
 
 		private void LoadTeams(BinaryReader romReader)
@@ -242,7 +255,13 @@ namespace VPWStudio.Editors.VPW2
 			tbTagGuestNumTeams.Text = string.Format("{0}", StoryTagTierGroupings[4]);
 			tbTagGuestInitialRank.Text = string.Format("{0}", StoryTagTierGroupings[5]);
 
+			romReader.ReadBytes(2);
+
 			// promotion/relegation values
+			// xxx: also hardcoded amount
+			StoryTagPromoRelegate = romReader.ReadBytes(2);
+			tbTagRelegate.Text = string.Format("{0}", StoryTagPromoRelegate[0]);
+			tbTagPromote.Text = string.Format("{0}", StoryTagPromoRelegate[1]);
 		}
 
 		private void LoadChampions(BinaryReader romReader)
@@ -384,6 +403,9 @@ namespace VPWStudio.Editors.VPW2
 		}
 		#endregion
 
+		#region Promotion/Relegation
+		#endregion
+
 		#region Default Champions
 		#endregion
 
@@ -447,31 +469,31 @@ namespace VPWStudio.Editors.VPW2
 			}
 
 			// handle special cases
-			if (values == 7)
+			if (values == StoryModeBookingInstruction.CHAMPION_CARNIVAL_FINAL)
 			{
 				return string.Format("0x{0:X4} Champion Carnival Final", values);
 			}
-			else if (values == 8)
+			else if (values == StoryModeBookingInstruction.TAG_LEAGUE_FINAL)
 			{
 				return string.Format("0x{0:X4} Tag League Final", values);
 			}
-			else if (values == 9)
+			else if (values == StoryModeBookingInstruction.BATTLE_ROYAL)
 			{
 				return string.Format("0x{0:X4} Battle Royal", values);
 			}
-			else if (values == 0xA)
+			else if (values == StoryModeBookingInstruction.SINGLES_TOURNAMENT)
 			{
 				return string.Format("0x{0:X4} Singles Tournament", values);
 			}
-			else if (values == 0xB)
+			else if (values == StoryModeBookingInstruction.TAG_TOURNAMENT)
 			{
 				return string.Format("0x{0:X4} Tag Tournament", values);
 			}
-			else if (values == 0xC)
+			else if (values == StoryModeBookingInstruction.CHAMPION_CARNIVAL_LEAGUE)
 			{
 				return string.Format("0x{0:X4} Champion Carnival League", values);
 			}
-			else if (values == 0xD)
+			else if (values == StoryModeBookingInstruction.TAG_LEAGUE)
 			{
 				return string.Format("0x{0:X4} Tag League", values);
 			}
