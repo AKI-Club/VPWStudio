@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace VPWStudio
 {
+	#region Location File Entry
 	/// <summary>
 	/// Location Type
 	/// </summary>
@@ -115,6 +116,7 @@ namespace VPWStudio
 			this.Handler = LocationHandlerType.None;
 		}
 	}
+	#endregion
 
 	/// <summary>
 	/// Location File
@@ -224,7 +226,7 @@ namespace VPWStudio
 		/// <summary>
 		/// String to LocationType mapping.
 		/// </summary>
-		private static Dictionary<String, LocationType> LocationTypes = new Dictionary<string, LocationType>()
+		private static readonly Dictionary<String, LocationType> LocationTypes = new Dictionary<string, LocationType>()
 		{
 			{ "ROM", LocationType.ROM },
 			{ "RAM", LocationType.RAM },
