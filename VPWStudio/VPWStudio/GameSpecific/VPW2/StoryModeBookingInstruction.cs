@@ -14,7 +14,19 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// </summary>
 		public static readonly UInt16 NO_MATCH = 0xFFFF;
 
-		// todo: 7-0xD
+		public static readonly UInt16 CHAMPION_CARNIVAL_FINAL = 7;
+
+		public static readonly UInt16 TAG_LEAGUE_FINAL = 8;
+
+		public static readonly UInt16 BATTLE_ROYAL = 9;
+
+		public static readonly UInt16 SINGLES_TOURNAMENT = 0xA;
+
+		public static readonly UInt16 TAG_TOURNAMENT = 0xB;
+
+		public static readonly UInt16 CHAMPION_CARNIVAL_LEAGUE = 0xC;
+
+		public static readonly UInt16 TAG_LEAGUE = 0xD;
 		#endregion
 
 		#region Members
