@@ -119,6 +119,12 @@
     <Compile Include="Dialogs\SelectTextureDialog.Designer.cs">
       <DependentUpon>SelectTextureDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SelectWrestlerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SelectWrestlerDialog.Designer.cs">
+      <DependentUpon>SelectWrestlerDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\StableDef\SwapWrestler_Revenge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -611,6 +617,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SelectTextureDialog.resx">
       <DependentUpon>SelectTextureDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SelectWrestlerDialog.resx">
+      <DependentUpon>SelectWrestlerDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StableDef\SwapWrestler_Revenge.resx">
       <DependentUpon>SwapWrestler_Revenge.cs</DependentUpon>
