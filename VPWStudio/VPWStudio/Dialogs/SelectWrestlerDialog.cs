@@ -8,6 +8,8 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio
 {
+	// warning: this is very hacky
+
 	/// <summary>
 	/// Dialog for selecting a wrestler based on ID2 or ID4 values.
 	/// </summary>
