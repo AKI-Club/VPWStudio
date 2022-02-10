@@ -42,7 +42,7 @@ namespace VPWStudio
 			this.btnOK.Location = new System.Drawing.Point(216, 54);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(75, 23);
-			this.btnOK.TabIndex = 0;
+			this.btnOK.TabIndex = 2;
 			this.btnOK.Text = "&OK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -53,7 +53,7 @@ namespace VPWStudio
 			this.btnCancel.Location = new System.Drawing.Point(297, 54);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 1;
+			this.btnCancel.TabIndex = 3;
 			this.btnCancel.Text = "&Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -70,7 +70,7 @@ namespace VPWStudio
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 36);
-			this.tableLayoutPanel1.TabIndex = 2;
+			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// lblWrestler
 			// 
@@ -107,6 +107,7 @@ namespace VPWStudio
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(400, 128);
 			this.Name = "SelectWrestlerDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Select Wrestler";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
