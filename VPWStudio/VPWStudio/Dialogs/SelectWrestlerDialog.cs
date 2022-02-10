@@ -49,14 +49,36 @@ namespace VPWStudio
 
 		public int ReturnID = -1;
 
-		public SelectWrestlerDialog(WrestlerIDMode _mode)
+		/// <summary>
+		/// Select Wrestler dialog
+		/// </summary>
+		/// <param name="_mode">WrestlerIDMode.ID2 or WrestlerIDMode.ID4</param>
+		/// <param name="_select">(optional) Wrestler ID to pre-select.</param>
+		public SelectWrestlerDialog(WrestlerIDMode _mode, int _select = -1)
 		{
 			InitializeComponent();
 			Mode = _mode;
 			Text += (Mode == WrestlerIDMode.ID2) ? " (ID2)" : " (ID4)";
 			LoadWrestlers();
 			PopulateWrestlerList();
-			cbWrestlers.SelectedIndex = 0;
+
+			if (_select != -1)
+			{
+				// search for ID in wrestler list
+				for (int i = 0; i < cbWrestlers.Items.Count; i++)
+				{
+					int _id = int.Parse(cbWrestlers.Items[i].ToString().Substring(0, Mode == WrestlerIDMode.ID2 ? 2 : 4), NumberStyles.HexNumber);
+					if (_id == _select)
+					{
+						cbWrestlers.SelectedIndex = i;
+						break;
+					}
+				}
+			}
+			else
+			{
+				cbWrestlers.SelectedIndex = 0;
+			}
 		}
 
 		private void LoadWrestlers()
