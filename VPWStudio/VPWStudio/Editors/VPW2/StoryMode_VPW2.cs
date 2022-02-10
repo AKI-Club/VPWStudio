@@ -387,7 +387,12 @@ namespace VPWStudio.Editors.VPW2
 
 		private void btnChangeWrestlerSingle_Click(object sender, EventArgs e)
 		{
-			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (lbSinglesParticipants.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, StorySinglesParticipants[lbSinglesParticipants.SelectedIndex].WrestlerID2);
 			if (swd.ShowDialog() == DialogResult.OK)
 			{
 				int selectedIndex = lbSinglesParticipants.SelectedIndex;
@@ -427,7 +432,12 @@ namespace VPWStudio.Editors.VPW2
 
 		private void btnChangeWrestlerTeam1_Click(object sender, EventArgs e)
 		{
-			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (lbTeams.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, StoryTeams[lbTeams.SelectedIndex].WrestlerID2_1);
 			if (swd.ShowDialog() == DialogResult.OK)
 			{
 				int selectedIndex = lbTeams.SelectedIndex;
@@ -440,7 +450,12 @@ namespace VPWStudio.Editors.VPW2
 
 		private void btnChangeWrestlerTeam2_Click(object sender, EventArgs e)
 		{
-			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (lbTeams.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, StoryTeams[lbTeams.SelectedIndex].WrestlerID2_2);
 			if (swd.ShowDialog() == DialogResult.OK)
 			{
 				int selectedIndex = lbTeams.SelectedIndex;
@@ -456,6 +471,55 @@ namespace VPWStudio.Editors.VPW2
 		#endregion
 
 		#region Default Champions
+		private void btnChangeTripleCrown_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, DefaultChampions[0]);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				DefaultChampions[0] = (byte)swd.ReturnID;
+				tbTripleCrown.Text = String.Format("0x{0:X2} {1}", DefaultChampions[0], DefaultNames.Entries[DefaultChampions[0] * 2].Text);
+			}
+		}
+
+		private void btnChangeWorldTag1_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, DefaultChampions[1]);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				DefaultChampions[1] = (byte)swd.ReturnID;
+				tbWorldTag1.Text = String.Format("0x{0:X2} {1}", DefaultChampions[1], DefaultNames.Entries[DefaultChampions[1] * 2].Text);
+			}
+		}
+
+		private void btnChangeWorldTag2_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, DefaultChampions[2]);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				DefaultChampions[3] = (byte)swd.ReturnID;
+				tbWorldTag2.Text = String.Format("0x{0:X2} {1}", DefaultChampions[3], DefaultNames.Entries[DefaultChampions[3] * 2].Text);
+			}
+		}
+
+		private void btnChangeAsiaTag1_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, DefaultChampions[2]);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				DefaultChampions[2] = (byte)swd.ReturnID;
+				tbAsiaTag1.Text = String.Format("0x{0:X2} {1}", DefaultChampions[2], DefaultNames.Entries[DefaultChampions[2] * 2].Text);
+			}
+		}
+
+		private void btnChangeAsiaTag2_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2, DefaultChampions[2]);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				DefaultChampions[4] = (byte)swd.ReturnID;
+				tbAsiaTag2.Text = String.Format("0x{0:X2} {1}", DefaultChampions[4], DefaultNames.Entries[DefaultChampions[4] * 2].Text);
+			}
+		}
 		#endregion
 
 		#region Event Schedule
