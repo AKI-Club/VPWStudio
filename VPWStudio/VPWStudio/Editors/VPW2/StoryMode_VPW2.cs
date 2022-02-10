@@ -322,6 +322,7 @@ namespace VPWStudio.Editors.VPW2
 				cbEvents.Items.Add(string.Format("Event {0}{1}", i, i==0 ? " do not edit":string.Empty));
 			}
 			cbEvents.EndUpdate();
+			cbEvents.SelectedIndex = 0;
 		}
 
 		private void LoadBookingInstructions(BinaryReader romReader)
@@ -351,6 +352,7 @@ namespace VPWStudio.Editors.VPW2
 				cbBookingInstructions.Items.Add(string.Format("Set {0}", i));
 			}
 			cbBookingInstructions.EndUpdate();
+			cbBookingInstructions.SelectedIndex = 0;
 		}
 
 		private void btnOK_Click(object sender, EventArgs e)
@@ -370,7 +372,7 @@ namespace VPWStudio.Editors.VPW2
 		{
 			StoryModeSingleEntry curWrestler = StorySinglesParticipants[lbSinglesParticipants.SelectedIndex];
 			tbSingleWrestler.Text = String.Format("0x{0:X2} {1}", curWrestler.WrestlerID2, DefaultNames.Entries[curWrestler.WrestlerID2 * 2].Text);
-			tbSingleSkillLevel.Text = String.Format("0x{0:X2}", curWrestler.SkillLevel);
+			tbSingleSkillLevel.Text = String.Format("{0}", curWrestler.SkillLevel);
 			tbSingleTitleShotPercent.Text = String.Format("{0}", curWrestler.TitleShotPercent);
 		}
 
@@ -381,6 +383,19 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 			UpdateSinglesValues();
+		}
+
+		private void btnChangeWrestlerSingle_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				int selectedIndex = lbSinglesParticipants.SelectedIndex;
+				StoryModeSingleEntry curWrestler = StorySinglesParticipants[selectedIndex];
+				curWrestler.WrestlerID2 = (byte)swd.ReturnID;
+				tbSingleWrestler.Text = String.Format("0x{0:X2} {1}", curWrestler.WrestlerID2, DefaultNames.Entries[curWrestler.WrestlerID2 * 2].Text);
+				lbSinglesParticipants.Items[selectedIndex] = String.Format("{0:D2} {1}", selectedIndex, DefaultNames.Entries[curWrestler.WrestlerID2 * 2 + 1].Text);
+			}
 		}
 		#endregion
 
@@ -400,6 +415,40 @@ namespace VPWStudio.Editors.VPW2
 				return;
 			}
 			UpdateTeamValues();
+		}
+
+		private void UpdateTagTeamListEntry(int index)
+		{
+			lbTeams.Items[index] = String.Format("{0:D2} {1}/{2}", index,
+				DefaultNames.Entries[StoryTeams[index].WrestlerID2_1 * 2 + 1].Text,
+				DefaultNames.Entries[StoryTeams[index].WrestlerID2_2 * 2 + 1].Text
+			);
+		}
+
+		private void btnChangeWrestlerTeam1_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				int selectedIndex = lbTeams.SelectedIndex;
+				StoryModeTeamEntry curTeam = StoryTeams[selectedIndex];
+				curTeam.WrestlerID2_1 = (byte)swd.ReturnID;
+				tbTeamWrestler1.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_1, DefaultNames.Entries[curTeam.WrestlerID2_1 * 2].Text);
+				UpdateTagTeamListEntry(selectedIndex);
+			}
+		}
+
+		private void btnChangeWrestlerTeam2_Click(object sender, EventArgs e)
+		{
+			SelectWrestlerDialog swd = new SelectWrestlerDialog(SelectWrestlerDialog.WrestlerIDMode.ID2);
+			if (swd.ShowDialog() == DialogResult.OK)
+			{
+				int selectedIndex = lbTeams.SelectedIndex;
+				StoryModeTeamEntry curTeam = StoryTeams[selectedIndex];
+				curTeam.WrestlerID2_2 = (byte)swd.ReturnID;
+				tbTeamWrestler2.Text = String.Format("0x{0:X2} {1}", curTeam.WrestlerID2_2, DefaultNames.Entries[curTeam.WrestlerID2_2 * 2].Text);
+				UpdateTagTeamListEntry(selectedIndex);
+			}
 		}
 		#endregion
 
