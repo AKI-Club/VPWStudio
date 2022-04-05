@@ -561,6 +561,12 @@
     <Compile Include="Tools\StableDefParseTest.Designer.cs">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\TextIndexTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\TextIndexTool.Designer.cs">
+      <DependentUpon>TextIndexTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\TimTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -782,6 +788,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\StableDefParseTest.resx">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\TextIndexTool.resx">
+      <DependentUpon>TextIndexTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\TimTester.resx">
       <DependentUpon>TimTester.cs</DependentUpon>
