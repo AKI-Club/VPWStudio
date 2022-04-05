@@ -2384,5 +2384,11 @@ namespace VPWStudio
 			t.ShowDialog();
 		}
 		#endregion
+
+		private void vpw2TextIndexToolToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Tools.TextIndexTool TxtIdxTool = new Tools.TextIndexTool();
+			TxtIdxTool.ShowDialog();
+		}
 	}
 }
