@@ -64,7 +64,7 @@ namespace VPWStudio.Tools
 			// 
 			this.tbOutputValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbOutputValue.Location = new System.Drawing.Point(90, 39);
-			this.tbOutputValue.MaxLength = 8;
+			this.tbOutputValue.MaxLength = 32;
 			this.tbOutputValue.Name = "tbOutputValue";
 			this.tbOutputValue.ReadOnly = true;
 			this.tbOutputValue.Size = new System.Drawing.Size(255, 20);
