@@ -78,7 +78,7 @@ namespace VPWStudio.Editors
 			cbTextEntries.BeginUpdate();
 			for (int i = 0; i < CurTextArchive.Entries.Count; i++)
 			{
-				cbTextEntries.Items.Add(String.Format("Entry {0}: {1}", i+1, CurTextArchive.Entries[i].Text));
+				cbTextEntries.Items.Add(String.Format("Entry {0}: {1}", i, CurTextArchive.Entries[i].Text));
 			}
 			cbTextEntries.EndUpdate();
 			cbTextEntries.SelectedIndex = 0;
