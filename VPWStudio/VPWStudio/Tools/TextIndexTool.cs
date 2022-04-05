@@ -61,13 +61,12 @@ namespace VPWStudio.Tools
 			{
 				uint internalIndex = 0xFFFF0F41;
 				uint outValue = (uint)(internalIndex + inValue);
-				tbOutputValue.Text = String.Format("{0:X}", outValue);
 
 				if (outValue < 0x136)
 				{
 					// global text
 					lblRegionValue.Text = "Global Text";
-					tbOutputValue.Text = String.Format("{0:X}", outValue);
+					tbOutputValue.Text = String.Format("0x{0:X} ({0})", outValue);
 				}
 				else
 				{
@@ -78,7 +77,7 @@ namespace VPWStudio.Tools
 						if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
 						{
 							lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
-							tbOutputValue.Text = String.Format("{0:X}", inValue - tvr.StartValue);
+							tbOutputValue.Text = String.Format("0x{0:X} ({0})", inValue - tvr.StartValue);
 							foundRegion = true;
 						}
 					}

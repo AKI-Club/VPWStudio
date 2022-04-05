@@ -44,6 +44,10 @@ namespace VPWStudio
 		/// Hex Viewer form
 		/// </summary>
 		public HexViewer HexViewerForm = null;
+
+		#region Danger Zone Tool Forms
+		public Tools.TextIndexTool TextIndexDecoder = null;
+		#endregion
 		#endregion
 
 		#region Program-related Forms
@@ -2387,8 +2391,27 @@ namespace VPWStudio
 
 		private void vpw2TextIndexToolToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Tools.TextIndexTool TxtIdxTool = new Tools.TextIndexTool();
-			TxtIdxTool.ShowDialog();
+			if (TextIndexDecoder == null)
+			{
+				TextIndexDecoder = new Tools.TextIndexTool();
+				TextIndexDecoder.MdiParent = this;
+				TextIndexDecoder.Show();
+			}
+			else
+			{
+				if (TextIndexDecoder.IsDisposed)
+				{
+					TextIndexDecoder = new Tools.TextIndexTool();
+				}
+
+				// if it was minimized, show it again.
+				if (TextIndexDecoder.WindowState == FormWindowState.Minimized)
+				{
+					TextIndexDecoder.WindowState = FormWindowState.Normal;
+				}
+				TextIndexDecoder.MdiParent = this;
+				TextIndexDecoder.Show();
+			}
 		}
 	}
 }
