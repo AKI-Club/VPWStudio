@@ -1025,7 +1025,6 @@ namespace VPWStudio
 					}
 					break;
 
-				// TEMPORARY
 				case FileTypes.AkiModel:
 					{
 						ModelTool2 mt2 = new ModelTool2(key);
@@ -1033,6 +1032,7 @@ namespace VPWStudio
 					}
 					break;
 
+				// TEMPORARY
 				case FileTypes.AkiAnimation:
 					{
 						AnimTest t = new AnimTest(key);
