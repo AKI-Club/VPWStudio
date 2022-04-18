@@ -2387,7 +2387,6 @@ namespace VPWStudio
 			TimTester t = new TimTester();
 			t.ShowDialog();
 		}
-		#endregion
 
 		private void vpw2TextIndexToolToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -2403,15 +2402,10 @@ namespace VPWStudio
 				{
 					TextIndexDecoder = new Tools.TextIndexTool();
 				}
-
-				// if it was minimized, show it again.
-				if (TextIndexDecoder.WindowState == FormWindowState.Minimized)
-				{
-					TextIndexDecoder.WindowState = FormWindowState.Normal;
-				}
 				TextIndexDecoder.MdiParent = this;
 				TextIndexDecoder.Show();
 			}
 		}
+		#endregion
 	}
 }
