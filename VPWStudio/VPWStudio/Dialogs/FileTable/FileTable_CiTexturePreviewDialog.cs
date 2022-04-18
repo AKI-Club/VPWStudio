@@ -63,60 +63,98 @@ namespace VPWStudio
 			BinaryWriter imgWriter = new BinaryWriter(imgStream);
 
 			// CurViewMode depends on item type.
-			if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci4Texture)
+			BinaryReader fr;
+			switch (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType)
 			{
-				CurViewMode = CiViewerModes.Ci4;
-				CurCI8Palette = null;
-				CurCI8Texture = null;
+				case FileTypes.Ci4Texture:
+					CurViewMode = CiViewerModes.Ci4;
+					CurCI8Palette = null;
+					CurCI8Texture = null;
 
-				paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
-				CurCI4Palette = new Ci4Palette();
-				CurCI4Texture = new Ci4Texture();
+					paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
+					CurCI4Palette = new Ci4Palette();
+					CurCI4Texture = new Ci4Texture();
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
-				imgStream.Seek(0, SeekOrigin.Begin);
-				BinaryReader fr = new BinaryReader(imgStream);
-				CurCI4Texture.ReadData(fr);
-				fr.Close();
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
+					imgStream.Seek(0, SeekOrigin.Begin);
+					fr = new BinaryReader(imgStream);
+					CurCI4Texture.ReadData(fr);
+					fr.Close();
 
-				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
-			}
-			else if(Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci8Texture)
-			{
-				CurViewMode = CiViewerModes.Ci8;
-				CurCI4Palette = null;
-				CurCI4Texture = null;
+					CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
+					break;
 
-				paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette);
-				CurCI8Palette = new Ci8Palette();
-				CurCI8Texture = new Ci8Texture();
+				case FileTypes.Ci8Texture:
+					CurViewMode = CiViewerModes.Ci8;
+					CurCI4Palette = null;
+					CurCI4Texture = null;
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
-				imgStream.Seek(0, SeekOrigin.Begin);
-				BinaryReader fr = new BinaryReader(imgStream);
-				CurCI8Texture.ReadData(fr);
-				fr.Close();
+					paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette);
+					CurCI8Palette = new Ci8Palette();
+					CurCI8Texture = new Ci8Texture();
 
-				CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
-			}
-			// special WWF No Mercy background case
-			else if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].FileType == FileTypes.Ci4Background)
-			{
-				CurViewMode = CiViewerModes.Ci4;
-				CurCI8Palette = null;
-				CurCI8Texture = null;
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
+					imgStream.Seek(0, SeekOrigin.Begin);
+					fr = new BinaryReader(imgStream);
+					CurCI8Texture.ReadData(fr);
+					fr.Close();
 
-				paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
-				CurCI4Palette = new Ci4Palette();
-				CurCI4Texture = new Ci4Texture();
+					CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
+					break;
 
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
-				imgStream.Seek(8, SeekOrigin.Begin);
-				BinaryReader fr = new BinaryReader(imgStream);
-				CurCI4Texture.ReadRawData(320, 240, fr);
-				fr.Close();
+				case FileTypes.Ci4Background:
+					// special WWF No Mercy background case
+					CurViewMode = CiViewerModes.Ci4;
+					CurCI8Palette = null;
+					CurCI8Texture = null;
 
-				CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
+					paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
+					CurCI4Palette = new Ci4Palette();
+					CurCI4Texture = new Ci4Texture();
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
+					imgStream.Seek(8, SeekOrigin.Begin);
+					fr = new BinaryReader(imgStream);
+					CurCI4Texture.ReadRawData(320, 240, fr);
+					fr.Close();
+
+					CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
+					break;
+
+				case FileTypes.RawCi8Texture:
+					if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData == null)
+					{
+						Program.ErrorMessageBox("Previewing a RawCi8Texture requires ExtraData to be set.");
+						Close();
+					}
+
+					CurViewMode = CiViewerModes.Ci8;
+					CurCI4Palette = null;
+					CurCI4Texture = null;
+
+					paletteIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette);
+					CurCI8Palette = new Ci8Palette();
+					CurCI8Texture = new Ci8Texture();
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, PreviewImageFileID);
+					imgStream.Seek(0, SeekOrigin.Begin);
+					fr = new BinaryReader(imgStream);
+
+					if (Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData.ImageWidth <= 0
+						|| Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData.ImageHeight <= 0)
+					{
+						fr.Close();
+						Program.ErrorMessageBox("Previewing a RawCi8Texture requires Image Width and Height to be greater than 0.");
+						Close();
+					}
+
+					int w = Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData.ImageWidth;
+					int h = Program.CurrentProject.ProjectFileTable.Entries[PreviewImageFileID].ExtraData.ImageHeight;
+					CurCI8Texture.ReadRawData(w, h, fr);
+					fr.Close();
+
+					CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
+					break;
 			}
 
 			imgWriter.Close();
