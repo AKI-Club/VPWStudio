@@ -106,6 +106,29 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Read Raw CI8 texture data (headerless) using a BinaryReader.
+		/// </summary>
+		/// <param name="width">Width of image</param>
+		/// <param name="height">Height of image</param>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public void ReadRawData(int width, int height, BinaryReader br)
+		{
+			Width = width;
+			Height = height;
+
+			int numPixels = Width * Height;
+			Data = new byte[numPixels];
+
+			// one pixel per byte
+			int i = 0;
+			while (i < numPixels)
+			{
+				Data[i] = br.ReadByte();
+				i++;
+			}
+		}
+
+		/// <summary>
 		/// Write CI8 texture data using a BinaryWriter.
 		/// </summary>
 		/// <param name="bw">BinaryWriter instance to use.</param>

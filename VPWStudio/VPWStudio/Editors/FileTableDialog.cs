@@ -774,6 +774,7 @@ namespace VPWStudio
 				case FileTypes.Ci4Texture:
 				case FileTypes.Ci8Texture:
 				case FileTypes.Ci4Background:
+				case FileTypes.RawCi8Texture:
 					{
 						FileTable_CiTexturePreviewDialog citd = new FileTable_CiTexturePreviewDialog(key);
 						citd.ShowDialog();
