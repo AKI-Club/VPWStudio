@@ -153,6 +153,15 @@ namespace VPWStudio
 			// image data
 			bw.Write(Data);
 		}
+
+		/// <summary>
+		/// Write Ci8 texture data only, for use with FileTypes.RawCi8Texture.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteRawData(BinaryWriter bw)
+		{
+			bw.Write(Data);
+		}
 		#endregion
 
 		#region Bitmap Read/Write
