@@ -30,6 +30,7 @@ namespace VPWStudio
 			cbFileTypes.SelectedIndex = cbFileTypes.Items.IndexOf(CurEntry.FileType.ToString());
 			cbForceFileType.Checked = CurEntry.OverrideFileType;
 			tbComment.Text = fte.Comment;
+			tbProjComment.Text = fte.ProjectSpecificComment;
 
 			cbReplaceEncoding.SelectedIndex = (int)CurEntry.ReplaceEncoding;
 			tbReplaceFilePath.Text = CurEntry.ReplaceFilePath;
@@ -60,6 +61,7 @@ namespace VPWStudio
 
 			CurEntry.OverrideFileType = cbForceFileType.Checked;
 			CurEntry.Comment = tbComment.Text;
+			CurEntry.ProjectSpecificComment = tbProjComment.Text;
 
 			// Attempt to convert absolute paths to relative, so the project files take up less space.
 			string relPath = Program.ShortenAbsolutePath(tbReplaceFilePath.Text);
@@ -120,7 +122,7 @@ namespace VPWStudio
 			{
 				case FileTypes.Ci4Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4; break;
 				case FileTypes.Ci8Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8; break;
-				case FileTypes.I4Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureI4; break;
+				case FileTypes.I4Texture:  ofd.Filter = SharedStrings.FileLoadFilter_TextureI4; break;
 				case FileTypes.Ci4Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi4; break;
 				case FileTypes.Ci8Texture: ofd.Filter = SharedStrings.FileLoadFilter_TextureCi8; break;
 				case FileTypes.AkiTexture: ofd.Filter = SharedStrings.FileLoadFilter_TextureAki; break;
