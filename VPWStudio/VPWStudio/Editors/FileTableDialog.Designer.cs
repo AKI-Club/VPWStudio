@@ -61,6 +61,7 @@
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelSelectedItems = new System.Windows.Forms.ToolStripStatusLabel();
+			this.chProjComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -77,7 +78,8 @@
             this.chRomAddr,
             this.chFileType,
             this.chLzss,
-            this.chComments});
+            this.chComments,
+            this.chProjComments});
 			this.lvFileList.ContextMenuStrip = this.cmsFileEntry;
 			this.lvFileList.FullRowSelect = true;
 			this.lvFileList.GridLines = true;
@@ -86,7 +88,7 @@
 			this.lvFileList.Location = new System.Drawing.Point(12, 27);
 			this.lvFileList.Name = "lvFileList";
 			this.lvFileList.ShowGroups = false;
-			this.lvFileList.Size = new System.Drawing.Size(608, 381);
+			this.lvFileList.Size = new System.Drawing.Size(680, 389);
 			this.lvFileList.TabIndex = 1;
 			this.lvFileList.UseCompatibleStateImageBehavior = false;
 			this.lvFileList.View = System.Windows.Forms.View.Details;
@@ -123,7 +125,7 @@
 			// chComments
 			// 
 			this.chComments.Text = "Comments";
-			this.chComments.Width = 236;
+			this.chComments.Width = 232;
 			// 
 			// cmsFileEntry
 			// 
@@ -205,7 +207,7 @@
             this.exportToolStripMenuItem});
 			this.menuStripFileTable.Location = new System.Drawing.Point(0, 0);
 			this.menuStripFileTable.Name = "menuStripFileTable";
-			this.menuStripFileTable.Size = new System.Drawing.Size(632, 24);
+			this.menuStripFileTable.Size = new System.Drawing.Size(704, 24);
 			this.menuStripFileTable.TabIndex = 2;
 			this.menuStripFileTable.Text = "menuStrip1";
 			// 
@@ -313,9 +315,9 @@
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssLabelSelectedItems});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 411);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 419);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(632, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(704, 22);
 			this.statusStrip1.TabIndex = 3;
 			this.statusStrip1.Text = "statusStrip1";
 			// 
@@ -325,16 +327,21 @@
 			this.tssLabelSelectedItems.Size = new System.Drawing.Size(92, 17);
 			this.tssLabelSelectedItems.Text = "# items selected";
 			// 
+			// chProjComments
+			// 
+			this.chProjComments.Text = "Project-Specific Comments";
+			this.chProjComments.Width = 232;
+			// 
 			// FileTableDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(632, 433);
+			this.ClientSize = new System.Drawing.Size(704, 441);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.menuStripFileTable);
 			this.Controls.Add(this.lvFileList);
 			this.MainMenuStrip = this.menuStripFileTable;
-			this.MinimumSize = new System.Drawing.Size(648, 472);
+			this.MinimumSize = new System.Drawing.Size(720, 480);
 			this.Name = "FileTableDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "File Table";
@@ -381,5 +388,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exportCSVToolStripMenuItem;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelSelectedItems;
+		private System.Windows.Forms.ColumnHeader chProjComments;
 	}
 }
