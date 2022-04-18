@@ -66,7 +66,7 @@ namespace VPWStudio.Tools
 				{
 					// global text
 					lblRegionValue.Text = "Global Text";
-					tbOutputValue.Text = String.Format("0x{0:X} ({0})", outValue);
+					tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, 0x80105090+(outValue*4));
 				}
 				else
 				{
