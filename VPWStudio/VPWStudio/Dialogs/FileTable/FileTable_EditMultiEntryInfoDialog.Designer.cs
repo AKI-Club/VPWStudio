@@ -35,6 +35,7 @@
 			this.FileType = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.Encoding = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProjComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ReplaceFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Browse = new System.Windows.Forms.DataGridViewButtonColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgvEditEntries)).BeginInit();
@@ -43,7 +44,7 @@
 			// buttonOK
 			// 
 			this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOK.Location = new System.Drawing.Point(464, 238);
+			this.buttonOK.Location = new System.Drawing.Point(536, 246);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 0;
@@ -54,7 +55,7 @@
 			// buttonCancel
 			// 
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonCancel.Location = new System.Drawing.Point(545, 238);
+			this.buttonCancel.Location = new System.Drawing.Point(617, 246);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 1;
@@ -76,11 +77,12 @@
             this.FileType,
             this.Encoding,
             this.Comment,
+            this.ProjComment,
             this.ReplaceFile,
             this.Browse});
 			this.dgvEditEntries.Location = new System.Drawing.Point(12, 12);
 			this.dgvEditEntries.Name = "dgvEditEntries";
-			this.dgvEditEntries.Size = new System.Drawing.Size(608, 220);
+			this.dgvEditEntries.Size = new System.Drawing.Size(680, 228);
 			this.dgvEditEntries.TabIndex = 2;
 			this.dgvEditEntries.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEditEntries_CellContentClick);
 			// 
@@ -114,6 +116,12 @@
 			this.Comment.HeaderText = "Comment";
 			this.Comment.Name = "Comment";
 			// 
+			// ProjComment
+			// 
+			this.ProjComment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.ProjComment.HeaderText = "Project-Specific Comment";
+			this.ProjComment.Name = "ProjComment";
+			// 
 			// ReplaceFile
 			// 
 			this.ReplaceFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -135,13 +143,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(632, 273);
+			this.ClientSize = new System.Drawing.Size(704, 281);
 			this.Controls.Add(this.dgvEditEntries);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(640, 300);
+			this.MinimumSize = new System.Drawing.Size(720, 320);
 			this.Name = "FileTable_EditMultiEntryInfoDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "File Table Entry Information";
@@ -159,6 +167,7 @@
 		private System.Windows.Forms.DataGridViewComboBoxColumn FileType;
 		private System.Windows.Forms.DataGridViewComboBoxColumn Encoding;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ProjComment;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ReplaceFile;
 		private System.Windows.Forms.DataGridViewButtonColumn Browse;
 	}

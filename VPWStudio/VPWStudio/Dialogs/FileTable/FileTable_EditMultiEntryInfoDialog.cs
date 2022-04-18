@@ -11,8 +11,9 @@ namespace VPWStudio
 		private const int COLUMN_FILETYPE = 1;
 		private const int COLUMN_ENCODING = 2;
 		private const int COLUMN_COMMENT = 3;
-		private const int COLUMN_REPLACEFILE = 4;
-		private const int COLUMN_BROWSE = 5;
+		private const int COLUMN_PROJCOMMENT = 4;
+		private const int COLUMN_REPLACEFILE = 5;
+		private const int COLUMN_BROWSE = 6;
 
 		private static string BROWSE_TEXT = "Browse...";
 		#endregion
@@ -57,6 +58,7 @@ namespace VPWStudio
 				dgvEditEntries.Rows[i].Cells[COLUMN_ENCODING].Value = Enum.GetName(typeof(FileTableReplaceEncoding), Entries[i].ReplaceEncoding);
 
 				dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value = Entries[i].Comment;
+				dgvEditEntries.Rows[i].Cells[COLUMN_PROJCOMMENT].Value = Entries[i].ProjectSpecificComment;
 				dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value = Entries[i].ReplaceFilePath;
 				dgvEditEntries.Rows[i].Cells[COLUMN_BROWSE].Value = BROWSE_TEXT;
 			}
@@ -89,6 +91,14 @@ namespace VPWStudio
 				{
 					AnyChangesSubmitted = true;
 					Entries[i].Comment = newComment;
+				}
+
+				// project-specific comment
+				string newProjSpecificComment = dgvEditEntries.Rows[i].Cells[COLUMN_PROJCOMMENT].Value.ToString();
+				if (!newProjSpecificComment.Equals(Entries[i].ProjectSpecificComment))
+				{
+					AnyChangesSubmitted = true;
+					Entries[i].ProjectSpecificComment = newProjSpecificComment;
 				}
 
 				// replace path
