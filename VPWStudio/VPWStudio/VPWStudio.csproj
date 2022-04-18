@@ -1055,6 +1055,9 @@
     <Content Include="Resources\FileTypes\Ia4Texture.png" />
     <Content Include="Resources\FileTypes\Ia8Texture.png" />
     <Content Include="Resources\FileTypes\MenuBackground.png" />
+    <Content Include="Resources\FileTypes\OneBppTexture.png" />
+    <Content Include="Resources\FileTypes\RawCi4TexPal.png" />
+    <Content Include="Resources\FileTypes\RawCi8Texture.png" />
     <Content Include="Resources\gameintro.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_NoMercy.png" />
     <Content Include="Resources\MainMenuBG\MainMenuBG_Revenge.png" />

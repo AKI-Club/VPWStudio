@@ -27,6 +27,11 @@ namespace VPWStudio
 		I4Texture,  // raw I4 texture data
 		// todo: IA8, IA4, I8, others
 
+		// semi-standard, but different enough to be an issue
+		RawCi4TexPal,  // no header, but contains palette and CI4 texture data
+		RawCi8Texture, // no header or palette, but contains CI8 texture data
+		OneBppTexture, // headered 1bpp (example: WWF No Mercy file ID 0x0396)
+
 		// "special" formats
 		#region Game-Specific
 		// note: this section contains things like movesets, etc. that change per game.
@@ -83,6 +88,9 @@ namespace VPWStudio
 			{ FileTypes.Ci4Texture, ".ci4tex" },
 			{ FileTypes.Ci8Texture, ".ci8tex" },
 			{ FileTypes.I4Texture, ".i4tex" },
+			{ FileTypes.RawCi4TexPal, ".ci4raw" },
+			{ FileTypes.RawCi8Texture, ".ci8raw" },
+			{ FileTypes.OneBppTexture, ".1bpp" },
 			{ FileTypes.DoubleTex, ".tex" }, // note: exports as two files
 			{ FileTypes.MenuBackground, ".menubg" }, // not really supported yet
 			{ FileTypes.Ci4Background, ".ci4bg" }, // this is awkward, freem
