@@ -16,12 +16,14 @@ namespace VPWStudio
 	{
 		#region Column constants
 		// update these any time you update a new column, which is hopefully never!!!
+		// freem from 2022/04/18, when he added project comment column: "lol"
 		private const int FILE_ID_COLUMN = 0;
 		private const int LOCATION_COLUMN = 1;
 		private const int ROM_ADDR_COLUMN = 2;
 		private const int FILE_TYPE_COLUMN = 3;
 		private const int LZSS_COLUMN = 4;
 		private const int COMMENT_COLUMN = 5;
+		private const int PROJECT_COMMENT_COLUMN = 6;
 		#endregion
 
 		#region Search values
@@ -110,6 +112,9 @@ namespace VPWStudio
 			{ FileTypes.DoubleTex, Properties.Resources.FileType_DoubleTex },
 			{ FileTypes.I4Texture, Properties.Resources.FileType_I4Texture },
 			{ FileTypes.MenuBackground, Properties.Resources.FileType_MenuBackground },
+			{ FileTypes.RawCi4TexPal, Properties.Resources.FileType_RawCi4TexPal },
+			{ FileTypes.RawCi8Texture, Properties.Resources.FileType_RawCi8Texture },
+			{ FileTypes.OneBppTexture, Properties.Resources.FileType_OneBppTexture },
 		};
 
 		/// <summary>
@@ -321,7 +326,8 @@ namespace VPWStudio
 					String.Format("{0:X8}",fte.Value.Location + offset),
 					fte.Value.FileType.ToString(),
 					fte.Value.IsEncoded.ToString(),
-					fte.Value.Comment
+					fte.Value.Comment,
+					fte.Value.ProjectSpecificComment
 				});
 				lvi.UseItemStyleForSubItems = false;
 				Color rowColor = (i % 2 == 0) ? Color.White : Color.FromArgb(240, 240, 240);
@@ -338,6 +344,7 @@ namespace VPWStudio
 				lvi.SubItems[FILE_TYPE_COLUMN].Font = regular;
 				lvi.SubItems[LZSS_COLUMN].Font = regular;
 				lvi.SubItems[COMMENT_COLUMN].Font = regular;
+				lvi.SubItems[PROJECT_COMMENT_COLUMN].Font = regular;
 				lvFileList.Items.Add(lvi);
 
 				i++;
@@ -713,6 +720,7 @@ namespace VPWStudio
 				Program.CurrentProject.ProjectFileTable.Entries[key].DeepCopy(editInfoDialog.CurEntry);
 				lvFileList.SelectedItems[0].SubItems[FILE_TYPE_COLUMN].Text = editInfoDialog.CurEntry.FileType.ToString();
 				lvFileList.SelectedItems[0].SubItems[COMMENT_COLUMN].Text = editInfoDialog.CurEntry.Comment;
+				lvFileList.SelectedItems[0].SubItems[PROJECT_COMMENT_COLUMN].Text = editInfoDialog.CurEntry.ProjectSpecificComment;
 				Program.UnsavedChanges = true;
 				((MainForm)(MdiParent)).UpdateTitleBar();
 			}
@@ -1330,6 +1338,9 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Export the FileTable as a CSV file.
+		/// </summary>
 		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
@@ -1339,7 +1350,7 @@ namespace VPWStudio
 			{
 				FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
 				StreamWriter sw = new StreamWriter(fs);
-				Program.CurrentProject.ProjectFileTable.WriteExtractScript(sw);
+				Program.CurrentProject.ProjectFileTable.WriteConvertScript(sw);
 				sw.Flush();
 				sw.Close();
 			}
