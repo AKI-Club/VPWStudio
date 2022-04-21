@@ -97,9 +97,10 @@
 			// 
 			// pbPreview
 			// 
+			this.pbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.pbPreview.BackColor = System.Drawing.SystemColors.Control;
 			this.pbPreview.ContextMenuStrip = this.cmsPreview;
-			this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbPreview.Location = new System.Drawing.Point(0, 35);
 			this.pbPreview.Margin = new System.Windows.Forms.Padding(0);
 			this.pbPreview.MinimumSize = new System.Drawing.Size(1, 1);
@@ -111,8 +112,7 @@
 			// 
 			// tlpImageControls
 			// 
-			this.tlpImageControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.tlpImageControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpImageControls.ColumnCount = 5;
 			this.tlpImageControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
