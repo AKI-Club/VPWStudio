@@ -2,9 +2,44 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 20 (202x/yy/zz)
+Pre-Alpha Preview 21 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 20 (2022/04/22)
+---------------------------------
+* [StoryMode_VPW2 dialog] Complete overhaul thanks to research done by Melonbread.
+  Compared to before...
+  * Added Singles participants
+  * Added Single and Tag Team groupings
+  * Added Promotion and Relegation values
+  * Added Event Schedule information
+  * Added Booking Instructions
+  Nothing is really editable yet, though...
+
+* Added "Select Wrestler" dialog.
+  The code is hacky and reveals a design flaw in the current codebase
+  that should eventually be fixed.
+
+* Added "vpw2 text index tool" to Danger Zone.
+  VPW2 uses this really weird but makes-sense-in-context way of decoding text
+  IDs. This has been semi-figured out.
+
+* [AkiText Editor] Entries now start counting from 0.
+
+* [FileTable] Added Project-Specific Comment field to FileTableEntry.
+  (Various UI forms have been modified to support it.)
+
+* [FileTypes] Added three new FileTypes:
+  - RawCi4TexPal  - header-less CI4 palette and texture data
+  - RawCi8Texture - header-less, palette-less CI8 texture data
+  - OneBppTexture - 1bpp texture data (with header) [todo: needs support]
+
+* [FileTable_EditEntryInfoDialog] ExtraData values for Image Width/Height are
+  no longer capped at 640 and 480. (The new limit is 65535 for both values.)
+
+* [ITexturePreviewDialog] Width/Height/Refresh area no longer resizes with the
+  rest of the preview window.
 
 Pre-Alpha Preview 19 (2022/01/29)
 ---------------------------------
