@@ -19,7 +19,7 @@ namespace VPWStudio
 			"Tokidoim",        // he's the "Toki" in Toki1, Toki2, Toki3... among other things.
 			"Kryogenics",      // many hacks and discoveries throughout the years
 			"JamStubbs",       // created utilities and hosted an influential archive board
-			"S.K. Stylez",     // AKI Club founder
+			"S.K. Stylez",     // AKI Club founder, among many other things
 			"DOOMSDAY EWF",    // found many values (textures)
 			"The Pelican",     // also found many values
 			"Keson",           // keeping the future alive with AKI Evo and new tools
@@ -70,7 +70,7 @@ namespace VPWStudio
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
 			sb.AppendLine();
-			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of February 2022, this includes:");
+			sb.AppendLine("This program is only meant to be used by the VPW Studio testing group. As of April 2022, this includes:");
 			sb.AppendLine();
 			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
 			sb.AppendLine("- GameGenie720");
@@ -108,7 +108,7 @@ namespace VPWStudio
 			sb.AppendLine();
 			sb.AppendLine();
 
-			sb.AppendLine("This program uses the following libraries:");
+			sb.AppendLine("This program uses the following libraries, both MIT licensed:");
 			sb.AppendLine("- OpenTK (https://opentk.net/)");
 			sb.Append("- Be.HexBox (https://sourceforge.net/projects/hexbox/)");
 
