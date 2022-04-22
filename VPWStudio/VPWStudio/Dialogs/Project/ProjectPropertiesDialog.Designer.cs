@@ -57,9 +57,6 @@
 			this.tbRegionCode = new System.Windows.Forms.TextBox();
 			this.tpProjectFiles = new System.Windows.Forms.TabPage();
 			this.tlpProjFilesTab = new System.Windows.Forms.TableLayoutPanel();
-			this.tlpWrestlerNames = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetWrestlerNameFile = new System.Windows.Forms.Button();
-			this.tbWrestlerNamesFile = new System.Windows.Forms.TextBox();
 			this.tlpAssetFilesPath = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetAssetFilesPath = new System.Windows.Forms.Button();
 			this.tbAssetFilesPath = new System.Windows.Forms.TextBox();
@@ -73,6 +70,19 @@
 			this.tbCustomLocationFile = new System.Windows.Forms.TextBox();
 			this.labelAssetFilesPath = new System.Windows.Forms.Label();
 			this.labelWrestlerNamesFile = new System.Windows.Forms.Label();
+			this.tlpWrestlerNames = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetWrestlerNameFile = new System.Windows.Forms.Button();
+			this.tbWrestlerNamesFile = new System.Windows.Forms.TextBox();
+			this.tpOutputData = new System.Windows.Forms.TabPage();
+			this.tlpOutData = new System.Windows.Forms.TableLayoutPanel();
+			this.labelInDataPath = new System.Windows.Forms.Label();
+			this.labelOutDataPath = new System.Windows.Forms.Label();
+			this.tbInDataPath = new System.Windows.Forms.TextBox();
+			this.tbOutDataPath = new System.Windows.Forms.TextBox();
+			this.tlpInDataPath = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetInDataPath = new System.Windows.Forms.Button();
+			this.tlpOutDataPath = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetOutDataPath = new System.Windows.Forms.Button();
 			this.tcProjectProperties.SuspendLayout();
 			this.tpMainProperties.SuspendLayout();
 			this.tlpProjectOptions.SuspendLayout();
@@ -83,10 +93,14 @@
 			this.tlpRegion.SuspendLayout();
 			this.tpProjectFiles.SuspendLayout();
 			this.tlpProjFilesTab.SuspendLayout();
-			this.tlpWrestlerNames.SuspendLayout();
 			this.tlpAssetFilesPath.SuspendLayout();
 			this.tlpProjFilesPath.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
+			this.tlpWrestlerNames.SuspendLayout();
+			this.tpOutputData.SuspendLayout();
+			this.tlpOutData.SuspendLayout();
+			this.tlpInDataPath.SuspendLayout();
+			this.tlpOutDataPath.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -117,6 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tcProjectProperties.Controls.Add(this.tpMainProperties);
 			this.tcProjectProperties.Controls.Add(this.tpOutputRom);
+			this.tcProjectProperties.Controls.Add(this.tpOutputData);
 			this.tcProjectProperties.Controls.Add(this.tpProjectFiles);
 			this.tcProjectProperties.Location = new System.Drawing.Point(12, 12);
 			this.tcProjectProperties.Name = "tcProjectProperties";
@@ -258,6 +273,7 @@
 			this.cbGameType.Name = "cbGameType";
 			this.cbGameType.Size = new System.Drawing.Size(352, 21);
 			this.cbGameType.TabIndex = 7;
+			this.cbGameType.SelectedIndexChanged += new System.EventHandler(this.cbGameType_SelectedIndexChanged);
 			// 
 			// tpOutputRom
 			// 
@@ -434,40 +450,6 @@
 			this.tlpProjFilesTab.Size = new System.Drawing.Size(496, 250);
 			this.tlpProjFilesTab.TabIndex = 0;
 			// 
-			// tlpWrestlerNames
-			// 
-			this.tlpWrestlerNames.ColumnCount = 2;
-			this.tlpWrestlerNames.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-			this.tlpWrestlerNames.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tlpWrestlerNames.Controls.Add(this.buttonSetWrestlerNameFile, 1, 0);
-			this.tlpWrestlerNames.Controls.Add(this.tbWrestlerNamesFile, 0, 0);
-			this.tlpWrestlerNames.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpWrestlerNames.Location = new System.Drawing.Point(141, 189);
-			this.tlpWrestlerNames.Name = "tlpWrestlerNames";
-			this.tlpWrestlerNames.RowCount = 1;
-			this.tlpWrestlerNames.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpWrestlerNames.Size = new System.Drawing.Size(352, 58);
-			this.tlpWrestlerNames.TabIndex = 23;
-			// 
-			// buttonSetWrestlerNameFile
-			// 
-			this.buttonSetWrestlerNameFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetWrestlerNameFile.Location = new System.Drawing.Point(319, 14);
-			this.buttonSetWrestlerNameFile.Name = "buttonSetWrestlerNameFile";
-			this.buttonSetWrestlerNameFile.Size = new System.Drawing.Size(30, 29);
-			this.buttonSetWrestlerNameFile.TabIndex = 13;
-			this.buttonSetWrestlerNameFile.Text = "...";
-			this.buttonSetWrestlerNameFile.UseVisualStyleBackColor = true;
-			this.buttonSetWrestlerNameFile.Click += new System.EventHandler(this.buttonSetWrestlerNameFile_Click);
-			// 
-			// tbWrestlerNamesFile
-			// 
-			this.tbWrestlerNamesFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerNamesFile.Location = new System.Drawing.Point(3, 19);
-			this.tbWrestlerNamesFile.Name = "tbWrestlerNamesFile";
-			this.tbWrestlerNamesFile.Size = new System.Drawing.Size(310, 20);
-			this.tbWrestlerNamesFile.TabIndex = 12;
-			// 
 			// tlpAssetFilesPath
 			// 
 			this.tlpAssetFilesPath.ColumnCount = 2;
@@ -614,6 +596,156 @@
 			this.labelWrestlerNamesFile.TabIndex = 22;
 			this.labelWrestlerNamesFile.Text = "Wrestler &Names File";
 			// 
+			// tlpWrestlerNames
+			// 
+			this.tlpWrestlerNames.ColumnCount = 2;
+			this.tlpWrestlerNames.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tlpWrestlerNames.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpWrestlerNames.Controls.Add(this.buttonSetWrestlerNameFile, 1, 0);
+			this.tlpWrestlerNames.Controls.Add(this.tbWrestlerNamesFile, 0, 0);
+			this.tlpWrestlerNames.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpWrestlerNames.Location = new System.Drawing.Point(141, 189);
+			this.tlpWrestlerNames.Name = "tlpWrestlerNames";
+			this.tlpWrestlerNames.RowCount = 1;
+			this.tlpWrestlerNames.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpWrestlerNames.Size = new System.Drawing.Size(352, 58);
+			this.tlpWrestlerNames.TabIndex = 23;
+			// 
+			// buttonSetWrestlerNameFile
+			// 
+			this.buttonSetWrestlerNameFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetWrestlerNameFile.Location = new System.Drawing.Point(319, 14);
+			this.buttonSetWrestlerNameFile.Name = "buttonSetWrestlerNameFile";
+			this.buttonSetWrestlerNameFile.Size = new System.Drawing.Size(30, 29);
+			this.buttonSetWrestlerNameFile.TabIndex = 13;
+			this.buttonSetWrestlerNameFile.Text = "...";
+			this.buttonSetWrestlerNameFile.UseVisualStyleBackColor = true;
+			this.buttonSetWrestlerNameFile.Click += new System.EventHandler(this.buttonSetWrestlerNameFile_Click);
+			// 
+			// tbWrestlerNamesFile
+			// 
+			this.tbWrestlerNamesFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerNamesFile.Location = new System.Drawing.Point(3, 19);
+			this.tbWrestlerNamesFile.Name = "tbWrestlerNamesFile";
+			this.tbWrestlerNamesFile.Size = new System.Drawing.Size(310, 20);
+			this.tbWrestlerNamesFile.TabIndex = 12;
+			// 
+			// tpOutputData
+			// 
+			this.tpOutputData.Controls.Add(this.tlpOutData);
+			this.tpOutputData.Location = new System.Drawing.Point(4, 22);
+			this.tpOutputData.Name = "tpOutputData";
+			this.tpOutputData.Padding = new System.Windows.Forms.Padding(3);
+			this.tpOutputData.Size = new System.Drawing.Size(502, 256);
+			this.tpOutputData.TabIndex = 3;
+			this.tpOutputData.Text = "Output Data";
+			this.tpOutputData.UseVisualStyleBackColor = true;
+			// 
+			// tlpOutData
+			// 
+			this.tlpOutData.ColumnCount = 2;
+			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpOutData.Controls.Add(this.tlpInDataPath, 1, 0);
+			this.tlpOutData.Controls.Add(this.labelInDataPath, 0, 0);
+			this.tlpOutData.Controls.Add(this.labelOutDataPath, 0, 1);
+			this.tlpOutData.Controls.Add(this.tlpOutDataPath, 1, 1);
+			this.tlpOutData.Location = new System.Drawing.Point(3, 3);
+			this.tlpOutData.Name = "tlpOutData";
+			this.tlpOutData.RowCount = 2;
+			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOutData.Size = new System.Drawing.Size(496, 250);
+			this.tlpOutData.TabIndex = 0;
+			// 
+			// labelInDataPath
+			// 
+			this.labelInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelInDataPath.AutoSize = true;
+			this.labelInDataPath.Location = new System.Drawing.Point(3, 56);
+			this.labelInDataPath.Name = "labelInDataPath";
+			this.labelInDataPath.Size = new System.Drawing.Size(118, 13);
+			this.labelInDataPath.TabIndex = 0;
+			this.labelInDataPath.Text = "&Input Data Path";
+			// 
+			// labelOutDataPath
+			// 
+			this.labelOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelOutDataPath.AutoSize = true;
+			this.labelOutDataPath.Location = new System.Drawing.Point(3, 181);
+			this.labelOutDataPath.Name = "labelOutDataPath";
+			this.labelOutDataPath.Size = new System.Drawing.Size(118, 13);
+			this.labelOutDataPath.TabIndex = 1;
+			this.labelOutDataPath.Text = "Ou&tput Data Path";
+			// 
+			// tbInDataPath
+			// 
+			this.tbInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbInDataPath.Location = new System.Drawing.Point(3, 49);
+			this.tbInDataPath.Name = "tbInDataPath";
+			this.tbInDataPath.Size = new System.Drawing.Size(268, 20);
+			this.tbInDataPath.TabIndex = 2;
+			// 
+			// tbOutDataPath
+			// 
+			this.tbOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbOutDataPath.Location = new System.Drawing.Point(3, 49);
+			this.tbOutDataPath.Name = "tbOutDataPath";
+			this.tbOutDataPath.Size = new System.Drawing.Size(268, 20);
+			this.tbOutDataPath.TabIndex = 3;
+			// 
+			// tlpInDataPath
+			// 
+			this.tlpInDataPath.ColumnCount = 2;
+			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpInDataPath.Controls.Add(this.buttonSetInDataPath, 1, 0);
+			this.tlpInDataPath.Controls.Add(this.tbInDataPath, 0, 0);
+			this.tlpInDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpInDataPath.Location = new System.Drawing.Point(127, 3);
+			this.tlpInDataPath.Name = "tlpInDataPath";
+			this.tlpInDataPath.RowCount = 1;
+			this.tlpInDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpInDataPath.Size = new System.Drawing.Size(366, 119);
+			this.tlpInDataPath.TabIndex = 4;
+			// 
+			// buttonSetInDataPath
+			// 
+			this.buttonSetInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetInDataPath.Location = new System.Drawing.Point(277, 48);
+			this.buttonSetInDataPath.Name = "buttonSetInDataPath";
+			this.buttonSetInDataPath.Size = new System.Drawing.Size(86, 23);
+			this.buttonSetInDataPath.TabIndex = 0;
+			this.buttonSetInDataPath.Text = "...";
+			this.buttonSetInDataPath.UseVisualStyleBackColor = true;
+			this.buttonSetInDataPath.Click += new System.EventHandler(this.buttonSetInDataPath_Click);
+			// 
+			// tlpOutDataPath
+			// 
+			this.tlpOutDataPath.ColumnCount = 2;
+			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpOutDataPath.Controls.Add(this.tbOutDataPath, 0, 0);
+			this.tlpOutDataPath.Controls.Add(this.buttonSetOutDataPath, 1, 0);
+			this.tlpOutDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpOutDataPath.Location = new System.Drawing.Point(127, 128);
+			this.tlpOutDataPath.Name = "tlpOutDataPath";
+			this.tlpOutDataPath.RowCount = 1;
+			this.tlpOutDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpOutDataPath.Size = new System.Drawing.Size(366, 119);
+			this.tlpOutDataPath.TabIndex = 5;
+			// 
+			// buttonSetOutDataPath
+			// 
+			this.buttonSetOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetOutDataPath.Location = new System.Drawing.Point(277, 48);
+			this.buttonSetOutDataPath.Name = "buttonSetOutDataPath";
+			this.buttonSetOutDataPath.Size = new System.Drawing.Size(86, 23);
+			this.buttonSetOutDataPath.TabIndex = 4;
+			this.buttonSetOutDataPath.Text = "...";
+			this.buttonSetOutDataPath.UseVisualStyleBackColor = true;
+			this.buttonSetOutDataPath.Click += new System.EventHandler(this.buttonSetOutDataPath_Click);
+			// 
 			// ProjectPropertiesDialog
 			// 
 			this.AcceptButton = this.buttonOK;
@@ -647,14 +779,21 @@
 			this.tpProjectFiles.ResumeLayout(false);
 			this.tlpProjFilesTab.ResumeLayout(false);
 			this.tlpProjFilesTab.PerformLayout();
-			this.tlpWrestlerNames.ResumeLayout(false);
-			this.tlpWrestlerNames.PerformLayout();
 			this.tlpAssetFilesPath.ResumeLayout(false);
 			this.tlpAssetFilesPath.PerformLayout();
 			this.tlpProjFilesPath.ResumeLayout(false);
 			this.tlpProjFilesPath.PerformLayout();
 			this.tlpCustomLoc.ResumeLayout(false);
 			this.tlpCustomLoc.PerformLayout();
+			this.tlpWrestlerNames.ResumeLayout(false);
+			this.tlpWrestlerNames.PerformLayout();
+			this.tpOutputData.ResumeLayout(false);
+			this.tlpOutData.ResumeLayout(false);
+			this.tlpOutData.PerformLayout();
+			this.tlpInDataPath.ResumeLayout(false);
+			this.tlpInDataPath.PerformLayout();
+			this.tlpOutDataPath.ResumeLayout(false);
+			this.tlpOutDataPath.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -706,5 +845,15 @@
 		private System.Windows.Forms.TableLayoutPanel tlpWrestlerNames;
 		private System.Windows.Forms.Button buttonSetWrestlerNameFile;
 		private System.Windows.Forms.TextBox tbWrestlerNamesFile;
+		private System.Windows.Forms.TabPage tpOutputData;
+		private System.Windows.Forms.TableLayoutPanel tlpOutData;
+		private System.Windows.Forms.Label labelInDataPath;
+		private System.Windows.Forms.Label labelOutDataPath;
+		private System.Windows.Forms.TextBox tbInDataPath;
+		private System.Windows.Forms.TextBox tbOutDataPath;
+		private System.Windows.Forms.TableLayoutPanel tlpInDataPath;
+		private System.Windows.Forms.Button buttonSetInDataPath;
+		private System.Windows.Forms.TableLayoutPanel tlpOutDataPath;
+		private System.Windows.Forms.Button buttonSetOutDataPath;
 	}
 }

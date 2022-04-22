@@ -39,6 +39,7 @@ namespace VPWStudio
 			}
 			cbGameType.EndUpdate();
 
+			#region N64-specific
 			RegionList = new GameRegion[Enum.GetValues(typeof(GameRegion)).Length];
 
 			cbRegionCode.BeginUpdate();
@@ -59,6 +60,7 @@ namespace VPWStudio
 				regionCounter++;
 			}
 			cbRegionCode.EndUpdate();
+			#endregion
 
 			if (Program.CurrentProject == null)
 			{
@@ -92,12 +94,28 @@ namespace VPWStudio
 					}
 				}
 
+				// output data page
+				tbOutDataPath.Text = Program.CurrentProject.Settings.OutputDataPath;
+				tbInDataPath.Text = Program.CurrentProject.Settings.InputDataPath;
+
 				// project files page
 				tbProjFilesPath.Text = Program.CurrentProject.Settings.ProjectFilesPath;
 				tbAssetFilesPath.Text = Program.CurrentProject.Settings.AssetsPath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
 				tbWrestlerNamesFile.Text = Program.CurrentProject.Settings.WrestlerNameFilePath;
+			}
+
+			// hide platform-specific tab pages
+			if (GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].TargetConsole == PlatformType.Nintendo64)
+			{
+				int hidePage = tcProjectProperties.TabPages.IndexOfKey("tpOutputData");
+				tcProjectProperties.TabPages.Remove(tcProjectProperties.TabPages[hidePage]);
+			}
+			else if(GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].TargetConsole == PlatformType.PlayStation1)
+			{
+				int hidePage = tcProjectProperties.TabPages.IndexOfKey("tpOutputRom");
+				tcProjectProperties.TabPages.Remove(tcProjectProperties.TabPages[hidePage]);
 			}
 		}
 
@@ -205,6 +223,10 @@ namespace VPWStudio
 				NewSettings.OutputRomCustomRegion = (char)RegionList[cbRegionCode.SelectedIndex];
 			}
 
+			// output data tab
+			NewSettings.OutputDataPath = tbOutDataPath.Text;
+			NewSettings.InputDataPath = tbInDataPath.Text;
+
 			// project files tab
 			NewSettings.ProjectFilesPath = tbProjFilesPath.Text;
 			NewSettings.AssetsPath = tbAssetFilesPath.Text;
@@ -246,9 +268,15 @@ namespace VPWStudio
 				tbBaseROMPath.Text = Path.GetFullPath(ofd.FileName);
 			}
 		}
+
+		private void cbGameType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			// todo: something about choosing a different target platform than the current one and
+			// telling people to close this damned thing and open it again to get the proper options
+		}
 		#endregion
 
-		#region Output ROM Tab
+		#region Output ROM Tab (N64 games)
 		/// <summary>
 		/// Select output ROM path.
 		/// </summary>
@@ -287,6 +315,36 @@ namespace VPWStudio
 			}
 		}
 
+		#endregion
+
+		#region Output Data Tab (PS1 games)
+		private void buttonSetInDataPath_Click(object sender, EventArgs e)
+		{
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			if (Program.CurrentProject.Settings.InputDataPath != String.Empty)
+			{
+				fbd.SelectedPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.InputDataPath);
+			}
+			fbd.Description = "Select the Input Data directory.";
+			if (fbd.ShowDialog() == DialogResult.OK)
+			{
+				tbInDataPath.Text = Program.ShortenAbsolutePath(fbd.SelectedPath);
+			}
+		}
+
+		private void buttonSetOutDataPath_Click(object sender, EventArgs e)
+		{
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			if (Program.CurrentProject.Settings.OutputDataPath != String.Empty)
+			{
+				fbd.SelectedPath = Program.ConvertRelativePath(Program.CurrentProject.Settings.OutputDataPath);
+			}
+			fbd.Description = "Select the Output Data directory.";
+			if (fbd.ShowDialog() == DialogResult.OK)
+			{
+				tbOutDataPath.Text = Program.ShortenAbsolutePath(fbd.SelectedPath);
+			}
+		}
 		#endregion
 
 		#region Project Files Tab
@@ -345,7 +403,9 @@ namespace VPWStudio
 				tbWrestlerNamesFile.Text = ofd.FileName;
 			}
 		}
+
 		#endregion
 
+		
 	}
 }
