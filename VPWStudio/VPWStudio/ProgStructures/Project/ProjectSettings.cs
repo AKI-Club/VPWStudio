@@ -47,7 +47,7 @@ namespace VPWStudio
 		public string AssetsPath;
 		#endregion
 
-		#region Class Members - N64-Specific
+		#region Class Members - N64-specific
 		/// <summary>
 		/// ROM file to use with this project.
 		/// </summary>
@@ -77,7 +77,19 @@ namespace VPWStudio
 		public char OutputRomCustomRegion;
 		#endregion
 
-		#region Class Members - unsorted
+		#region Class Members - PS1-specific
+		/// <summary>
+		/// Path to extracted file data to use with this project.
+		/// </summary>
+		public string InputDataPath;
+
+		/// <summary>
+		/// Path to generated output file data.
+		/// </summary>
+		public string OutputDataPath;
+		#endregion
+
+		#region Class Members - Custom Location File
 		/// <summary>
 		/// Use a custom location file?
 		/// </summary>
@@ -87,7 +99,9 @@ namespace VPWStudio
 		/// Path to custom location file.
 		/// </summary>
 		public string CustomLocationFilePath;
+		#endregion
 
+		#region Class Members - Ancillary Files
 		/// <summary>
 		/// Path to custom Wrestler Definition file.
 		/// </summary>
@@ -119,28 +133,39 @@ namespace VPWStudio
 			OutputRomPath = String.Empty;
 			ProjectFilesPath = String.Empty;
 			AssetsPath = String.Empty;
+
 			UseCustomLocationFile = false;
 			CustomLocationFilePath = String.Empty;
+
+			#region N64-specific
 			OutputRomInternalName = String.Empty;
 			OutputRomRegion = GameRegion.NorthAmerica;
 			OutputRomCustomRegion = '0';
+			#endregion
+
+			#region PS1-specific
+			InputDataPath = String.Empty;
+			OutputDataPath = String.Empty;
+			#endregion
+
+			#region Ancillary Files
 			WrestlerDefinitionFilePath = String.Empty;
 			StableDefinitionFilePath = String.Empty;
 			WrestlerNameFilePath = String.Empty;
+			#endregion
 		}
 
 		/// <summary>
 		/// Full constructor.
 		/// </summary>
 		/// <param name="_name">Project name</param>
-		/// <param name="_baseGame"></param>
-		/// <param name="_gameType"></param>
+		/// <param name="_baseGame">Base game type</param>
+		/// <param name="_gameType">Specific game variant (e.g. NTSC-U v1.0, PAL v1.1, etc.)</param>
 		/// <param name="_authors">Project Authors</param>
 		/// <param name="_notes">Project notes</param>
 		/// <param name="_inROM">Input ROM path</param>
 		/// <param name="_outROM">Output ROM path</param>
 		/// <param name="_locPath">Custom Location File path</param>
-		/// <param name="_gscPath">GameShark Code File path</param>
 		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath)
 		{
 			ProjectName = _name;
@@ -152,14 +177,37 @@ namespace VPWStudio
 			OutputRomPath = _outROM;
 			ProjectFilesPath = String.Empty;
 			AssetsPath = String.Empty;
+
 			UseCustomLocationFile = !_locPath.Equals(String.Empty);
 			CustomLocationFilePath = _locPath;
-			OutputRomInternalName = String.Empty;
-			OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
-			OutputRomCustomRegion = '0';
+
+			if (GameInformation.GameDefs[_gameType].TargetConsole == PlatformType.Nintendo64)
+			{
+				OutputRomInternalName = String.Empty;
+				OutputRomRegion = GameInformation.GameDefs[_gameType].Region;
+				OutputRomCustomRegion = '0';
+
+				// nullify PS1-specific
+				InputDataPath = null;
+				OutputDataPath = null;
+			}
+			else if (GameInformation.GameDefs[_gameType].TargetConsole == PlatformType.PlayStation1)
+			{
+				InputDataPath = String.Empty;
+				OutputDataPath = String.Empty;
+
+				// nullify N64-specific
+				OutputRomInternalName = null;
+				OutputRomRegion = GameRegion.Custom;
+				OutputRomCustomRegion = '0';
+			}
+
+			#region Ancillary Files
 			WrestlerDefinitionFilePath = String.Empty;
 			StableDefinitionFilePath = String.Empty;
 			WrestlerNameFilePath = String.Empty;
+			#endregion
+
 		}
 
 		/// <summary>
@@ -186,11 +234,21 @@ namespace VPWStudio
 			OutputRomPath = _src.OutputRomPath;
 			ProjectFilesPath = _src.ProjectFilesPath;
 			AssetsPath = _src.AssetsPath;
+
 			UseCustomLocationFile = _src.UseCustomLocationFile;
 			CustomLocationFilePath = _src.CustomLocationFilePath;
+
+			#region N64-specific
 			OutputRomInternalName = _src.OutputRomInternalName;
 			OutputRomRegion = _src.OutputRomRegion;
 			OutputRomCustomRegion = _src.OutputRomCustomRegion;
+			#endregion
+
+			#region PS1-specific
+			InputDataPath = _src.InputDataPath;
+			OutputDataPath = _src.OutputDataPath;
+			#endregion
+
 			WrestlerDefinitionFilePath = _src.WrestlerDefinitionFilePath;
 			StableDefinitionFilePath = _src.StableDefinitionFilePath;
 			WrestlerNameFilePath = _src.WrestlerNameFilePath;
