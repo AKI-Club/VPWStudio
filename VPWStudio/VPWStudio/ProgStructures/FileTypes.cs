@@ -109,7 +109,10 @@ namespace VPWStudio
 			FileTypes.Ci4Texture,
 			FileTypes.Ci8Texture,
 			FileTypes.I4Texture,
-			FileTypes.DoubleTex
+			FileTypes.DoubleTex,
+			FileTypes.RawCi4TexPal,
+			FileTypes.RawCi8Texture,
+			FileTypes.OneBppTexture
 		};
 
 		/// <summary>
