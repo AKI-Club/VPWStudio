@@ -33,6 +33,7 @@ namespace VPWStudio
 		public FileTable ProjectFileTable;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
@@ -55,6 +56,7 @@ namespace VPWStudio
 
 			LoadFile(path);
 		}
+		#endregion
 
 		/// <summary>
 		/// Deep copy an existing ProjectFile instance.
