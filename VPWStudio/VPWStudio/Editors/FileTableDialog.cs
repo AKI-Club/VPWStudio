@@ -1171,6 +1171,16 @@ namespace VPWStudio
 							return CurrentSearchItemNumber;
 						}
 					}
+
+					if (!String.IsNullOrEmpty(Program.CurrentProject.ProjectFileTable.Entries[i].ProjectSpecificComment))
+					{
+						string projComment = Program.CurrentProject.ProjectFileTable.Entries[i].ProjectSpecificComment.ToLower();
+						if (projComment.Contains(searchText.ToLower()))
+						{
+							CurrentSearchItemNumber = i;
+							return CurrentSearchItemNumber;
+						}
+					}
 				}
 			}
 			else
@@ -1181,6 +1191,16 @@ namespace VPWStudio
 					{
 						string fileComment = Program.CurrentProject.ProjectFileTable.Entries[i].Comment.ToLower();
 						if (fileComment.Contains(searchText.ToLower()))
+						{
+							CurrentSearchItemNumber = i;
+							return CurrentSearchItemNumber;
+						}
+					}
+
+					if (!String.IsNullOrEmpty(Program.CurrentProject.ProjectFileTable.Entries[i].ProjectSpecificComment))
+					{
+						string projComment = Program.CurrentProject.ProjectFileTable.Entries[i].ProjectSpecificComment.ToLower();
+						if (projComment.Contains(searchText.ToLower()))
 						{
 							CurrentSearchItemNumber = i;
 							return CurrentSearchItemNumber;
