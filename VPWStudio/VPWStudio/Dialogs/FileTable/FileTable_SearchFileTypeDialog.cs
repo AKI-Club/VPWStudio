@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VPWStudio.Dialogs.FileTable
+namespace VPWStudio
 {
 	public partial class FileTable_SearchFileTypeDialog : Form
 	{

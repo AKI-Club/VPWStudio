@@ -1,5 +1,5 @@
 ﻿
-namespace VPWStudio.Dialogs.FileTable
+namespace VPWStudio
 {
 	partial class FileTable_SearchFileTypeDialog
 	{
