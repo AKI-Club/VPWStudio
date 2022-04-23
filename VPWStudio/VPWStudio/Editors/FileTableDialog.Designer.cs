@@ -36,6 +36,7 @@
 			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chLzss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chProjComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.setTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@
 			this.goToBottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.searchFileTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +63,6 @@
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelSelectedItems = new System.Windows.Forms.ToolStripStatusLabel();
-			this.chProjComments = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -126,6 +127,11 @@
 			// 
 			this.chComments.Text = "Comments";
 			this.chComments.Width = 232;
+			// 
+			// chProjComments
+			// 
+			this.chProjComments.Text = "Project-Specific Comments";
+			this.chProjComments.Width = 232;
 			// 
 			// cmsFileEntry
 			// 
@@ -220,6 +226,7 @@
             this.goToBottomToolStripMenuItem,
             this.toolStripSeparator4,
             this.searchToolStripMenuItem,
+            this.searchFileTypeToolStripMenuItem,
             this.findNextToolStripMenuItem});
 			this.navigationToolStripMenuItem.Name = "navigationToolStripMenuItem";
 			this.navigationToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
@@ -229,47 +236,54 @@
 			// 
 			this.goToToolStripMenuItem.Name = "goToToolStripMenuItem";
 			this.goToToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-			this.goToToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.goToToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.goToToolStripMenuItem.Text = "&Go to...";
 			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(155, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
 			// 
 			// goToTopToolStripMenuItem
 			// 
 			this.goToTopToolStripMenuItem.Name = "goToTopToolStripMenuItem";
-			this.goToTopToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.goToTopToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.goToTopToolStripMenuItem.Text = "Go to Top";
 			this.goToTopToolStripMenuItem.Click += new System.EventHandler(this.goToTopToolStripMenuItem_Click);
 			// 
 			// goToBottomToolStripMenuItem
 			// 
 			this.goToBottomToolStripMenuItem.Name = "goToBottomToolStripMenuItem";
-			this.goToBottomToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.goToBottomToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.goToBottomToolStripMenuItem.Text = "Go to Bottom";
 			this.goToBottomToolStripMenuItem.Click += new System.EventHandler(this.goToBottomToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(155, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(179, 6);
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
 			this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-			this.searchToolStripMenuItem.Text = "&Search...";
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.searchToolStripMenuItem.Text = "&Search Text...";
 			this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+			// 
+			// searchFileTypeToolStripMenuItem
+			// 
+			this.searchFileTypeToolStripMenuItem.Name = "searchFileTypeToolStripMenuItem";
+			this.searchFileTypeToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.searchFileTypeToolStripMenuItem.Text = "Search FileType...";
+			this.searchFileTypeToolStripMenuItem.Click += new System.EventHandler(this.searchFileTypeToolStripMenuItem_Click);
 			// 
 			// findNextToolStripMenuItem
 			// 
 			this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
 			this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.findNextToolStripMenuItem.Text = "Find &Next";
 			this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
 			// 
@@ -326,11 +340,6 @@
 			this.tssLabelSelectedItems.Name = "tssLabelSelectedItems";
 			this.tssLabelSelectedItems.Size = new System.Drawing.Size(92, 17);
 			this.tssLabelSelectedItems.Text = "# items selected";
-			// 
-			// chProjComments
-			// 
-			this.chProjComments.Text = "Project-Specific Comments";
-			this.chProjComments.Width = 232;
 			// 
 			// FileTableDialog
 			// 
@@ -389,5 +398,6 @@
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelSelectedItems;
 		private System.Windows.Forms.ColumnHeader chProjComments;
+		private System.Windows.Forms.ToolStripMenuItem searchFileTypeToolStripMenuItem;
 	}
 }

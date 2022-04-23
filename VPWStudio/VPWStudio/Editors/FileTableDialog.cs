@@ -56,6 +56,8 @@ namespace VPWStudio
 		/// Set via "Search" command, used for "Find Next" (F3?)
 		private string CurrentSearchText = String.Empty;
 
+		private FileTypes CurrentFileType;
+
 		/// <summary>
 		/// Index of current search hit.
 		/// </summary>
@@ -1085,15 +1087,42 @@ namespace VPWStudio
 			}
 			if (e.KeyCode == Keys.F3 && e.Shift == true)
 			{
-				if (CurrentSearchItemNumber == -1)
+				if (CurrentSearchType == SearchType.Invalid || CurrentSearchItemNumber == -1)
 				{
+					CurrentSearchType = SearchType.Text;
 					searchToolStripMenuItem_Click(sender, e);
 				}
 
-				int searchResult = SearchFile(CurrentSearchText, true);
-				if (searchResult != -1)
+				int searchResult = 0;
+				switch (CurrentSearchType)
 				{
-					PostSearch(searchResult);
+					case SearchType.Text:
+						searchResult = SearchFile(CurrentSearchText, true);
+						if (searchResult > 0)
+						{
+							PostSearch(searchResult);
+						}
+						break;
+
+					case SearchType.FileType:
+						searchResult = SearchFileType(CurrentFileType, true);
+						if (searchResult > 0)
+						{
+							PostSearch(searchResult);
+						}
+						break;
+				}
+
+				if (searchResult < 0)
+				{
+					if (searchResult == -1)
+					{
+						Program.InfoMessageBox("Unable to find any matching entries.");
+					}
+					else if (searchResult == -2)
+					{
+						Program.InfoMessageBox("No more matching entries.");
+					}
 				}
 			}
 		}
@@ -1218,14 +1247,63 @@ namespace VPWStudio
 			return -1;
 		}
 
+		private int SearchFileType(FileTypes ftype, bool _backwards = false)
+		{
+			int startPoint = 1;
+			int prevSearchNum = CurrentSearchItemNumber;
+
+			if (CurrentSearchItemNumber != -1)
+			{
+				if (_backwards)
+				{
+					// start from current search item number - 1, so "Find Previous" (Shift+F3) works
+					startPoint = CurrentSearchItemNumber - 1;
+				}
+				else
+				{
+					// start from current search item number + 1, so "Find Next" works
+					startPoint = CurrentSearchItemNumber + 1;
+				}
+			}
+
+			if (_backwards)
+			{
+				for (int i = startPoint; i > 0; i--)
+				{
+					if (Program.CurrentProject.ProjectFileTable.Entries[i].FileType == ftype)
+					{
+						CurrentSearchItemNumber = i;
+						return CurrentSearchItemNumber;
+					}
+				}
+			}
+			else
+			{
+				for (int i = startPoint; i < Program.CurrentProject.ProjectFileTable.Entries.Count; i++)
+				{
+					if (Program.CurrentProject.ProjectFileTable.Entries[i].FileType == ftype)
+					{
+						CurrentSearchItemNumber = i;
+						return CurrentSearchItemNumber;
+					}
+				}
+			}
+
+			// todo: does not handle wrapping around to the beginning/end.
+			if (CurrentSearchItemNumber == prevSearchNum)
+			{
+				return -2;
+			}
+
+			return -1;
+		}
+
 		/// <summary>
 		/// Post-search action.
 		/// </summary>
 		private void PostSearch(int focus)
 		{
 			lvFileList.BeginUpdate();
-
-			// todo: issue with focus when trying to backwards search
 			lvFileList.FocusedItem = lvFileList.Items[focus - 1];
 			lvFileList.EnsureVisible(focus - 1);
 
@@ -1274,6 +1352,35 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Search for a file based on the FileType.
+		/// </summary>
+		private void searchFileTypeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FileTable_SearchFileTypeDialog sftd = new FileTable_SearchFileTypeDialog();
+			if (sftd.ShowDialog() == DialogResult.OK)
+			{
+				CurrentSearchType = SearchType.FileType;
+
+				CurrentFileType = sftd.SelectedFileType;
+				int searchResult = SearchFileType(CurrentFileType);
+				switch (searchResult)
+				{
+					case -1:
+						Program.InfoMessageBox(String.Format("Unable to find any entries with filetype '{0}'.", sftd.SelectedFileType));
+						break;
+
+					case -2:
+						Program.InfoMessageBox(String.Format("No more entries with filetype '{0}'.", sftd.SelectedFileType));
+						break;
+
+					default:
+						PostSearch(searchResult);
+						break;
+				}
+			}
+		}
+
 		private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			switch (CurrentSearchType)
@@ -1305,7 +1412,26 @@ namespace VPWStudio
 
 				case SearchType.FileType:
 					{
-						// todo: implement me
+						if (CurrentSearchItemNumber == -1)
+						{
+							searchFileTypeToolStripMenuItem_Click(sender, e);
+						}
+
+						int searchResult = SearchFileType(CurrentFileType);
+						switch (searchResult)
+						{
+							case -1:
+								Program.InfoMessageBox(String.Format("Unable to find any entries with filetype '{0}'.", CurrentFileType));
+								break;
+
+							case -2:
+								Program.InfoMessageBox(String.Format("No more entries with filetype '{0}'.", CurrentFileType));
+								break;
+
+							default:
+								PostSearch(searchResult);
+								break;
+						}
 					}
 					break;
 			}
@@ -1385,5 +1511,7 @@ namespace VPWStudio
 			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
 			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
 		}
+
+		
 	}
 }
