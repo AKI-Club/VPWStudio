@@ -925,7 +925,8 @@ namespace VPWStudio
 		// temporary bullshit
 		private static List<VPWGames> IntroEditorSupported = new List<VPWGames>{
 			VPWGames.Revenge,
-			VPWGames.VPW2
+			VPWGames.VPW2,
+			VPWGames.NoMercy
 		};
 
 		/// <summary>
@@ -940,7 +941,7 @@ namespace VPWStudio
 
 			if (!IntroEditorSupported.Contains(Program.CurrentProject.Settings.BaseGame))
 			{
-				MessageBox.Show("Game Intro Editor only \"works\" for VPW2 and Revenge right now. Other modern games will be supported soon.", "Game Intro Editor");
+				MessageBox.Show("Game Intro Editor only \"works\" for VPW2, Revenge, and No Mercy right now. Other modern games will be supported soon.", "Game Intro Editor");
 				return;
 			}
 
