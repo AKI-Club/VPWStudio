@@ -205,6 +205,9 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
+					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7927C, 7920) },
+					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B16C, 96) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AA0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
