@@ -34,6 +34,12 @@ namespace VPWStudio
 				this.CurModel = new AkiModel(br);
 				fs.Close();
 
+				lblValueScale.Text = CurModel.Scale.ToString();
+				lblValueOffsetX.Text = CurModel.OffsetX.ToString();
+				lblValueOffsetY.Text = CurModel.OffsetY.ToString();
+				lblValueOffsetZ.Text = CurModel.OffsetZ.ToString();
+				lblValueTexOffset.Text = String.Format("0x{0:X}, 0x{1:X}", (CurModel.TextureSize & 0xF0) >> 4, CurModel.TextureSize & 0x0F);
+
 				tbInfoDump.Clear();
 
 				tbInfoDump.Text += String.Format("Information for {0}:\r\n", ofd.FileName);
