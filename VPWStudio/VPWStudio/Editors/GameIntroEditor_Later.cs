@@ -93,97 +93,130 @@ namespace VPWStudio
 			}
 
 			// if no values were found in the location file, use hardcoded values
-			// xxx: these are VPW2 specific!! use Program.CurrentProject.Settings.GameType
 			if (!hasAnimLocation)
 			{
-				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Anims");
-				animLocation = anims.Offset; // 0x7C710
-				numAnims = (int)(anims.Length / 20); // 218;
+				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Anims");
+				if (anims != null)
+				{
+					animLocation = anims.Offset; // 0x7C710
+					numAnims = (int)(anims.Length / 20); // 218;
+					hasAnimLocation = true;
+				}
 			}
 
 			if (!hasImageLocation)
 			{
-				DefaultGameData.DefaultLocationDataEntry imgs = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Images");
-				imgLocation = imgs.Offset; // 0x7DEA8;
-				numImages = (int)(imgs.Length / 16); // 12;
+				DefaultGameData.DefaultLocationDataEntry imgs = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Images");
+				if (imgs != null)
+				{
+					imgLocation = imgs.Offset; // 0x7DEA8;
+					numImages = (int)(imgs.Length / 16); // 12;
+					hasImageLocation = true;
+				}
 			}
 
 			if (!hasSeqLocation)
 			{
-				DefaultGameData.DefaultLocationDataEntry seqs = DefaultGameData.GetEntry(SpecificGame.VPW2_NTSC_J, "IntroDefs_Later_Sequence");
-				seqLocation = seqs.Offset; // 0x7E098;
-				numSeqEntries = (int)(seqs.Length / 28); // 81;
+				DefaultGameData.DefaultLocationDataEntry seqs = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Sequence");
+				if (seqs != null)
+				{
+					seqLocation = seqs.Offset; // 0x7E098;
+					numSeqEntries = (int)(seqs.Length / 28); // 81;
+					hasSeqLocation = true;
+				}
 			}
 
 			// FINALLY get to reading the damned data
-			ms.Seek(animLocation, SeekOrigin.Begin);
-			for (int i = 0; i < numAnims; i++)
+			if (hasAnimLocation)
 			{
-				IntroAnimations.Add(new IntroSequenceAnimation_Later(br));
+				ms.Seek(animLocation, SeekOrigin.Begin);
+				for (int i = 0; i < numAnims; i++)
+				{
+					IntroAnimations.Add(new IntroSequenceAnimation_Later(br));
+				}
 			}
 
-			ms.Seek(imgLocation, SeekOrigin.Begin);
-			for (int i = 0; i < numImages; i++)
+			if(hasImageLocation)
 			{
-				IntroImages.Add(new IntroSequenceGraphic_Later(br));
+				ms.Seek(imgLocation, SeekOrigin.Begin);
+				for (int i = 0; i < numImages; i++)
+				{
+					IntroImages.Add(new IntroSequenceGraphic_Later(br));
+				}
 			}
 
-			ms.Seek(seqLocation, SeekOrigin.Begin);
-			for (int i = 0; i < numSeqEntries; i++)
+			if (hasSeqLocation)
 			{
-				IntroSequenceItems.Add(new IntroSequence_Later(br));
+				ms.Seek(seqLocation, SeekOrigin.Begin);
+				for (int i = 0; i < numSeqEntries; i++)
+				{
+					IntroSequenceItems.Add(new IntroSequence_Later(br));
+				}
 			}
 
 			br.Close();
+			PopulateRows(hasAnimLocation, hasImageLocation, hasSeqLocation);
+		}
 
-			dgvAnimations.Rows.Add(IntroAnimations.Count);
-			for (int i = 0; i < IntroAnimations.Count; i++)
+		private void PopulateRows(bool _anim, bool _img, bool _seq)
+		{
+			if (_anim)
 			{
-				IntroSequenceAnimation_Later curAnim = IntroAnimations[i];
-				dgvAnimations.Rows[i].Cells[0].Value = string.Format("{0:X4}", curAnim.WrestlerID4);
-				dgvAnimations.Rows[i].Cells[1].Value = curAnim.TimingA;
-				dgvAnimations.Rows[i].Cells[2].Value = string.Format("{0:X4}", curAnim.AnimationID);
-				dgvAnimations.Rows[i].Cells[3].Value = curAnim.TimingB;
-				dgvAnimations.Rows[i].Cells[4].Value = curAnim.XPosition;
-				dgvAnimations.Rows[i].Cells[5].Value = curAnim.YPosition;
-				dgvAnimations.Rows[i].Cells[6].Value = curAnim.ZPosition;
-				dgvAnimations.Rows[i].Cells[7].Value = curAnim.Rotation;
-				dgvAnimations.Rows[i].Cells[8].Value = string.Format("{0:X2}", curAnim.AnimFlags);
-				dgvAnimations.Rows[i].Cells[9].Value = string.Format("{0:X2}", curAnim.MoveSpeed);
-				dgvAnimations.Rows[i].Cells[10].Value = string.Format("{0:X2}", curAnim.Unknown);
-				dgvAnimations.Rows[i].Cells[11].Value = string.Format("{0:X2}", curAnim.CostumeNum);
+				dgvAnimations.Rows.Add(IntroAnimations.Count);
+				for (int i = 0; i < IntroAnimations.Count; i++)
+				{
+					IntroSequenceAnimation_Later curAnim = IntroAnimations[i];
+					dgvAnimations.Rows[i].Cells[0].Value = string.Format("{0:X4}", curAnim.WrestlerID4);
+					dgvAnimations.Rows[i].Cells[1].Value = curAnim.TimingA;
+					dgvAnimations.Rows[i].Cells[2].Value = string.Format("{0:X4}", curAnim.AnimationID);
+					dgvAnimations.Rows[i].Cells[3].Value = curAnim.TimingB;
+					dgvAnimations.Rows[i].Cells[4].Value = curAnim.XPosition;
+					dgvAnimations.Rows[i].Cells[5].Value = curAnim.YPosition;
+					dgvAnimations.Rows[i].Cells[6].Value = curAnim.ZPosition;
+					dgvAnimations.Rows[i].Cells[7].Value = curAnim.Rotation;
+					dgvAnimations.Rows[i].Cells[8].Value = string.Format("{0:X2}", curAnim.AnimFlags);
+					dgvAnimations.Rows[i].Cells[9].Value = string.Format("{0:X2}", curAnim.MoveSpeed);
+					dgvAnimations.Rows[i].Cells[10].Value = string.Format("{0:X2}", curAnim.Unknown);
+					dgvAnimations.Rows[i].Cells[11].Value = string.Format("{0:X2}", curAnim.CostumeNum);
+				}
 			}
 
-			dgvImages.Rows.Add(IntroImages.Count);
-			for (int i = 0; i < IntroImages.Count; i++)
+			if (_img)
 			{
-				IntroSequenceGraphic_Later curImage = IntroImages[i];
-				dgvImages.Rows[i].Cells[0].Value = string.Format("{0:X4}", curImage.FileID);
-				dgvImages.Rows[i].Cells[1].Value = curImage.Width;
-				dgvImages.Rows[i].Cells[2].Value = curImage.Height;
-				dgvImages.Rows[i].Cells[3].Value = curImage.VertDisplacement;
-				dgvImages.Rows[i].Cells[4].Value = curImage.HorizStretch;
-				dgvImages.Rows[i].Cells[5].Value = string.Format("{0:X2}", curImage.Flags1);
-				dgvImages.Rows[i].Cells[6].Value = curImage.ScrollSpeed;
-				dgvImages.Rows[i].Cells[7].Value = string.Format("{0:X2}", curImage.Unknown);
+				dgvImages.Rows.Add(IntroImages.Count);
+				for (int i = 0; i < IntroImages.Count; i++)
+				{
+					IntroSequenceGraphic_Later curImage = IntroImages[i];
+					dgvImages.Rows[i].Cells[0].Value = string.Format("{0:X4}", curImage.FileID);
+					dgvImages.Rows[i].Cells[1].Value = curImage.Width;
+					dgvImages.Rows[i].Cells[2].Value = curImage.Height;
+					dgvImages.Rows[i].Cells[3].Value = curImage.VertDisplacement;
+					dgvImages.Rows[i].Cells[4].Value = curImage.HorizStretch;
+					dgvImages.Rows[i].Cells[5].Value = string.Format("{0:X2}", curImage.Flags1);
+					dgvImages.Rows[i].Cells[6].Value = curImage.ScrollSpeed;
+					dgvImages.Rows[i].Cells[7].Value = string.Format("{0:X2}", curImage.Unknown);
+				}
 			}
 
-			dgvSequence.Rows.Add(IntroSequenceItems.Count);
-			for (int i = 0; i < IntroSequenceItems.Count; i++)
+			if (_seq)
 			{
-				IntroSequence_Later curSeq = IntroSequenceItems[i];
-				dgvSequence.Rows[i].Cells[0].Value = curSeq.MainSequence;
-				dgvSequence.Rows[i].Cells[1].Value = curSeq.SubSequence;
-				dgvSequence.Rows[i].Cells[2].Value = string.Format("{0:X2}", curSeq.Flags);
-				dgvSequence.Rows[i].Cells[3].Value = string.Format("{0:X2}", curSeq.Transition);
-				dgvSequence.Rows[i].Cells[4].Value = curSeq.SceneTime;
-				dgvSequence.Rows[i].Cells[5].Value = string.Format("{0:X2}", curSeq.CameraMotion);
-				dgvSequence.Rows[i].Cells[6].Value = string.Format("{0:X4}", curSeq.Unknown);
-				dgvSequence.Rows[i].Cells[7].Value = string.Format("{0:X4}", curSeq.StageNum);
-				dgvSequence.Rows[i].Cells[8].Value = string.Format("{0:X8}", curSeq.Pointer1);
-				dgvSequence.Rows[i].Cells[9].Value = string.Format("{0:X8}", curSeq.Pointer2);
-				dgvSequence.Rows[i].Cells[10].Value = string.Format("{0:X8}", curSeq.Pointer3);
-				dgvSequence.Rows[i].Cells[11].Value = string.Format("{0:X8}", curSeq.Pointer4);
+				dgvSequence.Rows.Add(IntroSequenceItems.Count);
+				for (int i = 0; i < IntroSequenceItems.Count; i++)
+				{
+					IntroSequence_Later curSeq = IntroSequenceItems[i];
+					dgvSequence.Rows[i].Cells[0].Value = curSeq.MainSequence;
+					dgvSequence.Rows[i].Cells[1].Value = curSeq.SubSequence;
+					dgvSequence.Rows[i].Cells[2].Value = string.Format("{0:X2}", curSeq.Flags);
+					dgvSequence.Rows[i].Cells[3].Value = string.Format("{0:X2}", curSeq.Transition);
+					dgvSequence.Rows[i].Cells[4].Value = curSeq.SceneTime;
+					dgvSequence.Rows[i].Cells[5].Value = string.Format("{0:X2}", curSeq.CameraMotion);
+					dgvSequence.Rows[i].Cells[6].Value = string.Format("{0:X4}", curSeq.Unknown);
+					dgvSequence.Rows[i].Cells[7].Value = string.Format("{0:X4}", curSeq.StageNum);
+					dgvSequence.Rows[i].Cells[8].Value = string.Format("{0:X8}", curSeq.Pointer1);
+					dgvSequence.Rows[i].Cells[9].Value = string.Format("{0:X8}", curSeq.Pointer2);
+					dgvSequence.Rows[i].Cells[10].Value = string.Format("{0:X8}", curSeq.Pointer3);
+					dgvSequence.Rows[i].Cells[11].Value = string.Format("{0:X8}", curSeq.Pointer4);
+				}
 			}
 		}
 
