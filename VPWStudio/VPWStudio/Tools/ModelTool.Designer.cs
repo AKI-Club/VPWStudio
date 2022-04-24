@@ -56,6 +56,11 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.buttonExportOBJ = new System.Windows.Forms.Button();
+			this.lblValueScale = new System.Windows.Forms.Label();
+			this.lblValueOffsetY = new System.Windows.Forms.Label();
+			this.lblValueTexOffset = new System.Windows.Forms.Label();
+			this.lblValueOffsetX = new System.Windows.Forms.Label();
+			this.lblValueOffsetZ = new System.Windows.Forms.Label();
 			this.gbVertices.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvVertices)).BeginInit();
 			this.gbFaces.SuspendLayout();
@@ -275,6 +280,11 @@
 			this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.label5, 2, 1);
 			this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblValueScale, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.lblValueOffsetY, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.lblValueTexOffset, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.lblValueOffsetX, 3, 0);
+			this.tableLayoutPanel1.Controls.Add(this.lblValueOffsetZ, 3, 1);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 3;
@@ -344,6 +354,51 @@
 			this.buttonExportOBJ.UseVisualStyleBackColor = true;
 			this.buttonExportOBJ.Click += new System.EventHandler(this.buttonExportOBJ_Click);
 			// 
+			// lblValueScale
+			// 
+			this.lblValueScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblValueScale.AutoSize = true;
+			this.lblValueScale.Location = new System.Drawing.Point(83, 6);
+			this.lblValueScale.Name = "lblValueScale";
+			this.lblValueScale.Size = new System.Drawing.Size(114, 13);
+			this.lblValueScale.TabIndex = 5;
+			// 
+			// lblValueOffsetY
+			// 
+			this.lblValueOffsetY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblValueOffsetY.AutoSize = true;
+			this.lblValueOffsetY.Location = new System.Drawing.Point(83, 31);
+			this.lblValueOffsetY.Name = "lblValueOffsetY";
+			this.lblValueOffsetY.Size = new System.Drawing.Size(114, 13);
+			this.lblValueOffsetY.TabIndex = 6;
+			// 
+			// lblValueTexOffset
+			// 
+			this.lblValueTexOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblValueTexOffset.AutoSize = true;
+			this.lblValueTexOffset.Location = new System.Drawing.Point(83, 56);
+			this.lblValueTexOffset.Name = "lblValueTexOffset";
+			this.lblValueTexOffset.Size = new System.Drawing.Size(114, 13);
+			this.lblValueTexOffset.TabIndex = 7;
+			// 
+			// lblValueOffsetX
+			// 
+			this.lblValueOffsetX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblValueOffsetX.AutoSize = true;
+			this.lblValueOffsetX.Location = new System.Drawing.Point(283, 6);
+			this.lblValueOffsetX.Name = "lblValueOffsetX";
+			this.lblValueOffsetX.Size = new System.Drawing.Size(117, 13);
+			this.lblValueOffsetX.TabIndex = 8;
+			// 
+			// lblValueOffsetZ
+			// 
+			this.lblValueOffsetZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblValueOffsetZ.AutoSize = true;
+			this.lblValueOffsetZ.Location = new System.Drawing.Point(283, 31);
+			this.lblValueOffsetZ.Name = "lblValueOffsetZ";
+			this.lblValueOffsetZ.Size = new System.Drawing.Size(117, 13);
+			this.lblValueOffsetZ.TabIndex = 9;
+			// 
 			// ModelTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,5 +459,10 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn VPos;
 		private System.Windows.Forms.DataGridViewTextBoxColumn VertexColor;
 		private System.Windows.Forms.Button buttonExportOBJ;
+		private System.Windows.Forms.Label lblValueScale;
+		private System.Windows.Forms.Label lblValueOffsetY;
+		private System.Windows.Forms.Label lblValueTexOffset;
+		private System.Windows.Forms.Label lblValueOffsetX;
+		private System.Windows.Forms.Label lblValueOffsetZ;
 	}
 }
