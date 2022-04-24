@@ -922,9 +922,10 @@ namespace VPWStudio
 			FileTableEditor.Show();
 		}
 
-		// temporary bullshit
+		// until the intro data format(s) are found for WorldTour and VPW64, this stays:
 		private static List<VPWGames> IntroEditorSupported = new List<VPWGames>{
 			VPWGames.Revenge,
+			VPWGames.WM2K,
 			VPWGames.VPW2,
 			VPWGames.NoMercy
 		};
@@ -941,7 +942,7 @@ namespace VPWStudio
 
 			if (!IntroEditorSupported.Contains(Program.CurrentProject.Settings.BaseGame))
 			{
-				MessageBox.Show("Game Intro Editor only \"works\" for VPW2, Revenge, and No Mercy right now. Other modern games will be supported soon.", "Game Intro Editor");
+				MessageBox.Show("Game Intro Editor only \"works\" for Revenge and later.", "Game Intro Editor");
 				return;
 			}
 
