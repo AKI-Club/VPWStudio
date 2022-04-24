@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace VPWStudio
 {
+	// todo: restructure this to handle N64 and PS1 games; currently only handles N64
+
 	/// <summary>
 	/// Possible Nintendo 64 game regions, and their codes.
 	/// </summary>
