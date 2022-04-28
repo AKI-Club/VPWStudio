@@ -230,6 +230,7 @@ namespace VPWStudio
 			var positionLocation = GL.GetAttribLocation(ShaderProgram, "position");
 			var uvCoordsLocation = GL.GetAttribLocation(ShaderProgram, "uvCoords");
 			var colorDataLocation = GL.GetAttribLocation(ShaderProgram, "colorData");
+			//var modelViewLocation = GL.GetUniformLocation(ShaderProgram, "modelView");
 
 			// VAO schwartz
 			VertexArrayObject = GL.GenVertexArray();
