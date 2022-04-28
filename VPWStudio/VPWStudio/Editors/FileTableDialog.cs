@@ -366,6 +366,20 @@ namespace VPWStudio
 
 				menuBackgroundReplacementToolStripMenuItem.Enabled = false;
 				menuBackgroundReplacementToolStripMenuItem.Visible = false;
+
+				// check if any of the selected items has a replacement file entry
+				bool hasReplaceFile = false;
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					if (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile())
+					{
+						hasReplaceFile = true;
+						break;
+					}
+				}
+
+				viewHexReplacementFileDataToolStripMenuItem.Enabled = hasReplaceFile;
 			}
 			else if (lvFileList.SelectedItems.Count == 1)
 			{
@@ -377,6 +391,7 @@ namespace VPWStudio
 				bool isMenuBGItem = (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.MenuBackground);
 				menuBackgroundReplacementToolStripMenuItem.Enabled = isMenuBGItem;
 				menuBackgroundReplacementToolStripMenuItem.Visible = isMenuBGItem;
+				viewHexReplacementFileDataToolStripMenuItem.Enabled = Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile();
 			}
 		}
 
@@ -409,9 +424,9 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Call the hex viewer
+		/// Call the hex viewer for ROM data
 		/// </summary>
-		private void viewHexToolStripMenuItem_Click(object sender, EventArgs e)
+		private void viewHexRomDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (lvFileList.SelectedItems.Count <= 0)
 			{
@@ -430,6 +445,40 @@ namespace VPWStudio
 				{
 					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					((MainForm)MdiParent).RequestHexViewer(key);
+				}
+				return;
+			}
+		}
+
+		/// <summary>
+		/// Call the hex viewer for replacement file data
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void viewHexReplacementFileDataToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			if (lvFileList.SelectedItems.Count == 1)
+			{
+				// easy
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+				string path = Program.CurrentProject.ProjectFileTable.Entries[key].ReplaceFilePath;
+				((MainForm)MdiParent).RequestHexViewer(File.ReadAllBytes(Program.ConvertRelativePath(path)), path);
+			}
+			else
+			{
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					if (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile())
+					{
+						string path = Program.CurrentProject.ProjectFileTable.Entries[key].ReplaceFilePath;
+						((MainForm)MdiParent).RequestHexViewer(File.ReadAllBytes(Program.ConvertRelativePath(path)), path);
+					}
 				}
 				return;
 			}
@@ -1511,7 +1560,5 @@ namespace VPWStudio
 			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
 			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
 		}
-
-		
 	}
 }

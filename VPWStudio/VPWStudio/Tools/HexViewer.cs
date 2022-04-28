@@ -51,7 +51,7 @@ namespace VPWStudio
 		/// <param name="hvds">Viewer data source.</param>
 		/// <param name="data">Data to load.</param>
 		/// <param name="fileID">File ID, if loading from FileTable.</param>
-		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1)
+		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1, string title = "")
 		{
 			InitializeComponent();
 			ViewSource = hvds;
@@ -67,6 +67,13 @@ namespace VPWStudio
 				if (!String.IsNullOrEmpty(comment))
 				{
 					Text += " " + comment;
+				}
+			}
+			else
+			{
+				if (!string.IsNullOrEmpty(title))
+				{
+					Text = String.Format("Hex Viewer [{0}]", title);
 				}
 			}
 		}

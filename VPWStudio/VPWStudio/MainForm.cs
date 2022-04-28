@@ -350,9 +350,9 @@ namespace VPWStudio
 		/// Request a HexViewerForm using data passed in.
 		/// </summary>
 		/// <param name="data">Data to view in HexViewer.</param>
-		public void RequestHexViewer(byte[] data)
+		public void RequestHexViewer(byte[] data, string title = "")
 		{
-			HexViewer newHV = Program.HexViewManager.NewViewerData(data);
+			HexViewer newHV = Program.HexViewManager.NewViewerData(data, title);
 			newHV.MdiParent = this;
 			newHV.Show();
 			newHV.BringToFront();
