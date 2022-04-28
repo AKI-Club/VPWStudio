@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace VPWStudio
 {
@@ -81,11 +82,13 @@ namespace VPWStudio
 		/// <summary>
 		/// Path to extracted file data to use with this project.
 		/// </summary>
+		[XmlElement(IsNullable = true)]
 		public string InputDataPath;
 
 		/// <summary>
 		/// Path to generated output file data.
 		/// </summary>
+		[XmlElement(IsNullable = true)]
 		public string OutputDataPath;
 		#endregion
 
@@ -144,8 +147,8 @@ namespace VPWStudio
 			#endregion
 
 			#region PS1-specific
-			InputDataPath = String.Empty;
-			OutputDataPath = String.Empty;
+			InputDataPath = null;
+			OutputDataPath = null;
 			#endregion
 
 			#region Ancillary Files
