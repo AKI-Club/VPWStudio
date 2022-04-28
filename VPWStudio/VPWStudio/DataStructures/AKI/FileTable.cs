@@ -1010,7 +1010,7 @@ namespace VPWStudio
 				case FileTypes.AkiLargeFont: return "largefont";
 				case FileTypes.AkiSmallFont: return "smallfont";
 				case FileTypes.AkiModel: return "mesh";
-				case FileTypes.AkiText: return "text";
+				case FileTypes.AkiText: return "akitext";
 				case FileTypes.AkiTexture: return "akitex";
 				case FileTypes.Ci4Background: return "ci4bg";
 				case FileTypes.Ci4Palette: return "ci4pal";
@@ -1019,6 +1019,10 @@ namespace VPWStudio
 				case FileTypes.Ci8Texture: return "ci8tex";
 				case FileTypes.DoubleTex: return "doubletex";
 				case FileTypes.I4Texture: return "i4tex";
+
+				// No Mercy-specific
+				case FileTypes.MenuItems_NoGroup: return "nmitem0";
+				case FileTypes.MenuItems_Shop: return "nmitem3";
 
 				case FileTypes.Binary:
 				default:
