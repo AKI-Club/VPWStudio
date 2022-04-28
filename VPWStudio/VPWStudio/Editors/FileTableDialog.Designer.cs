@@ -43,6 +43,8 @@
 			this.menuBackgroundReplacementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.viewHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewHexRomDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewHexReplacementFileDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.extractRawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,7 +147,7 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(251, 148);
+			this.cmsFileEntry.Size = new System.Drawing.Size(251, 170);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// setTypeToolStripMenuItem
@@ -178,11 +180,27 @@
 			// 
 			// viewHexToolStripMenuItem
 			// 
+			this.viewHexToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewHexRomDataToolStripMenuItem,
+            this.viewHexReplacementFileDataToolStripMenuItem});
 			this.viewHexToolStripMenuItem.Name = "viewHexToolStripMenuItem";
-			this.viewHexToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
 			this.viewHexToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-			this.viewHexToolStripMenuItem.Text = "View &Hex...";
-			this.viewHexToolStripMenuItem.Click += new System.EventHandler(this.viewHexToolStripMenuItem_Click);
+			this.viewHexToolStripMenuItem.Text = "View &Hex";
+			// 
+			// viewHexRomDataToolStripMenuItem
+			// 
+			this.viewHexRomDataToolStripMenuItem.Name = "viewHexRomDataToolStripMenuItem";
+			this.viewHexRomDataToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+			this.viewHexRomDataToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+			this.viewHexRomDataToolStripMenuItem.Text = "ROM Data...";
+			this.viewHexRomDataToolStripMenuItem.Click += new System.EventHandler(this.viewHexRomDataToolStripMenuItem_Click);
+			// 
+			// viewHexReplacementFileDataToolStripMenuItem
+			// 
+			this.viewHexReplacementFileDataToolStripMenuItem.Name = "viewHexReplacementFileDataToolStripMenuItem";
+			this.viewHexReplacementFileDataToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+			this.viewHexReplacementFileDataToolStripMenuItem.Text = "ReplacementFile Data...";
+			this.viewHexReplacementFileDataToolStripMenuItem.Click += new System.EventHandler(this.viewHexReplacementFileDataToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -399,5 +417,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel tssLabelSelectedItems;
 		private System.Windows.Forms.ColumnHeader chProjComments;
 		private System.Windows.Forms.ToolStripMenuItem searchFileTypeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewHexRomDataToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewHexReplacementFileDataToolStripMenuItem;
 	}
 }

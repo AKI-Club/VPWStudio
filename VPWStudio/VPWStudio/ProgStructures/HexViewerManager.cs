@@ -100,7 +100,7 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="data">Data to be loaded into the HexView.</param>
 		/// <returns>HexViewer form with the requested data.</returns>
-		public HexViewer NewViewerData(byte[] data)
+		public HexViewer NewViewerData(byte[] data, string title = "")
 		{
 			SHA256 sha256 = SHA256.Create();
 			byte[] hash = sha256.ComputeHash(data);
@@ -115,7 +115,7 @@ namespace VPWStudio
 			else
 			{
 				// make it new
-				HexViewer f = new HexViewer(HexViewerDataSource.ExternalData, data);
+				HexViewer f = new HexViewer(HexViewerDataSource.ExternalData, data, -1, title);
 				ActiveHexViewers.Add(new HexViewerEntry(f, sha256.ComputeHash(data)));
 				return f;
 			}
