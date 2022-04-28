@@ -6,11 +6,16 @@ namespace VPWStudio
 {
 	public partial class ProgramOptionsDialog : Form
 	{
+		// todo: anything involving an emulator is currently N64-specific
 		/// <summary>
 		/// Path to emulator executable.
 		/// </summary>
 		public string EmulatorPath;
 		public string EmulatorArgs;
+
+		/// <summary>
+		/// Controls output displayed during the build phase.
+		/// </summary>
 		public int BuildLogVerbosity;
 
 		public ProgramOptionsDialog()
@@ -19,10 +24,10 @@ namespace VPWStudio
 			EmulatorArgs = Properties.Settings.Default.EmulatorArguments;
 
 			InitializeComponent();
-			tvOptions.SelectedNode = tvOptions.Nodes["Emulator"];
+			tvOptions.SelectedNode = tvOptions.Nodes["EmulatorN64"];
 
-			optionControlEmu.tbEmuPath.Text = EmulatorPath;
-			optionControlEmu.tbEmulatorArguments.Text = EmulatorArgs;
+			optionControlEmuN64.tbEmuPath.Text = EmulatorPath;
+			optionControlEmuN64.tbEmulatorArguments.Text = EmulatorArgs;
 
 			cbBuildLogVerbosity.BeginUpdate();
 			foreach (int i in Enum.GetValues(typeof(BuildLogEventPublisher.BuildLogVerbosity)))
@@ -35,13 +40,13 @@ namespace VPWStudio
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			if (optionControlEmu.tbEmuPath.Text != String.Empty && !File.Exists(optionControlEmu.tbEmuPath.Text))
+			if (optionControlEmuN64.tbEmuPath.Text != String.Empty && !File.Exists(optionControlEmuN64.tbEmuPath.Text))
 			{
 				Program.ErrorMessageBox("Emulator executable not found.");
 				return;
 			}
-			EmulatorPath = optionControlEmu.tbEmuPath.Text;
-			EmulatorArgs = optionControlEmu.tbEmulatorArguments.Text;
+			EmulatorPath = optionControlEmuN64.tbEmuPath.Text;
+			EmulatorArgs = optionControlEmuN64.tbEmulatorArguments.Text;
 			BuildLogVerbosity = cbBuildLogVerbosity.SelectedIndex;
 
 			DialogResult = DialogResult.OK;
@@ -65,13 +70,13 @@ namespace VPWStudio
 			{
 				case "Emulator":
 					{
-						optionControlEmu.Visible = true;
+						optionControlEmuN64.Visible = true;
 						tlpBuildLogVerbosity.Visible = false;
 					}
 					break;
 				case "Build":
 					{
-						optionControlEmu.Visible = false;
+						optionControlEmuN64.Visible = false;
 						tlpBuildLogVerbosity.Visible = true;
 					}
 					break;

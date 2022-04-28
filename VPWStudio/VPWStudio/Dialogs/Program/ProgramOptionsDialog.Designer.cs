@@ -28,15 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Emulator");
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Build");
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("N64 Emulator");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Build");
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tlpBuildLogVerbosity = new System.Windows.Forms.TableLayoutPanel();
-			this.labelBuildLogVerbosity = new System.Windows.Forms.Label();
 			this.cbBuildLogVerbosity = new System.Windows.Forms.ComboBox();
+			this.labelBuildLogVerbosity = new System.Windows.Forms.Label();
 			this.tvOptions = new System.Windows.Forms.TreeView();
-			this.optionControlEmu = new VPWStudio.Controls.OptionsControl_Emulator();
+			this.optionControlEmuN64 = new VPWStudio.Controls.OptionsControl_Emulator();
 			this.tlpBuildLogVerbosity.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -75,16 +75,6 @@
 			this.tlpBuildLogVerbosity.Size = new System.Drawing.Size(355, 26);
 			this.tlpBuildLogVerbosity.TabIndex = 4;
 			// 
-			// labelBuildLogVerbosity
-			// 
-			this.labelBuildLogVerbosity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelBuildLogVerbosity.AutoSize = true;
-			this.labelBuildLogVerbosity.Location = new System.Drawing.Point(3, 6);
-			this.labelBuildLogVerbosity.Name = "labelBuildLogVerbosity";
-			this.labelBuildLogVerbosity.Size = new System.Drawing.Size(99, 13);
-			this.labelBuildLogVerbosity.TabIndex = 0;
-			this.labelBuildLogVerbosity.Text = "Build Log &Verbosity";
-			// 
 			// cbBuildLogVerbosity
 			// 
 			this.cbBuildLogVerbosity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -95,29 +85,39 @@
 			this.cbBuildLogVerbosity.Size = new System.Drawing.Size(244, 21);
 			this.cbBuildLogVerbosity.TabIndex = 1;
 			// 
+			// labelBuildLogVerbosity
+			// 
+			this.labelBuildLogVerbosity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelBuildLogVerbosity.AutoSize = true;
+			this.labelBuildLogVerbosity.Location = new System.Drawing.Point(3, 6);
+			this.labelBuildLogVerbosity.Name = "labelBuildLogVerbosity";
+			this.labelBuildLogVerbosity.Size = new System.Drawing.Size(99, 13);
+			this.labelBuildLogVerbosity.TabIndex = 0;
+			this.labelBuildLogVerbosity.Text = "Build Log &Verbosity";
+			// 
 			// tvOptions
 			// 
 			this.tvOptions.FullRowSelect = true;
 			this.tvOptions.HideSelection = false;
 			this.tvOptions.Location = new System.Drawing.Point(12, 12);
 			this.tvOptions.Name = "tvOptions";
-			treeNode3.Name = "Emulator";
-			treeNode3.Text = "Emulator";
-			treeNode4.Name = "Build";
-			treeNode4.Text = "Build";
+			treeNode1.Name = "EmulatorN64";
+			treeNode1.Text = "N64 Emulator";
+			treeNode2.Name = "Build";
+			treeNode2.Text = "Build";
 			this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode1,
+            treeNode2});
 			this.tvOptions.Size = new System.Drawing.Size(121, 191);
 			this.tvOptions.TabIndex = 0;
 			this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
 			// 
-			// optionControlEmu
+			// optionControlEmuN64
 			// 
-			this.optionControlEmu.Location = new System.Drawing.Point(139, 12);
-			this.optionControlEmu.Name = "optionControlEmu";
-			this.optionControlEmu.Size = new System.Drawing.Size(355, 80);
-			this.optionControlEmu.TabIndex = 3;
+			this.optionControlEmuN64.Location = new System.Drawing.Point(139, 12);
+			this.optionControlEmuN64.Name = "optionControlEmuN64";
+			this.optionControlEmuN64.Size = new System.Drawing.Size(355, 80);
+			this.optionControlEmuN64.TabIndex = 3;
 			// 
 			// ProgramOptionsDialog
 			// 
@@ -126,7 +126,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(506, 215);
-			this.Controls.Add(this.optionControlEmu);
+			this.Controls.Add(this.optionControlEmuN64);
 			this.Controls.Add(this.tvOptions);
 			this.Controls.Add(this.tlpBuildLogVerbosity);
 			this.Controls.Add(this.buttonCancel);
@@ -151,6 +151,6 @@
 		private System.Windows.Forms.Label labelBuildLogVerbosity;
 		private System.Windows.Forms.ComboBox cbBuildLogVerbosity;
 		private System.Windows.Forms.TreeView tvOptions;
-		private Controls.OptionsControl_Emulator optionControlEmu;
+		private Controls.OptionsControl_Emulator optionControlEmuN64;
 	}
 }
