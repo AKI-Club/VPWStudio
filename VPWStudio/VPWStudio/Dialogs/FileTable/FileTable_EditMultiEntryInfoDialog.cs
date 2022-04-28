@@ -86,19 +86,38 @@ namespace VPWStudio
 				}
 
 				// comment
-				string newComment = dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value.ToString();
-				if (!newComment.Equals(Entries[i].Comment))
+				if (dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value != null)
 				{
+					string newComment = dgvEditEntries.Rows[i].Cells[COLUMN_COMMENT].Value.ToString();
+					if (!newComment.Equals(Entries[i].Comment))
+					{
+						AnyChangesSubmitted = true;
+						Entries[i].Comment = newComment;
+					}
+				}
+				else
+				{
+					// erase old comment
 					AnyChangesSubmitted = true;
-					Entries[i].Comment = newComment;
+					Entries[i].Comment = String.Empty;
 				}
 
 				// project-specific comment
-				string newProjSpecificComment = dgvEditEntries.Rows[i].Cells[COLUMN_PROJCOMMENT].Value.ToString();
-				if (!newProjSpecificComment.Equals(Entries[i].ProjectSpecificComment))
+				if (dgvEditEntries.Rows[i].Cells[COLUMN_PROJCOMMENT].Value != null)
 				{
+					string newProjSpecificComment = dgvEditEntries.Rows[i].Cells[COLUMN_PROJCOMMENT].Value.ToString();
+					if (!newProjSpecificComment.Equals(Entries[i].ProjectSpecificComment))
+					{
+						AnyChangesSubmitted = true;
+						Entries[i].ProjectSpecificComment = newProjSpecificComment;
+					}
+				}
+				else
+				{
+					// erase old comment
 					AnyChangesSubmitted = true;
-					Entries[i].ProjectSpecificComment = newProjSpecificComment;
+					Entries[i].ProjectSpecificComment = String.Empty;
+
 				}
 
 				// replace path
