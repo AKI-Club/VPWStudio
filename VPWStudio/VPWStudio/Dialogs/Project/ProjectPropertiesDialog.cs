@@ -224,8 +224,16 @@ namespace VPWStudio
 			}
 
 			// output data tab
-			NewSettings.OutputDataPath = tbOutDataPath.Text;
-			NewSettings.InputDataPath = tbInDataPath.Text;
+			if (GameInformation.GameDefs[NewSettings.GameType].TargetConsole == PlatformType.PlayStation1)
+			{
+				NewSettings.OutputDataPath = tbOutDataPath.Text;
+				NewSettings.InputDataPath = tbInDataPath.Text;
+			}
+			else
+			{
+				NewSettings.OutputDataPath = null;
+				NewSettings.InputDataPath = null;
+			}
 
 			// project files tab
 			NewSettings.ProjectFilesPath = tbProjFilesPath.Text;
@@ -320,6 +328,7 @@ namespace VPWStudio
 		#region Output Data Tab (PS1 games)
 		private void buttonSetInDataPath_Click(object sender, EventArgs e)
 		{
+			/*
 			FolderBrowserDialog fbd = new FolderBrowserDialog();
 			if (Program.CurrentProject.Settings.InputDataPath != String.Empty)
 			{
@@ -330,10 +339,12 @@ namespace VPWStudio
 			{
 				tbInDataPath.Text = Program.ShortenAbsolutePath(fbd.SelectedPath);
 			}
+			*/
 		}
 
 		private void buttonSetOutDataPath_Click(object sender, EventArgs e)
 		{
+			/*
 			FolderBrowserDialog fbd = new FolderBrowserDialog();
 			if (Program.CurrentProject.Settings.OutputDataPath != String.Empty)
 			{
@@ -344,6 +355,7 @@ namespace VPWStudio
 			{
 				tbOutDataPath.Text = Program.ShortenAbsolutePath(fbd.SelectedPath);
 			}
+			*/
 		}
 		#endregion
 

@@ -55,6 +55,16 @@
 			this.tlpRegion = new System.Windows.Forms.TableLayoutPanel();
 			this.cbRegionCode = new System.Windows.Forms.ComboBox();
 			this.tbRegionCode = new System.Windows.Forms.TextBox();
+			this.tpOutputData = new System.Windows.Forms.TabPage();
+			this.tlpOutData = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpInDataPath = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetInDataPath = new System.Windows.Forms.Button();
+			this.tbInDataPath = new System.Windows.Forms.TextBox();
+			this.labelInDataPath = new System.Windows.Forms.Label();
+			this.labelOutDataPath = new System.Windows.Forms.Label();
+			this.tlpOutDataPath = new System.Windows.Forms.TableLayoutPanel();
+			this.tbOutDataPath = new System.Windows.Forms.TextBox();
+			this.buttonSetOutDataPath = new System.Windows.Forms.Button();
 			this.tpProjectFiles = new System.Windows.Forms.TabPage();
 			this.tlpProjFilesTab = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpAssetFilesPath = new System.Windows.Forms.TableLayoutPanel();
@@ -73,16 +83,6 @@
 			this.tlpWrestlerNames = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSetWrestlerNameFile = new System.Windows.Forms.Button();
 			this.tbWrestlerNamesFile = new System.Windows.Forms.TextBox();
-			this.tpOutputData = new System.Windows.Forms.TabPage();
-			this.tlpOutData = new System.Windows.Forms.TableLayoutPanel();
-			this.labelInDataPath = new System.Windows.Forms.Label();
-			this.labelOutDataPath = new System.Windows.Forms.Label();
-			this.tbInDataPath = new System.Windows.Forms.TextBox();
-			this.tbOutDataPath = new System.Windows.Forms.TextBox();
-			this.tlpInDataPath = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetInDataPath = new System.Windows.Forms.Button();
-			this.tlpOutDataPath = new System.Windows.Forms.TableLayoutPanel();
-			this.buttonSetOutDataPath = new System.Windows.Forms.Button();
 			this.tcProjectProperties.SuspendLayout();
 			this.tpMainProperties.SuspendLayout();
 			this.tlpProjectOptions.SuspendLayout();
@@ -91,16 +91,16 @@
 			this.tlpOutputRom.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
 			this.tlpRegion.SuspendLayout();
+			this.tpOutputData.SuspendLayout();
+			this.tlpOutData.SuspendLayout();
+			this.tlpInDataPath.SuspendLayout();
+			this.tlpOutDataPath.SuspendLayout();
 			this.tpProjectFiles.SuspendLayout();
 			this.tlpProjFilesTab.SuspendLayout();
 			this.tlpAssetFilesPath.SuspendLayout();
 			this.tlpProjFilesPath.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
 			this.tlpWrestlerNames.SuspendLayout();
-			this.tpOutputData.SuspendLayout();
-			this.tlpOutData.SuspendLayout();
-			this.tlpInDataPath.SuspendLayout();
-			this.tlpOutDataPath.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
@@ -283,7 +283,7 @@
 			this.tpOutputRom.Padding = new System.Windows.Forms.Padding(3);
 			this.tpOutputRom.Size = new System.Drawing.Size(502, 256);
 			this.tpOutputRom.TabIndex = 1;
-			this.tpOutputRom.Text = "Output ROM";
+			this.tpOutputRom.Text = "Output ROM (N64)";
 			this.tpOutputRom.UseVisualStyleBackColor = true;
 			// 
 			// tlpOutputRom
@@ -383,8 +383,8 @@
 			// 
 			this.tlpRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpRegion.ColumnCount = 2;
-			this.tlpRegion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpRegion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+			this.tlpRegion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tlpRegion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tlpRegion.Controls.Add(this.cbRegionCode, 0, 0);
 			this.tlpRegion.Controls.Add(this.tbRegionCode, 1, 0);
 			this.tlpRegion.Location = new System.Drawing.Point(127, 179);
@@ -401,19 +401,135 @@
 			this.cbRegionCode.FormattingEnabled = true;
 			this.cbRegionCode.Location = new System.Drawing.Point(3, 16);
 			this.cbRegionCode.Name = "cbRegionCode";
-			this.cbRegionCode.Size = new System.Drawing.Size(108, 21);
+			this.cbRegionCode.Size = new System.Drawing.Size(250, 21);
 			this.cbRegionCode.TabIndex = 10;
 			this.cbRegionCode.SelectedIndexChanged += new System.EventHandler(this.cbRegionCode_SelectedIndexChanged);
 			// 
 			// tbRegionCode
 			// 
 			this.tbRegionCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRegionCode.Location = new System.Drawing.Point(117, 16);
+			this.tbRegionCode.Location = new System.Drawing.Point(259, 16);
 			this.tbRegionCode.MaxLength = 1;
 			this.tbRegionCode.Name = "tbRegionCode";
 			this.tbRegionCode.ReadOnly = true;
-			this.tbRegionCode.Size = new System.Drawing.Size(246, 20);
+			this.tbRegionCode.Size = new System.Drawing.Size(104, 20);
 			this.tbRegionCode.TabIndex = 11;
+			// 
+			// tpOutputData
+			// 
+			this.tpOutputData.Controls.Add(this.tlpOutData);
+			this.tpOutputData.Location = new System.Drawing.Point(4, 22);
+			this.tpOutputData.Name = "tpOutputData";
+			this.tpOutputData.Padding = new System.Windows.Forms.Padding(3);
+			this.tpOutputData.Size = new System.Drawing.Size(502, 256);
+			this.tpOutputData.TabIndex = 3;
+			this.tpOutputData.Text = "Output Data (PS1)";
+			this.tpOutputData.UseVisualStyleBackColor = true;
+			// 
+			// tlpOutData
+			// 
+			this.tlpOutData.ColumnCount = 2;
+			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpOutData.Controls.Add(this.tlpInDataPath, 1, 0);
+			this.tlpOutData.Controls.Add(this.labelInDataPath, 0, 0);
+			this.tlpOutData.Controls.Add(this.labelOutDataPath, 0, 1);
+			this.tlpOutData.Controls.Add(this.tlpOutDataPath, 1, 1);
+			this.tlpOutData.Location = new System.Drawing.Point(3, 3);
+			this.tlpOutData.Name = "tlpOutData";
+			this.tlpOutData.RowCount = 2;
+			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOutData.Size = new System.Drawing.Size(496, 250);
+			this.tlpOutData.TabIndex = 0;
+			// 
+			// tlpInDataPath
+			// 
+			this.tlpInDataPath.ColumnCount = 2;
+			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpInDataPath.Controls.Add(this.buttonSetInDataPath, 1, 0);
+			this.tlpInDataPath.Controls.Add(this.tbInDataPath, 0, 0);
+			this.tlpInDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpInDataPath.Location = new System.Drawing.Point(127, 3);
+			this.tlpInDataPath.Name = "tlpInDataPath";
+			this.tlpInDataPath.RowCount = 1;
+			this.tlpInDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpInDataPath.Size = new System.Drawing.Size(366, 119);
+			this.tlpInDataPath.TabIndex = 4;
+			// 
+			// buttonSetInDataPath
+			// 
+			this.buttonSetInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetInDataPath.Location = new System.Drawing.Point(277, 48);
+			this.buttonSetInDataPath.Name = "buttonSetInDataPath";
+			this.buttonSetInDataPath.Size = new System.Drawing.Size(86, 23);
+			this.buttonSetInDataPath.TabIndex = 0;
+			this.buttonSetInDataPath.Text = "...";
+			this.buttonSetInDataPath.UseVisualStyleBackColor = true;
+			this.buttonSetInDataPath.Click += new System.EventHandler(this.buttonSetInDataPath_Click);
+			// 
+			// tbInDataPath
+			// 
+			this.tbInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbInDataPath.Location = new System.Drawing.Point(3, 49);
+			this.tbInDataPath.Name = "tbInDataPath";
+			this.tbInDataPath.Size = new System.Drawing.Size(268, 20);
+			this.tbInDataPath.TabIndex = 2;
+			// 
+			// labelInDataPath
+			// 
+			this.labelInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelInDataPath.AutoSize = true;
+			this.labelInDataPath.Location = new System.Drawing.Point(3, 56);
+			this.labelInDataPath.Name = "labelInDataPath";
+			this.labelInDataPath.Size = new System.Drawing.Size(118, 13);
+			this.labelInDataPath.TabIndex = 0;
+			this.labelInDataPath.Text = "&Input Data Path";
+			// 
+			// labelOutDataPath
+			// 
+			this.labelOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelOutDataPath.AutoSize = true;
+			this.labelOutDataPath.Location = new System.Drawing.Point(3, 181);
+			this.labelOutDataPath.Name = "labelOutDataPath";
+			this.labelOutDataPath.Size = new System.Drawing.Size(118, 13);
+			this.labelOutDataPath.TabIndex = 1;
+			this.labelOutDataPath.Text = "Ou&tput Data Path";
+			// 
+			// tlpOutDataPath
+			// 
+			this.tlpOutDataPath.ColumnCount = 2;
+			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpOutDataPath.Controls.Add(this.tbOutDataPath, 0, 0);
+			this.tlpOutDataPath.Controls.Add(this.buttonSetOutDataPath, 1, 0);
+			this.tlpOutDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpOutDataPath.Location = new System.Drawing.Point(127, 128);
+			this.tlpOutDataPath.Name = "tlpOutDataPath";
+			this.tlpOutDataPath.RowCount = 1;
+			this.tlpOutDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpOutDataPath.Size = new System.Drawing.Size(366, 119);
+			this.tlpOutDataPath.TabIndex = 5;
+			// 
+			// tbOutDataPath
+			// 
+			this.tbOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbOutDataPath.Location = new System.Drawing.Point(3, 49);
+			this.tbOutDataPath.Name = "tbOutDataPath";
+			this.tbOutDataPath.Size = new System.Drawing.Size(268, 20);
+			this.tbOutDataPath.TabIndex = 3;
+			// 
+			// buttonSetOutDataPath
+			// 
+			this.buttonSetOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetOutDataPath.Location = new System.Drawing.Point(277, 48);
+			this.buttonSetOutDataPath.Name = "buttonSetOutDataPath";
+			this.buttonSetOutDataPath.Size = new System.Drawing.Size(86, 23);
+			this.buttonSetOutDataPath.TabIndex = 4;
+			this.buttonSetOutDataPath.Text = "...";
+			this.buttonSetOutDataPath.UseVisualStyleBackColor = true;
+			this.buttonSetOutDataPath.Click += new System.EventHandler(this.buttonSetOutDataPath_Click);
 			// 
 			// tpProjectFiles
 			// 
@@ -630,122 +746,6 @@
 			this.tbWrestlerNamesFile.Size = new System.Drawing.Size(310, 20);
 			this.tbWrestlerNamesFile.TabIndex = 12;
 			// 
-			// tpOutputData
-			// 
-			this.tpOutputData.Controls.Add(this.tlpOutData);
-			this.tpOutputData.Location = new System.Drawing.Point(4, 22);
-			this.tpOutputData.Name = "tpOutputData";
-			this.tpOutputData.Padding = new System.Windows.Forms.Padding(3);
-			this.tpOutputData.Size = new System.Drawing.Size(502, 256);
-			this.tpOutputData.TabIndex = 3;
-			this.tpOutputData.Text = "Output Data";
-			this.tpOutputData.UseVisualStyleBackColor = true;
-			// 
-			// tlpOutData
-			// 
-			this.tlpOutData.ColumnCount = 2;
-			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpOutData.Controls.Add(this.tlpInDataPath, 1, 0);
-			this.tlpOutData.Controls.Add(this.labelInDataPath, 0, 0);
-			this.tlpOutData.Controls.Add(this.labelOutDataPath, 0, 1);
-			this.tlpOutData.Controls.Add(this.tlpOutDataPath, 1, 1);
-			this.tlpOutData.Location = new System.Drawing.Point(3, 3);
-			this.tlpOutData.Name = "tlpOutData";
-			this.tlpOutData.RowCount = 2;
-			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpOutData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpOutData.Size = new System.Drawing.Size(496, 250);
-			this.tlpOutData.TabIndex = 0;
-			// 
-			// labelInDataPath
-			// 
-			this.labelInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelInDataPath.AutoSize = true;
-			this.labelInDataPath.Location = new System.Drawing.Point(3, 56);
-			this.labelInDataPath.Name = "labelInDataPath";
-			this.labelInDataPath.Size = new System.Drawing.Size(118, 13);
-			this.labelInDataPath.TabIndex = 0;
-			this.labelInDataPath.Text = "&Input Data Path";
-			// 
-			// labelOutDataPath
-			// 
-			this.labelOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelOutDataPath.AutoSize = true;
-			this.labelOutDataPath.Location = new System.Drawing.Point(3, 181);
-			this.labelOutDataPath.Name = "labelOutDataPath";
-			this.labelOutDataPath.Size = new System.Drawing.Size(118, 13);
-			this.labelOutDataPath.TabIndex = 1;
-			this.labelOutDataPath.Text = "Ou&tput Data Path";
-			// 
-			// tbInDataPath
-			// 
-			this.tbInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbInDataPath.Location = new System.Drawing.Point(3, 49);
-			this.tbInDataPath.Name = "tbInDataPath";
-			this.tbInDataPath.Size = new System.Drawing.Size(268, 20);
-			this.tbInDataPath.TabIndex = 2;
-			// 
-			// tbOutDataPath
-			// 
-			this.tbOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutDataPath.Location = new System.Drawing.Point(3, 49);
-			this.tbOutDataPath.Name = "tbOutDataPath";
-			this.tbOutDataPath.Size = new System.Drawing.Size(268, 20);
-			this.tbOutDataPath.TabIndex = 3;
-			// 
-			// tlpInDataPath
-			// 
-			this.tlpInDataPath.ColumnCount = 2;
-			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpInDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpInDataPath.Controls.Add(this.buttonSetInDataPath, 1, 0);
-			this.tlpInDataPath.Controls.Add(this.tbInDataPath, 0, 0);
-			this.tlpInDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpInDataPath.Location = new System.Drawing.Point(127, 3);
-			this.tlpInDataPath.Name = "tlpInDataPath";
-			this.tlpInDataPath.RowCount = 1;
-			this.tlpInDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpInDataPath.Size = new System.Drawing.Size(366, 119);
-			this.tlpInDataPath.TabIndex = 4;
-			// 
-			// buttonSetInDataPath
-			// 
-			this.buttonSetInDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetInDataPath.Location = new System.Drawing.Point(277, 48);
-			this.buttonSetInDataPath.Name = "buttonSetInDataPath";
-			this.buttonSetInDataPath.Size = new System.Drawing.Size(86, 23);
-			this.buttonSetInDataPath.TabIndex = 0;
-			this.buttonSetInDataPath.Text = "...";
-			this.buttonSetInDataPath.UseVisualStyleBackColor = true;
-			this.buttonSetInDataPath.Click += new System.EventHandler(this.buttonSetInDataPath_Click);
-			// 
-			// tlpOutDataPath
-			// 
-			this.tlpOutDataPath.ColumnCount = 2;
-			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpOutDataPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpOutDataPath.Controls.Add(this.tbOutDataPath, 0, 0);
-			this.tlpOutDataPath.Controls.Add(this.buttonSetOutDataPath, 1, 0);
-			this.tlpOutDataPath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpOutDataPath.Location = new System.Drawing.Point(127, 128);
-			this.tlpOutDataPath.Name = "tlpOutDataPath";
-			this.tlpOutDataPath.RowCount = 1;
-			this.tlpOutDataPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpOutDataPath.Size = new System.Drawing.Size(366, 119);
-			this.tlpOutDataPath.TabIndex = 5;
-			// 
-			// buttonSetOutDataPath
-			// 
-			this.buttonSetOutDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetOutDataPath.Location = new System.Drawing.Point(277, 48);
-			this.buttonSetOutDataPath.Name = "buttonSetOutDataPath";
-			this.buttonSetOutDataPath.Size = new System.Drawing.Size(86, 23);
-			this.buttonSetOutDataPath.TabIndex = 4;
-			this.buttonSetOutDataPath.Text = "...";
-			this.buttonSetOutDataPath.UseVisualStyleBackColor = true;
-			this.buttonSetOutDataPath.Click += new System.EventHandler(this.buttonSetOutDataPath_Click);
-			// 
 			// ProjectPropertiesDialog
 			// 
 			this.AcceptButton = this.buttonOK;
@@ -776,6 +776,13 @@
 			this.tlpOutROM.PerformLayout();
 			this.tlpRegion.ResumeLayout(false);
 			this.tlpRegion.PerformLayout();
+			this.tpOutputData.ResumeLayout(false);
+			this.tlpOutData.ResumeLayout(false);
+			this.tlpOutData.PerformLayout();
+			this.tlpInDataPath.ResumeLayout(false);
+			this.tlpInDataPath.PerformLayout();
+			this.tlpOutDataPath.ResumeLayout(false);
+			this.tlpOutDataPath.PerformLayout();
 			this.tpProjectFiles.ResumeLayout(false);
 			this.tlpProjFilesTab.ResumeLayout(false);
 			this.tlpProjFilesTab.PerformLayout();
@@ -787,13 +794,6 @@
 			this.tlpCustomLoc.PerformLayout();
 			this.tlpWrestlerNames.ResumeLayout(false);
 			this.tlpWrestlerNames.PerformLayout();
-			this.tpOutputData.ResumeLayout(false);
-			this.tlpOutData.ResumeLayout(false);
-			this.tlpOutData.PerformLayout();
-			this.tlpInDataPath.ResumeLayout(false);
-			this.tlpInDataPath.PerformLayout();
-			this.tlpOutDataPath.ResumeLayout(false);
-			this.tlpOutDataPath.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
