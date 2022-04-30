@@ -436,6 +436,7 @@
 			this.ClientSize = new System.Drawing.Size(634, 339);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.menuStrip1);
+			this.KeyPreview = true;
 			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -444,6 +445,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelTool2_FormClosing);
+			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ModelTool2_KeyUp);
 			this.gbModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.PerformLayout();

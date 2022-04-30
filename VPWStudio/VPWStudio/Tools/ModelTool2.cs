@@ -385,5 +385,13 @@ namespace VPWStudio
 			UpdateTexture();
 			glControl1.Invalidate();
 		}
+
+		private void ModelTool2_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
