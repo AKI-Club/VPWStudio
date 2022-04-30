@@ -58,9 +58,9 @@
 0039=AkiArchive;
 003A=AkiArchive;
 003B=AkiArchive;
-003C=AkiTexture;
-003D=AkiTexture;
-003E=AkiTexture;
+003C=AkiArchive;
+003D=AkiArchive;
+003E=AkiArchive;
 003F=AkiArchive;
 0040=AkiArchive;(related to old VPW2 halloween arena; stage area)
 0041=AkiArchive;
@@ -70,10 +70,10 @@
 0045=AkiArchive;
 0046=AkiArchive;
 0047=AkiTexture;[Controller Settings] Player Control icons
-0048=AkiTexture;[VPW2]
+0048=AkiTexture;[VPW2] Menu Control 1
 0049=AkiTexture;
 004A=AkiTexture;[UI]
-004B=AkiTexture;[UI]
+004B=AkiTexture;[UI] Contents
 004C=AkiTexture;[UI] Blue Box
 004D=AkiTexture;[UI]
 004E=AkiTexture;[UI] Match Box (Purple)
