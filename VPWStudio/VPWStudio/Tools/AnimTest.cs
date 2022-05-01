@@ -13,6 +13,8 @@ namespace VPWStudio
 	{
 		public AkiAnimation CurAnim = new AkiAnimation();
 
+		readonly int firstAnimNumber = DefaultGameData.DefaultFileTableIDs["FirstAnimationFileID"][Program.CurrentProject.Settings.GameType];
+
 		public AnimTest(int fileID)
 		{
 			InitializeComponent();
@@ -39,6 +41,15 @@ namespace VPWStudio
 				cbFrames.Items.Add(i);
 			}
 			cbFrames.EndUpdate();
+
+			if ((fileID - firstAnimNumber) >= 0)
+			{
+				tbToki1Index.Text = String.Format("{0:X4}", fileID - firstAnimNumber);
+			}
+			else
+			{
+				tbToki1Index.Text = String.Format("{0:X4} (!)", fileID - firstAnimNumber);
+			}
 
 			tbToki2.Text = String.Format("{0:X2} {1:X2} {2:X2} {3:X2}", CurAnim.Toki2[0], CurAnim.Toki2[1], CurAnim.Toki2[2], CurAnim.Toki2[3]);
 
@@ -183,6 +194,14 @@ namespace VPWStudio
 			}
 			Clipboard.SetText(hexVals);
 			Program.InfoMessageBox("Copied animation data to clipboard.\n\nPaste it into S.K. Stylez's Animation Editor at D3 (main) or D43 (secondary).");
+		}
+
+		private void AnimTest_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
 		}
 	}
 }
