@@ -68,7 +68,7 @@ namespace VPWStudio
 
 			switch (tvOptions.SelectedNode.Name)
 			{
-				case "Emulator":
+				case "EmulatorN64":
 					{
 						optionControlEmuN64.Visible = true;
 						tlpBuildLogVerbosity.Visible = false;
