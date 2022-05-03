@@ -629,6 +629,8 @@
 0274=I4Texture;(I4 image)|w:64,h:64
 0275=I4Texture;(I4 image)|w:64,h:64
 0277=Binary;Move damage values
+0278=Binary;Move animation values
+0279=Binary;Move properties values
 027A=Binary;Reversals - Heavyweight
 027B=Binary;Reversals - Heavy Special
 027C=Binary;Reversals - Junior
