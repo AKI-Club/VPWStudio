@@ -393,5 +393,13 @@ namespace VPWStudio
 				Close();
 			}
 		}
+
+		private void ModelTool2_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char)27) // escape key
+			{
+				Close();
+			}
+		}
 	}
 }
