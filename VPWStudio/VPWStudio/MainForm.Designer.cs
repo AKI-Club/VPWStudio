@@ -84,12 +84,14 @@
 			this.stableParseTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.romSliceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.moveDamageTestvpw2OnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.vpw2TextIndexToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
 			this.timTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.vpw2TextIndexToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -411,7 +413,9 @@
             this.moveDamageTestvpw2OnlyToolStripMenuItem,
             this.vpw2TextIndexToolToolStripMenuItem,
             this.toolStripSeparator10,
-            this.timTestToolStripMenuItem});
+            this.timTestToolStripMenuItem,
+            this.toolStripSeparator11,
+            this.testScene3dToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -503,6 +507,12 @@
 			resources.ApplyResources(this.moveDamageTestvpw2OnlyToolStripMenuItem, "moveDamageTestvpw2OnlyToolStripMenuItem");
 			this.moveDamageTestvpw2OnlyToolStripMenuItem.Click += new System.EventHandler(this.moveDamageTestvpw2OnlyToolStripMenuItem_Click);
 			// 
+			// vpw2TextIndexToolToolStripMenuItem
+			// 
+			this.vpw2TextIndexToolToolStripMenuItem.Name = "vpw2TextIndexToolToolStripMenuItem";
+			resources.ApplyResources(this.vpw2TextIndexToolToolStripMenuItem, "vpw2TextIndexToolToolStripMenuItem");
+			this.vpw2TextIndexToolToolStripMenuItem.Click += new System.EventHandler(this.vpw2TextIndexToolToolStripMenuItem_Click);
+			// 
 			// toolStripSeparator10
 			// 
 			this.toolStripSeparator10.Name = "toolStripSeparator10";
@@ -541,11 +551,16 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// vpw2TextIndexToolToolStripMenuItem
+			// testScene3dToolStripMenuItem
 			// 
-			this.vpw2TextIndexToolToolStripMenuItem.Name = "vpw2TextIndexToolToolStripMenuItem";
-			resources.ApplyResources(this.vpw2TextIndexToolToolStripMenuItem, "vpw2TextIndexToolToolStripMenuItem");
-			this.vpw2TextIndexToolToolStripMenuItem.Click += new System.EventHandler(this.vpw2TextIndexToolToolStripMenuItem_Click);
+			this.testScene3dToolStripMenuItem.Name = "testScene3dToolStripMenuItem";
+			resources.ApplyResources(this.testScene3dToolStripMenuItem, "testScene3dToolStripMenuItem");
+			this.testScene3dToolStripMenuItem.Click += new System.EventHandler(this.testScene3dToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator11
+			// 
+			this.toolStripSeparator11.Name = "toolStripSeparator11";
+			resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
 			// 
 			// MainForm
 			// 
@@ -634,6 +649,8 @@
 		private System.Windows.Forms.ToolStripMenuItem gameSpecificInformationToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem cancelBuildToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw2TextIndexToolToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+		private System.Windows.Forms.ToolStripMenuItem testScene3dToolStripMenuItem;
 	}
 }
 
