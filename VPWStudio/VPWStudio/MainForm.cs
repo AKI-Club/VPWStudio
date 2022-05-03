@@ -2408,6 +2408,20 @@ namespace VPWStudio
 				TextIndexDecoder.Show();
 			}
 		}
+
+		private void testScene3dToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("test 3d scene requires open project file");
+				return;
+			}
+
+			TestScene3D t3d = new TestScene3D();
+			t3d.ShowDialog();
+		}
 		#endregion
+
+
 	}
 }

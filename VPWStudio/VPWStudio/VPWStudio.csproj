@@ -101,6 +101,12 @@
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="DataStructures\PS1\TmdFile.cs" />
+    <Compile Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.Designer.cs">
+      <DependentUpon>TestScene3D_AddEditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,6 +467,7 @@
     <Compile Include="Helpers\Crc32.cs" />
     <Compile Include="Helpers\N64Colors.cs" />
     <Compile Include="Helpers\NameHandler.cs" />
+    <Compile Include="ProgStructures\3D\RenderableN64.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
@@ -561,6 +568,12 @@
     <Compile Include="Tools\StableDefParseTest.Designer.cs">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\TestScene3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\TestScene3D.Designer.cs">
+      <DependentUpon>TestScene3D.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\TextIndexTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -587,6 +600,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionsControl_Emulator.resx">
       <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.resx">
+      <DependentUpon>TestScene3D_AddEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_CiTexturePreviewDialog.resx">
       <DependentUpon>FileTable_CiTexturePreviewDialog.cs</DependentUpon>
@@ -789,6 +805,9 @@
     <EmbeddedResource Include="Tools\StableDefParseTest.resx">
       <DependentUpon>StableDefParseTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tools\TestScene3D.resx">
+      <DependentUpon>TestScene3D.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\TextIndexTool.resx">
       <DependentUpon>TextIndexTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -798,6 +817,9 @@
     <EmbeddedResource Include="Tools\Toki1TestDialog.resx">
       <DependentUpon>Toki1TestDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

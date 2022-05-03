@@ -462,6 +462,15 @@
   <data name="timTestToolStripMenuItem.Text" xml:space="preserve">
     <value>tim test</value>
   </data>
+  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 6</value>
+  </data>
+  <data name="testScene3dToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>308, 22</value>
+  </data>
+  <data name="testScene3dToolStripMenuItem.Text" xml:space="preserve">
+    <value>test scene 3d</value>
+  </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -2050,6 +2059,12 @@
   <data name="&gt;&gt;moveDamageTestvpw2OnlyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;vpw2TextIndexToolToolStripMenuItem.Name" xml:space="preserve">
+    <value>vpw2TextIndexToolToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;vpw2TextIndexToolToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
     <value>toolStripSeparator10</value>
   </data>
@@ -2074,11 +2089,17 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vpw2TextIndexToolToolStripMenuItem.Name" xml:space="preserve">
-    <value>vpw2TextIndexToolToolStripMenuItem</value>
+  <data name="&gt;&gt;testScene3dToolStripMenuItem.Name" xml:space="preserve">
+    <value>testScene3dToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;vpw2TextIndexToolToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;testScene3dToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
+    <value>toolStripSeparator11</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
