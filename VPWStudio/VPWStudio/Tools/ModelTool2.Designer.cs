@@ -445,6 +445,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelTool2_FormClosing);
+			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ModelTool2_KeyPress);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ModelTool2_KeyUp);
 			this.gbModelInfo.ResumeLayout(false);
 			this.tlpModelInfo.ResumeLayout(false);
