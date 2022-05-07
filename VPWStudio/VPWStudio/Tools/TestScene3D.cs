@@ -274,6 +274,10 @@ namespace VPWStudio
 			GL.VertexAttribPointer(UVCoordsLoc, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
 			GL.VertexAttribPointer(ColorDataLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
 
+			GL.EnableVertexAttribArray(PositionLoc);
+			GL.EnableVertexAttribArray(UVCoordsLoc);
+			GL.EnableVertexAttribArray(ColorDataLoc);
+
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				obj.CalculateModelMatrix();
@@ -310,9 +314,12 @@ namespace VPWStudio
 			int curIndex = 0;
 			foreach (RenderableN64 obj in SceneModels)
 			{
-				//GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
-				GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
-				curIndex += obj.Model.Faces.Count;
+				if (obj.Visible)
+				{
+					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
+					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
+					curIndex += obj.Model.Faces.Count;
+				}
 			}
 
 			GL.DisableVertexAttribArray(VertexArrayObject);
