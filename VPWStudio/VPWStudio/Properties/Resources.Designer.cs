@@ -361,16 +361,6 @@ namespace VPWStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon GameShark {
-            get {
-                object obj = ResourceManager.GetObject("GameShark", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to VPW Studio.
         /// </summary>
         internal static string MainForm_Title {
@@ -736,6 +726,16 @@ namespace VPWStudio.Properties {
             get {
                 object obj = ResourceManager.GetObject("MenuIcon16_Wrestlers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon VPWSProjFileIcon {
+            get {
+                object obj = ResourceManager.GetObject("VPWSProjFileIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
