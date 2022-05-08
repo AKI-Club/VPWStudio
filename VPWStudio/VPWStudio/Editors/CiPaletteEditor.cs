@@ -41,19 +41,18 @@ namespace VPWStudio.Editors
 		private int FileID;
 
 		/// <summary>
-		/// Current active palette number.
+		/// Current active palette number. (CI4 only)
 		/// </summary>
 		private int PaletteNumber = 0;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		/// <param name="fileID">Palette File ID to view/edit.</param>
 		public CiPaletteEditor(int fileID)
 		{
 			InitializeComponent();
 			FileID = fileID;
-
-			// todo:
-			// - determine if a replacement file is set
-			//   - if so, determine the data type (could be raw, could be JASC) and load it
-			//   - if not, load from ROM (see current code)
 
 			string replaceFile = Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath;
 			if (!String.IsNullOrEmpty(replaceFile))
@@ -72,6 +71,53 @@ namespace VPWStudio.Editors
 			}
 
 			Text = String.Format("CI{0} Palette Editor - File {1:X4}", CurEditMode == CiEditorModes.Ci4 ? 4 : 8, FileID);
+
+			PopulateColorList();
+			UpdatePreview();
+
+			cbColorEntries.SelectedIndex = 0;
+			cbColorEntries_SelectionChangeCommitted(this, new EventArgs());
+		}
+
+		/// <summary>
+		/// Load arbitrary CI palette data.
+		/// </summary>
+		/// <param name="data"></param>
+		public CiPaletteEditor(byte[] data, bool _ci8 = false)
+		{
+			InitializeComponent();
+			FileID = -1;
+
+			CurEditMode = _ci8 ? CiEditorModes.Ci8 : CiEditorModes.Ci4;
+
+			if (CurEditMode == CiEditorModes.Ci4)
+			{
+				CurPaletteCI8 = null;
+				CurPaletteCI4 = new Ci4Palette();
+
+				MemoryStream ms = new MemoryStream(data);
+				BinaryReader br = new BinaryReader(ms);
+				CurPaletteCI4.ReadData(br);
+				br.Close();
+				ms.Dispose();
+
+				LoadColorsCi4();
+			}
+			else
+			{
+				CurPaletteCI4 = null;
+				CurPaletteCI8 = new Ci8Palette();
+
+				MemoryStream ms = new MemoryStream(data);
+				BinaryReader br = new BinaryReader(ms);
+				CurPaletteCI8.ReadData(br);
+				br.Close();
+				ms.Dispose();
+
+				LoadColorsCi8();
+			}
+
+			Text = String.Format("CI{0} Palette Editor", CurEditMode == CiEditorModes.Ci4 ? 4 : 8);
 
 			PopulateColorList();
 			UpdatePreview();
