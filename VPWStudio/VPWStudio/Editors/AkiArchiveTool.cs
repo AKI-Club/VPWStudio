@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using VPWStudio.Editors;
+
 namespace VPWStudio
 {
 	public partial class AkiArchiveTool : Form
@@ -205,6 +207,28 @@ namespace VPWStudio
 
 			ITexturePreviewDialog ipd = new ITexturePreviewDialog(CurArchive.FileEntries[lbFiles.SelectedIndex].Data);
 			ipd.Show();
+		}
+
+		private void cI4PaletteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lbFiles.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			CiPaletteEditor cpd = new CiPaletteEditor(CurArchive.FileEntries[lbFiles.SelectedIndex].Data);
+			cpd.ShowDialog();
+		}
+
+		private void cI8PaletteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lbFiles.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			CiPaletteEditor cpd = new CiPaletteEditor(CurArchive.FileEntries[lbFiles.SelectedIndex].Data, true);
+			cpd.ShowDialog();
 		}
 	}
 }
