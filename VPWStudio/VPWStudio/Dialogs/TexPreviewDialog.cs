@@ -186,6 +186,11 @@ namespace VPWStudio
 
 		private void DrawImage()
 		{
+			if (DefaultImageSize.IsEmpty)
+			{
+				return;
+			}
+
 			Bitmap zoomed = new Bitmap(DefaultImageSize.Width * CurrentZoom, DefaultImageSize.Height * CurrentZoom);
 
 			Graphics g = Graphics.FromImage(zoomed);
