@@ -60,6 +60,11 @@ namespace VPWStudio
 
 		public List<RenderableN64> SceneModels = new List<RenderableN64>();
 
+		/// <summary>
+		/// A 1x1 full brightness fallback texture.
+		/// </summary>
+		private readonly byte[] FallbackTexture = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
+
 		public TestScene3D()
 		{
 			InitializeComponent();
@@ -207,6 +212,8 @@ namespace VPWStudio
 			GL.LinkProgram(ShaderProgram);
 			#endregion
 
+			GL.GenBuffers(1, out VertexBufferObject);
+
 			// grab params from vertex shader
 			PositionLoc = GL.GetAttribLocation(ShaderProgram, "position");
 			UVCoordsLoc = GL.GetAttribLocation(ShaderProgram, "uvCoords");
@@ -251,7 +258,6 @@ namespace VPWStudio
 
 		private void UpdateScene(object sender, EventArgs e)
 		{
-			// todo: a lot of stuff goes in here
 			List<float> coordsList = new List<float>();
 			List<int> faceList = new List<int>();
 
@@ -259,7 +265,7 @@ namespace VPWStudio
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				coordsList.AddRange(obj.Model.GetNormalizedCoords());
-				faceList.AddRange(obj.Model.GetFacesList());
+				faceList.AddRange(obj.Model.GetFacesList(numVerts));
 				numVerts += obj.Model.NumVertices;
 			}
 
@@ -267,16 +273,20 @@ namespace VPWStudio
 			SceneCoords = coordsList.ToArray();
 			SceneFaces = faceList.ToArray();
 
-			// todo: bind buffers
+			// bind buffers
 			GL.BindBuffer(BufferTarget.ArrayBuffer, VertexArrayObject);
-			GL.BufferData(BufferTarget.ArrayBuffer, (coordsList.Count * sizeof(float)), SceneCoords, BufferUsageHint.StaticDraw);
-			GL.VertexAttribPointer(PositionLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
-			GL.VertexAttribPointer(UVCoordsLoc, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
-			GL.VertexAttribPointer(ColorDataLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
+			GL.BindVertexArray(VertexArrayObject);
+			GL.BufferData(BufferTarget.ArrayBuffer, coordsList.Count * sizeof(float), SceneCoords, BufferUsageHint.StaticDraw);
 
+			GL.VertexAttribPointer(PositionLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
 			GL.EnableVertexAttribArray(PositionLoc);
+			GL.VertexAttribPointer(UVCoordsLoc, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
 			GL.EnableVertexAttribArray(UVCoordsLoc);
+			GL.VertexAttribPointer(ColorDataLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
 			GL.EnableVertexAttribArray(ColorDataLoc);
+
+			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
+			GL.BufferData(BufferTarget.ElementArrayBuffer, SceneFaces.Length * sizeof(int), SceneFaces, BufferUsageHint.StaticDraw);
 
 			foreach (RenderableN64 obj in SceneModels)
 			{
@@ -285,12 +295,13 @@ namespace VPWStudio
 				obj.ModelViewProjectionMatrix = obj.ModelMatrix * obj.ViewProjectionMatrix;
 			}
 
+			GL.ActiveTexture(TextureUnit.Texture0);
+			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
+			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
+
 			GL.UseProgram(ShaderProgram);
 
 			GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-
-			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
-			GL.BufferData(BufferTarget.ElementArrayBuffer, (SceneFaces.Length * sizeof(int)), SceneFaces, BufferUsageHint.StaticDraw);
 
 			glControl1.Invalidate();
 		}
@@ -310,6 +321,7 @@ namespace VPWStudio
 			GL.Enable(EnableCap.DepthTest);
 
 			GL.EnableVertexAttribArray(VertexArrayObject);
+			GL.BindVertexArray(VertexArrayObject);
 
 			int curIndex = 0;
 			foreach (RenderableN64 obj in SceneModels)
@@ -318,8 +330,8 @@ namespace VPWStudio
 				{
 					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
 					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
-					curIndex += obj.Model.Faces.Count;
 				}
+				curIndex += obj.Model.Faces.Count;
 			}
 
 			GL.DisableVertexAttribArray(VertexArrayObject);
