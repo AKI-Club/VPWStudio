@@ -213,7 +213,7 @@
     <value>204, 22</value>
   </data>
   <data name="costumesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Costumes</value>
+    <value>&amp;Costume Items</value>
   </data>
   <data name="titantronVideosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
@@ -2077,6 +2077,18 @@
   <data name="&gt;&gt;timTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
+    <value>toolStripSeparator11</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;testScene3dToolStripMenuItem.Name" xml:space="preserve">
+    <value>testScene3dToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;testScene3dToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -2088,18 +2100,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;testScene3dToolStripMenuItem.Name" xml:space="preserve">
-    <value>testScene3dToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;testScene3dToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
-    <value>toolStripSeparator11</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
