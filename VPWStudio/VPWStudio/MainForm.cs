@@ -980,7 +980,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Moves dialog not yet designed.");
+			Program.ErrorMessageBox("Moves dialog not yet designed.\nConsidering that moves consist of many parts, this is going to take a while.");
 		}
 
 		/// <summary>
@@ -2052,6 +2052,7 @@ namespace VPWStudio
 		// items in this section are (meant to be) short lived.
 		// I just wanted a better place to put them.
 
+		#region LZSS testing
 		private void asmikLzssTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -2089,6 +2090,7 @@ namespace VPWStudio
 				br.Close();
 			}
 		}
+		#endregion
 
 		private void nameEncoderdecoderToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -2101,6 +2103,8 @@ namespace VPWStudio
 			Toki1TestDialog t1td = new Toki1TestDialog();
 			t1td.ShowDialog();
 		}
+
+		#region PNG conversion
 
 		// PNG to TEX
 		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2319,6 +2323,8 @@ namespace VPWStudio
 			}
 			#endregion
 		}
+
+		#endregion
 
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
