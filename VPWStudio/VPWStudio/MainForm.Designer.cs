@@ -87,11 +87,11 @@
 			this.vpw2TextIndexToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
 			this.timTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -524,6 +524,17 @@
 			resources.ApplyResources(this.timTestToolStripMenuItem, "timTestToolStripMenuItem");
 			this.timTestToolStripMenuItem.Click += new System.EventHandler(this.timTestToolStripMenuItem_Click);
 			// 
+			// toolStripSeparator11
+			// 
+			this.toolStripSeparator11.Name = "toolStripSeparator11";
+			resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
+			// 
+			// testScene3dToolStripMenuItem
+			// 
+			this.testScene3dToolStripMenuItem.Name = "testScene3dToolStripMenuItem";
+			resources.ApplyResources(this.testScene3dToolStripMenuItem, "testScene3dToolStripMenuItem");
+			this.testScene3dToolStripMenuItem.Click += new System.EventHandler(this.testScene3dToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -550,17 +561,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// testScene3dToolStripMenuItem
-			// 
-			this.testScene3dToolStripMenuItem.Name = "testScene3dToolStripMenuItem";
-			resources.ApplyResources(this.testScene3dToolStripMenuItem, "testScene3dToolStripMenuItem");
-			this.testScene3dToolStripMenuItem.Click += new System.EventHandler(this.testScene3dToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator11
-			// 
-			this.toolStripSeparator11.Name = "toolStripSeparator11";
-			resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
 			// 
 			// MainForm
 			// 
