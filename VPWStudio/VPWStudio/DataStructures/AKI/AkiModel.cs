@@ -344,8 +344,9 @@ namespace VPWStudio
 		/// <summary>
 		/// Convert the List of AkiFaces to an array of the actual indices.
 		/// </summary>
+		/// <param name="offset">Offset for indices.</param>
 		/// <returns>Array of integers with the indices for face mappings</returns>
-		public int[] GetFacesList()
+		public int[] GetFacesList(int offset = 0)
 		{
 			List<int> faces = new List<int>();
 			foreach (AkiFace f in Faces)
@@ -354,6 +355,15 @@ namespace VPWStudio
 				faces.Add(f.Vertex2);
 				faces.Add(f.Vertex3);
 			}
+
+			if (offset != 0)
+			{
+				for (int i = 0; i < faces.Count; i++)
+				{
+					faces[i] += offset;
+				}
+			}
+
 			return faces.ToArray();
 		}
 
