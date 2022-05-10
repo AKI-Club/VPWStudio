@@ -57,7 +57,7 @@
     <Reference Include="OpenTK, Version=3.3.2.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.3.2\lib\net20\OpenTK.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+    <Reference Include="OpenTK.GLControl">
       <HintPath>..\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -433,7 +433,6 @@
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\CostumeTextures.cs" />
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
-    <Compile Include="GameSpecific\NoMercy\MenuItems_Costume.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_NoGroup.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_Shop.cs" />
     <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
