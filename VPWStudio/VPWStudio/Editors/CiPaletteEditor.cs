@@ -723,7 +723,7 @@ namespace VPWStudio.Editors
 									if (string.Equals(Encoding.ASCII.GetString(header), "RIFF"))
 									{
 										// not a JASC format .pal file
-										Program.ErrorMessageBox("This is not a JASC Paint Shop Pro format palette file.");
+										Program.ErrorMessageBox("Microsoft .pal files are unsupported.\nPlease re-export the palette in JASC Paint Shop Pro format, if possible.");
 										br.Dispose(); // it's ok to dispose of it here, though.
 										return;
 									}
