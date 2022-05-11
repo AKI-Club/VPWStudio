@@ -1932,19 +1932,31 @@ namespace VPWStudio
 		/// </summary>
 		private void UpdateBuildMenuItems()
 		{
-			if (Program.RomBuildActive)
+			if (Program.CurrentProject == null)
 			{
 				buildROMToolStripMenuItem.Enabled = false;
 				buildROMToolStripMenuItem.Visible = false;
-				cancelBuildToolStripMenuItem.Enabled = true;
-				cancelBuildToolStripMenuItem.Visible = true;
+				cancelBuildToolStripMenuItem.Enabled = false;
+				cancelBuildToolStripMenuItem.Visible = false;
+				playROMToolStripMenuItem.Enabled = false;
+				playROMToolStripMenuItem.Visible = false;
 			}
 			else
 			{
-				buildROMToolStripMenuItem.Enabled = true;
-				buildROMToolStripMenuItem.Visible = true;
-				cancelBuildToolStripMenuItem.Enabled = false;
-				cancelBuildToolStripMenuItem.Visible = false;
+				if (Program.RomBuildActive)
+				{
+					buildROMToolStripMenuItem.Enabled = false;
+					buildROMToolStripMenuItem.Visible = false;
+					cancelBuildToolStripMenuItem.Enabled = true;
+					cancelBuildToolStripMenuItem.Visible = true;
+				}
+				else
+				{
+					buildROMToolStripMenuItem.Enabled = true;
+					buildROMToolStripMenuItem.Visible = true;
+					cancelBuildToolStripMenuItem.Enabled = false;
+					cancelBuildToolStripMenuItem.Visible = false;
+				}
 			}
 		}
 
