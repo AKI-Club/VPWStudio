@@ -15,6 +15,8 @@ namespace VPWStudio
 
 		readonly int firstAnimNumber = DefaultGameData.DefaultFileTableIDs["FirstAnimationFileID"][Program.CurrentProject.Settings.GameType];
 
+		protected int Toki1Index;
+
 		public AnimTest(int fileID)
 		{
 			InitializeComponent();
@@ -42,13 +44,14 @@ namespace VPWStudio
 			}
 			cbFrames.EndUpdate();
 
-			if ((fileID - firstAnimNumber) >= 0)
+			Toki1Index = fileID - firstAnimNumber;
+			if (Toki1Index >= 0)
 			{
-				tbToki1Index.Text = String.Format("{0:X4}", fileID - firstAnimNumber);
+				tbToki1Index.Text = String.Format("{0:X4}", Toki1Index);
 			}
 			else
 			{
-				tbToki1Index.Text = String.Format("{0:X4} (!)", fileID - firstAnimNumber);
+				tbToki1Index.Text = String.Format("{0:X4} (!)", Toki1Index);
 			}
 
 			tbToki2.Text = String.Format("{0:X2} {1:X2} {2:X2} {3:X2}", CurAnim.Toki2[0], CurAnim.Toki2[1], CurAnim.Toki2[2], CurAnim.Toki2[3]);
@@ -202,6 +205,12 @@ namespace VPWStudio
 			{
 				Close();
 			}
+		}
+
+		private void btnViewToki1_Click(object sender, EventArgs e)
+		{
+			Toki1TestDialog t1td = new Toki1TestDialog(Toki1Index);
+			t1td.ShowDialog();
 		}
 	}
 }
