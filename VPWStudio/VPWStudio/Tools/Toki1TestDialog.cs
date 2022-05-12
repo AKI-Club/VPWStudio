@@ -29,7 +29,7 @@ namespace VPWStudio
 
 		readonly int firstAnimNumber = DefaultGameData.DefaultFileTableIDs["FirstAnimationFileID"][Program.CurrentProject.Settings.GameType];
 
-		public Toki1TestDialog()
+		public Toki1TestDialog(int _entry = 0)
 		{
 			InitializeComponent();
 
@@ -38,6 +38,9 @@ namespace VPWStudio
 				LoadToki1();
 				PopulateEntries();
 			}
+
+			cbToki1Entries.SelectedIndex = _entry;
+			ShowData(cbToki1Entries.SelectedIndex);
 		}
 
 		private void LoadToki1()
