@@ -42,6 +42,7 @@
 			this.tlpFrame = new System.Windows.Forms.TableLayoutPanel();
 			this.gbToki1 = new System.Windows.Forms.GroupBox();
 			this.tbToki1Index = new System.Windows.Forms.TextBox();
+			this.btnViewToki1 = new System.Windows.Forms.Button();
 			this.gbToki2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvFrameData)).BeginInit();
 			this.menuStrip1.SuspendLayout();
@@ -168,6 +169,7 @@
 			// 
 			// gbToki1
 			// 
+			this.gbToki1.Controls.Add(this.btnViewToki1);
 			this.gbToki1.Controls.Add(this.tbToki1Index);
 			this.gbToki1.Location = new System.Drawing.Point(12, 27);
 			this.gbToki1.Name = "gbToki1";
@@ -182,8 +184,18 @@
 			this.tbToki1Index.Location = new System.Drawing.Point(6, 19);
 			this.tbToki1Index.Name = "tbToki1Index";
 			this.tbToki1Index.ReadOnly = true;
-			this.tbToki1Index.Size = new System.Drawing.Size(146, 20);
+			this.tbToki1Index.Size = new System.Drawing.Size(66, 20);
 			this.tbToki1Index.TabIndex = 1;
+			// 
+			// btnViewToki1
+			// 
+			this.btnViewToki1.Location = new System.Drawing.Point(77, 18);
+			this.btnViewToki1.Name = "btnViewToki1";
+			this.btnViewToki1.Size = new System.Drawing.Size(75, 23);
+			this.btnViewToki1.TabIndex = 2;
+			this.btnViewToki1.Text = "&View...";
+			this.btnViewToki1.UseVisualStyleBackColor = true;
+			this.btnViewToki1.Click += new System.EventHandler(this.btnViewToki1_Click);
 			// 
 			// AnimTest
 			// 
@@ -234,5 +246,6 @@
 		private System.Windows.Forms.TableLayoutPanel tlpFrame;
 		private System.Windows.Forms.GroupBox gbToki1;
 		private System.Windows.Forms.TextBox tbToki1Index;
+		private System.Windows.Forms.Button btnViewToki1;
 	}
 }
