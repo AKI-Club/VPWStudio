@@ -947,6 +947,9 @@
     <Content Include="Manual\img\akitext.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Manual\img\animtest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\img\ci4palette_editor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
