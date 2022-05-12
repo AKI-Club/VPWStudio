@@ -433,6 +433,7 @@
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\CostumeTextures.cs" />
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
+    <Compile Include="GameSpecific\NoMercy\MenuItems_Costume.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_NoGroup.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_Shop.cs" />
     <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
