@@ -78,6 +78,10 @@ namespace VPWStudio
 		/// </summary>
 		private readonly byte[] FallbackTexture = new byte[]{ 0xFF, 0xFF, 0xFF, 0xFF };
 
+		public int ModelViewUniform;
+
+		private Matrix4[] mviewData;
+
 		public ModelTool2(int fileID)
 		{ 
 			InitializeComponent();
@@ -118,6 +122,11 @@ namespace VPWStudio
 
 			// enable texture display by default
 			textureEnabledToolStripMenuItem.Checked = true;
+
+			mviewData = new Matrix4[]
+			{
+				Matrix4.Identity
+			};
 		}
 
 		/// <summary>
@@ -230,7 +239,7 @@ namespace VPWStudio
 			var positionLocation = GL.GetAttribLocation(ShaderProgram, "position");
 			var uvCoordsLocation = GL.GetAttribLocation(ShaderProgram, "uvCoords");
 			var colorDataLocation = GL.GetAttribLocation(ShaderProgram, "colorData");
-			//var modelViewLocation = GL.GetUniformLocation(ShaderProgram, "modelView");
+			ModelViewUniform = GL.GetUniformLocation(ShaderProgram, "modelView");
 
 			// VAO schwartz
 			VertexArrayObject = GL.GenVertexArray();
@@ -327,6 +336,9 @@ namespace VPWStudio
 			}
 
 			GL.Clear(ClearBufferMask.ColorBufferBit);
+
+			mviewData[0] = Matrix4.CreateTranslation(0.0f, 0.0f, -1.0f);
+			GL.UniformMatrix4(ModelViewUniform, false, ref mviewData[0]);
 
 			// bind necessary resources
 			GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
