@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
@@ -27,6 +28,11 @@ namespace VPWStudio
 		public bool Visible;
 
 		/// <summary>
+		/// Texture enable/disable flag
+		/// </summary>
+		public bool EnableTexture;
+
+		/// <summary>
 		/// Model data File ID
 		/// </summary>
 		public uint ModelFileID;
@@ -44,10 +50,13 @@ namespace VPWStudio
 		#region Internal Stuff
 		public AkiModel Model;
 
+		// todo: only supports ci4 right now
 		public Ci4Palette Palette_CI4;
 		public Ci4Texture Texture_CI4;
 
 		public Bitmap Texture;
+
+		public byte[] PixelData;
 		#endregion
 
 		#region Constructors
@@ -57,6 +66,7 @@ namespace VPWStudio
 		public RenderableN64()
 		{
 			Visible = true;
+			EnableTexture = true;
 			ModelFileID = 0;
 			PalFileID = 0;
 			TexFileID = 0;
@@ -72,6 +82,7 @@ namespace VPWStudio
 		public RenderableN64(uint modelID, uint palID, uint texID)
 		{
 			Visible = true;
+			EnableTexture = true;
 
 			ModelFileID = modelID;
 			PalFileID = palID;
@@ -131,6 +142,14 @@ namespace VPWStudio
 			// convert to ye olde bitmappe
 			Texture = new Bitmap(Texture_CI4.Width, Texture_CI4.Height, System.Drawing.Imaging.PixelFormat.Format4bppIndexed);
 			Texture = Texture_CI4.ToBitmap(Palette_CI4);
+
+			// and get bytes for GL texturing
+			BitmapData textureData = Texture.LockBits(new Rectangle(0, 0, Texture.Width, Texture.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = textureData.Scan0;
+			int numBytes = Math.Abs(textureData.Stride) * Texture.Height;
+			PixelData = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, PixelData, 0, numBytes);
+			Texture.UnlockBits(textureData);
 		}
 
 		/// <summary>
