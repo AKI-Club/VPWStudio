@@ -23,6 +23,11 @@ namespace VPWStudio
 		public Matrix4 ModelViewProjectionMatrix = Matrix4.Identity;
 
 		/// <summary>
+		/// Name of this object.
+		/// </summary>
+		public string Name;
+
+		/// <summary>
 		/// Is this object visible in the preview?
 		/// </summary>
 		public bool Visible;
@@ -65,6 +70,7 @@ namespace VPWStudio
 		/// </summary>
 		public RenderableN64()
 		{
+			Name = String.Empty;
 			Visible = true;
 			EnableTexture = true;
 			ModelFileID = 0;
@@ -81,6 +87,7 @@ namespace VPWStudio
 		/// <param name="texID">Texture File ID</param>
 		public RenderableN64(uint modelID, uint palID, uint texID)
 		{
+			Name = String.Empty;
 			Visible = true;
 			EnableTexture = true;
 
@@ -91,6 +98,13 @@ namespace VPWStudio
 			LoadData();
 		}
 		#endregion
+
+		public void ResetPosRotScale()
+		{
+			Position = new Vector3(0, 0, -1);
+			Rotation = Vector3.Zero;
+			Scale = Vector3.One;
+		}
 
 		public void LoadData()
 		{
