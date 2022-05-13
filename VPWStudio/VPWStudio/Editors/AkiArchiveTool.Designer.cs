@@ -40,11 +40,11 @@
 			this.cmsOpenAs = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.akiTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.iTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.buttonViewHexEditor = new System.Windows.Forms.Button();
-			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.cI4PaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cI8PaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.buttonViewHexEditor = new System.Windows.Forms.Button();
+			this.tbSelItemInfo = new System.Windows.Forms.TextBox();
 			this.gbArchiveFiles.SuspendLayout();
 			this.gbSelItem.SuspendLayout();
 			this.cmsOpenAs.SuspendLayout();
@@ -103,6 +103,7 @@
 			// 
 			// buttonCancel
 			// 
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Location = new System.Drawing.Point(547, 420);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -143,13 +144,13 @@
             this.cI4PaletteToolStripMenuItem,
             this.cI8PaletteToolStripMenuItem});
 			this.cmsOpenAs.Name = "cmsOpenAs";
-			this.cmsOpenAs.Size = new System.Drawing.Size(181, 120);
+			this.cmsOpenAs.Size = new System.Drawing.Size(130, 98);
 			// 
 			// akiTextureToolStripMenuItem
 			// 
 			this.akiTextureToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_AkiTexture;
 			this.akiTextureToolStripMenuItem.Name = "akiTextureToolStripMenuItem";
-			this.akiTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.akiTextureToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
 			this.akiTextureToolStripMenuItem.Text = "AkiTexture";
 			this.akiTextureToolStripMenuItem.Click += new System.EventHandler(this.akiTextureToolStripMenuItem_Click);
 			// 
@@ -157,9 +158,30 @@
 			// 
 			this.iTextureToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_I4Texture;
 			this.iTextureToolStripMenuItem.Name = "iTextureToolStripMenuItem";
-			this.iTextureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.iTextureToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
 			this.iTextureToolStripMenuItem.Text = "ITexture";
 			this.iTextureToolStripMenuItem.Click += new System.EventHandler(this.iTextureToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(126, 6);
+			// 
+			// cI4PaletteToolStripMenuItem
+			// 
+			this.cI4PaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci4Palette;
+			this.cI4PaletteToolStripMenuItem.Name = "cI4PaletteToolStripMenuItem";
+			this.cI4PaletteToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+			this.cI4PaletteToolStripMenuItem.Text = "CI4Palette";
+			this.cI4PaletteToolStripMenuItem.Click += new System.EventHandler(this.cI4PaletteToolStripMenuItem_Click);
+			// 
+			// cI8PaletteToolStripMenuItem
+			// 
+			this.cI8PaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci8Palette;
+			this.cI8PaletteToolStripMenuItem.Name = "cI8PaletteToolStripMenuItem";
+			this.cI8PaletteToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+			this.cI8PaletteToolStripMenuItem.Text = "CI8Palette";
+			this.cI8PaletteToolStripMenuItem.Click += new System.EventHandler(this.cI8PaletteToolStripMenuItem_Click);
 			// 
 			// buttonViewHexEditor
 			// 
@@ -182,31 +204,12 @@
 			this.tbSelItemInfo.Size = new System.Drawing.Size(390, 346);
 			this.tbSelItemInfo.TabIndex = 5;
 			// 
-			// cI4PaletteToolStripMenuItem
-			// 
-			this.cI4PaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci4Palette;
-			this.cI4PaletteToolStripMenuItem.Name = "cI4PaletteToolStripMenuItem";
-			this.cI4PaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.cI4PaletteToolStripMenuItem.Text = "CI4Palette";
-			this.cI4PaletteToolStripMenuItem.Click += new System.EventHandler(this.cI4PaletteToolStripMenuItem_Click);
-			// 
-			// cI8PaletteToolStripMenuItem
-			// 
-			this.cI8PaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci8Palette;
-			this.cI8PaletteToolStripMenuItem.Name = "cI8PaletteToolStripMenuItem";
-			this.cI8PaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.cI8PaletteToolStripMenuItem.Text = "CI8Palette";
-			this.cI8PaletteToolStripMenuItem.Click += new System.EventHandler(this.cI8PaletteToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-			// 
 			// AkiArchiveTool
 			// 
+			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(634, 455);
 			this.Controls.Add(this.gbSelItem);
 			this.Controls.Add(this.buttonCancel);
