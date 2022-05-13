@@ -451,5 +451,35 @@ namespace VPWStudio
 			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].TexFileID);
 			tbPalFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].PalFileID);
 		}
+
+		private void TestScene3D_Leave(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.Context.MakeCurrent(null);
+			RedrawTimer.Stop();
+		}
+
+		private void TestScene3D_Enter(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.MakeCurrent();
+			RedrawTimer.Start();
+		}
 	}
 }

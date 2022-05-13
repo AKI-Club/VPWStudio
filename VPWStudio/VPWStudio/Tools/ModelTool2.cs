@@ -401,5 +401,35 @@ namespace VPWStudio
 				Close();
 			}
 		}
+
+		private void ModelTool2_Leave(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.Context.MakeCurrent(null);
+			RedrawTimer.Stop();
+		}
+
+		private void ModelTool2_Enter(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.MakeCurrent();
+			RedrawTimer.Start();
+		}
 	}
 }

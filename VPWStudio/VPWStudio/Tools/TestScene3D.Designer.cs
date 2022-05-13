@@ -57,14 +57,14 @@ namespace VPWStudio
 			this.tbRotY = new System.Windows.Forms.TextBox();
 			this.tbRotZ = new System.Windows.Forms.TextBox();
 			this.tpFileID = new System.Windows.Forms.TabPage();
+			this.btnEditModelFileID = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.tbTexFileID = new System.Windows.Forms.TextBox();
+			this.tbPalFileID = new System.Windows.Forms.TextBox();
+			this.tbModelFileID = new System.Windows.Forms.TextBox();
 			this.lblModelID = new System.Windows.Forms.Label();
 			this.lblPalID = new System.Windows.Forms.Label();
 			this.lblTextureID = new System.Windows.Forms.Label();
-			this.tbModelFileID = new System.Windows.Forms.TextBox();
-			this.tbPalFileID = new System.Windows.Forms.TextBox();
-			this.tbTexFileID = new System.Windows.Forms.TextBox();
-			this.btnEditModelFileID = new System.Windows.Forms.Button();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
@@ -405,6 +405,16 @@ namespace VPWStudio
 			this.tpFileID.Text = "File IDs";
 			this.tpFileID.UseVisualStyleBackColor = true;
 			// 
+			// btnEditModelFileID
+			// 
+			this.btnEditModelFileID.Location = new System.Drawing.Point(6, 112);
+			this.btnEditModelFileID.Name = "btnEditModelFileID";
+			this.btnEditModelFileID.Size = new System.Drawing.Size(219, 23);
+			this.btnEditModelFileID.TabIndex = 1;
+			this.btnEditModelFileID.Text = "&Modify...";
+			this.btnEditModelFileID.UseVisualStyleBackColor = true;
+			this.btnEditModelFileID.Click += new System.EventHandler(this.btnEditModelFileID_Click);
+			// 
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.ColumnCount = 2;
@@ -424,6 +434,33 @@ namespace VPWStudio
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(219, 100);
 			this.tableLayoutPanel3.TabIndex = 0;
+			// 
+			// tbTexFileID
+			// 
+			this.tbTexFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTexFileID.Location = new System.Drawing.Point(57, 73);
+			this.tbTexFileID.Name = "tbTexFileID";
+			this.tbTexFileID.ReadOnly = true;
+			this.tbTexFileID.Size = new System.Drawing.Size(159, 20);
+			this.tbTexFileID.TabIndex = 1;
+			// 
+			// tbPalFileID
+			// 
+			this.tbPalFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbPalFileID.Location = new System.Drawing.Point(57, 39);
+			this.tbPalFileID.Name = "tbPalFileID";
+			this.tbPalFileID.ReadOnly = true;
+			this.tbPalFileID.Size = new System.Drawing.Size(159, 20);
+			this.tbPalFileID.TabIndex = 1;
+			// 
+			// tbModelFileID
+			// 
+			this.tbModelFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbModelFileID.Location = new System.Drawing.Point(57, 6);
+			this.tbModelFileID.Name = "tbModelFileID";
+			this.tbModelFileID.ReadOnly = true;
+			this.tbModelFileID.Size = new System.Drawing.Size(159, 20);
+			this.tbModelFileID.TabIndex = 1;
 			// 
 			// lblModelID
 			// 
@@ -455,43 +492,6 @@ namespace VPWStudio
 			this.lblTextureID.TabIndex = 2;
 			this.lblTextureID.Text = "Texture";
 			// 
-			// tbModelFileID
-			// 
-			this.tbModelFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbModelFileID.Location = new System.Drawing.Point(57, 6);
-			this.tbModelFileID.Name = "tbModelFileID";
-			this.tbModelFileID.ReadOnly = true;
-			this.tbModelFileID.Size = new System.Drawing.Size(159, 20);
-			this.tbModelFileID.TabIndex = 1;
-			// 
-			// tbPalFileID
-			// 
-			this.tbPalFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPalFileID.Location = new System.Drawing.Point(57, 39);
-			this.tbPalFileID.Name = "tbPalFileID";
-			this.tbPalFileID.ReadOnly = true;
-			this.tbPalFileID.Size = new System.Drawing.Size(159, 20);
-			this.tbPalFileID.TabIndex = 1;
-			// 
-			// tbTexFileID
-			// 
-			this.tbTexFileID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTexFileID.Location = new System.Drawing.Point(57, 73);
-			this.tbTexFileID.Name = "tbTexFileID";
-			this.tbTexFileID.ReadOnly = true;
-			this.tbTexFileID.Size = new System.Drawing.Size(159, 20);
-			this.tbTexFileID.TabIndex = 1;
-			// 
-			// btnEditModelFileID
-			// 
-			this.btnEditModelFileID.Location = new System.Drawing.Point(6, 112);
-			this.btnEditModelFileID.Name = "btnEditModelFileID";
-			this.btnEditModelFileID.Size = new System.Drawing.Size(219, 23);
-			this.btnEditModelFileID.TabIndex = 1;
-			this.btnEditModelFileID.Text = "&Modify...";
-			this.btnEditModelFileID.UseVisualStyleBackColor = true;
-			this.btnEditModelFileID.Click += new System.EventHandler(this.btnEditModelFileID_Click);
-			// 
 			// TestScene3D
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +509,8 @@ namespace VPWStudio
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "TestScene3D";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TestScene3D_FormClosing);
+			this.Enter += new System.EventHandler(this.TestScene3D_Enter);
+			this.Leave += new System.EventHandler(this.TestScene3D_Leave);
 			this.gbItems.ResumeLayout(false);
 			this.gbPreview.ResumeLayout(false);
 			this.gbItemInfo.ResumeLayout(false);
