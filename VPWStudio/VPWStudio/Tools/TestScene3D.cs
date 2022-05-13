@@ -330,7 +330,7 @@ namespace VPWStudio
 					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
 					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count*3, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
 				}
-				curIndex += obj.Model.Faces.Count;
+				curIndex += obj.Model.Faces.Count*3;
 			}
 
 			GL.DisableVertexAttribArray(VertexArrayObject);
@@ -406,6 +406,12 @@ namespace VPWStudio
 			}
 
 			// reset the values in the text boxes
+			tbPosX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.X);
+			tbPosY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Y);
+			tbPosZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Z);
+			tbRotX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.X);
+			tbRotY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Y);
+			tbRotZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Z);
 		}
 		#endregion
 
