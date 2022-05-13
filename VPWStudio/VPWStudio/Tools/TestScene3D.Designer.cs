@@ -57,6 +57,7 @@ namespace VPWStudio
 			this.tbRotY = new System.Windows.Forms.TextBox();
 			this.tbRotZ = new System.Windows.Forms.TextBox();
 			this.tpFileID = new System.Windows.Forms.TabPage();
+			this.cbEnableTexture = new System.Windows.Forms.CheckBox();
 			this.btnEditModelFileID = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbTexFileID = new System.Windows.Forms.TextBox();
@@ -65,7 +66,8 @@ namespace VPWStudio
 			this.lblModelID = new System.Windows.Forms.Label();
 			this.lblPalID = new System.Windows.Forms.Label();
 			this.lblTextureID = new System.Windows.Forms.Label();
-			this.cbEnableTexture = new System.Windows.Forms.CheckBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.btnBackgroundColor = new System.Windows.Forms.Button();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
@@ -185,7 +187,7 @@ namespace VPWStudio
 			this.gbItemInfo.Controls.Add(this.tcItemInfo);
 			this.gbItemInfo.Location = new System.Drawing.Point(12, 169);
 			this.gbItemInfo.Name = "gbItemInfo";
-			this.gbItemInfo.Size = new System.Drawing.Size(251, 380);
+			this.gbItemInfo.Size = new System.Drawing.Size(251, 351);
 			this.gbItemInfo.TabIndex = 2;
 			this.gbItemInfo.TabStop = false;
 			this.gbItemInfo.Text = "Item I&nformation";
@@ -200,7 +202,7 @@ namespace VPWStudio
 			this.tcItemInfo.Location = new System.Drawing.Point(6, 19);
 			this.tcItemInfo.Name = "tcItemInfo";
 			this.tcItemInfo.SelectedIndex = 0;
-			this.tcItemInfo.Size = new System.Drawing.Size(239, 355);
+			this.tcItemInfo.Size = new System.Drawing.Size(239, 326);
 			this.tcItemInfo.TabIndex = 0;
 			// 
 			// tpPosRot
@@ -210,7 +212,7 @@ namespace VPWStudio
 			this.tpPosRot.Location = new System.Drawing.Point(4, 22);
 			this.tpPosRot.Name = "tpPosRot";
 			this.tpPosRot.Padding = new System.Windows.Forms.Padding(3);
-			this.tpPosRot.Size = new System.Drawing.Size(231, 329);
+			this.tpPosRot.Size = new System.Drawing.Size(231, 300);
 			this.tpPosRot.TabIndex = 0;
 			this.tpPosRot.Text = "Position/Rotation";
 			this.tpPosRot.UseVisualStyleBackColor = true;
@@ -222,7 +224,7 @@ namespace VPWStudio
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.Controls.Add(this.btnUpdatePosRot, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.btnResetPosRot, 1, 0);
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 290);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 261);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -277,14 +279,14 @@ namespace VPWStudio
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(219, 278);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(219, 249);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// lblPosX
 			// 
 			this.lblPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosX.AutoSize = true;
-			this.lblPosX.Location = new System.Drawing.Point(3, 16);
+			this.lblPosX.Location = new System.Drawing.Point(3, 14);
 			this.lblPosX.Name = "lblPosX";
 			this.lblPosX.Size = new System.Drawing.Size(59, 13);
 			this.lblPosX.TabIndex = 0;
@@ -294,7 +296,7 @@ namespace VPWStudio
 			// 
 			this.lblPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosY.AutoSize = true;
-			this.lblPosY.Location = new System.Drawing.Point(3, 62);
+			this.lblPosY.Location = new System.Drawing.Point(3, 55);
 			this.lblPosY.Name = "lblPosY";
 			this.lblPosY.Size = new System.Drawing.Size(59, 13);
 			this.lblPosY.TabIndex = 1;
@@ -304,7 +306,7 @@ namespace VPWStudio
 			// 
 			this.lblPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosZ.AutoSize = true;
-			this.lblPosZ.Location = new System.Drawing.Point(3, 108);
+			this.lblPosZ.Location = new System.Drawing.Point(3, 96);
 			this.lblPosZ.Name = "lblPosZ";
 			this.lblPosZ.Size = new System.Drawing.Size(59, 13);
 			this.lblPosZ.TabIndex = 2;
@@ -314,7 +316,7 @@ namespace VPWStudio
 			// 
 			this.lblRotX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotX.AutoSize = true;
-			this.lblRotX.Location = new System.Drawing.Point(3, 154);
+			this.lblRotX.Location = new System.Drawing.Point(3, 137);
 			this.lblRotX.Name = "lblRotX";
 			this.lblRotX.Size = new System.Drawing.Size(59, 13);
 			this.lblRotX.TabIndex = 3;
@@ -323,7 +325,7 @@ namespace VPWStudio
 			// tbPosX
 			// 
 			this.tbPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosX.Location = new System.Drawing.Point(68, 13);
+			this.tbPosX.Location = new System.Drawing.Point(68, 10);
 			this.tbPosX.Name = "tbPosX";
 			this.tbPosX.Size = new System.Drawing.Size(148, 20);
 			this.tbPosX.TabIndex = 7;
@@ -332,7 +334,7 @@ namespace VPWStudio
 			// tbPosY
 			// 
 			this.tbPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosY.Location = new System.Drawing.Point(68, 59);
+			this.tbPosY.Location = new System.Drawing.Point(68, 51);
 			this.tbPosY.Name = "tbPosY";
 			this.tbPosY.Size = new System.Drawing.Size(148, 20);
 			this.tbPosY.TabIndex = 8;
@@ -341,7 +343,7 @@ namespace VPWStudio
 			// tbPosZ
 			// 
 			this.tbPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosZ.Location = new System.Drawing.Point(68, 105);
+			this.tbPosZ.Location = new System.Drawing.Point(68, 92);
 			this.tbPosZ.Name = "tbPosZ";
 			this.tbPosZ.Size = new System.Drawing.Size(148, 20);
 			this.tbPosZ.TabIndex = 9;
@@ -350,7 +352,7 @@ namespace VPWStudio
 			// tbRotX
 			// 
 			this.tbRotX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotX.Location = new System.Drawing.Point(68, 151);
+			this.tbRotX.Location = new System.Drawing.Point(68, 133);
 			this.tbRotX.Name = "tbRotX";
 			this.tbRotX.Size = new System.Drawing.Size(148, 20);
 			this.tbRotX.TabIndex = 10;
@@ -360,7 +362,7 @@ namespace VPWStudio
 			// 
 			this.lblRotY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotY.AutoSize = true;
-			this.lblRotY.Location = new System.Drawing.Point(3, 200);
+			this.lblRotY.Location = new System.Drawing.Point(3, 178);
 			this.lblRotY.Name = "lblRotY";
 			this.lblRotY.Size = new System.Drawing.Size(59, 13);
 			this.lblRotY.TabIndex = 11;
@@ -370,7 +372,7 @@ namespace VPWStudio
 			// 
 			this.lblRotZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotZ.AutoSize = true;
-			this.lblRotZ.Location = new System.Drawing.Point(3, 247);
+			this.lblRotZ.Location = new System.Drawing.Point(3, 220);
 			this.lblRotZ.Name = "lblRotZ";
 			this.lblRotZ.Size = new System.Drawing.Size(59, 13);
 			this.lblRotZ.TabIndex = 12;
@@ -379,7 +381,7 @@ namespace VPWStudio
 			// tbRotY
 			// 
 			this.tbRotY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotY.Location = new System.Drawing.Point(68, 197);
+			this.tbRotY.Location = new System.Drawing.Point(68, 174);
 			this.tbRotY.Name = "tbRotY";
 			this.tbRotY.Size = new System.Drawing.Size(148, 20);
 			this.tbRotY.TabIndex = 13;
@@ -388,7 +390,7 @@ namespace VPWStudio
 			// tbRotZ
 			// 
 			this.tbRotZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotZ.Location = new System.Drawing.Point(68, 244);
+			this.tbRotZ.Location = new System.Drawing.Point(68, 217);
 			this.tbRotZ.Name = "tbRotZ";
 			this.tbRotZ.Size = new System.Drawing.Size(148, 20);
 			this.tbRotZ.TabIndex = 14;
@@ -402,10 +404,23 @@ namespace VPWStudio
 			this.tpFileID.Location = new System.Drawing.Point(4, 22);
 			this.tpFileID.Name = "tpFileID";
 			this.tpFileID.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFileID.Size = new System.Drawing.Size(231, 329);
+			this.tpFileID.Size = new System.Drawing.Size(231, 306);
 			this.tpFileID.TabIndex = 1;
 			this.tpFileID.Text = "File IDs";
 			this.tpFileID.UseVisualStyleBackColor = true;
+			// 
+			// cbEnableTexture
+			// 
+			this.cbEnableTexture.AutoSize = true;
+			this.cbEnableTexture.Checked = true;
+			this.cbEnableTexture.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbEnableTexture.Location = new System.Drawing.Point(6, 141);
+			this.cbEnableTexture.Name = "cbEnableTexture";
+			this.cbEnableTexture.Size = new System.Drawing.Size(98, 17);
+			this.cbEnableTexture.TabIndex = 2;
+			this.cbEnableTexture.Text = "Enable Texture";
+			this.cbEnableTexture.UseVisualStyleBackColor = true;
+			this.cbEnableTexture.CheckedChanged += new System.EventHandler(this.cbEnableTexture_CheckedChanged);
 			// 
 			// btnEditModelFileID
 			// 
@@ -494,28 +509,38 @@ namespace VPWStudio
 			this.lblTextureID.TabIndex = 2;
 			this.lblTextureID.Text = "Texture";
 			// 
-			// cbEnableTexture
+			// menuStrip1
 			// 
-			this.cbEnableTexture.AutoSize = true;
-			this.cbEnableTexture.Checked = true;
-			this.cbEnableTexture.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cbEnableTexture.Location = new System.Drawing.Point(6, 141);
-			this.cbEnableTexture.Name = "cbEnableTexture";
-			this.cbEnableTexture.Size = new System.Drawing.Size(98, 17);
-			this.cbEnableTexture.TabIndex = 2;
-			this.cbEnableTexture.Text = "Enable Texture";
-			this.cbEnableTexture.UseVisualStyleBackColor = true;
-			this.cbEnableTexture.CheckedChanged += new System.EventHandler(this.cbEnableTexture_CheckedChanged);
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(884, 24);
+			this.menuStrip1.TabIndex = 3;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// btnBackgroundColor
+			// 
+			this.btnBackgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnBackgroundColor.Location = new System.Drawing.Point(12, 526);
+			this.btnBackgroundColor.Name = "btnBackgroundColor";
+			this.btnBackgroundColor.Size = new System.Drawing.Size(248, 23);
+			this.btnBackgroundColor.TabIndex = 4;
+			this.btnBackgroundColor.Text = "Background Color...";
+			this.btnBackgroundColor.UseVisualStyleBackColor = true;
+			this.btnBackgroundColor.Click += new System.EventHandler(this.btnBackgroundColor_Click);
 			// 
 			// TestScene3D
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(884, 561);
+			this.Controls.Add(this.btnBackgroundColor);
 			this.Controls.Add(this.gbItemInfo);
 			this.Controls.Add(this.gbPreview);
 			this.Controls.Add(this.gbItems);
+			this.Controls.Add(this.menuStrip1);
 			this.KeyPreview = true;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(900, 600);
@@ -539,6 +564,7 @@ namespace VPWStudio
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -581,5 +607,7 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbTexFileID;
 		private System.Windows.Forms.Button btnEditModelFileID;
 		private System.Windows.Forms.CheckBox cbEnableTexture;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.Button btnBackgroundColor;
 	}
 }

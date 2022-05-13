@@ -22,6 +22,8 @@ namespace VPWStudio
 	{
 		private Timer RedrawTimer = new Timer();
 
+		private Color BackgroundColor = Color.CornflowerBlue;
+
 		#region GL-specific
 		/// <summary>
 		/// Determine if the GL context is valid. True if we can issue GL commands.
@@ -241,7 +243,7 @@ namespace VPWStudio
 		private void glControl1_Load(object sender, EventArgs e)
 		{
 			glControl1.MakeCurrent();
-			GL.ClearColor(Color.CornflowerBlue);
+			GL.ClearColor(BackgroundColor);
 			ValidGL = true;
 
 			SetupGLResources();
@@ -514,6 +516,17 @@ namespace VPWStudio
 			}
 
 			SceneModels[lbSceneItems.SelectedIndex].EnableTexture = cbEnableTexture.Checked;
+		}
+
+		private void btnBackgroundColor_Click(object sender, EventArgs e)
+		{
+			ColorDialog cd = new ColorDialog();
+			if (cd.ShowDialog() == DialogResult.OK)
+			{
+				BackgroundColor = cd.Color;
+				GL.ClearColor(BackgroundColor);
+				glControl1.Invalidate();
+			}
 		}
 	}
 }
