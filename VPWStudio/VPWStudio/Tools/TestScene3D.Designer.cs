@@ -65,6 +65,7 @@ namespace VPWStudio
 			this.lblModelID = new System.Windows.Forms.Label();
 			this.lblPalID = new System.Windows.Forms.Label();
 			this.lblTextureID = new System.Windows.Forms.Label();
+			this.cbEnableTexture = new System.Windows.Forms.CheckBox();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
@@ -395,6 +396,7 @@ namespace VPWStudio
 			// 
 			// tpFileID
 			// 
+			this.tpFileID.Controls.Add(this.cbEnableTexture);
 			this.tpFileID.Controls.Add(this.btnEditModelFileID);
 			this.tpFileID.Controls.Add(this.tableLayoutPanel3);
 			this.tpFileID.Location = new System.Drawing.Point(4, 22);
@@ -492,6 +494,19 @@ namespace VPWStudio
 			this.lblTextureID.TabIndex = 2;
 			this.lblTextureID.Text = "Texture";
 			// 
+			// cbEnableTexture
+			// 
+			this.cbEnableTexture.AutoSize = true;
+			this.cbEnableTexture.Checked = true;
+			this.cbEnableTexture.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbEnableTexture.Location = new System.Drawing.Point(6, 141);
+			this.cbEnableTexture.Name = "cbEnableTexture";
+			this.cbEnableTexture.Size = new System.Drawing.Size(98, 17);
+			this.cbEnableTexture.TabIndex = 2;
+			this.cbEnableTexture.Text = "Enable Texture";
+			this.cbEnableTexture.UseVisualStyleBackColor = true;
+			this.cbEnableTexture.CheckedChanged += new System.EventHandler(this.cbEnableTexture_CheckedChanged);
+			// 
 			// TestScene3D
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,6 +535,7 @@ namespace VPWStudio
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tpFileID.ResumeLayout(false);
+			this.tpFileID.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
 			this.ResumeLayout(false);
@@ -564,5 +580,6 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbPalFileID;
 		private System.Windows.Forms.TextBox tbTexFileID;
 		private System.Windows.Forms.Button btnEditModelFileID;
+		private System.Windows.Forms.CheckBox cbEnableTexture;
 	}
 }

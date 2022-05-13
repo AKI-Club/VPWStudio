@@ -68,6 +68,7 @@ namespace VPWStudio
 		public TestScene3D()
 		{
 			InitializeComponent();
+			cbEnableTexture.Enabled = false;
 
 			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
 			RedrawTimer.Tick += new EventHandler(UpdateScene);
@@ -227,6 +228,14 @@ namespace VPWStudio
 
 			// texture buffer
 			GL.GenBuffers(1, out TextureObject);
+
+			// texture settings
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+
+			// todo: this needs to be defined somehow
+			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
+			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
 		}
 
 		private void glControl1_Load(object sender, EventArgs e)
@@ -237,6 +246,36 @@ namespace VPWStudio
 
 			SetupGLResources();
 			GL.Viewport(0, 0, glControl1.Width, glControl1.Height);
+			RedrawTimer.Start();
+		}
+
+		private void TestScene3D_Leave(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.Context.MakeCurrent(null);
+			RedrawTimer.Stop();
+		}
+
+		private void TestScene3D_Enter(object sender, EventArgs e)
+		{
+			if (!ValidGL)
+			{
+				return;
+			}
+			if (glControl1 == null)
+			{
+				return;
+			}
+
+			glControl1.MakeCurrent();
 			RedrawTimer.Start();
 		}
 
@@ -328,6 +367,14 @@ namespace VPWStudio
 				if (obj.Visible)
 				{
 					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
+					if (obj.EnableTexture)
+					{
+						GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, obj.Texture.Width, obj.Texture.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, obj.PixelData);
+					}
+					else
+					{
+						GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
+					}
 					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count*3, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
 				}
 				curIndex += obj.Model.Faces.Count*3;
@@ -430,8 +477,7 @@ namespace VPWStudio
 			);
 			if (editDialog.ShowDialog() == DialogResult.OK)
 			{
-				// todo: actual update of SceneModels and everything else
-
+				SceneModels[lbSceneItems.SelectedIndex] = new RenderableN64(editDialog.ModelFileID, editDialog.PaletteFileID, editDialog.TextureFileID);
 				UpdateSceneList();
 				glControl1.Invalidate();
 			}
@@ -456,36 +502,18 @@ namespace VPWStudio
 			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].ModelFileID);
 			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].TexFileID);
 			tbPalFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].PalFileID);
+			cbEnableTexture.Enabled = true;
+			cbEnableTexture.Checked = SceneModels[lbSceneItems.SelectedIndex].EnableTexture;
 		}
 
-		private void TestScene3D_Leave(object sender, EventArgs e)
+		private void cbEnableTexture_CheckedChanged(object sender, EventArgs e)
 		{
-			if (!ValidGL)
-			{
-				return;
-			}
-			if (glControl1 == null)
+			if (lbSceneItems.SelectedIndex < 0)
 			{
 				return;
 			}
 
-			glControl1.Context.MakeCurrent(null);
-			RedrawTimer.Stop();
-		}
-
-		private void TestScene3D_Enter(object sender, EventArgs e)
-		{
-			if (!ValidGL)
-			{
-				return;
-			}
-			if (glControl1 == null)
-			{
-				return;
-			}
-
-			glControl1.MakeCurrent();
-			RedrawTimer.Start();
+			SceneModels[lbSceneItems.SelectedIndex].EnableTexture = cbEnableTexture.Checked;
 		}
 	}
 }
