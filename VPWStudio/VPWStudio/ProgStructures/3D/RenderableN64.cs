@@ -14,7 +14,7 @@ namespace VPWStudio
 	// todo: should split out some of the common stuff into an interface called IRenderable or something
 	public class RenderableN64
 	{
-		public Vector3 Position = Vector3.Zero;
+		public Vector3 Position = new Vector3(0, 0, -1);
 		public Vector3 Rotation = Vector3.Zero;
 		public Vector3 Scale = Vector3.One;
 

@@ -385,10 +385,9 @@ namespace VPWStudio
 			int curIndex = 0;
 			foreach (RenderableN64 obj in SceneModels)
 			{
+				GL.UniformMatrix4(ModelViewLoc, false, ref obj.ModelViewProjectionMatrix);
 				if (obj.Visible)
 				{
-					GL.UniformMatrix4(ModelViewLoc, false, ref obj.ModelViewProjectionMatrix);
-
 					// todo: this needs to be defined on a per-object basis
 					//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
 					//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
