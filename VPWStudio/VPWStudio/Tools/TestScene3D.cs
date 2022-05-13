@@ -25,6 +25,8 @@ namespace VPWStudio
 		/// </summary>
 		private Timer RedrawTimer = new Timer();
 
+		private bool Active;
+
 		/// <summary>
 		/// Background clear color.
 		/// </summary>
@@ -84,6 +86,7 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 			cbEnableTexture.Enabled = false;
+			Active = true;
 
 			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
 			RedrawTimer.Tick += new EventHandler(UpdateScene);
@@ -252,8 +255,9 @@ namespace VPWStudio
 				return;
 			}
 
-			glControl1.Context.MakeCurrent(null);
+			Active = false;
 			RedrawTimer.Stop();
+			glControl1.Context.MakeCurrent(null);
 		}
 
 		/// <summary>
@@ -270,6 +274,7 @@ namespace VPWStudio
 				return;
 			}
 
+			Active = true;
 			glControl1.MakeCurrent();
 			RedrawTimer.Start();
 		}
@@ -287,6 +292,11 @@ namespace VPWStudio
 
 		private void glControl1_Paint(object sender, PaintEventArgs e)
 		{
+			if (!Active)
+			{
+				return;
+			}
+
 			RenderScene(sender, e);
 		}
 
