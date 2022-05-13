@@ -155,6 +155,10 @@ namespace VPWStudio
 
 		#endregion
 
+		#region Danger Zone
+		public TestScene3D Test3dDialog = null;
+		#endregion
+
 		#endregion // children forms
 
 		public MainForm(string[] args)
@@ -2435,8 +2439,21 @@ namespace VPWStudio
 				return;
 			}
 
-			TestScene3D t3d = new TestScene3D();
-			t3d.ShowDialog();
+			if (Test3dDialog == null)
+			{
+				Test3dDialog = new TestScene3D();
+				Test3dDialog.MdiParent = this;
+				Test3dDialog.Show();
+			}
+			else
+			{
+				if (Test3dDialog.IsDisposed)
+				{
+					Test3dDialog = new TestScene3D();
+					Test3dDialog.MdiParent = this;
+					Test3dDialog.Show();
+				}
+			}
 		}
 		#endregion
 
