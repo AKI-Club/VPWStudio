@@ -70,6 +70,7 @@
 			// 
 			// buttonCancel
 			// 
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Location = new System.Drawing.Point(429, 410);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -304,8 +305,10 @@
 			// 
 			// CiPaletteEditor
 			// 
+			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(516, 445);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.buttonExport);
