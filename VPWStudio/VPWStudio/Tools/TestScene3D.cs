@@ -20,8 +20,14 @@ namespace VPWStudio
 	/// </summary>
 	public partial class TestScene3D : Form
 	{
+		/// <summary>
+		/// Timer for poking the Update routine.
+		/// </summary>
 		private Timer RedrawTimer = new Timer();
 
+		/// <summary>
+		/// Background clear color.
+		/// </summary>
 		private Color BackgroundColor = Color.CornflowerBlue;
 
 		#region GL-specific
@@ -39,11 +45,9 @@ namespace VPWStudio
 		public int PositionLoc;
 		public int UVCoordsLoc;
 		public int ColorDataLoc;
+
 		public int ModelViewLoc;
-
-		public int vboModelView;
-
-		// the GL stuff below this line is undetermined
+		public int ModelViewObject;
 
 		// VBO, VAO
 		public int VertexBufferObject;
@@ -56,10 +60,19 @@ namespace VPWStudio
 		public int TextureObject;
 		#endregion
 
-		// arrays for scene content
+		/// <summary>
+		/// Full list of scene coordinates.
+		/// </summary>
 		public float[] SceneCoords;
+
+		/// <summary>
+		/// Full list of scene faces.
+		/// </summary>
 		public int[] SceneFaces;
 
+		/// <summary>
+		/// Renderable scene contents.
+		/// </summary>
 		public List<RenderableN64> SceneModels = new List<RenderableN64>();
 
 		/// <summary>
@@ -104,6 +117,7 @@ namespace VPWStudio
 			{
 				SceneModels.Add(new RenderableN64(addDialog.ModelFileID, addDialog.PaletteFileID, addDialog.TextureFileID));
 				UpdateSceneList();
+				lbSceneItems.SelectedIndex = lbSceneItems.Items.Count - 1;
 				glControl1.Invalidate();
 			}
 		}
@@ -221,7 +235,9 @@ namespace VPWStudio
 			PositionLoc = GL.GetAttribLocation(ShaderProgram, "position");
 			UVCoordsLoc = GL.GetAttribLocation(ShaderProgram, "uvCoords");
 			ColorDataLoc = GL.GetAttribLocation(ShaderProgram, "colorData");
-			//ModelViewLoc = GL.GetUniformLocation(ShaderProgram, "modelView");
+			ModelViewLoc = GL.GetUniformLocation(ShaderProgram, "modelView");
+
+			GL.GenBuffers(1, out ModelViewObject);
 
 			GL.GenBuffers(1, out VertexArrayObject);
 
@@ -230,14 +246,6 @@ namespace VPWStudio
 
 			// texture buffer
 			GL.GenBuffers(1, out TextureObject);
-
-			// texture settings
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-
-			// todo: this needs to be defined somehow
-			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
-			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
 		}
 
 		private void glControl1_Load(object sender, EventArgs e)
@@ -251,6 +259,9 @@ namespace VPWStudio
 			RedrawTimer.Start();
 		}
 
+		/// <summary>
+		/// Disable 3D stuff when moving away from this form
+		/// </summary>
 		private void TestScene3D_Leave(object sender, EventArgs e)
 		{
 			if (!ValidGL)
@@ -266,6 +277,9 @@ namespace VPWStudio
 			RedrawTimer.Stop();
 		}
 
+		/// <summary>
+		/// Enable 3D stuff when moving back to this form
+		/// </summary>
 		private void TestScene3D_Enter(object sender, EventArgs e)
 		{
 			if (!ValidGL)
@@ -337,6 +351,15 @@ namespace VPWStudio
 			}
 
 			GL.ActiveTexture(TextureUnit.Texture0);
+
+			// texture settings
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+
+			// todo: this needs to be defined on a per-object basis
+			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
+			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
+
 			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
 			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
 
@@ -368,7 +391,7 @@ namespace VPWStudio
 			{
 				if (obj.Visible)
 				{
-					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
+					GL.UniformMatrix4(ModelViewLoc, false, ref obj.ModelViewProjectionMatrix);
 					if (obj.EnableTexture)
 					{
 						GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, obj.Texture.Width, obj.Texture.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, obj.PixelData);
@@ -443,8 +466,19 @@ namespace VPWStudio
 				return;
 			}
 
-			// update the position and rotation of the selected item
-			//SceneModels[lbSceneItems.SelectedIndex]
+			SceneModels[lbSceneItems.SelectedIndex].Position = new Vector3(
+				float.Parse(tbPosX.Text),
+				float.Parse(tbPosY.Text),
+				float.Parse(tbPosZ.Text)
+			);
+
+			SceneModels[lbSceneItems.SelectedIndex].Rotation = new Vector3(
+				float.Parse(tbRotX.Text),
+				float.Parse(tbRotY.Text),
+				float.Parse(tbRotZ.Text)
+			);
+
+			glControl1.Invalidate();
 		}
 
 		private void btnResetPosRot_Click(object sender, EventArgs e)
