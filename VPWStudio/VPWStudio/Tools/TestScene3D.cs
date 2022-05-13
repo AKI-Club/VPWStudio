@@ -346,7 +346,7 @@ namespace VPWStudio
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				obj.CalculateModelMatrix();
-				obj.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / glControl1.Height, 1.0f, 40.0f);
+				obj.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 1.0f, 40.0f);
 				obj.ModelViewProjectionMatrix = obj.ModelMatrix * obj.ViewProjectionMatrix;
 			}
 
@@ -355,10 +355,6 @@ namespace VPWStudio
 			// texture settings
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-
-			// todo: this needs to be defined on a per-object basis
-			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
-			//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
 
 			GL.BindTexture(TextureTarget.Texture2D, TextureObject);
 			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Rgba, PixelType.UnsignedByte, FallbackTexture);
@@ -392,6 +388,11 @@ namespace VPWStudio
 				if (obj.Visible)
 				{
 					GL.UniformMatrix4(ModelViewLoc, false, ref obj.ModelViewProjectionMatrix);
+
+					// todo: this needs to be defined on a per-object basis
+					//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, GetTextureRepeatMode(horizontalMirrorToolStripMenuItem));
+					//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, GetTextureRepeatMode(verticalMirrorToolStripMenuItem));
+
 					if (obj.EnableTexture)
 					{
 						GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, obj.Texture.Width, obj.Texture.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, obj.PixelData);
