@@ -94,16 +94,19 @@ namespace VPWStudio
 		/// </summary>
 		private void UpdateSceneList()
 		{
-			lbSceneItems.BeginUpdate();
-			lbSceneItems.Items.Clear();
+			lvSceneItems.BeginUpdate();
+			lvSceneItems.Clear();
 
 			for (int i = 0; i < SceneModels.Count; i++)
 			{
-				// temporary naming
-				lbSceneItems.Items.Add(String.Format("{0}{1}",i, SceneModels[i].Visible ? "" : " (hidden)"));
+				ListViewItem lvi = new ListViewItem();
+				lvi.Text = SceneModels[i].Name;
+				lvi.Tag = i;
+				lvi.Checked = SceneModels[i].Visible;
+				lvSceneItems.Items.Add(lvi);
 			}
 
-			lbSceneItems.EndUpdate();
+			lvSceneItems.EndUpdate();
 		}
 
 		#region Item Buttons
@@ -115,9 +118,10 @@ namespace VPWStudio
 			TestScene3D_AddEditDialog addDialog = new TestScene3D_AddEditDialog();
 			if (addDialog.ShowDialog() == DialogResult.OK)
 			{
-				SceneModels.Add(new RenderableN64(addDialog.ModelFileID, addDialog.PaletteFileID, addDialog.TextureFileID));
+				RenderableN64 newObj = new RenderableN64(addDialog.ModelFileID, addDialog.PaletteFileID, addDialog.TextureFileID);
+				newObj.Name = String.Format("{0}", SceneModels.Count);
+				SceneModels.Add(newObj);
 				UpdateSceneList();
-				lbSceneItems.SelectedIndex = lbSceneItems.Items.Count - 1;
 				glControl1.Invalidate();
 			}
 		}
@@ -127,12 +131,12 @@ namespace VPWStudio
 		/// </summary>
 		private void btnRemove_Click(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count < 0)
 			{
 				return;
 			}
 
-			SceneModels.RemoveAt(lbSceneItems.SelectedIndex);
+			SceneModels.RemoveAt(lvSceneItems.SelectedItems[0].Index);
 
 			UpdateSceneList();
 			glControl1.Invalidate();
@@ -147,6 +151,7 @@ namespace VPWStudio
 			UpdateSceneList();
 			glControl1.Invalidate();
 
+			tbObjectName.Text = String.Empty;
 			tbPosX.Text = String.Empty;
 			tbPosY.Text = String.Empty;
 			tbPosZ.Text = String.Empty;
@@ -156,32 +161,6 @@ namespace VPWStudio
 			tbModelFileID.Text = String.Empty;
 			tbPalFileID.Text = String.Empty;
 			tbTexFileID.Text = String.Empty;
-		}
-
-		/// <summary>
-		/// Toggle the visibility of the selected object.
-		/// </summary>
-		private void btnToggleVis_Click(object sender, EventArgs e)
-		{
-			if (lbSceneItems.SelectedIndex < 0)
-			{
-				return;
-			}
-
-			bool curVis = SceneModels[lbSceneItems.SelectedIndex].Visible;
-			SceneModels[lbSceneItems.SelectedIndex].Visible = !curVis;
-
-			string curText = lbSceneItems.Items[lbSceneItems.SelectedIndex].ToString();
-			if (curText.Contains("(hidden)") && SceneModels[lbSceneItems.SelectedIndex].Visible)
-			{
-				lbSceneItems.Items[lbSceneItems.SelectedIndex] = curText.Substring(0, curText.IndexOf(" "));
-			}
-			else
-			{
-				lbSceneItems.Items[lbSceneItems.SelectedIndex] = String.Format("{0} (hidden)", curText);
-			}
-
-			glControl1.Invalidate();
 		}
 		#endregion
 
@@ -461,18 +440,20 @@ namespace VPWStudio
 		#region Position/Rotation buttons
 		private void btnUpdatePosRot_Click(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
-			SceneModels[lbSceneItems.SelectedIndex].Position = new Vector3(
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
+
+			SceneModels[objIndex].Position = new Vector3(
 				float.Parse(tbPosX.Text),
 				float.Parse(tbPosY.Text),
 				float.Parse(tbPosZ.Text)
 			);
 
-			SceneModels[lbSceneItems.SelectedIndex].Rotation = new Vector3(
+			SceneModels[objIndex].Rotation = new Vector3(
 				float.Parse(tbRotX.Text),
 				float.Parse(tbRotY.Text),
 				float.Parse(tbRotZ.Text)
@@ -483,37 +464,42 @@ namespace VPWStudio
 
 		private void btnResetPosRot_Click(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
 			// reset the values in the text boxes
-			tbPosX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.X);
-			tbPosY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Y);
-			tbPosZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Z);
-			tbRotX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.X);
-			tbRotY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Y);
-			tbRotZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Z);
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
+
+			tbPosX.Text = String.Format("{0}", SceneModels[objIndex].Position.X);
+			tbPosY.Text = String.Format("{0}", SceneModels[objIndex].Position.Y);
+			tbPosZ.Text = String.Format("{0}", SceneModels[objIndex].Position.Z);
+			tbRotX.Text = String.Format("{0}", SceneModels[objIndex].Rotation.X);
+			tbRotY.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Y);
+			tbRotZ.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Z);
 		}
 		#endregion
 
 		#region File ID buttons
 		private void btnEditModelFileID_Click(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
+
 			TestScene3D_AddEditDialog editDialog = new TestScene3D_AddEditDialog(
-				(int)SceneModels[lbSceneItems.SelectedIndex].ModelFileID,
-				(int)SceneModels[lbSceneItems.SelectedIndex].TexFileID,
-				(int)SceneModels[lbSceneItems.SelectedIndex].PalFileID
+				(int)SceneModels[objIndex].ModelFileID,
+				(int)SceneModels[objIndex].TexFileID,
+				(int)SceneModels[objIndex].PalFileID
 			);
 			if (editDialog.ShowDialog() == DialogResult.OK)
 			{
-				SceneModels[lbSceneItems.SelectedIndex] = new RenderableN64(editDialog.ModelFileID, editDialog.PaletteFileID, editDialog.TextureFileID);
+				SceneModels[objIndex] = new RenderableN64(editDialog.ModelFileID, editDialog.PaletteFileID, editDialog.TextureFileID);
+				SceneModels[objIndex].ResetPosRotScale();
 				UpdateSceneList();
 				glControl1.Invalidate();
 			}
@@ -522,34 +508,39 @@ namespace VPWStudio
 
 		private void lbSceneItems_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
 			// update yon display values
-			tbPosX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.X);
-			tbPosY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Y);
-			tbPosZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Position.Z);
-			tbRotX.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.X);
-			tbRotY.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Y);
-			tbRotZ.Text = String.Format("{0}", SceneModels[lbSceneItems.SelectedIndex].Rotation.Z);
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
 
-			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].ModelFileID);
-			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].TexFileID);
-			tbPalFileID.Text = String.Format("{0:X4}", SceneModels[lbSceneItems.SelectedIndex].PalFileID);
+			tbObjectName.Text = SceneModels[objIndex].Name;
+
+			tbPosX.Text = String.Format("{0}", SceneModels[objIndex].Position.X);
+			tbPosY.Text = String.Format("{0}", SceneModels[objIndex].Position.Y);
+			tbPosZ.Text = String.Format("{0}", SceneModels[objIndex].Position.Z);
+			tbRotX.Text = String.Format("{0}", SceneModels[objIndex].Rotation.X);
+			tbRotY.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Y);
+			tbRotZ.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Z);
+
+			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[objIndex].ModelFileID);
+			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[objIndex].TexFileID);
+			tbPalFileID.Text = String.Format("{0:X4}", SceneModels[objIndex].PalFileID);
 			cbEnableTexture.Enabled = true;
-			cbEnableTexture.Checked = SceneModels[lbSceneItems.SelectedIndex].EnableTexture;
+			cbEnableTexture.Checked = SceneModels[objIndex].EnableTexture;
 		}
 
 		private void cbEnableTexture_CheckedChanged(object sender, EventArgs e)
 		{
-			if (lbSceneItems.SelectedIndex < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
 
-			SceneModels[lbSceneItems.SelectedIndex].EnableTexture = cbEnableTexture.Checked;
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
+			SceneModels[objIndex].EnableTexture = cbEnableTexture.Checked;
 		}
 
 		private void btnBackgroundColor_Click(object sender, EventArgs e)
@@ -561,6 +552,48 @@ namespace VPWStudio
 				GL.ClearColor(BackgroundColor);
 				glControl1.Invalidate();
 			}
+		}
+
+		private void btnRename_Click(object sender, EventArgs e)
+		{
+			if (lvSceneItems.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			int objIndex = lvSceneItems.SelectedItems[0].Index;
+			SceneModels[objIndex].Name = tbObjectName.Text;
+			UpdateSceneList();
+		}
+
+		private void lvSceneItems_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lvSceneItems.SelectedItems.Count <= 0)
+			{
+				return;
+			}
+
+			int sceneModelsIndex = lvSceneItems.SelectedItems[0].Index;
+			// update yon display values
+			tbObjectName.Text = SceneModels[sceneModelsIndex].Name;
+
+			tbPosX.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Position.X);
+			tbPosY.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Position.Y);
+			tbPosZ.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Position.Z);
+			tbRotX.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.X);
+			tbRotY.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.Y);
+			tbRotZ.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.Z);
+
+			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[sceneModelsIndex].ModelFileID);
+			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[sceneModelsIndex].TexFileID);
+			tbPalFileID.Text = String.Format("{0:X4}", SceneModels[sceneModelsIndex].PalFileID);
+			cbEnableTexture.Enabled = true;
+			cbEnableTexture.Checked = SceneModels[sceneModelsIndex].EnableTexture;
+		}
+
+		private void lvSceneItems_ItemChecked(object sender, ItemCheckedEventArgs e)
+		{
+			SceneModels[e.Item.Index].Visible = e.Item.Checked;
 		}
 	}
 }
