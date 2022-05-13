@@ -266,7 +266,7 @@ namespace VPWStudio
 			{
 				coordsList.AddRange(obj.Model.GetNormalizedCoords());
 				faceList.AddRange(obj.Model.GetFacesList(numVerts));
-				numVerts += obj.Model.NumVertices;
+				numVerts += obj.Model.Vertices.Count;
 			}
 
 			// convert lists to arrays
@@ -275,9 +275,9 @@ namespace VPWStudio
 
 			// bind buffers
 			GL.BindBuffer(BufferTarget.ArrayBuffer, VertexArrayObject);
-			GL.BindVertexArray(VertexArrayObject);
-			GL.BufferData(BufferTarget.ArrayBuffer, coordsList.Count * sizeof(float), SceneCoords, BufferUsageHint.StaticDraw);
+			GL.BufferData(BufferTarget.ArrayBuffer, SceneCoords.Length * sizeof(float), SceneCoords, BufferUsageHint.StaticDraw);
 
+			GL.BindVertexArray(VertexArrayObject);
 			GL.VertexAttribPointer(PositionLoc, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
 			GL.EnableVertexAttribArray(PositionLoc);
 			GL.VertexAttribPointer(UVCoordsLoc, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
@@ -286,7 +286,7 @@ namespace VPWStudio
 			GL.EnableVertexAttribArray(ColorDataLoc);
 
 			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
-			GL.BufferData(BufferTarget.ElementArrayBuffer, SceneFaces.Length * sizeof(int), SceneFaces, BufferUsageHint.StaticDraw);
+			GL.BufferData(BufferTarget.ElementArrayBuffer, SceneFaces.Length * sizeof(uint), SceneFaces, BufferUsageHint.StaticDraw);
 
 			foreach (RenderableN64 obj in SceneModels)
 			{
@@ -320,7 +320,6 @@ namespace VPWStudio
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 			GL.Enable(EnableCap.DepthTest);
 
-			GL.EnableVertexAttribArray(VertexArrayObject);
 			GL.BindVertexArray(VertexArrayObject);
 
 			int curIndex = 0;
@@ -329,7 +328,7 @@ namespace VPWStudio
 				if (obj.Visible)
 				{
 					GL.UniformMatrix4(vboModelView, false, ref obj.ModelViewProjectionMatrix);
-					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
+					GL.DrawElements(PrimitiveType.Triangles, obj.Model.Faces.Count*3, DrawElementsType.UnsignedInt, curIndex * sizeof(uint));
 				}
 				curIndex += obj.Model.Faces.Count;
 			}
