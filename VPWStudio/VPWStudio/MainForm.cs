@@ -258,6 +258,9 @@ namespace VPWStudio
 			}
 
 			LoadLocationFile();
+
+			playROMToolStripMenuItem.Enabled = true;
+			playROMToolStripMenuItem.Visible = true;
 		}
 
 		/// <summary>
