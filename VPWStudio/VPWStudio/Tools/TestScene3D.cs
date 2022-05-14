@@ -500,6 +500,7 @@ namespace VPWStudio
 			}
 
 			int objIndex = lvSceneItems.SelectedItems[0].Index;
+			string oldName = SceneModels[objIndex].Name;
 
 			TestScene3D_AddEditDialog editDialog = new TestScene3D_AddEditDialog(
 				(int)SceneModels[objIndex].ModelFileID,
@@ -509,6 +510,7 @@ namespace VPWStudio
 			if (editDialog.ShowDialog() == DialogResult.OK)
 			{
 				SceneModels[objIndex] = new RenderableN64(editDialog.ModelFileID, editDialog.PaletteFileID, editDialog.TextureFileID);
+				SceneModels[objIndex].Name = oldName;
 				SceneModels[objIndex].ResetPosRotScale();
 				UpdateSceneList();
 				glControl1.Invalidate();
