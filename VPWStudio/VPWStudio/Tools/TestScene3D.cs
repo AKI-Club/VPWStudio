@@ -134,7 +134,7 @@ namespace VPWStudio
 		/// </summary>
 		private void btnRemove_Click(object sender, EventArgs e)
 		{
-			if (lvSceneItems.SelectedItems.Count < 0)
+			if (lvSceneItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
@@ -188,7 +188,7 @@ namespace VPWStudio
 			}
 			// todo: GL.GetShaderInfoLog(VertexShader, output string)
 
-			s = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.Resources.DefaultShader.frag");
+			s = Assembly.GetExecutingAssembly().GetManifestResourceStream("VPWStudio.Resources.NoVertexColors.frag");
 			if (s != null)
 			{
 				StreamReader sr = new StreamReader(s);
