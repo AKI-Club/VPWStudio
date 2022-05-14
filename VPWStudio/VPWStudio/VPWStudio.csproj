@@ -905,6 +905,7 @@
     </Content>
     <EmbeddedResource Include="Resources\DefaultShader.frag" />
     <EmbeddedResource Include="Resources\DefaultShader.vert" />
+    <EmbeddedResource Include="Resources\NoVertexColors.frag" />
     <None Include="Resources\vpw64_16px.png" />
     <None Include="Resources\wm2000_16px.png" />
     <None Include="Resources\worldtour_16px.png" />
