@@ -218,6 +218,7 @@
 			// 
 			// arenasToolStripMenuItem
 			// 
+			this.arenasToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Arenas;
 			this.arenasToolStripMenuItem.Name = "arenasToolStripMenuItem";
 			resources.ApplyResources(this.arenasToolStripMenuItem, "arenasToolStripMenuItem");
 			this.arenasToolStripMenuItem.Click += new System.EventHandler(this.arenasToolStripMenuItem_Click);

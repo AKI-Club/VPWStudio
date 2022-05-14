@@ -1064,6 +1064,7 @@
     <Content Include="Manual\worldtour.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\arenas.png" />
     <Content Include="Resources\FileTypes\AkiArchive.png" />
     <Content Include="Resources\FileTypes\AkiLargeFont.png" />
     <Content Include="Resources\FileTypes\AkiModel.png" />
