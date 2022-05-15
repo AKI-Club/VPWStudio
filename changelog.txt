@@ -2,9 +2,65 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 21 (202x/yy/zz)
+Pre-Alpha Preview 22 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 21 (2022/05/xx)
+---------------------------------
+* [FileTableDialog] Text search now also checks project-specific comments.
+
+* [FileTableDialog] Added "Search FileType" option.
+
+* [Intro "Editor"] Now supports all regions and revisions of No Mercy and WM2000.
+  (Only Animation and Image data is supported; Sequence data is not yet found.)
+  (Also, there's still no actual editing, hence the quotes around "Editor".)
+
+* [FileTable Editor] Added Hex Viewer for replacement file data.
+  (Note: this only shows the contents of the replacement file, not necessarily
+  how it will appear in the ROM when it's built. This comment mainly concerns
+  textures and palettes.)
+
+* [FileTable_EditMultiEntryInfoDialog] Fix error related to blanking out Comment
+  and/or Project Comment values.
+
+* [ModelTool2] Added quick close shortcut (Escape key), like other forms.
+
+* [AnimTest] Added Toki 1 index; allow form resizing; allow closing form via
+  Escape key.
+
+* [TexPreviewDialog] Fixed error when using scroll wheel on a 0x0px image.
+
+* [AkiArchiveTool] Allow viewing file data as CI4Palette and CI8Palette.
+
+* [Project Menu] Rename "Costumes" to "Costume Items", since this could get
+  confused with default wrestler costumes.
+
+* [Project Menu] Properly hide and disable "Build ROM" on closing a project.
+
+* [AnimTest] Added "View" button for Toki1 values.
+
+* [AkiArchiveTool] Added ability to close dialog with Escape key.
+
+* [CiPaletteEditor] Added ability to close dialog with Escape key and
+  accept changes with the Enter key.
+
+* [SelectTextureDialog] Added ability to close dialog with Escape key and
+  accept changes with the Enter key.
+
+* Added new Danger Zone item: TestScene3D.
+  It kind of works, but it's a pain to deal with!
+  That's what you get when things are made by someone who doesn't understand
+  3D programming all too well.
+  (Also, there isn't a good solution for handling model and texture selection yet.)
+
+* [FileTableDB] Various updates to a few FileTableDBs:
+  - VPW2 had a small amount of updates
+  - WM2K has over 800 changes
+  - Revenge was also updated
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 20 (2022/04/22)
 ---------------------------------
