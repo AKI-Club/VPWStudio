@@ -6,7 +6,7 @@ Pre-Alpha Preview 22 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
 
-Pre-Alpha Preview 21 (2022/05/xx)
+Pre-Alpha Preview 21 (2022/05/14)
 ---------------------------------
 * [FileTableDialog] Text search now also checks project-specific comments.
 
