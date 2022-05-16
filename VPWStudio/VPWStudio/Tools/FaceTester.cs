@@ -63,6 +63,8 @@ namespace VPWStudio
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
+			// todo: not hardcoded addresses
+			
 			romStream.Seek(0x469B8, SeekOrigin.Begin);
 			DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(110);
 
