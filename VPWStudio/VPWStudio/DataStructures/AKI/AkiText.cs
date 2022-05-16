@@ -207,8 +207,6 @@ namespace VPWStudio
 			// the challenging part is that strings can contain newlines (\n), so we have to be careful.
 
 			int curEntry = 0;
-			SortedList<int, string> outEntries = new SortedList<int, string>();
-
 			while (!sr.EndOfStream)
 			{
 				string curLine = sr.ReadLine();
@@ -225,11 +223,6 @@ namespace VPWStudio
 					// continued from previous entry
 					Entries[curEntry].Text += "\n" + curLine;
 				}
-			}
-
-			foreach (KeyValuePair<int, AkiTextEntry> e in Entries)
-			{
-				Console.WriteLine(String.Format("{0} = {1}", e.Key, e.Value.Text));
 			}
 
 			// fix up locations
