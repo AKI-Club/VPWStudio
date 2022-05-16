@@ -335,7 +335,8 @@ namespace VPWStudio
 				return;
 			}
 
-			GL.Clear(ClearBufferMask.ColorBufferBit);
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			GL.Enable(EnableCap.DepthTest);
 
 			mviewData[0] = Matrix4.CreateTranslation(0.0f, 0.0f, -1.0f);
 			GL.UniformMatrix4(ModelViewUniform, false, ref mviewData[0]);
