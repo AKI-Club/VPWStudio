@@ -197,6 +197,10 @@ namespace VPWStudio
 		#endregion
 
 		#region CSV Read/Write
+		/// <summary>
+		/// Read AkiText from a tab-delimited CSV file.
+		/// </summary>
+		/// <param name="sr">StreamReader instance to use.</param>
 		public void ReadCsv(StreamReader sr)
 		{
 			// zoinkity's original code
@@ -286,6 +290,108 @@ namespace VPWStudio
 			for (int i = 0; i < Entries.Count; i++)
 			{
 				sw.WriteLine(String.Format("{0}\t{1}", i, Entries[i].Text));
+			}
+		}
+		#endregion
+
+		#region akitext Command Line Tool Import/Export
+		/// <summary>
+		/// Parsing mode for akitext Command Line Tool format import
+		/// </summary>
+		private enum ToolParseMode
+		{
+			CheckOpenBracket,
+			GetString,
+			CheckCloseBracket
+		};
+
+		/// <summary>
+		/// Read AkiText from a format compatible with the "akitext" command line tool.
+		/// </summary>
+		/// <param name="sr">StreamReader instance to use.</param>
+		public void ReadToolImport(StreamReader sr)
+		{
+			ToolParseMode parseMode = ToolParseMode.CheckOpenBracket;
+			int curEntry = 0;
+			string outString = "";
+
+			while (!sr.EndOfStream)
+			{
+				char c = (char)sr.Read();
+				switch (parseMode)
+				{
+					case ToolParseMode.CheckOpenBracket:
+						if (c == '{')
+						{
+							if ((char)sr.Peek() == '\"')
+							{
+								parseMode = ToolParseMode.GetString;
+								outString = String.Empty;
+								sr.Read();
+							}
+						}
+						break;
+
+					case ToolParseMode.GetString:
+						if (c == '\"')
+						{
+							parseMode = ToolParseMode.CheckCloseBracket;
+						}
+						else
+						{
+							outString += (char)c;
+						}
+						break;
+
+					case ToolParseMode.CheckCloseBracket:
+						if (c == '}')
+						{
+							parseMode = ToolParseMode.CheckOpenBracket;
+							Entries.Add(curEntry++, new AkiTextEntry(0, outString));
+						}
+						else if (c == '\"')
+						{
+							// ends in double quote
+							outString += (char)c;
+						}
+						else
+						{
+							outString += '\"' + (char)c;
+							parseMode = ToolParseMode.GetString;
+						}
+						break;
+				}
+			}
+
+			// generate location table
+			int startLoc = (Entries.Count * 2);
+
+			// adjust for terminator if needed
+			if (Entries.Count % 2 != 0)
+			{
+				startLoc += 2;
+			}
+
+			int curLoc = startLoc;
+			for (int i = 0; i < Entries.Count; i++)
+			{
+				Entries[i].Location = (UInt16)curLoc;
+				curLoc += (Encoding.GetEncoding("shift_jis").GetBytes(Entries[i].Text).Length + 1);
+			}
+		}
+
+		/// <summary>
+		/// Write out AkiText to a format compatible with the "akitext" command line tool.
+		/// </summary>
+		/// <param name="sw">StreamWriter instance to use.</param>
+		public void WriteToolExport(StreamWriter sw)
+		{
+			// entry format: {"string"}
+			for (int i = 0; i < Entries.Count; i++)
+			{
+				sw.Write("{\"");
+				sw.Write(Entries[i].Text);
+				sw.WriteLine("\"}");
 			}
 		}
 		#endregion
