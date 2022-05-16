@@ -861,12 +861,14 @@ namespace VPWStudio
 			#endregion
 
 			#region Edit Mode-related
+			// These entries don't exist for Revenge and earlier games.
 			{
 				"FirstSkinColorPalette",
 				new Dictionary<SpecificGame, int>()
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x10DE },
 					{ SpecificGame.WM2K_PAL, 0x10DE },
+
 					{ SpecificGame.VPW2_NTSC_J, 0x173D },
 				}
 			},
@@ -877,19 +879,33 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x1112 },
 					{ SpecificGame.WM2K_PAL, 0x1112 },
+
 					{ SpecificGame.VPW2_NTSC_J, 0x1745 },
+
+					// No Mercy uses a per-face palette, unlike the other games.
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x1D72 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D72 },
+					{ SpecificGame.NoMercy_PAL_10, 0x1D72 },
+					{ SpecificGame.NoMercy_PAL_11, 0x1D72 },
 				}
 			},
 
 			{
-				// only valid for games where faces are sequentially stored in the filetable
-				// (in other words, WM2K and later)
 				"FirstFaceTexture",
 				new Dictionary<SpecificGame, int>()
 				{
+					// linear with shared palettes
 					{ SpecificGame.WM2K_NTSC_U, 0x114F },
 					{ SpecificGame.WM2K_PAL, 0x114F },
+
+					// linear with shared palettes
 					{ SpecificGame.VPW2_NTSC_J, 0x17F0 },
+
+					// mixed with per-face palettes
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x1D73 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D73 },
+					{ SpecificGame.NoMercy_PAL_10, 0x1D73 },
+					{ SpecificGame.NoMercy_PAL_11, 0x1D73 },
 				}
 			},
 
@@ -899,7 +915,13 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x1182 },
 					{ SpecificGame.WM2K_PAL, 0x1182 },
+
 					{ SpecificGame.VPW2_NTSC_J, 0x185E },
+
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x1F09 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x1F09 },
+					{ SpecificGame.NoMercy_PAL_10, 0x1F09 },
+					{ SpecificGame.NoMercy_PAL_11, 0x1F09 },
 				}
 			},
 
@@ -909,7 +931,14 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x11B5 },
 					{ SpecificGame.WM2K_PAL, 0x11B5 },
+
 					{ SpecificGame.VPW2_NTSC_J, 0x18CC },
+
+					// Note: No Mercy uses (texture, palette, palette)
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x1F6F },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x1F6F },
+					{ SpecificGame.NoMercy_PAL_10, 0x1F6F },
+					{ SpecificGame.NoMercy_PAL_11, 0x1F6F },
 				}
 			},
 
@@ -917,8 +946,8 @@ namespace VPWStudio
 				"FirstFacePaintTexture",
 				new Dictionary<SpecificGame, int>()
 				{
-					// WM2000 combines facepaint and face accessories into one selection,
-					// which is why there's no entries for it here.
+					// WM2000 and No Mercy combine facepaint and face accessories into
+					// one selection, which is why there's no entries for them here.
 
 					{ SpecificGame.VPW2_NTSC_J, 0x18E8 },
 				}
@@ -930,7 +959,13 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x11D4 },
 					{ SpecificGame.WM2K_PAL, 0x11D4 },
+
 					{ SpecificGame.VPW2_NTSC_J, 0x190A },
+
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x264F },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x264F },
+					{ SpecificGame.NoMercy_PAL_10, 0x264F },
+					{ SpecificGame.NoMercy_PAL_11, 0x264F },
 				}
 			},
 			#endregion
