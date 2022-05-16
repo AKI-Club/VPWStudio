@@ -171,11 +171,11 @@ namespace VPWStudio.Editors
 			tbNewText.Text = curText;
 		}
 
-		#region CSV Import/Export
-		private void buttonImportCSV_Click(object sender, EventArgs e)
+		#region Import/Export Tab-separated CSV
+		private void importTabCSVToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Import CSV";
+			ofd.Title = "Import Tab-separated CSV";
 			ofd.Filter = SharedStrings.FileFilter_CSV;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
@@ -183,18 +183,18 @@ namespace VPWStudio.Editors
 				{
 					using (StreamReader sr = new StreamReader(fs))
 					{
-						CurTextArchive = new AkiText();
+						//CurTextArchive = new AkiText();
 						CurTextArchive.ReadCsv(sr);
-						PopulateEntryList();
+						//PopulateEntryList();
 					}
 				}
 			}
 		}
 
-		private void buttonExportCSV_Click(object sender, EventArgs e)
+		private void exportTabCSVToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Title = "Export CSV";
+			sfd.Title = "Export Tab-separated CSV";
 			sfd.Filter = SharedStrings.FileFilter_CSV;
 			if (FileKey == -1)
 			{
@@ -212,6 +212,53 @@ namespace VPWStudio.Editors
 					using (StreamWriter sw = new StreamWriter(fs))
 					{
 						CurTextArchive.WriteCsv(sw);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region Import/Export akitext command line tool format
+		private void importAkiTextToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Import akitext Command Line Tool Format";
+			ofd.Filter = SharedStrings.FileFilter_TXT;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+				{
+					using (StreamReader sr = new StreamReader(fs))
+					{
+						CurTextArchive = new AkiText();
+						CurTextArchive.ReadToolImport(sr);
+						PopulateEntryList();
+					}
+				}
+			}
+		}
+
+		private void exportAkiTextToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export akitext Command Line Tool Format";
+			sfd.Filter = SharedStrings.FileFilter_CSV;
+			if (FileKey == -1)
+			{
+				// todo: we could make this better
+				sfd.FileName = "export.txt";
+			}
+			else
+			{
+				sfd.FileName = String.Format("{0:X4}.txt", FileKey);
+			}
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+				{
+					using (StreamWriter sw = new StreamWriter(fs))
+					{
+						CurTextArchive.WriteToolExport(sw);
 					}
 				}
 			}
@@ -267,5 +314,6 @@ namespace VPWStudio.Editors
 		{
 			Program.InfoMessageBox(KnownControlCodes);
 		}
+
 	}
 }

@@ -36,17 +36,23 @@
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.cbTextEntries = new System.Windows.Forms.ComboBox();
 			this.labelTextEntry = new System.Windows.Forms.Label();
-			this.buttonImportCSV = new System.Windows.Forms.Button();
-			this.buttonExportCSV = new System.Windows.Forms.Button();
 			this.buttonControlCodes = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.importTabCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.importAkiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportTabCSVToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportAkiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbCurrentText.SuspendLayout();
 			this.gbNewText.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbCurrentText
 			// 
 			this.gbCurrentText.Controls.Add(this.tbCurText);
-			this.gbCurrentText.Location = new System.Drawing.Point(12, 39);
+			this.gbCurrentText.Location = new System.Drawing.Point(12, 62);
 			this.gbCurrentText.Name = "gbCurrentText";
 			this.gbCurrentText.Size = new System.Drawing.Size(480, 144);
 			this.gbCurrentText.TabIndex = 1;
@@ -67,7 +73,7 @@
 			// gbNewText
 			// 
 			this.gbNewText.Controls.Add(this.tbNewText);
-			this.gbNewText.Location = new System.Drawing.Point(12, 189);
+			this.gbNewText.Location = new System.Drawing.Point(12, 212);
 			this.gbNewText.Name = "gbNewText";
 			this.gbNewText.Size = new System.Drawing.Size(480, 144);
 			this.gbNewText.TabIndex = 2;
@@ -87,7 +93,7 @@
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(336, 339);
+			this.buttonOK.Location = new System.Drawing.Point(336, 362);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 6;
@@ -97,7 +103,7 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(417, 339);
+			this.buttonCancel.Location = new System.Drawing.Point(417, 362);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 7;
@@ -108,7 +114,7 @@
 			// cbTextEntries
 			// 
 			this.cbTextEntries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbTextEntries.Location = new System.Drawing.Point(73, 12);
+			this.cbTextEntries.Location = new System.Drawing.Point(73, 35);
 			this.cbTextEntries.Name = "cbTextEntries";
 			this.cbTextEntries.Size = new System.Drawing.Size(419, 21);
 			this.cbTextEntries.TabIndex = 0;
@@ -117,35 +123,15 @@
 			// labelTextEntry
 			// 
 			this.labelTextEntry.AutoSize = true;
-			this.labelTextEntry.Location = new System.Drawing.Point(12, 15);
+			this.labelTextEntry.Location = new System.Drawing.Point(12, 38);
 			this.labelTextEntry.Name = "labelTextEntry";
 			this.labelTextEntry.Size = new System.Drawing.Size(55, 13);
 			this.labelTextEntry.TabIndex = 0;
 			this.labelTextEntry.Text = "&Text Entry";
 			// 
-			// buttonImportCSV
-			// 
-			this.buttonImportCSV.Location = new System.Drawing.Point(12, 339);
-			this.buttonImportCSV.Name = "buttonImportCSV";
-			this.buttonImportCSV.Size = new System.Drawing.Size(88, 23);
-			this.buttonImportCSV.TabIndex = 3;
-			this.buttonImportCSV.Text = "&Import CSV...";
-			this.buttonImportCSV.UseVisualStyleBackColor = true;
-			this.buttonImportCSV.Click += new System.EventHandler(this.buttonImportCSV_Click);
-			// 
-			// buttonExportCSV
-			// 
-			this.buttonExportCSV.Location = new System.Drawing.Point(106, 339);
-			this.buttonExportCSV.Name = "buttonExportCSV";
-			this.buttonExportCSV.Size = new System.Drawing.Size(88, 23);
-			this.buttonExportCSV.TabIndex = 4;
-			this.buttonExportCSV.Text = "&Export CSV...";
-			this.buttonExportCSV.UseVisualStyleBackColor = true;
-			this.buttonExportCSV.Click += new System.EventHandler(this.buttonExportCSV_Click);
-			// 
 			// buttonControlCodes
 			// 
-			this.buttonControlCodes.Location = new System.Drawing.Point(200, 339);
+			this.buttonControlCodes.Location = new System.Drawing.Point(12, 362);
 			this.buttonControlCodes.Name = "buttonControlCodes";
 			this.buttonControlCodes.Size = new System.Drawing.Size(130, 23);
 			this.buttonControlCodes.TabIndex = 5;
@@ -153,30 +139,90 @@
 			this.buttonControlCodes.UseVisualStyleBackColor = true;
 			this.buttonControlCodes.Click += new System.EventHandler(this.buttonControlCodes_Click);
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importToolStripMenuItem,
+            this.exportToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(504, 24);
+			this.menuStrip1.TabIndex = 8;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// importToolStripMenuItem
+			// 
+			this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importTabCSVToolStripMenuItem,
+            this.importAkiTextToolStripMenuItem});
+			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+			this.importToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+			this.importToolStripMenuItem.Text = "&Import";
+			// 
+			// importTabCSVToolStripMenuItem
+			// 
+			this.importTabCSVToolStripMenuItem.Name = "importTabCSVToolStripMenuItem";
+			this.importTabCSVToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+			this.importTabCSVToolStripMenuItem.Text = "Tab-separated CSV...";
+			this.importTabCSVToolStripMenuItem.Click += new System.EventHandler(this.importTabCSVToolStripMenuItem_Click);
+			// 
+			// importAkiTextToolStripMenuItem
+			// 
+			this.importAkiTextToolStripMenuItem.Name = "importAkiTextToolStripMenuItem";
+			this.importAkiTextToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+			this.importAkiTextToolStripMenuItem.Text = "akitext Tool Format...";
+			this.importAkiTextToolStripMenuItem.Click += new System.EventHandler(this.importAkiTextToolStripMenuItem_Click);
+			// 
+			// exportToolStripMenuItem
+			// 
+			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportTabCSVToolStripMenuItem1,
+            this.exportAkiTextToolStripMenuItem});
+			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+			this.exportToolStripMenuItem.Text = "&Export";
+			// 
+			// exportTabCSVToolStripMenuItem1
+			// 
+			this.exportTabCSVToolStripMenuItem1.Name = "exportTabCSVToolStripMenuItem1";
+			this.exportTabCSVToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+			this.exportTabCSVToolStripMenuItem1.Text = "Tab-separated CSV...";
+			this.exportTabCSVToolStripMenuItem1.Click += new System.EventHandler(this.exportTabCSVToolStripMenuItem1_Click);
+			// 
+			// exportAkiTextToolStripMenuItem
+			// 
+			this.exportAkiTextToolStripMenuItem.Name = "exportAkiTextToolStripMenuItem";
+			this.exportAkiTextToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+			this.exportAkiTextToolStripMenuItem.Text = "akitext Tool Format...";
+			this.exportAkiTextToolStripMenuItem.Click += new System.EventHandler(this.exportAkiTextToolStripMenuItem_Click);
+			// 
 			// AkiTextEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(504, 374);
+			this.ClientSize = new System.Drawing.Size(504, 397);
 			this.Controls.Add(this.buttonControlCodes);
-			this.Controls.Add(this.buttonExportCSV);
-			this.Controls.Add(this.buttonImportCSV);
 			this.Controls.Add(this.labelTextEntry);
 			this.Controls.Add(this.cbTextEntries);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.gbNewText);
 			this.Controls.Add(this.gbCurrentText);
+			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "AkiTextEditor";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "AKI Text Editor";
 			this.gbCurrentText.ResumeLayout(false);
 			this.gbCurrentText.PerformLayout();
 			this.gbNewText.ResumeLayout(false);
 			this.gbNewText.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -192,8 +238,13 @@
 		private System.Windows.Forms.TextBox tbNewText;
 		private System.Windows.Forms.ComboBox cbTextEntries;
 		private System.Windows.Forms.Label labelTextEntry;
-		private System.Windows.Forms.Button buttonImportCSV;
-		private System.Windows.Forms.Button buttonExportCSV;
 		private System.Windows.Forms.Button buttonControlCodes;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem importTabCSVToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportTabCSVToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem importAkiTextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportAkiTextToolStripMenuItem;
 	}
 }
