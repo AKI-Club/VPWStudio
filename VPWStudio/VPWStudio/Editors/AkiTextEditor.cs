@@ -183,9 +183,9 @@ namespace VPWStudio.Editors
 				{
 					using (StreamReader sr = new StreamReader(fs))
 					{
-						//CurTextArchive = new AkiText();
+						CurTextArchive = new AkiText();
 						CurTextArchive.ReadCsv(sr);
-						//PopulateEntryList();
+						PopulateEntryList();
 					}
 				}
 			}
