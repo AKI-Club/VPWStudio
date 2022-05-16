@@ -199,7 +199,6 @@ namespace VPWStudio
 		#region CSV Read/Write
 		public void ReadCsv(StreamReader sr)
 		{
-			
 			// zoinkity's original code
 			/*
 			def CSVtoVPW2(data, * args):
@@ -237,15 +236,53 @@ namespace VPWStudio
 				a.byteswap()
 				return b''.join((a.tobytes(), b))
 				*/
+
+			// each entry is (number)\t(string)
+			// the challenging part is that strings can contain newlines (\n),
+			// so we have to be careful.
+			string csvText = sr.ReadToEnd();
+			string[] entries = csvText.Split('\t', '\n');
+
+			int curEntry = 0;
+			bool parsingString = false;
+			SortedList<int, string> outEntries = new SortedList<int, string>();
+
+			for (int i = 0; i < entries.Length; i++)
+			{
+				if (parsingString)
+				{
+					if (!int.TryParse(entries[i], out _))
+					{
+						if (outEntries.ContainsKey(curEntry))
+						{
+							outEntries[curEntry] += entries[i];
+							parsingString = false;
+						}
+						else
+						{
+							outEntries.Add(curEntry, entries[i]);
+						}
+					}
+				}
+
+				if (int.TryParse(entries[i], out curEntry))
+				{
+					parsingString = true;
+				}
+			}
+
+			foreach (KeyValuePair<int, string> p in outEntries)
+			{
+				Console.WriteLine(String.Format("{0} = {1}", p.Key, p.Value));
+			}
 		}
 
 		/// <summary>
-		/// Write out AkiText to a CSV file
+		/// Write out AkiText to a tab-delimited CSV file.
 		/// </summary>
 		/// <param name="sw">StreamWriter instance to use.</param>
 		public void WriteCsv(StreamWriter sw)
 		{
-			// todo: this could probably be improved.
 			for (int i = 0; i < Entries.Count; i++)
 			{
 				sw.WriteLine(String.Format("{0}\t{1}", i, Entries[i].Text));
