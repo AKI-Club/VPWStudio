@@ -52,3 +52,9 @@ FTID:0435,1;Toki1FileID
 FTID:03AD,1;MoveDamageFileID
 FTID:0001,1;DefaultLargeFont
 FTID:0002,1;DefaultSmallFont
+FTID:10DE,1;FirstSkinColorPalette
+FTID:1112,1;FirstFaceColorPalette
+FTID:114F,1;FirstFaceTexture
+FTID:1182,1;FirstFrontHairTexture
+FTID:11B5,1;FirstFacialHairTexture
+FTID:11D4,1;FirstFaceAccessoryTexture

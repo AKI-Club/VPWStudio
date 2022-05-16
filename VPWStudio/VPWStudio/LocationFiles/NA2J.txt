@@ -110,3 +110,10 @@ FTID:006B,1;WrestlerDefaultCostumeData
 FTID:006C,1;DefaultNameData
 FTID:0001,1;DefaultLargeFont
 FTID:0002,1;DefaultSmallFont
+FTID:173D,1;FirstSkinColorPalette
+FTID:1745,1;FirstFaceColorPalette
+FTID:17F0,1;FirstFaceTexture
+FTID:185E,1;FirstFrontHairTexture
+FTID:18CC,1;FirstFacialHairTexture
+FTID:18EB,1;FirstFacePaintTexture
+FTID:190A,1;FirstFaceAccessoryTexture

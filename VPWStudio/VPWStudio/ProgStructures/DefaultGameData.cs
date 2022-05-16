@@ -857,7 +857,82 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_PAL_11, 0x4478 }
 					#endregion
 				}
-			}
+			},
+			#endregion
+
+			#region Edit Mode-related
+			{
+				"FirstSkinColorPalette",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x10DE },
+					{ SpecificGame.WM2K_PAL, 0x10DE },
+					{ SpecificGame.VPW2_NTSC_J, 0x173D },
+				}
+			},
+
+			{
+				"FirstFaceColorPalette",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x1112 },
+					{ SpecificGame.WM2K_PAL, 0x1112 },
+					{ SpecificGame.VPW2_NTSC_J, 0x1745 },
+				}
+			},
+
+			{
+				// only valid for games where faces are sequentially stored in the filetable
+				// (in other words, WM2K and later)
+				"FirstFaceTexture",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x114F },
+					{ SpecificGame.WM2K_PAL, 0x114F },
+					{ SpecificGame.VPW2_NTSC_J, 0x17F0 },
+				}
+			},
+
+			{
+				"FirstFrontHairTexture",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x1182 },
+					{ SpecificGame.WM2K_PAL, 0x1182 },
+					{ SpecificGame.VPW2_NTSC_J, 0x185E },
+				}
+			},
+
+			{
+				"FirstFacialHairTexture",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x11B5 },
+					{ SpecificGame.WM2K_PAL, 0x11B5 },
+					{ SpecificGame.VPW2_NTSC_J, 0x18CC },
+				}
+			},
+
+			{
+				"FirstFacePaintTexture",
+				new Dictionary<SpecificGame, int>()
+				{
+					// WM2000 combines facepaint and face accessories into one selection,
+					// which is why there's no entries for it here.
+
+					{ SpecificGame.VPW2_NTSC_J, 0x18E8 },
+				}
+			},
+
+			{
+				"FirstFaceAccessoryTexture",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x11D4 },
+					{ SpecificGame.WM2K_PAL, 0x11D4 },
+					{ SpecificGame.VPW2_NTSC_J, 0x190A },
+				}
+			},
 			#endregion
 		};
 		#endregion
