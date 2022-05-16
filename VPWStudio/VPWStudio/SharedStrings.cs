@@ -21,6 +21,7 @@ namespace VPWStudio
 		// todo: split these out into save/load
 		// for example, we might want to have a filter that catches all relevant formats.
 		public static string FileFilter_CSV = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+		public static string FileFilter_TXT = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 		public static string FileFilter_PNG = "PNG Files (*.png)|*.png|All Files (*.*)|*.*";
 		public static string FileFilter_Text = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 		public static string FileFilter_GameSharkCodes = "GameShark Code File (*.gscodes)|*.gscodes|All Files (*.*)|*.*";
