@@ -203,81 +203,49 @@ namespace VPWStudio
 		/// <param name="sr">StreamReader instance to use.</param>
 		public void ReadCsv(StreamReader sr)
 		{
-			// zoinkity's original code
-			/*
-			def CSVtoVPW2(data, * args):
-				from array import array
-
-				# Split at tabs, then strip the last newlines off.
-				l = data.split(b'\t')[1:]
-				# Create an array with len(lst) entries, each 2 bytes long.
-				sz = len(l) << 1
-
-				a, b, t = array('H'), bytearray(), []
-				for i in l:
-				    a.append(sz + len(b))
-				    # This is a bit convoluted for python, but screw it.
-				    s = b''.join((i.rsplit(b'\n', 1)[0].rstrip(), b'\x00'))
-				    b.extend(s)
-					t.append(s)
-				# Condense the list, which should have been done before...
-				for c, i in enumerate(t) :
-
-					p = b.rfind(i)
-					q = a[c] - sz
-				    if p == q:
-				        p = b.rfind(i, 0, q)
-				    if p<0: continue
-				    # On a hit, set new index and delete the old reference.
-				    l = len(i)
-					del b[q:q + l]
-					q = a[c]
-
-					a[c] = p + sz
-				    for j in range(len(a)) :
-				        if a[j] > q:
-				            a[j]-=l
-				a.byteswap()
-				return b''.join((a.tobytes(), b))
-				*/
-
 			// each entry is (number)\t(string)
-			// the challenging part is that strings can contain newlines (\n),
-			// so we have to be careful.
-			string csvText = sr.ReadToEnd();
-			string[] entries = csvText.Split('\t', '\n');
+			// the challenging part is that strings can contain newlines (\n), so we have to be careful.
 
 			int curEntry = 0;
-			bool parsingString = false;
 			SortedList<int, string> outEntries = new SortedList<int, string>();
 
-			for (int i = 0; i < entries.Length; i++)
+			while (!sr.EndOfStream)
 			{
-				if (parsingString)
+				string curLine = sr.ReadLine();
+				if (curLine.Contains("\t"))
 				{
-					if (!int.TryParse(entries[i], out _))
+					string[] tok = curLine.Split('\t');
+					if (int.TryParse(tok[0], out curEntry))
 					{
-						if (outEntries.ContainsKey(curEntry))
-						{
-							outEntries[curEntry] += entries[i];
-							parsingString = false;
-						}
-						else
-						{
-							outEntries.Add(curEntry, entries[i]);
-						}
+						Entries.Add(curEntry, new AkiTextEntry(0, tok[1]));
 					}
 				}
-
-				if (int.TryParse(entries[i], out curEntry))
+				else
 				{
-					parsingString = true;
+					// continued from previous entry
+					Entries[curEntry].Text += "\n" + curLine;
 				}
 			}
 
-			foreach (KeyValuePair<int, string> p in outEntries)
+			foreach (KeyValuePair<int, AkiTextEntry> e in Entries)
 			{
-				Console.WriteLine(String.Format("{0} = {1}", p.Key, p.Value));
+				Console.WriteLine(String.Format("{0} = {1}", e.Key, e.Value.Text));
+			}
+
+			// fix up locations
+			int startLoc = (Entries.Count * 2);
+
+			// adjust for terminator if needed
+			if (Entries.Count % 2 != 0)
+			{
+				startLoc += 2;
+			}
+
+			int curLoc = startLoc;
+			for (int i = 0; i < Entries.Count; i++)
+			{
+				Entries[i].Location = (UInt16)curLoc;
+				curLoc += (Encoding.GetEncoding("shift_jis").GetBytes(Entries[i].Text).Length + 1);
 			}
 		}
 
