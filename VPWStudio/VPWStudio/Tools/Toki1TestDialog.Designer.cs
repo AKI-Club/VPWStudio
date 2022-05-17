@@ -65,12 +65,15 @@
 			this.ClientSize = new System.Drawing.Size(492, 293);
 			this.Controls.Add(this.cbToki1Entries);
 			this.Controls.Add(this.tbOutput);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 320);
 			this.Name = "Toki1TestDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Toki1 Test";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Toki1TestDialog_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

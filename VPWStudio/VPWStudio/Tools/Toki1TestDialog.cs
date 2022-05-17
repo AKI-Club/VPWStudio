@@ -187,13 +187,13 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("Mist/Fire Frame: 0x{0:X2}", t.Data[6]));
 			sb.AppendLine(String.Format("Beginning Frame for Reversal Only 0x{0:X2}", t.Data[7]));
 			sb.AppendLine(String.Format("[08] 0x{0:X2}", t.Data[8]));
-			sb.AppendLine(String.Format("[09] 0x{0:X2}", t.Data[9]));
+			sb.AppendLine(String.Format("Reversal Frame (Front Grapples?) 0x{0:X2}", t.Data[9]));
 			sb.AppendLine(String.Format("Breakway Frame (Grapple Moves) 0x{0:X2}", t.Data[10]));
 			sb.AppendLine(String.Format("Motion Effect: frame {0}, value 0x{1:X2}", t.Data[11], t.Data[12]));
 			sb.AppendLine(String.Format("Camera Effect: frame {0}, value 0x{1:X2}", t.Data[13], t.Data[14]));
 			sb.AppendLine(String.Format("Replay Frame: 0x{0:X2}", t.Data[15]));
 			sb.AppendLine(String.Format("[10] 0x{0:X2}", t.Data[16]));
-			sb.AppendLine(String.Format("[11] 0x{0:X2}", t.Data[17]));
+			sb.AppendLine(String.Format("Ground Hold Interrupt Frame 0x{0:X2}", t.Data[17]));
 			sb.AppendLine(String.Format("[12] 0x{0:X2}", t.Data[18]));
 			sb.AppendLine(String.Format("[13] 0x{0:X2}", t.Data[19]));
 			sb.AppendLine(String.Format("Effect 1: frame {0}, value 0x{1:X2}", t.Data[20], t.Data[21]));
@@ -216,13 +216,38 @@ namespace VPWStudio
 
 			ShowData(cbToki1Entries.SelectedIndex);
 		}
+
+		private void Toki1TestDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 
+	/// <summary>
+	/// A single Animation Mods 1/Toki 1 entry.
+	/// </summary>
+	/// This should probably exist elsewhere...
 	public class Toki1Entry
 	{
+		/// <summary>
+		/// Data for this Toki 1 entry.
+		/// </summary>
 		public byte[] Data;
+
+		/// <summary>
+		/// Data length of this Toki 1 entry.
+		/// Has to exist since the Toki 1 values changed through the games.
+		/// </summary>
 		public int DataLength;
 
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		/// <param name="dataLength">Length of data to read.</param>
 		public Toki1Entry(BinaryReader br, int dataLength)
 		{
 			DataLength = dataLength;
