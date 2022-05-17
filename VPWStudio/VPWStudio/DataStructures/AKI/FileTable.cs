@@ -728,8 +728,9 @@ namespace VPWStudio
 		/// Find all files of a specified type in the FileTable.
 		/// </summary>
 		/// <param name="t">FileTypes enum value of file type to find.</param>
+		/// <param name="ignoreForced">If true, ignore any files where the File Type has been forced.</param>
 		/// <returns>A List containing all the IDs of files matching the specified type.</returns>
-		public List<int> GetFilesOfType(FileTypes t)
+		public List<int> GetFilesOfType(FileTypes t, bool ignoreForced = false)
 		{
 			List<int> files = new List<int>();
 
@@ -737,7 +738,17 @@ namespace VPWStudio
 			{
 				if (fte.Value.FileType == t)
 				{
-					files.Add(fte.Key);
+					if (ignoreForced)
+					{
+						if (!fte.Value.OverrideFileType)
+						{
+							files.Add(fte.Key);
+						}
+					}
+					else
+					{
+						files.Add(fte.Key);
+					}
 				}
 			}
 
