@@ -99,6 +99,7 @@ namespace VPWStudio
 		/// Create a new HexViewer from an array of bytes.
 		/// </summary>
 		/// <param name="data">Data to be loaded into the HexView.</param>
+		/// <param name="title">(optional) Title for the hex editor form.</param>
 		/// <returns>HexViewer form with the requested data.</returns>
 		public HexViewer NewViewerData(byte[] data, string title = "")
 		{
@@ -125,8 +126,8 @@ namespace VPWStudio
 		/// <summary>
 		/// Check if the requested data is already open in a hex editor.
 		/// </summary>
-		/// <param name="hash"></param>
-		/// <returns></returns>
+		/// <param name="hash">Data hash to check.</param>
+		/// <returns>Index of active hex viewer, or -1 if none found.</returns>
 		public int CheckOpenFile(byte[] hash)
 		{
 			foreach (HexViewerEntry hve in ActiveHexViewers)
