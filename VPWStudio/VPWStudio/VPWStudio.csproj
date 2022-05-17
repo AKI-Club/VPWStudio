@@ -467,6 +467,7 @@
     <Compile Include="Helpers\Crc32.cs" />
     <Compile Include="Helpers\N64Colors.cs" />
     <Compile Include="Helpers\NameHandler.cs" />
+    <Compile Include="Helpers\PackedBitsHandler.cs" />
     <Compile Include="ProgStructures\3D\RenderableN64.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
