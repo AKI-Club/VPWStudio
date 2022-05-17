@@ -127,11 +127,11 @@ namespace VPWStudio
 
 		private void GenerateTextureLists()
 		{
-			AkiTexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.AkiTexture);
-			Ci4TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Texture);
-			Ci8TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Texture);
-			Ci4PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
-			Ci8PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette);
+			AkiTexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.AkiTexture, true);
+			Ci4TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Texture, true);
+			Ci8TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Texture, true);
+			Ci4PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette, true);
+			Ci8PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette, true);
 		}
 
 		private void UpdateComboBoxLists()
