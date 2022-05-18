@@ -99,6 +99,7 @@ namespace VPWStudio
 			this.ClientSize = new System.Drawing.Size(280, 297);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.menuStrip1);
+			this.KeyPreview = true;
 			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(1064, 1104);
@@ -107,7 +108,9 @@ namespace VPWStudio
 			this.Name = "TimTester";
 			this.ShowInTaskbar = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "TIM Tester";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TimTester_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
