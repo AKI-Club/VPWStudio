@@ -65,6 +65,7 @@
 			this.ClientSize = new System.Drawing.Size(494, 295);
 			this.Controls.Add(this.cbMoveDamageEntries);
 			this.Controls.Add(this.tbOutput);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 320);
@@ -72,6 +73,7 @@
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Move Damage Test";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveDamageTestDialog_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
