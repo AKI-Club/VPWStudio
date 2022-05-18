@@ -139,12 +139,14 @@
 			this.Controls.Add(this.gbOutput);
 			this.Controls.Add(this.buttonParse);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefParseTest";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "StableDefParseTest";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StableDefParseTest_KeyDown);
 			this.gbOutput.ResumeLayout(false);
 			this.gbOutput.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
