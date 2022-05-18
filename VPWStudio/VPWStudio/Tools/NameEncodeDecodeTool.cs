@@ -28,5 +28,13 @@ namespace VPWStudio
 			tbLong.Text = result[0];
 			tbShort.Text = result[1];
 		}
+
+		private void NameEncodeDecodeTool_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }

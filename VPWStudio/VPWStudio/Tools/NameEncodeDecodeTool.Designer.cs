@@ -143,11 +143,13 @@
 			this.Controls.Add(this.buttonEncode);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.Name = "NameEncodeDecodeTool";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Name Encode/Decode Tool (\"Ned\")";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameEncodeDecodeTool_KeyDown);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
