@@ -457,12 +457,14 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.gbPreview);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FaceTester";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "VPW2 Face Tester";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FaceTester_KeyDown);
 			this.gbPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbFacePreview)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
