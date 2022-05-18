@@ -709,6 +709,34 @@ namespace VPWStudio
 			},
 
 			// "LastAnimationFileID"
+
+			{
+				"FirstMoveAnimationID",
+				new Dictionary<SpecificGame, int>()
+				{
+					// Unsure if World Tour and VPW64 has and/or uses this value.
+					// It could be something that was introduced in Revenge.
+
+					#region WCW/nWo Revenge
+					{ SpecificGame.Revenge_NTSC_U, 0x110B },
+					{ SpecificGame.Revenge_PAL, 0x110B },
+					#endregion
+
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x19DB },
+					{ SpecificGame.WM2K_PAL, 0x19DB },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x2056 },
+
+					#region WWF No Mercy
+					{ SpecificGame.NoMercy_NTSC_U_10, 0x3322 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x3322 },
+					{ SpecificGame.NoMercy_PAL_10, 0x3322 },
+					{ SpecificGame.NoMercy_PAL_11, 0x3322 }
+					#endregion
+				}
+			},
 			#endregion
 
 			{

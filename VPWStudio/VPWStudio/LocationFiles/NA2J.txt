@@ -104,6 +104,7 @@ RAM:800707C0,4;Toki2 Pointer
 RAM:800707C4,4;Toki1 Pointer
 FTID:0E50,1;CostumeColorPalette
 FTID:1A90,1;FirstAnimationFileID
+FTID:2056,1;FirstMoveAnimationID
 FTID:034B,1;Toki1FileID
 FTID:0277,1;MoveDamageFileID
 FTID:006B,1;WrestlerDefaultCostumeData
