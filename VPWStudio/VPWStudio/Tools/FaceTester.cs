@@ -459,5 +459,13 @@ namespace VPWStudio
 			g.Dispose();
 			pbFacePreview.Image = FacePreview;
 		}
+
+		private void FaceTester_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
