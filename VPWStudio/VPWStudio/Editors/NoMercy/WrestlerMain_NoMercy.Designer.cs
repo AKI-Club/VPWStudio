@@ -30,6 +30,11 @@
 		{
 			this.lbWrestlers = new System.Windows.Forms.ListBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpHeight = new System.Windows.Forms.TableLayoutPanel();
+			this.nudHeight = new System.Windows.Forms.NumericUpDown();
+			this.labelHeightValue = new System.Windows.Forms.Label();
+			this.cbEntranceVideo = new System.Windows.Forms.ComboBox();
+			this.cbThemeMusic = new System.Windows.Forms.ComboBox();
 			this.tbUnknown = new System.Windows.Forms.TextBox();
 			this.tbWrestlerID4 = new System.Windows.Forms.TextBox();
 			this.tbWrestlerID2 = new System.Windows.Forms.TextBox();
@@ -50,35 +55,30 @@
 			this.labelAppearanceIndex = new System.Windows.Forms.Label();
 			this.labelProfileIndex = new System.Windows.Forms.Label();
 			this.tlpProfile = new System.Windows.Forms.TableLayoutPanel();
+			this.nudProfileIndex = new System.Windows.Forms.NumericUpDown();
 			this.buttonProfile = new System.Windows.Forms.Button();
 			this.tlpAppearance = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonAppearance = new System.Windows.Forms.Button();
 			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
 			this.labelThemeMusic = new System.Windows.Forms.Label();
-			this.cbEntranceVideo = new System.Windows.Forms.ComboBox();
+			this.tlpWeight = new System.Windows.Forms.TableLayoutPanel();
+			this.labelWeightValue = new System.Windows.Forms.Label();
+			this.nudWeight = new System.Windows.Forms.NumericUpDown();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.cbThemeMusic = new System.Windows.Forms.ComboBox();
-			this.nudProfileIndex = new System.Windows.Forms.NumericUpDown();
-			this.tlpHeight = new System.Windows.Forms.TableLayoutPanel();
-			this.labelHeightValue = new System.Windows.Forms.Label();
-			this.tlpWeight = new System.Windows.Forms.TableLayoutPanel();
-			this.labelWeightValue = new System.Windows.Forms.Label();
-			this.nudHeight = new System.Windows.Forms.NumericUpDown();
-			this.nudWeight = new System.Windows.Forms.NumericUpDown();
 			this.buttonRefreshList = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tlpHeight.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
 			this.tlpProfile.SuspendLayout();
-			this.tlpAppearance.SuspendLayout();
-			this.gbWrestlers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).BeginInit();
-			this.tlpHeight.SuspendLayout();
+			this.tlpAppearance.SuspendLayout();
 			this.tlpWeight.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
+			this.gbWrestlers.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -138,6 +138,172 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 375);
 			this.tableLayoutPanel1.TabIndex = 1;
+			// 
+			// tlpHeight
+			// 
+			this.tlpHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpHeight.ColumnCount = 2;
+			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tlpHeight.Controls.Add(this.nudHeight, 0, 0);
+			this.tlpHeight.Controls.Add(this.labelHeightValue, 1, 0);
+			this.tlpHeight.Location = new System.Drawing.Point(106, 139);
+			this.tlpHeight.Name = "tlpHeight";
+			this.tlpHeight.RowCount = 1;
+			this.tlpHeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpHeight.Size = new System.Drawing.Size(219, 28);
+			this.tlpHeight.TabIndex = 4;
+			// 
+			// nudHeight
+			// 
+			this.nudHeight.Hexadecimal = true;
+			this.nudHeight.Location = new System.Drawing.Point(3, 3);
+			this.nudHeight.Maximum = new decimal(new int[] {
+            39,
+            0,
+            0,
+            0});
+			this.nudHeight.Name = "nudHeight";
+			this.nudHeight.Size = new System.Drawing.Size(81, 20);
+			this.nudHeight.TabIndex = 4;
+			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
+			this.nudHeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudHeight_Validating);
+			// 
+			// labelHeightValue
+			// 
+			this.labelHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelHeightValue.AutoSize = true;
+			this.labelHeightValue.Location = new System.Drawing.Point(90, 7);
+			this.labelHeightValue.Name = "labelHeightValue";
+			this.labelHeightValue.Size = new System.Drawing.Size(126, 13);
+			this.labelHeightValue.TabIndex = 11;
+			this.labelHeightValue.Text = "(height)";
+			// 
+			// cbEntranceVideo
+			// 
+			this.cbEntranceVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbEntranceVideo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbEntranceVideo.FormattingEnabled = true;
+			this.cbEntranceVideo.Items.AddRange(new object[] {
+            "00 (None?)",
+            "01 APA",
+            "02 Al Snow",
+            "03 Angle",
+            "04 Austin",
+            "05 (formerly big show?)",
+            "06 Blackman",
+            "07 Bossman",
+            "08 Bulldog",
+            "09 Cactus",
+            "0A Chyna",
+            "0B Corporate",
+            "0C D\'Lo",
+            "0D Dudleyz",
+            "0E DX",
+            "0F Edge",
+            "10 Rios",
+            "11 Godfather",
+            "12 Hardyz",
+            "13 HBK",
+            "14 HHH",
+            "15 Hollys",
+            "16 Jericho",
+            "17 Kane",
+            "18 Mankind",
+            "19 Mark Henry",
+            "1A Mr. Ass",
+            "1B NAO",
+            "1C Malenko",
+            "1D The Rock",
+            "1E Shamrock",
+            "1F Taka",
+            "20 Tazz",
+            "21 Too Cool",
+            "22 Venis",
+            "23 Viscera",
+            "24 X-Pac",
+            "25 (Y2J Countdown)",
+            "26 Undertaker",
+            "27 Benoit",
+            "28 T&A",
+            "29 Eddy",
+            "2A Saturn",
+            "2B Right to Censor"});
+			this.cbEntranceVideo.Location = new System.Drawing.Point(106, 108);
+			this.cbEntranceVideo.Name = "cbEntranceVideo";
+			this.cbEntranceVideo.Size = new System.Drawing.Size(219, 21);
+			this.cbEntranceVideo.TabIndex = 8;
+			this.cbEntranceVideo.SelectionChangeCommitted += new System.EventHandler(this.cbEntranceVideo_SelectionChangeCommitted);
+			// 
+			// cbThemeMusic
+			// 
+			this.cbThemeMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbThemeMusic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbThemeMusic.FormattingEnabled = true;
+			this.cbThemeMusic.Items.AddRange(new object[] {
+            "00 (None?)",
+            "01 Kane",
+            "02 ???",
+            "03 N.A.O.",
+            "04 Shamrock",
+            "05 Venis",
+            "06 X-Pac",
+            "07 ???",
+            "08 Al Snow",
+            "09 Boss Man",
+            "0A Steve Blackman",
+            "0B ???",
+            "0C Corporate",
+            "0D D\'Lo",
+            "0E DX",
+            "0F Edge",
+            "10 Godfather",
+            "11 Mark Henry",
+            "12 Right to Censor",
+            "13 Raw",
+            "14 Mr. Ass",
+            "15 Hardy Boyz",
+            "16 Hardcore Holly",
+            "17 ???",
+            "18 Dudleys",
+            "19 British Bulldog",
+            "1A Viscera",
+            "1B Essa Rios",
+            "1C Chyna",
+            "1D ???",
+            "1E Malenko",
+            "1F ???",
+            "20 TAKA",
+            "21 Tazz",
+            "22 Real American",
+            "23 HHH",
+            "24 Austin",
+            "25 The Rock",
+            "26 APA",
+            "27 Mankind/Mick",
+            "28 Too Cool",
+            "29 Cactus",
+            "2A HBK",
+            "2B (Y2J Countdown)",
+            "2C Jericho",
+            "2D Angle",
+            "2E ???",
+            "2F Benoit",
+            "30 T&A",
+            "31 Guerrero",
+            "32 Saturn",
+            "33 Original 1",
+            "34 Original 2",
+            "35 Original 3",
+            "36 Original 4",
+            "37 Original 5",
+            "38 Original 6",
+            "39 Original 7"});
+			this.cbThemeMusic.Location = new System.Drawing.Point(106, 74);
+			this.cbThemeMusic.Name = "cbThemeMusic";
+			this.cbThemeMusic.Size = new System.Drawing.Size(219, 21);
+			this.cbThemeMusic.TabIndex = 6;
+			this.cbThemeMusic.SelectionChangeCommitted += new System.EventHandler(this.cbThemeMusic_SelectionChangeCommitted);
 			// 
 			// tbUnknown
 			// 
@@ -351,6 +517,27 @@
 			this.tlpProfile.Size = new System.Drawing.Size(219, 29);
 			this.tlpProfile.TabIndex = 28;
 			// 
+			// nudProfileIndex
+			// 
+			this.nudProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudProfileIndex.Hexadecimal = true;
+			this.nudProfileIndex.Increment = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.nudProfileIndex.Location = new System.Drawing.Point(3, 4);
+			this.nudProfileIndex.Maximum = new decimal(new int[] {
+            291,
+            0,
+            0,
+            0});
+			this.nudProfileIndex.Name = "nudProfileIndex";
+			this.nudProfileIndex.Size = new System.Drawing.Size(142, 20);
+			this.nudProfileIndex.TabIndex = 4;
+			this.nudProfileIndex.ValueChanged += new System.EventHandler(this.nudProfileIndex_ValueChanged);
+			this.nudProfileIndex.Validating += new System.ComponentModel.CancelEventHandler(this.nudProfileIndex_Validating);
+			// 
 			// buttonProfile
 			// 
 			this.buttonProfile.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -407,61 +594,45 @@
 			this.labelThemeMusic.TabIndex = 5;
 			this.labelThemeMusic.Text = "Theme &Music";
 			// 
-			// cbEntranceVideo
+			// tlpWeight
 			// 
-			this.cbEntranceVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbEntranceVideo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbEntranceVideo.FormattingEnabled = true;
-			this.cbEntranceVideo.Items.AddRange(new object[] {
-            "00 (None?)",
-            "01 APA",
-            "02 Al Snow",
-            "03 Angle",
-            "04 Austin",
-            "05 (formerly big show?)",
-            "06 Blackman",
-            "07 Bossman",
-            "08 Bulldog",
-            "09 Cactus",
-            "0A Chyna",
-            "0B Corporate",
-            "0C D\'Lo",
-            "0D Dudleyz",
-            "0E DX",
-            "0F Edge",
-            "10 Rios",
-            "11 Godfather",
-            "12 Hardyz",
-            "13 HBK",
-            "14 HHH",
-            "15 Hollys",
-            "16 Jericho",
-            "17 Kane",
-            "18 Mankind",
-            "19 Mark Henry",
-            "1A Mr. Ass",
-            "1B NAO",
-            "1C Malenko",
-            "1D The Rock",
-            "1E Shamrock",
-            "1F Taka",
-            "20 Tazz",
-            "21 Too Cool",
-            "22 Venis",
-            "23 Viscera",
-            "24 X-Pac",
-            "25 (Y2J Countdown)",
-            "26 Undertaker",
-            "27 Benoit",
-            "28 T&A",
-            "29 Eddy",
-            "2A Saturn",
-            "2B Right to Censor"});
-			this.cbEntranceVideo.Location = new System.Drawing.Point(106, 108);
-			this.cbEntranceVideo.Name = "cbEntranceVideo";
-			this.cbEntranceVideo.Size = new System.Drawing.Size(219, 21);
-			this.cbEntranceVideo.TabIndex = 8;
-			this.cbEntranceVideo.SelectionChangeCommitted += new System.EventHandler(this.cbEntranceVideo_SelectionChangeCommitted);
+			this.tlpWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpWeight.ColumnCount = 2;
+			this.tlpWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tlpWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+			this.tlpWeight.Controls.Add(this.labelWeightValue, 1, 0);
+			this.tlpWeight.Controls.Add(this.nudWeight, 0, 0);
+			this.tlpWeight.Location = new System.Drawing.Point(106, 207);
+			this.tlpWeight.Name = "tlpWeight";
+			this.tlpWeight.RowCount = 1;
+			this.tlpWeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpWeight.Size = new System.Drawing.Size(219, 28);
+			this.tlpWeight.TabIndex = 30;
+			// 
+			// labelWeightValue
+			// 
+			this.labelWeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelWeightValue.AutoSize = true;
+			this.labelWeightValue.Location = new System.Drawing.Point(90, 7);
+			this.labelWeightValue.Name = "labelWeightValue";
+			this.labelWeightValue.Size = new System.Drawing.Size(126, 13);
+			this.labelWeightValue.TabIndex = 15;
+			this.labelWeightValue.Text = "(weight)";
+			// 
+			// nudWeight
+			// 
+			this.nudWeight.Hexadecimal = true;
+			this.nudWeight.Location = new System.Drawing.Point(3, 3);
+			this.nudWeight.Maximum = new decimal(new int[] {
+            503,
+            0,
+            0,
+            0});
+			this.nudWeight.Name = "nudWeight";
+			this.nudWeight.Size = new System.Drawing.Size(81, 20);
+			this.nudWeight.TabIndex = 4;
+			this.nudWeight.ValueChanged += new System.EventHandler(this.nudWeight_ValueChanged);
+			this.nudWeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudWeight_Validating);
 			// 
 			// gbWrestlers
 			// 
@@ -493,177 +664,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// cbThemeMusic
-			// 
-			this.cbThemeMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbThemeMusic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbThemeMusic.FormattingEnabled = true;
-			this.cbThemeMusic.Items.AddRange(new object[] {
-            "00 (None?)",
-            "01 Kane",
-            "02 ???",
-            "03 N.A.O.",
-            "04 Shamrock",
-            "05 Venis",
-            "06 X-Pac",
-            "07 ???",
-            "08 Al Snow",
-            "09 Boss Man",
-            "0A Steve Blackman",
-            "0B ???",
-            "0C Corporate",
-            "0D D\'Lo",
-            "0E DX",
-            "0F Edge",
-            "10 Godfather",
-            "11 Mark Henry",
-            "12 Right to Censor",
-            "13 Raw",
-            "14 Mr. Ass",
-            "15 Hardy Boyz",
-            "16 Hardcore Holly",
-            "17 ???",
-            "18 Dudleys",
-            "19 British Bulldog",
-            "1A Viscera",
-            "1B Essa Rios",
-            "1C Chyna",
-            "1D ???",
-            "1E Malenko",
-            "1F ???",
-            "20 TAKA",
-            "21 Tazz",
-            "22 Real American",
-            "23 HHH",
-            "24 Austin",
-            "25 The Rock",
-            "26 APA",
-            "27 Mankind/Mick",
-            "28 Too Cool",
-            "29 Cactus",
-            "2A HBK",
-            "2B (Y2J Countdown)",
-            "2C Jericho",
-            "2D Angle",
-            "2E ???",
-            "2F Benoit",
-            "30 T&A",
-            "31 Guerrero",
-            "32 Saturn",
-            "33 Original 1",
-            "34 Original 2",
-            "35 Original 3",
-            "36 Original 4",
-            "37 Original 5",
-            "38 Original 6",
-            "39 Original 7"});
-			this.cbThemeMusic.Location = new System.Drawing.Point(106, 74);
-			this.cbThemeMusic.Name = "cbThemeMusic";
-			this.cbThemeMusic.Size = new System.Drawing.Size(219, 21);
-			this.cbThemeMusic.TabIndex = 6;
-			this.cbThemeMusic.SelectionChangeCommitted += new System.EventHandler(this.cbThemeMusic_SelectionChangeCommitted);
-			// 
-			// nudProfileIndex
-			// 
-			this.nudProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudProfileIndex.Hexadecimal = true;
-			this.nudProfileIndex.Increment = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.nudProfileIndex.Location = new System.Drawing.Point(3, 4);
-			this.nudProfileIndex.Maximum = new decimal(new int[] {
-            291,
-            0,
-            0,
-            0});
-			this.nudProfileIndex.Name = "nudProfileIndex";
-			this.nudProfileIndex.Size = new System.Drawing.Size(142, 20);
-			this.nudProfileIndex.TabIndex = 4;
-			this.nudProfileIndex.ValueChanged += new System.EventHandler(this.nudProfileIndex_ValueChanged);
-			this.nudProfileIndex.Validating += new System.ComponentModel.CancelEventHandler(this.nudProfileIndex_Validating);
-			// 
-			// tlpHeight
-			// 
-			this.tlpHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpHeight.ColumnCount = 2;
-			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-			this.tlpHeight.Controls.Add(this.nudHeight, 0, 0);
-			this.tlpHeight.Controls.Add(this.labelHeightValue, 1, 0);
-			this.tlpHeight.Location = new System.Drawing.Point(106, 139);
-			this.tlpHeight.Name = "tlpHeight";
-			this.tlpHeight.RowCount = 1;
-			this.tlpHeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpHeight.Size = new System.Drawing.Size(219, 28);
-			this.tlpHeight.TabIndex = 4;
-			// 
-			// labelHeightValue
-			// 
-			this.labelHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelHeightValue.AutoSize = true;
-			this.labelHeightValue.Location = new System.Drawing.Point(90, 7);
-			this.labelHeightValue.Name = "labelHeightValue";
-			this.labelHeightValue.Size = new System.Drawing.Size(126, 13);
-			this.labelHeightValue.TabIndex = 11;
-			this.labelHeightValue.Text = "(height)";
-			// 
-			// tlpWeight
-			// 
-			this.tlpWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpWeight.ColumnCount = 2;
-			this.tlpWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-			this.tlpWeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-			this.tlpWeight.Controls.Add(this.labelWeightValue, 1, 0);
-			this.tlpWeight.Controls.Add(this.nudWeight, 0, 0);
-			this.tlpWeight.Location = new System.Drawing.Point(106, 207);
-			this.tlpWeight.Name = "tlpWeight";
-			this.tlpWeight.RowCount = 1;
-			this.tlpWeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpWeight.Size = new System.Drawing.Size(219, 28);
-			this.tlpWeight.TabIndex = 30;
-			// 
-			// labelWeightValue
-			// 
-			this.labelWeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelWeightValue.AutoSize = true;
-			this.labelWeightValue.Location = new System.Drawing.Point(90, 7);
-			this.labelWeightValue.Name = "labelWeightValue";
-			this.labelWeightValue.Size = new System.Drawing.Size(126, 13);
-			this.labelWeightValue.TabIndex = 15;
-			this.labelWeightValue.Text = "(weight)";
-			// 
-			// nudHeight
-			// 
-			this.nudHeight.Hexadecimal = true;
-			this.nudHeight.Location = new System.Drawing.Point(3, 3);
-			this.nudHeight.Maximum = new decimal(new int[] {
-            39,
-            0,
-            0,
-            0});
-			this.nudHeight.Name = "nudHeight";
-			this.nudHeight.Size = new System.Drawing.Size(81, 20);
-			this.nudHeight.TabIndex = 4;
-			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
-			this.nudHeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudHeight_Validating);
-			// 
-			// nudWeight
-			// 
-			this.nudWeight.Hexadecimal = true;
-			this.nudWeight.Location = new System.Drawing.Point(3, 3);
-			this.nudWeight.Maximum = new decimal(new int[] {
-            503,
-            0,
-            0,
-            0});
-			this.nudWeight.Name = "nudWeight";
-			this.nudWeight.Size = new System.Drawing.Size(81, 20);
-			this.nudWeight.TabIndex = 4;
-			this.nudWeight.ValueChanged += new System.EventHandler(this.nudWeight_ValueChanged);
-			this.nudWeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudWeight_Validating);
-			// 
 			// buttonRefreshList
 			// 
 			this.buttonRefreshList.Location = new System.Drawing.Point(12, 393);
@@ -688,25 +688,26 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_NoMercy";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (WWF No Mercy)";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tlpHeight.ResumeLayout(false);
+			this.tlpHeight.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			this.tlpParams.ResumeLayout(false);
 			this.tlpParams.PerformLayout();
 			this.tlpMoveset.ResumeLayout(false);
 			this.tlpMoveset.PerformLayout();
 			this.tlpProfile.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).EndInit();
 			this.tlpAppearance.ResumeLayout(false);
 			this.tlpAppearance.PerformLayout();
-			this.gbWrestlers.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).EndInit();
-			this.tlpHeight.ResumeLayout(false);
-			this.tlpHeight.PerformLayout();
 			this.tlpWeight.ResumeLayout(false);
 			this.tlpWeight.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
+			this.gbWrestlers.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

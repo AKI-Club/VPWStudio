@@ -32,36 +32,36 @@
 			this.labelChampionship = new System.Windows.Forms.Label();
 			this.cbChampionships = new System.Windows.Forms.ComboBox();
 			this.tlpChampData = new System.Windows.Forms.TableLayoutPanel();
-			this.gbRoster = new System.Windows.Forms.GroupBox();
+			this.tbUnknown8 = new System.Windows.Forms.TextBox();
+			this.labelUnknown8 = new System.Windows.Forms.Label();
 			this.labelIdentifier = new System.Windows.Forms.Label();
 			this.labelUnknown1 = new System.Windows.Forms.Label();
 			this.labelChampionID2_1 = new System.Windows.Forms.Label();
 			this.labelChampionID2_2 = new System.Windows.Forms.Label();
 			this.labelUnknown2 = new System.Windows.Forms.Label();
-			this.labelFlags1 = new System.Windows.Forms.Label();
-			this.labelFlags2 = new System.Windows.Forms.Label();
-			this.labelUnknown3 = new System.Windows.Forms.Label();
-			this.labelUnknown4 = new System.Windows.Forms.Label();
 			this.tbIdentifier = new System.Windows.Forms.TextBox();
 			this.tbUnknown1 = new System.Windows.Forms.TextBox();
 			this.tbChampID2_1 = new System.Windows.Forms.TextBox();
 			this.tbChampID2_2 = new System.Windows.Forms.TextBox();
 			this.tbUnknown2 = new System.Windows.Forms.TextBox();
-			this.tbFlags1 = new System.Windows.Forms.TextBox();
-			this.tbFlags2 = new System.Windows.Forms.TextBox();
-			this.tbUnknown3 = new System.Windows.Forms.TextBox();
-			this.tbUnknown4 = new System.Windows.Forms.TextBox();
-			this.lbRoster = new System.Windows.Forms.ListBox();
-			this.labelUnknown5 = new System.Windows.Forms.Label();
-			this.labelUnknown6 = new System.Windows.Forms.Label();
-			this.labelUnknown7 = new System.Windows.Forms.Label();
 			this.labelRosterPointer = new System.Windows.Forms.Label();
-			this.tbUnknown5 = new System.Windows.Forms.TextBox();
-			this.tbUnknown6 = new System.Windows.Forms.TextBox();
-			this.tbUnknown7 = new System.Windows.Forms.TextBox();
 			this.tbRosterPointer = new System.Windows.Forms.TextBox();
-			this.labelUnknown8 = new System.Windows.Forms.Label();
-			this.tbUnknown8 = new System.Windows.Forms.TextBox();
+			this.tbFlags2 = new System.Windows.Forms.TextBox();
+			this.labelFlags2 = new System.Windows.Forms.Label();
+			this.labelFlags1 = new System.Windows.Forms.Label();
+			this.tbFlags1 = new System.Windows.Forms.TextBox();
+			this.labelUnknown3 = new System.Windows.Forms.Label();
+			this.tbUnknown3 = new System.Windows.Forms.TextBox();
+			this.labelUnknown4 = new System.Windows.Forms.Label();
+			this.tbUnknown4 = new System.Windows.Forms.TextBox();
+			this.labelUnknown5 = new System.Windows.Forms.Label();
+			this.tbUnknown5 = new System.Windows.Forms.TextBox();
+			this.labelUnknown6 = new System.Windows.Forms.Label();
+			this.tbUnknown6 = new System.Windows.Forms.TextBox();
+			this.labelUnknown7 = new System.Windows.Forms.Label();
+			this.tbUnknown7 = new System.Windows.Forms.TextBox();
+			this.gbRoster = new System.Windows.Forms.GroupBox();
+			this.lbRoster = new System.Windows.Forms.ListBox();
 			this.tlpTitleSelect.SuspendLayout();
 			this.tlpChampData.SuspendLayout();
 			this.gbRoster.SuspendLayout();
@@ -155,15 +155,24 @@
 			this.tlpChampData.Size = new System.Drawing.Size(300, 352);
 			this.tlpChampData.TabIndex = 2;
 			// 
-			// gbRoster
+			// tbUnknown8
 			// 
-			this.gbRoster.Controls.Add(this.lbRoster);
-			this.gbRoster.Location = new System.Drawing.Point(318, 51);
-			this.gbRoster.Name = "gbRoster";
-			this.gbRoster.Size = new System.Drawing.Size(142, 352);
-			this.gbRoster.TabIndex = 3;
-			this.gbRoster.TabStop = false;
-			this.gbRoster.Text = "&Roster";
+			this.tbUnknown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown8.Location = new System.Drawing.Point(153, 303);
+			this.tbUnknown8.Name = "tbUnknown8";
+			this.tbUnknown8.ReadOnly = true;
+			this.tbUnknown8.Size = new System.Drawing.Size(144, 20);
+			this.tbUnknown8.TabIndex = 27;
+			// 
+			// labelUnknown8
+			// 
+			this.labelUnknown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown8.AutoSize = true;
+			this.labelUnknown8.Location = new System.Drawing.Point(3, 306);
+			this.labelUnknown8.Name = "labelUnknown8";
+			this.labelUnknown8.Size = new System.Drawing.Size(144, 13);
+			this.labelUnknown8.TabIndex = 26;
+			this.labelUnknown8.Text = "Unknown 8";
 			// 
 			// labelIdentifier
 			// 
@@ -215,46 +224,6 @@
 			this.labelUnknown2.TabIndex = 4;
 			this.labelUnknown2.Text = "Defending ID2 #1";
 			// 
-			// labelFlags1
-			// 
-			this.labelFlags1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelFlags1.AutoSize = true;
-			this.labelFlags1.Location = new System.Drawing.Point(3, 156);
-			this.labelFlags1.Name = "labelFlags1";
-			this.labelFlags1.Size = new System.Drawing.Size(144, 13);
-			this.labelFlags1.TabIndex = 5;
-			this.labelFlags1.Text = "Flags 1";
-			// 
-			// labelFlags2
-			// 
-			this.labelFlags2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelFlags2.AutoSize = true;
-			this.labelFlags2.Location = new System.Drawing.Point(3, 181);
-			this.labelFlags2.Name = "labelFlags2";
-			this.labelFlags2.Size = new System.Drawing.Size(144, 13);
-			this.labelFlags2.TabIndex = 6;
-			this.labelFlags2.Text = "Flags 2";
-			// 
-			// labelUnknown3
-			// 
-			this.labelUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown3.AutoSize = true;
-			this.labelUnknown3.Location = new System.Drawing.Point(3, 131);
-			this.labelUnknown3.Name = "labelUnknown3";
-			this.labelUnknown3.Size = new System.Drawing.Size(144, 13);
-			this.labelUnknown3.TabIndex = 7;
-			this.labelUnknown3.Text = "Defending ID2 #2";
-			// 
-			// labelUnknown4
-			// 
-			this.labelUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown4.AutoSize = true;
-			this.labelUnknown4.Location = new System.Drawing.Point(3, 206);
-			this.labelUnknown4.Name = "labelUnknown4";
-			this.labelUnknown4.Size = new System.Drawing.Size(144, 13);
-			this.labelUnknown4.TabIndex = 8;
-			this.labelUnknown4.Text = "Unknown 4";
-			// 
 			// tbIdentifier
 			// 
 			this.tbIdentifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -300,14 +269,24 @@
 			this.tbUnknown2.Size = new System.Drawing.Size(144, 20);
 			this.tbUnknown2.TabIndex = 13;
 			// 
-			// tbFlags1
+			// labelRosterPointer
 			// 
-			this.tbFlags1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbFlags1.Location = new System.Drawing.Point(153, 153);
-			this.tbFlags1.Name = "tbFlags1";
-			this.tbFlags1.ReadOnly = true;
-			this.tbFlags1.Size = new System.Drawing.Size(144, 20);
-			this.tbFlags1.TabIndex = 14;
+			this.labelRosterPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelRosterPointer.AutoSize = true;
+			this.labelRosterPointer.Location = new System.Drawing.Point(3, 332);
+			this.labelRosterPointer.Name = "labelRosterPointer";
+			this.labelRosterPointer.Size = new System.Drawing.Size(144, 13);
+			this.labelRosterPointer.TabIndex = 21;
+			this.labelRosterPointer.Text = "Roster Pointer";
+			// 
+			// tbRosterPointer
+			// 
+			this.tbRosterPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbRosterPointer.Location = new System.Drawing.Point(153, 328);
+			this.tbRosterPointer.Name = "tbRosterPointer";
+			this.tbRosterPointer.ReadOnly = true;
+			this.tbRosterPointer.Size = new System.Drawing.Size(144, 20);
+			this.tbRosterPointer.TabIndex = 25;
 			// 
 			// tbFlags2
 			// 
@@ -318,6 +297,45 @@
 			this.tbFlags2.Size = new System.Drawing.Size(144, 20);
 			this.tbFlags2.TabIndex = 15;
 			// 
+			// labelFlags2
+			// 
+			this.labelFlags2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelFlags2.AutoSize = true;
+			this.labelFlags2.Location = new System.Drawing.Point(3, 181);
+			this.labelFlags2.Name = "labelFlags2";
+			this.labelFlags2.Size = new System.Drawing.Size(144, 13);
+			this.labelFlags2.TabIndex = 6;
+			this.labelFlags2.Text = "Flags 2";
+			// 
+			// labelFlags1
+			// 
+			this.labelFlags1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelFlags1.AutoSize = true;
+			this.labelFlags1.Location = new System.Drawing.Point(3, 156);
+			this.labelFlags1.Name = "labelFlags1";
+			this.labelFlags1.Size = new System.Drawing.Size(144, 13);
+			this.labelFlags1.TabIndex = 5;
+			this.labelFlags1.Text = "Flags 1";
+			// 
+			// tbFlags1
+			// 
+			this.tbFlags1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbFlags1.Location = new System.Drawing.Point(153, 153);
+			this.tbFlags1.Name = "tbFlags1";
+			this.tbFlags1.ReadOnly = true;
+			this.tbFlags1.Size = new System.Drawing.Size(144, 20);
+			this.tbFlags1.TabIndex = 14;
+			// 
+			// labelUnknown3
+			// 
+			this.labelUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown3.AutoSize = true;
+			this.labelUnknown3.Location = new System.Drawing.Point(3, 131);
+			this.labelUnknown3.Name = "labelUnknown3";
+			this.labelUnknown3.Size = new System.Drawing.Size(144, 13);
+			this.labelUnknown3.TabIndex = 7;
+			this.labelUnknown3.Text = "Defending ID2 #2";
+			// 
 			// tbUnknown3
 			// 
 			this.tbUnknown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -327,6 +345,16 @@
 			this.tbUnknown3.Size = new System.Drawing.Size(144, 20);
 			this.tbUnknown3.TabIndex = 16;
 			// 
+			// labelUnknown4
+			// 
+			this.labelUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUnknown4.AutoSize = true;
+			this.labelUnknown4.Location = new System.Drawing.Point(3, 206);
+			this.labelUnknown4.Name = "labelUnknown4";
+			this.labelUnknown4.Size = new System.Drawing.Size(144, 13);
+			this.labelUnknown4.TabIndex = 8;
+			this.labelUnknown4.Text = "Unknown 4";
+			// 
 			// tbUnknown4
 			// 
 			this.tbUnknown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -335,14 +363,6 @@
 			this.tbUnknown4.ReadOnly = true;
 			this.tbUnknown4.Size = new System.Drawing.Size(144, 20);
 			this.tbUnknown4.TabIndex = 17;
-			// 
-			// lbRoster
-			// 
-			this.lbRoster.FormattingEnabled = true;
-			this.lbRoster.Location = new System.Drawing.Point(6, 19);
-			this.lbRoster.Name = "lbRoster";
-			this.lbRoster.Size = new System.Drawing.Size(130, 316);
-			this.lbRoster.TabIndex = 0;
 			// 
 			// labelUnknown5
 			// 
@@ -354,6 +374,15 @@
 			this.labelUnknown5.TabIndex = 18;
 			this.labelUnknown5.Text = "Unknown 5";
 			// 
+			// tbUnknown5
+			// 
+			this.tbUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown5.Location = new System.Drawing.Point(153, 228);
+			this.tbUnknown5.Name = "tbUnknown5";
+			this.tbUnknown5.ReadOnly = true;
+			this.tbUnknown5.Size = new System.Drawing.Size(144, 20);
+			this.tbUnknown5.TabIndex = 22;
+			// 
 			// labelUnknown6
 			// 
 			this.labelUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -363,6 +392,15 @@
 			this.labelUnknown6.Size = new System.Drawing.Size(144, 13);
 			this.labelUnknown6.TabIndex = 19;
 			this.labelUnknown6.Text = "Unknown 6";
+			// 
+			// tbUnknown6
+			// 
+			this.tbUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbUnknown6.Location = new System.Drawing.Point(153, 253);
+			this.tbUnknown6.Name = "tbUnknown6";
+			this.tbUnknown6.ReadOnly = true;
+			this.tbUnknown6.Size = new System.Drawing.Size(144, 20);
+			this.tbUnknown6.TabIndex = 23;
 			// 
 			// labelUnknown7
 			// 
@@ -374,34 +412,6 @@
 			this.labelUnknown7.TabIndex = 20;
 			this.labelUnknown7.Text = "Unknown 7";
 			// 
-			// labelRosterPointer
-			// 
-			this.labelRosterPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelRosterPointer.AutoSize = true;
-			this.labelRosterPointer.Location = new System.Drawing.Point(3, 332);
-			this.labelRosterPointer.Name = "labelRosterPointer";
-			this.labelRosterPointer.Size = new System.Drawing.Size(144, 13);
-			this.labelRosterPointer.TabIndex = 21;
-			this.labelRosterPointer.Text = "Roster Pointer";
-			// 
-			// tbUnknown5
-			// 
-			this.tbUnknown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown5.Location = new System.Drawing.Point(153, 228);
-			this.tbUnknown5.Name = "tbUnknown5";
-			this.tbUnknown5.ReadOnly = true;
-			this.tbUnknown5.Size = new System.Drawing.Size(144, 20);
-			this.tbUnknown5.TabIndex = 22;
-			// 
-			// tbUnknown6
-			// 
-			this.tbUnknown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown6.Location = new System.Drawing.Point(153, 253);
-			this.tbUnknown6.Name = "tbUnknown6";
-			this.tbUnknown6.ReadOnly = true;
-			this.tbUnknown6.Size = new System.Drawing.Size(144, 20);
-			this.tbUnknown6.TabIndex = 23;
-			// 
 			// tbUnknown7
 			// 
 			this.tbUnknown7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -411,33 +421,23 @@
 			this.tbUnknown7.Size = new System.Drawing.Size(144, 20);
 			this.tbUnknown7.TabIndex = 24;
 			// 
-			// tbRosterPointer
+			// gbRoster
 			// 
-			this.tbRosterPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRosterPointer.Location = new System.Drawing.Point(153, 328);
-			this.tbRosterPointer.Name = "tbRosterPointer";
-			this.tbRosterPointer.ReadOnly = true;
-			this.tbRosterPointer.Size = new System.Drawing.Size(144, 20);
-			this.tbRosterPointer.TabIndex = 25;
+			this.gbRoster.Controls.Add(this.lbRoster);
+			this.gbRoster.Location = new System.Drawing.Point(318, 51);
+			this.gbRoster.Name = "gbRoster";
+			this.gbRoster.Size = new System.Drawing.Size(142, 352);
+			this.gbRoster.TabIndex = 3;
+			this.gbRoster.TabStop = false;
+			this.gbRoster.Text = "&Roster";
 			// 
-			// labelUnknown8
+			// lbRoster
 			// 
-			this.labelUnknown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelUnknown8.AutoSize = true;
-			this.labelUnknown8.Location = new System.Drawing.Point(3, 306);
-			this.labelUnknown8.Name = "labelUnknown8";
-			this.labelUnknown8.Size = new System.Drawing.Size(144, 13);
-			this.labelUnknown8.TabIndex = 26;
-			this.labelUnknown8.Text = "Unknown 8";
-			// 
-			// tbUnknown8
-			// 
-			this.tbUnknown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUnknown8.Location = new System.Drawing.Point(153, 303);
-			this.tbUnknown8.Name = "tbUnknown8";
-			this.tbUnknown8.ReadOnly = true;
-			this.tbUnknown8.Size = new System.Drawing.Size(144, 20);
-			this.tbUnknown8.TabIndex = 27;
+			this.lbRoster.FormattingEnabled = true;
+			this.lbRoster.Location = new System.Drawing.Point(6, 19);
+			this.lbRoster.Name = "lbRoster";
+			this.lbRoster.Size = new System.Drawing.Size(130, 316);
+			this.lbRoster.TabIndex = 0;
 			// 
 			// ChampionshipDefs_Revenge
 			// 
@@ -450,6 +450,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.Name = "ChampionshipDefs_Revenge";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Championship Definitions";
 			this.tlpTitleSelect.ResumeLayout(false);

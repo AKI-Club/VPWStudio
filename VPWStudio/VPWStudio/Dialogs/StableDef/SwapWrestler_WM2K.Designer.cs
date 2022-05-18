@@ -122,6 +122,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "SwapWrestler_WM2K";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Swap Wrestlers";
 			this.gbDestinationWrestlers.ResumeLayout(false);

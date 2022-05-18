@@ -871,7 +871,7 @@
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.99144F));
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.00428F));
 			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.00428F));
-			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightUpperArm.Controls.Add(this.tableLayoutPanel46, 2, 0);
 			this.tlpCostumeRightUpperArm.Controls.Add(this.labelCostumeRightUpperArm, 0, 0);
 			this.tlpCostumeRightUpperArm.Controls.Add(this.pbRightUpperArm, 3, 0);
@@ -889,7 +889,7 @@
 			this.tableLayoutPanel46.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel46.Controls.Add(this.tbRightUpperArmTexture, 0, 1);
 			this.tableLayoutPanel46.Controls.Add(this.labelRightUpperArmTexture, 0, 0);
-			this.tableLayoutPanel46.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel46.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel46.Name = "tableLayoutPanel46";
 			this.tableLayoutPanel46.RowCount = 2;
 			this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -923,16 +923,16 @@
 			this.labelCostumeRightUpperArm.AutoSize = true;
 			this.labelCostumeRightUpperArm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightUpperArm.Name = "labelCostumeRightUpperArm";
-			this.labelCostumeRightUpperArm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightUpperArm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightUpperArm.TabIndex = 0;
 			this.labelCostumeRightUpperArm.Text = "Right Upper Arm";
 			// 
 			// pbRightUpperArm
 			// 
 			this.pbRightUpperArm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightUpperArm.Location = new System.Drawing.Point(298, 4);
+			this.pbRightUpperArm.Location = new System.Drawing.Point(297, 4);
 			this.pbRightUpperArm.Name = "pbRightUpperArm";
-			this.pbRightUpperArm.Size = new System.Drawing.Size(136, 64);
+			this.pbRightUpperArm.Size = new System.Drawing.Size(137, 64);
 			this.pbRightUpperArm.TabIndex = 4;
 			this.pbRightUpperArm.TabStop = false;
 			// 
@@ -942,7 +942,7 @@
 			this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel47.Controls.Add(this.tbRightUpperArmPalette, 0, 1);
 			this.tableLayoutPanel47.Controls.Add(this.labelRightUpperArmPalette, 0, 0);
-			this.tableLayoutPanel47.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel47.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel47.Name = "tableLayoutPanel47";
 			this.tableLayoutPanel47.RowCount = 2;
 			this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -977,7 +977,7 @@
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightFingers.Controls.Add(this.tableLayoutPanel43, 2, 0);
 			this.tlpCostumeRightFingers.Controls.Add(this.labelCostumeRightFingers, 0, 0);
 			this.tlpCostumeRightFingers.Controls.Add(this.pbRightFingers, 3, 0);
@@ -995,7 +995,7 @@
 			this.tableLayoutPanel43.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel43.Controls.Add(this.tbRightFingersTexture, 0, 1);
 			this.tableLayoutPanel43.Controls.Add(this.labelRightFingersTexture, 0, 0);
-			this.tableLayoutPanel43.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel43.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel43.Name = "tableLayoutPanel43";
 			this.tableLayoutPanel43.RowCount = 2;
 			this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1029,16 +1029,16 @@
 			this.labelCostumeRightFingers.AutoSize = true;
 			this.labelCostumeRightFingers.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightFingers.Name = "labelCostumeRightFingers";
-			this.labelCostumeRightFingers.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightFingers.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightFingers.TabIndex = 0;
 			this.labelCostumeRightFingers.Text = "Right Fingers";
 			// 
 			// pbRightFingers
 			// 
 			this.pbRightFingers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightFingers.Location = new System.Drawing.Point(298, 4);
+			this.pbRightFingers.Location = new System.Drawing.Point(297, 4);
 			this.pbRightFingers.Name = "pbRightFingers";
-			this.pbRightFingers.Size = new System.Drawing.Size(136, 64);
+			this.pbRightFingers.Size = new System.Drawing.Size(137, 64);
 			this.pbRightFingers.TabIndex = 4;
 			this.pbRightFingers.TabStop = false;
 			// 
@@ -1048,7 +1048,7 @@
 			this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel44.Controls.Add(this.tbRightFingersPalette, 0, 1);
 			this.tableLayoutPanel44.Controls.Add(this.labelRightFingersPalette, 0, 0);
-			this.tableLayoutPanel44.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel44.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel44.Name = "tableLayoutPanel44";
 			this.tableLayoutPanel44.RowCount = 2;
 			this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1083,7 +1083,7 @@
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightPalm.Controls.Add(this.tableLayoutPanel40, 2, 0);
 			this.tlpCostumeRightPalm.Controls.Add(this.labelCostumeRightPalm, 0, 0);
 			this.tlpCostumeRightPalm.Controls.Add(this.pbRightPalm, 3, 0);
@@ -1101,7 +1101,7 @@
 			this.tableLayoutPanel40.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel40.Controls.Add(this.tbRightPalmTexture, 0, 1);
 			this.tableLayoutPanel40.Controls.Add(this.labelRightPalmTexture, 0, 0);
-			this.tableLayoutPanel40.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel40.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel40.Name = "tableLayoutPanel40";
 			this.tableLayoutPanel40.RowCount = 2;
 			this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1135,16 +1135,16 @@
 			this.labelCostumeRightPalm.AutoSize = true;
 			this.labelCostumeRightPalm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightPalm.Name = "labelCostumeRightPalm";
-			this.labelCostumeRightPalm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightPalm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightPalm.TabIndex = 0;
 			this.labelCostumeRightPalm.Text = "Right Palm";
 			// 
 			// pbRightPalm
 			// 
 			this.pbRightPalm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightPalm.Location = new System.Drawing.Point(298, 4);
+			this.pbRightPalm.Location = new System.Drawing.Point(297, 4);
 			this.pbRightPalm.Name = "pbRightPalm";
-			this.pbRightPalm.Size = new System.Drawing.Size(136, 64);
+			this.pbRightPalm.Size = new System.Drawing.Size(137, 64);
 			this.pbRightPalm.TabIndex = 4;
 			this.pbRightPalm.TabStop = false;
 			// 
@@ -1154,7 +1154,7 @@
 			this.tableLayoutPanel41.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel41.Controls.Add(this.tbRightPalmPalette, 0, 1);
 			this.tableLayoutPanel41.Controls.Add(this.labelRightPalmPalette, 0, 0);
-			this.tableLayoutPanel41.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel41.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel41.Name = "tableLayoutPanel41";
 			this.tableLayoutPanel41.RowCount = 2;
 			this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1189,7 +1189,7 @@
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightForearm.Controls.Add(this.tableLayoutPanel37, 2, 0);
 			this.tlpCostumeRightForearm.Controls.Add(this.labelCostumeRightForearm, 0, 0);
 			this.tlpCostumeRightForearm.Controls.Add(this.pbRightForearm, 3, 0);
@@ -1207,7 +1207,7 @@
 			this.tableLayoutPanel37.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel37.Controls.Add(this.tbRightForearmTexture, 0, 1);
 			this.tableLayoutPanel37.Controls.Add(this.labelRightForearmTexture, 0, 0);
-			this.tableLayoutPanel37.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel37.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel37.Name = "tableLayoutPanel37";
 			this.tableLayoutPanel37.RowCount = 2;
 			this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1241,16 +1241,16 @@
 			this.labelCostumeRightForearm.AutoSize = true;
 			this.labelCostumeRightForearm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightForearm.Name = "labelCostumeRightForearm";
-			this.labelCostumeRightForearm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightForearm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightForearm.TabIndex = 0;
 			this.labelCostumeRightForearm.Text = "Right Forearm";
 			// 
 			// pbRightForearm
 			// 
 			this.pbRightForearm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightForearm.Location = new System.Drawing.Point(298, 4);
+			this.pbRightForearm.Location = new System.Drawing.Point(297, 4);
 			this.pbRightForearm.Name = "pbRightForearm";
-			this.pbRightForearm.Size = new System.Drawing.Size(136, 64);
+			this.pbRightForearm.Size = new System.Drawing.Size(137, 64);
 			this.pbRightForearm.TabIndex = 4;
 			this.pbRightForearm.TabStop = false;
 			// 
@@ -1260,7 +1260,7 @@
 			this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel38.Controls.Add(this.tbRightForearmPalette, 0, 1);
 			this.tableLayoutPanel38.Controls.Add(this.labelRightForearmPalette, 0, 0);
-			this.tableLayoutPanel38.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel38.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel38.Name = "tableLayoutPanel38";
 			this.tableLayoutPanel38.RowCount = 2;
 			this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1295,7 +1295,7 @@
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightFoot.Controls.Add(this.tableLayoutPanel34, 2, 0);
 			this.tlpCostumeRightFoot.Controls.Add(this.labelCostumeRightFoot, 0, 0);
 			this.tlpCostumeRightFoot.Controls.Add(this.pbRightFoot, 3, 0);
@@ -1313,7 +1313,7 @@
 			this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel34.Controls.Add(this.tbRightFootTexture, 0, 1);
 			this.tableLayoutPanel34.Controls.Add(this.labelRightFootTexture, 0, 0);
-			this.tableLayoutPanel34.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel34.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel34.Name = "tableLayoutPanel34";
 			this.tableLayoutPanel34.RowCount = 2;
 			this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1347,16 +1347,16 @@
 			this.labelCostumeRightFoot.AutoSize = true;
 			this.labelCostumeRightFoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightFoot.Name = "labelCostumeRightFoot";
-			this.labelCostumeRightFoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightFoot.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightFoot.TabIndex = 0;
 			this.labelCostumeRightFoot.Text = "Right Foot";
 			// 
 			// pbRightFoot
 			// 
 			this.pbRightFoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightFoot.Location = new System.Drawing.Point(298, 4);
+			this.pbRightFoot.Location = new System.Drawing.Point(297, 4);
 			this.pbRightFoot.Name = "pbRightFoot";
-			this.pbRightFoot.Size = new System.Drawing.Size(136, 64);
+			this.pbRightFoot.Size = new System.Drawing.Size(137, 64);
 			this.pbRightFoot.TabIndex = 4;
 			this.pbRightFoot.TabStop = false;
 			// 
@@ -1366,7 +1366,7 @@
 			this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel35.Controls.Add(this.tbRightFootPalette, 0, 1);
 			this.tableLayoutPanel35.Controls.Add(this.labelRightFootPalette, 0, 0);
-			this.tableLayoutPanel35.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel35.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel35.Name = "tableLayoutPanel35";
 			this.tableLayoutPanel35.RowCount = 2;
 			this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1401,7 +1401,7 @@
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightLeg.Controls.Add(this.tableLayoutPanel31, 2, 0);
 			this.tlpCostumeRightLeg.Controls.Add(this.labelCostumeRightLeg, 0, 0);
 			this.tlpCostumeRightLeg.Controls.Add(this.pbRightLeg, 3, 0);
@@ -1419,7 +1419,7 @@
 			this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel31.Controls.Add(this.tbRightLegTexture, 0, 1);
 			this.tableLayoutPanel31.Controls.Add(this.labelRightLegTexture, 0, 0);
-			this.tableLayoutPanel31.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel31.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel31.Name = "tableLayoutPanel31";
 			this.tableLayoutPanel31.RowCount = 2;
 			this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1453,16 +1453,16 @@
 			this.labelCostumeRightLeg.AutoSize = true;
 			this.labelCostumeRightLeg.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightLeg.Name = "labelCostumeRightLeg";
-			this.labelCostumeRightLeg.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightLeg.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightLeg.TabIndex = 0;
 			this.labelCostumeRightLeg.Text = "Right Leg";
 			// 
 			// pbRightLeg
 			// 
 			this.pbRightLeg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightLeg.Location = new System.Drawing.Point(298, 4);
+			this.pbRightLeg.Location = new System.Drawing.Point(297, 4);
 			this.pbRightLeg.Name = "pbRightLeg";
-			this.pbRightLeg.Size = new System.Drawing.Size(136, 64);
+			this.pbRightLeg.Size = new System.Drawing.Size(137, 64);
 			this.pbRightLeg.TabIndex = 4;
 			this.pbRightLeg.TabStop = false;
 			// 
@@ -1472,7 +1472,7 @@
 			this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel32.Controls.Add(this.tbRightLegPalette, 0, 1);
 			this.tableLayoutPanel32.Controls.Add(this.labelRightLegPalette, 0, 0);
-			this.tableLayoutPanel32.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel32.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel32.Name = "tableLayoutPanel32";
 			this.tableLayoutPanel32.RowCount = 2;
 			this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1507,7 +1507,7 @@
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeRightBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeRightBoot.Controls.Add(this.tableLayoutPanel4, 2, 0);
 			this.tlpCostumeRightBoot.Controls.Add(this.labelCostumeRightBoot, 0, 0);
 			this.tlpCostumeRightBoot.Controls.Add(this.pbRightBoot, 3, 0);
@@ -1525,7 +1525,7 @@
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.Controls.Add(this.tbRightBootTexture, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.labelRightBootTexture, 0, 0);
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 2;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1559,16 +1559,16 @@
 			this.labelCostumeRightBoot.AutoSize = true;
 			this.labelCostumeRightBoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeRightBoot.Name = "labelCostumeRightBoot";
-			this.labelCostumeRightBoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeRightBoot.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeRightBoot.TabIndex = 0;
 			this.labelCostumeRightBoot.Text = "Right Boot";
 			// 
 			// pbRightBoot
 			// 
 			this.pbRightBoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbRightBoot.Location = new System.Drawing.Point(298, 4);
+			this.pbRightBoot.Location = new System.Drawing.Point(297, 4);
 			this.pbRightBoot.Name = "pbRightBoot";
-			this.pbRightBoot.Size = new System.Drawing.Size(136, 64);
+			this.pbRightBoot.Size = new System.Drawing.Size(137, 64);
 			this.pbRightBoot.TabIndex = 4;
 			this.pbRightBoot.TabStop = false;
 			// 
@@ -1578,7 +1578,7 @@
 			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel7.Controls.Add(this.tbRightBootPalette, 0, 1);
 			this.tableLayoutPanel7.Controls.Add(this.labelRightBootPalette, 0, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel7.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 2;
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1613,7 +1613,7 @@
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftUpperArm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.tableLayoutPanel29, 2, 0);
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.labelCostumeLeftUpperArm, 0, 0);
 			this.tlpCostumeLeftUpperArm.Controls.Add(this.pbLeftUpperArm, 3, 0);
@@ -1631,7 +1631,7 @@
 			this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel29.Controls.Add(this.tbLeftUpperArmTexture, 0, 1);
 			this.tableLayoutPanel29.Controls.Add(this.labelLeftUpperArmTexture, 0, 0);
-			this.tableLayoutPanel29.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel29.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel29.Name = "tableLayoutPanel29";
 			this.tableLayoutPanel29.RowCount = 2;
 			this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1665,16 +1665,16 @@
 			this.labelCostumeLeftUpperArm.AutoSize = true;
 			this.labelCostumeLeftUpperArm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftUpperArm.Name = "labelCostumeLeftUpperArm";
-			this.labelCostumeLeftUpperArm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftUpperArm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftUpperArm.TabIndex = 0;
 			this.labelCostumeLeftUpperArm.Text = "Left Upper Arm";
 			// 
 			// pbLeftUpperArm
 			// 
 			this.pbLeftUpperArm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftUpperArm.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftUpperArm.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftUpperArm.Name = "pbLeftUpperArm";
-			this.pbLeftUpperArm.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftUpperArm.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftUpperArm.TabIndex = 4;
 			this.pbLeftUpperArm.TabStop = false;
 			// 
@@ -1684,7 +1684,7 @@
 			this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel30.Controls.Add(this.tbLeftUpperArmPalette, 0, 1);
 			this.tableLayoutPanel30.Controls.Add(this.labelLeftUpperArmPalette, 0, 0);
-			this.tableLayoutPanel30.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel30.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel30.Name = "tableLayoutPanel30";
 			this.tableLayoutPanel30.RowCount = 2;
 			this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1719,7 +1719,7 @@
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftForearm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftForearm.Controls.Add(this.tableLayoutPanel26, 2, 0);
 			this.tlpCostumeLeftForearm.Controls.Add(this.labelCostumeLeftForearm, 0, 0);
 			this.tlpCostumeLeftForearm.Controls.Add(this.pbLeftForearm, 3, 0);
@@ -1737,7 +1737,7 @@
 			this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel26.Controls.Add(this.tbLeftForearmTexture, 0, 1);
 			this.tableLayoutPanel26.Controls.Add(this.labelLeftForearmTexture, 0, 0);
-			this.tableLayoutPanel26.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel26.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel26.Name = "tableLayoutPanel26";
 			this.tableLayoutPanel26.RowCount = 2;
 			this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1771,16 +1771,16 @@
 			this.labelCostumeLeftForearm.AutoSize = true;
 			this.labelCostumeLeftForearm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftForearm.Name = "labelCostumeLeftForearm";
-			this.labelCostumeLeftForearm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftForearm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftForearm.TabIndex = 0;
 			this.labelCostumeLeftForearm.Text = "Left Forearm";
 			// 
 			// pbLeftForearm
 			// 
 			this.pbLeftForearm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftForearm.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftForearm.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftForearm.Name = "pbLeftForearm";
-			this.pbLeftForearm.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftForearm.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftForearm.TabIndex = 4;
 			this.pbLeftForearm.TabStop = false;
 			// 
@@ -1790,7 +1790,7 @@
 			this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel27.Controls.Add(this.tbLeftForearmPalette, 0, 1);
 			this.tableLayoutPanel27.Controls.Add(this.labelLeftForearmPalette, 0, 0);
-			this.tableLayoutPanel27.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel27.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel27.Name = "tableLayoutPanel27";
 			this.tableLayoutPanel27.RowCount = 2;
 			this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1825,7 +1825,7 @@
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftFingers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftFingers.Controls.Add(this.tableLayoutPanel23, 2, 0);
 			this.tlpCostumeLeftFingers.Controls.Add(this.labelCostumeLeftFingers, 0, 0);
 			this.tlpCostumeLeftFingers.Controls.Add(this.pbLeftFingers, 3, 0);
@@ -1843,7 +1843,7 @@
 			this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel23.Controls.Add(this.tbLeftFingersTexture, 0, 1);
 			this.tableLayoutPanel23.Controls.Add(this.labelLeftFingersTexture, 0, 0);
-			this.tableLayoutPanel23.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel23.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel23.Name = "tableLayoutPanel23";
 			this.tableLayoutPanel23.RowCount = 2;
 			this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1877,16 +1877,16 @@
 			this.labelCostumeLeftFingers.AutoSize = true;
 			this.labelCostumeLeftFingers.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftFingers.Name = "labelCostumeLeftFingers";
-			this.labelCostumeLeftFingers.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftFingers.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftFingers.TabIndex = 0;
 			this.labelCostumeLeftFingers.Text = "Left Fingers";
 			// 
 			// pbLeftFingers
 			// 
 			this.pbLeftFingers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftFingers.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftFingers.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftFingers.Name = "pbLeftFingers";
-			this.pbLeftFingers.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftFingers.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftFingers.TabIndex = 4;
 			this.pbLeftFingers.TabStop = false;
 			// 
@@ -1896,7 +1896,7 @@
 			this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel24.Controls.Add(this.tbLeftFingersPalette, 0, 1);
 			this.tableLayoutPanel24.Controls.Add(this.labelLeftFingersPalette, 0, 0);
-			this.tableLayoutPanel24.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel24.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel24.Name = "tableLayoutPanel24";
 			this.tableLayoutPanel24.RowCount = 2;
 			this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1931,7 +1931,7 @@
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftPalm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftPalm.Controls.Add(this.tableLayoutPanel20, 2, 0);
 			this.tlpCostumeLeftPalm.Controls.Add(this.labelCostumeLeftPalm, 0, 0);
 			this.tlpCostumeLeftPalm.Controls.Add(this.pbLeftPalm, 3, 0);
@@ -1949,7 +1949,7 @@
 			this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel20.Controls.Add(this.tbLeftPalmTexture, 0, 1);
 			this.tableLayoutPanel20.Controls.Add(this.labelLeftPalmTexture, 0, 0);
-			this.tableLayoutPanel20.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel20.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel20.Name = "tableLayoutPanel20";
 			this.tableLayoutPanel20.RowCount = 2;
 			this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1983,16 +1983,16 @@
 			this.labelCostumeLeftPalm.AutoSize = true;
 			this.labelCostumeLeftPalm.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftPalm.Name = "labelCostumeLeftPalm";
-			this.labelCostumeLeftPalm.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftPalm.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftPalm.TabIndex = 0;
 			this.labelCostumeLeftPalm.Text = "Left Palm";
 			// 
 			// pbLeftPalm
 			// 
 			this.pbLeftPalm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftPalm.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftPalm.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftPalm.Name = "pbLeftPalm";
-			this.pbLeftPalm.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftPalm.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftPalm.TabIndex = 4;
 			this.pbLeftPalm.TabStop = false;
 			// 
@@ -2002,7 +2002,7 @@
 			this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel21.Controls.Add(this.tbLeftPalmPalette, 0, 1);
 			this.tableLayoutPanel21.Controls.Add(this.labelLeftPalmPalette, 0, 0);
-			this.tableLayoutPanel21.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel21.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel21.Name = "tableLayoutPanel21";
 			this.tableLayoutPanel21.RowCount = 2;
 			this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2037,7 +2037,7 @@
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftFoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftFoot.Controls.Add(this.tableLayoutPanel17, 2, 0);
 			this.tlpCostumeLeftFoot.Controls.Add(this.labelCostumeLeftFoot, 0, 0);
 			this.tlpCostumeLeftFoot.Controls.Add(this.pbLeftFoot, 3, 0);
@@ -2055,7 +2055,7 @@
 			this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel17.Controls.Add(this.tbLeftFootTexture, 0, 1);
 			this.tableLayoutPanel17.Controls.Add(this.labelLeftFootTexture, 0, 0);
-			this.tableLayoutPanel17.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel17.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel17.Name = "tableLayoutPanel17";
 			this.tableLayoutPanel17.RowCount = 2;
 			this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2089,16 +2089,16 @@
 			this.labelCostumeLeftFoot.AutoSize = true;
 			this.labelCostumeLeftFoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftFoot.Name = "labelCostumeLeftFoot";
-			this.labelCostumeLeftFoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftFoot.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftFoot.TabIndex = 0;
 			this.labelCostumeLeftFoot.Text = "Left Foot";
 			// 
 			// pbLeftFoot
 			// 
 			this.pbLeftFoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftFoot.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftFoot.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftFoot.Name = "pbLeftFoot";
-			this.pbLeftFoot.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftFoot.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftFoot.TabIndex = 4;
 			this.pbLeftFoot.TabStop = false;
 			// 
@@ -2108,7 +2108,7 @@
 			this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel18.Controls.Add(this.tbLeftFootPalette, 0, 1);
 			this.tableLayoutPanel18.Controls.Add(this.labelLeftFootPalette, 0, 0);
-			this.tableLayoutPanel18.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel18.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel18.Name = "tableLayoutPanel18";
 			this.tableLayoutPanel18.RowCount = 2;
 			this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2143,7 +2143,7 @@
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftLeg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftLeg.Controls.Add(this.tableLayoutPanel14, 2, 0);
 			this.tlpCostumeLeftLeg.Controls.Add(this.labelCostumeLeftLeg, 0, 0);
 			this.tlpCostumeLeftLeg.Controls.Add(this.pbLeftLeg, 3, 0);
@@ -2161,7 +2161,7 @@
 			this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel14.Controls.Add(this.tbLeftLegTexture, 0, 1);
 			this.tableLayoutPanel14.Controls.Add(this.labelLeftLegTexture, 0, 0);
-			this.tableLayoutPanel14.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel14.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel14.Name = "tableLayoutPanel14";
 			this.tableLayoutPanel14.RowCount = 2;
 			this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2195,16 +2195,16 @@
 			this.labelCostumeLeftLeg.AutoSize = true;
 			this.labelCostumeLeftLeg.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftLeg.Name = "labelCostumeLeftLeg";
-			this.labelCostumeLeftLeg.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftLeg.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftLeg.TabIndex = 0;
 			this.labelCostumeLeftLeg.Text = "Left Leg";
 			// 
 			// pbLeftLeg
 			// 
 			this.pbLeftLeg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftLeg.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftLeg.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftLeg.Name = "pbLeftLeg";
-			this.pbLeftLeg.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftLeg.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftLeg.TabIndex = 4;
 			this.pbLeftLeg.TabStop = false;
 			// 
@@ -2214,7 +2214,7 @@
 			this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel15.Controls.Add(this.tbLeftLegPalette, 0, 1);
 			this.tableLayoutPanel15.Controls.Add(this.labelLeftLegPalette, 0, 0);
-			this.tableLayoutPanel15.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel15.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel15.Name = "tableLayoutPanel15";
 			this.tableLayoutPanel15.RowCount = 2;
 			this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2249,7 +2249,7 @@
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeChest.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeChest.Controls.Add(this.tableLayoutPanel8, 2, 0);
 			this.tlpCostumeChest.Controls.Add(this.labelCostumeChest, 0, 0);
 			this.tlpCostumeChest.Controls.Add(this.pbChest, 3, 0);
@@ -2267,7 +2267,7 @@
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel8.Controls.Add(this.tbChestTexture, 0, 1);
 			this.tableLayoutPanel8.Controls.Add(this.labelChestTexture, 0, 0);
-			this.tableLayoutPanel8.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel8.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.tableLayoutPanel8.RowCount = 2;
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2301,16 +2301,16 @@
 			this.labelCostumeChest.AutoSize = true;
 			this.labelCostumeChest.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeChest.Name = "labelCostumeChest";
-			this.labelCostumeChest.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeChest.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeChest.TabIndex = 0;
 			this.labelCostumeChest.Text = "Chest";
 			// 
 			// pbChest
 			// 
 			this.pbChest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbChest.Location = new System.Drawing.Point(298, 4);
+			this.pbChest.Location = new System.Drawing.Point(297, 4);
 			this.pbChest.Name = "pbChest";
-			this.pbChest.Size = new System.Drawing.Size(136, 64);
+			this.pbChest.Size = new System.Drawing.Size(137, 64);
 			this.pbChest.TabIndex = 4;
 			this.pbChest.TabStop = false;
 			// 
@@ -2320,7 +2320,7 @@
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel9.Controls.Add(this.tbChestPalette, 0, 1);
 			this.tableLayoutPanel9.Controls.Add(this.labelChestPalette, 0, 0);
-			this.tableLayoutPanel9.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel9.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			this.tableLayoutPanel9.RowCount = 2;
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2355,7 +2355,7 @@
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeStomach.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeStomach.Controls.Add(this.tableLayoutPanel5, 2, 0);
 			this.tlpCostumeStomach.Controls.Add(this.labelCostumeStomach, 0, 0);
 			this.tlpCostumeStomach.Controls.Add(this.pbStomach, 3, 0);
@@ -2373,7 +2373,7 @@
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel5.Controls.Add(this.tbStomachTexture, 0, 1);
 			this.tableLayoutPanel5.Controls.Add(this.labelStomachTexture, 0, 0);
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel5.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.tableLayoutPanel5.RowCount = 2;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2407,16 +2407,16 @@
 			this.labelCostumeStomach.AutoSize = true;
 			this.labelCostumeStomach.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeStomach.Name = "labelCostumeStomach";
-			this.labelCostumeStomach.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeStomach.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeStomach.TabIndex = 0;
 			this.labelCostumeStomach.Text = "Stomach";
 			// 
 			// pbStomach
 			// 
 			this.pbStomach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbStomach.Location = new System.Drawing.Point(298, 4);
+			this.pbStomach.Location = new System.Drawing.Point(297, 4);
 			this.pbStomach.Name = "pbStomach";
-			this.pbStomach.Size = new System.Drawing.Size(136, 64);
+			this.pbStomach.Size = new System.Drawing.Size(137, 64);
 			this.pbStomach.TabIndex = 4;
 			this.pbStomach.TabStop = false;
 			// 
@@ -2426,7 +2426,7 @@
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel6.Controls.Add(this.tbStomachPalette, 0, 1);
 			this.tableLayoutPanel6.Controls.Add(this.labelStomachPalette, 0, 0);
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel6.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			this.tableLayoutPanel6.RowCount = 2;
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2461,7 +2461,7 @@
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeLeftBoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumeLeftBoot.Controls.Add(this.tableLayoutPanel11, 2, 0);
 			this.tlpCostumeLeftBoot.Controls.Add(this.labelCostumeLeftBoot, 0, 0);
 			this.tlpCostumeLeftBoot.Controls.Add(this.pbLeftBoot, 3, 0);
@@ -2479,7 +2479,7 @@
 			this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel11.Controls.Add(this.tbLeftBootTexture, 0, 1);
 			this.tableLayoutPanel11.Controls.Add(this.labelLeftBootTexture, 0, 0);
-			this.tableLayoutPanel11.Location = new System.Drawing.Point(198, 3);
+			this.tableLayoutPanel11.Location = new System.Drawing.Point(197, 3);
 			this.tableLayoutPanel11.Name = "tableLayoutPanel11";
 			this.tableLayoutPanel11.RowCount = 2;
 			this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2513,16 +2513,16 @@
 			this.labelCostumeLeftBoot.AutoSize = true;
 			this.labelCostumeLeftBoot.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumeLeftBoot.Name = "labelCostumeLeftBoot";
-			this.labelCostumeLeftBoot.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumeLeftBoot.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumeLeftBoot.TabIndex = 0;
 			this.labelCostumeLeftBoot.Text = "Left Boot";
 			// 
 			// pbLeftBoot
 			// 
 			this.pbLeftBoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbLeftBoot.Location = new System.Drawing.Point(298, 4);
+			this.pbLeftBoot.Location = new System.Drawing.Point(297, 4);
 			this.pbLeftBoot.Name = "pbLeftBoot";
-			this.pbLeftBoot.Size = new System.Drawing.Size(136, 64);
+			this.pbLeftBoot.Size = new System.Drawing.Size(137, 64);
 			this.pbLeftBoot.TabIndex = 4;
 			this.pbLeftBoot.TabStop = false;
 			// 
@@ -2532,7 +2532,7 @@
 			this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel12.Controls.Add(this.tbLeftBootPalette, 0, 1);
 			this.tableLayoutPanel12.Controls.Add(this.labelLeftBootPalette, 0, 0);
-			this.tableLayoutPanel12.Location = new System.Drawing.Point(98, 3);
+			this.tableLayoutPanel12.Location = new System.Drawing.Point(97, 3);
 			this.tableLayoutPanel12.Name = "tableLayoutPanel12";
 			this.tableLayoutPanel12.RowCount = 2;
 			this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2566,7 +2566,7 @@
 			this.tlpCostumeUnknown.ColumnCount = 3;
 			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.46328F));
 			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.53672F));
-			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumeUnknown.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
 			this.tlpCostumeUnknown.Controls.Add(this.labelCostumeUnknown, 0, 0);
 			this.tlpCostumeUnknown.Controls.Add(this.tbCostumeUnknown, 1, 0);
 			this.tlpCostumeUnknown.Controls.Add(this.cbCostumesAltPalette, 2, 0);
@@ -2593,13 +2593,13 @@
 			this.tbCostumeUnknown.Location = new System.Drawing.Point(105, 3);
 			this.tbCostumeUnknown.Name = "tbCostumeUnknown";
 			this.tbCostumeUnknown.ReadOnly = true;
-			this.tbCostumeUnknown.Size = new System.Drawing.Size(188, 20);
+			this.tbCostumeUnknown.Size = new System.Drawing.Size(187, 20);
 			this.tbCostumeUnknown.TabIndex = 1;
 			// 
 			// cbCostumesAltPalette
 			// 
 			this.cbCostumesAltPalette.AutoSize = true;
-			this.cbCostumesAltPalette.Location = new System.Drawing.Point(299, 3);
+			this.cbCostumesAltPalette.Location = new System.Drawing.Point(298, 3);
 			this.cbCostumesAltPalette.Name = "cbCostumesAltPalette";
 			this.cbCostumesAltPalette.Size = new System.Drawing.Size(126, 17);
 			this.cbCostumesAltPalette.TabIndex = 2;
@@ -2648,7 +2648,7 @@
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.9932F));
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
 			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.0034F));
-			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tlpCostumePelvis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
 			this.tlpCostumePelvis.Controls.Add(this.tlpPelvisTexture, 2, 0);
 			this.tlpCostumePelvis.Controls.Add(this.labelCostumePelvis, 0, 0);
 			this.tlpCostumePelvis.Controls.Add(this.pbPelvis, 3, 0);
@@ -2666,7 +2666,7 @@
 			this.tlpPelvisTexture.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpPelvisTexture.Controls.Add(this.tbPelvisTexture, 0, 1);
 			this.tlpPelvisTexture.Controls.Add(this.labelPelvisTexture, 0, 0);
-			this.tlpPelvisTexture.Location = new System.Drawing.Point(198, 3);
+			this.tlpPelvisTexture.Location = new System.Drawing.Point(197, 3);
 			this.tlpPelvisTexture.Name = "tlpPelvisTexture";
 			this.tlpPelvisTexture.RowCount = 2;
 			this.tlpPelvisTexture.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2700,16 +2700,16 @@
 			this.labelCostumePelvis.AutoSize = true;
 			this.labelCostumePelvis.Location = new System.Drawing.Point(3, 29);
 			this.labelCostumePelvis.Name = "labelCostumePelvis";
-			this.labelCostumePelvis.Size = new System.Drawing.Size(89, 13);
+			this.labelCostumePelvis.Size = new System.Drawing.Size(88, 13);
 			this.labelCostumePelvis.TabIndex = 0;
 			this.labelCostumePelvis.Text = "Pelvis";
 			// 
 			// pbPelvis
 			// 
 			this.pbPelvis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbPelvis.Location = new System.Drawing.Point(298, 4);
+			this.pbPelvis.Location = new System.Drawing.Point(297, 4);
 			this.pbPelvis.Name = "pbPelvis";
-			this.pbPelvis.Size = new System.Drawing.Size(136, 64);
+			this.pbPelvis.Size = new System.Drawing.Size(137, 64);
 			this.pbPelvis.TabIndex = 4;
 			this.pbPelvis.TabStop = false;
 			// 
@@ -2719,7 +2719,7 @@
 			this.tlpPelvisPalette.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpPelvisPalette.Controls.Add(this.tbPelvisPalette, 0, 1);
 			this.tlpPelvisPalette.Controls.Add(this.labelPelvisPalette, 0, 0);
-			this.tlpPelvisPalette.Location = new System.Drawing.Point(98, 3);
+			this.tlpPelvisPalette.Location = new System.Drawing.Point(97, 3);
 			this.tlpPelvisPalette.Name = "tlpPelvisPalette";
 			this.tlpPelvisPalette.RowCount = 2;
 			this.tlpPelvisPalette.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3177,6 +3177,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "CostumeDefs_Early";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Costumes, Heads/Masks, Body Types";
 			this.tcMain.ResumeLayout(false);

@@ -153,6 +153,7 @@ namespace VPWStudio.Tools
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TextIndexTool";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "(VPW2) Text Index Tool";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextIndexTool_KeyDown);

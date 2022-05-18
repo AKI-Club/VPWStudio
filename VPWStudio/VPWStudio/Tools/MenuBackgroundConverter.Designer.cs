@@ -213,6 +213,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MenuBackgroundConverter";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Menu Background Converter";
 			this.tlpImage.ResumeLayout(false);

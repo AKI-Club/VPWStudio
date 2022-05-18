@@ -147,7 +147,7 @@
             this.extractFileToolStripMenuItem,
             this.extractRawToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(251, 170);
+			this.cmsFileEntry.Size = new System.Drawing.Size(251, 148);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// setTypeToolStripMenuItem
@@ -370,6 +370,7 @@
 			this.MainMenuStrip = this.menuStripFileTable;
 			this.MinimumSize = new System.Drawing.Size(720, 480);
 			this.Name = "FileTableDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "File Table";
 			this.cmsFileEntry.ResumeLayout(false);

@@ -89,6 +89,7 @@ namespace VPWStudio
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FileTable_SearchFileTypeDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Search for File Type";
 			this.ResumeLayout(false);

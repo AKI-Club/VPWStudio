@@ -55,12 +55,12 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.buttonExportOBJ = new System.Windows.Forms.Button();
 			this.lblValueScale = new System.Windows.Forms.Label();
 			this.lblValueOffsetY = new System.Windows.Forms.Label();
 			this.lblValueTexOffset = new System.Windows.Forms.Label();
 			this.lblValueOffsetX = new System.Windows.Forms.Label();
 			this.lblValueOffsetZ = new System.Windows.Forms.Label();
+			this.buttonExportOBJ = new System.Windows.Forms.Button();
 			this.gbVertices.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvVertices)).BeginInit();
 			this.gbFaces.SuspendLayout();
@@ -344,16 +344,6 @@
 			this.label6.TabIndex = 3;
 			this.label6.Text = "Texture Offset";
 			// 
-			// buttonExportOBJ
-			// 
-			this.buttonExportOBJ.Location = new System.Drawing.Point(529, 41);
-			this.buttonExportOBJ.Name = "buttonExportOBJ";
-			this.buttonExportOBJ.Size = new System.Drawing.Size(91, 23);
-			this.buttonExportOBJ.TabIndex = 8;
-			this.buttonExportOBJ.Text = "Export OBJ...";
-			this.buttonExportOBJ.UseVisualStyleBackColor = true;
-			this.buttonExportOBJ.Click += new System.EventHandler(this.buttonExportOBJ_Click);
-			// 
 			// lblValueScale
 			// 
 			this.lblValueScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -399,6 +389,16 @@
 			this.lblValueOffsetZ.Size = new System.Drawing.Size(117, 13);
 			this.lblValueOffsetZ.TabIndex = 9;
 			// 
+			// buttonExportOBJ
+			// 
+			this.buttonExportOBJ.Location = new System.Drawing.Point(529, 41);
+			this.buttonExportOBJ.Name = "buttonExportOBJ";
+			this.buttonExportOBJ.Size = new System.Drawing.Size(91, 23);
+			this.buttonExportOBJ.TabIndex = 8;
+			this.buttonExportOBJ.Text = "Export OBJ...";
+			this.buttonExportOBJ.UseVisualStyleBackColor = true;
+			this.buttonExportOBJ.Click += new System.EventHandler(this.buttonExportOBJ_Click);
+			// 
 			// ModelTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +416,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "ModelTool";
+			this.ShowInTaskbar = false;
 			this.Text = "Model Tool";
 			this.gbVertices.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvVertices)).EndInit();

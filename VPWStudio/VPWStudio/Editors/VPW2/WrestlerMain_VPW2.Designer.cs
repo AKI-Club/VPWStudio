@@ -55,32 +55,32 @@
 			this.labelHeight = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.tlpProfile = new System.Windows.Forms.TableLayoutPanel();
+			this.nudProfileIndex = new System.Windows.Forms.NumericUpDown();
 			this.buttonProfile = new System.Windows.Forms.Button();
 			this.tlpAppearance = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonAppearance = new System.Windows.Forms.Button();
 			this.tbAppearanceIndex = new System.Windows.Forms.TextBox();
 			this.tlpHeight = new System.Windows.Forms.TableLayoutPanel();
 			this.nudHeight = new System.Windows.Forms.NumericUpDown();
+			this.labelHeightValue = new System.Windows.Forms.Label();
 			this.tlpWeight = new System.Windows.Forms.TableLayoutPanel();
 			this.nudWeight = new System.Windows.Forms.NumericUpDown();
+			this.labelWeightValue = new System.Windows.Forms.Label();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.labelHeightValue = new System.Windows.Forms.Label();
-			this.labelWeightValue = new System.Windows.Forms.Label();
-			this.nudProfileIndex = new System.Windows.Forms.NumericUpDown();
 			this.buttonRefreshList = new System.Windows.Forms.Button();
 			this.tlpWrestlerData.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
 			this.tlpProfile.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).BeginInit();
 			this.tlpAppearance.SuspendLayout();
 			this.tlpHeight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
 			this.tlpWeight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
 			this.gbWrestlers.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lbWrestlers
@@ -590,6 +590,26 @@
 			this.tlpProfile.Size = new System.Drawing.Size(237, 31);
 			this.tlpProfile.TabIndex = 26;
 			// 
+			// nudProfileIndex
+			// 
+			this.nudProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nudProfileIndex.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+			this.nudProfileIndex.Location = new System.Drawing.Point(3, 5);
+			this.nudProfileIndex.Maximum = new decimal(new int[] {
+            228,
+            0,
+            0,
+            0});
+			this.nudProfileIndex.Name = "nudProfileIndex";
+			this.nudProfileIndex.Size = new System.Drawing.Size(159, 20);
+			this.nudProfileIndex.TabIndex = 4;
+			this.nudProfileIndex.ValueChanged += new System.EventHandler(this.nudProfileIndex_ValueChanged);
+			this.nudProfileIndex.Validating += new System.ComponentModel.CancelEventHandler(this.nudProfileIndex_Validating);
+			// 
 			// buttonProfile
 			// 
 			this.buttonProfile.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -667,6 +687,16 @@
 			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
 			this.nudHeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudHeight_Validating);
 			// 
+			// labelHeightValue
+			// 
+			this.labelHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelHeightValue.AutoSize = true;
+			this.labelHeightValue.Location = new System.Drawing.Point(97, 7);
+			this.labelHeightValue.Name = "labelHeightValue";
+			this.labelHeightValue.Size = new System.Drawing.Size(137, 13);
+			this.labelHeightValue.TabIndex = 13;
+			this.labelHeightValue.Text = "(height)";
+			// 
 			// tlpWeight
 			// 
 			this.tlpWeight.ColumnCount = 2;
@@ -698,6 +728,16 @@
 			this.nudWeight.ValueChanged += new System.EventHandler(this.nudWeight_ValueChanged);
 			this.nudWeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudWeight_Validating);
 			// 
+			// labelWeightValue
+			// 
+			this.labelWeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelWeightValue.AutoSize = true;
+			this.labelWeightValue.Location = new System.Drawing.Point(97, 7);
+			this.labelWeightValue.Name = "labelWeightValue";
+			this.labelWeightValue.Size = new System.Drawing.Size(137, 13);
+			this.labelWeightValue.TabIndex = 15;
+			this.labelWeightValue.Text = "(weight)";
+			// 
 			// gbWrestlers
 			// 
 			this.gbWrestlers.Controls.Add(this.lbWrestlers);
@@ -728,46 +768,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// labelHeightValue
-			// 
-			this.labelHeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelHeightValue.AutoSize = true;
-			this.labelHeightValue.Location = new System.Drawing.Point(97, 7);
-			this.labelHeightValue.Name = "labelHeightValue";
-			this.labelHeightValue.Size = new System.Drawing.Size(137, 13);
-			this.labelHeightValue.TabIndex = 13;
-			this.labelHeightValue.Text = "(height)";
-			// 
-			// labelWeightValue
-			// 
-			this.labelWeightValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelWeightValue.AutoSize = true;
-			this.labelWeightValue.Location = new System.Drawing.Point(97, 7);
-			this.labelWeightValue.Name = "labelWeightValue";
-			this.labelWeightValue.Size = new System.Drawing.Size(137, 13);
-			this.labelWeightValue.TabIndex = 15;
-			this.labelWeightValue.Text = "(weight)";
-			// 
-			// nudProfileIndex
-			// 
-			this.nudProfileIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.nudProfileIndex.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-			this.nudProfileIndex.Location = new System.Drawing.Point(3, 5);
-			this.nudProfileIndex.Maximum = new decimal(new int[] {
-            228,
-            0,
-            0,
-            0});
-			this.nudProfileIndex.Name = "nudProfileIndex";
-			this.nudProfileIndex.Size = new System.Drawing.Size(159, 20);
-			this.nudProfileIndex.TabIndex = 4;
-			this.nudProfileIndex.ValueChanged += new System.EventHandler(this.nudProfileIndex_ValueChanged);
-			this.nudProfileIndex.Validating += new System.ComponentModel.CancelEventHandler(this.nudProfileIndex_Validating);
-			// 
 			// buttonRefreshList
 			// 
 			this.buttonRefreshList.Location = new System.Drawing.Point(12, 418);
@@ -792,6 +792,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (VPW2)";
 			this.tlpWrestlerData.ResumeLayout(false);
@@ -801,6 +802,7 @@
 			this.tlpMoveset.ResumeLayout(false);
 			this.tlpMoveset.PerformLayout();
 			this.tlpProfile.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).EndInit();
 			this.tlpAppearance.ResumeLayout(false);
 			this.tlpAppearance.PerformLayout();
 			this.tlpHeight.ResumeLayout(false);
@@ -810,7 +812,6 @@
 			this.tlpWeight.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
 			this.gbWrestlers.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nudProfileIndex)).EndInit();
 			this.ResumeLayout(false);
 
 		}

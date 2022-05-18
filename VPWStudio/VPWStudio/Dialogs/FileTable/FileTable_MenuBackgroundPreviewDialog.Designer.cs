@@ -73,6 +73,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FileTable_MenuBackgoundPreviewDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Menu Background Preview";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_MenuBackgoundPreviewDialog_KeyDown);

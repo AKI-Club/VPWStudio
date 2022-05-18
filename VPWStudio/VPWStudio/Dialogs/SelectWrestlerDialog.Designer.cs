@@ -107,6 +107,7 @@ namespace VPWStudio
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(400, 128);
 			this.Name = "SelectWrestlerDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Select Wrestler";
 			this.tableLayoutPanel1.ResumeLayout(false);

@@ -215,6 +215,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FontDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Fonts";
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FontDialog_KeyUp);

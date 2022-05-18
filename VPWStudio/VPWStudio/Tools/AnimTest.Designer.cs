@@ -41,8 +41,8 @@
 			this.copyHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tlpFrame = new System.Windows.Forms.TableLayoutPanel();
 			this.gbToki1 = new System.Windows.Forms.GroupBox();
-			this.tbToki1Index = new System.Windows.Forms.TextBox();
 			this.btnViewToki1 = new System.Windows.Forms.Button();
+			this.tbToki1Index = new System.Windows.Forms.TextBox();
 			this.gbToki2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvFrameData)).BeginInit();
 			this.menuStrip1.SuspendLayout();
@@ -178,15 +178,6 @@
 			this.gbToki1.TabStop = false;
 			this.gbToki1.Text = "Toki1 &Index";
 			// 
-			// tbToki1Index
-			// 
-			this.tbToki1Index.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbToki1Index.Location = new System.Drawing.Point(6, 19);
-			this.tbToki1Index.Name = "tbToki1Index";
-			this.tbToki1Index.ReadOnly = true;
-			this.tbToki1Index.Size = new System.Drawing.Size(66, 20);
-			this.tbToki1Index.TabIndex = 1;
-			// 
 			// btnViewToki1
 			// 
 			this.btnViewToki1.Location = new System.Drawing.Point(77, 18);
@@ -196,6 +187,15 @@
 			this.btnViewToki1.Text = "&View...";
 			this.btnViewToki1.UseVisualStyleBackColor = true;
 			this.btnViewToki1.Click += new System.EventHandler(this.btnViewToki1_Click);
+			// 
+			// tbToki1Index
+			// 
+			this.tbToki1Index.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbToki1Index.Location = new System.Drawing.Point(6, 19);
+			this.tbToki1Index.Name = "tbToki1Index";
+			this.tbToki1Index.ReadOnly = true;
+			this.tbToki1Index.Size = new System.Drawing.Size(66, 20);
+			this.tbToki1Index.TabIndex = 1;
 			// 
 			// AnimTest
 			// 
@@ -213,6 +213,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(600, 448);
 			this.Name = "AnimTest";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "AnimTest";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AnimTest_KeyDown);

@@ -119,6 +119,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "PackedFileTool";
+			this.ShowInTaskbar = false;
 			this.Text = "Packed File Tool";
 			this.ResumeLayout(false);
 			this.PerformLayout();

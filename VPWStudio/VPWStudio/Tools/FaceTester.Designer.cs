@@ -460,6 +460,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FaceTester";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "VPW2 Face Tester";
 			this.gbPreview.ResumeLayout(false);

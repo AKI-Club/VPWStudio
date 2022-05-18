@@ -465,6 +465,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_Revenge";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (WCW/nWo Revenge)";
 			this.tlpWrestlerInfo.ResumeLayout(false);

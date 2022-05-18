@@ -70,23 +70,23 @@
 			this.nudFileID.Hexadecimal = true;
 			this.nudFileID.Location = new System.Drawing.Point(78, 12);
 			this.nudFileID.Maximum = new decimal(new int[] {
-			65535,
-			0,
-			0,
-			0});
+            65535,
+            0,
+            0,
+            0});
 			this.nudFileID.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			this.nudFileID.Name = "nudFileID";
 			this.nudFileID.Size = new System.Drawing.Size(96, 20);
 			this.nudFileID.TabIndex = 0;
 			this.nudFileID.Value = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			// 
 			// FileTable_GoToDialog
 			// 
@@ -103,6 +103,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FileTable_GoToDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Go To...";
 			((System.ComponentModel.ISupportInitialize)(this.nudFileID)).EndInit();

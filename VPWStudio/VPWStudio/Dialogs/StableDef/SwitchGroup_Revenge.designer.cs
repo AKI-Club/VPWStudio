@@ -99,6 +99,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "SwitchGroup_Revenge";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Move Wrestler to Stable";
 			this.ResumeLayout(false);

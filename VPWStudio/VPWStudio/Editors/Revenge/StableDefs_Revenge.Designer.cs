@@ -281,6 +281,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefs_Revenge";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.tableLayoutPanel1.ResumeLayout(false);

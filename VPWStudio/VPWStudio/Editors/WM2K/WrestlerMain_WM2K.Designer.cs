@@ -42,7 +42,6 @@
 			this.tlpCostumePointer1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbCosPointer1 = new System.Windows.Forms.TextBox();
 			this.buttonCostume1 = new System.Windows.Forms.Button();
-			this.tbWrestlerName = new System.Windows.Forms.TextBox();
 			this.tbUnknown = new System.Windows.Forms.TextBox();
 			this.labelUnknown = new System.Windows.Forms.Label();
 			this.labelEntranceVideo = new System.Windows.Forms.Label();
@@ -68,16 +67,17 @@
 			this.labelCostumePointer2 = new System.Windows.Forms.Label();
 			this.labelCostumePointer3 = new System.Windows.Forms.Label();
 			this.labelCostumePointer4 = new System.Windows.Forms.Label();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
-			this.nudHeight = new System.Windows.Forms.NumericUpDown();
 			this.tlpHeight = new System.Windows.Forms.TableLayoutPanel();
+			this.nudHeight = new System.Windows.Forms.NumericUpDown();
 			this.labelHeightValue = new System.Windows.Forms.Label();
 			this.tlpWeight = new System.Windows.Forms.TableLayoutPanel();
 			this.nudWeight = new System.Windows.Forms.NumericUpDown();
 			this.labelWeightValue = new System.Windows.Forms.Label();
 			this.tlpWrestlerName = new System.Windows.Forms.TableLayoutPanel();
+			this.tbWrestlerName = new System.Windows.Forms.TextBox();
 			this.tbNamePointer = new System.Windows.Forms.TextBox();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpCostume4.SuspendLayout();
 			this.tlpCostume3.SuspendLayout();
@@ -85,8 +85,8 @@
 			this.tlpCostumePointer1.SuspendLayout();
 			this.tlpParams.SuspendLayout();
 			this.tlpMoveset.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
 			this.tlpHeight.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
 			this.tlpWeight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
 			this.tlpWrestlerName.SuspendLayout();
@@ -298,15 +298,6 @@
 			this.buttonCostume1.Text = "View/Edit";
 			this.buttonCostume1.UseVisualStyleBackColor = true;
 			this.buttonCostume1.Click += new System.EventHandler(this.buttonCostume1_Click);
-			// 
-			// tbWrestlerName
-			// 
-			this.tbWrestlerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerName.Location = new System.Drawing.Point(67, 3);
-			this.tbWrestlerName.Name = "tbWrestlerName";
-			this.tbWrestlerName.ReadOnly = true;
-			this.tbWrestlerName.Size = new System.Drawing.Size(167, 20);
-			this.tbWrestlerName.TabIndex = 29;
 			// 
 			// tbUnknown
 			// 
@@ -659,25 +650,20 @@
 			this.labelCostumePointer4.TabIndex = 33;
 			this.labelCostumePointer4.Text = "Costume Pointer 4";
 			// 
-			// buttonOK
+			// tlpHeight
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(336, 459);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 2;
-			this.buttonOK.Text = "OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(417, 459);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 3;
-			this.buttonCancel.Text = "Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			this.tlpHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpHeight.ColumnCount = 2;
+			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpHeight.Controls.Add(this.nudHeight, 0, 0);
+			this.tlpHeight.Controls.Add(this.labelHeightValue, 1, 0);
+			this.tlpHeight.Location = new System.Drawing.Point(106, 96);
+			this.tlpHeight.Name = "tlpHeight";
+			this.tlpHeight.RowCount = 1;
+			this.tlpHeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpHeight.Size = new System.Drawing.Size(237, 25);
+			this.tlpHeight.TabIndex = 34;
 			// 
 			// nudHeight
 			// 
@@ -694,21 +680,6 @@
 			this.nudHeight.TabIndex = 4;
 			this.nudHeight.ValueChanged += new System.EventHandler(this.nudHeight_ValueChanged);
 			this.nudHeight.Validating += new System.ComponentModel.CancelEventHandler(this.nudHeight_Validating);
-			// 
-			// tlpHeight
-			// 
-			this.tlpHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpHeight.ColumnCount = 2;
-			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpHeight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpHeight.Controls.Add(this.nudHeight, 0, 0);
-			this.tlpHeight.Controls.Add(this.labelHeightValue, 1, 0);
-			this.tlpHeight.Location = new System.Drawing.Point(106, 96);
-			this.tlpHeight.Name = "tlpHeight";
-			this.tlpHeight.RowCount = 1;
-			this.tlpHeight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpHeight.Size = new System.Drawing.Size(237, 25);
-			this.tlpHeight.TabIndex = 34;
 			// 
 			// labelHeightValue
 			// 
@@ -776,6 +747,15 @@
 			this.tlpWrestlerName.Size = new System.Drawing.Size(237, 25);
 			this.tlpWrestlerName.TabIndex = 36;
 			// 
+			// tbWrestlerName
+			// 
+			this.tbWrestlerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerName.Location = new System.Drawing.Point(67, 3);
+			this.tbWrestlerName.Name = "tbWrestlerName";
+			this.tbWrestlerName.ReadOnly = true;
+			this.tbWrestlerName.Size = new System.Drawing.Size(167, 20);
+			this.tbWrestlerName.TabIndex = 29;
+			// 
 			// tbNamePointer
 			// 
 			this.tbNamePointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -784,6 +764,26 @@
 			this.tbNamePointer.ReadOnly = true;
 			this.tbNamePointer.Size = new System.Drawing.Size(58, 20);
 			this.tbNamePointer.TabIndex = 30;
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(336, 459);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 2;
+			this.buttonOK.Text = "OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(417, 459);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 3;
+			this.buttonCancel.Text = "Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// WrestlerMain_WM2K
 			// 
@@ -798,6 +798,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_WM2K";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (WWF WrestleMania 2000)";
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -814,9 +815,9 @@
 			this.tlpParams.PerformLayout();
 			this.tlpMoveset.ResumeLayout(false);
 			this.tlpMoveset.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			this.tlpHeight.ResumeLayout(false);
 			this.tlpHeight.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
 			this.tlpWeight.ResumeLayout(false);
 			this.tlpWeight.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();

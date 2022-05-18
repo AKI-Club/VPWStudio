@@ -761,6 +761,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 360);
 			this.Name = "ProjectPropertiesDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Project Properties";
 			this.tcProjectProperties.ResumeLayout(false);

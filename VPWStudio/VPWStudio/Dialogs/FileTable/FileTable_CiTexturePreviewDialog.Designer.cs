@@ -97,20 +97,20 @@
             this.savePNGToolStripMenuItem,
             this.backgroundColorToolStripMenuItem});
 			this.cmsImage.Name = "cmsImage";
-			this.cmsImage.Size = new System.Drawing.Size(171, 48);
+			this.cmsImage.Size = new System.Drawing.Size(180, 48);
 			// 
 			// savePNGToolStripMenuItem
 			// 
 			this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+			this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
 			this.savePNGToolStripMenuItem.Text = "Save PNG...";
 			this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
 			// 
 			// backgroundColorToolStripMenuItem
 			// 
 			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
-			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
 			this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
 			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
 			// 
@@ -151,6 +151,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(400, 317);
 			this.Name = "FileTable_CiTexturePreviewDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "(CI* image preview)";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FileTable_CiTexturePreviewDialog_KeyDown);

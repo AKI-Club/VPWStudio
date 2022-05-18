@@ -59,6 +59,7 @@
 			this.MaximumSize = new System.Drawing.Size(640, 600);
 			this.MinimumSize = new System.Drawing.Size(640, 400);
 			this.Name = "HexViewer";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
 			this.Text = "Hex Viewer";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HexViewer_FormClosing);

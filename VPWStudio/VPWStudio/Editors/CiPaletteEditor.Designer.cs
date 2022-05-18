@@ -322,6 +322,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "CiPaletteEditor";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "CI* Palette Editor";
 			this.gbPalettePreview.ResumeLayout(false);

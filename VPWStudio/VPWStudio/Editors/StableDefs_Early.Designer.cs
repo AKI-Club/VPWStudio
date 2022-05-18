@@ -32,12 +32,14 @@ namespace VPWStudio.Editors
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.lbStables = new System.Windows.Forms.ListBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.tbWrestlerCount = new System.Windows.Forms.TextBox();
-			this.tbChampTextPointer = new System.Windows.Forms.TextBox();
-			this.tbChampionshipCount = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
+			this.tbChampionshipCount = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.tbChampTextPointer = new System.Windows.Forms.TextBox();
+			this.tbWrestlerCount = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.tbWrestlerDefPointer = new System.Windows.Forms.TextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.buttonSwapWrestler = new System.Windows.Forms.Button();
 			this.buttonSwitchGroup = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@ namespace VPWStudio.Editors
 			this.lbWresPointers = new System.Windows.Forms.ListBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbWrestlerDefPointer = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -96,23 +96,15 @@ namespace VPWStudio.Editors
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(247, 109);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
-			// tbWrestlerCount
+			// label3
 			// 
-			this.tbWrestlerCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerCount.Location = new System.Drawing.Point(126, 30);
-			this.tbWrestlerCount.Name = "tbWrestlerCount";
-			this.tbWrestlerCount.ReadOnly = true;
-			this.tbWrestlerCount.Size = new System.Drawing.Size(118, 20);
-			this.tbWrestlerCount.TabIndex = 0;
-			// 
-			// tbChampTextPointer
-			// 
-			this.tbChampTextPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbChampTextPointer.Location = new System.Drawing.Point(126, 57);
-			this.tbChampTextPointer.Name = "tbChampTextPointer";
-			this.tbChampTextPointer.ReadOnly = true;
-			this.tbChampTextPointer.Size = new System.Drawing.Size(118, 20);
-			this.tbChampTextPointer.TabIndex = 1;
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(3, 88);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(117, 13);
+			this.label3.TabIndex = 5;
+			this.label3.Text = "Championship Count";
 			// 
 			// tbChampionshipCount
 			// 
@@ -122,16 +114,6 @@ namespace VPWStudio.Editors
 			this.tbChampionshipCount.ReadOnly = true;
 			this.tbChampionshipCount.Size = new System.Drawing.Size(118, 20);
 			this.tbChampionshipCount.TabIndex = 2;
-			// 
-			// label1
-			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 34);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(117, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Wrestler Count";
 			// 
 			// label2
 			// 
@@ -143,15 +125,52 @@ namespace VPWStudio.Editors
 			this.label2.TabIndex = 4;
 			this.label2.Text = "Championship Text Pointer";
 			// 
-			// label3
+			// tbChampTextPointer
 			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 88);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(117, 13);
-			this.label3.TabIndex = 5;
-			this.label3.Text = "Championship Count";
+			this.tbChampTextPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbChampTextPointer.Location = new System.Drawing.Point(126, 57);
+			this.tbChampTextPointer.Name = "tbChampTextPointer";
+			this.tbChampTextPointer.ReadOnly = true;
+			this.tbChampTextPointer.Size = new System.Drawing.Size(118, 20);
+			this.tbChampTextPointer.TabIndex = 1;
+			// 
+			// tbWrestlerCount
+			// 
+			this.tbWrestlerCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerCount.Location = new System.Drawing.Point(126, 30);
+			this.tbWrestlerCount.Name = "tbWrestlerCount";
+			this.tbWrestlerCount.ReadOnly = true;
+			this.tbWrestlerCount.Size = new System.Drawing.Size(118, 20);
+			this.tbWrestlerCount.TabIndex = 0;
+			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 34);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(117, 13);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Wrestler Count";
+			// 
+			// label4
+			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(3, 7);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(117, 13);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "Wrestler Definitions";
+			// 
+			// tbWrestlerDefPointer
+			// 
+			this.tbWrestlerDefPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbWrestlerDefPointer.Location = new System.Drawing.Point(126, 3);
+			this.tbWrestlerDefPointer.Name = "tbWrestlerDefPointer";
+			this.tbWrestlerDefPointer.ReadOnly = true;
+			this.tbWrestlerDefPointer.Size = new System.Drawing.Size(118, 20);
+			this.tbWrestlerDefPointer.TabIndex = 7;
 			// 
 			// groupBox2
 			// 
@@ -246,25 +265,6 @@ namespace VPWStudio.Editors
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// label4
-			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 7);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(117, 13);
-			this.label4.TabIndex = 6;
-			this.label4.Text = "Wrestler Definitions";
-			// 
-			// tbWrestlerDefPointer
-			// 
-			this.tbWrestlerDefPointer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbWrestlerDefPointer.Location = new System.Drawing.Point(126, 3);
-			this.tbWrestlerDefPointer.Name = "tbWrestlerDefPointer";
-			this.tbWrestlerDefPointer.ReadOnly = true;
-			this.tbWrestlerDefPointer.Size = new System.Drawing.Size(118, 20);
-			this.tbWrestlerDefPointer.TabIndex = 7;
-			// 
 			// StableDefs_Early
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +279,7 @@ namespace VPWStudio.Editors
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefs_Early";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.groupBox1.ResumeLayout(false);
