@@ -442,6 +442,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(650, 378);
 			this.Name = "ModelTool2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ModelTool2";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelTool2_FormClosing);

@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.dgvMenuItems = new System.Windows.Forms.DataGridView();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
 			this.ItemValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvMenuItems)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -51,6 +51,21 @@
 			this.dgvMenuItems.Size = new System.Drawing.Size(480, 288);
 			this.dgvMenuItems.TabIndex = 0;
 			this.dgvMenuItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMenuItems_CellEndEdit);
+			// 
+			// ItemValue
+			// 
+			this.ItemValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.ItemValue.FillWeight = 25F;
+			this.ItemValue.HeaderText = " Value";
+			this.ItemValue.MaxInputLength = 3;
+			this.ItemValue.Name = "ItemValue";
+			// 
+			// ItemName
+			// 
+			this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.ItemName.FillWeight = 75F;
+			this.ItemName.HeaderText = "Name";
+			this.ItemName.Name = "ItemName";
 			// 
 			// buttonOK
 			// 
@@ -73,21 +88,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// ItemValue
-			// 
-			this.ItemValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.ItemValue.FillWeight = 25F;
-			this.ItemValue.HeaderText = " Value";
-			this.ItemValue.MaxInputLength = 3;
-			this.ItemValue.Name = "ItemValue";
-			// 
-			// ItemName
-			// 
-			this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.ItemName.FillWeight = 75F;
-			this.ItemName.HeaderText = "Name";
-			this.ItemName.Name = "ItemName";
-			// 
 			// MenuItemsNoGroup_NoMercy
 			// 
 			this.AcceptButton = this.buttonOK;
@@ -102,6 +102,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MenuItemsNoGroup_NoMercy";
+			this.ShowInTaskbar = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Menu Item Editor - Groupless";

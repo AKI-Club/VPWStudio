@@ -135,6 +135,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ProgramOptionsDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Program Options";
 			this.tlpBuildLogVerbosity.ResumeLayout(false);

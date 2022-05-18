@@ -262,6 +262,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MenuItemsShop_NoMercy";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "No Mercy Smackdown Mall Shop Items";
 			this.tableLayoutPanel1.ResumeLayout(false);

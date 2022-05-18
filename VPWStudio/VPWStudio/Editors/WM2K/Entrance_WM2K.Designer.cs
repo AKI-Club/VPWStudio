@@ -33,7 +33,6 @@
 			this.labelEntrance = new System.Windows.Forms.Label();
 			this.tcEntranceTabs = new System.Windows.Forms.TabControl();
 			this.tpMain = new System.Windows.Forms.TabPage();
-			this.tpTitantron = new System.Windows.Forms.TabPage();
 			this.tlpEntranceMain = new System.Windows.Forms.TableLayoutPanel();
 			this.labelTitantronPointer = new System.Windows.Forms.Label();
 			this.labelThemeMusic = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
 			this.tbTextIndex = new System.Windows.Forms.TextBox();
 			this.tbUnknown = new System.Windows.Forms.TextBox();
 			this.tbLightingDelay = new System.Windows.Forms.TextBox();
+			this.tpTitantron = new System.Windows.Forms.TabPage();
 			this.tlpEntrances.SuspendLayout();
 			this.tcEntranceTabs.SuspendLayout();
 			this.tpMain.SuspendLayout();
@@ -106,16 +106,6 @@
 			this.tpMain.TabIndex = 0;
 			this.tpMain.Text = "Main";
 			this.tpMain.UseVisualStyleBackColor = true;
-			// 
-			// tpTitantron
-			// 
-			this.tpTitantron.Location = new System.Drawing.Point(4, 22);
-			this.tpTitantron.Name = "tpTitantron";
-			this.tpTitantron.Padding = new System.Windows.Forms.Padding(3);
-			this.tpTitantron.Size = new System.Drawing.Size(344, 181);
-			this.tpTitantron.TabIndex = 1;
-			this.tpTitantron.Text = "Titantron";
-			this.tpTitantron.UseVisualStyleBackColor = true;
 			// 
 			// tlpEntranceMain
 			// 
@@ -239,6 +229,16 @@
 			this.tbLightingDelay.Size = new System.Drawing.Size(227, 20);
 			this.tbLightingDelay.TabIndex = 9;
 			// 
+			// tpTitantron
+			// 
+			this.tpTitantron.Location = new System.Drawing.Point(4, 22);
+			this.tpTitantron.Name = "tpTitantron";
+			this.tpTitantron.Padding = new System.Windows.Forms.Padding(3);
+			this.tpTitantron.Size = new System.Drawing.Size(344, 181);
+			this.tpTitantron.TabIndex = 1;
+			this.tpTitantron.Text = "Titantron";
+			this.tpTitantron.UseVisualStyleBackColor = true;
+			// 
 			// Entrance_WM2K
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +249,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.Name = "Entrance_WM2K";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "WM2K Entrance Editor";
 			this.tlpEntrances.ResumeLayout(false);

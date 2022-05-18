@@ -151,6 +151,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(720, 320);
 			this.Name = "FileTable_EditMultiEntryInfoDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "File Table Entry Information";
 			((System.ComponentModel.ISupportInitialize)(this.dgvEditEntries)).EndInit();

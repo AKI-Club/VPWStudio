@@ -46,10 +46,12 @@
 			this.tbSingleGuestNumWrestlers = new System.Windows.Forms.TextBox();
 			this.tbSingleGuestInitialRank = new System.Windows.Forms.TextBox();
 			this.tlpSingleParticipant = new System.Windows.Forms.TableLayoutPanel();
+			this.tlpSingleWrestlerID = new System.Windows.Forms.TableLayoutPanel();
+			this.tbSingleWrestler = new System.Windows.Forms.TextBox();
+			this.btnChangeWrestlerSingle = new System.Windows.Forms.Button();
 			this.lblSinglesWrestler = new System.Windows.Forms.Label();
 			this.lblSingleSkillLevel = new System.Windows.Forms.Label();
 			this.lblSingleTitleShotPercent = new System.Windows.Forms.Label();
-			this.tbSingleWrestler = new System.Windows.Forms.TextBox();
 			this.tbSingleSkillLevel = new System.Windows.Forms.TextBox();
 			this.tbSingleTitleShotPercent = new System.Windows.Forms.TextBox();
 			this.lbSinglesParticipants = new System.Windows.Forms.ListBox();
@@ -70,9 +72,13 @@
 			this.labelTeamWrestler1 = new System.Windows.Forms.Label();
 			this.labelTeamWrestler2 = new System.Windows.Forms.Label();
 			this.labelTeamTitleShotPercent = new System.Windows.Forms.Label();
-			this.tbTeamWrestler1 = new System.Windows.Forms.TextBox();
-			this.tbTeamWrestler2 = new System.Windows.Forms.TextBox();
 			this.tbTeamTitleShotPercent = new System.Windows.Forms.TextBox();
+			this.tlpTagWrestler1ID = new System.Windows.Forms.TableLayoutPanel();
+			this.tbTeamWrestler1 = new System.Windows.Forms.TextBox();
+			this.btnChangeWrestlerTeam1 = new System.Windows.Forms.Button();
+			this.tlpTagWrestler2ID = new System.Windows.Forms.TableLayoutPanel();
+			this.tbTeamWrestler2 = new System.Windows.Forms.TextBox();
+			this.btnChangeWrestlerTeam2 = new System.Windows.Forms.Button();
 			this.lbTeams = new System.Windows.Forms.ListBox();
 			this.tpPromoRelegate = new System.Windows.Forms.TabPage();
 			this.gbPromoRelegateTag = new System.Windows.Forms.GroupBox();
@@ -102,13 +108,19 @@
 			this.tlpAsiaTag = new System.Windows.Forms.TableLayoutPanel();
 			this.tbAsiaTag2 = new System.Windows.Forms.TextBox();
 			this.tbAsiaTag1 = new System.Windows.Forms.TextBox();
+			this.btnChangeAsiaTag1 = new System.Windows.Forms.Button();
+			this.btnChangeAsiaTag2 = new System.Windows.Forms.Button();
 			this.labelTripleCrown = new System.Windows.Forms.Label();
 			this.labelWorldTag = new System.Windows.Forms.Label();
 			this.labelAsiaTag = new System.Windows.Forms.Label();
-			this.tbTripleCrown = new System.Windows.Forms.TextBox();
 			this.tlpWorldTag = new System.Windows.Forms.TableLayoutPanel();
 			this.tbWorldTag2 = new System.Windows.Forms.TextBox();
 			this.tbWorldTag1 = new System.Windows.Forms.TextBox();
+			this.btnChangeWorldTag1 = new System.Windows.Forms.Button();
+			this.btnChangeWorldTag2 = new System.Windows.Forms.Button();
+			this.tlpTripleCrownChampion = new System.Windows.Forms.TableLayoutPanel();
+			this.tbTripleCrown = new System.Windows.Forms.TextBox();
+			this.btnChangeTripleCrown = new System.Windows.Forms.Button();
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.tabCtrlMain = new System.Windows.Forms.TabControl();
@@ -167,25 +179,16 @@
 			this.tlpBookingSet = new System.Windows.Forms.TableLayoutPanel();
 			this.lblInstructionSet = new System.Windows.Forms.Label();
 			this.cbBookingInstructions = new System.Windows.Forms.ComboBox();
-			this.tlpSingleWrestlerID = new System.Windows.Forms.TableLayoutPanel();
-			this.btnChangeWrestlerSingle = new System.Windows.Forms.Button();
-			this.tlpTagWrestler1ID = new System.Windows.Forms.TableLayoutPanel();
-			this.btnChangeWrestlerTeam1 = new System.Windows.Forms.Button();
-			this.tlpTagWrestler2ID = new System.Windows.Forms.TableLayoutPanel();
-			this.btnChangeWrestlerTeam2 = new System.Windows.Forms.Button();
-			this.tlpTripleCrownChampion = new System.Windows.Forms.TableLayoutPanel();
-			this.btnChangeTripleCrown = new System.Windows.Forms.Button();
-			this.btnChangeWorldTag1 = new System.Windows.Forms.Button();
-			this.btnChangeWorldTag2 = new System.Windows.Forms.Button();
-			this.btnChangeAsiaTag1 = new System.Windows.Forms.Button();
-			this.btnChangeAsiaTag2 = new System.Windows.Forms.Button();
 			this.tabCtrlParticipants.SuspendLayout();
 			this.tpSinglesParticipants.SuspendLayout();
 			this.tlpSingleGroupings.SuspendLayout();
 			this.tlpSingleParticipant.SuspendLayout();
+			this.tlpSingleWrestlerID.SuspendLayout();
 			this.tpTeams.SuspendLayout();
 			this.tlpTagGroupings.SuspendLayout();
 			this.tlpTeams.SuspendLayout();
+			this.tlpTagWrestler1ID.SuspendLayout();
+			this.tlpTagWrestler2ID.SuspendLayout();
 			this.tpPromoRelegate.SuspendLayout();
 			this.gbPromoRelegateTag.SuspendLayout();
 			this.tlpPromoRelegateTag.SuspendLayout();
@@ -195,6 +198,7 @@
 			this.tlpChampions.SuspendLayout();
 			this.tlpAsiaTag.SuspendLayout();
 			this.tlpWorldTag.SuspendLayout();
+			this.tlpTripleCrownChampion.SuspendLayout();
 			this.tabCtrlMain.SuspendLayout();
 			this.tpParticipants.SuspendLayout();
 			this.tpEvents.SuspendLayout();
@@ -204,10 +208,6 @@
 			this.tpBookingInstructions.SuspendLayout();
 			this.tlpBookingInstructions.SuspendLayout();
 			this.tlpBookingSet.SuspendLayout();
-			this.tlpSingleWrestlerID.SuspendLayout();
-			this.tlpTagWrestler1ID.SuspendLayout();
-			this.tlpTagWrestler2ID.SuspendLayout();
-			this.tlpTripleCrownChampion.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabCtrlParticipants
@@ -420,6 +420,41 @@
 			this.tlpSingleParticipant.Size = new System.Drawing.Size(423, 186);
 			this.tlpSingleParticipant.TabIndex = 1;
 			// 
+			// tlpSingleWrestlerID
+			// 
+			this.tlpSingleWrestlerID.ColumnCount = 2;
+			this.tlpSingleWrestlerID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpSingleWrestlerID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpSingleWrestlerID.Controls.Add(this.tbSingleWrestler, 0, 0);
+			this.tlpSingleWrestlerID.Controls.Add(this.btnChangeWrestlerSingle, 1, 0);
+			this.tlpSingleWrestlerID.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpSingleWrestlerID.Location = new System.Drawing.Point(108, 3);
+			this.tlpSingleWrestlerID.Name = "tlpSingleWrestlerID";
+			this.tlpSingleWrestlerID.RowCount = 1;
+			this.tlpSingleWrestlerID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpSingleWrestlerID.Size = new System.Drawing.Size(312, 56);
+			this.tlpSingleWrestlerID.TabIndex = 3;
+			// 
+			// tbSingleWrestler
+			// 
+			this.tbSingleWrestler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSingleWrestler.Location = new System.Drawing.Point(3, 18);
+			this.tbSingleWrestler.Name = "tbSingleWrestler";
+			this.tbSingleWrestler.ReadOnly = true;
+			this.tbSingleWrestler.Size = new System.Drawing.Size(228, 20);
+			this.tbSingleWrestler.TabIndex = 3;
+			// 
+			// btnChangeWrestlerSingle
+			// 
+			this.btnChangeWrestlerSingle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeWrestlerSingle.Location = new System.Drawing.Point(237, 16);
+			this.btnChangeWrestlerSingle.Name = "btnChangeWrestlerSingle";
+			this.btnChangeWrestlerSingle.Size = new System.Drawing.Size(72, 23);
+			this.btnChangeWrestlerSingle.TabIndex = 4;
+			this.btnChangeWrestlerSingle.Text = "Change...";
+			this.btnChangeWrestlerSingle.UseVisualStyleBackColor = true;
+			this.btnChangeWrestlerSingle.Click += new System.EventHandler(this.btnChangeWrestlerSingle_Click);
+			// 
 			// lblSinglesWrestler
 			// 
 			this.lblSinglesWrestler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -434,7 +469,7 @@
 			// 
 			this.lblSingleSkillLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSingleSkillLevel.AutoSize = true;
-			this.lblSingleSkillLevel.Location = new System.Drawing.Point(3, 85);
+			this.lblSingleSkillLevel.Location = new System.Drawing.Point(3, 86);
 			this.lblSingleSkillLevel.Name = "lblSingleSkillLevel";
 			this.lblSingleSkillLevel.Size = new System.Drawing.Size(99, 13);
 			this.lblSingleSkillLevel.TabIndex = 1;
@@ -444,25 +479,16 @@
 			// 
 			this.lblSingleTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSingleTitleShotPercent.AutoSize = true;
-			this.lblSingleTitleShotPercent.Location = new System.Drawing.Point(3, 147);
+			this.lblSingleTitleShotPercent.Location = new System.Drawing.Point(3, 148);
 			this.lblSingleTitleShotPercent.Name = "lblSingleTitleShotPercent";
 			this.lblSingleTitleShotPercent.Size = new System.Drawing.Size(99, 13);
 			this.lblSingleTitleShotPercent.TabIndex = 2;
 			this.lblSingleTitleShotPercent.Text = "Title Shot Percent";
 			// 
-			// tbSingleWrestler
-			// 
-			this.tbSingleWrestler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleWrestler.Location = new System.Drawing.Point(3, 17);
-			this.tbSingleWrestler.Name = "tbSingleWrestler";
-			this.tbSingleWrestler.ReadOnly = true;
-			this.tbSingleWrestler.Size = new System.Drawing.Size(228, 20);
-			this.tbSingleWrestler.TabIndex = 3;
-			// 
 			// tbSingleSkillLevel
 			// 
 			this.tbSingleSkillLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleSkillLevel.Location = new System.Drawing.Point(108, 81);
+			this.tbSingleSkillLevel.Location = new System.Drawing.Point(108, 83);
 			this.tbSingleSkillLevel.Name = "tbSingleSkillLevel";
 			this.tbSingleSkillLevel.ReadOnly = true;
 			this.tbSingleSkillLevel.Size = new System.Drawing.Size(312, 20);
@@ -471,7 +497,7 @@
 			// tbSingleTitleShotPercent
 			// 
 			this.tbSingleTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSingleTitleShotPercent.Location = new System.Drawing.Point(108, 144);
+			this.tbSingleTitleShotPercent.Location = new System.Drawing.Point(108, 145);
 			this.tbSingleTitleShotPercent.Name = "tbSingleTitleShotPercent";
 			this.tbSingleTitleShotPercent.ReadOnly = true;
 			this.tbSingleTitleShotPercent.Size = new System.Drawing.Size(312, 20);
@@ -683,6 +709,30 @@
 			this.labelTeamTitleShotPercent.TabIndex = 2;
 			this.labelTeamTitleShotPercent.Text = "Title Shot Percent";
 			// 
+			// tbTeamTitleShotPercent
+			// 
+			this.tbTeamTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(108, 166);
+			this.tbTeamTitleShotPercent.Name = "tbTeamTitleShotPercent";
+			this.tbTeamTitleShotPercent.ReadOnly = true;
+			this.tbTeamTitleShotPercent.Size = new System.Drawing.Size(309, 20);
+			this.tbTeamTitleShotPercent.TabIndex = 5;
+			// 
+			// tlpTagWrestler1ID
+			// 
+			this.tlpTagWrestler1ID.ColumnCount = 2;
+			this.tlpTagWrestler1ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpTagWrestler1ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpTagWrestler1ID.Controls.Add(this.tbTeamWrestler1, 0, 0);
+			this.tlpTagWrestler1ID.Controls.Add(this.btnChangeWrestlerTeam1, 1, 0);
+			this.tlpTagWrestler1ID.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpTagWrestler1ID.Location = new System.Drawing.Point(108, 3);
+			this.tlpTagWrestler1ID.Name = "tlpTagWrestler1ID";
+			this.tlpTagWrestler1ID.RowCount = 1;
+			this.tlpTagWrestler1ID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpTagWrestler1ID.Size = new System.Drawing.Size(309, 64);
+			this.tlpTagWrestler1ID.TabIndex = 6;
+			// 
 			// tbTeamWrestler1
 			// 
 			this.tbTeamWrestler1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -691,6 +741,32 @@
 			this.tbTeamWrestler1.ReadOnly = true;
 			this.tbTeamWrestler1.Size = new System.Drawing.Size(225, 20);
 			this.tbTeamWrestler1.TabIndex = 3;
+			// 
+			// btnChangeWrestlerTeam1
+			// 
+			this.btnChangeWrestlerTeam1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeWrestlerTeam1.Location = new System.Drawing.Point(234, 20);
+			this.btnChangeWrestlerTeam1.Name = "btnChangeWrestlerTeam1";
+			this.btnChangeWrestlerTeam1.Size = new System.Drawing.Size(72, 23);
+			this.btnChangeWrestlerTeam1.TabIndex = 4;
+			this.btnChangeWrestlerTeam1.Text = "Change...";
+			this.btnChangeWrestlerTeam1.UseVisualStyleBackColor = true;
+			this.btnChangeWrestlerTeam1.Click += new System.EventHandler(this.btnChangeWrestlerTeam1_Click);
+			// 
+			// tlpTagWrestler2ID
+			// 
+			this.tlpTagWrestler2ID.ColumnCount = 2;
+			this.tlpTagWrestler2ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpTagWrestler2ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpTagWrestler2ID.Controls.Add(this.tbTeamWrestler2, 0, 0);
+			this.tlpTagWrestler2ID.Controls.Add(this.btnChangeWrestlerTeam2, 1, 0);
+			this.tlpTagWrestler2ID.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpTagWrestler2ID.Location = new System.Drawing.Point(108, 73);
+			this.tlpTagWrestler2ID.Name = "tlpTagWrestler2ID";
+			this.tlpTagWrestler2ID.RowCount = 1;
+			this.tlpTagWrestler2ID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpTagWrestler2ID.Size = new System.Drawing.Size(309, 64);
+			this.tlpTagWrestler2ID.TabIndex = 7;
 			// 
 			// tbTeamWrestler2
 			// 
@@ -701,14 +777,16 @@
 			this.tbTeamWrestler2.Size = new System.Drawing.Size(225, 20);
 			this.tbTeamWrestler2.TabIndex = 4;
 			// 
-			// tbTeamTitleShotPercent
+			// btnChangeWrestlerTeam2
 			// 
-			this.tbTeamTitleShotPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTeamTitleShotPercent.Location = new System.Drawing.Point(108, 166);
-			this.tbTeamTitleShotPercent.Name = "tbTeamTitleShotPercent";
-			this.tbTeamTitleShotPercent.ReadOnly = true;
-			this.tbTeamTitleShotPercent.Size = new System.Drawing.Size(309, 20);
-			this.tbTeamTitleShotPercent.TabIndex = 5;
+			this.btnChangeWrestlerTeam2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeWrestlerTeam2.Location = new System.Drawing.Point(234, 20);
+			this.btnChangeWrestlerTeam2.Name = "btnChangeWrestlerTeam2";
+			this.btnChangeWrestlerTeam2.Size = new System.Drawing.Size(72, 23);
+			this.btnChangeWrestlerTeam2.TabIndex = 5;
+			this.btnChangeWrestlerTeam2.Text = "Change...";
+			this.btnChangeWrestlerTeam2.UseVisualStyleBackColor = true;
+			this.btnChangeWrestlerTeam2.Click += new System.EventHandler(this.btnChangeWrestlerTeam2_Click);
 			// 
 			// lbTeams
 			// 
@@ -1054,6 +1132,28 @@
 			this.tbAsiaTag1.Size = new System.Drawing.Size(311, 20);
 			this.tbAsiaTag1.TabIndex = 4;
 			// 
+			// btnChangeAsiaTag1
+			// 
+			this.btnChangeAsiaTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeAsiaTag1.Location = new System.Drawing.Point(320, 18);
+			this.btnChangeAsiaTag1.Name = "btnChangeAsiaTag1";
+			this.btnChangeAsiaTag1.Size = new System.Drawing.Size(100, 23);
+			this.btnChangeAsiaTag1.TabIndex = 6;
+			this.btnChangeAsiaTag1.Text = "Change...";
+			this.btnChangeAsiaTag1.UseVisualStyleBackColor = true;
+			this.btnChangeAsiaTag1.Click += new System.EventHandler(this.btnChangeAsiaTag1_Click);
+			// 
+			// btnChangeAsiaTag2
+			// 
+			this.btnChangeAsiaTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeAsiaTag2.Location = new System.Drawing.Point(320, 77);
+			this.btnChangeAsiaTag2.Name = "btnChangeAsiaTag2";
+			this.btnChangeAsiaTag2.Size = new System.Drawing.Size(100, 23);
+			this.btnChangeAsiaTag2.TabIndex = 7;
+			this.btnChangeAsiaTag2.Text = "Change...";
+			this.btnChangeAsiaTag2.UseVisualStyleBackColor = true;
+			this.btnChangeAsiaTag2.Click += new System.EventHandler(this.btnChangeAsiaTag2_Click);
+			// 
 			// labelTripleCrown
 			// 
 			this.labelTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1083,15 +1183,6 @@
 			this.labelAsiaTag.Size = new System.Drawing.Size(137, 13);
 			this.labelAsiaTag.TabIndex = 2;
 			this.labelAsiaTag.Text = "Asia Tag";
-			// 
-			// tbTripleCrown
-			// 
-			this.tbTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbTripleCrown.Location = new System.Drawing.Point(3, 48);
-			this.tbTripleCrown.Name = "tbTripleCrown";
-			this.tbTripleCrown.ReadOnly = true;
-			this.tbTripleCrown.Size = new System.Drawing.Size(311, 20);
-			this.tbTripleCrown.TabIndex = 3;
 			// 
 			// tlpWorldTag
 			// 
@@ -1128,6 +1219,63 @@
 			this.tbWorldTag1.ReadOnly = true;
 			this.tbWorldTag1.Size = new System.Drawing.Size(311, 20);
 			this.tbWorldTag1.TabIndex = 4;
+			// 
+			// btnChangeWorldTag1
+			// 
+			this.btnChangeWorldTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeWorldTag1.Location = new System.Drawing.Point(320, 17);
+			this.btnChangeWorldTag1.Name = "btnChangeWorldTag1";
+			this.btnChangeWorldTag1.Size = new System.Drawing.Size(100, 23);
+			this.btnChangeWorldTag1.TabIndex = 6;
+			this.btnChangeWorldTag1.Text = "Change...";
+			this.btnChangeWorldTag1.UseVisualStyleBackColor = true;
+			this.btnChangeWorldTag1.Click += new System.EventHandler(this.btnChangeWorldTag1_Click);
+			// 
+			// btnChangeWorldTag2
+			// 
+			this.btnChangeWorldTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeWorldTag2.Location = new System.Drawing.Point(320, 76);
+			this.btnChangeWorldTag2.Name = "btnChangeWorldTag2";
+			this.btnChangeWorldTag2.Size = new System.Drawing.Size(100, 23);
+			this.btnChangeWorldTag2.TabIndex = 7;
+			this.btnChangeWorldTag2.Text = "Change...";
+			this.btnChangeWorldTag2.UseVisualStyleBackColor = true;
+			this.btnChangeWorldTag2.Click += new System.EventHandler(this.btnChangeWorldTag2_Click);
+			// 
+			// tlpTripleCrownChampion
+			// 
+			this.tlpTripleCrownChampion.ColumnCount = 2;
+			this.tlpTripleCrownChampion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tlpTripleCrownChampion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tlpTripleCrownChampion.Controls.Add(this.tbTripleCrown, 0, 0);
+			this.tlpTripleCrownChampion.Controls.Add(this.btnChangeTripleCrown, 1, 0);
+			this.tlpTripleCrownChampion.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tlpTripleCrownChampion.Location = new System.Drawing.Point(146, 3);
+			this.tlpTripleCrownChampion.Name = "tlpTripleCrownChampion";
+			this.tlpTripleCrownChampion.RowCount = 1;
+			this.tlpTripleCrownChampion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpTripleCrownChampion.Size = new System.Drawing.Size(423, 117);
+			this.tlpTripleCrownChampion.TabIndex = 6;
+			// 
+			// tbTripleCrown
+			// 
+			this.tbTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTripleCrown.Location = new System.Drawing.Point(3, 48);
+			this.tbTripleCrown.Name = "tbTripleCrown";
+			this.tbTripleCrown.ReadOnly = true;
+			this.tbTripleCrown.Size = new System.Drawing.Size(311, 20);
+			this.tbTripleCrown.TabIndex = 3;
+			// 
+			// btnChangeTripleCrown
+			// 
+			this.btnChangeTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnChangeTripleCrown.Location = new System.Drawing.Point(320, 47);
+			this.btnChangeTripleCrown.Name = "btnChangeTripleCrown";
+			this.btnChangeTripleCrown.Size = new System.Drawing.Size(100, 23);
+			this.btnChangeTripleCrown.TabIndex = 4;
+			this.btnChangeTripleCrown.Text = "Change...";
+			this.btnChangeTripleCrown.UseVisualStyleBackColor = true;
+			this.btnChangeTripleCrown.Click += new System.EventHandler(this.btnChangeTripleCrown_Click);
 			// 
 			// btnOK
 			// 
@@ -1790,154 +1938,6 @@
 			this.cbBookingInstructions.TabIndex = 1;
 			this.cbBookingInstructions.SelectedIndexChanged += new System.EventHandler(this.cbBookingInstructions_SelectedIndexChanged);
 			// 
-			// tlpSingleWrestlerID
-			// 
-			this.tlpSingleWrestlerID.ColumnCount = 2;
-			this.tlpSingleWrestlerID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpSingleWrestlerID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpSingleWrestlerID.Controls.Add(this.tbSingleWrestler, 0, 0);
-			this.tlpSingleWrestlerID.Controls.Add(this.btnChangeWrestlerSingle, 1, 0);
-			this.tlpSingleWrestlerID.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpSingleWrestlerID.Location = new System.Drawing.Point(108, 3);
-			this.tlpSingleWrestlerID.Name = "tlpSingleWrestlerID";
-			this.tlpSingleWrestlerID.RowCount = 1;
-			this.tlpSingleWrestlerID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpSingleWrestlerID.Size = new System.Drawing.Size(312, 55);
-			this.tlpSingleWrestlerID.TabIndex = 3;
-			// 
-			// btnChangeWrestlerSingle
-			// 
-			this.btnChangeWrestlerSingle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeWrestlerSingle.Location = new System.Drawing.Point(237, 16);
-			this.btnChangeWrestlerSingle.Name = "btnChangeWrestlerSingle";
-			this.btnChangeWrestlerSingle.Size = new System.Drawing.Size(72, 23);
-			this.btnChangeWrestlerSingle.TabIndex = 4;
-			this.btnChangeWrestlerSingle.Text = "Change...";
-			this.btnChangeWrestlerSingle.UseVisualStyleBackColor = true;
-			this.btnChangeWrestlerSingle.Click += new System.EventHandler(this.btnChangeWrestlerSingle_Click);
-			// 
-			// tlpTagWrestler1ID
-			// 
-			this.tlpTagWrestler1ID.ColumnCount = 2;
-			this.tlpTagWrestler1ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpTagWrestler1ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpTagWrestler1ID.Controls.Add(this.tbTeamWrestler1, 0, 0);
-			this.tlpTagWrestler1ID.Controls.Add(this.btnChangeWrestlerTeam1, 1, 0);
-			this.tlpTagWrestler1ID.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpTagWrestler1ID.Location = new System.Drawing.Point(108, 3);
-			this.tlpTagWrestler1ID.Name = "tlpTagWrestler1ID";
-			this.tlpTagWrestler1ID.RowCount = 1;
-			this.tlpTagWrestler1ID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpTagWrestler1ID.Size = new System.Drawing.Size(309, 64);
-			this.tlpTagWrestler1ID.TabIndex = 6;
-			// 
-			// btnChangeWrestlerTeam1
-			// 
-			this.btnChangeWrestlerTeam1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeWrestlerTeam1.Location = new System.Drawing.Point(234, 20);
-			this.btnChangeWrestlerTeam1.Name = "btnChangeWrestlerTeam1";
-			this.btnChangeWrestlerTeam1.Size = new System.Drawing.Size(72, 23);
-			this.btnChangeWrestlerTeam1.TabIndex = 4;
-			this.btnChangeWrestlerTeam1.Text = "Change...";
-			this.btnChangeWrestlerTeam1.UseVisualStyleBackColor = true;
-			this.btnChangeWrestlerTeam1.Click += new System.EventHandler(this.btnChangeWrestlerTeam1_Click);
-			// 
-			// tlpTagWrestler2ID
-			// 
-			this.tlpTagWrestler2ID.ColumnCount = 2;
-			this.tlpTagWrestler2ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpTagWrestler2ID.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpTagWrestler2ID.Controls.Add(this.tbTeamWrestler2, 0, 0);
-			this.tlpTagWrestler2ID.Controls.Add(this.btnChangeWrestlerTeam2, 1, 0);
-			this.tlpTagWrestler2ID.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpTagWrestler2ID.Location = new System.Drawing.Point(108, 73);
-			this.tlpTagWrestler2ID.Name = "tlpTagWrestler2ID";
-			this.tlpTagWrestler2ID.RowCount = 1;
-			this.tlpTagWrestler2ID.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpTagWrestler2ID.Size = new System.Drawing.Size(309, 64);
-			this.tlpTagWrestler2ID.TabIndex = 7;
-			// 
-			// btnChangeWrestlerTeam2
-			// 
-			this.btnChangeWrestlerTeam2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeWrestlerTeam2.Location = new System.Drawing.Point(234, 20);
-			this.btnChangeWrestlerTeam2.Name = "btnChangeWrestlerTeam2";
-			this.btnChangeWrestlerTeam2.Size = new System.Drawing.Size(72, 23);
-			this.btnChangeWrestlerTeam2.TabIndex = 5;
-			this.btnChangeWrestlerTeam2.Text = "Change...";
-			this.btnChangeWrestlerTeam2.UseVisualStyleBackColor = true;
-			this.btnChangeWrestlerTeam2.Click += new System.EventHandler(this.btnChangeWrestlerTeam2_Click);
-			// 
-			// tlpTripleCrownChampion
-			// 
-			this.tlpTripleCrownChampion.ColumnCount = 2;
-			this.tlpTripleCrownChampion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tlpTripleCrownChampion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tlpTripleCrownChampion.Controls.Add(this.tbTripleCrown, 0, 0);
-			this.tlpTripleCrownChampion.Controls.Add(this.btnChangeTripleCrown, 1, 0);
-			this.tlpTripleCrownChampion.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpTripleCrownChampion.Location = new System.Drawing.Point(146, 3);
-			this.tlpTripleCrownChampion.Name = "tlpTripleCrownChampion";
-			this.tlpTripleCrownChampion.RowCount = 1;
-			this.tlpTripleCrownChampion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpTripleCrownChampion.Size = new System.Drawing.Size(423, 117);
-			this.tlpTripleCrownChampion.TabIndex = 6;
-			// 
-			// btnChangeTripleCrown
-			// 
-			this.btnChangeTripleCrown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeTripleCrown.Location = new System.Drawing.Point(320, 47);
-			this.btnChangeTripleCrown.Name = "btnChangeTripleCrown";
-			this.btnChangeTripleCrown.Size = new System.Drawing.Size(100, 23);
-			this.btnChangeTripleCrown.TabIndex = 4;
-			this.btnChangeTripleCrown.Text = "Change...";
-			this.btnChangeTripleCrown.UseVisualStyleBackColor = true;
-			this.btnChangeTripleCrown.Click += new System.EventHandler(this.btnChangeTripleCrown_Click);
-			// 
-			// btnChangeWorldTag1
-			// 
-			this.btnChangeWorldTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeWorldTag1.Location = new System.Drawing.Point(320, 17);
-			this.btnChangeWorldTag1.Name = "btnChangeWorldTag1";
-			this.btnChangeWorldTag1.Size = new System.Drawing.Size(100, 23);
-			this.btnChangeWorldTag1.TabIndex = 6;
-			this.btnChangeWorldTag1.Text = "Change...";
-			this.btnChangeWorldTag1.UseVisualStyleBackColor = true;
-			this.btnChangeWorldTag1.Click += new System.EventHandler(this.btnChangeWorldTag1_Click);
-			// 
-			// btnChangeWorldTag2
-			// 
-			this.btnChangeWorldTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeWorldTag2.Location = new System.Drawing.Point(320, 76);
-			this.btnChangeWorldTag2.Name = "btnChangeWorldTag2";
-			this.btnChangeWorldTag2.Size = new System.Drawing.Size(100, 23);
-			this.btnChangeWorldTag2.TabIndex = 7;
-			this.btnChangeWorldTag2.Text = "Change...";
-			this.btnChangeWorldTag2.UseVisualStyleBackColor = true;
-			this.btnChangeWorldTag2.Click += new System.EventHandler(this.btnChangeWorldTag2_Click);
-			// 
-			// btnChangeAsiaTag1
-			// 
-			this.btnChangeAsiaTag1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeAsiaTag1.Location = new System.Drawing.Point(320, 18);
-			this.btnChangeAsiaTag1.Name = "btnChangeAsiaTag1";
-			this.btnChangeAsiaTag1.Size = new System.Drawing.Size(100, 23);
-			this.btnChangeAsiaTag1.TabIndex = 6;
-			this.btnChangeAsiaTag1.Text = "Change...";
-			this.btnChangeAsiaTag1.UseVisualStyleBackColor = true;
-			this.btnChangeAsiaTag1.Click += new System.EventHandler(this.btnChangeAsiaTag1_Click);
-			// 
-			// btnChangeAsiaTag2
-			// 
-			this.btnChangeAsiaTag2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnChangeAsiaTag2.Location = new System.Drawing.Point(320, 77);
-			this.btnChangeAsiaTag2.Name = "btnChangeAsiaTag2";
-			this.btnChangeAsiaTag2.Size = new System.Drawing.Size(100, 23);
-			this.btnChangeAsiaTag2.TabIndex = 7;
-			this.btnChangeAsiaTag2.Text = "Change...";
-			this.btnChangeAsiaTag2.UseVisualStyleBackColor = true;
-			this.btnChangeAsiaTag2.Click += new System.EventHandler(this.btnChangeAsiaTag2_Click);
-			// 
 			// StoryMode_VPW2
 			// 
 			this.AcceptButton = this.btnOK;
@@ -1952,6 +1952,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StoryMode_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "VPW2 Royal Road/King\'s Road Succession";
 			this.tabCtrlParticipants.ResumeLayout(false);
@@ -1960,11 +1961,17 @@
 			this.tlpSingleGroupings.PerformLayout();
 			this.tlpSingleParticipant.ResumeLayout(false);
 			this.tlpSingleParticipant.PerformLayout();
+			this.tlpSingleWrestlerID.ResumeLayout(false);
+			this.tlpSingleWrestlerID.PerformLayout();
 			this.tpTeams.ResumeLayout(false);
 			this.tlpTagGroupings.ResumeLayout(false);
 			this.tlpTagGroupings.PerformLayout();
 			this.tlpTeams.ResumeLayout(false);
 			this.tlpTeams.PerformLayout();
+			this.tlpTagWrestler1ID.ResumeLayout(false);
+			this.tlpTagWrestler1ID.PerformLayout();
+			this.tlpTagWrestler2ID.ResumeLayout(false);
+			this.tlpTagWrestler2ID.PerformLayout();
 			this.tpPromoRelegate.ResumeLayout(false);
 			this.gbPromoRelegateTag.ResumeLayout(false);
 			this.tlpPromoRelegateTag.ResumeLayout(false);
@@ -1979,6 +1986,8 @@
 			this.tlpAsiaTag.PerformLayout();
 			this.tlpWorldTag.ResumeLayout(false);
 			this.tlpWorldTag.PerformLayout();
+			this.tlpTripleCrownChampion.ResumeLayout(false);
+			this.tlpTripleCrownChampion.PerformLayout();
 			this.tabCtrlMain.ResumeLayout(false);
 			this.tpParticipants.ResumeLayout(false);
 			this.tpEvents.ResumeLayout(false);
@@ -1993,14 +2002,6 @@
 			this.tlpBookingInstructions.PerformLayout();
 			this.tlpBookingSet.ResumeLayout(false);
 			this.tlpBookingSet.PerformLayout();
-			this.tlpSingleWrestlerID.ResumeLayout(false);
-			this.tlpSingleWrestlerID.PerformLayout();
-			this.tlpTagWrestler1ID.ResumeLayout(false);
-			this.tlpTagWrestler1ID.PerformLayout();
-			this.tlpTagWrestler2ID.ResumeLayout(false);
-			this.tlpTagWrestler2ID.PerformLayout();
-			this.tlpTripleCrownChampion.ResumeLayout(false);
-			this.tlpTripleCrownChampion.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

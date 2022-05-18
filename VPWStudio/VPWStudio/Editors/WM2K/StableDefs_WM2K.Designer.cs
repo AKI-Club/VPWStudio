@@ -269,6 +269,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefs_WM2K";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.gbStables.ResumeLayout(false);

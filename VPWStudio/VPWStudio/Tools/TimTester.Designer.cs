@@ -105,6 +105,7 @@ namespace VPWStudio
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(296, 336);
 			this.Name = "TimTester";
+			this.ShowInTaskbar = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.Text = "TIM Tester";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -142,6 +142,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefParseTest";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "StableDefParseTest";
 			this.gbOutput.ResumeLayout(false);

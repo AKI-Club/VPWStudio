@@ -30,15 +30,15 @@
 		{
 			this.tcCostumes = new System.Windows.Forms.TabControl();
 			this.tpCostume1 = new System.Windows.Forms.TabPage();
+			this.cosEditCostume1 = new VPWStudio.Controls.CostumeEditor_VPW2();
 			this.tpCostume2 = new System.Windows.Forms.TabPage();
+			this.cosEditCostume2 = new VPWStudio.Controls.CostumeEditor_VPW2();
 			this.tpCostume3 = new System.Windows.Forms.TabPage();
+			this.cosEditCostume3 = new VPWStudio.Controls.CostumeEditor_VPW2();
 			this.tpCostume4 = new System.Windows.Forms.TabPage();
+			this.cosEditCostume4 = new VPWStudio.Controls.CostumeEditor_VPW2();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.cosEditCostume1 = new VPWStudio.Controls.CostumeEditor_VPW2();
-			this.cosEditCostume2 = new VPWStudio.Controls.CostumeEditor_VPW2();
-			this.cosEditCostume3 = new VPWStudio.Controls.CostumeEditor_VPW2();
-			this.cosEditCostume4 = new VPWStudio.Controls.CostumeEditor_VPW2();
 			this.tcCostumes.SuspendLayout();
 			this.tpCostume1.SuspendLayout();
 			this.tpCostume2.SuspendLayout();
@@ -69,6 +69,17 @@
 			this.tpCostume1.Text = "Costume 1";
 			this.tpCostume1.UseVisualStyleBackColor = true;
 			// 
+			// cosEditCostume1
+			// 
+			this.cosEditCostume1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cosEditCostume1.AutoScroll = true;
+			this.cosEditCostume1.AutoScrollMinSize = new System.Drawing.Size(224, 256);
+			this.cosEditCostume1.Location = new System.Drawing.Point(3, 6);
+			this.cosEditCostume1.Name = "cosEditCostume1";
+			this.cosEditCostume1.Size = new System.Drawing.Size(326, 266);
+			this.cosEditCostume1.TabIndex = 1;
+			// 
 			// tpCostume2
 			// 
 			this.tpCostume2.Controls.Add(this.cosEditCostume2);
@@ -79,6 +90,17 @@
 			this.tpCostume2.TabIndex = 1;
 			this.tpCostume2.Text = "Costume 2";
 			this.tpCostume2.UseVisualStyleBackColor = true;
+			// 
+			// cosEditCostume2
+			// 
+			this.cosEditCostume2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cosEditCostume2.AutoScroll = true;
+			this.cosEditCostume2.AutoScrollMinSize = new System.Drawing.Size(224, 256);
+			this.cosEditCostume2.Location = new System.Drawing.Point(3, 6);
+			this.cosEditCostume2.Name = "cosEditCostume2";
+			this.cosEditCostume2.Size = new System.Drawing.Size(326, 266);
+			this.cosEditCostume2.TabIndex = 2;
 			// 
 			// tpCostume3
 			// 
@@ -91,6 +113,17 @@
 			this.tpCostume3.Text = "Costume 3";
 			this.tpCostume3.UseVisualStyleBackColor = true;
 			// 
+			// cosEditCostume3
+			// 
+			this.cosEditCostume3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cosEditCostume3.AutoScroll = true;
+			this.cosEditCostume3.AutoScrollMinSize = new System.Drawing.Size(224, 256);
+			this.cosEditCostume3.Location = new System.Drawing.Point(3, 6);
+			this.cosEditCostume3.Name = "cosEditCostume3";
+			this.cosEditCostume3.Size = new System.Drawing.Size(326, 266);
+			this.cosEditCostume3.TabIndex = 2;
+			// 
 			// tpCostume4
 			// 
 			this.tpCostume4.Controls.Add(this.cosEditCostume4);
@@ -101,6 +134,17 @@
 			this.tpCostume4.TabIndex = 3;
 			this.tpCostume4.Text = "Costume 4";
 			this.tpCostume4.UseVisualStyleBackColor = true;
+			// 
+			// cosEditCostume4
+			// 
+			this.cosEditCostume4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cosEditCostume4.AutoScroll = true;
+			this.cosEditCostume4.AutoScrollMinSize = new System.Drawing.Size(224, 256);
+			this.cosEditCostume4.Location = new System.Drawing.Point(3, 6);
+			this.cosEditCostume4.Name = "cosEditCostume4";
+			this.cosEditCostume4.Size = new System.Drawing.Size(326, 266);
+			this.cosEditCostume4.TabIndex = 2;
 			// 
 			// buttonOK
 			// 
@@ -122,50 +166,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// cosEditCostume1
-			// 
-			this.cosEditCostume1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cosEditCostume1.AutoScroll = true;
-			this.cosEditCostume1.AutoScrollMinSize = new System.Drawing.Size(224, 256);
-			this.cosEditCostume1.Location = new System.Drawing.Point(3, 6);
-			this.cosEditCostume1.Name = "cosEditCostume1";
-			this.cosEditCostume1.Size = new System.Drawing.Size(326, 266);
-			this.cosEditCostume1.TabIndex = 1;
-			// 
-			// cosEditCostume2
-			// 
-			this.cosEditCostume2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cosEditCostume2.AutoScroll = true;
-			this.cosEditCostume2.AutoScrollMinSize = new System.Drawing.Size(224, 256);
-			this.cosEditCostume2.Location = new System.Drawing.Point(3, 6);
-			this.cosEditCostume2.Name = "cosEditCostume2";
-			this.cosEditCostume2.Size = new System.Drawing.Size(326, 266);
-			this.cosEditCostume2.TabIndex = 2;
-			// 
-			// cosEditCostume3
-			// 
-			this.cosEditCostume3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cosEditCostume3.AutoScroll = true;
-			this.cosEditCostume3.AutoScrollMinSize = new System.Drawing.Size(224, 256);
-			this.cosEditCostume3.Location = new System.Drawing.Point(3, 6);
-			this.cosEditCostume3.Name = "cosEditCostume3";
-			this.cosEditCostume3.Size = new System.Drawing.Size(326, 266);
-			this.cosEditCostume3.TabIndex = 2;
-			// 
-			// cosEditCostume4
-			// 
-			this.cosEditCostume4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cosEditCostume4.AutoScroll = true;
-			this.cosEditCostume4.AutoScrollMinSize = new System.Drawing.Size(224, 256);
-			this.cosEditCostume4.Location = new System.Drawing.Point(3, 6);
-			this.cosEditCostume4.Name = "cosEditCostume4";
-			this.cosEditCostume4.Size = new System.Drawing.Size(326, 266);
-			this.cosEditCostume4.TabIndex = 2;
-			// 
 			// DefaultCostume_VPW2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +178,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "DefaultCostume_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Default Costumes";
 			this.tcCostumes.ResumeLayout(false);

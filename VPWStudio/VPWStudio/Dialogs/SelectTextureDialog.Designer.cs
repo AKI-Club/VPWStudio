@@ -237,6 +237,7 @@ namespace VPWStudio
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(512, 320);
 			this.Name = "SelectTextureDialog";
+			this.ShowInTaskbar = false;
 			this.Text = "Select Texture";
 			this.tlpTexture.ResumeLayout(false);
 			this.gbPreview.ResumeLayout(false);

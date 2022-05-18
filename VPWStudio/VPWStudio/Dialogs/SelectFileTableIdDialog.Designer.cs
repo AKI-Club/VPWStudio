@@ -32,12 +32,12 @@ namespace VPWStudio
 			this.buttonSelect = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.lvFileTableEntries = new System.Windows.Forms.ListView();
+			this.chFileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chComment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cbFileTypeFilter = new System.Windows.Forms.ComboBox();
 			this.labelFileTypeFilter = new System.Windows.Forms.Label();
 			this.gbFileTableEntries = new System.Windows.Forms.GroupBox();
-			this.chFileID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.chComment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.chFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.gbFileTableEntries.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -83,6 +83,20 @@ namespace VPWStudio
 			this.lvFileTableEntries.UseCompatibleStateImageBehavior = false;
 			this.lvFileTableEntries.View = System.Windows.Forms.View.Details;
 			// 
+			// chFileID
+			// 
+			this.chFileID.Text = "File ID";
+			// 
+			// chFileType
+			// 
+			this.chFileType.Text = "File Type";
+			this.chFileType.Width = 90;
+			// 
+			// chComment
+			// 
+			this.chComment.Text = "Comment";
+			this.chComment.Width = 440;
+			// 
 			// cbFileTypeFilter
 			// 
 			this.cbFileTypeFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -117,20 +131,6 @@ namespace VPWStudio
 			this.gbFileTableEntries.TabStop = false;
 			this.gbFileTableEntries.Text = "File Table &Entries";
 			// 
-			// chFileID
-			// 
-			this.chFileID.Text = "File ID";
-			// 
-			// chComment
-			// 
-			this.chComment.Text = "Comment";
-			this.chComment.Width = 440;
-			// 
-			// chFileType
-			// 
-			this.chFileType.Text = "File Type";
-			this.chFileType.Width = 90;
-			// 
 			// SelectFileTableIdDialog
 			// 
 			this.AcceptButton = this.buttonSelect;
@@ -147,6 +147,7 @@ namespace VPWStudio
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(640, 384);
 			this.Name = "SelectFileTableIdDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Select File Table ID";
 			this.gbFileTableEntries.ResumeLayout(false);

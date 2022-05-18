@@ -414,6 +414,7 @@ namespace VPWStudio.Editors
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "WrestlerMain_Early";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Wrestler Editor (World Tour/VPW64)";
 			this.tableLayoutPanel1.ResumeLayout(false);

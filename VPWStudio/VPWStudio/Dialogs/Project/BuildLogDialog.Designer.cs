@@ -51,6 +51,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "BuildLogDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Build Log";
 			this.ResumeLayout(false);

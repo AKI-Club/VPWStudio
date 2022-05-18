@@ -1046,6 +1046,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "CostumeDefs_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Costumes, Heads/Masks, Body Types (VPW2)";
 			this.tcMain.ResumeLayout(false);

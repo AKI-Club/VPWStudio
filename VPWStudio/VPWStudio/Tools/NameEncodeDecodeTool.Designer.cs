@@ -145,6 +145,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "NameEncodeDecodeTool";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Name Encode/Decode Tool (\"Ned\")";
 			this.tableLayoutPanel1.ResumeLayout(false);

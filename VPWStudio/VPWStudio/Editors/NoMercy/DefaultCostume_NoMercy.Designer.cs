@@ -1941,6 +1941,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "DefaultCostume_NoMercy";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Default Costume Data";
 			this.panel1.ResumeLayout(false);

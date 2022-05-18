@@ -42,9 +42,9 @@
 			this.buttonMoveDown = new System.Windows.Forms.Button();
 			this.buttonMoveUp = new System.Windows.Forms.Button();
 			this.gbWrestlers = new System.Windows.Forms.GroupBox();
+			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.buttonSwapWres = new System.Windows.Forms.Button();
 			this.gbStables.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.gbWrestlers.SuspendLayout();
@@ -198,6 +198,16 @@
 			this.gbWrestlers.TabStop = false;
 			this.gbWrestlers.Text = "&Wrestlers";
 			// 
+			// buttonSwapWres
+			// 
+			this.buttonSwapWres.Location = new System.Drawing.Point(106, 104);
+			this.buttonSwapWres.Name = "buttonSwapWres";
+			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
+			this.buttonSwapWres.TabIndex = 16;
+			this.buttonSwapWres.Text = "Swa&p Wrestler";
+			this.buttonSwapWres.UseVisualStyleBackColor = true;
+			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
+			// 
 			// buttonOK
 			// 
 			this.buttonOK.Location = new System.Drawing.Point(144, 240);
@@ -218,16 +228,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// buttonSwapWres
-			// 
-			this.buttonSwapWres.Location = new System.Drawing.Point(106, 104);
-			this.buttonSwapWres.Name = "buttonSwapWres";
-			this.buttonSwapWres.Size = new System.Drawing.Size(89, 23);
-			this.buttonSwapWres.TabIndex = 16;
-			this.buttonSwapWres.Text = "Swa&p Wrestler";
-			this.buttonSwapWres.UseVisualStyleBackColor = true;
-			this.buttonSwapWres.Click += new System.EventHandler(this.buttonSwapWres_Click);
-			// 
 			// StableDefs_VPW2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +242,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StableDefs_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Stable Definitions";
 			this.gbStables.ResumeLayout(false);

@@ -30,21 +30,7 @@
 		{
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
-			this.dgvImages = new System.Windows.Forms.DataGridView();
 			this.dgvAnimations = new System.Windows.Forms.DataGridView();
-			this.dgvSequence = new System.Windows.Forms.DataGridView();
-			this.fileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.width = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.height = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.vertDisplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.horizStretch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.imageFlags = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.scrollSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.imgUnknown = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.wrestlerID4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.timingA = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.animID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +43,18 @@
 			this.moveSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.animUnknown = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.costume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.dgvImages = new System.Windows.Forms.DataGridView();
+			this.fileID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.width = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.height = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.vertDisplace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.horizStretch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.imageFlags = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.scrollSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.imgUnknown = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.dgvSequence = new System.Windows.Forms.DataGridView();
 			this.mainSequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.subSequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.seqFlags = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,12 +67,14 @@
 			this.pointer2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pointer3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pointer4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAnimations)).BeginInit();
+			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).BeginInit();
+			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvSequence)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -99,75 +99,6 @@
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Animations";
 			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Controls.Add(this.dgvImages);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(722, 336);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Images";
-			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// tabPage3
-			// 
-			this.tabPage3.Controls.Add(this.dgvSequence);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(722, 336);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Sequence";
-			this.tabPage3.UseVisualStyleBackColor = true;
-			// 
-			// buttonOK
-			// 
-			this.buttonOK.Location = new System.Drawing.Point(586, 380);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 1;
-			this.buttonOK.Text = "&OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(667, 380);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 2;
-			this.buttonCancel.Text = "&Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-			// 
-			// dgvImages
-			// 
-			this.dgvImages.AllowUserToAddRows = false;
-			this.dgvImages.AllowUserToDeleteRows = false;
-			this.dgvImages.AllowUserToResizeRows = false;
-			this.dgvImages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-			this.dgvImages.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-			this.dgvImages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvImages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fileID,
-            this.width,
-            this.height,
-            this.vertDisplace,
-            this.horizStretch,
-            this.imageFlags,
-            this.scrollSpeed,
-            this.imgUnknown});
-			this.dgvImages.Location = new System.Drawing.Point(6, 6);
-			this.dgvImages.MultiSelect = false;
-			this.dgvImages.Name = "dgvImages";
-			this.dgvImages.RowHeadersVisible = false;
-			this.dgvImages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.dgvImages.ShowEditingIcon = false;
-			this.dgvImages.Size = new System.Drawing.Size(710, 324);
-			this.dgvImages.TabIndex = 1;
-			this.dgvImages.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvImages_CellValidating);
 			// 
 			// dgvAnimations
 			// 
@@ -197,110 +128,6 @@
 			this.dgvAnimations.Size = new System.Drawing.Size(713, 324);
 			this.dgvAnimations.TabIndex = 1;
 			this.dgvAnimations.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAnimations_CellValidating);
-			// 
-			// dgvSequence
-			// 
-			this.dgvSequence.AllowUserToAddRows = false;
-			this.dgvSequence.AllowUserToDeleteRows = false;
-			this.dgvSequence.AllowUserToResizeRows = false;
-			this.dgvSequence.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-			this.dgvSequence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvSequence.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mainSequence,
-            this.subSequence,
-            this.seqFlags,
-            this.transition,
-            this.sceneTime,
-            this.cameraMotion,
-            this.seqUnknown,
-            this.stageNum,
-            this.pointer1,
-            this.pointer2,
-            this.pointer3,
-            this.pointer4});
-			this.dgvSequence.Location = new System.Drawing.Point(6, 6);
-			this.dgvSequence.Name = "dgvSequence";
-			this.dgvSequence.RowHeadersVisible = false;
-			this.dgvSequence.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.dgvSequence.Size = new System.Drawing.Size(710, 324);
-			this.dgvSequence.TabIndex = 1;
-			this.dgvSequence.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSequence_CellValidating);
-			// 
-			// fileID
-			// 
-			this.fileID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.fileID.FillWeight = 20F;
-			this.fileID.HeaderText = "File ID";
-			this.fileID.MaxInputLength = 4;
-			this.fileID.Name = "fileID";
-			this.fileID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.fileID.ToolTipText = "File ID (hex)";
-			// 
-			// width
-			// 
-			this.width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.width.FillWeight = 20F;
-			this.width.HeaderText = "Width";
-			this.width.Name = "width";
-			this.width.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.width.ToolTipText = "Image Width";
-			this.width.Width = 41;
-			// 
-			// height
-			// 
-			this.height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.height.FillWeight = 20F;
-			this.height.HeaderText = "Height";
-			this.height.Name = "height";
-			this.height.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.height.ToolTipText = "Image Height";
-			this.height.Width = 44;
-			// 
-			// vertDisplace
-			// 
-			this.vertDisplace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.vertDisplace.FillWeight = 40F;
-			this.vertDisplace.HeaderText = "Vertical Displacement";
-			this.vertDisplace.Name = "vertDisplace";
-			this.vertDisplace.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.vertDisplace.Width = 115;
-			// 
-			// horizStretch
-			// 
-			this.horizStretch.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.horizStretch.FillWeight = 30F;
-			this.horizStretch.HeaderText = "Horiz. Stretch";
-			this.horizStretch.Name = "horizStretch";
-			this.horizStretch.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.horizStretch.Width = 77;
-			// 
-			// imageFlags
-			// 
-			this.imageFlags.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.imageFlags.FillWeight = 20F;
-			this.imageFlags.HeaderText = "Flags";
-			this.imageFlags.MaxInputLength = 4;
-			this.imageFlags.Name = "imageFlags";
-			this.imageFlags.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.imageFlags.Width = 38;
-			// 
-			// scrollSpeed
-			// 
-			this.scrollSpeed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.scrollSpeed.FillWeight = 20F;
-			this.scrollSpeed.HeaderText = "Scroll Speed";
-			this.scrollSpeed.Name = "scrollSpeed";
-			this.scrollSpeed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.scrollSpeed.Width = 73;
-			// 
-			// imgUnknown
-			// 
-			this.imgUnknown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.imgUnknown.FillWeight = 20F;
-			this.imgUnknown.HeaderText = "Unknown";
-			this.imgUnknown.Name = "imgUnknown";
-			this.imgUnknown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			this.imgUnknown.Width = 59;
 			// 
 			// wrestlerID4
 			// 
@@ -398,6 +225,159 @@
 			this.costume.Name = "costume";
 			this.costume.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			this.costume.Width = 54;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Controls.Add(this.dgvImages);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(722, 336);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Images";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// dgvImages
+			// 
+			this.dgvImages.AllowUserToAddRows = false;
+			this.dgvImages.AllowUserToDeleteRows = false;
+			this.dgvImages.AllowUserToResizeRows = false;
+			this.dgvImages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+			this.dgvImages.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+			this.dgvImages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvImages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fileID,
+            this.width,
+            this.height,
+            this.vertDisplace,
+            this.horizStretch,
+            this.imageFlags,
+            this.scrollSpeed,
+            this.imgUnknown});
+			this.dgvImages.Location = new System.Drawing.Point(6, 6);
+			this.dgvImages.MultiSelect = false;
+			this.dgvImages.Name = "dgvImages";
+			this.dgvImages.RowHeadersVisible = false;
+			this.dgvImages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+			this.dgvImages.ShowEditingIcon = false;
+			this.dgvImages.Size = new System.Drawing.Size(710, 324);
+			this.dgvImages.TabIndex = 1;
+			this.dgvImages.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvImages_CellValidating);
+			// 
+			// fileID
+			// 
+			this.fileID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.fileID.FillWeight = 20F;
+			this.fileID.HeaderText = "File ID";
+			this.fileID.MaxInputLength = 4;
+			this.fileID.Name = "fileID";
+			this.fileID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.fileID.ToolTipText = "File ID (hex)";
+			// 
+			// width
+			// 
+			this.width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.width.FillWeight = 20F;
+			this.width.HeaderText = "Width";
+			this.width.Name = "width";
+			this.width.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.width.ToolTipText = "Image Width";
+			this.width.Width = 41;
+			// 
+			// height
+			// 
+			this.height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.height.FillWeight = 20F;
+			this.height.HeaderText = "Height";
+			this.height.Name = "height";
+			this.height.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.height.ToolTipText = "Image Height";
+			this.height.Width = 44;
+			// 
+			// vertDisplace
+			// 
+			this.vertDisplace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.vertDisplace.FillWeight = 40F;
+			this.vertDisplace.HeaderText = "Vertical Displacement";
+			this.vertDisplace.Name = "vertDisplace";
+			this.vertDisplace.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.vertDisplace.Width = 104;
+			// 
+			// horizStretch
+			// 
+			this.horizStretch.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.horizStretch.FillWeight = 30F;
+			this.horizStretch.HeaderText = "Horiz. Stretch";
+			this.horizStretch.Name = "horizStretch";
+			this.horizStretch.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.horizStretch.Width = 69;
+			// 
+			// imageFlags
+			// 
+			this.imageFlags.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.imageFlags.FillWeight = 20F;
+			this.imageFlags.HeaderText = "Flags";
+			this.imageFlags.MaxInputLength = 4;
+			this.imageFlags.Name = "imageFlags";
+			this.imageFlags.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.imageFlags.Width = 38;
+			// 
+			// scrollSpeed
+			// 
+			this.scrollSpeed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.scrollSpeed.FillWeight = 20F;
+			this.scrollSpeed.HeaderText = "Scroll Speed";
+			this.scrollSpeed.Name = "scrollSpeed";
+			this.scrollSpeed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.scrollSpeed.Width = 66;
+			// 
+			// imgUnknown
+			// 
+			this.imgUnknown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.imgUnknown.FillWeight = 20F;
+			this.imgUnknown.HeaderText = "Unknown";
+			this.imgUnknown.Name = "imgUnknown";
+			this.imgUnknown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.imgUnknown.Width = 59;
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.dgvSequence);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(722, 336);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "Sequence";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// dgvSequence
+			// 
+			this.dgvSequence.AllowUserToAddRows = false;
+			this.dgvSequence.AllowUserToDeleteRows = false;
+			this.dgvSequence.AllowUserToResizeRows = false;
+			this.dgvSequence.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+			this.dgvSequence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvSequence.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mainSequence,
+            this.subSequence,
+            this.seqFlags,
+            this.transition,
+            this.sceneTime,
+            this.cameraMotion,
+            this.seqUnknown,
+            this.stageNum,
+            this.pointer1,
+            this.pointer2,
+            this.pointer3,
+            this.pointer4});
+			this.dgvSequence.Location = new System.Drawing.Point(6, 6);
+			this.dgvSequence.Name = "dgvSequence";
+			this.dgvSequence.RowHeadersVisible = false;
+			this.dgvSequence.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+			this.dgvSequence.Size = new System.Drawing.Size(710, 324);
+			this.dgvSequence.TabIndex = 1;
+			this.dgvSequence.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSequence_CellValidating);
 			// 
 			// mainSequence
 			// 
@@ -507,6 +487,26 @@
 			this.pointer4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			this.pointer4.Width = 64;
 			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(586, 380);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 1;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(667, 380);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 2;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
 			// GameIntroEditor_Later
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,14 +519,15 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "GameIntroEditor_Later";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Game Introduction Editor";
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAnimations)).EndInit();
+			this.tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).EndInit();
+			this.tabPage3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvSequence)).EndInit();
 			this.ResumeLayout(false);
 

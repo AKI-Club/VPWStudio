@@ -69,6 +69,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 320);
 			this.Name = "MoveDamageTestDialog";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Move Damage Test";
 			this.ResumeLayout(false);
