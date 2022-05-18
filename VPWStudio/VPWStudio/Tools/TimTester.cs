@@ -88,5 +88,13 @@ namespace VPWStudio
 			}
 			pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
 		}
+
+		private void TimTester_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
