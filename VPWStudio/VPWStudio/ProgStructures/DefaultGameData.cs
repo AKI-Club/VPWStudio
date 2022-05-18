@@ -725,6 +725,7 @@ namespace VPWStudio
 					#region WWF WrestleMania 2000
 					{ SpecificGame.WM2K_NTSC_U, 0x19DB },
 					{ SpecificGame.WM2K_PAL, 0x19DB },
+					// todo: WM2K_NTSC_J
 					#endregion
 
 					{ SpecificGame.VPW2_NTSC_J, 0x2056 },
@@ -997,6 +998,21 @@ namespace VPWStudio
 				}
 			},
 			#endregion
+
+			{
+				"DefaultWrestlerNames",
+				new Dictionary<SpecificGame, int>()
+				{
+					// only exists in VPW2 and No Mercy
+
+					{ SpecificGame.VPW2_NTSC_J, 0x006C },
+
+					{ SpecificGame.NoMercy_NTSC_U_10, 2 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
+					{ SpecificGame.NoMercy_PAL_10, 2 },
+					{ SpecificGame.NoMercy_PAL_11, 2 }
+				}
+			},
 		};
 		#endregion
 	}
