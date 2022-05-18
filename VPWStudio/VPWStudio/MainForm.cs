@@ -2405,7 +2405,10 @@ namespace VPWStudio
 			MoveDamageTestDialog mdtd = new MoveDamageTestDialog();
 			if (mdtd != null)
 			{
-				mdtd.ShowDialog();
+				if (!mdtd.IsDisposed)
+				{
+					mdtd.ShowDialog();
+				}
 			}
 		}
 
