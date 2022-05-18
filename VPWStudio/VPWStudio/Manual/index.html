@@ -30,6 +30,7 @@
 <ol>
 <li><a href="#TextureSources">Texture Sources</a></li>
 <li><a href="#ColorFormat">Color Format</a></li>
+<li><a href="#PaletteFormats">Palette Formats</a></li>
 <li><a href="#CostumeColorChanging">Costume Color Changing</a></li>
 <li><a href="#SkinColorChanging">Skin Color Changing</a></li>
 <li><a href="#TextureLayering">Texture Layering</a></li>
@@ -905,8 +906,8 @@ and import that data via the File Table.</p>
 <hr />
 <h2><a name="HackingWorkflow">Hacking Workflow</a></h2>
 <p>VPW Studio's usage conventions are largely dictated by external factors.
-Some of it is caused by VPW Studio being incomplete, while other factors are
-dictated by the game's internals.</p>
+Some of it is caused by VPW Studio being incomplete, while others are dictated
+by the game's internals.</p>
 
 <p>If you are planning to make changes to elements that are not editable in
 VPW Studio, it is <strong>very important</strong> to understand the order of
@@ -993,6 +994,53 @@ as palette space is limited.</p>
 
 <p>For the Nintendo 64 games, a full black color (RGB 0,0,0) is often considered
 transparent. To get a non-transparent black, use RGB 8,8,8.</p>
+
+<h3><a name="PaletteFormats">Palette Formats</a></h3>
+<p>Palettes come in many different formats, and it's important to understand
+them if you plan on changing any graphical elements.</p>
+
+<h4>Raw CI4/CI8 Palettes</h4>
+<p>Raw CI palettes are the formats used by the game. They only contain the
+available colors, and no headers or other information.</p>
+
+<p>CI8 palettes have 256 colors, while CI4 palettes are meant to store
+16 colors. However, you will often find CI4 palettes with more than 16 colors.
+This is meant to be used for changing colors in Edit Mode, and is explained
+further below.</p>
+
+<h4>VPW Studio Palette</h4>
+<p>Even though there are many external palette formats available, none of the
+existing solutions matched the desired criteria:</p>
+<ul>
+<li>Text-based format (for easy editing outside of the program)</li>
+<li>Ability to define the number of colors in the palette (16 or 256)</li>
+<li>Ability to define the alpha/transparency on a per-palette entry level</li>
+<li>Support for CI4 sub-palettes</li>
+</ul>
+<p>The existing palette format that came closest to these criteria was the
+JASC Paint Shop Pro palette format, specifically from Paint Shop Pro 7.
+Seeing as it was already text-based, it seemed reasonable to modify it for
+the above purposes. VPW Studio palette files have the file extension <code>.vpwspal</code>.</p>
+
+<p>More specific details about the VPW Studio Palette format can be found in
+<a href="./appendix_b.html#VPWSPal">Appendix B</a>.</p>
+
+<h4>Other Formats</h4>
+<p>It feels a bit unreasonable for Paint Shop Pro 7 to be <em>required</em>
+for palette work, so support for other palette formats is available. However,
+the other formats are not guaranteed to support per-color transparency or
+sub-palettes. Please see the <a href="#CIPaletteEdit">CI Palette Editor</a>
+section for more detailed information on support for these types:</p>
+<ul>
+<li>JASC Paint Shop Pro <code>.pal</code> &ndash; the non-VPW Studio-specific version.</li>
+<li>GIMP <code>.gpl</code> &ndash; palette format from The GIMP.</li>
+<li>Adobe <code>.act</code> &ndash; palette format from Adobe Photoshop.</li>
+</ul>
+
+<h4>Unsupported Formats</h4>
+<p>Other palette formats are currently unsupported. This includes the Microsoft
+palette format, which unfortunately shares the <code>.pal</code> extension with
+the JASC PSP format.</p>
 
 <h3><a name="CostumeColorChanging">Costume Color Changing</a></h3>
 <p>The ability for players to change the colors on costumes was first implemented
