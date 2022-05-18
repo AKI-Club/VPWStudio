@@ -206,6 +206,14 @@ namespace VPWStudio
 
 			tbOutput.Text = sb.ToString();
 		}
+
+		private void MoveDamageTestDialog_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 
 	public class MoveDamageEntry
