@@ -23,6 +23,7 @@ ROM:1BD1B0,1;$FIRSTFILE
 ROM:16C3238,77848;$FILETABLE
 FTID:10F5,1;CostumeColorPalette
 FTID:2DD9,1;FirstAnimationFileID
+FTID:3322,1;FirstMoveAnimationID
 FTID:02BF,1;Toki1FileID
 FTID:01EF,1;MoveDamageFileID
 FTID:0001,1;WrestlerDefaultCostumeData

@@ -48,6 +48,7 @@ ROM:144AA0,1;$FIRSTFILE
 ROM:11778BE,41248;$FILETABLE
 FTID:0A63,1;CostumeColorPalette
 FTID:1609,1;FirstAnimationFileID
+FTID:19DB,1;FirstMoveAnimationID
 FTID:0435,1;Toki1FileID
 FTID:03AD,1;MoveDamageFileID
 FTID:0001,1;DefaultLargeFont

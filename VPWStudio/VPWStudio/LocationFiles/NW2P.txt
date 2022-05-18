@@ -20,6 +20,7 @@ ROM:D81E0,1;$FIRSTFILE
 ROM:CDFCE2,30632;$FILETABLE
 FTID:0A51,1;CostumeColorPalette
 FTID:0E39,1;FirstAnimationFileID
+FTID:110B,1;FirstMoveAnimationID
 FTID:020F,1;Toki1FileID
 FTID:0002,1;DefaultLargeFont
 FTID:0001,1;DefaultSmallFont
