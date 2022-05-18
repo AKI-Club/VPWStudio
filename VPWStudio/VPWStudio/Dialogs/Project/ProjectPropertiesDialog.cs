@@ -107,12 +107,13 @@ namespace VPWStudio
 			}
 
 			// hide platform-specific tab pages
-			if (GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].TargetConsole == PlatformType.Nintendo64)
+			PlatformType plat = Program.CurrentProject.Settings.GetPlatformType();
+			if (plat == PlatformType.Nintendo64)
 			{
 				int hidePage = tcProjectProperties.TabPages.IndexOfKey("tpOutputData");
 				tcProjectProperties.TabPages.Remove(tcProjectProperties.TabPages[hidePage]);
 			}
-			else if(GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].TargetConsole == PlatformType.PlayStation1)
+			else if(plat == PlatformType.PlayStation1)
 			{
 				int hidePage = tcProjectProperties.TabPages.IndexOfKey("tpOutputRom");
 				tcProjectProperties.TabPages.Remove(tcProjectProperties.TabPages[hidePage]);
@@ -224,7 +225,7 @@ namespace VPWStudio
 			}
 
 			// output data tab
-			if (GameInformation.GameDefs[NewSettings.GameType].TargetConsole == PlatformType.PlayStation1)
+			if (NewSettings.GetPlatformType() == PlatformType.PlayStation1)
 			{
 				NewSettings.OutputDataPath = tbOutDataPath.Text;
 				NewSettings.InputDataPath = tbInDataPath.Text;
