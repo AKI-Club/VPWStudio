@@ -106,41 +106,6 @@ namespace VPWStudio
 			Toki1Entry t = Toki1Entries[index];
 			StringBuilder sb = new StringBuilder();
 
-			// from my old World Tour notes:
-			/*
-			+00 - End of move position modifier
-			+01 - 
-			+02 - 
-			+03 - 
-			+04 - 
-			+05 - 
-			+06 - 
-			+07 - 
-			+08 - 
-			+09 - 
-			+0A - 
-			+0B - 
-			+0C - 
-			+0D - 
-			+0E - 
-			+0F - 
-			+10 - Frame for Event 1
-			+11 - Event 1
-			+12 - Frame for Event 2
-			+13 - Event 2
-			+14 - Frame for Event 3
-			+15 - Event 3
-			+16 - Frame for Event 4
-			+17 - Event 4
-			+18 - Frame for Event 5
-			+19 - Event 5
-			+1A - Frame for Event 6
-			+1B - Event 6
-			+1C - Frame for Event 7
-			+1D - Event 7
-			+1E - Frame for Event 8
-			+1F - Event 8
-			 */
 			sb.AppendLine(String.Format("Camera, End of Animation status: 0x{0:X2}", t.Data[0]));
 			sb.AppendLine(String.Format("[01]: 0x{0:X2}", t.Data[1]));
 			sb.AppendLine(String.Format("[02]: 0x{0:X2}", t.Data[2]));
