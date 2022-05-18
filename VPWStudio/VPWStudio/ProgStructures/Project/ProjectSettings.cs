@@ -256,5 +256,14 @@ namespace VPWStudio
 			StableDefinitionFilePath = _src.StableDefinitionFilePath;
 			WrestlerNameFilePath = _src.WrestlerNameFilePath;
 		}
+
+		/// <summary>
+		/// Get target platform for this project file.
+		/// </summary>
+		/// <returns>PlatformType value representing the target console for the project's GameType.</returns>
+		public PlatformType GetPlatformType()
+		{
+			return GameInformation.GameDefs[GameType].TargetConsole;
+		}
 	}
 }
