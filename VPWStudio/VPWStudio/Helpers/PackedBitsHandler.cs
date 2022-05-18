@@ -8,7 +8,7 @@ namespace VPWStudio
 {
 	/// <summary>
 	/// This class houses routines for dealing with packed bits.
-	/// Packed bits are found in WrestleMania 2000 and later, used for wrestler Parameters and Moves.
+	/// Specifically, the wrestler Parameters and Moves found in WrestleMania 2000 and later.
 	/// </summary>
 	public class PackedBitsHandler
 	{
@@ -26,13 +26,12 @@ namespace VPWStudio
 		// VPW2 relevant locations of interest:
 		// tbl_8003C8E0 (pro-wrestler), tbl_8003CEDC (combo), tbl_8003D4EC (shootfighting) - move slot definitions
 		// tbl_8003D930 - number of bits required for each move category (add 5 to value for real number of bits)
-		// PackBits routine (runtime 80004D60, Z64 ROM offset 0x005960)
-		// UnpackBits routine 
 
 		// $a0=address, $a2=shiftVal1, $a3=shiftVal2, 0x10($sp)=numBits -> 0x18($sp), 0x14($sp)=mode -> 0x1C($sp)
 		/// <summary>
 		/// Bit packing routine.
 		/// </summary>
+		/// VPW2 locations: runtime 80004D60, Z64 ROM offset 0x005960
 		/// <param name="numBits">Number of bits to pack.</param>
 		/// <param name="mode">0 for setup, 1 for actual bit packing.</param>
 		/// <returns>Packed value, or 0 in certain circumstances (mode==0; numBits <=0).</returns>
