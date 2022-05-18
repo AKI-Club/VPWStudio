@@ -47,5 +47,13 @@ namespace VPWStudio
 			}
 			*/
 		}
+
+		private void StableDefParseTest_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
