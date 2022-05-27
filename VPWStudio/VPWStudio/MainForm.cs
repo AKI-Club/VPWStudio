@@ -1261,7 +1261,7 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WM2K:
-					Program.ErrorMessageBox("Not implemented yet, but this will be a copy of the VPW2 editor, so it will exist sooner rather than later.");
+					Program.ErrorMessageBox("Not implemented yet, but this will be similar to the VPW2 editor, so it will exist sooner rather than later.");
 					break;
 				case VPWGames.VPW2:
 					Editors.VPW2.StoryMode_VPW2 sme = new Editors.VPW2.StoryMode_VPW2();
@@ -1672,6 +1672,7 @@ namespace VPWStudio
 		/// </summary>
 		private void playROMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			#region Sanity Checking
 			// no project loaded to play ROM of
 			if (Program.CurrentProject == null)
 			{
@@ -1704,6 +1705,7 @@ namespace VPWStudio
 				Program.ErrorMessageBox("The Output ROM path is empty. Please set it before continuing.");
 				return;
 			}
+			#endregion
 
 			if (!Path.IsPathRooted(Program.CurrentProject.Settings.OutputRomPath))
 			{
