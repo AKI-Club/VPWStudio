@@ -26,7 +26,7 @@ namespace VPWStudio
 			"jordyad",         // pushed me further when I needed it most, providing great info
 			"randymanfoo",     // has provided a lot of No Mercy FileTable updates, among other things
 			"Melonbread",      // new (circa 2020-2022) VPW2 findings
-			"(and others I haven't gotten around to listing yet)"
+			"(and many others I haven't gotten around to listing yet)"
 		};
 
 		/// <summary>
@@ -75,7 +75,6 @@ namespace VPWStudio
 			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
 			sb.AppendLine("- GameGenie720");
 			sb.AppendLine("- AshVPW");
-			sb.AppendLine("- hammerglenn");
 			sb.AppendLine();
 			sb.AppendLine("VPW Studio is largely untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
