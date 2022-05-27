@@ -2,9 +2,40 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 22 (202x/yy/zz)
+Pre-Alpha Preview 23 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 22 (2022/05/27)
+---------------------------------
+* [AkiText] Implement tab-separated CSV import. (Finally.)
+
+* [AkiText] Implement "akitext" command line tool format import/export.
+
+* [AkiTextEditor] Import/Export options now appear in a menu.
+
+* [SelectTextureDialog] Fix crash when using images with forced FileTypes.
+
+* [Toki1TestDialog] Added labels for modern Toki1 offsets 0x09 and 0x11.
+
+* Disabled "Show In Taskbar" for various dialogs and editors.
+
+* Fixed error when attempting to access Move Damage tool with a currently
+  unsupported game.
+
+* Various dialogs updated to allow closing with Escape button:
+ - Toki1TestDialog
+ - TimTester
+ - StableDefParseTest
+ - NameEncodeDecodeTool
+ - MoveDamageTestDialog
+ - FaceTester
+
+* [FileTableDB] Updates to WrestleMania 2000 FileTableDB, bringing it to around
+  99.93% marked! WCW/nWo Revenge's FileTableDB was also updated.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 21 (2022/05/14)
 ---------------------------------
