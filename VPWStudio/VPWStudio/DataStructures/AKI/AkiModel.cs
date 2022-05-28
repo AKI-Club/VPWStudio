@@ -227,7 +227,7 @@ namespace VPWStudio
 	}
 
 	/// <summary>
-	/// 3D Model Data
+	/// 3D Mesh Data
 	/// </summary>
 	public class AkiModel
 	{
@@ -239,15 +239,15 @@ namespace VPWStudio
 		public int Scale;
 
 		/// <summary>
-		/// Number of vertices in this model.
+		/// Number of vertices in this mesh.
 		/// </summary>
-		/// The top bit of this possibly determines model type:
+		/// The top bit of this possibly determines mesh type:
 		/// 0x00 - normal model
 		/// 0x80 - body part model?
 		public int NumVertices;
 
 		/// <summary>
-		/// Number of faces in this model.
+		/// Number of faces in this mesh.
 		/// </summary>
 		public int NumFaces;
 
@@ -260,10 +260,12 @@ namespace VPWStudio
 		/// X location offset
 		/// </summary>
 		public int OffsetX;
+
 		/// <summary>
 		/// Y location offset
 		/// </summary>
 		public int OffsetY;
+
 		/// <summary>
 		/// Z location offset
 		/// </summary>
@@ -280,12 +282,12 @@ namespace VPWStudio
 		private int TextureSizeY;
 
 		/// <summary>
-		/// Collection of Vertices in this polygon.
+		/// Collection of Vertices in this mesh.
 		/// </summary>
 		public List<AkiVertex> Vertices;
 
 		/// <summary>
-		/// Collection of Faces in this polygon.
+		/// Collection of Faces in this mesh.
 		/// </summary>
 		public List<AkiFace> Faces;
 
