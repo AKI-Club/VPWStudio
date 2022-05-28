@@ -422,9 +422,13 @@ namespace VPWStudio
 			gbPreview.BackColor = Color.Transparent;
 		}
 
+		/// <summary>
+		/// Mouse button initially pressed.
+		/// </summary>
 		private void glControl1_MouseDown(object sender, MouseEventArgs e)
 		{
-			// button pressed
+			// mouse button pressed
+			
 		}
 
 		private void glControl1_MouseClick(object sender, MouseEventArgs e)
@@ -432,14 +436,19 @@ namespace VPWStudio
 			// executes between MouseDown and MouseUp, unsure of what states though
 		}
 
+		/// <summary>
+		/// Mouse button released.
+		/// </summary>
 		private void glControl1_MouseUp(object sender, MouseEventArgs e)
 		{
-			// button released
+			// mouse button released
 		}
 
+		/// <summary>
+		/// Change zoom on mouse wheel event.
+		/// </summary>
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e)
 		{
-			// change zoom
 			if (e.Delta == 120)
 			{
 				SceneCamera.Position.Z += ZoomStep;
