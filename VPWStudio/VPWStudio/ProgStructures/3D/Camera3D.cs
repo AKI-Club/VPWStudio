@@ -181,7 +181,7 @@ namespace VPWStudio
 		/// Set camera rotation to an absolute value.
 		/// </summary>
 		/// <param name="newRot">Vector3 with new absolute camera rotation.</param>
-		public void RotateAbsolue(Vector3 newRot)
+		public void RotateAbsolute(Vector3 newRot)
 		{
 			Rotation = newRot;
 		}
