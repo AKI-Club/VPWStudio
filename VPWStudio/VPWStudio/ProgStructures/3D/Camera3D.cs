@@ -56,9 +56,7 @@ namespace VPWStudio
 			Position = new Vector3(0.0f, 0.0f, 0.0f);
 			Rotation = new Vector3(0.0f, 0.0f, 0.0f);
 			Target = new Vector3(0.0f, 0.0f, 0.0f);
-			AntiTarget = Vector3.Normalize(Position - Target);
-			RightAxis = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, AntiTarget));
-			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
+			UpdateAntiAxis();
 		}
 
 		/// <summary>
@@ -70,9 +68,7 @@ namespace VPWStudio
 			Position = pos;
 			Rotation = new Vector3(0.0f, 0.0f, 0.0f);
 			Target = new Vector3(0.0f, 0.0f, 0.0f);
-			AntiTarget = Vector3.Normalize(Position - Target);
-			RightAxis = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, AntiTarget));
-			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
+			UpdateAntiAxis();
 		}
 
 		/// <summary>
@@ -85,9 +81,7 @@ namespace VPWStudio
 			Position = pos;
 			Rotation = rot;
 			Target = new Vector3(0.0f, 0.0f, 0.0f);
-			AntiTarget = Vector3.Normalize(Position - Target);
-			RightAxis = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, AntiTarget));
-			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
+			UpdateAntiAxis();
 		}
 
 		/// <summary>
@@ -101,14 +95,26 @@ namespace VPWStudio
 			Position = pos;
 			Rotation = rot;
 			Target = lookAt;
+			UpdateAntiAxis();
+		}
+		#endregion
+
+		/// <summary>
+		/// Updates AntiTarget, RightAxis, and UpAxis.
+		/// </summary>
+		private void UpdateAntiAxis()
+		{
 			AntiTarget = Vector3.Normalize(Position - Target);
 			RightAxis = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, AntiTarget));
 			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
 		}
-		#endregion
 
 		public void Move(float x, float y, float z)
 		{
+			Position.X += x;
+			Position.Y += y;
+			Position.Z += z;
+			UpdateAntiAxis();
 		}
 
 		/// <summary>
@@ -118,11 +124,13 @@ namespace VPWStudio
 		public void MoveAbsolute(Vector3 newPos)
 		{
 			Position = newPos;
-			AntiTarget = Vector3.Normalize(Position - Target);
-			RightAxis = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, AntiTarget));
-			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
+			UpdateAntiAxis();
 		}
 
+		/// <summary>
+		/// Returns the view matrix for the camera.
+		/// </summary>
+		/// <returns>Camera view matrix.</returns>
 		public Matrix4 GetView()
 		{
 			return Matrix4.LookAt(Position, Target, Vector3.UnitY);
