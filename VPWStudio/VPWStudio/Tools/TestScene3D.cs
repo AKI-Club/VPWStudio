@@ -335,7 +335,7 @@ namespace VPWStudio
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				obj.CalculateModelMatrix();
-				obj.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 1.0f, 40.0f);
+				obj.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 0.01f, 40.0f);
 				obj.ModelViewProjectionMatrix = obj.ModelMatrix * obj.ViewProjectionMatrix;
 			}
 
