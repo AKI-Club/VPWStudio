@@ -70,6 +70,7 @@ namespace VPWStudio
 			this.lblPalID = new System.Windows.Forms.Label();
 			this.lblTextureID = new System.Windows.Forms.Label();
 			this.btnBackgroundColor = new System.Windows.Forms.Button();
+			this.btnResetCamera = new System.Windows.Forms.Button();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
@@ -454,7 +455,7 @@ namespace VPWStudio
 			this.tpFileID.Location = new System.Drawing.Point(4, 22);
 			this.tpFileID.Name = "tpFileID";
 			this.tpFileID.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFileID.Size = new System.Drawing.Size(231, 288);
+			this.tpFileID.Size = new System.Drawing.Size(231, 248);
 			this.tpFileID.TabIndex = 1;
 			this.tpFileID.Text = "File IDs";
 			this.tpFileID.UseVisualStyleBackColor = true;
@@ -565,11 +566,21 @@ namespace VPWStudio
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnBackgroundColor.Location = new System.Drawing.Point(12, 526);
 			this.btnBackgroundColor.Name = "btnBackgroundColor";
-			this.btnBackgroundColor.Size = new System.Drawing.Size(248, 23);
+			this.btnBackgroundColor.Size = new System.Drawing.Size(122, 23);
 			this.btnBackgroundColor.TabIndex = 4;
 			this.btnBackgroundColor.Text = "Background &Color...";
 			this.btnBackgroundColor.UseVisualStyleBackColor = true;
 			this.btnBackgroundColor.Click += new System.EventHandler(this.btnBackgroundColor_Click);
+			// 
+			// btnResetCamera
+			// 
+			this.btnResetCamera.Location = new System.Drawing.Point(140, 526);
+			this.btnResetCamera.Name = "btnResetCamera";
+			this.btnResetCamera.Size = new System.Drawing.Size(120, 23);
+			this.btnResetCamera.TabIndex = 5;
+			this.btnResetCamera.Text = "Re&set Camera";
+			this.btnResetCamera.UseVisualStyleBackColor = true;
+			this.btnResetCamera.Click += new System.EventHandler(this.btnResetCamera_Click);
 			// 
 			// TestScene3D
 			// 
@@ -577,6 +588,7 @@ namespace VPWStudio
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(884, 561);
+			this.Controls.Add(this.btnResetCamera);
 			this.Controls.Add(this.btnBackgroundColor);
 			this.Controls.Add(this.gbItemInfo);
 			this.Controls.Add(this.gbPreview);
@@ -653,5 +665,6 @@ namespace VPWStudio
 		private System.Windows.Forms.Button btnRename;
 		private System.Windows.Forms.TextBox tbObjectName;
 		private System.Windows.Forms.ListView lvSceneItems;
+		private System.Windows.Forms.Button btnResetCamera;
 	}
 }

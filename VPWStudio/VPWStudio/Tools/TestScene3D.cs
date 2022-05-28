@@ -674,5 +674,10 @@ namespace VPWStudio
 		{
 			SceneModels[e.Item.Index].Visible = e.Item.Checked;
 		}
+
+		private void btnResetCamera_Click(object sender, EventArgs e)
+		{
+			SceneCamera.MoveAbsolute(new Vector3(0f, 0f, 0.1f));
+		}
 	}
 }
