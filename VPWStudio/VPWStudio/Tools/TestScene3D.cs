@@ -612,5 +612,15 @@ namespace VPWStudio
 		{
 			SceneModels[e.Item.Index].Visible = e.Item.Checked;
 		}
+
+		private void glControl1_Enter(object sender, EventArgs e)
+		{
+			gbPreview.BackColor = Color.LawnGreen;
+		}
+
+		private void glControl1_Leave(object sender, EventArgs e)
+		{
+			gbPreview.BackColor = Color.Transparent;
+		}
 	}
 }
