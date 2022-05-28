@@ -722,7 +722,19 @@ namespace VPWStudio
 				Bitmap newBG = new Bitmap(ofd.FileName);
 				if (!mbg.FromBitmap(newBG))
 				{
-					Program.ErrorMessageBox("Unable to convert provided image to a menu background.");
+					if (newBG.Width != 320 || newBG.Height != 240)
+					{
+						Program.ErrorMessageBox("Menu background images must be 320x240 pixels.");
+					}
+					else if (newBG.PixelFormat != System.Drawing.Imaging.PixelFormat.Format4bppIndexed)
+					{
+						Program.ErrorMessageBox("Menu background images must be 4BPP (16 colors).");
+					}
+					else
+					{
+						Program.ErrorMessageBox("Unable to convert provided image to a menu background for an undetermined reason.");
+					}
+					
 					newBG.Dispose();
 					return;
 				}
