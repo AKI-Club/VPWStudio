@@ -30,12 +30,17 @@ namespace VPWStudio
 		private void InitializeComponent()
 		{
 			this.gbItems = new System.Windows.Forms.GroupBox();
+			this.lvSceneItems = new System.Windows.Forms.ListView();
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnRemove = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.gbPreview = new System.Windows.Forms.GroupBox();
 			this.glControl1 = new OpenTK.GLControl();
 			this.gbItemInfo = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblName = new System.Windows.Forms.Label();
+			this.btnRename = new System.Windows.Forms.Button();
+			this.tbObjectName = new System.Windows.Forms.TextBox();
 			this.tcItemInfo = new System.Windows.Forms.TabControl();
 			this.tpPosRot = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,23 +69,17 @@ namespace VPWStudio
 			this.lblModelID = new System.Windows.Forms.Label();
 			this.lblPalID = new System.Windows.Forms.Label();
 			this.lblTextureID = new System.Windows.Forms.Label();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.btnBackgroundColor = new System.Windows.Forms.Button();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.lblName = new System.Windows.Forms.Label();
-			this.btnRename = new System.Windows.Forms.Button();
-			this.tbObjectName = new System.Windows.Forms.TextBox();
-			this.lvSceneItems = new System.Windows.Forms.ListView();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
 			this.tcItemInfo.SuspendLayout();
 			this.tpPosRot.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tpFileID.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			this.tableLayoutPanel4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbItems
@@ -97,6 +96,26 @@ namespace VPWStudio
 			this.gbItems.TabIndex = 0;
 			this.gbItems.TabStop = false;
 			this.gbItems.Text = "&Items";
+			// 
+			// lvSceneItems
+			// 
+			this.lvSceneItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lvSceneItems.CheckBoxes = true;
+			this.lvSceneItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.lvSceneItems.HideSelection = false;
+			this.lvSceneItems.LabelWrap = false;
+			this.lvSceneItems.Location = new System.Drawing.Point(6, 19);
+			this.lvSceneItems.MultiSelect = false;
+			this.lvSceneItems.Name = "lvSceneItems";
+			this.lvSceneItems.ShowGroups = false;
+			this.lvSceneItems.Size = new System.Drawing.Size(152, 129);
+			this.lvSceneItems.TabIndex = 5;
+			this.lvSceneItems.UseCompatibleStateImageBehavior = false;
+			this.lvSceneItems.View = System.Windows.Forms.View.List;
+			this.lvSceneItems.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvSceneItems_ItemChecked);
+			this.lvSceneItems.SelectedIndexChanged += new System.EventHandler(this.lvSceneItems_SelectedIndexChanged);
 			// 
 			// btnClear
 			// 
@@ -158,6 +177,8 @@ namespace VPWStudio
 			this.glControl1.VSync = false;
 			this.glControl1.Load += new System.EventHandler(this.glControl1_Load);
 			this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
+			this.glControl1.Enter += new System.EventHandler(this.glControl1_Enter);
+			this.glControl1.Leave += new System.EventHandler(this.glControl1_Leave);
 			this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
 			// 
 			// gbItemInfo
@@ -172,6 +193,51 @@ namespace VPWStudio
 			this.gbItemInfo.TabIndex = 2;
 			this.gbItemInfo.TabStop = false;
 			this.gbItemInfo.Text = "Item I&nformation";
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.ColumnCount = 3;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel4.Controls.Add(this.lblName, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.btnRename, 2, 0);
+			this.tableLayoutPanel4.Controls.Add(this.tbObjectName, 1, 0);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 1;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(239, 46);
+			this.tableLayoutPanel4.TabIndex = 1;
+			// 
+			// lblName
+			// 
+			this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblName.AutoSize = true;
+			this.lblName.Location = new System.Drawing.Point(3, 16);
+			this.lblName.Name = "lblName";
+			this.lblName.Size = new System.Drawing.Size(41, 13);
+			this.lblName.TabIndex = 0;
+			this.lblName.Text = "&Name";
+			// 
+			// btnRename
+			// 
+			this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRename.Location = new System.Drawing.Point(169, 11);
+			this.btnRename.Name = "btnRename";
+			this.btnRename.Size = new System.Drawing.Size(67, 23);
+			this.btnRename.TabIndex = 1;
+			this.btnRename.Text = "Rename";
+			this.btnRename.UseVisualStyleBackColor = true;
+			this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
+			// 
+			// tbObjectName
+			// 
+			this.tbObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbObjectName.Location = new System.Drawing.Point(50, 13);
+			this.tbObjectName.Name = "tbObjectName";
+			this.tbObjectName.Size = new System.Drawing.Size(113, 20);
+			this.tbObjectName.TabIndex = 2;
 			// 
 			// tcItemInfo
 			// 
@@ -385,7 +451,7 @@ namespace VPWStudio
 			this.tpFileID.Location = new System.Drawing.Point(4, 22);
 			this.tpFileID.Name = "tpFileID";
 			this.tpFileID.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFileID.Size = new System.Drawing.Size(231, 248);
+			this.tpFileID.Size = new System.Drawing.Size(231, 288);
 			this.tpFileID.TabIndex = 1;
 			this.tpFileID.Text = "File IDs";
 			this.tpFileID.UseVisualStyleBackColor = true;
@@ -490,14 +556,6 @@ namespace VPWStudio
 			this.lblTextureID.TabIndex = 2;
 			this.lblTextureID.Text = "Texture";
 			// 
-			// menuStrip1
-			// 
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(884, 24);
-			this.menuStrip1.TabIndex = 3;
-			this.menuStrip1.Text = "menuStrip1";
-			// 
 			// btnBackgroundColor
 			// 
 			this.btnBackgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -510,71 +568,6 @@ namespace VPWStudio
 			this.btnBackgroundColor.UseVisualStyleBackColor = true;
 			this.btnBackgroundColor.Click += new System.EventHandler(this.btnBackgroundColor_Click);
 			// 
-			// tableLayoutPanel4
-			// 
-			this.tableLayoutPanel4.ColumnCount = 3;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel4.Controls.Add(this.lblName, 0, 0);
-			this.tableLayoutPanel4.Controls.Add(this.btnRename, 2, 0);
-			this.tableLayoutPanel4.Controls.Add(this.tbObjectName, 1, 0);
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 1;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(239, 46);
-			this.tableLayoutPanel4.TabIndex = 1;
-			// 
-			// lblName
-			// 
-			this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(3, 16);
-			this.lblName.Name = "lblName";
-			this.lblName.Size = new System.Drawing.Size(41, 13);
-			this.lblName.TabIndex = 0;
-			this.lblName.Text = "&Name";
-			// 
-			// btnRename
-			// 
-			this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRename.Location = new System.Drawing.Point(169, 11);
-			this.btnRename.Name = "btnRename";
-			this.btnRename.Size = new System.Drawing.Size(67, 23);
-			this.btnRename.TabIndex = 1;
-			this.btnRename.Text = "Rename";
-			this.btnRename.UseVisualStyleBackColor = true;
-			this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
-			// 
-			// tbObjectName
-			// 
-			this.tbObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbObjectName.Location = new System.Drawing.Point(50, 13);
-			this.tbObjectName.Name = "tbObjectName";
-			this.tbObjectName.Size = new System.Drawing.Size(113, 20);
-			this.tbObjectName.TabIndex = 2;
-			// 
-			// lvSceneItems
-			// 
-			this.lvSceneItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.lvSceneItems.CheckBoxes = true;
-			this.lvSceneItems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-			this.lvSceneItems.HideSelection = false;
-			this.lvSceneItems.LabelWrap = false;
-			this.lvSceneItems.Location = new System.Drawing.Point(6, 19);
-			this.lvSceneItems.MultiSelect = false;
-			this.lvSceneItems.Name = "lvSceneItems";
-			this.lvSceneItems.ShowGroups = false;
-			this.lvSceneItems.Size = new System.Drawing.Size(152, 129);
-			this.lvSceneItems.TabIndex = 5;
-			this.lvSceneItems.UseCompatibleStateImageBehavior = false;
-			this.lvSceneItems.View = System.Windows.Forms.View.List;
-			this.lvSceneItems.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvSceneItems_ItemChecked);
-			this.lvSceneItems.SelectedIndexChanged += new System.EventHandler(this.lvSceneItems_SelectedIndexChanged);
-			// 
 			// TestScene3D
 			// 
 			this.AcceptButton = this.btnUpdatePosRot;
@@ -585,9 +578,7 @@ namespace VPWStudio
 			this.Controls.Add(this.gbItemInfo);
 			this.Controls.Add(this.gbPreview);
 			this.Controls.Add(this.gbItems);
-			this.Controls.Add(this.menuStrip1);
 			this.KeyPreview = true;
-			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(900, 600);
@@ -601,6 +592,8 @@ namespace VPWStudio
 			this.gbItems.ResumeLayout(false);
 			this.gbPreview.ResumeLayout(false);
 			this.gbItemInfo.ResumeLayout(false);
+			this.tableLayoutPanel4.ResumeLayout(false);
+			this.tableLayoutPanel4.PerformLayout();
 			this.tcItemInfo.ResumeLayout(false);
 			this.tpPosRot.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -610,10 +603,7 @@ namespace VPWStudio
 			this.tpFileID.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			this.tableLayoutPanel4.ResumeLayout(false);
-			this.tableLayoutPanel4.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -654,7 +644,6 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbTexFileID;
 		private System.Windows.Forms.Button btnEditModelFileID;
 		private System.Windows.Forms.CheckBox cbEnableTexture;
-		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.Button btnBackgroundColor;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.Label lblName;
