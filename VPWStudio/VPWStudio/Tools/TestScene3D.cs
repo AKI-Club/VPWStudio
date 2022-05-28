@@ -82,6 +82,11 @@ namespace VPWStudio
 		/// </summary>
 		private readonly byte[] FallbackTexture = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
 
+		/// <summary>
+		/// Scene camera.
+		/// </summary>
+		public Camera3D SceneCamera = new Camera3D(new Vector3(0f, 0f, 0.1f));
+
 		public TestScene3D()
 		{
 			InitializeComponent();
@@ -335,7 +340,7 @@ namespace VPWStudio
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				obj.CalculateModelMatrix();
-				obj.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 0.01f, 40.0f);
+				obj.ViewProjectionMatrix = SceneCamera.GetView() * Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 0.01f, 40.0f);
 				obj.ModelViewProjectionMatrix = obj.ModelMatrix * obj.ViewProjectionMatrix;
 			}
 
