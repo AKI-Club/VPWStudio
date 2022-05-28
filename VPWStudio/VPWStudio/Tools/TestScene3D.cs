@@ -87,11 +87,18 @@ namespace VPWStudio
 		/// </summary>
 		public Camera3D SceneCamera = new Camera3D(new Vector3(0f, 0f, 0.1f));
 
+		public readonly float MinZoom = 0.1f;
+		public readonly float MaxZoom = 3f;
+		public readonly float ZoomStep = 0.1f;
+
 		public TestScene3D()
 		{
 			InitializeComponent();
 			cbEnableTexture.Enabled = false;
 			Active = true;
+
+			// have to do this here, otherwise form designer chokes
+			glControl1.MouseWheel += new MouseEventHandler(glControl1_MouseWheel);
 
 			RedrawTimer.Interval = 16; // just about 1/60th of a second; can't use floating point values, so I had to round down
 			RedrawTimer.Tick += new EventHandler(UpdateScene);
@@ -404,6 +411,52 @@ namespace VPWStudio
 			GL.Flush();
 			glControl1.SwapBuffers();
 		}
+
+		private void glControl1_Enter(object sender, EventArgs e)
+		{
+			gbPreview.BackColor = Color.LawnGreen;
+		}
+
+		private void glControl1_Leave(object sender, EventArgs e)
+		{
+			gbPreview.BackColor = Color.Transparent;
+		}
+
+		private void glControl1_MouseDown(object sender, MouseEventArgs e)
+		{
+			// button pressed
+		}
+
+		private void glControl1_MouseClick(object sender, MouseEventArgs e)
+		{
+			// executes between MouseDown and MouseUp, unsure of what states though
+		}
+
+		private void glControl1_MouseUp(object sender, MouseEventArgs e)
+		{
+			// button released
+		}
+
+		private void glControl1_MouseWheel(object sender, MouseEventArgs e)
+		{
+			// change zoom
+			if (e.Delta == 120)
+			{
+				SceneCamera.Position.Z += ZoomStep;
+				if (SceneCamera.Position.Z > MaxZoom)
+				{
+					SceneCamera.Position.Z = MaxZoom;
+				}
+			}
+			else if (e.Delta == -120)
+			{
+				SceneCamera.Position.Z -= ZoomStep;
+				if (SceneCamera.Position.Z < MinZoom)
+				{
+					SceneCamera.Position.Z = MinZoom;
+				}
+			}
+		}
 		#endregion
 
 		private void TestScene3D_FormClosing(object sender, FormClosingEventArgs e)
@@ -611,16 +664,6 @@ namespace VPWStudio
 		private void lvSceneItems_ItemChecked(object sender, ItemCheckedEventArgs e)
 		{
 			SceneModels[e.Item.Index].Visible = e.Item.Checked;
-		}
-
-		private void glControl1_Enter(object sender, EventArgs e)
-		{
-			gbPreview.BackColor = Color.LawnGreen;
-		}
-
-		private void glControl1_Leave(object sender, EventArgs e)
-		{
-			gbPreview.BackColor = Color.Transparent;
 		}
 	}
 }
