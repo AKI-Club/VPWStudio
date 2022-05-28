@@ -8,11 +8,12 @@ using System.Runtime.InteropServices;
 namespace VPWStudio
 {
 	/// <summary>
-	/// AkiTexture, a.k.a. "TEX" (based on the magic number.)
+	/// AkiTexture container format
+	/// (a.k.a. "TEX", based on the magic number)
 	/// </summary>
 	public class AkiTexture
 	{
-		private byte[] TEX_HEADER_MAGIC = { 0x54, 0x45, 0x58, 0x00 };
+		private byte[] TEX_HEADER_MAGIC = { 0x54, 0x45, 0x58, 0x00 }; // "TEX", 0x00
 
 		/// <summary>
 		/// Possible image formats.
