@@ -109,6 +109,22 @@ namespace VPWStudio
 			UpAxis = Vector3.Cross(AntiTarget, RightAxis);
 		}
 
+		/// <summary>
+		/// Returns the view matrix for the camera.
+		/// </summary>
+		/// <returns>Camera view matrix.</returns>
+		public Matrix4 GetView()
+		{
+			return Matrix4.LookAt(Position, Target, Vector3.UnitY);
+		}
+
+		#region Movement
+		/// <summary>
+		/// Move camera using relative X/Y/Z values.
+		/// </summary>
+		/// <param name="x">Amount to move camera on X axis.</param>
+		/// <param name="y">Amount to move camera on Y axis.</param>
+		/// <param name="z">Amount to move camera on Z axis.</param>
 		public void Move(float x, float y, float z)
 		{
 			Position.X += x;
@@ -118,22 +134,57 @@ namespace VPWStudio
 		}
 
 		/// <summary>
+		/// Move camera relative to a Vector3.
+		/// </summary>
+		/// <param name="moveVec">Vector3 with values to move camera.</param>
+		public void Move(Vector3 moveVec)
+		{
+			Position += moveVec;
+			UpdateAntiAxis();
+		}
+
+		/// <summary>
 		/// Move the camera to an absolute position.
 		/// </summary>
-		/// <param name="newPos">New absolute position for the camera.</param>
+		/// <param name="newPos">Vector3 with new absolute camera position.</param>
 		public void MoveAbsolute(Vector3 newPos)
 		{
 			Position = newPos;
 			UpdateAntiAxis();
 		}
+		#endregion
+
+		#region Rotation
+		/// <summary>
+		/// Rotate camera using relative X/Y/Z values.
+		/// </summary>
+		/// <param name="rotX">Amount to rotate camera on X axis.</param>
+		/// <param name="rotY">Amount to rotate camera on Y axis.</param>
+		/// <param name="rotZ">Amount to rotate camera on Z axis.</param>
+		public void Rotate(float rotX, float rotY, float rotZ)
+		{
+			Rotation.X += rotX;
+			Rotation.Y += rotY;
+			Rotation.Z += rotZ;
+		}
 
 		/// <summary>
-		/// Returns the view matrix for the camera.
+		/// Rotate camera relative to a Vector3.
 		/// </summary>
-		/// <returns>Camera view matrix.</returns>
-		public Matrix4 GetView()
+		/// <param name="rotVec">Vector3 with values to rotate camera.</param>
+		public void Rotate(Vector3 rotVec)
 		{
-			return Matrix4.LookAt(Position, Target, Vector3.UnitY);
+			Rotation += rotVec;
 		}
+
+		/// <summary>
+		/// Set camera rotation to an absolute value.
+		/// </summary>
+		/// <param name="newRot">Vector3 with new absolute camera rotation.</param>
+		public void RotateAbsolue(Vector3 newRot)
+		{
+			Rotation = newRot;
+		}
+		#endregion
 	}
 }
