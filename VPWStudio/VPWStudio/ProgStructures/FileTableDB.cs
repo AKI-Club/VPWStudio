@@ -121,6 +121,11 @@ namespace VPWStudio
 		public Dictionary<UInt16,FileTableDBEntry> Entries;
 
 		/// <summary>
+		/// Error list when parsing FileTableDB
+		/// </summary>
+		public List<string> ErrorList;
+
+		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public FileTableDB()
@@ -135,17 +140,19 @@ namespace VPWStudio
 		public FileTableDB(string _file)
 		{
 			Entries = new Dictionary<ushort, FileTableDBEntry>();
-			ReadFile(_file);
+			ReadFile(_file, out ErrorList);
 		}
 
 		/// <summary>
 		/// Read FileTableDB from file.
 		/// </summary>
 		/// <param name="_path">Path to input FileTableDB.</param>
-		public void ReadFile(string _path)
+		public void ReadFile(string _path, out List<string> errors)
 		{
 			FileStream fs = new FileStream(_path, FileMode.Open);
 			StreamReader sr = new StreamReader(fs);
+
+			errors = new List<string>();
 
 			int lineNumber = 1;
 			while (!sr.EndOfStream)
@@ -159,7 +166,6 @@ namespace VPWStudio
 					continue;
 				}
 
-				// xxx: showing message boxes here is not good form
 				FileTableDBEntry ftdbe = new FileTableDBEntry(line);
 				try
 				{
@@ -170,12 +176,12 @@ namespace VPWStudio
 					if (Entries.ContainsKey(ftdbe.FileID))
 					{
 						// duplicate entry
-						System.Windows.Forms.MessageBox.Show(String.Format("Error on line {0}: Duplicate entry for FileID {1:X4}", lineNumber, ftdbe.FileID));
+						errors.Add(String.Format("Error on line {0}: Duplicate entry for FileID {1:X4}", lineNumber, ftdbe.FileID));
 					}
 					else
 					{
 						// undefined error
-						System.Windows.Forms.MessageBox.Show(String.Format("Error on line {0}: {1}", lineNumber, aex.ToString()));
+						errors.Add(String.Format("Error on line {0}: {1}", lineNumber, aex.ToString()));
 					}
 				}
 				finally

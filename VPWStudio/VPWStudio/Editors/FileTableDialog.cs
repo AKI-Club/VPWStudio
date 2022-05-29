@@ -209,6 +209,17 @@ namespace VPWStudio
 			else
 			{
 				ftdb = new FileTableDB(dbFilePath);
+
+				if (ftdb.ErrorList.Count > 0)
+				{
+					StringBuilder sb = new StringBuilder();
+					foreach (string error in ftdb.ErrorList)
+					{
+						sb.AppendLine(error);
+					}
+					Program.ErrorMessageBox(sb.ToString());
+				}
+
 				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 				{
 					int fileID = entry.Value.FileID;
@@ -245,6 +256,16 @@ namespace VPWStudio
 			{
 				bool changesMade = false;
 				FileTableDB ftdb = new FileTableDB(dbFilePath);
+
+				if (ftdb.ErrorList.Count > 0)
+				{
+					StringBuilder sb = new StringBuilder();
+					foreach (string error in ftdb.ErrorList)
+					{
+						sb.AppendLine(error);
+					}
+					Program.ErrorMessageBox(sb.ToString());
+				}
 
 				bool replaceComments = false;
 				if (MessageBox.Show("Do you want to overwrite your comments with comments from the FileTable Database?", SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
