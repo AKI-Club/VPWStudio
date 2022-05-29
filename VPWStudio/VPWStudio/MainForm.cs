@@ -503,6 +503,17 @@ namespace VPWStudio
 				if (!ftdbPath.Equals(String.Empty) && File.Exists(ftdbPath))
 				{
 					FileTableDB ftdb = new FileTableDB(ftdbPath);
+
+					if (ftdb.ErrorList.Count > 0)
+					{
+						StringBuilder sb = new StringBuilder();
+						foreach (string error in ftdb.ErrorList)
+						{
+							sb.AppendLine(error);
+						}
+						Program.ErrorMessageBox(sb.ToString());
+					}
+
 					foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 					{
 						int fileID = entry.Value.FileID;
@@ -756,6 +767,17 @@ namespace VPWStudio
 					if (!ftdbPath.Equals(String.Empty) && File.Exists(ftdbPath))
 					{
 						FileTableDB ftdb = new FileTableDB(ftdbPath);
+
+						if (ftdb.ErrorList.Count > 0)
+						{
+							StringBuilder sb = new StringBuilder();
+							foreach (string error in ftdb.ErrorList)
+							{
+								sb.AppendLine(error);
+							}
+							Program.ErrorMessageBox(sb.ToString());
+						}
+
 						foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
 						{
 							FileTableEntry fte = new FileTableEntry
