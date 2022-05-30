@@ -235,7 +235,7 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
+			Program.AppMainForm.RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
 		}
 
 		private void buttonParams_Click(object sender, EventArgs e)
@@ -245,7 +245,7 @@ namespace VPWStudio.Editors.WM2K
 				return;
 			}
 
-			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
+			Program.AppMainForm.RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
 		private void cbThemeMusic_SelectedIndexChanged(object sender, EventArgs e)

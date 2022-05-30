@@ -304,7 +304,7 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			((MainForm)(MdiParent)).RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
+			Program.AppMainForm.RequestHexViewer(this.WrestlerDefs[lbWrestlers.SelectedIndex].MovesetFileIndex);
 		}
 
 		private void buttonParams_Click(object sender, EventArgs e)
@@ -314,7 +314,7 @@ namespace VPWStudio.Editors.NoMercy
 				return;
 			}
 
-			((MainForm)(MdiParent)).RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
+			Program.AppMainForm.RequestHexViewer(WrestlerDefs[lbWrestlers.SelectedIndex].ParamsFileIndex);
 		}
 
 		private void buttonAppearance_Click(object sender, EventArgs e)
