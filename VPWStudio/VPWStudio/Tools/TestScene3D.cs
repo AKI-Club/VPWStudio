@@ -87,9 +87,22 @@ namespace VPWStudio
 		/// </summary>
 		public Camera3D SceneCamera = new Camera3D(new Vector3(0f, 0f, 0.1f));
 
+		#region Camera Zoom
 		public readonly float MinZoom = 0.1f;
 		public readonly float MaxZoom = 3f;
+
+		/// <summary>
+		/// Amount to change zoom.
+		/// </summary>
 		public readonly float ZoomStep = 0.1f;
+		#endregion
+
+		#region Camera Move
+		/// <summary>
+		/// Amount to move camera.
+		/// </summary>
+		public readonly float MoveStep = 0.1f;
+		#endregion
 
 		public int LastMouseX = 0;
 		public int LastMouseY = 0;
@@ -502,28 +515,40 @@ namespace VPWStudio
 			}
 			else if (e.Button == MouseButtons.Right)
 			{
+				// xxx: doesn't do what I want yet
+				/*
+				float xMove = 0;
+				float yMove = 0;
+
 				// right click and drag: pan
 				if (e.X > LastMouseX)
 				{
 					// dragging to right
+					xMove = MoveStep;
 				}
 				else if (e.X < LastMouseX)
 				{
 					// dragging to left
+					xMove = MoveStep * -1;
 				}
 
 				if (e.Y > LastMouseY)
 				{
 					// dragging down
+					yMove = MoveStep;
 				}
 				else if (e.Y < LastMouseY)
 				{
 					// dragging up
+					yMove = MoveStep * -1;
 				}
+
+				SceneCamera.Move(xMove, yMove, 0);
+				*/
 			}
 			else if (e.Button == (MouseButtons.Left | MouseButtons.Right))
 			{
-				// both buttons: zoom??
+				// both buttons: zoom
 				if (e.Y > LastMouseY)
 				{
 					// dragging down
