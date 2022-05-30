@@ -71,6 +71,12 @@ namespace VPWStudio
 		/// </summary>
 		public static HexViewerManager HexViewManager = new HexViewerManager();
 
+		/// <summary>
+		/// Application main form, defined as a variable to get around some hacky crap
+		/// regarding the HexViewerManager.
+		/// </summary>
+		public static MainForm AppMainForm;
+
 		#endregion
 
 		/// <summary>
@@ -83,7 +89,8 @@ namespace VPWStudio
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm(args));
+			AppMainForm = new MainForm(args);
+			Application.Run(AppMainForm);
 		}
 
 		#region Helpers
@@ -100,8 +107,7 @@ namespace VPWStudio
 
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
-			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable
-			// than the NTSC-U and PAL versions... Haven't figured out the actual changes yet.
+			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable than the NTSC-U and PAL versions.
 			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
 			{
 				dbFilePath += "WM2K-J.txt";
