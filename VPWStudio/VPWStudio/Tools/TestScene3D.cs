@@ -91,6 +91,9 @@ namespace VPWStudio
 		public readonly float MaxZoom = 3f;
 		public readonly float ZoomStep = 0.1f;
 
+		public int LastMouseX = 0;
+		public int LastMouseY = 0;
+
 		public TestScene3D()
 		{
 			InitializeComponent();
@@ -466,6 +469,84 @@ namespace VPWStudio
 				}
 			}
 		}
+
+		/// <summary>
+		/// Mouse moves over/within control
+		/// </summary>
+		private void glControl1_MouseMove(object sender, MouseEventArgs e)
+		{
+			// you: "freem, where is the middle mouse button?"
+			// freem: "I'm currently using a mouse that can't click the wheel worth a damn"
+
+			// only bother doing anything if button is pressed and held
+			if (e.Button == MouseButtons.Left)
+			{
+				// left click and drag: rotate
+				if (e.X > LastMouseX)
+				{
+					// dragging to right
+				}
+				else if (e.X < LastMouseX)
+				{
+					// dragging to left
+				}
+
+				if (e.Y > LastMouseY)
+				{
+					// dragging down
+				}
+				else if (e.Y < LastMouseY)
+				{
+					// dragging up
+				}
+			}
+			else if (e.Button == MouseButtons.Right)
+			{
+				// right click and drag: pan
+				if (e.X > LastMouseX)
+				{
+					// dragging to right
+				}
+				else if (e.X < LastMouseX)
+				{
+					// dragging to left
+				}
+
+				if (e.Y > LastMouseY)
+				{
+					// dragging down
+				}
+				else if (e.Y < LastMouseY)
+				{
+					// dragging up
+				}
+			}
+			else if (e.Button == (MouseButtons.Left | MouseButtons.Right))
+			{
+				// both buttons: zoom??
+				if (e.Y > LastMouseY)
+				{
+					// dragging down
+					SceneCamera.Position.Z += ZoomStep;
+					if (SceneCamera.Position.Z > MaxZoom)
+					{
+						SceneCamera.Position.Z = MaxZoom;
+					}
+				}
+				else if (e.Y < LastMouseY)
+				{
+					// dragging up
+					SceneCamera.Position.Z -= ZoomStep;
+					if (SceneCamera.Position.Z < MinZoom)
+					{
+						SceneCamera.Position.Z = MinZoom;
+					}
+				}
+			}
+
+			LastMouseX = e.X;
+			LastMouseY = e.Y;
+		}
 		#endregion
 
 		private void TestScene3D_FormClosing(object sender, FormClosingEventArgs e)
@@ -679,5 +760,6 @@ namespace VPWStudio
 		{
 			SceneCamera.MoveAbsolute(new Vector3(0f, 0f, 0.1f));
 		}
+
 	}
 }
