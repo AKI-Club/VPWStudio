@@ -79,9 +79,7 @@ namespace VPWStudio
 					MakeFileTableFromRom();
 
 					Program.UnsavedChanges = true;
-
-					// this is hacky as fuck but it's the only way I know how to do it without crashing.
-					(Application.OpenForms["MainForm"] as MainForm).UpdateTitleBar();
+					Program.AppMainForm.UpdateTitleBar();
 				}
 				UpdateEntryList();
 
@@ -311,7 +309,7 @@ namespace VPWStudio
 				if (changesMade)
 				{
 					Program.UnsavedChanges = true;
-					((MainForm)(MdiParent)).UpdateTitleBar();
+					Program.AppMainForm.UpdateTitleBar();
 				}
 			}
 		}
@@ -440,7 +438,7 @@ namespace VPWStudio
 				}
 				lvFileList.EndUpdate();
 				Program.UnsavedChanges = true;
-				((MainForm)(MdiParent)).UpdateTitleBar();
+				Program.AppMainForm.UpdateTitleBar();
 			}
 		}
 
@@ -552,7 +550,7 @@ namespace VPWStudio
 						lvFileList.FocusedItem = prevItem;
 
 						Program.UnsavedChanges = true;
-						((MainForm)(MdiParent)).UpdateTitleBar();
+						Program.AppMainForm.UpdateTitleBar();
 					}
 				}
 			}
@@ -786,7 +784,7 @@ namespace VPWStudio
 					}
 				}
 				Program.UnsavedChanges = true;
-				((MainForm)(MdiParent)).UpdateTitleBar();
+				Program.AppMainForm.UpdateTitleBar();
 				newBG.Dispose();
 			}
 		}
@@ -806,7 +804,7 @@ namespace VPWStudio
 				lvFileList.SelectedItems[0].SubItems[COMMENT_COLUMN].Text = editInfoDialog.CurEntry.Comment;
 				lvFileList.SelectedItems[0].SubItems[PROJECT_COMMENT_COLUMN].Text = editInfoDialog.CurEntry.ProjectSpecificComment;
 				Program.UnsavedChanges = true;
-				((MainForm)(MdiParent)).UpdateTitleBar();
+				Program.AppMainForm.UpdateTitleBar();
 			}
 		}
 
@@ -926,7 +924,7 @@ namespace VPWStudio
 								Program.InfoMessageBox(String.Format("Wrote new AkiText archive to {0}.", filename));
 
 								Program.UnsavedChanges = true;
-								((MainForm)(MdiParent)).UpdateTitleBar();
+								Program.AppMainForm.UpdateTitleBar();
 							}
 							else if (Path.GetExtension(fte.ReplaceFilePath) == ".csv")
 							{
@@ -1037,7 +1035,7 @@ namespace VPWStudio
 								Program.InfoMessageBox(String.Format("Wrote new MenuItems_NoGroup archive to {0}.", filename));
 
 								Program.UnsavedChanges = true;
-								((MainForm)(MdiParent)).UpdateTitleBar();
+								Program.AppMainForm.UpdateTitleBar();
 							}
 							else
 							{
@@ -1102,7 +1100,7 @@ namespace VPWStudio
 								Program.InfoMessageBox(String.Format("Wrote new MenuItems_Shop archive to {0}.", filename));
 
 								Program.UnsavedChanges = true;
-								((MainForm)(MdiParent)).UpdateTitleBar();
+								Program.AppMainForm.UpdateTitleBar();
 							}
 							else
 							{

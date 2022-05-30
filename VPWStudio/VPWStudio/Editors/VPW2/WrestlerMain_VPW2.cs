@@ -380,7 +380,7 @@ namespace VPWStudio.Editors.VPW2
 					Program.InfoMessageBox(String.Format("Wrote new Default Costume Data file to {0}.", filename));
 
 					Program.UnsavedChanges = true;
-					((MainForm)MdiParent).UpdateTitleBar();
+					Program.AppMainForm.UpdateTitleBar();
 				}
 			}
 		}
@@ -449,7 +449,7 @@ namespace VPWStudio.Editors.VPW2
 					Program.InfoMessageBox(String.Format("Wrote new AkiText archive to {0}.", filename));
 
 					Program.UnsavedChanges = true;
-					((MainForm)(MdiParent)).UpdateTitleBar();
+					Program.AppMainForm.UpdateTitleBar();
 				}
 				else if (Path.GetExtension(defWrestlerNames.ReplaceFilePath) == ".akitext")
 				{
