@@ -14,8 +14,19 @@ namespace VPWStudio
 	// todo: should split out some of the common stuff into an interface called IRenderable or something
 	public class RenderableN64
 	{
+		/// <summary>
+		/// Object position
+		/// </summary>
 		public Vector3 Position = new Vector3(0, 0, -1);
+
+		/// <summary>
+		/// Object rotation
+		/// </summary>
 		public Vector3 Rotation = Vector3.Zero;
+
+		/// <summary>
+		/// Object scale
+		/// </summary>
 		public Vector3 Scale = Vector3.One;
 
 		public Matrix4 ModelMatrix = Matrix4.Identity;
@@ -37,6 +48,7 @@ namespace VPWStudio
 		/// </summary>
 		public bool EnableTexture;
 
+		#region File IDs
 		/// <summary>
 		/// Model data File ID
 		/// </summary>
@@ -51,16 +63,26 @@ namespace VPWStudio
 		/// (CI4) Texture data File ID
 		/// </summary>
 		public uint TexFileID;
+		#endregion
 
 		#region Internal Stuff
+		/// <summary>
+		/// N64 mesh
+		/// </summary>
 		public AkiModel Model;
 
 		// todo: only supports ci4 right now
 		public Ci4Palette Palette_CI4;
 		public Ci4Texture Texture_CI4;
 
+		/// <summary>
+		/// Texture bitmap data
+		/// </summary>
 		public Bitmap Texture;
 
+		/// <summary>
+		/// Texture pixel data for OpenGL texture binding.
+		/// </summary>
 		public byte[] PixelData;
 		#endregion
 
@@ -80,7 +102,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Constructor with file IDs
+		/// Constructor with file IDs.
 		/// </summary>
 		/// <param name="modelID">Model File ID</param>
 		/// <param name="palID">Palette File ID</param>
@@ -99,6 +121,9 @@ namespace VPWStudio
 		}
 		#endregion
 
+		/// <summary>
+		/// Reset Position, Rotation, and Scale to the default values.
+		/// </summary>
 		public void ResetPosRotScale()
 		{
 			Position = new Vector3(0, 0, -1);
@@ -129,6 +154,16 @@ namespace VPWStudio
 			modelReader.Close();
 			modelWriter.Close();
 
+			LoadTexPalCI4(romReader);
+			romReader.Close();
+		}
+
+		/// <summary>
+		/// Load CI4 texture and palette data.
+		/// </summary>
+		/// <param name="romReader">BinaryReader instance to use.</param>
+		public void LoadTexPalCI4(BinaryReader romReader)
+		{
 			// load palette and texture
 			Palette_CI4 = new Ci4Palette();
 			Texture_CI4 = new Ci4Texture();
@@ -150,8 +185,6 @@ namespace VPWStudio
 			BinaryReader palfr = new BinaryReader(palStream);
 			Palette_CI4 = new Ci4Palette(palfr);
 			palfr.Close();
-
-			romReader.Close();
 
 			// convert to ye olde bitmappe
 			Texture = new Bitmap(Texture_CI4.Width, Texture_CI4.Height, System.Drawing.Imaging.PixelFormat.Format4bppIndexed);
