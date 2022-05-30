@@ -182,6 +182,7 @@ namespace VPWStudio
 			this.glControl1.Leave += new System.EventHandler(this.glControl1_Leave);
 			this.glControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseClick);
 			this.glControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseDown);
+			this.glControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseMove);
 			this.glControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseUp);
 			this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
 			// 
