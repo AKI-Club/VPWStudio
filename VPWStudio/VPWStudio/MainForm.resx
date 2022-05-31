@@ -120,11 +120,114 @@
   <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="projectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Project</value>
+  </data>
+  <data name="pngTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="pngTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>PNG to AKI &amp;TEX...</value>
+  </data>
+  <data name="pngToCi4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="pngToCi4ToolStripMenuItem.Text" xml:space="preserve">
+    <value>PNG to CI&amp;4Texture...</value>
+  </data>
+  <data name="pngToCi8ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="pngToCi8ToolStripMenuItem.Text" xml:space="preserve">
+    <value>PNG to CI&amp;8Texture...</value>
+  </data>
+  <data name="pngToMenubgToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="pngToMenubgToolStripMenuItem.Text" xml:space="preserve">
+    <value>PNG to &amp;Menu Background...</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 6</value>
+  </data>
+  <data name="modelDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="modelDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Model Data...</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 6</value>
+  </data>
+  <data name="programOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="programOptionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Program &amp;Options...</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.AccessibleName" xml:space="preserve">
+    <value>Danger Zone</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dangerZoneToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="dangerZoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Danger Zone</value>
+  </data>
+  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="newProjectToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 22</value>
   </data>
@@ -181,12 +284,6 @@
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
   </data>
   <data name="projectPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
@@ -263,7 +360,6 @@
   <data name="storyModeToolStripMenuItem.Text" xml:space="preserve">
     <value>St&amp;ory Mode</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="storyModeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -309,33 +405,6 @@
   <data name="playROMToolStripMenuItem.Text" xml:space="preserve">
     <value>Pla&amp;y ROM</value>
   </data>
-  <data name="projectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
-  </data>
-  <data name="projectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Project</value>
-  </data>
-  <data name="modelDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="modelDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Model Data</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 6</value>
-  </data>
-  <data name="programOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="programOptionsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Program &amp;Options</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
   <data name="manualToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
     <value>F1</value>
   </data>
@@ -359,42 +428,6 @@
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About VPW Studio</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.AccessibleName" xml:space="preserve">
-    <value>Danger Zone</value>
-  </data>
-  <data name="pngTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="pngTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>png to &amp;tex</value>
-  </data>
-  <data name="pngToCi4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="pngToCi4ToolStripMenuItem.Text" xml:space="preserve">
-    <value>png to ci&amp;4</value>
-  </data>
-  <data name="pngToCi8ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="pngToCi8ToolStripMenuItem.Text" xml:space="preserve">
-    <value>png to ci&amp;8</value>
-  </data>
-  <data name="pngToMenubgToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="pngToMenubgToolStripMenuItem.Text" xml:space="preserve">
-    <value>png to &amp;menubg</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>308, 22</value>
@@ -471,63 +504,9 @@
   <data name="testScene3dToolStripMenuItem.Text" xml:space="preserve">
     <value>test scene 3d</value>
   </data>
-  <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="dangerZoneToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Danger Zone</value>
-  </data>
-  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 24</value>
-  </data>
-  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
-    <value>MainMenu</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 17</value>
   </metadata>
-  <data name="tssLabelCurFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>777, 20</value>
-  </data>
-  <data name="tssLabelCurFile.Text" xml:space="preserve">
-    <value>No project file opened.</value>
-  </data>
-  <data name="tssLabelCurFile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="tssLabelGameType.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tssLabelGameType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="tssLabelGameType.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="tssLabelGameType.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="StatusBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 589</value>
   </data>
@@ -548,6 +527,27 @@
   </data>
   <data name="&gt;&gt;StatusBar.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tssLabelCurFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 20</value>
+  </data>
+  <data name="tssLabelCurFile.Text" xml:space="preserve">
+    <value>No project file opened.</value>
+  </data>
+  <data name="tssLabelCurFile.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="tssLabelGameType.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tssLabelGameType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="tssLabelGameType.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tssLabelGameType.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1975,36 +1975,6 @@
   <data name="&gt;&gt;dangerZoneToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pngTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>pngTestToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pngTestToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pngToCi4ToolStripMenuItem.Name" xml:space="preserve">
-    <value>pngToCi4ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pngToCi4ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pngToCi8ToolStripMenuItem.Name" xml:space="preserve">
-    <value>pngToCi8ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pngToCi8ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pngToMenubgToolStripMenuItem.Name" xml:space="preserve">
-    <value>pngToMenubgToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pngToMenubgToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;asmikLzssTestToolStripMenuItem.Name" xml:space="preserve">
     <value>asmikLzssTestToolStripMenuItem</value>
   </data>
@@ -2100,6 +2070,36 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pngTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>pngTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pngTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pngToCi4ToolStripMenuItem.Name" xml:space="preserve">
+    <value>pngToCi4ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pngToCi4ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pngToCi8ToolStripMenuItem.Name" xml:space="preserve">
+    <value>pngToCi8ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pngToCi8ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pngToMenubgToolStripMenuItem.Name" xml:space="preserve">
+    <value>pngToMenubgToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pngToMenubgToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
+    <value>toolStripSeparator12</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

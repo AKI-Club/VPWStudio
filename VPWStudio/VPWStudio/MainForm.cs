@@ -1819,6 +1819,226 @@ namespace VPWStudio
 			}
 		}
 
+		#region Graphics Conversion
+		// PNG to TEX
+		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to TEX";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == PixelFormat.Format8bppIndexed ||
+					b.PixelFormat == PixelFormat.Format4bppIndexed)
+				{
+					AkiTexture test = new AkiTexture();
+					if (test.FromBitmap(b))
+					{
+						using (FileStream fs = new FileStream(String.Format("{0}.tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+						{
+							using (BinaryWriter bw = new BinaryWriter(fs))
+							{
+								test.WriteData(bw);
+								bw.Close();
+								fs.Close();
+							}
+						}
+					}
+				}
+				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
+				{
+					Program.WarningMessageBox("Images with transparency are not properly handled at the moment.");
+					// dealing with a transparent image, which is possibly paletted.
+					HashSet<Color> usedColors = new HashSet<Color>();
+					UInt16 alphaColor = 0;
+					// todo: use LockBits/UnlockBits
+					for (int y = 0; y < b.Height; y++)
+					{
+						for (int x = 0; x < b.Width; x++)
+						{
+							Color c = b.GetPixel(x, y);
+							if (c.A == 0)
+							{
+								alphaColor = N64Colors.ColorToValue5551(c);
+							}
+
+							if (usedColors.Contains(c))
+								continue;
+
+							usedColors.Add(c);
+						}
+					}
+
+					AkiTexture test = new AkiTexture();
+					Bitmap converted;
+					// xxx: this conversion sucks (specifically, the way the number of colors is checked)
+					if (usedColors.Count <= 16)
+					{
+						// ci4
+						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format4bppIndexed);
+					}
+					else
+					{
+						// assume ci8
+						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format8bppIndexed);
+					}
+					test.FromBitmap(converted);
+
+					// find the alpha color and kill its alpha bit
+					for (int i = 0; i < test.Palette.Length; i++)
+					{
+						UInt16 thisColor = test.Palette[i];
+						if ((thisColor & 0xFFFE) == alphaColor)
+						{
+							test.Palette[i] &= 0xFFFE;
+						}
+					}
+
+					FileStream fs = new FileStream("test.tex", FileMode.Create);
+					BinaryWriter bw = new BinaryWriter(fs);
+					test.WriteData(bw);
+					bw.Close();
+					fs.Close();
+				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Input image has unsupported PixelFormat {0}", b.PixelFormat));
+				}
+				b.Dispose();
+			}
+		}
+
+		private void pngToCi4ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to CI4";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == PixelFormat.Format4bppIndexed)
+				{
+					Ci4Texture test = new Ci4Texture();
+					test.FromBitmap(b);
+					using (FileStream fs = new FileStream(String.Format("{0}.ci4tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							test.WriteData(bw);
+							bw.Flush();
+						}
+					}
+				}
+				else if (b.PixelFormat == PixelFormat.Format8bppIndexed)
+				{
+					// in theory, this can be converted, but the results will probably not be good
+					// UNLESS the input image only uses the first 16 palette indices.
+					Program.ErrorMessageBox("Input image is 256 colors/PixelFormat.Format8bppIndexed, expected 16 colors/PixelFormat.Format4bppIndexed");
+				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI4/PixelFormat.Format4bppIndexed", b.PixelFormat));
+				}
+				b.Dispose();
+			}
+		}
+
+		private void pngToCi8ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to CI8";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
+				{
+					Ci8Texture test = new Ci8Texture();
+					test.FromBitmap(b);
+					using (FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							test.WriteData(bw);
+							bw.Flush();
+						}
+					}
+				}
+				else if (b.PixelFormat == PixelFormat.Format4bppIndexed)
+				{
+					// in theory, this can be converted, but I have to write the code for it.
+					Program.ErrorMessageBox("Input image is 16 colors/PixelFormat.Format4bppIndexed, expected 256 colors/PixelFormat.Format8bppIndexed");
+				}
+				else
+				{
+					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI8/PixelFormat.Format8bppIndexed", b.PixelFormat));
+				}
+				b.Dispose();
+			}
+		}
+
+		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			#region Old single-file .menubg export
+			/*
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Convert PNG to MenuBackground";
+			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(ofd.FileName);
+				MenuBackground mbg = new MenuBackground();
+				if (mbg.FromBitmap(b))
+				{
+					using (FileStream fs = new FileStream("menubackground.menubg", FileMode.Create))
+					{
+						using (BinaryWriter bw = new BinaryWriter(fs))
+						{
+							bw.Write(mbg.WriteData());
+							bw.Flush();
+							bw.Close();
+						}
+					}
+				}
+				else
+				{
+					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
+				}
+				b.Dispose();
+			}
+			*/
+			#endregion
+
+			#region New multi-file export
+			MenuBackgroundConverter mbc = new MenuBackgroundConverter();
+			if (mbc.ShowDialog() == DialogResult.OK)
+			{
+				Bitmap b = new Bitmap(mbc.InputFile);
+				MenuBackground mbg = new MenuBackground(mbc.GameType);
+				if (mbg.FromBitmap(b))
+				{
+					for (int i = 0; i < mbg.ChunkRows * mbg.ChunkColumns; i++)
+					{
+						using (FileStream fs = new FileStream(String.Format("{0}\\bg{1:D2}.bin", mbc.OutputDirectory, i + 1), FileMode.Create))
+						{
+							using (BinaryWriter bw = new BinaryWriter(fs))
+							{
+								bw.Write(mbg.GetChunkBytes(i));
+							}
+						}
+					}
+				}
+				else
+				{
+					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
+				}
+				b.Dispose();
+			}
+			#endregion
+		}
+		#endregion
+
 		/// <summary>
 		/// Packed File
 		/// </summary>
@@ -2151,228 +2371,6 @@ namespace VPWStudio
 			t1td.ShowDialog();
 		}
 
-		#region PNG conversion
-
-		// PNG to TEX
-		private void pngTestToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert PNG to TEX";
-			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				Bitmap b = new Bitmap(ofd.FileName);
-				if (b.PixelFormat == PixelFormat.Format8bppIndexed ||
-					b.PixelFormat == PixelFormat.Format4bppIndexed)
-				{
-					AkiTexture test = new AkiTexture();
-					if (test.FromBitmap(b))
-					{
-						using (FileStream fs = new FileStream(String.Format("{0}.tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
-						{
-							using (BinaryWriter bw = new BinaryWriter(fs))
-							{
-								test.WriteData(bw);
-								bw.Close();
-								fs.Close();
-							}
-						}
-					}
-				}
-				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
-				{
-					Program.WarningMessageBox("Images with transparency are not properly handled at the moment.");
-					// dealing with a transparent image, which is possibly paletted.
-					HashSet<Color> usedColors = new HashSet<Color>();
-					UInt16 alphaColor = 0;
-					// todo: use LockBits/UnlockBits
-					for (int y = 0; y < b.Height; y++)
-					{
-						for (int x = 0; x < b.Width; x++)
-						{
-							Color c = b.GetPixel(x, y);
-							if (c.A == 0)
-							{
-								alphaColor = N64Colors.ColorToValue5551(c);
-							}
-
-							if (usedColors.Contains(c))
-								continue;
-
-							usedColors.Add(c);
-						}
-					}
-
-					AkiTexture test = new AkiTexture();
-					Bitmap converted;
-					// xxx: this conversion sucks (specifically, the way the number of colors is checked)
-					if (usedColors.Count <= 16)
-					{
-						// ci4
-						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format4bppIndexed);
-					}
-					else
-					{
-						// assume ci8
-						converted = b.Clone(new Rectangle(0, 0, b.Width, b.Height), PixelFormat.Format8bppIndexed);
-					}
-					test.FromBitmap(converted);
-
-					// find the alpha color and kill its alpha bit
-					for (int i = 0; i < test.Palette.Length; i++)
-					{
-						UInt16 thisColor = test.Palette[i];
-						if ((thisColor & 0xFFFE) == alphaColor)
-						{
-							test.Palette[i] &= 0xFFFE;
-						}
-					}
-
-					FileStream fs = new FileStream("test.tex", FileMode.Create);
-					BinaryWriter bw = new BinaryWriter(fs);
-					test.WriteData(bw);
-					bw.Close();
-					fs.Close();
-				}
-				else
-				{
-					Program.ErrorMessageBox(String.Format("Input image has unsupported PixelFormat {0}", b.PixelFormat));
-				}
-				b.Dispose();
-			}
-		}
-
-		private void pngToCi4ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert PNG to CI4";
-			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				Bitmap b = new Bitmap(ofd.FileName);
-				if (b.PixelFormat == PixelFormat.Format4bppIndexed)
-				{
-					Ci4Texture test = new Ci4Texture();
-					test.FromBitmap(b);
-					using (FileStream fs = new FileStream(String.Format("{0}.ci4tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
-					{
-						using (BinaryWriter bw = new BinaryWriter(fs))
-						{
-							test.WriteData(bw);
-							bw.Flush();
-						}
-					}
-				}
-				else if (b.PixelFormat == PixelFormat.Format8bppIndexed)
-				{
-					// in theory, this can be converted, but the results will probably not be good
-					// UNLESS the input image only uses the first 16 palette indices.
-					Program.ErrorMessageBox("Input image is 256 colors/PixelFormat.Format8bppIndexed, expected 16 colors/PixelFormat.Format4bppIndexed");
-				}
-				else
-				{
-					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI4/PixelFormat.Format4bppIndexed", b.PixelFormat));
-				}
-				b.Dispose();
-			}
-		}
-
-		private void pngToCi8ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert PNG to CI8";
-			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				Bitmap b = new Bitmap(ofd.FileName);
-				if (b.PixelFormat == PixelFormat.Format8bppIndexed)
-				{
-					Ci8Texture test = new Ci8Texture();
-					test.FromBitmap(b);
-					using (FileStream fs = new FileStream(String.Format("{0}.ci8tex", Path.GetFileNameWithoutExtension(ofd.FileName)), FileMode.Create))
-					{
-						using (BinaryWriter bw = new BinaryWriter(fs))
-						{
-							test.WriteData(bw);
-							bw.Flush();
-						}
-					}
-				}
-				else if (b.PixelFormat == PixelFormat.Format4bppIndexed)
-				{
-					// in theory, this can be converted, but I have to write the code for it.
-					Program.ErrorMessageBox("Input image is 16 colors/PixelFormat.Format4bppIndexed, expected 256 colors/PixelFormat.Format8bppIndexed");
-				}
-				else
-				{
-					Program.ErrorMessageBox(String.Format("Can not convert input image of PixelFormat {0} to CI8/PixelFormat.Format8bppIndexed", b.PixelFormat));
-				}
-				b.Dispose();
-			}
-		}
-
-		private void pngToMenubgToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			#region Old single-file .menubg export
-			/*
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Title = "Convert PNG to MenuBackground";
-			ofd.Filter = "PNG files (*.png)|*.png|All Files (*.*)|*.*";
-			if (ofd.ShowDialog() == DialogResult.OK)
-			{
-				Bitmap b = new Bitmap(ofd.FileName);
-				MenuBackground mbg = new MenuBackground();
-				if (mbg.FromBitmap(b))
-				{
-					using (FileStream fs = new FileStream("menubackground.menubg", FileMode.Create))
-					{
-						using (BinaryWriter bw = new BinaryWriter(fs))
-						{
-							bw.Write(mbg.WriteData());
-							bw.Flush();
-							bw.Close();
-						}
-					}
-				}
-				else
-				{
-					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
-				}
-				b.Dispose();
-			}
-			*/
-			#endregion
-
-			#region New multi-file export
-			MenuBackgroundConverter mbc = new MenuBackgroundConverter();
-			if (mbc.ShowDialog() == DialogResult.OK)
-			{
-				Bitmap b = new Bitmap(mbc.InputFile);
-				MenuBackground mbg = new MenuBackground(mbc.GameType);
-				if (mbg.FromBitmap(b))
-				{
-					for (int i = 0; i < mbg.ChunkRows*mbg.ChunkColumns; i++)
-					{
-						using (FileStream fs = new FileStream(String.Format("{0}\\bg{1:D2}.bin", mbc.OutputDirectory, i+1), FileMode.Create))
-						{
-							using (BinaryWriter bw = new BinaryWriter(fs))
-							{
-								bw.Write(mbg.GetChunkBytes(i));
-							}
-						}
-					}
-				}
-				else
-				{
-					Program.ErrorMessageBox("unspecified error attempting to create MenuBackground from Bitmap");
-				}
-				b.Dispose();
-			}
-			#endregion
-		}
-
-		#endregion
-
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -2489,8 +2487,7 @@ namespace VPWStudio
 				}
 			}
 		}
+
 		#endregion
-
-
 	}
 }
