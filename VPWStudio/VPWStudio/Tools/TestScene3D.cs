@@ -30,7 +30,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Background clear color.
 		/// </summary>
-		private Color BackgroundColor = Color.CornflowerBlue;
+		private Color BackgroundColor = Color.FromArgb(48, 48, 56);
 
 		#region GL-specific
 		/// <summary>
@@ -363,7 +363,7 @@ namespace VPWStudio
 			foreach (RenderableN64 obj in SceneModels)
 			{
 				obj.CalculateModelMatrix();
-				obj.ViewProjectionMatrix = SceneCamera.GetView() * Matrix4.CreatePerspectiveFieldOfView(1.3f, glControl1.Width / (float)glControl1.Height, 0.01f, 40.0f);
+				obj.ViewProjectionMatrix = SceneCamera.GetView() * Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), glControl1.Width / (float)glControl1.Height, 0.01f, 40.0f);
 				obj.ModelViewProjectionMatrix = obj.ModelMatrix * obj.ViewProjectionMatrix;
 			}
 
@@ -515,28 +515,31 @@ namespace VPWStudio
 			}
 			else if (e.Button == MouseButtons.Right)
 			{
+				Vector3 camMove = new Vector3();
 				// right click and drag: pan
 				if (e.X > LastMouseX)
 				{
 					// dragging to right
-					SceneCamera.Move(Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * (MoveStep * -1));
+					camMove = Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * (MoveStep * -1) * (e.X - LastMouseX);
 				}
 				else if (e.X < LastMouseX)
 				{
 					// dragging to left
-					SceneCamera.Move(Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * MoveStep);
+					camMove = Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * MoveStep * (LastMouseX - e.X);
 				}
 
 				if (e.Y > LastMouseY)
 				{
 					// dragging down
-					SceneCamera.Move(0, MoveStep, 0);
+					camMove += new Vector3(0, MoveStep * (e.Y - LastMouseY), 0);
 				}
 				else if (e.Y < LastMouseY)
 				{
 					// dragging up
-					SceneCamera.Move(0, MoveStep * -1, 0);
+					camMove += new Vector3(0, (MoveStep * -1) * (LastMouseY - e.Y), 0);
 				}
+
+				SceneCamera.Move(camMove);
 			}
 			else if (e.Button == (MouseButtons.Left | MouseButtons.Right))
 			{
