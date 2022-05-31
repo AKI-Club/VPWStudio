@@ -237,7 +237,7 @@ namespace VPWStudio
 		public string Comment;
 
 		/// <summary>
-		/// Project-specific comment, different from Comment;
+		/// Project-specific comment, different from Comment.
 		/// </summary>
 		public string ProjectSpecificComment;
 
