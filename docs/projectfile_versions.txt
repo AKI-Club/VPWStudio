@@ -1,0 +1,82 @@
+VPW Studio Project File Versions
+================================
+Current version: 0 (as of 2022/05/30)
+
+--------------------------------------------------------------------------------
+Version 0
+--------------------------------------------------------------------------------
+Initial project file format version.
+First supported version: v0.0.0.1
+
+This version of the format has been hacked onto in order to prevent existing
+projects from having to start over.
+
+The format initially included:
+- Project Name
+- Authors
+- Base Game
+- Specific GameType
+- Notes
+- Input ROM Path
+- Output ROM Path
+- Use Custom Location File
+- Custom Location File Path
+- GameShark Code File Path (removed on 2021/08/10)
+
+Project settings were later split out to their own class, gaining and losing
+features along the way.
+- Output ROM Internal Name (added 2018/03/04)
+- Output ROM "Game Code" (added 2018/03/04; removed on 2021/08/10)
+- ProjectFiles Path (added 2018/03/04)
+- Assets Path (added 2018/03/09)
+- Output ROM Region (added 2018/07/03)
+- Output ROM Custom Region (added 2018/07/03)
+- Stable Definition File Path (added 2018/07/04)
+- Wrestler Names File Path (added 2018/09/08; still unused)
+- Wrestler Definition File Path (added 2021/09/19)
+- PS1-specific Input Data Path and Output Data Path (added 2022/04/22)
+
+--------------------------------------------------------------------------------
+Version 1
+--------------------------------------------------------------------------------
+Next version, implementation date undetermined.
+
+This version will represent the first "breaking" changes for the project file
+format. In other words, existing projects will need to be updated.
+
+Concrete Plans:
+- split FileTable into a separate XML file
+  The FileTable makes up the bulk of the project file.
+
+Things to look into:
+- moving Stable and Wrestler Defs into the project file
+  Currently, these are defined in separate text files, due to differences in
+  data structures between games.
+
+- supporting different "variants" of a project
+  This includes the traditional variants (i.e. region and revision), as well as
+  arbitrary variants.
+
+--------------------------------------------------------------------------------
+Future
+--------------------------------------------------------------------------------
+These ideas are not fleshed out yet.
+
+- costume data
+  Differs per game, of course.
+  This would be defined in a separate XML file.
+
+- arena data
+  Differs per game as well. Some games provide more customization than others.
+
+- weapon data
+  unsure how to handle, as it might be part of move damage data in some games
+
+- move data
+  unsure how to handle. would have to be a separate file for sanity's sake.
+
+- menu data
+  unsure how to handle
+
+- sound stuff
+  also differs per game; known blind spot in my knowledge
