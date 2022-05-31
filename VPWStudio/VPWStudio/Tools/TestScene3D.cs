@@ -101,7 +101,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Amount to move camera.
 		/// </summary>
-		public readonly float MoveStep = 0.1f;
+		public readonly float MoveStep = 0.01f;
 		#endregion
 
 		public int LastMouseX = 0;
@@ -515,36 +515,28 @@ namespace VPWStudio
 			}
 			else if (e.Button == MouseButtons.Right)
 			{
-				// xxx: doesn't do what I want yet
-				/*
-				float xMove = 0;
-				float yMove = 0;
-
 				// right click and drag: pan
 				if (e.X > LastMouseX)
 				{
 					// dragging to right
-					xMove = MoveStep;
+					SceneCamera.Move(Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * (MoveStep * -1));
 				}
 				else if (e.X < LastMouseX)
 				{
 					// dragging to left
-					xMove = MoveStep * -1;
+					SceneCamera.Move(Vector3.Normalize(Vector3.Cross(SceneCamera.Front, SceneCamera.UpAxis)) * MoveStep);
 				}
 
 				if (e.Y > LastMouseY)
 				{
 					// dragging down
-					yMove = MoveStep;
+					SceneCamera.Move(0, MoveStep, 0);
 				}
 				else if (e.Y < LastMouseY)
 				{
 					// dragging up
-					yMove = MoveStep * -1;
+					SceneCamera.Move(0, MoveStep * -1, 0);
 				}
-
-				SceneCamera.Move(xMove, yMove, 0);
-				*/
 			}
 			else if (e.Button == (MouseButtons.Left | MouseButtons.Right))
 			{
