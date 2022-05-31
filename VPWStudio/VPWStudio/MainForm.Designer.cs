@@ -70,11 +70,6 @@
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutVPWStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.dangerZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pngTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pngToCi4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pngToCi8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pngToMenubgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.asmikLzssTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lzssDecompressTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -92,6 +87,11 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.pngTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pngToCi4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pngToCi8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pngToMenubgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -333,6 +333,11 @@
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pngTestToolStripMenuItem,
+            this.pngToCi4ToolStripMenuItem,
+            this.pngToCi8ToolStripMenuItem,
+            this.pngToMenubgToolStripMenuItem,
+            this.toolStripSeparator12,
             this.modelDataToolStripMenuItem,
             this.toolStripSeparator6,
             this.programOptionsToolStripMenuItem});
@@ -398,11 +403,6 @@
 			this.dangerZoneToolStripMenuItem.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuItem;
 			this.dangerZoneToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.dangerZoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pngTestToolStripMenuItem,
-            this.pngToCi4ToolStripMenuItem,
-            this.pngToCi8ToolStripMenuItem,
-            this.pngToMenubgToolStripMenuItem,
-            this.toolStripSeparator7,
             this.asmikLzssTestToolStripMenuItem,
             this.lzssDecompressTestToolStripMenuItem,
             this.toolStripSeparator9,
@@ -420,39 +420,6 @@
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
-			// 
-			// pngTestToolStripMenuItem
-			// 
-			this.pngTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_AkiTexture;
-			this.pngTestToolStripMenuItem.Name = "pngTestToolStripMenuItem";
-			resources.ApplyResources(this.pngTestToolStripMenuItem, "pngTestToolStripMenuItem");
-			this.pngTestToolStripMenuItem.Click += new System.EventHandler(this.pngTestToolStripMenuItem_Click);
-			// 
-			// pngToCi4ToolStripMenuItem
-			// 
-			this.pngToCi4ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci4Texture;
-			this.pngToCi4ToolStripMenuItem.Name = "pngToCi4ToolStripMenuItem";
-			resources.ApplyResources(this.pngToCi4ToolStripMenuItem, "pngToCi4ToolStripMenuItem");
-			this.pngToCi4ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi4ToolStripMenuItem_Click);
-			// 
-			// pngToCi8ToolStripMenuItem
-			// 
-			this.pngToCi8ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci8Texture;
-			this.pngToCi8ToolStripMenuItem.Name = "pngToCi8ToolStripMenuItem";
-			resources.ApplyResources(this.pngToCi8ToolStripMenuItem, "pngToCi8ToolStripMenuItem");
-			this.pngToCi8ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi8ToolStripMenuItem_Click);
-			// 
-			// pngToMenubgToolStripMenuItem
-			// 
-			this.pngToMenubgToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_MenuBackground;
-			this.pngToMenubgToolStripMenuItem.Name = "pngToMenubgToolStripMenuItem";
-			resources.ApplyResources(this.pngToMenubgToolStripMenuItem, "pngToMenubgToolStripMenuItem");
-			this.pngToMenubgToolStripMenuItem.Click += new System.EventHandler(this.pngToMenubgToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator7
-			// 
-			this.toolStripSeparator7.Name = "toolStripSeparator7";
-			resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
 			// 
 			// asmikLzssTestToolStripMenuItem
 			// 
@@ -563,6 +530,39 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// pngTestToolStripMenuItem
+			// 
+			this.pngTestToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_AkiTexture;
+			this.pngTestToolStripMenuItem.Name = "pngTestToolStripMenuItem";
+			resources.ApplyResources(this.pngTestToolStripMenuItem, "pngTestToolStripMenuItem");
+			this.pngTestToolStripMenuItem.Click += new System.EventHandler(this.pngTestToolStripMenuItem_Click);
+			// 
+			// pngToCi4ToolStripMenuItem
+			// 
+			this.pngToCi4ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci4Texture;
+			this.pngToCi4ToolStripMenuItem.Name = "pngToCi4ToolStripMenuItem";
+			resources.ApplyResources(this.pngToCi4ToolStripMenuItem, "pngToCi4ToolStripMenuItem");
+			this.pngToCi4ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi4ToolStripMenuItem_Click);
+			// 
+			// pngToCi8ToolStripMenuItem
+			// 
+			this.pngToCi8ToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_Ci8Texture;
+			this.pngToCi8ToolStripMenuItem.Name = "pngToCi8ToolStripMenuItem";
+			resources.ApplyResources(this.pngToCi8ToolStripMenuItem, "pngToCi8ToolStripMenuItem");
+			this.pngToCi8ToolStripMenuItem.Click += new System.EventHandler(this.pngToCi8ToolStripMenuItem_Click);
+			// 
+			// pngToMenubgToolStripMenuItem
+			// 
+			this.pngToMenubgToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.FileType_MenuBackground;
+			this.pngToMenubgToolStripMenuItem.Name = "pngToMenubgToolStripMenuItem";
+			resources.ApplyResources(this.pngToMenubgToolStripMenuItem, "pngToMenubgToolStripMenuItem");
+			this.pngToMenubgToolStripMenuItem.Click += new System.EventHandler(this.pngToMenubgToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator12
+			// 
+			this.toolStripSeparator12.Name = "toolStripSeparator12";
+			resources.ApplyResources(this.toolStripSeparator12, "toolStripSeparator12");
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -632,10 +632,6 @@
 		private System.Windows.Forms.ToolStripMenuItem soundsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toki1Testvpw2OnlyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem weaponsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem pngTestToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem pngToCi4ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem pngToCi8ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw2FaceTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem stableParseTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem romSliceTestToolStripMenuItem;
@@ -643,7 +639,6 @@
 		private System.Windows.Forms.ToolStripMenuItem moveDamageTestvpw2OnlyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem gameIntroductionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem wrestlersToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
 		private System.Windows.Forms.ToolStripMenuItem timTestToolStripMenuItem;
@@ -652,6 +647,11 @@
 		private System.Windows.Forms.ToolStripMenuItem vpw2TextIndexToolToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		private System.Windows.Forms.ToolStripMenuItem testScene3dToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pngTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pngToCi4ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pngToCi8ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
 	}
 }
 
