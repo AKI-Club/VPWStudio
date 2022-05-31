@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,6 +81,7 @@ namespace VPWStudio
 					Program.UnsavedChanges = true;
 					Program.AppMainForm.UpdateTitleBar();
 				}
+
 				UpdateEntryList();
 
 				// check to see if a specific file was requested, and scroll to it if so.
@@ -335,7 +335,7 @@ namespace VPWStudio
 			{
 				offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FirstFile"].Offset;
 			}
-			Program.CurrentProject.ProjectFileTable.FirstFile = offset;	
+			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
 
 			lvFileList.Items.Clear();
 			lvFileList.BeginUpdate();
