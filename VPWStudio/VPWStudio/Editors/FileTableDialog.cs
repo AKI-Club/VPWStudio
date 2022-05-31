@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -334,11 +335,10 @@ namespace VPWStudio
 			{
 				offset = DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FirstFile"].Offset;
 			}
-			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
+			Program.CurrentProject.ProjectFileTable.FirstFile = offset;	
 
 			lvFileList.Items.Clear();
 			lvFileList.BeginUpdate();
-			int i = 0;
 			foreach (KeyValuePair<int, FileTableEntry> fte in Program.CurrentProject.ProjectFileTable.Entries)
 			{
 				ListViewItem lvi = new ListViewItem(new string[] {
@@ -351,7 +351,7 @@ namespace VPWStudio
 					fte.Value.ProjectSpecificComment
 				});
 				lvi.UseItemStyleForSubItems = false;
-				Color rowColor = (i % 2 == 0) ? Color.White : Color.FromArgb(240, 240, 240);
+				Color rowColor = (fte.Value.FileID % 2 == 0) ? Color.FromArgb(240, 240, 240) : Color.White;
 				foreach (ListViewItem.ListViewSubItem subitem in lvi.SubItems)
 				{
 					subitem.BackColor = rowColor;
@@ -367,8 +367,6 @@ namespace VPWStudio
 				lvi.SubItems[COMMENT_COLUMN].Font = regular;
 				lvi.SubItems[PROJECT_COMMENT_COLUMN].Font = regular;
 				lvFileList.Items.Add(lvi);
-
-				i++;
 			}
 			lvFileList.EndUpdate();
 		}
