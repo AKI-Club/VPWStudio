@@ -47,6 +47,8 @@ namespace VPWStudio
 		public Vector3 RightAxis;
 		#endregion
 
+		public readonly Vector3 Front = new Vector3(0.0f, 0.0f, -1.0f);
+
 		#region Constructors
 		/// <summary>
 		/// Default constructor.
@@ -115,7 +117,7 @@ namespace VPWStudio
 		/// <returns>Camera view matrix.</returns>
 		public Matrix4 GetView()
 		{
-			return Matrix4.LookAt(Position, Target, Vector3.UnitY);
+			return Matrix4.LookAt(Position, Position + Front, Vector3.UnitY);
 		}
 
 		#region Movement
