@@ -218,7 +218,7 @@ namespace VPWStudio
 					Program.ErrorMessageBox(sb.ToString());
 				}
 
-				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
+				Parallel.ForEach(ftdb.Entries, delegate(KeyValuePair<UInt16, FileTableDBEntry> entry)
 				{
 					int fileID = entry.Value.FileID;
 					Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType = entry.Value.FileType;
@@ -228,7 +228,7 @@ namespace VPWStudio
 					{
 						Program.CurrentProject.ProjectFileTable.Entries[fileID].ParseExtraDataString(entry.Value.ExtraData);
 					}
-				}
+				});
 			}
 		}
 
@@ -271,7 +271,7 @@ namespace VPWStudio
 					replaceComments = true;
 				}
 
-				foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)
+				Parallel.ForEach(ftdb.Entries, delegate (KeyValuePair<UInt16, FileTableDBEntry> entry)
 				{
 					int fileID = entry.Value.FileID;
 					if (Program.CurrentProject.ProjectFileTable.Entries.ContainsKey(fileID))
@@ -304,7 +304,7 @@ namespace VPWStudio
 							}
 						}
 					}
-				}
+				});
 
 				if (changesMade)
 				{
