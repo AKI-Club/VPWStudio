@@ -30,6 +30,8 @@ namespace VPWStudio
 		/// <summary>
 		/// FileTable for this project.
 		/// </summary>
+		/// todo: Eventually, this will be moved into a separate file, with
+		/// an entry in Settings pointing to it.
 		public FileTable ProjectFileTable;
 		#endregion
 
