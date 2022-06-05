@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.22 (May 27th, 2022)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.22 (June 3rd, 2022)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -72,7 +72,12 @@
 <li><a href="#StoryMode">Story Mode</a></li>
 <li><a href="#Weapons">Weapons</a></li>
 <li><a href="#Wrestlers">Wrestlers</a></li>
-<li><a href="#Tools">Tools</a></li>
+<li><a href="#Tools">Tools</a>
+	<ol>
+	<li><a href="#ModelTool">Model Tool</a></li>
+	<li><a href="#PNGTools">PNG Conversion</a></li>
+	</ol>
+</li>
 <li><a href="#DangerZone">Danger Zone</a></li>
 </ol>
 
@@ -2028,20 +2033,28 @@ the list of vertices and faces.</p>
 <p>Much like ModelTool2, you can export the model to Wavefront OBJ format via the
 "Export OBJ..." button.</p>
 
+<h3><a name="PNGTools">PNG Conversion</a></h3>
+<p>Though the preferred way to convert PNG files is to include them in the project,
+sometimes you need to generate target files separately from the build process.</p>
+<ul>
+<li><strong>PNG to AKI TEX</strong> &ndash; Converts a PNG to TEX format. PNG must be 16 or 256 colors.</li>
+<li><strong>PNG to CI4Texture</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
+<li><strong>PNG to CI8Texture</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
+<li><strong>PNG to Menu Background</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
+</ul>
+
+<p>Aside from needing to use "PNG to AKI TEX" to <a href="#TexTransparency">fix
+transparency problems</a>, you will likely not need to use these tools.</p>
+
+<p>(These items formerly appeared in the Danger Zone menu. They were moved out of
+the Danger Zone menu in pre-Alpha Preview 23.)</p>
+
 <hr />
 <h2><a name="DangerZone">Danger Zone</a></h2>
 <p>The Danger Zone is a collection of tools that is not necessarily meant for
 end users. These tools are typically rough and unfinished, and usually serve as
 the base for the final, more polished features. Starting with Pre-Alpha Preview
 15, items are grouped by their general purpose.</p>
-
-<h3>Image Conversion</h3>
-<ul>
-<li><strong>png to tex</strong> &ndash; Converts a PNG to TEX format. PNG must be 16 or 256 colors. Of all the Danger Zone items, this is the one most people will actually need.</li>
-<li><strong>png to ci4</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
-<li><strong>png to ci8</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
-<li><strong>png to menubg</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
-</ul>
 
 <h3>LZSS-related</h3>
 <ul>
@@ -2058,7 +2071,7 @@ the base for the final, more polished features. Starting with Pre-Alpha Preview
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM data. Requires an open project.</li>
 <li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
 <li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values. Currently only handles the first image in multi-image archives.</li>
-<li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. very awkward to use, only recommended for experts and
+<li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. incomplete and very awkward to use, only recommended for experts and
 the terminally curious.</li>
 </ul>
 
