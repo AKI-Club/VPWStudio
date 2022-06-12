@@ -2,9 +2,57 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 23 (202x/yy/zz)
+Pre-Alpha Preview 24 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 23 (2022/06/12)
+---------------------------------
+* [FileTableDialog] MenuBackground replacement tool now shows specific
+  error messages when:
+  - Input image is not 320x240px
+  - Input image is not 4bpp (16 colors)
+
+* [TestScene3D] Change near clipping plane value from 1.0f to 0.01f.
+
+* [TestScene3D] Change background color of Preview panel when giving the
+  3D Preview control focus.
+
+* [TestScene3D] Add mouse wheel zooming.
+
+* [FileTableDB] Refactored error generation and display when loading data.
+  FileTableDB class no longer spawns message boxes when coming across errors.
+  Instead, the errors are put into a list, and the caller is meant to check for
+  and display any errors.
+  (Anyone who isn't looking at the source code won't notice this change,
+  but it's important to me because the old method was "dirty".)
+
+* [Wrestler Dialog] Fix error when trying to view wrestler moveset and params.
+
+* [TestScene3D] Added alternate zoom method (press and hold both mouse buttons
+  on the preview, then move the mouse up and/or down).
+
+* [TestScene3D] Add scene panning via holding down right mouse button and moving
+  inside the Preview panel. (Yes, it's a bit wonky.)
+
+* [ROM Building] If a file lacks an extension, treat it as binary.
+
+* [FileTableDialog] LoadFileTableDB() and ReloadFileTableDB() now use Parallel.ForEach().
+  This should result in slightly faster operation for these two functions.
+  Key word "should"... your mileage may vary.
+
+* [MainForm] Officially move PNG conversion tools out of Danger Zone and into
+  "Tools" menu.
+
+* [FileTableDB] Updates to a few FileTableDBs:
+  - WrestleMania 2000 NTSC-J now has all animations marked, an error fixed, and
+    more entries added.
+  - WCW/nWo Revenge's FileTableDB has reached around 90% FileType completion.
+  - Fixed an error in World Tour's FileTableDB and marked some more entries.
+  - VPW64 had some entries added as well.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 22 (2022/05/27)
 ---------------------------------
