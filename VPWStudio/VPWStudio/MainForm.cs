@@ -263,6 +263,7 @@ namespace VPWStudio
 			playROMToolStripMenuItem.Visible = true;
 		}
 
+		#region Drag and Drop
 		/// <summary>
 		/// Drag and Drop, Drag portion.
 		/// </summary>
@@ -308,6 +309,8 @@ namespace VPWStudio
 				}
 
 				LoadProject(files[0]);
+				// update active directory to dragged in project file's location
+				Environment.CurrentDirectory = Path.GetDirectoryName(files[0]);
 
 				UpdateTitleBar();
 				UpdateValidMenus();
@@ -315,6 +318,8 @@ namespace VPWStudio
 				UpdateBackground();
 			}
 		}
+		#endregion
+
 		#endregion
 
 		#region Program Exit Routines
