@@ -26,6 +26,28 @@ namespace VPWStudio
 		private const int PROJECT_COMMENT_COLUMN = 6;
 		#endregion
 
+		#region Row Colors
+		/// <summary>
+		/// Row color for unmodified odd rows
+		/// </summary>
+		private readonly Color RowColor_UnmodifiedFirst = Color.White;
+
+		/// <summary>
+		/// Row color for unmodified even rows
+		/// </summary>
+		private readonly Color RowColor_UnmodifiedSecond = Color.FromArgb(240, 240, 240);
+
+		/// <summary>
+		/// Row color for modified odd rows
+		/// </summary>
+		private readonly Color RowColor_ModifiedFirst = Color.FromArgb(255, 224, 224);
+
+		/// <summary>
+		/// Row color for modified even rows
+		/// </summary>
+		private readonly Color RowColor_ModifiedSecond = Color.FromArgb(240, 192, 192);
+		#endregion
+
 		#region Search values
 		/// <summary>
 		/// Possible search types.
@@ -351,7 +373,17 @@ namespace VPWStudio
 					fte.Value.ProjectSpecificComment
 				});
 				lvi.UseItemStyleForSubItems = false;
-				Color rowColor = (fte.Value.FileID % 2 == 0) ? Color.FromArgb(240, 240, 240) : Color.White;
+
+				Color rowColor;
+				if (fte.Value.FileID % 2 == 0)
+				{
+					rowColor = (fte.Value.HasReplacementFile()) ? RowColor_ModifiedSecond : RowColor_UnmodifiedSecond;
+				}
+				else
+				{
+					rowColor = (fte.Value.HasReplacementFile()) ? RowColor_ModifiedFirst : RowColor_UnmodifiedFirst;
+				}
+
 				foreach (ListViewItem.ListViewSubItem subitem in lvi.SubItems)
 				{
 					subitem.BackColor = rowColor;
