@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace VPWStudio
@@ -133,6 +134,27 @@ namespace VPWStudio
 			{
 				CurEntry.ReplaceFilePath = ofd.FileName;
 				tbReplaceFilePath.Text = ofd.FileName;
+			}
+		}
+
+		private void tbReplaceFilePath_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbReplaceFilePath_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbReplaceFilePath.Text = Path.GetFullPath(files[0]);
 			}
 		}
 	}
