@@ -226,11 +226,14 @@
 			// 
 			// tbReplaceFilePath
 			// 
+			this.tbReplaceFilePath.AllowDrop = true;
 			this.tbReplaceFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbReplaceFilePath.Location = new System.Drawing.Point(3, 10);
 			this.tbReplaceFilePath.Name = "tbReplaceFilePath";
 			this.tbReplaceFilePath.Size = new System.Drawing.Size(240, 20);
 			this.tbReplaceFilePath.TabIndex = 12;
+			this.tbReplaceFilePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbReplaceFilePath_DragDrop);
+			this.tbReplaceFilePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbReplaceFilePath_DragEnter);
 			// 
 			// labelReplaceFilePath
 			// 
