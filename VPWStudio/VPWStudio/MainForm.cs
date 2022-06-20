@@ -186,7 +186,7 @@ namespace VPWStudio
 					LoadProject(args[0]);
 
 					// update working directory to project path
-					//Environment.CurrentDirectory = Path.GetDirectoryName(Program.CurProjectPath);
+					Environment.CurrentDirectory = Path.GetDirectoryName(Program.CurProjectPath);
 				}
 				else
 				{
