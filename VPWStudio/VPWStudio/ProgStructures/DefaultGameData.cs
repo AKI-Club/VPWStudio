@@ -252,6 +252,15 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3FBE4, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x408BC, 136) },
+
+					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x469B8, 110) },
+					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46A28, 110) },
+					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x46C58, 32) },
+					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x46CD8, 32) },
+					{ "FacePaint_Type", new DefaultLocationDataEntry(0x46D18, 32) },
+					{ "FaceAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46CF8, 32) },
+					{ "FaceAccessories_Type", new DefaultLocationDataEntry(0x46D38, 32) },
+
 					{ "StoryModeSinglesParticipants", new DefaultLocationDataEntry(0xDB43C, 160) },
 					{ "StoryModeSingleGroups", new DefaultLocationDataEntry(0xDB4DC, 8) },
 					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 74) },
