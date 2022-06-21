@@ -183,5 +183,28 @@ namespace VPWStudio
 			tbCustomLocationFile.Enabled = chbCustomLocation.Checked;
 			buttonSetCustomLocFile.Enabled = chbCustomLocation.Checked;
 		}
+
+		#region Drag and Drop
+		private void tbRomFile_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbRomFile_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbRomFile.Text = Path.GetFullPath(files[0]);
+			}
+		}
+		#endregion
 	}
 }
