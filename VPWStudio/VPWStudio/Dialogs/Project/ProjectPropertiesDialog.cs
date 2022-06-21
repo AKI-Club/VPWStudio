@@ -283,6 +283,27 @@ namespace VPWStudio
 			// todo: something about choosing a different target platform than the current one and
 			// telling people to close this damned thing and open it again to get the proper options
 		}
+
+		private void tbBaseROMPath_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbBaseROMPath_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbBaseROMPath.Text = Path.GetFullPath(files[0]);
+			}
+		}
 		#endregion
 
 		#region Output ROM Tab (N64 games)
@@ -403,6 +424,27 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				tbCustomLocationFile.Text = ofd.FileName;
+			}
+		}
+
+		private void tbCustomLocationFile_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbCustomLocationFile_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbCustomLocationFile.Text = Path.GetFullPath(files[0]);
 			}
 		}
 
