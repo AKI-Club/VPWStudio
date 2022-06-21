@@ -207,11 +207,14 @@
 			// 
 			// tbRomFile
 			// 
+			this.tbRomFile.AllowDrop = true;
 			this.tbRomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbRomFile.Location = new System.Drawing.Point(3, 4);
 			this.tbRomFile.Name = "tbRomFile";
 			this.tbRomFile.Size = new System.Drawing.Size(293, 20);
 			this.tbRomFile.TabIndex = 3;
+			this.tbRomFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbRomFile_DragDrop);
+			this.tbRomFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbRomFile_DragEnter);
 			// 
 			// labelGameType
 			// 
