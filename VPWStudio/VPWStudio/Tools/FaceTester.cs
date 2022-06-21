@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
+	// xxx: this is very hardcoded and VPW2-specific.
 	public partial class FaceTester : Form
 	{
+		private static readonly int NUM_FACES_VPW2 = 110;
+
 		private UInt16 SkinColor = 0x1745;
 		private UInt16 Face = 0x17F0;
 		private UInt16 HairColor = 0x17E5;
@@ -23,8 +26,8 @@ namespace VPWStudio
 
 		private Bitmap FacePreview = new Bitmap(32,64);
 
-		private byte[] DefaultFaceDisplacement_FacialHair = new byte[110];
-		private byte[] DefaultFaceDisplacement_PaintAccessories = new byte[110];
+		private byte[] DefaultFaceDisplacement_FacialHair = new byte[NUM_FACES_VPW2];
+		private byte[] DefaultFaceDisplacement_PaintAccessories = new byte[NUM_FACES_VPW2];
 
 		private byte[] Displacement_FacialHair = new byte[32];
 		private byte[] Displacement_Paint = new byte[32];
@@ -41,7 +44,7 @@ namespace VPWStudio
 			cbFace.BeginUpdate();
 			cbFrontHair.BeginUpdate();
 			cbFrontHair.Items.Add("None");
-			for (int i = 0; i < 110; i++)
+			for (int i = 0; i < NUM_FACES_VPW2; i++)
 			{
 				cbFace.Items.Add(String.Format("{0:D3}", i+1));
 				cbFrontHair.Items.Add(String.Format("{0:D3}", i+1));
@@ -63,28 +66,130 @@ namespace VPWStudio
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
-			// todo: not hardcoded addresses
-			
-			romStream.Seek(0x469B8, SeekOrigin.Begin);
-			DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(110);
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry perFaceFacialHairDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["DefaultFace_FacialHair_VertDisplacement"]);
+				if (perFaceFacialHairDisplacementEntry != null)
+				{
+					romStream.Seek(perFaceFacialHairDisplacementEntry.Address, SeekOrigin.Begin);
+					DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(perFaceFacialHairDisplacementEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x469B8, SeekOrigin.Begin);
+					DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NUM_FACES_VPW2);
+				}
 
-			romStream.Seek(0x46A28, SeekOrigin.Begin);
-			DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(110);
+				LocationFileEntry perFacePaintAccessoryDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["DefaultFace_PaintAccessories_VertDisplacement"]);
+				if (perFacePaintAccessoryDisplacementEntry != null)
+				{
+					romStream.Seek(perFacePaintAccessoryDisplacementEntry.Address, SeekOrigin.Begin);
+					DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(perFacePaintAccessoryDisplacementEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46A28, SeekOrigin.Begin);
+					DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NUM_FACES_VPW2);
+				}
 
-			romStream.Seek(0x46C58, SeekOrigin.Begin);
-			Displacement_FacialHair = romReader.ReadBytes(32);
+				// facial hair displacement
+				LocationFileEntry facialHairDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FacialHair_VertDisplacement"]);
+				if (facialHairDisplacementEntry != null)
+				{
+					romStream.Seek(facialHairDisplacementEntry.Address, SeekOrigin.Begin);
+					Displacement_FacialHair = romReader.ReadBytes(facialHairDisplacementEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46C58, SeekOrigin.Begin);
+					Displacement_FacialHair = romReader.ReadBytes(32);
+				}
 
-			romStream.Seek(0x46CD8, SeekOrigin.Begin);
-			Displacement_Paint = romReader.ReadBytes(32);
+				// face paint displacement
+				LocationFileEntry facePaintDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FacePaint_VertDisplacement"]);
+				if (facePaintDisplacementEntry != null)
+				{
+					romStream.Seek(facePaintDisplacementEntry.Address, SeekOrigin.Begin);
+					Displacement_Paint = romReader.ReadBytes(facePaintDisplacementEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46CD8, SeekOrigin.Begin);
+					Displacement_Paint = romReader.ReadBytes(32);
+				}
 
-			romStream.Seek(0x46CF8, SeekOrigin.Begin);
-			Displacement_Accessories = romReader.ReadBytes(32);
+				// accessories displacement
+				LocationFileEntry faceAccessoryDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FaceAccessories_VertDisplacement"]);
+				if (faceAccessoryDisplacementEntry != null)
+				{
+					romStream.Seek(faceAccessoryDisplacementEntry.Address, SeekOrigin.Begin);
+					Displacement_Accessories = romReader.ReadBytes(faceAccessoryDisplacementEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46CF8, SeekOrigin.Begin);
+					Displacement_Accessories = romReader.ReadBytes(32);
+				}
 
-			romStream.Seek(0x46D18, SeekOrigin.Begin);
-			FacepaintType = romReader.ReadBytes(32);
+				// facepaint type
+				LocationFileEntry facePaintTypeEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FacePaint_Type"]);
+				if (facePaintTypeEntry != null)
+				{
+					romStream.Seek(facePaintTypeEntry.Address, SeekOrigin.Begin);
+					FacepaintType = romReader.ReadBytes(facePaintTypeEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46D18, SeekOrigin.Begin);
+					FacepaintType = romReader.ReadBytes(32);
+				}
 
-			romStream.Seek(0x46D38, SeekOrigin.Begin);
-			AccessoryType = romReader.ReadBytes(32);
+				// accessory type
+				LocationFileEntry faceAccessoryTypeEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FaceAccessories_Type"]);
+				if (faceAccessoryTypeEntry != null)
+				{
+					romStream.Seek(faceAccessoryTypeEntry.Address, SeekOrigin.Begin);
+					AccessoryType = romReader.ReadBytes(faceAccessoryTypeEntry.Length);
+				}
+				else
+				{
+					// fallback to hardcoded data (todo: NOT VPW2's!)
+					romStream.Seek(0x46D38, SeekOrigin.Begin);
+					AccessoryType = romReader.ReadBytes(32);
+				}
+			}
+			else
+			{
+				Program.InfoMessageBox("Location data not found; using hardcoded offsets and lengths instead.");
+				// fallback to hardcoded data (todo: NOT VPW2's!)
+
+				romStream.Seek(0x469B8, SeekOrigin.Begin);
+				DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NUM_FACES_VPW2);
+
+				romStream.Seek(0x46A28, SeekOrigin.Begin);
+				DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NUM_FACES_VPW2);
+
+				romStream.Seek(0x46C58, SeekOrigin.Begin);
+				Displacement_FacialHair = romReader.ReadBytes(32);
+
+				romStream.Seek(0x46CD8, SeekOrigin.Begin);
+				Displacement_Paint = romReader.ReadBytes(32);
+
+				romStream.Seek(0x46CF8, SeekOrigin.Begin);
+				Displacement_Accessories = romReader.ReadBytes(32);
+
+				romStream.Seek(0x46D18, SeekOrigin.Begin);
+				FacepaintType = romReader.ReadBytes(32);
+
+				romStream.Seek(0x46D38, SeekOrigin.Begin);
+				AccessoryType = romReader.ReadBytes(32);
+			}
 
 			romReader.Close();
 		}
