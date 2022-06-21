@@ -242,11 +242,14 @@
 			// 
 			// tbBaseROMPath
 			// 
+			this.tbBaseROMPath.AllowDrop = true;
 			this.tbBaseROMPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbBaseROMPath.Location = new System.Drawing.Point(3, 19);
 			this.tbBaseROMPath.Name = "tbBaseROMPath";
 			this.tbBaseROMPath.Size = new System.Drawing.Size(310, 20);
 			this.tbBaseROMPath.TabIndex = 9;
+			this.tbBaseROMPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbBaseROMPath_DragDrop);
+			this.tbBaseROMPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbBaseROMPath_DragEnter);
 			// 
 			// tbProjectName
 			// 
@@ -685,12 +688,15 @@
 			// 
 			// tbCustomLocationFile
 			// 
+			this.tbCustomLocationFile.AllowDrop = true;
 			this.tbCustomLocationFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbCustomLocationFile.Enabled = false;
 			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 18);
 			this.tbCustomLocationFile.Name = "tbCustomLocationFile";
 			this.tbCustomLocationFile.Size = new System.Drawing.Size(310, 20);
 			this.tbCustomLocationFile.TabIndex = 9;
+			this.tbCustomLocationFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbCustomLocationFile_DragDrop);
+			this.tbCustomLocationFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbCustomLocationFile_DragEnter);
 			// 
 			// labelAssetFilesPath
 			// 
