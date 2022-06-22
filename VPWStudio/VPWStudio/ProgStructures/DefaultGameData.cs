@@ -244,6 +244,12 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
+					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x47168, 52) },
+					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x4719C, 52) },
+					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x473A0, 32) },
+					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x473E8, 32) },
+					{ "FacePaint_Type", new DefaultLocationDataEntry(0x47408, 32) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x11778DE, 41248) },
