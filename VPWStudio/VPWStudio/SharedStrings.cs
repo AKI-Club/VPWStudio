@@ -25,7 +25,7 @@ namespace VPWStudio
 		public static string FileFilter_PNG = "PNG Files (*.png)|*.png|All Files (*.*)|*.*";
 		public static string FileFilter_Text = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 		public static string FileFilter_GameSharkCodes = "GameShark Code File (*.gscodes)|*.gscodes|All Files (*.*)|*.*";
-		public static string FileFilter_Palettes = "VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|GIMP Palette File (*.gpl)|*.gpl|Adobe ACT Palette File (*.act)|*.act|All Files (*.*)|*.*";
+		public static string FileFilter_Palettes = "VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|GIMP Text Palette File (*.txt)|*.txt|GIMP Palette File (*.gpl)|*.gpl|Adobe ACT Palette File (*.act)|*.act|All Files (*.*)|*.*";
 
 		// palette load/import
 		public static string FileLoadFilter_PaletteCi4 = "All CI4 Palette Formats|*.ci4pal;*.vpwspal;*.pal|CI4 Palettes (*.ci4pal)|*.ci4pal|VPW Studio Palette File (*.vpwspal)|*.vpwspal|JASC Paint Shop Pro Palette File (*.pal)|*.pal|All Files (*.*)|*.*";

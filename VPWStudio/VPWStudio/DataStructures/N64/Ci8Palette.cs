@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace VPWStudio
@@ -179,7 +180,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Export Ci4Palette to our variant of the JASC Paint Shop Pro palette file.
+		/// Export Ci8Palette to our variant of the JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sw"></param>
 		public void ExportVpwsPal(StreamWriter sw)
@@ -194,7 +195,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Import Ci4Palette data from our variant of the JASC Paint Shop Pro palette file.
+		/// Import Ci8Palette data from our variant of the JASC Paint Shop Pro palette file.
 		/// </summary>
 		/// <param name="sr"></param>
 		/// <returns></returns>
@@ -228,7 +229,7 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region GIMP Palette Import/Export
+		#region GIMP Palette (.gpl file) Import/Export
 		/// <summary>
 		/// Write header data for a GIMP palette file.
 		/// </summary>
@@ -293,8 +294,6 @@ namespace VPWStudio
 				sw.WriteLine( String.Format("{0}\tUntitled", ColorToJascPalEntry(N64Colors.Value5551ToColor(Entries[i]))) );
 			}
 		}
-
-		// todo: export subpal
 
 		/// <summary>
 		/// Import Ci8Palette data from a GIMP palette file.
@@ -392,6 +391,72 @@ namespace VPWStudio
 				else
 				{
 					Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(255, r, g, b));
+				}
+			}
+
+			return true;
+		}
+		#endregion
+
+		#region GIMP Text Palette Import/Export
+		/// <summary>
+		/// Export a CI8 palette to GIMP's .txt palette format.
+		/// </summary>
+		/// <param name="sw">StreamWriter instance to use.</param>
+		public void ExportGimpText(StreamWriter sw)
+		{
+			sw.NewLine = "\n";
+			foreach (ushort c in Entries)
+			{
+				Color curColor = N64Colors.Value5551ToColor(c);
+				sw.WriteLine(String.Format("#{0:x2}{1:x2}{2:x2}", curColor.R, curColor.G, curColor.B));
+			}
+		}
+
+		/// <summary>
+		/// Import GIMP's .txt palette format to a CI8 palette.
+		/// </summary>
+		/// <param name="sr">StreamReader instance to use.</param>
+		/// <returns>True if successful (or even if not...)</returns>
+		public bool ImportGimpText(StreamReader sr)
+		{
+			int numEntries = 0;
+			while (!sr.EndOfStream)
+			{
+				string colString = sr.ReadLine();
+				if (string.IsNullOrEmpty(colString))
+				{
+					continue;
+				}
+
+				// #rrggbb
+				int r = int.Parse(colString.Substring(1, 2), NumberStyles.HexNumber);
+				int g = int.Parse(colString.Substring(3, 2), NumberStyles.HexNumber);
+				int b = int.Parse(colString.Substring(5, 2), NumberStyles.HexNumber);
+
+				// handle ad-hoc transparency if available (not an official part of the GIMP format)
+				bool hasTransparency = colString.Length > 7;
+
+				if (hasTransparency)
+				{
+					int a = int.Parse(colString.Substring(7, 2), NumberStyles.HexNumber);
+					Entries[numEntries] = N64Colors.ColorToValue5551(Color.FromArgb(a > 0 ? 255 : 0, r, g, b));
+				}
+				else
+				{
+					Entries[numEntries] = N64Colors.ColorToValue5551(Color.FromArgb(r, g, b));
+				}
+
+				++numEntries;
+			}
+
+			// handle files with fewer than 256 colors by forcing missing entries to transparent
+			if (numEntries < 256)
+			{
+				int diff = 256 - numEntries;
+				for (int i = 0; i < diff; i++)
+				{
+					Entries[numEntries + i] = 0;
 				}
 			}
 
