@@ -782,6 +782,39 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								else if (Path.GetExtension(ofd.FileName) == ".txt")
+								{
+									// import GIMP .txt palette
+									ColorList.Clear();
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										if (cbPalettes.SelectedIndex > 0)
+										{
+											if (import.ImportGimpTextSubPal(sr, cbPalettes.SelectedIndex - 1))
+											{
+												ColorList.RemoveRange((cbPalettes.SelectedIndex * 16), 16);
+												ColorList.InsertRange((cbPalettes.SelectedIndex * 16), import.SubPalettes[cbPalettes.SelectedIndex - 1].Entries);
+											}
+											else
+											{
+												Program.ErrorMessageBox("Unspecified error trying to import GIMP text palette as sub-palette.");
+											}
+										}
+										else
+										{
+											if (import.ImportGimpText(sr))
+											{
+												ColorList.RemoveRange(0, 16);
+												ColorList.InsertRange(0, import.Entries);
+											}
+											else
+											{
+												Program.ErrorMessageBox("Unspecified error trying to import GIMP text palette.");
+											}
+										}
+									}
+								}
 								else if (Path.GetExtension(ofd.FileName) == ".act")
 								{
 									// import Adobe ACT palette
@@ -872,6 +905,20 @@ namespace VPWStudio.Editors
 										if (!import.ImportGimp(sr))
 										{
 											Program.ErrorMessageBox("Unspecified error trying to import GIMP palette.");
+											return;
+										}
+									}
+								}
+								else if (Path.GetExtension(ofd.FileName) == ".txt")
+								{
+									// import GIMP .txt palette
+									ColorList.Clear();
+									ColorList.AddRange(import.Entries);
+									using (StreamReader sr = new StreamReader(fs))
+									{
+										if (!import.ImportGimpText(sr))
+										{
+											Program.ErrorMessageBox("Unspecified error trying to import GIMP text palette.");
 											return;
 										}
 									}
@@ -973,6 +1020,22 @@ namespace VPWStudio.Editors
 										}
 									}
 								}
+								else if (Path.GetExtension(sfd.FileName) == ".txt")
+								{
+									// export GIMP text palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										// export based on cbPalettes.SelectedIndex
+										if (cbPalettes.SelectedIndex > 0)
+										{
+											export.ExportGimpTextSubPal(sw, cbPalettes.SelectedIndex - 1);
+										}
+										else
+										{
+											export.ExportGimpText(sw);
+										}
+									}
+								}
 								else
 								{
 									// export .ci4pal
@@ -1010,6 +1073,14 @@ namespace VPWStudio.Editors
 									using (StreamWriter sw = new StreamWriter(fs))
 									{
 										export.ExportGimp(sw, String.Format("File ID 0x{0:X4}", FileID));
+									}
+								}
+								else if (Path.GetExtension(sfd.FileName) == ".txt")
+								{
+									// export GIMP text palette
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										export.ExportGimpText(sw);
 									}
 								}
 								else
