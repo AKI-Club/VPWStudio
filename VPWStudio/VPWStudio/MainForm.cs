@@ -561,11 +561,6 @@ namespace VPWStudio
 			ofd.Title = "Open VPW Studio Project File";
 			ofd.Filter = SharedStrings.FileFilter_Project;
 
-			if (Program.CurrentProject != null)
-			{
-				ofd.InitialDirectory = Environment.CurrentDirectory;
-			}
-
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				LoadProject(ofd.FileName);
