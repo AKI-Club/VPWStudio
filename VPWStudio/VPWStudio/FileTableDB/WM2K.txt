@@ -3851,10 +3851,10 @@
 0F11=Ci4Texture;[Boots]|p:0F10
 0F12=Ci4Palette;[Boots]
 0F13=Ci4Texture;[Boots]|p:0F12
-0F14=Ci4Palette;[Tattoo] 1 (Austin; leg)
-0F15=Ci4Texture;[Tattoo] 1 (Austin; leg)|p:0F14
-0F16=Ci4Palette;[Tattoo] 2 (Rock; upper right arm)
-0F17=Ci4Texture;[Tattoo] 2 (Rock; upper right arm)|p:0F16
+0F14=Ci4Palette;[Tattoo] 1 (Austin) leg
+0F15=Ci4Texture;[Tattoo] 1 (Austin) leg|p:0F14
+0F16=Ci4Palette;[Tattoo] 2 (Rock) upper right arm
+0F17=Ci4Texture;[Tattoo] 2 (Rock) upper right arm|p:0F16
 0F18=Ci4Palette;[Tattoo]
 0F19=Ci4Texture;[Tattoo]|p:0F18
 0F1A=Ci4Palette;[Tattoo]
