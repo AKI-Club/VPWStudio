@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.23 (June 12th, 2022)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.23 (July 13th, 2022)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -1038,7 +1038,8 @@ sub-palettes. Please see the <a href="#CIPaletteEdit">CI Palette Editor</a>
 section for more detailed information on support for these types:</p>
 <ul>
 <li>JASC Paint Shop Pro <code>.pal</code> &ndash; the non-VPW Studio-specific version.</li>
-<li>GIMP <code>.gpl</code> &ndash; palette format from The GIMP.</li>
+<li>GIMP <code>.gpl</code> &ndash; palette format from The GIMP.<br />(For some reason, GIMP doesn't allow you to export this format directly from an image, necessitating the need for the next option in this list...)</li>
+<li>GIMP <code>.txt</code> &ndash; text-based palette format from The GIMP.</li>
 <li>Adobe <code>.act</code> &ndash; palette format from Adobe Photoshop.</li>
 </ul>
 
@@ -1479,10 +1480,11 @@ the CI4 palette has any sub-palettes.</p>
 <h4>Supported Palette Formats</h4>
 <p>There are multiple palette formats available for import and export:</p>
 <ul>
-<li>The game-native formats, "CI4 Palette"/<code>.ci4pal</code> and "CI8 Palette"/<code>.ci8pal</code>. Supports sub-palettes.</li>
-<li>The VPW Studio palette format/<code>.vpwspal</code> (recommended for editing). Supports sub-palettes.</li>
+<li>The game-native formats, "CI4 Palette"/<code>.ci4pal</code> and "CI8 Palette"/<code>.ci8pal</code>. Supports sub-palettes and multiple transparent colors.</li>
+<li>The text-based VPW Studio palette format/<code>.vpwspal</code> (recommended for editing). Supports sub-palettes and multiple transparent colors.</li>
 <li>JASC Paint Shop Pro palette format/<code>.pal</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported.</li>
 <li>GIMP palette format/<code>.gpl</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported.</li>
+<li>GIMP text palette format/<code>.txt</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported. Supports multiple transparent colors <em>for import only</em>.</li>
 <li>Adobe palette format/<code>.act</code>. Does not support sub-palettes; each sub-palette must be manually imported/exported.</li>
 </ul>
 
@@ -1537,14 +1539,20 @@ the loaded texture makes it hard to click on the close window button.</p>
 <em>in WWF WrestleMania 2000</em>, and are also found in <em>Virtual Pro-Wrestling 2</em>
 and <em>WWF No Mercy</em>.</p>
 
+<h4>Import/Export</h4>
+<p>There are two options for importing and exporting AKIText archives to/from
+different formats:</p>
+
 <ul>
-<li><strong>Import CSV...</strong> &ndash; Import an existing CSV file, replacing all entries with the data.</li>
-<li><strong>Export CSV...</strong> &ndash; Export the current AKIText archive to a CSV file.</li>
-<li><strong>Control Codes</strong> &ndash; Shows a dialog box with the various control
-codes (typically) available for text display.</li>
+<li><strong>Tab-separated CSV</strong> &ndash; CSV format, using tabs instead of commas. Meant to be used with Zoinkity's toolset.</li>
+<li><strong>akitext Tool Format</strong> &ndash; Format used by the <a href="https://github.com/AKI-Club/akitext"><code>akitext</code></a> command line tool.</li>
 </ul>
 
 <h4>Control Code Reference</h4>
+<p>Pressing the <strong>Control Codes</strong> button shows a dialog box with the
+various control codes (typically) available for text display. The list is replicated
+below:</p>
+
 <ul>
 <li><code>@B</code> &ndash; Blue text color</li>
 <li><code>@C</code> &ndash; Cyan text color</li>
@@ -1692,14 +1700,13 @@ to be selectable in menus...), and most of the formats change per-game)</p>
 to preview and change sounds. (This includes the theme music found in WM2K, VPW2,
 and No Mercy.)</p>
 
-<p>(todo: I haven't even begun to think about this; you're better off using SubDrag's N64 sound/music tools right now)</p>
+<p>(todo: I haven't even begun to think about this; you're better off using SubDrag and Ice Mario's
+N64 sound/music tools right now)</p>
 
 <hr />
 <h2><a name="Stables">Stables</a></h2>
 <p>The Stable Editor (Project &rarr; Stables) allows you to change the default stable data.
 The stable data controls how the wrestlers are grouped and displayed in the menus.</p>
-
-<p>(todo)</p>
 
 <h3>Game Support</h3>
 <table>
@@ -2070,6 +2077,7 @@ the base for the final, more polished features. Starting with Pre-Alpha Preview
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format. Only properly handles VPW2 and No Mercy formats.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM data. Requires an open project.</li>
 <li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
+<li><strong>vpw2 text index tool</strong> &ndash; Convert from VPW2 text index values to location and index.</li>
 <li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values. Currently only handles the first image in multi-image archives.</li>
 <li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. incomplete and very awkward to use, only recommended for experts and
 the terminally curious.</li>
