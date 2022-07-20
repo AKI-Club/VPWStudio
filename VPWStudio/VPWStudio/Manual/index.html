@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.23 (July 13th, 2022)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.23 (July 20th, 2022)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -83,6 +83,11 @@
 
 <h3>Chapter 3: Everything Else</h3>
 <ol>
+<li><a href="#ExternalTools">External Tools</a>
+	<ol>
+	<li><a href="#ExtPalTools">VPW Studio Palette Conversion Tools</a></li>
+	</ol>
+</li>
 <li><a href="#Credits">Credits</a></li>
 </ol>
 
@@ -2082,6 +2087,47 @@ the base for the final, more polished features. Starting with Pre-Alpha Preview
 <li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. incomplete and very awkward to use, only recommended for experts and
 the terminally curious.</li>
 </ul>
+
+<hr />
+<h2><a name="ExternalTools">External Tools</a></h2>
+<p>Starting with Pre-Alpha Preview 24, VPW Studio includes some extra stand-alone
+programs that are useful for development purposes.</p>
+
+<h3><a name="ExtPalTools">VPW Studio Palette Conversion Tools</a></h3>
+<p>Two stand-alone tools are provided for converting JASC Paint Shop Pro palette files
+to the VPW Studio palette format (<code>.vpwspal</code>).</p>
+
+<p>(For more information on these tools, see the original repository:
+<a href="https://github.com/AKI-Club/vpwspal">https://github.com/AKI-Club/vpwspal</a>)</p>
+
+<h4><code>vpwspalconv</code></h4>
+<p><code>vpwspalconv</code> converts a single Paint Shop Pro palette to VPW Studio
+format. All palette values are given an alpha value of 255, so you'll have to edit
+the file if you need transparency for any color(s).</p>
+
+<p>Usage: <code>vpwspalconv JASC_PAL_FILE</code></p>
+
+<p>You can also drag and drop a single JASC <code>.pal</code> file onto the
+<code>vpwspalconv</code> executable icon to convert a palette.</p>
+
+<h4><code>vpwspalmerge</code></h4>
+<p><code>vpwspalmerge</code> merges multiple <strong><em>16-color</em></strong>
+Paint Shop Pro palettes into a single VPW Studio palette file, taking advantage
+of sub-palettes.</p>
+
+<p>Usage: <code>vpwspalmerge JASC_PAL_FILE1 JASC_PAL_FILE2 [...]</code></p>
+
+<p>There must be at least two palette files passed in. If you need to convert
+a single palette, use <code>vpwspalconv</code> instead.</p>
+
+<p>The output <code>.vpwspal</code> file name depends on the first file passed
+into the program.</p>
+
+<p>Drag and drop functionality is also available for <code>vpwspalmerge</code>,
+but you need to be careful when selecting multiple files to merge.</p>
+
+<p>Sub-palette order is influenced by the order of the passed in filenames,
+so remember to put the filenames in the proper order for output.</p>
 
 <hr />
 <h2><a name="Credits">Credits</a></h2>
