@@ -2,9 +2,37 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 24 (202x/yy/zz)
+Pre-Alpha Preview 25 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 24 (2022/07/20)
+---------------------------------
+- [Drag and Drop] The active working directory is now updated to the location
+  of the project file during a drag and drop event.
+
+  This allows saving the project file to work as expected, instead of creating
+  a copy in the original working directory.
+
+- Update active working directory upon opening a project (via non-drag-and-drop).
+
+- [File Table Editor] Modified File Table entries now have a light red background.
+  (Colors may be customizable in the future, if it's requested.)
+
+- [File Table Entry Editor] Allow dragging and dropping a file onto the
+  "Replacement File Path" text box to fill it in.
+
+- [New Project Dialog] Allow dragging and dropping a file onto the "Base ROM File"
+  text box to fill it in.
+
+- [Project Properties Dialog] Allow dragging and dropping files onto the "Base
+  ROM File" and "Custom Location File" text boxes.
+
+- [CIPalette] Add support for GIMP .txt palette import/export.
+  (It turns out you can't make a .gpl palette from an existing image in GIMP...)
+
+- Added stand-alone VPW Studio palette tools to distribution under the "Tools"
+  directory. Usage information can be found in the Manual.
 
 Pre-Alpha Preview 23 (2022/06/12)
 ---------------------------------
