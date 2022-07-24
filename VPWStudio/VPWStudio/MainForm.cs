@@ -2384,9 +2384,9 @@ namespace VPWStudio
 				if (nedTool.IsDisposed)
 				{
 					nedTool = new NameEncodeDecodeTool();
-					nedTool.MdiParent = this;
-					nedTool.Show();
 				}
+				nedTool.MdiParent = this;
+				nedTool.Show();
 			}
 		}
 
@@ -2409,9 +2409,9 @@ namespace VPWStudio
 				if (Toki1Test.IsDisposed)
 				{
 					Toki1Test = new Toki1TestDialog();
-					Toki1Test.MdiParent = this;
-					Toki1Test.Show();
 				}
+				Toki1Test.MdiParent = this;
+				Toki1Test.Show();
 			}
 		}
 
@@ -2490,9 +2490,9 @@ namespace VPWStudio
 				if (MoveDamageTest.IsDisposed)
 				{
 					MoveDamageTest = new MoveDamageTestDialog();
-					MoveDamageTest.MdiParent = this;
-					MoveDamageTest.Show();
 				}
+				MoveDamageTest.MdiParent = this;
+				MoveDamageTest.Show();
 			}
 		}
 
@@ -2540,9 +2540,9 @@ namespace VPWStudio
 				if (Test3dDialog.IsDisposed)
 				{
 					Test3dDialog = new TestScene3D();
-					Test3dDialog.MdiParent = this;
-					Test3dDialog.Show();
 				}
+				Test3dDialog.MdiParent = this;
+				Test3dDialog.Show();
 			}
 		}
 
