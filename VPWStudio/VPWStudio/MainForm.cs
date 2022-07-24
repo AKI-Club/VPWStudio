@@ -156,6 +156,12 @@ namespace VPWStudio
 		#endregion
 
 		#region Danger Zone
+		public NameEncodeDecodeTool nedTool = null;
+
+		public Toki1TestDialog Toki1Test = null;
+
+		public MoveDamageTestDialog MoveDamageTest = null;
+
 		public TestScene3D Test3dDialog = null;
 		#endregion
 
@@ -2367,26 +2373,59 @@ namespace VPWStudio
 
 		private void nameEncoderdecoderToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			NameEncodeDecodeTool nedTool = new NameEncodeDecodeTool();
-			nedTool.ShowDialog();
+			if (nedTool == null)
+			{
+				nedTool = new NameEncodeDecodeTool();
+				nedTool.MdiParent = this;
+				nedTool.Show();
+			}
+			else
+			{
+				if (nedTool.IsDisposed)
+				{
+					nedTool = new NameEncodeDecodeTool();
+					nedTool.MdiParent = this;
+					nedTool.Show();
+				}
+			}
 		}
 
-		private void toki1Testvpw2OnlyToolStripMenuItem_Click(object sender, EventArgs e)
+		private void toki1TestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Toki1TestDialog t1td = new Toki1TestDialog();
-			t1td.ShowDialog();
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("Toki 1 Test requires open project file");
+				return;
+			}
+
+			if (Toki1Test == null)
+			{
+				Toki1Test = new Toki1TestDialog();
+				Toki1Test.MdiParent = this;
+				Toki1Test.Show();
+			}
+			else
+			{
+				if (Toki1Test.IsDisposed)
+				{
+					Toki1Test = new Toki1TestDialog();
+					Toki1Test.MdiParent = this;
+					Toki1Test.Show();
+				}
+			}
 		}
 
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
 			{
+				Program.ErrorMessageBox("Requires an open VPW2 project file.");
 				return;
 			}
 
 			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
 			{
-				Program.ErrorMessageBox("VPW2 only!!");
+				Program.ErrorMessageBox("This works with VPW2 only!! (because freem's lazy)");
 				return;
 			}
 
@@ -2432,14 +2471,27 @@ namespace VPWStudio
 			}
 		}
 
-		private void moveDamageTestvpw2OnlyToolStripMenuItem_Click(object sender, EventArgs e)
+		private void moveDamageTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MoveDamageTestDialog mdtd = new MoveDamageTestDialog();
-			if (mdtd != null)
+			if (Program.CurrentProject == null)
 			{
-				if (!mdtd.IsDisposed)
+				Program.ErrorMessageBox("Move Damage Test requires open project file");
+				return;
+			}
+
+			if (MoveDamageTest == null)
+			{
+				MoveDamageTest = new MoveDamageTestDialog();
+				MoveDamageTest.MdiParent = this;
+				MoveDamageTest.Show();
+			}
+			else
+			{
+				if (MoveDamageTest.IsDisposed)
 				{
-					mdtd.ShowDialog();
+					MoveDamageTest = new MoveDamageTestDialog();
+					MoveDamageTest.MdiParent = this;
+					MoveDamageTest.Show();
 				}
 			}
 		}
