@@ -150,6 +150,7 @@ namespace VPWStudio
 		/// <param name="closing">AkiTextEditor to be closed.</param>
 		public void FormClosed(AkiTextEditor closing)
 		{
+			// todo: handle closing.DialogResult
 			RemoveEntry(closing);
 		}
 
