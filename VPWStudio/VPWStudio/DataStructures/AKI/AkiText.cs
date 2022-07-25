@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace VPWStudio
@@ -29,6 +30,13 @@ namespace VPWStudio
 		/// Entries in this AkiText archive.
 		/// </summary>
 		public SortedList<int, AkiTextEntry> Entries;
+
+		private byte[] sha256Hash;
+
+		public byte[] Sha256Hash
+		{
+			get { return sha256Hash; }
+		}
 
 		/// <summary>
 		/// Default constructor.
@@ -135,6 +143,13 @@ namespace VPWStudio
 			fileSize = (int)br.BaseStream.Position;
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
+			// get SHA256 hash for AkiTextEditorManager usage
+			SHA256 sha256 = SHA256.Create();
+			byte[] data = br.ReadBytes(fileSize);
+			sha256Hash = sha256.ComputeHash(data);
+
+			br.BaseStream.Seek(0, SeekOrigin.Begin);
+
 			// Figure out table size
 			byte[] tsb = br.ReadBytes(2);
 			if (BitConverter.IsLittleEndian)
@@ -203,6 +218,16 @@ namespace VPWStudio
 		/// <param name="sr">StreamReader instance to use.</param>
 		public void ReadCsv(StreamReader sr)
 		{
+			// get SHA256 hash for AkiTextEditorManager usage
+			SHA256 sha256 = SHA256.Create();
+			char[] temp = sr.ReadToEnd().ToCharArray();
+			byte[] data = new byte[temp.Length];
+			for (int i = 0; i < temp.Length; i++)
+			{
+				data[i] = (byte)temp[i];
+			}
+			sha256Hash = sha256.ComputeHash(data);
+
 			// each entry is (number)\t(string)
 			// the challenging part is that strings can contain newlines (\n), so we have to be careful.
 
@@ -272,6 +297,18 @@ namespace VPWStudio
 		/// <param name="sr">StreamReader instance to use.</param>
 		public void ReadToolImport(StreamReader sr)
 		{
+			// get SHA256 hash for AkiTextEditorManager usage
+			SHA256 sha256 = SHA256.Create();
+			char[] temp = sr.ReadToEnd().ToCharArray();
+			byte[] data = new byte[temp.Length];
+			for (int i = 0; i < temp.Length; i++)
+			{
+				data[i] = (byte)temp[i];
+			}
+			sha256Hash = sha256.ComputeHash(data);
+
+			sr.BaseStream.Seek(0, SeekOrigin.Begin);
+
 			ToolParseMode parseMode = ToolParseMode.CheckOpenBracket;
 			int curEntry = 0;
 			string outString = "";
