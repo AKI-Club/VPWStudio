@@ -127,6 +127,14 @@ namespace VPWStudio.Editors
 						CurTextArchive.ReadCsv(sr);
 					}
 				}
+				else if (Path.GetExtension(path) == ".txt")
+				{
+					// akitext command line tool format
+					using (StreamReader sr = new StreamReader(fs))
+					{
+						CurTextArchive.ReadToolImport(sr);
+					}
+				}
 				else
 				{
 					// AkiText binary format
