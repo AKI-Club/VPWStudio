@@ -72,6 +72,11 @@ namespace VPWStudio
 		public static HexViewerManager HexViewManager = new HexViewerManager();
 
 		/// <summary>
+		/// AkiTextEditor Manager
+		/// </summary>
+		//public static AkiTextEditorManager TextEditManager = new AkiTextEditorManager();
+
+		/// <summary>
 		/// Application main form, defined as a variable to get around some hacky crap
 		/// regarding the HexViewerManager.
 		/// </summary>
