@@ -554,10 +554,13 @@ FileTable as an <code>AkiText</code> archive (file ID <code>0002</code>).</p>
 
 <p>Wrestler names are stored in the following order:</p>
 <ol>
-<li>Long Name</li>
-<li>Short Name</li>
-<li>Nickname</li>
+<li>Long Name (max length 20 characters)</li>
+<li>Short Name (max length 10 characters)</li>
+<li>Nickname/Alias (max length 16 characters)</li>
 </ol>
+
+<p>VPW Studio does not currently enforce name length limits, so you will have
+to manually ensure all strings fit.</p>
 
 <p>Make sure the first three entries in the Wrestler Name <code>AkiText</code>
 archive remain blank. If you need to change a wrestler's Profile Index value,

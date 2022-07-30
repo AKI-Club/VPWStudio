@@ -591,7 +591,16 @@ There are more entries than one would expect, due to a number of entries
 being duplicated for the cruiserweight-only roster.</p>
 
 <h3><a name="WrestlerProfile">Profile</a></h3>
-<p>Profile data is stored in the ROM.</p>
+<p>Profile data is stored in the ROM. This includes wrestler names, height/weight,
+and various other items.</p>
+
+<p>All names are using EUC-JP encoding.</p>
+<ul>
+<li>Long Name (max length 16 characters)</li>
+<li>Short Name (max length 8 characters)</li>
+</ul>
+<p>VPW Studio does not currently allow you to edit wrestler names, since VPW64
+stores them in a way that is not easy to work with.</p>
 
 <h3><a name="WrestlerMoves">Moves and Parameters</a></h3>
 <p>Moves and Parameters are found in the FileTable, but the data formats are not
