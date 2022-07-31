@@ -609,7 +609,7 @@ namespace VPWStudio
 											Ci4Palette ci4pal = new Ci4Palette();
 											if (!ci4pal.ImportVpwsPal(sr))
 											{
-												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci4Palette."));
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert VPW Studio palette to Ci4Palette."));
 												return null;
 											}
 											ci4pal.WriteData(bw);
@@ -628,7 +628,7 @@ namespace VPWStudio
 											Ci4Palette ci4pal = new Ci4Palette();
 											if (!ci4pal.ImportJasc(sr))
 											{
-												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci4Palette."));
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert JASC PSP palette to Ci4Palette."));
 												return null;
 											}
 											ci4pal.WriteData(bw);
@@ -658,7 +658,7 @@ namespace VPWStudio
 											Ci8Palette ci8pal = new Ci8Palette();
 											if (!ci8pal.ImportVpwsPal(sr))
 											{
-												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci8Palette."));
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert VPW Studio palette to Ci8Palette."));
 												return null;
 											}
 											ci8pal.WriteData(bw);
@@ -674,7 +674,7 @@ namespace VPWStudio
 											Ci8Palette ci8pal = new Ci8Palette();
 											if (!ci8pal.ImportJasc(sr))
 											{
-												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert palette to Ci8Palette."));
+												BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unable to convert JASC PSP palette to Ci8Palette."));
 												return null;
 											}
 											ci8pal.WriteData(bw);
