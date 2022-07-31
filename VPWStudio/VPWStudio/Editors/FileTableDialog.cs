@@ -901,7 +901,111 @@ namespace VPWStudio
 						Editors.CiPaletteEditor cipe = new Editors.CiPaletteEditor(key);
 						if (cipe.ShowDialog() == DialogResult.OK)
 						{
-							// commit changes... somehow.
+							if (Program.CurProjectPath == null || Program.CurProjectPath == String.Empty)
+							{
+								// we need to have saved in order to actually... save.
+								Program.ErrorMessageBox("Can not save palette changes to an unsaved Project File.\n\nPlease save the Project File before continuing.");
+								return;
+							}
+
+							if (String.IsNullOrEmpty(fte.ReplaceFilePath))
+							{
+								// make new palette file
+								string filename = String.Empty;
+								if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci4)
+								{
+									filename = String.Format("{0}\\{1:X4}.ci4pal", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), key);
+								}
+								else if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci8)
+								{
+									filename = String.Format("{0}\\{1:X4}.ci8pal", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), key);
+								}
+
+								using (FileStream fs = new FileStream(filename, FileMode.Create))
+								{
+									using (BinaryWriter bw = new BinaryWriter(fs))
+									{
+										if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci4)
+										{
+											cipe.CurPaletteCI4.WriteData(bw);
+										}
+										else if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci8)
+										{
+											cipe.CurPaletteCI8.WriteData(bw);
+										}
+									}
+								}
+
+								// set new ReplaceFilePath
+								fte.ReplaceFilePath = Program.ShortenAbsolutePath(filename);
+								Program.InfoMessageBox(String.Format("Wrote new palette file to {0}.", filename));
+
+								Program.UnsavedChanges = true;
+								Program.AppMainForm.UpdateTitleBar();
+							}
+							else
+							{
+								// existing file, likely .vpwspal, but sometimes not
+								if (Path.GetExtension(fte.ReplaceFilePath) == ".vpwspal")
+								{
+									// vpw studio format
+									using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+									{
+										using (StreamWriter sw = new StreamWriter(fs))
+										{
+											if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci4)
+											{
+												cipe.CurPaletteCI4.ExportVpwsPal(sw);
+											}
+											else if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci8)
+											{
+												cipe.CurPaletteCI8.ExportVpwsPal(sw);
+											}
+										}
+									}
+								}
+								else if (Path.GetExtension(fte.ReplaceFilePath) == ".ci4pal")
+								{
+									// ci4 palette binary
+									if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci4)
+									{
+										using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+										{
+											using (BinaryWriter bw = new BinaryWriter(fs))
+											{
+												cipe.CurPaletteCI4.WriteData(bw);
+											}
+										}
+									}
+									else
+									{
+										Program.ErrorMessageBox("Error attempting to save CI4 palette in CI8 mode; this is not supported.");
+									}
+								}
+								else if (Path.GetExtension(fte.ReplaceFilePath) == ".ci8pal")
+								{
+									// ci8 palette binary
+									if (cipe.EditorMode == Editors.CiPaletteEditor.CiEditorModes.Ci8)
+									{
+										using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+										{
+											using (BinaryWriter bw = new BinaryWriter(fs))
+											{
+												cipe.CurPaletteCI8.WriteData(bw);
+											}
+										}
+									}
+									else
+									{
+										Program.ErrorMessageBox("Error attempting to save CI8 palette in CI4 mode; this is not supported.");
+									}
+								}
+								else
+								{
+									// not handled yet
+									Program.ErrorMessageBox("freem is currently too lazy to hook up palette saving for non-raw CI and non-vpwspal formats.\nConsidering that only raw CI palettes, .vpwspal format, and jasc .pal format are supported for project building, though...");
+								}
+							}
 						}
 					}
 					break;
@@ -974,6 +1078,11 @@ namespace VPWStudio
 										ate.CurTextArchive.WriteData(bw);
 									}
 								}
+							}
+							else if (Path.GetExtension(fte.ReplaceFilePath) == ".txt")
+							{
+								Program.WarningMessageBox("todo: have not implemented akitext command line tool ReplaceFile case; changes not saved.\nfreem gets to be mad at himself for completely preventable problems!");
+								// situation 4: .txt for akitext command line tool (make new akitext binary file)
 							}
 						}
 					}
