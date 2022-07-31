@@ -170,7 +170,7 @@ namespace VPWStudio.Editors
 				}
 				else if (palExt.Equals(".gpl"))
 				{
-					// GIMP (does not support sub-palettes by default)
+					// GIMP .gpl (does not support sub-palettes by default)
 					StreamReader sr = new StreamReader(fs);
 					CurPaletteCI4.ImportGimp(sr);
 					sr.Close();
@@ -181,6 +181,13 @@ namespace VPWStudio.Editors
 					BinaryReader br = new BinaryReader(fs);
 					CurPaletteCI4.ImportAct(br);
 					br.Close();
+				}
+				else if (palExt.Equals(".txt"))
+				{
+					// GIMP .txt (does not support sub-palettes by default)
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI4.ImportGimpText(sr);
+					sr.Close();
 				}
 				else
 				{
@@ -220,9 +227,10 @@ namespace VPWStudio.Editors
 				}
 				else if (palExt.Equals(".gpl"))
 				{
-					// GIMP import for CI8 not yet supported
-					fs.Dispose();
-					return false;
+					// GIMP .gpl
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI8.ImportGimp(sr);
+					sr.Close();
 				}
 				else if (palExt.Equals(".act"))
 				{
@@ -230,6 +238,13 @@ namespace VPWStudio.Editors
 					BinaryReader br = new BinaryReader(fs);
 					CurPaletteCI8.ImportAct(br);
 					br.Close();
+				}
+				else if (palExt.Equals(".txt"))
+				{
+					// GIMP .txt
+					StreamReader sr = new StreamReader(fs);
+					CurPaletteCI8.ImportGimpText(sr);
+					sr.Close();
 				}
 				else
 				{
@@ -751,7 +766,7 @@ namespace VPWStudio.Editors
 								}
 								else if (Path.GetExtension(ofd.FileName) == ".gpl")
 								{
-									// import GIMP palette
+									// import GIMP .gpl palette
 									ColorList.Clear();
 									ColorList.AddRange(import.Entries);
 									using (StreamReader sr = new StreamReader(fs))
