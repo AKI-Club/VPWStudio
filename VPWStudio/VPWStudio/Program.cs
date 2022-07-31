@@ -458,7 +458,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for AkiTexture conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for AkiTexture conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -519,7 +519,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Texture conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for Ci4Texture conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -552,7 +552,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Background conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for Ci4Background conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -589,7 +589,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci8Texture conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for Ci8Texture conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -638,7 +638,7 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci4Palette conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for Ci4Palette conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -684,7 +684,46 @@ namespace VPWStudio
 								else
 								{
 									// unsupported type for conversions
-									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "Unsupported type for Ci8Palette conversion."));
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported type '{0}' for Ci8Palette conversion.", ReplaceFileExtension)));
+									return null;
+								}
+							}
+							break;
+						#endregion
+
+						#region AkiText Conversion
+						case FileTypes.AkiText:
+							{
+								if (ReplaceFileExtension == ".txt")
+								{
+									// akitext command line format
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											AkiText textArc = new AkiText();
+											textArc.ReadToolImport(sr);
+											textArc.WriteData(bw);
+										}
+									}
+								}
+								else if (ReplaceFileExtension == ".csv")
+								{
+									// zoinkity's tab-delimited csv format
+									using (FileStream fs = new FileStream(ReplaceFilePath, FileMode.Open))
+									{
+										using (StreamReader sr = new StreamReader(fs))
+										{
+											AkiText textArc = new AkiText();
+											textArc.ReadCsv(sr);
+											textArc.WriteData(bw);
+										}
+									}
+								}
+								else
+								{
+									// unsupported type for conversions
+									BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, String.Format("Unsupported filetype '{0}' for AkiText conversion.", ReplaceFileExtension)));
 									return null;
 								}
 							}
@@ -692,27 +731,6 @@ namespace VPWStudio
 						#endregion
 
 						// todo: other filetypes.
-
-						#region AkiText Conversion
-						case FileTypes.AkiText:
-							{
-								/*
-								if (ReplaceFileExtension == ".csv")
-								{
-									// not implemented error
-									return null;
-								}
-								else
-								{
-									// unsupported type for conversions
-									return null;
-								}
-								*/
-								BuildMessages.Add(new BuildWarnErr(fte.FileID, BuildMessageTypes.Warning, "AkiText conversion is currently not implemented."));
-								return null;
-							}
-							//break;
-						#endregion
 					}
 
 					// return data
