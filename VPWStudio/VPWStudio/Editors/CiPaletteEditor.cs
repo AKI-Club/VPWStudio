@@ -15,12 +15,24 @@ namespace VPWStudio.Editors
 	/// </summary>
 	public partial class CiPaletteEditor : Form
 	{
-		private enum CiEditorModes
+		/// <summary>
+		/// Possible CI palette editor modes.
+		/// </summary>
+		public enum CiEditorModes
 		{
 			Ci4,
 			Ci8
 		}
+
+		/// <summary>
+		/// Active CI palette editor mode.
+		/// </summary>
 		private CiEditorModes CurEditMode;
+
+		public CiEditorModes EditorMode
+		{
+			get { return CurEditMode; }
+		}
 
 		public Ci4Palette CurPaletteCI4;
 		public Ci8Palette CurPaletteCI8;
