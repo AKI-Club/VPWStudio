@@ -121,6 +121,7 @@ namespace VPWStudio
 		/// </summary>
 		private Dictionary<FileTypes, Image> FileTypeIcons = new Dictionary<FileTypes, Image>()
 		{
+			{ FileTypes.AkiAnimation, Properties.Resources.FileType_AkiAnimation },
 			{ FileTypes.AkiArchive, Properties.Resources.FileType_AkiArchive },
 			{ FileTypes.AkiLargeFont, Properties.Resources.FileType_AkiLargeFont },
 			{ FileTypes.AkiModel, Properties.Resources.FileType_AkiModel },
@@ -138,6 +139,7 @@ namespace VPWStudio
 			{ FileTypes.RawCi4TexPal, Properties.Resources.FileType_RawCi4TexPal },
 			{ FileTypes.RawCi8Texture, Properties.Resources.FileType_RawCi8Texture },
 			{ FileTypes.OneBppTexture, Properties.Resources.FileType_OneBppTexture },
+			{ FileTypes.AkiFontChars, Properties.Resources.FileType_AkiFontChars },
 		};
 
 		/// <summary>
