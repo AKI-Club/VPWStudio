@@ -1068,7 +1068,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\arenas.png" />
+    <Content Include="Resources\FileTypes\AkiAnimation.png" />
     <Content Include="Resources\FileTypes\AkiArchive.png" />
+    <Content Include="Resources\FileTypes\AkiFontChars.png" />
     <Content Include="Resources\FileTypes\AkiLargeFont.png" />
     <Content Include="Resources\FileTypes\AkiModel.png" />
     <Content Include="Resources\FileTypes\AkiSmallFont.png" />
