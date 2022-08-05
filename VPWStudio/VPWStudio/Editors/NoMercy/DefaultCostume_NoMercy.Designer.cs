@@ -1493,7 +1493,25 @@
             "0B Cane",
             "0C Bazooka",
             "0D Goblet",
-            "0E Scales"});
+            "0E Scales",
+            "0F",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "1A",
+            "1B",
+            "1C",
+            "1D",
+            "1E",
+            "1F",
+            "20"});
 			this.cbEntranceWeapon.Location = new System.Drawing.Point(124, 392);
 			this.cbEntranceWeapon.Name = "cbEntranceWeapon";
 			this.cbEntranceWeapon.Size = new System.Drawing.Size(176, 21);
