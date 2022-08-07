@@ -1379,7 +1379,7 @@
             "17 (Title Belt)",
             "18 (Ring Bell)",
             "19 (Fire Extinguisher)",
-            "1A (Ladder?)",
+            "1A (Ladder)",
             "1B Cane",
             "1C Bazooka",
             "1D Goblet",
