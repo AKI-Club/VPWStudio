@@ -361,8 +361,8 @@ namespace VPWStudio
 			}
 			Program.CurrentProject.ProjectFileTable.FirstFile = offset;
 
-			lvFileList.Items.Clear();
 			lvFileList.BeginUpdate();
+			lvFileList.Items.Clear();
 			foreach (KeyValuePair<int, FileTableEntry> fte in Program.CurrentProject.ProjectFileTable.Entries)
 			{
 				ListViewItem lvi = new ListViewItem(new string[] {
