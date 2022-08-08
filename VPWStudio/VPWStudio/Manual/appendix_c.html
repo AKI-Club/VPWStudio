@@ -52,7 +52,7 @@ section are little endian, unless otherwise stated.</p>
 <h3>Game-specific Formats</h3>
 <p><strong>WCW/nWo Revenge</strong></p>
 <ol type="1">
-<li>DoubleTex</li>
+<li><a href="#DoubleTex">DoubleTex</a></li>
 </ol>
 
 <p><strong>WWF No Mercy</strong></p>
@@ -275,7 +275,7 @@ they are stored in "3/2/3" format, and consist of three components:</p>
 
 <hr />
 
-<h2><a name="AkiAnimation">AkiArchive</a></h2>
+<h2><a name="AkiArchive">AkiArchive</a></h2>
 <p>AkiArchive packs multiple files into a single file. It is up to the game to
 determine how the contents are handled, meaning it's not easy to figure out
 what each entry is meant to be.</p>
@@ -289,7 +289,7 @@ what each entry is meant to be.</p>
 
 <hr />
 
-<h2><a name="AkiAnimation">AkiModel</a></h2>
+<h2><a name="AkiModel">AkiModel</a></h2>
 <p>AkiModel stores mesh data. The format is largely the same between the six
 AKI N64 wrestling games, though some implementation details may differ.</p>
 
@@ -334,7 +334,7 @@ Each face consists of three bytes, representing vertex indices.</p>
 
 <hr />
 
-<h2><a name="AkiAnimation">AkiText</a></h2>
+<h2><a name="AkiText">AkiText</a></h2>
 <p>AkiText is an archive of strings with a table at the beginning, pointing to
 the location of the strings in the file. It is only used in the last three
 AKI N64 wrestling games (<em>WWF WrestleMania 2000</em>, <em>Virtual Pro-Wrestling
@@ -344,12 +344,16 @@ AKI N64 wrestling games (<em>WWF WrestleMania 2000</em>, <em>Virtual Pro-Wrestli
 two bytes, big-endian, and represent the offset in the file where the relevant
 string is located.</p>
 
+<p>String encoding depends on the game. <em>WWF WrestleMania 2000</em> and
+<em>WWF No Mercy</em> use (mostly) ASCII. <em>Virtual Pro-Wrestling 2</em>
+uses mostly Shift-JIS.</p>
+
 <p>Strings in AkiText files typically end with a null/0x00 byte, but if a string
 is at the end of the file, it may not have a terminating byte.</p>
 
 <hr />
 
-<h2><a name="AkiAnimation">AkiTexture</a></h2>
+<h2><a name="AkiTexture">AkiTexture</a></h2>
 <p>AkiTexture is a wrapper around CI4/CI8 texture and palette data. It is
 typically used for user interface graphics in the menus.</p>
 
@@ -473,6 +477,12 @@ either externally or internally.</p>
 <h2><a name="CLUT">CLUT</a></h2>
 <p><strong>Note</strong>: This only describes CLUT data as found in <a href="#TIM">TIM</a>
 files. Standalone CLUT files exist, but have a slightly different format.</p>
+
+<hr />
+
+<h2><a name="DoubleTex">DoubleTex (WCW/nWo Revenge)</a></h2>
+<p>DoubleTex contains two <a href="#AkiTexture">AkiTexture</a> images in one file.
+Both images are 64x64 pixels. They are only used for the credits sequence.</p>
 
 <hr />
 
