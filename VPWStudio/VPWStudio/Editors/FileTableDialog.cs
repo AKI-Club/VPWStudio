@@ -835,6 +835,18 @@ namespace VPWStudio
 				lvFileList.SelectedItems[0].SubItems[FILE_TYPE_COLUMN].Text = editInfoDialog.CurEntry.FileType.ToString();
 				lvFileList.SelectedItems[0].SubItems[COMMENT_COLUMN].Text = editInfoDialog.CurEntry.Comment;
 				lvFileList.SelectedItems[0].SubItems[PROJECT_COMMENT_COLUMN].Text = editInfoDialog.CurEntry.ProjectSpecificComment;
+
+				Color rowColor;
+				if (key % 2 == 0)
+				{
+					rowColor = (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile()) ? RowColor_ModifiedSecond : RowColor_UnmodifiedSecond;
+				}
+				else
+				{
+					rowColor = (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile()) ? RowColor_ModifiedFirst : RowColor_UnmodifiedFirst;
+				}
+				lvFileList.SelectedItems[0].BackColor = rowColor;
+
 				Program.UnsavedChanges = true;
 				Program.AppMainForm.UpdateTitleBar();
 			}
