@@ -2234,10 +2234,10 @@
 08BA=AkiModel;
 08BB=AkiModel;
 08BC=AkiModel;
-08BD=AkiModel;
-08BE=AkiModel;
-08BF=AkiModel;
-08C0=AkiModel;
+08BD=Ci4Palette;
+08BE=Ci4Texture;|p:08BD
+08BF=Ci4Palette;
+08C0=Ci4Texture;|p:08BF
 08C1=AkiModel;
 08C2=AkiModel;
 08C3=AkiModel;
