@@ -123,28 +123,27 @@ which works directly on game data. This allows hacks to work on console,
 assuming you follow all of the internal "rules" of the game and the
 various (console and game-specific) data formats.</p>
 
-<p>As of 2018 (when work on this program began), the primary accepted solution
-for making changes to the N64 AKI wrestling games are GameShark codes and
-emulator-only plugin-based texture replacements. Anyone who wanted to play
-projects using these methods on console could not fully do so. The replacement
-textures in these projects are often higher resolution than the originals and
-typically use more than 256 colors. Both of these attributes combine to make
-a situation that can't reasonably be handled with the N64's limited amount of
-texture RAM. GameShark codes pose their own problems, as you have to decide if
-you want to use a real GameShark, or rely on your flash cart's support for
-GameShark codes. It's possible to use GameShark hardware with the 64drive,
-for example, but you have to load the ROM over USB via a command line tool,
-and you still have to deal with the GameShark's finicky hardware, which can
-freeze the game if you look at it wrong or mess up when pressing the GS button.
-The Everdrive64 OS supports GameShark codes, but only a limited amount, and
-without any clear way to separate and label codes. (Perhaps a third party OS
-fixes this; I am not sure.) No matter what route you take, you'd be best served
-finding a way to import codes from a text file, as the amount of GameShark codes
-these projects typically have is in the <em>thousands</em>. That's not an
-exaggeration, either:</p>
+<p>When work on this program began in 2018, the primary method of making changes
+to AKI's N64 wrestling games involved GameShark codes and emulator-only plugin-based
+texture replacements. Anyone who wanted to play projects using these methods on
+the original hardware could not fully do so. The replacement textures in these
+projects are often higher resolution than the originals and typically use more
+than 256 colors. Both of these attributes combine to make a situation that can't
+reasonably be handled with the N64's limited amount of texture RAM. GameShark
+codes pose their own problems, as you have to decide if you want to use a real
+GameShark, or rely on your flash cart's support for GameShark codes. It's possible
+to use GameShark hardware with the 64drive, for example, but you have to load
+the ROM over USB via a command line tool, and you still have to deal with the
+GameShark's finicky hardware, which can freeze the game if you look at it wrong
+or mess up when pressing the GS button. The stock Everdrive64 OS supports GameShark
+codes, but only a limited amount, and without any clear way to separate and label
+codes. (Perhaps a third party OS fixes this; I am not sure.) No matter what route
+you take, you'd be best served finding a way to import codes from a text file,
+as the amount of GameShark codes these projects typically have is in the
+<em>thousands</em>. That's not an exaggeration, either:</p>
 
 <blockquote>Every attire [in AKI Evolution] requires anywhere between 842 and 1,043
-lines of code.
+lines of [GameShark] code[s].
 <p>-Chuckiepk on <a href="https://twitter.com/Chuckie_PK/status/1434220438616477698">twitter</a>, September 4th, 2021</p>
 </blockquote>
 
@@ -257,7 +256,7 @@ supported at this time. Please convert non-Z64 format ROMs with a tool, such as
 or <a href="https://hack64.net/tools/swapper.php">Hack64's online Web Swapper</a>.<br />
 More information about <a href="http://n64dev.org/romformats.html">N64 ROM formats</a>
 can be found on n64dev.org.</li>
-<li>OpenGL 3.3 support (for <a href="#ModelTool2">ModelTool2</a> dialog and any future 3D-displaying stuff)</li>
+<li>OpenGL 3.3 support (for <a href="#ModelTool2">ModelTool2</a> dialog and any other 3D-displaying stuff)</li>
 <li>An image editor that can create and edit <em>paletted</em> PNG images. (Ideally, one that allows for exporting palettes in JASC Paint Shop Pro format.)</li>
 <li>A hex editor, to do things that aren't (easily) possible in VPW Studio yet.
 (If you don't already have a hex editor, <a href="https://mh-nexus.de/en/hxd/">HxD</a>
@@ -277,6 +276,7 @@ probably want some other tools on hand.</p>
 <ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/ProWrestlingMods/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins by Grix</a>.</li></ul></li>
 <li><a href="https://github.com/queueRAM/Texture64">Texture64</a> by queueRAM &ndash; handles various Nintendo 64 texture formats.</li>
 <li><a href="https://github.com/jombo23/N64-Tools">N64 Midi Tool and N64 Sound Tool</a>, originally by SubDrag and Ice Mario. As the names suggest, these handle sequenced and streaming sounds.</li>
+<li><a href="https://github.com/AKI-Club/vpwspal/releases/tag/v1.1">VPW Studio Palette Tools</a>, for quickly converting and merging JASC PSP palette files to VPW Studio palette format.</li>
 </ul>
 
 <h3>Notes</h3>
@@ -448,7 +448,8 @@ with the main form updating to reflect the new project.</p>
 
 <p>After creating a new project, the first thing you should do is <a href="#Saving">save
 it</a>. This is <strong>required</strong> for various functions of VPW Studio to work
-correctly.</p>
+correctly. Future versions of the program may force a save upon starting a new
+project, but this is currently not implemented.</p>
 
 <h4>Base ROM and Game Type</h4>
 <p>The Base ROM must match the selected Game Type. VPW Studio checks a few
@@ -583,8 +584,8 @@ you will likely run into issues when saving data.</p>
 <h4>Project Files</h4>
 <img src="./img/project_properties-projectfiles.png" title="Project Properties - Project Files Tab" />
 <ul>
-<li><strong>Project Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
-<li><strong>Asset Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
+<li><strong>Project Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
+<li><strong>Asset Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
 <li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes. <em>Most people will not need to use this.</em></li>
 <li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused/unimplemented; not particularly "needed" for No Mercy)</li>
 </ul>
@@ -801,8 +802,7 @@ the World</em>) has not been located or figured out. It does not appear to be st
 
 <p>Currently, there are no animation editing or creation facilities in VPW Studio.
 Creating new animations from scratch (as opposed to splicing together existing
-animations via GameShark codes) is still considered relatively "new" technology
-in 2021.</p>
+animations via GameShark codes) is still considered relatively "new" technology.</p>
 
 <h3><code>AkiArchive</code></h3>
 <p>An <code>AkiArchive</code> contains multiple files packed into a single File Table
@@ -828,8 +828,8 @@ mean "vertex color" or "normal vector", depending on certain header values.</p>
 <p>Where possible, tools in VPW Studio allows for export to Wavefront OBJ
 format, despite the fact that it does not officially support vertex colors.</p>
 
-<p>Until recently (September 2021), there was no workflow for importing models
-back into the game. The release of <a href="https://github.com/dotGrix/AKI-Model-Blender-IO-Addon"><code>AkiModel</code>
+<p>Until recently (September 2021), there was no reasonably simple workflow for
+importing models back into the game. The release of <a href="https://github.com/ProWrestlingMods/AKI-Model-Blender-IO-Addon"><code>AkiModel</code>
 import/export plugins for Blender by Grix</a> has changed this situation significantly.</p>
 
 <h3><code>AkiTexture</code></h3>
@@ -864,8 +864,9 @@ may not always exist in the file table; it only seems to be used in certain game
 
 <h3><code>MenuBackground</code></h3>
 <p>A <code>MenuBackground</code> is a collection of unheadered <code>Ci4Palette</code>
-and <code>Ci4Texture</code> data, making up a 320x240 pixel background. Implementation
-details differ per game, though they only appear in <em>WWF WrestleMania 2000</em> and later.</p>
+and <code>Ci4Texture</code> data split up over multiple files, making up a 320x240
+pixel background. Implementation details differ per game, though they only appear
+in <em>WWF WrestleMania 2000</em> and later.</p>
 
 <p>VPW Studio allows for "simple" import of new data for <code>MenuBackground</code>,
 but it relies on the replacement PNG image being set <em>only</em> in the entry that
