@@ -839,11 +839,11 @@ namespace VPWStudio
 				Color rowColor;
 				if (key % 2 == 0)
 				{
-					rowColor = (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile()) ? RowColor_ModifiedSecond : RowColor_UnmodifiedSecond;
+					rowColor = (editInfoDialog.CurEntry.HasReplacementFile()) ? RowColor_ModifiedSecond : RowColor_UnmodifiedSecond;
 				}
 				else
 				{
-					rowColor = (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile()) ? RowColor_ModifiedFirst : RowColor_UnmodifiedFirst;
+					rowColor = (editInfoDialog.CurEntry.HasReplacementFile()) ? RowColor_ModifiedFirst : RowColor_UnmodifiedFirst;
 				}
 				lvFileList.SelectedItems[0].BackColor = rowColor;
 
