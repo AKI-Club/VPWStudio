@@ -845,7 +845,10 @@ namespace VPWStudio
 				{
 					rowColor = (editInfoDialog.CurEntry.HasReplacementFile()) ? RowColor_ModifiedFirst : RowColor_UnmodifiedFirst;
 				}
-				lvFileList.SelectedItems[0].BackColor = rowColor;
+				foreach (ListViewItem.ListViewSubItem subitem in lvFileList.SelectedItems[0].SubItems)
+				{
+					subitem.BackColor = rowColor;
+				}
 
 				Program.UnsavedChanges = true;
 				Program.AppMainForm.UpdateTitleBar();
