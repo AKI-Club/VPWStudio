@@ -6589,7 +6589,7 @@
 19BD=Ci8Texture;[Mask Sides] Mask 20|p:1929
 19BE=Ci8Texture;[Mask Sides] Mask 21|p:1929
 19BF=Ci8Texture;[Mask Sides] Mask 22|p:1929
-19C0=Ci8Texture;[Mask Sides] Mask 22, hair type 3?|p:1929
+19C0=Ci8Texture;[Mask Sides] Mask hair type 3|p:1929
 19C1=Ci8Texture;[Mask Accessory 2] 1|p:1929
 19C2=Ci8Texture;[Mask Accessory 2] 2|p:1929
 19C3=Ci8Texture;[Mask Accessory 2] 3|p:1929
