@@ -2,9 +2,50 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 25 (202x/yy/zz)
+Pre-Alpha Preview 26 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 25 (2022/08/12)
+---------------------------------
+* Various Danger Zone dialogs are now non-modal (i.e. you can interact with
+  other open windows instead of being locked to a single dialog).
+  This includes the Name Encoding/Decoding tool, the Toki 1 test dialog,
+  and the Move Damage test dialog.
+
+* [AkiText Editor] Add support for loading akitext tool format files
+  via ".txt" extension.
+
+* [Project Build] Updated some file conversion error messages to specify
+  the unsupported file extension.
+
+* [Project Build] Added support for AkiText conversion from .txt (akitext
+  command line program) and .csv (Zoinkity's tab-delimited CSV format).
+  Currently untested. Hopefully won't break anything if you try using it.
+
+* [Ci Palette Editor] Add support for GIMP .txt palette format in LoadPaletteFile.
+
+* [Project Build] Add more descriptive "Unable to convert" error messages for palettes.
+
+* [File Table Dialog] Handle creating and updating palette files.
+  Currently only enabled for raw CI4/CI8 palettes and VPW Studio palette format.
+
+* [File Type Icons] Add icons for AkiAnimation and AkiFontChars file types.
+
+* [No Mercy Default Costume Editor] Added missing items from Weapons/Props list.
+
+* [File Table Dialog] Fixed list redraw when changing one or more entries.
+
+* [File Table Dialog] Fix issue where modifying a single file table entry would
+  not change the corresponding row's background color.
+
+* [FileTableDB] Updates to a few FileTableDBs:
+  - More entries added to VPW64
+  - Fixed some issues with VPW2 file types
+  - Added wrestler movesets and params to WM2K NTSC-J
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 24 (2022/07/20)
 ---------------------------------
