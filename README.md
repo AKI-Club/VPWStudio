@@ -25,3 +25,7 @@ Manual
 ------
 Until GitHub Pages is set up for this repository, you can find the (incomplete)
 manual in the repository at [VPWStudio/VPWStudio/Manual/](VPWStudio/VPWStudio/Manual/).
+
+License
+-------
+MIT; see [LICENSE](LICENSE) for more details.
