@@ -236,6 +236,7 @@ namespace VPWStudio
 					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
 
 					// bit packing related
+					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3B160, 258) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3A0C0, 1590) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3A6F8, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3AD38, 1050) },
