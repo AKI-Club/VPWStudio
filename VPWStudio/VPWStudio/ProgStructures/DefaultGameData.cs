@@ -205,6 +205,12 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
+					// bit packing related
+					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3D7A0, 258) },
+					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3C700, 1590) },
+					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3CD38, 1600) },
+					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3D378, 1050) },
+
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x47168, 52) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x4719C, 52) },
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x473A0, 32) },
@@ -229,6 +235,11 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3F850, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
 
+					// bit packing related
+					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3A0C0, 1590) },
+					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3A6F8, 1600) },
+					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3AD38, 1050) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x12C070, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x116F3C2, 41480) },
@@ -244,11 +255,20 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
 
+					// bit packing related
+					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3D7A0, 258) },
+					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3C700, 1590) },
+					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3CD38, 1600) },
+					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3D378, 1050) },
+
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x47168, 52) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x4719C, 52) },
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x473A0, 32) },
 					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x473E8, 32) },
 					{ "FacePaint_Type", new DefaultLocationDataEntry(0x47408, 32) },
+
+					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7929C, 7920) },
+					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B18C, 96) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
@@ -264,6 +284,12 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3FBE4, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x408BC, 136) },
+
+					// bit packing related
+					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3E530, 268) },
+					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3D4E0, 1530) },
+					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3DADC, 1550) },
+					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3E0EC, 1080) },
 
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x469B8, 110) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46A28, 110) },
