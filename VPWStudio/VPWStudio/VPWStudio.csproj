@@ -559,6 +559,12 @@
     <Compile Include="Tools\ModelTool.Designer.cs">
       <DependentUpon>ModelTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ParamDecodeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\ParamDecodeTest.Designer.cs">
+      <DependentUpon>ParamDecodeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\RomSliceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -801,6 +807,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool.resx">
       <DependentUpon>ModelTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\ParamDecodeTest.resx">
+      <DependentUpon>ParamDecodeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\RomSliceDialog.resx">
       <DependentUpon>RomSliceDialog.cs</DependentUpon>

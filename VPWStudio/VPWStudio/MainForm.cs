@@ -2546,6 +2546,24 @@ namespace VPWStudio
 			}
 		}
 
+		private void paramUnpackTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("param unpack test requires open project file");
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K || Program.CurrentProject.Settings.BaseGame > VPWGames.NoMercy)
+			{
+				Program.ErrorMessageBox("param unpack test only works for wm2k, vpw2, no mercy");
+				return;
+			}
+
+			ParamDecodeTest pdt = new ParamDecodeTest();
+			pdt.MdiParent = this;
+			pdt.Show();
+		}
 		#endregion
 	}
 }
