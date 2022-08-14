@@ -59,7 +59,7 @@ namespace VPWStudio
 		/// <param name="numBits">Number of bits to unpack.</param>
 		/// <param name="mode">0 for setup, 1 for actual bit unpacking.</param>
 		/// <returns>Unpacked value, or 0 in certain circumstances (mode==0; numBits <=0).</returns>
-		public static int UnpackBits(/* uint address, */ int numBits /* $a1 */, int mode /* $a2 */)
+		public static int UnpackBits(BinaryReader br, /* uint address, */ int numBits /* $a1 */, int mode /* $a2 */)
 		{
 			if (mode == 0)
 			{
@@ -70,9 +70,13 @@ namespace VPWStudio
 			}
 
 			// can't unpack 0 or less bits
-			if (numBits <= 0) { return 0; }
+			if (numBits <= 0) {
+				return 0;
+			}
 
 			// actual bit unpacking
+			int reg_a0 = 0; /* address, passed in */
+			int reg_a3 = 0;
 			int reg_s0 = 8;
 			int reg_s2 = 0;
 			int reg_s3 = 0;
@@ -84,12 +88,10 @@ namespace VPWStudio
 			int reg_t5 = 0;
 			int reg_t6 = 0;
 			int reg_t7 = 1;
-			int reg_t8 = 0; /* address */
+			int reg_t8 = 0; /* address, copy of reg_a0 */
 			int reg_t9 = 0;
 			int reg_v0 = reg_t4;
 			int reg_v1 = 0;
-			int reg_a0 = 0;
-			int reg_a3 = 0;
 
 #if false
 			begin loop
@@ -114,14 +116,10 @@ namespace VPWStudio
 			reg_v0 += numBits;
 			reg_t3 = reg_t2; // branch delay slot
 
-			// slti  $v0, $v0, 9 # if reg_v0 < 9
-			// beqz  $v0, .L800050AC
-			/*
-			if (reg_v0 < 9 == false)
+			if (reg_v0 >= 9)
 			{
 				goto lbl_800050AC;
 			}
-			*/
 
 #if false
 			/* 005BDC 80004FDC 00051680 */  sll   $v0, $a1, 0x1a # reg_v0 = reg_a1 << 0x1A
@@ -157,7 +155,7 @@ namespace VPWStudio
 			reg_s2 = reg_t4 << numBits; // branch delay slot
 			if (reg_v0 != 0)
 			{
-				reg_v0 = ~numBits;
+				reg_v0 = ~(numBits);
 				reg_v0 = reg_t5 << reg_v0;
 				reg_s2 |= reg_v0;
 			}
@@ -189,7 +187,12 @@ namespace VPWStudio
 			reg_a3 = 0;
 			reg_a0 = 0;
 			reg_v0 += reg_t8;
+			Console.WriteLine(String.Format("[UnpackBits] reg_v0 = {0:X}", reg_v0));
+			Console.WriteLine(String.Format("br curpos before peek = 0x{0:X}", br.BaseStream.Position));
 			// load byte from address v0 into v1
+			reg_v1 = br.PeekChar();
+			Console.WriteLine(String.Format("[UnpackBits] reg_v1 = {0:X}", reg_v1));
+			Console.WriteLine(String.Format("br curpos after peek = 0x{0:X}", br.BaseStream.Position));
 
 #if false
 			/* 005C30 80005030 000A1400 */  sll   $v0, $t2, 0x10 # reg_v0 = reg_t2 << 0x10
@@ -209,6 +212,10 @@ namespace VPWStudio
 			reg_v1 = reg_v1 >> reg_v0;
 			reg_t1 = reg_v1;
 			reg_t0 = reg_v1 >> 0x1F; // branch delay slot
+			if (reg_t9 >= numBits)
+			{
+				goto lbl_80005080;
+			}
 
 #if false
 			.L80005050:
@@ -238,8 +245,10 @@ namespace VPWStudio
 			reg_v0 >>= 0x10;
 			reg_a3 |= reg_t7; // branch delay slot
 
-			// slt $v0 $a1
-			// bnez back up
+			if (reg_v0 < numBits)
+			{
+				goto lbl_80005050;
+			}
 
 #if false
 			.L80005080:
@@ -265,7 +274,7 @@ namespace VPWStudio
 			reg_a0 += numBits;
 			bssMain_800571F6 = (ushort)reg_a0;
 			numBits = 0; // branch delay slot
-			/*goto lbl_80005178;*/
+			goto lbl_80005178;
 
 #if false
 			.L800050AC:
@@ -310,7 +319,7 @@ namespace VPWStudio
 #endif
 			if (reg_v1 != 0)
 			{
-				reg_v1 = ~reg_t2;
+				reg_v1 = ~(reg_t2);
 				reg_v1 = reg_t5 << reg_v1;
 				reg_s2 |= reg_v1;
 			}
@@ -319,8 +328,6 @@ namespace VPWStudio
 			.L800050E8:
 			/* 005CE8 800050E8 014D9804 */  sllv  $s3, $t5, $t2 # reg_s3 = reg_t5 << reg_t2
 #endif
-
-			lbl_800050E8:
 			reg_s3 = reg_t5 << reg_t2;
 
 #if false
@@ -340,6 +347,10 @@ namespace VPWStudio
 			reg_a3 = 0;
 			reg_v0 += reg_t8;
 			// load byte from $v0 into $t1
+			Console.WriteLine(String.Format("reg_v0 before t1 read = 0x{0:X}", reg_v0));
+			Console.WriteLine(String.Format("br curpos before t1 read = 0x{0:X}", br.BaseStream.Position));
+			reg_t1 = br.ReadByte();
+			Console.WriteLine(String.Format("br curpos after t1 read = 0x{0:X}", br.BaseStream.Position));
 
 #if false
 			/* 005D04 80005104 00002021 */  addu  $a0, $zero, $zero # reg_a0 = 0
@@ -348,12 +359,19 @@ namespace VPWStudio
 			/* 005D10 80005110 00004021 */   addu  $t0, $zero, $zero # reg_t0 = 0
 #endif
 
-			#region UnpackBits assembly
-#if false
-			"reg_a1" = numBits
+			reg_a0 = 0;
+			reg_t0 = 0; // branch delay slot
+			if (reg_t9 >= reg_t2)
+			{
+				goto lbl_80005148;
+			}
 
-			/* 005D14 80005114 01401821 */  addu  $v1, $t2, $zero # reg_v1 = reg_t2
-			
+#if false
+			/* 005D14 80005114 01401821 */ addu  $v1, $t2, $zero # reg_v1 = reg_t2
+#endif
+			reg_v1 = reg_t2;
+
+#if false
 			.L80005118:
 			/* 005D18 80005118 00063040 */  sll   $a2, $a2, 1 # reg_a2 <<= 1
 			/* 005D1C 8000511C 000717C2 */  srl   $v0, $a3, 0x1f # reg_v0 = reg_a3 >> 0x1F
@@ -367,7 +385,25 @@ namespace VPWStudio
 			/* 005D3C 8000513C 0043102A */  slt   $v0, $v0, $v1
 			/* 005D40 80005140 1440FFF5 */  bnez  $v0, .L80005118
 			/* 005D44 80005144 00EF3825 */   or    $a3, $a3, $t7 # reg_a3 |= reg_t7
-			
+#endif
+
+			lbl_80005118:
+			mode <<= 1;
+			reg_v0 = reg_a3 >> 0x1F;
+			mode |= reg_v0;
+			reg_a3 <<= 1;
+			mode |= reg_t6;
+			reg_v0 = reg_a0 + 1;
+			reg_a0 = reg_v0;
+			reg_v0 <<= 0x10;
+			reg_v0 >>= 0x10;
+			reg_a3 |= reg_t7; // branch delay slot
+			if (reg_v0 < reg_v1)
+			{
+				goto lbl_80005118;
+			}
+
+#if false
 			.L80005148:
 			/* 005D48 80005148 01061024 */  and   $v0, $t0, $a2 # reg_v0 = reg_t0 & reg_a2
 			/* 005D4C 8000514C 01271824 */  and   $v1, $t1, $a3 # reg_v1 = reg_t1 & reg_a3
@@ -381,7 +417,21 @@ namespace VPWStudio
 			/* 005D6C 8000516C 006B1821 */  addu  $v1, $v1, $t3 # reg_v1 += reg_t3
 			/* 005D70 80005170 3C018005 */  lui   $at, %hi(bssMain_800571F6) # $at, 0x8005
 			/* 005D74 80005174 A42371F6 */  sh    $v1, %lo(bssMain_800571F6)($at)
-			
+#endif
+
+			lbl_80005148:
+			reg_v0 = reg_t0 & mode;
+			reg_v1 = reg_t1 & reg_a3;
+			reg_t4 |= reg_v0;
+			reg_t5 |= reg_v1;
+			reg_v0 = reg_t3 << 0x10;
+			reg_v1 = bssMain_800571F6;
+			reg_v0 >>= 0x10;
+			numBits -= reg_v0;
+			reg_v1 += reg_t3;
+			bssMain_800571F6 = (ushort)reg_v1;
+
+#if false
 			.L80005178:
 			/* 005D78 80005178 3C028005 */  lui   $v0, %hi(bssMain_800571F6) # $v0, 0x8005
 			/* 005D7C 8000517C 844271F6 */  lh    $v0, %lo(bssMain_800571F6)($v0)
@@ -389,7 +439,18 @@ namespace VPWStudio
 			/* 005D84 80005184 28420008 */  slti  $v0, $v0, 8
 			/* 005D88 80005188 14400008 */  bnez  $v0, .L800051AC
 			/* 005D8C 8000518C 2482FFF8 */   addiu $v0, $a0, -8 # reg_v0 = reg_a0 - 8
-			
+#endif
+
+			lbl_80005178:
+			reg_v0 = bssMain_800571F6;
+			reg_a0 = reg_v0;
+			reg_v0 = reg_a0 - 8; // branch delay slot
+			if (reg_v0 < 8)
+			{
+				goto lbl_800051AC;
+			}
+
+#if false
 			/* 005D90 80005190 3C038005 */  lui   $v1, %hi(bssMain_800571F4) # $v1, 0x8005
 			/* 005D94 80005194 946371F4 */  lhu   $v1, %lo(bssMain_800571F4)($v1)
 			/* 005D98 80005198 3C018005 */  lui   $at, %hi(bssMain_800571F6) # $at, 0x8005
@@ -397,18 +458,33 @@ namespace VPWStudio
 			/* 005DA0 800051A0 24630001 */  addiu $v1, $v1, 1 # reg_v1++
 			/* 005DA4 800051A4 3C018005 */  lui   $at, %hi(bssMain_800571F4) # $at, 0x8005
 			/* 005DA8 800051A8 A42371F4 */  sh    $v1, %lo(bssMain_800571F4)($at)
-			
+#endif
+			reg_v1 = bssMain_800571F4;
+			bssMain_800571F6 = (ushort)reg_v0;
+			reg_v1++;
+			bssMain_800571F4 = (ushort)reg_v1;
+
+#if false
 			.L800051AC:
 			/* 005DAC 800051AC 1CA0FF82 */  bgtz  $a1, .L80004FB8
 			/* 005DB0 800051B0 01801021 */   addu  $v0, $t4, $zero # reg_v0 = reg_t4
 			loop ends
+#endif
 
+			lbl_800051AC:
+			reg_v0 = reg_t4; // branch delay slot
+			if (numBits > 0)
+			{
+				goto lbl_80004FB8;
+			}
+
+#if false
 			.L800051B4:
 			/* 005DB4 800051B4 01A01821 */  addu  $v1, $t5, $zero # reg_v1 = reg_t5
 #endif
-			#endregion
+			reg_v1 = reg_t5;
 
-			return 0;
+			return reg_v1;
 		}
 	}
 }
