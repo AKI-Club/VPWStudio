@@ -183,6 +183,15 @@ namespace VPWStudio
 			// todo: WM2K and NoMercy EntranceDef and TitantronFrames
 			// $ENTRANCEDEFS
 			// $TITANTRON_FRAMES_START // ROM location of first Titantron script
+
+			// move-related items
+			{ "MasterMoveMods", "$MASTER_MOVE_MODS" },
+
+			// tables for bit packing (WM2K and later)
+			{ "BitPacking_MainTable", "$BITPACKING_MAINTABLE" }, // ROM location of "menu item to number of bits" table
+			{ "BitPacking_MoveGroup_Wrestling", "$BITPACKING_MOVEGROUP_WRESTLING" },
+			{ "BitPacking_MoveGroup_Combo", "$BITPACKING_MOVEGROUP_COMBO" },
+			{ "BitPacking_MoveGroup_Shoot", "$BITPACKING_MOVEGROUP_SHOOT" },
 			#endregion
 
 			#region CodeChange
