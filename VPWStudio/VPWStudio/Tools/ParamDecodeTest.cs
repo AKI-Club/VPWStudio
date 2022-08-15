@@ -70,25 +70,107 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Handle 30-byte Parameter blocks. (used in WrestleMania 2000, Virtual Pro-Wrestling 2)
+		/// </summary>
 		private void ParseParams_30()
 		{
 			tbParamsOut.Clear();
+			StringBuilder sb = new StringBuilder();
+
+			// make large string of 0-padded binary values
+			for (int i = 0; i < ParamData.Length; i++)
+			{
+				string binVal = Convert.ToString(ParamData[i], 2);
+				if (binVal.Length < 8)
+				{
+					for (int j = (8 - binVal.Length); j > 0 ; j--)
+					{
+						binVal = String.Format("0{0}", binVal);
+					}
+				}
+				sb.Append(binVal);
+				tbParamsOut.Text += string.Format("{1:X2}: b{0}\r\n", binVal, i);
+			}
+
+			tbParamsOut.Text += "\r\n";
+
+			int curPoint = 0;
+			string fullBin = sb.ToString();
+			for (int i = 0; i < Params30_BitWidths.Length; i++)
+			{
+				if (i < Params30_BitWidths.Length-1)
+				{
+					tbParamsOut.Text += String.Format("{0}\r\n", fullBin.Substring(curPoint, Params30_BitWidths[i]));
+				}
+				else
+				{
+					// this may be a bit sketchy...
+					string outBin = fullBin.Substring(curPoint);
+					for (int j = Params30_BitWidths[i] - fullBin.Substring(curPoint).Length; j > 0; j--)
+					{
+						outBin = String.Format("0{0}", outBin);
+					}
+
+					tbParamsOut.Text += String.Format("{0}\r\n", outBin);
+				}
+				curPoint += Params30_BitWidths[i];
+			}
+
+			/*
 			MemoryStream ms = new MemoryStream(ParamData);
 			BinaryReader br = new BinaryReader(ms);
 
 			PackedBitsHandler.UnpackBits(br, 0, 0);
 			int param0 = PackedBitsHandler.UnpackBits(br, 3, 1);
-			tbParamsOut.Text = String.Format("[0x00] {0:X}\r\n", param0);
+			tbParamsOut.Text = String.Format("[0x00] {0:X} ({1})\r\n", param0, Convert.ToString(param0,2));
 
 			int param1 = PackedBitsHandler.UnpackBits(br, 4, 1);
-			tbParamsOut.Text += String.Format("[0x01] {0:X}\r\n", param1);
+			tbParamsOut.Text += String.Format("[0x01] {0:X} ({1})\r\n", param1, Convert.ToString(param1, 2));
 
 			br.Close();
+			*/
 		}
 
+		/// <summary>
+		/// Handle 32-byte Parameter blocks. (used in No Mercy)
+		/// </summary>
 		private void ParseParams_32()
 		{
 			tbParamsOut.Clear();
+			StringBuilder sb = new StringBuilder();
+
+			// make large string of 0-padded binary values
+			for (int i = 0; i < ParamData.Length; i++)
+			{
+				string binVal = Convert.ToString(ParamData[i], 2);
+				if (binVal.Length < 8)
+				{
+					for (int j = (8 - binVal.Length); j > 0; j--)
+					{
+						binVal = String.Format("0{0}", binVal);
+					}
+				}
+				sb.Append(binVal);
+				tbParamsOut.Text += string.Format("{1:X2}: b{0}\r\n", binVal, i);
+			}
+
+			tbParamsOut.Text += "\r\n";
+
+			int curPoint = 0;
+			string fullBin = sb.ToString();
+			for (int i = 0; i < Params32_BitWidths.Length; i++)
+			{
+				if (i < Params32_BitWidths.Length - 1)
+				{
+					tbParamsOut.Text += String.Format("{0}\r\n", fullBin.Substring(curPoint, Params32_BitWidths[i]));
+				}
+				else
+				{
+					tbParamsOut.Text += String.Format("{0}\r\n", fullBin.Substring(curPoint));
+				}
+				curPoint += Params32_BitWidths[i];
+			}
 		}
 	}
 }
