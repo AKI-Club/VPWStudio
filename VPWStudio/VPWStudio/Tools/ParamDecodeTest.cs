@@ -29,7 +29,7 @@ namespace VPWStudio
 		};
 
 		private readonly byte[] Params32_BitWidths = {
-			3,4,3,4,4,3,3,3,5,6,4,4,4,4,4,4,4,4,4,4,3,4,1,3,4,3,3,9,4,4,9,4,3,3,4,4,3,12,12,12,12,32,32
+			3,4,3,4,4,3,3,3,5,6,4,4,4,4,4,4,4,4,4,4,3,4,1,3,3,4,3,3,9,4,4,9,4,3,3,4,4,3,12,12,12,12,32,32
 		};
 
 		public ParamDecodeTest()
@@ -167,7 +167,14 @@ namespace VPWStudio
 				}
 				else
 				{
-					tbParamsOut.Text += String.Format("{0}\r\n", fullBin.Substring(curPoint));
+					// this may be a bit sketchy...
+					string outBin = fullBin.Substring(curPoint);
+					for (int j = Params32_BitWidths[i] - fullBin.Substring(curPoint).Length; j > 0; j--)
+					{
+						outBin = String.Format("0{0}", outBin);
+					}
+
+					tbParamsOut.Text += String.Format("{0}\r\n", outBin);
 				}
 				curPoint += Params32_BitWidths[i];
 			}
