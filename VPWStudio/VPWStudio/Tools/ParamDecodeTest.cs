@@ -28,6 +28,8 @@ namespace VPWStudio
 			3,4,3,4,4,3,3,3,5,4,4,4,4,4,4,4,4,4,4,4,3,5,3,3,4,3,3,9,4,4,9,4,3,3,4,4,3,12,12,12,12,32,32
 		};
 
+		// todo: check values actually used by game
+		// xxx: an extra 3 was added after the 1 in an attempt to fix things, but it didn't work
 		private readonly byte[] Params32_BitWidths = {
 			3,4,3,4,4,3,3,3,5,6,4,4,4,4,4,4,4,4,4,4,3,4,1,3,3,4,3,3,9,4,4,9,4,3,3,4,4,3,12,12,12,12,32,32
 		};
