@@ -173,7 +173,7 @@ namespace VPWStudio
 		/// Game version; 1.0 in most instances.
 		/// </summary>
 		/// todo: perhaps this should be a byte so it can be written in the mask rom version field.
-		public float GameVersion;
+		public byte GameVersion;
 
 		/// <summary>
 		/// Game/program code name.
@@ -193,12 +193,12 @@ namespace VPWStudio
 			BaseGame = _baseGame;
 			GameType = _specific;
 			TargetConsole = _console;
-			GameVersion = 1.0f;
+			GameVersion = 0;
 			GameCode = _codeName;
 			Region = _region;
 		}
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, float _ver, string _codeName, GameRegion _region){
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, byte _ver, string _codeName, GameRegion _region){
 			BaseGame = _baseGame;
 			GameType = _specific;
 			TargetConsole = _console;
@@ -218,74 +218,74 @@ namespace VPWStudio
 			#region Nintendo 64
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, PlatformType.Nintendo64, 1.0f, "NWNE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, PlatformType.Nintendo64, 0, "NWNE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_NTSC_U_11,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, PlatformType.Nintendo64, 1.1f, "NWNE-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, PlatformType.Nintendo64, 1, "NWNE-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WorldTour_PAL,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, PlatformType.Nintendo64, 1.0f, "NWNP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, PlatformType.Nintendo64, 0, "NWNP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW64_NTSC_J,
-				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, PlatformType.Nintendo64, 1.0f, "NVPJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, PlatformType.Nintendo64, 0, "NVPJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.Revenge_NTSC_U,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, PlatformType.Nintendo64, 1.0f, "NW2E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, PlatformType.Nintendo64, 0, "NW2E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.Revenge_PAL,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, PlatformType.Nintendo64, 1.0f, "NW2P", GameRegion.Europe)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, PlatformType.Nintendo64, 0, "NW2P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.WM2K_NTSC_U,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, PlatformType.Nintendo64, 1.0f, "NWXE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, PlatformType.Nintendo64, 0, "NWXE", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WM2K_NTSC_J,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, PlatformType.Nintendo64, 1.0f, "NWXJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, PlatformType.Nintendo64, 0, "NWXJ", GameRegion.Japan)
 			},
 			{
 				SpecificGame.WM2K_PAL,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, PlatformType.Nintendo64, 1.0f, "NWXP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, PlatformType.Nintendo64, 0, "NWXP", GameRegion.Europe)
 			},
 			{
 				SpecificGame.VPW2_NTSC_J,
-				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, PlatformType.Nintendo64, 1.0f, "NA2J", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, PlatformType.Nintendo64, 0, "NA2J", GameRegion.Japan)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, PlatformType.Nintendo64, 1.0f, "NW4E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, PlatformType.Nintendo64, 0, "NW4E", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, PlatformType.Nintendo64, 1.1f, "NW4E-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, PlatformType.Nintendo64, 1, "NW4E-1", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.NoMercy_PAL_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, PlatformType.Nintendo64, 1.0f, "NW4P", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, PlatformType.Nintendo64, 0, "NW4P", GameRegion.Europe)
 			},
 			{
 				SpecificGame.NoMercy_PAL_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1.1f, "NW4P-1", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1, "NW4P-1", GameRegion.Europe)
 			},
 			#endregion
 
 			#region PlayStation
 			{
 				SpecificGame.VPW_NTSC_J,
-				new GameDefinition(VPWGames.VPW, SpecificGame.VPW_NTSC_J, PlatformType.PlayStation1, 1.0f, "SLPS-00449", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW, SpecificGame.VPW_NTSC_J, PlatformType.PlayStation1, 0, "SLPS-00449", GameRegion.Japan)
 			},
 			{
 				SpecificGame.WCWvsWorld_NTSC_U,
-				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_NTSC_U, PlatformType.PlayStation1, 1.0f, "SLUS-00455", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_NTSC_U, PlatformType.PlayStation1, 0, "SLUS-00455", GameRegion.NorthAmerica)
 			},
 			{
 				SpecificGame.WCWvsWorld_PAL,
-				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_PAL, PlatformType.PlayStation1, 1.0f, "SLES-00763", GameRegion.Europe)
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_PAL, PlatformType.PlayStation1, 0, "SLES-00763", GameRegion.Europe)
 			}
 			#endregion
 		};

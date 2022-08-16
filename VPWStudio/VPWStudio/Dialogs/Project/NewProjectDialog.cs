@@ -111,12 +111,11 @@ namespace VPWStudio
 					}
 				}
 
-				// freem had the "smart" idea of making the GameDefinition GameVersion value a float, when it's actually a byte in the N64 ROM.
-				if (1.0f + romTemp.GameVersion != gd.GameVersion)
+				if (romTemp.GameVersion != gd.GameVersion)
 				{
 					// game revision mismatch (only really necessary for World Tour NTSC-U and WWF No Mercy all regions)
-					Program.ErrorMessageBox(String.Format("The project expects a game revision value of {0} (0x{1:X2}), but the selected base ROM has a game revision value of 0x{2:X2}. Ensure that you have the correct version of the game, or change the Game Type.",
-						gd.GameVersion, (byte)((gd.GameVersion - 1.0f) * 10), romTemp.GameVersion
+					Program.ErrorMessageBox(String.Format("The project expects a game revision value of 0x{0:X2}, but the selected base ROM has a game revision value of 0x{1:X2}. Ensure that you have the correct version of the game, or change the Game Type.",
+						gd.GameVersion, romTemp.GameVersion
 					));
 					return;
 				}
