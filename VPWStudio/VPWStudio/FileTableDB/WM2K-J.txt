@@ -1231,10 +1231,10 @@
 04D5=Ci4Texture;[Attitude Meter] P4 (right)|p:04C8
 04D6=Ci4Texture;[Attitude Meter] COM (left)|p:04CC
 04D7=Ci4Texture;[Attitude Meter] COM (right)|p:04CC
-04D8=Ci4Palette;[Attitude Meter] Special
-04D9=Ci4Texture;[Attitude Meter] Special|p:04D8
-04DA=Ci4Palette;[Attitude Meter] Special 2
-04DB=Ci4Texture;[Attitude Meter] Special 2|p:04DA
+04D8=Ci4Palette;[Attitude Meter] Super Special
+04D9=Ci4Texture;[Attitude Meter] Super Special|p:04D8
+04DA=Ci4Palette;[Attitude Meter] Special
+04DB=Ci4Texture;[Attitude Meter] Special|p:04DA
 04DC=Ci4Palette;[Attitude Meter] Danger
 04DD=Ci4Texture;[Attitude Meter] Danger|p:04DC
 04DE=Ci4Palette;(1 min left frame 1)

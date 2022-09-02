@@ -1173,10 +1173,10 @@
 049B=Ci4Texture;[Attitude Meter] P4 (right)|p:048E
 049C=Ci4Texture;[Attitude Meter] COM (left)|p:0492
 049D=Ci4Texture;[Attitude Meter] COM (right)|p:0492
-049E=Ci4Palette;[Attitude Meter] Special
-049F=Ci4Texture;[Attitude Meter] Special|p:049E
-04A0=Ci4Palette;[Attitude Meter] Special 2
-04A1=Ci4Texture;[Attitude Meter] Special 2|p:04A0
+049E=Ci4Palette;[Attitude Meter] Super Special
+049F=Ci4Texture;[Attitude Meter] Super Special|p:049E
+04A0=Ci4Palette;[Attitude Meter] Special
+04A1=Ci4Texture;[Attitude Meter] Special|p:04A0
 04A2=Ci4Palette;[Attitude Meter] Danger
 04A3=Ci4Texture;[Attitude Meter] Danger|p:04A2
 04A4=Ci4Palette;(1 min left frame 1)
