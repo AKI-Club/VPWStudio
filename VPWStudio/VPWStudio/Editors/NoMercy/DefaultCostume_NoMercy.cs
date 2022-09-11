@@ -102,7 +102,7 @@ namespace VPWStudio.Editors.NoMercy
 			cbHeadShape.SelectedIndex = CostumeData.HeadShape;
 			cbFaces.SelectedIndex = CostumeData.FaceNumber;
 			cbHairType.SelectedIndex = CostumeData.HairType;
-			cbHairColor.SelectedIndex = CostumeData.HairColor;
+			cccHairColor.nudColor.Value = CostumeData.HairColor;
 			cbFrontHair.SelectedIndex = CostumeData.FrontHair;
 			cbFacialHair.SelectedIndex = CostumeData.FacialHair;
 			cbMasksEtc.SelectedIndex = CostumeData.MasksEtc;
@@ -153,7 +153,7 @@ namespace VPWStudio.Editors.NoMercy
 			CostumeData.HeadShape = (byte)cbHeadShape.SelectedIndex;
 			CostumeData.FaceNumber = (byte)cbFaces.SelectedIndex;
 			CostumeData.HairType = (byte)cbHairType.SelectedIndex;
-			CostumeData.HairColor = (byte)cbHairColor.SelectedIndex;
+			CostumeData.HairColor = (byte)cccHairColor.nudColor.Value;
 			CostumeData.FrontHair = (byte)cbFrontHair.SelectedIndex;
 			CostumeData.FacialHair = (byte)cbFacialHair.SelectedIndex;
 
