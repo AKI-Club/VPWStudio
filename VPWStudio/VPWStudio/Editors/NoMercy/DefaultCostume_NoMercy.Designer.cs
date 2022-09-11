@@ -30,6 +30,20 @@
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccLeftElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccWristbandColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccGlovesColor = new VPWStudio.Controls.CostumeColorControl();
+			this.cccEntranceAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccEntranceAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccUpperAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccUpperAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRingAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRingAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
 			this.cbFaces = new System.Windows.Forms.ComboBox();
 			this.cbFrontHair = new System.Windows.Forms.ComboBox();
 			this.cbRingAttire = new System.Windows.Forms.ComboBox();
@@ -81,7 +95,6 @@
 			this.cbSkinColor = new System.Windows.Forms.ComboBox();
 			this.cbHeadShape = new System.Windows.Forms.ComboBox();
 			this.cbHairType = new System.Windows.Forms.ComboBox();
-			this.cbHairColor = new System.Windows.Forms.ComboBox();
 			this.cbHatsCaps = new System.Windows.Forms.ComboBox();
 			this.cbEntranceAttire = new System.Windows.Forms.ComboBox();
 			this.cbEntranceWeapon = new System.Windows.Forms.ComboBox();
@@ -89,25 +102,12 @@
 			this.cbMasksEtc = new System.Windows.Forms.ComboBox();
 			this.cbFacialHair = new System.Windows.Forms.ComboBox();
 			this.cbLeftKneepad = new System.Windows.Forms.ComboBox();
+			this.cccHatsCaps = new VPWStudio.Controls.CostumeColorControl();
 			this.cbUpperAttire = new System.Windows.Forms.ComboBox();
 			this.cbTattoo = new System.Windows.Forms.ComboBox();
+			this.cccHairColor = new VPWStudio.Controls.CostumeColorControl();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccLeftElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccWristbandColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccGlovesColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccEntranceAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccEntranceAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccUpperAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccUpperAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRingAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRingAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccHatsCaps = new VPWStudio.Controls.CostumeColorControl();
 			this.panel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -191,7 +191,6 @@
 			this.tableLayoutPanel1.Controls.Add(this.cbSkinColor, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.cbHeadShape, 1, 28);
 			this.tableLayoutPanel1.Controls.Add(this.cbHairType, 1, 30);
-			this.tableLayoutPanel1.Controls.Add(this.cbHairColor, 1, 31);
 			this.tableLayoutPanel1.Controls.Add(this.cbHatsCaps, 1, 35);
 			this.tableLayoutPanel1.Controls.Add(this.cbEntranceAttire, 1, 8);
 			this.tableLayoutPanel1.Controls.Add(this.cbEntranceWeapon, 1, 11);
@@ -202,6 +201,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.cccHatsCaps, 1, 36);
 			this.tableLayoutPanel1.Controls.Add(this.cbUpperAttire, 1, 5);
 			this.tableLayoutPanel1.Controls.Add(this.cbTattoo, 1, 14);
+			this.tableLayoutPanel1.Controls.Add(this.cccHairColor, 1, 31);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 38;
@@ -246,6 +246,118 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(303, 1328);
 			this.tableLayoutPanel1.TabIndex = 2;
+			// 
+			// cccBootsColor2
+			// 
+			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor2.Location = new System.Drawing.Point(124, 949);
+			this.cccBootsColor2.Name = "cccBootsColor2";
+			this.cccBootsColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor2.TabIndex = 112;
+			// 
+			// cccBootsColor1
+			// 
+			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor1.Location = new System.Drawing.Point(124, 914);
+			this.cccBootsColor1.Name = "cccBootsColor1";
+			this.cccBootsColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccBootsColor1.TabIndex = 111;
+			// 
+			// cccRightKneePadColor
+			// 
+			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightKneePadColor.Location = new System.Drawing.Point(124, 844);
+			this.cccRightKneePadColor.Name = "cccRightKneePadColor";
+			this.cccRightKneePadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccRightKneePadColor.TabIndex = 109;
+			// 
+			// cccLeftKneePadColor
+			// 
+			this.cccLeftKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftKneePadColor.Location = new System.Drawing.Point(124, 774);
+			this.cccLeftKneePadColor.Name = "cccLeftKneePadColor";
+			this.cccLeftKneePadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccLeftKneePadColor.TabIndex = 108;
+			// 
+			// cccRightElbowPadColor
+			// 
+			this.cccRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightElbowPadColor.Location = new System.Drawing.Point(124, 704);
+			this.cccRightElbowPadColor.Name = "cccRightElbowPadColor";
+			this.cccRightElbowPadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccRightElbowPadColor.TabIndex = 107;
+			// 
+			// cccLeftElbowPadColor
+			// 
+			this.cccLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftElbowPadColor.Location = new System.Drawing.Point(124, 634);
+			this.cccLeftElbowPadColor.Name = "cccLeftElbowPadColor";
+			this.cccLeftElbowPadColor.Size = new System.Drawing.Size(176, 26);
+			this.cccLeftElbowPadColor.TabIndex = 106;
+			// 
+			// cccWristbandColor
+			// 
+			this.cccWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccWristbandColor.Location = new System.Drawing.Point(124, 564);
+			this.cccWristbandColor.Name = "cccWristbandColor";
+			this.cccWristbandColor.Size = new System.Drawing.Size(176, 26);
+			this.cccWristbandColor.TabIndex = 33;
+			// 
+			// cccGlovesColor
+			// 
+			this.cccGlovesColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccGlovesColor.Location = new System.Drawing.Point(124, 459);
+			this.cccGlovesColor.Name = "cccGlovesColor";
+			this.cccGlovesColor.Size = new System.Drawing.Size(176, 26);
+			this.cccGlovesColor.TabIndex = 27;
+			// 
+			// cccEntranceAttireColor2
+			// 
+			this.cccEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(124, 354);
+			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
+			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccEntranceAttireColor2.TabIndex = 21;
+			// 
+			// cccEntranceAttireColor1
+			// 
+			this.cccEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(124, 319);
+			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
+			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccEntranceAttireColor1.TabIndex = 19;
+			// 
+			// cccUpperAttireColor2
+			// 
+			this.cccUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor2.Location = new System.Drawing.Point(124, 249);
+			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
+			this.cccUpperAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccUpperAttireColor2.TabIndex = 15;
+			// 
+			// cccUpperAttireColor1
+			// 
+			this.cccUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor1.Location = new System.Drawing.Point(124, 214);
+			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
+			this.cccUpperAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccUpperAttireColor1.TabIndex = 13;
+			// 
+			// cccRingAttireColor2
+			// 
+			this.cccRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor2.Location = new System.Drawing.Point(124, 144);
+			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
+			this.cccRingAttireColor2.Size = new System.Drawing.Size(176, 26);
+			this.cccRingAttireColor2.TabIndex = 9;
+			// 
+			// cccRingAttireColor1
+			// 
+			this.cccRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor1.Location = new System.Drawing.Point(124, 109);
+			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
+			this.cccRingAttireColor1.Size = new System.Drawing.Size(176, 26);
+			this.cccRingAttireColor1.TabIndex = 7;
 			// 
 			// cbFaces
 			// 
@@ -1266,25 +1378,6 @@
 			this.cbHairType.Size = new System.Drawing.Size(176, 21);
 			this.cbHairType.TabIndex = 78;
 			// 
-			// cbHairColor
-			// 
-			this.cbHairColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbHairColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbHairColor.FormattingEnabled = true;
-			this.cbHairColor.Items.AddRange(new object[] {
-            "00 White",
-            "01 Light Blond",
-            "02 Blond",
-            "03 Light Brown",
-            "04 Brown",
-            "05 Black",
-            "06 Blue",
-            "07 Red"});
-			this.cbHairColor.Location = new System.Drawing.Point(124, 1092);
-			this.cbHairColor.Name = "cbHairColor";
-			this.cbHairColor.Size = new System.Drawing.Size(176, 21);
-			this.cbHairColor.TabIndex = 79;
-			// 
 			// cbHatsCaps
 			// 
 			this.cbHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1613,6 +1706,14 @@
 			this.cbLeftKneepad.Size = new System.Drawing.Size(176, 21);
 			this.cbLeftKneepad.TabIndex = 86;
 			// 
+			// cccHatsCaps
+			// 
+			this.cccHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccHatsCaps.Location = new System.Drawing.Point(124, 1264);
+			this.cccHatsCaps.Name = "cccHatsCaps";
+			this.cccHatsCaps.Size = new System.Drawing.Size(176, 26);
+			this.cccHatsCaps.TabIndex = 97;
+			// 
 			// cbUpperAttire
 			// 
 			this.cbUpperAttire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1790,6 +1891,17 @@
 			this.cbTattoo.Size = new System.Drawing.Size(176, 21);
 			this.cbTattoo.TabIndex = 114;
 			// 
+			// cccHairColor
+			// 
+			this.cccHairColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccHairColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.Hair_NoMercy;
+			this.cccHairColor.Location = new System.Drawing.Point(124, 1088);
+			this.cccHairColor.Name = "cccHairColor";
+			this.cccHairColor.Size = new System.Drawing.Size(176, 29);
+			this.cccHairColor.TabIndex = 115;
+			// 
 			// buttonOK
 			// 
 			this.buttonOK.Location = new System.Drawing.Point(176, 240);
@@ -1809,141 +1921,6 @@
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-			// 
-			// cccBootsColor2
-			// 
-			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccBootsColor2.Location = new System.Drawing.Point(124, 949);
-			this.cccBootsColor2.Name = "cccBootsColor2";
-			this.cccBootsColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccBootsColor2.TabIndex = 112;
-			// 
-			// cccBootsColor1
-			// 
-			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccBootsColor1.Location = new System.Drawing.Point(124, 914);
-			this.cccBootsColor1.Name = "cccBootsColor1";
-			this.cccBootsColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccBootsColor1.TabIndex = 111;
-			// 
-			// cccRightKneePadColor
-			// 
-			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRightKneePadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRightKneePadColor.Location = new System.Drawing.Point(124, 844);
-			this.cccRightKneePadColor.Name = "cccRightKneePadColor";
-			this.cccRightKneePadColor.Size = new System.Drawing.Size(176, 26);
-			this.cccRightKneePadColor.TabIndex = 109;
-			// 
-			// cccLeftKneePadColor
-			// 
-			this.cccLeftKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccLeftKneePadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccLeftKneePadColor.Location = new System.Drawing.Point(124, 774);
-			this.cccLeftKneePadColor.Name = "cccLeftKneePadColor";
-			this.cccLeftKneePadColor.Size = new System.Drawing.Size(176, 26);
-			this.cccLeftKneePadColor.TabIndex = 108;
-			// 
-			// cccRightElbowPadColor
-			// 
-			this.cccRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRightElbowPadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRightElbowPadColor.Location = new System.Drawing.Point(124, 704);
-			this.cccRightElbowPadColor.Name = "cccRightElbowPadColor";
-			this.cccRightElbowPadColor.Size = new System.Drawing.Size(176, 26);
-			this.cccRightElbowPadColor.TabIndex = 107;
-			// 
-			// cccLeftElbowPadColor
-			// 
-			this.cccLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccLeftElbowPadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccLeftElbowPadColor.Location = new System.Drawing.Point(124, 634);
-			this.cccLeftElbowPadColor.Name = "cccLeftElbowPadColor";
-			this.cccLeftElbowPadColor.Size = new System.Drawing.Size(176, 26);
-			this.cccLeftElbowPadColor.TabIndex = 106;
-			// 
-			// cccWristbandColor
-			// 
-			this.cccWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccWristbandColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccWristbandColor.Location = new System.Drawing.Point(124, 564);
-			this.cccWristbandColor.Name = "cccWristbandColor";
-			this.cccWristbandColor.Size = new System.Drawing.Size(176, 26);
-			this.cccWristbandColor.TabIndex = 33;
-			// 
-			// cccGlovesColor
-			// 
-			this.cccGlovesColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccGlovesColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccGlovesColor.Location = new System.Drawing.Point(124, 459);
-			this.cccGlovesColor.Name = "cccGlovesColor";
-			this.cccGlovesColor.Size = new System.Drawing.Size(176, 26);
-			this.cccGlovesColor.TabIndex = 27;
-			// 
-			// cccEntranceAttireColor2
-			// 
-			this.cccEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccEntranceAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(124, 354);
-			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
-			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccEntranceAttireColor2.TabIndex = 21;
-			// 
-			// cccEntranceAttireColor1
-			// 
-			this.cccEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccEntranceAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(124, 319);
-			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
-			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccEntranceAttireColor1.TabIndex = 19;
-			// 
-			// cccUpperAttireColor2
-			// 
-			this.cccUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccUpperAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccUpperAttireColor2.Location = new System.Drawing.Point(124, 249);
-			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
-			this.cccUpperAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccUpperAttireColor2.TabIndex = 15;
-			// 
-			// cccUpperAttireColor1
-			// 
-			this.cccUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccUpperAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccUpperAttireColor1.Location = new System.Drawing.Point(124, 214);
-			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
-			this.cccUpperAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccUpperAttireColor1.TabIndex = 13;
-			// 
-			// cccRingAttireColor2
-			// 
-			this.cccRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRingAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRingAttireColor2.Location = new System.Drawing.Point(124, 144);
-			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
-			this.cccRingAttireColor2.Size = new System.Drawing.Size(176, 26);
-			this.cccRingAttireColor2.TabIndex = 9;
-			// 
-			// cccRingAttireColor1
-			// 
-			this.cccRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRingAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRingAttireColor1.Location = new System.Drawing.Point(124, 109);
-			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
-			this.cccRingAttireColor1.Size = new System.Drawing.Size(176, 26);
-			this.cccRingAttireColor1.TabIndex = 7;
-			// 
-			// cccHatsCaps
-			// 
-			this.cccHatsCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccHatsCaps.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccHatsCaps.Location = new System.Drawing.Point(124, 1264);
-			this.cccHatsCaps.Name = "cccHatsCaps";
-			this.cccHatsCaps.Size = new System.Drawing.Size(176, 26);
-			this.cccHatsCaps.TabIndex = 97;
 			// 
 			// DefaultCostume_NoMercy
 			// 
@@ -2035,7 +2012,6 @@
 		private System.Windows.Forms.ComboBox cbSkinColor;
 		private System.Windows.Forms.ComboBox cbHeadShape;
 		private System.Windows.Forms.ComboBox cbHairType;
-		private System.Windows.Forms.ComboBox cbHairColor;
 		private System.Windows.Forms.ComboBox cbHatsCaps;
 		private System.Windows.Forms.ComboBox cbEntranceAttire;
 		private System.Windows.Forms.ComboBox cbEntranceWeapon;
@@ -2048,5 +2024,6 @@
 		private Controls.CostumeColorControl cccBootsColor1;
 		private System.Windows.Forms.ComboBox cbUpperAttire;
 		private System.Windows.Forms.ComboBox cbTattoo;
+		private Controls.CostumeColorControl cccHairColor;
 	}
 }

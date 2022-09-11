@@ -40,7 +40,7 @@ namespace VPWStudio.Editors.WM2K
 		private void PopulateData()
 		{
 			cbHeadShape.SelectedIndex = DefaultCostume.HeadShape;
-			cbHairColor.SelectedIndex = DefaultCostume.HairColor;
+			cccHairColor.nudColor.Value = DefaultCostume.HairColor;
 			nudUnknown1.Value = DefaultCostume.Unknown1;
 			cbFaceNumber.SelectedIndex = DefaultCostume.FaceNumber;
 			cbMainHair.SelectedIndex = DefaultCostume.Hair1;

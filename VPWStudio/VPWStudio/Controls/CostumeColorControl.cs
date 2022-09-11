@@ -17,6 +17,11 @@ namespace VPWStudio.Controls
 		public enum ColorMode
 		{
 			/// <summary>
+			/// WWF WrestleMania 2000 and later (costume items)
+			/// </summary>
+			Modern,
+
+			/// <summary>
 			/// Virtual Pro-Wrestling 64
 			/// </summary>
 			VPW64,
@@ -25,11 +30,6 @@ namespace VPWStudio.Controls
 			/// WCW/nWo Revenge
 			/// </summary>
 			Revenge,
-
-			/// <summary>
-			/// WWF WrestleMania 2000 and later (costume items)
-			/// </summary>
-			Modern,
 
 			/// <summary>
 			/// WWF WrestleMania 2000 (hair)
@@ -213,6 +213,7 @@ namespace VPWStudio.Controls
 		/// ToolTip that shows up when hovering over the color swatch.
 		/// </summary>
 		private ToolTip ColorToolTip;
+		private ColorMode colorModeType;
 		#endregion
 
 		/// <summary>
@@ -221,30 +222,13 @@ namespace VPWStudio.Controls
 		[Browsable(true)]
 		[DefaultValue(ColorMode.Modern)]
 		[Description("Color mode used by this CostumeColorControl."), Category("Behavior")]
-		public ColorMode ColorModeType { get; set; }
+		public ColorMode ColorModeType { get => colorModeType; set => colorModeType = value; }
 
 		public CostumeColorControl()
 		{
 			InitializeComponent();
 			ColorToolTip = new ToolTip();
 			UpdateColor();
-
-			switch (ColorModeType)
-			{
-				case ColorMode.Modern:
-				default:
-					nudColor.Maximum = 31;
-					break;
-
-				case ColorMode.Hair_WM2K:
-					nudColor.Maximum = 6;
-					break;
-
-				case ColorMode.Hair_VPW2:
-				case ColorMode.Hair_NoMercy:
-					nudColor.Maximum = 7;
-					break;
-			}
 		}
 
 		/// <summary>
@@ -266,6 +250,26 @@ namespace VPWStudio.Controls
 		/// </summary>
 		private void UpdateColor()
 		{
+			// no, I can't just put this in the constructor, because it doesn't want to get run there due to some fucking bullshit
+			// regarding how the forms editor lays out field members
+			// this is stupid, and unless you know how to fix it "properly", don't complain about it
+			switch (ColorModeType)
+			{
+				case ColorMode.Hair_WM2K:
+					nudColor.Maximum = 6;
+					break;
+
+				case ColorMode.Hair_VPW2:
+				case ColorMode.Hair_NoMercy:
+					nudColor.Maximum = 7;
+					break;
+
+				case ColorMode.Modern:
+				default:
+					nudColor.Maximum = 31;
+					break;
+			}
+
 			// update panelColorPreview based on nudColor.Value
 			switch (ColorModeType)
 			{
