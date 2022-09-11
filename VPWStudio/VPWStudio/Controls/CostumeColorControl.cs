@@ -16,19 +16,44 @@ namespace VPWStudio.Controls
 		/// </summary>
 		public enum ColorMode
 		{
+			/// <summary>
+			/// Virtual Pro-Wrestling 64
+			/// </summary>
 			VPW64,
+
+			/// <summary>
+			/// WCW/nWo Revenge
+			/// </summary>
 			Revenge,
-			Modern/*,
-			Hair*/
+
+			/// <summary>
+			/// WWF WrestleMania 2000 and later (costume items)
+			/// </summary>
+			Modern,
+
+			/// <summary>
+			/// WWF WrestleMania 2000 (hair)
+			/// </summary>
+			Hair_WM2K,
+
+			/// <summary>
+			/// Virtual Pro-Wrestling 2 (hair)
+			/// </summary>
+			Hair_VPW2,
+
+			/// <summary>
+			/// WWF No Mercy (hair)
+			/// </summary>
+			Hair_NoMercy
 		};
 
 		#region Color Palettes
 		/// <summary>
-		/// Colors for WrestleMania 2000, VPW2, and No Mercy.
+		/// Costume colors for WrestleMania 2000, VPW2, and No Mercy.
 		/// </summary>
 		private Color[] ModernColors = new Color[]
 		{
-			Color.FromArgb(255,0,0,0),       // Color 00: default costume colors
+			Color.Transparent,       // Color 00: default costume colors
 			/* Default Color Shades */
 			Color.FromArgb(255,57,57,57),    // Color 01: Black
 			Color.FromArgb(255,246,246,246), // Color 02: White
@@ -68,7 +93,10 @@ namespace VPWStudio.Controls
 			Color.FromArgb(255,164,164,197),  // Color 1F: Silver
 		};
 
-		private string[] ColorNames = new string[32]
+		/// <summary>
+		/// Representational color strings, matching the order of ModernColors.
+		/// </summary>
+		private string[] ModernColorNames = new string[32]
 		{
 			"Default",
 			"Black",
@@ -104,8 +132,86 @@ namespace VPWStudio.Controls
 			"Silver"
 		};
 
-		/* todo: Hair colors, I guess. */
+		/// <summary>
+		/// Hair colors for WWF WrestleMania 2000.
+		/// </summary>
+		private Color[] HairColors_WM2K = new Color[]
+		{
+			Color.FromArgb(255,16,8,8),		 // Hair Color 00: black
+			Color.FromArgb(255,56,24,16),	 // Hair Color 01: brown
+			Color.FromArgb(255,104,80,40),	 // Hair Color 02: blonde1
+			Color.FromArgb(255,104,64,32),	 // Hair Color 03: blonde2
+			Color.FromArgb(255,120,112,104), // Hair Color 04: white
+			Color.FromArgb(255,32,32,56),	 // Hair Color 05: blue
+			Color.FromArgb(255,88,16,16),	 // Hair Color 06: red
+		};
 
+		/// <summary>
+		/// Hair colors for Virtual Pro-Wrestling 2.
+		/// </summary>
+		/// (same as WM2K, but with purple)
+		private Color[] HairColors_VPW2 = new Color[]
+		{
+			Color.FromArgb(255,16,8,8),      // Hair Color 00: black
+			Color.FromArgb(255,56,24,16),    // Hair Color 01: brown
+			Color.FromArgb(255,104,80,40),   // Hair Color 02: blonde1
+			Color.FromArgb(255,104,64,32),   // Hair Color 03: blonde2
+			Color.FromArgb(255,120,112,104), // Hair Color 04: white
+			Color.FromArgb(255,32,32,56),    // Hair Color 05: blue
+			Color.FromArgb(255,88,16,16),    // Hair Color 06: red
+			Color.FromArgb(255,104,64,96),   // Hair Color 07: purple
+		};
+
+		/// <summary>
+		/// Shared color names for WM2K and VPW2.
+		/// </summary>
+		private string[] HairColorNames_Old = new string[]
+		{
+			"Black",
+			"Brown",
+			"Blonde 1",
+			"Blonde 2",
+			"White",
+			"Blue",
+			"Red",
+			"Purple" // vpw2 only
+		};
+
+		/// <summary>
+		/// Hair colors for WWF No Mercy.
+		/// </summary>
+		private Color[] HairColors_NoMercy = new Color[]
+		{
+			// 8 colors, but not the same as vpw2
+			Color.FromArgb(255,192,184,184), // Hair Color 00: white/silver
+			Color.FromArgb(255,208,176,104), // Hair Color 01: blonde1
+			Color.FromArgb(255,224,176,96),  // Hair Color 02: blonde2
+			Color.FromArgb(255,152,80,32),   // Hair Color 03: brown1
+			Color.FromArgb(255,112,56,24),   // Hair Color 04: brown2
+			Color.FromArgb(255,64,32,32),    // Hair Color 05: dark brown
+			Color.FromArgb(255,0,120,224),   // Hair Color 06: blue
+			Color.FromArgb(255,184,64,64),   // Hair Color 07: red
+		};
+
+		/// <summary>
+		/// Color names for WWF No Mercy.
+		/// </summary>
+		private string[] HairColorNames_NoMercy = new string[]
+		{
+			"White/Silver",
+			"Blonde 1",
+			"Blonde 2",
+			"Brown 1",
+			"Brown 2",
+			"Brown 2",
+			"Dark Brown",
+			"Blue",
+			"Red"
+		};
+
+		/// <summary>
+		/// ToolTip that shows up when hovering over the color swatch.
+		/// </summary>
 		private ToolTip ColorToolTip;
 		#endregion
 
@@ -121,7 +227,24 @@ namespace VPWStudio.Controls
 		{
 			InitializeComponent();
 			ColorToolTip = new ToolTip();
-			ColorToolTip.SetToolTip(panelColorPreview, ColorNames[(int)nudColor.Value]);
+			UpdateColor();
+
+			switch (ColorModeType)
+			{
+				case ColorMode.Modern:
+				default:
+					nudColor.Maximum = 31;
+					break;
+
+				case ColorMode.Hair_WM2K:
+					nudColor.Maximum = 6;
+					break;
+
+				case ColorMode.Hair_VPW2:
+				case ColorMode.Hair_NoMercy:
+					nudColor.Maximum = 7;
+					break;
+			}
 		}
 
 		/// <summary>
@@ -144,15 +267,29 @@ namespace VPWStudio.Controls
 		private void UpdateColor()
 		{
 			// update panelColorPreview based on nudColor.Value
-			// todo: different games have different color IDs.
-			// this currently assumes WM2K,VPW2,No Mercy; they have sane values.
-			// Revenge and VPW64 are different.
 			switch (ColorModeType)
 			{
+				// todo: revenge and vpw64 still not handled
+
 				case ColorMode.Modern:
 				default:
 					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
-					ColorToolTip.SetToolTip(panelColorPreview, ColorNames[(int)nudColor.Value]);
+					ColorToolTip.SetToolTip(panelColorPreview, ModernColorNames[(int)nudColor.Value]);
+					break;
+
+				case ColorMode.Hair_WM2K:
+					panelColorPreview.BackColor = HairColors_WM2K[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, HairColorNames_Old[(int)nudColor.Value]);
+					break;
+
+				case ColorMode.Hair_VPW2:
+					panelColorPreview.BackColor = HairColors_VPW2[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, HairColorNames_Old[(int)nudColor.Value]);
+					break;
+
+				case ColorMode.Hair_NoMercy:
+					panelColorPreview.BackColor = HairColors_NoMercy[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, HairColorNames_NoMercy[(int)nudColor.Value]);
 					break;
 			}
 		}
