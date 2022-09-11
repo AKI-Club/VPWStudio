@@ -72,6 +72,8 @@
 			this.panelColorPreview.Name = "panelColorPreview";
 			this.panelColorPreview.Size = new System.Drawing.Size(69, 23);
 			this.panelColorPreview.TabIndex = 1;
+			this.panelColorPreview.MouseLeave += new System.EventHandler(this.panelColorPreview_MouseLeave);
+			this.panelColorPreview.MouseHover += new System.EventHandler(this.panelColorPreview_MouseHover);
 			// 
 			// CostumeColorControl
 			// 
