@@ -84,7 +84,7 @@ namespace VPWStudio.Controls
 			nudUnknown1.Value = Costume.Unknown1;
 			nudFaceNumber.Value = Costume.FaceNumber;
 			nudHairType.Value = Costume.HairType;
-			nudHairColor.Value = Costume.HairColor;
+			cccHairColor.nudColor.Value = Costume.HairColor;
 			nudFrontHair.Value = Costume.FrontHair;
 			nudUnknown2.Value = Costume.Unknown2;
 			nudFacialHair.Value = Costume.FacialHair;
@@ -149,7 +149,7 @@ namespace VPWStudio.Controls
 			Costume.Unknown1 = (byte)nudUnknown1.Value;
 			Costume.FaceNumber = (byte)nudFaceNumber.Value;
 			Costume.HairType = (byte)nudHairType.Value;
-			Costume.HairColor = (byte)nudHairColor.Value;
+			Costume.HairColor = (byte)cccHairColor.nudColor.Value;
 			Costume.FrontHair = (byte)nudFrontHair.Value;
 			Costume.Unknown2 = (byte)nudUnknown2.Value;
 			Costume.FacialHair = (byte)nudFacialHair.Value;
