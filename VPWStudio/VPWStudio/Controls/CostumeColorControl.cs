@@ -68,7 +68,45 @@ namespace VPWStudio.Controls
 			Color.FromArgb(255,164,164,197),  // Color 1F: Silver
 		};
 
+		private string[] ColorNames = new string[32]
+		{
+			"Default",
+			"Black",
+			"White",
+			"Red",
+			"Blue",
+			"Green",
+			"Yellow",
+			"Orange",
+			"Purple",
+			"Pink",
+			"Gold",
+			"Light Black",
+			"Light White",
+			"Light Red",
+			"Light Blue",
+			"Light Green",
+			"Light Yellow",
+			"Light Orange",
+			"Light Purple",
+			"Light Pink",
+			"Light Gold",
+			"Dark Black",
+			"Dark White",
+			"Dark Red",
+			"Dark Blue",
+			"Dark Green",
+			"Dark Yellow",
+			"Dark Orange",
+			"Dark Purple",
+			"Dark Pink",
+			"Dark Gold",
+			"Silver"
+		};
+
 		/* todo: Hair colors, I guess. */
+
+		private ToolTip ColorToolTip;
 		#endregion
 
 		/// <summary>
@@ -82,6 +120,8 @@ namespace VPWStudio.Controls
 		public CostumeColorControl()
 		{
 			InitializeComponent();
+			ColorToolTip = new ToolTip();
+			ColorToolTip.SetToolTip(panelColorPreview, ColorNames[(int)nudColor.Value]);
 		}
 
 		/// <summary>
@@ -112,6 +152,7 @@ namespace VPWStudio.Controls
 				case ColorMode.Modern:
 				default:
 					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, ColorNames[(int)nudColor.Value]);
 					break;
 			}
 		}
@@ -119,6 +160,16 @@ namespace VPWStudio.Controls
 		private void nudColor_ValueChanged(object sender, EventArgs e)
 		{
 			UpdateColor();
+		}
+
+		private void panelColorPreview_MouseHover(object sender, EventArgs e)
+		{
+			ColorToolTip.Show("test", this);
+		}
+
+		private void panelColorPreview_MouseLeave(object sender, EventArgs e)
+		{
+			ColorToolTip.Hide(this);
 		}
 	}
 }
