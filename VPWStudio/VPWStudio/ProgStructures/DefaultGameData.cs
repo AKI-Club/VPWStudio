@@ -308,6 +308,8 @@ namespace VPWStudio
 					{ "StoryModeSchedule", new DefaultLocationDataEntry(0x6AED0, 180) },
 					{ "StoryModeBookingInstructions", new DefaultLocationDataEntry(0xDB5A0, 480) },
 
+					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0xDC280, 190) },
+
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7C710, 4360) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
 					{ "IntroDefs_Later_Sequence", new DefaultLocationDataEntry(0x7E098, 2292) },
