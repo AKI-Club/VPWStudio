@@ -1824,10 +1824,10 @@
 0720=Ci4Texture;[Arena - Kawasaki] (ads 3 with Coke Coke)|p:071F
 0721=Ci4Palette;[Arena - Kawasaki] Skyline
 0722=Ci4Texture;[Arena - Kawasaki] Skyline|p:0721
-0723=Ci4Palette;
-0724=Ci4Texture;|p:0723
-0725=Ci4Palette;
-0726=Ci4Texture;|p:0725
+0723=Ci4Palette;[Arena - Kawasaki] Blue Corner Mat 1
+0724=Ci4Texture;[Arena - Kawasaki] Blue Corner Mat 1|p:0723
+0725=Ci4Palette;[Arena - Kawasaki] Blue Corner Mat 2
+0726=Ci4Texture;[Arena - Kawasaki] Blue Corner Mat 2|p:0725
 0727=Ci4Palette;[Arena - Kawasaki] Scoreboard
 0728=Ci4Texture;[Arena - Kawasaki] Scoreboard|p:0727
 0729=Ci4Palette;[Arena - Kawasaki] Guardrail
@@ -2256,7 +2256,7 @@
 08D0=AkiModel;
 08D1=Ci4Palette;
 08D2=Ci4Palette;
-08D3=Ci8Palette;(raw CI4 texture??)
+08D3=RawCi4TexPal;(raw CI4 texture??)|w:16,h:16
 08D4=Ci4Palette;
 08D5=Ci4Palette;
 08D6=Ci4Palette;
