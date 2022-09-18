@@ -169,6 +169,8 @@ namespace VPWStudio
 			{ "FaceAccessories_VertDisplacement", "$FACEACCESSORIES_VERTDISPLACEMENT" },
 			{ "FaceAccessories_Type", "$FACEACCESSORIES_TYPE" },
 
+			{ "AttractModeDemoMatches", "$ATTRACT_MODE_DEMO_MATCHES" },
+
 			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 
 			// WM2K and VPW2:
