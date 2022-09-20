@@ -24,7 +24,7 @@ namespace VPWStudio
 		ROM = 0,
 
 		/// <summary>
-		/// Found in RAM. (originally intended for GameShark code support; deprecated)
+		/// Found in RAM.
 		/// </summary>
 		RAM,
 
