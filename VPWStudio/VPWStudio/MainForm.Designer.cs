@@ -89,10 +89,11 @@
 			this.timTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.paramUnpackTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.paramUnpackTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.demoMatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -188,6 +189,7 @@
             this.arenasToolStripMenuItem,
             this.championshipsToolStripMenuItem,
             this.costumesToolStripMenuItem,
+            this.demoMatchesToolStripMenuItem,
             this.titantronVideosToolStripMenuItem,
             this.fileTableToolStripMenuItem,
             this.gameIntroductionToolStripMenuItem,
@@ -538,6 +540,12 @@
 			resources.ApplyResources(this.testScene3dToolStripMenuItem, "testScene3dToolStripMenuItem");
 			this.testScene3dToolStripMenuItem.Click += new System.EventHandler(this.testScene3dToolStripMenuItem_Click);
 			// 
+			// paramUnpackTestToolStripMenuItem
+			// 
+			this.paramUnpackTestToolStripMenuItem.Name = "paramUnpackTestToolStripMenuItem";
+			resources.ApplyResources(this.paramUnpackTestToolStripMenuItem, "paramUnpackTestToolStripMenuItem");
+			this.paramUnpackTestToolStripMenuItem.Click += new System.EventHandler(this.paramUnpackTestToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -565,11 +573,11 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// paramUnpackTestToolStripMenuItem
+			// demoMatchesToolStripMenuItem
 			// 
-			this.paramUnpackTestToolStripMenuItem.Name = "paramUnpackTestToolStripMenuItem";
-			resources.ApplyResources(this.paramUnpackTestToolStripMenuItem, "paramUnpackTestToolStripMenuItem");
-			this.paramUnpackTestToolStripMenuItem.Click += new System.EventHandler(this.paramUnpackTestToolStripMenuItem_Click);
+			this.demoMatchesToolStripMenuItem.Name = "demoMatchesToolStripMenuItem";
+			resources.ApplyResources(this.demoMatchesToolStripMenuItem, "demoMatchesToolStripMenuItem");
+			this.demoMatchesToolStripMenuItem.Click += new System.EventHandler(this.demoMatchesToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -661,6 +669,7 @@
 		private System.Windows.Forms.ToolStripMenuItem pngToMenubgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
 		private System.Windows.Forms.ToolStripMenuItem paramUnpackTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem demoMatchesToolStripMenuItem;
 	}
 }
 
