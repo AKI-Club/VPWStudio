@@ -215,6 +215,12 @@
   <data name="costumesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Costume Items</value>
   </data>
+  <data name="demoMatchesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="demoMatchesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Demo Matches</value>
+  </data>
   <data name="titantronVideosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -2095,6 +2101,12 @@
   <data name="&gt;&gt;testScene3dToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;paramUnpackTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>paramUnpackTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;paramUnpackTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -2107,10 +2119,10 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;paramUnpackTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>paramUnpackTestToolStripMenuItem</value>
+  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Name" xml:space="preserve">
+    <value>demoMatchesToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;paramUnpackTestToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

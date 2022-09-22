@@ -940,6 +940,34 @@ namespace VPWStudio
 			}
 		}
 
+		private void demoMatchesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.VPW2:
+					Editors.VPW2.DemoMatchEditor_VPW2 demoMatchEd = new Editors.VPW2.DemoMatchEditor_VPW2();
+					if (demoMatchEd.ShowDialog() == DialogResult.OK)
+					{
+						Program.ErrorMessageBox("Data does not get saved yet, sorry");
+					}
+
+					break;
+
+				case VPWGames.NoMercy:
+					Program.ErrorMessageBox("Demo match locations for WWF No Mercy have yet to be found. Please help!");
+					break;
+
+				default:
+					Program.ErrorMessageBox("Demo match locations for games before VPW2 may not even exist... The data has yet to be found, in any case.");
+					break;
+			}
+		}
+
 		/// <summary>
 		/// File table editor
 		/// </summary>
