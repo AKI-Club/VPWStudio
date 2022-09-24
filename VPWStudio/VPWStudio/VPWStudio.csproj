@@ -450,6 +450,7 @@
     <Compile Include="Editors\VPW2\DemoMatchEditor_VPW2.Designer.cs">
       <DependentUpon>DemoMatchEditor_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameSpecific\VPW2\MatchRuleset.cs" />
     <Compile Include="GameSpecific\VPW2\StoryModeBookingInstruction.cs" />
     <Compile Include="GameSpecific\VPW2\StoryModeEvent.cs" />
     <Compile Include="GameSpecific\VPW2\StoryModeSingleEntry.cs" />
