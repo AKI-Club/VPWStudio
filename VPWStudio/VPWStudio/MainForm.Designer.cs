@@ -46,6 +46,7 @@
 			this.arenasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.championshipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.costumesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.demoMatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.titantronVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gameIntroductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +94,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.demoMatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchRulesetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -193,6 +194,7 @@
             this.titantronVideosToolStripMenuItem,
             this.fileTableToolStripMenuItem,
             this.gameIntroductionToolStripMenuItem,
+            this.matchRulesetsToolStripMenuItem,
             this.menusToolStripMenuItem,
             this.movesToolStripMenuItem,
             this.soundsToolStripMenuItem,
@@ -239,6 +241,12 @@
 			this.costumesToolStripMenuItem.Name = "costumesToolStripMenuItem";
 			resources.ApplyResources(this.costumesToolStripMenuItem, "costumesToolStripMenuItem");
 			this.costumesToolStripMenuItem.Click += new System.EventHandler(this.costumesToolStripMenuItem_Click);
+			// 
+			// demoMatchesToolStripMenuItem
+			// 
+			this.demoMatchesToolStripMenuItem.Name = "demoMatchesToolStripMenuItem";
+			resources.ApplyResources(this.demoMatchesToolStripMenuItem, "demoMatchesToolStripMenuItem");
+			this.demoMatchesToolStripMenuItem.Click += new System.EventHandler(this.demoMatchesToolStripMenuItem_Click);
 			// 
 			// titantronVideosToolStripMenuItem
 			// 
@@ -573,11 +581,11 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// demoMatchesToolStripMenuItem
+			// matchRulesetsToolStripMenuItem
 			// 
-			this.demoMatchesToolStripMenuItem.Name = "demoMatchesToolStripMenuItem";
-			resources.ApplyResources(this.demoMatchesToolStripMenuItem, "demoMatchesToolStripMenuItem");
-			this.demoMatchesToolStripMenuItem.Click += new System.EventHandler(this.demoMatchesToolStripMenuItem_Click);
+			this.matchRulesetsToolStripMenuItem.Name = "matchRulesetsToolStripMenuItem";
+			resources.ApplyResources(this.matchRulesetsToolStripMenuItem, "matchRulesetsToolStripMenuItem");
+			this.matchRulesetsToolStripMenuItem.Click += new System.EventHandler(this.matchRulesetsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -670,6 +678,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
 		private System.Windows.Forms.ToolStripMenuItem paramUnpackTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem demoMatchesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchRulesetsToolStripMenuItem;
 	}
 }
 

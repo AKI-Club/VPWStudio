@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace VPWStudio.Editors.VPW2
 {
-	public partial class DemoMatchEditor_VPW2 : Form
+	public partial class DemoMatch_VPW2 : Form
 	{
 		private int NUM_MATCHES = 38;
 		private int BYTES_PER_MATCH = 5;
 
 		public byte[] DemoMatchData;
 
-		public DemoMatchEditor_VPW2()
+		public DemoMatch_VPW2()
 		{
 			InitializeComponent();
 

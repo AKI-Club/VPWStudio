@@ -72,6 +72,9 @@ namespace VPWStudio.GameSpecific.VPW2
 		// [mma] number of rounds
 		public byte NumRounds;
 
+		// [mma] gong save
+		public byte GongSave;
+
 		#endregion
 
 		#region Constructors
@@ -99,6 +102,7 @@ namespace VPWStudio.GameSpecific.VPW2
 			Down = 0;
 			Suplex = 0;
 			NumRounds = 0;
+			GongSave = 0;
 		}
 
 		/// <summary>
@@ -137,6 +141,7 @@ namespace VPWStudio.GameSpecific.VPW2
 			Down = br.ReadByte();
 			Suplex = br.ReadByte();
 			NumRounds = br.ReadByte();
+			GongSave = br.ReadByte();
 		}
 
 		/// <summary>
@@ -164,6 +169,7 @@ namespace VPWStudio.GameSpecific.VPW2
 			bw.Write(Down);
 			bw.Write(Suplex);
 			bw.Write(NumRounds);
+			bw.Write(GongSave);
 		}
 		#endregion
 	}

@@ -167,6 +167,12 @@
     <Compile Include="Editors\StableDefs_Early.Designer.cs">
       <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\VPW2\Ruleset_VPW2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW2\Ruleset_VPW2.Designer.cs">
+      <DependentUpon>Ruleset_VPW2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WrestlerMain_Early.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -444,11 +450,11 @@
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
-    <Compile Include="Editors\VPW2\DemoMatchEditor_VPW2.cs">
+    <Compile Include="Editors\VPW2\DemoMatch_VPW2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editors\VPW2\DemoMatchEditor_VPW2.Designer.cs">
-      <DependentUpon>DemoMatchEditor_VPW2.cs</DependentUpon>
+    <Compile Include="Editors\VPW2\DemoMatch_VPW2.Designer.cs">
+      <DependentUpon>DemoMatch_VPW2.cs</DependentUpon>
     </Compile>
     <Compile Include="GameSpecific\VPW2\MatchRuleset.cs" />
     <Compile Include="GameSpecific\VPW2\StoryModeBookingInstruction.cs" />
@@ -752,6 +758,9 @@
     <EmbeddedResource Include="Editors\VPW2\DefaultCostume_VPW2.resx">
       <DependentUpon>DefaultCostume_VPW2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW2\Ruleset_VPW2.resx">
+      <DependentUpon>Ruleset_VPW2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW2\StableDefs_VPW2.resx">
       <DependentUpon>StableDefs_VPW2.cs</DependentUpon>
     </EmbeddedResource>
@@ -779,8 +788,8 @@
     <EmbeddedResource Include="Editors\WM2K\WrestlerMain_WM2K.resx">
       <DependentUpon>WrestlerMain_WM2K.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editors\VPW2\DemoMatchEditor_VPW2.resx">
-      <DependentUpon>DemoMatchEditor_VPW2.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\VPW2\DemoMatch_VPW2.resx">
+      <DependentUpon>DemoMatch_VPW2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
