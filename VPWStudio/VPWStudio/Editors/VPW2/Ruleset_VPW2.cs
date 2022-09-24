@@ -15,6 +15,36 @@ namespace VPWStudio.Editors.VPW2
 	{
 		public MatchRuleset[] Rulesets = new MatchRuleset[23];
 
+		// fun fact: The rule values mean different things based on the core ruleset type!
+		// Some values only get used in certain ruleset types.
+
+		private string[] DefaultRulesetExplanations = new string[]
+		{
+			"Default Singles",
+			"Default Martial Arts",
+			"Default Tag",
+			"Default Battle Royal",
+			"RRS/KRS Singles",
+			"RRS/KRS Tag",
+			"RRS/KRS Singles - Champion Carnival League",
+			"RRS/KRS Singles - Champion Carnival Final",
+			"RRS/KRS Tag - World's Strongest Tag League",
+			"RRS/KRS Tag - World's Strongest Tag League Final",
+			"RRS/KRS Singles - Fan Appreciation Day Tournament",
+			"RRS/KRS Tag - Fan Appreciation Day Tournament",
+			"RRS/KRS Battle Royal - New Year's Giant Series",
+			"RRS/KRS Single - Triple Crown Championship",
+			"RRS/KRS Tag - Tag Championship",
+			"RRS/KRS Tag - All-Asia Tag Championship",
+			"Demo - Single",
+			"Demo - Tag",
+			"Demo - Martial Arts 1",
+			"Demo - Martial Arts 2",
+			"Demo - Martial Arts 3",
+			"Demo - Martial Arts 4",
+			"Demo - Martial Arts 5",
+		};
+
 		public Ruleset_VPW2()
 		{
 			InitializeComponent();
@@ -47,7 +77,7 @@ namespace VPWStudio.Editors.VPW2
 			cbRulesets.BeginUpdate();
 			for (int i = 0; i < Rulesets.Length; i++)
 			{
-				cbRulesets.Items.Add(String.Format("Ruleset 0x{0:X2}",i));
+				cbRulesets.Items.Add(String.Format("0x{0:X2} - {1}",i, DefaultRulesetExplanations[i]));
 			}
 			cbRulesets.EndUpdate();
 			cbRulesets.SelectedIndex = 0;
