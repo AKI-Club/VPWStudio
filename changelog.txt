@@ -2,9 +2,47 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 26 (202x/yy/zz)
+Pre-Alpha Preview 27 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 26 (2022/09/24)
+---------------------------------
+- [GameDefinition] Store the revision as a byte instead of a float.
+  This fixes an issue with trying to create projects for WCW vs. nWo World Tour
+  NTSC-U v1.1/Revision A (and possibly any No Mercy project on v1.1/Rev A).
+
+- [Default Costume Editors] Hovering over the color swatch for a few seconds will
+  show a tooltip with the color name.
+
+- [CostumeColorControl] Now supports hair colors (WM2K and later).
+
+- [Default Costume Editors] Use CostumeColorControl for hair color.
+
+- [LocationFile, DefaultGameData] Added entry for Attract Mode Demo Matches.
+  Currently VPW2 only; still looking for No Mercy, as well as confirming
+  if WM2K and earlier have them or not.
+
+- Added very early Demo Match "Editor" for VPW2.
+  Data is not editable. Values do not get written back yet.
+
+  WWF No Mercy's demo match data needs re-confirmation; thanks to WldFb for
+  finding it many years ago.
+
+  Demo matches in general need to be confirmed for WM2K and earlier.
+
+- [LocationFile, DefaultGameData] Added entry for Default Rulesets.
+  Currently VPW2 only; data should be in all games, but formats will be different
+  due to the presence/absence/changing of various rules.
+
+- Added very early Match Ruleset "Editor" for VPW2.
+  Data is not editable. Values do not get written back yet.
+  For other games, data needs to be found (or in some cases, re-found).
+
+* [FileTableDB] Small updates for Revenge and No Mercy FileTableDBs.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 25 (2022/08/12)
 ---------------------------------
