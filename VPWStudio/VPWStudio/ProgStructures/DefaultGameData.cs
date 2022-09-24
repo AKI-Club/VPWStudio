@@ -300,6 +300,8 @@ namespace VPWStudio
 					{ "FaceAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46CF8, 32) },
 					{ "FaceAccessories_Type", new DefaultLocationDataEntry(0x46D38, 32) },
 
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x6DEAC, 460) },
+
 					{ "StoryModeSinglesParticipants", new DefaultLocationDataEntry(0xDB43C, 160) },
 					{ "StoryModeSingleGroups", new DefaultLocationDataEntry(0xDB4DC, 8) },
 					{ "StoryModeTeams", new DefaultLocationDataEntry(0xDB4F0, 74) },
