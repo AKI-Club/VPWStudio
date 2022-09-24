@@ -1,7 +1,7 @@
 ﻿
 namespace VPWStudio.Editors.VPW2
 {
-	partial class DemoMatchEditor_VPW2
+	partial class DemoMatch_VPW2
 	{
 		/// <summary>
 		/// Required designer variable.

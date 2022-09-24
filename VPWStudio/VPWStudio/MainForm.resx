@@ -239,6 +239,12 @@
   <data name="gameIntroductionToolStripMenuItem.Text" xml:space="preserve">
     <value>Game &amp;Introduction</value>
   </data>
+  <data name="matchRulesetsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="matchRulesetsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Match &amp;Rulesets</value>
+  </data>
   <data name="menusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -1843,6 +1849,12 @@
   <data name="&gt;&gt;costumesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Name" xml:space="preserve">
+    <value>demoMatchesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;titantronVideosToolStripMenuItem.Name" xml:space="preserve">
     <value>titantronVideosToolStripMenuItem</value>
   </data>
@@ -2119,10 +2131,10 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Name" xml:space="preserve">
-    <value>demoMatchesToolStripMenuItem</value>
+  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Name" xml:space="preserve">
+    <value>matchRulesetsToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;demoMatchesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

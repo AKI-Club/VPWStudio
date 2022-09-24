@@ -950,7 +950,7 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.VPW2:
-					Editors.VPW2.DemoMatchEditor_VPW2 demoMatchEd = new Editors.VPW2.DemoMatchEditor_VPW2();
+					Editors.VPW2.DemoMatch_VPW2 demoMatchEd = new Editors.VPW2.DemoMatch_VPW2();
 					if (demoMatchEd.ShowDialog() == DialogResult.OK)
 					{
 						Program.ErrorMessageBox("Data does not get saved yet, sorry");
@@ -1023,6 +1023,29 @@ namespace VPWStudio
 			if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
 			{
 				// update intro data
+			}
+		}
+
+		private void matchRulesetsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			switch (Program.CurrentProject.Settings.BaseGame)
+			{
+				case VPWGames.VPW2:
+					Editors.VPW2.Ruleset_VPW2 rules = new Editors.VPW2.Ruleset_VPW2();
+					if (rules.ShowDialog() == DialogResult.OK)
+					{
+						Program.ErrorMessageBox("Data does not get saved yet, sorry");
+					}
+					break;
+
+				default:
+					Program.ErrorMessageBox(String.Format("Ruleset data needs to be found (or re-found) for {0}.", Program.CurrentProject.Settings.BaseGame));
+					break;
 			}
 		}
 
@@ -2593,5 +2616,6 @@ namespace VPWStudio
 			pdt.Show();
 		}
 		#endregion
+
 	}
 }
