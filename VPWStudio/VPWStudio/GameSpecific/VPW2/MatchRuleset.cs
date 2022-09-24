@@ -24,16 +24,23 @@ namespace VPWStudio.GameSpecific.VPW2
 		// round length
 		public byte RoundLength;
 
-		// outside count
+		/// <summary>
+		/// Outside count
+		/// </summary>
+		/// Battle Royal has different values than other ruleset types.
 		public byte OutsideCount;
 
-		// fall
+		/// <summary>
+		/// Pinfalls
+		/// </summary>
 		public byte Pinfall;
 
 		// give up
 		public byte Submission;
 
-		// tko
+		/// <summary>
+		/// TKO
+		/// </summary>
 		public byte TKO;
 
 		// rope break
@@ -42,7 +49,9 @@ namespace VPWStudio.GameSpecific.VPW2
 		// quick match
 		public byte QuickMatch;
 
-		// blood
+		/// <summary>
+		/// Blood
+		/// </summary>
 		public byte Blood;
 
 		// change title on ring out

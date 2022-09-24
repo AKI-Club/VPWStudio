@@ -84,8 +84,8 @@ namespace VPWStudio.Editors.VPW2
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
 			this.tableLayoutPanel1.Controls.Add(this.lblRulesetIndex, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.cbRulesets, 1, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
@@ -101,7 +101,7 @@ namespace VPWStudio.Editors.VPW2
 			this.lblRulesetIndex.AutoSize = true;
 			this.lblRulesetIndex.Location = new System.Drawing.Point(3, 7);
 			this.lblRulesetIndex.Name = "lblRulesetIndex";
-			this.lblRulesetIndex.Size = new System.Drawing.Size(124, 13);
+			this.lblRulesetIndex.Size = new System.Drawing.Size(81, 13);
 			this.lblRulesetIndex.TabIndex = 0;
 			this.lblRulesetIndex.Text = "&Ruleset Index";
 			// 
@@ -110,9 +110,9 @@ namespace VPWStudio.Editors.VPW2
 			this.cbRulesets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbRulesets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbRulesets.FormattingEnabled = true;
-			this.cbRulesets.Location = new System.Drawing.Point(133, 3);
+			this.cbRulesets.Location = new System.Drawing.Point(90, 3);
 			this.cbRulesets.Name = "cbRulesets";
-			this.cbRulesets.Size = new System.Drawing.Size(300, 21);
+			this.cbRulesets.Size = new System.Drawing.Size(343, 21);
 			this.cbRulesets.TabIndex = 1;
 			this.cbRulesets.SelectedIndexChanged += new System.EventHandler(this.cbRulesets_SelectedIndexChanged);
 			// 
@@ -598,8 +598,10 @@ namespace VPWStudio.Editors.VPW2
 			// 
 			// Ruleset_VPW2
 			// 
+			this.AcceptButton = this.btnOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(464, 281);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOK);
