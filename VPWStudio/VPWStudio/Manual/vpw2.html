@@ -89,6 +89,10 @@ multiple 64x30 chunks of an image, with a total of 5 columns and 8 rows.</p>
 <hr />
 
 <h2><a name="WrestlerID">Default Wrestler IDs</a></h2>
+<p>Internal wrestler ordering generally matches the stables, though exceptions
+are made for unlocked characters (and some other oddities). There are no obvious
+gaps in ordering, unlike previous games.</p>
+
 <table>
 <thead>
 <tr>
@@ -617,6 +621,27 @@ multiple 64x30 chunks of an image, with a total of 5 columns and 8 rows.</p>
 By default, they are only loaded when visiting the Wrestler section of the Data
 menu in the Options.</p>
 
+<p>Nobody's particularly sure why Enson Inoue is hanging out with the Michinoku Pro
+dudes (at ID4 0607), but given that Mil Mascaras is right before him in ID4 ordering
+(0606), his slot probably originally belonged to Dos Caras.</p>
+
+<p>As for identities of people who <em>could have</em> been in the game, that's
+a lot less obvious. All we have to go by is how AKI supposedly named the files
+for moveset/parameters, as those seem to get added to the file table in alphabetical
+order.</p>
+
+<ul>
+<li>0A03 &ndash; Belongs to Mark Kerr in the final game, but appears near the top of the file list. The most likely candidate is Andy Hug, as this appears after Andre the Giant, but before Giant Baba.</li>
+<li>0409 &ndash; Belongs to Magnum TOKYO in the final game. Appears after Giant Baba, filename likely starts with a "b".</li>
+<li>0806 &ndash; Belongs to Rumina Sato in the final game. Appears right after ID4 0409, filename likely starts with a "b" as well.</li>
+<li>0607 &ndash; Belongs to Enson Inoue, as mentioned above. Appears right between the end of D and the start of F.</li>
+<li>0508 &ndash; Belongs to Dragon Kid in the final game. Appears between Hansen and Hase, so filename likely starts with "ha".</li>
+<li>0605 &ndash; Belongs to TAKA Michinoku in the final game. Appears between Hiro Saito and Daisuke Ikeda, so filename could start with either "h" or "i".</li>
+<li>040A &ndash; Belongs to CIMA in the final game. Appears between Shinjiro Otani and Rickson Gracie. Starting letter can be anywhere from "o" to "r".</li>
+<li>0B02 &ndash; Belongs to Ultimo Dragon in the final game. Appears between Minoru Suzuki and Nobuhiko Takada. Could start with "s" or "t".</li>
+<li>010D &ndash; Belongs to Kentaro Shiga in the final game. Appears between Yoshihiro Takayama and Kiyoshi Tamura. Likely starts with "ta".</li>
+</ul>
+
 <hr />
 
 <h2><a name="WrestlerData">Wrestler Data</a></h2>
@@ -646,6 +671,59 @@ Mode and export the Moves and Parameters in the formats required.</p>
 <p>Default costume data is also stored in the FileTable (file ID <code>006B</code>),
 and can be edited via the Wrestlers dialog. The "Appearance Index" in the Wrestler
 dialog maps to the entries in the default costume data.</p>
+
+<h4>Data Format</h4>
+<ul>
+<li>Offset 0x00: Body Type</li>
+<li>Offset 0x01: Skin Color</li>
+<li>Offset 0x02: Ring Attire</li>
+<li>Offset 0x03: Ring Attire Color 1</li>
+<li>Offset 0x04: Ring Attire Color 2</li>
+<li>Offset 0x05: Upper Attire</li>
+<li>Offset 0x06: Upper Attire Color 1</li>
+<li>Offset 0x07: Upper Attire Color 2</li>
+<li>Offset 0x08: Entrance Attire</li>
+<li>Offset 0x09: Entrance Attire Color 1</li>
+<li>Offset 0x0A: Entrance Attire Color 2</li>
+<li>Offset 0x0B: Entrance Weapon</li>
+<li>Offset 0x0C: Gloves</li>
+<li>Offset 0x0D: Gloves Color 1</li>
+<li>Offset 0x0E: Gloves Color 2</li>
+<li>Offset 0x0F: Tattoo</li>
+<li>Offset 0x10: Wristband</li>
+<li>Offset 0x11: Wristband Color</li>
+<li>Offset 0x12: Left Elbow Pad</li>
+<li>Offset 0x13: Left Elbow PadColor</li>
+<li>Offset 0x14: Right Elbow Pad</li>
+<li>Offset 0x15: Right Elbow PadColor</li>
+<li>Offset 0x16: Left Knee Pad</li>
+<li>Offset 0x17: Left Knee Pad Color</li>
+<li>Offset 0x18: Right Knee Pad</li>
+<li>Offset 0x19: Right Knee Pad Color</li>
+<li>Offset 0x1A: Boots</li>
+<li>Offset 0x1B: Boots Color 1</li>
+<li>Offset 0x1C: Boots Color 2</li>
+<li>Offset 0x1D: Mask</li>
+<li>Offset 0x1E: Head Shape</li>
+<li>Offset 0x1F: Unknown 1</li>
+<li>Offset 0x20: Face Number</li>
+<li>Offset 0x21: Hair Type</li>
+<li>Offset 0x22: Hair Color</li>
+<li>Offset 0x23: Front Hair</li>
+<li>Offset 0x24: Unknown 2</li>
+<li>Offset 0x25: Facial Hair</li>
+<li>Offset 0x26: Facepaint</li>
+<li>Offset 0x27: Accessory</li>
+<li>Offset 0x28: Mask Head Shape</li>
+<li>Offset 0x29: Mask Number</li>
+<li>Offset 0x2A: Mask Color 1</li>
+<li>Offset 0x2B: Mask Color 2</li>
+<li>Offset 0x2C: Mask Color 3</li>
+<li>Offset 0x2D: Mask Color 4</li>
+<li>Offset 0x2E: Mask Hair Type</li>
+<li>Offset 0x2F: Mask Accessory 1</li>
+<li>Offset 0x30: Mask Accessory 2</li>
+</ul>
 
 <hr />
 
