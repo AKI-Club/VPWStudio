@@ -499,13 +499,13 @@ profile editor.</p>
 </tr>
 </tbody>
 </table>
-<p>A few of these entries deserve further explanation.</p>
+<p>A few of these entries require further explanation.</p>
 
 <h3>Post-Match Celebrations</h3>
-<p>Some slots (signified in the above table with a <span class="postmatchwrestler">specific
-background color</span>) have post-match celebrations tied to them. It is important to
-keep them in mind when creating a hack, if you don't plan on removing post-match
-celebrations entirely. (todo: how?)</p>
+<p>Some slots (signified in the above table with a <span class="postmatchwrestler">light
+orange background color</span>) have post-match celebrations tied to them. It is
+important to keep them in mind when creating a hack, if you don't plan on removing
+post-match celebrations entirely. (todo: how?)</p>
 
 <h3>Controller Pak Edit Slot</h3>
 <p>These wrestlers are not normally available for use in matches. By default,
@@ -583,6 +583,50 @@ Mode (Smackdown Mall) and export the Moves and Parameters in the formats require
 <p>Default costume data is also stored in the FileTable (file ID <code>0001</code>),
 and can be edited via the Wrestlers dialog. The "Appearance Index" in the Wrestler
 dialog maps to the entries in the default costume data.</p>
+
+<h4>Data Format</h4>
+<ul>
+<li>Offset 0x00: Body Type</li>
+<li>Offset 0x01: Skin Color</li>
+<li>Offset 0x02: Ring Attire</li>
+<li>Offset 0x03: Ring Attire Color 1</li>
+<li>Offset 0x04: Ring Attire Color 2</li>
+<li>Offset 0x05: Upper Attire</li>
+<li>Offset 0x06: Upper Attire Color 1</li>
+<li>Offset 0x07: Upper Attire Color 2</li>
+<li>Offset 0x08: Entrance Attire</li>
+<li>Offset 0x09: Entrance Attire Color 1</li>
+<li>Offset 0x0A: Entrance Attire Color 2</li>
+<li>Offset 0x0B: Entrance Weapon</li>
+<li>Offset 0x0C: Gloves</li>
+<li>Offset 0x0D: Gloves Color</li>
+<li>Offset 0x0E: Tattoo</li>
+<li>Offset 0x0F: Wristband</li>
+<li>Offset 0x10: Wristband Color</li>
+<li>Offset 0x11: Left Elbow Pad</li>
+<li>Offset 0x12: Left Elbow Pad Color</li>
+<li>Offset 0x13: Right Elbow Pad</li>
+<li>Offset 0x14: Right Elbow Pad Color</li>
+<li>Offset 0x15: Left Knee Pad</li>
+<li>Offset 0x16: Left Knee Pad Color</li>
+<li>Offset 0x17: Right Knee Pad</li>
+<li>Offset 0x18: Right Knee Pad Color</li>
+<li>Offset 0x19: Boots</li>
+<li>Offset 0x1A: Boots Color 1</li>
+<li>Offset 0x1B: Boots Color 2</li>
+<li>Offset 0x1C: Head Shape</li>
+<li>Offset 0x1D: Face Number</li>
+<li>Offset 0x1E: Hair Type</li>
+<li>Offset 0x1F: Hair Color</li>
+<li>Offset 0x20: Front Hair</li>
+<li>Offset 0x21: Facial Hair</li>
+<li>Offset 0x22: Masks/Etc.</li>
+<li>Offset 0x23: Hats/Caps</li>
+<li>Offset 0x24: Hats/Caps Color</li>
+<li>Offset 0x25: Portrait</li>
+</ul>
+
+</ul>
 
 <hr />
 

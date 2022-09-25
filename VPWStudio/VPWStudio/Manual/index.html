@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.26 (September 24th, 2022)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.26 (September 25th, 2022)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -265,6 +265,7 @@ can be found on n64dev.org.</li>
 is recommended for Windows.)</li>
 <li>A calculator that can work in hex and binary modes. Your operating system's calculator
 may fit the bill (guaranteed on Windows, though you might need to switch to Programmer view).</li>
+<li>Japanese IME/text entry, if you plan on editing Virtual Pro-Wrestling 64 or Virtual Pro-Wrestling 2.</li>
 <li>Patience. (This program is not yet complete, and has a long way to go.)</li>
 </ul>
 
@@ -278,7 +279,7 @@ probably want some other tools on hand.</p>
 <ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/ProWrestlingMods/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins by Grix</a>.</li></ul></li>
 <li><a href="https://github.com/queueRAM/Texture64">Texture64</a> by queueRAM &ndash; handles various Nintendo 64 texture formats.</li>
 <li><a href="https://github.com/jombo23/N64-Tools">N64 Midi Tool and N64 Sound Tool</a>, originally by SubDrag and Ice Mario. As the names suggest, these handle sequenced and streaming sounds.</li>
-<li><a href="https://github.com/AKI-Club/vpwspal/releases/tag/v1.1">VPW Studio Palette Tools</a>, for quickly converting and merging JASC PSP palette files to VPW Studio palette format.</li>
+<li><a href="https://github.com/AKI-Club/vpwspal/releases/tag/v1.1">VPW Studio Palette Tools</a>, for quickly converting and merging JASC PSP palette files to VPW Studio palette format. Binaries are included with VPW Studio in the "Tools" folder. They are command-line programs, so use the Command Prompt to launch them. Documentation for these tools can be found in the <a href="#ExtPalTools">External Tools</a> section of this manual.</li>
 </ul>
 
 <h3>Notes</h3>
@@ -842,7 +843,9 @@ around the CI4 and CI8 texture and palette formats.</p>
 <p>VPW Studio can convert PNG images to <code>AkiTexture</code>, but they must have
 a 16 or 256-color palette. Furthermore, images with transparency need to be
 <a href="#DangerZone">manually converted</a> and <a href="#TexTransparency">modified
-with a hex editor</a>, due to assumptions .NET makes about transparent images.</p>
+with a hex editor</a>, due to assumptions the .NET Framework makes about transparent images.
+(Yes, it's possible to code around this, but until it gets implemented, you'll
+have to follow the linked instructions.)</p>
 
 <h3><code>AkiText</code></h3>
 <p><code>AkiText</code> files contain multiple strings used for text display.</p>
@@ -1432,8 +1435,8 @@ on how many entries are selected.</p>
 <p>The single entry dialog has an "Extra" tab, which includes a few options
 for specific file types.</p>
 <ul>
-<li><strong>Image Width</strong> &ndash; Set the width of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
-<li><strong>Image Height</strong> &ndash; Set the height of an image. Primarily used with <code>I*Texture</code>s. "Unset" value is -1.</li>
+<li><strong>Image Width</strong> &ndash; Set the width of an image. Primarily used with <code>I*Texture</code> and <code>RawCi*</code> types. "Unset" value is -1.</li>
+<li><strong>Image Height</strong> &ndash; Set the height of an image. Primarily used with <code>I*Texture</code> and <code>RawCi*</code> types. "Unset" value is -1.</li>
 <li><strong>Transparent Color Index</strong> &ndash; Currently unused. "Unset" value is -1.</li>
 <li><strong>Default Palette ID</strong> &ndash; Set the default palette ID, used for
 previewing images. The value corresponds to an index in the File Table, and is
@@ -2077,7 +2080,7 @@ the Danger Zone menu in pre-Alpha Preview 23.)</p>
 <h2><a name="DangerZone">Danger Zone</a></h2>
 <p>The Danger Zone is a collection of tools that is not necessarily meant for
 end users. These tools are typically rough and unfinished, and usually serve as
-the base for the final, more polished features. Starting with Pre-Alpha Preview
+the base for the final, more polished features. Starting with pre-Alpha Preview
 15, items are grouped by their general purpose.</p>
 
 <h3>LZSS-related</h3>
@@ -2104,11 +2107,13 @@ the terminally curious.</li>
 <hr />
 <h2><a name="ExternalTools">External Tools</a></h2>
 <p>Starting with Pre-Alpha Preview 24, VPW Studio includes some extra stand-alone
-programs that are useful for development purposes.</p>
+programs that are useful for development purposes. These programs are located in
+the "Tools" directory.</p>
 
 <h3><a name="ExtPalTools">VPW Studio Palette Conversion Tools</a></h3>
 <p>Two stand-alone tools are provided for converting JASC Paint Shop Pro palette files
-to the VPW Studio palette format (<code>.vpwspal</code>).</p>
+to the VPW Studio palette format (<code>.vpwspal</code>). These tools are meant to
+be used from the Command Prompt, but file drag-and-drop works as well.</p>
 
 <p>(For more information on these tools, see the original repository:
 <a href="https://github.com/AKI-Club/vpwspal">https://github.com/AKI-Club/vpwspal</a>)</p>
@@ -2147,7 +2152,7 @@ so remember to put the filenames in the proper order for output.</p>
 <p>(todo: very incomplete)</p>
 <ul>
 <li><strong>Main Programming</strong> &ndash; freem</li>
-<li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Stylez, Keson, jordyad, randymanfoo, Melonbread</li>
+<li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Stylez, Keson, jordyad, randymanfoo, Melonbread, WldFb</li>
 </ul>
 
 <p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>, both of which are MIT licensed.</p>
