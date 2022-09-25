@@ -944,8 +944,8 @@
 03B6=Binary;(Unknown text file)
 03B7=Binary;Wrestler Params 0504 (Albert)
 03B8=Binary;Wrestler Moveset 0504 (Albert)
-03B9=Binary;Wrestler Params ????
-03BA=Binary;Wrestler Moveset ????
+03B9=Binary;Wrestler Params ???? (Ali Singh?)
+03BA=Binary;Wrestler Moveset ???? (Ali Singh?)
 03BB=Binary;Wrestler Params 0701 (Al Snow)
 03BC=Binary;Wrestler Moveset 0701 (Al Snow)
 03BD=Binary;Wrestler Params 0001 (Austin)
@@ -986,8 +986,8 @@
 03E0=Binary;Wrestler Moveset 0105 (Farooq)
 03E1=Binary;Wrestler Params 0602 (Gangrel)
 03E2=Binary;Wrestler Moveset 0602 (Gangrel)
-03E3=Binary;Wrestler Params ????
-03E4=Binary;Wrestler Moveset ????
+03E3=Binary;Wrestler Params ???? (Gillberg?)
+03E4=Binary;Wrestler Moveset ???? (Gillberg?)
 03E5=Binary;Wrestler Params 0402 (Godfather)
 03E6=Binary;Wrestler Moveset 0402 (Godfather)
 03E7=Binary;Wrestler Params 0403 (Jericho)
