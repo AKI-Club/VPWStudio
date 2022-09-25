@@ -72,7 +72,7 @@ namespace VPWStudio.Editors.VPW2
 			tbWrestler3.Text = String.Format("0x{0:X2}", DemoMatchData[(cbDemoMatches.SelectedIndex * BYTES_PER_MATCH)+2]);
 			tbWrestler4.Text = String.Format("0x{0:X2}", DemoMatchData[(cbDemoMatches.SelectedIndex * BYTES_PER_MATCH)+3]);
 			byte arenaRules = DemoMatchData[(cbDemoMatches.SelectedIndex * BYTES_PER_MATCH) + 4];
-			tbRuleset.Text = String.Format("0x{0:X2} (arena {1}, ruleset {2})", arenaRules, (arenaRules&0xF0)>>4, arenaRules&0x0F);
+			tbRuleset.Text = String.Format("0x{0:X2} (arena {1}, ruleset {2})", arenaRules, (arenaRules&0xF0)>>4, (arenaRules&0x0F)|0x10);
 		}
 
 		private void btnOK_Click(object sender, EventArgs e)
