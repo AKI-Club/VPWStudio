@@ -336,6 +336,8 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x803B8, 330) },
+
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9890, 3220) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0xAA524, 96) },
 
@@ -358,6 +360,8 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44EE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44270, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4489C, 1600) },
+
+					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80348, 330) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9820, 3220) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0xAA4B4, 96) },
@@ -382,6 +386,8 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x803B8, 330) },
+
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9900, 3220) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0xAA594, 96) },
 
@@ -404,6 +410,8 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44DE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44170, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4479C, 1600) },
+
+					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80248, 330) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9790, 3220) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0xAA424, 96) },
