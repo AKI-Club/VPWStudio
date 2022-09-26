@@ -65,14 +65,14 @@ namespace VPWStudio.Editors.VPW2
 			this.tlpMatches.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tlpMatches.ColumnCount = 2;
-			this.tlpMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.22727F));
-			this.tlpMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.77273F));
+			this.tlpMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tlpMatches.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
 			this.tlpMatches.Controls.Add(this.cbDemoMatches, 1, 0);
 			this.tlpMatches.Controls.Add(this.lblMatch, 0, 0);
 			this.tlpMatches.Location = new System.Drawing.Point(12, 12);
 			this.tlpMatches.Name = "tlpMatches";
 			this.tlpMatches.RowCount = 1;
-			this.tlpMatches.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpMatches.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpMatches.Size = new System.Drawing.Size(440, 35);
 			this.tlpMatches.TabIndex = 1;
 			// 
@@ -160,7 +160,7 @@ namespace VPWStudio.Editors.VPW2
 			this.lblRuleset.Name = "lblRuleset";
 			this.lblRuleset.Size = new System.Drawing.Size(104, 13);
 			this.lblRuleset.TabIndex = 4;
-			this.lblRuleset.Text = "Venue and Ruleset";
+			this.lblRuleset.Text = "Arena and Ruleset";
 			// 
 			// tbWrestler1
 			// 
@@ -209,7 +209,7 @@ namespace VPWStudio.Editors.VPW2
 			// 
 			// btnOK
 			// 
-			this.btnOK.Location = new System.Drawing.Point(293, 193);
+			this.btnOK.Location = new System.Drawing.Point(296, 193);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(75, 23);
 			this.btnOK.TabIndex = 3;
@@ -220,7 +220,7 @@ namespace VPWStudio.Editors.VPW2
 			// btnCancel
 			// 
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(374, 193);
+			this.btnCancel.Location = new System.Drawing.Point(377, 193);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 4;
@@ -228,7 +228,7 @@ namespace VPWStudio.Editors.VPW2
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
-			// DemoMatchEditor_VPW2
+			// DemoMatch_VPW2
 			// 
 			this.AcceptButton = this.btnOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,8 +242,8 @@ namespace VPWStudio.Editors.VPW2
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(480, 240);
-			this.Name = "DemoMatchEditor_VPW2";
+			this.MinimumSize = new System.Drawing.Size(480, 267);
+			this.Name = "DemoMatch_VPW2";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Demo Match Editor";
 			this.tlpMatches.ResumeLayout(false);
