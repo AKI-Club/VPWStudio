@@ -950,16 +950,23 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.VPW2:
-					Editors.VPW2.DemoMatch_VPW2 demoMatchEd = new Editors.VPW2.DemoMatch_VPW2();
-					if (demoMatchEd.ShowDialog() == DialogResult.OK)
 					{
-						Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						Editors.VPW2.DemoMatch_VPW2 demoMatchEd = new Editors.VPW2.DemoMatch_VPW2();
+						if (demoMatchEd.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						}
 					}
-
 					break;
 
 				case VPWGames.NoMercy:
-					Program.ErrorMessageBox("Demo match locations for WWF No Mercy have yet to be found. Please help!");
+					{
+						Editors.NoMercy.DemoMatch_NoMercy demoMatchEd = new Editors.NoMercy.DemoMatch_NoMercy();
+						if (demoMatchEd.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						}
+					}
 					break;
 
 				default:

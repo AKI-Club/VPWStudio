@@ -149,6 +149,12 @@
     <Compile Include="Editors\GameIntroEditor_Later.Designer.cs">
       <DependentUpon>GameIntroEditor_Later.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\DemoMatch_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\DemoMatch_NoMercy.Designer.cs">
+      <DependentUpon>DemoMatch_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\NoMercy\MenuItemsNoGroup_NoMercy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -727,6 +733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\DefaultCostume_NoMercy.resx">
       <DependentUpon>DefaultCostume_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\DemoMatch_NoMercy.resx">
+      <DependentUpon>DemoMatch_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\MenuItemsNoGroup_NoMercy.resx">
       <DependentUpon>MenuItemsNoGroup_NoMercy.cs</DependentUpon>
