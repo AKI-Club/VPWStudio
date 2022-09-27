@@ -167,6 +167,12 @@
     <Compile Include="Editors\NoMercy\MenuItemsShop_NoMercy.Designer.cs">
       <DependentUpon>MenuItemsShop_NoMercy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\Ruleset_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\Ruleset_NoMercy.Designer.cs">
+      <DependentUpon>Ruleset_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\StableDefs_Early.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,7 @@
     <Compile Include="GameSpecific\MaskDef_Early.cs" />
     <Compile Include="GameSpecific\NoMercy\CostumeTextures.cs" />
     <Compile Include="GameSpecific\NoMercy\DefaultCostumeData.cs" />
+    <Compile Include="GameSpecific\NoMercy\MatchRuleset.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_Costume.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_NoGroup.cs" />
     <Compile Include="GameSpecific\NoMercy\MenuItems_Shop.cs" />
@@ -742,6 +749,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\MenuItemsShop_NoMercy.resx">
       <DependentUpon>MenuItemsShop_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\Ruleset_NoMercy.resx">
+      <DependentUpon>Ruleset_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\StableDefs_NoMercy.resx">
       <DependentUpon>StableDefs_NoMercy.cs</DependentUpon>
