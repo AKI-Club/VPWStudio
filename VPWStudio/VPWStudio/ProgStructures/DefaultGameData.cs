@@ -336,6 +336,8 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73898, 696) },
+
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x803B8, 330) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9890, 3220) },
@@ -360,6 +362,8 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44EE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44270, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4489C, 1600) },
+
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73828, 696) },
 
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80348, 330) },
 
@@ -386,6 +390,8 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73898, 696) },
+
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x803B8, 330) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0xA9900, 3220) },
@@ -410,6 +416,8 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44DE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44170, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4479C, 1600) },
+
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73728, 696) },
 
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80248, 330) },
 
