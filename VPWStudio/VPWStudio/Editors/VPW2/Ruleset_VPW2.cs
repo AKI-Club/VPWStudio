@@ -45,6 +45,127 @@ namespace VPWStudio.Editors.VPW2
 			"Demo - Martial Arts 5",
 		};
 
+		private string[] RulesetStrings = new string[]
+		{
+			"Singles",
+			"Martial Arts",
+			"Tag Team",
+			"Battle Royal"
+		};
+
+		private string[] CommonYesNoStrings = new string[]
+		{
+			"On",
+			"Off"
+		};
+
+		private string[] BloodStrings = new string[]
+		{
+			"On",
+			"Referee Stop",
+			"Off",
+		};
+
+		private string[] TimeLimits_Wrestling = new string[]
+		{
+			"5 Minutes",
+			"10 Minutes",
+			"15 Minutes",
+			"20 Minutes",
+			"25 Minutes",
+			"30 Minutes",
+			"35 Minutes",
+			"40 Minutes",
+			"45 Minutes",
+			"50 Minutes",
+			"55 Minutes",
+			"60 Minutes",
+			"No Limit",
+		};
+
+		private string[] TimeLimits_MartialArts = new string[]
+		{
+			"3 Minutes",
+			"5 Minutes",
+			"10 Minutes",
+			"15 Minutes",
+			"20 Minutes",
+			"30 Minutes",
+			"60 Minutes",
+			"No Limit"
+		};
+
+		private string[] OutsideStrings_Normal = new string[]
+		{
+			"10 Count",
+			"20 Count",
+			"Lumberjack",
+			"Anywhere",
+			"Off"
+		};
+
+		private string[] OutsideStrings_BattleRoyal = new string[]
+		{
+			"Loss",
+			"Anywhere",
+			"Off"
+		};
+
+		private string[] NumRoundsStrings = new string[]
+		{
+			"1 Round",
+			"2 Rounds",
+			"3 Rounds",
+			"4 Rounds",
+			"5 Rounds",
+			"8 Rounds",
+			"10 Rounds",
+			"12 Rounds",
+			"15 Rounds",
+			"Off"
+		};
+
+		private string[] NumPointsStrings = new string[]
+		{
+			"3 Points",
+			"5 Points",
+			"10 Points",
+			"15 Points",
+			"Free",
+		};
+
+		private string[] TagHelpTimerStrings = new string[]
+		{
+			"5 Seconds",
+			"10 Seconds",
+			"15 Seconds",
+			"20 Seconds",
+			"30 Seconds",
+			"40 Seconds",
+			"50 Seconds",
+			"60 Seconds",
+			"No Touch/Tornado Tag"
+		};
+
+		// used for Down and Rope Escape
+		private string[] MartialArtsScoringStrings = new string[]
+		{
+			"1 Point",
+			"2 Points",
+			"3 Points",
+			"Free",
+			"Off"
+		};
+
+		// Suplex doesn't have an "Off" feature
+		private string[] SuplexPointsStrings = new string[]
+		{
+			"1 Point",
+			"2 Points",
+			"3 Points",
+			"Free"
+		};
+
 		public Ruleset_VPW2()
 		{
 			InitializeComponent();
@@ -103,26 +224,53 @@ namespace VPWStudio.Editors.VPW2
 			}
 
 			MatchRuleset curRuleset = Rulesets[cbRulesets.SelectedIndex];
-			tbMatchRuleset.Text = String.Format("0x{0:X2}", curRuleset.RulesetType);
-			tbTimeLimit.Text = String.Format("0x{0:X2}", curRuleset.TimeLimit);
-			tbRoundLength.Text = String.Format("0x{0:X2}", curRuleset.RoundLength);
-			tbOutsideCount.Text = String.Format("0x{0:X2}", curRuleset.OutsideCount);
-			tbPinfall.Text = String.Format("0x{0:X2}", curRuleset.Pinfall);
-			tbSubmission.Text = String.Format("0x{0:X2}", curRuleset.Submission);
-			tbTKO.Text = String.Format("0x{0:X2}", curRuleset.TKO);
-			tbRopeBreak.Text = String.Format("0x{0:X2}", curRuleset.RopeBreak);
-			tbQuickMatch.Text = String.Format("0x{0:X2}", curRuleset.QuickMatch);
-			tbBlood.Text = String.Format("0x{0:X2}", curRuleset.Blood);
-			tbChangeTitleRingOut.Text = String.Format("0x{0:X2}", curRuleset.ChangeTitleOnRingOut);
-			tbTimeLimitDecision.Text = String.Format("0x{0:X2}", curRuleset.TimeLimitDecision);
-			tbInterference.Text = String.Format("0x{0:X2}", curRuleset.Interference);
-			tbTagHelpTimer.Text = String.Format("0x{0:X2}", curRuleset.TagHelpTimer);
-			tbStartPoints.Text = String.Format("0x{0:X2}", curRuleset.StartPoints);
-			tbRopeEscape.Text = String.Format("0x{0:X2}", curRuleset.RopeEscape);
-			tbDown.Text = String.Format("0x{0:X2}", curRuleset.Down);
-			tbSuplex.Text = String.Format("0x{0:X2}", curRuleset.Suplex);
-			tbNumRounds.Text = String.Format("0x{0:X2}", curRuleset.NumRounds);
-			tbGongSave.Text = String.Format("0x{0:X2}", curRuleset.GongSave);
+			tbMatchRuleset.Text = String.Format("0x{0:X2} ({1})", curRuleset.RulesetType, RulesetStrings[curRuleset.RulesetType]);
+
+			switch(curRuleset.RulesetType)
+			{
+				case 3:
+					// battle royal, forced to "none"
+					tbTimeLimit.Text = String.Format("0x{0:X2} (None)", curRuleset.TimeLimit);
+					break;
+
+				default:
+					// default
+					tbTimeLimit.Text = String.Format("0x{0:X2} ({1})", curRuleset.TimeLimit, TimeLimits_Wrestling[curRuleset.TimeLimit]);
+					break;
+			}
+
+			tbRoundLength.Text = String.Format("0x{0:X2} ({1})", curRuleset.RoundLength, TimeLimits_MartialArts[curRuleset.RoundLength]);
+
+			switch (curRuleset.RulesetType) {
+				case 1:
+					tbOutsideCount.Text = String.Format("0x{0:X2} (Off)", curRuleset.OutsideCount);
+					break;
+
+				case 3:
+					tbOutsideCount.Text = String.Format("0x{0:X2} ({1})", curRuleset.OutsideCount, OutsideStrings_BattleRoyal[curRuleset.OutsideCount]);
+					break;
+
+				default:
+					tbOutsideCount.Text = String.Format("0x{0:X2} ({1})", curRuleset.OutsideCount, OutsideStrings_Normal[curRuleset.OutsideCount]);
+					break;
+			}
+
+			tbPinfall.Text = String.Format("0x{0:X2} ({1})", curRuleset.Pinfall, CommonYesNoStrings[curRuleset.Pinfall]);
+			tbSubmission.Text = String.Format("0x{0:X2} ({1})", curRuleset.Submission, CommonYesNoStrings[curRuleset.Submission]);
+			tbTKO.Text = String.Format("0x{0:X2} ({1})", curRuleset.TKO, CommonYesNoStrings[curRuleset.TKO]);
+			tbRopeBreak.Text = String.Format("0x{0:X2} ({1})", curRuleset.RopeBreak, CommonYesNoStrings[curRuleset.RopeBreak]);
+			tbQuickMatch.Text = String.Format("0x{0:X2} ({1})", curRuleset.QuickMatch, CommonYesNoStrings[curRuleset.QuickMatch]);
+			tbBlood.Text = String.Format("0x{0:X2} ({1})", curRuleset.Blood, BloodStrings[curRuleset.Blood]);
+			tbChangeTitleRingOut.Text = String.Format("0x{0:X2} ({1})", curRuleset.ChangeTitleOnRingOut, CommonYesNoStrings[curRuleset.ChangeTitleOnRingOut]);
+			tbTimeLimitDecision.Text = String.Format("0x{0:X2} ({1})", curRuleset.TimeLimitDecision, CommonYesNoStrings[curRuleset.TimeLimitDecision]);
+			tbInterference.Text = String.Format("0x{0:X2} ({1})", curRuleset.Interference, CommonYesNoStrings[curRuleset.Interference]);
+			tbTagHelpTimer.Text = String.Format("0x{0:X2} ({1})", curRuleset.TagHelpTimer, TagHelpTimerStrings[curRuleset.TagHelpTimer]);
+			tbStartPoints.Text = String.Format("0x{0:X2} ({1})", curRuleset.StartPoints, NumPointsStrings[curRuleset.StartPoints]);
+			tbRopeEscape.Text = String.Format("0x{0:X2} ({1})", curRuleset.RopeEscape, MartialArtsScoringStrings[curRuleset.RopeEscape]);
+			tbDown.Text = String.Format("0x{0:X2} ({1})", curRuleset.Down, MartialArtsScoringStrings[curRuleset.Down]);
+			tbSuplex.Text = String.Format("0x{0:X2} ({1})", curRuleset.Suplex, SuplexPointsStrings[curRuleset.Suplex]);
+			tbNumRounds.Text = String.Format("0x{0:X2} ({1})", curRuleset.NumRounds, NumRoundsStrings[curRuleset.NumRounds]);
+			tbGongSave.Text = String.Format("0x{0:X2} ({1})", curRuleset.GongSave, CommonYesNoStrings[curRuleset.GongSave]);
 		}
 	}
 }
