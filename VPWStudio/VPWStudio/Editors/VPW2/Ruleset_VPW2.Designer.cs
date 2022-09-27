@@ -88,11 +88,11 @@ namespace VPWStudio.Editors.VPW2
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
 			this.tableLayoutPanel1.Controls.Add(this.lblRulesetIndex, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.cbRulesets, 1, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 27);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 27);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// lblRulesetIndex
@@ -101,7 +101,7 @@ namespace VPWStudio.Editors.VPW2
 			this.lblRulesetIndex.AutoSize = true;
 			this.lblRulesetIndex.Location = new System.Drawing.Point(3, 7);
 			this.lblRulesetIndex.Name = "lblRulesetIndex";
-			this.lblRulesetIndex.Size = new System.Drawing.Size(81, 13);
+			this.lblRulesetIndex.Size = new System.Drawing.Size(82, 13);
 			this.lblRulesetIndex.TabIndex = 0;
 			this.lblRulesetIndex.Text = "&Ruleset Index";
 			// 
@@ -110,9 +110,9 @@ namespace VPWStudio.Editors.VPW2
 			this.cbRulesets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbRulesets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbRulesets.FormattingEnabled = true;
-			this.cbRulesets.Location = new System.Drawing.Point(90, 3);
+			this.cbRulesets.Location = new System.Drawing.Point(91, 3);
 			this.cbRulesets.Name = "cbRulesets";
-			this.cbRulesets.Size = new System.Drawing.Size(343, 21);
+			this.cbRulesets.Size = new System.Drawing.Size(346, 21);
 			this.cbRulesets.TabIndex = 1;
 			this.cbRulesets.SelectedIndexChanged += new System.EventHandler(this.cbRulesets_SelectedIndexChanged);
 			// 
@@ -571,9 +571,9 @@ namespace VPWStudio.Editors.VPW2
 			// 
 			this.panel1.AutoScroll = true;
 			this.panel1.Controls.Add(this.tableLayoutPanel2);
-			this.panel1.Location = new System.Drawing.Point(16, 48);
+			this.panel1.Location = new System.Drawing.Point(12, 45);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(436, 192);
+			this.panel1.Size = new System.Drawing.Size(440, 195);
 			this.panel1.TabIndex = 2;
 			// 
 			// btnOK
@@ -588,6 +588,7 @@ namespace VPWStudio.Editors.VPW2
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Location = new System.Drawing.Point(377, 246);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
