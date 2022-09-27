@@ -1043,10 +1043,22 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.VPW2:
-					Editors.VPW2.Ruleset_VPW2 rules = new Editors.VPW2.Ruleset_VPW2();
-					if (rules.ShowDialog() == DialogResult.OK)
 					{
-						Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						Editors.VPW2.Ruleset_VPW2 rules = new Editors.VPW2.Ruleset_VPW2();
+						if (rules.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						}
+					}
+					break;
+
+				case VPWGames.NoMercy:
+					{
+						Editors.NoMercy.Ruleset_NoMercy rules = new Editors.NoMercy.Ruleset_NoMercy();
+						if (rules.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						}
 					}
 					break;
 
