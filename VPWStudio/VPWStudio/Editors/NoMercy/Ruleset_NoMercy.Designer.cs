@@ -421,6 +421,7 @@ namespace VPWStudio.Editors.NoMercy
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(480, 320);
 			this.Name = "Ruleset_NoMercy";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Match Rulesets";
 			this.tableLayoutPanel1.ResumeLayout(false);
