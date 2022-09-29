@@ -613,6 +613,7 @@ namespace VPWStudio.Editors.VPW2
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(480, 320);
 			this.Name = "Ruleset_VPW2";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Match Rulesets";
 			this.tableLayoutPanel1.ResumeLayout(false);
