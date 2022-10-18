@@ -35,6 +35,7 @@ namespace VPWStudio
 		public static string FileLoadFilter_TextureCi4 = "All CI4 Texture Formats|*.ci4tex;*.png|CI4 Textures (*.ci4tex)|*.ci4tex|PNG Files (*.png)|*.png|All Files (*.*)|*.*";
 		public static string FileLoadFilter_TextureCi8 = "All CI8 Texture Formats|*.ci8tex;*.png|CI8 Textures (*.ci8tex)|*.ci8tex|PNG Files (*.png)|*.png|All Files (*.*)|*.*";
 		public static string FileLoadFilter_TextureAki = "All AKI Texture Formats|*.tex;*.png|AKI Textures (*.tex)|*.tex|PNG Files (*.png)|*.png|All Files (*.*)|*.*";
+		public static string FileLoadFilter_TextureTim = "TIM Files (*.tim, *.dat)|*.tim;*.dat|All Files (*.*)|*.*";
 
 		/// <summary>
 		/// File filters for FileTypes.
