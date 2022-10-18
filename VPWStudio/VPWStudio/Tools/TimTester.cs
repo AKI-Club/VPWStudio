@@ -46,7 +46,7 @@ namespace VPWStudio
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select TIM File";
-			ofd.Filter = "TIM File (*.tim, *.dat)|*.tim;*.dat|All Files (*.*)|*.*";
+			ofd.Filter = SharedStrings.FileLoadFilter_TextureTim;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
