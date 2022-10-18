@@ -27,6 +27,11 @@ namespace VPWStudio
 		/// </summary>
 		public static readonly int TIM_IMAGEFORMAT_MASK = 7;
 
+		/// <summary>
+		/// Mask used for getting the "Uses CLUT" value from Flags.
+		/// </summary>
+		public static readonly int TIM_CLUT_MASK = 8;
+
 		// first byte is always 0x10
 
 		#region Class Members
@@ -136,7 +141,7 @@ namespace VPWStudio
 			Flags = BitConverter.ToUInt32(flag,0);
 
 			// determine if we need to read CLUT data
-			if ((byte)(Flags & 0x08) != 0)
+			if ((byte)(Flags & TIM_CLUT_MASK) != 0)
 			{
 				CLUT = new ClutData(br);
 			}
@@ -201,7 +206,7 @@ namespace VPWStudio
 		public Bitmap ToBitmap(int palNumber = 0, ClutData externalClut = null)
 		{
 			// need to know image format in order to find out actual image width
-			ImageFormat format = (ImageFormat)((byte)Flags & 7);
+			ImageFormat format = (ImageFormat)((byte)Flags & TIM_IMAGEFORMAT_MASK);
 			UInt16 actualWidth = 0;
 			switch (format)
 			{
@@ -237,7 +242,7 @@ namespace VPWStudio
 				}
 				else
 				{
-					if ((byte)(Flags & 8) == 0)
+					if ((byte)(Flags & TIM_CLUT_MASK) == 0)
 					{
 						// no CLUT in this TIM file (and no external CLUT loaded either)
 						// make an ad-hoc grayscale palette
