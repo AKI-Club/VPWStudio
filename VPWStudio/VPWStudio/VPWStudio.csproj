@@ -615,6 +615,12 @@
     <Compile Include="Tools\TextIndexTool.Designer.cs">
       <DependentUpon>TextIndexTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\TimEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\TimEditor.Designer.cs">
+      <DependentUpon>TimEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\TimTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -860,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\TextIndexTool.resx">
       <DependentUpon>TextIndexTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\TimEditor.resx">
+      <DependentUpon>TimEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\TimTester.resx">
       <DependentUpon>TimTester.cs</DependentUpon>
