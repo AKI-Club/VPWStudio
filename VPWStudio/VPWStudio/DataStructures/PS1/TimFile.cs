@@ -22,6 +22,11 @@ namespace VPWStudio
 			Mixed
 		}
 
+		/// <summary>
+		/// Mask used for getting the ImageFormat from Flags.
+		/// </summary>
+		public static readonly int TIM_IMAGEFORMAT_MASK = 7;
+
 		// first byte is always 0x10
 
 		#region Class Members
