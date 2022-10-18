@@ -43,9 +43,9 @@ namespace VPWStudio
 				CurrentTim = new TimFile(br);
 				pictureBox1.Image = CurrentTim.ToBitmap();
 
-				nextPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4;
-				previousPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4;
-				if ((TimFile.ImageFormat)(CurrentTim.Flags & 7) == TimFile.ImageFormat.Clut4)
+				nextPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & TimFile.TIM_IMAGEFORMAT_MASK) == TimFile.ImageFormat.Clut4;
+				previousPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & TimFile.TIM_IMAGEFORMAT_MASK) == TimFile.ImageFormat.Clut4;
+				if ((TimFile.ImageFormat)(CurrentTim.Flags & TimFile.TIM_IMAGEFORMAT_MASK) == TimFile.ImageFormat.Clut4)
 				{
 					if (ExternalClut != null)
 					{
@@ -56,6 +56,13 @@ namespace VPWStudio
 						NumPalettes = CurrentTim.CLUT.DataHeight;
 					}
 				}
+
+				if (br.BaseStream.Position != br.BaseStream.Length)
+				{
+					Program.InfoMessageBox("This file probably has more than one TIM, but handling multiple TIMs isn't supported yet.");
+				}
+
+				br.Close();
 			}
 		}
 
@@ -94,6 +101,25 @@ namespace VPWStudio
 			if (e.KeyCode == Keys.Escape)
 			{
 				Close();
+			}
+		}
+
+		private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// show message box with TIM information
+			if (CurrentTim == null)
+			{
+				Program.ErrorMessageBox("No TIM file loaded.");
+				return;
+			}
+
+			if (CurrentTim.CLUT != null)
+			{
+				Program.InfoMessageBox(String.Format("Current TIM has a CLUT with {0} colors at VRAM position {1}x{2}", CurrentTim.CLUT.GetColors().Count, CurrentTim.CLUT.XCoordinate, CurrentTim.CLUT.YCoordinate));
+			}
+			else
+			{
+				Program.InfoMessageBox("Current TIM has no CLUT");
 			}
 		}
 	}

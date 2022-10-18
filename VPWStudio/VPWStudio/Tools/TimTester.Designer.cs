@@ -31,10 +31,15 @@ namespace VPWStudio
 		{
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.loadTIMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.timToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cLUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.nextPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.previousPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadTIMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.nextTIMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.previousTIMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -47,27 +52,32 @@ namespace VPWStudio
 			this.pictureBox1.Location = new System.Drawing.Point(12, 27);
 			this.pictureBox1.MaximumSize = new System.Drawing.Size(1024, 1024);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(256, 257);
+			this.pictureBox1.Size = new System.Drawing.Size(288, 257);
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadTIMToolStripMenuItem,
-            this.cLUTToolStripMenuItem});
+            this.timToolStripMenuItem,
+            this.cLUTToolStripMenuItem,
+            this.infoToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(280, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(312, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// loadTIMToolStripMenuItem
+			// timToolStripMenuItem
 			// 
-			this.loadTIMToolStripMenuItem.Name = "loadTIMToolStripMenuItem";
-			this.loadTIMToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-			this.loadTIMToolStripMenuItem.Text = "&Load TIM...";
-			this.loadTIMToolStripMenuItem.Click += new System.EventHandler(this.loadTIMToolStripMenuItem_Click);
+			this.timToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadTIMToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.nextTIMToolStripMenuItem,
+            this.previousTIMToolStripMenuItem});
+			this.timToolStripMenuItem.Name = "timToolStripMenuItem";
+			this.timToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+			this.timToolStripMenuItem.Text = "TIM";
 			// 
 			// cLUTToolStripMenuItem
 			// 
@@ -81,22 +91,53 @@ namespace VPWStudio
 			// nextPaletteToolStripMenuItem
 			// 
 			this.nextPaletteToolStripMenuItem.Name = "nextPaletteToolStripMenuItem";
-			this.nextPaletteToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.nextPaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.nextPaletteToolStripMenuItem.Text = "&Next Palette";
 			this.nextPaletteToolStripMenuItem.Click += new System.EventHandler(this.nextPaletteToolStripMenuItem_Click);
 			// 
 			// previousPaletteToolStripMenuItem
 			// 
 			this.previousPaletteToolStripMenuItem.Name = "previousPaletteToolStripMenuItem";
-			this.previousPaletteToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.previousPaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.previousPaletteToolStripMenuItem.Text = "&Previous Palette";
 			this.previousPaletteToolStripMenuItem.Click += new System.EventHandler(this.previousPaletteToolStripMenuItem_Click);
+			// 
+			// infoToolStripMenuItem
+			// 
+			this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+			this.infoToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+			this.infoToolStripMenuItem.Text = "&Info...";
+			this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
+			// 
+			// loadTIMToolStripMenuItem
+			// 
+			this.loadTIMToolStripMenuItem.Name = "loadTIMToolStripMenuItem";
+			this.loadTIMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadTIMToolStripMenuItem.Text = "Load...";
+			this.loadTIMToolStripMenuItem.Click += new System.EventHandler(this.loadTIMToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// nextTIMToolStripMenuItem
+			// 
+			this.nextTIMToolStripMenuItem.Name = "nextTIMToolStripMenuItem";
+			this.nextTIMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.nextTIMToolStripMenuItem.Text = "&Next TIM";
+			// 
+			// previousTIMToolStripMenuItem
+			// 
+			this.previousTIMToolStripMenuItem.Name = "previousTIMToolStripMenuItem";
+			this.previousTIMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.previousTIMToolStripMenuItem.Text = "&Previous TIM";
 			// 
 			// TimTester
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(280, 297);
+			this.ClientSize = new System.Drawing.Size(312, 297);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.KeyPreview = true;
@@ -123,9 +164,14 @@ namespace VPWStudio
 
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem loadTIMToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem timToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem cLUTToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem nextPaletteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem previousPaletteToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadTIMToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem nextTIMToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem previousTIMToolStripMenuItem;
 	}
 }
