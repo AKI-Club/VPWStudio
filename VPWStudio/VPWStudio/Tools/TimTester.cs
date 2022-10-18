@@ -13,6 +13,13 @@ namespace VPWStudio
 	public partial class TimTester : Form
 	{
 		/// <summary>
+		/// List of TIM files.
+		/// </summary>
+		public List<TimFile> TimFiles;
+
+		private int CurTimIndex = 0;
+
+		/// <summary>
 		/// Current TIM file being previewed.
 		/// </summary>
 		public TimFile CurrentTim;
@@ -26,21 +33,33 @@ namespace VPWStudio
 
 		public int NumPalettes = 0;
 
+		private StringBuilder InfoStringBuilder = new StringBuilder();
+
 		public TimTester()
 		{
 			InitializeComponent();
+			TimFiles = new List<TimFile>();
+			CurTimIndex = 0;
 		}
 
 		private void loadTIMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select TIM File";
-			ofd.Filter = "TIM File (*.tim)|*.tim|All Files (*.*)|*.*";
+			ofd.Filter = "TIM File (*.tim, *.dat)|*.tim;*.dat|All Files (*.*)|*.*";
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
 				BinaryReader br = new BinaryReader(fs);
-				CurrentTim = new TimFile(br);
+				TimFiles = new List<TimFile>();
+				CurTimIndex = 0;
+				while (br.BaseStream.Position != br.BaseStream.Length)
+				{
+					TimFiles.Add(new TimFile(br));
+				}
+				br.Close();
+
+				CurrentTim = TimFiles[CurTimIndex];
 				pictureBox1.Image = CurrentTim.ToBitmap();
 
 				nextPaletteToolStripMenuItem.Enabled = (TimFile.ImageFormat)(CurrentTim.Flags & TimFile.TIM_IMAGEFORMAT_MASK) == TimFile.ImageFormat.Clut4;
@@ -57,12 +76,26 @@ namespace VPWStudio
 					}
 				}
 
-				if (br.BaseStream.Position != br.BaseStream.Length)
-				{
-					Program.InfoMessageBox("This file probably has more than one TIM, but handling multiple TIMs isn't supported yet.");
-				}
+				nextTIMToolStripMenuItem.Enabled = TimFiles.Count > 1;
+				previousTIMToolStripMenuItem.Enabled = TimFiles.Count > 1;
+				UpdateStatusBar();
+			}
+		}
 
-				br.Close();
+		private void UpdateStatusBar()
+		{
+			timStatusLabel.Text = String.Format("TIM {0}/{1}; Palette {2}/{3}", CurTimIndex+1,TimFiles.Count, CurPaletteNumber+1,NumPalettes);
+		}
+
+		private void UpdateTimPreview(int palNum = -1)
+		{
+			if (palNum != -1)
+			{
+				pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
+			}
+			else
+			{
+				pictureBox1.Image = CurrentTim.ToBitmap();
 			}
 		}
 
@@ -78,7 +111,8 @@ namespace VPWStudio
 			{
 				CurPaletteNumber = 0;
 			}
-			pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
+			UpdateTimPreview(CurPaletteNumber);
+			UpdateStatusBar();
 		}
 
 		private void previousPaletteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,7 +127,8 @@ namespace VPWStudio
 			{
 				CurPaletteNumber = NumPalettes-1;
 			}
-			pictureBox1.Image = CurrentTim.ToBitmap(CurPaletteNumber);
+			UpdateTimPreview(CurPaletteNumber);
+			UpdateStatusBar();
 		}
 
 		private void TimTester_KeyDown(object sender, KeyEventArgs e)
@@ -113,14 +148,77 @@ namespace VPWStudio
 				return;
 			}
 
-			if (CurrentTim.CLUT != null)
+			InfoStringBuilder.Clear();
+
+			InfoStringBuilder.AppendLine(String.Format("TIM image {0}/{1} information:",CurTimIndex+1,TimFiles.Count));
+
+			TimFile.ImageFormat curFormat = (TimFile.ImageFormat)(CurrentTim.Flags & TimFile.TIM_IMAGEFORMAT_MASK);
+			InfoStringBuilder.AppendLine(String.Format("  Texture Format: {0}", Enum.GetName(typeof(TimFile.ImageFormat), curFormat)));
+
+			int pixWidth = 0;
+			if (curFormat == TimFile.ImageFormat.Clut4)
 			{
-				Program.InfoMessageBox(String.Format("Current TIM has a CLUT with {0} colors at VRAM position {1}x{2}", CurrentTim.CLUT.GetColors().Count, CurrentTim.CLUT.XCoordinate, CurrentTim.CLUT.YCoordinate));
+				pixWidth = CurrentTim.PixelWidth * 4;
+			}
+			else if (curFormat == TimFile.ImageFormat.Clut8)
+			{
+				pixWidth = CurrentTim.PixelWidth * 2;
 			}
 			else
 			{
-				Program.InfoMessageBox("Current TIM has no CLUT");
+				// we're just going to ignore Direct24 here? ok
+				pixWidth = CurrentTim.PixelWidth;
 			}
+
+			InfoStringBuilder.AppendLine(String.Format("  Texture Size: {0} x {1}", pixWidth, CurrentTim.PixelHeight));
+			InfoStringBuilder.AppendLine(String.Format("  VRAM Position: {0} x {1}", CurrentTim.PixelXCoordinate, CurrentTim.PixelYCoordinate));
+
+			if (CurrentTim.CLUT != null)
+			{
+				InfoStringBuilder.AppendLine();
+				InfoStringBuilder.AppendLine("CLUT information:");
+				InfoStringBuilder.AppendLine(String.Format("  Number of Palettes: {0}", NumPalettes));
+				InfoStringBuilder.AppendLine(String.Format("  Colors in Palette: {0}", CurrentTim.CLUT.GetColors().Count));
+				InfoStringBuilder.AppendLine(String.Format("  CLUT pixel size: {0} x {1}", CurrentTim.CLUT.DataWidth, CurrentTim.CLUT.DataHeight));
+				InfoStringBuilder.Append(String.Format("  VRAM Position: {0} x {1}", CurrentTim.CLUT.XCoordinate, CurrentTim.CLUT.YCoordinate));
+			}
+
+			Program.InfoMessageBox(InfoStringBuilder.ToString());
+		}
+
+		/// <summary>
+		/// View next TIM image in file
+		/// </summary>
+		private void nextTIMToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CurTimIndex = CurTimIndex + 1;
+			if (CurTimIndex > TimFiles.Count-1)
+			{
+				CurTimIndex = 0;
+			}
+			CurrentTim = TimFiles[CurTimIndex];
+			CurPaletteNumber = 0;
+			NumPalettes = CurrentTim.CLUT.DataHeight;
+			UpdateTimPreview();
+			UpdateStatusBar();
+		}
+
+		/// <summary>
+		/// View previous TIM image in file
+		/// </summary>
+		private void previousTIMToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+			CurTimIndex = CurTimIndex - 1;
+			if (CurTimIndex < 0)
+			{
+				CurTimIndex = TimFiles.Count-1;
+			}
+			CurrentTim = TimFiles[CurTimIndex];
+			CurPaletteNumber = 0;
+			NumPalettes = CurrentTim.CLUT.DataHeight;
+			UpdateTimPreview();
+			UpdateStatusBar();
 		}
 	}
 }
