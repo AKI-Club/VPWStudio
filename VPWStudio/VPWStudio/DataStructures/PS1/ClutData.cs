@@ -221,5 +221,19 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		#region VPW Studio Palette Import/Export
+		public void ExportVpwsPal(StreamWriter sw)
+		{
+			sw.WriteLine("VPWStudio-PAL");
+			// number of sub-palettes is determined by height of palette data
+			sw.WriteLine(String.Format("01{0:D2}", DataHeight-1));
+			sw.WriteLine("16");
+			foreach (Color c in GetColors())
+			{
+				sw.WriteLine(String.Format("{0} {1} {2} {3}", c.R, c.G, c.B, c.A));
+			}
+		}
+		#endregion
 	}
 }
