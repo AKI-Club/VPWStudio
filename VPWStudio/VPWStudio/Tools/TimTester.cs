@@ -99,6 +99,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region CLUT/Palette menu
 		private void nextPaletteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (CurrentTim == null)
@@ -130,6 +131,26 @@ namespace VPWStudio
 			UpdateTimPreview(CurPaletteNumber);
 			UpdateStatusBar();
 		}
+
+		private void exportPaletteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (CurrentTim == null)
+			{
+				return;
+			}
+
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export CLUT Palette";
+			sfd.Filter = "VPW Studio Palette File (*.vpwspal)|*.vpwspal|All Files (*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				StreamWriter sw = new StreamWriter(sfd.FileName);
+				CurrentTim.CLUT.ExportVpwsPal(sw);
+				sw.Flush();
+				sw.Close();
+			}
+		}
+		#endregion
 
 		private void TimTester_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -219,6 +240,24 @@ namespace VPWStudio
 			NumPalettes = CurrentTim.CLUT.DataHeight;
 			UpdateTimPreview();
 			UpdateStatusBar();
+		}
+
+		private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (CurrentTim == null)
+			{
+				Program.ErrorMessageBox("Nothing to save!");
+				return;
+			}
+
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Save PNG";
+			sfd.Filter = "PNG Files (*.png)|*.png|All Files(*.*)|*.*";
+			sfd.FileName = "tim_export.png";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				pictureBox1.Image.Save(sfd.FileName);
+			}
 		}
 	}
 }
