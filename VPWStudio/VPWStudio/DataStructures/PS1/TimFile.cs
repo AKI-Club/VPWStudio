@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace VPWStudio
 {
@@ -338,6 +340,70 @@ namespace VPWStudio
 			}
 
 			return bOut;
+		}
+
+		/// <summary>
+		/// Convert Bitmap to TIM. Only 4bpp and 8bpp CLUT formats are supported.
+		/// </summary>
+		/// <param name="inBmp">Bitmap to convert.</param>
+		/// <param name="clut">CLUT data to include.</param>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		/// <returns>True if successful, false otherwise.</returns>
+		public bool FromBitmap(Bitmap inBmp, ClutData clut, BinaryWriter bw)
+		{
+			// right now, we only support this operation for 4bpp and 8bpp CLUT.
+			// PixelFormat.Format16bppArgb1555 could be used IN THEORY, but requires some work.
+			if (inBmp.PixelFormat != PixelFormat.Format4bppIndexed && inBmp.PixelFormat != PixelFormat.Format8bppIndexed)
+			{
+				return false;
+			}
+
+			// TIM header data
+			bw.Write((byte)0x10);
+			bw.Write((byte)Version);
+			bw.Write((byte)0);
+			bw.Write((byte)0);
+
+			// flags (4 bytes)
+			bw.Write((byte)(Flags & 0xFF000000) >> 24);
+			bw.Write((byte)(Flags & 0x00FF0000) >> 16);
+			bw.Write((byte)(Flags & 0x0000FF00) >> 8);
+			bw.Write((byte)(Flags & 0x000000FF));
+
+			// CLUT data
+			clut.WriteData(bw);
+
+			// image descriptors
+			bw.Write(PixelDataLength);
+			bw.Write(PixelXCoordinate);
+			bw.Write(PixelYCoordinate);
+			bw.Write(PixelWidth);
+			bw.Write(PixelHeight);
+
+			// image pixel data
+			BitmapData bData = null;
+			if (inBmp.PixelFormat == PixelFormat.Format4bppIndexed)
+			{
+				bData = inBmp.LockBits(new Rectangle(0, 0, inBmp.Width, inBmp.Height), ImageLockMode.WriteOnly, PixelFormat.Format4bppIndexed);
+			}
+			else if (inBmp.PixelFormat == PixelFormat.Format8bppIndexed)
+			{
+				bData = inBmp.LockBits(new Rectangle(0, 0, inBmp.Width, inBmp.Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+			}
+
+			// should never run this, but just in case...
+			if (bData == null)
+			{
+				return false;
+			}
+
+			IntPtr imageDataPtr = bData.Scan0;
+			int numBytes = Math.Abs(bData.Stride) * inBmp.Height;
+			byte[] Data = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, Data, 0, numBytes);
+			inBmp.UnlockBits(bData);
+
+			return true;
 		}
 		#endregion
 	}
