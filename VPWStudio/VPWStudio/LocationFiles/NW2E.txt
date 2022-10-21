@@ -1,4 +1,4 @@
-# WCW/nWo Revenge (NTSC-U) [NW2E]
+# N64:WCW/nWo Revenge (NTSC-U) [NW2E]
 ROM:40CA,4;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:3D2A,4;%SOUND01
