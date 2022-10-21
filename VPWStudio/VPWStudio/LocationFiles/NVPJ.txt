@@ -1,4 +1,4 @@
-# Virtual Pro-Wrestling 64 (NTSC-J) [NVPJ]
+# N64:Virtual Pro-Wrestling 64 (NTSC-J) [NVPJ]
 ROM:5966,8;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:460E,8;%SOUND01

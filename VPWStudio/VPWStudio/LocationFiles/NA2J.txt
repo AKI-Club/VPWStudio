@@ -1,4 +1,4 @@
-﻿# Virtual Pro-Wrestling 2 [NA2J]
+﻿# N64:Virtual Pro-Wrestling 2 [NA2J]
 ROM:48DA,4;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:432A,4;%SOUND01

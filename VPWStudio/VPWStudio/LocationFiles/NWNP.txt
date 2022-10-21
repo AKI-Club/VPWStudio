@@ -1,4 +1,4 @@
-# WCW vs. nWo World Tour (PAL) [NWNP]
+# N64:WCW vs. nWo World Tour (PAL) [NWNP]
 ROM:5826,8;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:44EA,8;%SOUND01

@@ -1,4 +1,4 @@
-# WWF No Mercy (PAL v1.0) [NW4P]
+# N64:WWF No Mercy (PAL v1.0) [NW4P]
 ROM:46DE,4;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:402A,4;%SOUND01

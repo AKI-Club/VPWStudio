@@ -1,4 +1,4 @@
-# WCW/nWo Revenge (PAL) [NW2P]
+# N64:WCW/nWo Revenge (PAL) [NW2P]
 ROM:3FEA,4;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:3C4A,4;%SOUND01

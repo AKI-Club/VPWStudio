@@ -1,4 +1,4 @@
-# WCW vs. nWo World Tour (NTSC-U v1.1) [NWNE-1]
+# N64:WCW vs. nWo World Tour (NTSC-U v1.1) [NWNE-1]
 ROM:5846,8;%SETUPFT_FTLOCATION
 # Sound Junk
 ROM:450A,8;%SOUND01
