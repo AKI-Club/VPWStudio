@@ -42,11 +42,13 @@ namespace VPWStudio
 			this.cLUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.nextPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.previousPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsSepClut = new System.Windows.Forms.ToolStripSeparator();
+			this.exportPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.timStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.exportPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsSepClut = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.imageContextMenu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -99,7 +101,9 @@ namespace VPWStudio
             this.loadTIMToolStripMenuItem,
             this.tsSepTim,
             this.nextTIMToolStripMenuItem,
-            this.previousTIMToolStripMenuItem});
+            this.previousTIMToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.exportToolStripMenuItem});
 			this.timToolStripMenuItem.Name = "timToolStripMenuItem";
 			this.timToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
 			this.timToolStripMenuItem.Text = "&TIM";
@@ -155,6 +159,18 @@ namespace VPWStudio
 			this.previousPaletteToolStripMenuItem.Text = "&Previous Palette";
 			this.previousPaletteToolStripMenuItem.Click += new System.EventHandler(this.previousPaletteToolStripMenuItem_Click);
 			// 
+			// tsSepClut
+			// 
+			this.tsSepClut.Name = "tsSepClut";
+			this.tsSepClut.Size = new System.Drawing.Size(177, 6);
+			// 
+			// exportPaletteToolStripMenuItem
+			// 
+			this.exportPaletteToolStripMenuItem.Name = "exportPaletteToolStripMenuItem";
+			this.exportPaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exportPaletteToolStripMenuItem.Text = "&Export Palette...";
+			this.exportPaletteToolStripMenuItem.Click += new System.EventHandler(this.exportPaletteToolStripMenuItem_Click);
+			// 
 			// infoToolStripMenuItem
 			// 
 			this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
@@ -178,17 +194,17 @@ namespace VPWStudio
 			this.timStatusLabel.Size = new System.Drawing.Size(85, 17);
 			this.timStatusLabel.Text = "No TIM loaded";
 			// 
-			// exportPaletteToolStripMenuItem
+			// toolStripSeparator1
 			// 
-			this.exportPaletteToolStripMenuItem.Name = "exportPaletteToolStripMenuItem";
-			this.exportPaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.exportPaletteToolStripMenuItem.Text = "&Export Palette...";
-			this.exportPaletteToolStripMenuItem.Click += new System.EventHandler(this.exportPaletteToolStripMenuItem_Click);
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
-			// tsSepClut
+			// exportToolStripMenuItem
 			// 
-			this.tsSepClut.Name = "tsSepClut";
-			this.tsSepClut.Size = new System.Drawing.Size(177, 6);
+			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exportToolStripMenuItem.Text = "&Export...";
+			this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
 			// 
 			// TimTester
 			// 
@@ -240,5 +256,7 @@ namespace VPWStudio
 		private System.Windows.Forms.ToolStripMenuItem savePNGToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportPaletteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator tsSepClut;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
 	}
 }

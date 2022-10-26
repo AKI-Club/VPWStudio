@@ -259,5 +259,10 @@ namespace VPWStudio
 				pictureBox1.Image.Save(sfd.FileName);
 			}
 		}
+
+		private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			savePNGToolStripMenuItem_Click(sender, e);
+		}
 	}
 }
