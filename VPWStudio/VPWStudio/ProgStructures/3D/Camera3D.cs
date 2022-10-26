@@ -23,7 +23,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Camera rotation.
 		/// </summary>
-		public Vector3 Rotation;
+		public Vector2 Rotation;
 
 		/// <summary>
 		/// Camera target/"look at" point.
@@ -56,8 +56,8 @@ namespace VPWStudio
 		public Camera3D()
 		{
 			Position = new Vector3(0.0f, 0.0f, 0.0f);
-			Rotation = new Vector3(0.0f, 0.0f, 0.0f);
-			Target = new Vector3(0.0f, 0.0f, 0.0f);
+			Rotation = new Vector2(0.0f, 0.0f);
+			Target = Front;
 			UpdateAntiAxis();
 		}
 
@@ -68,8 +68,8 @@ namespace VPWStudio
 		public Camera3D(Vector3 pos)
 		{
 			Position = pos;
-			Rotation = new Vector3(0.0f, 0.0f, 0.0f);
-			Target = new Vector3(0.0f, 0.0f, 0.0f);
+			Rotation = new Vector2(0.0f, 0.0f);
+			Target = Front;
 			UpdateAntiAxis();
 		}
 
@@ -78,11 +78,11 @@ namespace VPWStudio
 		/// </summary>
 		/// <param name="pos">Camera starting position.</param>
 		/// <param name="rot">Camera starting rotation.</param>
-		public Camera3D(Vector3 pos, Vector3 rot)
+		public Camera3D(Vector3 pos, Vector2 rot)
 		{
 			Position = pos;
 			Rotation = rot;
-			Target = new Vector3(0.0f, 0.0f, 0.0f);
+			Target = Front;
 			UpdateAntiAxis();
 		}
 
@@ -92,7 +92,7 @@ namespace VPWStudio
 		/// <param name="pos">Camera starting position.</param>
 		/// <param name="rot">Camera starting potation.</param>
 		/// <param name="lookAt">Camera starting target/"look at" point.</param>
-		public Camera3D(Vector3 pos, Vector3 rot, Vector3 lookAt)
+		public Camera3D(Vector3 pos, Vector2 rot, Vector3 lookAt)
 		{
 			Position = pos;
 			Rotation = rot;
@@ -117,7 +117,7 @@ namespace VPWStudio
 		/// <returns>Camera view matrix.</returns>
 		public Matrix4 GetView()
 		{
-			return Matrix4.LookAt(Position, Position + Front, Vector3.UnitY);
+			return Matrix4.LookAt(Position, Position + Target, Vector3.UnitY);
 		}
 
 		#region Movement
@@ -158,23 +158,21 @@ namespace VPWStudio
 
 		#region Rotation
 		/// <summary>
-		/// Rotate camera using relative X/Y/Z values.
+		/// Rotate camera using relative X/Y values.
 		/// </summary>
 		/// <param name="rotX">Amount to rotate camera on X axis.</param>
 		/// <param name="rotY">Amount to rotate camera on Y axis.</param>
-		/// <param name="rotZ">Amount to rotate camera on Z axis.</param>
-		public void Rotate(float rotX, float rotY, float rotZ)
+		public void Rotate(float rotX, float rotY)
 		{
 			Rotation.X += rotX;
 			Rotation.Y += rotY;
-			Rotation.Z += rotZ;
 		}
 
 		/// <summary>
-		/// Rotate camera relative to a Vector3.
+		/// Rotate camera relative to a Vector2.
 		/// </summary>
-		/// <param name="rotVec">Vector3 with values to rotate camera.</param>
-		public void Rotate(Vector3 rotVec)
+		/// <param name="rotVec">Vector2 with values to rotate camera.</param>
+		public void Rotate(Vector2 rotVec)
 		{
 			Rotation += rotVec;
 		}
@@ -182,8 +180,8 @@ namespace VPWStudio
 		/// <summary>
 		/// Set camera rotation to an absolute value.
 		/// </summary>
-		/// <param name="newRot">Vector3 with new absolute camera rotation.</param>
-		public void RotateAbsolute(Vector3 newRot)
+		/// <param name="newRot">Vector2 with new absolute camera rotation.</param>
+		public void RotateAbsolute(Vector2 newRot)
 		{
 			Rotation = newRot;
 		}
