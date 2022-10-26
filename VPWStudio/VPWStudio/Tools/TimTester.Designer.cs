@@ -110,6 +110,7 @@ namespace VPWStudio
 			// 
 			// loadTIMToolStripMenuItem
 			// 
+			this.loadTIMToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Open;
 			this.loadTIMToolStripMenuItem.Name = "loadTIMToolStripMenuItem";
 			this.loadTIMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.loadTIMToolStripMenuItem.Text = "&Load...";
@@ -166,6 +167,7 @@ namespace VPWStudio
 			// 
 			// exportPaletteToolStripMenuItem
 			// 
+			this.exportPaletteToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.exportPaletteToolStripMenuItem.Name = "exportPaletteToolStripMenuItem";
 			this.exportPaletteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.exportPaletteToolStripMenuItem.Text = "&Export Palette...";
@@ -201,9 +203,10 @@ namespace VPWStudio
 			// 
 			// exportToolStripMenuItem
 			// 
+			this.exportToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.exportToolStripMenuItem.Text = "&Export...";
+			this.exportToolStripMenuItem.Text = "&Export PNG...";
 			this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
 			// 
 			// TimTester
