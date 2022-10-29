@@ -395,7 +395,7 @@ relevant CI4/CI8Texture format(s).</p>
 <p>Nintendo 64-specific format for defining a 16-color palette. These files
 only contain palette data, no headers or anything else.</p>
 
-<h3>Data Format</h3>
+<h3>Color Format</h3>
 <p>Each palette entry consists of two bytes, stored in big endian format.</p>
 
 <pre>
@@ -472,11 +472,86 @@ are used in AKI's N64 games.</p>
 <p>PlayStation 1-specific texture format. Often paired with a <a href="#CLUT">CLUT</a>,
 either externally or internally.</p>
 
+<p>A single file may contain multiple TIM files, and this is often the case in
+AKI's wrestling games on PlayStation 1.</p>
+
+<h3>Header Format</h3>
+<ul>
+<li>Offset 0x00: TIM identifier (value <code>0x10</code>)</li>
+<li>Offset 0x01: TIM version number (value <code>0x00</code>)</li>
+<li>Offsets 0x02,0x03: always <code>0x00</code></li>
+<li>Offset 0x04: Image Flags (4 bytes)</li>
+</ul>
+
+<p>If the image has an internal CLUT, it starts at offset 0x08.
+Data then continues as follows:</p>
+
+<ul>
+<li>Pixel Data Length (4 bytes) &ndash; Number of bytes to describe the pixel data, including the 4 bytes for this variable.</li>
+<li>Pixel X Coordinate (2 bytes) &ndash; X coordinate for pixel data in the framebuffer.</li>
+<li>Pixel Y Coordinate (2 bytes) &ndash; Y coordinate for pixel data in the framebuffer.</li>
+<li>Pixel Width (2 bytes) &ndash; Width of the pixel data (in 16 bit/2 byte units).</li>
+<li>Pixel Height (2 bytes) &ndash; Height of the pixel data.</li>
+</ul>
+
+<p>The actual pixels follow the header data. See the "Image Formats" section below
+for more information.</p>
+
+<h3>Image Flags</h3>
+<p>Only the four least significant bits are used:</p>
+<pre>
+3210
+||_|
+| |
+| +-- Image Format
++---- Has internal CLUT
+</pre>
+
+<h4>Image Formats</h4>
+<p>The "Image Format" section accepts the following values ("one uint16 value" is two bytes):</p>
+<ul>
+<li><code>0</code> &ndash; 4bpp CLUT/paletted (one uint16 value = 4 pixels)</li>
+<li><code>1</code> &ndash; 8bpp CLUT/paletted (one uint16 value = 2 pixels)</li>
+<li><code>2</code> &ndash; 15bpp direct color (one uint16 value = 1 pixel)</li>
+<li><code>3</code> &ndash; 24bpp direct color (one uint16 value = 2/3rds of a pixel; three uint16 values = 2 pixels)</li>
+<li><code>4</code> &ndash; "Mixed" (not supported by VPW Studio)</li>
+</ul>
+<p>Values 5-7 are presumed unused, or are at least assumed to be unused by AKI's PS1 games.</p>
+
 <hr />
 
 <h2><a name="CLUT">CLUT</a></h2>
+<p>CLUT is short for "Color Look-Up Table", but it's really just a fancy term
+for a palette.</p>
+
 <p><strong>Note</strong>: This only describes CLUT data as found in <a href="#TIM">TIM</a>
 files. Standalone CLUT files exist, but have a slightly different format.</p>
+
+<h3>Header Format</h3>
+<ul>
+<li>Offset 0x00: Data Length (4 bytes) &ndash; Total length of the CLUT data, including the 4 bytes for this variable, as well as the other values below.</li>
+<li>Offset 0x04: VRAM X Coordinate (2 bytes) &ndash; X coordinate for CLUT data in the framebuffer.</li>
+<li>Offset 0x06: VRAM Y Coordinate (2 bytes) &ndash; Y coordinate for CLUT data in the framebuffer.</li>
+<li>Offset 0x08: Data Width (2 bytes) &ndash; Width of the CLUT data in the framebuffer.</li>
+<li>Offset 0x0A: Data Height (2 bytes) &ndash; Height of the CLUT data in the framebuffer.</li>
+</ul>
+
+<h3>Color Format</h3>
+<p>Actual color data follows the header, with each color entry in the following format:</p>
+<pre>
+FEDCBA9876543210
+||___||___||___|
+|  |    |    |
+|  |    |    +--- Red
+|  |    +-------- Green
+|  +------------- Blue
++---------------- (Semi-)Transparent
+</pre>
+
+<p>Alpha/transparency calculation is slightly more complicated than just checking
+the relevant bit. If the Red, Green, and Blue values are 0 and (Semi-)transparency
+is also 0, it's fully transparent. However, if any of the RGB values are non-zero,
+the color is only semi-transparent.</p>
 
 <hr />
 
