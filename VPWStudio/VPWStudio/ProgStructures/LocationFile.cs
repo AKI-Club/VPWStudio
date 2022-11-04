@@ -175,6 +175,9 @@ namespace VPWStudio
 
 			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 
+			// WM2K only?
+			{ "TagTeamDefs", "$TAGTEAMDEFS" }, // ROM location of tag team definitions
+
 			// WM2K and VPW2:
 			{ "StoryModeSinglesParticipants", "$STORY_MODE_SINGLES_PARTICIPANTS" }, // ROM location of story mode singles participants
 			{ "StoryModeSingleGroups", "$STORY_MODE_SINGLE_GROUPS" }, // ROM location of story mode singles groupings

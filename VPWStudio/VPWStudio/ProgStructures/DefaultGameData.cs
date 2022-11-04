@@ -220,6 +220,8 @@ namespace VPWStudio
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7927C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B16C, 96) },
 
+					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA04, 396) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AA0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
@@ -240,6 +242,8 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3A0C0, 1590) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3A6F8, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3AD38, 1050) },
+
+					{ "TagTeamDefs", new DefaultLocationDataEntry(0x67794, 396) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x12C070, 0) },
@@ -270,6 +274,8 @@ namespace VPWStudio
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7929C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B18C, 96) },
+
+					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA24, 396) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
