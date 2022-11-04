@@ -480,6 +480,7 @@
     <Compile Include="GameSpecific\VPW2\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
+    <Compile Include="GameSpecific\WM2K\TagTeamDefinition.cs" />
     <Compile Include="GameSpecific\WrestlerDefinition_Early.cs" />
     <Compile Include="GameSpecific\VPW64\WrestlerParams.cs" />
     <Compile Include="GameSpecific\WM2K\DefaultCostumeData.cs" />
