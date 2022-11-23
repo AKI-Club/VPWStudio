@@ -494,6 +494,9 @@ namespace VPWStudio
 			// only bother doing anything if button is pressed and held
 			if (e.Button == MouseButtons.Left)
 			{
+				int deltaX = e.X - LastMouseX;
+				int deltaY = e.Y - LastMouseY;
+
 				// left click and drag: rotate
 				if (e.X > LastMouseX)
 				{

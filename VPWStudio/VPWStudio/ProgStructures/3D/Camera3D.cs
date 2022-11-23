@@ -8,6 +8,7 @@ namespace VPWStudio
 {
 	// http://neokabuto.blogspot.com/2014/01/opentk-tutorial-5-basic-camera.html
 	// https://learnopengl.com/Getting-started/Camera
+	// https://opentk.net/learn/chapter1/9-camera.html
 
 	/// <summary>
 	/// Camera for viewing a 3D scene.
