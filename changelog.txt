@@ -2,9 +2,32 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 27 (202x/yy/zz)
+Pre-Alpha Preview 28 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 27 (2022/11/27)
+---------------------------------
+- Added Demo Match "Editor" for WWF No Mercy.
+  Just like the VPW2 editor from last version, this one doesn't allow for
+  editing or saving changes.
+
+- [VPW2 Ruleset Editor] Added labels for rule values.
+
+- Added No Mercy Ruleset "Editor".
+  Same caveats as the one added for VPW2 in the previous version:
+  - editing not implemented
+  - data doesn't get written back
+
+- Various updates to the TIM Tester tool:
+  - Now supports files with multiple TIM images
+  - Actually close the file stream once loading is finished
+    (fixes a bug where you couldn't open the same file more than once)
+  - Added Information feature
+  - Added CLUT/Palette export (only reasonably working with 4bpp palettes at the moment)
+  - Added texture export
+
+- [Toki 1 Test Dialog] Standardized offset display; re-added offsets to labeled items.
 
 Pre-Alpha Preview 26 (2022/09/24)
 ---------------------------------
