@@ -491,6 +491,14 @@
 01EC=AkiText;[Story Mode] (women's story dialog)
 01ED=AkiText;[Story Mode] (GBC story dialog)
 01EF=Binary;Move damage values
+01F0=Binary;Move animation values
+01F1=Binary;Move properties values
+01F2=Binary;Reversals - Heavyweight
+01F3=Binary;Reversals - Heavy Special
+01F4=Binary;Reversals - Junior
+01F5=Binary;Reversals - Junior Special
+01F6=Binary;Reversals - Martial Arts
+01F7=Binary;Reversals - Heel
 01F8=Binary;some weird text file
 01F9=Binary;Wrestler Params 0001 (The Rock)
 01FA=Binary;Wrestler Moveset 0001 (The Rock)
