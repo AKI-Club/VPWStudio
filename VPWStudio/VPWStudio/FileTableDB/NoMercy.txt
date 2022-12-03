@@ -915,7 +915,7 @@
 0395=Ci4Texture;Wrestler Name Bar|p:0394
 0396=Binary;(1bpp font? 160x112 total texture size)
 0397=Ci4Texture;(revenge leftover)
-0398=Ci4Texture;(revenge leftover)|p:0397
+0398=Ci4Texture;(revenge leftover)
 0399=Ci4Palette;(VPW2 leftover) 5 minutes left (frame 1)
 039A=Ci4Texture;(VPW2 leftover) 5 minutes left (frame 1)|p:0399
 039B=Ci4Palette;(VPW2 leftover) 5 minutes left (frame 2)
