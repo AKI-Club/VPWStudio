@@ -166,6 +166,13 @@ namespace VPWStudio
 					continue;
 				}
 
+				// ignore blank lines
+				if (string.IsNullOrEmpty(line))
+				{
+					lineNumber++;
+					continue;
+				}
+
 				FileTableDBEntry ftdbe = new FileTableDBEntry(line);
 				try
 				{
