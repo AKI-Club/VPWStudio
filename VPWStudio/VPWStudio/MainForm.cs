@@ -222,6 +222,13 @@ namespace VPWStudio
 			{
 				// default location file
 				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
+
+				// xxx hack for WWF No Mercy September 2000 prototype
+				if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+				{
+					lfn = "NoMercy_Sep2000.txt";
+				}
+
 				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
 				Program.CurLocationFile.LoadFile(locPath);
 				Program.CurLocationFilePath = locPath;
@@ -449,6 +456,13 @@ namespace VPWStudio
 				{
 					// load location file based on game name
 					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
+
+					// xxx hack for WWF No Mercy September 2000 prototype
+					if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+					{
+						lfn = "NoMercy_Sep2000.txt";
+					}
+
 					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
 
 					if (!File.Exists(locPath))
@@ -522,7 +536,7 @@ namespace VPWStudio
 						{
 							sb.AppendLine(error);
 						}
-						Program.ErrorMessageBox(sb.ToString());
+						Program.ErrorMessageBox("Error doing something or other:\n"+sb.ToString());
 					}
 
 					foreach (KeyValuePair<UInt16, FileTableDBEntry> entry in ftdb.Entries)

@@ -29,6 +29,7 @@ namespace VPWStudio
 		OtherX = 'X',
 		OtherY = 'Y',
 		OtherZ = 'Z',
+		Unset = ' ',
 		Custom = -1
 	}
 

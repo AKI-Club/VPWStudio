@@ -901,6 +901,9 @@
     <Content Include="FileTableDB\NoMercy.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FileTableDB\NoMercy_Sep2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="FileTableDB\Revenge.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -922,6 +925,9 @@
     <Content Include="GameShark.ico" />
     <EmbeddedResource Include="githash.txt" />
     <Content Include="LocationFiles\NA2J.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationFiles\NoMercy_Sep2000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LocationFiles\NVPJ.txt">
