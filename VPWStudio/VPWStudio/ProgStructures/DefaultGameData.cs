@@ -442,6 +442,9 @@ namespace VPWStudio
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46CE, 4) },
 
+					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46698, 0) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BB930, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x16C0DB2, 77774) },
