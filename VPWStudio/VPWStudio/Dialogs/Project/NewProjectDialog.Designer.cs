@@ -287,6 +287,7 @@
 			this.tbOutROMPath.Name = "tbOutROMPath";
 			this.tbOutROMPath.Size = new System.Drawing.Size(293, 20);
 			this.tbOutROMPath.TabIndex = 2;
+			this.tbOutROMPath.Text = "built.z64";
 			// 
 			// chbCustomLocation
 			// 
