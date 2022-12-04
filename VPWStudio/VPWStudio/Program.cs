@@ -117,6 +117,11 @@ namespace VPWStudio
 			{
 				dbFilePath += "WM2K-J.txt";
 			}
+			// special case: WWF No Mercy September 2000 prototype
+			else if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+			{
+				dbFilePath += "NoMercy_Sep2000.txt";
+			}
 			else
 			{
 				dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());

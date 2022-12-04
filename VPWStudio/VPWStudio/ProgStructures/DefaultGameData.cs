@@ -435,6 +435,18 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0x16C3148, 77848) },
 				})
 			},
+			{
+				SpecificGame.NoMercy_Proto_NTSC_September2000,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
+				{
+					// code changes
+					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46CE, 4) },
+
+					// filetable-related
+					{ "FirstFile", new DefaultLocationDataEntry(0x1BB930, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x16C0DB2, 77774) },
+				})
+			}
 		};
 
 		/// <summary>

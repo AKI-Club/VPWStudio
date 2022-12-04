@@ -78,58 +78,76 @@ namespace VPWStudio
 		/// WCW vs. nWo World Tour (NTSC-U v1.0) [NWNE]
 		/// </summary>
 		WorldTour_NTSC_U_10 = 0,
+
 		/// <summary>
 		/// WCW vs. nWo World Tour (NTSC-U v1.1) [NWNE-1]
 		/// </summary>
 		WorldTour_NTSC_U_11,
+
 		/// <summary>
 		/// WCW vs. nWo World Tour (PAL) [NWNP]
 		/// </summary>
 		WorldTour_PAL,
+
 		/// <summary>
 		/// Virtual Pro-Wrestling 64 (NTSC-J) [NVPJ]
 		/// </summary>
 		VPW64_NTSC_J,
+
 		/// <summary>
 		/// WCW/nWo Revenge (NTSC-U) [NW2E]
 		/// </summary>
 		Revenge_NTSC_U,
+
 		/// <summary>
 		/// WCW/nWo Revenge (PAL) [NW2P]
 		/// </summary>
 		Revenge_PAL,
+
 		/// <summary>
 		/// WWF WrestleMania 2000 (NTSC-U) [NWXE]
 		/// </summary>
 		WM2K_NTSC_U,
+
 		/// <summary>
 		/// WWF WrestleMania 2000 (NTSC-J) [NWXJ]
 		/// </summary>
 		WM2K_NTSC_J,
+
 		/// <summary>
 		/// WWF WrestleMania 2000 (PAL) [NWXP]
 		/// </summary>
 		WM2K_PAL,
+
 		/// <summary>
 		/// Virtual Pro-Wrestling 2 (NTSC-J) [NA2J]
 		/// </summary>
 		VPW2_NTSC_J,
+
 		/// <summary>
 		/// WWF No Mercy (NTSC-U v1.0) [NW4E]
 		/// </summary>
 		NoMercy_NTSC_U_10,
+
 		/// <summary>
 		/// WWF No Mercy (NTSC-U v1.1) [NW4E-1]
 		/// </summary>
 		NoMercy_NTSC_U_11,
+
 		/// <summary>
 		/// WWF No Mercy (PAL v1.0) [NW4P]
 		/// </summary>
 		NoMercy_PAL_10,
+
 		/// <summary>
 		/// WWF No Mercy (PAL v1.1) [NW4P-1]
 		/// </summary>
 		NoMercy_PAL_11,
+
+		/// <summary>
+		/// WWF No Mercy (September 11, 2000 prototype)
+		/// </summary>
+		NoMercy_Proto_NTSC_September2000,
 		#endregion
 
 		#region PlayStation
@@ -272,6 +290,10 @@ namespace VPWStudio
 				SpecificGame.NoMercy_PAL_11,
 				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1, "NW4P-1", GameRegion.Europe)
 			},
+			{
+				SpecificGame.NoMercy_Proto_NTSC_September2000,
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_September2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset)
+			},
 			#endregion
 
 			#region PlayStation
@@ -340,6 +362,7 @@ namespace VPWStudio
 				case SpecificGame.NoMercy_NTSC_U_11:   return GetBaseGameName(VPWGames.NoMercy) + String.Format(" NTSC-U v1.1 ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.NoMercy_PAL_10:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.0 ({0})", GameDefs[sg].GameCode);
 				case SpecificGame.NoMercy_PAL_11:      return GetBaseGameName(VPWGames.NoMercy) + String.Format(" PAL v1.1 ({0})", GameDefs[sg].GameCode);
+				case SpecificGame.NoMercy_Proto_NTSC_September2000: return GetBaseGameName(VPWGames.NoMercy) + " September 11 2000 NTSC Prototype";
 				#endregion
 
 				#region PlayStation
@@ -384,6 +407,7 @@ namespace VPWStudio
 				case SpecificGame.NoMercy_NTSC_U_11:
 				case SpecificGame.NoMercy_PAL_10:
 				case SpecificGame.NoMercy_PAL_11:
+				case SpecificGame.NoMercy_Proto_NTSC_September2000:
 					return VPWGames.NoMercy;
 				#endregion
 

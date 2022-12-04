@@ -1,0 +1,10 @@
+# FileTable database for WWF No Mercy (September 2000 prototype)
+0001=Binary;Default Character Costumes
+0002=AkiText;Default Character Names
+0003=AkiModel;
+0004=Ci4Palette;
+0005=Ci4Texture;Light or Lens flare?|p:0004
+0006=Ci4Palette;
+0007=Ci4Texture;Mr. Socko Arm|p:0006
+0008=Ci4Palette;
+0009=Ci4Texture;Mr. Socko Hand|p:0008
