@@ -151,13 +151,13 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("[0x05] Mist/Fire Type: 0x{0:X2}", t.Data[5]));
 			sb.AppendLine(String.Format("[0x06] Mist/Fire Frame: 0x{0:X2}", t.Data[6]));
 			sb.AppendLine(String.Format("[0x07] Beginning Frame for Reversal Only 0x{0:X2}", t.Data[7]));
-			sb.AppendLine(String.Format("[0x08] 0x{0:X2}", t.Data[8]));
+			sb.AppendLine(String.Format("[0x08] First Vulnerable Frame 0x{0:X2}", t.Data[8]));
 			sb.AppendLine(String.Format("[0x09] Reversal Frame (Front Grapples?) 0x{0:X2}", t.Data[9]));
 			sb.AppendLine(String.Format("[0x0A] Breakway Frame (Grapple Moves) 0x{0:X2}", t.Data[10]));
 			sb.AppendLine(String.Format("[0x0B] Motion Effect: frame {0}, value 0x{1:X2}", t.Data[11], t.Data[12]));
 			sb.AppendLine(String.Format("[0x0D] Camera Effect: frame {0}, value 0x{1:X2}", t.Data[13], t.Data[14]));
 			sb.AppendLine(String.Format("[0x0F] Replay Frame: 0x{0:X2}", t.Data[15]));
-			sb.AppendLine(String.Format("[0x10] 0x{0:X2}", t.Data[16]));
+			sb.AppendLine(String.Format("[0x10] (WWF No Mercy: Table Break Frame; others: ???) 0x{0:X2}", t.Data[16]));
 			sb.AppendLine(String.Format("[0x11] Ground Hold Interrupt Frame 0x{0:X2}", t.Data[17]));
 			sb.AppendLine(String.Format("[0x12] 0x{0:X2}", t.Data[18]));
 			sb.AppendLine(String.Format("[0x13] 0x{0:X2}", t.Data[19]));
