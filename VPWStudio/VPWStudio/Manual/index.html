@@ -224,7 +224,8 @@ hack, and vice versa.</p>
 <tr>
 	<td>WWF No Mercy</td>
 	<!--<td>Nintendo 64</td>-->
-	<td>NTSC-U v1.0, NTSC-U v1.1, PAL v1.0, PAL v1.1</td>
+	<td>NTSC-U v1.0, NTSC-U v1.1, PAL v1.0, PAL v1.1<hr/>
+	September 2000 prototype/pre-release (Partial read-only support)</td>
 </tr>
 </tbody>
 </table>
@@ -306,7 +307,16 @@ important information.</li>
 
 <p>The program is primarily the work of one person, and they do not have the
 capabilities to be both the primary developer <em>and</em> personal/private
-technical support (without detriment to development time).</p>
+technical support (without detriment to development time and/or developer sanity).</p>
+
+<p>The few times I have tried to offer private one-on-one technical support,
+I ended up getting angry at myself for not having enough patience to deal with
+people. Therefore, <strong><em><big><big>I <small>(freem)</small> can not offer private one-on-one technical
+support for VPW Studio. Please do not contact me directly for technical support.</big></big></em></strong>
+This includes, but is not limited to, e-mails and direct/private messages. Yes,
+I made the program, but that does not mean I have the time to solve everyone's
+problems, nor do I have the patience to walk everyone through every possible
+situation that could come up.</p>
 
 <p>Since there is no "official" technical support channel, you will have to turn
 to the community. Though a large number of gaming communities have abandoned web
@@ -325,12 +335,6 @@ technical support:</p>
 <li><a href="https://akilive.boards.net/">AKI Live</a></li>
 <li><a href="https://www.tapatalk.com/groups/vpw2dojo/">VPW2 Dojo</a></li>
 </ul>
-
-<p>Even with the above, I (freem) do feel the need to jump out of the "technical
-writing voice" to reiterate: <strong><em>please do not contact me directly for
-technical support</em></strong>. This includes, but is not limited to, e-mails
-and direct/private messages. Yes, I made the program, but that does not mean I
-have the time to solve everyone's problems.</p>
 
 <p>Posting your problems and questions in a public place has a few benefits:</p>
 <ul>
@@ -453,7 +457,7 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 <li><strong>Author(s)</strong> &ndash; Names of people involved in the project. Optional, but recommended.</li>
 <li><strong>Game Type</strong> &ndash; Select the game your project is based on. Be sure to match the proper region and revision.</li>
 <li><strong>Base ROM File</strong> &ndash; Set the location of the base/input Z64 format ROM.</li>
-<li><strong>Output ROM File</strong> &ndash; Set the location of the built/output Z64 format ROM.</li>
+<li><strong>Output ROM File</strong> &ndash; Set the location of the built/output Z64 format ROM. Defaults to <code>built.z64</code> in pre-Alpha Preview 28 and later.</li>
 <li><strong>Custom Location File</strong> &ndash; When checked, allows you to use a
 custom Location File. Helpful if you've already made changes to the base ROM that
 result in differences from the default Location File for the specified Game Type.
@@ -948,9 +952,9 @@ events when "Build ROM" is called:</p>
 <li><strong>Base ROM</strong> &ndash; The Base ROM is the original ROM that will
 be edited by VPW Studio. If you want your ROM changes to appear in the built/output
 ROM, you <strong>MUST</strong> make the changes in the Base ROM. Any changes made to
-the built/output ROM will disappear once you build the project in VPW Studio.<br />
-You do not have to worry about the internal checksums, as they are handled at the
-end of the build process.</li>
+the built/output ROM will disappear once you (re-)build the project in VPW Studio.<br />
+You do not have to worry about the internal checksums of the Base ROM, as they are
+re-calculated at the end of the build process.</li>
 <li><strong>Non-Filetable Changes</strong> &ndash; Anything that appears before
 the Filetable and its contents gets changed first. This includes Wrestlers, Stables,
 Costumes, and so on.</li>
