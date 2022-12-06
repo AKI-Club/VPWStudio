@@ -122,14 +122,14 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("[0x0D]: 0x{0:X2}", t.Data[13]));
 			sb.AppendLine(String.Format("[0x0E]: 0x{0:X2}", t.Data[14]));
 			sb.AppendLine(String.Format("[0x0F]: 0x{0:X2}", t.Data[15]));
-			sb.AppendLine(String.Format("[0x10] Effect 1: frame {0}, value 0x{1:X2}", t.Data[16], t.Data[17]));
-			sb.AppendLine(String.Format("[0x12] Effect 2: frame {0}, value 0x{1:X2}", t.Data[18], t.Data[19]));
-			sb.AppendLine(String.Format("[0x14] Effect 3: frame {0}, value 0x{1:X2}", t.Data[20], t.Data[21]));
-			sb.AppendLine(String.Format("[0x16] Effect 4: frame {0}, value 0x{1:X2}", t.Data[22], t.Data[23]));
-			sb.AppendLine(String.Format("[0x18] Effect 5: frame {0}, value 0x{1:X2}", t.Data[24], t.Data[25]));
-			sb.AppendLine(String.Format("[0x1A] Effect 6: frame {0}, value 0x{1:X2}", t.Data[26], t.Data[27]));
-			sb.AppendLine(String.Format("[0x1C] Effect 7: frame {0}, value 0x{1:X2}", t.Data[28], t.Data[29]));
-			sb.AppendLine(String.Format("[0x1E] Effect 8: frame {0}, value 0x{1:X2}", t.Data[30], t.Data[31]));
+			sb.AppendLine(String.Format("[0x10] Effect 1: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[16], t.Data[17]));
+			sb.AppendLine(String.Format("[0x12] Effect 2: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[18], t.Data[19]));
+			sb.AppendLine(String.Format("[0x14] Effect 3: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[20], t.Data[21]));
+			sb.AppendLine(String.Format("[0x16] Effect 4: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[22], t.Data[23]));
+			sb.AppendLine(String.Format("[0x18] Effect 5: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[24], t.Data[25]));
+			sb.AppendLine(String.Format("[0x1A] Effect 6: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[26], t.Data[27]));
+			sb.AppendLine(String.Format("[0x1C] Effect 7: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[28], t.Data[29]));
+			sb.AppendLine(String.Format("[0x1E] Effect 8: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[30], t.Data[31]));
 
 			tbOutput.Text = sb.ToString();
 		}
@@ -150,8 +150,8 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("[0x04] Ending Damage Frame (Striking Moves) 0x{0:X2}", t.Data[4]));
 			sb.AppendLine(String.Format("[0x05] Mist/Fire Type: 0x{0:X2}", t.Data[5]));
 			sb.AppendLine(String.Format("[0x06] Mist/Fire Frame: 0x{0:X2}", t.Data[6]));
-			sb.AppendLine(String.Format("[0x07] Beginning Frame for Reversal Only 0x{0:X2}", t.Data[7]));
-			sb.AppendLine(String.Format("[0x08] First Vulnerable Frame 0x{0:X2}", t.Data[8]));
+			sb.AppendLine(String.Format("[0x07] Beginning Frame for Reversal Only: 0x{0:X2}", t.Data[7]));
+			sb.AppendLine(String.Format("[0x08] First Vulnerable Frame: 0x{0:X2}", t.Data[8]));
 			sb.AppendLine(String.Format("[0x09] Reversal Frame (Front Grapples?) 0x{0:X2}", t.Data[9]));
 			sb.AppendLine(String.Format("[0x0A] Breakway Frame (Grapple Moves) 0x{0:X2}", t.Data[10]));
 			sb.AppendLine(String.Format("[0x0B] Motion Effect: frame {0}, value 0x{1:X2}", t.Data[11], t.Data[12]));
@@ -161,14 +161,14 @@ namespace VPWStudio
 			sb.AppendLine(String.Format("[0x11] Ground Hold Interrupt Frame 0x{0:X2}", t.Data[17]));
 			sb.AppendLine(String.Format("[0x12] 0x{0:X2}", t.Data[18]));
 			sb.AppendLine(String.Format("[0x13] 0x{0:X2}", t.Data[19]));
-			sb.AppendLine(String.Format("[0x14] Effect 1: frame {0}, value 0x{1:X2}", t.Data[20], t.Data[21]));
-			sb.AppendLine(String.Format("[0x16] Effect 2: frame {0}, value 0x{1:X2}", t.Data[22], t.Data[23]));
-			sb.AppendLine(String.Format("[0x18] Effect 3: frame {0}, value 0x{1:X2}", t.Data[24], t.Data[25]));
-			sb.AppendLine(String.Format("[0x1A] Effect 4: frame {0}, value 0x{1:X2}", t.Data[26], t.Data[27]));
-			sb.AppendLine(String.Format("[0x1C] Effect 5: frame {0}, value 0x{1:X2}", t.Data[28], t.Data[29]));
-			sb.AppendLine(String.Format("[0x1E] Effect 6: frame {0}, value 0x{1:X2}", t.Data[30], t.Data[31]));
-			sb.AppendLine(String.Format("[0x20] Effect 7: frame {0}, value 0x{1:X2}", t.Data[32], t.Data[33]));
-			sb.AppendLine(String.Format("[0x22] Effect 8: frame {0}, value 0x{1:X2}", t.Data[34], t.Data[35]));
+			sb.AppendLine(String.Format("[0x14] Effect 1: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[20], t.Data[21]));
+			sb.AppendLine(String.Format("[0x16] Effect 2: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[22], t.Data[23]));
+			sb.AppendLine(String.Format("[0x18] Effect 3: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[24], t.Data[25]));
+			sb.AppendLine(String.Format("[0x1A] Effect 4: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[26], t.Data[27]));
+			sb.AppendLine(String.Format("[0x1C] Effect 5: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[28], t.Data[29]));
+			sb.AppendLine(String.Format("[0x1E] Effect 6: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[30], t.Data[31]));
+			sb.AppendLine(String.Format("[0x20] Effect 7: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[32], t.Data[33]));
+			sb.AppendLine(String.Format("[0x22] Effect 8: frame {0} (0x{0:X2}), value 0x{1:X2}", t.Data[34], t.Data[35]));
 			tbOutput.Text = sb.ToString();
 		}
 
