@@ -1712,8 +1712,16 @@ namespace VPWStudio
 			if (!Directory.Exists(Path.GetDirectoryName(Program.ConvertRelativePath(Program.CurrentProject.Settings.OutputRomPath))))
 			{
 				// output directory doesn't exist
-				// I mean we COULD make it, but...
-				Program.ErrorMessageBox("Output ROM directory does not exist.\nThis error sucks monkey nuts, because I could just ask if you want the directory made, but I don't.\nSorry. Maybe next time.");
+				if (MessageBox.Show(String.Format("The Output ROM Path directory '{0}' does not exist. Create it?", Path.GetDirectoryName(Program.ConvertRelativePath(Program.CurrentProject.Settings.OutputRomPath))), "VPW Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+				{
+					Directory.CreateDirectory(Path.GetDirectoryName(Program.ConvertRelativePath(Program.CurrentProject.Settings.OutputRomPath)));
+				}
+				else
+				{
+					// output directory was not made, cancel build
+					Program.ErrorMessageBox("Output ROM directory does not exist, and the attempt to create it was canceled. Project build has been halted.");
+					return;
+				}
 				return;
 			}
 
