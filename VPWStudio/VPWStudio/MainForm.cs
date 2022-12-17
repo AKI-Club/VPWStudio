@@ -1953,13 +1953,16 @@ namespace VPWStudio
 								test.WriteData(bw);
 								bw.Close();
 								fs.Close();
+								Program.InfoMessageBox(String.Format("Converted file written to {0}", Path.GetFullPath(fs.Name)));
 							}
 						}
 					}
 				}
 				else if (b.PixelFormat == PixelFormat.Format32bppArgb)
 				{
+					// todo: this doesn't always imply transparency
 					Program.WarningMessageBox("Images with transparency are not properly handled at the moment.");
+
 					// dealing with a transparent image, which is possibly paletted.
 					HashSet<Color> usedColors = new HashSet<Color>();
 					UInt16 alphaColor = 0;
@@ -2038,6 +2041,7 @@ namespace VPWStudio
 						{
 							test.WriteData(bw);
 							bw.Flush();
+							Program.InfoMessageBox(String.Format("Converted file written to {0}", Path.GetFullPath(fs.Name)));
 						}
 					}
 				}
@@ -2073,6 +2077,7 @@ namespace VPWStudio
 						{
 							test.WriteData(bw);
 							bw.Flush();
+							Program.InfoMessageBox(String.Format("Converted file written to {0}", Path.GetFullPath(fs.Name)));
 						}
 					}
 				}
