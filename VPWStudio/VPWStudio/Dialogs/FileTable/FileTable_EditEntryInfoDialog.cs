@@ -118,8 +118,11 @@ namespace VPWStudio
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Select Replacement File";
 
+			// fuck the cocksucking piece of shit file types, part 2
+			List<FileTypes> validTypes = FileTypeInfo.GetValidFileTypesForGame(Program.CurrentProject.Settings.BaseGame);
+
 			// Set filter based on (FileTypes)cbFileTypes.SelectedIndex
-			switch ((FileTypes)cbFileTypes.SelectedIndex)
+			switch (validTypes[cbFileTypes.SelectedIndex])
 			{
 				case FileTypes.Ci4Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi4; break;
 				case FileTypes.Ci8Palette: ofd.Filter = SharedStrings.FileLoadFilter_PaletteCi8; break;
