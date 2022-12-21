@@ -66,21 +66,8 @@ namespace VPWStudio
 				return;
 			}
 
-			switch (tvOptions.SelectedNode.Name)
-			{
-				case "EmulatorN64":
-					{
-						optionControlEmuN64.Visible = true;
-						tlpBuildLogVerbosity.Visible = false;
-					}
-					break;
-				case "Build":
-					{
-						optionControlEmuN64.Visible = false;
-						tlpBuildLogVerbosity.Visible = true;
-					}
-					break;
-			}
+			optionControlEmuN64.Visible = (tvOptions.SelectedNode.Name == "EmulatorN64");
+			tlpBuildLogVerbosity.Visible = (tvOptions.SelectedNode.Name == "Build");
 		}
 	}
 }
