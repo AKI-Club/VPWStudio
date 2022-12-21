@@ -100,6 +100,18 @@ namespace VPWStudio
 
 		#region Helpers
 		/// <summary>
+		/// Special cases where a separate FileTableDB is required.
+		/// </summary>
+		static Dictionary<SpecificGame, string> FileTableDB_Overrides = new Dictionary<SpecificGame, string>()
+		{
+			// WWF WrestleMania 2000 NTSC-J
+			{ SpecificGame.WM2K_NTSC_J, "WM2K-J.txt" },
+
+			// WWF No Mercy (September 2000 prototype)
+			{ SpecificGame.NoMercy_Proto_NTSC_September2000, "NoMercy_Sep2000.txt" }
+		};
+
+		/// <summary>
 		/// Get the path to the default FileTableDB for the loaded game type.
 		/// </summary>
 		/// <returns></returns>
@@ -112,15 +124,9 @@ namespace VPWStudio
 
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
-			// special case: WWF WrestleMania 2000 NTSC-J has a different FileTable than the NTSC-U and PAL versions.
-			if (Program.CurrentProject.Settings.GameType == SpecificGame.WM2K_NTSC_J)
+			if (FileTableDB_Overrides.ContainsKey(Program.CurrentProject.Settings.GameType))
 			{
-				dbFilePath += "WM2K-J.txt";
-			}
-			// special case: WWF No Mercy September 2000 prototype
-			else if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
-			{
-				dbFilePath += "NoMercy_Sep2000.txt";
+				dbFilePath += FileTableDB_Overrides[Program.CurrentProject.Settings.GameType];
 			}
 			else
 			{
