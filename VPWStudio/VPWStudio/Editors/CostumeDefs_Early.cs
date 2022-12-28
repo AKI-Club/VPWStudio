@@ -33,21 +33,11 @@ namespace VPWStudio.Editors
 	 * Body Type Defs: 0x2FCE4, 176 bytes (44 entries)
 	 * Head/Mask Defs: 0x31A44, 36 bytes (9 base pointers, 106? total entries)
 	 * Costume Defs: See source code; VPW64 has multiple pointer lists for costumes.
-	 * 
-	 * [WCW/nWo Revenge NTSC]
-	 * Body Type Defs: 0x323F0, 208 bytes (52 entries)
-	 * Head/Mask Defs: 0x33744, 40 bytes (10 base pointers, 90 total entries)
-	 * Costume Defs: 0x36AA4, 592 bytes (147 entries)
-	 * 
-	 * [WCW/nWo Revenge PAL]
-	 * Body Type Defs: 0x2FB40, 208 bytes
-	 * Head/Mask Defs: 0x30E94, 40 bytes
-	 * Costume Defs: 0x341F4, 592 bytes
 	 */
 
 	/// <summary>
 	/// Body Type, Costume, and Head/Mask Form for the early VPW series games.
-	/// (WCW vs. nWo World Tour, Virtual Pro-Wrestling 64, WCW/nWo Revenge)
+	/// (WCW vs. nWo World Tour and Virtual Pro-Wrestling 64)
 	/// </summary>
 	public partial class CostumeDefs_Early : Form
 	{
@@ -65,11 +55,6 @@ namespace VPWStudio.Editors
 		/// Mask/Head definitions
 		/// </summary>
 		private List<MaskDef_Early> MaskDefs = new List<MaskDef_Early>();
-
-		/// <summary>
-		/// Determine if the subpalette should be shown.
-		/// </summary>
-		private bool Costume_UseSubpalette = false;
 
 		#region VPW64-specific
 		private const int VPW64_SMALL = 0;
@@ -115,15 +100,6 @@ namespace VPWStudio.Editors
 		public CostumeDefs_Early()
 		{
 			InitializeComponent();
-			cbCostumesAltPalette.Checked = Costume_UseSubpalette;
-
-			// Only show sub-palette toggle for WCW/nWo Revenge
-			if (Program.CurrentProject.Settings.BaseGame != VPWGames.Revenge)
-			{
-				cbCostumesAltPalette.Enabled = false;
-				cbCostumesAltPalette.Visible = false;
-			}
-
 			MemoryStream ms = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader br = new BinaryReader(ms);
 
@@ -192,14 +168,6 @@ namespace VPWStudio.Editors
 						offset = 0x2FCE4;
 						numBodyDefs = 44;
 						break;
-					case SpecificGame.Revenge_NTSC_U:
-						offset = 0x323F0;
-						numBodyDefs = 52;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x2FB40;
-						numBodyDefs = 52;
-						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
@@ -233,7 +201,7 @@ namespace VPWStudio.Editors
 		private void LoadCostumeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numCostumes = 0;
+			int numCostumes = 45;
 
 			if (Program.CurLocationFile != null)
 			{
@@ -241,21 +209,6 @@ namespace VPWStudio.Editors
 				if (cdEntry != null)
 				{
 					br.BaseStream.Seek(cdEntry.Address, SeekOrigin.Begin);
-
-					switch (Program.CurrentProject.Settings.GameType)
-					{
-						case SpecificGame.WorldTour_NTSC_U_10:
-						case SpecificGame.WorldTour_NTSC_U_11:
-						case SpecificGame.WorldTour_PAL:
-							numCostumes = 45;
-							break;
-
-						case SpecificGame.Revenge_NTSC_U:
-						case SpecificGame.Revenge_PAL:
-							numCostumes = (cdEntry.Length / 4) - 1;
-							break;
-					}
-
 					hasLocation = true;
 				}
 			}
@@ -269,25 +222,13 @@ namespace VPWStudio.Editors
 				{
 					case SpecificGame.WorldTour_NTSC_U_10:
 						offset = 0x3368C;
-						numCostumes = 45;
 						return;
 					case SpecificGame.WorldTour_NTSC_U_11:
 						offset = 0x336FC;
-						numCostumes = 45;
 						break;
 					case SpecificGame.WorldTour_PAL:
 						offset = 0x336DC;
-						numCostumes = 45;
 						return;
-					case SpecificGame.Revenge_NTSC_U:
-						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"]
-						offset = 0x36AA4;
-						numCostumes = 147;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x341F4;
-						numCostumes = 147;
-						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
@@ -529,10 +470,6 @@ namespace VPWStudio.Editors
 					case SpecificGame.VPW64_NTSC_J:
 						numHeadDefs = 106;
 						break;
-					case SpecificGame.Revenge_NTSC_U:
-					case SpecificGame.Revenge_PAL:
-						numHeadDefs = 90;
-						break;
 				}
 			}
 			if (!hasLocation)
@@ -558,15 +495,6 @@ namespace VPWStudio.Editors
 					case SpecificGame.VPW64_NTSC_J:
 						offset = 0x31A44;
 						numHeadDefs = 106;
-						break;
-					case SpecificGame.Revenge_NTSC_U:
-						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
-						offset = 0x33744;
-						numHeadDefs = 90;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x30E94;
-						numHeadDefs = 90;
 						break;
 				}
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
@@ -803,29 +731,37 @@ namespace VPWStudio.Editors
 			SetTextBoxContentsHex4(tbRightUpperArmPalette, cdef.RightUpperArmPalette);
 			SetTextBoxContentsHex4(tbRightUpperArmTexture, cdef.RightUpperArmTexture);
 
+			SetTextBoxContentsHex4(tbLeftFootBottomPalette, cdef.LeftFootBottomPalette);
+			SetTextBoxContentsHex4(tbLeftFootBottomTexture, cdef.LeftFootBottomTexture);
+			SetTextBoxContentsHex4(tbRightFootBottomPalette, cdef.RightFootBottomPalette);
+			SetTextBoxContentsHex4(tbRightFootBottomTexture, cdef.RightFootBottomTexture);
+
 			// drawing textures is fun, not!!
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
 
-			LoadPreview_CI4(romReader, pbPelvis, cdef.PelvisPalette, cdef.PelvisTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbStomach, cdef.StomachPalette, cdef.StomachTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbChest, cdef.ChestPalette, cdef.ChestTexture, (Costume_UseSubpalette ? 1 : 0));
+			LoadPreview_CI4(romReader, pbPelvis, cdef.PelvisPalette, cdef.PelvisTexture, 0);
+			LoadPreview_CI4(romReader, pbStomach, cdef.StomachPalette, cdef.StomachTexture, 0);
+			LoadPreview_CI4(romReader, pbChest, cdef.ChestPalette, cdef.ChestTexture, 0);
 
-			LoadPreview_CI4(romReader, pbLeftBoot, cdef.LeftBootPalette, cdef.LeftBootTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftLeg, cdef.LeftLegPalette, cdef.LeftLegTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftFoot, cdef.LeftFootPalette, cdef.LeftFootTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftPalm, cdef.LeftPalmPalette, cdef.LeftPalmTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftFingers, cdef.LeftFingersPalette, cdef.LeftFingersTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftForearm, cdef.LeftForearmPalette, cdef.LeftForearmTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbLeftUpperArm, cdef.LeftUpperArmPalette, cdef.LeftUpperArmTexture, (Costume_UseSubpalette ? 1 : 0));
+			LoadPreview_CI4(romReader, pbLeftBoot, cdef.LeftBootPalette, cdef.LeftBootTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftLeg, cdef.LeftLegPalette, cdef.LeftLegTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftFoot, cdef.LeftFootPalette, cdef.LeftFootTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftPalm, cdef.LeftPalmPalette, cdef.LeftPalmTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftFingers, cdef.LeftFingersPalette, cdef.LeftFingersTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftForearm, cdef.LeftForearmPalette, cdef.LeftForearmTexture, 0);
+			LoadPreview_CI4(romReader, pbLeftUpperArm, cdef.LeftUpperArmPalette, cdef.LeftUpperArmTexture, 0);
 
-			LoadPreview_CI4(romReader, pbRightBoot, cdef.RightBootPalette, cdef.RightBootTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightLeg, cdef.RightLegPalette, cdef.RightLegTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightFoot, cdef.RightFootPalette, cdef.RightFootTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightPalm, cdef.RightPalmPalette, cdef.RightPalmTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightFingers, cdef.RightFingersPalette, cdef.RightFingersTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightForearm, cdef.RightForearmPalette, cdef.RightForearmTexture, (Costume_UseSubpalette ? 1 : 0));
-			LoadPreview_CI4(romReader, pbRightUpperArm, cdef.RightUpperArmPalette, cdef.RightUpperArmTexture, (Costume_UseSubpalette ? 1 : 0));
+			LoadPreview_CI4(romReader, pbRightBoot, cdef.RightBootPalette, cdef.RightBootTexture, 0);
+			LoadPreview_CI4(romReader, pbRightLeg, cdef.RightLegPalette, cdef.RightLegTexture, 0);
+			LoadPreview_CI4(romReader, pbRightFoot, cdef.RightFootPalette, cdef.RightFootTexture, 0);
+			LoadPreview_CI4(romReader, pbRightPalm, cdef.RightPalmPalette, cdef.RightPalmTexture, 0);
+			LoadPreview_CI4(romReader, pbRightFingers, cdef.RightFingersPalette, cdef.RightFingersTexture, 0);
+			LoadPreview_CI4(romReader, pbRightForearm, cdef.RightForearmPalette, cdef.RightForearmTexture, 0);
+			LoadPreview_CI4(romReader, pbRightUpperArm, cdef.RightUpperArmPalette, cdef.RightUpperArmTexture, 0);
+
+			LoadPreview_CI4(romReader, pbLeftFootBottom, cdef.LeftFootBottomPalette, cdef.LeftFootBottomTexture, 0);
+			LoadPreview_CI4(romReader, pbRightFootBottom, cdef.RightFootBottomPalette, cdef.RightFootBottomTexture, 0);
 
 			romReader.Close();
 		}
@@ -1056,21 +992,6 @@ namespace VPWStudio.Editors
 			LoadMaskDefinition(MaskDefs[lbHeadsMasks.SelectedIndex]);
 		}
 		#endregion
-
-		/// <summary>
-		/// Toggle the use of the subpalette for Costume items.
-		/// </summary>
-		private void cbCostumesAltPalette_Click(object sender, EventArgs e)
-		{
-			Costume_UseSubpalette = cbCostumesAltPalette.Checked;
-
-			if (lbCostumes.SelectedIndex < 0)
-			{
-				return;
-			}
-
-			LoadCostumeDefinition(CostumeDefs[lbCostumes.SelectedIndex]);
-		}
 
 		
 	}
