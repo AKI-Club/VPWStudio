@@ -11,20 +11,6 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio.Editors.Revenge
 {
-	// XXX: ALL HARDCODED VALUES SHOULD BE ADDED TO DEFAULTGAMELOCATIONS!!!!
-
-	/*
-	 * [WCW/nWo Revenge NTSC]
-	 * Body Type Defs: 0x323F0, 208 bytes (52 entries)
-	 * Head/Mask Defs: 0x33744, 40 bytes (10 base pointers, 90 total entries)
-	 * Costume Defs: 0x36AA4, 592 bytes (147 entries)
-	 * 
-	 * [WCW/nWo Revenge PAL]
-	 * Body Type Defs: 0x2FB40, 208 bytes
-	 * Head/Mask Defs: 0x30E94, 40 bytes
-	 * Costume Defs: 0x341F4, 592 bytes
-	 */
-
 	/// <summary>
 	/// Body Type, Costume, and Head/Mask Form for WCW/nWo Revenge
 	/// </summary>
@@ -78,7 +64,7 @@ namespace VPWStudio.Editors.Revenge
 		private void LoadBodyTypeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numBodyDefs = 0;
+			int numBodyDefs = 52;
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry btdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["BodyTypeDefs"]);
@@ -94,20 +80,7 @@ namespace VPWStudio.Editors.Revenge
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Body Type Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.Revenge_NTSC_U:
-						offset = 0x323F0;
-						numBodyDefs = 52;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x2FB40;
-						numBodyDefs = 52;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["BodyTypeDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// read pointer, go to address, read values, return to pointer list
@@ -139,7 +112,7 @@ namespace VPWStudio.Editors.Revenge
 		private void LoadCostumeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numCostumes = 0;
+			int numCostumes = 147;
 
 			if (Program.CurLocationFile != null)
 			{
@@ -163,26 +136,11 @@ namespace VPWStudio.Editors.Revenge
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Costume Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.Revenge_NTSC_U:
-						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"]
-						offset = 0x36AA4;
-						numCostumes = 147;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x341F4;
-						numCostumes = 147;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// if you thought mask defs were a pain, this is worse.
 
-			// xxx: this below description is probably for WCW/nWo Revenge only
 			// each pointer in the main list goes to another list containing three pointers.
 			// usually, the three pointers are the same, and we don't have to worry about anything.
 
@@ -238,19 +196,7 @@ namespace VPWStudio.Editors.Revenge
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Head/Mask Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.Revenge_NTSC_U:
-						//DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"]
-						offset = 0x33744;
-						break;
-					case SpecificGame.Revenge_PAL:
-						offset = 0x30E94;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// this is a pain because you have to follow pointers.
