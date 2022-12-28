@@ -42,6 +42,8 @@ namespace VPWStudio.GameSpecific
 		public UInt16 LeftForearmTexture;
 		public UInt16 LeftUpperArmPalette;
 		public UInt16 LeftUpperArmTexture;
+		public UInt16 LeftFootBottomPalette;
+		public UInt16 LeftFootBottomTexture;
 		#endregion
 
 		#region Right Side
@@ -59,6 +61,8 @@ namespace VPWStudio.GameSpecific
 		public UInt16 RightForearmTexture;
 		public UInt16 RightUpperArmPalette;
 		public UInt16 RightUpperArmTexture;
+		public UInt16 RightFootBottomPalette;
+		public UInt16 RightFootBottomTexture;
 		#endregion
 
 		public UInt16 Terminator = 0;
@@ -105,6 +109,10 @@ namespace VPWStudio.GameSpecific
 			RightForearmTexture = 0;
 			RightUpperArmPalette = 0;
 			RightUpperArmTexture = 0;
+			LeftFootBottomPalette = 0;
+			LeftFootBottomTexture = 0;
+			RightFootBottomPalette = 0;
+			RightFootBottomTexture = 0;
 		}
 
 		/// <summary>
@@ -174,6 +182,10 @@ namespace VPWStudio.GameSpecific
 			RightFingersTexture = ReadElement(br);
 			RightUpperArmPalette = ReadElement(br);
 			RightUpperArmTexture = ReadElement(br);
+			LeftFootBottomPalette = ReadElement(br);
+			LeftFootBottomTexture = ReadElement(br);
+			RightFootBottomPalette = ReadElement(br);
+			RightFootBottomTexture = ReadElement(br);
 			Terminator = ReadElement(br);
 		}
 
@@ -234,6 +246,10 @@ namespace VPWStudio.GameSpecific
 			WriteElement(bw, RightForearmTexture);
 			WriteElement(bw, RightUpperArmPalette);
 			WriteElement(bw, RightUpperArmTexture);
+			WriteElement(bw, LeftFootBottomPalette);
+			WriteElement(bw, LeftFootBottomTexture);
+			WriteElement(bw, RightFootBottomPalette);
+			WriteElement(bw, RightFootBottomTexture);
 			WriteElement(bw, Terminator);
 		}
 		#endregion
