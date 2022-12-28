@@ -60,7 +60,8 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F100, 176) },
-					//{ "CostumeDefs", new DefaultLocationDataEntry(0x3368C, ?) },
+					{ "HeadDefs", new DefaultLocationDataEntry(0x2FD50, 32) },
+					{ "CostumeDefs", new DefaultLocationDataEntry(0x3368C, 180) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x37BF8, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 
@@ -83,7 +84,8 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F170, 176) },
-					//{ "CostumeDefs", new DefaultLocationDataEntry(0x336FC, ?) },
+					{ "HeadDefs", new DefaultLocationDataEntry(0x2FDC0, 32) },
+					{ "CostumeDefs", new DefaultLocationDataEntry(0x336FC, 180) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x37C68, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x37F38, 96) },
 
@@ -106,7 +108,8 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
-					//{ "CostumeDefs", new DefaultLocationDataEntry(0x336DC, ?) },
+					{ "HeadDefs", new DefaultLocationDataEntry(0x2FDA0, 32) },
+					{ "CostumeDefs", new DefaultLocationDataEntry(0x336DC, 180) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x37BF8, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x37EC8, 96) },
 
@@ -129,10 +132,12 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
+					// do not be alarmed by the lack of a "CostumeDefs" entry; see below
+					{ "HeadDefs", new DefaultLocationDataEntry(0x31A44, 36) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x49438, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x4989C, 176) },
 
-					// costume definitions
+					// costume definitions (yes, VPW64 does it differently from World Tour)
 					{ "VPW64Costumes_Small", new DefaultLocationDataEntry(0x3EE40, 504) },
 					{ "VPW64Costumes_Medium", new DefaultLocationDataEntry(0x36EC0, 384) },
 					{ "VPW64Costumes_Large", new DefaultLocationDataEntry(0x32CF0, 84) },
@@ -161,6 +166,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
+					{ "HeadDefs", new DefaultLocationDataEntry(0x33744, 40) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x36AA4, 592) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3ADEC, 0) },
 					{ "ChampionshipDefs", new DefaultLocationDataEntry(0x3B084, 100) },
@@ -182,6 +188,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FB40, 208) },
+					{ "HeadDefs", new DefaultLocationDataEntry(0x30E94, 40) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x341F4, 592) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3823C, 0) },
 					{ "ChampionshipDefs", new DefaultLocationDataEntry(0x384D4, 100) },

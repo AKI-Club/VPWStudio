@@ -132,7 +132,7 @@ namespace VPWStudio.Editors
 		private void LoadBodyTypeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numBodyDefs = 0;
+			int numBodyDefs = 44;
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry btdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["BodyTypeDefs"]);
@@ -148,28 +148,7 @@ namespace VPWStudio.Editors
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Body Type Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-						offset = 0x2F100;
-						numBodyDefs = 44;
-						break;
-					case SpecificGame.WorldTour_NTSC_U_11:
-						offset = 0x2F170;
-						numBodyDefs = 44;
-						break;
-					case SpecificGame.WorldTour_PAL:
-						offset = 0x2F150;
-						numBodyDefs = 44;
-						break;
-					case SpecificGame.VPW64_NTSC_J:
-						offset = 0x2FCE4;
-						numBodyDefs = 44;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["BodyTypeDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// read pointer, go to address, read values, return to pointer list
@@ -216,21 +195,7 @@ namespace VPWStudio.Editors
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Costume Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-						offset = 0x3368C;
-						return;
-					case SpecificGame.WorldTour_NTSC_U_11:
-						offset = 0x336FC;
-						break;
-					case SpecificGame.WorldTour_PAL:
-						offset = 0x336DC;
-						return;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["CostumeDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// if you thought mask defs were a pain, this is worse.
@@ -450,7 +415,10 @@ namespace VPWStudio.Editors
 		private void LoadMaskDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numHeadDefs = 0;
+
+			// VPW64 has way more heads/masks defined than World Tour
+			int numHeadDefs = (Program.CurrentProject.Settings.GameType == SpecificGame.VPW64_NTSC_J) ? 106 : 45;
+
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry hdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["HeadDefs"]);
@@ -459,45 +427,12 @@ namespace VPWStudio.Editors
 					br.BaseStream.Seek(hdEntry.Address, SeekOrigin.Begin);
 					hasLocation = true;
 				}
-
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-					case SpecificGame.WorldTour_NTSC_U_11:
-					case SpecificGame.WorldTour_PAL:
-						numHeadDefs = 45;
-						break;
-					case SpecificGame.VPW64_NTSC_J:
-						numHeadDefs = 106;
-						break;
-				}
 			}
 			if (!hasLocation)
 			{
 				// fallback to hardcoded offset
 				Program.InfoMessageBox("Head/Mask Definition location not found; using hardcoded offset instead.");
-
-				long offset = 0;
-				switch (Program.CurrentProject.Settings.GameType)
-				{
-					case SpecificGame.WorldTour_NTSC_U_10:
-						offset = 0x2FD50;
-						numHeadDefs = 45;
-						break;
-					case SpecificGame.WorldTour_NTSC_U_11:
-						offset = 0x2FDC0;
-						numHeadDefs = 45;
-						break;
-					case SpecificGame.WorldTour_PAL:
-						offset = 0x2FDA0;
-						numHeadDefs = 45;
-						break;
-					case SpecificGame.VPW64_NTSC_J:
-						offset = 0x31A44;
-						numHeadDefs = 106;
-						break;
-				}
-				br.BaseStream.Seek(offset, SeekOrigin.Begin);
+				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["HeadDefs"].Offset, SeekOrigin.Begin);
 			}
 
 			// this is a pain because you have to follow pointers.
