@@ -11,30 +11,6 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio.Editors
 {
-	// XXX: ALL HARDCODED VALUES SHOULD BE ADDED TO DEFAULTGAMELOCATIONS!!!!
-
-	/*
-	 * [WCW vs. nWo World Tour NTSC v1.0]
-	 * Body Type Defs: 0x2F150, 176 bytes (44 entries)
-	 * Head/Mask Defs: 0x2FD50, 32 bytes (8 base pointers, 45 entries)
-	 * Costume Defs: 0x33740, 32 bytes (8 base pointers, 45 entries)
-	 * 
-	 * [WCW vs. nWo World Tour NTSC v1.1]
-	 * Body Type Defs: 0x2F170, 176 bytes (44 entries)
-	 * Head/Mask Defs: 0x2FDC0, 32 bytes (8 base pointers, 45 entries)
-	 * Costume Defs: 0x336FC, 32 bytes (8 base pointers, 45 entries)
-	 * 
-	 * [WCW vs. nWo World Tour PAL]
-	 * Body Type Defs: 0x2F150, 176 bytes (44 entries)
-	 * Head/Mask Defs: 0x2FDA0, 32 bytes (8 base pointers, 45 entries)
-	 * Costume Defs: 0x336DC, 32 bytes (8 base pointers, 45 entries)
-	 * 
-	 * [Virtual Pro-Wrestling 64]
-	 * Body Type Defs: 0x2FCE4, 176 bytes (44 entries)
-	 * Head/Mask Defs: 0x31A44, 36 bytes (9 base pointers, 106? total entries)
-	 * Costume Defs: See source code; VPW64 has multiple pointer lists for costumes.
-	 */
-
 	/// <summary>
 	/// Body Type, Costume, and Head/Mask Form for the early VPW series games.
 	/// (WCW vs. nWo World Tour and Virtual Pro-Wrestling 64)
