@@ -1746,6 +1746,7 @@
 0B58=Ci4Texture;|p:11AC
 0B5C=Ci4Texture;|p:11B9
 0B8B=Ci4Texture;
+0BCC=Ci8Palette;(costume colors)
 0CAC=Ci4Palette;
 0CBD=Ci4Palette;
 0CBE=Ci4Palette;
