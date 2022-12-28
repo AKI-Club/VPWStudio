@@ -458,6 +458,7 @@
     <Compile Include="GameSpecific\NoMercy\StableDefinition.cs" />
     <Compile Include="GameSpecific\NoMercy\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\ChampionshipDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\CostumeDef.cs" />
     <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
