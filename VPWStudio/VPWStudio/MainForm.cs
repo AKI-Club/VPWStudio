@@ -110,6 +110,11 @@ namespace VPWStudio
 		/// Revenge Wrestler Editor, main form
 		/// </summary>
 		public Editors.Revenge.WrestlerMain_Revenge WrestlerMain_Revenge = null;
+
+		/// <summary>
+		/// WCW/nWo Revenge Costume and Mask/Head Editor
+		/// </summary>
+		public Editors.Revenge.CostumeDefs_Revenge CostumeDefs_Revenge = null;
 		#endregion
 
 		#region WM2K
@@ -921,7 +926,6 @@ namespace VPWStudio
 				// Early VPW games
 				case VPWGames.WorldTour:
 				case VPWGames.VPW64:
-				case VPWGames.Revenge:
 					if (CostumeDefs_Early == null || CostumeDefs_Early.IsDisposed)
 					{
 						CostumeDefs_Early = new Editors.CostumeDefs_Early();
@@ -932,6 +936,19 @@ namespace VPWStudio
 					}
 					CostumeDefs_Early.MdiParent = this;
 					CostumeDefs_Early.Show();
+					break;
+
+				case VPWGames.Revenge:
+					if (CostumeDefs_Revenge == null || CostumeDefs_Revenge.IsDisposed)
+					{
+						CostumeDefs_Revenge = new Editors.Revenge.CostumeDefs_Revenge();
+					}
+					if (CostumeDefs_Revenge.WindowState == FormWindowState.Minimized)
+					{
+						CostumeDefs_Revenge.WindowState = FormWindowState.Normal;
+					}
+					CostumeDefs_Revenge.MdiParent = this;
+					CostumeDefs_Revenge.Show();
 					break;
 
 				// WIP shite
