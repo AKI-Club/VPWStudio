@@ -2,9 +2,47 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 28 (202x/yy/zz)
+Pre-Alpha Preview 29 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 28 (2023/02/17)
+---------------------------------
+- Preliminary support for WWF No Mercy September 2000 prototype.
+  Build/editing support is not planned for any prototype/pre-release versions.
+
+- Ignore blank lines in FileTableDB files instead of erroring out.
+  (I'm actually surprised I didn't run into this issue sooner...)
+
+- [New Project Dialog] Add "built.z64" to the default Output ROM File box.
+
+- [Toki 1 Test Dialog] Added labels for modern game offsets 0x08 and 0x10.
+  Thanks to RetroRandy for figuring those out.
+  (offset 0x10's purpose is only known for No Mercy right now;
+  VPW2 and earlier still unknown.)
+
+- [Toki 1 Test Dialog] Added hex values for Effect frame numbers.
+
+- [Project Build] If the Output ROM Path directory does not exist, offer to
+  create it.
+
+- [FileTable Edit Entry Dialog] Fixed issue where certain file types would not
+  use the proper file filter (e.g. CI8Texture brought up CI8Palette file types).
+
+- [PNG Conversion Tools] Now shows a message box with the output file location
+  once conversion is finished.
+
+- [Costume Items Dialog] Split Costume Items dialog into two separate versions:
+  one for World Tour/VPW64, and one for WCW/nWo Revenge.
+
+  While the original dialog was compatible with all three games, Revenge's
+  costume definition is slightly different from World Tour and VPW64.
+  (Revenge does not include separate boot/foot bottom textures/palettes.)
+
+- [FileTableDB] Small updates for No Mercy, VPW64, World Tour FileTableDBs.
+
+  To update your project, open the File Table dialog, then choose Database ->
+  Reload File Table Database.
 
 Pre-Alpha Preview 27 (2022/11/27)
 ---------------------------------

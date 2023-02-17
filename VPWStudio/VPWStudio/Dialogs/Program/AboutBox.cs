@@ -48,7 +48,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Last updated month and year for program testing group information.
 		/// </summary>
-		private readonly string DateString = "November 2022";
+		private readonly string DateString = "February 2023";
 
 		public AboutBox()
 		{
