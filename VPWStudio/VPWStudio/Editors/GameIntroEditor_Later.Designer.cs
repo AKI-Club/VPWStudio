@@ -69,6 +69,7 @@
 			this.pointer4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.btnReloadRom = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAnimations)).BeginInit();
@@ -507,11 +508,22 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
+			// btnReloadRom
+			// 
+			this.btnReloadRom.Location = new System.Drawing.Point(12, 380);
+			this.btnReloadRom.Name = "btnReloadRom";
+			this.btnReloadRom.Size = new System.Drawing.Size(114, 23);
+			this.btnReloadRom.TabIndex = 3;
+			this.btnReloadRom.Text = "&Reload ROM Data";
+			this.btnReloadRom.UseVisualStyleBackColor = true;
+			this.btnReloadRom.Click += new System.EventHandler(this.btnReloadRom_Click);
+			// 
 			// GameIntroEditor_Later
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(754, 415);
+			this.Controls.Add(this.btnReloadRom);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.tabControl1);
@@ -576,5 +588,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn pointer2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn pointer3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn pointer4;
+		private System.Windows.Forms.Button btnReloadRom;
 	}
 }

@@ -275,5 +275,17 @@ namespace VPWStudio
 		{
 
 		}
+
+		private void btnReloadRom_Click(object sender, EventArgs e)
+		{
+			IntroAnimations.Clear();
+			IntroImages.Clear();
+			IntroSequenceItems.Clear();
+
+			dgvAnimations.Rows.Clear();
+			dgvImages.Rows.Clear();
+			dgvSequence.Rows.Clear();
+			LoadIntroData();
+		}
 	}
 }
