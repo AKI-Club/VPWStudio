@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.28 (February 17th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.28 (July 2nd, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -83,7 +83,12 @@
 <li><a href="#DangerZone">Danger Zone</a></li>
 </ol>
 
-<h3>Chapter 3: Everything Else</h3>
+<h3>Chapter 3: "No, seriously, how do I..."</h3>
+<ol>
+<li>Edit Wrestler Movesets and Parameters</li>
+</ol>
+
+<h3>Chapter 4: Everything Else</h3>
 <ol>
 <li><a href="#ExternalTools">External Tools</a>
 	<ol>
@@ -120,7 +125,9 @@ are external (i.e. separate from the main manual).)</p>
 <li><a href="http://maximoff.alreadyread.net/Tutorial-Faces/">gmspectre's No Mercy Face Tutorial</a></li>
 </ul>
 
-<hr />
+<hr class="chapterSplit" />
+<div class="chapter">Chapter 1: Introductory Material</div>
+
 <h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
 <em>Virtual Pro-Wrestling</em> series. The initial focus is on AKI's
@@ -251,6 +258,9 @@ adding support for the two PlayStation 1 games. As of August 2021, the Def Jam
 games are officially out of scope for VPW Studio. A new, purpose-built tool
 would be a better solution for the Def Jam games.</p>
 
+<p>There will be no attempt to allow project building for prototype versions of
+the games. This may or may not change in the future.</p>
+
 <hr />
 <h2><a name="Requirements">Requirements and Notes</a></h2>
 <p>In order to use VPW Studio, you'll need a few things.</p>
@@ -344,27 +354,6 @@ technical support:</p>
 by then, has a solution as well.</li>
 </ul>
 
-<p>Paid technical support has been considered as an option, but that will
-inevitably lead to one specific question being asked...</p>
-
-<h3>"Can't freem just do everything for me?"</h3>
-<p>The answer is no. Actually, that's the <em>nice</em> version of the answer.
-The <em>real</em> answer is:</p>
-
-<p><span class="huge">I WILL NOT MAKE YOUR HACK FOR YOU.</span></p>
-
-<p>It took long enough to make this program (starting in 2018), a hack to go along
-with it (spanning 2018-the beginning of 2021), <em>and</em> an abandoned hack (that
-my heart wasn't completely in) to get this far. I am <em>completely uninterested</em>
-in doing all of the work for you, having <em>already</em> done it 1¼ times. Offering
-money will not change this, either, as money can't magically do the work for me.</p>
-
-<p>Please respect my wishes on these matters.</p>
-
-<p>I would also advise not asking other people to make your projects if you are
-not willing to put forth some of the work required. Even a "smaller" scale project
-can take weeks or months, depending on the number of things you need to change.</p>
-
 <h3>"What about program bugs?"</h3>
 <p>Any bugs with the program should be reported on the <a href="https://github.com/AKI-Club/VPWStudio/issues">GitHub
 Issues page</a>. When filing a bug report, please make it a point to include
@@ -422,8 +411,12 @@ to change the Build Log Verbosity option to "Quiet".</p>
 
 <hr />
 <h2><a name="ProjectFiles">Project Files</a></h2>
-<p>VPW Studio primarily operates on the concept of Project Files. This method was
-chosen due to the number of total conversion hacks created by the AKI hacking communities.</p>
+<p>VPW Studio operates on the concept of Project Files. A project file represents
+a "total conversion" hack, as this is the primary project type created by the AKI
+hacking community over the past two decades. Each project file currently targets a
+single game version and region combination. Locations in the ROM can change between
+regions and revisions, and certain versions of the games have more external
+documentation than others.</p>
 
 <p>Project Files have the extension <code>.vpwsproj</code>. Technical information
 about the Project File format can be found in <a href="./appendix_b.html#ProjectFile">Appendix B</a>.</p>
@@ -485,8 +478,8 @@ run into any issues here.</p>
 
 <p>It is also important to note that the two letter game code is often used
 by emulators and flash carts to determine the save type, so modifying it is
-<strong><em>not recommended</em></strong>. This goes quintuple for <em>WWF No
-Mercy</em>, which is the only game in the series to save to Flash memory.</p>
+<strong><em>not recommended</em></strong>. This goes quintuple for
+<em>WWF No Mercy</em>, which is the only game in the series to save to Flash memory.</p>
 
 <a name="Region_GoodNames" />
 <p>For the region, it's important to note that the region codes used by
@@ -1040,8 +1033,7 @@ available colors, and no headers or other information.</p>
 
 <p>CI8 palettes have 256 colors, while CI4 palettes are meant to store
 16 colors. However, you will often find CI4 palettes with more than 16 colors.
-This is meant to be used for changing colors in Edit Mode, and is explained
-further below.</p>
+This is used for changing colors in Edit Mode, and is explained further below.</p>
 
 <h4>VPW Studio Palette</h4>
 <p>Even though there are many external palette formats available, none of the
@@ -1117,7 +1109,7 @@ CI4 sub-palettes.</p>
 
 <p>In <em>WWF No Mercy</em>, each face has its own palette, which can be a pro
 and a con for people who want to edit them. If you are working on a <em>No Mercy</em>
-project, it is recommended to set up a shared face palette for most faces.</p>
+project, it is recommended to create a set of shared face palettes for most faces.</p>
 
 <h3><a name="TextureLayering">Texture Layering</a></h3>
 <p>Costume items are often layered on top of other textures. This includes
@@ -1148,18 +1140,19 @@ per-face and per-facial hair item.</p>
 <h3><a name="TexTransparency"><code>AkiTexture</code> Transparency Fix</a></h3>
 <p>Since the .NET Framework has issues with transparent PNG files (namely, assuming
 they can't possibly be paletted), you have to manually fix the transparency in any
-<code>AkiTexture</code> formatted texture. To do this, you'll need to manually
-change a palette entry to be transparent via a hex editor.</p>
+<code>AkiTexture</code> formatted texture. This involves changing a palette entry
+to be transparent via a hex editor. Start by using the "PNG to AKI TEX" option in
+the Tools menu. This will create a <code>.tex</code> file which can be edited.</p>
 
 <p>TEX files start with 16 bytes of header data, which is followed by the palette
 data (starting at file offset <code>0x10</code>). Each color takes up two bytes in
 the palette. If it's a 16-color texture, there will be 32 bytes of palette data.
 If it's a 256-color texture, there will be 512 bytes of palette data. The key to
-transparency is the least significant bit of the <em>second</em> byte. For example,
-non-transparent full black would have the hex values <code>00 01</code>. To make
-this transparent, you would change it to <code>00 00</code>. For other colors,
-it's best to throw the second byte into a hex-capable calculator, then switch to
-binary mode and modify the least significant bit to be 0.</p>
+transparency is the least significant bit of the <em>second</em> byte of a palette
+entry. For example, non-transparent full black would have the hex values
+<code>00 01</code>. To make this transparent, you would change it to <code>00 00</code>.
+For other colors, it's best to throw the second byte into a hex-capable calculator,
+then switch to binary mode and modify the least significant bit to be 0.</p>
 
 <p>If you're having trouble determining which palette entry represents the color
 that needs to be transparent, check the pixel data for the most common value.
@@ -1168,10 +1161,14 @@ enough. For 16-color pictures, each byte represents two colors, packing the
 color index into a "nibble". For example, a hex value of <code>23</code>
 would draw two pixels using palette index 2 and 3.</p>
 
+<p>After finishing the hex edit, be sure to set the Replacement File to the
+new <code>.tex</code> file in the File Table dialog.</p>
+
 <h3><a name="FontWorkflow">Fonts</a></h3>
 <p>Both the Large and Small font types are 1bpp format. VPW Studio currently
 has no workflow for handling font replacement, but they can be edited using a
-program that understands 1bpp format tiles. <a href="http://www.romhacking.net/utilities/109/">Tile
+program that understands 1bpp format tiles <em>and</em> has flexible display
+options. <a href="http://www.romhacking.net/utilities/109/">Tile
 Molester</a> is one such program.</p>
 
 <p>While a complete guide to using Tile Molester is out of the scope of this
@@ -1203,7 +1200,8 @@ but it is helpful to know how things work when making certain types of changes.<
 <p>Games for the fifth generation of consoles (Nintendo 64, PlayStation 1, and
 Saturn) load code into RAM and execute it. For the disc-based systems, this is
 required, as accessing the disc constantly is bad for the lifespan of the
-CD-ROM drive. However, for the cartridge-based Nintendo 64, code execution in
+CD-ROM drive. <small>(Exceptions exist, but this isn't a manual for a Crash Bandicoot
+editor.)</small> However, for the cartridge-based Nintendo 64, code execution in
 RAM may seem like an odd choice.</p>
 
 <p>Consoles from the fifth generation are not typically immediately able to
@@ -1236,7 +1234,9 @@ can be different between different regions and versions/revisions of a game.</p>
 <p>Specific information on how each game handles this can be found in the
 <a href="#GameSpecificDocs">Game-Specific Information</a> section.</p>
 
-<hr />
+<hr class="chapterSplit" />
+<div class="chapter">Chapter 2: Program Functionality</div>
+
 <h2><a name="Arenas">Arenas</a></h2>
 <p>(todo: this portion of the program requires a 3D renderer capable of handling
 multiple objects, along with being able to select and move them, and I'm not fully
@@ -1538,7 +1538,7 @@ which are alternate sets of 16 colors.</p>
 viewer, as I4 textures don't have a width or height set in the file. Unless the
 file you're previewing has set up the required Extra Data values (see the "File
 Table Entry Information" section), you'll need to play with the width and height
-values to find the proper settings. Be sure to press the Refresh button to update
+values to find the proper settings. Be sure to press the Redraw button to update
 the image preview.</p>
 
 <p>Right clicking on the image brings up a context menu with three options:</p>
@@ -1673,7 +1673,9 @@ spreadsheet. Paste it into cell D3 (main) or D43 (secondary).</p>
 
 <hr />
 <h2><a name="GameIntro">Game Introduction</a></h2>
-<p>(todo: not really "working" as an editor)</p>
+<p>The Game Introduction dialog is a crude information viewer for mulitple
+parts of the game's introduction sequence. Right now, this isn't really working
+as an Editor, so all changes must be done to the base ROM in a hex editor.</p>
 
 <h3>Game Support</h3>
 <p>All games are currently read-only.</p>
@@ -1727,7 +1729,8 @@ plus it's pretty different for each of the games)</p>
 
 <hr />
 <h2><a name="Moves">Moves</a></h2>
-<p>The Moves section (Project &rarr; Moves) deals with every move and animation found in the game.</p>
+<p>The Moves section (Project &rarr; Moves) deals with every move and animation found
+in the game. This is not to be confused with wrestler movesets.</p>
 
 <p>(todo: this takes a lot of work to get right, considering moves are composed
 of multiple parts (toki1, damage, actual animation data, data required for things
@@ -1736,7 +1739,7 @@ to be selectable in menus...), and most of the formats change per-game)</p>
 <hr />
 <h2><a name="SoundMusic">Sound/Music</a></h2>
 <p>The Sound and Music editor (Project &rarr; Sound/Music) will eventually allow you
-to preview and change sounds. (This includes the theme music found in WM2K, VPW2,
+to preview and change sounds. (This includes the streamed music found in WM2K, VPW2,
 and No Mercy.)</p>
 
 <p>(todo: I haven't even begun to think about this; you're better off using SubDrag and Ice Mario's
@@ -1874,9 +1877,10 @@ ID2 value of the wrestler you want to swap.</p>
 <h2><a name="StoryMode">Story Mode</a></h2>
 <p>"Project &rarr; Story Mode" (todo)</p>
 
-<p>This feature is not yet implemented, as not all data has been found.
+<p>This feature is not fully implemented, as not all data has been found.
 The table below shows what games will be supported once the feature is completed.
-For now, please disregard the table below.</p>
+For now, please disregard the table below; only VPW2 is meaningfully supported
+at this time.</p>
 
 <h3>Game Support</h3>
 <table>
@@ -1916,6 +1920,13 @@ For now, please disregard the table below.</p>
 <p>Note: The Story Mode editor for World Tour, VPW64, and Revenge can be found in the <a href="#Championships">Championships</a> section,
 as the Championships and Story Mode are intertwined in those games.</p>
 
+<h3>WWF WrestleMania 2000</h3>
+<p>(todo)</p>
+
+<h3>Virtual Pro-Wrestling 2</h3>
+<p>(todo)</p>
+
+<h3>WWF No Mercy</h3>
 <p>(todo)</p>
 
 <hr />
@@ -2123,7 +2134,9 @@ the terminally curious.</li>
 <li><strong>param unpack test</strong> &ndash; attempt to test wrestler parameter unpacking. only works properly with vpw2 and wm2k; no mercy is "supported", but the output is wrong. all other N64 AKI games use unpacked parameters.</li>
 </ul>
 
-<hr />
+<hr class="chapterSplit" />
+<div class="chapter">Chapter 4: Everything Else</div>
+
 <h2><a name="ExternalTools">External Tools</a></h2>
 <p>Starting with Pre-Alpha Preview 24, VPW Studio includes some extra stand-alone
 programs that are useful for development purposes. These programs are located in
@@ -2178,7 +2191,7 @@ so remember to put the filenames in the proper order for output.</p>
 
 <p>This tool is dedicated to the memory of Maximo.</p>
 
-<hr />
+<hr class="chapterSplit" />
 <h2><a name="Glossary">Appendix A: Glossary</a></h2>
 <p>Various communities create and use jargon to refer to ideas and concepts.
 The Virtual Pro-Wrestling series hacking communities are no exception.
@@ -2275,7 +2288,7 @@ using a Doctor V64.</dd>
 using a Mr. Backup Z64.</dd>
 </dl>
 
-<hr />
+<hr class="chapterSplit" />
 <div id="footer">(footer content todo)</div>
 
 </body>
