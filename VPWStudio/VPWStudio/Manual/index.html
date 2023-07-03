@@ -85,7 +85,7 @@
 
 <h3>Chapter 3: "No, seriously, how do I..."</h3>
 <ol>
-<li>Edit Wrestler Movesets and Parameters</li>
+<li><a href="#MovesetParams">Edit Wrestler Movesets and Parameters</a></li>
 </ol>
 
 <h3>Chapter 4: Everything Else</h3>
@@ -2133,6 +2133,106 @@ the base for the final, more polished features. Starting with pre-Alpha Preview
 the terminally curious.</li>
 <li><strong>param unpack test</strong> &ndash; attempt to test wrestler parameter unpacking. only works properly with vpw2 and wm2k; no mercy is "supported", but the output is wrong. all other N64 AKI games use unpacked parameters.</li>
 </ul>
+
+<hr class="chapterSplit" />
+<div class="chapter">Chapter 3: "No, seriously, how do I..."</div>
+
+<h2><a name="MovesetParams">Edit Wrestler Movesets and Parameters</a></h2>
+<p>Unfortunately, editing wrestler movesets and parameters is different per-game.
+It is easiest to accomplish in the later three N64 games (<em>WWF WrestleMania 2000</em>
+and later), but requires a small bit of work on your part.</p>
+
+<p>The actual instructions are largely game-specific, though the overall method is similar:</p>
+
+<ol>
+<li>Create your character with the desired parameters and moveset in Edit Mode/Smackdown Mall.</li>
+<li>Load a match with your CAW/edited character in the first slot (or wherever, or with multiple edits...)</li>
+<li>Dump the moveset and parameters data from RAM into two separate files.</li>
+<li>Replace the existing moveset and param files in the File Table with the newly dumped data.</li>
+</ol>
+
+<p>An automated dumping method is available for versions of Project64 that support
+JavaScript.</p>
+
+<!-- https://github.com/AKI-Club/emuscripts/tree/master/project64/memdump -->
+
+<h3>WWF WrestleMania 2000</h3>
+<p>Since <em>WrestleMania 2000</em> has multiple regional releases, the locations
+you need to dump from will change based on which version you're using. The good
+news is that Parameter data will always be 30 (<code>0x1E</code>) bytes, and
+Moveset data will always* be 180 (<code>0xB4</code>) bytes.</p>
+
+<table>
+<tbody>
+<tr>
+	<th colspan=3>NTSC-U and PAL</th>
+</tr>
+<tr>
+	<th>Player</th>
+	<th>Moveset</th>
+	<th>Parameters</th>
+</tr>
+<tr>
+	<td>P1</td>
+	<td>8008DC34</td>
+	<td>8008DCFC</td>
+</tr>
+<tr>
+	<td>P2</td>
+	<td>8008DD28</td>
+	<td>8008DDF0</td>
+</tr>
+<tr>
+	<td>P3</td>
+	<td>8008DE1C</td>
+	<td>8008DEE4</td>
+</tr>
+<tr>
+	<td>P4</td>
+	<td>8008DF10</td>
+	<td>8008DFD8</td>
+</tr>
+
+<tr>
+	<th colspan=3>NTSC-J</th>
+</tr>
+<tr>
+	<th>Player</th>
+	<th>Moveset</th>
+	<th>Parameters</th>
+</tr>
+<tr>
+	<td>P1</td>
+	<td>8008BF84</td>
+	<td>8008C04C</td>
+</tr>
+<tr>
+	<td>P2</td>
+	<td>8008C078</td>
+	<td>8008C140</td>
+</tr>
+<tr>
+	<td>P3</td>
+	<td>8008C16C</td>
+	<td>8008C234</td>
+</tr>
+<tr>
+	<td>P4</td>
+	<td>8008C260</td>
+	<td>8008C328</td>
+</tr>
+</tbody>
+</table>
+
+<p>* This exception is for RagDas; I don't have the necessary details offhand
+for dealing with Combo or Shootfighting styles in WM2K.</p>
+
+<h3>Virtual Pro-Wrestling 2</h3>
+<p>VPW2 is trickier to deal with, due to having multiple Fighting Styles. The length
+of the moveset data differs depending on the Fighting Style set in the Parameters.</p>
+
+<h3>WWF No Mercy</h3>
+<p></p>
 
 <hr class="chapterSplit" />
 <div class="chapter">Chapter 4: Everything Else</div>
