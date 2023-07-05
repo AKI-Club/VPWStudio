@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.28 (July 2nd, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.28 (July 5th, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -136,7 +136,10 @@ learning about the internals of these games, and a lot of this program assumes
 that you either know the necessary information, or you know
 <a href="https://vpw.ajworld.net/">where to get it</a>.</p>
 
-<p><strong>This program does NOT hold your hand.</strong> You have been warned.</p>
+<p><strong>This program does NOT hold your hand, and it is not particularly
+user-friendly at this time.</strong> You have been warned.</p>
+
+<hr />
 
 <h2><a name="Intro">Introduction</a></h2>
 <p>VPW Studio is a ROM hacking tool for the games in AKI Corporation's
@@ -2146,13 +2149,18 @@ the terminally curious.</li>
 
 <hr class="chapterSplit" />
 <div class="chapter">Chapter 3: "No, seriously, how do I..."</div>
+<p>For various reasons, some common/expected tasks have non-obvious directions.
+This section attempts to cover these tasks, as well as things that have been asked
+for in the past, but are not possible with the program.</p>
+
+<hr />
 
 <h2><a name="MovesetParams">Edit Wrestler Movesets and Parameters</a></h2>
 <p>Editing wrestler movesets and parameters is different per-game. It is easiest
 to accomplish in the later three N64 games (<em>WWF WrestleMania 2000</em> and later),
 but requires a small bit of work on your part.</p>
 
-<p>The actual instructions are largely game-specific, though the overall method is similar:</p>
+<p>The overall method is similar, but details differ per game:</p>
 
 <ol>
 <li>Create your character with the desired parameters and moveset in Edit Mode/Smackdown Mall.</li>
@@ -2160,6 +2168,28 @@ but requires a small bit of work on your part.</p>
 <li>Dump the moveset and parameters data from RAM into two separate files.</li>
 <li>Replace the existing moveset and param files in the File Table with the newly dumped data.</li>
 </ol>
+
+<p>For Project64 v2.4 and later, ensure the debugger is enabled. If it's not
+enabled, go to Options &rarr; Settings &rarr; Options and uncheck "Hide advanced
+settings. Then, go to the Advanced section and make sure "Enable debugger" is
+checked. This should enable the "Debugger" menu. While the game is loaded, select
+Debugger &rarr; Memory &rarr; Dump, and a dialog should appear.</p>
+
+<img src="./img/dumpmem_pj64.png" title="Project64 Dump Memory interface" />
+
+<p>dump instructions</p>
+<ul>
+<li>Set "Start VAddress" to one of the values in the tables below, based on what you
+want to dump. The beginning <code>0x</code> (as seen in the screenshot) is required.</li>
+<li>"End VAddress" needs to be calculated based on what you're dumping. Take the base
+value from the table, then add the data length to it. Using a hex-capable calculator
+is highly recommended. Again, <code>0x</code> is required at the beginning of the address.</li>
+<li>Ensure "Use alternate PC" is <em>unchecked</em>.</li>
+<li>Set the filename based on what you're dumping (e.g. <code>wrestler_moves.bin</code>,
+<code>wrestler_params.bin</code>). Using the "..." button next to the filename box
+is recommended.</li>
+<li>"Format" should be "RAW - Big Endian (N64)".</li>
+</ul>
 
 <h3>WCW/nWo Revenge and earlier</h3>
 <p>Information on movesets and parameters in these games is scarce. RagDas and
@@ -2292,9 +2322,9 @@ of the moveset data differs depending on the Fighting Style set in the Parameter
 
 <p>An <a href="https://github.com/AKI-Club/emuscripts/tree/master/project64/memdump">automated
 dumping method</a> is available for versions of Project64 that support JavaScript.
-Put <code>memdump.js</code> in the Scripts directory, run the memdump script in Project64,
-then open <code>moveparam_vpw2.html</code> in a web browser and save the links on the page
-after loading a match with the desired wrestler(s).</p>
+Put <code>memdump.js</code> in the <code>Scripts</code> directory, run the memdump
+script in Project64, then open <code>moveparam_vpw2.html</code> in a web browser and
+save the links on the page after loading a match with the desired wrestler(s).</p>
 
 <h3>WWF No Mercy</h3>
 <p>Two regions, two revisions. Luckily, there's only one Fighting Style available.</p>
@@ -2441,9 +2471,9 @@ rely on specific data widths. Adding more selectable moves to certain slots woul
 require expanding the available list of moves, which is a non-trivial task.</li>
 </ul>
 
-<p>There's also the matter of adding data that isn't editable in the File Table,
-such as arena and wrestler definitions. These require a disassembly to properly
-modify.</p>
+<p>There's also the matter of adding data that <em>isn't</em> editable in the
+File Table, such as arena and wrestler definitions. These require a disassembly
+to properly modify.</p>
 
 <hr class="chapterSplit" />
 <div class="chapter">Chapter 4: Everything Else</div>
