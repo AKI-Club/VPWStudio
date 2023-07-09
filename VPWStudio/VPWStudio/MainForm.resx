@@ -379,22 +379,25 @@
     <value>F1</value>
   </data>
   <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>277, 22</value>
   </data>
   <data name="manualToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Manual...</value>
   </data>
+  <data name="gameSpecificInformationToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Shift+F1</value>
+  </data>
   <data name="gameSpecificInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>277, 22</value>
   </data>
   <data name="gameSpecificInformationToolStripMenuItem.Text" xml:space="preserve">
     <value>Game-Specific Information...</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>274, 6</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>277, 22</value>
   </data>
   <data name="aboutVPWStudioToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About VPW Studio</value>
@@ -1873,6 +1876,12 @@
   <data name="&gt;&gt;gameIntroductionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Name" xml:space="preserve">
+    <value>matchRulesetsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menusToolStripMenuItem.Name" xml:space="preserve">
     <value>menusToolStripMenuItem</value>
   </data>
@@ -2130,12 +2139,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Name" xml:space="preserve">
-    <value>matchRulesetsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
