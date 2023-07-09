@@ -150,6 +150,12 @@ namespace VPWStudio
 		public List<byte> RawData;
 
 		/// <summary>
+		/// Character header data.
+		/// (2 bytes for small fonts, 3 bytes for large fonts)
+		/// </summary>
+		public Dictionary<int, byte[]> CharHeaders;
+
+		/// <summary>
 		/// Height of each character cell.
 		/// </summary>
 		public int CellHeight;
@@ -179,6 +185,7 @@ namespace VPWStudio
 			FontType = AkiFontType.AkiSmallFont;
 			Data = new List<byte>();
 			RawData = new List<byte>();
+			CharHeaders = new Dictionary<int, byte[]>();
 
 			CellHeight = 0;
 			NumCharacters = 0;
@@ -196,6 +203,7 @@ namespace VPWStudio
 			FontType = _ft;
 			Data = new List<byte>();
 			RawData = new List<byte>();
+			CharHeaders = new Dictionary<int, byte[]>();
 
 			switch (FontType)
 			{
@@ -227,6 +235,7 @@ namespace VPWStudio
 			FontType = _ft;
 			Data = new List<byte>();
 			RawData = new List<byte>();
+			CharHeaders = new Dictionary<int, byte[]>();
 
 			CellHeight = _cellHeight;
 			NumCharacters = _numChars;
@@ -272,13 +281,17 @@ namespace VPWStudio
 		{
 			byte[] test = new byte[3];
 			int charBytes = (CellHeight * 24) / 8;
+			int charNum = 0;
 			while (true)
 			{
 				test = br.ReadBytes(3);
+
 				if (test[2] == 0x0A)
 				{
 					break;
 				}
+				CharHeaders.Add(charNum++, test);
+
 				Data.AddRange(br.ReadBytes(charBytes));
 			}
 		}
@@ -295,9 +308,10 @@ namespace VPWStudio
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
 			int charBytes = (CellHeight * 16) / 8;
+			int charNum = 0;
 			while (br.BaseStream.Position < fileLen)
 			{
-				br.ReadBytes(2);
+				CharHeaders.Add(charNum++, br.ReadBytes(2));
 				Data.AddRange(br.ReadBytes(charBytes));
 			}
 		}
