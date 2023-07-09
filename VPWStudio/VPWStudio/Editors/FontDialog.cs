@@ -634,6 +634,7 @@ namespace VPWStudio.Editors
 		{
 			InitializeComponent();
 			LoadFont(fileID);
+			Text = String.Format("Fonts - File ID {0:X4}",fileID);
 			if (charsID > 0)
 			{
 				LoadCharacters(charsID);
@@ -793,6 +794,21 @@ namespace VPWStudio.Editors
 
 			// update preview
 			pbCharacterPreview.Image = CurFont.GetCharacterBitmap(lbCharacters.SelectedIndex);
+
+			if (CurFont.FontType == AkiFontType.AkiLargeFont)
+			{
+				// header is 3 bytes
+				tbTemp.Text = String.Format("0x{0:X2}, 0x{1:X2}, 0x{2:X2}",
+					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
+					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
+					CurFont.CharHeaders[lbCharacters.SelectedIndex][2]
+				);
+			}
+			else
+			{
+				// header is 2 bytes
+				tbTemp.Text = String.Format("0x{0:X2}, 0x{1:X2}", CurFont.CharHeaders[lbCharacters.SelectedIndex][0], CurFont.CharHeaders[lbCharacters.SelectedIndex][1]);
+			}
 		}
 
 		/// <summary>
