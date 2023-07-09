@@ -2408,7 +2408,10 @@ namespace VPWStudio
 		/// </summary>
 		private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
 		{
-			manualToolStripMenuItem_Click(sender, hlpevent);
+			if (!ModifierKeys.HasFlag(Keys.Shift))
+			{
+				manualToolStripMenuItem_Click(sender, hlpevent);
+			}
 		}
 
 		/// <summary>
