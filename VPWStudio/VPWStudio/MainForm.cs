@@ -277,6 +277,24 @@ namespace VPWStudio
 
 			LoadLocationFile();
 
+			// if a custom location file is being used and the filetable's
+			// location doesn't match the value in the custom location file,
+			// change it.
+			if (Program.CurrentProject.Settings.UseCustomLocationFile && Program.CurrentProject.ProjectFileTable != null)
+			{
+				LocationFileEntry ftLoc = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["FileTable"]);
+				if (ftLoc != null)
+				{
+					if (Program.CurrentProject.ProjectFileTable.Location != ftLoc.Address)
+					{
+						Program.CurrentProject.ProjectFileTable.Location = ftLoc.Address;
+						Program.WarningMessageBox("The project's FileTable location differs from the value in the custom location file.\nUpdating the project's FileTable location now. Please save changes.");
+						Program.UnsavedChanges = true;
+						UpdateTitleBar();
+					}
+				}
+			}
+
 			playROMToolStripMenuItem.Enabled = true;
 			playROMToolStripMenuItem.Visible = true;
 		}
@@ -855,6 +873,8 @@ namespace VPWStudio
 						Program.ErrorMessageBox(String.Format("Unable to load Input ROM file {0}.\nPlease set the Input ROM Path in the Project Settings.", baseRomPath));
 					}
 				}
+
+				// todo: check to see if custom location file is being used (filetable edit)
 
 				UpdateTitleBar();
 				UpdateStatusBar();
