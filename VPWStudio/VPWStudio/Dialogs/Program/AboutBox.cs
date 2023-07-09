@@ -24,8 +24,8 @@ namespace VPWStudio
 			"The Pelican",     // also found many values
 			"Keson",           // keeping the future alive with AKI Evo and new tools
 			"jordyad",         // pushed me further when I needed it most, providing great info
-			"randymanfoo",     // has provided a lot of No Mercy FileTable updates, among other things
-			"Melonbread",      // new (circa 2020-2022) VPW2 findings
+			"RetroRandy",      // has provided a lot of No Mercy FileTable updates, among other things
+			"Melonbread",      // new (circa 2020-2023) VPW2 findings
 			"(and many others I haven't gotten around to listing yet)"
 		};
 
@@ -48,7 +48,7 @@ namespace VPWStudio
 		/// <summary>
 		/// Last updated month and year for program testing group information.
 		/// </summary>
-		private readonly string DateString = "February 2023";
+		private readonly string DateString = "July 2023";
 
 		public AboutBox()
 		{
@@ -73,7 +73,7 @@ namespace VPWStudio
 
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("This is an in-development version of VPW Studio.");
-			sb.AppendLine("It is not meant to be used in 'production'; always make backups.");
+			sb.AppendLine("It is not meant to be used in 'production'; always make backups of your Project File and Base ROM.");
 			sb.AppendLine();
 			sb.AppendLine(String.Format("This program is only meant to be used by the VPW Studio testing group. As of {0}, this includes:", DateString));
 			sb.AppendLine();
