@@ -103,7 +103,8 @@ namespace VPWStudio
 			{
 				if (i < Params30_BitWidths.Length-1)
 				{
-					tbParamsOut.Text += String.Format("{0}\r\n", fullBin.Substring(curPoint, Params30_BitWidths[i]));
+					string binVal = fullBin.Substring(curPoint, Params30_BitWidths[i]);
+					tbParamsOut.Text += String.Format("{0} (0x{1:X})\r\n", binVal, Convert.ToUInt32(binVal,2));
 				}
 				else
 				{
