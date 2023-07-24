@@ -22,8 +22,13 @@ namespace VPWStudio
 		AkiSmallFont/*,
 
 		/// <summary>
-		/// the one used in No Mercy for in-match names
+		/// the one used in No Mercy for in-match names (file ID 0396)
 		/// </summary>
+		/// Technically stored as 2x, or drawn at 0.5x or something like that.
+		/// offset 0x00: byte imgWidth
+		/// offset 0x01: byte imgHeight
+		/// offset 0x02, 0x03: both values are 0x00
+		/// 1bpp data follows, but not character-based like the other formats.
 		AkiTinyFont
 		*/
 	}
