@@ -798,7 +798,7 @@ namespace VPWStudio.Editors
 			if (CurFont.FontType == AkiFontType.AkiLargeFont)
 			{
 				// header is 3 bytes
-				tbTemp.Text = String.Format("0x{0:X2}, 0x{1:X2}, 0x{2:X2}",
+				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2},0x{2:X2} (lead {0}; width {1})",
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][2]
@@ -807,7 +807,12 @@ namespace VPWStudio.Editors
 			else
 			{
 				// header is 2 bytes
-				tbTemp.Text = String.Format("0x{0:X2}, 0x{1:X2}", CurFont.CharHeaders[lbCharacters.SelectedIndex][0], CurFont.CharHeaders[lbCharacters.SelectedIndex][1]);
+				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2} (lead {2}; width {3})",
+					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
+					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
+					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1]&0xF0)>>4,
+					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1]&0x0F)
+				);
 			}
 		}
 

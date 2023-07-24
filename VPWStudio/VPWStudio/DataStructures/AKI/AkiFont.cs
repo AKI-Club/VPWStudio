@@ -153,6 +153,20 @@ namespace VPWStudio
 		/// Character header data.
 		/// (2 bytes for small fonts, 3 bytes for large fonts)
 		/// </summary>
+
+		/// [Small Fonts]
+		/// offset 0x00 - unknown
+		/// offset 0x01 - leading spacing and width
+		/// 76543210
+		/// |__||__|
+		///  |    |
+		///  |    +-- Character width?
+		///  +------- Number of leading blank pixels?
+
+		/// [Large Fonts]
+		/// offset 0x00 - leading spacing?
+		/// offset 0x01 - character width?
+		/// offset 0x02 - unknown
 		public Dictionary<int, byte[]> CharHeaders;
 
 		/// <summary>
