@@ -44,6 +44,11 @@ namespace VPWStudio
 		// VPW2 Actual font characters: 3253
 
 		#region Large Font
+		/// <summary>
+		/// Large font character width is 24 pixels.
+		/// </summary>
+		public static readonly int LARGE_FONT_CHAR_WIDTH = 24;
+
 		private static Dictionary<VPWGames, int> LargeFontHeight = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 23 },
@@ -86,6 +91,11 @@ namespace VPWStudio
 		#endregion
 
 		#region Small Font
+		/// <summary>
+		/// Small font character width is 16 pixels.
+		/// </summary>
+		public static readonly int SMALL_FONT_CHAR_WIDTH = 16;
+
 		private static Dictionary<VPWGames, int> SmallFontHeight = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 14 },
@@ -125,10 +135,6 @@ namespace VPWStudio
 			{ VPWGames.VPW2, 51 },
 			{ VPWGames.NoMercy, 7 },
 		};
-		#endregion
-
-		#region WrestleMania 2000 (NTSC-J)
-		// this game is probably a giant exception to the rule for certain fonts
 		#endregion
 
 		#endregion
@@ -265,7 +271,7 @@ namespace VPWStudio
 		/// <returns>Bitmap of the specified character.</returns>
 		public Bitmap GetCharacterBitmap(int charNo)
 		{
-			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? 24 : 16;
+			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? LARGE_FONT_CHAR_WIDTH : SMALL_FONT_CHAR_WIDTH;
 			int charBytes = (charWidth * CellHeight);
 
 			Bitmap chrBmp = new Bitmap(charWidth, CellHeight);
@@ -294,7 +300,7 @@ namespace VPWStudio
 		private void ReadFontData_Large(BinaryReader br)
 		{
 			byte[] test = new byte[3];
-			int charBytes = (CellHeight * 24) / 8;
+			int charBytes = (CellHeight * LARGE_FONT_CHAR_WIDTH) / 8;
 			int charNum = 0;
 			while (true)
 			{
@@ -321,7 +327,7 @@ namespace VPWStudio
 			int fileLen = (int)br.BaseStream.Position;
 			br.BaseStream.Seek(0, SeekOrigin.Begin);
 
-			int charBytes = (CellHeight * 16) / 8;
+			int charBytes = (CellHeight * SMALL_FONT_CHAR_WIDTH) / 8;
 			int charNum = 0;
 			while (br.BaseStream.Position < fileLen)
 			{
@@ -378,7 +384,7 @@ namespace VPWStudio
 		/// <returns>Bitmap with the characters.</returns>
 		public Bitmap ToBitmap()
 		{
-			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? 24 : 16;
+			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? LARGE_FONT_CHAR_WIDTH : SMALL_FONT_CHAR_WIDTH;
 			int charBytes = (charWidth * CellHeight);
 
 			Bitmap mainBmp = new Bitmap((charWidth * OutColumns), (CellHeight * OutRows));
