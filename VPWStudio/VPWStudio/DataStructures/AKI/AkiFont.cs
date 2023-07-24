@@ -49,6 +49,9 @@ namespace VPWStudio
 		/// </summary>
 		public static readonly int LARGE_FONT_CHAR_WIDTH = 24;
 
+		/// <summary>
+		/// Large Font character height, in pixels.
+		/// </summary>
 		private static Dictionary<VPWGames, int> LargeFontHeight = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 23 },
@@ -59,6 +62,10 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 22 },
 		};
 
+		/// <summary>
+		/// Hardcoded number of characters in Large Fonts.
+		/// </summary>
+		/// Not exactly an ideal solution.
 		private static Dictionary<VPWGames, int> LargeFontNumChars = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 100 },
@@ -69,6 +76,9 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 110 },
 		};
 
+		/// <summary>
+		/// Characters per row in Large Font image export.
+		/// </summary>
 		private static Dictionary<VPWGames, int> LargeFontOutCols = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 24 },
@@ -79,6 +89,10 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 24 },
 		};
 
+		/// <summary>
+		/// Number of rows in Large Font image export.
+		/// </summary>
+		/// This could possibly be calculated at runtime, but it's not.
 		private static Dictionary<VPWGames, int> LargeFontOutRows = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 5 },
@@ -96,6 +110,9 @@ namespace VPWStudio
 		/// </summary>
 		public static readonly int SMALL_FONT_CHAR_WIDTH = 16;
 
+		/// <summary>
+		/// Small Font character heignt, in pixels.
+		/// </summary>
 		private static Dictionary<VPWGames, int> SmallFontHeight = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 14 },
@@ -106,6 +123,10 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 14 },
 		};
 
+		/// <summary>
+		/// Hardcoded number of characters in Small Fonts.
+		/// </summary>
+		/// Again, not ideal.
 		private static Dictionary<VPWGames, int> SmallFontNumChars = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 112 },
@@ -116,6 +137,9 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 112 },
 		};
 
+		/// <summary>
+		/// Characters per row in Small Font image export.
+		/// </summary>
 		private static Dictionary<VPWGames, int> SmallFontOutCols = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 16 },
@@ -126,6 +150,10 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 16 },
 		};
 
+		/// <summary>
+		/// Number of rows in Small Font image export.
+		/// </summary>
+		/// Again, could be generated at runtime, but isn't.
 		private static Dictionary<VPWGames, int> SmallFontOutRows = new Dictionary<VPWGames, int>()
 		{
 			{ VPWGames.WorldTour, 7 },
@@ -161,7 +189,7 @@ namespace VPWStudio
 		/// </summary>
 
 		/// [Small Fonts]
-		/// offset 0x00 - unknown
+		/// offset 0x00 - unknown (always 0?)
 		/// offset 0x01 - leading spacing and width
 		/// 76543210
 		/// |__||__|
@@ -172,7 +200,7 @@ namespace VPWStudio
 		/// [Large Fonts]
 		/// offset 0x00 - leading spacing?
 		/// offset 0x01 - character width?
-		/// offset 0x02 - unknown
+		/// offset 0x02 - unknown (always 0?)
 		public Dictionary<int, byte[]> CharHeaders;
 
 		/// <summary>
