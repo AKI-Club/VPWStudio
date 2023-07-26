@@ -296,6 +296,7 @@ namespace VPWStudio.Editors
 			"@O - Text Color Orange\n" +
 			"@P - Text Color Gray\n" +
 			"@R - Text Color Red\n" +
+			"@W - Text Color White\n" +
 			"@Y - Text Color Yellow\n" +
 			"%### - Short name of Wrestler with ID4 ###\n" +
 			"$0 - A button\n" +
