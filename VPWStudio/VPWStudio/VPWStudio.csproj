@@ -101,6 +101,12 @@
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="DataStructures\PS1\TmdFile.cs" />
+    <Compile Include="Dialogs\AkiTextEditor_GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AkiTextEditor_GoToDialog.Designer.cs">
+      <DependentUpon>AkiTextEditor_GoToDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -649,6 +655,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionsControl_Emulator.resx">
       <DependentUpon>OptionsControl_Emulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AkiTextEditor_GoToDialog.resx">
+      <DependentUpon>AkiTextEditor_GoToDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.resx">
       <DependentUpon>TestScene3D_AddEditDialog.cs</DependentUpon>

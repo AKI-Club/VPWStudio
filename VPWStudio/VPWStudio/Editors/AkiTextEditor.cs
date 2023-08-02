@@ -324,5 +324,13 @@ namespace VPWStudio.Editors
 			Program.InfoMessageBox(KnownControlCodes);
 		}
 
+		private void goToToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AkiTextEditor_GoToDialog gtd = new AkiTextEditor_GoToDialog(CurTextArchive.Entries.Count);
+			if (gtd.ShowDialog() == DialogResult.OK)
+			{
+				cbTextEntries.SelectedIndex = gtd.DestinationEntry;
+			}
+		}
 	}
 }
