@@ -44,6 +44,7 @@
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportTabCSVToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportAkiTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbCurrentText.SuspendLayout();
 			this.gbNewText.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -143,7 +144,8 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.goToToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(504, 24);
@@ -196,6 +198,14 @@
 			this.exportAkiTextToolStripMenuItem.Text = "akitext Tool Format...";
 			this.exportAkiTextToolStripMenuItem.Click += new System.EventHandler(this.exportAkiTextToolStripMenuItem_Click);
 			// 
+			// goToToolStripMenuItem
+			// 
+			this.goToToolStripMenuItem.Name = "goToToolStripMenuItem";
+			this.goToToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+			this.goToToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+			this.goToToolStripMenuItem.Text = "&Go To...";
+			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
+			// 
 			// AkiTextEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,5 +256,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exportTabCSVToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem importAkiTextToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportAkiTextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem goToToolStripMenuItem;
 	}
 }
