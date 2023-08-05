@@ -44,8 +44,8 @@
 002B=AkiTexture;[Old UI] Combative Rule
 002C=AkiTexture;[UI] Match Box (Purple)
 002D=AkiTexture;[UI] Match Box (Gold)
-002E=AkiTexture;?
-002F=AkiTexture;?
+002E=AkiTexture;Blue checkerboard small
+002F=AkiTexture;Blue checkerboard medium
 0030=AkiTexture;Blue metal bar
 0031=AkiTexture;Red metal bar
 0032=AkiTexture;Gray metal bar
@@ -91,7 +91,7 @@
 005A=AkiTexture;[Controller Settings] Cursor
 005B=AkiTexture;Right arrow
 005C=AkiTexture;VS. Screen emblem
-005D=AkiTexture;
+005D=AkiTexture;Arrows and Scrollbar parts
 005E=AkiTexture;Red numbers 1-16
 005F=AkiTexture;Red and Blue numbers 1-5
 0060=AkiTexture;CPU/MAN icons
@@ -1341,7 +1341,7 @@
 053D=AkiModel;[Ring Post] Model
 053E=Ci4Palette;[Ring Post] old palette
 053F=Ci4Texture;[Ring Post] old texture|p:053E
-0540=AkiModel;
+0540=AkiModel;Turnbuckle Links
 0541=Ci4Palette;Turnbuckle Links
 0542=Ci4Texture;Turnbuckle Links|p:0541
 0543=AkiModel;Triangular Turnbuckle Pads
@@ -1367,9 +1367,9 @@
 0557=AkiModel;(alternate unused dome road ramp??)
 0558=Ci4Palette;
 0559=Ci4Texture;|p:0558
-055A=AkiModel;
-055B=Ci4Palette;
-055C=Ci4Texture;|p:055B
+055A=AkiModel;Overhead Lights
+055B=Ci4Palette;Overhead Lights
+055C=Ci4Texture;Overhead Lights|p:055B
 055D=AkiModel;
 055E=AkiModel;
 055F=Ci4Palette;
