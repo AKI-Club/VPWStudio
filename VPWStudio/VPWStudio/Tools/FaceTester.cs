@@ -13,6 +13,8 @@ namespace VPWStudio
 	// xxx: this is very hardcoded and VPW2-specific.
 	public partial class FaceTester : Form
 	{
+		// NUM_FACES_WM2K = 51; // 0-50
+
 		private static readonly int NUM_FACES_VPW2 = 110;
 
 		private UInt16 SkinColor = 0x1745;
