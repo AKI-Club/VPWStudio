@@ -1628,7 +1628,8 @@
 068B=Ci8Texture;[Face]|p:04DD
 068C=Ci8Texture;|p:04DE
 068D=Ci8Texture;[Face]|p:04DF
-068F=Ci8Texture;[Face]|p:04E0
+068E=Ci8Texture;|p:04E0
+068F=Ci8Texture;[Face]|p:04E1
 0691=Ci8Texture;[Face]
 0693=Ci8Texture;[Face]
 0696=Ci8Texture;[Face]
@@ -1947,10 +1948,11 @@
 08CA=AkiModel;
 08CB=AkiModel;
 08CC=AkiModel;
-08CD=Ci4Texture;
+08CD=Ci4Texture;|p:0BCD
 08CE=Ci4Texture;
 08CF=Ci4Texture;
-08D0=Ci4Texture;
+08D0=Ci4Texture;|p:0BD7
+08DA=Ci4Texture;|p:0BEA
 091E=Ci4Texture;
 091F=Ci4Texture;
 0920=Ci4Texture;
