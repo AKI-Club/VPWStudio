@@ -628,6 +628,7 @@
 0273=I4Texture;(I4 image)|w:64,h:64
 0274=I4Texture;(I4 image)|w:64,h:64
 0275=I4Texture;(I4 image)|w:64,h:64
+0276=Binary;(unknown)
 0277=Binary;Move damage values
 0278=Binary;Move animation values
 0279=Binary;Move properties values
