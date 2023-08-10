@@ -102,6 +102,8 @@
 0065=AkiTexture;
 0066=AkiTexture;
 0067=AkiTexture;[Tournament] MAN/COM indicators
+0068=Binary;???
+0069=Binary;???
 006A=AkiText;Move Names 1
 006B=AkiText;Move Names 2
 006C=AkiText;Move Names 3
@@ -110,7 +112,7 @@
 006F=AkiText;(VPW2 leftover)
 0070=AkiText;
 0071=AkiText;Credits
-0072=Binary;no mercy (raw CI4 image, 128x32)
+0072=RawCi4TexPal;no mercy (raw CI4 image, 128x32)
 0073=AkiTexture;[Splash] Legal Info
 0074=AkiTexture;[Splash] THQ
 0075=AkiTexture;[Splash] Asmik
@@ -490,6 +492,7 @@
 01EB=AkiText;[Story Mode] (light heavyweight story dialog)
 01EC=AkiText;[Story Mode] (women's story dialog)
 01ED=AkiText;[Story Mode] (GBC story dialog)
+01EE=Binary;?
 01EF=Binary;Move damage values
 01F0=Binary;Move animation values
 01F1=Binary;Move properties values
@@ -18861,6 +18864,7 @@
 49B1=Ci4Texture;Arrow right|p:49B0
 49B2=Ci4Palette;Arrow down
 49B3=Ci4Texture;Arrow down|p:49B2
+49B4=Binary;???
 49B5=Ci4Palette;[Moveset Edit] Move Name BG
 49B6=Ci4Texture;[Moveset Edit] Move Name BG|p:49B5
 49B7=Ci4Palette;[Moveset Edit] Power & KO Bar
@@ -19040,6 +19044,7 @@
 4A65=Binary;[Edit Mode] Upper Body
 4A66=Binary;[Edit Mode] Wrist Bands
 4A67=Binary;[Edit Mode] Weapons/Props
+4A68=Binary;???
 4A69=Binary;[Unlockable] Arenas
 4A6A=Binary;[Unlockable] Belts
 4A6B=Binary;[Unlockable] Theme Song
