@@ -145,10 +145,14 @@
 0090=AkiTexture;[Arena Select] SummerSlam (right)
 0091=AkiTexture;[Arena Select] Sunday Night Heat (left)
 0092=AkiTexture;[Arena Select] Sunday Night Heat (right)
+0093=Binary;?
+0094=Binary;?
 0095=AkiText;(Move names 1)
 0096=AkiText;(Move names 2)
 0097=AkiText;(Move names 3)
+0098=Binary;?
 0099=AkiText;(Edit Mode move categories)
+009A=Binary;?
 009B=AkiTexture;
 009C=AkiTexture; [Belt] Smoking Skull (left)
 009D=AkiTexture; [Belt] (left)
@@ -934,7 +938,10 @@
 03A9=AkiTexture;[Titantron] Mark Henry frame x
 03AA=AkiTexture;[Titantron] Mark Henry frame x
 03AB=AkiTexture;[Titantron] Mark Henry frame x
+03AC=Binary;?
 03AD=Binary;Move damage values
+03AE=Binary;?
+03AF=Binary;?
 03B0=Binary;Reversals - Heavyweight
 03B1=Binary;Reversals - Heavy Special
 03B2=Binary;Reversals - Junior
