@@ -1476,7 +1476,7 @@
 05CA=Ci4Texture;|p:05C9
 05CB=Ci4Palette;(WCW/nWo Revenge guardrail)
 05CC=Ci4Texture;(WCW/nWo Revenge guardrail)|p:05CB
-0A9D=Ci8Palette;(default costume colors)
+0A9D=Ci4Palette;(default costume colors)
 1626=AkiModel;
 1627=Ci8Palette;
 1628=Ci8Texture;
