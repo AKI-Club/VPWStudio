@@ -1257,6 +1257,10 @@
 04EB=Ci4Texture;debug hex font
 04EC=Ci8Palette;N64 controller
 04ED=Ci8Texture;N64 controller|p:04EC
+10B6=AkiModel;
+10B7=Ci4Palette;[Revenge Weapon] Black Bat
+10B8=Ci4Texture;[Revenge Weapon] Black Bat|p:10B7
+10E2=Ci4Palette;Default Colors
 4461=AkiText;Match Options text
 4462=AkiText;Mode instructions
 4463=AkiText;Various text, rumble pak & more (also VPW2 leftover?)
