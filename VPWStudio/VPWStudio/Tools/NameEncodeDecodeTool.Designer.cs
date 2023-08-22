@@ -37,6 +37,7 @@
 			this.tbShort = new System.Windows.Forms.TextBox();
 			this.buttonEncode = new System.Windows.Forms.Button();
 			this.buttonDecode = new System.Windows.Forms.Button();
+			this.lblInfo = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -57,7 +58,7 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(301, 100);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 100);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// labelFull
@@ -95,7 +96,7 @@
 			this.tbFull.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbFull.Location = new System.Drawing.Point(93, 6);
 			this.tbFull.Name = "tbFull";
-			this.tbFull.Size = new System.Drawing.Size(205, 20);
+			this.tbFull.Size = new System.Drawing.Size(204, 20);
 			this.tbFull.TabIndex = 0;
 			// 
 			// tbLong
@@ -103,7 +104,7 @@
 			this.tbLong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbLong.Location = new System.Drawing.Point(93, 39);
 			this.tbLong.Name = "tbLong";
-			this.tbLong.Size = new System.Drawing.Size(205, 20);
+			this.tbLong.Size = new System.Drawing.Size(204, 20);
 			this.tbLong.TabIndex = 1;
 			// 
 			// tbShort
@@ -111,12 +112,12 @@
 			this.tbShort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbShort.Location = new System.Drawing.Point(93, 73);
 			this.tbShort.Name = "tbShort";
-			this.tbShort.Size = new System.Drawing.Size(205, 20);
+			this.tbShort.Size = new System.Drawing.Size(204, 20);
 			this.tbShort.TabIndex = 2;
 			// 
 			// buttonEncode
 			// 
-			this.buttonEncode.Location = new System.Drawing.Point(12, 118);
+			this.buttonEncode.Location = new System.Drawing.Point(12, 131);
 			this.buttonEncode.Name = "buttonEncode";
 			this.buttonEncode.Size = new System.Drawing.Size(120, 23);
 			this.buttonEncode.TabIndex = 3;
@@ -126,7 +127,7 @@
 			// 
 			// buttonDecode
 			// 
-			this.buttonDecode.Location = new System.Drawing.Point(223, 118);
+			this.buttonDecode.Location = new System.Drawing.Point(222, 131);
 			this.buttonDecode.Name = "buttonDecode";
 			this.buttonDecode.Size = new System.Drawing.Size(90, 23);
 			this.buttonDecode.TabIndex = 4;
@@ -134,17 +135,31 @@
 			this.buttonDecode.UseVisualStyleBackColor = true;
 			this.buttonDecode.Click += new System.EventHandler(this.buttonDecode_Click);
 			// 
+			// lblInfo
+			// 
+			this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblInfo.AutoSize = true;
+			this.lblInfo.Location = new System.Drawing.Point(12, 115);
+			this.lblInfo.Name = "lblInfo";
+			this.lblInfo.Size = new System.Drawing.Size(276, 13);
+			this.lblInfo.TabIndex = 5;
+			this.lblInfo.Text = "Legend: <Short and Long>; {Short only}; results may vary";
+			this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// NameEncodeDecodeTool
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(325, 153);
+			this.ClientSize = new System.Drawing.Size(324, 166);
+			this.Controls.Add(this.lblInfo);
 			this.Controls.Add(this.buttonDecode);
 			this.Controls.Add(this.buttonEncode);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "NameEncodeDecodeTool";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -153,6 +168,7 @@
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -166,5 +182,6 @@
 		private System.Windows.Forms.TextBox tbShort;
 		private System.Windows.Forms.Button buttonEncode;
 		private System.Windows.Forms.Button buttonDecode;
+		private System.Windows.Forms.Label lblInfo;
 	}
 }
