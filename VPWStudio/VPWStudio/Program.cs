@@ -122,6 +122,21 @@ namespace VPWStudio
 				return String.Empty;
 			}
 
+			if (Program.CurrentProject.Settings.UseCustomFileTableDB)
+			{
+				if (Path.IsPathRooted(Program.CurrentProject.Settings.CustomFileTableDBPath))
+				{
+					return Program.CurrentProject.Settings.CustomFileTableDBPath;
+				}
+				else
+				{
+					// path is not rooted. assume it's relative to the program's FileTableDB directory
+					return String.Format("{0}{1}",
+						Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\",
+						Program.CurrentProject.Settings.CustomFileTableDBPath);
+				}
+			}
+
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\";
 
 			if (FileTableDB_Overrides.ContainsKey(Program.CurrentProject.Settings.GameType))

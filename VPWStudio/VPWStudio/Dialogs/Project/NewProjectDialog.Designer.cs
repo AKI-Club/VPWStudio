@@ -49,15 +49,20 @@
 			this.buttonSetOutROM = new System.Windows.Forms.Button();
 			this.tbOutROMPath = new System.Windows.Forms.TextBox();
 			this.chbCustomLocation = new System.Windows.Forms.CheckBox();
+			this.chbCustomFileTableDB = new System.Windows.Forms.CheckBox();
+			this.tlpCustomFileTableDB = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonSetCustomFileTableDBFile = new System.Windows.Forms.Button();
+			this.tbCustomFileTableDBFile = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tlpCustomLoc.SuspendLayout();
 			this.tlpRomFile.SuspendLayout();
 			this.tlpOutROM.SuspendLayout();
+			this.tlpCustomFileTableDB.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(326, 240);
+			this.buttonOK.Location = new System.Drawing.Point(326, 258);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 5;
@@ -68,7 +73,7 @@
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(407, 240);
+			this.buttonCancel.Location = new System.Drawing.Point(407, 258);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 6;
@@ -79,8 +84,8 @@
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
 			this.tableLayoutPanel1.Controls.Add(this.tlpCustomLoc, 1, 5);
 			this.tableLayoutPanel1.Controls.Add(this.labelOutROM, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.labelProjectName, 0, 0);
@@ -93,16 +98,19 @@
 			this.tableLayoutPanel1.Controls.Add(this.tbAuthors, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.tlpOutROM, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.chbCustomLocation, 0, 5);
+			this.tableLayoutPanel1.Controls.Add(this.chbCustomFileTableDB, 0, 6);
+			this.tableLayoutPanel1.Controls.Add(this.tlpCustomFileTableDB, 1, 6);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 6;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 220);
+			this.tableLayoutPanel1.RowCount = 7;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 240);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
 			// tlpCustomLoc
@@ -113,20 +121,20 @@
 			this.tlpCustomLoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tlpCustomLoc.Controls.Add(this.buttonSetCustomLocFile, 1, 0);
 			this.tlpCustomLoc.Controls.Add(this.tbCustomLocationFile, 0, 0);
-			this.tlpCustomLoc.Location = new System.Drawing.Point(134, 185);
+			this.tlpCustomLoc.Location = new System.Drawing.Point(167, 173);
 			this.tlpCustomLoc.Name = "tlpCustomLoc";
 			this.tlpCustomLoc.RowCount = 1;
 			this.tlpCustomLoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpCustomLoc.Size = new System.Drawing.Size(333, 30);
+			this.tlpCustomLoc.Size = new System.Drawing.Size(300, 28);
 			this.tlpCustomLoc.TabIndex = 9;
 			// 
 			// buttonSetCustomLocFile
 			// 
 			this.buttonSetCustomLocFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonSetCustomLocFile.Enabled = false;
-			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(302, 3);
+			this.buttonSetCustomLocFile.Location = new System.Drawing.Point(273, 3);
 			this.buttonSetCustomLocFile.Name = "buttonSetCustomLocFile";
-			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(28, 23);
+			this.buttonSetCustomLocFile.Size = new System.Drawing.Size(24, 22);
 			this.buttonSetCustomLocFile.TabIndex = 1;
 			this.buttonSetCustomLocFile.Text = "...";
 			this.buttonSetCustomLocFile.UseVisualStyleBackColor = true;
@@ -134,20 +142,23 @@
 			// 
 			// tbCustomLocationFile
 			// 
+			this.tbCustomLocationFile.AllowDrop = true;
 			this.tbCustomLocationFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbCustomLocationFile.Enabled = false;
-			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 5);
+			this.tbCustomLocationFile.Location = new System.Drawing.Point(3, 4);
 			this.tbCustomLocationFile.Name = "tbCustomLocationFile";
-			this.tbCustomLocationFile.Size = new System.Drawing.Size(293, 20);
+			this.tbCustomLocationFile.Size = new System.Drawing.Size(264, 20);
 			this.tbCustomLocationFile.TabIndex = 2;
+			this.tbCustomLocationFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbCustomLocationFile_DragDrop);
+			this.tbCustomLocationFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbCustomLocationFile_DragEnter);
 			// 
 			// labelOutROM
 			// 
 			this.labelOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelOutROM.AutoSize = true;
-			this.labelOutROM.Location = new System.Drawing.Point(3, 155);
+			this.labelOutROM.Location = new System.Drawing.Point(3, 146);
 			this.labelOutROM.Name = "labelOutROM";
-			this.labelOutROM.Size = new System.Drawing.Size(125, 13);
+			this.labelOutROM.Size = new System.Drawing.Size(158, 13);
 			this.labelOutROM.TabIndex = 5;
 			this.labelOutROM.Text = "Output ROM &File";
 			// 
@@ -155,27 +166,27 @@
 			// 
 			this.labelProjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelProjectName.AutoSize = true;
-			this.labelProjectName.Location = new System.Drawing.Point(3, 11);
+			this.labelProjectName.Location = new System.Drawing.Point(3, 10);
 			this.labelProjectName.Name = "labelProjectName";
-			this.labelProjectName.Size = new System.Drawing.Size(125, 13);
+			this.labelProjectName.Size = new System.Drawing.Size(158, 13);
 			this.labelProjectName.TabIndex = 0;
 			this.labelProjectName.Text = "Project &Name";
 			// 
 			// tbProjectName
 			// 
 			this.tbProjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbProjectName.Location = new System.Drawing.Point(134, 8);
+			this.tbProjectName.Location = new System.Drawing.Point(167, 7);
 			this.tbProjectName.Name = "tbProjectName";
-			this.tbProjectName.Size = new System.Drawing.Size(333, 20);
+			this.tbProjectName.Size = new System.Drawing.Size(300, 20);
 			this.tbProjectName.TabIndex = 0;
 			// 
 			// labelRomFile
 			// 
 			this.labelRomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelRomFile.AutoSize = true;
-			this.labelRomFile.Location = new System.Drawing.Point(3, 119);
+			this.labelRomFile.Location = new System.Drawing.Point(3, 112);
 			this.labelRomFile.Name = "labelRomFile";
-			this.labelRomFile.Size = new System.Drawing.Size(125, 13);
+			this.labelRomFile.Size = new System.Drawing.Size(158, 13);
 			this.labelRomFile.TabIndex = 3;
 			this.labelRomFile.Text = "&Base ROM File";
 			// 
@@ -187,19 +198,19 @@
 			this.tlpRomFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tlpRomFile.Controls.Add(this.buttonOpenROM, 1, 0);
 			this.tlpRomFile.Controls.Add(this.tbRomFile, 0, 0);
-			this.tlpRomFile.Location = new System.Drawing.Point(134, 111);
+			this.tlpRomFile.Location = new System.Drawing.Point(167, 105);
 			this.tlpRomFile.Name = "tlpRomFile";
 			this.tlpRomFile.RowCount = 1;
 			this.tlpRomFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpRomFile.Size = new System.Drawing.Size(333, 29);
+			this.tlpRomFile.Size = new System.Drawing.Size(300, 28);
 			this.tlpRomFile.TabIndex = 3;
 			// 
 			// buttonOpenROM
 			// 
 			this.buttonOpenROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOpenROM.Location = new System.Drawing.Point(302, 3);
+			this.buttonOpenROM.Location = new System.Drawing.Point(273, 3);
 			this.buttonOpenROM.Name = "buttonOpenROM";
-			this.buttonOpenROM.Size = new System.Drawing.Size(28, 23);
+			this.buttonOpenROM.Size = new System.Drawing.Size(24, 22);
 			this.buttonOpenROM.TabIndex = 4;
 			this.buttonOpenROM.Text = "...";
 			this.buttonOpenROM.UseVisualStyleBackColor = true;
@@ -211,7 +222,7 @@
 			this.tbRomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbRomFile.Location = new System.Drawing.Point(3, 4);
 			this.tbRomFile.Name = "tbRomFile";
-			this.tbRomFile.Size = new System.Drawing.Size(293, 20);
+			this.tbRomFile.Size = new System.Drawing.Size(264, 20);
 			this.tbRomFile.TabIndex = 3;
 			this.tbRomFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbRomFile_DragDrop);
 			this.tbRomFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbRomFile_DragEnter);
@@ -220,9 +231,9 @@
 			// 
 			this.labelGameType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelGameType.AutoSize = true;
-			this.labelGameType.Location = new System.Drawing.Point(3, 83);
+			this.labelGameType.Location = new System.Drawing.Point(3, 78);
 			this.labelGameType.Name = "labelGameType";
-			this.labelGameType.Size = new System.Drawing.Size(125, 13);
+			this.labelGameType.Size = new System.Drawing.Size(158, 13);
 			this.labelGameType.TabIndex = 2;
 			this.labelGameType.Text = "&Game Type";
 			// 
@@ -231,27 +242,27 @@
 			this.cbGameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbGameVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbGameVersion.FormattingEnabled = true;
-			this.cbGameVersion.Location = new System.Drawing.Point(134, 79);
+			this.cbGameVersion.Location = new System.Drawing.Point(167, 74);
 			this.cbGameVersion.Name = "cbGameVersion";
-			this.cbGameVersion.Size = new System.Drawing.Size(333, 21);
+			this.cbGameVersion.Size = new System.Drawing.Size(300, 21);
 			this.cbGameVersion.TabIndex = 2;
 			// 
 			// labelAuthors
 			// 
 			this.labelAuthors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelAuthors.AutoSize = true;
-			this.labelAuthors.Location = new System.Drawing.Point(3, 47);
+			this.labelAuthors.Location = new System.Drawing.Point(3, 44);
 			this.labelAuthors.Name = "labelAuthors";
-			this.labelAuthors.Size = new System.Drawing.Size(125, 13);
+			this.labelAuthors.Size = new System.Drawing.Size(158, 13);
 			this.labelAuthors.TabIndex = 1;
 			this.labelAuthors.Text = "&Author(s) (optional)";
 			// 
 			// tbAuthors
 			// 
 			this.tbAuthors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbAuthors.Location = new System.Drawing.Point(134, 44);
+			this.tbAuthors.Location = new System.Drawing.Point(167, 41);
 			this.tbAuthors.Name = "tbAuthors";
-			this.tbAuthors.Size = new System.Drawing.Size(333, 20);
+			this.tbAuthors.Size = new System.Drawing.Size(300, 20);
 			this.tbAuthors.TabIndex = 1;
 			// 
 			// tlpOutROM
@@ -262,19 +273,19 @@
 			this.tlpOutROM.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tlpOutROM.Controls.Add(this.buttonSetOutROM, 1, 0);
 			this.tlpOutROM.Controls.Add(this.tbOutROMPath, 0, 0);
-			this.tlpOutROM.Location = new System.Drawing.Point(134, 147);
+			this.tlpOutROM.Location = new System.Drawing.Point(167, 139);
 			this.tlpOutROM.Name = "tlpOutROM";
 			this.tlpOutROM.RowCount = 1;
 			this.tlpOutROM.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpOutROM.Size = new System.Drawing.Size(333, 30);
+			this.tlpOutROM.Size = new System.Drawing.Size(300, 28);
 			this.tlpOutROM.TabIndex = 7;
 			// 
 			// buttonSetOutROM
 			// 
 			this.buttonSetOutROM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSetOutROM.Location = new System.Drawing.Point(302, 3);
+			this.buttonSetOutROM.Location = new System.Drawing.Point(273, 3);
 			this.buttonSetOutROM.Name = "buttonSetOutROM";
-			this.buttonSetOutROM.Size = new System.Drawing.Size(28, 23);
+			this.buttonSetOutROM.Size = new System.Drawing.Size(24, 22);
 			this.buttonSetOutROM.TabIndex = 1;
 			this.buttonSetOutROM.Text = "...";
 			this.buttonSetOutROM.UseVisualStyleBackColor = true;
@@ -283,9 +294,9 @@
 			// tbOutROMPath
 			// 
 			this.tbOutROMPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbOutROMPath.Location = new System.Drawing.Point(3, 5);
+			this.tbOutROMPath.Location = new System.Drawing.Point(3, 4);
 			this.tbOutROMPath.Name = "tbOutROMPath";
-			this.tbOutROMPath.Size = new System.Drawing.Size(293, 20);
+			this.tbOutROMPath.Size = new System.Drawing.Size(264, 20);
 			this.tbOutROMPath.TabIndex = 2;
 			this.tbOutROMPath.Text = "built.z64";
 			// 
@@ -293,13 +304,64 @@
 			// 
 			this.chbCustomLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.chbCustomLocation.AutoSize = true;
-			this.chbCustomLocation.Location = new System.Drawing.Point(3, 191);
+			this.chbCustomLocation.Location = new System.Drawing.Point(3, 178);
 			this.chbCustomLocation.Name = "chbCustomLocation";
-			this.chbCustomLocation.Size = new System.Drawing.Size(125, 17);
+			this.chbCustomLocation.Size = new System.Drawing.Size(158, 17);
 			this.chbCustomLocation.TabIndex = 8;
 			this.chbCustomLocation.Text = "Custom &Location File";
 			this.chbCustomLocation.UseVisualStyleBackColor = true;
 			this.chbCustomLocation.Click += new System.EventHandler(this.chbCustomLocation_Click);
+			// 
+			// chbCustomFileTableDB
+			// 
+			this.chbCustomFileTableDB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.chbCustomFileTableDB.AutoSize = true;
+			this.chbCustomFileTableDB.Location = new System.Drawing.Point(3, 213);
+			this.chbCustomFileTableDB.Name = "chbCustomFileTableDB";
+			this.chbCustomFileTableDB.Size = new System.Drawing.Size(158, 17);
+			this.chbCustomFileTableDB.TabIndex = 10;
+			this.chbCustomFileTableDB.Text = "Custom &FileTableDB File";
+			this.chbCustomFileTableDB.UseVisualStyleBackColor = true;
+			this.chbCustomFileTableDB.Click += new System.EventHandler(this.chbCustomFileTableDB_Click);
+			// 
+			// tlpCustomFileTableDB
+			// 
+			this.tlpCustomFileTableDB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpCustomFileTableDB.ColumnCount = 2;
+			this.tlpCustomFileTableDB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+			this.tlpCustomFileTableDB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tlpCustomFileTableDB.Controls.Add(this.tbCustomFileTableDBFile, 0, 0);
+			this.tlpCustomFileTableDB.Controls.Add(this.buttonSetCustomFileTableDBFile, 1, 0);
+			this.tlpCustomFileTableDB.Location = new System.Drawing.Point(167, 207);
+			this.tlpCustomFileTableDB.Name = "tlpCustomFileTableDB";
+			this.tlpCustomFileTableDB.RowCount = 1;
+			this.tlpCustomFileTableDB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpCustomFileTableDB.Size = new System.Drawing.Size(300, 30);
+			this.tlpCustomFileTableDB.TabIndex = 11;
+			// 
+			// buttonSetCustomFileTableDBFile
+			// 
+			this.buttonSetCustomFileTableDBFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonSetCustomFileTableDBFile.Enabled = false;
+			this.buttonSetCustomFileTableDBFile.Location = new System.Drawing.Point(273, 4);
+			this.buttonSetCustomFileTableDBFile.Name = "buttonSetCustomFileTableDBFile";
+			this.buttonSetCustomFileTableDBFile.Size = new System.Drawing.Size(24, 22);
+			this.buttonSetCustomFileTableDBFile.TabIndex = 2;
+			this.buttonSetCustomFileTableDBFile.Text = "...";
+			this.buttonSetCustomFileTableDBFile.UseVisualStyleBackColor = true;
+			this.buttonSetCustomFileTableDBFile.Click += new System.EventHandler(this.buttonSetCustomFileTableDBFile_Click);
+			// 
+			// tbCustomFileTableDBFile
+			// 
+			this.tbCustomFileTableDBFile.AllowDrop = true;
+			this.tbCustomFileTableDBFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbCustomFileTableDBFile.Enabled = false;
+			this.tbCustomFileTableDBFile.Location = new System.Drawing.Point(3, 5);
+			this.tbCustomFileTableDBFile.Name = "tbCustomFileTableDBFile";
+			this.tbCustomFileTableDBFile.Size = new System.Drawing.Size(264, 20);
+			this.tbCustomFileTableDBFile.TabIndex = 3;
+			this.tbCustomFileTableDBFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbCustomFileTableDBFile_DragDrop);
+			this.tbCustomFileTableDBFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.tbCustomFileTableDBFile_DragEnter);
 			// 
 			// NewProjectDialog
 			// 
@@ -307,7 +369,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(494, 275);
+			this.ClientSize = new System.Drawing.Size(494, 293);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
@@ -327,6 +389,8 @@
 			this.tlpRomFile.PerformLayout();
 			this.tlpOutROM.ResumeLayout(false);
 			this.tlpOutROM.PerformLayout();
+			this.tlpCustomFileTableDB.ResumeLayout(false);
+			this.tlpCustomFileTableDB.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -354,5 +418,9 @@
 		private System.Windows.Forms.Button buttonSetCustomLocFile;
 		private System.Windows.Forms.TextBox tbCustomLocationFile;
 		private System.Windows.Forms.CheckBox chbCustomLocation;
+		private System.Windows.Forms.CheckBox chbCustomFileTableDB;
+		private System.Windows.Forms.TableLayoutPanel tlpCustomFileTableDB;
+		private System.Windows.Forms.TextBox tbCustomFileTableDBFile;
+		private System.Windows.Forms.Button buttonSetCustomFileTableDBFile;
 	}
 }

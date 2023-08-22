@@ -85,6 +85,20 @@ namespace VPWStudio
 				return;
 			}
 
+			// if using custom FileTableDB file, path to custom FileTableDB must not be empty
+			if (chbCustomFileTableDB.Checked && tbCustomFileTableDBFile.Text.Equals(String.Empty))
+			{
+				MessageBox.Show("Must provide custom FileTableDB path if using custom FileTableDB file.", SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			// if using custom FileTableDB file, the custom FileTableDB file must exist
+			if (chbCustomFileTableDB.Checked && !File.Exists(tbCustomFileTableDBFile.Text))
+			{
+				MessageBox.Show(String.Format("Custom FileTableDB File not found at\n{0}", Path.GetFullPath(tbCustomFileTableDBFile.Text)), SharedStrings.MainForm_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			GameDefinition gd = GameInformation.GameDefs[(SpecificGame)cbGameVersion.SelectedIndex];
 			// N64-specific checks
 			if (gd.TargetConsole == PlatformType.Nintendo64)
@@ -129,6 +143,7 @@ namespace VPWStudio
 			this.NewSettings.BaseGame = GameInformation.GetBaseGameFromSpecificGame((SpecificGame)cbGameVersion.SelectedIndex);
 			this.NewSettings.InputRomPath = tbRomFile.Text;
 			this.NewSettings.OutputRomPath = tbOutROMPath.Text;
+
 			this.NewSettings.UseCustomLocationFile = (chbCustomLocation.Checked);
 			if (chbCustomLocation.Checked)
 			{
@@ -137,6 +152,16 @@ namespace VPWStudio
 			else
 			{
 				this.NewSettings.CustomLocationFilePath = String.Empty;
+			}
+
+			this.NewSettings.UseCustomFileTableDB = (chbCustomFileTableDB.Checked);
+			if (chbCustomFileTableDB.Checked)
+			{
+				this.NewSettings.CustomFileTableDBPath = tbCustomFileTableDBFile.Text;
+			}
+			else
+			{
+				this.NewSettings.CustomFileTableDBPath = String.Empty;
 			}
 
 			this.DialogResult = DialogResult.OK;
@@ -177,10 +202,27 @@ namespace VPWStudio
 			}
 		}
 
+		private void buttonSetCustomFileTableDBFile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Custom FileTableDB File";
+			ofd.Filter = SharedStrings.FileFilter_Text;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbCustomFileTableDBFile.Text = ofd.FileName;
+			}
+		}
+
 		private void chbCustomLocation_Click(object sender, EventArgs e)
 		{
 			tbCustomLocationFile.Enabled = chbCustomLocation.Checked;
 			buttonSetCustomLocFile.Enabled = chbCustomLocation.Checked;
+		}
+
+		private void chbCustomFileTableDB_Click(object sender, EventArgs e)
+		{
+			tbCustomFileTableDBFile.Enabled = chbCustomFileTableDB.Checked;
+			buttonSetCustomFileTableDBFile.Enabled = chbCustomFileTableDB.Checked;
 		}
 
 		#region Drag and Drop
@@ -204,6 +246,49 @@ namespace VPWStudio
 				tbRomFile.Text = Path.GetFullPath(files[0]);
 			}
 		}
+
+		private void tbCustomLocationFile_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbCustomLocationFile_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop) && tbCustomLocationFile.Enabled)
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbCustomLocationFile.Text = Path.GetFullPath(files[0]);
+			}
+		}
+
+		private void tbCustomFileTableDBFile_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbCustomFileTableDBFile_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop) && tbCustomFileTableDBFile.Enabled)
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbCustomFileTableDBFile.Text = Path.GetFullPath(files[0]);
+			}
+		}
+
 		#endregion
 	}
 }

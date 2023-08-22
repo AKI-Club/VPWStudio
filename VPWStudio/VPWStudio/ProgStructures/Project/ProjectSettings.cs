@@ -104,6 +104,18 @@ namespace VPWStudio
 		public string CustomLocationFilePath;
 		#endregion
 
+		#region Class Members - Custom FileTableDB
+		/// <summary>
+		/// Use a custom FileTableDB file?
+		/// </summary>
+		public bool UseCustomFileTableDB;
+
+		/// <summary>
+		/// Path to custom FileTableDB file.
+		/// </summary>
+		public string CustomFileTableDBPath;
+		#endregion
+
 		#region Class Members - Ancillary Files
 		/// <summary>
 		/// Path to custom Wrestler Definition file.
@@ -139,6 +151,8 @@ namespace VPWStudio
 
 			UseCustomLocationFile = false;
 			CustomLocationFilePath = String.Empty;
+			UseCustomFileTableDB = false;
+			CustomFileTableDBPath = String.Empty;
 
 			#region N64-specific
 			OutputRomInternalName = String.Empty;
@@ -169,7 +183,8 @@ namespace VPWStudio
 		/// <param name="_inROM">Input ROM path</param>
 		/// <param name="_outROM">Output ROM path</param>
 		/// <param name="_locPath">Custom Location File path</param>
-		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath)
+		/// <param name="_ftdbPath">Custom FileTableDB path</param>
+		public ProjectSettings(string _name, VPWGames _baseGame, SpecificGame _gameType, string _authors, string _notes, string _inROM, string _outROM, string _locPath, string _ftdbPath)
 		{
 			ProjectName = _name;
 			BaseGame = _baseGame;
@@ -183,6 +198,8 @@ namespace VPWStudio
 
 			UseCustomLocationFile = !_locPath.Equals(String.Empty);
 			CustomLocationFilePath = _locPath;
+			UseCustomFileTableDB = !_ftdbPath.Equals(String.Empty);
+			CustomFileTableDBPath = _ftdbPath;
 
 			if (GameInformation.GameDefs[_gameType].TargetConsole == PlatformType.Nintendo64)
 			{
@@ -240,6 +257,8 @@ namespace VPWStudio
 
 			UseCustomLocationFile = _src.UseCustomLocationFile;
 			CustomLocationFilePath = _src.CustomLocationFilePath;
+			UseCustomFileTableDB = _src.UseCustomFileTableDB;
+			CustomFileTableDBPath = _src.CustomFileTableDBPath;
 
 			#region N64-specific
 			OutputRomInternalName = _src.OutputRomInternalName;

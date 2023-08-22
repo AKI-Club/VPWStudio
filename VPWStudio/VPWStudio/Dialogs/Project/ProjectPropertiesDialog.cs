@@ -103,6 +103,8 @@ namespace VPWStudio
 				tbAssetFilesPath.Text = Program.CurrentProject.Settings.AssetsPath;
 				chbCustomLocation.Checked = Program.CurrentProject.Settings.UseCustomLocationFile;
 				tbCustomLocationFile.Text = Program.CurrentProject.Settings.CustomLocationFilePath;
+				chbCustomFileTableDB.Checked = Program.CurrentProject.Settings.UseCustomFileTableDB;
+				tbCustomFileTableDBFile.Text = Program.CurrentProject.Settings.CustomFileTableDBPath;
 				tbWrestlerNamesFile.Text = Program.CurrentProject.Settings.WrestlerNameFilePath;
 			}
 
@@ -169,14 +171,28 @@ namespace VPWStudio
 			// if using custom location file, path to custom location must not be empty
 			if (chbCustomLocation.Checked && tbCustomLocationFile.Text.Equals(String.Empty))
 			{
-				Program.ErrorMessageBox("Must provide custom location path if using custom location file.");
+				Program.ErrorMessageBox("Must provide custom Location File path if using a custom location file.");
 				return;
 			}
 
-			// custom location file must exist
+			// custom location file must exist if using it
 			if (chbCustomLocation.Checked && !File.Exists(tbCustomLocationFile.Text))
 			{
 				Program.ErrorMessageBox(String.Format("Custom Location File not found at\n{0}", Path.GetFullPath(tbCustomLocationFile.Text)));
+				return;
+			}
+
+			// if using custom FileTableDB, path to custom FileTableDB must not be empty
+			if (chbCustomFileTableDB.Checked && tbCustomFileTableDBFile.Text.Equals(String.Empty))
+			{
+				Program.ErrorMessageBox("Must provide custom FileTableDB path if using a custom FileTableDB file.");
+				return;
+			}
+
+			// custom FileTableDB must exist if using it
+			if (chbCustomFileTableDB.Checked && !File.Exists(tbCustomFileTableDBFile.Text))
+			{
+				Program.ErrorMessageBox(String.Format("Custom FileTableDB File not found at\n{0}", Path.GetFullPath(tbCustomFileTableDBFile.Text)));
 				return;
 			}
 
@@ -248,6 +264,16 @@ namespace VPWStudio
 			else
 			{
 				NewSettings.CustomLocationFilePath = String.Empty;
+			}
+
+			NewSettings.UseCustomFileTableDB = (chbCustomFileTableDB.Checked);
+			if (chbCustomFileTableDB.Checked)
+			{
+				NewSettings.CustomFileTableDBPath = tbCustomFileTableDBFile.Text;
+			}
+			else
+			{
+				NewSettings.CustomFileTableDBPath = String.Empty;
 			}
 
 			NewSettings.WrestlerNameFilePath = tbWrestlerNamesFile.Text;
@@ -427,6 +453,7 @@ namespace VPWStudio
 			}
 		}
 
+		#region Drag and Drop
 		private void tbCustomLocationFile_DragEnter(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -448,6 +475,45 @@ namespace VPWStudio
 			}
 		}
 
+		private void tbCustomFileTableDBFile_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				e.Effect = DragDropEffects.Copy;
+			}
+			else
+			{
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		private void tbCustomFileTableDBFile_DragDrop(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				tbCustomFileTableDBFile.Text = Path.GetFullPath(files[0]);
+			}
+		}
+		#endregion
+
+		private void chbCustomFileTableDB_Click(object sender, EventArgs e)
+		{
+			buttonSetCustomFileTableDBFile.Enabled = chbCustomFileTableDB.Checked;
+			tbCustomFileTableDBFile.Enabled = chbCustomFileTableDB.Checked;
+		}
+
+		private void buttonSetCustomFileTableDBFile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Custom FileTableDB File";
+			ofd.Filter = SharedStrings.FileFilter_Text;
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				tbCustomFileTableDBFile.Text = ofd.FileName;
+			}
+		}
+
 		private void buttonSetWrestlerNameFile_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -458,9 +524,6 @@ namespace VPWStudio
 				tbWrestlerNamesFile.Text = ofd.FileName;
 			}
 		}
-
 		#endregion
-
-		
 	}
 }
