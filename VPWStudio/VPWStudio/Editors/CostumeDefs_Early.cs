@@ -64,11 +64,11 @@ namespace VPWStudio.Editors
 		{
 			126, // Small
 			96,  // Medium
-			21,  // Large
-			3,   // Saladin
-			2,   // Giant Baba
-			2,   // Judoka
-			2,   // BlackWidow
+			18,  // Large
+			2,   // Saladin
+			1,   // Giant Baba
+			1,   // Judoka
+			1,   // BlackWidow
 			4    // unused?
 		};
 		#endregion
@@ -650,6 +650,8 @@ namespace VPWStudio.Editors
 			// drawing textures is fun, not!!
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
+			// todo: some textures in VPW64 are CI8, but use CI4 palettes (?????)
+			// one example: file ID 0B76 (Ci8Texture) uses palette 11FD (Ci4Palette)
 
 			LoadPreview_CI4(romReader, pbPelvis, cdef.PelvisPalette, cdef.PelvisTexture, 0);
 			LoadPreview_CI4(romReader, pbStomach, cdef.StomachPalette, cdef.StomachTexture, 0);
