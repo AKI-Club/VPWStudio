@@ -1081,6 +1081,7 @@ namespace VPWStudio
 			if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
 			{
 				// update intro data
+				Program.ErrorMessageBox("Editing/writeback not implemented yet");
 			}
 		}
 
