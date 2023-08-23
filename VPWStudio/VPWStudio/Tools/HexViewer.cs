@@ -54,6 +54,7 @@ namespace VPWStudio
 		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1, string title = "")
 		{
 			InitializeComponent();
+
 			ViewSource = hvds;
 			FileID = fileID;
 
@@ -96,6 +97,12 @@ namespace VPWStudio
 		/// <param name="e"></param>
 		private void HexViewer_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			// check if data has been modified
+			if (HexBoxByteProvider.HasChanges())
+			{
+				// omg do you want to save the changes?!
+			}
+
 			IDisposable hbp = HexBoxByteProvider as IDisposable;
 			if (hbp != null)
 			{
