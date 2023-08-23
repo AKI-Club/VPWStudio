@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using VPWStudio.Editors;
+
 namespace VPWStudio.Tools
 {
 	public struct TextValueRange
@@ -48,9 +50,14 @@ namespace VPWStudio.Tools
 			new TextValueRange(0xF5A4, 0xF695, 0x000C, "akitext 07"),
 		};
 
+		protected int AkiTextFileID;
+		protected int TargetIndex;
+
 		public TextIndexTool()
 		{
 			InitializeComponent();
+			AkiTextFileID = 0;
+			TargetIndex = 0;
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
@@ -67,6 +74,7 @@ namespace VPWStudio.Tools
 					// global text
 					lblRegionValue.Text = "Global Text";
 					tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, 0x80105090+(outValue*4));
+					btnLaunchTextEditor.Enabled = false;
 				}
 				else
 				{
@@ -76,11 +84,24 @@ namespace VPWStudio.Tools
 					{
 						if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
 						{
+							AkiTextFileID = tvr.FileID;
+							TargetIndex = inValue - tvr.StartValue;
 							lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
-							tbOutputValue.Text = String.Format("0x{0:X} ({0})", inValue - tvr.StartValue);
+							tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
 							foundRegion = true;
 						}
 					}
+
+					if (Program.CurrentProject != null)
+					{
+						btnLaunchTextEditor.Enabled = foundRegion;
+					}
+					else
+					{
+						// don't allow launching text editor without a project open
+						btnLaunchTextEditor.Enabled = false;
+					}
+
 					if (!foundRegion)
 					{
 						lblRegionValue.Text = "unknown region";
@@ -95,6 +116,12 @@ namespace VPWStudio.Tools
 			{
 				Close();
 			}
+		}
+
+		private void btnLaunchTextEditor_Click(object sender, EventArgs e)
+		{
+			AkiTextEditor ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
+			ate.ShowDialog();
 		}
 	}
 }

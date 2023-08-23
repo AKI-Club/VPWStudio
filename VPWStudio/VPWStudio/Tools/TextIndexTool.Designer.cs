@@ -38,6 +38,7 @@ namespace VPWStudio.Tools
 			this.labelRegion = new System.Windows.Forms.Label();
 			this.lblRegionValue = new System.Windows.Forms.Label();
 			this.lblNote = new System.Windows.Forms.Label();
+			this.btnLaunchTextEditor = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -46,7 +47,7 @@ namespace VPWStudio.Tools
 			this.btnUpdate.Location = new System.Drawing.Point(285, 118);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-			this.btnUpdate.TabIndex = 4;
+			this.btnUpdate.TabIndex = 8;
 			this.btnUpdate.Text = "&Update";
 			this.btnUpdate.UseVisualStyleBackColor = true;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -88,7 +89,7 @@ namespace VPWStudio.Tools
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 100);
-			this.tableLayoutPanel1.TabIndex = 3;
+			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// lblInput
 			// 
@@ -117,7 +118,7 @@ namespace VPWStudio.Tools
 			this.labelRegion.Location = new System.Drawing.Point(3, 76);
 			this.labelRegion.Name = "labelRegion";
 			this.labelRegion.Size = new System.Drawing.Size(81, 13);
-			this.labelRegion.TabIndex = 5;
+			this.labelRegion.TabIndex = 4;
 			this.labelRegion.Text = "Region";
 			// 
 			// lblRegionValue
@@ -127,7 +128,7 @@ namespace VPWStudio.Tools
 			this.lblRegionValue.Location = new System.Drawing.Point(90, 76);
 			this.lblRegionValue.Name = "lblRegionValue";
 			this.lblRegionValue.Size = new System.Drawing.Size(255, 13);
-			this.lblRegionValue.TabIndex = 6;
+			this.lblRegionValue.TabIndex = 5;
 			this.lblRegionValue.Text = "(region)";
 			// 
 			// lblNote
@@ -136,8 +137,19 @@ namespace VPWStudio.Tools
 			this.lblNote.Location = new System.Drawing.Point(12, 123);
 			this.lblNote.Name = "lblNote";
 			this.lblNote.Size = new System.Drawing.Size(82, 13);
-			this.lblNote.TabIndex = 5;
+			this.lblNote.TabIndex = 6;
 			this.lblNote.Text = "F0BF is index 0.";
+			// 
+			// btnLaunchTextEditor
+			// 
+			this.btnLaunchTextEditor.Enabled = false;
+			this.btnLaunchTextEditor.Location = new System.Drawing.Point(191, 118);
+			this.btnLaunchTextEditor.Name = "btnLaunchTextEditor";
+			this.btnLaunchTextEditor.Size = new System.Drawing.Size(88, 23);
+			this.btnLaunchTextEditor.TabIndex = 7;
+			this.btnLaunchTextEditor.Text = "&Go To Entry...";
+			this.btnLaunchTextEditor.UseVisualStyleBackColor = true;
+			this.btnLaunchTextEditor.Click += new System.EventHandler(this.btnLaunchTextEditor_Click);
 			// 
 			// TextIndexTool
 			// 
@@ -145,6 +157,7 @@ namespace VPWStudio.Tools
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(372, 153);
+			this.Controls.Add(this.btnLaunchTextEditor);
 			this.Controls.Add(this.lblNote);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.btnUpdate);
@@ -175,5 +188,6 @@ namespace VPWStudio.Tools
 		private System.Windows.Forms.Label labelRegion;
 		private System.Windows.Forms.Label lblRegionValue;
 		private System.Windows.Forms.Label lblNote;
+		private System.Windows.Forms.Button btnLaunchTextEditor;
 	}
 }
