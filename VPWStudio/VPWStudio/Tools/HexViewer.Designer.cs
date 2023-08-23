@@ -68,7 +68,7 @@
 			// labelHexViewStatus
 			// 
 			this.labelHexViewStatus.Name = "labelHexViewStatus";
-			this.labelHexViewStatus.Size = new System.Drawing.Size(532, 19);
+			this.labelHexViewStatus.Size = new System.Drawing.Size(549, 19);
 			this.labelHexViewStatus.Spring = true;
 			this.labelHexViewStatus.Text = "test";
 			this.labelHexViewStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
