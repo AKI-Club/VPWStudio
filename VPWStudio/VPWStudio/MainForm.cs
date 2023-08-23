@@ -392,6 +392,10 @@ namespace VPWStudio
 			newHV.MdiParent = this;
 			newHV.Show();
 			newHV.BringToFront();
+			if (newHV.WindowState == FormWindowState.Minimized)
+			{
+				newHV.WindowState = FormWindowState.Normal;
+			}
 		}
 
 		/// <summary>
@@ -404,6 +408,10 @@ namespace VPWStudio
 			newHV.MdiParent = this;
 			newHV.Show();
 			newHV.BringToFront();
+			if (newHV.WindowState == FormWindowState.Minimized)
+			{
+				newHV.WindowState = FormWindowState.Normal;
+			}
 		}
 
 		public void RequestHexViewer(string filePath, string title = "")
@@ -412,6 +420,10 @@ namespace VPWStudio
 			newHV.MdiParent = this;
 			newHV.Show();
 			newHV.BringToFront();
+			if (newHV.WindowState == FormWindowState.Minimized)
+			{
+				newHV.WindowState = FormWindowState.Normal;
+			}
 		}
 		#endregion
 
