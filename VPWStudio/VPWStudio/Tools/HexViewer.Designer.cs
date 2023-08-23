@@ -37,15 +37,17 @@
 			// 
 			// hexBox1
 			// 
+			this.hexBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.hexBox1.ColumnInfoVisible = true;
-			this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.hexBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hexBox1.LineInfoVisible = true;
 			this.hexBox1.Location = new System.Drawing.Point(0, 0);
 			this.hexBox1.Name = "hexBox1";
 			this.hexBox1.ReadOnly = true;
 			this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-			this.hexBox1.Size = new System.Drawing.Size(624, 361);
+			this.hexBox1.Size = new System.Drawing.Size(624, 334);
 			this.hexBox1.StringViewVisible = true;
 			this.hexBox1.TabIndex = 0;
 			this.hexBox1.UseFixedBytesPerLine = true;
