@@ -54,6 +54,8 @@ namespace VPWStudio
 		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1, string title = "")
 		{
 			InitializeComponent();
+			labelHexViewStatus.Text = String.Empty;
+			labelInsertMode.Text = hexBox1.InsertActive ? "INS" : "OVR";
 
 			ViewSource = hvds;
 			FileID = fileID;
@@ -98,15 +100,23 @@ namespace VPWStudio
 		private void HexViewer_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			// check if data has been modified, and ask to save changes if so.
-			/*
 			if (HexBoxByteProvider.HasChanges())
 			{
 				if (!Program.QuestionMessageBox_YesNo("File has been modified. Do you want to save the changes?", MessageBoxIcon.Exclamation))
 				{
 					return;
 				}
+
+				// todo: how to deal with the changes
+				if (FileID == -1)
+				{
+					// external file
+				}
+				else
+				{
+					// replacing something in the FileTable
+				}
 			}
-			*/
 
 			IDisposable hbp = HexBoxByteProvider as IDisposable;
 			if (hbp != null)
@@ -136,6 +146,11 @@ namespace VPWStudio
 			{
 				Close();
 			}
+		}
+
+		private void hexBox1_InsertActiveChanged(object sender, EventArgs e)
+		{
+			labelInsertMode.Text = hexBox1.InsertActive ? "INS" : "OVR";
 		}
 	}
 }
