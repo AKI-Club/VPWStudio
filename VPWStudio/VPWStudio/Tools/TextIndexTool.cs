@@ -120,6 +120,7 @@ namespace VPWStudio.Tools
 
 		private void btnLaunchTextEditor_Click(object sender, EventArgs e)
 		{
+			// warning: doesn't save changes, lol oops :|
 			AkiTextEditor ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
 			ate.ShowDialog();
 		}
