@@ -97,11 +97,16 @@ namespace VPWStudio
 		/// <param name="e"></param>
 		private void HexViewer_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			// check if data has been modified
+			// check if data has been modified, and ask to save changes if so.
+			/*
 			if (HexBoxByteProvider.HasChanges())
 			{
-				// omg do you want to save the changes?!
+				if (!Program.QuestionMessageBox_YesNo("File has been modified. Do you want to save the changes?", MessageBoxIcon.Exclamation))
+				{
+					return;
+				}
 			}
+			*/
 
 			IDisposable hbp = HexBoxByteProvider as IDisposable;
 			if (hbp != null)
