@@ -61,6 +61,7 @@ namespace VPWStudio
 			FileID = fileID;
 
 			HexBoxByteProvider = new DynamicByteProvider(data);
+			HexBoxByteProvider.Changed += HexDataChanged;
 			hexBox1.ByteProvider = HexBoxByteProvider;
 
 			if (FileID != -1)
@@ -81,6 +82,18 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		public void HexDataChanged(object sender, EventArgs e)
+		{
+			if (hexBox1.ByteProvider.HasChanges())
+			{
+				labelHexViewStatus.Text = "Modified!";
+			}
+			else
+			{
+				labelHexViewStatus.Text = String.Empty;
+			}
+		}
 
 		/// <summary>
 		/// Get the SHA256 hash of the currently loaded data.
