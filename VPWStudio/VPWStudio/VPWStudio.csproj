@@ -179,6 +179,12 @@
     <Compile Include="Editors\NoMercy\Ruleset_NoMercy.Designer.cs">
       <DependentUpon>Ruleset_NoMercy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\NoMercy\StoryMode_NoMercy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\NoMercy\StoryMode_NoMercy.Designer.cs">
+      <DependentUpon>StoryMode_NoMercy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\Revenge\CostumeDefs_Revenge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -778,6 +784,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\StableDefs_NoMercy.resx">
       <DependentUpon>StableDefs_NoMercy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\NoMercy\StoryMode_NoMercy.resx">
+      <DependentUpon>StoryMode_NoMercy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\WrestlerMain_NoMercy.resx">
       <DependentUpon>WrestlerMain_NoMercy.cs</DependentUpon>
