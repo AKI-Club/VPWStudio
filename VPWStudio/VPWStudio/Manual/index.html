@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.29 (August 14th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.29 (August 23rd, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -473,6 +473,9 @@ Select "New Project..." from the File menu, which will bring up the New Project 
 custom Location File. Helpful if you've already made changes to the base ROM that
 result in differences from the default Location File for the specified Game Type.
 <strong><em>Most people will not need to use this.</em></strong></li>
+<li><strong>Custom FileTableDB File</strong> &ndash; When checked, allows you to use
+a custom FileTableDB file. Helpful if you're using a base ROM that has more files in
+it than the normal version. <strong><em>Most people will not need to use this.</em></strong></li>
 </ul>
 <p>All of these may be changed later in the <a href="#ProjectProperties">Project
 Properties</a> dialog. Upon pressing OK, you will be sent back to the main screen,
@@ -620,6 +623,7 @@ you will likely run into issues when saving data.</p>
 <li><strong>Project Files Path</strong> &ndash; Path to files that are already in game-native formats.</li>
 <li><strong>Asset Files Path</strong> &ndash; Path to files that will be converted to game-native formats.</li>
 <li><strong>Custom Location File</strong> &ndash; Path to a custom location file. Only useful if you're working from a ROM that has non-trivial code changes. <em>Most people will not need to use this.</em></li>
+<li><strong>Custom FileTableDB File</strong> &ndash; Path to a custom FileTableDB file. Only useful if you're working from a ROM that has extended the filetable. <em>Most people will not need to use this.</em></li>
 <li><strong>Wrestler Names File</strong> &ndash; Path to the Wrestler Name file for this project. (Currently unused/unimplemented; not particularly "needed" for No Mercy)</li>
 </ul>
 
@@ -1058,7 +1062,7 @@ This is used for changing colors in Edit Mode, and is explained further below.</
 existing solutions matched the desired criteria:</p>
 <ul>
 <li>Text-based format (for easy editing outside of the program)</li>
-<li>Ability to define the number of colors in the palette (16 or 256)</li>
+<li>Ability to define the number of entries in the palette (16 or 256)</li>
 <li>Ability to define the alpha/transparency on a per-palette entry level</li>
 <li>Support for CI4 sub-palettes</li>
 </ul>
@@ -1186,34 +1190,65 @@ new <code>.tex</code> file in the File Table dialog.</p>
 <p>Both the Large and Small font types are 1bpp format. VPW Studio currently
 has no workflow for handling font replacement, but they can be edited using a
 program that understands 1bpp format tiles <em>and</em> has flexible display
-options. <a href="http://www.romhacking.net/utilities/109/">Tile
-Molester</a> is one such program.</p>
+options.</p>
 
-<p>While a complete guide to using Tile Molester is out of the scope of this
-manual, the steps required to load and edit font data are as follows:</p>
-<ol>
-<li>Export the Font using the File Table editor. If the File Type has been set
+<p>Two programs have been tested and used:</p>
+<ul>
+<li><a href="https://www.romhacking.net/utilities/109/">Tile Molester</a></li>
+<li><a href="https://www.romhacking.net/utilities/818/">Crystal Tile 2</a></li>
+</ul>
+
+<p>A complete guide to these tools is out of the scope of this manual. Getting
+the fonts to display properly requires some work, though.</p>
+
+<p>First, export the Font using the File Table editor. If the File Type has been set
 correctly, this will export a <code>.smallfont</code> or <code>.largefont</code>
-file.</li>
+file. From there, the instructions differ based on what program you're using.</p>
+
+<p>The line of pixels separating each character is related to leading spacing
+and character width. The format of these values differs between Large and Small
+fonts, and is not fully understood yet.</p>
+
+<ul>
+<li>Small Fonts &ndash; two bytes; first byte always <code>0x00</code>; second byte leading pixels mask <code>0xF0</code>, character width mask <code>0x0F</code>.</li>
+<li>Large Fonts &ndash; three bytes; first byte is leading pixels; second byte is character width; third byte always <code>0x00</code>.</li>
+</ul>
+
+<h4>Tile Molester</h4>
+<ol>
 <li>Open the extracted file in Tile Molester.</li>
 <li>View &rarr; Codec &rarr; 1bpp Planar</li>
 <li>View &rarr; Mode &rarr; 2-Dimensional</li>
 <li>Press the "Decrease Width" button (found on the top toolbar; an arrow pointing
-left into three vertical lines) until you only see one "column" of the font data.</li>
+left into three vertical lines) until you only see one "column" of the font data.
+Alternatively, go to Image &rarr; Canvas Size, and use the following settings
+based on font type:<ul>
+<li>Small Fonts &ndash; columns 2, rows 16</li>
+<li>Large Fonts &ndash; columns 3, rows 16</li>
+</ul></li>
 </ol>
 
 <p>You can start editing at this point, but the default colors are slightly odd,
 so you may want to change them. Double click on each color swatch (between the large
 arrow buttons) to set the color.</p>
 
-<p>Do not edit the line of pixels separating each character. While the purpose of
-this data is currently unknown, it is highly likely related to character rendering
-and/or identification.</p>
+<h4>Crystal Tile 2</h4>
+<ol>
+<li>Open the extracted file in Crystal Tile 2.</li>
+<li>View &rarr; Tile Viewer (keyboard shortcut F5)</li>
+<li>In the "Tile Property" area, set character width and height based on font type:<ul>
+<li>Small Fonts &ndash; width 16, height 14</li>
+<li>Large Fonts &ndash; width 24, height 22</li>
+</ul></li>
+</ol>
+
+<p>(Crystal Tile 2 editing instructions are still todo)</p>
 
 <hr />
 <h2><a name="CodeDataPointers">Code, Data, and Pointers</a></h2>
 <p>Having low level knowledge is not 100% required to get use out of VPW Studio,
-but it is helpful to know how things work when making certain types of changes.</p>
+but it is helpful to know how things work when making certain types of changes
+(and for some things in the older games, it's currently required).</p>
 
 <p>Games for the fifth generation of consoles (Nintendo 64, PlayStation 1, and
 Saturn) load code into RAM and execute it. For the disc-based systems, this is
@@ -1226,8 +1261,8 @@ RAM may seem like an odd choice.</p>
 access anything at any time, as their available memory does not allow for
 the maximum size of their storage medium. For CD-based games, you would need
 at least 650 megabytes of RAM. For the Nintendo 64, you would need around
-64 megabytes of RAM for the largest games. Therefore, games have to
-specifically load what they need when they want to use it.</p>
+64 megabytes of RAM for the largest games. Therefore, games have to specifically
+load what they need when they want to use it.</p>
 
 <p>For AKI's Nintendo 64 games, the game code is generally split up into a
 few sections:</p>
@@ -1513,7 +1548,8 @@ for the file in question. This section covers the various tools available.</p>
 
 <p>The Hex Viewer is used to display data for "Binary" file types, but it can also
 be requested via the File Table context menu ("View Hex"). The data is read-only,
-so an external hex editor must be used to make changes.</p>
+so an external hex editor must be used to make changes. In-program editing
+will be implemented in a future version.</p>
 
 <h3><a name="CIPaletteEdit">CI4/CI8 Palettes</a></h3>
 <img src="./img/ci4palette_editor.png" title="Ci4Palette Editor" />&nbsp;
@@ -1599,6 +1635,9 @@ different formats:</p>
 <li><strong>Tab-separated CSV</strong> &ndash; CSV format, using tabs instead of commas. Meant to be used with Zoinkity's toolset.</li>
 <li><strong>akitext Tool Format</strong> &ndash; Format used by the <a href="https://github.com/AKI-Club/akitext"><code>akitext</code></a> command line tool.</li>
 </ul>
+
+<h4>Go To</h4>
+<p>Opens a dialog allowing you to jump to a specific entry.</p>
 
 <h4>Control Code Reference</h4>
 <p>Pressing the <strong>Control Codes</strong> button shows a dialog box with the
