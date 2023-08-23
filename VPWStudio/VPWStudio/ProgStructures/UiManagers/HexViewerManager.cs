@@ -117,7 +117,7 @@ namespace VPWStudio
 			{
 				// make it new
 				HexViewer f = new HexViewer(HexViewerDataSource.ExternalData, data, -1, title);
-				ActiveHexViewers.Add(new HexViewerEntry(f, sha256.ComputeHash(data)));
+				ActiveHexViewers.Add(new HexViewerEntry(f, hash));
 				return f;
 			}
 		}
