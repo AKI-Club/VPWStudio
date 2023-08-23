@@ -106,7 +106,7 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		/// <summary>
-		/// Load Costume Definitions for every early game that's not VPW64.
+		/// Load WCW/nWo Revenge Costume Definitions.
 		/// </summary>
 		/// <param name="br"></param>
 		private void LoadCostumeDefs(BinaryReader br)
