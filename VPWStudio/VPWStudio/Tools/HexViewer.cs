@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.IO;
 using Be.Windows.Forms;
 
 namespace VPWStudio
@@ -51,6 +52,7 @@ namespace VPWStudio
 		/// <param name="hvds">Viewer data source.</param>
 		/// <param name="data">Data to load.</param>
 		/// <param name="fileID">File ID, if loading from FileTable.</param>
+		/// <param name="title">Title to use for hex viewer window.</param>
 		public HexViewer(HexViewerDataSource hvds, byte[] data, int fileID = -1, string title = "")
 		{
 			InitializeComponent();
@@ -115,19 +117,44 @@ namespace VPWStudio
 			// check if data has been modified, and ask to save changes if so.
 			if (HexBoxByteProvider.HasChanges())
 			{
-				if (!Program.QuestionMessageBox_YesNo("File has been modified. Do you want to save the changes?", MessageBoxIcon.Exclamation))
+				if (Program.QuestionMessageBox_YesNo("File has been modified. Do you want to save the changes?", MessageBoxIcon.Exclamation))
 				{
-					return;
-				}
+					if (FileID != -1)
+					{
+						// replacing something in the FileTable
+						if (Program.CurrentProject.ProjectFileTable.Entries[FileID].HasReplacementFile())
+						{
+							// replacement file already exists; update it
+							string replaceFilePath = Program.ConvertRelativePath(Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath);
 
-				// todo: how to deal with the changes
-				if (FileID == -1)
-				{
-					// external file
-				}
-				else
-				{
-					// replacing something in the FileTable
+							using (FileStream fs = new FileStream(replaceFilePath, FileMode.Open))
+							{
+								using (BinaryWriter br = new BinaryWriter(fs))
+								{
+									br.Write(HexBoxByteProvider.Bytes.ToArray());
+								}
+							}
+						}
+						else
+						{
+							// replacement file doesn't exist; create it in ProjectFiles dir
+							string outFileName = string.Format("{0}\\{1:X4}.bin", Program.ConvertRelativePath(Program.CurrentProject.Settings.ProjectFilesPath), FileID);
+							using (FileStream fs = new FileStream(outFileName, FileMode.Create))
+							{
+								using (BinaryWriter br = new BinaryWriter(fs))
+								{
+									br.Write(HexBoxByteProvider.Bytes.ToArray());
+								}
+							}
+							Program.CurrentProject.ProjectFileTable.Entries[FileID].ReplaceFilePath = Program.ShortenAbsolutePath(outFileName);
+							Program.InfoMessageBox(string.Format("Wrote modified file to\n{0}", outFileName));
+						}
+					}
+					else
+					{
+						// external file
+						// HexViewer currently has no knowledge of files; all it knows is bytes.
+					}
 				}
 			}
 
