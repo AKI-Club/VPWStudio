@@ -95,6 +95,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.openFileInHexViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -461,6 +462,7 @@
             this.vpw2FaceTestToolStripMenuItem,
             this.stableParseTestToolStripMenuItem,
             this.romSliceTestToolStripMenuItem,
+            this.openFileInHexViewerToolStripMenuItem,
             this.moveDamageTestToolStripMenuItem,
             this.vpw2TextIndexToolToolStripMenuItem,
             this.toolStripSeparator10,
@@ -587,6 +589,12 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// openFileInHexViewerToolStripMenuItem
+			// 
+			this.openFileInHexViewerToolStripMenuItem.Name = "openFileInHexViewerToolStripMenuItem";
+			resources.ApplyResources(this.openFileInHexViewerToolStripMenuItem, "openFileInHexViewerToolStripMenuItem");
+			this.openFileInHexViewerToolStripMenuItem.Click += new System.EventHandler(this.openFileInHexViewerToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -679,6 +687,7 @@
 		private System.Windows.Forms.ToolStripMenuItem paramUnpackTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem demoMatchesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem matchRulesetsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem openFileInHexViewerToolStripMenuItem;
 	}
 }
 

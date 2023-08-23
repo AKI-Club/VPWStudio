@@ -405,6 +405,14 @@ namespace VPWStudio
 			newHV.Show();
 			newHV.BringToFront();
 		}
+
+		public void RequestHexViewer(string filePath, string title = "")
+		{
+			HexViewer newHV = Program.HexViewManager.HexViewerExternalFile(filePath, title);
+			newHV.MdiParent = this;
+			newHV.Show();
+			newHV.BringToFront();
+		}
 		#endregion
 
 		#region File Menu Items
@@ -2616,6 +2624,19 @@ namespace VPWStudio
 			}
 		}
 
+		private void openFileInHexViewerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select File";
+			if (ofd.ShowDialog() == DialogResult.OK)
+			{
+				HexViewer hv = Program.HexViewManager.HexViewerExternalFile(ofd.FileName, Path.GetFullPath(ofd.FileName));
+				hv.MdiParent = this;
+				hv.Show();
+				hv.BringToFront();
+			}
+		}
+
 		private void moveDamageTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (Program.CurrentProject == null)
@@ -2711,5 +2732,6 @@ namespace VPWStudio
 		}
 		#endregion
 
+		
 	}
 }

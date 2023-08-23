@@ -121,6 +121,30 @@ namespace VPWStudio
 				return f;
 			}
 		}
+
+		/// <summary>
+		/// Create a new HexViewer from an external file.
+		/// </summary>
+		/// <param name="filePath">Path to file to open in the HexView.</param>
+		/// <param name="title">(optional) Title for the hex editor form.</param>
+		/// <returns>HexViewer form with the requested data.</returns>
+		public HexViewer HexViewerExternalFile(string filePath, string title = "")
+		{
+			byte[] fileData = File.ReadAllBytes(filePath);
+			SHA256 sha256 = SHA256.Create();
+			byte[] hash = sha256.ComputeHash(fileData);
+			int viewerIndex = CheckOpenFile(hash);
+			if (viewerIndex != -1)
+			{
+				return ActiveHexViewers[viewerIndex].Form;
+			}
+			else
+			{
+				HexViewer f = new HexViewer(HexViewerDataSource.ExternalData, fileData, -1, title);
+				ActiveHexViewers.Add(new HexViewerEntry(f, hash));
+				return f;
+			}
+		}
 		#endregion
 
 		/// <summary>
