@@ -17,6 +17,28 @@ namespace VPWStudio.Editors
 	/// </summary>
 	public partial class CostumeDefs_Early : Form
 	{
+		#region Constants
+		/// <summary>
+		/// Number of body type definitions (shared between World Tour and VPW64)
+		/// </summary>
+		private const int NUM_BODY_TYPE_DEFS = 44;
+
+		/// <summary>
+		/// Number of costumes in World Tour. (VPW64 is handled differently)
+		/// </summary>
+		private const int NUM_COSTUMES_WORLDTOUR = 45;
+
+		/// <summary>
+		/// Number of head definitions in World Tour.
+		/// </summary>
+		private const int NUM_HEAD_DEFS_WORLDTOUR = 45;
+
+		/// <summary>
+		/// Number of head definitions in VPW64.
+		/// </summary>
+		private const int NUM_HEAD_DEFS_VPW64 = 106;
+		#endregion
+
 		/// <summary>
 		/// Body type definitions
 		/// </summary>
@@ -45,7 +67,7 @@ namespace VPWStudio.Editors
 		/// <summary>
 		/// Friendly names for costume types in Virtual Pro-Wrestling 64.
 		/// </summary>
-		private string[] CostumeTypes_VPW64 = new string[]
+		private readonly string[] CostumeTypes_VPW64 = new string[]
 		{
 			"Small",
 			"Medium",
@@ -60,7 +82,7 @@ namespace VPWStudio.Editors
 		/// <summary>
 		/// Number of costumes available for each Body Type in Virtual Pro-Wrestling 64.
 		/// </summary>
-		private int[] NumCostumes_VPW64 = new int[]
+		private readonly int[] NumCostumes_VPW64 = new int[]
 		{
 			126, // Small
 			96,  // Medium
@@ -108,7 +130,7 @@ namespace VPWStudio.Editors
 		private void LoadBodyTypeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numBodyDefs = 44;
+			int numBodyDefs = NUM_BODY_TYPE_DEFS;
 			if (Program.CurLocationFile != null)
 			{
 				LocationFileEntry btdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["BodyTypeDefs"]);
@@ -150,13 +172,13 @@ namespace VPWStudio.Editors
 		}
 
 		/// <summary>
-		/// Load Costume Definitions for every early game that's not VPW64.
+		/// Load Costume Definitions for World Tour.
 		/// </summary>
 		/// <param name="br"></param>
 		private void LoadCostumeDefs(BinaryReader br)
 		{
 			bool hasLocation = false;
-			int numCostumes = 45;
+			int numCostumes = NUM_COSTUMES_WORLDTOUR;
 
 			if (Program.CurLocationFile != null)
 			{
@@ -393,7 +415,7 @@ namespace VPWStudio.Editors
 			bool hasLocation = false;
 
 			// VPW64 has way more heads/masks defined than World Tour
-			int numHeadDefs = (Program.CurrentProject.Settings.GameType == SpecificGame.VPW64_NTSC_J) ? 106 : 45;
+			int numHeadDefs = (Program.CurrentProject.Settings.GameType == SpecificGame.VPW64_NTSC_J) ? NUM_HEAD_DEFS_VPW64 : NUM_HEAD_DEFS_WORLDTOUR;
 
 			if (Program.CurLocationFile != null)
 			{
