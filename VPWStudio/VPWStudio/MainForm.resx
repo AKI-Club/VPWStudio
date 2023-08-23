@@ -456,6 +456,12 @@
   <data name="romSliceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>rom &amp;slice test</value>
   </data>
+  <data name="openFileInHexViewerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>308, 22</value>
+  </data>
+  <data name="openFileInHexViewerToolStripMenuItem.Text" xml:space="preserve">
+    <value>open file in hex viewer...</value>
+  </data>
   <data name="moveDamageTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>308, 22</value>
   </data>
@@ -2139,6 +2145,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Name" xml:space="preserve">
+    <value>openFileInHexViewerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
