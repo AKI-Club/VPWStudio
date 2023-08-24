@@ -2,9 +2,26 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 29 (202x/yy/zz)
+Pre-Alpha Preview 30 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 29 (202x/yy/zz)
+---------------------------------
+- [Game Intro Editor] Added "Reload ROM Data" button.
+  Considering you currently need to make changes to the intro via hex editing,
+  this button was sorely missing.
+
+- [Font Dialog] Show the selected character's header bytes in a textbox.
+  These bytes appear to modify character size and/or spacing in some form,
+  but are still unknown.
+
+- If a custom LocationFile is being used and the project's FileTable location
+  doesn't match the value in the custom LocationFile, update the project.
+
+- [Help] Added Shift+F1 shortcut to open Game-Specific Information.
+
+- [AkiTextEditor] Added "Go To" option.
 
 Pre-Alpha Preview 28 (2023/02/17)
 ---------------------------------
