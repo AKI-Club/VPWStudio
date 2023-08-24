@@ -31,12 +31,13 @@ namespace VPWStudio.Tools
 	public partial class TextIndexTool : Form
 	{
 		#region VPW2 Constants/Values
-
 		// This relies on rollover;
 		// actual index = 0xFFFF0F41 + index value
 		private readonly uint VPW2_START_VALUE = 0xFFFF0F41;
 
-		// 0xF0BF is index 0
+		/// <summary>
+		/// First value in VPW2 that will result in an index of 0.
+		/// </summary>
 		private readonly uint VPW2_FIRST_VALUE = 0xF0BF;
 
 		/// <summary>
@@ -44,7 +45,9 @@ namespace VPWStudio.Tools
 		/// </summary>
 		private readonly uint VPW2_POINTERS_START_RUNTIME = 0x80105090;
 
-		// sltiu $v0, $v0, 0x136 # number of entries in global text table
+		/// <summary>
+		/// Number of entries in VPW2's global text table.
+		/// </summary>
 		private readonly int VPW2_MAX_GLOBALTEXT_ENTRIES = 0x136;
 
 		// runtime location 80105820 (when menus are loaded)
@@ -68,7 +71,10 @@ namespace VPWStudio.Tools
 		// actual index = 0xFFFF0F32 + index value
 		private readonly uint NOMERCY_START_VALUE = 0xFFFF0F32;
 
-		// (0xF0CE is index 0; 0xF0CF is the first real entry)
+		/// <summary>
+		/// First value in No Mercy that will result in an index of 0.
+		/// </summary>
+		/// 0xF0CF is the first real entry
 		private readonly uint NOMERCY_FIRST_VALUE = 0xF0CE;
 
 		/// <summary>
@@ -77,10 +83,13 @@ namespace VPWStudio.Tools
 		/// xxx: NTSC-U v1.0 value!!
 		private readonly uint NOMERCY_POINTERS_START_RUNTIME = 0x800F4790;
 
-		// 0xFD # number of entries in global text table
+		/// <summary>
+		/// Number of entries in No Mercy's global text table.
+		/// </summary>
 		private readonly int NOMERCY_MAX_GLOBALTEXT_ENTRIES = 0xFD;
 
 		// runtime location 800F4E38 (when menus are loaded)
+		// xxx: above comment is for NTSC-U v1.0 only
 		public List<TextValueRange> TextRanges_NoMercy = new List<TextValueRange>()
 		{
 			new TextValueRange(0xF1CC, 0xF50F, 0x0039, "vpw2 edit mode leftover"),
@@ -101,6 +110,32 @@ namespace VPWStudio.Tools
 		};
 		#endregion
 
+		#region WM2K Constants/Values
+		// still todo; pointer values depend on region
+
+		// This also relies on rollover;
+		// actual index = 0xFFFF01A7 + index value
+		private readonly uint WM2K_START_VALUE = 0xFFFF01A7;
+
+		/// <summary>
+		/// First value in WM2K that will result in an index of 0.
+		/// </summary>
+		private readonly uint WM2K_FIRST_VALUE = 0xFE59;
+
+		/// <summary>
+		/// Number of entries WM2K's global text table.
+		/// </summary>
+		private readonly int WM2K_MAX_GLOBALTEXT_ENTRIES = 0x162;
+
+		public List<TextValueRange> TextRanges_WM2K = new List<TextValueRange>()
+		{
+			new TextValueRange(0x030A, 0x0413, 0x0004, "edit mode"),
+			new TextValueRange(0x0415, 0x0450, 0x0005, "story mode"),
+			new TextValueRange(0x0452, 0x04B4, 0x0006, "general strings"),
+			new TextValueRange(0x04B6, 0x0548, 0x0007, "credits"),
+		};
+		#endregion
+
 		protected int AkiTextFileID;
 
 		protected int TargetIndex;
@@ -113,7 +148,7 @@ namespace VPWStudio.Tools
 
 			if (Program.CurrentProject != null)
 			{
-				if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2 || Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
+				if (Program.CurrentProject.Settings.BaseGame >= VPWGames.WM2K)
 				{
 					rbVPW2.Enabled = false;
 					rbNoMercy.Enabled = false;
@@ -121,6 +156,10 @@ namespace VPWStudio.Tools
 					if (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
 					{
 						lblNote.Text = String.Format("{0:X} is index 0.", NOMERCY_FIRST_VALUE);
+					}
+					else if (Program.CurrentProject.Settings.BaseGame == VPWGames.WM2K)
+					{
+						lblNote.Text = String.Format("{0:X} is index 0.", WM2K_FIRST_VALUE);
 					}
 				}
 				else
@@ -212,6 +251,42 @@ namespace VPWStudio.Tools
 			return false;
 		}
 
+		/// <summary>
+		/// Convert WM2K text index values.
+		/// </summary>
+		/// <param name="inValue"></param>
+		/// <returns>True if a valid region was found, false otherwise.</returns>
+		protected bool ConvertWM2K(ushort inValue)
+		{
+			uint internalIndex = WM2K_START_VALUE;
+			uint outValue = (uint)(internalIndex + inValue);
+
+			if (outValue < WM2K_MAX_GLOBALTEXT_ENTRIES)
+			{
+				lblRegionValue.Text = "Global Text";
+				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at ?????)", outValue);
+				btnLaunchTextEditor.Enabled = false;
+				return true;
+			}
+			else
+			{
+				foreach (TextValueRange tvr in TextRanges_WM2K)
+				{
+					if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
+					{
+						AkiTextFileID = tvr.FileID;
+						TargetIndex = inValue - tvr.StartValue;
+						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
+						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
+						btnLaunchTextEditor.Enabled = true;
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			// todo: split out code
@@ -221,23 +296,32 @@ namespace VPWStudio.Tools
 			{
 				if (Program.CurrentProject != null)
 				{
-					if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+					switch (Program.CurrentProject.Settings.BaseGame)
 					{
-						if (!ConvertVPW2(inValue))
-						{
-							lblRegionValue.Text = "unknown region";
-						}
-					}
-					else if (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
-					{
-						if (!ConvertNoMercy(inValue))
-						{
-							lblRegionValue.Text = "unknown region";
-						}
-					}
-					else
-					{
-						// unsupported; only other game that may work is WM2K (and that may be different)
+						case VPWGames.WM2K:
+							if (!ConvertWM2K(inValue))
+							{
+								lblRegionValue.Text = "unknown region";
+							}
+							break;
+
+						case VPWGames.VPW2:
+							if (!ConvertVPW2(inValue))
+							{
+								lblRegionValue.Text = "unknown region";
+							}
+							break;
+
+						case VPWGames.NoMercy:
+							if (!ConvertNoMercy(inValue))
+							{
+								lblRegionValue.Text = "unknown region";
+							}
+							break;
+
+						default:
+							// unsupported.
+							break;
 					}
 				}
 				else
