@@ -14,18 +14,21 @@ namespace VPWStudio.Editors.NoMercy
 	{
 		// todo: figure out where these file IDs are defined, and if possible, read them from ROM
 
+		// file ID 01CC is used for main story mode stuff
+
 		// chapter titles file ID 01DD
+		// runtime NTSC-U v1.0 location (one of them, at least) 800F4E60
 
 		// match information file IDs
 		/*
-		 * 01DE - World Heavyweight
-		 * 01DF - Tag Team
-		 * 01E0 - Intercontinental
-		 * 01E1 - European
-		 * 01E2 - Hardcore
-		 * 01E3 - Light Heavyweight
-		 * 01E4 - Women's
-		 * 01E5 - No Mercy GBC
+		 * 01DE - World Heavyweight (runtime NTSC-U v1.0 loc 800F4E66; NTSC-U v1.0 Z64 offset 0x71386)
+		 * 01DF - Tag Team (runtime NTSC-U v1.0 loc 800F4E6C; NTSC-U v1.0 Z64 offset 0x7138C)
+		 * 01E0 - Intercontinental (runtime NTSC-U v1.0 loc 800F4E72)
+		 * 01E1 - European (runtime NTSC-U v1.0 loc 800F4E78)
+		 * 01E2 - Hardcore (runtime NTSC-U v1.0 loc 800F4E7E)
+		 * 01E3 - Light Heavyweight (runtime NTSC-U v1.0 loc 800F4E84)
+		 * 01E4 - Women's (runtime NTSC-U v1.0 loc 800F4E8A)
+		 * 01E5 - No Mercy GBC (runtime NTSC-U v1.0 loc 800F4E90)
 		 */
 
 		// dialog file IDs
