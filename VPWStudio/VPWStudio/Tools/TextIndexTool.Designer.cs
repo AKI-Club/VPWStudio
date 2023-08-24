@@ -37,12 +37,12 @@ namespace VPWStudio.Tools
 			this.lblOutput = new System.Windows.Forms.Label();
 			this.labelRegion = new System.Windows.Forms.Label();
 			this.lblRegionValue = new System.Windows.Forms.Label();
-			this.lblNote = new System.Windows.Forms.Label();
-			this.btnLaunchTextEditor = new System.Windows.Forms.Button();
 			this.lblMode = new System.Windows.Forms.Label();
 			this.flpMode = new System.Windows.Forms.FlowLayoutPanel();
 			this.rbVPW2 = new System.Windows.Forms.RadioButton();
 			this.rbNoMercy = new System.Windows.Forms.RadioButton();
+			this.lblNote = new System.Windows.Forms.Label();
+			this.btnLaunchTextEditor = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.flpMode.SuspendLayout();
 			this.SuspendLayout();
@@ -60,10 +60,11 @@ namespace VPWStudio.Tools
 			// tbInputValue
 			// 
 			this.tbInputValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbInputValue.Location = new System.Drawing.Point(90, 5);
-			this.tbInputValue.MaxLength = 8;
+			this.tbInputValue.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbInputValue.Location = new System.Drawing.Point(90, 4);
+			this.tbInputValue.MaxLength = 4;
 			this.tbInputValue.Name = "tbInputValue";
-			this.tbInputValue.Size = new System.Drawing.Size(255, 20);
+			this.tbInputValue.Size = new System.Drawing.Size(255, 23);
 			this.tbInputValue.TabIndex = 1;
 			// 
 			// tbOutputValue
@@ -107,7 +108,7 @@ namespace VPWStudio.Tools
 			this.lblInput.Name = "lblInput";
 			this.lblInput.Size = new System.Drawing.Size(81, 13);
 			this.lblInput.TabIndex = 0;
-			this.lblInput.Text = "&Input (0xF???)";
+			this.lblInput.Text = "&Input (0x????)";
 			// 
 			// lblOutput
 			// 
@@ -138,26 +139,6 @@ namespace VPWStudio.Tools
 			this.lblRegionValue.Size = new System.Drawing.Size(255, 13);
 			this.lblRegionValue.TabIndex = 5;
 			this.lblRegionValue.Text = "(region)";
-			// 
-			// lblNote
-			// 
-			this.lblNote.AutoSize = true;
-			this.lblNote.Location = new System.Drawing.Point(12, 147);
-			this.lblNote.Name = "lblNote";
-			this.lblNote.Size = new System.Drawing.Size(82, 13);
-			this.lblNote.TabIndex = 10;
-			this.lblNote.Text = "F0BF is index 0.";
-			// 
-			// btnLaunchTextEditor
-			// 
-			this.btnLaunchTextEditor.Enabled = false;
-			this.btnLaunchTextEditor.Location = new System.Drawing.Point(191, 142);
-			this.btnLaunchTextEditor.Name = "btnLaunchTextEditor";
-			this.btnLaunchTextEditor.Size = new System.Drawing.Size(88, 23);
-			this.btnLaunchTextEditor.TabIndex = 11;
-			this.btnLaunchTextEditor.Text = "&Go To Entry...";
-			this.btnLaunchTextEditor.UseVisualStyleBackColor = true;
-			this.btnLaunchTextEditor.Click += new System.EventHandler(this.btnLaunchTextEditor_Click);
 			// 
 			// lblMode
 			// 
@@ -203,6 +184,26 @@ namespace VPWStudio.Tools
 			this.rbNoMercy.Text = "&No Mercy";
 			this.rbNoMercy.UseVisualStyleBackColor = true;
 			this.rbNoMercy.CheckedChanged += new System.EventHandler(this.rbNoMercy_CheckedChanged);
+			// 
+			// lblNote
+			// 
+			this.lblNote.AutoSize = true;
+			this.lblNote.Location = new System.Drawing.Point(12, 147);
+			this.lblNote.Name = "lblNote";
+			this.lblNote.Size = new System.Drawing.Size(82, 13);
+			this.lblNote.TabIndex = 10;
+			this.lblNote.Text = "F0BF is index 0.";
+			// 
+			// btnLaunchTextEditor
+			// 
+			this.btnLaunchTextEditor.Enabled = false;
+			this.btnLaunchTextEditor.Location = new System.Drawing.Point(191, 142);
+			this.btnLaunchTextEditor.Name = "btnLaunchTextEditor";
+			this.btnLaunchTextEditor.Size = new System.Drawing.Size(88, 23);
+			this.btnLaunchTextEditor.TabIndex = 11;
+			this.btnLaunchTextEditor.Text = "&Go To Entry...";
+			this.btnLaunchTextEditor.UseVisualStyleBackColor = true;
+			this.btnLaunchTextEditor.Click += new System.EventHandler(this.btnLaunchTextEditor_Click);
 			// 
 			// TextIndexTool
 			// 
