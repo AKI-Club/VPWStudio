@@ -30,13 +30,25 @@ namespace VPWStudio.Tools
 
 	public partial class TextIndexTool : Form
 	{
+		#region VPW2 Constants/Values
+
 		// This relies on rollover;
 		// actual index = 0xFFFF0F41 + index value
-		// (0xF0BF is index 0)
+		private readonly uint VPW2_START_VALUE = 0xFFFF0F41;
+
+		// 0xF0BF is index 0
+		private readonly uint VPW2_FIRST_VALUE = 0xF0BF;
+
+		/// <summary>
+		/// Runtime location where VPW2's global text pointers start.
+		/// </summary>
+		private readonly uint VPW2_POINTERS_START_RUNTIME = 0x80105090;
+
 		// sltiu $v0, $v0, 0x136 # number of entries in global text table
+		private readonly int VPW2_MAX_GLOBALTEXT_ENTRIES = 0x136;
 
 		// runtime location 80105820 (when menus are loaded)
-		public List<TextValueRange> TextRanges = new List<TextValueRange>()
+		public List<TextValueRange> TextRanges_VPW2 = new List<TextValueRange>()
 		{
 			new TextValueRange(0xF1F6, 0xF3AA, 0x0005, "edit mode"),
 			new TextValueRange(0xF3AC, 0xF436, 0x0007, "result phrases"),
@@ -49,8 +61,48 @@ namespace VPWStudio.Tools
 			new TextValueRange(0xF53B, 0xF5A2, 0x000E, "credits"),
 			new TextValueRange(0xF5A4, 0xF695, 0x000C, "akitext 07"),
 		};
+		#endregion
+
+		#region No Mercy Constants/Values
+		// This also relies on rollover;
+		// actual index = 0xFFFF0F32 + index value
+		private readonly uint NOMERCY_START_VALUE = 0xFFFF0F32;
+
+		// (0xF0CE is index 0; 0xF0CF is the first real entry)
+		private readonly uint NOMERCY_FIRST_VALUE = 0xF0CE;
+
+		/// <summary>
+		/// Runtime location where No Mercy's global text pointers start.
+		/// </summary>
+		/// xxx: NTSC-U v1.0 value!!
+		private readonly uint NOMERCY_POINTERS_START_RUNTIME = 0x800F4790;
+
+		// 0xFD # number of entries in global text table
+		private readonly int NOMERCY_MAX_GLOBALTEXT_ENTRIES = 0xFD;
+
+		// runtime location 800F4E38 (when menus are loaded)
+		public List<TextValueRange> TextRanges_NoMercy = new List<TextValueRange>()
+		{
+			new TextValueRange(0xF1CC, 0xF50F, 0x0039, "vpw2 edit mode leftover"),
+			new TextValueRange(0xF511, 0xF5C0, 0x0071, "credits"),
+			new TextValueRange(0xF5C2, 0xF665, 0x4476, "various strings"),
+			new TextValueRange(0xF667, 0xF68E, 0x4474, "match options text"),
+			new TextValueRange(0xF690, 0xF69A, 0x4475, "mode instructions"),
+			new TextValueRange(0xF69C, 0xF6AF, 0x01DC, "story main"),
+			new TextValueRange(0xF6B1, 0xF7FD, 0x01DD, "story chapter titles"),
+			new TextValueRange(0xF7FF, 0xF832, 0x01DE, "story world heavy match info"),
+			new TextValueRange(0xF834, 0xF86B, 0x01DF, "story tag team match info"),
+			new TextValueRange(0xF86D, 0xF8AF, 0x01E0, "story IC match info"),
+			new TextValueRange(0xF8B1, 0xF8E1, 0x01E1, "story euro match info"),
+			new TextValueRange(0xF8E3, 0xF91A, 0x01E2, "story hardcore match info"),
+			new TextValueRange(0xF91C, 0xF934, 0x01E3, "story light heavy match info"),
+			new TextValueRange(0xF936, 0xF949, 0x01E4, "story women's match info"),
+			new TextValueRange(0xF94B, 0xF952, 0x01E5, "story GBC match info"),
+		};
+		#endregion
 
 		protected int AkiTextFileID;
+
 		protected int TargetIndex;
 
 		public TextIndexTool()
@@ -58,54 +110,160 @@ namespace VPWStudio.Tools
 			InitializeComponent();
 			AkiTextFileID = 0;
 			TargetIndex = 0;
+
+			if (Program.CurrentProject != null)
+			{
+				if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2 || Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
+				{
+					rbVPW2.Enabled = false;
+					rbNoMercy.Enabled = false;
+
+					if (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
+					{
+						lblNote.Text = String.Format("{0:X} is index 0.", NOMERCY_FIRST_VALUE);
+					}
+				}
+				else
+				{
+					// not currently supported; fallback to VPW2
+					rbVPW2.Enabled = true;
+					rbNoMercy.Enabled = true;
+					rbVPW2.Checked = true;
+				}
+			}
+			else
+			{
+				// no project open; fallback to vpw2
+				rbVPW2.Enabled = true;
+				rbNoMercy.Enabled = true;
+				rbVPW2.Checked = true;
+			}
+		}
+
+		/// <summary>
+		/// Convert VPW2 text index values.
+		/// </summary>
+		/// <param name="inValue"></param>
+		/// <returns>True if a valid region was found, false otherwise.</returns>
+		protected bool ConvertVPW2(ushort inValue)
+		{
+			uint internalIndex = VPW2_START_VALUE;
+			uint outValue = (uint)(internalIndex + inValue);
+
+			if (outValue < VPW2_MAX_GLOBALTEXT_ENTRIES)
+			{
+				lblRegionValue.Text = "Global Text";
+				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, VPW2_POINTERS_START_RUNTIME + (outValue * 4));
+				btnLaunchTextEditor.Enabled = false;
+				return true;
+			}
+			else
+			{
+				foreach (TextValueRange tvr in TextRanges_VPW2)
+				{
+					if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
+					{
+						AkiTextFileID = tvr.FileID;
+						TargetIndex = inValue - tvr.StartValue;
+						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
+						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
+						btnLaunchTextEditor.Enabled = true;
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Convert No Mercy text index values.
+		/// </summary>
+		/// <param name="inValue"></param>
+		/// <returns>True if a valid region was found, false otherwise.</returns>
+		protected bool ConvertNoMercy(ushort inValue)
+		{
+			uint internalIndex = NOMERCY_START_VALUE;
+			uint outValue = (uint)(internalIndex + inValue);
+
+			if (outValue < NOMERCY_MAX_GLOBALTEXT_ENTRIES)
+			{
+				lblRegionValue.Text = "Global Text";
+				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, NOMERCY_POINTERS_START_RUNTIME + (outValue * 4));
+				btnLaunchTextEditor.Enabled = false;
+				return true;
+			}
+			else
+			{
+				foreach (TextValueRange tvr in TextRanges_NoMercy)
+				{
+					if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
+					{
+						AkiTextFileID = tvr.FileID;
+						TargetIndex = inValue - tvr.StartValue;
+						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
+						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
+						btnLaunchTextEditor.Enabled = true;
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
+			// todo: split out code
 			// check input
 			ushort inValue;
 			if (ushort.TryParse(tbInputValue.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out inValue))
 			{
-				uint internalIndex = 0xFFFF0F41;
-				uint outValue = (uint)(internalIndex + inValue);
-
-				if (outValue < 0x136)
+				if (Program.CurrentProject != null)
 				{
-					// global text
-					lblRegionValue.Text = "Global Text";
-					tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, 0x80105090+(outValue*4));
-					btnLaunchTextEditor.Enabled = false;
-				}
-				else
-				{
-					// region depends on input value
-					bool foundRegion = false;
-					foreach (TextValueRange tvr in TextRanges)
+					if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
 					{
-						if (inValue >= tvr.StartValue && inValue <= tvr.EndValue)
+						if (!ConvertVPW2(inValue))
 						{
-							AkiTextFileID = tvr.FileID;
-							TargetIndex = inValue - tvr.StartValue;
-							lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
-							tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
-							foundRegion = true;
+							lblRegionValue.Text = "unknown region";
 						}
 					}
-
-					if (Program.CurrentProject != null && Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+					else if (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
 					{
-						btnLaunchTextEditor.Enabled = foundRegion;
+						if (!ConvertNoMercy(inValue))
+						{
+							lblRegionValue.Text = "unknown region";
+						}
 					}
 					else
 					{
-						// don't allow launching text editor without a project open
-						btnLaunchTextEditor.Enabled = false;
+						// unsupported; only other game that may work is WM2K (and that may be different)
+					}
+				}
+				else
+				{
+					// depends on radio buttons
+					if (rbVPW2.Checked)
+					{
+						if (!ConvertVPW2(inValue))
+						{
+							lblRegionValue.Text = "unknown region";
+						}
+					}
+					else if (rbNoMercy.Checked)
+					{
+						if (!ConvertNoMercy(inValue))
+						{
+							lblRegionValue.Text = "unknown region";
+						}
+					}
+					else
+					{
+						// wait, how
+						Program.ErrorMessageBox("wot");
 					}
 
-					if (!foundRegion)
-					{
-						lblRegionValue.Text = "unknown region";
-					}
+					btnLaunchTextEditor.Enabled = false;
 				}
 			}
 		}
@@ -123,6 +281,22 @@ namespace VPWStudio.Tools
 			// warning: doesn't save changes, lol oops :|
 			AkiTextEditor ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
 			ate.ShowDialog();
+		}
+
+		private void rbVPW2_CheckedChanged(object sender, EventArgs e)
+		{
+			if (rbVPW2.Checked)
+			{
+				lblNote.Text = String.Format("{0:X} is index 0.", VPW2_FIRST_VALUE);
+			}
+		}
+
+		private void rbNoMercy_CheckedChanged(object sender, EventArgs e)
+		{
+			if (rbNoMercy.Checked)
+			{
+				lblNote.Text = String.Format("{0:X} is index 0.", NOMERCY_FIRST_VALUE);
+			}
 		}
 	}
 }

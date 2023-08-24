@@ -472,7 +472,7 @@
     <value>308, 22</value>
   </data>
   <data name="vpw2TextIndexToolToolStripMenuItem.Text" xml:space="preserve">
-    <value>vpw2 text index tool</value>
+    <value>text index tool</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
     <value>305, 6</value>
@@ -2092,6 +2092,12 @@
   <data name="&gt;&gt;romSliceTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Name" xml:space="preserve">
+    <value>openFileInHexViewerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;moveDamageTestToolStripMenuItem.Name" xml:space="preserve">
     <value>moveDamageTestToolStripMenuItem</value>
   </data>
@@ -2145,12 +2151,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Name" xml:space="preserve">
-    <value>openFileInHexViewerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openFileInHexViewerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
