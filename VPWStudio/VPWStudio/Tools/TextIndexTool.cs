@@ -92,7 +92,7 @@ namespace VPWStudio.Tools
 						}
 					}
 
-					if (Program.CurrentProject != null)
+					if (Program.CurrentProject != null && Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
 					{
 						btnLaunchTextEditor.Enabled = foundRegion;
 					}
