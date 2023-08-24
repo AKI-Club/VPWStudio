@@ -186,11 +186,7 @@ namespace VPWStudio
 		/// <returns>True if the reply to the question was "Yes", false otherwise.</returns>
 		public static bool QuestionMessageBox_YesNo(string msg, MessageBoxIcon icon)
 		{
-			if (MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, icon) == DialogResult.Yes)
-			{
-				return true;
-			}
-			return false;
+			return MessageBox.Show(msg, SharedStrings.MainForm_Title, MessageBoxButtons.YesNo, icon) == DialogResult.Yes;
 		}
 		#endregion
 
