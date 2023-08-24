@@ -85,6 +85,7 @@
 			this.vpw2FaceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stableParseTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.romSliceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openFileInHexViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.moveDamageTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.vpw2TextIndexToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
@@ -95,7 +96,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.openFileInHexViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -522,6 +522,12 @@
 			resources.ApplyResources(this.romSliceTestToolStripMenuItem, "romSliceTestToolStripMenuItem");
 			this.romSliceTestToolStripMenuItem.Click += new System.EventHandler(this.romSliceTestToolStripMenuItem_Click);
 			// 
+			// openFileInHexViewerToolStripMenuItem
+			// 
+			this.openFileInHexViewerToolStripMenuItem.Name = "openFileInHexViewerToolStripMenuItem";
+			resources.ApplyResources(this.openFileInHexViewerToolStripMenuItem, "openFileInHexViewerToolStripMenuItem");
+			this.openFileInHexViewerToolStripMenuItem.Click += new System.EventHandler(this.openFileInHexViewerToolStripMenuItem_Click);
+			// 
 			// moveDamageTestToolStripMenuItem
 			// 
 			this.moveDamageTestToolStripMenuItem.Name = "moveDamageTestToolStripMenuItem";
@@ -588,12 +594,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// openFileInHexViewerToolStripMenuItem
-			// 
-			this.openFileInHexViewerToolStripMenuItem.Name = "openFileInHexViewerToolStripMenuItem";
-			resources.ApplyResources(this.openFileInHexViewerToolStripMenuItem, "openFileInHexViewerToolStripMenuItem");
-			this.openFileInHexViewerToolStripMenuItem.Click += new System.EventHandler(this.openFileInHexViewerToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
