@@ -6,7 +6,7 @@ Pre-Alpha Preview 30 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
 
-Pre-Alpha Preview 29 (202x/yy/zz)
+Pre-Alpha Preview 29 (2023/08/05)
 ---------------------------------
 - [Game Intro Editor] Added "Reload ROM Data" button.
   Considering you currently need to make changes to the intro via hex editing,
