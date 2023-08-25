@@ -2499,9 +2499,9 @@ bytes long.</p>
 world. The easiest way would be to distribute the built ROM file, but that runs
 afowl of copyright laws. ROM hacks are often distributed as patches, which are
 applied to unmodified versions of the game. This way, the hack's creator does not
-redistribute the original copyrighted ROM content, only the "instructions" for
-making changes. The end user is meant to supply their own ROM (ideally legally
-backed up from their own copy, but this often isn't the case in practice).</p>
+redistribute the original copyrighted ROM content, only a file with the
+"instructions" for making changes. The end user is meant to supply their own ROM
+(ideally, legally backed up from their own copy).</p>
 
 <p>There are many patch formats out there. Some are better suited than others.
 The Goldeneye and Perfect Dark hacking communities have agreed on the <code>xdelta</code>
@@ -2509,15 +2509,29 @@ format, which makes it a good fit for our purposes as well. Other suitable forma
 exist, but they will not be covered here.</p>
 
 <p>(todo: note about padding ROM to nearest power-of-two boundary)</p>
+<p>Original ROM sizes for each game:</p>
+<ul>
+<li><strong>WCW vs. nWo - World Tour</strong> &ndash; 12,582,912 bytes (12 megabytes; 96 megabits)</li>
+<li><strong>Virtual Pro-Wrestling 64</strong> &ndash; 16,777,216 bytes (16 megabytes; 128 megabits)</li>
+<li><strong>WCW/nWo Revenge</strong> &ndash; 16,777,216 bytes (16 megabytes; 128 megabits)</li>
+<li><strong>WWF WrestleMania 2000</strong> &ndash; 33,554,432 bytes (32 megabytes; 256 megabits)</li>
+<li><strong>Virtual Pro-Wrestling 2</strong> &ndash; 33,554,432 bytes (32 megabytes; 256 megabits)</li>
+<li><strong>WWF No Mercy</strong> &ndash; 33,554,432 bytes (32 megabytes; 256 megabits)</li>
+</ul>
+
+<p>Depending on what you change in your project, your built ROM could be smaller or
+larger than the original unhacked ROM.</p>
+
+<p></p>
 
 <p>(todo: the rest of the owl, including patch creation, checksum stuff, and so on)</p>
 
 <hr />
 
 <h2><a name="NotPossible">(something that isn't possible with this program)</a></h2>
-<p>Many requested things are not possible with VPW Studio. This is just a small
-list of things I've seen requested over the past few decades, as well as reasons
-why they can't be supported.</p>
+<p>Many requested things are not possible with VPW Studio, even if more development
+time is dedicated to it. This is just a small list of things I've seen requested
+over the past few decades, as well as reasons why they can't be supported.</p>
 
 <h3>Edit default wrestlers' movesets in-game</h3>
 <p>One of the most often asked questions involves editing the movesets of default
