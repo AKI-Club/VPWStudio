@@ -231,7 +231,7 @@ namespace VPWStudio.Editors
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.Title = "Import akitext Command Line Tool Format";
-			ofd.Filter = SharedStrings.FileFilter_TXT;
+			ofd.Filter = SharedStrings.FileFilter_Text;
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
