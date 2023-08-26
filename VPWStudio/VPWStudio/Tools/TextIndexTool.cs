@@ -51,7 +51,7 @@ namespace VPWStudio.Tools
 		private readonly int VPW2_MAX_GLOBALTEXT_ENTRIES = 0x136;
 
 		// runtime location 80105820 (when menus are loaded)
-		public List<TextValueRange> TextRanges_VPW2 = new List<TextValueRange>()
+		public readonly List<TextValueRange> TextRanges_VPW2 = new List<TextValueRange>()
 		{
 			new TextValueRange(0xF1F6, 0xF3AA, 0x0005, "edit mode"),
 			new TextValueRange(0xF3AC, 0xF436, 0x0007, "result phrases"),
@@ -67,7 +67,7 @@ namespace VPWStudio.Tools
 		#endregion
 
 		#region No Mercy Constants/Values
-		// This also relies on rollover;
+		// This relies on rollover;
 		// actual index = 0xFFFF0F32 + index value
 		private readonly uint NOMERCY_START_VALUE = 0xFFFF0F32;
 
@@ -90,7 +90,7 @@ namespace VPWStudio.Tools
 
 		// runtime location 800F4E38 (when menus are loaded)
 		// xxx: above comment is for NTSC-U v1.0 only
-		public List<TextValueRange> TextRanges_NoMercy = new List<TextValueRange>()
+		public readonly List<TextValueRange> TextRanges_NoMercy = new List<TextValueRange>()
 		{
 			new TextValueRange(0xF1CC, 0xF50F, 0x0039, "vpw2 edit mode leftover"),
 			new TextValueRange(0xF511, 0xF5C0, 0x0071, "credits"),
@@ -111,9 +111,7 @@ namespace VPWStudio.Tools
 		#endregion
 
 		#region WM2K Constants/Values
-		// still todo; pointer values depend on region
-
-		// This also relies on rollover;
+		// This relies on rollover;
 		// actual index = 0xFFFF01A7 + index value
 		private readonly uint WM2K_START_VALUE = 0xFFFF01A7;
 
@@ -123,11 +121,26 @@ namespace VPWStudio.Tools
 		private readonly uint WM2K_FIRST_VALUE = 0xFE59;
 
 		/// <summary>
-		/// Number of entries WM2K's global text table.
+		/// Runtime location where WrestleMania 2000's global text pointers start, indexed by game type.
+		/// </summary>
+		public readonly Dictionary<SpecificGame, uint> RuntimePointers_WM2K = new Dictionary<SpecificGame, uint>()
+		{
+			{ SpecificGame.WM2K_NTSC_U, 0x800FFB88 },
+			{ SpecificGame.WM2K_PAL,    0x800FFBA8 },
+			{ SpecificGame.WM2K_NTSC_J, 0x800FABC8 },
+		};
+
+		/// <summary>
+		/// Number of entries in WM2K's global text table.
 		/// </summary>
 		private readonly int WM2K_MAX_GLOBALTEXT_ENTRIES = 0x162;
 
-		public List<TextValueRange> TextRanges_WM2K = new List<TextValueRange>()
+		/*
+		 * NTSC-U ROM loc 0x6A998
+		 * PAL ROM loc    0x6A9B8
+		 * NTSC-J ROM loc 0x650D8
+		 */
+		public readonly List<TextValueRange> TextRanges_WM2K = new List<TextValueRange>()
 		{
 			new TextValueRange(0x030A, 0x0413, 0x0004, "edit mode"),
 			new TextValueRange(0x0415, 0x0450, 0x0005, "story mode"),
@@ -256,7 +269,7 @@ namespace VPWStudio.Tools
 		/// </summary>
 		/// <param name="inValue"></param>
 		/// <returns>True if a valid region was found, false otherwise.</returns>
-		protected bool ConvertWM2K(ushort inValue)
+		protected bool ConvertWM2K(ushort inValue, SpecificGame variant)
 		{
 			uint internalIndex = WM2K_START_VALUE;
 			uint outValue = (uint)(internalIndex + inValue);
@@ -264,7 +277,7 @@ namespace VPWStudio.Tools
 			if (outValue < WM2K_MAX_GLOBALTEXT_ENTRIES)
 			{
 				lblRegionValue.Text = "Global Text";
-				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at ?????)", outValue);
+				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at {1:X})", outValue, RuntimePointers_WM2K[variant] + (outValue * 4));
 				btnLaunchTextEditor.Enabled = false;
 				return true;
 			}
@@ -299,7 +312,7 @@ namespace VPWStudio.Tools
 					switch (Program.CurrentProject.Settings.BaseGame)
 					{
 						case VPWGames.WM2K:
-							if (!ConvertWM2K(inValue))
+							if (!ConvertWM2K(inValue, Program.CurrentProject.Settings.GameType))
 							{
 								lblRegionValue.Text = "unknown region";
 							}
