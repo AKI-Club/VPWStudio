@@ -163,8 +163,7 @@ namespace VPWStudio.Tools
 			{
 				if (Program.CurrentProject.Settings.BaseGame >= VPWGames.WM2K)
 				{
-					rbVPW2.Enabled = false;
-					rbNoMercy.Enabled = false;
+					cbMode.Enabled = false;
 
 					if (Program.CurrentProject.Settings.BaseGame == VPWGames.NoMercy)
 					{
@@ -177,18 +176,16 @@ namespace VPWStudio.Tools
 				}
 				else
 				{
-					// not currently supported; fallback to VPW2
-					rbVPW2.Enabled = true;
-					rbNoMercy.Enabled = true;
-					rbVPW2.Checked = true;
+					// not currently supported; allow dropdown
+					cbMode.Enabled = true;
+					cbMode.SelectedIndex = 0;
 				}
 			}
 			else
 			{
-				// no project open; fallback to vpw2
-				rbVPW2.Enabled = true;
-				rbNoMercy.Enabled = true;
-				rbVPW2.Checked = true;
+				// no project open; allow dropdown
+				cbMode.Enabled = true;
+				cbMode.SelectedIndex = 0;
 			}
 		}
 
@@ -302,7 +299,6 @@ namespace VPWStudio.Tools
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			// todo: split out code
 			// check input
 			ushort inValue;
 			if (ushort.TryParse(tbInputValue.Text, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out inValue))
@@ -333,36 +329,65 @@ namespace VPWStudio.Tools
 							break;
 
 						default:
-							// unsupported.
+							// check dropdown
+							UpdateFromDropdown(inValue);
+							btnLaunchTextEditor.Enabled = false;
 							break;
 					}
 				}
 				else
 				{
-					// depends on radio buttons
-					if (rbVPW2.Checked)
-					{
-						if (!ConvertVPW2(inValue))
-						{
-							lblRegionValue.Text = "unknown region";
-						}
-					}
-					else if (rbNoMercy.Checked)
-					{
-						if (!ConvertNoMercy(inValue))
-						{
-							lblRegionValue.Text = "unknown region";
-						}
-					}
-					else
-					{
-						// wait, how
-						Program.ErrorMessageBox("wot");
-					}
-
+					// depends on dropdown
+					UpdateFromDropdown(inValue);
 					btnLaunchTextEditor.Enabled = false;
 				}
 			}
+		}
+
+		private void UpdateFromDropdown(ushort inValue)
+		{
+			switch (cbMode.SelectedIndex)
+			{
+				// wm2k ntsc-u
+				case 0:
+					if (!ConvertWM2K(inValue, SpecificGame.WM2K_NTSC_U))
+					{
+						lblRegionValue.Text = "unknown region";
+					}
+					break;
+
+				// wm2k pal
+				case 1:
+					if (!ConvertWM2K(inValue, SpecificGame.WM2K_PAL))
+					{
+						lblRegionValue.Text = "unknown region";
+					}
+					break;
+
+				// wm2k ntsc-j
+				case 2:
+					if (!ConvertWM2K(inValue, SpecificGame.WM2K_NTSC_J))
+					{
+						lblRegionValue.Text = "unknown region";
+					}
+					break;
+
+				case 3:
+					if (!ConvertVPW2(inValue))
+					{
+						lblRegionValue.Text = "unknown region";
+					}
+					break;
+
+				case 4:
+					if (!ConvertNoMercy(inValue))
+					{
+						lblRegionValue.Text = "unknown region";
+					}
+					break;
+
+				default: break;
+			};
 		}
 
 		private void TextIndexTool_KeyDown(object sender, KeyEventArgs e)
@@ -380,20 +405,31 @@ namespace VPWStudio.Tools
 			ate.ShowDialog();
 		}
 
-		private void rbVPW2_CheckedChanged(object sender, EventArgs e)
+		private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (rbVPW2.Checked)
+			if (cbMode.SelectedIndex < 0)
 			{
-				lblNote.Text = String.Format("{0:X} is index 0.", VPW2_FIRST_VALUE);
+				return;
 			}
-		}
 
-		private void rbNoMercy_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rbNoMercy.Checked)
+			// update label as needed
+			uint firstValue = 0;
+			if (cbMode.SelectedIndex < 3)
 			{
-				lblNote.Text = String.Format("{0:X} is index 0.", NOMERCY_FIRST_VALUE);
+				// wm2k
+				firstValue = WM2K_FIRST_VALUE;
 			}
+			else if (cbMode.SelectedIndex == 3)
+			{
+				// vpw2
+				firstValue = VPW2_FIRST_VALUE;
+			}
+			else if (cbMode.SelectedIndex == 4)
+			{
+				// no mercy
+				firstValue = NOMERCY_FIRST_VALUE;
+			}
+			lblNote.Text = String.Format("{0:X} is index 0.", firstValue);
 		}
 	}
 }

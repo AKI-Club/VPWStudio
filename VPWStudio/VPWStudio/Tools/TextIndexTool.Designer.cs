@@ -38,13 +38,10 @@ namespace VPWStudio.Tools
 			this.labelRegion = new System.Windows.Forms.Label();
 			this.lblRegionValue = new System.Windows.Forms.Label();
 			this.lblMode = new System.Windows.Forms.Label();
-			this.flpMode = new System.Windows.Forms.FlowLayoutPanel();
-			this.rbVPW2 = new System.Windows.Forms.RadioButton();
-			this.rbNoMercy = new System.Windows.Forms.RadioButton();
 			this.lblNote = new System.Windows.Forms.Label();
 			this.btnLaunchTextEditor = new System.Windows.Forms.Button();
+			this.cbMode = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.flpMode.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnUpdate
@@ -82,6 +79,7 @@ namespace VPWStudio.Tools
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tableLayoutPanel1.Controls.Add(this.cbMode, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.tbInputValue, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tbOutputValue, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.lblInput, 0, 0);
@@ -89,7 +87,6 @@ namespace VPWStudio.Tools
 			this.tableLayoutPanel1.Controls.Add(this.labelRegion, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.lblRegionValue, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.lblMode, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.flpMode, 1, 3);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 4;
@@ -150,41 +147,6 @@ namespace VPWStudio.Tools
 			this.lblMode.TabIndex = 6;
 			this.lblMode.Text = "&Mode";
 			// 
-			// flpMode
-			// 
-			this.flpMode.Controls.Add(this.rbVPW2);
-			this.flpMode.Controls.Add(this.rbNoMercy);
-			this.flpMode.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.flpMode.Location = new System.Drawing.Point(90, 96);
-			this.flpMode.Name = "flpMode";
-			this.flpMode.Size = new System.Drawing.Size(255, 25);
-			this.flpMode.TabIndex = 7;
-			// 
-			// rbVPW2
-			// 
-			this.rbVPW2.AutoSize = true;
-			this.rbVPW2.Location = new System.Drawing.Point(3, 3);
-			this.rbVPW2.Name = "rbVPW2";
-			this.rbVPW2.Size = new System.Drawing.Size(56, 17);
-			this.rbVPW2.TabIndex = 8;
-			this.rbVPW2.TabStop = true;
-			this.rbVPW2.Text = "&VPW2";
-			this.rbVPW2.UseVisualStyleBackColor = true;
-			this.rbVPW2.CheckedChanged += new System.EventHandler(this.rbVPW2_CheckedChanged);
-			// 
-			// rbNoMercy
-			// 
-			this.rbNoMercy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rbNoMercy.AutoSize = true;
-			this.rbNoMercy.Location = new System.Drawing.Point(65, 3);
-			this.rbNoMercy.Name = "rbNoMercy";
-			this.rbNoMercy.Size = new System.Drawing.Size(71, 17);
-			this.rbNoMercy.TabIndex = 9;
-			this.rbNoMercy.TabStop = true;
-			this.rbNoMercy.Text = "&No Mercy";
-			this.rbNoMercy.UseVisualStyleBackColor = true;
-			this.rbNoMercy.CheckedChanged += new System.EventHandler(this.rbNoMercy_CheckedChanged);
-			// 
 			// lblNote
 			// 
 			this.lblNote.AutoSize = true;
@@ -204,6 +166,23 @@ namespace VPWStudio.Tools
 			this.btnLaunchTextEditor.Text = "&Go To Entry...";
 			this.btnLaunchTextEditor.UseVisualStyleBackColor = true;
 			this.btnLaunchTextEditor.Click += new System.EventHandler(this.btnLaunchTextEditor_Click);
+			// 
+			// cbMode
+			// 
+			this.cbMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbMode.FormattingEnabled = true;
+			this.cbMode.Items.AddRange(new object[] {
+            "WM2K NTSC-U",
+            "WM2K PAL",
+            "WM2K NTSC-J",
+            "VPW2",
+            "No Mercy"});
+			this.cbMode.Location = new System.Drawing.Point(90, 98);
+			this.cbMode.Name = "cbMode";
+			this.cbMode.Size = new System.Drawing.Size(255, 21);
+			this.cbMode.TabIndex = 13;
+			this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
 			// 
 			// TextIndexTool
 			// 
@@ -226,8 +205,6 @@ namespace VPWStudio.Tools
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextIndexTool_KeyDown);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			this.flpMode.ResumeLayout(false);
-			this.flpMode.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -246,8 +223,6 @@ namespace VPWStudio.Tools
 		private System.Windows.Forms.Label lblNote;
 		private System.Windows.Forms.Button btnLaunchTextEditor;
 		private System.Windows.Forms.Label lblMode;
-		private System.Windows.Forms.FlowLayoutPanel flpMode;
-		private System.Windows.Forms.RadioButton rbVPW2;
-		private System.Windows.Forms.RadioButton rbNoMercy;
+		private System.Windows.Forms.ComboBox cbMode;
 	}
 }
