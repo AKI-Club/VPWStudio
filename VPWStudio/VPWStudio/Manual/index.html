@@ -9,7 +9,7 @@
 <body>
 <div id="header">
 <h1>VPW Studio <small>(incomplete)</small> Manual</h1>
-<p>Version 0.0.0.29 (August 24th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.29 (August 25th, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -775,7 +775,7 @@ in the "Global" text area.</li>
 <li>Text and graphics are mainly Japanese.</li>
 <li>Wrestler face textures only take up the facial area.</li>
 <li>Running grapples are introduced in this game.</li>
-<li>Wrestler CPU Logic editor available by default, though lacking the first option
+<li>Wrestler CPU Logic editor available by default, though lacking the "Type" option
 found in WM2000.</li>
 <li>Cage match not available.</li>
 <li>Only game in the series with second-level Special grapples.</li>
@@ -2508,7 +2508,9 @@ The Goldeneye and Perfect Dark hacking communities have agreed on the <code>xdel
 format, which makes it a good fit for our purposes as well. Other suitable formats
 exist, but they will not be covered here.</p>
 
+<h3>ROM Padding</h3>
 <p>(todo: note about padding ROM to nearest power-of-two boundary)</p>
+
 <p>Original ROM sizes for each game:</p>
 <ul>
 <li><strong>WCW vs. nWo - World Tour</strong> &ndash; 12,582,912 bytes (12 megabytes; 96 megabits)</li>
@@ -2520,11 +2522,15 @@ exist, but they will not be covered here.</p>
 </ul>
 
 <p>Depending on what you change in your project, your built ROM could be smaller or
-larger than the original unhacked ROM.</p>
-
-<p></p>
+larger than the original unhacked ROM. If it's smaller, pad the built ROM using
+<code>0xFF</code> bytes until it reaches the boundary. If it's larger, then you'll
+have to pad it to the next largest boundary. If you've somehow made a ROM over 64
+megabytes, it probably won't work on the real N64 hardware.</p>
 
 <p>(todo: the rest of the owl, including patch creation, checksum stuff, and so on)</p>
+
+<h3>Patch Creation</h3>
+<p>(todo: figure out good instructions)</p>
 
 <hr />
 
