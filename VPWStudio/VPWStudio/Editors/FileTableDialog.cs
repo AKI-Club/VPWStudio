@@ -1739,6 +1739,27 @@ namespace VPWStudio
 				sw.Close();
 			}
 		}
+
+		/// <summary>
+		/// Export the FileTable as a FileTableDB file.
+		/// </summary>
+		private void exportFileTableDBToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Export FileTableDB";
+			sfd.Filter = SharedStrings.FileFilter_Text;
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+				{
+					using (StreamWriter sw = new StreamWriter(fs))
+					{
+						Program.CurrentProject.ProjectFileTable.WriteFTDB(sw);
+						sw.Flush();
+					}
+				}
+			}
+		}
 		#endregion
 
 		private void lvFileList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
