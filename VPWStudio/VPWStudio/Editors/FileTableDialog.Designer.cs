@@ -65,6 +65,7 @@
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelSelectedItems = new System.Windows.Forms.ToolStripStatusLabel();
+			this.exportFileTableDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -324,7 +325,8 @@
 			// 
 			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportMidwaydecFileListToolStripMenuItem,
-            this.exportCSVToolStripMenuItem});
+            this.exportCSVToolStripMenuItem,
+            this.exportFileTableDBToolStripMenuItem});
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
 			this.exportToolStripMenuItem.Text = "&Export";
@@ -358,6 +360,13 @@
 			this.tssLabelSelectedItems.Name = "tssLabelSelectedItems";
 			this.tssLabelSelectedItems.Size = new System.Drawing.Size(92, 17);
 			this.tssLabelSelectedItems.Text = "# items selected";
+			// 
+			// exportFileTableDBToolStripMenuItem
+			// 
+			this.exportFileTableDBToolStripMenuItem.Name = "exportFileTableDBToolStripMenuItem";
+			this.exportFileTableDBToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+			this.exportFileTableDBToolStripMenuItem.Text = "Export &FileTableDB...";
+			this.exportFileTableDBToolStripMenuItem.Click += new System.EventHandler(this.exportFileTableDBToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -420,5 +429,6 @@
 		private System.Windows.Forms.ToolStripMenuItem searchFileTypeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewHexRomDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewHexReplacementFileDataToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportFileTableDBToolStripMenuItem;
 	}
 }
