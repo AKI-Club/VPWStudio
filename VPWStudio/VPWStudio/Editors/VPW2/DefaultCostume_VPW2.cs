@@ -129,5 +129,21 @@ namespace VPWStudio.Editors.VPW2
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
+
+		/// <summary>
+		/// Copy costume data to the clipboard
+		/// </summary>
+		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(CostumeEditors[tcCostumes.SelectedIndex].ToClipboardString());
+		}
+
+		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (!CostumeEditors[tcCostumes.SelectedIndex].FromString(Clipboard.GetText()))
+			{
+				// was not able to paste.
+			}
+		}
 	}
 }
