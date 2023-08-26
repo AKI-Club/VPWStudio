@@ -584,7 +584,7 @@
 0247=Binary;Wrestler Params 0601 (Al)
 0248=Binary;Wrestler Moveset 0601 (Al)
 0249=Binary;Wrestler Params 0602 (Blackman)
-024a=Binary;Wrestler Moveset 0602 (Blackman)
+024A=Binary;Wrestler Moveset 0602 (Blackman)
 024B=Binary;Wrestler Params 0603 (Bulldog)
 024C=Binary;Wrestler Moveset 0603 (Bulldog)
 024D=Binary;Wrestler Params 0604 (Henry)
@@ -1801,7 +1801,7 @@
 0708=AkiModel;[Backstage] Parking Lot - Blue Car - Tires
 0709=AkiModel;[Backstage] Parking Lot - Blue Car - Bonnet, Windscreen & Roof
 070A=AkiModel;[Backstage] Parking Lot - Blue Car - Side Windows
-070B=AkiModel;[Backstage] Parking Lot - Yellow Car = Bonnet
+070B=AkiModel;[Backstage] Parking Lot - Yellow Car - Bonnet
 070C=AkiModel;[Backstage] Parking Lot - Yellow Car - Front
 070D=AkiModel;[Backstage] Parking Lot - Yellow Car - Sides
 070E=AkiModel;[Backstage] Parking Lot - Yellow Car - Tires
@@ -4330,8 +4330,8 @@
 10E9=Ci4Texture;|p:10E8
 10EA=Ci4Palette;
 10EB=Ci4Texture;|p:10EA
-10ED=Ci4Texture;
 10EC=AkiModel;
+10ED=Ci4Texture;
 10EE=Ci8Palette;
 10EF=Ci4Texture;|p:10EE
 10F0=Ci4Palette;
@@ -8039,6 +8039,8 @@
 1F66=Ci4Texture;[Hat] Godfather (Entrance)|p:1F65
 1F67=Ci4Palette;[Hat] Jim Ross (Entrance)
 1F68=Ci4Texture;[Hat] Jim Ross (Entrance)|p:1F67
+1F69=Ci4Palette;
+1F6A=Ci4Texture;|p:1F69
 1F6B=Ci8Palette;[Skin] Head
 1F6C=Ci8Texture;[Skin] Head|p:1F6B
 1F6D=Ci8Palette;[Skin] Head (SMALL EAR)
