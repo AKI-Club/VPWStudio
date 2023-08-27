@@ -316,6 +316,7 @@ probably want some other tools on hand.</p>
 <li><a href="https://github.com/queueRAM/Texture64">Texture64</a> by queueRAM &ndash; handles various Nintendo 64 texture formats.</li>
 <li><a href="https://github.com/jombo23/N64-Tools">N64 Midi Tool and N64 Sound Tool</a>, originally by SubDrag and Ice Mario. As the names suggest, these handle sequenced and streaming sounds.</li>
 <li><a href="https://github.com/AKI-Club/vpwspal/releases/tag/v1.1">VPW Studio Palette Tools</a>, for quickly converting and merging JASC PSP palette files to VPW Studio palette format. Binaries are included with VPW Studio in the "Tools" folder. They are command-line programs, so use the Command Prompt to launch them. Documentation for these tools can be found in the <a href="#ExtPalTools">External Tools</a> section of this manual.</li>
+<li>xdelta patch creation tool</li>
 </ul>
 
 <h3>Notes</h3>
@@ -2494,7 +2495,8 @@ bytes long.</p>
 <hr />
 
 <h2><a name="MakePatch">Prepare a Finished Project for Distribution</a></h2>
-<p>Note: This only covers the patch creation process.</p>
+<p>Note: This only covers the patch creation process. You are responsible for
+any hosting, documentation, etc.</p>
 
 <p>Let's say you've finished a project and want to share it with the rest of the
 world. The easiest way would be to distribute the built ROM file, but that runs
@@ -2509,8 +2511,21 @@ The Goldeneye and Perfect Dark hacking communities have agreed on the <code>xdel
 format, which makes it a good fit for our purposes as well. Other suitable formats
 exist, but they will not be covered here.</p>
 
+<h3>ROM Formats</h3>
+<p>Since VPW Studio only supports editing Z64 format ROMs, the base ROMs
+(for both editing and patch creation) must be in Z64 format as well. Creating
+patches for other N64 ROM formats is out of scope of this manual.</p>
+
 <h3>ROM Padding</h3>
-<p>(todo: note about padding ROM to nearest power-of-two boundary)</p>
+<p>This step might not be required, but it's good to know about. N64 game ROMs
+tend to be specific sizes, with any unused space filled with <code>0xFF</code>
+bytes.</p>
+
+<p>Depending on what you change in your project, your built ROM could be smaller or
+larger than the original unhacked ROM. If it's smaller, pad the built ROM using
+<code>0xFF</code> bytes until it reaches the boundary. If it's larger, then you'll
+have to pad it to the next largest boundary. If you've somehow made a ROM over 64
+megabytes, it probably won't work on the real N64 hardware.</p>
 
 <p>Original ROM sizes for each game:</p>
 <ul>
@@ -2522,16 +2537,170 @@ exist, but they will not be covered here.</p>
 <li><strong>WWF No Mercy</strong> &ndash; 33,554,432 bytes (32 megabytes; 256 megabits)</li>
 </ul>
 
-<p>Depending on what you change in your project, your built ROM could be smaller or
-larger than the original unhacked ROM. If it's smaller, pad the built ROM using
-<code>0xFF</code> bytes until it reaches the boundary. If it's larger, then you'll
-have to pad it to the next largest boundary. If you've somehow made a ROM over 64
-megabytes, it probably won't work on the real N64 hardware.</p>
-
-<p>(todo: the rest of the owl, including patch creation, checksum stuff, and so on)</p>
-
 <h3>Patch Creation</h3>
 <p>(todo: figure out good instructions)</p>
+
+<h3>Checksums and Hashes</h3>
+<p>Multiple checksums and hashes are involved with the ROM, as well as some of
+the emulators and flash carts used to play the ROM. All hashes should be
+calculated on the built ROM (after adding padding, if necessary).</p>
+
+<h4>N64 Internal Checksums</h4>
+<p>Every N64 ROM has two internal checksums (4 bytes each, at offsets 0x10 and 0x14).
+If these are not correct with respect to the ROM's data, the game will not start.
+VPW Studio corrects/recalculates the internal checksums when building a project's ROM,
+so you shouldn't run into any problems. The only exception is if you try to edit the
+built ROM in a hex editor. If you do that, you will need to recalculate the internal
+checksums (preferably with an external tool).</p>
+
+<h4>CRC32</h4>
+<p>One of two hash types used by MAME's software lists. Not really recommended outside
+of this specific use case.</p>
+
+<h4>MD5</h4>
+<p>Used by Mupen64Plus to identify ROMs in its game database.</p>
+
+<h4>SHA-1</h4>
+<p>One of two hash types used by MAME's software lists.</p>
+
+<h4>Unmodified ROM Checksums and Hashes</h4>
+<p>For reference, here are the checksums and hashes for unmodified Z64 format ROMs
+that VPW Studio supports:</p>
+
+<table>
+<thead>
+<tr>
+<th>Game and Variant</th>
+<th>Internal 1</th>
+<th>Internal 2</th>
+<th>CRC32</th>
+<th>MD5</th>
+<th>SHA-1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>WCW vs. nWo - World Tour [NTSC-U v1.0]</th>
+<td><code>2C3E19BD</code></td>
+<td><code>5113EE5E</code></td>
+<td><code>DFBFC61F</code></td>
+<td><code>203C3BBFDD10C5A0B7C5D0CDB085D853</code></td>
+<td><code>5AD2D8359058C8BB71F08E3D3433B7A50D3BB645</code></td>
+</tr>
+<tr>
+<th>WCW vs. nWo - World Tour [PAL]</th>
+<td><code>8BDBAF68 </code></td>
+<td><code>345B4B36</code></td>
+<td><code>37F358EB</code></td>
+<td><code>553D8D5347969C66E5D91C3FE35208B9</code></td>
+<td><code>840B8B6303ACACEB49619EB1533CB4221CDEC474</code></td>
+</tr>
+<tr>
+<th>WCW vs. nWo - World Tour [NTSC-U v1.1/Rev A]</th>
+<td><code>71BE60B9</code></td>
+<td><code>1DDBFB3C</code></td>
+<td><code>A74DA07A</code></td>
+<td><code>B7A220B59303D47F3BEAE233CA868CFD</code></td>
+<td><code>60814FB3AD2DD206BADBEEE47C07636357DD0D7E</code></td>
+</tr>
+<tr>
+<th>Virtual Pro-Wrestling 64 [NTSC-J]</th>
+<td><code>045C08C4</code></td>
+<td><code>4AFD798B</code></td>
+<td><code>E6651803</code></td>
+<td><code>5E6202200AF40A8F026780EDFE1E15D0</code></td>
+<td><code>F9E9FA2ED819C3A39DB5CB6AFECA186F021DB5ED</code></td>
+</tr>
+<tr>
+<th>WCW/nWo Revenge [NTSC-U]</th>
+<td><code>DEE596AB</code></td>
+<td><code>AF3B7AE7</code></td>
+<td><code>54CBAAA8</code></td>
+<td><code>C1384F3637D7A381B29341FED3EF3CEB</code></td>
+<td><code>E1711A2511394B9357B5F1AC8CA5CC17BD674836</code></td>
+</tr>
+<tr>
+<th>WCW/nWo Revenge [PAL]</th>
+<td><code>68E8A875</code></td>
+<td><code>0CE7A486</code></td>
+<td><code>8AF0F964</code></td>
+<td><code>30C6676EC1D62122F4E7607EF3ABBD41</code></td>
+<td><code>C59315A3E7A6E8124495477656A77E4619DAC104</code></td>
+</tr>
+<tr>
+<th>WWF WrestleMania 2000 [NTSC-U]</th>
+<td><code>90A59003</code></td>
+<td><code>31089864</code></td>
+<td><code>0B50B4C6</code></td>
+<td><code>D9030CA30E4D1AF805ACCE1BFED988CC</code></td>
+<td><code>442D417A52ED672CA1A47E7261A5414DEBB1E27A</code></td>
+</tr>
+<tr>
+<th>WWF WrestleMania 2000 [PAL]</th>
+<td><code>C71353BE</code></td>
+<td><code>AA09A6EE</code></td>
+<td><code>09D710C7</code></td>
+<td><code>B75149F87CC5F3A508643AC377F2FCC9</code></td>
+<td><code>D37C4100D967CB8B71852993B947619467FFCAF7</code></td>
+</tr>
+<tr>
+<th>WWF WrestleMania 2000 [NTSC-J]</th>
+<td><code>12737DA5</code></td>
+<td><code>23969159</code></td>
+<td><code>C2034D24</code></td>
+<td><code>11EEE2F34BF8DA05A1B8F4FB9FE9F74C</code></td>
+<td><code>E020C26DEDE0C349181CF08A3541816DC47F63A8</code></td>
+</tr>
+<tr>
+<th>Virtual Pro-Wrestling 2 [NTSC-J]</th>
+<td><code>CD094235</code></td>
+<td><code>88074B62</code></td>
+<td><code>F620835D</code></td>
+<td><code>90002501777E3237739F5ED9B0E349E2</code></td>
+<td><code>82DD25A044689EAB57AB362FE10C0DA6388C217A</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [NTSC-U v1.0]</th>
+<td><code>4E4B0640</code></td>
+<td><code>1B49BCFB</code></td>
+<td><code>B33F44F0</code></td>
+<td><code>04C492BE7F89FC6F425238BD67629544</code></td>
+<td><code>3566D9B5723291937582453AD0453CE517CFC358</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [PAL v1.0]</th>
+<td><code>6D8DF08E</code></td>
+<td><code>D008C3CF</code></td>
+<td><code>E88D7E16</code></td>
+<td><code>D94A8F78178473D4BA4BED62FA8E2E66</code></td>
+<td><code>15AD0A48DBB2DA32B39601E6BFB5D7B381853529</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [NTSC-U v1.1/Rev A]</th>
+<td><code>6C80F13B</code></td>
+<td><code>427EDEAA</code></td>
+<td><code>BACEEA13</code></td>
+<td><code>66B8EC24557A50514A814F15429BD559</code></td>
+<td><code>91CEE3D096F4A76644D8B35B9AEAD6448909ABD1</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [PAL v1.1/Rev A]</th>
+<td><code>8CDB94C2</code></td>
+<td><code>CB46C6F0</code></td>
+<td><code>43BA9E7E</code></td>
+<td><code>400A14F132D993F5544F8B008EC136FA</code></td>
+<td><code>CC8B9863C0E96D1B6A611D6AC2238E38B247EA5D</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [Sept. 2000 Prototype]</th>
+<td><code>8A0AE9D6</code></td>
+<td><code>CE038A9D</code></td>
+<td><code>A526FF27</code></td>
+<td><code>5CE490CF86CFEABF28C19B4C8AFC3F24</code></td>
+<td><code>1C2C5969F176A3A781CFC4D8A8E44DAF3632AD64</code></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
