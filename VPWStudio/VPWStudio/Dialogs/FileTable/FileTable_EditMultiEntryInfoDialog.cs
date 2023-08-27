@@ -22,11 +22,23 @@ namespace VPWStudio
 
 		public bool AnyChangesSubmitted = false;
 
-		public FileTable_EditMultiEntryInfoDialog(List<FileTableEntry> entries)
+		/// <summary>
+		/// Previous width of this dialog.
+		/// </summary>
+		public int LastWidth = 800;
+
+		public FileTable_EditMultiEntryInfoDialog(List<FileTableEntry> entries, int width=800)
 		{
 			Entries = entries;
 			InitializeComponent();
 			PopulateEntries();
+			dgvEditEntries.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+			LastWidth = Width;
+			if (width < MinimumSize.Width)
+			{
+				width = MinimumSize.Width;
+			}
+			Width = width;
 		}
 
 		private void AddFileTypes(DataGridViewComboBoxCell cb)
@@ -148,12 +160,14 @@ namespace VPWStudio
 			}
 
 			DialogResult = DialogResult.OK;
+			LastWidth = Width;
 			Close();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
+			LastWidth = Width;
 			Close();
 		}
 
