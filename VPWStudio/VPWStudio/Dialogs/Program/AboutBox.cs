@@ -14,18 +14,18 @@ namespace VPWStudio
 		/// </summary>
 		private List<String> SpecialThanks = new List<string>()
 		{
-			"WldFb",           // "the godhand of VPW hacking", as proclaimed by freem
-			"Zoinkity",        // world's best N64 hacker (also as proclaimed by freem)
-			"Tokidoim",        // he's the "Toki" in Toki1, Toki2, Toki3... among other things.
-			"Kryogenics",      // many hacks and discoveries throughout the years
-			"JamStubbs",       // created utilities and hosted an influential archive board
-			"S.K. Stylez",     // AKI Club founder, among many other things
-			"DOOMSDAY EWF",    // found many values (textures)
-			"The Pelican",     // also found many values
-			"Keson",           // keeping the future alive with AKI Evo and new tools
-			"jordyad",         // pushed me further when I needed it most, providing great info
-			"RetroRandy",      // has provided a lot of No Mercy FileTable updates, among other things
-			"Melonbread",      // new (circa 2020-2023) VPW2 findings
+			"WldFb",              // "the godhand of VPW hacking", as proclaimed by freem
+			"Zoinkity",           // world's best N64 hacker (also as proclaimed by freem)
+			"Tokidoim",           // he's the "Toki" in Toki1, Toki2, Toki3... among other things.
+			"Kryogenics",         // many hacks and discoveries throughout the years
+			"JamStubbs",          // created utilities and hosted an influential archive board
+			"S.K. Stylez",        // AKI Club founder, among many other things
+			"DOOMSDAY EWF",       // found many values (textures)
+			"The Pelican",        // also found many values
+			"Keson",              // keeping the future alive with AKI Evo and new tools
+			"jordyad/LIGHTNING",  // pushed me further when I needed it most, providing great info
+			"RetroRandy",         // has provided a lot of No Mercy FileTable updates, among other things (probably the most prolific AKI hacker of the modern era)
+			"Melonbread",         // new (circa 2020-2023) VPW series findings
 			"(and many others I haven't gotten around to listing yet)"
 		};
 
@@ -45,11 +45,6 @@ namespace VPWStudio
 			"CurdleGames"
 		};
 
-		/// <summary>
-		/// Last updated month and year for program testing group information.
-		/// </summary>
-		private readonly string DateString = "August 2023";
-
 		public AboutBox()
 		{
 			InitializeComponent();
@@ -63,8 +58,18 @@ namespace VPWStudio
 			string buildDate = reader.ReadToEnd().Substring(0, 19);
 			reader.Close();
 
+			/*
 			labelVersion.Text = String.Format(
 				"{0} (indev) v{1} by freem\nbuilt on {2}; Git hash: {3}",
+				AssemblyProduct,
+				AssemblyVersion,
+				buildDate,
+				gitHash
+			);
+			*/
+			// temp
+			labelVersion.Text = String.Format(
+				"{0} v0.0.0.30 Release Candidate 1 by freem\nbuilt on {2}; Git hash: {3}",
 				AssemblyProduct,
 				AssemblyVersion,
 				buildDate,
@@ -74,12 +79,6 @@ namespace VPWStudio
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("This is an in-development version of VPW Studio.");
 			sb.AppendLine("It is not meant to be used in 'production'; always make backups of your Project File and Base ROM.");
-			sb.AppendLine();
-			sb.AppendLine(String.Format("This program is only meant to be used by the VPW Studio testing group. As of {0}, this includes:", DateString));
-			sb.AppendLine();
-			sb.AppendLine("- current \"AKI Wrestling Game Hacking\" Discord channel members");
-			sb.AppendLine("- GameGenie720");
-			sb.AppendLine("- AshVPW");
 			sb.AppendLine();
 			sb.AppendLine("VPW Studio is largely untested and can ruin your data. User discretion is advised.");
 			sb.AppendLine();
