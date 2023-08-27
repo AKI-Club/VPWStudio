@@ -86,6 +86,9 @@ namespace VPWStudio
 		private int CurrentSearchItemNumber = -1;
 		#endregion
 
+		// xxx: not synced with FileTable_EditMultiEntryInfoDialog
+		protected int MultiEditWindowWidth = 800;
+
 		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
@@ -558,7 +561,7 @@ namespace VPWStudio
 					EditEntries.Add(Program.CurrentProject.ProjectFileTable.Entries[key]);
 				}
 
-				FileTable_EditMultiEntryInfoDialog emd = new FileTable_EditMultiEntryInfoDialog(EditEntries);
+				FileTable_EditMultiEntryInfoDialog emd = new FileTable_EditMultiEntryInfoDialog(EditEntries, MultiEditWindowWidth);
 				if (emd.ShowDialog() == DialogResult.OK)
 				{
 					if (emd.AnyChangesSubmitted)
@@ -585,6 +588,7 @@ namespace VPWStudio
 						Program.AppMainForm.UpdateTitleBar();
 					}
 				}
+				MultiEditWindowWidth = emd.LastWidth;
 			}
 		}
 
