@@ -131,8 +131,8 @@ namespace VPWStudio
 				else
 				{
 					// path is not rooted. assume it's relative to the program's FileTableDB directory
-					return String.Format("{0}{1}",
-						Path.GetDirectoryName(Application.ExecutablePath) + "\\FileTableDB\\",
+					return String.Format("{0}\\FileTableDB\\{1}",
+						Path.GetDirectoryName(Application.ExecutablePath),
 						Program.CurrentProject.Settings.CustomFileTableDBPath);
 				}
 			}
