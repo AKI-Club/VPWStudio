@@ -1073,6 +1073,9 @@
     <Content Include="Manual\img\i4texture_preview.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Manual\img\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manual\img\main_interface.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
