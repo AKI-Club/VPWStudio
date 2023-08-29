@@ -69,7 +69,7 @@ namespace VPWStudio
 			*/
 			// temp
 			labelVersion.Text = String.Format(
-				"{0} v0.0.0.30 Release Candidate 1 by freem\nbuilt on {2}; Git hash: {3}",
+				"{0} v0.0.0.30 Release Candidate 2 by freem\nbuilt on {2}; Git hash: {3}",
 				AssemblyProduct,
 				AssemblyVersion,
 				buildDate,
