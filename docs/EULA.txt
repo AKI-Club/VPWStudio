@@ -1,0 +1,12 @@
+VPW Studio End User License Agreement
+
+By downloading and using this program, you accept the following terms:
+
+- You will not contact me (freem) privately for technical support regarding this program.
+This includes, but is not limited to, e-mails, private messages, smoke signals,
+pigeongrams, Marconi devices, etc.
+
+- You will make a best faith attempt to read and understand the included documentation.
+If the documentation is lacking, that's on me, not you.
+
+That's it.
