@@ -347,7 +347,7 @@ namespace VPWStudio
 			};
 			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-				tbBaseROMPath.Text = Path.GetFullPath(sfd.FileName);
+				tbOutROMPath.Text = Path.GetFullPath(sfd.FileName);
 			}
 		}
 
