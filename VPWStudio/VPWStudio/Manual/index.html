@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.30 Release Candidate 2 (August 29th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.30 (August 31st, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -37,7 +37,7 @@
 <li><a href="#SkinColorChanging">Skin Color Changing</a></li>
 <li><a href="#TextureLayering">Texture Layering</a></li>
 <li><a href="#TexTransparency">AkiTexture Transparency Fix</a></li>
-<li><a href="#FontWorkflow">Fonts</a></li>
+<li><a href="#FontWorkflow">Font Workflow</a></li>
 </ol></li>
 <li><a href="#CodeDataPointers">Code, Data, and Pointers</a></li>
 </ol>
@@ -61,7 +61,7 @@
 	<li><a href="#AKITextEdit">AkiText</a></li>
 	<li><a href="#ModelTool2">ModelTool2</a></li>
 	<li><a href="#AnimTest">AnimTest</a></li>
-	<!-- Fonts -->
+	<li><a href="#Fonts">Fonts</a></li>
 	<!-- MenuItems_NoGroup -->
 	<!-- MenuItems_Shop -->
 	</ol>
@@ -1189,7 +1189,7 @@ would draw two pixels using palette index 2 and 3.</p>
 <p>After finishing the hex edit, be sure to set the Replacement File to the
 new <code>.tex</code> file in the File Table dialog.</p>
 
-<h3><a name="FontWorkflow">Fonts</a></h3>
+<h3><a name="FontWorkflow">Font Workflow</a></h3>
 <p>Both the Large and Small font types are 1bpp format. VPW Studio currently
 has no workflow for handling font replacement, but they can be edited using a
 program that understands 1bpp format tiles <em>and</em> has flexible display
@@ -1732,6 +1732,15 @@ knowledge to understand the displayed data.</p>
 
 <p>The "Copy Hex" option is meant to be used with S.K. Stylez's Animation Editor
 spreadsheet. Paste it into cell D3 (main) or D43 (secondary).</p>
+
+<hr />
+
+<h3><a name="Fonts">Fonts</a></h3>
+<img src="./img/fontviewer.png" title="Font Viewer Dialog" />
+<p>FileTable entries marked as <code>AkiSmallFont</code> and <code>AkiLargeFont</code>
+bring up this dialog. You are able to view each of the characters stored in the font,
+as well as the "header" bytes. Editing the fonts requires a separate program (see
+the <a href="#FontWorkflow">Font Workflow</a> section for more details).</p>
 
 <hr />
 <h2><a name="GameIntro">Game Introduction</a></h2>
