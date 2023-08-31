@@ -2,9 +2,62 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 30 (202x/yy/zz)
+Pre-Alpha Preview 31 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 30 (2023/08/31)
+---------------------------------
+First public release, after many years of work.
+No, it's still not done; I'm just sick of holding it back.
+
+- [Move Damage Test Dialog] Now includes "0x" at beginning of all hex numbers.
+
+- [Name Encode/Decode Tool] Added legend for special characters ("<>" and "{}").
+
+- [VPW64 Costume Dialog] Fix various issues with costume type definitions.
+  (No, not the one where a Ci8Texture is using a Ci4Palette.)
+
+- [Intro Data "Editor"] Add note about changes not being saved when pressing "OK".
+
+- [Project Files, FileTableDB] Add support for custom FileTableDBs.
+
+- [Hex Viewer] Requesting an already open, yet minimized, hex viewer will un-minimize
+  the hex viewer in question.
+
+- [Text Index Tool] Add "Go To Entry" button, which opens an AkiTextEditor.
+  (Only works with non-global entries. Edits not yet saved.)
+
+- [Text Index Tool] Add WWF No Mercy support.
+  (Pointer values are for NTSC-U v1.0; other region/revision support to-do)
+
+- [No Mercy Default Costume Editor] Add copy/paste support.
+
+- [Text Index Tool] Add WM2K support (all three regions).
+
+- [VPW2 Default Costume Editor] Add copy/paste support.
+
+- [File Table Dialog] Add FileTableDB format export.
+
+- [FileTable_EditMultiEntryInfoDialog] A few changes under the hood:
+  - Expanded default width to 800px (up from 720, which remains the minimum).
+  - Re-configured default column widths.
+  - Run AutoResizeColumns after the form loads.
+
+- [FileTable_EditMultiEntryInfoDialog] Now remembers width of dialog, as long as
+  the File Table Editor stays open.
+
+- [Project Properties Dialog] Fix bug where Output ROM's "Browse" button would
+  change the Base ROM's path when used.
+
+- [FileTableDB] Lots of updates for World Tour and VPW64.
+  A smaller amount of updates for WCW/nWo Revenge and No Mercy Sept. 2000 prerelease.
+  Updated WM2K (NTSC/PAL), VPW2, and No Mercy to 100%.
+  Fixed up some entries in the No Mercy FileTableDB as well.
+  RetroRandy also sent over some No Mercy updates.
+
+  To update your project, open the File Table dialog, then choose
+  Database -> Reload File Table Database.
 
 Pre-Alpha Preview 29 (2023/08/05)
 ---------------------------------
