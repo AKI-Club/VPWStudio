@@ -58,18 +58,8 @@ namespace VPWStudio
 			string buildDate = reader.ReadToEnd().Substring(0, 19);
 			reader.Close();
 
-			/*
 			labelVersion.Text = String.Format(
 				"{0} (indev) v{1} by freem\nbuilt on {2}; Git hash: {3}",
-				AssemblyProduct,
-				AssemblyVersion,
-				buildDate,
-				gitHash
-			);
-			*/
-			// temp
-			labelVersion.Text = String.Format(
-				"{0} v0.0.0.30 Release Candidate 2 by freem\nbuilt on {2}; Git hash: {3}",
 				AssemblyProduct,
 				AssemblyVersion,
 				buildDate,

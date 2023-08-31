@@ -1067,6 +1067,7 @@
     <Content Include="Manual\img\filetable_entry_single-main.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Manual\img\fontviewer.png" />
     <Content Include="Manual\img\hexviewer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
