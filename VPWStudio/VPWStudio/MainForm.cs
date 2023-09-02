@@ -2742,8 +2742,25 @@ namespace VPWStudio
 			pdt.MdiParent = this;
 			pdt.Show();
 		}
-		#endregion
 
-		
+		private void vpw64CostumeTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("Requires an open VPW64 project to use.");
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW64)
+			{
+				Program.ErrorMessageBox("This only works with VPW64, as suggested by the name.");
+				return;
+			}
+
+			Editors.VPW64.DefaultCostume_VPW64 vpw64ce = new Editors.VPW64.DefaultCostume_VPW64();
+			vpw64ce.ShowDialog();
+		}
+
+		#endregion
 	}
 }
