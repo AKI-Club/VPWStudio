@@ -12,7 +12,7 @@ namespace VPWStudio.Controls
 	public partial class CostumeColorControl : UserControl
 	{
 		/// <summary>
-		/// Possible color modes. Mainly effects what color palette is used.
+		/// Possible color modes. Mainly affects what color palette is used.
 		/// </summary>
 		public enum ColorMode
 		{
@@ -52,7 +52,7 @@ namespace VPWStudio.Controls
 		/// Costume colors for Virtual Pro-Wrestling 64.
 		/// </summary>
 		/// "Index" is the internal value, "Color" is the in-game displayed value.
-		private Color[] VPW64Colors = new Color[]
+		private readonly Color[] VPW64Colors = new Color[]
 		{
 			Color.FromArgb(255,24,40,56),    // Index  0/Color  1: Black
 			Color.FromArgb(255,248,0,0),     // Index  1/Color  2: Red
@@ -75,7 +75,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Representational color strings, matching the order of VPW64Colors.
 		/// </summary>
-		private string[] VPW64ColorNames = new string[16]
+		private readonly string[] VPW64ColorNames = new string[16]
 		{
 			"Black",
 			"Red",
@@ -95,12 +95,56 @@ namespace VPWStudio.Controls
 			"White"
 		};
 
-		// todo: source Revenge colors from file ID 0A51
+		/// <summary>
+		/// Costume colors for WCW/nWo Revenge.
+		/// </summary>
+		private readonly Color[] RevengeColors = new Color[]
+		{
+			Color.FromArgb(255,205,41,41),   // Index 0: Red
+			Color.FromArgb(255,82,90,180),   // Index 1: Blue
+			Color.FromArgb(255,16,148,57),   // Index 2: Green
+			Color.FromArgb(255,255,180,0),   // Index 3: Yellow
+			Color.FromArgb(255,255,115,57),  // Index 4: Orange
+			Color.FromArgb(255,139,49,148),  // Index 5: Purple
+			Color.FromArgb(255,246,115,148), // Index 6: Pink
+			Color.FromArgb(255,24,115,139),  // Index 7: Cyan
+			Color.FromArgb(255,65,57,123),   // Index 8: Dark Purple
+			Color.FromArgb(255,65,180,123),  // Index 9: Light Cyan
+			Color.FromArgb(255,139,197,82),  // Index 10: Light Green
+			Color.FromArgb(255,16,164,246),  // Index 11: Light Blue
+			Color.FromArgb(255,189,156,74),  // Index 12: Gold
+			Color.FromArgb(255,213,213,222), // Index 13: White
+			Color.FromArgb(255,41,41,41),    // Index 14: Black
+			Color.Transparent // Index 15: default costume color
+		};
+
+		/// <summary>
+		/// Representational color strings, matching the order of RevengeColors.
+		/// </summary>
+		private readonly string[] RevengeColorNames = new string[16]
+		{
+			"Red",
+			"Blue",
+			"Green",
+			"Yellow",
+			"Orange",
+			"Purple",
+			"Pink",
+			"Cyan",
+			"Dark Purple",
+			"Light Cyan",
+			"Light Green",
+			"Light Blue",
+			"Gold",
+			"White",
+			"Black",
+			"Default"
+		};
 
 		/// <summary>
 		/// Costume colors for WrestleMania 2000, VPW2, and No Mercy.
 		/// </summary>
-		private Color[] ModernColors = new Color[]
+		private readonly Color[] ModernColors = new Color[]
 		{
 			Color.Transparent,       // Color 00: default costume colors
 			/* Default Color Shades */
@@ -145,7 +189,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Representational color strings, matching the order of ModernColors.
 		/// </summary>
-		private string[] ModernColorNames = new string[32]
+		private readonly string[] ModernColorNames = new string[32]
 		{
 			"Default",
 			"Black",
@@ -184,7 +228,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Hair colors for WWF WrestleMania 2000.
 		/// </summary>
-		private Color[] HairColors_WM2K = new Color[]
+		private readonly Color[] HairColors_WM2K = new Color[]
 		{
 			Color.FromArgb(255,16,8,8),		 // Hair Color 00: black
 			Color.FromArgb(255,56,24,16),	 // Hair Color 01: brown
@@ -199,7 +243,7 @@ namespace VPWStudio.Controls
 		/// Hair colors for Virtual Pro-Wrestling 2.
 		/// </summary>
 		/// (same as WM2K, but with purple)
-		private Color[] HairColors_VPW2 = new Color[]
+		private readonly Color[] HairColors_VPW2 = new Color[]
 		{
 			Color.FromArgb(255,16,8,8),      // Hair Color 00: black
 			Color.FromArgb(255,56,24,16),    // Hair Color 01: brown
@@ -214,7 +258,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Shared color names for WM2K and VPW2.
 		/// </summary>
-		private string[] HairColorNames_Old = new string[]
+		private readonly string[] HairColorNames_Old = new string[]
 		{
 			"Black",
 			"Brown",
@@ -229,7 +273,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Hair colors for WWF No Mercy.
 		/// </summary>
-		private Color[] HairColors_NoMercy = new Color[]
+		private readonly Color[] HairColors_NoMercy = new Color[]
 		{
 			// 8 colors, but not the same as vpw2
 			Color.FromArgb(255,192,184,184), // Hair Color 00: white/silver
@@ -245,7 +289,7 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Color names for WWF No Mercy.
 		/// </summary>
-		private string[] HairColorNames_NoMercy = new string[]
+		private readonly string[] HairColorNames_NoMercy = new string[]
 		{
 			"White/Silver",
 			"Blonde 1",
@@ -327,11 +371,14 @@ namespace VPWStudio.Controls
 			// update panelColorPreview based on nudColor.Value
 			switch (ColorModeType)
 			{
-				// todo: revenge still not handled
-
 				case ColorMode.VPW64:
 					panelColorPreview.BackColor = VPW64Colors[(int)nudColor.Value];
 					ColorToolTip.SetToolTip(panelColorPreview, VPW64ColorNames[(int)nudColor.Value]);
+					break;
+
+				case ColorMode.Revenge:
+					panelColorPreview.BackColor = RevengeColors[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, RevengeColorNames[(int)nudColor.Value]);
 					break;
 
 				case ColorMode.Modern:
