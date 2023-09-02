@@ -161,8 +161,18 @@ namespace VPWStudio.GameSpecific.VPW64
 		/// Constructor using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public DefaultCostumeData(BinaryReader br) : base()
+		// no, I can't use ": base()" here; I tried
+		public DefaultCostumeData(BinaryReader br)
 		{
+			Costumes = new DefaultCostumeDataEntry[4];
+			for (int _ = 0; _ < Costumes.Length; _++)
+			{
+				Costumes[_] = new DefaultCostumeDataEntry();
+			}
+			Unknown1 = 0;
+			Unknown2 = 0;
+			ExtraData = new byte[8];
+
 			ReadData(br);
 		}
 		#endregion
