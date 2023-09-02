@@ -65,9 +65,9 @@ namespace VPWStudio.Editors.VPW64
 			this.ClientSize = new System.Drawing.Size(624, 361);
 			this.Controls.Add(this.tbCostumeOutput);
 			this.Controls.Add(this.cbCostumes);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(512, 400);
 			this.Name = "DefaultCostume_VPW64";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
