@@ -203,6 +203,12 @@
     <Compile Include="Editors\VPW2\Ruleset_VPW2.Designer.cs">
       <DependentUpon>Ruleset_VPW2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\VPW64\DefaultCostume_VPW64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW64\DefaultCostume_VPW64.Designer.cs">
+      <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WrestlerMain_Early.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -828,6 +834,9 @@
     <EmbeddedResource Include="Editors\StableDefs_Early.resx">
       <DependentUpon>StableDefs_Early.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW64\DefaultCostume_VPW64.resx">
+      <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editors\WrestlerMain_Early.resx">
       <DependentUpon>WrestlerMain_Early.cs</DependentUpon>
     </EmbeddedResource>
@@ -1206,7 +1215,6 @@
     <Content Include="VPWStudio.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Editors\VPW64\" />
     <Folder Include="Editors\WorldTour\" />
   </ItemGroup>
   <ItemGroup>

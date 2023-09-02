@@ -96,6 +96,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.vpw64CostumeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -469,7 +470,8 @@
             this.timTestToolStripMenuItem,
             this.toolStripSeparator11,
             this.testScene3dToolStripMenuItem,
-            this.paramUnpackTestToolStripMenuItem});
+            this.paramUnpackTestToolStripMenuItem,
+            this.vpw64CostumeTestToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -595,6 +597,12 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
+			// vpw64CostumeTestToolStripMenuItem
+			// 
+			this.vpw64CostumeTestToolStripMenuItem.Name = "vpw64CostumeTestToolStripMenuItem";
+			resources.ApplyResources(this.vpw64CostumeTestToolStripMenuItem, "vpw64CostumeTestToolStripMenuItem");
+			this.vpw64CostumeTestToolStripMenuItem.Click += new System.EventHandler(this.vpw64CostumeTestToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -688,6 +696,7 @@
 		private System.Windows.Forms.ToolStripMenuItem demoMatchesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem matchRulesetsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem openFileInHexViewerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem vpw64CostumeTestToolStripMenuItem;
 	}
 }
 
