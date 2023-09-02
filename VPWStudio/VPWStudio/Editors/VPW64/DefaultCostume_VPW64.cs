@@ -14,8 +14,14 @@ namespace VPWStudio.Editors.VPW64
 {
 	public partial class DefaultCostume_VPW64 : Form
 	{
+		/// <summary>
+		/// Every default costume defined in VPW64.
+		/// </summary>
 		public List<DefaultCostumeData> AllCostumes = new List<DefaultCostumeData>();
 
+		/// <summary>
+		/// Used to create the output box string.
+		/// </summary>
 		protected StringBuilder InfoBuilder = new StringBuilder();
 
 		public DefaultCostume_VPW64()
@@ -28,11 +34,27 @@ namespace VPWStudio.Editors.VPW64
 
 		public void ReadCostumes_ROM()
 		{
-			// xxx: hardcoded
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
-			romReader.BaseStream.Seek(0x3F038, SeekOrigin.Begin);
-			// 106
+
+			bool hasLocation = false;
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry sdEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["WrestlerDefaultCostumeDefs"]);
+				if (sdEntry != null)
+				{
+					romReader.BaseStream.Seek(sdEntry.Address, SeekOrigin.Begin);
+					hasLocation = true;
+				}
+			}
+			if (!hasLocation)
+			{
+				// fallback to hardcoded offset
+				Program.InfoMessageBox("Wrestler Default Costume Definitions location not found; using hardcoded offset instead.");
+				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW64_NTSC_J].Locations["WrestlerDefaultCostumeDefs"].Offset, SeekOrigin.Begin);
+			}
+
+			// xxx: default number of costume defs
 			for (int i = 0; i < 106; i++)
 			{
 				AllCostumes.Add(new DefaultCostumeData(romReader));
