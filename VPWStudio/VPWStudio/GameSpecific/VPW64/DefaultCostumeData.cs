@@ -69,6 +69,21 @@ namespace VPWStudio.GameSpecific.VPW64
 		}
 		#endregion
 
+		#region Helpers
+		public int GetColor(int colNum)
+		{
+			switch (colNum)
+			{
+				case 0: return Color1;
+				case 1: return (Color2 & 0xF0) >> 4;
+				case 2: return (Color2 & 0x0F);
+			}
+
+			// invalid
+			return -1;
+		}
+		#endregion
+
 		#region Binary Read/Write
 		/// <summary>
 		/// Read a VPW64 default costume data slot using a BinaryReader.
@@ -154,7 +169,7 @@ namespace VPWStudio.GameSpecific.VPW64
 
 		#region Binary Read/Write
 		/// <summary>
-		/// Read Default Costume Data using a BinaryReader.
+		/// Read VPW64 Default Costume Data using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
@@ -176,6 +191,29 @@ namespace VPWStudio.GameSpecific.VPW64
 			byte unk2_1 = br.ReadByte();
 			byte unk2_2 = br.ReadByte();
 			Unknown2 = (UInt16)(((unk2_1 & 0xFF) << 8) | (unk2_2 & 0xFF));
+		}
+
+		/// <summary>
+		/// Write VPW64 Default Costume Data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			for (int c = 0; c < Costumes.Length; c++)
+			{
+				Costumes[c].WriteData(bw);
+			}
+
+			bw.Write((byte)((Unknown1 & 0xFF00) >> 8));
+			bw.Write((byte)(Unknown1 & 0x00FF));
+
+			if (Unknown1 != 0)
+			{
+				bw.Write(ExtraData);
+			}
+
+			bw.Write((byte)((Unknown2 & 0xFF00) >> 8));
+			bw.Write((byte)(Unknown2 & 0x00FF));
 		}
 		#endregion
 	}
