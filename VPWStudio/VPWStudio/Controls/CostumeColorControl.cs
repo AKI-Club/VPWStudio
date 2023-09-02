@@ -49,6 +49,55 @@ namespace VPWStudio.Controls
 
 		#region Color Palettes
 		/// <summary>
+		/// Costume colors for Virtual Pro-Wrestling 64.
+		/// </summary>
+		/// "Index" is the internal value, "Color" is the in-game displayed value.
+		private Color[] VPW64Colors = new Color[]
+		{
+			Color.FromArgb(255,24,40,56),    // Index  0/Color  1: Black
+			Color.FromArgb(255,248,0,0),     // Index  1/Color  2: Red
+			Color.FromArgb(255,0,0,248),     // Index  2/Color  3: Blue
+			Color.FromArgb(255,184,0,184),   // Index  3/Color  4: Purple
+			Color.FromArgb(255,248,72,0),    // Index  4/Color  5: Orange
+			Color.FromArgb(255,248,248,0),   // Index  5/Color  6: Yellow
+			Color.FromArgb(255,0,184,248),   // Index  6/Color  7: Light Blue
+			Color.FromArgb(255,248,72,184),  // Index  7/Color  8: Pink
+			Color.FromArgb(255,0,248,0),     // Index  8/Color  9: Light Green
+			Color.FromArgb(255,248,248,152), // Index  9/Color 10: Gold
+			Color.FromArgb(255,216,216,216), // Index 10/Color 11: Silver
+			Color.FromArgb(255,0,0,120),     // Index 11/Color 12: Navy Blue
+			Color.FromArgb(255,0,120,0),     // Index 12/Color 13: Dark Green
+			Color.FromArgb(255,72,72,120),   // Index 13/Color 14: Dark Gray
+			Color.FromArgb(255,184,184,184), // Index 14/Color 15: Gray
+			Color.FromArgb(255,248,248,248)  // Index 15/Color 16: White
+		};
+
+		/// <summary>
+		/// Representational color strings, matching the order of VPW64Colors.
+		/// </summary>
+		private string[] VPW64ColorNames = new string[16]
+		{
+			"Black",
+			"Red",
+			"Blue",
+			"Purple",
+			"Orange",
+			"Yellow",
+			"Light Blue",
+			"Pink",
+			"Light Green",
+			"Gold",
+			"Silver",
+			"Navy Blue",
+			"Dark Green",
+			"Dark Gray",
+			"Gray",
+			"White"
+		};
+
+		// todo: source Revenge colors from file ID 0A51
+
+		/// <summary>
 		/// Costume colors for WrestleMania 2000, VPW2, and No Mercy.
 		/// </summary>
 		private Color[] ModernColors = new Color[]
@@ -90,7 +139,7 @@ namespace VPWStudio.Controls
 			Color.FromArgb(255,139,41,115),  // Color 1D: Dark Pink
 			Color.FromArgb(255,213,189,74),  // Color 1E: Dark Gold
 
-			Color.FromArgb(255,164,164,197),  // Color 1F: Silver
+			Color.FromArgb(255,164,164,197)  // Color 1F: Silver
 		};
 
 		/// <summary>
@@ -264,6 +313,11 @@ namespace VPWStudio.Controls
 					nudColor.Maximum = 7;
 					break;
 
+				case ColorMode.VPW64:
+				case ColorMode.Revenge:
+					nudColor.Maximum = 15;
+					break;
+
 				case ColorMode.Modern:
 				default:
 					nudColor.Maximum = 31;
@@ -273,7 +327,12 @@ namespace VPWStudio.Controls
 			// update panelColorPreview based on nudColor.Value
 			switch (ColorModeType)
 			{
-				// todo: revenge and vpw64 still not handled
+				// todo: revenge still not handled
+
+				case ColorMode.VPW64:
+					panelColorPreview.BackColor = VPW64Colors[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, VPW64ColorNames[(int)nudColor.Value]);
+					break;
 
 				case ColorMode.Modern:
 				default:
