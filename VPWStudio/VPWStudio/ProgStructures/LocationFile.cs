@@ -140,6 +140,10 @@ namespace VPWStudio
 			{ "CostumeDefs", "$COSTUMEDEFS" }, // ROM location of costume definitions (World Tour and Revenge only)
 			{ "HeadDefs", "$HEADDEFS" }, // ROM location of head/mask definitions
 
+			{ "WrestlerBodyDefs", "$WRESTLERBODYDEFS" }, // vpw64 only? need to re-check world tour and revenge
+
+			//{"WrestlerDefaultCostumes"} // vpw64 only??
+
 			// VPW64 costume definitions
 			{ "VPW64Costumes_Small", "$VPW64COSTUMES_SMALL" },
 			{ "VPW64Costumes_Medium", "$VPW64COSTUMES_MED" },
