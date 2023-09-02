@@ -56,10 +56,22 @@ namespace VPWStudio.Editors.VPW64
 				InfoBuilder.AppendLine(String.Format("Costume #{0}",c));
 				InfoBuilder.AppendLine(String.Format("Head: 0x{0:X2}", cs.Costumes[c].Head));
 				InfoBuilder.AppendLine(String.Format("Costume: 0x{0:X2}", cs.Costumes[c].Costume));
-				InfoBuilder.AppendLine(String.Format("Color byte 1: 0x{0:X2}", cs.Costumes[c].Color1));
-				InfoBuilder.AppendLine(String.Format("Color byte 2: 0x{0:X2}", cs.Costumes[c].Color2));
-				tbCostumeOutput.Text = InfoBuilder.ToString();
+				InfoBuilder.AppendLine(String.Format("Color byte 1: 0x{0:X2}; Color 1 = {1}", cs.Costumes[c].Color1, cs.Costumes[c].GetColor(0)));
+				InfoBuilder.AppendLine(String.Format("Color byte 2: 0x{0:X2}; Color 2 = {1}, Color 3 = {2}", cs.Costumes[c].Color2, cs.Costumes[c].GetColor(1), cs.Costumes[c].GetColor(2)));
 			}
+
+			if (cs.Unknown1 != 0)
+			{
+				InfoBuilder.AppendLine();
+				InfoBuilder.AppendLine(String.Format("Unknown value 1: 0x{0:X4}", cs.Unknown1));
+				InfoBuilder.AppendLine("Extra Data bytes:");
+				for (int i = 0; i < cs.ExtraData.Length; i++)
+				{
+					InfoBuilder.Append(String.Format("0x{0:X2} ", cs.ExtraData[i]));
+				}
+			}
+
+			tbCostumeOutput.Text = InfoBuilder.ToString();
 		}
 
 		private void cbCostumes_SelectedIndexChanged(object sender, EventArgs e)
