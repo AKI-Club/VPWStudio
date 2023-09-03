@@ -156,10 +156,14 @@ namespace VPWStudio
 			modelWriter.Close();
 
 			// todo: determine palette and texture types separately, since VPW64 has some weird shit where it uses a CI4 palette with a CI8 texture
-
-			// todo: allow for CI8
-			LoadTexPalCI4(romReader);
-
+			if (Program.CurrentProject.ProjectFileTable.Entries[(int)PalFileID].FileType == FileTypes.Ci4Palette)
+			{
+				LoadTexPalCI4(romReader);
+			}
+			else if (Program.CurrentProject.ProjectFileTable.Entries[(int)PalFileID].FileType == FileTypes.Ci8Palette)
+			{
+				LoadTexPalCI8(romReader);
+			}
 			romReader.Close();
 		}
 
