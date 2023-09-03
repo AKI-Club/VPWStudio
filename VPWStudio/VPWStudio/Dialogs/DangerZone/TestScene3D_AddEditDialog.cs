@@ -11,18 +11,55 @@ namespace VPWStudio
 {
 	public partial class TestScene3D_AddEditDialog : Form
 	{
+		#region Return Values
 		public uint ModelFileID = 0;
 		public uint TextureFileID = 0;
 		public uint PaletteFileID = 0;
+		#endregion
 
+		#region File ID Lists
+		/// <summary>
+		/// List of FileTable entries marked as AkiModel.
+		/// </summary>
 		private List<int> ModelFileIDs;
+
+		/// <summary>
+		/// List of FileTable entries marked as Ci4Texture.
+		/// </summary>
 		private List<int> Ci4TexFileIDs;
+
+		/// <summary>
+		/// List of FileTable entries marked as Ci4Palette.
+		/// </summary>
 		private List<int> Ci4PalFileIDs;
+
+		/// <summary>
+		/// List of FileTable entries marked as Ci8Texture.
+		/// </summary>
+		private List<int> Ci8TexFileIDs;
+
+		/// <summary>
+		/// List of FileTable entries marked as Ci8Palette.
+		/// </summary>
+		private List<int> Ci8PalFileIDs;
+		#endregion
 
 		public TestScene3D_AddEditDialog(int mID = 0, int tID = 0, int pID = 0)
 		{
 			InitializeComponent();
-			GenerateTextureLists();
+			GenerateLists();
+
+			// model list only needs to be generated once
+			cbModelFileID.BeginUpdate();
+			cbModelFileID.Items.Clear();
+			foreach (int id in ModelFileIDs)
+			{
+				cbModelFileID.Items.Add(String.Format("{0:X4}", id));
+			}
+			cbModelFileID.EndUpdate();
+
+			// default to CI4 (todo: don't assume this, and check based on passed in file IDs)
+			cbCiType.SelectedIndex = 0;
 			UpdateComboBoxLists();
 
 			if (mID != 0 && tID != 0 && pID != 0)
@@ -47,6 +84,7 @@ namespace VPWStudio
 				cbModelFileID.SelectedIndex = 0;
 			}
 
+			// todo: CI8 support
 			if (tID != 0)
 			{
 				int idx = Ci4TexFileIDs.IndexOf(tID);
@@ -82,7 +120,7 @@ namespace VPWStudio
 			}
 		}
 
-		private void GenerateTextureLists()
+		private void GenerateLists()
 		{
 			List<int> Remove = new List<int>();
 
@@ -99,6 +137,7 @@ namespace VPWStudio
 				ModelFileIDs.Remove(mID);
 			}
 
+			// CI4 textures
 			Remove.Clear();
 			Ci4TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Texture);
 			foreach (int tID in Ci4TexFileIDs)
@@ -113,6 +152,7 @@ namespace VPWStudio
 				Ci4TexFileIDs.Remove(tID);
 			}
 
+			// CI4 palettes
 			Remove.Clear();
 			Ci4PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci4Palette);
 			foreach (int pID in Ci4PalFileIDs)
@@ -126,32 +166,77 @@ namespace VPWStudio
 			{
 				Ci4PalFileIDs.Remove(pID);
 			}
+
+			// CI8 textures
+			Remove.Clear();
+			Ci8TexFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Texture);
+			foreach (int tID in Ci8TexFileIDs)
+			{
+				if (Program.CurrentProject.ProjectFileTable.Entries[tID].OverrideFileType)
+				{
+					Remove.Add(tID);
+				}
+			}
+			foreach (int tID in Remove)
+			{
+				Ci8TexFileIDs.Remove(tID);
+			}
+
+			// CI8 palettes
+			Remove.Clear();
+			Ci8PalFileIDs = Program.CurrentProject.ProjectFileTable.GetFilesOfType(FileTypes.Ci8Palette);
+			foreach (int pID in Ci8PalFileIDs)
+			{
+				if (Program.CurrentProject.ProjectFileTable.Entries[pID].OverrideFileType)
+				{
+					Remove.Add(pID);
+				}
+			}
+			foreach (int pID in Remove)
+			{
+				Ci8PalFileIDs.Remove(pID);
+			}
 		}
 
 		private void UpdateComboBoxLists()
 		{
-			cbModelFileID.BeginUpdate();
-			cbModelFileID.Items.Clear();
-			foreach (int id in ModelFileIDs)
-			{
-				cbModelFileID.Items.Add(String.Format("{0:X4}", id));
-			}
-			cbModelFileID.EndUpdate();
-			
-
 			cbTextureFileID.BeginUpdate();
 			cbTextureFileID.Items.Clear();
-			foreach (int id in Ci4TexFileIDs)
+			if (cbCiType.SelectedIndex == 0)
 			{
-				cbTextureFileID.Items.Add(String.Format("{0:X4}", id));
+				// CI4
+				foreach (int id in Ci4TexFileIDs)
+				{
+					cbTextureFileID.Items.Add(String.Format("{0:X4}", id));
+				}
+			}
+			else
+			{
+				// CI8
+				foreach (int id in Ci8TexFileIDs)
+				{
+					cbTextureFileID.Items.Add(String.Format("{0:X4}", id));
+				}
 			}
 			cbTextureFileID.EndUpdate();
 
 			cbPaletteFileID.BeginUpdate();
 			cbPaletteFileID.Items.Clear();
-			foreach (int id in Ci4PalFileIDs)
+			if (cbCiType.SelectedIndex == 0)
 			{
-				cbPaletteFileID.Items.Add(String.Format("{0:X4}", id));
+				// CI4
+				foreach (int id in Ci4PalFileIDs)
+				{
+					cbPaletteFileID.Items.Add(String.Format("{0:X4}", id));
+				}
+			}
+			else
+			{
+				// CI8
+				foreach (int id in Ci8PalFileIDs)
+				{
+					cbPaletteFileID.Items.Add(String.Format("{0:X4}", id));
+				}
 			}
 			cbPaletteFileID.EndUpdate();
 		}
@@ -203,6 +288,15 @@ namespace VPWStudio
 
 			int texID = Convert.ToInt32(cbTextureFileID.Items[cbTextureFileID.SelectedIndex].ToString(), 16);
 			tbTextureComment.Text = Program.CurrentProject.ProjectFileTable.Entries[texID].Comment;
+		}
+
+		private void cbCiType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbCiType.SelectedIndex < 0)
+			{
+				return;
+			}
+			UpdateComboBoxLists();
 		}
 	}
 }
