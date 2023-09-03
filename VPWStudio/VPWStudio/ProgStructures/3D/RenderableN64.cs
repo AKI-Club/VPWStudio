@@ -71,9 +71,10 @@ namespace VPWStudio
 		/// </summary>
 		public AkiModel Model;
 
-		// todo: only supports ci4 right now
 		public Ci4Palette Palette_CI4;
 		public Ci4Texture Texture_CI4;
+		public Ci8Palette Palette_CI8;
+		public Ci8Texture Texture_CI8;
 
 		/// <summary>
 		/// Texture bitmap data
@@ -154,7 +155,11 @@ namespace VPWStudio
 			modelReader.Close();
 			modelWriter.Close();
 
+			// todo: determine palette and texture types separately, since VPW64 has some weird shit where it uses a CI4 palette with a CI8 texture
+
+			// todo: allow for CI8
 			LoadTexPalCI4(romReader);
+
 			romReader.Close();
 		}
 
@@ -165,9 +170,6 @@ namespace VPWStudio
 		public void LoadTexPalCI4(BinaryReader romReader)
 		{
 			// load palette and texture
-			Palette_CI4 = new Ci4Palette();
-			Texture_CI4 = new Ci4Texture();
-
 			MemoryStream imgStream = new MemoryStream();
 			BinaryWriter imgWriter = new BinaryWriter(imgStream);
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, (int)TexFileID);
@@ -179,7 +181,6 @@ namespace VPWStudio
 
 			MemoryStream palStream = new MemoryStream();
 			BinaryWriter palWriter = new BinaryWriter(palStream);
-
 			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, (int)PalFileID);
 			palStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader palfr = new BinaryReader(palStream);
@@ -189,6 +190,43 @@ namespace VPWStudio
 			// convert to ye olde bitmappe
 			Texture = new Bitmap(Texture_CI4.Width, Texture_CI4.Height, System.Drawing.Imaging.PixelFormat.Format4bppIndexed);
 			Texture = Texture_CI4.ToBitmap(Palette_CI4);
+
+			// and get bytes for GL texturing
+			BitmapData textureData = Texture.LockBits(new Rectangle(0, 0, Texture.Width, Texture.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			IntPtr imageDataPtr = textureData.Scan0;
+			int numBytes = Math.Abs(textureData.Stride) * Texture.Height;
+			PixelData = new byte[numBytes];
+			Marshal.Copy(imageDataPtr, PixelData, 0, numBytes);
+			Texture.UnlockBits(textureData);
+		}
+
+		/// <summary>
+		/// Load CI8 texture and palette data.
+		/// </summary>
+		/// <param name="romReader">BinaryReader instance to use.</param>
+		public void LoadTexPalCI8(BinaryReader romReader)
+		{
+			// load palette and texture
+			MemoryStream imgStream = new MemoryStream();
+			BinaryWriter imgWriter = new BinaryWriter(imgStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, imgWriter, (int)TexFileID);
+			imgStream.Seek(0, SeekOrigin.Begin);
+			BinaryReader texfr = new BinaryReader(imgStream);
+			Texture_CI8 = new Ci8Texture();
+			Texture_CI8.ReadData(texfr);
+			texfr.Close();
+
+			MemoryStream palStream = new MemoryStream();
+			BinaryWriter palWriter = new BinaryWriter(palStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, palWriter, (int)PalFileID);
+			palStream.Seek(0, SeekOrigin.Begin);
+			BinaryReader palfr = new BinaryReader(palStream);
+			Palette_CI8 = new Ci8Palette(palfr);
+			palfr.Close();
+
+			// convert to ye olde bitmappe
+			Texture = new Bitmap(Texture_CI8.Width, Texture_CI8.Height, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+			Texture = Texture_CI8.ToBitmap(Palette_CI8);
 
 			// and get bytes for GL texturing
 			BitmapData textureData = Texture.LockBits(new Rectangle(0, 0, Texture.Width, Texture.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
