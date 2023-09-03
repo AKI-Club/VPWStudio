@@ -306,7 +306,10 @@ namespace VPWStudio.Controls
 		/// ToolTip that shows up when hovering over the color swatch.
 		/// </summary>
 		private ToolTip ColorToolTip;
+
 		private ColorMode colorModeType;
+
+		private bool readOnly = false;
 		#endregion
 
 		/// <summary>
@@ -317,11 +320,25 @@ namespace VPWStudio.Controls
 		[Description("Color mode used by this CostumeColorControl."), Category("Behavior")]
 		public ColorMode ColorModeType { get => colorModeType; set => colorModeType = value; }
 
-		public CostumeColorControl()
+		/// <summary>
+		/// Determine if the color can be changed or not.
+		/// </summary>
+		[Browsable(true)]
+		[DefaultValue(false)]
+		[Description("Read-only mode."), Category("Behavior")]
+		public bool ReadOnly { get => readOnly; set => readOnly = value; }
+
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		/// <param name="ro">Set read-only mode. (optional; false by default)</param>
+		public CostumeColorControl(bool ro = false)
 		{
 			InitializeComponent();
+			ReadOnly = ro;
 			ColorToolTip = new ToolTip();
 			UpdateColor();
+			nudColor.Enabled = !ReadOnly;
 		}
 
 		/// <summary>
