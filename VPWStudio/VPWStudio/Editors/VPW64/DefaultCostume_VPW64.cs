@@ -94,6 +94,10 @@ namespace VPWStudio.Editors.VPW64
 			}
 
 			tbCostumeOutput.Text = InfoBuilder.ToString();
+
+			cccColor1.SetColorNum(cs.Costumes[0].GetColor(0));
+			cccColor2.SetColorNum(cs.Costumes[0].GetColor(1));
+			cccColor3.SetColorNum(cs.Costumes[0].GetColor(2));
 		}
 
 		private void cbCostumes_SelectedIndexChanged(object sender, EventArgs e)
