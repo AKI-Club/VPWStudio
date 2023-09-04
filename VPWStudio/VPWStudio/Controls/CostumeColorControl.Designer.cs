@@ -82,6 +82,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "CostumeColorControl";
 			this.Size = new System.Drawing.Size(150, 29);
+			this.Load += new System.EventHandler(this.CostumeColorControl_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.nudColor)).EndInit();
 			this.ResumeLayout(false);

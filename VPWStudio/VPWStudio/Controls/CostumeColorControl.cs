@@ -309,7 +309,7 @@ namespace VPWStudio.Controls
 
 		private ColorMode colorModeType;
 
-		private bool readOnly = false;
+		private bool readOnly;
 		#endregion
 
 		/// <summary>
@@ -332,13 +332,11 @@ namespace VPWStudio.Controls
 		/// Default constructor.
 		/// </summary>
 		/// <param name="ro">Set read-only mode. (optional; false by default)</param>
-		public CostumeColorControl(bool ro = false)
+		public CostumeColorControl()
 		{
 			InitializeComponent();
-			ReadOnly = ro;
 			ColorToolTip = new ToolTip();
 			UpdateColor();
-			nudColor.Enabled = !ReadOnly;
 		}
 
 		/// <summary>
@@ -360,31 +358,6 @@ namespace VPWStudio.Controls
 		/// </summary>
 		private void UpdateColor()
 		{
-			// no, I can't just put this in the constructor, because it doesn't want to get run there due to some fucking bullshit
-			// regarding how the forms editor lays out field members
-			// this is stupid, and unless you know how to fix it "properly", don't complain about it
-			switch (ColorModeType)
-			{
-				case ColorMode.Hair_WM2K:
-					nudColor.Maximum = 6;
-					break;
-
-				case ColorMode.Hair_VPW2:
-				case ColorMode.Hair_NoMercy:
-					nudColor.Maximum = 7;
-					break;
-
-				case ColorMode.VPW64:
-				case ColorMode.Revenge:
-					nudColor.Maximum = 15;
-					break;
-
-				case ColorMode.Modern:
-				default:
-					nudColor.Maximum = 31;
-					break;
-			}
-
 			// update panelColorPreview based on nudColor.Value
 			switch (ColorModeType)
 			{
@@ -434,6 +407,36 @@ namespace VPWStudio.Controls
 		private void panelColorPreview_MouseLeave(object sender, EventArgs e)
 		{
 			ColorToolTip.Hide(this);
+		}
+
+		private void CostumeColorControl_Load(object sender, EventArgs e)
+		{
+			// set proper max value
+			switch (ColorModeType)
+			{
+				case ColorMode.Hair_WM2K:
+					nudColor.Maximum = 6;
+					break;
+
+				case ColorMode.Hair_VPW2:
+				case ColorMode.Hair_NoMercy:
+					nudColor.Maximum = 7;
+					break;
+
+				case ColorMode.VPW64:
+				case ColorMode.Revenge:
+					nudColor.Maximum = 15;
+					break;
+
+				case ColorMode.Modern:
+				default:
+					nudColor.Maximum = 31;
+					break;
+			}
+
+			// disable editing if necessary
+			nudColor.Enabled = !readOnly;
+			nudColor.ReadOnly = readOnly;
 		}
 	}
 }
