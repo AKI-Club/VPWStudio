@@ -88,6 +88,22 @@ namespace VPWStudio.GameSpecific
 				Array.Reverse(namePtr);
 			}
 			NamePointer = BitConverter.ToUInt32(namePtr, 0);
+
+			if (NamePointer != 0)
+			{
+				long curLoc = br.BaseStream.Position;
+
+				br.BaseStream.Seek(Z64Rom.PointerToRom(NamePointer), SeekOrigin.Begin);
+				string s = String.Empty;
+				while (br.PeekChar() != 0)
+				{
+					s += br.ReadChar();
+				}
+				ChampionshipName = s;
+
+				// reload location
+				br.BaseStream.Seek(curLoc, SeekOrigin.Begin);
+			}
 		}
 
 		public void WriteData(BinaryWriter bw)
