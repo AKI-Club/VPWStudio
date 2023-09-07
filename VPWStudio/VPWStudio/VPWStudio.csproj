@@ -149,6 +149,12 @@
     <Compile Include="Dialogs\StableDef\SwitchGroup_Revenge.designer.cs">
       <DependentUpon>SwitchGroup_Revenge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\ChampionshipDefs_Early.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\ChampionshipDefs_Early.Designer.cs">
+      <DependentUpon>ChampionshipDefs_Early.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\GameIntroEditor_Later.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -761,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\AkiTextEditor.resx">
       <DependentUpon>AkiTextEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\ChampionshipDefs_Early.resx">
+      <DependentUpon>ChampionshipDefs_Early.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\CiPaletteEditor.resx">
       <DependentUpon>CiPaletteEditor.cs</DependentUpon>
