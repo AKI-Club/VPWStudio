@@ -6,6 +6,9 @@ using VPWStudio.GameSpecific;
 
 namespace VPWStudio.Editors
 {
+	/// <summary>
+	/// Stable Definition editor for WCW vs. nWo World Tour and Virtual Pro-Wrestling 64
+	/// </summary>
 	public partial class StableDefs_Early : Form
 	{
 		public SortedList<int, StableDef_Early> StableDefs = new SortedList<int, StableDef_Early>();
