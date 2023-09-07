@@ -89,6 +89,11 @@ namespace VPWStudio
 		/// </summary>
 		public Editors.WrestlerMain_Early WrestlerMain_Early = null;
 
+		/// <summary>
+		/// Championship definition editor, for WCW vs. nWo World Tour and Virtual Pro-Wrestling 64
+		/// </summary>
+		public Editors.ChampionshipDefs_Early ChampDefs_Early = null;
+
 		#region World Tour
 		#endregion
 
@@ -932,22 +937,42 @@ namespace VPWStudio
 				return;
 			}
 
-			if (Program.CurrentProject.Settings.BaseGame == VPWGames.Revenge)
+			switch (Program.CurrentProject.Settings.BaseGame)
 			{
-				if (ChampDefs_Revenge == null || ChampDefs_Revenge.IsDisposed)
-				{
-					ChampDefs_Revenge = new Editors.Revenge.ChampionshipDefs_Revenge();
-				}
-				if (ChampDefs_Revenge.WindowState == FormWindowState.Minimized)
-				{
-					ChampDefs_Revenge.WindowState = FormWindowState.Normal;
-				}
-				ChampDefs_Revenge.MdiParent = this;
-				ChampDefs_Revenge.Show();
-			}
-			else
-			{
-				Program.ErrorMessageBox("Championships dialog not yet designed for non-Revenge games.");
+				case VPWGames.WorldTour:
+				case VPWGames.VPW64:
+					{
+						if (ChampDefs_Early == null || ChampDefs_Early.IsDisposed)
+						{
+							ChampDefs_Early = new ChampionshipDefs_Early();
+						}
+						if (ChampDefs_Early.WindowState == FormWindowState.Minimized)
+						{
+							ChampDefs_Early.WindowState = FormWindowState.Normal;
+						}
+						ChampDefs_Early.MdiParent = this;
+						ChampDefs_Early.Show();
+					}
+					break;
+
+				case VPWGames.Revenge:
+					{
+						if (ChampDefs_Revenge == null || ChampDefs_Revenge.IsDisposed)
+						{
+							ChampDefs_Revenge = new Editors.Revenge.ChampionshipDefs_Revenge();
+						}
+						if (ChampDefs_Revenge.WindowState == FormWindowState.Minimized)
+						{
+							ChampDefs_Revenge.WindowState = FormWindowState.Normal;
+						}
+						ChampDefs_Revenge.MdiParent = this;
+						ChampDefs_Revenge.Show();
+					}
+					break;
+
+				default:
+					Program.ErrorMessageBox("Championships dialog not yet designed for this game.");
+					break;
 			}
 		}
 
