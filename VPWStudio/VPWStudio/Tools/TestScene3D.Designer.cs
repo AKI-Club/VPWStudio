@@ -71,6 +71,12 @@ namespace VPWStudio
 			this.lblTextureID = new System.Windows.Forms.Label();
 			this.btnBackgroundColor = new System.Windows.Forms.Button();
 			this.btnResetCamera = new System.Windows.Forms.Button();
+			this.lblScaleX = new System.Windows.Forms.Label();
+			this.lblScaleY = new System.Windows.Forms.Label();
+			this.lblScaleZ = new System.Windows.Forms.Label();
+			this.tbScaleX = new System.Windows.Forms.TextBox();
+			this.tbScaleY = new System.Windows.Forms.TextBox();
+			this.tbScaleZ = new System.Windows.Forms.TextBox();
 			this.gbItems.SuspendLayout();
 			this.gbPreview.SuspendLayout();
 			this.gbItemInfo.SuspendLayout();
@@ -212,14 +218,14 @@ namespace VPWStudio
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 1;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(239, 46);
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(239, 31);
 			this.tableLayoutPanel4.TabIndex = 1;
 			// 
 			// lblName
 			// 
 			this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(3, 16);
+			this.lblName.Location = new System.Drawing.Point(3, 9);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(41, 13);
 			this.lblName.TabIndex = 0;
@@ -228,7 +234,7 @@ namespace VPWStudio
 			// btnRename
 			// 
 			this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRename.Location = new System.Drawing.Point(169, 11);
+			this.btnRename.Location = new System.Drawing.Point(169, 4);
 			this.btnRename.Name = "btnRename";
 			this.btnRename.Size = new System.Drawing.Size(67, 23);
 			this.btnRename.TabIndex = 1;
@@ -239,7 +245,7 @@ namespace VPWStudio
 			// tbObjectName
 			// 
 			this.tbObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbObjectName.Location = new System.Drawing.Point(50, 13);
+			this.tbObjectName.Location = new System.Drawing.Point(50, 5);
 			this.tbObjectName.Name = "tbObjectName";
 			this.tbObjectName.Size = new System.Drawing.Size(113, 20);
 			this.tbObjectName.TabIndex = 2;
@@ -251,10 +257,10 @@ namespace VPWStudio
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tcItemInfo.Controls.Add(this.tpPosRot);
 			this.tcItemInfo.Controls.Add(this.tpFileID);
-			this.tcItemInfo.Location = new System.Drawing.Point(6, 71);
+			this.tcItemInfo.Location = new System.Drawing.Point(6, 56);
 			this.tcItemInfo.Name = "tcItemInfo";
 			this.tcItemInfo.SelectedIndex = 0;
-			this.tcItemInfo.Size = new System.Drawing.Size(239, 274);
+			this.tcItemInfo.Size = new System.Drawing.Size(239, 289);
 			this.tcItemInfo.TabIndex = 0;
 			// 
 			// tpPosRot
@@ -264,7 +270,7 @@ namespace VPWStudio
 			this.tpPosRot.Location = new System.Drawing.Point(4, 22);
 			this.tpPosRot.Name = "tpPosRot";
 			this.tpPosRot.Padding = new System.Windows.Forms.Padding(3);
-			this.tpPosRot.Size = new System.Drawing.Size(231, 248);
+			this.tpPosRot.Size = new System.Drawing.Size(231, 263);
 			this.tpPosRot.TabIndex = 0;
 			this.tpPosRot.Text = "Position/Rotation";
 			this.tpPosRot.UseVisualStyleBackColor = true;
@@ -276,7 +282,7 @@ namespace VPWStudio
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.Controls.Add(this.btnUpdatePosRot, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.btnResetPosRot, 1, 0);
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 204);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 224);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -310,6 +316,7 @@ namespace VPWStudio
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel1.Controls.Add(this.lblScaleZ, 0, 8);
 			this.tableLayoutPanel1.Controls.Add(this.lblPosX, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.lblPosY, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.lblPosZ, 0, 2);
@@ -322,23 +329,31 @@ namespace VPWStudio
 			this.tableLayoutPanel1.Controls.Add(this.lblRotZ, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.tbRotY, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.tbRotZ, 1, 5);
+			this.tableLayoutPanel1.Controls.Add(this.lblScaleX, 0, 6);
+			this.tableLayoutPanel1.Controls.Add(this.lblScaleY, 0, 7);
+			this.tableLayoutPanel1.Controls.Add(this.tbScaleX, 1, 6);
+			this.tableLayoutPanel1.Controls.Add(this.tbScaleY, 1, 7);
+			this.tableLayoutPanel1.Controls.Add(this.tbScaleZ, 1, 8);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 6;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(219, 192);
+			this.tableLayoutPanel1.RowCount = 9;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(219, 212);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// lblPosX
 			// 
 			this.lblPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosX.AutoSize = true;
-			this.lblPosX.Location = new System.Drawing.Point(3, 9);
+			this.lblPosX.Location = new System.Drawing.Point(3, 5);
 			this.lblPosX.Name = "lblPosX";
 			this.lblPosX.Size = new System.Drawing.Size(59, 13);
 			this.lblPosX.TabIndex = 0;
@@ -348,7 +363,7 @@ namespace VPWStudio
 			// 
 			this.lblPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosY.AutoSize = true;
-			this.lblPosY.Location = new System.Drawing.Point(3, 40);
+			this.lblPosY.Location = new System.Drawing.Point(3, 28);
 			this.lblPosY.Name = "lblPosY";
 			this.lblPosY.Size = new System.Drawing.Size(59, 13);
 			this.lblPosY.TabIndex = 1;
@@ -358,7 +373,7 @@ namespace VPWStudio
 			// 
 			this.lblPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblPosZ.AutoSize = true;
-			this.lblPosZ.Location = new System.Drawing.Point(3, 71);
+			this.lblPosZ.Location = new System.Drawing.Point(3, 51);
 			this.lblPosZ.Name = "lblPosZ";
 			this.lblPosZ.Size = new System.Drawing.Size(59, 13);
 			this.lblPosZ.TabIndex = 2;
@@ -368,7 +383,7 @@ namespace VPWStudio
 			// 
 			this.lblRotX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotX.AutoSize = true;
-			this.lblRotX.Location = new System.Drawing.Point(3, 102);
+			this.lblRotX.Location = new System.Drawing.Point(3, 74);
 			this.lblRotX.Name = "lblRotX";
 			this.lblRotX.Size = new System.Drawing.Size(59, 13);
 			this.lblRotX.TabIndex = 3;
@@ -377,7 +392,7 @@ namespace VPWStudio
 			// tbPosX
 			// 
 			this.tbPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosX.Location = new System.Drawing.Point(68, 5);
+			this.tbPosX.Location = new System.Drawing.Point(68, 3);
 			this.tbPosX.Name = "tbPosX";
 			this.tbPosX.Size = new System.Drawing.Size(148, 20);
 			this.tbPosX.TabIndex = 7;
@@ -386,7 +401,7 @@ namespace VPWStudio
 			// tbPosY
 			// 
 			this.tbPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosY.Location = new System.Drawing.Point(68, 36);
+			this.tbPosY.Location = new System.Drawing.Point(68, 26);
 			this.tbPosY.Name = "tbPosY";
 			this.tbPosY.Size = new System.Drawing.Size(148, 20);
 			this.tbPosY.TabIndex = 8;
@@ -395,7 +410,7 @@ namespace VPWStudio
 			// tbPosZ
 			// 
 			this.tbPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPosZ.Location = new System.Drawing.Point(68, 67);
+			this.tbPosZ.Location = new System.Drawing.Point(68, 49);
 			this.tbPosZ.Name = "tbPosZ";
 			this.tbPosZ.Size = new System.Drawing.Size(148, 20);
 			this.tbPosZ.TabIndex = 9;
@@ -404,7 +419,7 @@ namespace VPWStudio
 			// tbRotX
 			// 
 			this.tbRotX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotX.Location = new System.Drawing.Point(68, 98);
+			this.tbRotX.Location = new System.Drawing.Point(68, 72);
 			this.tbRotX.Name = "tbRotX";
 			this.tbRotX.Size = new System.Drawing.Size(148, 20);
 			this.tbRotX.TabIndex = 10;
@@ -414,7 +429,7 @@ namespace VPWStudio
 			// 
 			this.lblRotY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotY.AutoSize = true;
-			this.lblRotY.Location = new System.Drawing.Point(3, 133);
+			this.lblRotY.Location = new System.Drawing.Point(3, 97);
 			this.lblRotY.Name = "lblRotY";
 			this.lblRotY.Size = new System.Drawing.Size(59, 13);
 			this.lblRotY.TabIndex = 11;
@@ -424,7 +439,7 @@ namespace VPWStudio
 			// 
 			this.lblRotZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblRotZ.AutoSize = true;
-			this.lblRotZ.Location = new System.Drawing.Point(3, 167);
+			this.lblRotZ.Location = new System.Drawing.Point(3, 120);
 			this.lblRotZ.Name = "lblRotZ";
 			this.lblRotZ.Size = new System.Drawing.Size(59, 13);
 			this.lblRotZ.TabIndex = 12;
@@ -433,7 +448,7 @@ namespace VPWStudio
 			// tbRotY
 			// 
 			this.tbRotY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotY.Location = new System.Drawing.Point(68, 129);
+			this.tbRotY.Location = new System.Drawing.Point(68, 95);
 			this.tbRotY.Name = "tbRotY";
 			this.tbRotY.Size = new System.Drawing.Size(148, 20);
 			this.tbRotY.TabIndex = 13;
@@ -442,7 +457,7 @@ namespace VPWStudio
 			// tbRotZ
 			// 
 			this.tbRotZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRotZ.Location = new System.Drawing.Point(68, 163);
+			this.tbRotZ.Location = new System.Drawing.Point(68, 118);
 			this.tbRotZ.Name = "tbRotZ";
 			this.tbRotZ.Size = new System.Drawing.Size(148, 20);
 			this.tbRotZ.TabIndex = 14;
@@ -583,6 +598,63 @@ namespace VPWStudio
 			this.btnResetCamera.UseVisualStyleBackColor = true;
 			this.btnResetCamera.Click += new System.EventHandler(this.btnResetCamera_Click);
 			// 
+			// lblScaleX
+			// 
+			this.lblScaleX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblScaleX.AutoSize = true;
+			this.lblScaleX.Location = new System.Drawing.Point(3, 143);
+			this.lblScaleX.Name = "lblScaleX";
+			this.lblScaleX.Size = new System.Drawing.Size(59, 13);
+			this.lblScaleX.TabIndex = 15;
+			this.lblScaleX.Text = "X Scale";
+			// 
+			// lblScaleY
+			// 
+			this.lblScaleY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblScaleY.AutoSize = true;
+			this.lblScaleY.Location = new System.Drawing.Point(3, 166);
+			this.lblScaleY.Name = "lblScaleY";
+			this.lblScaleY.Size = new System.Drawing.Size(59, 13);
+			this.lblScaleY.TabIndex = 16;
+			this.lblScaleY.Text = "Y Scale";
+			// 
+			// lblScaleZ
+			// 
+			this.lblScaleZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblScaleZ.AutoSize = true;
+			this.lblScaleZ.Location = new System.Drawing.Point(3, 191);
+			this.lblScaleZ.Name = "lblScaleZ";
+			this.lblScaleZ.Size = new System.Drawing.Size(59, 13);
+			this.lblScaleZ.TabIndex = 17;
+			this.lblScaleZ.Text = "Z Scale";
+			// 
+			// tbScaleX
+			// 
+			this.tbScaleX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbScaleX.Location = new System.Drawing.Point(68, 141);
+			this.tbScaleX.Name = "tbScaleX";
+			this.tbScaleX.Size = new System.Drawing.Size(148, 20);
+			this.tbScaleX.TabIndex = 18;
+			this.tbScaleX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumeric_KeyPress);
+			// 
+			// tbScaleY
+			// 
+			this.tbScaleY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbScaleY.Location = new System.Drawing.Point(68, 164);
+			this.tbScaleY.Name = "tbScaleY";
+			this.tbScaleY.Size = new System.Drawing.Size(148, 20);
+			this.tbScaleY.TabIndex = 19;
+			this.tbScaleY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumeric_KeyPress);
+			// 
+			// tbScaleZ
+			// 
+			this.tbScaleZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbScaleZ.Location = new System.Drawing.Point(68, 188);
+			this.tbScaleZ.Name = "tbScaleZ";
+			this.tbScaleZ.Size = new System.Drawing.Size(148, 20);
+			this.tbScaleZ.TabIndex = 20;
+			this.tbScaleZ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumeric_KeyPress);
+			// 
 			// TestScene3D
 			// 
 			this.AcceptButton = this.btnUpdatePosRot;
@@ -667,5 +739,11 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbObjectName;
 		private System.Windows.Forms.ListView lvSceneItems;
 		private System.Windows.Forms.Button btnResetCamera;
+		private System.Windows.Forms.Label lblScaleZ;
+		private System.Windows.Forms.Label lblScaleX;
+		private System.Windows.Forms.Label lblScaleY;
+		private System.Windows.Forms.TextBox tbScaleX;
+		private System.Windows.Forms.TextBox tbScaleY;
+		private System.Windows.Forms.TextBox tbScaleZ;
 	}
 }
