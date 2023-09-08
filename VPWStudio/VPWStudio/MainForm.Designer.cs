@@ -93,10 +93,11 @@
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.paramUnpackTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.vpw64CostumeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.vpw64CostumeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tagTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -202,6 +203,7 @@
             this.soundsToolStripMenuItem,
             this.stablesToolStripMenuItem,
             this.storyModeToolStripMenuItem,
+            this.tagTeamsToolStripMenuItem,
             this.weaponsToolStripMenuItem,
             this.wrestlersToolStripMenuItem,
             this.toolStripSeparator3,
@@ -570,6 +572,12 @@
 			resources.ApplyResources(this.paramUnpackTestToolStripMenuItem, "paramUnpackTestToolStripMenuItem");
 			this.paramUnpackTestToolStripMenuItem.Click += new System.EventHandler(this.paramUnpackTestToolStripMenuItem_Click);
 			// 
+			// vpw64CostumeTestToolStripMenuItem
+			// 
+			this.vpw64CostumeTestToolStripMenuItem.Name = "vpw64CostumeTestToolStripMenuItem";
+			resources.ApplyResources(this.vpw64CostumeTestToolStripMenuItem, "vpw64CostumeTestToolStripMenuItem");
+			this.vpw64CostumeTestToolStripMenuItem.Click += new System.EventHandler(this.vpw64CostumeTestToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -597,11 +605,11 @@
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			// 
-			// vpw64CostumeTestToolStripMenuItem
+			// tagTeamsToolStripMenuItem
 			// 
-			this.vpw64CostumeTestToolStripMenuItem.Name = "vpw64CostumeTestToolStripMenuItem";
-			resources.ApplyResources(this.vpw64CostumeTestToolStripMenuItem, "vpw64CostumeTestToolStripMenuItem");
-			this.vpw64CostumeTestToolStripMenuItem.Click += new System.EventHandler(this.vpw64CostumeTestToolStripMenuItem_Click);
+			this.tagTeamsToolStripMenuItem.Name = "tagTeamsToolStripMenuItem";
+			resources.ApplyResources(this.tagTeamsToolStripMenuItem, "tagTeamsToolStripMenuItem");
+			this.tagTeamsToolStripMenuItem.Click += new System.EventHandler(this.tagTeamsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -697,6 +705,7 @@
 		private System.Windows.Forms.ToolStripMenuItem matchRulesetsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem openFileInHexViewerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw64CostumeTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem tagTeamsToolStripMenuItem;
 	}
 }
 
