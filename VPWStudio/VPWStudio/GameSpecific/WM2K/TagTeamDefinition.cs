@@ -4,7 +4,7 @@ using System.IO;
 namespace VPWStudio.GameSpecific.WM2K
 {
 	/// <summary>
-	/// WrestleMania 2000 Tag Team
+	/// WrestleMania 2000 Tag Team Definition
 	/// </summary>
 	public class TagTeamDefinition
 	{
@@ -65,9 +65,9 @@ namespace VPWStudio.GameSpecific.WM2K
 		public byte Wrestler2Entrance;
 
 		/// <summary>
-		/// Defines team name index (lower 4 bits) and ??? (upper 4 bits)
+		/// Defines team name index (lower 4 bits) and flags? (upper 4 bits)
 		/// </summary>
-		public byte TeamName;
+		public byte Flags_NameIndex;
 		#endregion
 
 		#region Constructors
@@ -87,7 +87,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			Unknown = 0;
 			Wrestler1Entrance = 0;
 			Wrestler2Entrance = 0;
-			TeamName = 0;
+			Flags_NameIndex = 0;
 		}
 
 		/// <summary>
@@ -118,7 +118,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			Unknown = br.ReadByte();
 			Wrestler1Entrance = br.ReadByte();
 			Wrestler2Entrance = br.ReadByte();
-			TeamName = br.ReadByte();
+			Flags_NameIndex = br.ReadByte();
 		}
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace VPWStudio.GameSpecific.WM2K
 			bw.Write(Unknown);
 			bw.Write(Wrestler1Entrance);
 			bw.Write(Wrestler2Entrance);
-			bw.Write(TeamName);
+			bw.Write(Flags_NameIndex);
 			return true;
 		}
 		#endregion
