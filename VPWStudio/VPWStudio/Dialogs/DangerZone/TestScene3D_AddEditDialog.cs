@@ -58,8 +58,22 @@ namespace VPWStudio
 			}
 			cbModelFileID.EndUpdate();
 
-			// default to CI4 (todo: don't assume this, and check based on passed in file IDs)
-			cbCiType.SelectedIndex = 0;
+			// check which CI type to use
+			if (pID == 0)
+			{
+				// force CI4
+				cbCiType.SelectedIndex = 0;
+			}
+			else if (Program.CurrentProject.ProjectFileTable.Entries[pID].FileType == FileTypes.Ci8Palette)
+			{
+				// force CI8
+				cbCiType.SelectedIndex = 1;
+			}
+			else
+			{
+				// assume CI4
+				cbCiType.SelectedIndex = 0;
+			}
 			UpdateComboBoxLists();
 
 			if (mID != 0 && tID != 0 && pID != 0)
@@ -84,39 +98,79 @@ namespace VPWStudio
 				cbModelFileID.SelectedIndex = 0;
 			}
 
-			// todo: CI8 support
-			if (tID != 0)
+			if (cbCiType.SelectedIndex == 0)
 			{
-				int idx = Ci4TexFileIDs.IndexOf(tID);
-				if (idx != -1)
+				// CI4
+				if (tID != 0)
 				{
-					cbTextureFileID.SelectedIndex = idx;
+					int idx = Ci4TexFileIDs.IndexOf(tID);
+					if (idx != -1)
+					{
+						cbTextureFileID.SelectedIndex = idx;
+					}
+					else
+					{
+						cbTextureFileID.SelectedIndex = 0;
+					}
 				}
 				else
 				{
 					cbTextureFileID.SelectedIndex = 0;
 				}
-			}
-			else
-			{
-				cbTextureFileID.SelectedIndex = 0;
-			}
 
-			if (pID != 0)
-			{
-				int idx = Ci4PalFileIDs.IndexOf(pID);
-				if (idx != -1)
+				if (pID != 0)
 				{
-					cbPaletteFileID.SelectedIndex = idx;
+					int idx = Ci4PalFileIDs.IndexOf(pID);
+					if (idx != -1)
+					{
+						cbPaletteFileID.SelectedIndex = idx;
+					}
+					else
+					{
+						cbPaletteFileID.SelectedIndex = 0;
+					}
 				}
 				else
 				{
 					cbPaletteFileID.SelectedIndex = 0;
 				}
 			}
-			else
+			else if (cbCiType.SelectedIndex == 1)
 			{
-				cbPaletteFileID.SelectedIndex = 0;
+				// CI8
+				if (tID != 0)
+				{
+					int idx = Ci8TexFileIDs.IndexOf(tID);
+					if (idx != -1)
+					{
+						cbTextureFileID.SelectedIndex = idx;
+					}
+					else
+					{
+						cbTextureFileID.SelectedIndex = 0;
+					}
+				}
+				else
+				{
+					cbTextureFileID.SelectedIndex = 0;
+				}
+
+				if (pID != 0)
+				{
+					int idx = Ci8PalFileIDs.IndexOf(pID);
+					if (idx != -1)
+					{
+						cbPaletteFileID.SelectedIndex = idx;
+					}
+					else
+					{
+						cbPaletteFileID.SelectedIndex = 0;
+					}
+				}
+				else
+				{
+					cbPaletteFileID.SelectedIndex = 0;
+				}
 			}
 		}
 
@@ -297,6 +351,9 @@ namespace VPWStudio
 				return;
 			}
 			UpdateComboBoxLists();
+			// reset selected index so people don't use blank values or something
+			cbPaletteFileID.SelectedIndex = 0;
+			cbTextureFileID.SelectedIndex = 0;
 		}
 	}
 }
