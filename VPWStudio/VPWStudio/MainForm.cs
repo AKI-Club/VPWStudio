@@ -132,6 +132,11 @@ namespace VPWStudio
 		/// WM2K Stable Editor
 		/// </summary>
 		public Editors.WM2K.StableDefs_WM2K StableDefs_WM2K = null;
+
+		/// <summary>
+		/// WM2K Tag Team Editor
+		/// </summary>
+		public Editors.WM2K.TagTeams_WM2K TagTeams_WM2K = null;
 		#endregion
 
 		#region VPW2
@@ -1476,6 +1481,29 @@ namespace VPWStudio
 					break;
 			}
 		}
+		/// <summary>
+		/// Tag Teams editor
+		/// </summary>
+		private void tagTeamsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.WM2K)
+			{
+				return;
+			}
+
+			if (TagTeams_WM2K == null || TagTeams_WM2K.IsDisposed)
+			{
+				TagTeams_WM2K = new Editors.WM2K.TagTeams_WM2K();
+			}
+			TagTeams_WM2K.MdiParent = this;
+			TagTeams_WM2K.Show();
+		}
+
 
 		/// <summary>
 		/// Titantron editor
@@ -2348,7 +2376,7 @@ namespace VPWStudio
 			UpdateBuildMenuItems();
 
 			// only handle special cases if a project is open
-			if (Program.CurrentProject != null)
+			if (projFileOpen)
 			{
 				VPWGames bg = Program.CurrentProject.Settings.BaseGame;
 
@@ -2374,6 +2402,11 @@ namespace VPWStudio
 				bool showTitantron = (bg == VPWGames.WM2K || bg == VPWGames.NoMercy);
 				titantronVideosToolStripMenuItem.Enabled = showTitantron;
 				titantronVideosToolStripMenuItem.Visible = showTitantron;
+
+				// tag team data has only been found in WM2K
+				bool showTagTeams = (bg == VPWGames.WM2K);
+				tagTeamsToolStripMenuItem.Enabled = showTagTeams;
+				tagTeamsToolStripMenuItem.Visible = showTagTeams;
 			}
 		}
 
@@ -2787,5 +2820,7 @@ namespace VPWStudio
 		}
 
 		#endregion
+
+		
 	}
 }

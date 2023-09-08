@@ -215,6 +215,12 @@
     <Compile Include="Editors\VPW64\DefaultCostume_VPW64.Designer.cs">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WM2K\TagTeams_WM2K.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WM2K\TagTeams_WM2K.Designer.cs">
+      <DependentUpon>TagTeams_WM2K.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WrestlerMain_Early.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -845,6 +851,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW64\DefaultCostume_VPW64.resx">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WM2K\TagTeams_WM2K.resx">
+      <DependentUpon>TagTeams_WM2K.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WrestlerMain_Early.resx">
       <DependentUpon>WrestlerMain_Early.cs</DependentUpon>

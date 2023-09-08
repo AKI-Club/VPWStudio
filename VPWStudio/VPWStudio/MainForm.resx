@@ -279,6 +279,12 @@
   <data name="storyModeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tagTeamsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="tagTeamsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ta&amp;g Teams</value>
+  </data>
   <data name="weaponsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -2146,6 +2152,12 @@
   <data name="&gt;&gt;paramUnpackTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;vpw64CostumeTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>vpw64CostumeTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;vpw64CostumeTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -2158,10 +2170,10 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vpw64CostumeTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>vpw64CostumeTestToolStripMenuItem</value>
+  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Name" xml:space="preserve">
+    <value>tagTeamsToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;vpw64CostumeTestToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
