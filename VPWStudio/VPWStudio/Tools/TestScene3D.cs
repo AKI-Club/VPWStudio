@@ -189,6 +189,9 @@ namespace VPWStudio
 			tbRotX.Text = String.Empty;
 			tbRotY.Text = String.Empty;
 			tbRotZ.Text = String.Empty;
+			tbScaleX.Text = String.Empty;
+			tbScaleY.Text = String.Empty;
+			tbScaleZ.Text = String.Empty;
 			tbModelFileID.Text = String.Empty;
 			tbPalFileID.Text = String.Empty;
 			tbTexFileID.Text = String.Empty;
@@ -618,7 +621,7 @@ namespace VPWStudio
 			}
 		}
 
-		#region Position/Rotation buttons
+		#region Position/Rotation/Scale buttons
 		private void btnUpdatePosRot_Click(object sender, EventArgs e)
 		{
 			if (lvSceneItems.SelectedItems.Count <= 0)
@@ -640,6 +643,12 @@ namespace VPWStudio
 				float.Parse(tbRotZ.Text)
 			);
 
+			SceneModels[objIndex].Scale = new Vector3(
+				float.Parse(tbScaleX.Text),
+				float.Parse(tbScaleY.Text),
+				float.Parse(tbScaleZ.Text)
+			);
+
 			glControl1.Invalidate();
 		}
 
@@ -659,6 +668,9 @@ namespace VPWStudio
 			tbRotX.Text = String.Format("{0}", SceneModels[objIndex].Rotation.X);
 			tbRotY.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Y);
 			tbRotZ.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Z);
+			tbScaleX.Text = String.Format("{0}", SceneModels[objIndex].Scale.X);
+			tbScaleY.Text = String.Format("{0}", SceneModels[objIndex].Scale.Y);
+			tbScaleZ.Text = String.Format("{0}", SceneModels[objIndex].Scale.Z);
 		}
 		#endregion
 
@@ -707,6 +719,9 @@ namespace VPWStudio
 			tbRotX.Text = String.Format("{0}", SceneModels[objIndex].Rotation.X);
 			tbRotY.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Y);
 			tbRotZ.Text = String.Format("{0}", SceneModels[objIndex].Rotation.Z);
+			tbScaleX.Text = String.Format("{0}", SceneModels[objIndex].Scale.X);
+			tbScaleY.Text = String.Format("{0}", SceneModels[objIndex].Scale.Y);
+			tbScaleZ.Text = String.Format("{0}", SceneModels[objIndex].Scale.Z);
 
 			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[objIndex].ModelFileID);
 			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[objIndex].TexFileID);
@@ -766,6 +781,9 @@ namespace VPWStudio
 			tbRotX.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.X);
 			tbRotY.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.Y);
 			tbRotZ.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Rotation.Z);
+			tbScaleX.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Scale.X);
+			tbScaleY.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Scale.Y);
+			tbScaleZ.Text = String.Format("{0}", SceneModels[sceneModelsIndex].Scale.Z);
 
 			tbModelFileID.Text = String.Format("{0:X4}", SceneModels[sceneModelsIndex].ModelFileID);
 			tbTexFileID.Text = String.Format("{0:X4}", SceneModels[sceneModelsIndex].TexFileID);
