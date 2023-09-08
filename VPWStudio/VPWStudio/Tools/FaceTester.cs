@@ -17,10 +17,11 @@ namespace VPWStudio
 
 		private static readonly int NUM_FACES_VPW2 = 110;
 
-		private UInt16 SkinColor = 0x1745;
-		private UInt16 Face = 0x17F0;
+		// todo: replace hardcoded file IDs with references to DefaultGameData stuff
+		private UInt16 SkinColor = 0x1745; // FirstFaceColorPalette
+		private UInt16 Face = 0x17F0; // FirstFaceTexture
 		private UInt16 HairColor = 0x17E5;
-		private UInt16 FrontHair = 0x185E;
+		private UInt16 FrontHair = 0x185E; // FirstFrontHairTexture
 		private UInt16 FacialHair = 0;
 		private UInt16 FacialHairColor = 0x17EE;
 		private UInt16 FacePaint = 0;
