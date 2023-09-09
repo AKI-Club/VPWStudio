@@ -266,17 +266,19 @@ namespace VPWStudio
 		public byte Flags;
 
 		/// <summary>
-		/// 
+		/// Primitive Type and more flags
 		/// </summary>
 		/// 76543210
 		/// |_||||||
-		///  | ||||+--
-		///  | |||+---
-		///  | ||+----
-		///  | |+-----
-		///  | +------
+		///  | ||||+-- "isLightCalculatedAtTexture"
+		///  | |||+--- "isTranslucent"
+		///  | ||+---- "isTextured"
+		///  | |+----- Number of sides (0=3 sides/triangle; 1=4 sides/quad)
+		///  | +------ Gouraud shading (0=disabled/flat; 1=enabled/gouraud)
 		///  +-------- Code/Type (001=polygon, 010=straight line, 011=sprite; all others undefined?)
 		public byte Mode;
+
+		// todo: rest of the data depends on primitive type
 	}
 
 	/// <summary>
