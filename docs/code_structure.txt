@@ -1,0 +1,232 @@
+VPW Studio Code Structure
+=========================
+"you mean there's an actual structure?" - freem
+
+Everything in this document assumes you're in the main code directory.
+
+================================================================================
+Controls/
+================================================================================
+Custom controls used by the program.
+
+CostumeColorControl
+-------------------
+A user control with a numeric up/down box and color swatch preview.
+Can be configured to work with various color sets.
+
+CostumeEditor_VPW2
+------------------
+A large panel that allows for editing VPW2 default wrestler costume data.
+This is necessary due to VPW2's default wrestler costume data having four
+costumes per wrestler.
+
+(No Mercy switches this to a per-slot default, essential for wrestlers
+like the TAKA/Funaki combo, among others.)
+
+OptionsControl_Emulator
+-----------------------
+A panel with two settings: path to emulator, and command line options for the
+emulator.
+
+================================================================================
+DataStructures/
+================================================================================
+Further split into three sections.
+
+DataStructures/AKI/
+-------------------
+Data structures found in AKI Corporation's wrestling games, but not directly
+tied to the concept of a wrestling game.
+
+DataStructures/N64/
+-------------------
+Data structures specific to Nintendo 64 games.
+
+DataStructures/PS1/
+-------------------
+Data structures specific to PlayStation 1 games.
+
+================================================================================
+Dialogs/
+================================================================================
+Various dialog boxes. These are different from Editors in some form.
+
+Dialogs/DangerZone
+------------------
+Dialogs for "Danger Zone" items.
+
+Dialogs/FileTable
+-----------------
+Dialogs for the FileTable editor.
+
+Dialogs/Program
+---------------
+Just has the About and Program Options dialogs for now.
+
+Dialogs/Project
+---------------
+Project-related dialogs.
+
+Dialogs/StableDef
+-----------------
+Stable Definition editor dialogs.
+
+================================================================================
+Editors/
+================================================================================
+Forms that allow people to edit various parts of the game.
+
+Editors/NoMercy
+---------------
+WWF No Mercy-specific editors.
+
+Editors/Revenge
+---------------
+WCW/nWo Revenge-specific editors.
+
+Editors/VPW2
+------------
+Virtual Pro-Wrestling 2-specific editors.
+
+Editors/VPW64
+-------------
+Virtual Pro-Wrestling 64-specific editors.
+
+Editors/WM2K
+------------
+WWF WrestleMania 2000-specific editors.
+
+Editors/WorldTour
+-----------------
+Currently empty; meant to house editors for WCW vs. nWo World Tour.
+
+In practice, a number of editors have the suffix "_Early". These are meant to
+handle both World Tour and VPW64, since both games have a lot in common.
+
+================================================================================
+FileTableDB/
+================================================================================
+Text files containing a database of File Table entries for each game.
+
+Unlike LocationFiles, these are largely shared between region and revision.
+However, there are exceptions.
+
+WWF WrestleMania 2000 NTSC-J adds some files to the FileTable for Japanese
+language support (some messages only). This requires a separate FileTableDB.
+
+The September 2000 pre-release of WWF No Mercy doesn't have every file that
+the final version has. This also requires a separate FileTableDB.
+
+================================================================================
+GameSpecific/
+================================================================================
+Game-specific data structures. Splitting this up is necessary due to data
+structure formats changing throughout the games.
+
+Most files are split up via sub-directories, but there are a few loose files
+that cover multiple games:
+
+-------------------------+--------------------------------+
+Filename (without .cs)   | Supported Games                |
+-------------------------+--------------------------------+
+BodyTypeDef_Early        | World Tour, VPW64, and Revenge |
+ChampionshipDef_Early    | World Tour and VPW64           |
+CostumeDef_Early         | World Tour and VPW64           |
+IntroSequence_Later      | Revenge and later              |
+MaskDef_Early            | World Tour, VPW64, and Revenge |
+StableDef_Early          | World Tour and VPW64           |
+TitantronFrame           | WM2K and No Mercy              |
+TitantronSequence        | WM2K and No Mercy              |
+WrestlerDefinition_Early | World Tour and VPW64           |
+-------------------------+--------------------------------+
+
+GameSpecific/NoMercy
+--------------------
+Data structures from WWF No Mercy.
+
+GameSpecific/Revenge
+--------------------
+Data structures from WCW/nWo Revenge.
+
+GameSpecific/VPW2
+-----------------
+Data structures from Virtual Pro-Wrestling 2.
+
+GameSpecific/VPW64
+------------------
+Data structures from Virtual Pro-Wrestling 64 that AREN'T the same as World Tour's.
+
+GameSpecific/WM2K
+-----------------
+Data structures from WWF WrestleMania 2000.
+
+GameSpecific/WorldTour
+----------------------
+Data structures from WCW vs. nWo World Tour that AREN'T the same as VPW64's.
+
+================================================================================
+Helpers/
+================================================================================
+Helper classes that don't particularly belong anywhere else.
+
+================================================================================
+LocationFiles/
+================================================================================
+Text files containing a list of ROM and RAM locations, as well as some default
+FileTable IDs for necessary information.
+
+Most files' names are based on the game/product code.
+
+For Nintendo 64 games, this is often in the format "Nppc";
+pp - two letter Product code
+c  - Country/Region code (see Manual for more information)
+
+If an N64 game has a revision/alternate release, the format changes to "Nppc-r".
+The "r" is replaced with a revision number.
+
+The September 2000 pre-release of WWF No Mercy uses a different filename.
+Going by product code would have resulted in an incorrect file being used.
+
+================================================================================
+Manual/
+================================================================================
+The program Manual (including game-specific information sections).
+
+It's included in the project so that it can be copied as a part of the build
+process. This makes releasing the program easier.
+
+================================================================================
+ProgStructures/
+================================================================================
+Program-specific data structures.
+
+ProgStructures/3D
+-----------------
+Anything related to 3D rendering.
+
+ProgStructures/Project
+----------------------
+Project-related stuff.
+
+ProgStructures/UiManagers
+-------------------------
+Manager classes that prevent multiple copies of the same file from being opened.
+
+================================================================================
+Resources/
+================================================================================
+Images, icons, and shaders used in the program.
+
+================================================================================
+Tools/
+================================================================================
+Holds some generic and testing ("Danger Zone") tools.
+
+Not to be confused with the "Tools" directory in each binary release.
+
+================================================================================
+WrestlerNames/
+================================================================================
+Currently unused folder for default wrestler names.
+Part of the issue stems from dealing with VPW64 and VPW2, which use Japanese text,
+as well as different text encodings.
