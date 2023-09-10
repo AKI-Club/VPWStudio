@@ -3837,7 +3837,10 @@
 0EFE=Ci4Palette;
 0EFF=Ci4Palette;
 0F4F=Ci4Palette;
+1043=Ci4Palette;(for 0ACD)
 1189=Ci4Palette;
+11AC=Ci4Palette;(for 0B58)
+11B9=Ci4Palette;(for 0B5C)
 1220=Ci4Palette;
 1221=Ci4Palette;
 1222=Ci4Palette;
@@ -3857,9 +3860,6 @@
 1230=Ci4Palette;
 1231=Ci4Palette;
 1232=Ci4Palette;
-1043=Ci4Palette;(for 0ACD)
-11AC=Ci4Palette;(for 0B58)
-11B9=Ci4Palette;(for 0B5C)
 12C0=Ci4Palette;
 12C1=Ci4Palette;
 12C2=Ci4Palette;
