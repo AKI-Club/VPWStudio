@@ -1023,6 +1023,7 @@ namespace VPWStudio
 
 				// WIP shite
 				case VPWGames.VPW2:
+					/*
 					if (CostumeDefs_VPW2 == null || CostumeDefs_VPW2.IsDisposed)
 					{
 						CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
@@ -1033,6 +1034,8 @@ namespace VPWStudio
 					}
 					CostumeDefs_VPW2.MdiParent = this;
 					CostumeDefs_VPW2.Show();
+					*/
+					Program.ErrorMessageBox("VPW2 costumes dialog is not complete");
 					break;
 
 				default:
