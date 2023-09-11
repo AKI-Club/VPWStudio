@@ -78,22 +78,39 @@ namespace VPWStudio
 			CurEntry.ReplaceEncoding = (FileTableReplaceEncoding)cbReplaceEncoding.SelectedIndex;
 
 			// Extra page
+
 			if (nudImageWidth.Value > 0)
 			{
 				CurEntry.ExtraData.ImageWidth = (int)nudImageWidth.Value;
 			}
+			else if (nudImageWidth.Value == -1)
+			{
+				CurEntry.ExtraData.ImageWidth = FileTableEntryExtraData.FTE_EXTRA_ENTRY_INVALID_DATA;
+			}
+
 			if (nudImageHeight.Value > 0)
 			{
 				CurEntry.ExtraData.ImageHeight = (int)nudImageHeight.Value;
 			}
+			else if (nudImageHeight.Value == -1)
+			{
+				CurEntry.ExtraData.ImageHeight = FileTableEntryExtraData.FTE_EXTRA_ENTRY_INVALID_DATA;
+			}
+
+			// todo: replace this entirely
 			if (nudTransparentIndex.Value >= 0)
 			{
 				CurEntry.ExtraData.TransparentColorIndex = (int)nudTransparentIndex.Value;
 			}
+
 			if (nudDefaultPaletteID.Value > 0)
 			{
 				CurEntry.ExtraData.IntendedPaletteFileID = (int)nudDefaultPaletteID.Value;
 			}
+			else if(nudDefaultPaletteID.Value == -1){
+				CurEntry.ExtraData.IntendedPaletteFileID = FileTableEntryExtraData.FTE_EXTRA_ENTRY_INVALID_DATA;
+			}
+
 			CurEntry.ExtraData.HorizMirror = cbHorizMirror.Checked;
 			CurEntry.ExtraData.VertMirror = cbVertMirror.Checked;
 

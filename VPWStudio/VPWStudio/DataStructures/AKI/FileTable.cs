@@ -21,7 +21,7 @@ namespace VPWStudio
 		/// <summary>
 		/// "Not used" value.
 		/// </summary>
-		private const int INVALID_DATA = -1;
+		public const int FTE_EXTRA_ENTRY_INVALID_DATA = -1;
 
 		#region Class Members
 		/// <summary>
@@ -60,10 +60,10 @@ namespace VPWStudio
 		/// </summary>
 		public FileTableEntryExtraData()
 		{
-			ImageWidth = INVALID_DATA;
-			ImageHeight = INVALID_DATA;
-			TransparentColorIndex = INVALID_DATA;
-			IntendedPaletteFileID = INVALID_DATA;
+			ImageWidth = FTE_EXTRA_ENTRY_INVALID_DATA;
+			ImageHeight = FTE_EXTRA_ENTRY_INVALID_DATA;
+			TransparentColorIndex = FTE_EXTRA_ENTRY_INVALID_DATA;
+			IntendedPaletteFileID = FTE_EXTRA_ENTRY_INVALID_DATA;
 			HorizMirror = false;
 			VertMirror = false;
 		}
@@ -74,7 +74,7 @@ namespace VPWStudio
 		/// <returns>True if any of the ExtraData values have been defined, false otherwise.</returns>
 		public bool HasData()
 		{
-			if (ImageWidth == INVALID_DATA && ImageHeight == INVALID_DATA && TransparentColorIndex == INVALID_DATA && IntendedPaletteFileID == INVALID_DATA && !HorizMirror && !VertMirror)
+			if (ImageWidth == FTE_EXTRA_ENTRY_INVALID_DATA && ImageHeight == FTE_EXTRA_ENTRY_INVALID_DATA && TransparentColorIndex == FTE_EXTRA_ENTRY_INVALID_DATA && IntendedPaletteFileID == FTE_EXTRA_ENTRY_INVALID_DATA && !HorizMirror && !VertMirror)
 			{
 				return false;
 			}
@@ -169,7 +169,7 @@ namespace VPWStudio
 		{
 			// Only bother writing data if it's not invalid.
 			// We don't need the project files ballooning in file size unnecessarily.
-			if (value != INVALID_DATA)
+			if (value != FTE_EXTRA_ENTRY_INVALID_DATA)
 			{
 				xw.WriteElementString(name, value.ToString());
 			}
@@ -206,21 +206,21 @@ namespace VPWStudio
 			}
 
 			StringBuilder sb = new StringBuilder();
-			if (ImageWidth != INVALID_DATA)
+			if (ImageWidth != FTE_EXTRA_ENTRY_INVALID_DATA)
 			{
 				sb.Append(String.Format("w:{0}",ImageWidth));
 			}
-			if (ImageHeight != INVALID_DATA)
+			if (ImageHeight != FTE_EXTRA_ENTRY_INVALID_DATA)
 			{
-				if (ImageWidth != INVALID_DATA)
+				if (ImageWidth != FTE_EXTRA_ENTRY_INVALID_DATA)
 				{
 					sb.Append(",");
 				}
 				sb.Append(String.Format("h:{0}", ImageHeight));
 			}
-			if (IntendedPaletteFileID != INVALID_DATA)
+			if (IntendedPaletteFileID != FTE_EXTRA_ENTRY_INVALID_DATA)
 			{
-				if (ImageWidth != INVALID_DATA || ImageHeight != INVALID_DATA)
+				if (ImageWidth != FTE_EXTRA_ENTRY_INVALID_DATA || ImageHeight != FTE_EXTRA_ENTRY_INVALID_DATA)
 				{
 					sb.Append(",");
 				}
@@ -228,7 +228,7 @@ namespace VPWStudio
 			}
 			if (HorizMirror)
 			{
-				if (ImageWidth != INVALID_DATA || ImageHeight != INVALID_DATA || IntendedPaletteFileID != INVALID_DATA)
+				if (ImageWidth != FTE_EXTRA_ENTRY_INVALID_DATA || ImageHeight != FTE_EXTRA_ENTRY_INVALID_DATA || IntendedPaletteFileID != FTE_EXTRA_ENTRY_INVALID_DATA)
 				{
 					sb.Append(",");
 				}
@@ -236,7 +236,7 @@ namespace VPWStudio
 			}
 			if (VertMirror)
 			{
-				if (HorizMirror || (ImageWidth != INVALID_DATA || ImageHeight != INVALID_DATA || IntendedPaletteFileID != INVALID_DATA))
+				if (HorizMirror || (ImageWidth != FTE_EXTRA_ENTRY_INVALID_DATA || ImageHeight != FTE_EXTRA_ENTRY_INVALID_DATA || IntendedPaletteFileID != FTE_EXTRA_ENTRY_INVALID_DATA))
 				{
 					sb.Append(",");
 				}
