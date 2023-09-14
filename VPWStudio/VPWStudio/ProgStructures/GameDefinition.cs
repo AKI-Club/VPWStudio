@@ -190,7 +190,6 @@ namespace VPWStudio
 		/// <summary>
 		/// Game version; 1.0 in most instances.
 		/// </summary>
-		/// todo: perhaps this should be a byte so it can be written in the mask rom version field.
 		public byte GameVersion;
 
 		/// <summary>
