@@ -777,7 +777,7 @@ namespace VPWStudio.Editors
 			}
 
 			// face is usually CI8, but not always.
-			// WCW/nWo Revenge CI4 entries: 60, 106
+			// (is this true for World Tour and VPW64? comment was about Revenge originally)
 			// xxx: hack; this needs to be determined in a better way.
 			MemoryStream facePalStream = new MemoryStream();
 			BinaryWriter facePalWriter = new BinaryWriter(facePalStream);
