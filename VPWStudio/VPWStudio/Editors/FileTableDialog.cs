@@ -1705,6 +1705,43 @@ namespace VPWStudio
 				CurrentSearchItemNumber = lvFileList.SelectedIndices[0] + 1;
 			}
 		}
+
+		/// <summary>
+		/// Calculate stats for current FileTableDB.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void fTDBInfoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// read relevant file from FileTableDB
+			FileTableDB ftdb;
+
+			string dbFilePath = Program.GetFileTableDBPath();
+			// make sure it exists
+			if (!File.Exists(dbFilePath))
+			{
+				// it doesn't
+				MessageBox.Show(
+					"Unable to find the requested FileTable Database in the 'FileTableDB' directory.",
+					SharedStrings.MainForm_Title,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+			}
+			else
+			{
+				ftdb = new FileTableDB(dbFilePath);
+				uint labeledCount = 0;
+				foreach (FileTableDBEntry entry in ftdb.Entries.Values)
+				{
+					if (!entry.Comment.Equals(String.Empty))
+					{
+						++labeledCount;
+					}
+				}
+				Program.InfoMessageBox(String.Format("{0} entries labeled",labeledCount));
+			}
+		}
 		#endregion
 
 		#region Export Menu Items

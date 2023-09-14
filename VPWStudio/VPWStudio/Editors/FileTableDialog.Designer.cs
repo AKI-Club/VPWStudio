@@ -63,9 +63,10 @@
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportFileTableDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelSelectedItems = new System.Windows.Forms.ToolStripStatusLabel();
-			this.exportFileTableDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.fTDBInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -309,7 +310,8 @@
 			// databaseToolStripMenuItem
 			// 
 			this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reloadFileTableDatabaseToolStripMenuItem});
+            this.reloadFileTableDatabaseToolStripMenuItem,
+            this.fTDBInfoToolStripMenuItem});
 			this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
 			this.databaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
 			this.databaseToolStripMenuItem.Text = "&Database";
@@ -345,6 +347,13 @@
 			this.exportCSVToolStripMenuItem.Text = "Export &CSV...";
 			this.exportCSVToolStripMenuItem.Click += new System.EventHandler(this.exportCSVToolStripMenuItem_Click);
 			// 
+			// exportFileTableDBToolStripMenuItem
+			// 
+			this.exportFileTableDBToolStripMenuItem.Name = "exportFileTableDBToolStripMenuItem";
+			this.exportFileTableDBToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+			this.exportFileTableDBToolStripMenuItem.Text = "Export &FileTableDB...";
+			this.exportFileTableDBToolStripMenuItem.Click += new System.EventHandler(this.exportFileTableDBToolStripMenuItem_Click);
+			// 
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -361,12 +370,12 @@
 			this.tssLabelSelectedItems.Size = new System.Drawing.Size(92, 17);
 			this.tssLabelSelectedItems.Text = "# items selected";
 			// 
-			// exportFileTableDBToolStripMenuItem
+			// fTDBInfoToolStripMenuItem
 			// 
-			this.exportFileTableDBToolStripMenuItem.Name = "exportFileTableDBToolStripMenuItem";
-			this.exportFileTableDBToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-			this.exportFileTableDBToolStripMenuItem.Text = "Export &FileTableDB...";
-			this.exportFileTableDBToolStripMenuItem.Click += new System.EventHandler(this.exportFileTableDBToolStripMenuItem_Click);
+			this.fTDBInfoToolStripMenuItem.Name = "fTDBInfoToolStripMenuItem";
+			this.fTDBInfoToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+			this.fTDBInfoToolStripMenuItem.Text = "FTDB Info...";
+			this.fTDBInfoToolStripMenuItem.Click += new System.EventHandler(this.fTDBInfoToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -430,5 +439,6 @@
 		private System.Windows.Forms.ToolStripMenuItem viewHexRomDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewHexReplacementFileDataToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportFileTableDBToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem fTDBInfoToolStripMenuItem;
 	}
 }
