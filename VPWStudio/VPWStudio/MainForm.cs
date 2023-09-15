@@ -1023,19 +1023,25 @@ namespace VPWStudio
 
 				// WIP shite
 				case VPWGames.VPW2:
-					/*
-					if (CostumeDefs_VPW2 == null || CostumeDefs_VPW2.IsDisposed)
+					// xxx: shift key is a hack so I can keep developing the form without needing to keep commenting and un-commenting it out
+					if (ModifierKeys.HasFlag(Keys.Shift))
 					{
-						CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
+						if (CostumeDefs_VPW2 == null || CostumeDefs_VPW2.IsDisposed)
+						{
+							CostumeDefs_VPW2 = new Editors.VPW2.CostumeDefs_VPW2();
+						}
+						if (CostumeDefs_VPW2.WindowState == FormWindowState.Minimized)
+						{
+							CostumeDefs_VPW2.WindowState = FormWindowState.Normal;
+						}
+						CostumeDefs_VPW2.MdiParent = this;
+						CostumeDefs_VPW2.Show();
 					}
-					if (CostumeDefs_VPW2.WindowState == FormWindowState.Minimized)
+					else
 					{
-						CostumeDefs_VPW2.WindowState = FormWindowState.Normal;
+						Program.ErrorMessageBox("VPW2 costumes dialog is not complete");
 					}
-					CostumeDefs_VPW2.MdiParent = this;
-					CostumeDefs_VPW2.Show();
-					*/
-					Program.ErrorMessageBox("VPW2 costumes dialog is not complete");
+					
 					break;
 
 				default:
