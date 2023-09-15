@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -98,6 +98,7 @@
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
     <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="DataStructures\N64\MusicSequence.cs" />
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
     <Compile Include="DataStructures\PS1\TmdFile.cs" />
