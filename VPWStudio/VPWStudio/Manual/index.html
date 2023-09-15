@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.30 (September 9th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.30 (September 15th, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -22,12 +22,12 @@
 <li><a href="#Warning">Warning</a></li>
 <li><a href="#Intro">Introduction</a></li>
 <li><a href="#Requirements">Requirements and Notes</a></li>
+<li><a href="#HackingWorkflow">Hacking Workflow</a>
 <li><a href="#MainInterface">Main Interface</a></li>
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
 <li><a href="#WhichGameToHack">Which Game To Hack?</a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
-<li><a href="#HackingWorkflow">Hacking Workflow</a>
 <li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
 <ol>
 <li><a href="#TextureSources">Texture Sources</a></li>
@@ -406,6 +406,40 @@ responsible for anyone's project being "leaked" via bug reports.</p>
 not exactly a program bug. It's merely a reminder that the program is incomplete.
 There is no need to report these items on the Issues page, unless there is no
 "incomplete" message given when using them.</p>
+
+<hr />
+<h2><a name="HackingWorkflow">Hacking Workflow</a></h2>
+<p>VPW Studio's usage conventions are largely dictated by external factors.
+Some of it is caused by VPW Studio being incomplete, while others are dictated
+by the game's internals.</p>
+
+<p>If you are planning to make changes to elements that are not editable in
+VPW Studio, it is <strong>very important</strong> to understand the order of
+events when "Build ROM" is called:</p>
+
+<ol>
+<li><strong>Base ROM</strong> &ndash; The Base ROM is the original ROM that will
+be edited by VPW Studio. If you want your ROM changes to appear in the built/output
+ROM, you <strong>MUST</strong> make the changes in the Base ROM. Any changes made to
+the built/output ROM will disappear once you (re-)build the project in VPW Studio.<br />
+You do not have to worry about the internal checksums of the Base ROM, as they are
+re-calculated at the end of the build process.</li>
+<li><strong>Non-Filetable Changes</strong> &ndash; Anything that appears before
+the Filetable and its contents gets changed first. This includes Wrestlers, Stables,
+Costumes, and so on.</li>
+<li><strong>Filetable Changes</strong> &ndash; Anything that involves the game's
+internal Filetable (which contains a lot of things you'll want to edit) happens
+next.</li>
+<li><strong>Fix-ups</strong> &ndash; Changing the Filetable will cause the data
+<em>after</em> the Filetable to be in unexpected positions. The fix-up phase does
+what you would expect from its name: fix up any values that reference them.</li>
+<li><strong>Checksums</strong> &ndash; N64 games have two internal checksums
+that need to be validated. This step is where the proper checksum values are
+calculated and placed in the built/output ROM.</li>
+</ol>
+
+<p>The main takeaway from this section: <strong>If you're going to make changes
+that VPW Studio can't do</strong> (yet)<strong>, make them in the Base ROM.</strong></p>
 
 <hr />
 <h2><a name="MainInterface">Main Interface</a></h2>
@@ -962,40 +996,6 @@ the "I4" format has been found in AKI's games.</p>
 <p>VPW Studio provides no support for converting images to <code>I4Texture</code>.
 The current recommended workflow is to use Texture64 to save the I4 format texture
 and import that data via the File Table.</p>
-
-<hr />
-<h2><a name="HackingWorkflow">Hacking Workflow</a></h2>
-<p>VPW Studio's usage conventions are largely dictated by external factors.
-Some of it is caused by VPW Studio being incomplete, while others are dictated
-by the game's internals.</p>
-
-<p>If you are planning to make changes to elements that are not editable in
-VPW Studio, it is <strong>very important</strong> to understand the order of
-events when "Build ROM" is called:</p>
-
-<ol>
-<li><strong>Base ROM</strong> &ndash; The Base ROM is the original ROM that will
-be edited by VPW Studio. If you want your ROM changes to appear in the built/output
-ROM, you <strong>MUST</strong> make the changes in the Base ROM. Any changes made to
-the built/output ROM will disappear once you (re-)build the project in VPW Studio.<br />
-You do not have to worry about the internal checksums of the Base ROM, as they are
-re-calculated at the end of the build process.</li>
-<li><strong>Non-Filetable Changes</strong> &ndash; Anything that appears before
-the Filetable and its contents gets changed first. This includes Wrestlers, Stables,
-Costumes, and so on.</li>
-<li><strong>Filetable Changes</strong> &ndash; Anything that involves the game's
-internal Filetable (which contains a lot of things you'll want to edit) happens
-next.</li>
-<li><strong>Fix-ups</strong> &ndash; Changing the Filetable will cause the data
-<em>after</em> the Filetable to be in unexpected positions. The fix-up phase does
-what you would expect from its name: fix up any values that reference them.</li>
-<li><strong>Checksums</strong> &ndash; N64 games have two internal checksums
-that need to be validated. This step is where the proper checksum values are
-calculated and placed in the built/output ROM.</li>
-</ol>
-
-<p>The main takeaway from this section: <strong>If you're going to make changes
-that VPW Studio can't do</strong> (yet)<strong>, make them in the Base ROM.</strong></p>
 
 <hr />
 <h2><a name="TextureWorkflow">Texture and Palette Workflow</a></h2>
