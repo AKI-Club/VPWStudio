@@ -331,7 +331,6 @@ namespace VPWStudio.Controls
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		/// <param name="ro">Set read-only mode. (optional; false by default)</param>
 		public CostumeColorControl()
 		{
 			InitializeComponent();
@@ -346,6 +345,7 @@ namespace VPWStudio.Controls
 		public void SetColorNum(int color)
 		{
 			nudColor.Value = color;
+			UpdateColor();
 		}
 
 		public int GetColorNum()
@@ -372,7 +372,6 @@ namespace VPWStudio.Controls
 					break;
 
 				case ColorMode.Modern:
-				default:
 					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
 					ColorToolTip.SetToolTip(panelColorPreview, ModernColorNames[(int)nudColor.Value]);
 					break;
