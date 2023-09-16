@@ -19,11 +19,6 @@ namespace VPWStudio.Editors.VPW64
 		/// </summary>
 		public List<DefaultCostumeData> AllCostumes = new List<DefaultCostumeData>();
 
-		/// <summary>
-		/// Used to create the output box string.
-		/// </summary>
-		protected StringBuilder InfoBuilder = new StringBuilder();
-
 		public DefaultCostume_VPW64()
 		{
 			InitializeComponent();
@@ -65,48 +60,28 @@ namespace VPWStudio.Editors.VPW64
 
 		public void UpdateOutput()
 		{
-			tbCostumeOutput.Clear();
-			InfoBuilder.Clear();
-
-			InfoBuilder.AppendLine(String.Format("Information for Costume Set 0x{0:X2}",cbCostumes.SelectedIndex));
 			DefaultCostumeData cs = AllCostumes[cbCostumes.SelectedIndex];
 
-			for (int c = 0; c < cs.Costumes.Length; c++)
-			{
-				InfoBuilder.AppendLine();
-
-				InfoBuilder.AppendLine(String.Format("Costume #{0}",c));
-				InfoBuilder.AppendLine(String.Format("Head: 0x{0:X2}", cs.Costumes[c].Head));
-				InfoBuilder.AppendLine(String.Format("Costume: 0x{0:X2}", cs.Costumes[c].Costume));
-				InfoBuilder.AppendLine(String.Format("Color byte 1: 0x{0:X2}; Color 1 = {1}", cs.Costumes[c].Color1, cs.Costumes[c].GetColor(0)));
-				InfoBuilder.AppendLine(String.Format("Color byte 2: 0x{0:X2}; Color 2 = {1}, Color 3 = {2}", cs.Costumes[c].Color2, cs.Costumes[c].GetColor(1), cs.Costumes[c].GetColor(2)));
-			}
-
-			if (cs.Unknown1 != 0)
-			{
-				InfoBuilder.AppendLine();
-				InfoBuilder.AppendLine(String.Format("Unknown value 1: 0x{0:X4}", cs.Unknown1));
-				InfoBuilder.AppendLine("Extra Data bytes:");
-				for (int i = 0; i < cs.ExtraData.Length; i++)
-				{
-					InfoBuilder.Append(String.Format("0x{0:X2} ", cs.ExtraData[i]));
-				}
-			}
-
-			tbCostumeOutput.Text = InfoBuilder.ToString();
-
+			tbCos1Head.Text = String.Format("0x{0:X2}", cs.Costumes[0].Head);
+			tbCos1Costume.Text = String.Format("0x{0:X2}", cs.Costumes[0].Costume);
 			cccCos1Color1.SetColorNum(cs.Costumes[0].GetColor(0));
 			cccCos1Color2.SetColorNum(cs.Costumes[0].GetColor(1));
 			cccCos1Color3.SetColorNum(cs.Costumes[0].GetColor(2));
 
+			tbCos2Head.Text = String.Format("0x{0:X2}", cs.Costumes[1].Head);
+			tbCos2Costume.Text = String.Format("0x{0:X2}", cs.Costumes[1].Costume);
 			cccCos2Color1.SetColorNum(cs.Costumes[1].GetColor(0));
 			cccCos2Color2.SetColorNum(cs.Costumes[1].GetColor(1));
 			cccCos2Color3.SetColorNum(cs.Costumes[1].GetColor(2));
 
+			tbCos3Head.Text = String.Format("0x{0:X2}", cs.Costumes[2].Head);
+			tbCos3Costume.Text = String.Format("0x{0:X2}", cs.Costumes[2].Costume);
 			cccCos3Color1.SetColorNum(cs.Costumes[2].GetColor(0));
 			cccCos3Color2.SetColorNum(cs.Costumes[2].GetColor(1));
 			cccCos3Color3.SetColorNum(cs.Costumes[2].GetColor(2));
 
+			tbCos4Head.Text = String.Format("0x{0:X2}", cs.Costumes[3].Head);
+			tbCos4Costume.Text = String.Format("0x{0:X2}", cs.Costumes[3].Costume);
 			cccCos4Color1.SetColorNum(cs.Costumes[3].GetColor(0));
 			cccCos4Color2.SetColorNum(cs.Costumes[3].GetColor(1));
 			cccCos4Color3.SetColorNum(cs.Costumes[3].GetColor(2));
