@@ -95,9 +95,21 @@ namespace VPWStudio.Editors.VPW64
 
 			tbCostumeOutput.Text = InfoBuilder.ToString();
 
-			cccColor1.SetColorNum(cs.Costumes[0].GetColor(0));
-			cccColor2.SetColorNum(cs.Costumes[0].GetColor(1));
-			cccColor3.SetColorNum(cs.Costumes[0].GetColor(2));
+			cccCos1Color1.SetColorNum(cs.Costumes[0].GetColor(0));
+			cccCos1Color2.SetColorNum(cs.Costumes[0].GetColor(1));
+			cccCos1Color3.SetColorNum(cs.Costumes[0].GetColor(2));
+
+			cccCos2Color1.SetColorNum(cs.Costumes[1].GetColor(0));
+			cccCos2Color2.SetColorNum(cs.Costumes[1].GetColor(1));
+			cccCos2Color3.SetColorNum(cs.Costumes[1].GetColor(2));
+
+			cccCos3Color1.SetColorNum(cs.Costumes[2].GetColor(0));
+			cccCos3Color2.SetColorNum(cs.Costumes[2].GetColor(1));
+			cccCos3Color3.SetColorNum(cs.Costumes[2].GetColor(2));
+
+			cccCos4Color1.SetColorNum(cs.Costumes[3].GetColor(0));
+			cccCos4Color2.SetColorNum(cs.Costumes[3].GetColor(1));
+			cccCos4Color3.SetColorNum(cs.Costumes[3].GetColor(2));
 		}
 
 		private void cbCostumes_SelectedIndexChanged(object sender, EventArgs e)
