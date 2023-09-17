@@ -19,14 +19,12 @@ namespace VPWStudio
 			{ VPWGames.VPW2, 110 }
 		};
 
-		private static readonly int NUM_FACES_VPW2 = 110;
-
 		private UInt16 SkinColor = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType];
 		private UInt16 Face = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFaceTexture"][Program.CurrentProject.Settings.GameType];
 		private UInt16 FrontHair = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFrontHairTexture"][Program.CurrentProject.Settings.GameType];
+		private UInt16 HairColor = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFrontHairPalette"][Program.CurrentProject.Settings.GameType];
 
 		// todo: replace hardcoded file IDs with references to DefaultGameData stuff
-		private UInt16 HairColor = 0x17E5;
 		private UInt16 FacialHair = 0;
 		private UInt16 FacialHairColor = 0x17EE;
 		private UInt16 FacePaint = 0;
@@ -55,11 +53,14 @@ namespace VPWStudio
 			// game-specific changes
 			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
 			{
-				// remove last skin color from dropdown if VPW2 (it technically exists but is unused)
-				cbSkinColor.Items.RemoveAt(cbSkinColor.Items.Count);
+				// remove last skin color from dropdown (it technically exists but is unused)
+				cbSkinColor.Items.RemoveAt(cbSkinColor.Items.Count-1);
 			}
 			else if (Program.CurrentProject.Settings.BaseGame == VPWGames.WM2K)
 			{
+				// remove last hair color from dropdown
+				cbHairColor.Items.RemoveAt(cbHairColor.Items.Count-1);
+
 				// disable Paint box
 				cbPaint.Enabled = false;
 			}
@@ -99,9 +100,9 @@ namespace VPWStudio
 				}
 				else
 				{
-					// fallback to hardcoded data (todo: NOT VPW2's!)
-					romStream.Seek(0x469B8, SeekOrigin.Begin);
-					DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NUM_FACES_VPW2);
+					// fallback to hardcoded data
+					romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["DefaultFace_FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
+					DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NumFaces[Program.CurrentProject.Settings.BaseGame]);
 				}
 
 				LocationFileEntry perFacePaintAccessoryDisplacementEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["DefaultFace_PaintAccessories_VertDisplacement"]);
@@ -112,9 +113,9 @@ namespace VPWStudio
 				}
 				else
 				{
-					// fallback to hardcoded data (todo: NOT VPW2's!)
-					romStream.Seek(0x46A28, SeekOrigin.Begin);
-					DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NUM_FACES_VPW2);
+					// fallback to hardcoded data
+					romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["DefaultFace_PaintAccessories_VertDisplacement"].Offset, SeekOrigin.Begin);
+					DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NumFaces[Program.CurrentProject.Settings.BaseGame]);
 				}
 
 				// facial hair displacement
@@ -126,8 +127,8 @@ namespace VPWStudio
 				}
 				else
 				{
-					// fallback to hardcoded data (todo: NOT VPW2's!)
-					romStream.Seek(0x46C58, SeekOrigin.Begin);
+					// fallback to hardcoded data
+					romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
 					Displacement_FacialHair = romReader.ReadBytes(32);
 				}
 
@@ -140,8 +141,8 @@ namespace VPWStudio
 				}
 				else
 				{
-					// fallback to hardcoded data (todo: NOT VPW2's!)
-					romStream.Seek(0x46CD8, SeekOrigin.Begin);
+					// fallback to hardcoded data
+					romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FacePaint_VertDisplacement"].Offset, SeekOrigin.Begin);
 					Displacement_Paint = romReader.ReadBytes(32);
 				}
 
@@ -192,13 +193,13 @@ namespace VPWStudio
 				Program.InfoMessageBox("Location data not found; using hardcoded offsets and lengths instead.");
 				// fallback to hardcoded data (todo: NOT VPW2's!)
 
-				romStream.Seek(0x469B8, SeekOrigin.Begin);
-				DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NUM_FACES_VPW2);
+				romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["DefaultFace_FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
+				DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NumFaces[Program.CurrentProject.Settings.BaseGame]);
 
-				romStream.Seek(0x46A28, SeekOrigin.Begin);
-				DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NUM_FACES_VPW2);
+				romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["DefaultFace_PaintAccessories_VertDisplacement"].Offset, SeekOrigin.Begin);
+				DefaultFaceDisplacement_PaintAccessories = romReader.ReadBytes(NumFaces[Program.CurrentProject.Settings.BaseGame]);
 
-				romStream.Seek(0x46C58, SeekOrigin.Begin);
+				romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
 				Displacement_FacialHair = romReader.ReadBytes(32);
 
 				romStream.Seek(0x46CD8, SeekOrigin.Begin);
@@ -227,19 +228,29 @@ namespace VPWStudio
 
 			SkinColor = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType] + cbSkinColor.SelectedIndex);
 
-			// xxx: VPW2 only!
-			switch (SkinColor)
+			if (cbSkinColor.SelectedIndex < 2)
 			{
-				case 0x1745:
-				case 0x1746:
-					// Skin Colors 0,1
+				// Skin Colors 0,1
+				if (Program.CurrentProject.Settings.BaseGame == VPWGames.WM2K)
+				{
+					FacialHairColor = 0x112D;
+				}
+				else if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+				{
 					FacialHairColor = 0x17EE;
-					break;
-				case 0x1747:
-				case 0x1748:
-					// Skin Colors 2,3
+				}
+			}
+			else
+			{
+				// Skin Colors 2,3
+				if (Program.CurrentProject.Settings.BaseGame == VPWGames.WM2K)
+				{
+					FacialHairColor = 0x112C;
+				}
+				else if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+				{
 					FacialHairColor = 0x17ED;
-					break;
+				}
 			}
 
 			UpdatePreview();
@@ -269,23 +280,25 @@ namespace VPWStudio
 			}
 
 			// depends on skin color
-			// todo: don't hardcode VPW2 values
-			switch (SkinColor)
+			// xxx: seems like VPW2 and WM2K have different offsets w/r/t skin color-based hair colors
+			switch (cbSkinColor.SelectedIndex)
 			{
-				case 0x1745:
+				case 0:
 					// Skin Color 0
-					HairColor = (UInt16)(0x17E5 + cbHairColor.SelectedIndex);
+					HairColor = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFrontHairPalette"][Program.CurrentProject.Settings.GameType] + cbHairColor.SelectedIndex);
 					break;
-				case 0x1746:
+
+				case 1:
 					// Skin Color 1
-					HairColor = (UInt16)(0x17DD + cbHairColor.SelectedIndex);
+					HairColor = (UInt16)((DefaultGameData.DefaultFileTableIDs["FirstFrontHairPalette"][Program.CurrentProject.Settings.GameType] - cbHairColor.Items.Count) + cbHairColor.SelectedIndex);
 					break;
-				case 0x1747:
-				case 0x1748:
-					// Skin Colors 2,3
-					HairColor = (UInt16)(0x17D5 + cbHairColor.SelectedIndex);
+
+				default:
+					// Skin Colors 2,3 (and in WM2K, 4?)
+					HairColor = (UInt16)((DefaultGameData.DefaultFileTableIDs["FirstFrontHairPalette"][Program.CurrentProject.Settings.GameType] - (cbHairColor.Items.Count*2)) + cbHairColor.SelectedIndex);
 					break;
 			}
+
 			UpdatePreview();
 		}
 
@@ -357,7 +370,6 @@ namespace VPWStudio
 			}
 			else
 			{
-				// todo: don't hardcode VPW2 values
 				Accessory = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceAccessoryTexture"][Program.CurrentProject.Settings.GameType] + (cbAccessory.SelectedIndex - 1));
 			}
 			UpdatePreview();
@@ -484,10 +496,10 @@ namespace VPWStudio
 			if(Accessory != 0)
 			{
 				Ci8Palette AccessoryPal = new Ci8Palette();
-				// accessory palette 17EF (XXX: VPW2!!)
+				// accessory palette
 				MemoryStream apalStream = new MemoryStream();
 				BinaryWriter apalWriter = new BinaryWriter(apalStream);
-				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, apalWriter, 0x17EF);
+				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, apalWriter, DefaultGameData.DefaultFileTableIDs["FaceAccessoryPalette"][Program.CurrentProject.Settings.GameType]);
 				apalStream.Seek(0, SeekOrigin.Begin);
 				BinaryReader br = new BinaryReader(apalStream);
 				AccessoryPal.ReadData(br);
@@ -534,10 +546,9 @@ namespace VPWStudio
 			// front hair
 			if (FrontHair != 0)
 			{
-				// vpw2 specific stuff
-				// hack: file ID 0x186D is CI8 for some dumb reason
-				if (FrontHair == 0x186D)
+				if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2 && FrontHair == 0x186D)
 				{
+					// hack: file ID 0x186D is CI8 for some dumb reason
 					// CI8 hair palette at file ID 0x192A
 					Ci8Palette FrontHairPal = new Ci8Palette();
 					MemoryStream fhpalStream = new MemoryStream();
