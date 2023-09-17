@@ -56,6 +56,7 @@
 			this.soundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.storyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tagTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.wrestlersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -97,7 +98,6 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.tagTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -310,6 +310,12 @@
 			this.storyModeToolStripMenuItem.Name = "storyModeToolStripMenuItem";
 			resources.ApplyResources(this.storyModeToolStripMenuItem, "storyModeToolStripMenuItem");
 			this.storyModeToolStripMenuItem.Click += new System.EventHandler(this.storyModeToolStripMenuItem_Click);
+			// 
+			// tagTeamsToolStripMenuItem
+			// 
+			this.tagTeamsToolStripMenuItem.Name = "tagTeamsToolStripMenuItem";
+			resources.ApplyResources(this.tagTeamsToolStripMenuItem, "tagTeamsToolStripMenuItem");
+			this.tagTeamsToolStripMenuItem.Click += new System.EventHandler(this.tagTeamsToolStripMenuItem_Click);
 			// 
 			// weaponsToolStripMenuItem
 			// 
@@ -604,12 +610,6 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
-			// 
-			// tagTeamsToolStripMenuItem
-			// 
-			this.tagTeamsToolStripMenuItem.Name = "tagTeamsToolStripMenuItem";
-			resources.ApplyResources(this.tagTeamsToolStripMenuItem, "tagTeamsToolStripMenuItem");
-			this.tagTeamsToolStripMenuItem.Click += new System.EventHandler(this.tagTeamsToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 

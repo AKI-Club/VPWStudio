@@ -448,7 +448,7 @@
     <value>308, 22</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>vpw2 &amp;face test</value>
+    <value>vpw2/wm2k &amp;face test</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>308, 22</value>
@@ -1930,6 +1930,12 @@
   <data name="&gt;&gt;storyModeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Name" xml:space="preserve">
+    <value>tagTeamsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;weaponsToolStripMenuItem.Name" xml:space="preserve">
     <value>weaponsToolStripMenuItem</value>
   </data>
@@ -2169,12 +2175,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Name" xml:space="preserve">
-    <value>tagTeamsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;tagTeamsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
