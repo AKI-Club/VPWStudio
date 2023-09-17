@@ -1069,6 +1069,17 @@ namespace VPWStudio
 			},
 
 			{
+				"FirstFrontHairPalette",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x1125 },
+					{ SpecificGame.WM2K_PAL, 0x1125 },
+
+					{ SpecificGame.VPW2_NTSC_J, 0x17E5 },
+				}
+			},
+
+			{
 				"FirstFrontHairTexture",
 				new Dictionary<SpecificGame, int>()
 				{
@@ -1128,6 +1139,17 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_PAL_10, 0x264F },
 					{ SpecificGame.NoMercy_PAL_11, 0x264F },
 					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+				}
+			},
+
+			{
+				"FaceAccessoryPalette",
+				new Dictionary<SpecificGame, int>()
+				{
+					{ SpecificGame.WM2K_NTSC_U, 0x112E },
+					{ SpecificGame.WM2K_PAL, 0x112E },
+
+					{ SpecificGame.VPW2_NTSC_J, 0x17EF },
 				}
 			},
 			#endregion
