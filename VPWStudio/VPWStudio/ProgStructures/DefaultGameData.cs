@@ -767,7 +767,8 @@ namespace VPWStudio
 				new Dictionary<SpecificGame, int>()
 				{
 					// World Tour: no Costume Edit mode, so no file.
-					// VPW64: Not sure if this is in the filetable; could be hardcoded
+
+					{ SpecificGame.VPW64_NTSC_J, 0x0BCC },
 
 					#region WCW/nWo Revenge
 					{SpecificGame.Revenge_NTSC_U, 0x0A51 },
@@ -786,7 +787,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x10F5 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x10F5 },
 					{ SpecificGame.NoMercy_PAL_10, 0x10F5 },
-					{ SpecificGame.NoMercy_PAL_11, 0x10F5 }
+					{ SpecificGame.NoMercy_PAL_11, 0x10F5 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x10E2 }
 					#endregion
 				}
 			},
@@ -822,6 +824,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x2DD9 },
 					{ SpecificGame.NoMercy_PAL_10, 0x2DD9 },
 					{ SpecificGame.NoMercy_PAL_11, 0x2DD9 }
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 					#endregion
 				}
 			},
@@ -853,6 +856,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x3322 },
 					{ SpecificGame.NoMercy_PAL_10, 0x3322 },
 					{ SpecificGame.NoMercy_PAL_11, 0x3322 }
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 					#endregion
 				}
 			},
@@ -887,7 +891,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x02BF },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x02BF },
 					{ SpecificGame.NoMercy_PAL_10, 0x02BF },
-					{ SpecificGame.NoMercy_PAL_11, 0x02BF }
+					{ SpecificGame.NoMercy_PAL_11, 0x02BF },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x02BF },
 					#endregion
 				}
 			},
@@ -908,7 +913,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x01EF },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x01EF },
 					{ SpecificGame.NoMercy_PAL_10, 0x01EF },
-					{ SpecificGame.NoMercy_PAL_11, 0x01EF }
+					{ SpecificGame.NoMercy_PAL_11, 0x01EF },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x01EF },
 					#endregion
 				}
 			},
@@ -921,7 +927,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 1 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 1 },
 					{ SpecificGame.NoMercy_PAL_10, 1 },
-					{ SpecificGame.NoMercy_PAL_11, 1 }
+					{ SpecificGame.NoMercy_PAL_11, 1 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 1 },
 				}
 			},
 
@@ -933,7 +940,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 2 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
 					{ SpecificGame.NoMercy_PAL_10, 2 },
-					{ SpecificGame.NoMercy_PAL_11, 2 }
+					{ SpecificGame.NoMercy_PAL_11, 2 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 2 },
 				}
 			},
 
@@ -968,6 +976,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x4477 },
 					{ SpecificGame.NoMercy_PAL_10, 0x4477 },
 					{ SpecificGame.NoMercy_PAL_11, 0x4477 }
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 					#endregion
 				}
 			},
@@ -1002,6 +1011,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x4478 },
 					{ SpecificGame.NoMercy_PAL_10, 0x4478 },
 					{ SpecificGame.NoMercy_PAL_11, 0x4478 }
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 					#endregion
 				}
 			},
@@ -1034,6 +1044,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D72 },
 					{ SpecificGame.NoMercy_PAL_10, 0x1D72 },
 					{ SpecificGame.NoMercy_PAL_11, 0x1D72 },
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 				}
 			},
 
@@ -1053,6 +1064,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D73 },
 					{ SpecificGame.NoMercy_PAL_10, 0x1D73 },
 					{ SpecificGame.NoMercy_PAL_11, 0x1D73 },
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 				}
 			},
 
@@ -1069,6 +1081,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1F09 },
 					{ SpecificGame.NoMercy_PAL_10, 0x1F09 },
 					{ SpecificGame.NoMercy_PAL_11, 0x1F09 },
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 				}
 			},
 
@@ -1086,6 +1099,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1F6F },
 					{ SpecificGame.NoMercy_PAL_10, 0x1F6F },
 					{ SpecificGame.NoMercy_PAL_11, 0x1F6F },
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 				}
 			},
 
@@ -1113,24 +1127,10 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x264F },
 					{ SpecificGame.NoMercy_PAL_10, 0x264F },
 					{ SpecificGame.NoMercy_PAL_11, 0x264F },
+					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 				}
 			},
 			#endregion
-
-			{
-				"DefaultWrestlerNames",
-				new Dictionary<SpecificGame, int>()
-				{
-					// only exists in VPW2 and No Mercy
-
-					{ SpecificGame.VPW2_NTSC_J, 0x006C },
-
-					{ SpecificGame.NoMercy_NTSC_U_10, 2 },
-					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
-					{ SpecificGame.NoMercy_PAL_10, 2 },
-					{ SpecificGame.NoMercy_PAL_11, 2 }
-				}
-			},
 		};
 		#endregion
 	}
