@@ -252,6 +252,15 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3A6F8, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3AD38, 1050) },
 
+					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x44C08, 52) },
+					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x44C3C, 52) },
+					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x44E40, 32) },
+					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x44E88, 32) },
+					{ "FacePaint_Type", new DefaultLocationDataEntry(0x44EA8, 32) },
+
+					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x73FDC, 7920) },
+					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x75ECC, 96) },
+
 					{ "TagTeamDefs", new DefaultLocationDataEntry(0x67794, 396) },
 
 					// filetable-related
@@ -1036,6 +1045,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x1112 },
 					{ SpecificGame.WM2K_PAL, 0x1112 },
+					{ SpecificGame.WM2K_NTSC_J, 0x114C },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x1745 },
 
@@ -1055,6 +1065,7 @@ namespace VPWStudio
 					// linear with shared palettes
 					{ SpecificGame.WM2K_NTSC_U, 0x114F },
 					{ SpecificGame.WM2K_PAL, 0x114F },
+					{ SpecificGame.WM2K_NTSC_J, 0x1189 },
 
 					// linear with shared palettes
 					{ SpecificGame.VPW2_NTSC_J, 0x17F0 },
@@ -1074,6 +1085,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x1125 },
 					{ SpecificGame.WM2K_PAL, 0x1125 },
+					{ SpecificGame.WM2K_NTSC_J, 0x115F },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x17E5 },
 				}
@@ -1085,6 +1097,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x1182 },
 					{ SpecificGame.WM2K_PAL, 0x1182 },
+					{ SpecificGame.WM2K_NTSC_J, 0x11BC },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x185E },
 
@@ -1102,6 +1115,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x11B5 },
 					{ SpecificGame.WM2K_PAL, 0x11B5 },
+					{ SpecificGame.WM2K_NTSC_J, 0x11EF },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x18CC },
 
@@ -1131,6 +1145,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x11D4 },
 					{ SpecificGame.WM2K_PAL, 0x11D4 },
+					{ SpecificGame.WM2K_NTSC_J, 0x120E },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x190A },
 
@@ -1148,6 +1163,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x112E },
 					{ SpecificGame.WM2K_PAL, 0x112E },
+					{ SpecificGame.WM2K_NTSC_J, 0x1168 },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x17EF },
 				}
