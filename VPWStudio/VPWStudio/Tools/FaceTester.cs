@@ -17,11 +17,12 @@ namespace VPWStudio
 
 		private static readonly int NUM_FACES_VPW2 = 110;
 
+		private UInt16 SkinColor = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType];
+		private UInt16 Face = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFaceTexture"][Program.CurrentProject.Settings.GameType];
+		private UInt16 FrontHair = (UInt16)DefaultGameData.DefaultFileTableIDs["FirstFrontHairTexture"][Program.CurrentProject.Settings.GameType];
+
 		// todo: replace hardcoded file IDs with references to DefaultGameData stuff
-		private UInt16 SkinColor = 0x1745; // FirstFaceColorPalette
-		private UInt16 Face = 0x17F0; // FirstFaceTexture
 		private UInt16 HairColor = 0x17E5;
-		private UInt16 FrontHair = 0x185E; // FirstFrontHairTexture
 		private UInt16 FacialHair = 0;
 		private UInt16 FacialHairColor = 0x17EE;
 		private UInt16 FacePaint = 0;
@@ -204,6 +205,8 @@ namespace VPWStudio
 			{
 				return;
 			}
+
+			// todo: don't hardcode VPW2 values
 			SkinColor = (UInt16)(0x1745 + cbSkinColor.SelectedIndex);
 
 			switch (SkinColor)
@@ -229,6 +232,8 @@ namespace VPWStudio
 			{
 				return;
 			}
+
+			// todo: don't hardcode VPW2 values
 			Face = (UInt16)(0x17F0 + cbFace.SelectedIndex);
 
 			// update base displacement values
@@ -246,6 +251,7 @@ namespace VPWStudio
 			}
 
 			// depends on skin color
+			// todo: don't hardcode VPW2 values
 			switch (SkinColor)
 			{
 				case 0x1745:
@@ -278,6 +284,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				// todo: don't hardcode VPW2 values
 				FrontHair = (UInt16)(0x185E + cbFrontHair.SelectedIndex - 1);
 			}
 			UpdatePreview();
@@ -296,6 +303,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				// todo: don't hardcode VPW2 values
 				FacialHair = (UInt16)(0x18CC + (cbFacialHair.SelectedIndex - 1));
 			}
 			UpdatePreview();
@@ -314,6 +322,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				// todo: don't hardcode VPW2 values
 				FacePaint = (UInt16)(0x18EB + (cbPaint.SelectedIndex - 1));
 			}
 			UpdatePreview();
@@ -332,6 +341,7 @@ namespace VPWStudio
 			}
 			else
 			{
+				// todo: don't hardcode VPW2 values
 				Accessory = (UInt16)(0x190A + (cbAccessory.SelectedIndex - 1));
 			}
 			UpdatePreview();
