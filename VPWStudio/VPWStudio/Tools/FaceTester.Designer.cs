@@ -157,7 +157,8 @@
             "0",
             "1",
             "2",
-            "3"});
+            "3",
+            "4"});
 			this.cbSkinColor.Location = new System.Drawing.Point(117, 3);
 			this.cbSkinColor.Name = "cbSkinColor";
 			this.cbSkinColor.Size = new System.Drawing.Size(260, 21);
@@ -463,7 +464,7 @@
 			this.Name = "FaceTester";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "VPW2 Face Tester";
+			this.Text = "WM2K/VPW2 Face Tester";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FaceTester_KeyDown);
 			this.gbPreview.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbFacePreview)).EndInit();

@@ -2651,13 +2651,13 @@ namespace VPWStudio
 		{
 			if (Program.CurrentProject == null)
 			{
-				Program.ErrorMessageBox("Requires an open VPW2 project file.");
+				Program.ErrorMessageBox("Requires an open project file.");
 				return;
 			}
 
-			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2)
+			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW2 && Program.CurrentProject.Settings.BaseGame != VPWGames.WM2K)
 			{
-				Program.ErrorMessageBox("This works with VPW2 only!! (because freem's lazy)");
+				Program.ErrorMessageBox("This works with VPW2 and WM2K only!! (because freem's lazy)");
 				return;
 			}
 

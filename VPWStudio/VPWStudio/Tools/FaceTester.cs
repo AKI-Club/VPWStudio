@@ -13,7 +13,11 @@ namespace VPWStudio
 	// xxx: this is very hardcoded and VPW2-specific.
 	public partial class FaceTester : Form
 	{
-		// NUM_FACES_WM2K = 51; // 0-50
+		private static readonly Dictionary<VPWGames, int> NumFaces = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WM2K, 51 }, // 0-50
+			{ VPWGames.VPW2, 110 }
+		};
 
 		private static readonly int NUM_FACES_VPW2 = 110;
 
@@ -30,8 +34,8 @@ namespace VPWStudio
 
 		private Bitmap FacePreview = new Bitmap(32,64);
 
-		private byte[] DefaultFaceDisplacement_FacialHair = new byte[NUM_FACES_VPW2];
-		private byte[] DefaultFaceDisplacement_PaintAccessories = new byte[NUM_FACES_VPW2];
+		private byte[] DefaultFaceDisplacement_FacialHair;
+		private byte[] DefaultFaceDisplacement_PaintAccessories;
 
 		private byte[] Displacement_FacialHair = new byte[32];
 		private byte[] Displacement_Paint = new byte[32];
@@ -42,13 +46,28 @@ namespace VPWStudio
 
 		public FaceTester()
 		{
+			DefaultFaceDisplacement_FacialHair = new byte[NumFaces[Program.CurrentProject.Settings.BaseGame]];
+			DefaultFaceDisplacement_PaintAccessories = new byte[NumFaces[Program.CurrentProject.Settings.BaseGame]];
+
 			InitializeComponent();
 			InitDisplacementTables();
+
+			// game-specific changes
+			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW2)
+			{
+				// remove last skin color from dropdown if VPW2 (it technically exists but is unused)
+				cbSkinColor.Items.RemoveAt(cbSkinColor.Items.Count);
+			}
+			else if (Program.CurrentProject.Settings.BaseGame == VPWGames.WM2K)
+			{
+				// disable Paint box
+				cbPaint.Enabled = false;
+			}
 
 			cbFace.BeginUpdate();
 			cbFrontHair.BeginUpdate();
 			cbFrontHair.Items.Add("None");
-			for (int i = 0; i < NUM_FACES_VPW2; i++)
+			for (int i = 0; i < NumFaces[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				cbFace.Items.Add(String.Format("{0:D3}", i+1));
 				cbFrontHair.Items.Add(String.Format("{0:D3}", i+1));
@@ -206,9 +225,9 @@ namespace VPWStudio
 				return;
 			}
 
-			// todo: don't hardcode VPW2 values
-			SkinColor = (UInt16)(0x1745 + cbSkinColor.SelectedIndex);
+			SkinColor = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType] + cbSkinColor.SelectedIndex);
 
+			// xxx: VPW2 only!
 			switch (SkinColor)
 			{
 				case 0x1745:
@@ -233,8 +252,7 @@ namespace VPWStudio
 				return;
 			}
 
-			// todo: don't hardcode VPW2 values
-			Face = (UInt16)(0x17F0 + cbFace.SelectedIndex);
+			Face = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceTexture"][Program.CurrentProject.Settings.GameType] + cbFace.SelectedIndex);
 
 			// update base displacement values
 			//DefaultDisplacement_FacialHair
@@ -284,8 +302,7 @@ namespace VPWStudio
 			}
 			else
 			{
-				// todo: don't hardcode VPW2 values
-				FrontHair = (UInt16)(0x185E + cbFrontHair.SelectedIndex - 1);
+				FrontHair = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFrontHairTexture"][Program.CurrentProject.Settings.GameType] + cbFrontHair.SelectedIndex - 1);
 			}
 			UpdatePreview();
 		}
@@ -303,8 +320,7 @@ namespace VPWStudio
 			}
 			else
 			{
-				// todo: don't hardcode VPW2 values
-				FacialHair = (UInt16)(0x18CC + (cbFacialHair.SelectedIndex - 1));
+				FacialHair = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFacialHairTexture"][Program.CurrentProject.Settings.GameType] + (cbFacialHair.SelectedIndex - 1));
 			}
 			UpdatePreview();
 		}
@@ -322,7 +338,7 @@ namespace VPWStudio
 			}
 			else
 			{
-				// todo: don't hardcode VPW2 values
+				// todo: this is vpw2 only
 				FacePaint = (UInt16)(0x18EB + (cbPaint.SelectedIndex - 1));
 			}
 			UpdatePreview();
@@ -342,7 +358,7 @@ namespace VPWStudio
 			else
 			{
 				// todo: don't hardcode VPW2 values
-				Accessory = (UInt16)(0x190A + (cbAccessory.SelectedIndex - 1));
+				Accessory = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceAccessoryTexture"][Program.CurrentProject.Settings.GameType] + (cbAccessory.SelectedIndex - 1));
 			}
 			UpdatePreview();
 		}
@@ -417,7 +433,7 @@ namespace VPWStudio
 			if (FacePaint != 0)
 			{
 				Ci8Palette FacePaintPal = new Ci8Palette();
-				// facepaint palette 1767
+				// facepaint palette 1767 (XXX: VPW2!!)
 				MemoryStream fpalStream = new MemoryStream();
 				BinaryWriter fpalWriter = new BinaryWriter(fpalStream);
 				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, fpalWriter, 0x1767);
@@ -468,7 +484,7 @@ namespace VPWStudio
 			if(Accessory != 0)
 			{
 				Ci8Palette AccessoryPal = new Ci8Palette();
-				// accessory palette 17EF
+				// accessory palette 17EF (XXX: VPW2!!)
 				MemoryStream apalStream = new MemoryStream();
 				BinaryWriter apalWriter = new BinaryWriter(apalStream);
 				Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, apalWriter, 0x17EF);
@@ -518,6 +534,7 @@ namespace VPWStudio
 			// front hair
 			if (FrontHair != 0)
 			{
+				// vpw2 specific stuff
 				// hack: file ID 0x186D is CI8 for some dumb reason
 				if (FrontHair == 0x186D)
 				{
