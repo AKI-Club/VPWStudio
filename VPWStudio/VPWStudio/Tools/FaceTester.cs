@@ -229,7 +229,7 @@ namespace VPWStudio
 
 			SkinColor = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType] + cbSkinColor.SelectedIndex);
 
-			// todo: replace hardcoded file IDs
+			// todo: replace hardcoded file IDs, since WM2K NTSC-J throws a wrench into things
 			if (cbSkinColor.SelectedIndex < 2)
 			{
 				// Skin Colors 0,1
