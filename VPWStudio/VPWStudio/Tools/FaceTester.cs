@@ -10,7 +10,8 @@ using System.Windows.Forms;
 
 namespace VPWStudio
 {
-	// xxx: this is very hardcoded and VPW2-specific.
+	// This was originally designed for VPW2, so beware of hardcoded values and assumptions.
+	// WM2K support is an ongoing process; No Mercy probably needs a separate dialog.
 	public partial class FaceTester : Form
 	{
 		private static readonly Dictionary<VPWGames, int> NumFaces = new Dictionary<VPWGames, int>()
@@ -218,7 +219,7 @@ namespace VPWStudio
 			romReader.Close();
 		}
 
-		#region Changing Items!
+		#region Changing Items
 		private void cbSkinColor_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbSkinColor.SelectedIndex < 0)
@@ -228,6 +229,7 @@ namespace VPWStudio
 
 			SkinColor = (UInt16)(DefaultGameData.DefaultFileTableIDs["FirstFaceColorPalette"][Program.CurrentProject.Settings.GameType] + cbSkinColor.SelectedIndex);
 
+			// todo: replace hardcoded file IDs
 			if (cbSkinColor.SelectedIndex < 2)
 			{
 				// Skin Colors 0,1
