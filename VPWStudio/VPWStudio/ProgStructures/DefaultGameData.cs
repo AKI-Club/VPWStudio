@@ -52,6 +52,7 @@ namespace VPWStudio
 		/// This primarily exists so the program can still be useful without the LocationFiles directory.
 		public static Dictionary<SpecificGame, DefaultLocationData> DefaultLocations = new Dictionary<SpecificGame, DefaultLocationData>()
 		{
+			#region WCW vs. nWo - World Tour
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -124,6 +125,8 @@ namespace VPWStudio
 					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x33818, 4) },
 				})
 			},
+			#endregion
+
 			{
 				SpecificGame.VPW64_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -160,6 +163,8 @@ namespace VPWStudio
 					{ "RelocatableCodeAddress4", new DefaultLocationDataEntry(0x3FAE8, 4) },
 				})
 			},
+
+			#region WCW/nWo Revenge
 			{
 				SpecificGame.Revenge_NTSC_U,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -204,6 +209,9 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0xCDFCE2, 30632) },
 				})
 			},
+			#endregion
+
+			#region WWF WrestleMania 2000
 			{
 				SpecificGame.WM2K_NTSC_U,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -300,6 +308,8 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0x11778DE, 41248) },
 				})
 			},
+			#endregion
+
 			{
 				SpecificGame.VPW2_NTSC_J,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -345,6 +355,8 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0x1310F40, 52364) },
 				})
 			},
+
+			#region WWF No Mercy
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
@@ -468,6 +480,7 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0x16C0DB2, 77774) },
 				})
 			}
+			#endregion
 		};
 
 		/// <summary>
@@ -932,6 +945,8 @@ namespace VPWStudio
 				"WrestlerDefaultCostumeData",
 				new Dictionary<SpecificGame, int>()
 				{
+					// pre-VPW2 games store default costume data in ROM
+
 					{ SpecificGame.VPW2_NTSC_J, 0x006B },
 					{ SpecificGame.NoMercy_NTSC_U_10, 1 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 1 },
@@ -945,6 +960,8 @@ namespace VPWStudio
 				"DefaultNameData",
 				new Dictionary<SpecificGame, int>()
 				{
+					// pre-VPW2 games store wrestler names in ROM
+
 					{ SpecificGame.VPW2_NTSC_J, 0x006C },
 					{ SpecificGame.NoMercy_NTSC_U_10, 2 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
@@ -984,8 +1001,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x4477 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x4477 },
 					{ SpecificGame.NoMercy_PAL_10, 0x4477 },
-					{ SpecificGame.NoMercy_PAL_11, 0x4477 }
-					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+					{ SpecificGame.NoMercy_PAL_11, 0x4477 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x4464 },
 					#endregion
 				}
 			},
@@ -1019,8 +1036,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x4478 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x4478 },
 					{ SpecificGame.NoMercy_PAL_10, 0x4478 },
-					{ SpecificGame.NoMercy_PAL_11, 0x4478 }
-					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+					{ SpecificGame.NoMercy_PAL_11, 0x4478 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x4465 },
 					#endregion
 				}
 			},
@@ -1034,6 +1051,7 @@ namespace VPWStudio
 				{
 					{ SpecificGame.WM2K_NTSC_U, 0x10DE },
 					{ SpecificGame.WM2K_PAL, 0x10DE },
+					{ SpecificGame.WM2K_NTSC_J, 0x1118 },
 
 					{ SpecificGame.VPW2_NTSC_J, 0x173D },
 				}
