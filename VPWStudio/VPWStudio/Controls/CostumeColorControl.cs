@@ -371,11 +371,6 @@ namespace VPWStudio.Controls
 					ColorToolTip.SetToolTip(panelColorPreview, RevengeColorNames[(int)nudColor.Value]);
 					break;
 
-				case ColorMode.Modern:
-					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
-					ColorToolTip.SetToolTip(panelColorPreview, ModernColorNames[(int)nudColor.Value]);
-					break;
-
 				case ColorMode.Hair_WM2K:
 					panelColorPreview.BackColor = HairColors_WM2K[(int)nudColor.Value];
 					ColorToolTip.SetToolTip(panelColorPreview, HairColorNames_Old[(int)nudColor.Value]);
@@ -389,6 +384,12 @@ namespace VPWStudio.Controls
 				case ColorMode.Hair_NoMercy:
 					panelColorPreview.BackColor = HairColors_NoMercy[(int)nudColor.Value];
 					ColorToolTip.SetToolTip(panelColorPreview, HairColorNames_NoMercy[(int)nudColor.Value]);
+					break;
+
+				case ColorMode.Modern:
+				default:
+					panelColorPreview.BackColor = ModernColors[(int)nudColor.Value];
+					ColorToolTip.SetToolTip(panelColorPreview, ModernColorNames[(int)nudColor.Value]);
 					break;
 			}
 		}

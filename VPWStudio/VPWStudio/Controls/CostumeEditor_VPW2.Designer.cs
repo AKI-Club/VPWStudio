@@ -36,9 +36,13 @@
 			this.tlpBoots = new System.Windows.Forms.TableLayoutPanel();
 			this.nudBoots = new System.Windows.Forms.NumericUpDown();
 			this.tlpBootsColor = new System.Windows.Forms.TableLayoutPanel();
+			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.tlpRightElbowPad = new System.Windows.Forms.TableLayoutPanel();
+			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.nudRightElbowPad = new System.Windows.Forms.NumericUpDown();
 			this.tlpLeftElbowPad = new System.Windows.Forms.TableLayoutPanel();
+			this.cccLeftElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.nudLeftElbowPad = new System.Windows.Forms.NumericUpDown();
 			this.labelLeftElbowPad = new System.Windows.Forms.Label();
 			this.labelWristband = new System.Windows.Forms.Label();
@@ -47,15 +51,21 @@
 			this.tlpGloves = new System.Windows.Forms.TableLayoutPanel();
 			this.nudGloves = new System.Windows.Forms.NumericUpDown();
 			this.tlpGlovesColors = new System.Windows.Forms.TableLayoutPanel();
+			this.cccGlovesColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccGlovesColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.labelGloves = new System.Windows.Forms.Label();
 			this.nudEntranceWeapon = new System.Windows.Forms.NumericUpDown();
 			this.tlpEntranceAttire = new System.Windows.Forms.TableLayoutPanel();
 			this.nudEntranceAttire = new System.Windows.Forms.NumericUpDown();
 			this.tlpEntranceAttireColors = new System.Windows.Forms.TableLayoutPanel();
+			this.cccEntranceAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccEntranceAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.labelEntranceAttire = new System.Windows.Forms.Label();
 			this.tlpUpperAttire = new System.Windows.Forms.TableLayoutPanel();
 			this.nudUpperAttire = new System.Windows.Forms.NumericUpDown();
 			this.tlpUpperAttireColors = new System.Windows.Forms.TableLayoutPanel();
+			this.cccUpperAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccUpperAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.labelUpperAttire = new System.Windows.Forms.Label();
 			this.labelBodyType = new System.Windows.Forms.Label();
 			this.labelSkinColor = new System.Windows.Forms.Label();
@@ -65,15 +75,20 @@
 			this.tlpRingAttire = new System.Windows.Forms.TableLayoutPanel();
 			this.nudRingAttire = new System.Windows.Forms.NumericUpDown();
 			this.tlpRingAttireColors = new System.Windows.Forms.TableLayoutPanel();
+			this.cccRingAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccRingAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.labelEntranceWeapon = new System.Windows.Forms.Label();
 			this.tlpWristband = new System.Windows.Forms.TableLayoutPanel();
+			this.cccWristbandColor = new VPWStudio.Controls.CostumeColorControl();
 			this.nudWristband = new System.Windows.Forms.NumericUpDown();
 			this.labelRightElbowPad = new System.Windows.Forms.Label();
 			this.labelLeftKneePad = new System.Windows.Forms.Label();
 			this.tlpLeftKneePad = new System.Windows.Forms.TableLayoutPanel();
+			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.nudLeftKneePad = new System.Windows.Forms.NumericUpDown();
 			this.labelRightKneePad = new System.Windows.Forms.Label();
 			this.tlpRightKneePad = new System.Windows.Forms.TableLayoutPanel();
+			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
 			this.nudRightKneePad = new System.Windows.Forms.NumericUpDown();
 			this.labelBoots = new System.Windows.Forms.Label();
 			this.labelUsingMask = new System.Windows.Forms.Label();
@@ -101,31 +116,16 @@
 			this.labelMaskColors = new System.Windows.Forms.Label();
 			this.tlpMaskColors = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.cccMaskColor3 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccMaskColor4 = new VPWStudio.Controls.CostumeColorControl();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.cccMaskColor1 = new VPWStudio.Controls.CostumeColorControl();
+			this.cccMaskColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.labelMaskHairType = new System.Windows.Forms.Label();
 			this.nudMaskHairType = new System.Windows.Forms.NumericUpDown();
 			this.labelMaskAccessory1 = new System.Windows.Forms.Label();
 			this.nudMaskAccessory1 = new System.Windows.Forms.NumericUpDown();
 			this.nudMaskAccessory2 = new System.Windows.Forms.NumericUpDown();
-			this.cccBootsColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccBootsColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRightElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccLeftElbowPadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccGlovesColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccGlovesColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccEntranceAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccEntranceAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccUpperAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccUpperAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRingAttireColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRingAttireColor2 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccWristbandColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccLeftKneePadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccRightKneePadColor = new VPWStudio.Controls.CostumeColorControl();
-			this.cccMaskColor3 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccMaskColor4 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccMaskColor1 = new VPWStudio.Controls.CostumeColorControl();
-			this.cccMaskColor2 = new VPWStudio.Controls.CostumeColorControl();
 			this.cccHairColor = new VPWStudio.Controls.CostumeColorControl();
 			this.tlpCostumeParts.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudUnknown1)).BeginInit();
@@ -280,7 +280,7 @@
 			this.tlpCostumeParts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.tlpCostumeParts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.tlpCostumeParts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-			this.tlpCostumeParts.Size = new System.Drawing.Size(254, 1274);
+			this.tlpCostumeParts.Size = new System.Drawing.Size(250, 1274);
 			this.tlpCostumeParts.TabIndex = 0;
 			// 
 			// labelMaskAccessory2
@@ -289,7 +289,7 @@
 			this.labelMaskAccessory2.AutoSize = true;
 			this.labelMaskAccessory2.Location = new System.Drawing.Point(4, 1245);
 			this.labelMaskAccessory2.Name = "labelMaskAccessory2";
-			this.labelMaskAccessory2.Size = new System.Drawing.Size(81, 26);
+			this.labelMaskAccessory2.Size = new System.Drawing.Size(80, 26);
 			this.labelMaskAccessory2.TabIndex = 78;
 			this.labelMaskAccessory2.Text = "Mask Accessory 2";
 			// 
@@ -297,14 +297,14 @@
 			// 
 			this.nudUnknown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudUnknown1.Hexadecimal = true;
-			this.nudUnknown1.Location = new System.Drawing.Point(92, 789);
+			this.nudUnknown1.Location = new System.Drawing.Point(91, 789);
 			this.nudUnknown1.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
 			this.nudUnknown1.Name = "nudUnknown1";
-			this.nudUnknown1.Size = new System.Drawing.Size(158, 20);
+			this.nudUnknown1.Size = new System.Drawing.Size(155, 20);
 			this.nudUnknown1.TabIndex = 48;
 			// 
 			// labelUnknown1
@@ -313,7 +313,7 @@
 			this.labelUnknown1.AutoSize = true;
 			this.labelUnknown1.Location = new System.Drawing.Point(4, 792);
 			this.labelUnknown1.Name = "labelUnknown1";
-			this.labelUnknown1.Size = new System.Drawing.Size(81, 13);
+			this.labelUnknown1.Size = new System.Drawing.Size(80, 13);
 			this.labelUnknown1.TabIndex = 47;
 			this.labelUnknown1.Text = "Unknown 1";
 			// 
@@ -323,7 +323,7 @@
 			this.labelHeadShape.AutoSize = true;
 			this.labelHeadShape.Location = new System.Drawing.Point(4, 763);
 			this.labelHeadShape.Name = "labelHeadShape";
-			this.labelHeadShape.Size = new System.Drawing.Size(81, 13);
+			this.labelHeadShape.Size = new System.Drawing.Size(80, 13);
 			this.labelHeadShape.TabIndex = 45;
 			this.labelHeadShape.Text = "Head Shape";
 			// 
@@ -334,12 +334,12 @@
 			this.tlpBoots.Controls.Add(this.nudBoots, 0, 0);
 			this.tlpBoots.Controls.Add(this.tlpBootsColor, 0, 1);
 			this.tlpBoots.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpBoots.Location = new System.Drawing.Point(92, 649);
+			this.tlpBoots.Location = new System.Drawing.Point(91, 649);
 			this.tlpBoots.Name = "tlpBoots";
 			this.tlpBoots.RowCount = 2;
 			this.tlpBoots.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpBoots.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpBoots.Size = new System.Drawing.Size(158, 74);
+			this.tlpBoots.Size = new System.Drawing.Size(155, 74);
 			this.tlpBoots.TabIndex = 30;
 			// 
 			// nudBoots
@@ -348,7 +348,7 @@
 			this.nudBoots.Hexadecimal = true;
 			this.nudBoots.Location = new System.Drawing.Point(3, 8);
 			this.nudBoots.Name = "nudBoots";
-			this.nudBoots.Size = new System.Drawing.Size(152, 20);
+			this.nudBoots.Size = new System.Drawing.Size(149, 20);
 			this.nudBoots.TabIndex = 40;
 			// 
 			// tlpBootsColor
@@ -363,8 +363,24 @@
 			this.tlpBootsColor.Name = "tlpBootsColor";
 			this.tlpBootsColor.RowCount = 1;
 			this.tlpBootsColor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpBootsColor.Size = new System.Drawing.Size(152, 31);
+			this.tlpBootsColor.Size = new System.Drawing.Size(149, 31);
 			this.tlpBootsColor.TabIndex = 6;
+			// 
+			// cccBootsColor1
+			// 
+			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor1.Location = new System.Drawing.Point(3, 4);
+			this.cccBootsColor1.Name = "cccBootsColor1";
+			this.cccBootsColor1.Size = new System.Drawing.Size(68, 23);
+			this.cccBootsColor1.TabIndex = 41;
+			// 
+			// cccBootsColor2
+			// 
+			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccBootsColor2.Location = new System.Drawing.Point(77, 4);
+			this.cccBootsColor2.Name = "cccBootsColor2";
+			this.cccBootsColor2.Size = new System.Drawing.Size(69, 23);
+			this.cccBootsColor2.TabIndex = 42;
 			// 
 			// tlpRightElbowPad
 			// 
@@ -374,12 +390,20 @@
 			this.tlpRightElbowPad.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpRightElbowPad.Controls.Add(this.cccRightElbowPadColor, 0, 0);
 			this.tlpRightElbowPad.Controls.Add(this.nudRightElbowPad, 0, 0);
-			this.tlpRightElbowPad.Location = new System.Drawing.Point(92, 526);
+			this.tlpRightElbowPad.Location = new System.Drawing.Point(91, 526);
 			this.tlpRightElbowPad.Name = "tlpRightElbowPad";
 			this.tlpRightElbowPad.RowCount = 1;
 			this.tlpRightElbowPad.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpRightElbowPad.Size = new System.Drawing.Size(158, 33);
+			this.tlpRightElbowPad.Size = new System.Drawing.Size(155, 33);
 			this.tlpRightElbowPad.TabIndex = 22;
+			// 
+			// cccRightElbowPadColor
+			// 
+			this.cccRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightElbowPadColor.Location = new System.Drawing.Point(80, 5);
+			this.cccRightElbowPadColor.Name = "cccRightElbowPadColor";
+			this.cccRightElbowPadColor.Size = new System.Drawing.Size(72, 23);
+			this.cccRightElbowPadColor.TabIndex = 32;
 			// 
 			// nudRightElbowPad
 			// 
@@ -392,7 +416,7 @@
             0,
             0});
 			this.nudRightElbowPad.Name = "nudRightElbowPad";
-			this.nudRightElbowPad.Size = new System.Drawing.Size(73, 20);
+			this.nudRightElbowPad.Size = new System.Drawing.Size(71, 20);
 			this.nudRightElbowPad.TabIndex = 31;
 			// 
 			// tlpLeftElbowPad
@@ -403,12 +427,20 @@
 			this.tlpLeftElbowPad.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpLeftElbowPad.Controls.Add(this.cccLeftElbowPadColor, 0, 0);
 			this.tlpLeftElbowPad.Controls.Add(this.nudLeftElbowPad, 0, 0);
-			this.tlpLeftElbowPad.Location = new System.Drawing.Point(92, 485);
+			this.tlpLeftElbowPad.Location = new System.Drawing.Point(91, 485);
 			this.tlpLeftElbowPad.Name = "tlpLeftElbowPad";
 			this.tlpLeftElbowPad.RowCount = 1;
 			this.tlpLeftElbowPad.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpLeftElbowPad.Size = new System.Drawing.Size(158, 33);
+			this.tlpLeftElbowPad.Size = new System.Drawing.Size(155, 33);
 			this.tlpLeftElbowPad.TabIndex = 21;
+			// 
+			// cccLeftElbowPadColor
+			// 
+			this.cccLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftElbowPadColor.Location = new System.Drawing.Point(80, 5);
+			this.cccLeftElbowPadColor.Name = "cccLeftElbowPadColor";
+			this.cccLeftElbowPadColor.Size = new System.Drawing.Size(72, 23);
+			this.cccLeftElbowPadColor.TabIndex = 29;
 			// 
 			// nudLeftElbowPad
 			// 
@@ -421,7 +453,7 @@
             0,
             0});
 			this.nudLeftElbowPad.Name = "nudLeftElbowPad";
-			this.nudLeftElbowPad.Size = new System.Drawing.Size(73, 20);
+			this.nudLeftElbowPad.Size = new System.Drawing.Size(71, 20);
 			this.nudLeftElbowPad.TabIndex = 28;
 			// 
 			// labelLeftElbowPad
@@ -430,7 +462,7 @@
 			this.labelLeftElbowPad.AutoSize = true;
 			this.labelLeftElbowPad.Location = new System.Drawing.Point(4, 495);
 			this.labelLeftElbowPad.Name = "labelLeftElbowPad";
-			this.labelLeftElbowPad.Size = new System.Drawing.Size(81, 13);
+			this.labelLeftElbowPad.Size = new System.Drawing.Size(80, 13);
 			this.labelLeftElbowPad.TabIndex = 27;
 			this.labelLeftElbowPad.Text = "Left Elbow Pad";
 			// 
@@ -440,7 +472,7 @@
 			this.labelWristband.AutoSize = true;
 			this.labelWristband.Location = new System.Drawing.Point(4, 454);
 			this.labelWristband.Name = "labelWristband";
-			this.labelWristband.Size = new System.Drawing.Size(81, 13);
+			this.labelWristband.Size = new System.Drawing.Size(80, 13);
 			this.labelWristband.TabIndex = 24;
 			this.labelWristband.Text = "Wristband";
 			// 
@@ -448,14 +480,14 @@
 			// 
 			this.nudTattoo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudTattoo.Hexadecimal = true;
-			this.nudTattoo.Location = new System.Drawing.Point(92, 416);
+			this.nudTattoo.Location = new System.Drawing.Point(91, 416);
 			this.nudTattoo.Maximum = new decimal(new int[] {
             15,
             0,
             0,
             0});
 			this.nudTattoo.Name = "nudTattoo";
-			this.nudTattoo.Size = new System.Drawing.Size(158, 20);
+			this.nudTattoo.Size = new System.Drawing.Size(155, 20);
 			this.nudTattoo.TabIndex = 23;
 			// 
 			// label2
@@ -464,7 +496,7 @@
 			this.label2.AutoSize = true;
 			this.label2.Location = new System.Drawing.Point(4, 419);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(81, 13);
+			this.label2.Size = new System.Drawing.Size(80, 13);
 			this.label2.TabIndex = 22;
 			this.label2.Text = "Tattoo";
 			// 
@@ -475,12 +507,12 @@
 			this.tlpGloves.Controls.Add(this.nudGloves, 0, 0);
 			this.tlpGloves.Controls.Add(this.tlpGlovesColors, 0, 1);
 			this.tlpGloves.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpGloves.Location = new System.Drawing.Point(92, 334);
+			this.tlpGloves.Location = new System.Drawing.Point(91, 334);
 			this.tlpGloves.Name = "tlpGloves";
 			this.tlpGloves.RowCount = 2;
 			this.tlpGloves.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpGloves.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpGloves.Size = new System.Drawing.Size(158, 74);
+			this.tlpGloves.Size = new System.Drawing.Size(155, 74);
 			this.tlpGloves.TabIndex = 14;
 			// 
 			// nudGloves
@@ -494,7 +526,7 @@
             0,
             0});
 			this.nudGloves.Name = "nudGloves";
-			this.nudGloves.Size = new System.Drawing.Size(152, 20);
+			this.nudGloves.Size = new System.Drawing.Size(149, 20);
 			this.nudGloves.TabIndex = 19;
 			// 
 			// tlpGlovesColors
@@ -509,8 +541,24 @@
 			this.tlpGlovesColors.Name = "tlpGlovesColors";
 			this.tlpGlovesColors.RowCount = 1;
 			this.tlpGlovesColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpGlovesColors.Size = new System.Drawing.Size(152, 31);
+			this.tlpGlovesColors.Size = new System.Drawing.Size(149, 31);
 			this.tlpGlovesColors.TabIndex = 6;
+			// 
+			// cccGlovesColor1
+			// 
+			this.cccGlovesColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccGlovesColor1.Location = new System.Drawing.Point(3, 4);
+			this.cccGlovesColor1.Name = "cccGlovesColor1";
+			this.cccGlovesColor1.Size = new System.Drawing.Size(68, 23);
+			this.cccGlovesColor1.TabIndex = 20;
+			// 
+			// cccGlovesColor2
+			// 
+			this.cccGlovesColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccGlovesColor2.Location = new System.Drawing.Point(77, 4);
+			this.cccGlovesColor2.Name = "cccGlovesColor2";
+			this.cccGlovesColor2.Size = new System.Drawing.Size(69, 23);
+			this.cccGlovesColor2.TabIndex = 21;
 			// 
 			// labelGloves
 			// 
@@ -518,7 +566,7 @@
 			this.labelGloves.AutoSize = true;
 			this.labelGloves.Location = new System.Drawing.Point(4, 364);
 			this.labelGloves.Name = "labelGloves";
-			this.labelGloves.Size = new System.Drawing.Size(81, 13);
+			this.labelGloves.Size = new System.Drawing.Size(80, 13);
 			this.labelGloves.TabIndex = 18;
 			this.labelGloves.Text = "Gloves";
 			// 
@@ -526,14 +574,14 @@
 			// 
 			this.nudEntranceWeapon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudEntranceWeapon.Hexadecimal = true;
-			this.nudEntranceWeapon.Location = new System.Drawing.Point(92, 306);
+			this.nudEntranceWeapon.Location = new System.Drawing.Point(91, 306);
 			this.nudEntranceWeapon.Maximum = new decimal(new int[] {
             6,
             0,
             0,
             0});
 			this.nudEntranceWeapon.Name = "nudEntranceWeapon";
-			this.nudEntranceWeapon.Size = new System.Drawing.Size(158, 20);
+			this.nudEntranceWeapon.Size = new System.Drawing.Size(155, 20);
 			this.nudEntranceWeapon.TabIndex = 17;
 			// 
 			// tlpEntranceAttire
@@ -543,12 +591,12 @@
 			this.tlpEntranceAttire.Controls.Add(this.nudEntranceAttire, 0, 0);
 			this.tlpEntranceAttire.Controls.Add(this.tlpEntranceAttireColors, 0, 1);
 			this.tlpEntranceAttire.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpEntranceAttire.Location = new System.Drawing.Point(92, 224);
+			this.tlpEntranceAttire.Location = new System.Drawing.Point(91, 224);
 			this.tlpEntranceAttire.Name = "tlpEntranceAttire";
 			this.tlpEntranceAttire.RowCount = 2;
 			this.tlpEntranceAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpEntranceAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpEntranceAttire.Size = new System.Drawing.Size(158, 74);
+			this.tlpEntranceAttire.Size = new System.Drawing.Size(155, 74);
 			this.tlpEntranceAttire.TabIndex = 10;
 			// 
 			// nudEntranceAttire
@@ -562,7 +610,7 @@
             0,
             0});
 			this.nudEntranceAttire.Name = "nudEntranceAttire";
-			this.nudEntranceAttire.Size = new System.Drawing.Size(152, 20);
+			this.nudEntranceAttire.Size = new System.Drawing.Size(149, 20);
 			this.nudEntranceAttire.TabIndex = 13;
 			// 
 			// tlpEntranceAttireColors
@@ -577,8 +625,24 @@
 			this.tlpEntranceAttireColors.Name = "tlpEntranceAttireColors";
 			this.tlpEntranceAttireColors.RowCount = 1;
 			this.tlpEntranceAttireColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpEntranceAttireColors.Size = new System.Drawing.Size(152, 31);
+			this.tlpEntranceAttireColors.Size = new System.Drawing.Size(149, 31);
 			this.tlpEntranceAttireColors.TabIndex = 6;
+			// 
+			// cccEntranceAttireColor1
+			// 
+			this.cccEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(3, 4);
+			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
+			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(68, 23);
+			this.cccEntranceAttireColor1.TabIndex = 14;
+			// 
+			// cccEntranceAttireColor2
+			// 
+			this.cccEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(77, 4);
+			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
+			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(69, 23);
+			this.cccEntranceAttireColor2.TabIndex = 15;
 			// 
 			// labelEntranceAttire
 			// 
@@ -586,7 +650,7 @@
 			this.labelEntranceAttire.AutoSize = true;
 			this.labelEntranceAttire.Location = new System.Drawing.Point(4, 254);
 			this.labelEntranceAttire.Name = "labelEntranceAttire";
-			this.labelEntranceAttire.Size = new System.Drawing.Size(81, 13);
+			this.labelEntranceAttire.Size = new System.Drawing.Size(80, 13);
 			this.labelEntranceAttire.TabIndex = 12;
 			this.labelEntranceAttire.Text = "Entrance Attire";
 			// 
@@ -597,12 +661,12 @@
 			this.tlpUpperAttire.Controls.Add(this.nudUpperAttire, 0, 0);
 			this.tlpUpperAttire.Controls.Add(this.tlpUpperAttireColors, 0, 1);
 			this.tlpUpperAttire.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpUpperAttire.Location = new System.Drawing.Point(92, 143);
+			this.tlpUpperAttire.Location = new System.Drawing.Point(91, 143);
 			this.tlpUpperAttire.Name = "tlpUpperAttire";
 			this.tlpUpperAttire.RowCount = 2;
 			this.tlpUpperAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpUpperAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpUpperAttire.Size = new System.Drawing.Size(158, 74);
+			this.tlpUpperAttire.Size = new System.Drawing.Size(155, 74);
 			this.tlpUpperAttire.TabIndex = 8;
 			// 
 			// nudUpperAttire
@@ -616,7 +680,7 @@
             0,
             0});
 			this.nudUpperAttire.Name = "nudUpperAttire";
-			this.nudUpperAttire.Size = new System.Drawing.Size(152, 20);
+			this.nudUpperAttire.Size = new System.Drawing.Size(149, 20);
 			this.nudUpperAttire.TabIndex = 9;
 			// 
 			// tlpUpperAttireColors
@@ -631,8 +695,24 @@
 			this.tlpUpperAttireColors.Name = "tlpUpperAttireColors";
 			this.tlpUpperAttireColors.RowCount = 1;
 			this.tlpUpperAttireColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpUpperAttireColors.Size = new System.Drawing.Size(152, 31);
+			this.tlpUpperAttireColors.Size = new System.Drawing.Size(149, 31);
 			this.tlpUpperAttireColors.TabIndex = 6;
+			// 
+			// cccUpperAttireColor1
+			// 
+			this.cccUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor1.Location = new System.Drawing.Point(3, 4);
+			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
+			this.cccUpperAttireColor1.Size = new System.Drawing.Size(68, 23);
+			this.cccUpperAttireColor1.TabIndex = 10;
+			// 
+			// cccUpperAttireColor2
+			// 
+			this.cccUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccUpperAttireColor2.Location = new System.Drawing.Point(77, 4);
+			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
+			this.cccUpperAttireColor2.Size = new System.Drawing.Size(69, 23);
+			this.cccUpperAttireColor2.TabIndex = 11;
 			// 
 			// labelUpperAttire
 			// 
@@ -640,7 +720,7 @@
 			this.labelUpperAttire.AutoSize = true;
 			this.labelUpperAttire.Location = new System.Drawing.Point(4, 173);
 			this.labelUpperAttire.Name = "labelUpperAttire";
-			this.labelUpperAttire.Size = new System.Drawing.Size(81, 13);
+			this.labelUpperAttire.Size = new System.Drawing.Size(80, 13);
 			this.labelUpperAttire.TabIndex = 8;
 			this.labelUpperAttire.Text = "Upper Attire";
 			// 
@@ -650,7 +730,7 @@
 			this.labelBodyType.AutoSize = true;
 			this.labelBodyType.Location = new System.Drawing.Point(4, 8);
 			this.labelBodyType.Name = "labelBodyType";
-			this.labelBodyType.Size = new System.Drawing.Size(81, 13);
+			this.labelBodyType.Size = new System.Drawing.Size(80, 13);
 			this.labelBodyType.TabIndex = 0;
 			this.labelBodyType.Text = "Body Type";
 			// 
@@ -660,7 +740,7 @@
 			this.labelSkinColor.AutoSize = true;
 			this.labelSkinColor.Location = new System.Drawing.Point(4, 37);
 			this.labelSkinColor.Name = "labelSkinColor";
-			this.labelSkinColor.Size = new System.Drawing.Size(81, 13);
+			this.labelSkinColor.Size = new System.Drawing.Size(80, 13);
 			this.labelSkinColor.TabIndex = 2;
 			this.labelSkinColor.Text = "Skin Color";
 			// 
@@ -670,7 +750,7 @@
 			this.labelRingAttire.AutoSize = true;
 			this.labelRingAttire.Location = new System.Drawing.Point(4, 92);
 			this.labelRingAttire.Name = "labelRingAttire";
-			this.labelRingAttire.Size = new System.Drawing.Size(81, 13);
+			this.labelRingAttire.Size = new System.Drawing.Size(80, 13);
 			this.labelRingAttire.TabIndex = 4;
 			this.labelRingAttire.Text = "Ring Attire";
 			// 
@@ -678,28 +758,28 @@
 			// 
 			this.nudBodyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudBodyType.Hexadecimal = true;
-			this.nudBodyType.Location = new System.Drawing.Point(92, 5);
+			this.nudBodyType.Location = new System.Drawing.Point(91, 5);
 			this.nudBodyType.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
 			this.nudBodyType.Name = "nudBodyType";
-			this.nudBodyType.Size = new System.Drawing.Size(158, 20);
+			this.nudBodyType.Size = new System.Drawing.Size(155, 20);
 			this.nudBodyType.TabIndex = 1;
 			// 
 			// nudSkinColor
 			// 
 			this.nudSkinColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudSkinColor.Hexadecimal = true;
-			this.nudSkinColor.Location = new System.Drawing.Point(92, 34);
+			this.nudSkinColor.Location = new System.Drawing.Point(91, 34);
 			this.nudSkinColor.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
 			this.nudSkinColor.Name = "nudSkinColor";
-			this.nudSkinColor.Size = new System.Drawing.Size(158, 20);
+			this.nudSkinColor.Size = new System.Drawing.Size(155, 20);
 			this.nudSkinColor.TabIndex = 3;
 			// 
 			// tlpRingAttire
@@ -709,12 +789,12 @@
 			this.tlpRingAttire.Controls.Add(this.nudRingAttire, 0, 0);
 			this.tlpRingAttire.Controls.Add(this.tlpRingAttireColors, 0, 1);
 			this.tlpRingAttire.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpRingAttire.Location = new System.Drawing.Point(92, 62);
+			this.tlpRingAttire.Location = new System.Drawing.Point(91, 62);
 			this.tlpRingAttire.Name = "tlpRingAttire";
 			this.tlpRingAttire.RowCount = 2;
 			this.tlpRingAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpRingAttire.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpRingAttire.Size = new System.Drawing.Size(158, 74);
+			this.tlpRingAttire.Size = new System.Drawing.Size(155, 74);
 			this.tlpRingAttire.TabIndex = 6;
 			// 
 			// nudRingAttire
@@ -728,7 +808,7 @@
             0,
             0});
 			this.nudRingAttire.Name = "nudRingAttire";
-			this.nudRingAttire.Size = new System.Drawing.Size(152, 20);
+			this.nudRingAttire.Size = new System.Drawing.Size(149, 20);
 			this.nudRingAttire.TabIndex = 5;
 			// 
 			// tlpRingAttireColors
@@ -743,8 +823,24 @@
 			this.tlpRingAttireColors.Name = "tlpRingAttireColors";
 			this.tlpRingAttireColors.RowCount = 1;
 			this.tlpRingAttireColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpRingAttireColors.Size = new System.Drawing.Size(152, 31);
+			this.tlpRingAttireColors.Size = new System.Drawing.Size(149, 31);
 			this.tlpRingAttireColors.TabIndex = 6;
+			// 
+			// cccRingAttireColor1
+			// 
+			this.cccRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor1.Location = new System.Drawing.Point(3, 4);
+			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
+			this.cccRingAttireColor1.Size = new System.Drawing.Size(68, 23);
+			this.cccRingAttireColor1.TabIndex = 6;
+			// 
+			// cccRingAttireColor2
+			// 
+			this.cccRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRingAttireColor2.Location = new System.Drawing.Point(77, 4);
+			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
+			this.cccRingAttireColor2.Size = new System.Drawing.Size(69, 23);
+			this.cccRingAttireColor2.TabIndex = 7;
 			// 
 			// labelEntranceWeapon
 			// 
@@ -752,7 +848,7 @@
 			this.labelEntranceWeapon.AutoSize = true;
 			this.labelEntranceWeapon.Location = new System.Drawing.Point(4, 303);
 			this.labelEntranceWeapon.Name = "labelEntranceWeapon";
-			this.labelEntranceWeapon.Size = new System.Drawing.Size(81, 26);
+			this.labelEntranceWeapon.Size = new System.Drawing.Size(80, 26);
 			this.labelEntranceWeapon.TabIndex = 16;
 			this.labelEntranceWeapon.Text = "Entrance Weapon";
 			// 
@@ -764,12 +860,20 @@
 			this.tlpWristband.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpWristband.Controls.Add(this.cccWristbandColor, 0, 0);
 			this.tlpWristband.Controls.Add(this.nudWristband, 0, 0);
-			this.tlpWristband.Location = new System.Drawing.Point(92, 444);
+			this.tlpWristband.Location = new System.Drawing.Point(91, 444);
 			this.tlpWristband.Name = "tlpWristband";
 			this.tlpWristband.RowCount = 1;
 			this.tlpWristband.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpWristband.Size = new System.Drawing.Size(158, 34);
+			this.tlpWristband.Size = new System.Drawing.Size(155, 34);
 			this.tlpWristband.TabIndex = 18;
+			// 
+			// cccWristbandColor
+			// 
+			this.cccWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccWristbandColor.Location = new System.Drawing.Point(80, 5);
+			this.cccWristbandColor.Name = "cccWristbandColor";
+			this.cccWristbandColor.Size = new System.Drawing.Size(72, 23);
+			this.cccWristbandColor.TabIndex = 26;
 			// 
 			// nudWristband
 			// 
@@ -782,7 +886,7 @@
             0,
             0});
 			this.nudWristband.Name = "nudWristband";
-			this.nudWristband.Size = new System.Drawing.Size(73, 20);
+			this.nudWristband.Size = new System.Drawing.Size(71, 20);
 			this.nudWristband.TabIndex = 25;
 			// 
 			// labelRightElbowPad
@@ -791,7 +895,7 @@
 			this.labelRightElbowPad.AutoSize = true;
 			this.labelRightElbowPad.Location = new System.Drawing.Point(4, 530);
 			this.labelRightElbowPad.Name = "labelRightElbowPad";
-			this.labelRightElbowPad.Size = new System.Drawing.Size(81, 26);
+			this.labelRightElbowPad.Size = new System.Drawing.Size(80, 26);
 			this.labelRightElbowPad.TabIndex = 30;
 			this.labelRightElbowPad.Text = "Right Elbow Pad";
 			// 
@@ -801,7 +905,7 @@
 			this.labelLeftKneePad.AutoSize = true;
 			this.labelLeftKneePad.Location = new System.Drawing.Point(4, 577);
 			this.labelLeftKneePad.Name = "labelLeftKneePad";
-			this.labelLeftKneePad.Size = new System.Drawing.Size(81, 13);
+			this.labelLeftKneePad.Size = new System.Drawing.Size(80, 13);
 			this.labelLeftKneePad.TabIndex = 33;
 			this.labelLeftKneePad.Text = "Left Knee Pad";
 			// 
@@ -813,12 +917,20 @@
 			this.tlpLeftKneePad.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpLeftKneePad.Controls.Add(this.cccLeftKneePadColor, 0, 0);
 			this.tlpLeftKneePad.Controls.Add(this.nudLeftKneePad, 0, 0);
-			this.tlpLeftKneePad.Location = new System.Drawing.Point(92, 567);
+			this.tlpLeftKneePad.Location = new System.Drawing.Point(91, 567);
 			this.tlpLeftKneePad.Name = "tlpLeftKneePad";
 			this.tlpLeftKneePad.RowCount = 1;
 			this.tlpLeftKneePad.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpLeftKneePad.Size = new System.Drawing.Size(158, 33);
+			this.tlpLeftKneePad.Size = new System.Drawing.Size(155, 33);
 			this.tlpLeftKneePad.TabIndex = 24;
+			// 
+			// cccLeftKneePadColor
+			// 
+			this.cccLeftKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccLeftKneePadColor.Location = new System.Drawing.Point(80, 5);
+			this.cccLeftKneePadColor.Name = "cccLeftKneePadColor";
+			this.cccLeftKneePadColor.Size = new System.Drawing.Size(72, 23);
+			this.cccLeftKneePadColor.TabIndex = 35;
 			// 
 			// nudLeftKneePad
 			// 
@@ -831,7 +943,7 @@
             0,
             0});
 			this.nudLeftKneePad.Name = "nudLeftKneePad";
-			this.nudLeftKneePad.Size = new System.Drawing.Size(73, 20);
+			this.nudLeftKneePad.Size = new System.Drawing.Size(71, 20);
 			this.nudLeftKneePad.TabIndex = 34;
 			// 
 			// labelRightKneePad
@@ -840,7 +952,7 @@
 			this.labelRightKneePad.AutoSize = true;
 			this.labelRightKneePad.Location = new System.Drawing.Point(4, 612);
 			this.labelRightKneePad.Name = "labelRightKneePad";
-			this.labelRightKneePad.Size = new System.Drawing.Size(81, 26);
+			this.labelRightKneePad.Size = new System.Drawing.Size(80, 26);
 			this.labelRightKneePad.TabIndex = 36;
 			this.labelRightKneePad.Text = "Right Knee Pad";
 			// 
@@ -852,12 +964,20 @@
 			this.tlpRightKneePad.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpRightKneePad.Controls.Add(this.cccRightKneePadColor, 0, 0);
 			this.tlpRightKneePad.Controls.Add(this.nudRightKneePad, 0, 0);
-			this.tlpRightKneePad.Location = new System.Drawing.Point(92, 608);
+			this.tlpRightKneePad.Location = new System.Drawing.Point(91, 608);
 			this.tlpRightKneePad.Name = "tlpRightKneePad";
 			this.tlpRightKneePad.RowCount = 1;
 			this.tlpRightKneePad.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tlpRightKneePad.Size = new System.Drawing.Size(158, 33);
+			this.tlpRightKneePad.Size = new System.Drawing.Size(155, 33);
 			this.tlpRightKneePad.TabIndex = 26;
+			// 
+			// cccRightKneePadColor
+			// 
+			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.cccRightKneePadColor.Location = new System.Drawing.Point(80, 5);
+			this.cccRightKneePadColor.Name = "cccRightKneePadColor";
+			this.cccRightKneePadColor.Size = new System.Drawing.Size(72, 23);
+			this.cccRightKneePadColor.TabIndex = 38;
 			// 
 			// nudRightKneePad
 			// 
@@ -870,7 +990,7 @@
             0,
             0});
 			this.nudRightKneePad.Name = "nudRightKneePad";
-			this.nudRightKneePad.Size = new System.Drawing.Size(73, 20);
+			this.nudRightKneePad.Size = new System.Drawing.Size(71, 20);
 			this.nudRightKneePad.TabIndex = 37;
 			// 
 			// labelBoots
@@ -879,7 +999,7 @@
 			this.labelBoots.AutoSize = true;
 			this.labelBoots.Location = new System.Drawing.Point(4, 679);
 			this.labelBoots.Name = "labelBoots";
-			this.labelBoots.Size = new System.Drawing.Size(81, 13);
+			this.labelBoots.Size = new System.Drawing.Size(80, 13);
 			this.labelBoots.TabIndex = 39;
 			this.labelBoots.Text = "Boots";
 			// 
@@ -889,7 +1009,7 @@
 			this.labelUsingMask.AutoSize = true;
 			this.labelUsingMask.Location = new System.Drawing.Point(4, 734);
 			this.labelUsingMask.Name = "labelUsingMask";
-			this.labelUsingMask.Size = new System.Drawing.Size(81, 13);
+			this.labelUsingMask.Size = new System.Drawing.Size(80, 13);
 			this.labelUsingMask.TabIndex = 43;
 			this.labelUsingMask.Text = "Using Mask?";
 			// 
@@ -897,9 +1017,9 @@
 			// 
 			this.cbUsingMask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbUsingMask.AutoSize = true;
-			this.cbUsingMask.Location = new System.Drawing.Point(92, 732);
+			this.cbUsingMask.Location = new System.Drawing.Point(91, 732);
 			this.cbUsingMask.Name = "cbUsingMask";
-			this.cbUsingMask.Size = new System.Drawing.Size(158, 17);
+			this.cbUsingMask.Size = new System.Drawing.Size(155, 17);
 			this.cbUsingMask.TabIndex = 44;
 			this.cbUsingMask.Text = "Masked";
 			this.cbUsingMask.UseVisualStyleBackColor = true;
@@ -908,28 +1028,28 @@
 			// 
 			this.nudHeadShape.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudHeadShape.Hexadecimal = true;
-			this.nudHeadShape.Location = new System.Drawing.Point(92, 760);
+			this.nudHeadShape.Location = new System.Drawing.Point(91, 760);
 			this.nudHeadShape.Maximum = new decimal(new int[] {
             4,
             0,
             0,
             0});
 			this.nudHeadShape.Name = "nudHeadShape";
-			this.nudHeadShape.Size = new System.Drawing.Size(158, 20);
+			this.nudHeadShape.Size = new System.Drawing.Size(155, 20);
 			this.nudHeadShape.TabIndex = 46;
 			// 
 			// nudFacepaint
 			// 
 			this.nudFacepaint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudFacepaint.Hexadecimal = true;
-			this.nudFacepaint.Location = new System.Drawing.Point(92, 992);
+			this.nudFacepaint.Location = new System.Drawing.Point(91, 992);
 			this.nudFacepaint.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudFacepaint.Name = "nudFacepaint";
-			this.nudFacepaint.Size = new System.Drawing.Size(158, 20);
+			this.nudFacepaint.Size = new System.Drawing.Size(155, 20);
 			this.nudFacepaint.TabIndex = 62;
 			// 
 			// labelFacepaint
@@ -938,7 +1058,7 @@
 			this.labelFacepaint.AutoSize = true;
 			this.labelFacepaint.Location = new System.Drawing.Point(4, 995);
 			this.labelFacepaint.Name = "labelFacepaint";
-			this.labelFacepaint.Size = new System.Drawing.Size(81, 13);
+			this.labelFacepaint.Size = new System.Drawing.Size(80, 13);
 			this.labelFacepaint.TabIndex = 61;
 			this.labelFacepaint.Text = "Facepaint";
 			// 
@@ -948,7 +1068,7 @@
 			this.labelFacialHair.AutoSize = true;
 			this.labelFacialHair.Location = new System.Drawing.Point(4, 966);
 			this.labelFacialHair.Name = "labelFacialHair";
-			this.labelFacialHair.Size = new System.Drawing.Size(81, 13);
+			this.labelFacialHair.Size = new System.Drawing.Size(80, 13);
 			this.labelFacialHair.TabIndex = 59;
 			this.labelFacialHair.Text = "Facial Hair";
 			// 
@@ -956,28 +1076,28 @@
 			// 
 			this.nudFacialHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudFacialHair.Hexadecimal = true;
-			this.nudFacialHair.Location = new System.Drawing.Point(92, 963);
+			this.nudFacialHair.Location = new System.Drawing.Point(91, 963);
 			this.nudFacialHair.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudFacialHair.Name = "nudFacialHair";
-			this.nudFacialHair.Size = new System.Drawing.Size(158, 20);
+			this.nudFacialHair.Size = new System.Drawing.Size(155, 20);
 			this.nudFacialHair.TabIndex = 60;
 			// 
 			// nudUnknown2
 			// 
 			this.nudUnknown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudUnknown2.Hexadecimal = true;
-			this.nudUnknown2.Location = new System.Drawing.Point(92, 934);
+			this.nudUnknown2.Location = new System.Drawing.Point(91, 934);
 			this.nudUnknown2.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
 			this.nudUnknown2.Name = "nudUnknown2";
-			this.nudUnknown2.Size = new System.Drawing.Size(158, 20);
+			this.nudUnknown2.Size = new System.Drawing.Size(155, 20);
 			this.nudUnknown2.TabIndex = 58;
 			// 
 			// labelUnknown2
@@ -986,7 +1106,7 @@
 			this.labelUnknown2.AutoSize = true;
 			this.labelUnknown2.Location = new System.Drawing.Point(4, 937);
 			this.labelUnknown2.Name = "labelUnknown2";
-			this.labelUnknown2.Size = new System.Drawing.Size(81, 13);
+			this.labelUnknown2.Size = new System.Drawing.Size(80, 13);
 			this.labelUnknown2.TabIndex = 57;
 			this.labelUnknown2.Text = "Unknown 2";
 			// 
@@ -996,7 +1116,7 @@
 			this.labelFrontHair.AutoSize = true;
 			this.labelFrontHair.Location = new System.Drawing.Point(4, 912);
 			this.labelFrontHair.Name = "labelFrontHair";
-			this.labelFrontHair.Size = new System.Drawing.Size(81, 13);
+			this.labelFrontHair.Size = new System.Drawing.Size(80, 13);
 			this.labelFrontHair.TabIndex = 55;
 			this.labelFrontHair.Text = "Front Hair";
 			// 
@@ -1004,14 +1124,14 @@
 			// 
 			this.nudFrontHair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudFrontHair.Hexadecimal = true;
-			this.nudFrontHair.Location = new System.Drawing.Point(92, 911);
+			this.nudFrontHair.Location = new System.Drawing.Point(91, 911);
 			this.nudFrontHair.Maximum = new decimal(new int[] {
             110,
             0,
             0,
             0});
 			this.nudFrontHair.Name = "nudFrontHair";
-			this.nudFrontHair.Size = new System.Drawing.Size(158, 20);
+			this.nudFrontHair.Size = new System.Drawing.Size(155, 20);
 			this.nudFrontHair.TabIndex = 56;
 			// 
 			// labelHairColor
@@ -1020,7 +1140,7 @@
 			this.labelHairColor.AutoSize = true;
 			this.labelHairColor.Location = new System.Drawing.Point(4, 883);
 			this.labelHairColor.Name = "labelHairColor";
-			this.labelHairColor.Size = new System.Drawing.Size(81, 13);
+			this.labelHairColor.Size = new System.Drawing.Size(80, 13);
 			this.labelHairColor.TabIndex = 53;
 			this.labelHairColor.Text = "Hair Color";
 			// 
@@ -1028,14 +1148,14 @@
 			// 
 			this.nudHairType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudHairType.Hexadecimal = true;
-			this.nudHairType.Location = new System.Drawing.Point(92, 847);
+			this.nudHairType.Location = new System.Drawing.Point(91, 847);
 			this.nudHairType.Maximum = new decimal(new int[] {
             15,
             0,
             0,
             0});
 			this.nudHairType.Name = "nudHairType";
-			this.nudHairType.Size = new System.Drawing.Size(158, 20);
+			this.nudHairType.Size = new System.Drawing.Size(155, 20);
 			this.nudHairType.TabIndex = 52;
 			// 
 			// labelHairType
@@ -1044,7 +1164,7 @@
 			this.labelHairType.AutoSize = true;
 			this.labelHairType.Location = new System.Drawing.Point(4, 850);
 			this.labelHairType.Name = "labelHairType";
-			this.labelHairType.Size = new System.Drawing.Size(81, 13);
+			this.labelHairType.Size = new System.Drawing.Size(80, 13);
 			this.labelHairType.TabIndex = 51;
 			this.labelHairType.Text = "Hair Type";
 			// 
@@ -1054,7 +1174,7 @@
 			this.labelFaceNumber.AutoSize = true;
 			this.labelFaceNumber.Location = new System.Drawing.Point(4, 821);
 			this.labelFaceNumber.Name = "labelFaceNumber";
-			this.labelFaceNumber.Size = new System.Drawing.Size(81, 13);
+			this.labelFaceNumber.Size = new System.Drawing.Size(80, 13);
 			this.labelFaceNumber.TabIndex = 49;
 			this.labelFaceNumber.Text = "Face Number";
 			// 
@@ -1062,14 +1182,14 @@
 			// 
 			this.nudFaceNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudFaceNumber.Hexadecimal = true;
-			this.nudFaceNumber.Location = new System.Drawing.Point(92, 818);
+			this.nudFaceNumber.Location = new System.Drawing.Point(91, 818);
 			this.nudFaceNumber.Maximum = new decimal(new int[] {
             110,
             0,
             0,
             0});
 			this.nudFaceNumber.Name = "nudFaceNumber";
-			this.nudFaceNumber.Size = new System.Drawing.Size(158, 20);
+			this.nudFaceNumber.Size = new System.Drawing.Size(155, 20);
 			this.nudFaceNumber.TabIndex = 50;
 			// 
 			// labelAccessory
@@ -1078,7 +1198,7 @@
 			this.labelAccessory.AutoSize = true;
 			this.labelAccessory.Location = new System.Drawing.Point(4, 1024);
 			this.labelAccessory.Name = "labelAccessory";
-			this.labelAccessory.Size = new System.Drawing.Size(81, 13);
+			this.labelAccessory.Size = new System.Drawing.Size(80, 13);
 			this.labelAccessory.TabIndex = 63;
 			this.labelAccessory.Text = "Accessory";
 			// 
@@ -1086,14 +1206,14 @@
 			// 
 			this.nudAccessory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudAccessory.Hexadecimal = true;
-			this.nudAccessory.Location = new System.Drawing.Point(92, 1021);
+			this.nudAccessory.Location = new System.Drawing.Point(91, 1021);
 			this.nudAccessory.Maximum = new decimal(new int[] {
             31,
             0,
             0,
             0});
 			this.nudAccessory.Name = "nudAccessory";
-			this.nudAccessory.Size = new System.Drawing.Size(158, 20);
+			this.nudAccessory.Size = new System.Drawing.Size(155, 20);
 			this.nudAccessory.TabIndex = 64;
 			// 
 			// labelMaskHeadShape
@@ -1102,7 +1222,7 @@
 			this.labelMaskHeadShape.AutoSize = true;
 			this.labelMaskHeadShape.Location = new System.Drawing.Point(4, 1047);
 			this.labelMaskHeadShape.Name = "labelMaskHeadShape";
-			this.labelMaskHeadShape.Size = new System.Drawing.Size(81, 26);
+			this.labelMaskHeadShape.Size = new System.Drawing.Size(80, 26);
 			this.labelMaskHeadShape.TabIndex = 65;
 			this.labelMaskHeadShape.Text = "Mask Head Shape";
 			// 
@@ -1110,14 +1230,14 @@
 			// 
 			this.nudMaskHeadShape.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudMaskHeadShape.Hexadecimal = true;
-			this.nudMaskHeadShape.Location = new System.Drawing.Point(92, 1050);
+			this.nudMaskHeadShape.Location = new System.Drawing.Point(91, 1050);
 			this.nudMaskHeadShape.Maximum = new decimal(new int[] {
             2,
             0,
             0,
             0});
 			this.nudMaskHeadShape.Name = "nudMaskHeadShape";
-			this.nudMaskHeadShape.Size = new System.Drawing.Size(158, 20);
+			this.nudMaskHeadShape.Size = new System.Drawing.Size(155, 20);
 			this.nudMaskHeadShape.TabIndex = 66;
 			// 
 			// labelMaskNumber
@@ -1126,7 +1246,7 @@
 			this.labelMaskNumber.AutoSize = true;
 			this.labelMaskNumber.Location = new System.Drawing.Point(4, 1082);
 			this.labelMaskNumber.Name = "labelMaskNumber";
-			this.labelMaskNumber.Size = new System.Drawing.Size(81, 13);
+			this.labelMaskNumber.Size = new System.Drawing.Size(80, 13);
 			this.labelMaskNumber.TabIndex = 67;
 			this.labelMaskNumber.Text = "Mask Number";
 			// 
@@ -1134,14 +1254,14 @@
 			// 
 			this.nudMaskNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudMaskNumber.Hexadecimal = true;
-			this.nudMaskNumber.Location = new System.Drawing.Point(92, 1079);
+			this.nudMaskNumber.Location = new System.Drawing.Point(91, 1079);
 			this.nudMaskNumber.Maximum = new decimal(new int[] {
             21,
             0,
             0,
             0});
 			this.nudMaskNumber.Name = "nudMaskNumber";
-			this.nudMaskNumber.Size = new System.Drawing.Size(158, 20);
+			this.nudMaskNumber.Size = new System.Drawing.Size(155, 20);
 			this.nudMaskNumber.TabIndex = 68;
 			// 
 			// labelMaskColors
@@ -1150,7 +1270,7 @@
 			this.labelMaskColors.AutoSize = true;
 			this.labelMaskColors.Location = new System.Drawing.Point(4, 1137);
 			this.labelMaskColors.Name = "labelMaskColors";
-			this.labelMaskColors.Size = new System.Drawing.Size(81, 13);
+			this.labelMaskColors.Size = new System.Drawing.Size(80, 13);
 			this.labelMaskColors.TabIndex = 69;
 			this.labelMaskColors.Text = "Mask Colors";
 			// 
@@ -1161,13 +1281,13 @@
 			this.tlpMaskColors.Controls.Add(this.tableLayoutPanel3, 0, 1);
 			this.tlpMaskColors.Controls.Add(this.tableLayoutPanel2, 0, 0);
 			this.tlpMaskColors.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpMaskColors.Location = new System.Drawing.Point(92, 1107);
+			this.tlpMaskColors.Location = new System.Drawing.Point(91, 1107);
 			this.tlpMaskColors.Name = "tlpMaskColors";
 			this.tlpMaskColors.RowCount = 2;
 			this.tlpMaskColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpMaskColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpMaskColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tlpMaskColors.Size = new System.Drawing.Size(158, 74);
+			this.tlpMaskColors.Size = new System.Drawing.Size(155, 74);
 			this.tlpMaskColors.TabIndex = 56;
 			// 
 			// tableLayoutPanel3
@@ -1182,8 +1302,24 @@
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(152, 31);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(149, 31);
 			this.tableLayoutPanel3.TabIndex = 7;
+			// 
+			// cccMaskColor3
+			// 
+			this.cccMaskColor3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cccMaskColor3.Location = new System.Drawing.Point(3, 3);
+			this.cccMaskColor3.Name = "cccMaskColor3";
+			this.cccMaskColor3.Size = new System.Drawing.Size(68, 25);
+			this.cccMaskColor3.TabIndex = 72;
+			// 
+			// cccMaskColor4
+			// 
+			this.cccMaskColor4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cccMaskColor4.Location = new System.Drawing.Point(77, 3);
+			this.cccMaskColor4.Name = "cccMaskColor4";
+			this.cccMaskColor4.Size = new System.Drawing.Size(69, 25);
+			this.cccMaskColor4.TabIndex = 73;
 			// 
 			// tableLayoutPanel2
 			// 
@@ -1197,8 +1333,24 @@
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(152, 31);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(149, 31);
 			this.tableLayoutPanel2.TabIndex = 6;
+			// 
+			// cccMaskColor1
+			// 
+			this.cccMaskColor1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cccMaskColor1.Location = new System.Drawing.Point(3, 3);
+			this.cccMaskColor1.Name = "cccMaskColor1";
+			this.cccMaskColor1.Size = new System.Drawing.Size(68, 25);
+			this.cccMaskColor1.TabIndex = 70;
+			// 
+			// cccMaskColor2
+			// 
+			this.cccMaskColor2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cccMaskColor2.Location = new System.Drawing.Point(77, 3);
+			this.cccMaskColor2.Name = "cccMaskColor2";
+			this.cccMaskColor2.Size = new System.Drawing.Size(69, 25);
+			this.cccMaskColor2.TabIndex = 71;
 			// 
 			// labelMaskHairType
 			// 
@@ -1206,7 +1358,7 @@
 			this.labelMaskHairType.AutoSize = true;
 			this.labelMaskHairType.Location = new System.Drawing.Point(4, 1186);
 			this.labelMaskHairType.Name = "labelMaskHairType";
-			this.labelMaskHairType.Size = new System.Drawing.Size(81, 26);
+			this.labelMaskHairType.Size = new System.Drawing.Size(80, 26);
 			this.labelMaskHairType.TabIndex = 74;
 			this.labelMaskHairType.Text = "Mask Hair Type";
 			// 
@@ -1214,14 +1366,14 @@
 			// 
 			this.nudMaskHairType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudMaskHairType.Hexadecimal = true;
-			this.nudMaskHairType.Location = new System.Drawing.Point(92, 1189);
+			this.nudMaskHairType.Location = new System.Drawing.Point(91, 1189);
 			this.nudMaskHairType.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
 			this.nudMaskHairType.Name = "nudMaskHairType";
-			this.nudMaskHairType.Size = new System.Drawing.Size(158, 20);
+			this.nudMaskHairType.Size = new System.Drawing.Size(155, 20);
 			this.nudMaskHairType.TabIndex = 75;
 			// 
 			// labelMaskAccessory1
@@ -1230,7 +1382,7 @@
 			this.labelMaskAccessory1.AutoSize = true;
 			this.labelMaskAccessory1.Location = new System.Drawing.Point(4, 1215);
 			this.labelMaskAccessory1.Name = "labelMaskAccessory1";
-			this.labelMaskAccessory1.Size = new System.Drawing.Size(81, 26);
+			this.labelMaskAccessory1.Size = new System.Drawing.Size(80, 26);
 			this.labelMaskAccessory1.TabIndex = 76;
 			this.labelMaskAccessory1.Text = "Mask Accessory 1";
 			// 
@@ -1238,208 +1390,37 @@
 			// 
 			this.nudMaskAccessory1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudMaskAccessory1.Hexadecimal = true;
-			this.nudMaskAccessory1.Location = new System.Drawing.Point(92, 1218);
+			this.nudMaskAccessory1.Location = new System.Drawing.Point(91, 1218);
 			this.nudMaskAccessory1.Maximum = new decimal(new int[] {
             4,
             0,
             0,
             0});
 			this.nudMaskAccessory1.Name = "nudMaskAccessory1";
-			this.nudMaskAccessory1.Size = new System.Drawing.Size(158, 20);
+			this.nudMaskAccessory1.Size = new System.Drawing.Size(155, 20);
 			this.nudMaskAccessory1.TabIndex = 77;
 			// 
 			// nudMaskAccessory2
 			// 
 			this.nudMaskAccessory2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.nudMaskAccessory2.Hexadecimal = true;
-			this.nudMaskAccessory2.Location = new System.Drawing.Point(92, 1248);
+			this.nudMaskAccessory2.Location = new System.Drawing.Point(91, 1248);
 			this.nudMaskAccessory2.Maximum = new decimal(new int[] {
             11,
             0,
             0,
             0});
 			this.nudMaskAccessory2.Name = "nudMaskAccessory2";
-			this.nudMaskAccessory2.Size = new System.Drawing.Size(158, 20);
+			this.nudMaskAccessory2.Size = new System.Drawing.Size(155, 20);
 			this.nudMaskAccessory2.TabIndex = 79;
-			// 
-			// cccBootsColor1
-			// 
-			this.cccBootsColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccBootsColor1.Location = new System.Drawing.Point(3, 4);
-			this.cccBootsColor1.Name = "cccBootsColor1";
-			this.cccBootsColor1.Size = new System.Drawing.Size(70, 23);
-			this.cccBootsColor1.TabIndex = 41;
-			// 
-			// cccBootsColor2
-			// 
-			this.cccBootsColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccBootsColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccBootsColor2.Location = new System.Drawing.Point(79, 4);
-			this.cccBootsColor2.Name = "cccBootsColor2";
-			this.cccBootsColor2.Size = new System.Drawing.Size(70, 23);
-			this.cccBootsColor2.TabIndex = 42;
-			// 
-			// cccRightElbowPadColor
-			// 
-			this.cccRightElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRightElbowPadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRightElbowPadColor.Location = new System.Drawing.Point(82, 5);
-			this.cccRightElbowPadColor.Name = "cccRightElbowPadColor";
-			this.cccRightElbowPadColor.Size = new System.Drawing.Size(73, 23);
-			this.cccRightElbowPadColor.TabIndex = 32;
-			// 
-			// cccLeftElbowPadColor
-			// 
-			this.cccLeftElbowPadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccLeftElbowPadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccLeftElbowPadColor.Location = new System.Drawing.Point(82, 5);
-			this.cccLeftElbowPadColor.Name = "cccLeftElbowPadColor";
-			this.cccLeftElbowPadColor.Size = new System.Drawing.Size(73, 23);
-			this.cccLeftElbowPadColor.TabIndex = 29;
-			// 
-			// cccGlovesColor1
-			// 
-			this.cccGlovesColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccGlovesColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccGlovesColor1.Location = new System.Drawing.Point(3, 4);
-			this.cccGlovesColor1.Name = "cccGlovesColor1";
-			this.cccGlovesColor1.Size = new System.Drawing.Size(70, 23);
-			this.cccGlovesColor1.TabIndex = 20;
-			// 
-			// cccGlovesColor2
-			// 
-			this.cccGlovesColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccGlovesColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccGlovesColor2.Location = new System.Drawing.Point(79, 4);
-			this.cccGlovesColor2.Name = "cccGlovesColor2";
-			this.cccGlovesColor2.Size = new System.Drawing.Size(70, 23);
-			this.cccGlovesColor2.TabIndex = 21;
-			// 
-			// cccEntranceAttireColor1
-			// 
-			this.cccEntranceAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccEntranceAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccEntranceAttireColor1.Location = new System.Drawing.Point(3, 4);
-			this.cccEntranceAttireColor1.Name = "cccEntranceAttireColor1";
-			this.cccEntranceAttireColor1.Size = new System.Drawing.Size(70, 23);
-			this.cccEntranceAttireColor1.TabIndex = 14;
-			// 
-			// cccEntranceAttireColor2
-			// 
-			this.cccEntranceAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccEntranceAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccEntranceAttireColor2.Location = new System.Drawing.Point(79, 4);
-			this.cccEntranceAttireColor2.Name = "cccEntranceAttireColor2";
-			this.cccEntranceAttireColor2.Size = new System.Drawing.Size(70, 23);
-			this.cccEntranceAttireColor2.TabIndex = 15;
-			// 
-			// cccUpperAttireColor1
-			// 
-			this.cccUpperAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccUpperAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccUpperAttireColor1.Location = new System.Drawing.Point(3, 4);
-			this.cccUpperAttireColor1.Name = "cccUpperAttireColor1";
-			this.cccUpperAttireColor1.Size = new System.Drawing.Size(70, 23);
-			this.cccUpperAttireColor1.TabIndex = 10;
-			// 
-			// cccUpperAttireColor2
-			// 
-			this.cccUpperAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccUpperAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccUpperAttireColor2.Location = new System.Drawing.Point(79, 4);
-			this.cccUpperAttireColor2.Name = "cccUpperAttireColor2";
-			this.cccUpperAttireColor2.Size = new System.Drawing.Size(70, 23);
-			this.cccUpperAttireColor2.TabIndex = 11;
-			// 
-			// cccRingAttireColor1
-			// 
-			this.cccRingAttireColor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRingAttireColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRingAttireColor1.Location = new System.Drawing.Point(3, 4);
-			this.cccRingAttireColor1.Name = "cccRingAttireColor1";
-			this.cccRingAttireColor1.Size = new System.Drawing.Size(70, 23);
-			this.cccRingAttireColor1.TabIndex = 6;
-			// 
-			// cccRingAttireColor2
-			// 
-			this.cccRingAttireColor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRingAttireColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRingAttireColor2.Location = new System.Drawing.Point(79, 4);
-			this.cccRingAttireColor2.Name = "cccRingAttireColor2";
-			this.cccRingAttireColor2.Size = new System.Drawing.Size(70, 23);
-			this.cccRingAttireColor2.TabIndex = 7;
-			// 
-			// cccWristbandColor
-			// 
-			this.cccWristbandColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccWristbandColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccWristbandColor.Location = new System.Drawing.Point(82, 5);
-			this.cccWristbandColor.Name = "cccWristbandColor";
-			this.cccWristbandColor.Size = new System.Drawing.Size(73, 23);
-			this.cccWristbandColor.TabIndex = 26;
-			// 
-			// cccLeftKneePadColor
-			// 
-			this.cccLeftKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccLeftKneePadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccLeftKneePadColor.Location = new System.Drawing.Point(82, 5);
-			this.cccLeftKneePadColor.Name = "cccLeftKneePadColor";
-			this.cccLeftKneePadColor.Size = new System.Drawing.Size(73, 23);
-			this.cccLeftKneePadColor.TabIndex = 35;
-			// 
-			// cccRightKneePadColor
-			// 
-			this.cccRightKneePadColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.cccRightKneePadColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccRightKneePadColor.Location = new System.Drawing.Point(82, 5);
-			this.cccRightKneePadColor.Name = "cccRightKneePadColor";
-			this.cccRightKneePadColor.Size = new System.Drawing.Size(73, 23);
-			this.cccRightKneePadColor.TabIndex = 38;
-			// 
-			// cccMaskColor3
-			// 
-			this.cccMaskColor3.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccMaskColor3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cccMaskColor3.Location = new System.Drawing.Point(3, 3);
-			this.cccMaskColor3.Name = "cccMaskColor3";
-			this.cccMaskColor3.Size = new System.Drawing.Size(70, 25);
-			this.cccMaskColor3.TabIndex = 72;
-			// 
-			// cccMaskColor4
-			// 
-			this.cccMaskColor4.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccMaskColor4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cccMaskColor4.Location = new System.Drawing.Point(79, 3);
-			this.cccMaskColor4.Name = "cccMaskColor4";
-			this.cccMaskColor4.Size = new System.Drawing.Size(70, 25);
-			this.cccMaskColor4.TabIndex = 73;
-			// 
-			// cccMaskColor1
-			// 
-			this.cccMaskColor1.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccMaskColor1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cccMaskColor1.Location = new System.Drawing.Point(3, 3);
-			this.cccMaskColor1.Name = "cccMaskColor1";
-			this.cccMaskColor1.Size = new System.Drawing.Size(70, 25);
-			this.cccMaskColor1.TabIndex = 70;
-			// 
-			// cccMaskColor2
-			// 
-			this.cccMaskColor2.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.VPW64;
-			this.cccMaskColor2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cccMaskColor2.Location = new System.Drawing.Point(79, 3);
-			this.cccMaskColor2.Name = "cccMaskColor2";
-			this.cccMaskColor2.Size = new System.Drawing.Size(70, 25);
-			this.cccMaskColor2.TabIndex = 71;
 			// 
 			// cccHairColor
 			// 
 			this.cccHairColor.ColorModeType = VPWStudio.Controls.CostumeColorControl.ColorMode.Hair_VPW2;
 			this.cccHairColor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.cccHairColor.Location = new System.Drawing.Point(92, 875);
+			this.cccHairColor.Location = new System.Drawing.Point(91, 875);
 			this.cccHairColor.Name = "cccHairColor";
-			this.cccHairColor.Size = new System.Drawing.Size(158, 29);
+			this.cccHairColor.Size = new System.Drawing.Size(155, 29);
 			this.cccHairColor.TabIndex = 80;
 			// 
 			// CostumeEditor_VPW2
@@ -1450,7 +1431,7 @@
 			this.AutoScrollMinSize = new System.Drawing.Size(256, 256);
 			this.Controls.Add(this.tlpCostumeParts);
 			this.Name = "CostumeEditor_VPW2";
-			this.Size = new System.Drawing.Size(260, 239);
+			this.Size = new System.Drawing.Size(243, 222);
 			this.tlpCostumeParts.ResumeLayout(false);
 			this.tlpCostumeParts.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudUnknown1)).EndInit();
