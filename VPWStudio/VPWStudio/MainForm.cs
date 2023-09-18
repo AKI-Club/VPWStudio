@@ -2724,21 +2724,12 @@ namespace VPWStudio
 				return;
 			}
 
-			if (MoveDamageTest == null)
+			if (MoveDamageTest == null || MoveDamageTest.IsDisposed)
 			{
 				MoveDamageTest = new MoveDamageTestDialog();
-				MoveDamageTest.MdiParent = this;
-				MoveDamageTest.Show();
 			}
-			else
-			{
-				if (MoveDamageTest.IsDisposed)
-				{
-					MoveDamageTest = new MoveDamageTestDialog();
-				}
-				MoveDamageTest.MdiParent = this;
-				MoveDamageTest.Show();
-			}
+			MoveDamageTest.MdiParent = this;
+			MoveDamageTest.Show();
 		}
 
 		private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
