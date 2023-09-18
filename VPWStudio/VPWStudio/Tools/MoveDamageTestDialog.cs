@@ -48,7 +48,6 @@ namespace VPWStudio
 				else
 				{
 					Program.ErrorMessageBox(String.Format("Move Damage dialog not implemented for {0}.", Program.CurrentProject.Settings.BaseGame));
-					Close();
 				}
 			}
 		}
