@@ -2605,21 +2605,12 @@ namespace VPWStudio
 
 		private void nameEncoderdecoderToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (nedTool == null)
+			if (nedTool == null || nedTool.IsDisposed)
 			{
 				nedTool = new NameEncodeDecodeTool();
-				nedTool.MdiParent = this;
-				nedTool.Show();
 			}
-			else
-			{
-				if (nedTool.IsDisposed)
-				{
-					nedTool = new NameEncodeDecodeTool();
-				}
-				nedTool.MdiParent = this;
-				nedTool.Show();
-			}
+			nedTool.MdiParent = this;
+			nedTool.Show();
 		}
 
 		private void toki1TestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2630,21 +2621,12 @@ namespace VPWStudio
 				return;
 			}
 
-			if (Toki1Test == null)
+			if (Toki1Test == null || Toki1Test.IsDisposed)
 			{
 				Toki1Test = new Toki1TestDialog();
-				Toki1Test.MdiParent = this;
-				Toki1Test.Show();
 			}
-			else
-			{
-				if (Toki1Test.IsDisposed)
-				{
-					Toki1Test = new Toki1TestDialog();
-				}
-				Toki1Test.MdiParent = this;
-				Toki1Test.Show();
-			}
+			Toki1Test.MdiParent = this;
+			Toki1Test.Show();
 		}
 
 		private void vpw2FaceTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2740,21 +2722,12 @@ namespace VPWStudio
 
 		private void vpw2TextIndexToolToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (TextIndexDecoder == null)
+			if (TextIndexDecoder == null || TextIndexDecoder.IsDisposed)
 			{
 				TextIndexDecoder = new Tools.TextIndexTool();
-				TextIndexDecoder.MdiParent = this;
-				TextIndexDecoder.Show();
 			}
-			else
-			{
-				if (TextIndexDecoder.IsDisposed)
-				{
-					TextIndexDecoder = new Tools.TextIndexTool();
-				}
-				TextIndexDecoder.MdiParent = this;
-				TextIndexDecoder.Show();
-			}
+			TextIndexDecoder.MdiParent = this;
+			TextIndexDecoder.Show();
 		}
 
 		private void testScene3dToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2765,21 +2738,12 @@ namespace VPWStudio
 				return;
 			}
 
-			if (Test3dDialog == null)
+			if (Test3dDialog == null || Test3dDialog.IsDisposed)
 			{
 				Test3dDialog = new TestScene3D();
-				Test3dDialog.MdiParent = this;
-				Test3dDialog.Show();
 			}
-			else
-			{
-				if (Test3dDialog.IsDisposed)
-				{
-					Test3dDialog = new TestScene3D();
-				}
-				Test3dDialog.MdiParent = this;
-				Test3dDialog.Show();
-			}
+			Test3dDialog.MdiParent = this;
+			Test3dDialog.Show();
 		}
 
 		private void paramUnpackTestToolStripMenuItem_Click(object sender, EventArgs e)
