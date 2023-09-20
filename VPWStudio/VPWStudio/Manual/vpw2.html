@@ -18,6 +18,7 @@
 <li><a href="#RomInfo">Supported Versions/ROMs</a></li>
 <li><a href="#GeneralNotes">General Notes</a></li>
 <li><a href="#FileTypes">Notable File Types</a></li>
+<li><a href="#GlobalText">Global Text</a></li>
 <li><a href="#WrestlerID">Default Wrestler IDs</a></li>
 <li><a href="#WrestlerData">Wrestler Data</a>
 <ol>
@@ -87,6 +88,25 @@ in <code>AkiText</code> archives. This is a VPW Studio-specific problem.</p>
 <h3><code>MenuBackground</code></h3>
 <p>In Virtual Pro-Wrestling 2, <code>MenuBackground</code> objects consist of
 multiple 64x30 chunks of an image, with a total of 5 columns and 8 rows.</p>
+
+<hr />
+
+<h2><a name="GlobalText">Global Text</a></h2>
+<p>Z64 ROM address: <code>0x69650</code> (start of strings); <code>0x6A4E0</code> (start of pointers)</p>
+<p>While most of the strings are available in various AkiText archives, there
+are a few that are hardcoded in the ROM. freem calls this section "Global Text".
+Strings end with an <code>0x00</code> byte, though there may be extra
+padding for alignment purposes.</p>
+
+<p>Global text strings are accessed via a pointer table found directly after
+the strings. (The truth is a bit more complicated than this; ignore it for now.)
+Making strings longer requires re-pointing the table, which is a very arduous task
+to take on manually. The recommended method is to use an assembler; information
+on this is beyond the scope of this manual.</p>
+
+<p>In Virtual Pro-Wrestling 2, most of the global strings are Shift-JIS encoded.
+<a href="./index.html#TextControlCodes">Text control codes</a> are supported,
+though some are of limited use.</p>
 
 <hr />
 
