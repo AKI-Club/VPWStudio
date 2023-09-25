@@ -1261,6 +1261,9 @@
 10B7=Ci4Palette;[Revenge Weapon] Black Bat
 10B8=Ci4Texture;[Revenge Weapon] Black Bat|p:10B7
 10E2=Ci4Palette;Default Colors
+2DC4=Ci4Palette;
+2DC5=Ci4Texture;|p:2DC4
+2DC6=AkiAnimation;
 4461=AkiText;Match Options text
 4462=AkiText;Mode instructions
 4463=AkiText;Various text, rumble pak & more (also VPW2 leftover?)
