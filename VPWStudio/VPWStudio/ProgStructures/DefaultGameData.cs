@@ -845,8 +845,8 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x2DD9 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x2DD9 },
 					{ SpecificGame.NoMercy_PAL_10, 0x2DD9 },
-					{ SpecificGame.NoMercy_PAL_11, 0x2DD9 }
-					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+					{ SpecificGame.NoMercy_PAL_11, 0x2DD9 },
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x2DC6 }
 					#endregion
 				}
 			},
@@ -868,7 +868,7 @@ namespace VPWStudio
 					#region WWF WrestleMania 2000
 					{ SpecificGame.WM2K_NTSC_U, 0x19DB },
 					{ SpecificGame.WM2K_PAL, 0x19DB },
-					// todo: WM2K_NTSC_J
+					{ SpecificGame.WM2K_NTSC_J, 0x1A15 },
 					#endregion
 
 					{ SpecificGame.VPW2_NTSC_J, 0x2056 },
@@ -877,7 +877,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x3322 },
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x3322 },
 					{ SpecificGame.NoMercy_PAL_10, 0x3322 },
-					{ SpecificGame.NoMercy_PAL_11, 0x3322 }
+					{ SpecificGame.NoMercy_PAL_11, 0x3322 },
 					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
 					#endregion
 				}
@@ -1072,7 +1072,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D72 },
 					{ SpecificGame.NoMercy_PAL_10, 0x1D72 },
 					{ SpecificGame.NoMercy_PAL_11, 0x1D72 },
-					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x1D5F },
 				}
 			},
 
@@ -1093,7 +1093,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x1D73 },
 					{ SpecificGame.NoMercy_PAL_10, 0x1D73 },
 					{ SpecificGame.NoMercy_PAL_11, 0x1D73 },
-					// todo: SpecificGame.NoMercy_Proto_NTSC_September2000
+					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x1D60 },
 				}
 			},
 
