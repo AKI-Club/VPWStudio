@@ -6,7 +6,8 @@ namespace VPWStudio.GameSpecific
 	/// <summary>
 	/// Shared Costume definition for World Tour and VPW64.
 	/// </summary>
-	/// todo: this is more oriented towards Revenge, and should be refactored for World Tour/VPW64
+	/// todo: how much of this is still specific to Revenge?
+	/// Revenge stuff should be in GameSpecific/Revenge/CostumeDef.cs
 	public class CostumeDef_Early
 	{
 		#region Class Members
