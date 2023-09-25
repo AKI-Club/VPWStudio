@@ -2,9 +2,47 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 31 (202x/yy/zz)
+Pre-Alpha Preview 32 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 31 (2023/09/25)
+---------------------------------
+- [Costume Color Control] Now supports VPW64 and Revenge colors.
+
+- [RenderableN64, TestScene3D] Add CI8 texture/palette support.
+
+- Added ChampionshipDefs_Early data viewer (for World Tour and VPW64).
+
+- Added Tag Team data viewer for WM2K.
+
+- [TestScene3D] Added custom mesh scaling.
+  (Scale value from model data is currently ignored.)
+
+- Disabled the incomplete VPW2 Costume dialog, since it was confusing people and
+  needs a redesign anyways.
+
+- [FileTable_EditEntryInfoDialog] Allow image width, image height, and intended
+  palette to be un-set, in case you accidentally set them.
+
+- [File Table Dialog] Added "Database -> FTDB Info..." option, mainly for internal use.
+
+- [VPW2 Demo Match Dialog] Added wrestler names.
+
+- [Game-Specific Docs] Add links to document archives for each game.
+
+- [Param Unpack Test] Update/fix No Mercy bit widths.
+
+- [Face Tester] Partial WM2K support (NTSC-J still needs fixing).
+
+- [File Table Dialog] Fixed issue with MenuBackground replacement not changing
+  modified file entries to have a red background.
+
+- [FileTableDB] Large update for VPW64 (now at 99%), as well as updates for
+  World Tour, Revenge, WM2000 NTSC-J, and No Mercy Sept. 2000 pre-release.
+
+  To update your project, open the File Table dialog, then choose
+  Database -> Reload File Table Database.
 
 Pre-Alpha Preview 30 (2023/08/31)
 ---------------------------------
