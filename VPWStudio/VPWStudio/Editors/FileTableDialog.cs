@@ -783,7 +783,7 @@ namespace VPWStudio
 					}
 					else if (newBG.PixelFormat != System.Drawing.Imaging.PixelFormat.Format4bppIndexed)
 					{
-						Program.ErrorMessageBox("Menu background images must be 4BPP (16 colors).");
+						Program.ErrorMessageBox(String.Format("Menu background images must be 4BPP (16 colors).\nInput image has PixelFormat '{0}'.",newBG.PixelFormat.ToString()));
 					}
 					else
 					{
