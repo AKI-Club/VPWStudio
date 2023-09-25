@@ -822,6 +822,16 @@ namespace VPWStudio
 				Program.UnsavedChanges = true;
 				Program.AppMainForm.UpdateTitleBar();
 				newBG.Dispose();
+
+				// save previous position
+				ListViewItem prevItem = lvFileList.FocusedItem;
+				int prevIndex = prevItem.Index;
+
+				UpdateEntryList();
+
+				// reload previous position
+				lvFileList.EnsureVisible(prevIndex);
+				lvFileList.FocusedItem = prevItem;
 			}
 		}
 		#endregion
