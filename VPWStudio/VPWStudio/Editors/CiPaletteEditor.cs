@@ -411,7 +411,8 @@ namespace VPWStudio.Editors
 
 		private void pbPalettePreview_MouseClick(object sender, MouseEventArgs e)
 		{
-			// todo: determine where we clicked
+			// todo: determine where we clicked and set the active editing color
+			// both e.Location and e.X/e.Y are relative to the control's position
 		}
 
 		/// <summary>

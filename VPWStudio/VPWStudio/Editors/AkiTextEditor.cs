@@ -17,7 +17,7 @@ namespace VPWStudio.Editors
 		private AkiText OrigTextArchive = new AkiText();
 
 		/// <summary>
-		/// pseudo-crap
+		/// File ID, used as a "key"
 		/// </summary>
 		private int FileKey = -1;
 
@@ -118,7 +118,7 @@ namespace VPWStudio.Editors
 
 			using (FileStream fs = new FileStream(path, FileMode.Open))
 			{
-				// someone might have put a CSV file here...
+				// Handle multiple possible formats
 				if (Path.GetExtension(path) == ".csv")
 				{
 					// Zoinkity's CSV format
