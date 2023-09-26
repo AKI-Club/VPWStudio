@@ -35,7 +35,7 @@ namespace VPWStudio
 		public int ImageHeight;
 
 		/// <summary>
-		/// Index of transparent color.
+		/// Index of transparent color. (deprecated)
 		/// </summary>
 		public int TransparentColorIndex;
 
@@ -456,15 +456,17 @@ namespace VPWStudio
 			{
 				if (tokens[i].StartsWith("w:"))
 				{
+					//int.TryParse(tokens[i].Substring(2), out ExtraData.ImageWidth);
 					ExtraData.ImageWidth = int.Parse(tokens[i].Substring(2));
 				}
 				if (tokens[i].StartsWith("h:"))
 				{
+					//int.TryParse(tokens[i].Substring(2), out ExtraData.ImageHeight);
 					ExtraData.ImageHeight = int.Parse(tokens[i].Substring(2));
 				}
 				if (tokens[i].StartsWith("t:"))
 				{
-					// transparent color index
+					// transparent color index (deprecated)
 				}
 				if (tokens[i].StartsWith("p:"))
 				{
@@ -472,10 +474,12 @@ namespace VPWStudio
 				}
 				if (tokens[i].StartsWith("mh:"))
 				{
+					//int.TryParse(tokens[i].Substring(2), out ExtraData.HorizMirror);
 					ExtraData.HorizMirror = bool.Parse(tokens[i].Substring(3));
 				}
 				if (tokens[i].StartsWith("mv:"))
 				{
+					//int.TryParse(tokens[i].Substring(2), out ExtraData.VertMirror);
 					ExtraData.VertMirror = bool.Parse(tokens[i].Substring(3));
 				}
 			}
@@ -626,35 +630,6 @@ namespace VPWStudio
 		#endregion
 
 		#region Midwaydec Read/Write
-		/// <summary>
-		/// haven't really finished this yet
-		/// </summary>
-		/// <param name="sr"></param>
-		public void ReadMidwaydecEntry(StreamReader sr)
-		{
-			// xxx: this should be elsewhere
-			string line = sr.ReadLine();
-			// skip comments
-			if (line.StartsWith("#"))
-			{
-				return;
-			}
-
-			string[] tokens = line.Split(new char[] { '\t' });
-
-			if (tokens[0].Contains(","))
-			{
-				// file length is included
-
-				// 0x1310F40, 0xCC8C	bin	filetable.bin
-				// there is a SPACE after the comma
-			}
-
-			// filetype can be tricky too
-			// 0x18542E	bin	font.txt
-			// 0x188F3A	LZSS_0B, AKItext
-		}
-
 		/// <summary>
 		/// Write a Midwaydec File Table entry.
 		/// </summary>
@@ -1038,29 +1013,7 @@ namespace VPWStudio
 		}
 		#endregion
 
-		#region Midwaydec Read/Write
-		/// <summary>
-		/// Something about attempting to load filetypes and filenames (as comments) from Midwaydec File Lists.
-		/// </summary>
-		/// <param name="sr"></param>
-		public void ReadMidwaydec(StreamReader sr)
-		{
-			// todo: what
-			while (!sr.EndOfStream)
-			{
-				string line = sr.ReadLine();
-				if (line.StartsWith("#"))
-				{
-					continue;
-				}
-
-				// we're mainly here to check a few things...
-				// * does the location in the midwaydec file match a ROM location in the filelist?
-				// * is the filetype in the midwaydec file different, and NOT "bin"
-				// * use filename as comment *IF* comment not available in our filelist.
-			}
-		}
-
+		#region Midwaydec Write
 		/// <summary>
 		/// Export FileTable to Midwaydec File List format.
 		/// </summary>
