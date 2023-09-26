@@ -5,7 +5,6 @@ namespace VPWStudio
 	/// <summary>
 	/// Handles "encoded" names, used from World Tour to WrestleMania 2000.
 	/// </summary>
-	/// todo: VPW64 may need to handle strings as EUC-JP
 	public class NameHandler
 	{
 		/// <summary>
@@ -73,6 +72,8 @@ namespace VPWStudio
 				// * "Diamond Dallas Page{DDP}" (human intervention version: "<D>iamond <D>allas <P>age" uses more bytes)
 				// * "Konnan{K-Dawg}" (human intervention version: "<K>onnan{-Dawg}" uses more bytes)
 				// * "Juventud Guerrera{Juvi}" (human intervention version: "<Juv>entud Guerrera{i}" uses one less byte)
+
+				// for now, we just output the long name, followed by the short name (a la the DDP and Konnan examples above)
 				result = string.Format("{0}{{{1}}}", _long, _short);
 			}
 

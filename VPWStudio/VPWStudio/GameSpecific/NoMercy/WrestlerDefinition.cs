@@ -56,8 +56,6 @@ namespace VPWStudio.GameSpecific.NoMercy
 		/// 0x01F7 = fake 400 lbs. (Crash Holly)
 		public UInt16 Weight;
 
-		// todo: missing items between here and there
-
 		/// <summary>
 		/// Moveset file index
 		/// </summary>

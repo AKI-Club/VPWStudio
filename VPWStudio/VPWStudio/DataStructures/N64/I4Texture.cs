@@ -8,8 +8,7 @@ namespace VPWStudio
 	/// <summary>
 	/// 4BPP intensity-only image.
 	/// </summary>
-	/// todo: the images I've found do not give width and height values.
-	/// they are probably provided by the game.
+	/// Images I've found do not have width and height values; game probably provides them somehow.
 	public class I4Texture
 	{
 		#region Class Members
