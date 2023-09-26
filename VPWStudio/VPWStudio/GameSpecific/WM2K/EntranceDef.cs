@@ -65,6 +65,10 @@ namespace VPWStudio.GameSpecific.WM2K
 		#endregion
 
 		#region Binary Read/Write
+		/// <summary>
+		/// Read EntranceDef data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			// part 1: data
