@@ -87,8 +87,7 @@ namespace VPWStudio.Tools
 
 		private void btnTextureMoveDown_Click(object sender, EventArgs e)
 		{
-			// todo: don't do this at end of list either
-			if (lbTextures.SelectedIndex < 0)
+			if (lbTextures.SelectedIndex < 0 || lbTextures.SelectedIndex == lbTextures.Items.Count-1)
 			{
 				return;
 			}
