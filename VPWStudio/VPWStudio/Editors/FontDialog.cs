@@ -669,6 +669,7 @@ namespace VPWStudio.Editors
 
 					default:
 						FontCharacters = FallbackCharacters;
+						tbTemp.BackColor = Color.FromArgb(255, 208, 240, 255);
 						break;
 				}
 

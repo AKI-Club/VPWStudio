@@ -83,9 +83,9 @@
 			// 
 			this.buttonExportFontGraphic.Location = new System.Drawing.Point(12, 158);
 			this.buttonExportFontGraphic.Name = "buttonExportFontGraphic";
-			this.buttonExportFontGraphic.Size = new System.Drawing.Size(128, 23);
+			this.buttonExportFontGraphic.Size = new System.Drawing.Size(105, 23);
 			this.buttonExportFontGraphic.TabIndex = 3;
-			this.buttonExportFontGraphic.Text = "&Export Font Graphic...";
+			this.buttonExportFontGraphic.Text = "&Export Font PNG...";
 			this.buttonExportFontGraphic.UseVisualStyleBackColor = true;
 			this.buttonExportFontGraphic.Click += new System.EventHandler(this.buttonExportFontGraphic_Click);
 			// 
@@ -204,10 +204,10 @@
 			// tbTemp
 			// 
 			this.tbTemp.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbTemp.Location = new System.Drawing.Point(146, 158);
+			this.tbTemp.Location = new System.Drawing.Point(123, 158);
 			this.tbTemp.Name = "tbTemp";
 			this.tbTemp.ReadOnly = true;
-			this.tbTemp.Size = new System.Drawing.Size(215, 23);
+			this.tbTemp.Size = new System.Drawing.Size(238, 23);
 			this.tbTemp.TabIndex = 5;
 			// 
 			// FontDialog
