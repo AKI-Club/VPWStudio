@@ -130,6 +130,7 @@
 0081=AkiTexture;Won Trophy BG
 0082=AkiTexture;Won Belt BG
 0083=AkiTexture;Created by AKI Corporation
+0084=Binary;
 0085=Binary;[Params] Johnny Ace
 0086=Binary;[Move Damage] Johnny Ace
 0087=Binary;[Moveset] Johnny Ace
@@ -903,6 +904,7 @@
 0387=AkiModel;
 0388=Ci4Texture;Turnbuckle Pads
 0389=Ci4Texture;Circular Corner Pad
+038A=Binary;
 038B=Ci4Texture;Ringpost texture
 038C=Ci4Palette;
 038D=Ci4Palette;
