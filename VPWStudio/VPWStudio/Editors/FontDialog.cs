@@ -633,7 +633,17 @@ namespace VPWStudio.Editors
 		public FontDialog(int fileID, int charsID = 0)
 		{
 			InitializeComponent();
-			LoadFont(fileID);
+
+			if (Program.CurrentProject.ProjectFileTable.Entries[fileID].HasReplacementFile())
+			{
+				LoadFont(Program.ConvertRelativePath(Program.CurrentProject.ProjectFileTable.Entries[fileID].ReplaceFilePath),
+					Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont);
+			}
+			else
+			{
+				LoadFont(fileID);
+			}
+
 			Text = String.Format("Fonts - File ID {0:X4}",fileID);
 			if (charsID > 0)
 			{
@@ -707,14 +717,14 @@ namespace VPWStudio.Editors
 		/// Load font from external file
 		/// </summary>
 		/// <param name="fontPath">Path to AkiFont data file.</param>
-		/// xxx: this should probably take in more arguments...
-		private void LoadFont(string fontPath)
+		/// <param name="fontType">Which font type to load the data as.</param>
+		private void LoadFont(string fontPath, AkiFontType fontType)
 		{
 			using (FileStream fs = new FileStream(fontPath, FileMode.Open))
 			{
 				using (BinaryReader br = new BinaryReader(fs))
 				{
-					CurFont = new AkiFont();
+					CurFont = new AkiFont(fontType, Program.CurrentProject.Settings.BaseGame);
 					CurFont.ReadData(br);
 					UpdateValues();
 				}
@@ -733,9 +743,9 @@ namespace VPWStudio.Editors
 		}
 
 		/// <summary>
-		/// 
+		/// Load font characters from File ID. Assumes Shift-JIS encoding.
 		/// </summary>
-		/// <param name="charsID"></param>
+		/// <param name="charsID">File ID with character list.</param>
 		private void LoadCharacters(int charsID)
 		{
 			// add items to FontCharacters
@@ -759,7 +769,7 @@ namespace VPWStudio.Editors
 		}
 
 		/// <summary>
-		/// Populate the character listbox
+		/// Populate the character listbox.
 		/// </summary>
 		private void PopulateCharacterList()
 		{
@@ -798,7 +808,7 @@ namespace VPWStudio.Editors
 
 			if (CurFont.FontType == AkiFontType.AkiLargeFont)
 			{
-				// header is 3 bytes
+				// Large font character header is 3 bytes
 				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2},0x{2:X2} (lead {0}; width {1})",
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
@@ -807,7 +817,7 @@ namespace VPWStudio.Editors
 			}
 			else
 			{
-				// header is 2 bytes
+				// Small font character header is 2 bytes
 				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2} (lead {2}; width {3})",
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
