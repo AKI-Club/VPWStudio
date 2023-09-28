@@ -25,7 +25,8 @@ namespace VPWStudio
 		Ci4Texture, // CI4 texture data (with header)
 		Ci8Texture, // CI8 texture data (with header)
 		I4Texture,  // raw I4 texture data
-		// todo: IA8, IA4, I8, others
+		// todo: determine if IA8, IA4, and I8 are used in any AKI games
+		// I'm assuming some of the others (e.g. JPG, YUV) aren't used.
 
 		// semi-standard, but different enough to be an issue
 		RawCi4TexPal,  // no header, but contains palette and CI4 texture data
