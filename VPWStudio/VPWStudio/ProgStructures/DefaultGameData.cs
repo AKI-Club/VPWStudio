@@ -1195,10 +1195,9 @@ namespace VPWStudio
 
 		/*
 		 * todo: the endless shrimp buffet list at Red Corner Lobster
-		 * - number of stables
-		 * - number of wrestlers
+		 * - move damage data length (per-move)
 		 * - number of entries for various tables
-		 *   also other assumptions that I can't think of right now0
+		 *   also other assumptions that I can't think of right now
 		 */
 
 		/// <summary>
@@ -1206,12 +1205,31 @@ namespace VPWStudio
 		/// </summary>
 		public static Dictionary<VPWGames, int> StableCount = new Dictionary<VPWGames, int>()
 		{
-			{ VPWGames.WorldTour, 6 }, // 4 main + 1 hidden + 1 for cruiserweight-only roster
-			{ VPWGames.VPW64, 11 },    // 7 main + 1 hidden + 1 separate group (for holding Z on certain characters) + 2 for cruiserweight-only roster
-			{ VPWGames.Revenge, 13 },  // 9 main + 2 manager-only (normally unselectable) + 2 for cruiserweight-only roster
-			{ VPWGames.WM2K, 11 },     // 8 main + 1 hidden + 2 edit
-			{ VPWGames.VPW2, 17 },     // 12 main + 3 hidden + 2 edit
-			{ VPWGames.NoMercy, 12 }   // 6 main + 2 hidden + 2 empty (Superstars 6,7) + 2 edit
+			{ VPWGames.WorldTour, 6 },  // 4 main + 1 hidden + 1 for cruiserweight-only roster
+			{ VPWGames.VPW64,    11 },  // 7 main + 1 hidden + 1 separate group (for holding Z on certain characters) + 2 for cruiserweight-only roster
+			{ VPWGames.Revenge,  13 },  // 9 main + 2 manager-only (normally unselectable) + 2 for cruiserweight-only roster
+			{ VPWGames.WM2K,     11 },  // 8 main + 1 hidden + 2 edit
+			{ VPWGames.VPW2,     17 },  // 12 main + 3 hidden + 2 edit
+			{ VPWGames.NoMercy,  12 }   // 6 main + 2 hidden + 2 empty (Superstars 6,7) + 2 edit
+		};
+
+		/// <summary>
+		/// Number of Wrestlers defined in each game.
+		/// </summary>
+		/// This is not as consistent as I'd like, since some games have a cruiserweight-only roster.
+		public static Dictionary<VPWGames, int> WrestlerCount = new Dictionary<VPWGames, int>()
+		{
+			// Notice! These two skip the duplicate cruiserweight-only definitions:
+			{ VPWGames.WorldTour, 43 },
+			{ VPWGames.VPW64,     99 },
+
+			{ VPWGames.Revenge,   90 }, // 63 default + 14 cruiserweight-only + 13 managers
+			{ VPWGames.WM2K,      76 },
+			{ VPWGames.VPW2,     130 }, // 98 default + 16 edit + 16 controller pak
+
+			// Note: there are another 37 slots unaccounted for in this value
+			// (18x edit mode characters, 18x controller pak characters, 1x GBC Story Mode slot)
+			{ VPWGames.NoMercy,   64 }, // Main wrestler count only; multiply by 4 to account for per-costume slot differences
 		};
 		#endregion
 	}
