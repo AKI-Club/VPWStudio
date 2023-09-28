@@ -1206,12 +1206,12 @@ namespace VPWStudio
 		/// </summary>
 		public static Dictionary<VPWGames, int> StableCount = new Dictionary<VPWGames, int>()
 		{
-			{ VPWGames.WorldTour, 6 },
-			{ VPWGames.VPW64, 11 },
-			{ VPWGames.Revenge, 13 },
-			{ VPWGames.WM2K, 11 },
-			{ VPWGames.VPW2, 17 },
-			{ VPWGames.NoMercy, 12 }
+			{ VPWGames.WorldTour, 6 }, // 4 main + 1 hidden + 1 for cruiserweight-only roster
+			{ VPWGames.VPW64, 11 },    // 7 main + 1 hidden + 1 separate group (for holding Z on certain characters) + 2 for cruiserweight-only roster
+			{ VPWGames.Revenge, 13 },  // 9 main + 2 manager-only (normally unselectable) + 2 for cruiserweight-only roster
+			{ VPWGames.WM2K, 11 },     // 8 main + 1 hidden + 2 edit
+			{ VPWGames.VPW2, 17 },     // 12 main + 3 hidden + 2 edit
+			{ VPWGames.NoMercy, 12 }   // 6 main + 2 hidden + 2 empty (Superstars 6,7) + 2 edit
 		};
 		#endregion
 	}
