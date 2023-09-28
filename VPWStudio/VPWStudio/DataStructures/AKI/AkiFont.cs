@@ -415,6 +415,7 @@ namespace VPWStudio
 		/// Converts the AkiFont into a Bitmap.
 		/// </summary>
 		/// <returns>Bitmap with the characters.</returns>
+		/// todo: replace SetPixel commands if possible
 		public Bitmap ToBitmap()
 		{
 			int charWidth = (FontType == AkiFontType.AkiLargeFont) ? LARGE_FONT_CHAR_WIDTH : SMALL_FONT_CHAR_WIDTH;
