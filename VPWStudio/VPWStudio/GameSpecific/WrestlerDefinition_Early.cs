@@ -12,6 +12,8 @@ namespace VPWStudio.GameSpecific
 		/// <summary>
 		/// ??? 1
 		/// </summary>
+		/// World Tour: matches Wrestler ID2
+		/// VPW64: value differs from Wrestler ID2 for some wrestlers
 		public UInt16 Unknown1;
 
 		/// <summary>
@@ -27,11 +29,20 @@ namespace VPWStudio.GameSpecific
 		/// <summary>
 		/// includes Heavyweight vs. Cruiserweight status
 		/// </summary>
+		/// wrestlers in World Tour only have 0x05 (Heavyweight) or 0x06 (Cruiserweight)
+		/// VPW64 has a few more values (0x01, 0x02, 0x05, 0x06)
+
+		/// 76543210
+		/// ||||||||
+		/// ?????||+-- ?
+		/// ?????|+--- 0=Heavyweight, 1=Cruiserweight
+		/// ?????+---- 0=Japanese, 1=Foreigner/Gaijin ??? this is the only pattern that makes any sense given VPW64's data; corrections are welcome
 		public byte Flags1;
 
 		/// <summary>
 		/// ??? 2
 		/// </summary>
+		/// always 0x0001 in both games for all wrestlers
 		public UInt16 Unknown2;
 
 		/// <summary>
@@ -144,6 +155,16 @@ namespace VPWStudio.GameSpecific
 				s += br.ReadChar();
 			}
 			return s;
+		}
+
+		public bool IsHeavyweight()
+		{
+			return (Flags1 & 2) == 0;
+		}
+
+		public bool IsCruiserweight()
+		{
+			return (Flags1 & 2) != 0;
 		}
 		#endregion
 
