@@ -63,8 +63,7 @@ namespace VPWStudio.Editors.Revenge
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < 13; i++)
+			for (int i = 0; i < DefaultGameData.StableCount[VPWGames.Revenge]; i++)
 			{
 				StableDefinition sdef = new StableDefinition(br);
 				StableDefs.Add(i, sdef);

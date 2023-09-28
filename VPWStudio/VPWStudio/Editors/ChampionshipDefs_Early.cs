@@ -15,13 +15,6 @@ namespace VPWStudio.Editors
 	{
 		public SortedList<int, StableDef_Early> StableDefs = new SortedList<int, StableDef_Early>();
 
-		// xxx: this is duplicated from StableDefs_Early editor
-		private Dictionary<VPWGames, int> NumStables = new Dictionary<VPWGames, int>()
-		{
-			{ VPWGames.WorldTour, 6 },
-			{ VPWGames.VPW64, 11 }
-		};
-
 		public ChampionshipDefs_Early()
 		{
 			InitializeComponent();
@@ -77,8 +70,7 @@ namespace VPWStudio.Editors
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < NumStables[Program.CurrentProject.Settings.BaseGame]; i++)
+			for (int i = 0; i < DefaultGameData.StableCount[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				StableDef_Early sdef = new StableDef_Early(br);
 				StableDefs.Add(i, sdef);

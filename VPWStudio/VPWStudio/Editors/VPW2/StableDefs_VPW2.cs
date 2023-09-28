@@ -82,8 +82,7 @@ namespace VPWStudio.Editors.VPW2
 				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < 17; i++)
+			for (int i = 0; i < DefaultGameData.StableCount[VPWGames.VPW2]; i++)
 			{
 				StableDefinition sdef = new StableDefinition(romReader);
 				StableDefs.Add(i, sdef);

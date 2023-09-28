@@ -15,6 +15,7 @@ namespace VPWStudio.Editors.NoMercy
 
 		private AkiText DefaultNames;
 
+		// todo: use DefaultGameData version
 		private const UInt16 NOMERCY_DEFAULT_NAMES_FILE = 2;
 
 		public StableDefs_NoMercy()
@@ -85,8 +86,7 @@ namespace VPWStudio.Editors.NoMercy
 				romReader.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < 12; i++)
+			for (int i = 0; i < DefaultGameData.StableCount[VPWGames.NoMercy]; i++)
 			{
 				StableDefinition sdef = new StableDefinition(romReader);
 				StableDefs.Add(i, sdef);

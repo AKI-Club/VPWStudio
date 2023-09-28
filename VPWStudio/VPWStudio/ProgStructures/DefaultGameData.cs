@@ -1189,5 +1189,30 @@ namespace VPWStudio
 			#endregion
 		};
 		#endregion
+
+		#region Default Data Sizes
+		// This section covers a number of hardcoded assumptions previously found elsewhere in the tool.
+
+		/*
+		 * todo: the endless shrimp buffet list at Red Corner Lobster
+		 * - number of stables
+		 * - number of wrestlers
+		 * - number of entries for various tables
+		 *   also other assumptions that I can't think of right now0
+		 */
+
+		/// <summary>
+		/// Number of Stables defined in each game.
+		/// </summary>
+		public static Dictionary<VPWGames, int> StableCount = new Dictionary<VPWGames, int>()
+		{
+			{ VPWGames.WorldTour, 6 },
+			{ VPWGames.VPW64, 11 },
+			{ VPWGames.Revenge, 13 },
+			{ VPWGames.WM2K, 11 },
+			{ VPWGames.VPW2, 17 },
+			{ VPWGames.NoMercy, 12 }
+		};
+		#endregion
 	}
 }

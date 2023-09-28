@@ -76,8 +76,7 @@ namespace VPWStudio.Editors.WM2K
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of stable defs
-			for (int i = 0; i < 11; i++)
+			for (int i = 0; i < DefaultGameData.StableCount[VPWGames.WM2K]; i++)
 			{
 				StableDefinition sdef = new StableDefinition(br);
 				StableDefs.Add(i, sdef);
