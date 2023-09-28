@@ -106,8 +106,7 @@ namespace VPWStudio.Editors.VPW2
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < 0x82; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[VPWGames.VPW2]; i++)
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);

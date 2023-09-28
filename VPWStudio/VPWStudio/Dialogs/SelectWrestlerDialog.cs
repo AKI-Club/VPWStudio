@@ -195,8 +195,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < NumWrestlers[Program.CurrentProject.Settings.BaseGame]; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i * 4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);
@@ -237,8 +236,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < 90; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[VPWGames.Revenge]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i * 4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);
@@ -279,8 +277,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < 76; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[VPWGames.WM2K]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i * 4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);
@@ -320,8 +317,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[SpecificGame.VPW2_NTSC_J].Locations["StableDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < 0x82; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[VPWGames.VPW2]; i++)
 			{
 				GameSpecific.VPW2.WrestlerDefinition wdef = new GameSpecific.VPW2.WrestlerDefinition(br);
 				WrestlerDefs_VPW2.Add(i, wdef);
@@ -352,8 +348,7 @@ namespace VPWStudio
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < (0x40 * 4) + 0x25; i++)
+			for (int i = 0; i < (DefaultGameData.WrestlerCount[VPWGames.NoMercy] * 4) + 0x25; i++)
 			{
 				GameSpecific.NoMercy.WrestlerDefinition wdef = new GameSpecific.NoMercy.WrestlerDefinition(br);
 				WrestlerDefs_NoMercy.Add(i, wdef);

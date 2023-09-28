@@ -69,8 +69,7 @@ namespace VPWStudio.Editors.WM2K
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < 76; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[VPWGames.WM2K]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i*4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);

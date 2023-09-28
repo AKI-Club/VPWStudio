@@ -130,8 +130,7 @@ namespace VPWStudio.Editors.NoMercy
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < (0x40 * 4) + 0x25; i++)
+			for (int i = 0; i < (DefaultGameData.WrestlerCount[VPWGames.NoMercy] * 4) + 0x25; i++)
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
 				WrestlerDefs.Add(i, wdef);

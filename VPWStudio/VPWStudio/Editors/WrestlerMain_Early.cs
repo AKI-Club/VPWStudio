@@ -15,13 +15,6 @@ namespace VPWStudio.Editors
 	{
 		public SortedList<int, WrestlerDefinition_Early> WrestlerDefs = new SortedList<int, WrestlerDefinition_Early>();
 
-		// Note: skips duplicate entries used for junior heavyweight roster
-		private Dictionary<VPWGames, int> NumWrestlers = new Dictionary<VPWGames, int>()
-		{
-			{ VPWGames.WorldTour, 43 },
-			{ VPWGames.VPW64, 99 }
-		};
-
 		public WrestlerMain_Early()
 		{
 			InitializeComponent();
@@ -35,7 +28,7 @@ namespace VPWStudio.Editors
 			}
 			else
 			{
-				// load stable definitions from Revenge ROM
+				// load stable definitions from ROM
 				LoadDefs_Rom();
 			}
 
@@ -68,8 +61,7 @@ namespace VPWStudio.Editors
 				br.BaseStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["WrestlerDefs"].Offset, SeekOrigin.Begin);
 			}
 
-			// xxx: default number of wrestler defs
-			for (int i = 0; i < NumWrestlers[Program.CurrentProject.Settings.BaseGame]; i++)
+			for (int i = 0; i < DefaultGameData.WrestlerCount[Program.CurrentProject.Settings.BaseGame]; i++)
 			{
 				br.BaseStream.Seek(baseLocation + (i * 4), SeekOrigin.Begin);
 				byte[] ptrBytes = br.ReadBytes(4);
