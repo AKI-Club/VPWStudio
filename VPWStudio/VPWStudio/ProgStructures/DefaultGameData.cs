@@ -857,8 +857,13 @@ namespace VPWStudio
 				"FirstMoveAnimationID",
 				new Dictionary<SpecificGame, int>()
 				{
-					// Unsure if World Tour and VPW64 has and/or uses this value.
-					// It could be something that was introduced in Revenge.
+					#region WCW/nWo World Tour
+					{ SpecificGame.WorldTour_NTSC_U_10, 0x0D82 },
+					{ SpecificGame.WorldTour_NTSC_U_11, 0x0D82 }, // found at runtime code address 800A2468 when in-match
+					{ SpecificGame.WorldTour_PAL, 0x0D82 },
+					#endregion
+
+					{ SpecificGame.VPW64_NTSC_J, 0x1575 }, // found at runtime code address 8009B630 when in-match
 
 					#region WCW/nWo Revenge
 					{ SpecificGame.Revenge_NTSC_U, 0x110B },
@@ -923,6 +928,8 @@ namespace VPWStudio
 				"MoveDamageFileID",
 				new Dictionary<SpecificGame, int>()
 				{
+					// World Tour, VPW64, and Revenge have per-wrestler move damage in separate files
+
 					#region WWF WrestleMania 2000
 					{ SpecificGame.WM2K_NTSC_U, 0x03AD },
 					{ SpecificGame.WM2K_PAL, 0x03AD },
