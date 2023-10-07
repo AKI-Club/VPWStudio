@@ -418,94 +418,94 @@
     <value>Danger Zone</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;compress test</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;decompress test</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Text" xml:space="preserve">
     <value>name e&amp;ncoder/decoder</value>
   </data>
   <data name="toki1TestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="toki1TestToolStripMenuItem.Text" xml:space="preserve">
     <value>toki &amp;1 test</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw2/wm2k &amp;face test</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Text" xml:space="preserve">
     <value>s&amp;table parse test</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>rom &amp;slice test</value>
   </data>
   <data name="openFileInHexViewerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="openFileInHexViewerToolStripMenuItem.Text" xml:space="preserve">
     <value>open file in hex viewer...</value>
   </data>
   <data name="moveDamageTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="moveDamageTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>m&amp;ove damage test (WM2K/VPW2/No Mercy only)</value>
+    <value>m&amp;ove damage test</value>
   </data>
   <data name="vpw2TextIndexToolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="vpw2TextIndexToolToolStripMenuItem.Text" xml:space="preserve">
     <value>text index tool</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="timTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="timTestToolStripMenuItem.Text" xml:space="preserve">
     <value>tim test</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="testScene3dToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="testScene3dToolStripMenuItem.Text" xml:space="preserve">
     <value>test scene 3d</value>
   </data>
   <data name="paramUnpackTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="paramUnpackTestToolStripMenuItem.Text" xml:space="preserve">
     <value>param unpack test</value>
   </data>
   <data name="vpw64CostumeTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="vpw64CostumeTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw64 costume test</value>
