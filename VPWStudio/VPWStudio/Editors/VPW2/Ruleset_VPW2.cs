@@ -18,7 +18,8 @@ namespace VPWStudio.Editors.VPW2
 		// fun fact: The rule values mean different things based on the core ruleset type!
 		// Some values only get used in certain ruleset types.
 
-		private string[] DefaultRulesetExplanations = new string[]
+		#region Ruleset Strings
+		private readonly string[] DefaultRulesetExplanations = new string[]
 		{
 			"Default Singles",
 			"Default Martial Arts",
@@ -45,7 +46,7 @@ namespace VPWStudio.Editors.VPW2
 			"Demo - Martial Arts 5",
 		};
 
-		private string[] RulesetStrings = new string[]
+		private readonly string[] RulesetStrings = new string[]
 		{
 			"Singles",
 			"Martial Arts",
@@ -53,20 +54,20 @@ namespace VPWStudio.Editors.VPW2
 			"Battle Royal"
 		};
 
-		private string[] CommonYesNoStrings = new string[]
+		private readonly string[] CommonYesNoStrings = new string[]
 		{
 			"On",
 			"Off"
 		};
 
-		private string[] BloodStrings = new string[]
+		private readonly string[] BloodStrings = new string[]
 		{
 			"On",
 			"Referee Stop",
 			"Off",
 		};
 
-		private string[] TimeLimits_Wrestling = new string[]
+		private readonly string[] TimeLimits_Wrestling = new string[]
 		{
 			"5 Minutes",
 			"10 Minutes",
@@ -83,7 +84,7 @@ namespace VPWStudio.Editors.VPW2
 			"No Limit",
 		};
 
-		private string[] TimeLimits_MartialArts = new string[]
+		private readonly string[] TimeLimits_MartialArts = new string[]
 		{
 			"3 Minutes",
 			"5 Minutes",
@@ -95,7 +96,7 @@ namespace VPWStudio.Editors.VPW2
 			"No Limit"
 		};
 
-		private string[] OutsideStrings_Normal = new string[]
+		private readonly string[] OutsideStrings_Normal = new string[]
 		{
 			"10 Count",
 			"20 Count",
@@ -104,14 +105,14 @@ namespace VPWStudio.Editors.VPW2
 			"Off"
 		};
 
-		private string[] OutsideStrings_BattleRoyal = new string[]
+		private readonly string[] OutsideStrings_BattleRoyal = new string[]
 		{
 			"Loss",
 			"Anywhere",
 			"Off"
 		};
 
-		private string[] NumRoundsStrings = new string[]
+		private readonly string[] NumRoundsStrings = new string[]
 		{
 			"1 Round",
 			"2 Rounds",
@@ -125,7 +126,7 @@ namespace VPWStudio.Editors.VPW2
 			"Off"
 		};
 
-		private string[] NumPointsStrings = new string[]
+		private readonly string[] NumPointsStrings = new string[]
 		{
 			"3 Points",
 			"5 Points",
@@ -134,7 +135,7 @@ namespace VPWStudio.Editors.VPW2
 			"Free",
 		};
 
-		private string[] TagHelpTimerStrings = new string[]
+		private readonly string[] TagHelpTimerStrings = new string[]
 		{
 			"5 Seconds",
 			"10 Seconds",
@@ -148,7 +149,7 @@ namespace VPWStudio.Editors.VPW2
 		};
 
 		// used for Down and Rope Escape
-		private string[] MartialArtsScoringStrings = new string[]
+		private readonly string[] MartialArtsScoringStrings = new string[]
 		{
 			"1 Point",
 			"2 Points",
@@ -158,13 +159,14 @@ namespace VPWStudio.Editors.VPW2
 		};
 
 		// Suplex doesn't have an "Off" feature
-		private string[] SuplexPointsStrings = new string[]
+		private readonly string[] SuplexPointsStrings = new string[]
 		{
 			"1 Point",
 			"2 Points",
 			"3 Points",
 			"Free"
 		};
+		#endregion
 
 		public Ruleset_VPW2()
 		{
