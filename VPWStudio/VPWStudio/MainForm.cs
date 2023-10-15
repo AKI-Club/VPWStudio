@@ -2783,8 +2783,15 @@ namespace VPWStudio
 			vpw64ce.ShowDialog();
 		}
 
+
 		#endregion
 
-		
+		private void tssLabelGameType_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject != null)
+			{
+				projectPropertiesToolStripMenuItem_Click(sender, e);
+			}
+		}
 	}
 }

@@ -610,6 +610,7 @@
 			resources.ApplyResources(this.tssLabelGameType, "tssLabelGameType");
 			this.tssLabelGameType.Name = "tssLabelGameType";
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
+			this.tssLabelGameType.Click += new System.EventHandler(this.tssLabelGameType_Click);
 			// 
 			// MainForm
 			// 
