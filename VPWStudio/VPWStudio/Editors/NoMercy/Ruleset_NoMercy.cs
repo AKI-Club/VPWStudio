@@ -13,7 +13,84 @@ namespace VPWStudio.Editors.NoMercy
 {
 	public partial class Ruleset_NoMercy : Form
 	{
-		public MatchRuleset[] Rulesets = new MatchRuleset[58];
+		public MatchRuleset[] Rulesets = new MatchRuleset[56];
+
+		#region Ruleset Strings
+		// todo: match ruleset types
+		// 0x00 = single
+		// 0x01 = tag
+		// 0x02 = triple threat
+		// 0x03 = handicap match
+		// 0x04 = cage match
+		// 0x05 = ladder match
+		// 0x06 = guest referee
+		// 0x07 = ?
+		// 0x08 = ?
+		// 0x09 = ironman match
+		// 0x0A = ?
+		// 0x0B = ?
+		// 0x0C = ?
+		// 0x0D = Royal Rumble
+		// 0x0E = ?
+
+		private readonly string[] CommonYesNoStrings = new string[]
+		{
+			"Yes",
+			"No"
+		};
+
+		// Note: a few match types only have Yes/No (Cage, Ladder)
+		private readonly string[] BloodStrings = new string[]
+		{
+			"Yes",
+			"First Blood",
+			"No",
+		};
+
+		private readonly string[] TimeLimits_Normal = new string[]
+		{
+			"5 Minutes",
+			"10 Minutes",
+			"15 Minutes",
+			"30 Minutes",
+			"60 Minutes",
+			"No Limit",
+		};
+
+		private readonly string[] TimeLimits_Ironman = new string[]
+		{
+			"5 Minutes",
+			"10 Minutes",
+			"15 Minutes",
+			"30 Minutes",
+			"60 Minutes",
+		};
+
+		private readonly string[] OutsideStrings_Normal = new string[]
+		{
+			"10 Counts",
+			"20 Counts",
+			"Hardcore",
+			"No Count"
+		};
+
+		private readonly string[] OutsideStrings_BattleRoyal = new string[]
+		{
+			"Lose",
+			"Hardcore",
+			"No"
+		};
+
+		private readonly string[] TagHelpTimerStrings = new string[]
+		{
+			"5 Seconds",
+			"10 Seconds",
+			"20 Seconds",
+			"30 Seconds",
+			"60 Seconds",
+			"No Tag"
+		};
+		#endregion
 
 		public Ruleset_NoMercy()
 		{
@@ -62,17 +139,17 @@ namespace VPWStudio.Editors.NoMercy
 
 			MatchRuleset curRuleset = Rulesets[cbRulesets.SelectedIndex];
 			tbMatchRuleset.Text = String.Format("0x{0:X2}", curRuleset.RulesetType);
-			tbTimeLimit.Text = String.Format("0x{0:X2}", curRuleset.TimeLimit);
-			tbCountOut.Text = String.Format("0x{0:X2}", curRuleset.CountOut);
-			tbPin.Text = String.Format("0x{0:X2}", curRuleset.Pinfall);
-			tbSubmission.Text = String.Format("0x{0:X2}", curRuleset.Submission);
-			tbTKO.Text = String.Format("0x{0:X2}", curRuleset.TKO);
-			tbRopeBreak.Text = String.Format("0x{0:X2}", curRuleset.RopeBreak);
-			tbDQ.Text = String.Format("0x{0:X2}", curRuleset.DQ);
-			tbBlood.Text = String.Format("0x{0:X2}", curRuleset.Blood);
-			tbInterference.Text = String.Format("0x{0:X2}", curRuleset.Interference);
-			tbTagHelpTime.Text = String.Format("0x{0:X2}", curRuleset.TagHelpTime);
-			tbRoyalRumbleTimer.Text = String.Format("0x{0:X2}", curRuleset.TimeCount);
+			tbTimeLimit.Text = String.Format("0x{0:X2} ()", curRuleset.TimeLimit);
+			tbCountOut.Text = String.Format("0x{0:X2} ()", curRuleset.CountOut);
+			tbPin.Text = String.Format("0x{0:X2} ({1})", curRuleset.Pinfall, CommonYesNoStrings[curRuleset.Pinfall]);
+			tbSubmission.Text = String.Format("0x{0:X2} ({1})", curRuleset.Submission, CommonYesNoStrings[curRuleset.Submission]);
+			tbTKO.Text = String.Format("0x{0:X2} ({1})", curRuleset.TKO, CommonYesNoStrings[curRuleset.TKO]);
+			tbRopeBreak.Text = String.Format("0x{0:X2} ({1})", curRuleset.RopeBreak, CommonYesNoStrings[curRuleset.RopeBreak]);
+			tbDQ.Text = String.Format("0x{0:X2} ({1})", curRuleset.DQ, CommonYesNoStrings[curRuleset.DQ]);
+			tbBlood.Text = String.Format("0x{0:X2} ()", curRuleset.Blood);
+			tbInterference.Text = String.Format("0x{0:X2} ({1})", curRuleset.Interference, CommonYesNoStrings[curRuleset.Interference]);
+			tbTagHelpTime.Text = String.Format("0x{0:X2} ()", curRuleset.TagHelpTime);
+			tbRoyalRumbleTimer.Text = String.Format("0x{0:X2} ({1})", curRuleset.TimeCount, CommonYesNoStrings[curRuleset.TimeCount]);
 		}
 
 		private void btnOK_Click(object sender, EventArgs e)
