@@ -23,10 +23,16 @@ namespace VPWStudio
 		{
 			InitializeComponent();
 			nudTextEntryID.Maximum = maxEntryNum;
+			nudTextEntryID.Select(0, 1);
 		}
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
+			if ((int)nudTextEntryID.Value >= (int)nudTextEntryID.Maximum)
+			{
+				nudTextEntryID.Value = nudTextEntryID.Maximum-1;
+			}
+
 			DestinationEntry = (int)nudTextEntryID.Value;
 			DialogResult = DialogResult.OK;
 			Close();
