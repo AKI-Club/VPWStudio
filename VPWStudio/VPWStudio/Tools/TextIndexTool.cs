@@ -400,9 +400,24 @@ namespace VPWStudio.Tools
 
 		private void btnLaunchTextEditor_Click(object sender, EventArgs e)
 		{
-			// warning: doesn't save changes, lol oops :|
-			AkiTextEditor ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
-			ate.ShowDialog();
+			// warning: still doesn't save changes
+
+			AkiTextEditor ate;
+			if (Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].HasReplacementFile())
+			{
+				// from external file
+				ate = new AkiTextEditor(Program.ConvertRelativePath(Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].ReplaceFilePath), TargetIndex);
+			}
+			else
+			{
+				// from ROM
+				ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
+			}
+
+			if (ate.ShowDialog() == DialogResult.OK)
+			{
+				MessageBox.Show("i have to write code to write back the changes. this is why i hate akitext stuff");
+			}
 		}
 
 		private void cbMode_SelectedIndexChanged(object sender, EventArgs e)
