@@ -1113,8 +1113,14 @@ namespace VPWStudio
 							}
 							else if (Path.GetExtension(fte.ReplaceFilePath) == ".txt")
 							{
-								Program.WarningMessageBox("todo: have not implemented akitext command line tool ReplaceFile case; changes not saved.\nfreem gets to be mad at himself for completely preventable problems!");
-								// situation 4: .txt for akitext command line tool (make new akitext binary file)
+								// situation 4: .txt for akitext command line tool (overwrite existing file)
+								using (FileStream fs = new FileStream(Program.ConvertRelativePath(fte.ReplaceFilePath), FileMode.Open))
+								{
+									using (StreamWriter sw = new StreamWriter(fs))
+									{
+										ate.CurTextArchive.WriteToolExport(sw);
+									}
+								}
 							}
 						}
 					}
