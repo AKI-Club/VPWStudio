@@ -49,6 +49,7 @@ namespace VPWStudio.Editors
 			this.lbWresPointers = new System.Windows.Forms.ListBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.btnViewChampionships = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -59,7 +60,7 @@ namespace VPWStudio.Editors
 			this.groupBox1.Controls.Add(this.lbStables);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(127, 308);
+			this.groupBox1.Size = new System.Drawing.Size(127, 357);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "&Stables";
@@ -69,7 +70,7 @@ namespace VPWStudio.Editors
 			this.lbStables.FormattingEnabled = true;
 			this.lbStables.Location = new System.Drawing.Point(6, 19);
 			this.lbStables.Name = "lbStables";
-			this.lbStables.Size = new System.Drawing.Size(115, 277);
+			this.lbStables.Size = new System.Drawing.Size(115, 329);
 			this.lbStables.TabIndex = 0;
 			this.lbStables.SelectedIndexChanged += new System.EventHandler(this.lbStables_SelectedIndexChanged);
 			// 
@@ -180,9 +181,9 @@ namespace VPWStudio.Editors
 			this.groupBox2.Controls.Add(this.buttonMoveUp);
 			this.groupBox2.Controls.Add(this.buttonViewWrestler);
 			this.groupBox2.Controls.Add(this.lbWresPointers);
-			this.groupBox2.Location = new System.Drawing.Point(150, 127);
+			this.groupBox2.Location = new System.Drawing.Point(145, 156);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(242, 193);
+			this.groupBox2.Size = new System.Drawing.Size(247, 194);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "&Wrestlers";
@@ -247,7 +248,7 @@ namespace VPWStudio.Editors
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(236, 326);
+			this.buttonOK.Location = new System.Drawing.Point(236, 356);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 3;
@@ -257,7 +258,7 @@ namespace VPWStudio.Editors
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(317, 326);
+			this.buttonCancel.Location = new System.Drawing.Point(317, 356);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 4;
@@ -265,11 +266,22 @@ namespace VPWStudio.Editors
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
+			// btnViewChampionships
+			// 
+			this.btnViewChampionships.Location = new System.Drawing.Point(145, 127);
+			this.btnViewChampionships.Name = "btnViewChampionships";
+			this.btnViewChampionships.Size = new System.Drawing.Size(247, 23);
+			this.btnViewChampionships.TabIndex = 5;
+			this.btnViewChampionships.Text = "View Championships";
+			this.btnViewChampionships.UseVisualStyleBackColor = true;
+			this.btnViewChampionships.Click += new System.EventHandler(this.btnViewChampionships_Click);
+			// 
 			// StableDefs_Early
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(404, 361);
+			this.ClientSize = new System.Drawing.Size(404, 391);
+			this.Controls.Add(this.btnViewChampionships);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.groupBox2);
@@ -312,5 +324,6 @@ namespace VPWStudio.Editors
 		private System.Windows.Forms.Button buttonSwapWrestler;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox tbWrestlerDefPointer;
+		private System.Windows.Forms.Button btnViewChampionships;
 	}
 }

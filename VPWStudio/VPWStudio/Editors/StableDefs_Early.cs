@@ -16,6 +16,7 @@ namespace VPWStudio.Editors
 		public StableDefs_Early()
 		{
 			InitializeComponent();
+			btnViewChampionships.Enabled = false;
 
 			if (!String.IsNullOrEmpty(Program.CurrentProject.Settings.StableDefinitionFilePath) &&
 				File.Exists(Program.ConvertRelativePath(Program.CurrentProject.Settings.StableDefinitionFilePath))
@@ -108,6 +109,8 @@ namespace VPWStudio.Editors
 			tbChampionshipCount.Text = _sdef.NumChampionships.ToString();
 
 			PopulateWrestlerList(_sdef);
+
+			btnViewChampionships.Enabled = (_sdef.NumChampionships > 0);
 		}
 
 		private void lbStables_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,6 +228,23 @@ namespace VPWStudio.Editors
 			}
 
 			MessageBox.Show("not implemented yet");
+		}
+
+		private void btnViewChampionships_Click(object sender, EventArgs e)
+		{
+			if (lbStables.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			// the button should be disabled, but just in case...
+			if (StableDefs[lbStables.SelectedIndex].NumChampionships <= 0)
+			{
+				return;
+			}
+
+			ChampionshipDefs_Early cdEarly = new ChampionshipDefs_Early(lbStables.SelectedIndex);
+			cdEarly.ShowDialog();
 		}
 	}
 }
