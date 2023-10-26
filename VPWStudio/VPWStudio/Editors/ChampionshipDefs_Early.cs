@@ -15,7 +15,7 @@ namespace VPWStudio.Editors
 	{
 		public SortedList<int, StableDef_Early> StableDefs = new SortedList<int, StableDef_Early>();
 
-		public ChampionshipDefs_Early()
+		public ChampionshipDefs_Early(int stableNum = -1)
 		{
 			InitializeComponent();
 			/*
@@ -35,7 +35,15 @@ namespace VPWStudio.Editors
 			{
 				cbStables.Items.Add(string.Format("stable {0}",stable.Key));
 			}
-			cbStables.SelectedIndex = 0;
+
+			if (stableNum != -1)
+			{
+				cbStables.SelectedIndex = stableNum;
+			}
+			else
+			{
+				cbStables.SelectedIndex = 0;
+			}
 		}
 
 		private void LoadData_File(string _path)
