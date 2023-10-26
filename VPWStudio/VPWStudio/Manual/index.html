@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.31 (September 25th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.31 (October 25th, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -327,7 +327,7 @@ probably want some other tools on hand.</p>
 <ul>
 <li>A Nintendo 64 emulator, for testing builds of your projects. An emulator with debugging tools is highly recommended, and currently <em>required</em> for some changes.</li>
 <li>A 3D modeler, for viewing models exported in Wavefront OBJ format. If you haven't already bought into a specific 3D editor ecosystem, <a href="https://www.blender.org/">Blender</a> is free and supported on multiple platforms.
-<ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/ProWrestlingMods/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins by Grix</a>.</li></ul></li>
+<ul><li>And if you decide to use Blender (v2.93), grab the <a href="https://github.com/ProWrestlingMods/AKI-Model-Blender-IO-Addon"><code>AkiModel</code> import/export plugins by Grix</a>. Not sure if they work on Blender v3.0 or later.</li></ul></li>
 <li><a href="https://github.com/queueRAM/Texture64">Texture64</a> by queueRAM &ndash; handles various Nintendo 64 texture formats.</li>
 <li><a href="https://github.com/jombo23/N64-Tools">N64 Midi Tool and N64 Sound Tool</a>, originally by SubDrag and Ice Mario. As the names suggest, these handle sequenced and streaming sounds.</li>
 <li><a href="https://github.com/AKI-Club/vpwspal/releases/tag/v1.1">VPW Studio Palette Tools</a>, for quickly converting and merging JASC PSP palette files to VPW Studio palette format. Binaries are included with VPW Studio in the "Tools" folder. They are command-line programs, so use the Command Prompt to launch them. Documentation for these tools can be found in the <a href="#ExtPalTools">External Tools</a> section of this manual.</li>
@@ -1337,11 +1337,11 @@ available when making a new belt.</li>
 <tbody>
 <tr>
 <td>WCW vs. nWo World Tour</td>
-<td class="notsupported">No</td>
+<td class="partialsupport">Partial</td>
 </tr>
 <tr>
 <td>Virtual Pro-Wrestling 64</td>
-<td class="notsupported">No</td>
+<td class="partialsupport">Partial</td>
 </tr>
 <tr>
 <td>WCW/nWo Revenge</td>
@@ -1384,6 +1384,9 @@ and later, which can be found in the <a href="#Wrestlers">Wrestlers</a> section.
 view and edit the entries in the game's File Table. A large portion of the game's
 data is found here, including wrestler movesets, parameters, move data, animations,
 textures, palettes, models, and more.</p>
+
+<p>Due to various hardcoded file IDs in the game's code, it is not straightforward
+to add, remove, or move files around.</p>
 
 <h3>Game Support</h3>
 <table>
@@ -1447,8 +1450,8 @@ in the <a href="#CommonDataFormats">Common Data Formats</a> section, and game-sp
 <a href="#GameSpecificDocs">game-specific documentation</a>.</li>
 <li><strong>Edit Information</strong> &ndash; Opens the <a href="#FileTableEntryInfo">File Table Entry Information dialog</a> for the selected entry.</li>
 <li><strong>View Hex</strong> &rarr; <strong>ROM Data...</strong> &ndash; Opens a <a href="#HexViewer">Hex Viewer</a> with the selected entry's data in the base ROM.</li>
-<li><strong>View Hex</strong> &rarr; <strong>ReplacementFile Data...</strong> &ndash; Opens a <a href="#HexViewer">Hex Viewer</a> with the replacement file's data.<br/>
-NOTICE: This is how the file is stored on disk, and is not necessarily the format that will be written to ROM!</li>
+<li><strong>View Hex</strong> &rarr; <strong>ReplacementFile Data...</strong> &ndash; Opens a <a href="#HexViewer">Hex Viewer</a> with the replacement file's data. Only enabled if an entry has a replacement file set.<br/>
+NOTICE: This is how the <em>unconverted</em> file is stored on disk, and is not necessarily the format that will be written to ROM!</li>
 <li><strong>Extract File</strong> &ndash; Extracts the selected entry to a file, decompressing it if necessary.</li>
 <li><strong>Extract Raw</strong> &ndash; Extracts the compressed version of the selected
 entry without decompressing it. (Only available if "LZSS" is set to "True" for this entry.
@@ -1488,12 +1491,17 @@ a dialog with a list of possible FileTypes. Choose your desired FileType and
 press OK. You can also use <kbd>F3</kbd> to continue the FileType search.</p>
 
 <h3>Database Menu</h3>
-<p>The Database menu only contains one option, but it's important if you've upgraded
-to a new version of VPW Studio or updated the FileTableDB for the game you're editing.
-"Reload File Table Database" will let you update your project's File Table with the
+<p>The Database menu contains functionality related to File Table Databases.</p>
+
+<h4>Reload File Table Database</h4>
+<p>"Reload File Table Database" will let you update your project's File Table with the
 current data in the FileTableDB file for the current game. When selecting this option,
 you will be asked if you want to overwrite any of your existing comments with the
 comments in the FileTableDB.</p>
+
+<h4>FTDB Info</h4>
+<p>Provides the number of "labeled" entries in the current game's FileTableDB.
+Primarily intended for internal use.</p>
 
 <h3>Export Menu</h3>
 <p>The Export Menu is something most people won't ever need to touch, but it is
@@ -1528,11 +1536,11 @@ for specific file types.</p>
 <ul>
 <li><strong>Image Width</strong> &ndash; Set the width of an image. Primarily used with <code>I*Texture</code> and <code>RawCi*</code> types. "Unset" value is -1.</li>
 <li><strong>Image Height</strong> &ndash; Set the height of an image. Primarily used with <code>I*Texture</code> and <code>RawCi*</code> types. "Unset" value is -1.</li>
-<li><strong>Transparent Color Index</strong> &ndash; Currently unused. "Unset" value is -1.</li>
+<li><strong>Transparent Color Index</strong> &ndash; Currently unused, likely to get repurposed. "Unset" value is -1.</li>
 <li><strong>Default Palette ID</strong> &ndash; Set the default palette ID, used for
-previewing images. The value corresponds to an index in the File Table, and is
-hexadecimal. "Unset" value is <code>FFFFFFFFFFFFFFFF</code>, since File Table IDs
-are unsigned.</li>
+previewing  <code>CI*Texture</code> format images. The value corresponds to an index
+in the File Table, and is hexadecimal. The "Unset" value is <code>FFFFFFFFFFFFFFFF</code>,
+since File Table IDs are unsigned.</li>
 <li><strong>Horizontal Mirroring</strong> &ndash; Force horizontal mirroring for a texture. Primarily used with <code>CI*Texture</code>s.</li>
 <li><strong>Vertical Mirroring</strong> &ndash; Force vertical mirroring for a texture. Primarily used with <code>CI*Texture</code>s.</li>
 </ul>
@@ -1754,8 +1762,12 @@ spreadsheet. Paste it into cell D3 (main) or D43 (secondary).</p>
 <img src="./img/fontviewer.png" title="Font Viewer Dialog" />
 <p>FileTable entries marked as <code>AkiSmallFont</code> and <code>AkiLargeFont</code>
 bring up this dialog. You are able to view each of the characters stored in the font,
-as well as the "header" bytes. Editing the fonts requires a separate program (see
-the <a href="#FontWorkflow">Font Workflow</a> section for more details).</p>
+as well as the "header" bytes. If the "header" text box has a light blue color, one
+of the fallback character sets is being used. The fallback character set may or may
+not line up with the actual glyphs in the font file.</p>
+
+<p>Editing the fonts requires a separate program (see the
+<a href="#FontWorkflow">Font Workflow</a> section for more details).</p>
 
 <hr />
 <h2><a name="GameIntro">Game Introduction</a></h2>
@@ -1802,8 +1814,9 @@ as an Editor, so all changes must be done to the base ROM in a hex editor.</p>
 
 <hr />
 <h2><a name="MatchRulesets">Match Rulesets</a></h2>
-<p>todo: only works with VPW2, data needs to be found/re-found for other games;
-doesn't actually edit values</p>
+<p>View the various match rulesets in the game data. You can't currently edit the values.</p>
+
+<p>todo: only works with VPW2 and No Mercy, data needs to be found/re-found for other games</p>
 
 <hr />
 <h2><a name="Menus">Menus</a></h2>
@@ -1815,8 +1828,8 @@ plus it's pretty different for each of the games)</p>
 
 <hr />
 <h2><a name="Moves">Moves</a></h2>
-<p>The Moves section (Project &rarr; Moves) deals with every move and animation found
-in the game. This is not to be confused with wrestler movesets.</p>
+<p>The Moves section (Project &rarr; Moves) deals with every move and animation
+found in the game. This is not to be confused with wrestler movesets.</p>
 
 <p>(todo: this takes a lot of work to get right, considering moves are composed
 of multiple parts (toki1, damage, actual animation data, data required for things
@@ -1895,6 +1908,10 @@ The stable data controls how the wrestlers are grouped and displayed in the menu
 <li><strong>Championship Text Pointer</strong> &ndash; Pointer to Championship-related text for this stable.</li>
 <li><strong>Championship Count</strong> &ndash; Number of Championships this stable has.</li>
 </ul>
+
+<p>If the selected stable has any championships, the "View Championships" button will
+be enabled. Clicking it will open the <a href="#Championships">Championships</a> dialog with the active
+stable.</p>
 
 <h3>WCW/nWo Revenge</h3>
 <img src="./img/stable_editor-revenge.png" title="Stable Editor - WCW/nWo Revenge" />
@@ -2177,8 +2194,9 @@ the list of vertices and faces.</p>
 "Export OBJ..." button.</p>
 
 <h3><a name="PNGTools">PNG Conversion</a></h3>
-<p>Though the preferred way to convert PNG files is to include them in the project,
-sometimes you need to generate target files separately from the build process.</p>
+<p>Though the preferred way to convert PNG files is to include them in the project
+via the File Table, sometimes you need to generate target files separately from
+the build process.</p>
 <ul>
 <li><strong>PNG to AKI TEX</strong> &ndash; Converts a PNG to TEX format. PNG must be 16 or 256 colors.</li>
 <li><strong>PNG to CI4Texture</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
@@ -2213,7 +2231,7 @@ the base for the final, more polished features. Starting with pre-Alpha Preview
 <li><strong>stable parse test</strong> &ndash; Internal test of parsing the text StableDefinition format. Only properly handles VPW2 and No Mercy formats.</li>
 <li><strong>rom slice test</strong> &ndash; Test the HexViewerManager by getting a specific slice of ROM data. Requires an open project.</li>
 <li><strong>open file in hex viewer</strong> &ndash; Open an external file in the hex viewer.</li>
-<li><strong>move damage test (WM2K/VPW2/No Mercy only)</strong> &ndash; Show move damage values. Requires an open WM2K/VPW2/No Mercy project.</li>
+<li><strong>move damage test</strong> &ndash; Show move damage values. Requires an open project.</li>
 <li><strong>text index tool</strong> &ndash; Convert from WM2K, VPW2, and No Mercy text index values to location and index.</li>
 <li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values.</li>
 <li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. incomplete and very awkward to use, only recommended for experts and
@@ -2564,6 +2582,9 @@ megabytes, it probably won't work on the real N64 hardware.</p>
 </ul>
 
 <h3>Patch Creation</h3>
+<p>todo: certain versions of xdelta force a secondary compression type that won't
+work with Web Patcher JS; not sure how to handle this with xdelta UI</p>
+
 <p>On Windows, "<a href="https://www.romhacking.net/utilities/598/">xdelta UI</a>"
 is recommended. Open xdeltaUI, then switch to the "Create Patch" tab, and follow these
 steps:</p>
@@ -2578,7 +2599,10 @@ for your patch.</li>
 <li>Finally, click the "Patch" button to create the patch.</li>
 </ol>
 
-<p>For command line/terminal users: <code>xdelta3 -e -s old_file new_file delta_file</code></p>
+<p>For command line/terminal users: <code>xdelta3 -e -S none -s old_file new_file delta_file</code></p>
+<p>The <code>-S none</code> is included to disable any default secondary compressor.
+This is recommended for compatibility purposes, as Web Patcher JS does not support
+any secondary compression functionality.</p>
 
 <h3>Checksums and Hashes</h3>
 <p>Multiple checksums and hashes are involved with the ROM, as well as some of
