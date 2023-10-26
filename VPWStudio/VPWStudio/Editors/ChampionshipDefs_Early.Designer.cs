@@ -63,11 +63,13 @@ namespace VPWStudio.Editors
 			this.ClientSize = new System.Drawing.Size(584, 441);
 			this.Controls.Add(this.tbOutput);
 			this.Controls.Add(this.cbStables);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ChampionshipDefs_Early";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Championships (Early)";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChampionshipDefs_Early_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -131,5 +131,12 @@ namespace VPWStudio.Editors
 				tbOutput.Text = "No championship data for this stable.";
 			}
 		}
+
+		private void ChampionshipDefs_Early_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Escape){
+				Close();
+			}
+		}
 	}
 }
