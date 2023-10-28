@@ -2,9 +2,40 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 32 (202x/yy/zz)
+Pre-Alpha Preview 33 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 32 (2023/10/28)
+---------------------------------
+- [Font Dialog] Extended width of info textbox. Also made the info textbox's
+  background color change to light blue if the generic fallback character set
+  is being used.
+
+- [Font Dialog] Allow viewing replacement font data.
+
+- [Move Damage Test] Now works with World Tour, VPW64, and Revenge.
+  Values are still unmarked, however.
+
+- You can now click on the game's name on the right side of the statusbar to
+  bring up the Project Properties dialog.
+
+- [AkiTextEditor Go To Dialog] Fix issue with entering a larger value than
+  the maximum.
+
+- [AkiTextEditor Go To Dialog] Select the text on dialog open.
+
+- [Danger Zone Text Index Tool] Now loads replacement AkiText if a path has been set.
+
+- [Stable Definitions (Early) Dialog] Added "View Championships" button.
+
+- [Championship Definitions (Early) Dialog] Added "Escape key closes dialog" functionality.
+
+- [FileTableDB] World Tour and VPW64 are now 100% marked.
+  No Mercy September 2000 pre-release has also been updated.
+
+  To update your project, open the File Table dialog, then choose
+  Database → Reload File Table Database.
 
 Pre-Alpha Preview 31 (2023/09/25)
 ---------------------------------
