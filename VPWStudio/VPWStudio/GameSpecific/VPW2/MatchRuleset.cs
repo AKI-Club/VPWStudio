@@ -18,10 +18,14 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// 0=single, 1=martial arts, 2=tag, 3=battle royal
 		public byte RulesetType;
 
-		// time limit
+		/// <summary>
+		/// Match time limit.
+		/// </summary>
 		public byte TimeLimit;
 
-		// round length
+		/// <summary>
+		/// Round Length (for Martial Arts matches).
+		/// </summary>
 		public byte RoundLength;
 
 		/// <summary>
@@ -35,7 +39,9 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// </summary>
 		public byte Pinfall;
 
-		// give up
+		/// <summary>
+		/// Submission/Give Up
+		/// </summary>
 		public byte Submission;
 
 		/// <summary>
@@ -43,10 +49,14 @@ namespace VPWStudio.GameSpecific.VPW2
 		/// </summary>
 		public byte TKO;
 
-		// rope break
+		/// <summary>
+		/// Rope Break
+		/// </summary>
 		public byte RopeBreak;
 
-		// quick match
+		/// <summary>
+		/// Quick Match
+		/// </summary>
 		public byte QuickMatch;
 
 		/// <summary>
