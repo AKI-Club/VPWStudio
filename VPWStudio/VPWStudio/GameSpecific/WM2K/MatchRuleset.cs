@@ -92,6 +92,9 @@ namespace VPWStudio.GameSpecific.WM2K
 		#endregion
 
 		#region Constructors
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public MatchRuleset()
 		{
 			RulesetType = 0;
@@ -115,6 +118,10 @@ namespace VPWStudio.GameSpecific.WM2K
 			Unused8 = 0;
 		}
 
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public MatchRuleset(BinaryReader br)
 		{
 			ReadData(br);
@@ -122,6 +129,10 @@ namespace VPWStudio.GameSpecific.WM2K
 		#endregion
 
 		#region Binary Read/Write
+		/// <summary>
+		/// Read Ruleset data using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public void ReadData(BinaryReader br)
 		{
 			RulesetType = br.ReadByte();
@@ -143,6 +154,33 @@ namespace VPWStudio.GameSpecific.WM2K
 			Unused6 = br.ReadByte();
 			Unused7 = br.ReadByte();
 			Unused8 = br.ReadByte();
+		}
+
+		/// <summary>
+		/// Write Ruleset data using a BinaryWriter.
+		/// </summary>
+		/// <param name="bw">BinaryWriter instance to use.</param>
+		public void WriteData(BinaryWriter bw)
+		{
+			bw.Write(TimeLimit);
+			bw.Write(Unused1);
+			bw.Write(OutsideCount);
+			bw.Write(Pinfall);
+			bw.Write(Submission);
+			bw.Write(TKO);
+			bw.Write(RopeBreak);
+			bw.Write(Blood);
+			bw.Write(Unused2);
+			bw.Write(Unused3);
+			bw.Write(Interference);
+			bw.Write(BloodCage);
+			bw.Write(TagHelpTimer);
+			bw.Write(Unused4);
+			bw.Write(Unused5);
+			bw.Write(Unused6);
+			bw.Write(Unused7);
+			bw.Write(Unused8);
+			bw.Write(RulesetType);
 		}
 		#endregion
 	}
