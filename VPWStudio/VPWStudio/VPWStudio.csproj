@@ -216,6 +216,12 @@
     <Compile Include="Editors\VPW64\DefaultCostume_VPW64.Designer.cs">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\WM2K\Ruleset_WM2K.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\WM2K\Ruleset_WM2K.designer.cs">
+      <DependentUpon>Ruleset_WM2K.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WM2K\TagTeams_WM2K.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +525,7 @@
     <Compile Include="GameSpecific\VPW2\StableDefinition.cs" />
     <Compile Include="GameSpecific\VPW2\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\VPW64\DefaultCostumeData.cs" />
+    <Compile Include="GameSpecific\WM2K\MatchRuleset.cs" />
     <Compile Include="GameSpecific\WM2K\TagTeamDefinition.cs" />
     <Compile Include="GameSpecific\WrestlerDefinition_Early.cs" />
     <Compile Include="GameSpecific\VPW64\WrestlerParams.cs" />
@@ -852,6 +859,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW64\DefaultCostume_VPW64.resx">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\WM2K\Ruleset_WM2K.resx">
+      <DependentUpon>Ruleset_WM2K.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WM2K\TagTeams_WM2K.resx">
       <DependentUpon>TagTeams_WM2K.cs</DependentUpon>

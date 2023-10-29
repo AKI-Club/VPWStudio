@@ -234,6 +234,8 @@ namespace VPWStudio
 					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x473E8, 32) },
 					{ "FacePaint_Type", new DefaultLocationDataEntry(0x47408, 32) },
 
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x708D8, 228) },
+
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7927C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B16C, 96) },
 
@@ -266,6 +268,8 @@ namespace VPWStudio
 					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x44E88, 32) },
 					{ "FacePaint_Type", new DefaultLocationDataEntry(0x44EA8, 32) },
 
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x6B668, 228) },
+
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x73FDC, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x75ECC, 96) },
 
@@ -297,6 +301,8 @@ namespace VPWStudio
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x473A0, 32) },
 					{ "FacePaint_VertDisplacement", new DefaultLocationDataEntry(0x473E8, 32) },
 					{ "FacePaint_Type", new DefaultLocationDataEntry(0x47408, 32) },
+
+					{ "DefaultRulesets", new DefaultLocationDataEntry(0x708F8, 228) },
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7929C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B18C, 96) },

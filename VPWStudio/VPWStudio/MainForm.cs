@@ -1153,6 +1153,16 @@ namespace VPWStudio
 
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
+				case VPWGames.WM2K:
+					{
+						Editors.WM2K.Ruleset_WM2K rules = new Editors.WM2K.Ruleset_WM2K();
+						if (rules.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+						}
+					}
+					break;
+
 				case VPWGames.VPW2:
 					{
 						Editors.VPW2.Ruleset_VPW2 rules = new Editors.VPW2.Ruleset_VPW2();
