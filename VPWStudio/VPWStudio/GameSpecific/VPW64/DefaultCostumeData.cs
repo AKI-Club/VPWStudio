@@ -116,6 +116,11 @@ namespace VPWStudio.GameSpecific.VPW64
 	/// </summary>
 	public class DefaultCostumeData
 	{
+		/// <summary>
+		/// Number of costume entries per wrestler.
+		/// </summary>
+		public static readonly int NUM_COSTUMES = 4;
+
 		#region Class Members
 		/// <summary>
 		/// The actual costumes.
@@ -147,7 +152,7 @@ namespace VPWStudio.GameSpecific.VPW64
 		/// </summary>
 		public DefaultCostumeData()
 		{
-			Costumes = new DefaultCostumeDataEntry[4];
+			Costumes = new DefaultCostumeDataEntry[NUM_COSTUMES];
 			for (int _ = 0; _ < Costumes.Length; _++)
 			{
 				Costumes[_] = new DefaultCostumeDataEntry();
@@ -164,7 +169,7 @@ namespace VPWStudio.GameSpecific.VPW64
 		// no, I can't use ": base()" here; I tried
 		public DefaultCostumeData(BinaryReader br)
 		{
-			Costumes = new DefaultCostumeDataEntry[4];
+			Costumes = new DefaultCostumeDataEntry[NUM_COSTUMES];
 			for (int _ = 0; _ < Costumes.Length; _++)
 			{
 				Costumes[_] = new DefaultCostumeDataEntry();
