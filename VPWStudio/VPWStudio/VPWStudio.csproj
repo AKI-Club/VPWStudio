@@ -505,6 +505,7 @@
     <Compile Include="GameSpecific\Revenge\DefaultCostumeData.cs" />
     <Compile Include="GameSpecific\Revenge\DoubleTex.cs" />
     <Compile Include="GameSpecific\Revenge\StableDefinition.cs" />
+    <Compile Include="GameSpecific\Revenge\WrestlerBodyDef.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerDefinition.cs" />
     <Compile Include="GameSpecific\Revenge\WrestlerParams.cs" />
     <Compile Include="GameSpecific\StableDef_Early.cs" />
