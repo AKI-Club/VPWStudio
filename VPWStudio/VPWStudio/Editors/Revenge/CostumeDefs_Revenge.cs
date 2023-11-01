@@ -19,7 +19,7 @@ namespace VPWStudio.Editors.Revenge
 		/// <summary>
 		/// Body type definitions
 		/// </summary>
-		private List<BodyTypeDef_Early> BodyTypeDefs = new List<BodyTypeDef_Early>();
+		private List<BodyModelDef_Early> BodyTypeDefs = new List<BodyModelDef_Early>();
 
 		/// <summary>
 		/// Costume definitions
@@ -98,7 +98,7 @@ namespace VPWStudio.Editors.Revenge
 
 				// get data
 				br.BaseStream.Seek(Z64Rom.PointerToRom(bodyTypePointer), SeekOrigin.Begin);
-				this.BodyTypeDefs.Add(new BodyTypeDef_Early(br));
+				this.BodyTypeDefs.Add(new BodyModelDef_Early(br));
 
 				// next
 				br.BaseStream.Seek(curBodyTypePos, SeekOrigin.Begin);
@@ -333,7 +333,7 @@ namespace VPWStudio.Editors.Revenge
 		}
 
 		#region Body Types
-		private void LoadBodyTypeDefinition(BodyTypeDef_Early btdef)
+		private void LoadBodyTypeDefinition(BodyModelDef_Early btdef)
 		{
 			SetTextBoxContentsHex4(tbPelvisModel, btdef.PelvisModel);
 			SetTextBoxContentsHex4(tbStomachModel, btdef.StomachModel);

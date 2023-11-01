@@ -6,7 +6,7 @@ namespace VPWStudio.GameSpecific
 	/// <summary>
 	/// Shared Body Type definition for World Tour, VPW64, and Revenge.
 	/// </summary>
-	public class BodyTypeDef_Early
+	public class BodyModelDef_Early
 	{
 		#region Class Members
 		/// <summary>
@@ -98,7 +98,7 @@ namespace VPWStudio.GameSpecific
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public BodyTypeDef_Early()
+		public BodyModelDef_Early()
 		{
 			PelvisModel = 0;
 			StomachModel = 0;
@@ -123,7 +123,7 @@ namespace VPWStudio.GameSpecific
 		/// Constructor from BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
-		public BodyTypeDef_Early(BinaryReader br)
+		public BodyModelDef_Early(BinaryReader br)
 		{
 			ReadData(br);
 		}
