@@ -58,7 +58,7 @@ namespace VPWStudio.GameSpecific.Revenge
 		/// <returns>Shifted height index</returns>
 		public int GetHeightIndex()
 		{
-			return (Height >> 4);
+			return (Height & 0xF0) >> 4;
 		}
 
 		#region Binary Read/Write
