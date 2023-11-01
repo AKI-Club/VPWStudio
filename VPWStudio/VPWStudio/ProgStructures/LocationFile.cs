@@ -143,6 +143,8 @@ namespace VPWStudio
 			{ "WrestlerBodyDefs", "$WRESTLERBODYDEFS" }, // world tour, vpw64, revenge
 			{ "WrestlerDefaultCostumeDefs", "$DEFAULTCOSTUMEDEFS" }, // vpw64, revenge
 
+			{ "WrestlerHeightTable", "$WRESTLERHEIGHTTABLE" }, // world tour, vpw64, revenge
+
 			// VPW64 costume definitions
 			{ "VPW64Costumes_Small", "$VPW64COSTUMES_SMALL" },
 			{ "VPW64Costumes_Medium", "$VPW64COSTUMES_MED" },

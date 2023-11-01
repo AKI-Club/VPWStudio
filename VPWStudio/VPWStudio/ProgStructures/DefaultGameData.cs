@@ -173,6 +173,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
+					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x324C0, 32) },
 					{ "HeadDefs", new DefaultLocationDataEntry(0x33744, 40) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x36AA4, 592) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3ADEC, 0) },
@@ -195,6 +196,7 @@ namespace VPWStudio
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FB40, 208) },
+					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x2FC10, 32) },
 					{ "HeadDefs", new DefaultLocationDataEntry(0x30E94, 40) },
 					{ "CostumeDefs", new DefaultLocationDataEntry(0x341F4, 592) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3823C, 0) },
