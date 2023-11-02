@@ -119,7 +119,7 @@ namespace VPWStudio.Editors.VPW64
 			this.tpCostume1.Location = new System.Drawing.Point(4, 22);
 			this.tpCostume1.Name = "tpCostume1";
 			this.tpCostume1.Padding = new System.Windows.Forms.Padding(3);
-			this.tpCostume1.Size = new System.Drawing.Size(289, 171);
+			this.tpCostume1.Size = new System.Drawing.Size(292, 171);
 			this.tpCostume1.TabIndex = 0;
 			this.tpCostume1.Text = "Costume 1";
 			this.tpCostume1.UseVisualStyleBackColor = true;
@@ -254,7 +254,7 @@ namespace VPWStudio.Editors.VPW64
 			this.tpCostume2.Location = new System.Drawing.Point(4, 22);
 			this.tpCostume2.Name = "tpCostume2";
 			this.tpCostume2.Padding = new System.Windows.Forms.Padding(3);
-			this.tpCostume2.Size = new System.Drawing.Size(289, 171);
+			this.tpCostume2.Size = new System.Drawing.Size(292, 171);
 			this.tpCostume2.TabIndex = 1;
 			this.tpCostume2.Text = "Costume 2";
 			this.tpCostume2.UseVisualStyleBackColor = true;
@@ -388,7 +388,7 @@ namespace VPWStudio.Editors.VPW64
 			this.tpCostume3.Controls.Add(this.tlpCostume3);
 			this.tpCostume3.Location = new System.Drawing.Point(4, 22);
 			this.tpCostume3.Name = "tpCostume3";
-			this.tpCostume3.Size = new System.Drawing.Size(289, 171);
+			this.tpCostume3.Size = new System.Drawing.Size(292, 171);
 			this.tpCostume3.TabIndex = 2;
 			this.tpCostume3.Text = "Costume 3";
 			this.tpCostume3.UseVisualStyleBackColor = true;
@@ -652,6 +652,7 @@ namespace VPWStudio.Editors.VPW64
 			this.ClientSize = new System.Drawing.Size(324, 255);
 			this.Controls.Add(this.tcCostumeColors);
 			this.Controls.Add(this.cbCostumes);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(340, 294);
@@ -659,6 +660,7 @@ namespace VPWStudio.Editors.VPW64
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "VPW64 Default Costume Data";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DefaultCostume_VPW64_KeyDown);
 			this.tcCostumeColors.ResumeLayout(false);
 			this.tpCostume1.ResumeLayout(false);
 			this.tlpCostume1.ResumeLayout(false);

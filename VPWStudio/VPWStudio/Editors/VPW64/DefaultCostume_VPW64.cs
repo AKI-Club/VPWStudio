@@ -95,5 +95,13 @@ namespace VPWStudio.Editors.VPW64
 			}
 			UpdateOutput();
 		}
+
+		private void DefaultCostume_VPW64_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				Close();
+			}
+		}
 	}
 }
