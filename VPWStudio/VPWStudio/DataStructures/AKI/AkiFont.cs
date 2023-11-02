@@ -927,6 +927,36 @@ namespace VPWStudio
 			return chrBmp.Clone(new Rectangle(0, 0, chrBmp.Width, chrBmp.Height), PixelFormat.Format1bppIndexed);
 		}
 
+		/// <summary>
+		/// Get the width of a specific glyph, as defined in the "header" data.
+		/// </summary>
+		/// <param name="charNo">Character number to get width for.</param>
+		/// <returns>Width of the specified character (in pixels), or -1 if error.</returns>
+		public int GetCharacterWidth(int charNo)
+		{
+			switch (FontType)
+			{
+				case AkiFontType.AkiSmallFont: return (CharHeaders[charNo][1] & 0x0F);
+				case AkiFontType.AkiLargeFont: return CharHeaders[charNo][1];
+			}
+			return -1; // should NOT get here
+		}
+
+		/// <summary>
+		/// Get the leading spacing of a specific glyph, as defined in the "header" data.
+		/// </summary>
+		/// <param name="charNo">Character number to get leading spacing for.</param>
+		/// <returns>Leading spacing for the specified character (in pixels), or -1 if error.</returns>
+		public int GetCharacterLeadSpace(int charNo)
+		{
+			switch (FontType)
+			{
+				case AkiFontType.AkiSmallFont: return ((CharHeaders[charNo][1] & 0xF0) >> 4);
+				case AkiFontType.AkiLargeFont: return CharHeaders[charNo][0];
+			}
+			return -1; // should NOT get here
+		}
+
 		#region Read Data
 		/// <summary>
 		/// Read large font data.
