@@ -100,22 +100,22 @@ namespace VPWStudio.Controls
 		/// </summary>
 		private readonly Color[] RevengeColors = new Color[]
 		{
-			Color.FromArgb(255,205,41,41),   // Index 0: Red
-			Color.FromArgb(255,82,90,180),   // Index 1: Blue
-			Color.FromArgb(255,16,148,57),   // Index 2: Green
-			Color.FromArgb(255,255,180,0),   // Index 3: Yellow
-			Color.FromArgb(255,255,115,57),  // Index 4: Orange
-			Color.FromArgb(255,139,49,148),  // Index 5: Purple
-			Color.FromArgb(255,246,115,148), // Index 6: Pink
-			Color.FromArgb(255,24,115,139),  // Index 7: Cyan
-			Color.FromArgb(255,65,57,123),   // Index 8: Dark Purple
-			Color.FromArgb(255,65,180,123),  // Index 9: Light Cyan
-			Color.FromArgb(255,139,197,82),  // Index 10: Light Green
-			Color.FromArgb(255,16,164,246),  // Index 11: Light Blue
-			Color.FromArgb(255,189,156,74),  // Index 12: Gold
-			Color.FromArgb(255,213,213,222), // Index 13: White
-			Color.FromArgb(255,41,41,41),    // Index 14: Black
-			Color.Transparent // Index 15: default costume color
+			Color.Transparent, // Index 0: default costume color
+			Color.FromArgb(255,205,41,41),   // Index 1: Red
+			Color.FromArgb(255,82,90,180),   // Index 2: Blue
+			Color.FromArgb(255,16,148,57),   // Index 3: Green
+			Color.FromArgb(255,255,180,0),   // Index 4: Yellow
+			Color.FromArgb(255,255,115,57),  // Index 5: Orange
+			Color.FromArgb(255,139,49,148),  // Index 6: Purple
+			Color.FromArgb(255,246,115,148), // Index 7: Pink
+			Color.FromArgb(255,24,115,139),  // Index 8: Cyan
+			Color.FromArgb(255,65,57,123),   // Index 9: Dark Purple
+			Color.FromArgb(255,65,180,123),  // Index 10: Light Cyan
+			Color.FromArgb(255,139,197,82),  // Index 11: Light Green
+			Color.FromArgb(255,16,164,246),  // Index 12: Light Blue
+			Color.FromArgb(255,189,156,74),  // Index 13: Gold
+			Color.FromArgb(255,213,213,222), // Index 14: White
+			Color.FromArgb(255,41,41,41),    // Index 15: Black
 		};
 
 		/// <summary>
@@ -123,6 +123,7 @@ namespace VPWStudio.Controls
 		/// </summary>
 		private readonly string[] RevengeColorNames = new string[16]
 		{
+			"Default",
 			"Red",
 			"Blue",
 			"Green",
@@ -137,8 +138,7 @@ namespace VPWStudio.Controls
 			"Light Blue",
 			"Gold",
 			"White",
-			"Black",
-			"Default"
+			"Black"
 		};
 
 		/// <summary>
