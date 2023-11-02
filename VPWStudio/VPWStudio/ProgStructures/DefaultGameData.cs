@@ -142,7 +142,8 @@ namespace VPWStudio
 					{ "WrestlerBodyDefs", new DefaultLocationDataEntry(0x2FF74, 212) },
 					// no "CostumeDefs" entry here; see below
 					{ "HeadDefs", new DefaultLocationDataEntry(0x31A44, 36) },
-					{ "WrestlerDefaultCostumeDefs", new DefaultLocationDataEntry(0x3F038,0) }, // xxx: set length!!
+					{ "WrestlerDefaultCostumeDefs", new DefaultLocationDataEntry(0x3F038, 0) }, // xxx: set length!!
+					{ "WrestlerDefaultCostumePointers", new DefaultLocationDataEntry(0x3F8B0, 424) },
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x49438, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x4989C, 176) },
 
