@@ -4,7 +4,7 @@ using System.IO;
 namespace VPWStudio.GameSpecific
 {
 	/// <summary>
-	/// Shared Body Type definition for World Tour, VPW64, and Revenge.
+	/// Shared Body Model definition for World Tour, VPW64, and Revenge.
 	/// </summary>
 	public class BodyModelDef_Early
 	{
@@ -95,6 +95,7 @@ namespace VPWStudio.GameSpecific
 		public UInt16 RightUpperArmModel;
 		#endregion
 
+		#region Constructors
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
@@ -127,6 +128,7 @@ namespace VPWStudio.GameSpecific
 		{
 			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
