@@ -2783,14 +2783,24 @@ namespace VPWStudio
 				return;
 			}
 
-			if (Program.CurrentProject.Settings.BaseGame != VPWGames.VPW64)
+			switch (Program.CurrentProject.Settings.BaseGame)
 			{
-				Program.ErrorMessageBox("This only works with VPW64, as suggested by the name.");
-				return;
+				case VPWGames.VPW64:
+					Editors.VPW64.DefaultCostume_VPW64 vpw64ce = new Editors.VPW64.DefaultCostume_VPW64();
+					vpw64ce.ShowDialog();
+					break;
+
+				case VPWGames.Revenge:
+					Editors.Revenge.DefaultCostume_Revenge revce = new Editors.Revenge.DefaultCostume_Revenge();
+					revce.ShowDialog();
+					break;
+
+				default:
+					Program.ErrorMessageBox("This only works with VPW64 and Revenge.");
+					return;
 			}
 
-			Editors.VPW64.DefaultCostume_VPW64 vpw64ce = new Editors.VPW64.DefaultCostume_VPW64();
-			vpw64ce.ShowDialog();
+			
 		}
 
 

@@ -198,6 +198,12 @@
     <Compile Include="Editors\Revenge\CostumeDefs_Revenge.designer.cs">
       <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\Revenge\DefaultCostume_Revenge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\Revenge\DefaultCostume_Revenge.Designer.cs">
+      <DependentUpon>DefaultCostume_Revenge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\StableDefs_Early.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -831,6 +837,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\CostumeDefs_Revenge.resx">
       <DependentUpon>CostumeDefs_Revenge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\Revenge\DefaultCostume_Revenge.resx">
+      <DependentUpon>DefaultCostume_Revenge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\Revenge\StableDefs_Revenge.resx">
       <DependentUpon>StableDefs_Revenge.cs</DependentUpon>
