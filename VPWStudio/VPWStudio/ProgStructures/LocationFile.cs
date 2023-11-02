@@ -143,6 +143,9 @@ namespace VPWStudio
 			{ "WrestlerBodyDefs", "$WRESTLERBODYDEFS" }, // world tour, vpw64, revenge
 			{ "WrestlerDefaultCostumeDefs", "$DEFAULTCOSTUMEDEFS" }, // vpw64, revenge
 
+			{ "WrestlerDefaultCostumePointers", "$DEFAULTCOSTUMEPOINTERS" }, // full pointer table
+			// todo: pointers to pointers, corresponding with ID4 numbering
+
 			{ "WrestlerHeightTable", "$WRESTLERHEIGHTTABLE" }, // world tour, vpw64, revenge
 
 			// VPW64 costume definitions
