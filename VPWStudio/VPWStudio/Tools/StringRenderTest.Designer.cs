@@ -38,8 +38,8 @@ namespace VPWStudio
 			// 
 			// pbStringPreview
 			// 
-			this.pbStringPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.pbStringPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.pbStringPreview.Location = new System.Drawing.Point(12, 149);
 			this.pbStringPreview.MaximumSize = new System.Drawing.Size(480, 240);
 			this.pbStringPreview.MinimumSize = new System.Drawing.Size(480, 240);
@@ -50,8 +50,8 @@ namespace VPWStudio
 			// 
 			// gbText
 			// 
-			this.gbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.gbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbText.Controls.Add(this.tbPreviewText);
 			this.gbText.Location = new System.Drawing.Point(12, 12);
 			this.gbText.Name = "gbText";
@@ -80,12 +80,14 @@ namespace VPWStudio
 			this.Controls.Add(this.gbText);
 			this.Controls.Add(this.pbStringPreview);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(520, 414);
 			this.Name = "StringRenderTest";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "String Render Test";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StringRenderTest_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.pbStringPreview)).EndInit();
 			this.gbText.ResumeLayout(false);
 			this.gbText.PerformLayout();
