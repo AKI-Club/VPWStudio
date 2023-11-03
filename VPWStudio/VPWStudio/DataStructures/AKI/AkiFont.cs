@@ -34,6 +34,35 @@ namespace VPWStudio
 	}
 
 	/// <summary>
+	/// Font Color entry
+	/// </summary>
+	public class FontColorEntry
+	{
+		#region Class Members
+		/// <summary>
+		/// RGB color value
+		/// </summary>
+		public Color ColorValue;
+
+		/// <summary>
+		/// Human-readable description of this color, and/or its purpose.
+		/// </summary>
+		public string Description;
+		#endregion
+
+		/// <summary>
+		/// Constructor using specific values.
+		/// </summary>
+		/// <param name="color">RGB color value</param>
+		/// <param name="desc">Description</param>
+		public FontColorEntry(Color color, string desc)
+		{
+			ColorValue = color;
+			Description = desc;
+		}
+	}
+
+	/// <summary>
 	/// AKI font data.
 	/// </summary>
 	/// Some code in this class is based off of code in Zoinkity's Midwaydec.
@@ -772,6 +801,29 @@ namespace VPWStudio
 			{ VPWGames.NoMercy, 7 },
 		};
 		#endregion
+
+		/// <summary>
+		/// Available font colors.<br/>
+		/// Note: RGB color values are taken from VPW2 framebuffer dumps.<br/>
+		/// These may differ between games, and how the colors are actually defined in ROM.
+		/// </summary>
+		/// Note: Lowercase values work for most of the characters, even though they are not
+		/// explicitly defined. Only H/h is differentiated, based on VPW2 usage.
+		public static readonly Dictionary<char, FontColorEntry> FontColors = new Dictionary<char, FontColorEntry>()
+		{
+			{ 'B', new FontColorEntry(Color.FromArgb(82,131,255), "Blue") },
+			{ 'C', new FontColorEntry(Color.FromArgb(123,255,255), "Cyan") },
+			{ 'D', new FontColorEntry(Color.FromArgb(255,255,255), "Default") },
+			{ 'G', new FontColorEntry(Color.FromArgb(8,238,0), "Green") },
+			{ 'H', new FontColorEntry(Color.FromArgb(255,205,0), "Hidden costume item?") },
+			{ 'h', new FontColorEntry(Color.FromArgb(255,205,0), "Hidden move item?") },
+			{ 'K', new FontColorEntry(Color.FromArgb(0,0,0), "Black") },
+			{ 'O', new FontColorEntry(Color.FromArgb(255,164,0), "Orange") },
+			{ 'P', new FontColorEntry(Color.FromArgb(82,82,82), "Gray") },
+			{ 'R', new FontColorEntry(Color.FromArgb(255,0,0), "Red") },
+			{ 'W', new FontColorEntry(Color.FromArgb(255,255,255), "White") },
+			{ 'Y', new FontColorEntry(Color.FromArgb(255,205,0), "Yellow") },
+		};
 
 		#endregion
 
