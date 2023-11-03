@@ -178,6 +178,8 @@ namespace VPWStudio
 		public MoveDamageTestDialog MoveDamageTest = null;
 
 		public TestScene3D Test3dDialog = null;
+
+		public StringRenderTest RenderStringTest = null;
 		#endregion
 
 		#endregion // children forms
@@ -2805,8 +2807,13 @@ namespace VPWStudio
 
 		private void stringRenderTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			StringRenderTest srt = new StringRenderTest();
-			srt.ShowDialog();
+			if (RenderStringTest == null || RenderStringTest.IsDisposed)
+			{
+				RenderStringTest = new StringRenderTest();
+			}
+
+			RenderStringTest.MdiParent = this;
+			RenderStringTest.Show();
 		}
 
 		#endregion
