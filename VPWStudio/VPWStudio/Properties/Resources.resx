@@ -215,6 +215,27 @@
   <data name="GameIcon16_WorldTour" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\worldtour_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GameName_NoMercy" xml:space="preserve">
+    <value>WWF No Mercy</value>
+  </data>
+  <data name="GameName_VPW" xml:space="preserve">
+    <value>Virtual Pro-Wrestling</value>
+  </data>
+  <data name="GameName_VPW2" xml:space="preserve">
+    <value>Virtual Pro-Wrestling 2</value>
+  </data>
+  <data name="GameName_VPW64" xml:space="preserve">
+    <value>Virtual Pro-Wrestling 64</value>
+  </data>
+  <data name="GameName_VsWorld" xml:space="preserve">
+    <value>WCW vs. the World</value>
+  </data>
+  <data name="GameName_WM2K" xml:space="preserve">
+    <value>WWF WrestleMania 2000</value>
+  </data>
+  <data name="GameName_WorldTour" xml:space="preserve">
+    <value>WCW vs. nWo - World Tour</value>
+  </data>
   <data name="MainForm_Title" xml:space="preserve">
     <value>VPW Studio</value>
   </data>

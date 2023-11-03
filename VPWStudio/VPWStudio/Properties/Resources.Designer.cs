@@ -381,6 +381,69 @@ namespace VPWStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WWF No Mercy.
+        /// </summary>
+        internal static string GameName_NoMercy {
+            get {
+                return ResourceManager.GetString("GameName_NoMercy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Pro-Wrestling.
+        /// </summary>
+        internal static string GameName_VPW {
+            get {
+                return ResourceManager.GetString("GameName_VPW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Pro-Wrestling 2.
+        /// </summary>
+        internal static string GameName_VPW2 {
+            get {
+                return ResourceManager.GetString("GameName_VPW2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Pro-Wrestling 64.
+        /// </summary>
+        internal static string GameName_VPW64 {
+            get {
+                return ResourceManager.GetString("GameName_VPW64", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WCW vs. the World.
+        /// </summary>
+        internal static string GameName_VsWorld {
+            get {
+                return ResourceManager.GetString("GameName_VsWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WWF WrestleMania 2000.
+        /// </summary>
+        internal static string GameName_WM2K {
+            get {
+                return ResourceManager.GetString("GameName_WM2K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WCW vs. nWo - World Tour.
+        /// </summary>
+        internal static string GameName_WorldTour {
+            get {
+                return ResourceManager.GetString("GameName_WorldTour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VPW Studio.
         /// </summary>
         internal static string MainForm_Title {

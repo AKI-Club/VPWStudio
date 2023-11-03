@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GameName_NoMercy" xml:space="preserve">
+    <value>WWFノー・マーシー</value>
+  </data>
+  <data name="GameName_VPW" xml:space="preserve">
+    <value>バーチャル・プロレスリング</value>
+  </data>
+  <data name="GameName_VPW2" xml:space="preserve">
+    <value>バーチャル・プロレス2</value>
+  </data>
+  <data name="GameName_VPW64" xml:space="preserve">
+    <value>バーチャル・プロレスリング64</value>
+  </data>
+  <data name="GameName_VsWorld" xml:space="preserve">
+    <value>WCW vs. ザ・ワールド</value>
+  </data>
+  <data name="GameName_WM2K" xml:space="preserve">
+    <value>WWFレッスルマニア2000</value>
+  </data>
+  <data name="GameName_WorldTour" xml:space="preserve">
+    <value>WCW vs. nWo - ワールド・トゥール</value>
+  </data>
   <data name="MainForm_Title" xml:space="preserve">
     <value>バープロ スタジオ</value>
   </data>
