@@ -98,6 +98,7 @@
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
+			this.stringRenderTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -474,12 +475,13 @@
             this.openFileInHexViewerToolStripMenuItem,
             this.moveDamageTestToolStripMenuItem,
             this.vpw2TextIndexToolToolStripMenuItem,
+            this.vpw64CostumeTestToolStripMenuItem,
             this.toolStripSeparator10,
             this.timTestToolStripMenuItem,
             this.toolStripSeparator11,
             this.testScene3dToolStripMenuItem,
             this.paramUnpackTestToolStripMenuItem,
-            this.vpw64CostumeTestToolStripMenuItem});
+            this.stringRenderTestToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -612,6 +614,12 @@
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			this.tssLabelGameType.Click += new System.EventHandler(this.tssLabelGameType_Click);
 			// 
+			// stringRenderTestToolStripMenuItem
+			// 
+			this.stringRenderTestToolStripMenuItem.Name = "stringRenderTestToolStripMenuItem";
+			resources.ApplyResources(this.stringRenderTestToolStripMenuItem, "stringRenderTestToolStripMenuItem");
+			this.stringRenderTestToolStripMenuItem.Click += new System.EventHandler(this.stringRenderTestToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -707,6 +715,7 @@
 		private System.Windows.Forms.ToolStripMenuItem openFileInHexViewerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vpw64CostumeTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem tagTeamsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stringRenderTestToolStripMenuItem;
 	}
 }
 

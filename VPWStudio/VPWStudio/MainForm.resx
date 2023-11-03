@@ -480,6 +480,12 @@
   <data name="vpw2TextIndexToolToolStripMenuItem.Text" xml:space="preserve">
     <value>text index tool</value>
   </data>
+  <data name="vpw64CostumeTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 22</value>
+  </data>
+  <data name="vpw64CostumeTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>vpw64/revenge costume test</value>
+  </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 6</value>
   </data>
@@ -504,11 +510,11 @@
   <data name="paramUnpackTestToolStripMenuItem.Text" xml:space="preserve">
     <value>param unpack test</value>
   </data>
-  <data name="vpw64CostumeTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="stringRenderTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 22</value>
   </data>
-  <data name="vpw64CostumeTestToolStripMenuItem.Text" xml:space="preserve">
-    <value>vpw64/revenge costume test</value>
+  <data name="stringRenderTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>string render test</value>
   </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -2175,6 +2181,12 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stringRenderTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>stringRenderTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stringRenderTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

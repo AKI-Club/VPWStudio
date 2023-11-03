@@ -2803,6 +2803,11 @@ namespace VPWStudio
 			
 		}
 
+		private void stringRenderTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			StringRenderTest srt = new StringRenderTest();
+			srt.ShowDialog();
+		}
 
 		#endregion
 
