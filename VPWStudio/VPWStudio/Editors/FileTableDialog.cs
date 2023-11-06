@@ -1781,7 +1781,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Export the FileTable as a CSV file.
+		/// Export the FiileTable as a CSV file, meant for a conversion script.
 		/// </summary>
 		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1825,6 +1825,20 @@ namespace VPWStudio
 			// xxx: hardcoded english and many assumptions
 			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
 			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
+		}
+
+		private void exportJSONToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Title = "Save FileTable JSON";
+			sfd.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				using (StreamWriter sw = new StreamWriter(sfd.FileName, false))
+				{
+					Program.CurrentProject.ProjectFileTable.WriteJSON(sw);
+				}
+			}
 		}
 	}
 }

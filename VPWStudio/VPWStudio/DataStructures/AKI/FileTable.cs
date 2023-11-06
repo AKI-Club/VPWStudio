@@ -1200,5 +1200,38 @@ namespace VPWStudio
 			}
 		}
 		#endregion
+
+		#region JSON Export
+		/// <summary>
+		/// for filetable builder
+		/// </summary>
+		/// <param name="sw">StreamWriter instance to use.</param>
+		public void WriteJSON(StreamWriter sw)
+		{
+			sw.WriteLine("[");
+
+			// write all the entries
+			// { "file":"path", "lzss":false, "symbol":"optional", "exportsize":false }
+			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
+			{
+				sw.WriteLine("  {");
+
+				sw.WriteLine(String.Format("    \"file\":\"{0:X4}.bin\",", fte.Key));
+				sw.WriteLine(String.Format("    \"lzss\":{0},", fte.Value.IsEncoded.ToString().ToLower()));
+				// skip symbol and exportsize, which we can't set in VPW Studio anyways.
+
+				if (fte.Key < Entries.Count)
+				{
+					sw.WriteLine("  },");
+				}
+				else
+				{
+					sw.WriteLine("  }");
+				}
+			}
+
+			sw.WriteLine("]");
+		}
+		#endregion
 	}
 }
