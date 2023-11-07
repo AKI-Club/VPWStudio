@@ -1818,14 +1818,6 @@ namespace VPWStudio
 				}
 			}
 		}
-		#endregion
-
-		private void lvFileList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-		{
-			// xxx: hardcoded english and many assumptions
-			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
-			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
-		}
 
 		private void exportJSONToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1839,6 +1831,14 @@ namespace VPWStudio
 					Program.CurrentProject.ProjectFileTable.WriteJSON(sw);
 				}
 			}
+		}
+		#endregion
+
+		private void lvFileList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			// xxx: hardcoded english and many assumptions
+			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
+			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
 		}
 	}
 }
