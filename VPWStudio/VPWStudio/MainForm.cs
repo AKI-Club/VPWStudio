@@ -2816,6 +2816,11 @@ namespace VPWStudio
 			RenderStringTest.Show();
 		}
 
+		private void clientTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ClientTest ct = new ClientTest();
+			ct.ShowDialog();
+		}
 		#endregion
 
 		private void tssLabelGameType_Click(object sender, EventArgs e)

@@ -108,6 +108,12 @@
     <Compile Include="Dialogs\AkiTextEditor_GoToDialog.Designer.cs">
       <DependentUpon>AkiTextEditor_GoToDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DangerZone\ClientTest_PortNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DangerZone\ClientTest_PortNumber.Designer.cs">
+      <DependentUpon>ClientTest_PortNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -593,6 +599,12 @@
     <Compile Include="Tools\AnimTest.Designer.cs">
       <DependentUpon>AnimTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ClientTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\ClientTest.Designer.cs">
+      <DependentUpon>ClientTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\FaceTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -706,6 +718,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\AkiTextEditor_GoToDialog.resx">
       <DependentUpon>AkiTextEditor_GoToDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DangerZone\ClientTest_PortNumber.resx">
+      <DependentUpon>ClientTest_PortNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.resx">
       <DependentUpon>TestScene3D_AddEditDialog.cs</DependentUpon>
@@ -913,6 +928,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\AnimTest.resx">
       <DependentUpon>AnimTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\ClientTest.resx">
+      <DependentUpon>ClientTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\FaceTester.resx">
       <DependentUpon>FaceTester.cs</DependentUpon>
