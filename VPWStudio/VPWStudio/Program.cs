@@ -51,6 +51,7 @@ namespace VPWStudio
 		public static string CurLocationFilePath = String.Empty;
 		#endregion
 
+		#region Project Build-related
 		/// <summary>
 		/// Are we in the process of building a ROM?
 		/// </summary>
@@ -65,7 +66,9 @@ namespace VPWStudio
 		/// Build Warning and Error messages.
 		/// </summary>
 		public static List<BuildWarnErr> BuildMessages = new List<BuildWarnErr>();
+		#endregion
 
+		#region Dialog Managers
 		/// <summary>
 		/// HexViewer Manager
 		/// </summary>
@@ -75,6 +78,7 @@ namespace VPWStudio
 		/// AkiTextEditor Manager
 		/// </summary>
 		//public static AkiTextEditorManager TextEditManager = new AkiTextEditorManager();
+		#endregion
 
 		/// <summary>
 		/// Application main form, defined as a variable to get around some hacky crap
