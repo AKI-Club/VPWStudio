@@ -24,9 +24,12 @@ namespace VPWStudio
 		/// </summary>
 		private int PortNumber;
 
-		//private Socket Connection;
+		/// <summary>
+		/// Socket for communicating with the server.
+		/// </summary>
+		private Socket Connection;
 
-		//private Timer MessageTimer;
+		private Timer MessageTimer;
 
 		public ClientTest()
 		{
@@ -35,9 +38,8 @@ namespace VPWStudio
 			IsConnected = false;
 			btnSendCommand.Enabled = false;
 
-			//Connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-			//MessageTimer = new Timer();
-			//MessageTimer.Interval = 1000;
+			MessageTimer = new Timer();
+			MessageTimer.Interval = 1000;
 		}
 
 		#region Menu Items
@@ -46,16 +48,37 @@ namespace VPWStudio
 			if (!IsConnected)
 			{
 				// connect
-				IsConnected = true;
-				connectToolStripMenuItem.Text = "Disconnect";
-				tsslblConStatus.Text = "Connected";
+				tsslblConStatus.Text = "Connecting...";
+
+				try
+				{
+					Connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+					Connection.Connect("localhost", PortNumber);
+				}
+				catch (Exception ex)
+				{
+					IsConnected = false;
+					connectToolStripMenuItem.Text = "Connect";
+					tsslblConStatus.Text = "Not connected";
+
+					Program.ErrorMessageBox(string.Format("Could not connect to server:\n{0}", ex.Message));
+					return;
+				}
+
+				if (Connection.Connected)
+				{
+					IsConnected = true;
+					connectToolStripMenuItem.Text = "Disconnect";
+					tsslblConStatus.Text = String.Format("Connected on port {0}", PortNumber);
+				}
 			}
 			else
 			{
 				// disconnect
+				Connection.Disconnect(true);
 				IsConnected = false;
 				connectToolStripMenuItem.Text = "Connect";
-				tsslblConStatus.Text = "Not Connected";
+				tsslblConStatus.Text = "Not connected";
 			}
 
 			btnSendCommand.Enabled = IsConnected;
@@ -136,10 +159,11 @@ namespace VPWStudio
 
 		private void ClientTest_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			// todo: actually close the connection before fucking off into the ether!!
-			if (IsConnected)
+			// actually close the connection before fucking off into the ether!!
+			if (Connection.Connected)
 			{
-				// disconnect
+				Connection.Disconnect(false);
+				Connection.Dispose();
 			}
 		}
 	}
