@@ -75,7 +75,7 @@ namespace VPWStudio
 			else
 			{
 				// disconnect
-				Connection.Disconnect(true);
+				Connection.Disconnect(false);
 				IsConnected = false;
 				connectToolStripMenuItem.Text = "Connect";
 				tsslblConStatus.Text = "Not connected";
