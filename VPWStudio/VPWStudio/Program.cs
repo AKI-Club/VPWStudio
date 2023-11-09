@@ -103,6 +103,11 @@ namespace VPWStudio
 		}
 
 		#region Helpers
+		public static string GetVersionString()
+		{
+			return String.Format("v{0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+		}
+
 		/// <summary>
 		/// Special cases where a separate FileTableDB is required.
 		/// </summary>
