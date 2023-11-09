@@ -29,6 +29,8 @@ namespace VPWStudio
 		/// </summary>
 		private Socket Connection;
 
+		private NetworkStream NetStream;
+
 		private Timer MessageTimer;
 
 		public ClientTest()
@@ -54,6 +56,7 @@ namespace VPWStudio
 				{
 					Connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 					Connection.Connect("localhost", PortNumber);
+					NetStream = new NetworkStream(Connection);
 				}
 				catch (Exception ex)
 				{
@@ -147,6 +150,9 @@ namespace VPWStudio
 			tbOutput.Text += Environment.NewLine;
 
 			// ok MAYBE we can send this off
+
+			byte[] tmp = new byte[1] { 0 };
+			NetStream.Write(tmp, 0, 1);
 		}
 
 		private void ClientTest_KeyDown(object sender, KeyEventArgs e)
@@ -159,6 +165,11 @@ namespace VPWStudio
 
 		private void ClientTest_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			if (NetStream != null)
+			{
+				NetStream.Dispose();
+			}
+
 			// actually close the connection before fucking off into the ether!!
 			if (Connection.Connected)
 			{
