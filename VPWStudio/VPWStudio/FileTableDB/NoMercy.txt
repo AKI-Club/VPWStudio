@@ -104,11 +104,11 @@
 0067=AkiTexture;[Tournament] MAN/COM indicators
 0068=Binary;???
 0069=Binary;???
-006A=AkiText;Move Names 1
-006B=AkiText;Move Names 2
-006C=AkiText;Move Names 3
-006D=AkiText;Move Names 4
-006E=AkiText;Move Names 5
+006A=AkiText;(old) Move Names 1
+006B=AkiText;(old) Move Names 2
+006C=AkiText;(old) Move Names 3
+006D=AkiText;(old) Move Names 4
+006E=AkiText;(old) Move Names 5
 006F=AkiText;(VPW2 leftover)
 0070=AkiText;ERROR Text
 0071=AkiText;Credits
