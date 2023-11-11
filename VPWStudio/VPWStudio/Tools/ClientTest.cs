@@ -151,8 +151,8 @@ namespace VPWStudio
 
 			// ok MAYBE we can send this off
 
-			byte[] tmp = new byte[1] { 0 };
-			NetStream.Write(tmp, 0, 1);
+			//byte[] tmp = new byte[1] { 0 };
+			//NetStream.Write(tmp, 0, 1);
 		}
 
 		private void ClientTest_KeyDown(object sender, KeyEventArgs e)
