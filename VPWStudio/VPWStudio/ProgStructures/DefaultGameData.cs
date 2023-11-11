@@ -161,6 +161,8 @@ namespace VPWStudio
 					{ "FirstFile", new DefaultLocationDataEntry(0x4AD00, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0xC7B578, 37432) },
 
+					{ "IntroDefs_VPW64_Anims", new DefaultLocationDataEntry(0xF6B0D0, 2560) },
+
 					// relocatable code addresses
 					{ "RelocatableCodeAddress1", new DefaultLocationDataEntry(0x3FAC0, 4) },
 					{ "RelocatableCodeAddress2", new DefaultLocationDataEntry(0x3FAC4, 4) },
