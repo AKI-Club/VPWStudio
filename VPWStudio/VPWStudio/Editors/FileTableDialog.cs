@@ -1229,6 +1229,35 @@ namespace VPWStudio
 					}
 					break;
 
+				// WWF No Mercy move names
+				case FileTypes.MenuItems_Moves:
+					{
+						Editors.NoMercy.MenuItemsMoves_NoMercy me;
+						if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
+						{
+							// load file
+							me = new Editors.NoMercy.MenuItemsMoves_NoMercy(Program.ConvertRelativePath(fte.ReplaceFilePath));
+						}
+						else if (!String.IsNullOrEmpty(fte.ReplaceFilePath) && !File.Exists(Program.ConvertRelativePath(fte.ReplaceFilePath)))
+						{
+							// replacement file defined but nonexistent
+							Program.InfoMessageBox(String.Format("Unable to open replacement file {0}, using data from ROM instead.", fte.ReplaceFilePath));
+							me = new Editors.NoMercy.MenuItemsMoves_NoMercy(key);
+						}
+						else
+						{
+							// load rom
+							me = new Editors.NoMercy.MenuItemsMoves_NoMercy(key);
+						}
+
+						if (me.ShowDialog() == DialogResult.OK)
+						{
+							Program.ErrorMessageBox("hahaha well did you really expect freem to fully implement something immediately?\nsorry, changes not saved");
+							return;
+						}
+					}
+					break;
+
 				// WWF No Mercy Smackdown Mall Shop menu items
 				case FileTypes.MenuItems_Shop:
 						{

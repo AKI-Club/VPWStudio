@@ -61,7 +61,7 @@ namespace VPWStudio
 		Ci4Background, // WWF No Mercy Smackdown Mall background
 		MenuItems_NoGroup, // WWF No Mercy groupless Items (pictures, titantrons, themes)
 		//MenuItems_Costume, // WWF No Mercy Costume Items
-		//MenuItems_Moves, // WWF No Mercy Move List Items
+		MenuItems_Moves, // WWF No Mercy Move List Items
 		MenuItems_Shop, // WWF No Mercy Smackdown Mall Shop Items
 		#endregion
 
@@ -97,7 +97,7 @@ namespace VPWStudio
 			{ FileTypes.Ci4Background, ".ci4bg" }, // this is awkward, freem
 			{ FileTypes.MenuItems_NoGroup, ".nmitem0" },
 			//{ FileTypes.MenuItems_Costume, ".nmitem1" },
-			//{ FileTypes.MenuItems_Moves, ".nmitem2" },
+			{ FileTypes.MenuItems_Moves, ".nmitem2" },
 			{ FileTypes.MenuItems_Shop, ".nmitem3" },
 		};
 
@@ -164,7 +164,8 @@ namespace VPWStudio
 			if (gameType < VPWGames.NoMercy)
 			{
 				outTypes.Remove(FileTypes.MenuItems_NoGroup);
-				// eventually MenuItems_Costume and MenuItems_Moves
+				// eventually MenuItems_Costume
+				outTypes.Remove(FileTypes.MenuItems_Moves);
 				outTypes.Remove(FileTypes.MenuItems_Shop);
 				outTypes.Remove(FileTypes.Ci4Background);
 			}
