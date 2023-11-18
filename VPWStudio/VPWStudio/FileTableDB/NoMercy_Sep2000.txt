@@ -7675,8 +7675,8 @@
 498C=Ci4Texture;[Shop] Backlash logo left|p:498B
 498D=Ci4Palette;[Shop] Backlash logo right
 498E=Ci4Texture;[Shop] Backlash logo right|p:498D
-4BEB=Binary;[Move Names] (Double Team) Irish Whip Grapple
-4BEC=Binary;[Move Names] Special Ground Grapple Facing Up (Head)
-4BED=Binary;[Move Names] Special Ground Grapple Facing Down (Head)
-4BEE=Binary;[Move Names] Special Ground Grapple Facing Up (Feet)
-4BEF=Binary;[Move Names] Special Ground Grapple Facing Down (Feet)
+4BEB=MenuItems_Moves;[Move Names] (Double Team) Irish Whip Grapple
+4BEC=MenuItems_Moves;[Move Names] Special Ground Grapple Facing Up (Head)
+4BED=MenuItems_Moves;[Move Names] Special Ground Grapple Facing Down (Head)
+4BEE=MenuItems_Moves;[Move Names] Special Ground Grapple Facing Up (Feet)
+4BEF=MenuItems_Moves;[Move Names] Special Ground Grapple Facing Down (Feet)
