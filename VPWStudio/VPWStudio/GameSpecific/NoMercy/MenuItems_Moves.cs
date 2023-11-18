@@ -114,14 +114,16 @@ namespace VPWStudio.GameSpecific.NoMercy
 			}
 			MasterMoveID = BitConverter.ToInt16(fileID, 0);
 
-			// todo: strings could be Shift-JIS encoded
-			string name = string.Empty;
+			// strings could be Shift-JIS encoded, hence using a byte array.
+			// (not like anyone will see them in-game anyways, for multiple reasons)
+			byte[] temp = new byte[128];
+			int ti = 0;
 			while (br.PeekChar() != 0)
 			{
-				name += br.ReadChar();
+				temp[ti++] = br.ReadByte();
 			}
 			br.ReadByte();
-			MoveName = name;
+			MoveName = Encoding.GetEncoding("shift-jis").GetString(temp);
 		}
 
 		/// <summary>
