@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
-using System.Reflection;
-using System.Text;
 
 namespace VPWStudio
 {
@@ -38,7 +34,7 @@ namespace VPWStudio
 			Reserved_CD = 0xCD,
 
 			/// <summary>
-			/// Information, Client to Emulator
+			/// [0xCE] Information, Client to Emulator
 			/// </summary>
 			Info_Client2Emu = 0xCE,
 
@@ -56,17 +52,17 @@ namespace VPWStudio
 			Reserved_D9 = 0xD9,
 
 			/// <summary>
-			/// Dump Data, arbitrary range
+			/// [0xDA] Dump Data, arbitrary range
 			/// </summary>
 			DumpData_Arbitrary = 0xDA,
 
 			/// <summary>
-			/// Dump Data, preset range
+			/// [0xDB] Dump Data, preset range
 			/// </summary>
 			DumpData_Preset = 0xDB,
 
 			/// <summary>
-			/// Write Data once
+			/// [0xDC] Write Data once
 			/// </summary>
 			Data_Write = 0xDC,
 
@@ -74,7 +70,7 @@ namespace VPWStudio
 			Reserved_DE = 0xDE,
 
 			/// <summary>
-			/// Force data (essentially, a standard Gameshark code)
+			/// [0xDF] Force data (essentially, a standard Gameshark code)
 			/// </summary>
 			Data_Force = 0xDF,
 
@@ -93,7 +89,7 @@ namespace VPWStudio
 			Reserved_EB = 0xEB,
 
 			/// <summary>
-			/// Information, Emulator to Client
+			/// [0xEC] Information, Emulator to Client
 			/// </summary>
 			Info_Emu2Client = 0xEC,
 
