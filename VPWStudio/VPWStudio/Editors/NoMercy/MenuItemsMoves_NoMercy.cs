@@ -67,6 +67,7 @@ namespace VPWStudio.Editors.NoMercy
 				cbMoves.Items.Add(entry.MoveName);
 			}
 			cbMoves.EndUpdate();
+			cbMoves.SelectedIndex = 0;
 		}
 
 		private void cbMoves_SelectedIndexChanged(object sender, EventArgs e)
