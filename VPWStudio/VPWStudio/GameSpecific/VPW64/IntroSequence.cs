@@ -327,4 +327,131 @@ namespace VPWStudio.GameSpecific.VPW64
 		}
 		#endregion
 	}
+
+	/// <summary>
+	/// Introduction sequence graphic entry (Virtual Pro-Wrestling 64)
+	/// </summary>
+	public class IntroSequenceGraphic
+	{
+		#region Class Members
+		/// <summary>
+		/// File ID of the image to show.
+		/// </summary>
+		public short FileID;
+
+		// texture width
+		public short TexWidth;
+
+		// display width
+		public short DisplayWidth;
+
+		// display height
+		public short DisplayHeight;
+
+		// background color (3 bytes)
+		public byte[] BackgroundColor;
+
+		// unused and/or alignment byte
+		public byte Unused;
+
+		// four fading-related values?
+		public short Unknown1;
+		public short Unknown2;
+		public short Unknown3;
+		public short Unknown4;
+		#endregion
+
+		#region Constructors
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		public IntroSequenceGraphic()
+		{
+			FileID = 0;
+			TexWidth = 0;
+			DisplayWidth = 0;
+			DisplayHeight = 0;
+			BackgroundColor = new byte[3];
+			Unused = 0;
+			Unknown1 = 0;
+			Unknown2 = 0;
+			Unknown3 = 0;
+			Unknown4 = 0;
+		}
+
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use</param>
+		public IntroSequenceGraphic(BinaryReader br)
+		{
+			BackgroundColor = new byte[3];
+			ReadData(br);
+		}
+		#endregion
+
+		#region Read/Write Data
+		public void ReadData(BinaryReader br)
+		{
+			byte[] data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			FileID = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			TexWidth = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			DisplayWidth = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			DisplayHeight = BitConverter.ToInt16(data, 0);
+
+			BackgroundColor = br.ReadBytes(3);
+			Unused = br.ReadByte();
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			Unknown1 = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			Unknown2 = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			Unknown3 = BitConverter.ToInt16(data, 0);
+
+			data = br.ReadBytes(2);
+			if (BitConverter.IsLittleEndian)
+			{
+				Array.Reverse(data);
+			}
+			Unknown4 = BitConverter.ToInt16(data, 0);
+		}
+		#endregion
+	}
 }
