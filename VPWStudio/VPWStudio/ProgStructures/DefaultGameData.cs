@@ -800,7 +800,9 @@ namespace VPWStudio
 		/// <summary>
 		/// Dictionary of specific game types to default relevant File Table IDs.
 		/// </summary>
-		/// This has to be SpecificGame because WrestleMania 2000 NTSC-J has different IDs from WM2K NTSC-U/PAL.
+		/// SpecificGame is used for multiple reasons:
+		/// - WWF WrestleMania 2000 NTSC-J has different file table IDs from WM2K NTSC-U/PAL.
+		/// - WWF No Mercy September 2000 pre-release has different file table IDs from the final version(s).
 		public static Dictionary<string, Dictionary<SpecificGame, int>> DefaultFileTableIDs = new Dictionary<string, Dictionary<SpecificGame, int>>()
 		{
 			{
