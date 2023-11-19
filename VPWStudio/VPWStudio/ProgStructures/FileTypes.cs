@@ -148,15 +148,10 @@ namespace VPWStudio
 				outTypes.Add(ft);
 			}
 
-			// AkiText is in WM2K and later
+			// FileTypes only found in WM2K and later
 			if (gameType <= VPWGames.Revenge)
 			{
 				outTypes.Remove(FileTypes.AkiText);
-			}
-
-			// MenuBackground is in WM2K and later
-			if (gameType <= VPWGames.Revenge)
-			{
 				outTypes.Remove(FileTypes.MenuBackground);
 			}
 
