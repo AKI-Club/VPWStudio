@@ -10,25 +10,26 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.32 (October 28th, 2023)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.32 (November 26th, 2023)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
 <hr />
 
 <h2>Table of Contents</h2>
+<p>Sections in <strong>bold</strong> are considered important; don't skip them.</p>
 <h3>Chapter 1: Introductory Material</h3>
 <ol>
 <li><a href="#Warning">Warning</a></li>
 <li><a href="#Intro">Introduction</a></li>
 <li><a href="#Requirements">Requirements and Notes</a></li>
-<li><a href="#HackingWorkflow">Hacking Workflow</a>
+<li><a href="#HackingWorkflow"><strong>Hacking Workflow</strong></a>
 <li><a href="#MainInterface">Main Interface</a></li>
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
 <li><a href="#WhichGameToHack">Which Game To Hack?</a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
-<li><a href="#TextureWorkflow">Texture and Palette Workflow</a>
+<li><a href="#TextureWorkflow"><strong>Texture and Palette Workflow</strong></a>
 <ol>
 <li><a href="#TextureSources">Texture Sources</a></li>
 <li><a href="#ColorFormat">Color Format</a></li>
@@ -49,7 +50,7 @@
 <li><a href="#CostumeItems">Costume Items</a></li>
 <li><a href="#DemoMatches">Demo Matches</a></li>
 <li><a href="#Entrances">Entrances</a></li>
-<li><a href="#FileTable">File Table</a><ol>
+<li><a href="#FileTable"><strong>File Table</strong></a><ol>
 <li><a href="#FileTableEntryInfo">File Table Entry Information</a></li>
 <li><a href="#Editors">Viewers and Editors</a>
 	<ol>
@@ -63,6 +64,7 @@
 	<li><a href="#AnimTest">AnimTest</a></li>
 	<li><a href="#Fonts">Fonts</a></li>
 	<!-- MenuItems_NoGroup -->
+	<!-- MenuItems_Moves -->
 	<!-- MenuItems_Shop -->
 	</ol>
 </li></ol>
@@ -2233,11 +2235,13 @@ the base for the final, more polished features. Starting with pre-Alpha Preview
 <li><strong>open file in hex viewer</strong> &ndash; Open an external file in the hex viewer.</li>
 <li><strong>move damage test</strong> &ndash; Show move damage values. Requires an open project.</li>
 <li><strong>text index tool</strong> &ndash; Convert from WM2K, VPW2, and No Mercy text index values to location and index.</li>
+<li><strong>vpw64/revenge costume test</strong> &ndash; attempt to read default costume data. only works with VPW64 and Revenge.</li>
 <li><strong>tim test</strong> &ndash; Tests loading of TIM files (PlayStation textures) and their internal CLUT/palette values.</li>
 <li><strong>test scene 3d</strong> &ndash; attempting to display multiple models at once. requires an open project file. incomplete and very awkward to use, only recommended for experts and
 the terminally curious.</li>
 <li><strong>param unpack test</strong> &ndash; attempt to test wrestler parameter unpacking. only works properly with vpw2, wm2k, and no mercy. all other N64 AKI games use unpacked parameters.</li>
-<li><strong>vpw64 costume test</strong> &ndash; attempt to read default costume data. only works with VPW64.</li>
+<li><strong>string render test</strong> &ndash; eventually this will be used to test string rendering using the available game fonts.</li>
+<li><strong>client test</strong> &ndash; don't use this unless your name is "freem". seriously, it requires other moving parts that I haven't finalized yet.</li>
 </ul>
 
 <hr class="chapterSplit" />
