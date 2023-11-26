@@ -171,7 +171,7 @@ namespace VPWStudio
 			}
 
 			// actually close the connection before fucking off into the ether!!
-			if (Connection.Connected)
+			if (Connection != null && Connection.Connected)
 			{
 				Connection.Disconnect(false);
 				Connection.Dispose();
