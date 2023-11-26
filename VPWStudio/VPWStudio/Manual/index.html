@@ -1053,6 +1053,13 @@ from the final result, you're working from the composite parts that end up makin
 the final result. This means you'll have to get your textures and palettes from
 VPW Studio, then work from there.</p>
 
+<p>When exporting images from VPW Studio, they are not assigned a palette by default.
+This means you will have to re-palettize the image before you can import it again.
+How you handle the image's palette depends on many factors, including (but not
+limited to) the texture you're replacing and the game you're working with.
+The palette indices <strong>must</strong> match with the ones used in the texture,
+otherwise your images will look wrong.</p>
+
 <h3><a name="ColorFormat">Color Format</a></h3>
 <p>The Nintendo 64 and PlayStation 1 both use a 16bpp color format for most
 purposes. This gives a range of 0-31 for each of the red, green, and blue values,
