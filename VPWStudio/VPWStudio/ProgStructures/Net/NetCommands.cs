@@ -17,6 +17,8 @@ namespace VPWStudio
 			/// </summary>
 			Nop = 0,
 
+			// undefined range 0x01-0xBF
+
 			// reserved range 0xC0-0xCD
 			Reserved_C0 = 0xC0,
 			Reserved_C1 = 0xC1,
@@ -95,5 +97,35 @@ namespace VPWStudio
 
 			// reserved range 0xED-0xFF, not bothering to define them yet
 		};
+
+		/// <summary>
+		/// When the top bit of the sub-command is set, it's a response to a command.
+		/// </summary>
+		public static readonly byte ResponseMask = 0x80;
+
+		// todo: various sub-commands
+		// 0xCE
+		public enum InfoCommand_CE
+		{
+			ServerID = 0
+		};
+
+		// 0xEC
+		public enum InfoCommand_EC
+		{
+			ClientID = 1,
+
+			/// <summary>
+			/// Game identification (product code)
+			/// </summary>
+			GameID = 2,
+
+			/// <summary>
+			/// Internal ROM Name
+			/// </summary>
+			IntRomName = 3,
+		};
+
+		// 0xDB dump data preset
 	}
 }

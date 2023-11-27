@@ -578,7 +578,7 @@
     <Compile Include="ProgStructures\FileTypes.cs" />
     <Compile Include="ProgStructures\GameIntroDefFile.cs" />
     <Compile Include="ProgStructures\GameRegion.cs" />
-    <Compile Include="ProgStructures\NetCommands.cs" />
+    <Compile Include="ProgStructures\Net\NetCommands.cs" />
     <Compile Include="ProgStructures\UiManagers\AkiTextEditorManager.cs" />
     <Compile Include="ProgStructures\UiManagers\HexViewerManager.cs" />
     <Compile Include="ProgStructures\LocationFile.cs" />
