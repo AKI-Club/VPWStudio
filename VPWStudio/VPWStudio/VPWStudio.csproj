@@ -234,6 +234,12 @@
     <Compile Include="Editors\VPW64\DefaultCostume_VPW64.Designer.cs">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\VPW64\GameIntroEditor_VPW64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\VPW64\GameIntroEditor_VPW64.Designer.cs">
+      <DependentUpon>GameIntroEditor_VPW64.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\WM2K\Ruleset_WM2K.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -904,6 +910,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\VPW64\DefaultCostume_VPW64.resx">
       <DependentUpon>DefaultCostume_VPW64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\VPW64\GameIntroEditor_VPW64.resx">
+      <DependentUpon>GameIntroEditor_VPW64.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\WM2K\Ruleset_WM2K.resx">
       <DependentUpon>Ruleset_WM2K.cs</DependentUpon>

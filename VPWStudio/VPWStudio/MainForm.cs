@@ -98,6 +98,10 @@ namespace VPWStudio
 		#endregion
 
 		#region VPW64
+		/// <summary>
+		/// Game introduction editor for VPW64.
+		/// </summary>
+		public Editors.VPW64.GameIntroEditor_VPW64 GameIntroEditor_VPW64 = null;
 		#endregion
 
 		#region Revenge
@@ -1112,6 +1116,7 @@ namespace VPWStudio
 
 		// until the intro data format(s) are found for WorldTour and VPW64, this stays:
 		private static List<VPWGames> IntroEditorSupported = new List<VPWGames>{
+			VPWGames.VPW64,
 			VPWGames.Revenge,
 			VPWGames.WM2K,
 			VPWGames.VPW2,
@@ -1134,15 +1139,35 @@ namespace VPWStudio
 				return;
 			}
 
-			if (GameIntroEditor_Later == null || GameIntroEditor_Later.IsDisposed)
+			if (Program.CurrentProject.Settings.BaseGame == VPWGames.VPW64)
 			{
-				GameIntroEditor_Later = new GameIntroEditor_Later();
-			}
+				// specifically vpw64
+				//
+				if (GameIntroEditor_VPW64 == null || GameIntroEditor_VPW64.IsDisposed)
+				{
+					GameIntroEditor_VPW64 = new Editors.VPW64.GameIntroEditor_VPW64();
+				}
 
-			if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
+				if (GameIntroEditor_VPW64.ShowDialog() == DialogResult.OK)
+				{
+					// update intro data
+					// ...wait a minute, there's currently no OK or Cancel buttons on this form!
+					Program.ErrorMessageBox("Editing/writeback not implemented yet");
+				}
+			}
+			else
 			{
-				// update intro data
-				Program.ErrorMessageBox("Editing/writeback not implemented yet");
+				// assume Revenge or later
+				if (GameIntroEditor_Later == null || GameIntroEditor_Later.IsDisposed)
+				{
+					GameIntroEditor_Later = new GameIntroEditor_Later();
+				}
+
+				if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
+				{
+					// update intro data
+					Program.ErrorMessageBox("Editing/writeback not implemented yet");
+				}
 			}
 		}
 
