@@ -68,7 +68,11 @@ namespace VPWStudio
 			/// </summary>
 			Data_Write = 0xDC,
 
-			Reserved_DD = 0xDD,
+			/// <summary>
+			/// [0xDD] Read Data
+			/// </summary>
+			Data_Read = 0xDD,
+
 			Reserved_DE = 0xDE,
 
 			/// <summary>
