@@ -2,9 +2,35 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 33 (202x/yy/zz)
+Pre-Alpha Preview 34 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 33 (2023/12/06)
+---------------------------------
+Some changes to internals are not listed here, since they're not end-user facing.
+
+- Added WM2K support to Match Ruleset "editor".
+
+- [VPW64 Default Costume Set Dialog] Added "press Escape key to close dialog" functionality.
+
+- Added Revenge Default Costume Set Dialog in the Danger Zone.
+
+- Renamed "vpw64 costume test" to "vpw64/revenge costume test" per the above.
+
+- [No Mercy FileTableDBs] Labeled the 006A-area move name files as "(old)".
+  They're leftovers, likely from when the menus more resembled VPW2/WM2K.
+
+- Added preliminary support for No Mercy move name files.
+
+- Added read-only support for Virtual Pro-Wrestling 64 game intro data.
+
+- [FileTableDB] No Mercy's FileTableDB has been updated to mark the move name
+  files properly. (The September 2000 pre-release is still incomplete in this
+  regard.)
+
+  To update your project, open the File Table dialog, then choose
+  Database → Reload File Table Database.
 
 Pre-Alpha Preview 32 (2023/10/28)
 ---------------------------------
