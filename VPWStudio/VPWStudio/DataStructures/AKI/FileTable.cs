@@ -1203,15 +1203,16 @@ namespace VPWStudio
 
 		#region JSON Export
 		/// <summary>
-		/// for filetable builder
+		/// Export a JSON file for use with the akifiletable tool.
 		/// </summary>
+		/// akifiletable is available from https://github.com/AKI-Club/akifiletable
 		/// <param name="sw">StreamWriter instance to use.</param>
 		public void WriteJSON(StreamWriter sw)
 		{
 			sw.WriteLine("[");
 
 			// write all the entries
-			// { "file":"path", "lzss":false, "symbol":"optional", "exportsize":false }
+			// { "file":"path", "lzss":false, "symbol":"optional", "exportsize":false, "exportsizepad":0 }
 			foreach (KeyValuePair<int, FileTableEntry> fte in this.Entries)
 			{
 				sw.WriteLine("  {");
