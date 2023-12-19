@@ -1216,9 +1216,18 @@ namespace VPWStudio
 			{
 				sw.WriteLine("  {");
 
-				sw.WriteLine(String.Format("    \"file\":\"{0:X4}.bin\",", fte.Key));
+				if (fte.Value.IsEncoded)
+				{
+					sw.WriteLine(String.Format("    \"file\":\"{0:X4}.lzss\",", fte.Key));
+				}
+				else
+				{
+					sw.WriteLine(String.Format("    \"file\":\"{0:X4}.bin\",", fte.Key));
+				}
+
 				sw.WriteLine(String.Format("    \"lzss\":{0},", fte.Value.IsEncoded.ToString().ToLower()));
-				// skip symbol and exportsize, which we can't set in VPW Studio anyways.
+
+				// skip symbol, exportsize, and exportsizepad, which we can't set in VPW Studio (yet, anyways).
 
 				if (fte.Key < Entries.Count)
 				{
