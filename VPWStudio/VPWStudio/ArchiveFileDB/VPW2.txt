@@ -48,6 +48,23 @@
 002C=I4Texture;
 002D=I4Texture;
 002E=I4Texture;
+002F=I4Texture;
+0030=I4Texture;
+0031=I4Texture;
+0032=I4Texture;
+0033=I4Texture;
+0034=I4Texture;
+0035=I4Texture;
+0035=I4Texture;
+0036=I4Texture;
+0037=I4Texture;
+0038=I4Texture;
+0039=I4Texture;
+003A=I4Texture;
+003B=I4Texture;
+003C=I4Texture;
+003D=I4Texture;
+003E=I4Texture;
 
 [0087]
 0000=Ci4Palette;Shared Referee Palette
