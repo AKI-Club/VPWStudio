@@ -1,4 +1,4 @@
-# AkiArchive File database for WWF WrestleMania 2000 (NTSC-U (NWXE), PAL (NWXP))
+# AkiArchive File database for WWF WrestleMania 2000 (NWXE, NWXP, NWXJ)
 [0013]
 0000=AkiTexture;
 0001=AkiTexture;
