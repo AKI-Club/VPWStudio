@@ -15,6 +15,14 @@ namespace VPWStudio
 		public FileTypes FileType;
 		public string Comment;
 
+		public struct ExtraData
+		{
+			public int ImageWidth;
+			public int ImageHeight;
+		};
+
+		public ExtraData EntryExtraData;
+
 		#region Constructors
 		/// <summary>
 		/// Default constructor.
@@ -24,6 +32,10 @@ namespace VPWStudio
 			FileID = 0;
 			FileType = FileTypes.Binary;
 			Comment = String.Empty;
+
+			// set invalid values so we know ExtraData isn't real
+			EntryExtraData.ImageWidth = -1;
+			EntryExtraData.ImageHeight = -1;
 		}
 
 		/// <summary>
@@ -37,6 +49,10 @@ namespace VPWStudio
 			FileID = _id;
 			FileType = _ft;
 			Comment = _comment;
+
+			// set invalid values so we know ExtraData isn't real
+			EntryExtraData.ImageWidth = -1;
+			EntryExtraData.ImageHeight = -1;
 		}
 
 		/// <summary>
@@ -45,6 +61,10 @@ namespace VPWStudio
 		/// <param name="_input"></param>
 		public ArchiveFileEntry(string _input)
 		{
+			// pre-load invalid values; might be overwritten
+			EntryExtraData.ImageWidth = -1;
+			EntryExtraData.ImageHeight = -1;
+
 			FromString(_input);
 		}
 		#endregion
@@ -55,6 +75,7 @@ namespace VPWStudio
 		/// <returns></returns>
 		public override string ToString()
 		{
+			// xxx: ExtraData
 			return string.Format("{0:X4}={1};{2}", FileID, FileType.ToString(), Comment);
 		}
 
@@ -64,6 +85,7 @@ namespace VPWStudio
 		/// <param name="_in"></param>
 		public void FromString(string _in)
 		{
+			// xxx: ExtraData
 			string[] tokens = _in.Split(new char[] { '=', ';' });
 			FileID = UInt16.Parse(tokens[0], NumberStyles.HexNumber);
 			FileType = (FileTypes)Enum.Parse(typeof(FileTypes), tokens[1]);
