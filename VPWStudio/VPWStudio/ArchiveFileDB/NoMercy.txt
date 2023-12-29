@@ -1,1 +1,6 @@
 # AkiArchive File database for WWF No Mercy (NW4E, NW4P)
+[00F7]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
