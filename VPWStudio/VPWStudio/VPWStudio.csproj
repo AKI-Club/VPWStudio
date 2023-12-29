@@ -572,6 +572,7 @@
     <Compile Include="Helpers\StringParser.cs" />
     <Compile Include="ProgStructures\3D\Camera3D.cs" />
     <Compile Include="ProgStructures\3D\RenderableN64.cs" />
+    <Compile Include="ProgStructures\ArchiveFileDB.cs" />
     <Compile Include="ProgStructures\DefaultGameData.cs" />
     <Compile Include="ProgStructures\FileTableDB.cs" />
     <Compile Include="ProgStructures\GameDefinition.cs" />
@@ -1025,6 +1026,21 @@
   <ItemGroup>
     <EmbeddedResource Include="builddate.txt" />
     <None Include="Resources\cancelbuild.png" />
+    <Content Include="ArchiveFileDB\NoMercy.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArchiveFileDB\Revenge.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArchiveFileDB\VPW2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArchiveFileDB\WM2K-J.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArchiveFileDB\WM2K.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="FileTableDB\NoMercy.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

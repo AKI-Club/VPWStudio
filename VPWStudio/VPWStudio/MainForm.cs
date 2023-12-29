@@ -614,6 +614,15 @@ namespace VPWStudio
 					}
 				}
 
+				// filelist part 3: load data from ArchiveFileDB
+				if (Program.CurrentProject.Settings.BaseGame >= VPWGames.Revenge)
+				{
+					if (!Program.GetArchiveFileDBPath().Equals(String.Empty))
+					{
+						Program.AkiArchiveFileDB = new ArchiveFileDB(Program.GetArchiveFileDBPath());
+					}
+				}
+
 				// close any open dialogs
 				foreach (Form f in this.MdiChildren)
 				{
@@ -643,6 +652,15 @@ namespace VPWStudio
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				LoadProject(ofd.FileName);
+
+				// load data from ArchiveFileDB
+				if (Program.CurrentProject.Settings.BaseGame >= VPWGames.Revenge)
+				{
+					if (!Program.GetArchiveFileDBPath().Equals(String.Empty))
+					{
+						Program.AkiArchiveFileDB = new ArchiveFileDB(Program.GetArchiveFileDBPath());
+					}
+				}
 
 				/*
 				#region Upgrade fixing
@@ -801,6 +819,7 @@ namespace VPWStudio
 			Program.CurLocationFilePath = String.Empty;
 			Program.CurrentInputROM = null;
 			Program.CurrentOutputROM = null;
+			Program.AkiArchiveFileDB = null;
 
 			// close any open dialogs
 			foreach (Form f in MdiChildren)
@@ -872,6 +891,15 @@ namespace VPWStudio
 								Comment = entry.Value.Comment
 							};
 							Program.CurrentProject.ProjectFileTable.Entries.Add(entry.Value.FileID, fte);
+						}
+					}
+
+					// reload ArchiveFileDB
+					if (Program.CurrentProject.Settings.BaseGame >= VPWGames.Revenge)
+					{
+						if (!Program.GetArchiveFileDBPath().Equals(String.Empty))
+						{
+							Program.AkiArchiveFileDB = new ArchiveFileDB(Program.GetArchiveFileDBPath());
 						}
 					}
 

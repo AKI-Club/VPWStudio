@@ -197,6 +197,7 @@
 			// 
 			this.tbSelItemInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbSelItemInfo.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbSelItemInfo.Location = new System.Drawing.Point(6, 19);
 			this.tbSelItemInfo.Multiline = true;
 			this.tbSelItemInfo.Name = "tbSelItemInfo";

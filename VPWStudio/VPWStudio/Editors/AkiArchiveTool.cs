@@ -20,6 +20,8 @@ namespace VPWStudio
 
 		private const string FormTitle = "AKI Archive Tool [File {0:X4}]";
 
+		private StringBuilder InfoStringBuilder = new StringBuilder();
+
 		#region Constructors
 		public AkiArchiveTool(int _fileID)
 		{
@@ -129,7 +131,22 @@ namespace VPWStudio
 			else
 			{
 				// archive loaded from filetable
-				sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+				if (Program.AkiArchiveFileDB != null)
+				{
+					if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+					{
+						sfd.FileName = String.Format("{0:X4}-{1}{2}", FileID, lbFiles.SelectedIndex,
+							FileTypeInfo.DefaultFileTypeExtensions[Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex].FileType]);
+					}
+					else
+					{
+						sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+					}
+				}
+				else
+				{
+					sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+				}
 			}
 
 
@@ -160,12 +177,23 @@ namespace VPWStudio
 			tbSelItemInfo.Clear();
 
 			AkiArchiveEntry aae = CurArchive.FileEntries[lbFiles.SelectedIndex];
-			tbSelItemInfo.Text = String.Format(
-				"File Index {0}:\r\nStart Offset: 0x{1:X8}\r\nFile Size: 0x{2:X8}\r\n\r\n",
-				lbFiles.SelectedIndex,
-				aae.StartAddr,
-				aae.Size
-			);
+			InfoStringBuilder.Clear();
+			InfoStringBuilder.AppendLine(String.Format("File Index {0}:", lbFiles.SelectedIndex));
+			InfoStringBuilder.AppendLine(String.Format("Start Offset: 0x{0:X8}", aae.StartAddr));
+			InfoStringBuilder.AppendLine(String.Format("File Size: 0x{0:X8}", aae.Size));
+
+			if (Program.AkiArchiveFileDB != null)
+			{
+				if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+				{
+					ArchiveFileEntry arcE = Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex];
+					InfoStringBuilder.AppendLine();
+					InfoStringBuilder.AppendLine(String.Format("File Type: {0}", arcE.FileType.ToString()));
+					InfoStringBuilder.AppendLine(String.Format("Comment: {0}", arcE.Comment));
+				}
+			}
+
+			tbSelItemInfo.Text = InfoStringBuilder.ToString();
 		}
 
 		private void buttonViewHexEditor_Click(object sender, EventArgs e)

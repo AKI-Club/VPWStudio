@@ -1,0 +1,88 @@
+# AkiArchive File database for WWF WrestleMania 2000 (NTSC-U (NWXE), PAL (NWXP))
+[0013]
+
+[0016]
+
+[002F]
+
+[0030]
+
+[0031]
+
+[0032]
+
+[0033]
+
+[0034]
+
+[0035]
+
+[0036]
+
+[0037]
+
+[0038]
+
+[0039]
+
+[003A]
+
+[003B]
+
+[003C]
+
+[003D]
+
+[003E]
+
+[003F]
+
+[0040]
+
+[0041]
+
+[0042]
+
+[0043]
+
+[0044]
+0000=Ci4Palette;Close Fans Left 1
+0001=Ci4Texture;Close Fans Left 1
+0002=Ci4Palette;Close Fans Right 1
+0003=Ci4Texture;Close Fans Right 1
+0004=Ci4Palette;Far Fans 1
+0005=Ci4Texture;Far Fans 1
+0006=Ci4Palette;Close Fans Left 2
+0007=Ci4Texture;Close Fans Left 2
+0008=Ci4Palette;Close Fans Right 2
+0009=Ci4Texture;Close Fans Right 2
+000A=Ci4Palette;Far Fans 2
+000B=Ci4Texture;Far Fans 2
+000C=Ci4Palette;Guardrail
+000D=Ci4Texture;Guardrail
+000E=Ci4Palette;Outside Mats
+000F=Ci4Texture;Outside Mats
+0010=Ci4Palette;Ring Skirt
+0011=Ci4Texture;Ring Skirt
+0012=Ci4Palette;Ring Mat
+0013=Ci4Texture;Ring Mat
+
+[0045]
+
+[0046]
+
+[015E]
+
+[015F]
+
+[0160]
+
+[016B]
+
+[016C]
+
+[016D]
+
+[016E]
+
+[016F]

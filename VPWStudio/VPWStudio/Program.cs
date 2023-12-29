@@ -86,6 +86,11 @@ namespace VPWStudio
 		/// </summary>
 		public static MainForm AppMainForm;
 
+		/// <summary>
+		/// AkiArchive File Database.
+		/// </summary>
+		public static ArchiveFileDB AkiArchiveFileDB;
+
 		#endregion
 
 		/// <summary>
@@ -126,7 +131,7 @@ namespace VPWStudio
 		/// <returns></returns>
 		public static string GetFileTableDBPath()
 		{
-			if (Program.CurrentProject == null)
+			if (CurrentProject == null)
 			{
 				return String.Empty;
 			}
@@ -156,6 +161,21 @@ namespace VPWStudio
 			{
 				dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
 			}
+
+			return dbFilePath;
+		}
+
+		public static string GetArchiveFileDBPath()
+		{
+			if (CurrentProject == null)
+			{
+				return String.Empty;
+			}
+
+			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\ArchiveFileDB\\";
+
+			// xxx: does not handle override cases (WM2K NTSC-J, No Mercy Sept. 2000 pre-release)
+			dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
 
 			return dbFilePath;
 		}
