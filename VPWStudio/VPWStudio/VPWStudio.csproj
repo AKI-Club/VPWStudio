@@ -1035,9 +1035,6 @@
     <Content Include="ArchiveFileDB\VPW2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArchiveFileDB\WM2K-J.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ArchiveFileDB\WM2K.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
