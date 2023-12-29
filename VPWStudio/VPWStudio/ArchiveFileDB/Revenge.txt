@@ -1,62 +1,384 @@
 # AkiArchive File database for WCW/nWo Revenge (NW2E, NW2P)
 [000A]
+0000=AkiTexture;
+0001=AkiTexture;
+0002=AkiTexture;
+0003=AkiTexture;
+0004=AkiTexture;
+0005=AkiTexture;
+0006=AkiTexture;
+0007=AkiTexture;
+0008=AkiTexture;
+0009=AkiTexture;
+000A=AkiTexture;
+000B=AkiTexture;
+000C=AkiTexture;
+000D=AkiTexture;
+000E=AkiTexture;
+000F=AkiTexture;
+0010=AkiTexture;
+0011=AkiTexture;
+0012=AkiTexture;
+0013=AkiTexture;
+0014=AkiTexture;
+0015=AkiTexture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
+001C=I4Texture;
+001D=I4Texture;
+001E=I4Texture;
+001F=I4Texture;
+0020=I4Texture;
+0021=I4Texture;
+0022=I4Texture;
+0023=I4Texture;
+0024=I4Texture;
+0025=I4Texture;
+0025=I4Texture;
+0026=I4Texture;
+0027=I4Texture;
+0028=I4Texture;
+0029=I4Texture;
+002A=I4Texture;
+002B=I4Texture;
+002C=I4Texture;
+002D=I4Texture;
+002E=I4Texture;
+002F=I4Texture;
+0030=I4Texture;
+0031=I4Texture;
+0032=I4Texture;
+0033=I4Texture;
+0034=I4Texture;
+0035=I4Texture;
+0035=I4Texture;
+0036=I4Texture;
+0037=I4Texture;
+0038=I4Texture;
+0039=I4Texture;
+003A=I4Texture;
+003B=I4Texture;
+003C=I4Texture;
+003D=I4Texture;
+003E=I4Texture;
 
 [000C]
+0000=AkiTexture;Foreground
+0001=AkiTexture;TV Static
 
 [0025]
+0000=AkiTexture;Background
+0001=AkiTexture;Mid-ground Road
+0002=AkiTexture;Foreground Road
+0003=AkiTexture;Lightning strike
 
 [0026]
+0000=AkiTexture;Background
+0001=AkiTexture;Lightning strike
 
 [0027]
+0000=AkiTexture;Tombstones 1
+0001=AkiTexture;Tombstones 2
 
 [0028]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
+0006=I4Texture;
+0007=I4Texture;
+0008=I4Texture;
+0009=I4Texture;
+000A=I4Texture;
+000B=I4Texture;
+000C=I4Texture;
+000D=I4Texture;
+000E=I4Texture;
+000F=I4Texture;
+0010=I4Texture;
+0011=I4Texture;
+0012=I4Texture;
+0013=I4Texture;
+0014=I4Texture;
+0015=I4Texture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
+001C=I4Texture;
+001D=I4Texture;
+001E=I4Texture;
+001F=I4Texture;
+0020=I4Texture;
+0021=I4Texture;
+0022=I4Texture;
+0023=I4Texture;
+0024=I4Texture;
+0025=I4Texture;
 
 [0029]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
+0006=I4Texture;
+0007=I4Texture;
 
 [002A]
+0000=AkiTexture;Truck front
+0001=I4Texture;Headlight (64x64px)
 
 [002B]
+0000=AkiTexture;Background
 
 [002C]
+0000=AkiTexture;Barbed Wire Top Frame
+0001=AkiTexture;Stairs Background
+0002=AkiTexture;Bottom Frame
+0003=AkiTexture;Sting (white facepaint)
 
 [002D]
+0000=AkiTexture;Buildings
+0001=AkiTexture;Reflection
 
 [002E]
+0000=AkiTexture;Sting (red facepaint)
 
 [002F]
+0000=AkiTexture;Heartbeat line
+0001=AkiTexture;Dot
 
 [0030]
+0000=AkiTexture;Hogan
+0001=AkiTexture;Sting
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
 
 [0037]
 
 [0038]
+0000=Ci4Palette;
+0001=Ci4Texture;
 
 [0039]
 
 [003A]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=Ci4Palette;
+001B=Ci4Texture;
 
 [003B]
 
 [003C]
 
 [003D]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=Ci8Palette;
+001B=Ci8Texture;
+001C=Ci8Palette;
+001D=Ci8Texture;
+001E=Ci8Palette;
+001F=Ci8Texture;
+0020=Ci8Palette;
+0021=Ci8Texture;
+0022=Ci8Palette;
+0023=Ci8Texture;
+0024=Ci8Palette;
+0025=Ci8Texture;
+0026=Ci8Palette;
+0027=Ci8Texture;
+0028=Ci8Palette;
+0029=Ci8Texture;
+002A=Ci4Palette;
+002B=Ci4Texture;
+002C=Ci4Palette;
+002D=Ci4Texture;
+002E=Ci4Palette;
+002F=Ci4Texture;
+0030=AkiTexture;Palm Tree
 
 [003E]
 
 [003F]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=AkiTexture;Nitro Logo
+0013=AkiTexture;Metal Bar
+0014=AkiTexture;Nameplate Background
 
 [0040]
 
 [0041]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=AkiTexture;Starrcade Logo
 
 [0042]
 
 [0043]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=AkiTexture;Nameplate Background
+0017=AkiTexture;Souled Out Logo
 
 [0044]
 
 [0045]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=AkiTexture;SuperBrawl Logo
 
 [0046]
 
 [0047]
+0000=Ci8Palette;
+0001=Ci8Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci8Palette;
+000F=Ci8Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=AkiTexture;Halloween Havoc Logo
