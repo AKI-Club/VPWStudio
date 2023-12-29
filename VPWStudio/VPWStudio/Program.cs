@@ -165,6 +165,17 @@ namespace VPWStudio
 			return dbFilePath;
 		}
 
+		/// <summary>
+		/// Special cases where a separate ArchiveFileDB is required.
+		/// </summary>
+		/*
+		static Dictionary<SpecificGame, string> ArchiveFileDB_Overrides = new Dictionary<SpecificGame, string>()
+		{
+			// WWF No Mercy (September 2000 prototype)
+			//{ SpecificGame.NoMercy_Proto_NTSC_September2000, "NoMercy_Sep2000.txt" }
+		};
+		*/
+
 		public static string GetArchiveFileDBPath()
 		{
 			if (CurrentProject == null)
@@ -174,7 +185,7 @@ namespace VPWStudio
 
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\ArchiveFileDB\\";
 
-			// xxx: does not handle override cases (WM2K NTSC-J, No Mercy Sept. 2000 pre-release)
+			// xxx: does not handle override cases (No Mercy Sept. 2000 pre-release)
 			dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
 
 			return dbFilePath;
