@@ -1,35 +1,280 @@
 # AkiArchive File database for WWF WrestleMania 2000 (NTSC-U (NWXE), PAL (NWXP))
 [0013]
+0000=AkiTexture;
+0001=AkiTexture;
+0002=AkiTexture;
+0003=AkiTexture;
+0004=AkiTexture;
+0005=AkiTexture;
+0006=AkiTexture;
+0007=AkiTexture;
+0008=AkiTexture;
+0009=AkiTexture;
+000A=AkiTexture;
+000B=AkiTexture;
+000C=AkiTexture;
+000D=AkiTexture;
+000E=AkiTexture;
+000F=AkiTexture;
+0010=AkiTexture;
+0011=AkiTexture;
+0012=AkiTexture;
+0013=AkiTexture;
+0014=AkiTexture;
+0015=AkiTexture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
+001C=I4Texture;
+001D=I4Texture;
+001E=I4Texture;
+001F=I4Texture;
+0020=I4Texture;
+0021=I4Texture;
+0022=I4Texture;
+0023=I4Texture;
+0024=I4Texture;
+0025=I4Texture;
+0025=I4Texture;
+0026=I4Texture;
+0027=I4Texture;
+0028=I4Texture;
+0029=I4Texture;
+002A=I4Texture;
+002B=I4Texture;
+002C=I4Texture;
+002D=I4Texture;
+002E=I4Texture;
+002F=I4Texture;
+0030=I4Texture;
+0031=I4Texture;
+0032=I4Texture;
+0033=I4Texture;
+0034=I4Texture;
+0035=I4Texture;
+0035=I4Texture;
+0036=I4Texture;
+0037=I4Texture;
+0038=I4Texture;
+0039=I4Texture;
+003A=I4Texture;
+003B=I4Texture;
+003C=I4Texture;
+003D=I4Texture;
+003E=I4Texture;
 
 [0016]
+0000=AkiTexture;Foreground
+0001=AkiTexture;TV Static
 
 [002F]
 
 [0030]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=AkiTexture;RAW logo
+0019=AkiTexture;Nameplate background
 
 [0031]
 
 [0032]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=AkiTexture;Heat logo
+0019=AkiTexture;Nameplate background
 
 [0033]
 
 [0034]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=AkiTexture;Royal Rumble logo
+0017=AkiTexture;Nameplate background
 
 [0035]
 
 [0036]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=AkiTexture;Nameplate background
+001B=AkiTexture;KOTR logo
 
 [0037]
 
 [0038]
+0000=Ci8Palette;
+0001=Ci8Texture;
+0002=Ci8Palette;
+0003=Ci8Texture;
+0004=Ci8Palette;
+0005=Ci8Texture;
+0006=Ci8Palette;
+0007=Ci8Texture;
+0008=Ci8Palette;
+0009=Ci8Texture;
+000A=Ci8Palette;
+000B=Ci8Texture;
+000C=Ci8Palette;
+000D=Ci8Texture;
+000E=Ci8Palette;
+000F=Ci8Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=Ci4Palette;
+001B=Ci4Texture;
+001C=AkiTexture;Skull
+001D=AkiTexture;Nameplate background
 
 [0039]
 
 [003A]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=AkiTexture;WrestleMania logo
+0015=AkiTexture;Nameplate background
 
 [003B]
 
 [003C]
+0000=Ci8Palette;
+0001=Ci8Texture;
+0002=Ci8Palette;
+0003=Ci8Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=AkiTexture;Nameplate background
+0015=AkiTexture;SummerSlam logo
 
 [003D]
 
@@ -38,10 +283,98 @@
 [003F]
 
 [0040]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci8Palette;
+0017=Ci8Texture;
+0018=Ci8Palette;
+0019=Ci8Texture;
+001A=Ci8Palette;
+001B=Ci8Texture;
+001C=Ci8Palette;
+001D=Ci8Texture;
+001E=Ci8Palette;
+001F=Ci8Texture;
+0020=Ci8Palette;
+0021=Ci8Texture;
+0022=Ci4Palette;
+0023=Ci4Texture;
+0024=Ci4Palette;
+0025=Ci4Texture;
+0026=Ci4Palette;
+0027=Ci4Texture;
+0028=Ci4Palette;
+0029=Ci4Texture;
+002A=Ci4Palette;
+002B=Ci4Texture;
+002C=Ci8Palette;
+002D=Ci8Texture;
+002E=Ci4Palette;
+002F=Ci4Texture;
+0030=Ci4Palette;
+0031=Ci4Texture;
+0032=Ci4Palette;
+0033=Ci4Texture;
+0034=Ci4Palette;
+0035=Ci4Texture;
 
 [0041]
 
 [0042]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci8Palette;
+0005=Ci8Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci8Palette;
+000B=Ci8Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci8Palette;
+000F=Ci8Texture;
+0010=Ci8Palette;
+0011=Ci8Texture;
+0012=Ci8Palette;
+0013=Ci8Texture;
+0014=Ci8Palette;
+0015=Ci8Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=Ci4Palette;
+001B=Ci4Texture;
+001C=Ci4Palette;
+001D=Ci4Texture;
+001E=Ci4Palette;
+001F=Ci4Texture;
+0020=Ci4Palette;
+0021=Ci4Texture;
 
 [0043]
 
@@ -70,19 +403,76 @@
 [0045]
 
 [0046]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Texture;
+000C=Ci4Palette;
+000D=Ci4Texture;
+000E=Ci4Palette;
+000F=Ci4Texture;
+0010=Ci4Palette;
+0011=Ci4Texture;
+0012=Ci4Palette;
+0013=Ci4Texture;
+0014=Ci4Palette;
+0015=Ci4Texture;
+0016=Ci4Palette;
+0017=Ci4Texture;
+0018=Ci4Palette;
+0019=Ci4Texture;
+001A=Ci4Palette;
+001B=Ci4Texture;
+001C=Ci4Palette;
+001D=Ci4Texture;
+001E=Ci4Palette;
+001F=Ci4Texture;
+0020=Ci4Palette;
+0021=Ci4Texture;
+0022=Ci4Palette;
+0023=Ci4Texture;
+0024=Ci4Palette;
+0025=Ci4Texture;
+0026=Ci4Palette;
+0027=Ci4Texture;
+0028=Ci4Palette;
+0029=Ci4Texture;
+002A=Ci4Palette;
+002B=Ci4Texture;
+002C=Ci4Palette;
+002D=Ci4Texture;
 
 [015E]
+0000=AkiTexture;
+0001=Ci8Palette;
+0002=AkiTexture;
+0003=AkiTexture;
 
 [015F]
+0000=I4Texture;
 
 [0160]
+0000=I4Texture;
 
-[016B]
+[01CB]
+0000=I4Texture;
 
-[016C]
+[01CC]
+0000=I4Texture;
 
-[016D]
+[01CD]
+0000=I4Texture;
 
-[016E]
+[01CE]
+0000=I4Texture;
 
-[016F]
+[01CF]
+0000=I4Texture;
