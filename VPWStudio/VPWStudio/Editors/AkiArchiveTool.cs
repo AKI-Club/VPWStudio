@@ -133,10 +133,17 @@ namespace VPWStudio
 				// archive loaded from filetable
 				if (Program.AkiArchiveFileDB != null)
 				{
-					if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+					if (Program.AkiArchiveFileDB.Entries[FileID].Count > 0 && lbFiles.SelectedIndex < Program.AkiArchiveFileDB.Entries[FileID].Count)
 					{
-						sfd.FileName = String.Format("{0:X4}-{1}{2}", FileID, lbFiles.SelectedIndex,
-							FileTypeInfo.DefaultFileTypeExtensions[Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex].FileType]);
+						if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+						{
+							sfd.FileName = String.Format("{0:X4}-{1}{2}", FileID, lbFiles.SelectedIndex,
+								FileTypeInfo.DefaultFileTypeExtensions[Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex].FileType]);
+						}
+						else
+						{
+							sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+						}
 					}
 					else
 					{
@@ -178,18 +185,21 @@ namespace VPWStudio
 
 			AkiArchiveEntry aae = CurArchive.FileEntries[lbFiles.SelectedIndex];
 			InfoStringBuilder.Clear();
-			InfoStringBuilder.AppendLine(String.Format("File Index {0}:", lbFiles.SelectedIndex));
+			InfoStringBuilder.AppendLine(String.Format("File Index {0} (0x{0:X4}):", lbFiles.SelectedIndex));
 			InfoStringBuilder.AppendLine(String.Format("Start Offset: 0x{0:X8}", aae.StartAddr));
 			InfoStringBuilder.AppendLine(String.Format("File Size: 0x{0:X8}", aae.Size));
 
-			if (Program.AkiArchiveFileDB != null)
+			if (Program.AkiArchiveFileDB != null && Program.AkiArchiveFileDB.Entries.Count > 0)
 			{
-				if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+				if (Program.AkiArchiveFileDB.Entries[FileID].Count > 0 && lbFiles.SelectedIndex < Program.AkiArchiveFileDB.Entries[FileID].Count)
 				{
-					ArchiveFileEntry arcE = Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex];
-					InfoStringBuilder.AppendLine();
-					InfoStringBuilder.AppendLine(String.Format("File Type: {0}", arcE.FileType.ToString()));
-					InfoStringBuilder.AppendLine(String.Format("Comment: {0}", arcE.Comment));
+					if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+					{
+						ArchiveFileEntry arcE = Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex];
+						InfoStringBuilder.AppendLine();
+						InfoStringBuilder.AppendLine(String.Format("File Type: {0}", arcE.FileType.ToString()));
+						InfoStringBuilder.AppendLine(String.Format("Comment: {0}", arcE.Comment));
+					}
 				}
 			}
 
@@ -209,6 +219,8 @@ namespace VPWStudio
 
 		private void buttonOpenAs_Click(object sender, EventArgs e)
 		{
+			// todo: if filetype is known, automatically choose viewer
+
 			Button b = (Button)sender;
 			Point ptLowerLeft = new Point(0, b.Height);
 			ptLowerLeft = b.PointToScreen(ptLowerLeft);
