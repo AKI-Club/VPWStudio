@@ -1,112 +1,570 @@
 # AkiArchive File database for Virtual Pro-Wrestling 2 (NA2J)
 [0016]
+0000=AkiTexture;
+0001=AkiTexture;
+0002=AkiTexture;
+0003=AkiTexture;
+0004=AkiTexture;
+0005=AkiTexture;
+0006=AkiTexture;
+0007=AkiTexture;
+0008=AkiTexture;
+0009=AkiTexture;
+000A=AkiTexture;
+000B=AkiTexture;
+000C=AkiTexture;
+000D=AkiTexture;
+000E=AkiTexture;
+000F=AkiTexture;
+0010=AkiTexture;
+0011=AkiTexture;
+0012=AkiTexture;
+0013=AkiTexture;
+0014=AkiTexture;
+0015=AkiTexture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
+001C=I4Texture;
+001D=I4Texture;
+001E=I4Texture;
+001F=I4Texture;
+0020=I4Texture;
+0021=I4Texture;
+0022=I4Texture;
+0023=I4Texture;
+0024=I4Texture;
+0025=I4Texture;
+0025=I4Texture;
+0026=I4Texture;
+0027=I4Texture;
+0028=I4Texture;
+0029=I4Texture;
+002A=I4Texture;
+002B=I4Texture;
+002C=I4Texture;
+002D=I4Texture;
+002E=I4Texture;
 
 [0087]
+0000=Ci4Palette;Shared Referee Palette
+0001=Ci4Texture;
+0002=Ci4Texture;
+0003=Ci4Texture;
+0004=Ci4Texture;
+0005=Ci4Texture;
 
 [0088]
 
 [0089]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [008A]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [008B]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [008C]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
 
 [008D]
 
 [008E]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [008F]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
 
 [0090]
 
 [0091]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0092]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0093]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0094]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
 
 [0095]
 
 [0096]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0097]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0098]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [0099]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [009A]
+0000=Ci4Palette;
+0001=Ci4Texture;
 
 [009B]
 
 [009C]
+0000=Ci4Texture;
+0001=Ci4Palette;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Palette;
+0006=Ci4Texture;
+0007=Ci4Palette;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Palette;
 
 [009D]
+0000=Ci8Texture;
+0001=Ci8Palette;
+0002=Ci8Palette;
+0003=Ci8Texture;
+0004=Ci8Palette;
+0005=Ci8Palette;
+0006=Ci4Texture;
+0007=Ci4Palette;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Palette;
 
 [009E]
+0000=Ci4Texture;
+0001=Ci4Palette;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Palette;
+0006=Ci4Texture;
+0007=Ci4Palette;
+0008=Ci4Palette;
+0009=Ci4Texture;
+000A=Ci4Palette;
+000B=Ci4Palette;
 
 [009F]
+0000=Ci4Texture;
+0001=Ci4Palette;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Palette;
+0006=Ci8Texture;
+0007=Ci8Palette;
+0008=Ci8Palette;
+0009=Ci8Texture;
+000A=Ci8Palette;
+000B=Ci8Palette;
 
 [00A0]
+0000=Ci8Texture;
+0001=Ci8Palette;
+0002=Ci8Palette;
+0003=Ci8Texture;
+0004=Ci8Palette;
+0005=Ci8Palette;
 
 [00A1]
 
 [00A2]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00A3]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00A4]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00A5]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
 
 [00A6]
 
 [00A7]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00A8]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00A9]
+0000=Ci4Palette;
+0001=Ci4Texture;
 
 [00AA]
 
 [00AB]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00AC]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00AD]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00AE]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00AF]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Texture;
 
 [00B0]
+0000=Ci4Palette;
+0001=Ci4Texture;
+0002=Ci4Palette;
+0003=Ci4Texture;
 
 [00B1]
 
 [00B2]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B3]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B4]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B5]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B6]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B7]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
+0003=Ci4Palette;
+0004=Ci4Palette;
+0005=Ci4Texture;
+0006=Ci4Palette;
+0007=Ci4Palette;
+0008=Ci4Texture;
+0009=Ci4Palette;
+000A=Ci4Palette;
+000B=Ci4Texture;
 
 [00B8]
+0000=Ci4Palette;
+0001=Ci4Palette;
+0002=Ci4Texture;
 
 [0245]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
+0006=I4Texture;
+0007=I4Texture;
+0008=I4Texture;
+0009=I4Texture;
+000A=I4Texture;
+000B=I4Texture;
+000C=I4Texture;
+000D=I4Texture;
+000E=I4Texture;
+000F=I4Texture;
+0010=I4Texture;
+0011=I4Texture;
+0012=I4Texture;
+0013=I4Texture;
+0014=I4Texture;
+0015=I4Texture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
 
 [0246]
 
 [0247]
 
 [0248]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
+0006=I4Texture;
+0007=I4Texture;
+0008=I4Texture;
+0009=I4Texture;
+000A=I4Texture;
+000B=I4Texture;
 
 [0249]
+0000=I4Texture;
+0001=I4Texture;
+0002=I4Texture;
+0003=I4Texture;
+0004=I4Texture;
+0005=I4Texture;
+0006=I4Texture;
+0007=I4Texture;
+0008=I4Texture;
+0009=I4Texture;
+000A=I4Texture;
+000B=I4Texture;
+000C=I4Texture;
+000D=I4Texture;
+000E=I4Texture;
+000F=I4Texture;
+0010=I4Texture;
+0011=I4Texture;
+0012=I4Texture;
+0013=I4Texture;
+0014=I4Texture;
+0015=I4Texture;
+0016=I4Texture;
+0017=I4Texture;
+0018=I4Texture;
+0019=I4Texture;
+001A=I4Texture;
+001B=I4Texture;
