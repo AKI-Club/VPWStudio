@@ -25,6 +25,8 @@ namespace VPWStudio.Editors
 		/// </summary>
 		private SortedList<int, string> FontCharacters = new SortedList<int, string>();
 
+		private StringBuilder OutputStringBuilder = new StringBuilder();
+
 		public FontDialog(int fileID, int charsID = 0)
 		{
 			InitializeComponent();
@@ -74,7 +76,7 @@ namespace VPWStudio.Editors
 
 					default:
 						FontCharacters = AkiFont.FallbackCharacters;
-						tbTemp.BackColor = Color.FromArgb(255, 208, 240, 255);
+						tbOutput.BackColor = Color.FromArgb(255, 208, 240, 255);
 						break;
 				}
 
@@ -201,25 +203,33 @@ namespace VPWStudio.Editors
 			// update preview
 			pbCharacterPreview.Image = CurFont.GetCharacterBitmap(lbCharacters.SelectedIndex);
 
+			OutputStringBuilder.Clear();
+
 			if (CurFont.FontType == AkiFontType.AkiLargeFont)
 			{
 				// Large font character header is 3 bytes
-				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2},0x{2:X2} (lead {0}; width {1})",
+				OutputStringBuilder.AppendLine(String.Format("0x{0:X2},0x{1:X2},0x{2:X2} (lead {0}; width {1})",
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][2]
-				);
+				));
 			}
 			else
 			{
 				// Small font character header is 2 bytes
-				tbTemp.Text = String.Format("0x{0:X2},0x{1:X2} (lead {2}; width {3})",
+				OutputStringBuilder.AppendLine(String.Format("0x{0:X2},0x{1:X2} (lead {2}; width {3})",
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][0],
 					CurFont.CharHeaders[lbCharacters.SelectedIndex][1],
-					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1]&0xF0)>>4,
-					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1]&0x0F)
-				);
+					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1] & 0xF0) >> 4,
+					(CurFont.CharHeaders[lbCharacters.SelectedIndex][1] & 0x0F)
+				));
 			}
+
+			int charWidth = (CurFont.FontType == AkiFontType.AkiLargeFont) ? AkiFont.LARGE_FONT_CHAR_WIDTH : AkiFont.SMALL_FONT_CHAR_WIDTH;
+			int headerSize = (CurFont.FontType == AkiFontType.AkiLargeFont) ? 3 : 2;
+			OutputStringBuilder.AppendLine(String.Format("File offset 0x{0:X}", (((charWidth * CurFont.CellHeight)/8)+headerSize) * lbCharacters.SelectedIndex));
+
+			tbOutput.Text = OutputStringBuilder.ToString();
 		}
 
 		/// <summary>

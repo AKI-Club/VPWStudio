@@ -42,7 +42,7 @@
 			this.labelCharWidthValue = new System.Windows.Forms.Label();
 			this.labelCharHeight = new System.Windows.Forms.Label();
 			this.labelCharHeightValue = new System.Windows.Forms.Label();
-			this.tbTemp = new System.Windows.Forms.TextBox();
+			this.tbOutput = new System.Windows.Forms.TextBox();
 			this.gbCharacters.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbCharacterPreview)).BeginInit();
 			this.gbFontInfo.SuspendLayout();
@@ -81,9 +81,9 @@
 			// 
 			// buttonExportFontGraphic
 			// 
-			this.buttonExportFontGraphic.Location = new System.Drawing.Point(12, 158);
+			this.buttonExportFontGraphic.Location = new System.Drawing.Point(12, 226);
 			this.buttonExportFontGraphic.Name = "buttonExportFontGraphic";
-			this.buttonExportFontGraphic.Size = new System.Drawing.Size(105, 23);
+			this.buttonExportFontGraphic.Size = new System.Drawing.Size(360, 23);
 			this.buttonExportFontGraphic.TabIndex = 3;
 			this.buttonExportFontGraphic.Text = "&Export Font PNG...";
 			this.buttonExportFontGraphic.UseVisualStyleBackColor = true;
@@ -201,21 +201,23 @@
 			this.labelCharHeightValue.Size = new System.Drawing.Size(72, 13);
 			this.labelCharHeightValue.TabIndex = 7;
 			// 
-			// tbTemp
+			// tbOutput
 			// 
-			this.tbTemp.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbTemp.Location = new System.Drawing.Point(123, 158);
-			this.tbTemp.Name = "tbTemp";
-			this.tbTemp.ReadOnly = true;
-			this.tbTemp.Size = new System.Drawing.Size(238, 23);
-			this.tbTemp.TabIndex = 5;
+			this.tbOutput.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbOutput.Location = new System.Drawing.Point(12, 158);
+			this.tbOutput.Multiline = true;
+			this.tbOutput.Name = "tbOutput";
+			this.tbOutput.ReadOnly = true;
+			this.tbOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.tbOutput.Size = new System.Drawing.Size(360, 62);
+			this.tbOutput.TabIndex = 5;
 			// 
 			// FontDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(373, 193);
-			this.Controls.Add(this.tbTemp);
+			this.ClientSize = new System.Drawing.Size(384, 261);
+			this.Controls.Add(this.tbOutput);
 			this.Controls.Add(this.pbCharacterPreview);
 			this.Controls.Add(this.gbFontInfo);
 			this.Controls.Add(this.buttonExportFontGraphic);
@@ -225,6 +227,7 @@
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(400, 300);
 			this.Name = "FontDialog";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -256,6 +259,6 @@
 		private System.Windows.Forms.Label labelNumCharsValue;
 		private System.Windows.Forms.Label labelCharWidthValue;
 		private System.Windows.Forms.Label labelCharHeightValue;
-		private System.Windows.Forms.TextBox tbTemp;
+		private System.Windows.Forms.TextBox tbOutput;
 	}
 }
