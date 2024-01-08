@@ -60,16 +60,17 @@
 			this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reloadFileTableDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.fTDBInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportMidwaydecFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.exportFileTableDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tssLabelSelectedItems = new System.Windows.Forms.ToolStripStatusLabel();
-			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.exportJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.extractPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsFileEntry.SuspendLayout();
 			this.menuStripFileTable.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -150,9 +151,10 @@
             this.viewHexToolStripMenuItem,
             this.toolStripSeparator1,
             this.extractFileToolStripMenuItem,
-            this.extractRawToolStripMenuItem});
+            this.extractRawToolStripMenuItem,
+            this.extractPNGToolStripMenuItem});
 			this.cmsFileEntry.Name = "cmsFileEntry";
-			this.cmsFileEntry.Size = new System.Drawing.Size(251, 148);
+			this.cmsFileEntry.Size = new System.Drawing.Size(251, 192);
 			this.cmsFileEntry.Opening += new System.ComponentModel.CancelEventHandler(this.cmsFileEntry_Opening);
 			// 
 			// setTypeToolStripMenuItem
@@ -224,7 +226,7 @@
 			// 
 			this.extractRawToolStripMenuItem.Name = "extractRawToolStripMenuItem";
 			this.extractRawToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-			this.extractRawToolStripMenuItem.Text = "Extract &Raw...";
+			this.extractRawToolStripMenuItem.Text = "Extract &LZSS...";
 			this.extractRawToolStripMenuItem.Click += new System.EventHandler(this.extractRawToolStripMenuItem_Click);
 			// 
 			// menuStripFileTable
@@ -327,6 +329,11 @@
 			this.reloadFileTableDatabaseToolStripMenuItem.Text = "&Reload File Table Database";
 			this.reloadFileTableDatabaseToolStripMenuItem.Click += new System.EventHandler(this.reloadFileTableDatabaseToolStripMenuItem_Click);
 			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(209, 6);
+			// 
 			// fTDBInfoToolStripMenuItem
 			// 
 			this.fTDBInfoToolStripMenuItem.Name = "fTDBInfoToolStripMenuItem";
@@ -361,6 +368,19 @@
 			this.exportCSVToolStripMenuItem.Text = "Export Asset Conversion &CSV...";
 			this.exportCSVToolStripMenuItem.Click += new System.EventHandler(this.exportCSVToolStripMenuItem_Click);
 			// 
+			// exportJSONToolStripMenuItem
+			// 
+			this.exportJSONToolStripMenuItem.Name = "exportJSONToolStripMenuItem";
+			this.exportJSONToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+			this.exportJSONToolStripMenuItem.Text = "Export JSON...";
+			this.exportJSONToolStripMenuItem.ToolTipText = "Export JSON for Filetable Builder";
+			this.exportJSONToolStripMenuItem.Click += new System.EventHandler(this.exportJSONToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(232, 6);
+			// 
 			// exportFileTableDBToolStripMenuItem
 			// 
 			this.exportFileTableDBToolStripMenuItem.Name = "exportFileTableDBToolStripMenuItem";
@@ -384,23 +404,12 @@
 			this.tssLabelSelectedItems.Size = new System.Drawing.Size(92, 17);
 			this.tssLabelSelectedItems.Text = "# items selected";
 			// 
-			// toolStripSeparator5
+			// extractPNGToolStripMenuItem
 			// 
-			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(232, 6);
-			// 
-			// exportJSONToolStripMenuItem
-			// 
-			this.exportJSONToolStripMenuItem.Name = "exportJSONToolStripMenuItem";
-			this.exportJSONToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-			this.exportJSONToolStripMenuItem.Text = "Export JSON...";
-			this.exportJSONToolStripMenuItem.ToolTipText = "Export JSON for Filetable Builder";
-			this.exportJSONToolStripMenuItem.Click += new System.EventHandler(this.exportJSONToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator6
-			// 
-			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(209, 6);
+			this.extractPNGToolStripMenuItem.Name = "extractPNGToolStripMenuItem";
+			this.extractPNGToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+			this.extractPNGToolStripMenuItem.Text = "Extract PNG...";
+			this.extractPNGToolStripMenuItem.Click += new System.EventHandler(this.extractPNGToolStripMenuItem_Click);
 			// 
 			// FileTableDialog
 			// 
@@ -468,5 +477,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exportJSONToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+		private System.Windows.Forms.ToolStripMenuItem extractPNGToolStripMenuItem;
 	}
 }

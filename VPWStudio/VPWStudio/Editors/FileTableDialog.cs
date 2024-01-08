@@ -447,6 +447,11 @@ namespace VPWStudio
 				menuBackgroundReplacementToolStripMenuItem.Enabled = isMenuBGItem;
 				menuBackgroundReplacementToolStripMenuItem.Visible = isMenuBGItem;
 				viewHexReplacementFileDataToolStripMenuItem.Enabled = Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile();
+
+				// PNG export currently only available for AkiTexture
+				bool isAkiTexture = (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiTexture);
+				extractPNGToolStripMenuItem.Enabled = isAkiTexture;
+				extractPNGToolStripMenuItem.Visible = isAkiTexture;
 			}
 		}
 
@@ -833,6 +838,51 @@ namespace VPWStudio
 				// reload previous position
 				lvFileList.EnsureVisible(prevIndex);
 				lvFileList.FocusedItem = prevItem;
+			}
+		}
+
+		/// <summary>
+		/// Extract textures as PNG files.
+		/// Currently only supports AkiTexture, because palette issues.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void extractPNGToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (lvFileList.SelectedItems.Count > 1)
+			{
+				// ugh
+				Program.ErrorMessageBox(string.Format("freem's a lazy twat who didn't implement it yet (repeat {0} times)", lvFileList.SelectedItems.Count));
+			}
+			else if (lvFileList.SelectedItems.Count == 1)
+			{
+				int key = int.Parse(lvFileList.SelectedItems[0].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "Export PNG";
+				sfd.Filter = SharedStrings.FileFilter_PNG;
+				sfd.FileName = String.Format("{0:X4}.png", key);
+
+				if (sfd.ShowDialog() == DialogResult.OK)
+				{
+					MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+					BinaryReader romReader = new BinaryReader(romStream);
+
+					MemoryStream outStream = new MemoryStream();
+					BinaryWriter outWriter = new BinaryWriter(outStream);
+
+					Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, key);
+					romReader.Close();
+
+					BinaryReader outReader = new BinaryReader(outStream);
+					outStream.Seek(0, SeekOrigin.Begin);
+
+					AkiTexture outTex = new AkiTexture(outReader);
+					outTex.ToBitmap().Save(sfd.FileName);
+
+					romReader.Close();
+					outWriter.Close();
+				}
 			}
 		}
 		#endregion
@@ -1869,5 +1919,7 @@ namespace VPWStudio
 			string items = lvFileList.SelectedItems.Count == 1 ? "item" : "items";
 			tssLabelSelectedItems.Text = String.Format("{0} {1} selected", lvFileList.SelectedItems.Count, items);
 		}
+
+		
 	}
 }
