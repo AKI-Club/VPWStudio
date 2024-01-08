@@ -435,6 +435,10 @@ namespace VPWStudio
 				}
 
 				viewHexReplacementFileDataToolStripMenuItem.Enabled = hasReplaceFile;
+
+				// disable png export for now
+				extractPNGToolStripMenuItem.Enabled = false;
+				extractPNGToolStripMenuItem.Visible = false;
 			}
 			else if (lvFileList.SelectedItems.Count == 1)
 			{
@@ -756,7 +760,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// 
+		/// Replace Menu Background files
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -851,8 +855,33 @@ namespace VPWStudio
 		{
 			if (lvFileList.SelectedItems.Count > 1)
 			{
-				// ugh
-				Program.ErrorMessageBox(string.Format("freem's a lazy twat who didn't implement it yet (repeat {0} times)", lvFileList.SelectedItems.Count));
+				// determine if we have anything we can actually export
+				List<int> ExportIDs = new List<int>();
+				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
+				{
+					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
+					if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiArchive)
+					{
+						ExportIDs.Add(key);
+					}
+				}
+
+				if (ExportIDs.Count <= 0)
+				{
+					Program.ErrorMessageBox("None of the selected files can be exported using this option.");
+					return;
+				}
+
+				// set output directory
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "Select Export Directory";
+				sfd.Filter = SharedStrings.FileFilter_None;
+				sfd.CheckFileExists = false;
+				sfd.FileName = "(choose a directory)";
+				if (sfd.ShowDialog() == DialogResult.OK)
+				{
+					Program.ErrorMessageBox("freem's a lazy twat who didn't implement it yet");
+				}
 			}
 			else if (lvFileList.SelectedItems.Count == 1)
 			{
