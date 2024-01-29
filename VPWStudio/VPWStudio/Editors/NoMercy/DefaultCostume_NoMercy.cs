@@ -170,8 +170,8 @@ namespace VPWStudio.Editors.NoMercy
 			CostumeData.Wristband = (byte)cbWristband.SelectedIndex;
 			CostumeData.WristbandColor = (byte)cccWristbandColor.GetColorNum();
 
-			CostumeData.LeftElbowPad = (byte)cbRightElbowPad.SelectedIndex;
-			CostumeData.LeftElbowPadColor = (byte)cccRightElbowPadColor.GetColorNum();
+			CostumeData.LeftElbowPad = (byte)cbLeftElbowPad.SelectedIndex;
+			CostumeData.LeftElbowPadColor = (byte)cccLeftElbowPadColor.GetColorNum();
 			CostumeData.RightElbowPad = (byte)cbRightElbowPad.SelectedIndex;
 			CostumeData.RightElbowPadColor = (byte)cccRightElbowPadColor.GetColorNum();
 
