@@ -69,6 +69,15 @@ namespace VPWStudio
 			HeightBitLength = 0;
 			Data = null;
 		}
+
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
+		public Ci8Texture(BinaryReader br)
+		{
+			ReadData(br);
+		}
 		#endregion
 
 		#region Binary Read/Write
