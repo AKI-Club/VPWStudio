@@ -34,6 +34,21 @@ namespace VPWStudio
 
 		public bool AnyChangesSubmitted = false;
 
+		/// <summary>
+		/// Starting ROM address of the animation entries.
+		/// </summary>
+		private uint AnimStartLocation;
+
+		/// <summary>
+		/// Starting ROM address of the image entries.
+		/// </summary>
+		private uint ImgStartLocation;
+
+		/// <summary>
+		/// Starting ROM address of the sequence entries.
+		/// </summary>
+		private uint SeqStartLocation;
+
 		public GameIntroEditor_Later()
 		{
 			InitializeComponent();
@@ -55,13 +70,13 @@ namespace VPWStudio
 			bool hasImageLocation = false;
 			bool hasSeqLocation = false;
 
-			uint animLocation = 0;
+			AnimStartLocation = 0;
 			int numAnims = 0;
 
-			uint imgLocation = 0;
+			ImgStartLocation = 0;
 			int numImages = 0;
 
-			uint seqLocation = 0;
+			SeqStartLocation = 0;
 			int numSeqEntries = 0;
 
 			// xxx: non-image values don't take the credits sequence into account
@@ -70,7 +85,7 @@ namespace VPWStudio
 				LocationFileEntry animEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["IntroDefs_Later_Anims"]);
 				if (animEntry != null)
 				{
-					animLocation = animEntry.Address;
+					AnimStartLocation = animEntry.Address;
 					numAnims = animEntry.Length / 20;
 					hasAnimLocation = true;
 				}
@@ -78,7 +93,7 @@ namespace VPWStudio
 				LocationFileEntry imgEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["IntroDefs_Later_Images"]);
 				if (imgEntry != null)
 				{
-					imgLocation = imgEntry.Address;
+					ImgStartLocation = imgEntry.Address;
 					numImages = imgEntry.Length / 16;
 					hasImageLocation = true;
 				}
@@ -86,7 +101,7 @@ namespace VPWStudio
 				LocationFileEntry seqEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["IntroDefs_Later_Sequence"]);
 				if (seqEntry != null)
 				{
-					seqLocation = seqEntry.Address;
+					SeqStartLocation = seqEntry.Address;
 					numSeqEntries = seqEntry.Length / 28;
 					hasSeqLocation = true;
 				}
@@ -98,7 +113,7 @@ namespace VPWStudio
 				DefaultGameData.DefaultLocationDataEntry anims = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Anims");
 				if (anims != null)
 				{
-					animLocation = anims.Offset; // 0x7C710
+					AnimStartLocation = anims.Offset; // 0x7C710
 					numAnims = (int)(anims.Length / 20); // 218;
 					hasAnimLocation = true;
 				}
@@ -109,7 +124,7 @@ namespace VPWStudio
 				DefaultGameData.DefaultLocationDataEntry imgs = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Images");
 				if (imgs != null)
 				{
-					imgLocation = imgs.Offset; // 0x7DEA8;
+					ImgStartLocation = imgs.Offset; // 0x7DEA8;
 					numImages = (int)(imgs.Length / 16); // 12;
 					hasImageLocation = true;
 				}
@@ -120,7 +135,7 @@ namespace VPWStudio
 				DefaultGameData.DefaultLocationDataEntry seqs = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_Sequence");
 				if (seqs != null)
 				{
-					seqLocation = seqs.Offset; // 0x7E098;
+					SeqStartLocation = seqs.Offset; // 0x7E098;
 					numSeqEntries = (int)(seqs.Length / 28); // 81;
 					hasSeqLocation = true;
 				}
@@ -129,7 +144,7 @@ namespace VPWStudio
 			// FINALLY get to reading the damned data
 			if (hasAnimLocation)
 			{
-				ms.Seek(animLocation, SeekOrigin.Begin);
+				ms.Seek(AnimStartLocation, SeekOrigin.Begin);
 				for (int i = 0; i < numAnims; i++)
 				{
 					IntroAnimations.Add(new IntroSequenceAnimation_Later(br));
@@ -138,7 +153,7 @@ namespace VPWStudio
 
 			if(hasImageLocation)
 			{
-				ms.Seek(imgLocation, SeekOrigin.Begin);
+				ms.Seek(ImgStartLocation, SeekOrigin.Begin);
 				for (int i = 0; i < numImages; i++)
 				{
 					IntroImages.Add(new IntroSequenceGraphic_Later(br));
@@ -147,7 +162,7 @@ namespace VPWStudio
 
 			if (hasSeqLocation)
 			{
-				ms.Seek(seqLocation, SeekOrigin.Begin);
+				ms.Seek(SeqStartLocation, SeekOrigin.Begin);
 				for (int i = 0; i < numSeqEntries; i++)
 				{
 					IntroSequenceItems.Add(new IntroSequence_Later(br));
@@ -286,6 +301,79 @@ namespace VPWStudio
 			dgvImages.Rows.Clear();
 			dgvSequence.Rows.Clear();
 			LoadIntroData();
+		}
+
+		// todo: properly calculate the offsets
+
+		private void dgvAnimations_SelectionChanged(object sender, EventArgs e)
+		{
+			if (dgvAnimations.SelectedCells.Count <= 0)
+			{
+				tsslblCurAddressAnim.Text = "No Anim. cell selected";
+			}
+			else
+			{
+				// each row is 20 bytes
+				// most entries are 2 bytes, except for the 4 bytes at the end (cols 8-11)
+				int offset = dgvAnimations.SelectedCells[0].RowIndex * 20;
+				if (dgvAnimations.SelectedCells[0].ColumnIndex >= 8)
+				{
+					// fixerator
+					offset += 16 + (dgvAnimations.SelectedCells[0].ColumnIndex-8);
+				}
+				else
+				{
+					// 2 bytes
+					offset += (dgvAnimations.SelectedCells[0].ColumnIndex*2);
+				}
+
+				tsslblCurAddressAnim.Text = String.Format("Anim. ROM Address: 0x{0:X}", AnimStartLocation+offset);
+			}
+		}
+
+		private void dgvImages_SelectionChanged(object sender, EventArgs e)
+		{
+			if (dgvImages.SelectedCells.Count <= 0)
+			{
+				tsslblCurAddressImg.Text = "No Image cell selected";
+			}
+			else
+			{
+				// each row is 16 bytes, each entry is 2 bytes
+				int offset = (dgvImages.SelectedCells[0].RowIndex * 16) + (dgvImages.SelectedCells[0].ColumnIndex * 2);
+				tsslblCurAddressImg.Text = String.Format("Image ROM Address: 0x{0:X}", ImgStartLocation+offset);
+			}
+		}
+
+		private void dgvSequence_SelectionChanged(object sender, EventArgs e)
+		{
+			if (dgvSequence.SelectedCells.Count <= 0)
+			{
+				tsslblCurAddressImg.Text = "No Seq. cell selected";
+			}
+			else
+			{
+				// each row is 28 bytes
+				int offset = dgvSequence.SelectedCells[0].RowIndex * 28;
+
+				if (dgvSequence.SelectedCells[0].ColumnIndex <= 3)
+				{
+					// 4 bytes (cols 0-3)
+					offset += dgvSequence.SelectedCells[0].ColumnIndex;
+				}
+				else if (dgvSequence.SelectedCells[0].ColumnIndex <= 7)
+				{
+					// add 4 bytes; 4*2 bytes (cols 4-7)
+					offset += 4 + ((dgvSequence.SelectedCells[0].ColumnIndex-4)*2);
+				}
+				else
+				{
+					// add 12 bytes; 4*4 bytes (cols 8-11)
+					offset += 12 + ((dgvSequence.SelectedCells[0].ColumnIndex - 8) * 4);
+				}
+
+				tsslblCurAddressSeq.Text = String.Format("Seq. ROM Address: 0x{0:X})", SeqStartLocation+offset);
+			}
 		}
 	}
 }

@@ -70,6 +70,10 @@
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.btnReloadRom = new System.Windows.Forms.Button();
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.tsslblCurAddressAnim = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslblCurAddressImg = new System.Windows.Forms.ToolStripStatusLabel();
+			this.tsslblCurAddressSeq = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAnimations)).BeginInit();
@@ -77,6 +81,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).BeginInit();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvSequence)).BeginInit();
+			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -129,6 +134,7 @@
 			this.dgvAnimations.Size = new System.Drawing.Size(713, 324);
 			this.dgvAnimations.TabIndex = 1;
 			this.dgvAnimations.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAnimations_CellValidating);
+			this.dgvAnimations.SelectionChanged += new System.EventHandler(this.dgvAnimations_SelectionChanged);
 			// 
 			// wrestlerID4
 			// 
@@ -264,6 +270,7 @@
 			this.dgvImages.Size = new System.Drawing.Size(710, 324);
 			this.dgvImages.TabIndex = 1;
 			this.dgvImages.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvImages_CellValidating);
+			this.dgvImages.SelectionChanged += new System.EventHandler(this.dgvImages_SelectionChanged);
 			// 
 			// fileID
 			// 
@@ -373,12 +380,14 @@
             this.pointer3,
             this.pointer4});
 			this.dgvSequence.Location = new System.Drawing.Point(6, 6);
+			this.dgvSequence.MultiSelect = false;
 			this.dgvSequence.Name = "dgvSequence";
 			this.dgvSequence.RowHeadersVisible = false;
 			this.dgvSequence.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
 			this.dgvSequence.Size = new System.Drawing.Size(710, 324);
 			this.dgvSequence.TabIndex = 1;
 			this.dgvSequence.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSequence_CellValidating);
+			this.dgvSequence.SelectionChanged += new System.EventHandler(this.dgvSequence_SelectionChanged);
 			// 
 			// mainSequence
 			// 
@@ -490,7 +499,7 @@
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(586, 380);
+			this.buttonOK.Location = new System.Drawing.Point(586, 376);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 1;
@@ -500,7 +509,7 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(667, 380);
+			this.buttonCancel.Location = new System.Drawing.Point(667, 376);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 2;
@@ -510,7 +519,7 @@
 			// 
 			// btnReloadRom
 			// 
-			this.btnReloadRom.Location = new System.Drawing.Point(12, 380);
+			this.btnReloadRom.Location = new System.Drawing.Point(12, 376);
 			this.btnReloadRom.Name = "btnReloadRom";
 			this.btnReloadRom.Size = new System.Drawing.Size(114, 23);
 			this.btnReloadRom.TabIndex = 3;
@@ -518,11 +527,44 @@
 			this.btnReloadRom.UseVisualStyleBackColor = true;
 			this.btnReloadRom.Click += new System.EventHandler(this.btnReloadRom_Click);
 			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslblCurAddressAnim,
+            this.tsslblCurAddressImg,
+            this.tsslblCurAddressSeq});
+			this.statusStrip1.Location = new System.Drawing.Point(0, 402);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(754, 24);
+			this.statusStrip1.TabIndex = 4;
+			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// tsslblCurAddressAnim
+			// 
+			this.tsslblCurAddressAnim.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+			this.tsslblCurAddressAnim.Name = "tsslblCurAddressAnim";
+			this.tsslblCurAddressAnim.Size = new System.Drawing.Size(129, 19);
+			this.tsslblCurAddressAnim.Text = "No Anim. cell selected";
+			// 
+			// tsslblCurAddressImg
+			// 
+			this.tsslblCurAddressImg.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+			this.tsslblCurAddressImg.Name = "tsslblCurAddressImg";
+			this.tsslblCurAddressImg.Size = new System.Drawing.Size(130, 19);
+			this.tsslblCurAddressImg.Text = "No Image cell selected";
+			// 
+			// tsslblCurAddressSeq
+			// 
+			this.tsslblCurAddressSeq.Name = "tsslblCurAddressSeq";
+			this.tsslblCurAddressSeq.Size = new System.Drawing.Size(115, 19);
+			this.tsslblCurAddressSeq.Text = "No Seq. cell selected";
+			// 
 			// GameIntroEditor_Later
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(754, 415);
+			this.ClientSize = new System.Drawing.Size(754, 426);
+			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.btnReloadRom);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOK);
@@ -541,7 +583,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvImages)).EndInit();
 			this.tabPage3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvSequence)).EndInit();
+			this.statusStrip1.ResumeLayout(false);
+			this.statusStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -589,5 +634,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn pointer3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn pointer4;
 		private System.Windows.Forms.Button btnReloadRom;
+		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.ToolStripStatusLabel tsslblCurAddressAnim;
+		private System.Windows.Forms.ToolStripStatusLabel tsslblCurAddressImg;
+		private System.Windows.Forms.ToolStripStatusLabel tsslblCurAddressSeq;
 	}
 }
