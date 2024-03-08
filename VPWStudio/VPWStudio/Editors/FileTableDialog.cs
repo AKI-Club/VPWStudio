@@ -436,7 +436,7 @@ namespace VPWStudio
 
 				viewHexReplacementFileDataToolStripMenuItem.Enabled = hasReplaceFile;
 
-				// disable png export for now
+				// disable multi-png export for now
 				extractPNGToolStripMenuItem.Enabled = false;
 				extractPNGToolStripMenuItem.Visible = false;
 			}
@@ -846,8 +846,7 @@ namespace VPWStudio
 		}
 
 		/// <summary>
-		/// Extract textures as PNG files.
-		/// Currently only supports AkiTexture, because palette issues.
+		/// Extract selected textures as PNG files.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -860,10 +859,26 @@ namespace VPWStudio
 				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
 				{
 					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
-					if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiArchive)
+					// only supports AkiTexture, CI4Texture, and CI8Texture.
+					// the latter two require known palettes to be set in the ExtraData entries.
+					if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.AkiTexture)
 					{
 						ExportIDs.Add(key);
 					}
+					/*
+					else if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.Ci4Texture
+						&& Program.CurrentProject.ProjectFileTable.Entries[key].ExtraData.IntendedPaletteFileID != -1)
+					{
+						// CI4 with known palette
+						ExportIDs.Add(key);
+					}
+					else if (Program.CurrentProject.ProjectFileTable.Entries[key].FileType == FileTypes.Ci8Texture
+						&& Program.CurrentProject.ProjectFileTable.Entries[key].ExtraData.IntendedPaletteFileID != -1)
+					{
+						// CI8 with known palette
+						ExportIDs.Add(key);
+					}
+					*/
 				}
 
 				if (ExportIDs.Count <= 0)
@@ -880,7 +895,39 @@ namespace VPWStudio
 				sfd.FileName = "(choose a directory)";
 				if (sfd.ShowDialog() == DialogResult.OK)
 				{
-					Program.ErrorMessageBox("freem's a lazy twat who didn't implement it yet");
+					Program.ErrorMessageBox("freem's a lazy twat who didn't implement multi-export yet");
+					string outPath = Path.GetDirectoryName(sfd.FileName);
+
+					// todo: shared romreader
+					//MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+					//BinaryReader romReader = new BinaryReader(romStream);
+
+					//MemoryStream outStream = new MemoryStream();
+					//BinaryWriter outWriter = new BinaryWriter(outStream);
+
+					//BinaryReader outReader = new BinaryReader(outStream);
+
+					foreach (int fid in ExportIDs)
+					{
+						//Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, outWriter, fid);
+						//outStream.Seek(0, SeekOrigin.Begin);
+
+						if (Program.CurrentProject.ProjectFileTable.Entries[fid].FileType == FileTypes.AkiTexture)
+						{
+							//AkiTexture outTex = new AkiTexture(outReader);
+							//outTex.ToBitmap().Save(String.Format("{0:X4}.png",fid));
+						}
+						else if (Program.CurrentProject.ProjectFileTable.Entries[fid].FileType == FileTypes.Ci4Texture)
+						{
+							// need to load Ci4Palette
+						}
+						else if (Program.CurrentProject.ProjectFileTable.Entries[fid].FileType == FileTypes.Ci8Texture)
+						{
+							// need to load Ci8Palette
+						}
+					}
+
+					// todo: cleanup file handles
 				}
 			}
 			else if (lvFileList.SelectedItems.Count == 1)
