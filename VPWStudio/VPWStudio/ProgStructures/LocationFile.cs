@@ -53,6 +53,11 @@ namespace VPWStudio
 		/// Changes to game code. "%name"
 		/// </summary>
 		CodeChange,
+
+		/// <summary>
+		/// Locations of code segments (overlays). "@name"
+		/// </summary>
+		CodeSegment,
 	}
 
 	/// <summary>
@@ -315,10 +320,12 @@ namespace VPWStudio
 						// code change entry
 						entry.Handler = LocationHandlerType.CodeChange;
 					}
+
+					// right now, there are no "@" entries in the table
 				}
 				else
 				{
-					// handle things I haven't coded up yet
+					// handle things I haven't explicitly defined
 					if (tokens[3].StartsWith("$"))
 					{
 						// data location entry
@@ -328,6 +335,11 @@ namespace VPWStudio
 					{
 						// code change entry
 						entry.Handler = LocationHandlerType.CodeChange;
+					}
+					else if (tokens[3].StartsWith("@"))
+					{
+						// code segment location entry
+						entry.Handler = LocationHandlerType.CodeSegment;
 					}
 				}
 

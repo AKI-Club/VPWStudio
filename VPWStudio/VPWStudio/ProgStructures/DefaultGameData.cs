@@ -27,6 +27,34 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Code segment location entry.
+		/// </summary>
+		public class CodeSegmentLocationEntry
+		{
+			/// <summary>
+			/// Address of this segment in ROM.
+			/// </summary>
+			public UInt32 RomAddr;
+
+			/// <summary>
+			/// RAM Address that this segment is loaded into.
+			/// </summary>
+			public UInt32 LoadAddr;
+
+			public CodeSegmentLocationEntry()
+			{
+				RomAddr = 0;
+				LoadAddr = 0;
+			}
+
+			public CodeSegmentLocationEntry(UInt32 _rom, UInt32 _ram)
+			{
+				RomAddr = _rom;
+				LoadAddr = _ram;
+			}
+		}
+
 		#region Primary Offsets
 		/// <summary>
 		/// Default location data.
@@ -790,6 +818,49 @@ namespace VPWStudio
 					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			}
+		};
+		#endregion
+
+		#region Code Segments
+		/// <summary>
+		/// Default code segment data.
+		/// </summary>
+		public class DefaultCodeSegLocData
+		{
+			public Dictionary<string, CodeSegmentLocationEntry> Locations;
+
+			public DefaultCodeSegLocData()
+			{
+				Locations = new Dictionary<string, CodeSegmentLocationEntry>();
+			}
+
+			public DefaultCodeSegLocData(Dictionary<string, CodeSegmentLocationEntry> _entry)
+			{
+				Locations = _entry;
+			}
+		}
+
+		public static Dictionary<SpecificGame, DefaultCodeSegLocData> DefaultCodeSegLocations = new Dictionary<SpecificGame, DefaultCodeSegLocData>()
+		{
+			// world tour
+
+			// vpw64
+
+			// revenge
+
+			// wm2k
+
+			{
+				SpecificGame.VPW2_NTSC_J,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x04BF40, 0x800E6AF0) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x071A90, 0x80119450) },
+					{ "CodeSeg2", new CodeSegmentLocationEntry(0x084710, 0x80119450) },
+					{ "CodeSeg3", new CodeSegmentLocationEntry(0x0E11A0, 0x800E6AF0) }
+				})
+			}
+
+			// no mercy
 		};
 		#endregion
 
