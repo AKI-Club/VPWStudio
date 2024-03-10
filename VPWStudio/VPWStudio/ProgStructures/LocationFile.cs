@@ -139,6 +139,8 @@ namespace VPWStudio
 			{ "WrestlerDefs", "$WRESTLERDEFS" }, // ROM location of wrestler definitions
 			{ "StableDefs", "$STABLEDEFS" }, // ROM location of stable definitions
 
+			{ "CodeSegDefs", "$CODESEGDEFS" }, // ROM location of code segment definitions
+
 			// World Tour, VPW64, and Revenge share BodyTypeDefs and HeadDefs.
 			// If VPW64 didn't do its own thing for CostumeDefs, it'd be here too.
 			{ "BodyTypeDefs", "$BODYTYPEDEFS" }, // ROM location of body type definitions
