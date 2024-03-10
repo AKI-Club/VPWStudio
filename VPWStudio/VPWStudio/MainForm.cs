@@ -2874,6 +2874,24 @@ namespace VPWStudio
 			ClientTest ct = new ClientTest();
 			ct.ShowDialog();
 		}
+
+		private void codeSegmentTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("Requires an open project to use.");
+				return;
+			}
+
+			if (!DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations.ContainsKey("CodeSegDefs"))
+			{
+				Program.ErrorMessageBox("Requires a game that has code segment definitions defined.");
+				return;
+			}
+
+			CodeSegTest cst = new CodeSegTest();
+			cst.ShowDialog();
+		}
 		#endregion
 
 		private void tssLabelGameType_Click(object sender, EventArgs e)
@@ -2883,5 +2901,7 @@ namespace VPWStudio
 				projectPropertiesToolStripMenuItem_Click(sender, e);
 			}
 		}
+
+		
 	}
 }

@@ -96,10 +96,11 @@
 			this.testScene3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.paramUnpackTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stringRenderTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.clientTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.tssLabelCurFile = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabelGameType = new System.Windows.Forms.ToolStripStatusLabel();
-			this.clientTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.codeSegmentTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MainMenu.SuspendLayout();
 			this.StatusBar.SuspendLayout();
 			this.SuspendLayout();
@@ -483,7 +484,8 @@
             this.testScene3dToolStripMenuItem,
             this.paramUnpackTestToolStripMenuItem,
             this.stringRenderTestToolStripMenuItem,
-            this.clientTestToolStripMenuItem});
+            this.clientTestToolStripMenuItem,
+            this.codeSegmentTestToolStripMenuItem});
 			this.dangerZoneToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon_DangerZone;
 			this.dangerZoneToolStripMenuItem.Name = "dangerZoneToolStripMenuItem";
 			this.dangerZoneToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 1, 2, 0);
@@ -594,6 +596,12 @@
 			resources.ApplyResources(this.stringRenderTestToolStripMenuItem, "stringRenderTestToolStripMenuItem");
 			this.stringRenderTestToolStripMenuItem.Click += new System.EventHandler(this.stringRenderTestToolStripMenuItem_Click);
 			// 
+			// clientTestToolStripMenuItem
+			// 
+			this.clientTestToolStripMenuItem.Name = "clientTestToolStripMenuItem";
+			resources.ApplyResources(this.clientTestToolStripMenuItem, "clientTestToolStripMenuItem");
+			this.clientTestToolStripMenuItem.Click += new System.EventHandler(this.clientTestToolStripMenuItem_Click);
+			// 
 			// StatusBar
 			// 
 			this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -622,11 +630,11 @@
 			this.tssLabelGameType.Padding = new System.Windows.Forms.Padding(4, 2, 2, 3);
 			this.tssLabelGameType.Click += new System.EventHandler(this.tssLabelGameType_Click);
 			// 
-			// clientTestToolStripMenuItem
+			// codeSegmentTestToolStripMenuItem
 			// 
-			this.clientTestToolStripMenuItem.Name = "clientTestToolStripMenuItem";
-			resources.ApplyResources(this.clientTestToolStripMenuItem, "clientTestToolStripMenuItem");
-			this.clientTestToolStripMenuItem.Click += new System.EventHandler(this.clientTestToolStripMenuItem_Click);
+			this.codeSegmentTestToolStripMenuItem.Name = "codeSegmentTestToolStripMenuItem";
+			resources.ApplyResources(this.codeSegmentTestToolStripMenuItem, "codeSegmentTestToolStripMenuItem");
+			this.codeSegmentTestToolStripMenuItem.Click += new System.EventHandler(this.codeSegmentTestToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -725,6 +733,7 @@
 		private System.Windows.Forms.ToolStripMenuItem tagTeamsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem stringRenderTestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem clientTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem codeSegmentTestToolStripMenuItem;
 	}
 }
 

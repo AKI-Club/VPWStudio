@@ -98,6 +98,7 @@
     <Compile Include="DataStructures\AKI\AkiText.cs" />
     <Compile Include="DataStructures\AKI\AkiTexture.cs" />
     <Compile Include="DataStructures\AKI\FileTable.cs" />
+    <Compile Include="DataStructures\N64\CodeSegDef.cs" />
     <Compile Include="DataStructures\N64\MusicSequence.cs" />
     <Compile Include="DataStructures\PS1\ClutData.cs" />
     <Compile Include="DataStructures\PS1\TimFile.cs" />
@@ -621,6 +622,12 @@
     <Compile Include="Tools\ClientTest.Designer.cs">
       <DependentUpon>ClientTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\CodeSegTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\CodeSegTest.Designer.cs">
+      <DependentUpon>CodeSegTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\FaceTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -953,6 +960,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ClientTest.resx">
       <DependentUpon>ClientTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\CodeSegTest.resx">
+      <DependentUpon>CodeSegTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\FaceTester.resx">
       <DependentUpon>FaceTester.cs</DependentUpon>
