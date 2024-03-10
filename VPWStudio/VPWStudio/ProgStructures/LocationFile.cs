@@ -455,5 +455,14 @@ namespace VPWStudio
 		{
 			return GetEntriesStartingWith("%SOUND");
 		}
+
+		/// <summary>
+		/// Get a list of all entries whose name starts with "@CODESEG".
+		/// </summary>
+		/// <returns>List of all LocationFileEntry whose comment starts with "@CODESEG".</returns>
+		public List<LocationFileEntry> GetCodeSegEntries()
+		{
+			return GetEntriesStartingWith("@CODESEG");
+		}
 	}
 }
