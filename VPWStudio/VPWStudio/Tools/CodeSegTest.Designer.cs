@@ -29,6 +29,7 @@ namespace VPWStudio
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.lblCodeSeg = new System.Windows.Forms.Label();
 			this.cbCodeSegs = new System.Windows.Forms.ComboBox();
 			this.tbCodeSegInfo = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@ namespace VPWStudio
 			this.tbPtrOut = new System.Windows.Forms.TextBox();
 			this.tbPtrIn = new System.Windows.Forms.TextBox();
 			this.lblPtrToRom = new System.Windows.Forms.Label();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
 			// lblCodeSeg
@@ -73,9 +75,9 @@ namespace VPWStudio
 			// 
 			// btnConvert
 			// 
-			this.btnConvert.Location = new System.Drawing.Point(206, 199);
+			this.btnConvert.Location = new System.Drawing.Point(226, 199);
 			this.btnConvert.Name = "btnConvert";
-			this.btnConvert.Size = new System.Drawing.Size(75, 23);
+			this.btnConvert.Size = new System.Drawing.Size(55, 23);
 			this.btnConvert.TabIndex = 5;
 			this.btnConvert.Text = "&Convert";
 			this.btnConvert.UseVisualStyleBackColor = true;
@@ -93,24 +95,33 @@ namespace VPWStudio
 			this.tbPtrOut.ReadOnly = true;
 			this.tbPtrOut.Size = new System.Drawing.Size(135, 23);
 			this.tbPtrOut.TabIndex = 6;
+			this.toolTip1.SetToolTip(this.tbPtrOut, "Output ROM location (Z64 format)");
 			// 
 			// tbPtrIn
 			// 
 			this.tbPtrIn.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbPtrIn.Location = new System.Drawing.Point(81, 201);
+			this.tbPtrIn.Location = new System.Drawing.Point(101, 201);
 			this.tbPtrIn.MaxLength = 8;
 			this.tbPtrIn.Name = "tbPtrIn";
 			this.tbPtrIn.Size = new System.Drawing.Size(119, 23);
 			this.tbPtrIn.TabIndex = 4;
+			this.toolTip1.SetToolTip(this.tbPtrIn, "Input pointer value (80XXXXXX)");
 			// 
 			// lblPtrToRom
 			// 
 			this.lblPtrToRom.AutoSize = true;
 			this.lblPtrToRom.Location = new System.Drawing.Point(12, 205);
 			this.lblPtrToRom.Name = "lblPtrToRom";
-			this.lblPtrToRom.Size = new System.Drawing.Size(63, 13);
+			this.lblPtrToRom.Size = new System.Drawing.Size(80, 13);
 			this.lblPtrToRom.TabIndex = 3;
-			this.lblPtrToRom.Text = "Ptr. to ROM";
+			this.lblPtrToRom.Text = "Pointer to ROM";
+			// 
+			// toolTip1
+			// 
+			this.toolTip1.AutomaticDelay = 300;
+			this.toolTip1.AutoPopDelay = 3000;
+			this.toolTip1.InitialDelay = 300;
+			this.toolTip1.ReshowDelay = 30;
 			// 
 			// CodeSegTest
 			// 
@@ -145,5 +156,6 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbPtrOut;
 		private System.Windows.Forms.TextBox tbPtrIn;
 		private System.Windows.Forms.Label lblPtrToRom;
+		private System.Windows.Forms.ToolTip toolTip1;
 	}
 }

@@ -87,6 +87,8 @@ namespace VPWStudio
 
 			CodeSegDef curSeg = CodeSegmentDefs[cbCodeSegs.SelectedIndex];
 
+			// todo: check if pointer is within this segment?
+
 			UInt32 offset = inValue - curSeg.SegmentTextStart;
 			tbPtrOut.Text = String.Format("{0:X}", curSeg.SegmentRomStart+offset);
 		}
