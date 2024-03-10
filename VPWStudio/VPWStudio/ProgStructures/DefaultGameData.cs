@@ -840,27 +840,84 @@ namespace VPWStudio
 			}
 		}
 
+		/// <summary>
+		/// Fallback DefaultCodeSegLocData for each SpecificGame.
+		/// </summary>
 		public static Dictionary<SpecificGame, DefaultCodeSegLocData> DefaultCodeSegLocations = new Dictionary<SpecificGame, DefaultCodeSegLocData>()
 		{
-			// world tour
+			#region WCW vs. nWo World Tour
+			#endregion
 
-			// vpw64
+			{
+				SpecificGame.VPW64_NTSC_J,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0xF1AF80, 0x80088000) }, // everything that's not gameplay
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0xF6D170, 0x80088000) }, // gameplay
+				})
+			},
 
-			// revenge
+			#region WCW/nWo Revenge
+			{
+				SpecificGame.Revenge_NTSC_U,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x3C770, 0x80090000) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x834A0, 0x80090000) },
+				})
+			},
 
-			// wm2k
+			{
+				SpecificGame.Revenge_PAL,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x39AA0, 0x80090000) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x80A30, 0x80090000) },
+				})
+			},
+			#endregion
+
+			#region WWF WrestleMania 2000
+			{
+				SpecificGame.WM2K_NTSC_U,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x4C160, 0x800E1B90) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x73390, 0x8011C900) },
+					{ "CodeSeg2", new CodeSegmentLocationEntry(0x809D0, 0x8011C900) },
+					{ "CodeSeg3", new CodeSegmentLocationEntry(0xD2720, 0x800E1B90) },
+				})
+			},
+
+			{
+				SpecificGame.WM2K_PAL,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x4C160, 0x800E1B90) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x733B0, 0x8011C920) },
+					{ "CodeSeg2", new CodeSegmentLocationEntry(0x809F0, 0x8011C920) },
+					{ "CodeSeg3", new CodeSegmentLocationEntry(0xD2740, 0x800E1B90) },
+				})
+			},
+
+			{
+				SpecificGame.WM2K_NTSC_J,
+				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x49BB0, 0x800DFEE0) },
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x6E120, 0x80117F90) },
+					{ "CodeSeg2", new CodeSegmentLocationEntry(0x7B730, 0x80117F90) },
+					{ "CodeSeg3", new CodeSegmentLocationEntry(0xC21C0, 0x800DFEE0) },
+				})
+			},
+			#endregion
 
 			{
 				SpecificGame.VPW2_NTSC_J,
 				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x04BF40, 0x800E6AF0) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x071A90, 0x80119450) },
-					{ "CodeSeg2", new CodeSegmentLocationEntry(0x084710, 0x80119450) },
-					{ "CodeSeg3", new CodeSegmentLocationEntry(0x0E11A0, 0x800E6AF0) }
+					{ "CodeSeg0", new CodeSegmentLocationEntry(0x04BF40, 0x800E6AF0) }, // menus 1
+					{ "CodeSeg1", new CodeSegmentLocationEntry(0x071A90, 0x80119450) }, // game intro, ending, cutscenes
+					{ "CodeSeg2", new CodeSegmentLocationEntry(0x084710, 0x80119450) }, // menus 2
+					{ "CodeSeg3", new CodeSegmentLocationEntry(0x0E11A0, 0x800E6AF0) }  // gameplay
 				})
-			}
+			},
 
-			// no mercy
+			#region WWF No Mercy
+			#endregion
 		};
 		#endregion
 
