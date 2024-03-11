@@ -412,6 +412,9 @@ namespace VPWStudio
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x53A40, 180)},
+
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x48424, 192) },
@@ -438,6 +441,9 @@ namespace VPWStudio
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
+
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x539A0, 180)},
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x465B8, 0) },
@@ -466,6 +472,9 @@ namespace VPWStudio
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
 
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x53A40, 180)},
+
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46658, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x48424, 192) },
@@ -492,6 +501,9 @@ namespace VPWStudio
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46DE, 4) },
+
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x538A0, 180)},
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x464B8, 0) },
