@@ -27,34 +27,6 @@ namespace VPWStudio
 			}
 		}
 
-		/// <summary>
-		/// Code segment location entry.
-		/// </summary>
-		public class CodeSegmentLocationEntry
-		{
-			/// <summary>
-			/// Address of this segment in ROM.
-			/// </summary>
-			public UInt32 RomAddr;
-
-			/// <summary>
-			/// RAM Address that this segment is loaded into.
-			/// </summary>
-			public UInt32 LoadAddr;
-
-			public CodeSegmentLocationEntry()
-			{
-				RomAddr = 0;
-				LoadAddr = 0;
-			}
-
-			public CodeSegmentLocationEntry(UInt32 _rom, UInt32 _ram)
-			{
-				RomAddr = _rom;
-				LoadAddr = _ram;
-			}
-		}
-
 		#region Primary Offsets
 		/// <summary>
 		/// Default location data.
@@ -87,6 +59,9 @@ namespace VPWStudio
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5846, 8) },
 
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x337A0, 72) },
+
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F100, 176) },
 					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x2F1B0, 20) },
@@ -112,6 +87,9 @@ namespace VPWStudio
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5846, 8) },
 
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x33810, 72) },
+
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F170, 176) },
 					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x2F220, 20) },
@@ -136,6 +114,9 @@ namespace VPWStudio
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>(){
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x5826, 8) },
+
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x337F0, 72) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
@@ -839,106 +820,6 @@ namespace VPWStudio
 					{ "Sound13", new DefaultLocationDataEntry(0x4212,8) },
 				})
 			}
-		};
-		#endregion
-
-		#region Code Segments
-		/// <summary>
-		/// Default code segment data.
-		/// </summary>
-		public class DefaultCodeSegLocData
-		{
-			public Dictionary<string, CodeSegmentLocationEntry> Locations;
-
-			public DefaultCodeSegLocData()
-			{
-				Locations = new Dictionary<string, CodeSegmentLocationEntry>();
-			}
-
-			public DefaultCodeSegLocData(Dictionary<string, CodeSegmentLocationEntry> _entry)
-			{
-				Locations = _entry;
-			}
-		}
-
-		/// <summary>
-		/// Fallback DefaultCodeSegLocData for each SpecificGame.
-		/// </summary>
-		public static Dictionary<SpecificGame, DefaultCodeSegLocData> DefaultCodeSegLocations = new Dictionary<SpecificGame, DefaultCodeSegLocData>()
-		{
-			#region WCW vs. nWo World Tour
-			#endregion
-
-			{
-				SpecificGame.VPW64_NTSC_J,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0xF1AF80, 0x80088000) }, // everything that's not gameplay
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0xF6D170, 0x80088000) }, // gameplay
-				})
-			},
-
-			#region WCW/nWo Revenge
-			{
-				SpecificGame.Revenge_NTSC_U,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x3C770, 0x80090000) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x834A0, 0x80090000) },
-				})
-			},
-
-			{
-				SpecificGame.Revenge_PAL,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x39AA0, 0x80090000) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x80A30, 0x80090000) },
-				})
-			},
-			#endregion
-
-			#region WWF WrestleMania 2000
-			{
-				SpecificGame.WM2K_NTSC_U,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x4C160, 0x800E1B90) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x73390, 0x8011C900) },
-					{ "CodeSeg2", new CodeSegmentLocationEntry(0x809D0, 0x8011C900) },
-					{ "CodeSeg3", new CodeSegmentLocationEntry(0xD2720, 0x800E1B90) },
-				})
-			},
-
-			{
-				SpecificGame.WM2K_PAL,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x4C160, 0x800E1B90) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x733B0, 0x8011C920) },
-					{ "CodeSeg2", new CodeSegmentLocationEntry(0x809F0, 0x8011C920) },
-					{ "CodeSeg3", new CodeSegmentLocationEntry(0xD2740, 0x800E1B90) },
-				})
-			},
-
-			{
-				SpecificGame.WM2K_NTSC_J,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x49BB0, 0x800DFEE0) },
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x6E120, 0x80117F90) },
-					{ "CodeSeg2", new CodeSegmentLocationEntry(0x7B730, 0x80117F90) },
-					{ "CodeSeg3", new CodeSegmentLocationEntry(0xC21C0, 0x800DFEE0) },
-				})
-			},
-			#endregion
-
-			{
-				SpecificGame.VPW2_NTSC_J,
-				new DefaultCodeSegLocData(new Dictionary<string, CodeSegmentLocationEntry>(){
-					{ "CodeSeg0", new CodeSegmentLocationEntry(0x04BF40, 0x800E6AF0) }, // menus 1
-					{ "CodeSeg1", new CodeSegmentLocationEntry(0x071A90, 0x80119450) }, // game intro, ending, cutscenes
-					{ "CodeSeg2", new CodeSegmentLocationEntry(0x084710, 0x80119450) }, // menus 2
-					{ "CodeSeg3", new CodeSegmentLocationEntry(0x0E11A0, 0x800E6AF0) }  // gameplay
-				})
-			},
-
-			#region WWF No Mercy
-			#endregion
 		};
 		#endregion
 
