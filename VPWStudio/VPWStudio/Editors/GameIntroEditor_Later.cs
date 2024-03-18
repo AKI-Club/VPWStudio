@@ -349,7 +349,7 @@ namespace VPWStudio
 		{
 			if (dgvSequence.SelectedCells.Count <= 0)
 			{
-				tsslblCurAddressImg.Text = "No Seq. cell selected";
+				tsslblCurAddressSeq.Text = "No Seq. cell selected";
 			}
 			else
 			{
