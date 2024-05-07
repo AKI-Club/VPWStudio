@@ -192,8 +192,7 @@ namespace VPWStudio
 			else
 			{
 				Program.InfoMessageBox("Location data not found; using hardcoded offsets and lengths instead.");
-				// fallback to hardcoded data (todo: NOT VPW2's!)
-
+				// fallback to hardcoded data
 				romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["DefaultFace_FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
 				DefaultFaceDisplacement_FacialHair = romReader.ReadBytes(NumFaces[Program.CurrentProject.Settings.BaseGame]);
 
@@ -203,6 +202,7 @@ namespace VPWStudio
 				romStream.Seek(DefaultGameData.DefaultLocations[Program.CurrentProject.Settings.GameType].Locations["FacialHair_VertDisplacement"].Offset, SeekOrigin.Begin);
 				Displacement_FacialHair = romReader.ReadBytes(32);
 
+				// todo: fix up these hardcoded VPW2 addresses
 				romStream.Seek(0x46CD8, SeekOrigin.Begin);
 				Displacement_Paint = romReader.ReadBytes(32);
 
