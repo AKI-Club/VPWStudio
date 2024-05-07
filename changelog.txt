@@ -2,9 +2,36 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 34 (202x/yy/zz)
+Pre-Alpha Preview 35 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 34 (2024/05/06)
+---------------------------------
+- Added ArchiveFileDB, which documents the files in AkiArchives, similar to how
+  the FileTableDB works. Only valid for WCW/nWo Revenge and later.
+
+- [AkiArchive Viewer] Now displays File Type and Comment (if available) when
+  selecting an item.
+
+- [AkiArchive Viewer] Suggests a relevant file extension when exporting a file
+  if the File Type is available.
+
+- [Font Dialog] Added file offset for the selected character to the output textbox.
+
+- [File Table Dialog] Renamed "Export Raw" to "Export LZSS".
+
+- [File Table Dialog] Added PNG Export for AkiTexture files via context menu.
+
+- [No Mercy Default Costume Editor] Fixed a bug regarding Left Elbowpad's values.
+
+- [Game Intro "Editor"] Added status bar showing ROM locations of selected cells.
+
+- [FileTableDB] Decently large update to VPW2 FileTableDB (as required for
+  some other work I'm doing), and a smaller update to the WM2K FileTableDB.
+
+  To update your project, open the File Table dialog, then choose
+  Database → Reload File Table Database.
 
 Pre-Alpha Preview 33 (2023/12/06)
 ---------------------------------
