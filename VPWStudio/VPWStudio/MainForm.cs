@@ -956,7 +956,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Arena dialog not yet designed.");
+			Program.ErrorMessageBox("The Arena dialog has not been designed or implemented.\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1010,7 +1010,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					Program.ErrorMessageBox("Championships dialog not yet designed for this game.");
+					Program.ErrorMessageBox("Championships dialog not yet designed for this game.\nUnless you are a programmer, you can not fix this.");
 					break;
 			}
 		}
@@ -1079,7 +1079,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					Program.ErrorMessageBox(String.Format("Costumes dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
+					Program.ErrorMessageBox(String.Format("Costumes dialog not yet designed for {0}.\nUnless you are a programmer, you can not fix this.", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
@@ -1098,7 +1098,7 @@ namespace VPWStudio
 						Editors.VPW2.DemoMatch_VPW2 demoMatchEd = new Editors.VPW2.DemoMatch_VPW2();
 						if (demoMatchEd.ShowDialog() == DialogResult.OK)
 						{
-							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+							Program.ErrorMessageBox("Data does not get saved yet, sorry\nUnless you are a programmer, you can not fix this.");
 						}
 					}
 					break;
@@ -1108,13 +1108,13 @@ namespace VPWStudio
 						Editors.NoMercy.DemoMatch_NoMercy demoMatchEd = new Editors.NoMercy.DemoMatch_NoMercy();
 						if (demoMatchEd.ShowDialog() == DialogResult.OK)
 						{
-							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+							Program.ErrorMessageBox("Data does not get saved yet, sorry\nUnless you are a programmer, you can not fix this.");
 						}
 					}
 					break;
 
 				default:
-					Program.ErrorMessageBox("Demo match locations for games before VPW2 may not even exist... The data has yet to be found, in any case.");
+					Program.ErrorMessageBox("Demo match locations for games before VPW2 may not even exist... The data has yet to be found, in any case.\nUnless you are a programmer, you can not fix this.");
 					break;
 			}
 		}
@@ -1163,7 +1163,7 @@ namespace VPWStudio
 
 			if (!IntroEditorSupported.Contains(Program.CurrentProject.Settings.BaseGame))
 			{
-				MessageBox.Show("Game Intro Editor only \"works\" for Revenge and later.", "Game Intro Editor");
+				MessageBox.Show("Game Intro Editor only \"works\" for Revenge and later.\nUnless you are a programmer, you can not fix this.", "Game Intro Editor");
 				return;
 			}
 
@@ -1180,7 +1180,7 @@ namespace VPWStudio
 				{
 					// update intro data
 					// ...wait a minute, there's currently no OK or Cancel buttons on this form!
-					Program.ErrorMessageBox("Editing/writeback not implemented yet");
+					Program.ErrorMessageBox("Editing/writeback not implemented yet\nUnless you are a programmer, you can not fix this.");
 				}
 			}
 			else
@@ -1194,7 +1194,7 @@ namespace VPWStudio
 				if (GameIntroEditor_Later.ShowDialog() == DialogResult.OK)
 				{
 					// update intro data
-					Program.ErrorMessageBox("Editing/writeback not implemented yet");
+					Program.ErrorMessageBox("Editing/writeback not implemented yet\nUnless you are a programmer, you can not fix this.");
 				}
 			}
 		}
@@ -1213,7 +1213,7 @@ namespace VPWStudio
 						Editors.WM2K.Ruleset_WM2K rules = new Editors.WM2K.Ruleset_WM2K();
 						if (rules.ShowDialog() == DialogResult.OK)
 						{
-							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+							Program.ErrorMessageBox("Data does not get saved yet, sorry\nUnless you are a programmer, you can not fix this.");
 						}
 					}
 					break;
@@ -1223,7 +1223,7 @@ namespace VPWStudio
 						Editors.VPW2.Ruleset_VPW2 rules = new Editors.VPW2.Ruleset_VPW2();
 						if (rules.ShowDialog() == DialogResult.OK)
 						{
-							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+							Program.ErrorMessageBox("Data does not get saved yet, sorry\nUnless you are a programmer, you can not fix this.");
 						}
 					}
 					break;
@@ -1233,13 +1233,13 @@ namespace VPWStudio
 						Editors.NoMercy.Ruleset_NoMercy rules = new Editors.NoMercy.Ruleset_NoMercy();
 						if (rules.ShowDialog() == DialogResult.OK)
 						{
-							Program.ErrorMessageBox("Data does not get saved yet, sorry");
+							Program.ErrorMessageBox("Data does not get saved yet, sorry\nUnless you are a programmer, you can not fix this.");
 						}
 					}
 					break;
 
 				default:
-					Program.ErrorMessageBox(String.Format("Ruleset data needs to be found (or re-found) for {0}.", Program.CurrentProject.Settings.BaseGame));
+					Program.ErrorMessageBox(String.Format("Ruleset data needs to be found (or re-found) for {0}.\nUnless you are a programmer, you can not fix this.", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
@@ -1254,7 +1254,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Menu dialog not yet designed.");
+			Program.ErrorMessageBox("Menu dialog not yet designed.\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1267,7 +1267,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Moves dialog not yet designed.\nConsidering that moves consist of many parts, this is going to take a while.");
+			Program.ErrorMessageBox("Moves dialog not yet designed.\nConsidering that moves consist of many parts, this is going to take a while.\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1280,7 +1280,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Sound/Music dialog not yet designed.");
+			Program.ErrorMessageBox("Sound/Music dialog not yet designed.\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1523,7 +1523,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					Program.ErrorMessageBox(String.Format("Stables dialog not yet designed for {0}.", Program.CurrentProject.Settings.BaseGame));
+					Program.ErrorMessageBox(String.Format("Stables dialog not yet designed for {0}.\nUnless you are a programmer, you can not fix this.", Program.CurrentProject.Settings.BaseGame));
 					break;
 			}
 		}
@@ -1541,17 +1541,17 @@ namespace VPWStudio
 			switch (Program.CurrentProject.Settings.BaseGame)
 			{
 				case VPWGames.WM2K:
-					Program.ErrorMessageBox("Not implemented yet, but this will be similar to the VPW2 editor, so it will exist sooner rather than later.");
+					Program.ErrorMessageBox("Not implemented yet, but this will be similar to the VPW2 editor, so it will exist sooner rather than later.\nUnless you are a programmer, you can not fix this.");
 					break;
 				case VPWGames.VPW2:
 					Editors.VPW2.StoryMode_VPW2 sme = new Editors.VPW2.StoryMode_VPW2();
 					sme.ShowDialog();
 					break;
 				case VPWGames.NoMercy:
-					Program.ErrorMessageBox("No Mercy Story Mode Dialog will take some time, since the Story Mode is a lot more complex.");
+					Program.ErrorMessageBox("No Mercy Story Mode Dialog will take some time, since the Story Mode is a lot more complex.\nUnless you are a programmer, you can not fix this.");
 					break;
 				default:
-					Program.ErrorMessageBox("Story mode dialogs not yet designed for non-VPW2 games.");
+					Program.ErrorMessageBox("Story mode dialogs not yet designed for non-VPW2 games.\nUnless you are a programmer, you can not fix this.");
 					break;
 			}
 		}
@@ -1595,7 +1595,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("need to design titantron dialog");
+			Program.ErrorMessageBox("need to design titantron dialog\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1608,7 +1608,7 @@ namespace VPWStudio
 				return;
 			}
 
-			Program.ErrorMessageBox("Weapons dialog not yet designed.");
+			Program.ErrorMessageBox("Weapons dialog not yet designed.\nUnless you are a programmer, you can not fix this.");
 		}
 
 		/// <summary>
@@ -1842,7 +1842,7 @@ namespace VPWStudio
 					break;
 
 				default:
-					Program.ErrorMessageBox(String.Format("Wrestler definition editor not implemented for {0} yet.", Program.CurrentProject.Settings.BaseGame.ToString()));
+					Program.ErrorMessageBox(String.Format("Wrestler definition editor not implemented for {0} yet.\nUnless you are a programmer, you can not fix this.", Program.CurrentProject.Settings.BaseGame.ToString()));
 					break;
 			}
 		}
