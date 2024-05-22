@@ -129,33 +129,23 @@ namespace VPWStudio
 					// erase old comment
 					AnyChangesSubmitted = true;
 					Entries[i].ProjectSpecificComment = String.Empty;
-
 				}
 
 				// replace path
-				if (dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value == null)
-				{
-					if (!String.IsNullOrEmpty(Entries[i].ReplaceFilePath))
-					{
-						AnyChangesSubmitted = true;
-						Entries[i].ReplaceFilePath = string.Empty;
-					}
-				}
-				else
+				if (dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value != null)
 				{
 					string newPath = dgvEditEntries.Rows[i].Cells[COLUMN_REPLACEFILE].Value.ToString();
 					if (newPath != Entries[i].ReplaceFilePath)
 					{
 						AnyChangesSubmitted = true;
-						if (newPath == null)
-						{
-							Entries[i].ReplaceFilePath = string.Empty;
-						}
-						else
-						{
-							Entries[i].ReplaceFilePath = Program.ShortenAbsolutePath(newPath);
-						}
+						Entries[i].ReplaceFilePath = Program.ShortenAbsolutePath(newPath);
 					}
+				}
+				else
+				{
+					// erase old path
+					AnyChangesSubmitted = true;
+					Entries[i].ReplaceFilePath = string.Empty;
 				}
 			}
 
