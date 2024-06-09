@@ -2,9 +2,22 @@ VPW Studio End User License Agreement
 
 By downloading and using this program, you accept the following terms:
 
-- You will not contact me (freem) privately for technical support regarding this program.
-This includes, but is not limited to, e-mails, private messages, smoke signals,
-pigeongrams, Marconi devices, etc.
+- You will not contact me (freem) *privately* for technical support regarding
+this program. This includes, but is not limited to, e-mails, private messages,
+smoke signals, pigeongrams, Marconi devices, etc.
+
+It is important to note that you are able to ask questions in *public* spaces,
+such as (but not limited to):
+ - the Discussions page on GitHub | https://github.com/AKI-Club/VPWStudio/discussions
+ - the VPW2 freem Edition Discord
+ - AKI Live messageboard  | https://akilive.boards.net/
+ - VPW2 Dojo messageboard | https://www.tapatalk.com/groups/vpw2dojo/
+
+This is so other people can learn from your questions, and also so I don't have
+to repeat myself (as much).
+
+(Yes, I know that Discord is not really a viable solution for long-term information
+storage.)
 
 - You will make a best faith attempt to read and understand the included documentation.
 If the documentation is lacking, that's on me, not you.
