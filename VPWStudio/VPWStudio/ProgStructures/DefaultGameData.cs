@@ -538,6 +538,9 @@ namespace VPWStudio
 				SpecificGame.NoMercy_Proto_NTSC_July2000,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
 				{
+					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x40C94, 0) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
@@ -548,6 +551,9 @@ namespace VPWStudio
 				SpecificGame.NoMercy_Proto_NTSC_August2000,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
 				{
+					// data defs
+					{ "WrestlerDefs", new DefaultLocationDataEntry(0x40C94, 0) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
@@ -1315,6 +1321,7 @@ namespace VPWStudio
 		/// Number of Wrestlers defined in each game.
 		/// </summary>
 		/// This is not as consistent as I'd like, since some games have a cruiserweight-only roster.
+		/// XXX: This does not properly handle the WWF No Mercy prototypes.
 		public static Dictionary<VPWGames, int> WrestlerCount = new Dictionary<VPWGames, int>()
 		{
 			// Notice! These two skip the duplicate cruiserweight-only definitions:
