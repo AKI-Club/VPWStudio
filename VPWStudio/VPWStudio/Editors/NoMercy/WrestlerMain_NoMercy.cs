@@ -71,6 +71,12 @@ namespace VPWStudio.Editors.NoMercy
 			romReader.Close();
 
 			PopulateList();
+
+			if (GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].IsPrototype)
+			{
+				nudHeight.Maximum = 1000000;
+				nudWeight.Maximum = 1000000;
+			}
 		}
 
 		#region Load Wrestler Names
@@ -158,14 +164,21 @@ namespace VPWStudio.Editors.NoMercy
 			for (int i = 0; i < WrestlerDefs.Count; i++)
 			{
 				WrestlerDefinition wd = WrestlerDefs[i];
-				if (wd.WrestlerID2 <= 0x40)
+				if (GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].IsPrototype)
 				{
-					int costume = i % 4;
-					lbWrestlers.Items.Add(String.Format("{0:X4}-{1} {2}", wd.WrestlerID4, costume, DefaultNames.Entries[wd.ProfileIndex + 1].Text));
+					lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
 				}
 				else
 				{
-					lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
+					if (wd.WrestlerID2 <= 0x40)
+					{
+						int costume = i % 4;
+						lbWrestlers.Items.Add(String.Format("{0:X4}-{1} {2}", wd.WrestlerID4, costume, DefaultNames.Entries[wd.ProfileIndex + 1].Text));
+					}
+					else
+					{
+						lbWrestlers.Items.Add(String.Format("{0:X4}", wd.WrestlerID4));
+					}
 				}
 			}
 			lbWrestlers.EndUpdate();
