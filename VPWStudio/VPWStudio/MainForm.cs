@@ -244,10 +244,13 @@ namespace VPWStudio
 				// default location file
 				string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
 
-				// xxx hack for WWF No Mercy September 2000 prototype
-				if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+				// xxx: hacks for WWF No Mercy prototypes
+				switch (Program.CurrentProject.Settings.GameType)
 				{
-					lfn = "NoMercy_Sep2000.txt";
+					case SpecificGame.NoMercy_Proto_NTSC_June2000: lfn = "NoMercy_June2000.txt"; break;
+					case SpecificGame.NoMercy_Proto_NTSC_July2000: lfn = "NoMercy_Jul2000.txt"; break;
+					case SpecificGame.NoMercy_Proto_NTSC_August2000: lfn = "NoMercy_Aug2000.txt"; break;
+					case SpecificGame.NoMercy_Proto_NTSC_September2000: lfn = "NoMercy_Sep2000.txt"; break;
 				}
 
 				string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
@@ -480,7 +483,17 @@ namespace VPWStudio
 				BinaryReader br = new BinaryReader(ms);
 				ms.Seek(0x20, SeekOrigin.Begin);
 				byte[] gameName = br.ReadBytes(20);
-				Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
+
+				// xxx hack: Prototype versions of games can have 0x00-filled name data, which makes the XML parser choke
+				// for whatever reason when reading it back.
+				if (gameName[0] == 0)
+				{
+					Program.CurrentProject.Settings.OutputRomInternalName = String.Empty;
+				}
+				else
+				{
+					Program.CurrentProject.Settings.OutputRomInternalName = Encoding.GetEncoding("shift_jis").GetString(gameName, 0, 20);
+				}
 
 				// assume first letter at 0x3B is 'N'
 				ms.Seek(0x3E, SeekOrigin.Begin);
@@ -516,10 +529,13 @@ namespace VPWStudio
 					// load location file based on game name
 					string lfn = GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].GameCode + ".txt";
 
-					// xxx hack for WWF No Mercy September 2000 prototype
-					if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+					// xxx hack for WWF No Mercy prototypes
+					switch (Program.CurrentProject.Settings.GameType)
 					{
-						lfn = "NoMercy_Sep2000.txt";
+						case SpecificGame.NoMercy_Proto_NTSC_June2000:      lfn = "NoMercy_June2000.txt"; break;
+						case SpecificGame.NoMercy_Proto_NTSC_July2000:      lfn = "NoMercy_Jul2000.txt"; break;
+						case SpecificGame.NoMercy_Proto_NTSC_August2000:    lfn = "NoMercy_Aug2000.txt"; break;
+						case SpecificGame.NoMercy_Proto_NTSC_September2000: lfn = "NoMercy_Sep2000.txt"; break;
 					}
 
 					string locPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\LocationFiles\\" + lfn;
