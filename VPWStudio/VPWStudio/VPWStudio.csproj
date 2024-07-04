@@ -1057,6 +1057,9 @@
     <Content Include="FileTableDB\NoMercy_Jul2000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FileTableDB\NoMercy_June2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="FileTableDB\NoMercy_Sep2000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
