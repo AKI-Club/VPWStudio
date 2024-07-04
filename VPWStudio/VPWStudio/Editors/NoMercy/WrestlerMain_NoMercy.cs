@@ -136,6 +136,14 @@ namespace VPWStudio.Editors.NoMercy
 				br.BaseStream.Seek(offset, SeekOrigin.Begin);
 			}
 
+
+			// magic number 0x25 represents:
+			// - 18 edit wrestlers on cartridge
+			// - 18 edit wrestlers on controller pak
+			// - 1 No Mercy Game Boy Color wrestler slot
+
+			// xxx: prototype versions do not split out each costume into a separate entry (the *4 in the below equation);
+			// a few characters have duplicate entries in the July and August builds.
 			for (int i = 0; i < (DefaultGameData.WrestlerCount[VPWGames.NoMercy] * 4) + 0x25; i++)
 			{
 				WrestlerDefinition wdef = new WrestlerDefinition(br);
