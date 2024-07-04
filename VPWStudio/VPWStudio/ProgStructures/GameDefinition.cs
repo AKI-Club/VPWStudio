@@ -218,6 +218,11 @@ namespace VPWStudio
 		/// Region of game release.
 		/// </summary>
 		public GameRegion Region;
+
+		/// <summary>
+		/// Is this a prototype release?
+		/// </summary>
+		public bool IsPrototype;
 		#endregion
 
 		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, string _codeName, GameRegion _region)
@@ -228,15 +233,17 @@ namespace VPWStudio
 			GameVersion = 0;
 			GameCode = _codeName;
 			Region = _region;
+			IsPrototype = false;
 		}
 
-		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, byte _ver, string _codeName, GameRegion _region){
+		public GameDefinition(VPWGames _baseGame, SpecificGame _specific, PlatformType _console, byte _ver, string _codeName, GameRegion _region, bool _proto){
 			BaseGame = _baseGame;
 			GameType = _specific;
 			TargetConsole = _console;
 			GameVersion = _ver;
 			GameCode = _codeName;
 			Region = _region;
+			IsPrototype = _proto;
 		}
 	}
 
@@ -250,90 +257,90 @@ namespace VPWStudio
 			#region Nintendo 64
 			{
 				SpecificGame.WorldTour_NTSC_U_10,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, PlatformType.Nintendo64, 0, "NWNE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_10, PlatformType.Nintendo64, 0, "NWNE", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.WorldTour_NTSC_U_11,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, PlatformType.Nintendo64, 1, "NWNE-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_NTSC_U_11, PlatformType.Nintendo64, 1, "NWNE-1", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.WorldTour_PAL,
-				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, PlatformType.Nintendo64, 0, "NWNP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WorldTour, SpecificGame.WorldTour_PAL, PlatformType.Nintendo64, 0, "NWNP", GameRegion.Europe, false)
 			},
 			{
 				SpecificGame.VPW64_NTSC_J,
-				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, PlatformType.Nintendo64, 0, "NVPJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW64, SpecificGame.VPW64_NTSC_J, PlatformType.Nintendo64, 0, "NVPJ", GameRegion.Japan, false)
 			},
 			{
 				SpecificGame.Revenge_NTSC_U,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, PlatformType.Nintendo64, 0, "NW2E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_NTSC_U, PlatformType.Nintendo64, 0, "NW2E", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.Revenge_PAL,
-				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, PlatformType.Nintendo64, 0, "NW2P", GameRegion.Europe)
+				new GameDefinition(VPWGames.Revenge, SpecificGame.Revenge_PAL, PlatformType.Nintendo64, 0, "NW2P", GameRegion.Europe, false)
 			},
 			{
 				SpecificGame.WM2K_NTSC_U,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, PlatformType.Nintendo64, 0, "NWXE", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_U, PlatformType.Nintendo64, 0, "NWXE", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.WM2K_NTSC_J,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, PlatformType.Nintendo64, 0, "NWXJ", GameRegion.Japan)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_NTSC_J, PlatformType.Nintendo64, 0, "NWXJ", GameRegion.Japan, false)
 			},
 			{
 				SpecificGame.WM2K_PAL,
-				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, PlatformType.Nintendo64, 0, "NWXP", GameRegion.Europe)
+				new GameDefinition(VPWGames.WM2K, SpecificGame.WM2K_PAL, PlatformType.Nintendo64, 0, "NWXP", GameRegion.Europe, false)
 			},
 			{
 				SpecificGame.VPW2_NTSC_J,
-				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, PlatformType.Nintendo64, 0, "NA2J", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW2, SpecificGame.VPW2_NTSC_J, PlatformType.Nintendo64, 0, "NA2J", GameRegion.Japan, false)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, PlatformType.Nintendo64, 0, "NW4E", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_10, PlatformType.Nintendo64, 0, "NW4E", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.NoMercy_NTSC_U_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, PlatformType.Nintendo64, 1, "NW4E-1", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_NTSC_U_11, PlatformType.Nintendo64, 1, "NW4E-1", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.NoMercy_PAL_10,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, PlatformType.Nintendo64, 0, "NW4P", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_10, PlatformType.Nintendo64, 0, "NW4P", GameRegion.Europe, false)
 			},
 			{
 				SpecificGame.NoMercy_PAL_11,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1, "NW4P-1", GameRegion.Europe)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1, "NW4P-1", GameRegion.Europe, false)
 			},
 			{
 				SpecificGame.NoMercy_Proto_NTSC_June2000,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_June2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_June2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
 			},
 			{
 				SpecificGame.NoMercy_Proto_NTSC_July2000,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_July2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_July2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
 			},
 			{
 				SpecificGame.NoMercy_Proto_NTSC_August2000,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_August2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_August2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
 			},
 			{
 				SpecificGame.NoMercy_Proto_NTSC_September2000,
-				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_September2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset)
+				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_September2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
 			},
 			#endregion
 
 			#region PlayStation
 			{
 				SpecificGame.VPW_NTSC_J,
-				new GameDefinition(VPWGames.VPW, SpecificGame.VPW_NTSC_J, PlatformType.PlayStation1, 0, "SLPS-00449", GameRegion.Japan)
+				new GameDefinition(VPWGames.VPW, SpecificGame.VPW_NTSC_J, PlatformType.PlayStation1, 0, "SLPS-00449", GameRegion.Japan, false)
 			},
 			{
 				SpecificGame.WCWvsWorld_NTSC_U,
-				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_NTSC_U, PlatformType.PlayStation1, 0, "SLUS-00455", GameRegion.NorthAmerica)
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_NTSC_U, PlatformType.PlayStation1, 0, "SLUS-00455", GameRegion.NorthAmerica, false)
 			},
 			{
 				SpecificGame.WCWvsWorld_PAL,
-				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_PAL, PlatformType.PlayStation1, 0, "SLES-00763", GameRegion.Europe)
+				new GameDefinition(VPWGames.WCWvsWorld, SpecificGame.WCWvsWorld_PAL, PlatformType.PlayStation1, 0, "SLES-00763", GameRegion.Europe, false)
 			}
 			#endregion
 		};
