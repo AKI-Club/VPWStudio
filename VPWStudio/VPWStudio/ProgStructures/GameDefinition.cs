@@ -311,10 +311,13 @@ namespace VPWStudio
 				SpecificGame.NoMercy_PAL_11,
 				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_PAL_11, PlatformType.Nintendo64, 1, "NW4P-1", GameRegion.Europe, false)
 			},
+
+			// xxx: June 2000 pre-release has more in common with VPW2 than No Mercy w/r/t some internal structures
 			{
 				SpecificGame.NoMercy_Proto_NTSC_June2000,
 				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_June2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
 			},
+
 			{
 				SpecificGame.NoMercy_Proto_NTSC_July2000,
 				new GameDefinition(VPWGames.NoMercy, SpecificGame.NoMercy_Proto_NTSC_July2000, PlatformType.Nintendo64, 0, "\0\0\0\0", GameRegion.Unset, true)
