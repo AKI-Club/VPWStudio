@@ -1,0 +1,2 @@
+# FileTable database for WWF No Mercy (August 2000 prototype)
+0002=AkiText;Default Character Names

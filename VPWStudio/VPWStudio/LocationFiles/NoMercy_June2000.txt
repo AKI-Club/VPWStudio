@@ -1,0 +1,2 @@
+# N64:WWF No Mercy (NTSC-U, June 2000 E3 prototype)
+#ROM:477A?,4;%SETUPFT_FTLOCATION

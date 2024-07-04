@@ -1051,6 +1051,12 @@
     <Content Include="FileTableDB\NoMercy.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FileTableDB\NoMercy_Aug2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileTableDB\NoMercy_Jul2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="FileTableDB\NoMercy_Sep2000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1075,6 +1081,15 @@
     <Content Include="GameShark.ico" />
     <EmbeddedResource Include="githash.txt" />
     <Content Include="LocationFiles\NA2J.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationFiles\NoMercy_Aug2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationFiles\NoMercy_Jul2000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationFiles\NoMercy_June2000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LocationFiles\NoMercy_Sep2000.txt">
