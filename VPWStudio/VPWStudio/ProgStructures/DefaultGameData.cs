@@ -910,6 +910,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x10F5 },
 					{ SpecificGame.NoMercy_PAL_10, 0x10F5 },
 					{ SpecificGame.NoMercy_PAL_11, 0x10F5 },
+					{ SpecificGame.NoMercy_Proto_NTSC_June2000, 0x0B8F },
 					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x10E2 }
 					#endregion
 				}
@@ -1021,6 +1022,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x02BF },
 					{ SpecificGame.NoMercy_PAL_10, 0x02BF },
 					{ SpecificGame.NoMercy_PAL_11, 0x02BF },
+					{ SpecificGame.NoMercy_Proto_NTSC_June2000, 0x034B },
 					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x02BF },
 					#endregion
 				}
@@ -1045,6 +1047,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 0x01EF },
 					{ SpecificGame.NoMercy_PAL_10, 0x01EF },
 					{ SpecificGame.NoMercy_PAL_11, 0x01EF },
+					{ SpecificGame.NoMercy_Proto_NTSC_June2000, 0x0277 },
 					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 0x01EF },
 					#endregion
 				}
@@ -1061,6 +1064,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 1 },
 					{ SpecificGame.NoMercy_PAL_10, 1 },
 					{ SpecificGame.NoMercy_PAL_11, 1 },
+					{ SpecificGame.NoMercy_Proto_NTSC_June2000, 0x006B },
 					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 1 },
 				}
 			},
@@ -1076,6 +1080,7 @@ namespace VPWStudio
 					{ SpecificGame.NoMercy_NTSC_U_11, 2 },
 					{ SpecificGame.NoMercy_PAL_10, 2 },
 					{ SpecificGame.NoMercy_PAL_11, 2 },
+					{ SpecificGame.NoMercy_Proto_NTSC_June2000, 0x006C },
 					{ SpecificGame.NoMercy_Proto_NTSC_September2000, 2 },
 				}
 			},
