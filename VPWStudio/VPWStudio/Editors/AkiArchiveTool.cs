@@ -133,12 +133,19 @@ namespace VPWStudio
 				// archive loaded from filetable
 				if (Program.AkiArchiveFileDB != null)
 				{
-					if (Program.AkiArchiveFileDB.Entries[FileID].Count > 0 && lbFiles.SelectedIndex < Program.AkiArchiveFileDB.Entries[FileID].Count)
+					if (Program.AkiArchiveFileDB.Entries.ContainsKey(FileID))
 					{
-						if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+						if (Program.AkiArchiveFileDB.Entries[FileID].Count > 0 && lbFiles.SelectedIndex < Program.AkiArchiveFileDB.Entries[FileID].Count)
 						{
-							sfd.FileName = String.Format("{0:X4}-{1}{2}", FileID, lbFiles.SelectedIndex,
-								FileTypeInfo.DefaultFileTypeExtensions[Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex].FileType]);
+							if (Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex] != null)
+							{
+								sfd.FileName = String.Format("{0:X4}-{1}{2}", FileID, lbFiles.SelectedIndex,
+									FileTypeInfo.DefaultFileTypeExtensions[Program.AkiArchiveFileDB.Entries[FileID][lbFiles.SelectedIndex].FileType]);
+							}
+							else
+							{
+								sfd.FileName = String.Format("{0:X4}-{1}.bin", FileID, lbFiles.SelectedIndex);
+							}
 						}
 						else
 						{
