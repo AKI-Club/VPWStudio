@@ -527,6 +527,11 @@
 0CC3=Ci8Palette;side of head
 0CC4=Ci8Texture;side of head|p:0CC3
 0CD3=AkiModel;
+0D66=Ci4Palette;
+0D67=Ci4Texture;|p:0D66
+0D68=AkiAnimation;
+1258=AkiAnimation;
+240C=AkiAnimation;
 240D=AkiText;
 240E=AkiText;
 240F=Binary;l_font.bin.c
