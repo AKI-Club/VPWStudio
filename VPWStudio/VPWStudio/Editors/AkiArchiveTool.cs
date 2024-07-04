@@ -189,7 +189,7 @@ namespace VPWStudio
 			InfoStringBuilder.AppendLine(String.Format("Start Offset: 0x{0:X8}", aae.StartAddr));
 			InfoStringBuilder.AppendLine(String.Format("File Size: 0x{0:X8}", aae.Size));
 
-			if (Program.AkiArchiveFileDB != null && Program.AkiArchiveFileDB.Entries.Count > 0)
+			if (Program.AkiArchiveFileDB != null && Program.AkiArchiveFileDB.Entries.ContainsKey(FileID))
 			{
 				if (Program.AkiArchiveFileDB.Entries[FileID].Count > 0 && lbFiles.SelectedIndex < Program.AkiArchiveFileDB.Entries[FileID].Count)
 				{
