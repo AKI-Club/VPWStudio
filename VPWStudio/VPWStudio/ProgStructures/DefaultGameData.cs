@@ -531,6 +531,9 @@ namespace VPWStudio
 				SpecificGame.NoMercy_Proto_NTSC_June2000,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
 				{
+					// filetable-related
+					{ "FirstFile", new DefaultLocationDataEntry(0x128990, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x1138888, 37320) },
 				})
 			},
 
