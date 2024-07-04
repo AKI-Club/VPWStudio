@@ -1927,7 +1927,7 @@ namespace VPWStudio
 			}
 
 			// force pre-release/prototype versions to be unsupported because I don't want to deal with them at the moment
-			if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_September2000)
+			if (GameInformation.GameDefs[Program.CurrentProject.Settings.GameType].IsPrototype)
 			{
 				Program.ErrorMessageBox("Building projects is not supported for pre-release/prototype versions at this time.");
 				return;
