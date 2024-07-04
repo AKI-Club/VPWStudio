@@ -526,6 +526,34 @@ namespace VPWStudio
 					{ "FileTable", new DefaultLocationDataEntry(0x16C3148, 77848) },
 				})
 			},
+
+			{
+				SpecificGame.NoMercy_Proto_NTSC_June2000,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
+				{
+				})
+			},
+
+			{
+				SpecificGame.NoMercy_Proto_NTSC_July2000,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
+				{
+					// filetable-related
+					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
+				})
+			},
+
+			{
+				SpecificGame.NoMercy_Proto_NTSC_August2000,
+				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
+				{
+					// filetable-related
+					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
+					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
+				})
+			},
+
 			{
 				SpecificGame.NoMercy_Proto_NTSC_September2000,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
