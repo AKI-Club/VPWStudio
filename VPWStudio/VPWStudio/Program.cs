@@ -122,7 +122,7 @@ namespace VPWStudio
 			{ SpecificGame.WM2K_NTSC_J, "WM2K-J.txt" },
 
 			// WWF No Mercy (June 2000 E3 prototype)
-			{ SpecificGame.NoMercy_Proto_NTSC_June2000, "NoMercy_Jun2000.txt" },
+			{ SpecificGame.NoMercy_Proto_NTSC_June2000, "NoMercy_June2000.txt" },
 
 			// WWF No Mercy (July 2000 prototype)
 			{ SpecificGame.NoMercy_Proto_NTSC_July2000, "NoMercy_Jul2000.txt" },
@@ -194,8 +194,18 @@ namespace VPWStudio
 
 			string dbFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\ArchiveFileDB\\";
 
-			// xxx: does not handle override cases (No Mercy Sept. 2000 pre-release)
-			dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
+			// xxx: does not handle override cases (No Mercy prototypes)
+			if (GameInformation.GameDefs[CurrentProject.Settings.GameType].IsPrototype)
+			{
+				// todo: figure out how to do this properly
+
+				// XXXXX THIS IS TEMPORARY AND WON'T WORK BUT I DON'T WANT TO CODE THE SOLUTION RIGHT THIS SECOND!!!
+				dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
+			}
+			else
+			{
+				dbFilePath += String.Format("{0}.txt", CurrentProject.Settings.BaseGame.ToString());
+			}
 
 			return dbFilePath;
 		}
