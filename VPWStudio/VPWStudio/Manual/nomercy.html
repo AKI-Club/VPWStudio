@@ -109,8 +109,8 @@ though until all known information is ported over to v1.1, you are recommended
 to use v1.0 in order to take advantage of the community's existing knowledge base.</p>
 
 <h3>Prototype/Pre-Release Versions</h3>
-<p>A few prototype/pre-release versions of WWF No Mercy are known to exist.
-As of December 2022, only one has been dumped and made publicly available.</p>
+<p>Five prototype/pre-release versions of WWF No Mercy are known to exist.
+As of July 2024, four of them have been made publicly available.</p>
 
 <p>Unlike the final versions, VPW Studio's support for the pre-release builds
 is read-only. I do not foresee anyone wanting to build a project off of an
@@ -130,28 +130,28 @@ incomplete game, but having the ability to view and extract its contents is help
 </thead>
 <tbody>
 <tr>
-<td>June 2000 development build</td>
-<td>Earliest known development build</td>
-<td></td>
-<td></td>
-<td></td>
+<td>June 2000 E3 development build</td>
+<td>Earliest known development build; largely built off of Virtual Pro-Wrestling 2.</td>
+<td><code>44572b3ad9a45569331c3b29ba8433fc</code></td>
+<td><code>665d1306c9c6f5f70d3daf97e77ec5891956b7ad</code></td>
+<td><code>7BFEE838</code><br/><code>AAC6603C</code></td>
 </tr>
 <tr>
-<td>July 2000 development build</td>
+<td>July 19, 2000 development build</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><code>42c33d518a4e8266720f1269b46d0a29</code></td>
+<td><code>80645e8769d414cc2cdbffd415127da0dfaf2bf6</code></td>
+<td><code>24784E97</code><br/><code>E0D245DB</code></td>
 </tr>
 <tr>
 <td>August 2000 development build</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><code>de6304ba0a5b0fb0df7a54640d3aa14e</code></td>
+<td><code>914f9409b0ee5e3709f9cd82567352981b19e5f7</code></td>
+<td><code>24784E97</code><br/><code>E0D245DB</code></td>
 </tr>
 <tr>
-<td>September 2000 development build</td>
+<td>September 11, 2000 development build</td>
 <td><a href="https://web.archive.org/web/20230320092431/https://forestillusion.com/2022/wwf-no-mercy-usa-prototype">Released by Forest of Illusion in late 2022</a><br/>Close to final version; still missing some files in filetable</td>
 <td><code>5ce490cf86cfeabf28c19b4c8afc3f24</code></td>
 <td><code>1c2c5969f176a3a781cfc4d8a8e44daf3632ad64</code></td>
@@ -211,6 +211,10 @@ profile editor.</p>
 <th>NTSC-U v1.1</th>
 <th>PAL v1.0</th>
 <th>PAL v1.1</th>
+<th>June 2000 prototype</th>
+<th>July 19, 2000 prototype</th>
+<th>August 2000 prototype</th>
+<th>September 11, 2000 prototype</th>
 </tr>
 </thead>
 <tbody>
@@ -220,6 +224,10 @@ profile editor.</p>
 <td><code>0x70340</code> (strings)<br /><code>0x70C40</code> (pointer table)</td>
 <td><code>0x703B0</code> (strings)<br /><code>0x70CB0</code> (pointer table)</td>
 <td><code>0x70240</code> (strings)<br /><code>0x70B40</code> (pointer table)</td>
+<td><code>0x5BF40</code> (strings)<br /><code>0x5CDA8</code> (pointer table)</td>
+<td><code>0x69CC0</code> (strings)<br /><code>0x6AB78</code> (pointer table)</td>
+<td><code>0x69CC0</code> (strings)<br /><code>0x6AB78</code> (pointer table)</td>
+<td><code>0x702A0</code> (strings)<br /><code>0x70BA0</code> (pointer table)</td>
 </tr>
 </tbody>
 </table>
@@ -236,13 +244,19 @@ Making strings longer requires re-pointing the table, which is a very arduous ta
 to take on manually. The recommended method is to use an assembler; information
 on this is beyond the scope of this manual.</p>
 
-<p>In No Mercy, all of the global strings are ASCII encoded. Some are unused,
-and can be repurposed. <a href="./index.html#TextControlCodes">Text control codes</a>
-are supported, though some are of limited use.</p>
+<p>In released versions of No Mercy, all of the global strings are ASCII encoded.
+Some are unused, and can be repurposed. <a href="./index.html#TextControlCodes">Text
+control codes</a> are supported, though some are of limited use.</p>
+
+<p>Some prototype/pre-release versions of No Mercy also contain Shift-JIS encoded
+text.</p>
 
 <hr />
 
 <h2><a name="WrestlerID">Default Wrestler IDs</a></h2>
+<p>Note: These values are only valid for the released versions of the game.
+Prototype versions have different values.</p>
+
 <table>
 <thead>
 <tr>
@@ -742,6 +756,7 @@ dialog maps to the entries in the default costume data.</p>
 <th>NTSC-U v1.1</th>
 <th>PAL v1.0</th>
 <th>PAL v1.1</th>
+<th>June 2000 Prototype</th>
 </tr>
 </thead>
 <tbody>
@@ -751,6 +766,7 @@ dialog maps to the entries in the default costume data.</p>
 <td><code>0x48384</code></td>
 <td><code>0x48424</code></td>
 <td><code>0x48284</code></td>
+<td><code>0x3CA1C</code></td>
 </tr>
 </tbody>
 </table>
@@ -760,6 +776,11 @@ dialog maps to the entries in the default costume data.</p>
 <li>Offset <code>0x00</code>: Pointer to wrestler definitions for this stable (4 bytes)</li>
 <li>Offset <code>0x04</code>: Stable name index (4 bytes)</li>
 </ul>
+
+<p>(Note: The following paragraphs describe the released versions. The June 2000 prototype
+differs slightly from the below description, only offering 8 wrestlers maximum in
+a stable (like VPW2). Stable names come from a different <code>AkiText</code> file
+(file ID <code>006C</code>).)</p>
 
 <p>Wrestler definitions are given as a list of ID2 values. Stables in WWF No Mercy
 hold up to 9 wrestlers maximum. As this is an odd number of values, three padding
