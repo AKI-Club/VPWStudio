@@ -422,7 +422,9 @@ namespace VPWStudio
 				menuBackgroundReplacementToolStripMenuItem.Visible = false;
 
 				// check if any of the selected items has a replacement file entry
-				// todo: this may be causing lag when selecting a large amount of files
+
+				// todo: this causes lag when selecting a large amount of files
+				// how should this actually be handled?
 				bool hasReplaceFile = false;
 				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
 				{
