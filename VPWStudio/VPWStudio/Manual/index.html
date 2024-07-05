@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.34 (May 6th, 2024)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.34 (July 4th, 2024)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -162,6 +162,7 @@ future projects.</li>
 <li>Virtual Pro-Wrestling 2 freem Edition is not supported, and will not be supported.
 However, some project materials may be released in the future.</li>
 <li>None of the other known AKI ROM hacks are supported.</li>
+<li>Support for prototypes/pre-release versions is read-only.</li>
 </ul>
 
 <hr />
@@ -270,7 +271,8 @@ hack, and vice versa.</p>
 	<td>WWF No Mercy</td>
 	<!--<td>Nintendo 64</td>-->
 	<td>NTSC-U v1.0, NTSC-U v1.1, PAL v1.0, PAL v1.1<hr/>
-	September 2000 prototype/pre-release (Partial read-only support)</td>
+	Partial read-only support for prototypes/pre-releases:<br/>
+	June 2000; July 19, 2000; August 2000; September 11, 2000</td>
 </tr>
 </tbody>
 </table>
@@ -1448,7 +1450,7 @@ to add, remove, or move files around.</p>
 </tr>
 </tbody>
 </table>
-<p>* WWF No Mercy September 2000 pre-release does not support changing files/building projects.</p>
+<p>* Prototype/pre-release versions of WWF No Mercy do not support changing files/building projects.</p>
 
 <img src="./img/filetable-main.png" title="File Table Editor - Main" />
 
@@ -2295,6 +2297,7 @@ the terminally curious.</li>
 <li><strong>param unpack test</strong> &ndash; attempt to test wrestler parameter unpacking. only works properly with vpw2, wm2k, and no mercy. all other N64 AKI games use unpacked parameters.</li>
 <li><strong>string render test</strong> &ndash; eventually this will be used to test string rendering using the available game fonts.</li>
 <li><strong>client test</strong> &ndash; don't use this unless your name is "freem". seriously, it requires other moving parts that I haven't finalized yet.</li>
+<li><strong>code segment test</strong> &ndash; displays code segment information and also provides a "pointer to ROM" address calculator that takes the code sections into account.</li>
 </ul>
 
 <hr class="chapterSplit" />
@@ -2813,7 +2816,31 @@ that VPW Studio supports:</p>
 <td><code>CC8B9863C0E96D1B6A611D6AC2238E38B247EA5D</code></td>
 </tr>
 <tr>
-<th>WWF No Mercy [Sept. 2000 Prototype]</th>
+<th>WWF No Mercy [June 2000 E3 Prototype]</th>
+<td><code>7BFEE838</code></td>
+<td><code>AAC6603C</code></td>
+<td><code>E6DDCA14</code></td>
+<td><code>44572B3AD9A45569331C3B29BA8433FC</code></td>
+<td><code>665D1306C9C6F5F70D3DAF97E77EC5891956B7AD</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [July 19, 2000 Prototype]</th>
+<td><code>24784E97</code></td>
+<td><code>E0D245DB</code></td>
+<td><code>F73FCC5F</code></td>
+<td><code>42C33D518A4E8266720F1269B46D0A29</code></td>
+<td><code>80645E8769D414CC2CDBFFD415127DA0DFAF2BF6</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [August 2000 Prototype]</th>
+<td><code>24784E97</code></td>
+<td><code>E0D245DB</code></td>
+<td><code>275FD3E6</code></td>
+<td><code>DE6304BA0A5B0FB0DF7A54640D3AA14E</code></td>
+<td><code>914F9409B0EE5E3709F9CD82567352981B19E5F7</code></td>
+</tr>
+<tr>
+<th>WWF No Mercy [Sept. 11, 2000 Prototype]</th>
 <td><code>8A0AE9D6</code></td>
 <td><code>CE038A9D</code></td>
 <td><code>A526FF27</code></td>
@@ -2908,6 +2935,7 @@ so remember to put the filenames in the proper order for output.</p>
 <ul>
 <li><strong>Main Programming</strong> &ndash; freem</li>
 <li><strong>Assistance</strong> &ndash; Zoinkity, S.K. Stylez, Keson, jordyad, RetroRandy, Melonbread, WldFb</li>
+<li><strong>Special Thanks</strong> &ndash; Baker64</li>
 </ul>
 
 <p>VPW Studio uses <a href="https://opentk.net/">OpenTK</a> 3 and <a href="https://sourceforge.net/projects/hexbox/">Be.HexBox</a>, both of which are MIT licensed.</p>
