@@ -26,6 +26,7 @@ namespace VPWStudio
 			"jordyad/LIGHTNING",  // pushed me further when I needed it most, providing great info
 			"RetroRandy",         // has provided a lot of No Mercy FileTable updates, among other things (probably the most prolific AKI hacker of the modern era)
 			"Melonbread",         // new (circa 2020-2023) VPW series findings
+			"Baker64",            // for providing the WWF No Mercy prototypes/pre-release versions
 			"(and many others I haven't gotten around to listing yet)"
 		};
 
@@ -42,6 +43,7 @@ namespace VPWStudio
 			"RagDas",
 			"WldFb",
 			"Melly",
+			"G.M. Spectre",
 			"CurdleGames"
 		};
 
