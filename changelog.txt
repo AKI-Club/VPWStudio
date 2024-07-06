@@ -2,9 +2,20 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 35 (202x/yy/zz)
+Pre-Alpha Preview 36 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 35 (2024/07/05)
+---------------------------------
+- [File Table Editor] Fixed some issues regarding editing multiple entries at once.
+
+- Preliminary read-only support for the following game revisions:
+ - WWF No Mercy June 2000 E3 prototype
+ - WWF No Mercy July 2000 prototype
+ - WWF No Mercy August 2000 prototype
+
+  Special thanks to Baker64 for making this possible.
 
 Pre-Alpha Preview 34 (2024/05/06)
 ---------------------------------
