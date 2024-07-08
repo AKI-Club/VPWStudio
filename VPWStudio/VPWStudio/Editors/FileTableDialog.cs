@@ -89,6 +89,9 @@ namespace VPWStudio
 		// xxx: not synced with FileTable_EditMultiEntryInfoDialog
 		protected int MultiEditWindowWidth = 800;
 
+		protected Font regularFont = new Font(FontFamily.GenericSansSerif, 8.25f);
+		protected Font monoFont = new Font(FontFamily.GenericMonospace, 10.0f);
+
 		public FileTableDialog(int focusEntry = 0)
 		{
 			InitializeComponent();
@@ -394,15 +397,13 @@ namespace VPWStudio
 					subitem.BackColor = rowColor;
 				}
 
-				Font regular = new Font(FontFamily.GenericSansSerif, 8.25f);
-				Font mono = new Font(FontFamily.GenericMonospace, 10.0f);
-				lvi.SubItems[FILE_ID_COLUMN].Font = mono;
-				lvi.SubItems[LOCATION_COLUMN].Font = mono;
-				lvi.SubItems[ROM_ADDR_COLUMN].Font = mono;
-				lvi.SubItems[FILE_TYPE_COLUMN].Font = regular;
-				lvi.SubItems[LZSS_COLUMN].Font = regular;
-				lvi.SubItems[COMMENT_COLUMN].Font = regular;
-				lvi.SubItems[PROJECT_COMMENT_COLUMN].Font = regular;
+				lvi.SubItems[FILE_ID_COLUMN].Font = monoFont;
+				lvi.SubItems[LOCATION_COLUMN].Font = monoFont;
+				lvi.SubItems[ROM_ADDR_COLUMN].Font = monoFont;
+				lvi.SubItems[FILE_TYPE_COLUMN].Font = regularFont;
+				lvi.SubItems[LZSS_COLUMN].Font = regularFont;
+				lvi.SubItems[COMMENT_COLUMN].Font = regularFont;
+				lvi.SubItems[PROJECT_COMMENT_COLUMN].Font = regularFont;
 				lvFileList.Items.Add(lvi);
 			}
 			lvFileList.EndUpdate();
