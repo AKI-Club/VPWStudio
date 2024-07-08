@@ -106,6 +106,7 @@ namespace VPWStudio
 			Toki1Entry t = Toki1Entries[index];
 			StringBuilder sb = new StringBuilder();
 
+			sb.AppendLine(String.Format("Toki1 file location: 0x{0:X}", index * Toki1DataLength[Program.CurrentProject.Settings.BaseGame]));
 			sb.AppendLine(String.Format("[0x00] Camera, End of Animation status: 0x{0:X2}", t.Data[0]));
 			sb.AppendLine(String.Format("[0x01]: 0x{0:X2}", t.Data[1]));
 			sb.AppendLine(String.Format("[0x02]: 0x{0:X2}", t.Data[2]));
@@ -143,6 +144,7 @@ namespace VPWStudio
 			Toki1Entry t = Toki1Entries[index];
 			StringBuilder sb = new StringBuilder();
 
+			sb.AppendLine(String.Format("Toki1 file location: 0x{0:X}", index * Toki1DataLength[Program.CurrentProject.Settings.BaseGame]));
 			sb.AppendLine(String.Format("[0x00] Camera, End of Animation status: 0x{0:X2}", t.Data[0]));
 			sb.AppendLine(String.Format("[0x01] Single/Repeating: 0x{0:X2}", t.Data[1]));
 			sb.AppendLine(String.Format("[0x02] 0x{0:X2}", t.Data[2]));
