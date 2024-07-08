@@ -369,6 +369,7 @@ namespace VPWStudio
 
 			lvFileList.BeginUpdate();
 			lvFileList.Items.Clear();
+			Color rowColor;
 			foreach (KeyValuePair<int, FileTableEntry> fte in Program.CurrentProject.ProjectFileTable.Entries)
 			{
 				ListViewItem lvi = new ListViewItem(new string[] {
@@ -382,7 +383,6 @@ namespace VPWStudio
 				});
 				lvi.UseItemStyleForSubItems = false;
 
-				Color rowColor;
 				if (fte.Value.FileID % 2 == 0)
 				{
 					rowColor = (fte.Value.HasReplacementFile()) ? RowColor_ModifiedSecond : RowColor_UnmodifiedSecond;
