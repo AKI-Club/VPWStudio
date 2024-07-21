@@ -531,6 +531,9 @@ namespace VPWStudio
 				SpecificGame.NoMercy_Proto_NTSC_June2000,
 				new DefaultLocationData(new Dictionary<string, DefaultLocationDataEntry>()
 				{
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x3E8F0, 144)},
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x128990, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x1138888, 37320) },
@@ -543,6 +546,9 @@ namespace VPWStudio
 				{
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x40C94, 0) },
+
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
@@ -557,6 +563,9 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x40C94, 0) },
 
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
@@ -569,6 +578,9 @@ namespace VPWStudio
 				{
 					// code changes
 					{ "SetupFT_FTLocation", new DefaultLocationDataEntry(0x46CE, 4) },
+
+					// code seg defs
+					{ "CodeSegDefs", new DefaultLocationDataEntry(0x53AB0, 180)},
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46698, 0) },
