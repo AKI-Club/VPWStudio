@@ -6806,7 +6806,7 @@
 1A95=AkiAnimation;[Stance] ?
 1A96=AkiAnimation;[Stance] Women
 1A97=AkiAnimation;?
-1A98=AkiAnimation;Standing on apron, hands on top rope
+1A98=AkiAnimation;[Stance] Standing on apron, hands on top rope
 1A99=AkiAnimation;[Stance] Holding Head
 1A9A=AkiAnimation;[Stance] Holding Stomach
 1A9B=AkiAnimation;[Stance] Holding Arm 1
