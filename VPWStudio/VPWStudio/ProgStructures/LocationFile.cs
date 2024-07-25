@@ -191,6 +191,11 @@ namespace VPWStudio
 
 			{ "ChampionshipDefs", "$CHAMPIONSHIPDEFS" }, // ROM location of championship definitions
 
+			// arena-related items (may need per-game values)
+			// - object counts
+			// - various pointers
+			// - stage-related data (Revenge through VPW2)
+
 			// WM2K only?
 			{ "TagTeamDefs", "$TAGTEAMDEFS" }, // ROM location of tag team definitions
 
