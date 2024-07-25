@@ -120,7 +120,7 @@ namespace VPWStudio
 			ClientID = 1,
 
 			/// <summary>
-			/// Game identification (product code)
+			/// Game identification (product code and version byte)
 			/// </summary>
 			GameID = 2,
 

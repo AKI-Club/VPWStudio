@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,15 @@ namespace VPWStudio
 		/// </summary>
 		private Socket Connection;
 
+		/// <summary>
+		/// Data to be read/written/whatever.
+		/// </summary>
 		private NetworkStream NetStream;
 
 		private Timer MessageTimer;
+
+		// todo: add some check to make sure the server hasn't disconnected us
+		// todo2: convert this code to use async methods so we don't block the main thread
 
 		public ClientTest()
 		{
@@ -134,12 +141,14 @@ namespace VPWStudio
 
 			// [parse input]
 			// this part sucks, because we have to fuck with multiple substrings of a string
+			List<byte> outData = new List<byte>();
 			for (int i = 0; i < cmdText.Length / 2; i++)
 			{
 				byte data;
 				if (byte.TryParse(cmdText.Substring(i * 2, 2), NumberStyles.HexNumber, null, out data))
 				{
-					tbOutput.Text += string.Format("{0:X2}", data) + Environment.NewLine;
+					tbOutput.Text += string.Format("{0:X2}", data);
+					outData.Add(data);
 				}
 				else
 				{
@@ -150,9 +159,9 @@ namespace VPWStudio
 			tbOutput.Text += Environment.NewLine;
 
 			// ok MAYBE we can send this off
+			NetStream.Write(outData.ToArray(), 0, outData.Count);
 
-			//byte[] tmp = new byte[1] { 0 };
-			//NetStream.Write(tmp, 0, 1);
+			// todo: wait for response
 		}
 
 		private void ClientTest_KeyDown(object sender, KeyEventArgs e)
