@@ -184,6 +184,8 @@ namespace VPWStudio
 		public TestScene3D Test3dDialog = null;
 
 		public StringRenderTest RenderStringTest = null;
+
+		public ClientTest NetClientTest = null;
 		#endregion
 
 		#endregion // children forms
@@ -2887,8 +2889,12 @@ namespace VPWStudio
 
 		private void clientTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ClientTest ct = new ClientTest();
-			ct.ShowDialog();
+			if (NetClientTest == null || NetClientTest.IsDisposed)
+			{
+				NetClientTest = new ClientTest();
+			}
+			NetClientTest.MdiParent = this;
+			NetClientTest.Show();
 		}
 
 		private void codeSegmentTestToolStripMenuItem_Click(object sender, EventArgs e)
