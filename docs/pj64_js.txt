@@ -1,0 +1,273 @@
+VPW Studio and Project64 JavaScript
+===================================
+VPW Studio could be used as a client program for a server running on an emulator
+via scripting support. Currently, this assumes Project64 and JavaScript, but
+other emulators may support the required elements. (e.g. Bizhawk with LuaSockets)
+
+The real question is, what the hell can we provide that would be useful?
+
+- Dumping moves/params
+- Grabbing costume data for default wrestler costume editor
+- Integration with the AKI Animation Editor
+
+this isn't planned for ps1 sorry
+
+Terminology
+-----------
+"Client"
+Synonymous with "controlling program". VPW Studio is planned to be one such program.
+
+"Server"
+Synonymous with "game software". Typically an emulator or USB-connected flashcart.
+
+================================================================================
+Port number is 49999.
+
+This port was previously planned to be used for an update to the old No Mercy
+Music Tool. (note to self: use port 49998 for that project if revived)
+
+================================================================================
+Quick Command TOC
+================================================================================
+0x00 - nop/Ping
+0x01-0xBF - (currently undefined)
+0xC0-0xCD - (reserved)
+0xCE - Information Request (Client -> Emulator)
+ \ 0xCE01 - Emulator Identity
+ \ 0xCE81 - Client Identity (Reply to 0xEC01)
+0xCF-0xD9 - (reserved)
+0xDA - Dump Data Arbitrary
+0xDB - Dump Data Preset
+0xDC - Data Write
+0xDD - (reserved)
+0xDE - (reserved)
+0xDF - Data Force
+0xE0-0xEB - (reserved)
+0xEC - Information Request (Emulator -> Client)
+ \ 0xEC01 - Client Identity
+ \ 0xEC81 - Emulator Identity (Reply to 0xCE01)
+0xED-0xFF (reserved)
+
+================================================================================
+Command 0x00 - nop/Ping
+================================================================================
+No-operation, keep-alive, whatever you want to call it.
+Does nothing of consequence.
+
+================================================================================
+Commands 0xCE, 0xEC - Information Request
+================================================================================
+This can be used to request information from both the client and the server.
+
+0xEC emulator -> client
+0xCE client -> emulator
+
+Side *sending* a command should have top bit of the first parameter clear.
+Side *replying to* a command should have top bit of first parameter set.
+
+Client (VPWS) wants to know about Server (emulator):
+- emulator identity (name, version)
+
+Server (emulator) wants to know about Client (VPWS):
+- client identity
+
+Client (VPWS) wants to know about game running on emulator (Server):
+- game/product code (e.g. NA2J, NW4E)
+- game revision
+- currently loaded code sections
+
+todo: some games are not fully identified with the above
+
+--------------------------------------------------------------------------------
+Client to Emulator: Emulator Identity Command
+--------------------------------------------------------------------------------
+This command is used by the client to determine the emulator the server is
+running on.
+
++------+------+------+
+| 0xCE | 0x01 | 0x?? |
++------+------+------+
+Command EmuID  EIDVal
+
+The Server/Emulator's response will depend on the emulator.
+
+"EIDVal" means "Emulator ID Value", and has the following defined values:
+0x00 - reserved
+0x01 - Project64
+0x02 - Bizhawk
+0x80 - reserved
+0x81 - 64drive USB
+0x82 - Everdrive USB
+0x83 - SC64 USB
+
+top bit essentially means "running on real hardware".
+the game code will need to be modified to support these devices properly.
+
+
+Project64 does not expose a version number, only the JS API version via PJ64_JSAPI_VERSION.
+
+Project64 expected responses:
+------------+------+------+------+------+
+API 1st Ed. | 0xEC | 0x81 | 0x01 | 0x00 | Project64 v2.4 to v3.0x
+API 2nd Ed. | 0xEC | 0x81 | 0x01 | 0x01 | Project64 v4.0 and later
+------------+------+------+------+------+
+            Command EmuID  [PJ64] JS API
+
+
+Bizhawk client.getversion() returns a string.
+
+Bizhawk expected response:
++------+------+------+------------------------+
+| 0xEC | 0x81 | 0x02 | length-prefixed string |
++------+------+------+------------------------+
+Command EmuID  [Bizh] EmuVersion
+
+--------------------------------------------------------------------------------
+Emulator to Client: Client Identity Command
+--------------------------------------------------------------------------------
+This command is used by the server to identify the connected client program.
+
++------+------+
+| 0xEC | 0x01 |
++------+------+
+Command ClientID
+
+The Client's response will depend on the client.
+
+VPW Studio expected response:
++------+--------+------------------------+
+| 0xCE | 0x81   | length-prefixed string |
++------+--------+------------------------+
+Command ClientID ClientVersion
+
+e.g. 20,"VPW Studio v0.0.0.30"
+
+--------------------------------------------------------------------------------
+Client to Emulator: Game Identity Command
+--------------------------------------------------------------------------------
+This command is used by the client to get various game information.
+This includes the product code and version number.
+
++------+------+
+| 0xCE | 0x02 |
++------+------+
+Command GameID
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXX OLDDDDDDD
+
+Emulator expected response:
++------+------+----------------+------+
+| 0xEC | 0x82 | 0x00,0x00,0x00 | 0x00 |
++------+------+----------------+------+
+Command GameID ProductCode     Revision
+
+ProductCode is assumed to always start with 'N', so only the three bytes
+following it are sent.
+
+YYYYYYYYYYYYYYYYYYYYYYYYYYYY NEWWWWWWWWWWWWWW
+some games can not be reasonably identified by product code and revision alone.
+
+other sources of identification:
+- internal name (which can be blank)
+- internal CRC values (which can sometimes match other versions)
+
+--------------------------------------------------------------------------------
+Client to Emulator: Internal ROM Name
+--------------------------------------------------------------------------------
+This command returns the current game's internal ROM name.
+
+Sometimes, you can't rely on the product code to determine the identity of the
+running game.
+
++------+------+
+| 0xCE | 0x03 |
++------+------+
+Command IRName
+
+Emulator expected response:
++------+------+----------------+
+| 0xEC | 0x83 |   (20 bytes)   |
++------+------+----------------+
+Command IRName Internal ROM Name
+
+Internal ROM names are always 20 bytes long.
+Text encoding is either ASCII or Shift-JIS.
+
+================================================================================
+Command 0xDA - Dump Data Arbitrary
+================================================================================
+Dump an arbitrary block of memory.
+
++------+------------+------------+
+| 0xDA | 0x00000000 | 0x00000000 |
++------+------------+------------+
+Command  Address      Length
+
+Arguments:
+- uint32 Address (assumed to be virtual (i.e. in the 80xxxxxx area))
+- uint32 Length
+
+================================================================================
+Command 0xDB - Dump Data Preset
+================================================================================
+Dump a block of memory based on some internal presets.
+
+The presets are meant to include:
+- wrestler movesets
+- wrestler parameters
+- wrestler costume data for default costume editing
+- AKI animtion editor data
+
++------+------+------+
+| 0xDB | 0x00 | 0x00 |
++------+------+------+
+Command Preset Variant
+
+Arguments:
+- byte Preset
+- byte Variant
+
+todo: preset list
+- wm2k params
+- wm2k moveset - normal
+- wm2k moveset - combo?
+- wm2k moveset - shoot?
+- vpw2 params
+- vpw2 moveset - normal
+- vpw2 moveset - combo
+- vpw2 moveset - shoot
+- no mercy params
+- no mercy moveset
+
+================================================================================
+Command 0xDC - Data Write
+================================================================================
+Write data to RAM.
+The write only happens once; this isn't a replacement for GameShark codes.
+
++------+------------+------------+-----+
+| 0xDC | 0x00000000 | 0x00000000 | ... |
++------+------------+------------+-----+
+Command  TargetAddr   Length       Data
+
+================================================================================
+Command 0xDD - Data Read
+================================================================================
+Read data from RAM.
+This is meant for non-dumping purposes.
+
++------+------------+--------+
+| 0xDD | 0x00000000 | 0x0000 |
++------+------------+--------+
+Command  Address      Length
+
+================================================================================
+Command 0xDF - Data Force
+================================================================================
+Continuously write data to RAM.
+This is the intended replacement for GameShark codes.
+
++------+------------+------------+-----+
+| 0xDF | 0x00000000 | 0x00000000 | ... |
++------+------------+------------+-----+
+Command  TargetAddr   Length       Data
