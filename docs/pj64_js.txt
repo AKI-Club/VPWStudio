@@ -20,6 +20,9 @@ Synonymous with "controlling program". VPW Studio is planned to be one such prog
 "Server"
 Synonymous with "game software". Typically an emulator or USB-connected flashcart.
 
+"Emulator"
+Shorthand for "Server".
+
 ================================================================================
 Port number is 49999.
 
@@ -30,12 +33,16 @@ Music Tool. (note to self: use port 49998 for that project if revived)
 Quick Command TOC
 ================================================================================
 0x00 - nop/Ping
+
 0x01-0xBF - (currently undefined)
 0xC0-0xCD - (reserved)
+
 0xCE - Information Request (Client -> Emulator)
  \ 0xCE01 - Emulator Identity
  \ 0xCE81 - Client Identity (Reply to 0xEC01)
+
 0xCF-0xD9 - (reserved)
+
 0xDA - Dump Data Arbitrary
 0xDB - Dump Data Preset
 0xDC - Data Write
@@ -43,9 +50,11 @@ Quick Command TOC
 0xDE - (reserved)
 0xDF - Data Force
 0xE0-0xEB - (reserved)
+
 0xEC - Information Request (Emulator -> Client)
  \ 0xEC01 - Client Identity
  \ 0xEC81 - Emulator Identity (Reply to 0xCE01)
+
 0xED-0xFF (reserved)
 
 ================================================================================
@@ -141,6 +150,7 @@ VPW Studio expected response:
 Command ClientID ClientVersion
 
 e.g. 20,"VPW Studio v0.0.0.30"
+(without quotes)
 
 --------------------------------------------------------------------------------
 Client to Emulator: Game Identity Command
@@ -191,7 +201,29 @@ Emulator expected response:
 Command IRName Internal ROM Name
 
 Internal ROM names are always 20 bytes long.
+Shorter names are padded with spaces (0x20)
 Text encoding is either ASCII or Shift-JIS.
+
+--------------------------------------------------------------------------------
+Client to Emulator: Internal ROM CRCs
+--------------------------------------------------------------------------------
+This command returns the two internal ROM CRCs.
+
+For most situations, these values should be enough to disambiguate ROMs.
+However, this isn't always the case.
+
+Values are found at ROM offset 0x10.
+
++------+------+
+| 0xCE | 0x04 |
++------+------+
+Command IntCRC
+
+Emulator expected response:
++------+------+---------------+
+| 0xEC | 0x84 |   (8 bytes)   |
++------+------+---------------+
+Command IntCRC Internal ROM CRCs
 
 ================================================================================
 Command 0xDA - Dump Data Arbitrary
@@ -216,7 +248,7 @@ The presets are meant to include:
 - wrestler movesets
 - wrestler parameters
 - wrestler costume data for default costume editing
-- AKI animtion editor data
+- AKI animation editor data
 
 +------+------+------+
 | 0xDB | 0x00 | 0x00 |
@@ -227,17 +259,52 @@ Arguments:
 - byte Preset
 - byte Variant
 
-todo: preset list
-- wm2k params
-- wm2k moveset - normal
+--------------------
+VALUES NOT YET FINAL
+
 - wm2k moveset - combo?
 - wm2k moveset - shoot?
-- vpw2 params
-- vpw2 moveset - normal
-- vpw2 moveset - combo
-- vpw2 moveset - shoot
-- no mercy params
-- no mercy moveset
+
+-------+---------+----------------------------------
+Preset | Variant | Explanation
+-------+---------+----------------------------------
+0x00   | 0x00    | N/A, treat as nop
+-------+---------+----------------------------------
+0x01   | 0x00    | WM2K Params P1 (in match)
+0x01   | 0x01    | WM2K Params P2 (in match)
+0x01   | 0x02    | WM2K Params P3 (in match)
+0x01   | 0x03    | WM2K Params P4 (in match)
+0x02   | 0x00    | WM2K Moveset - Normal P1 (in match)
+0x02   | 0x01    | WM2K Moveset - Normal P2 (in match)
+0x02   | 0x02    | WM2K Moveset - Normal P3 (in match)
+0x02   | 0x03    | WM2K Moveset - Normal P4 (in match)
+-------+---------+----------------------------------
+0x03   | 0x00    | VPW2 Params P1 (in match)
+0x03   | 0x01    | VPW2 Params P2 (in match)
+0x03   | 0x02    | VPW2 Params P3 (in match)
+0x03   | 0x03    | VPW2 Params P4 (in match)
+0x04   | 0x00    | VPW2 Moveset - Normal P1 (in match)
+0x04   | 0x01    | VPW2 Moveset - Combo P1 (in match)
+0x04   | 0x02    | VPW2 Moveset - Shoot P1 (in match)
+0x04   | 0x03    | VPW2 Moveset - Normal P2 (in match)
+0x04   | 0x04    | VPW2 Moveset - Combo P2 (in match)
+0x04   | 0x05    | VPW2 Moveset - Shoot P2 (in match)
+0x04   | 0x06    | VPW2 Moveset - Normal P3 (in match)
+0x04   | 0x07    | VPW2 Moveset - Combo P3 (in match)
+0x04   | 0x08    | VPW2 Moveset - Shoot P3 (in match)
+0x04   | 0x09    | VPW2 Moveset - Normal P4 (in match)
+0x04   | 0x0A    | VPW2 Moveset - Combo P4 (in match)
+0x04   | 0x0B    | VPW2 Moveset - Shoot P4 (in match)
+-------+---------+----------------------------------
+0x05   | 0x00    | No Mercy Params P1 (in match)
+0x05   | 0x01    | No Mercy Params P2 (in match)
+0x05   | 0x02    | No Mercy Params P3 (in match)
+0x05   | 0x03    | No Mercy Params P4 (in match)
+0x06   | 0x00    | No Mercy Moveset P1 (in match)
+0x06   | 0x01    | No Mercy Moveset P2 (in match)
+0x06   | 0x02    | No Mercy Moveset P3 (in match)
+0x06   | 0x03    | No Mercy Moveset P4 (in match)
+-------+---------+----------------------------------
 
 ================================================================================
 Command 0xDC - Data Write
