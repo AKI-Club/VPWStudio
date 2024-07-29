@@ -220,6 +220,10 @@ namespace VPWStudio
 			{ "BitPacking_MoveGroup_Wrestling", "$BITPACKING_MOVEGROUP_WRESTLING" },
 			{ "BitPacking_MoveGroup_Combo", "$BITPACKING_MOVEGROUP_COMBO" },
 			{ "BitPacking_MoveGroup_Shoot", "$BITPACKING_MOVEGROUP_SHOOT" },
+
+			// "global text", used in various menus
+			{ "GlobalText_Start", "$GLOBAL_TEXT_START" },
+			{ "GlobalText_Pointers", "$GLOBAL_TEXT_POINTERS" },
 			#endregion
 
 			#region CodeChange
