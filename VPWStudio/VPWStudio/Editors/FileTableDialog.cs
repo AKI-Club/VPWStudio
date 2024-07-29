@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Input;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VPWStudio.GameSpecific;
@@ -429,6 +431,10 @@ namespace VPWStudio
 				bool hasReplaceFile = false;
 				for (int i = 0; i < lvFileList.SelectedItems.Count; i++)
 				{
+					if (hasReplaceFile)
+					{
+						break;
+					}
 					int key = int.Parse(lvFileList.SelectedItems[i].SubItems[FILE_ID_COLUMN].Text, NumberStyles.HexNumber);
 					if (Program.CurrentProject.ProjectFileTable.Entries[key].HasReplacementFile())
 					{
