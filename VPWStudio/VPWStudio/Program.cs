@@ -180,8 +180,17 @@ namespace VPWStudio
 		/*
 		static Dictionary<SpecificGame, string> ArchiveFileDB_Overrides = new Dictionary<SpecificGame, string>()
 		{
+			// WWF No Mercy (June 2000 E3 prototype)
+			{ SpecificGame.NoMercy_Proto_NTSC_June2000, "NoMercy_June2000.txt" },
+
+			// WWF No Mercy (July 2000 prototype)
+			{ SpecificGame.NoMercy_Proto_NTSC_July2000, "NoMercy_Jul2000.txt" },
+
+			// WWF No Mercy (August 2000 prototype)
+			{ SpecificGame.NoMercy_Proto_NTSC_August2000, "NoMercy_Aug2000.txt" },
+
 			// WWF No Mercy (September 2000 prototype)
-			//{ SpecificGame.NoMercy_Proto_NTSC_September2000, "NoMercy_Sep2000.txt" }
+			{ SpecificGame.NoMercy_Proto_NTSC_September2000, "NoMercy_Sep2000.txt" }
 		};
 		*/
 
