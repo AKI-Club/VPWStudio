@@ -33,10 +33,22 @@ namespace VPWStudio
 		/// </summary>
 		private UInt32 FirstPointer = 0;
 
-		public GlobalTextEditor()
+		/// <summary>
+		/// Global Text Editor
+		/// </summary>
+		/// <param name="selIndex">Optional index to select.</param>
+		public GlobalTextEditor(int selIndex = -1)
 		{
 			InitializeComponent();
 			LoadEntries();
+			if (selIndex != -1)
+			{
+				cbEntriesTemp.SelectedIndex = Math.Min(selIndex,cbEntriesTemp.Items.Count);
+			}
+			else
+			{
+				cbEntriesTemp.SelectedIndex = 0;
+			}
 		}
 
 		private void LoadEntries()
@@ -130,10 +142,9 @@ namespace VPWStudio
 			cbEntriesTemp.BeginUpdate();
 			for (int i = 0; i < Pointers.Count; i++)
 			{
-				cbEntriesTemp.Items.Add(String.Format("{0:X8}", Pointers[i]));
+				cbEntriesTemp.Items.Add(String.Format("[0x{1:X4}] {0:X8}", Pointers[i], i));
 			}
 			cbEntriesTemp.EndUpdate();
-			cbEntriesTemp.SelectedIndex = 0;
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)

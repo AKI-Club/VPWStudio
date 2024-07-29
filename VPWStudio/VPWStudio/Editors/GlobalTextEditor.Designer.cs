@@ -76,10 +76,11 @@
 			this.cbEntriesTemp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbEntriesTemp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbEntriesTemp.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbEntriesTemp.FormattingEnabled = true;
 			this.cbEntriesTemp.Location = new System.Drawing.Point(49, 12);
 			this.cbEntriesTemp.Name = "cbEntriesTemp";
-			this.cbEntriesTemp.Size = new System.Drawing.Size(435, 21);
+			this.cbEntriesTemp.Size = new System.Drawing.Size(435, 23);
 			this.cbEntriesTemp.TabIndex = 1;
 			this.cbEntriesTemp.SelectedIndexChanged += new System.EventHandler(this.cbEntriesTemp_SelectedIndexChanged);
 			// 
