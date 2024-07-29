@@ -275,6 +275,9 @@ namespace VPWStudio
 
 					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA04, 396) },
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69550, 3080) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A158, 1416) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AA0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x11778BE, 41248) },
@@ -312,6 +315,9 @@ namespace VPWStudio
 
 					{ "TagTeamDefs", new DefaultLocationDataEntry(0x67794, 396) },
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x63CA0, 3064) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x64898, 1416) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x12C070, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x116F3C2, 41480) },
@@ -348,6 +354,9 @@ namespace VPWStudio
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B18C, 96) },
 
 					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA24, 396) },
+
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69570, 3080) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A178, 1416) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x144AC0, 0) },
@@ -399,6 +408,9 @@ namespace VPWStudio
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
 					{ "IntroDefs_Later_Sequence", new DefaultLocationDataEntry(0x7E098, 2292) },
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69650, 3728) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A4E0, 1240) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x152DF0, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x1310F40, 52364) },
@@ -423,6 +435,9 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44F84, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
+
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x703B0, 2304) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70CB0, 1012) },
 
 					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73898, 696) },
 
@@ -454,6 +469,9 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44270, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4489C, 1600) },
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x70340, 2304) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70C40, 1012) },
+
 					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73828, 696) },
 
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80348, 330) },
@@ -483,6 +501,9 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44F84, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
+
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x703B0, 2304) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70CB0, 1012) },
 
 					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73898, 696) },
 
@@ -514,6 +535,9 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44170, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4479C, 1600) },
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x70240, 2304) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70B40, 1012) },
+
 					{ "DefaultRulesets", new DefaultLocationDataEntry(0x73728, 696) },
 
 					{ "AttractModeDemoMatches", new DefaultLocationDataEntry(0x80248, 330) },
@@ -534,6 +558,9 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x3E8F0, 144)},
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x5BF40, 3688) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x5CDA8, 1252) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x128990, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x1138888, 37320) },
@@ -550,6 +577,9 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
 
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69CC0, 3768) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6AB78, 1296) },
+
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
 					{ "FileTable", new DefaultLocationDataEntry(0x13F5378, 64504) },
@@ -565,6 +595,9 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
+
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69CC0, 3768) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6AB78, 1296) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x16B790, 0) },
@@ -584,6 +617,9 @@ namespace VPWStudio
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46698, 0) },
+
+					{ "GlobalText_Start", new DefaultLocationDataEntry(0x702A0, 2304) },
+					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70BA0, 1012) },
 
 					// filetable-related
 					{ "FirstFile", new DefaultLocationDataEntry(0x1BB930, 0) },
