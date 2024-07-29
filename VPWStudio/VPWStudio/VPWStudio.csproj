@@ -169,6 +169,12 @@
     <Compile Include="Editors\GameIntroEditor_Later.Designer.cs">
       <DependentUpon>GameIntroEditor_Later.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\GlobalTextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\GlobalTextEditor.Designer.cs">
+      <DependentUpon>GlobalTextEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editors\NoMercy\DemoMatch_NoMercy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -849,6 +855,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\GameIntroEditor_Later.resx">
       <DependentUpon>GameIntroEditor_Later.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\GlobalTextEditor.resx">
+      <DependentUpon>GlobalTextEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\NoMercy\DefaultCostume_NoMercy.resx">
       <DependentUpon>DefaultCostume_NoMercy.cs</DependentUpon>

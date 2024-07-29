@@ -1864,6 +1864,30 @@ namespace VPWStudio
 					break;
 			}
 		}
+
+		/// <summary>
+		/// Global Text editor
+		/// </summary>
+		private void globalTextToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				return;
+			}
+
+			// this is only valid for WM2K and later
+			if (Program.CurrentProject.Settings.BaseGame <= VPWGames.Revenge)
+			{
+				Program.ErrorMessageBox("Global Text editor not available for this game.");
+				return;
+			}
+
+			GlobalTextEditor gtEd = new GlobalTextEditor();
+			if (gtEd.ShowDialog() == DialogResult.OK)
+			{
+				Program.ErrorMessageBox("Global Text writeback not implemented yet.\nUnless you are a programmer, you can not fix this.");
+			}
+		}
 		#endregion
 
 		#region Project Build section
@@ -2499,6 +2523,11 @@ namespace VPWStudio
 				bool showTagTeams = (bg == VPWGames.WM2K);
 				tagTeamsToolStripMenuItem.Enabled = showTagTeams;
 				tagTeamsToolStripMenuItem.Visible = showTagTeams;
+
+				// Global Text is in WM2K and later
+				bool showGlobalText = (bg >= VPWGames.WM2K);
+				globalTextToolStripMenuItem.Enabled = showGlobalText;
+				globalTextToolStripMenuItem.Visible = showGlobalText;
 			}
 		}
 
@@ -2923,7 +2952,5 @@ namespace VPWStudio
 				projectPropertiesToolStripMenuItem_Click(sender, e);
 			}
 		}
-
-		
 	}
 }

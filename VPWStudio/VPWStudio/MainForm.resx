@@ -239,6 +239,12 @@
   <data name="gameIntroductionToolStripMenuItem.Text" xml:space="preserve">
     <value>Game &amp;Introduction</value>
   </data>
+  <data name="globalTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="globalTextToolStripMenuItem.Text" xml:space="preserve">
+    <value>Global Text</value>
+  </data>
   <data name="matchRulesetsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -2194,6 +2200,12 @@
   <data name="&gt;&gt;clientTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;codeSegmentTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>codeSegmentTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;codeSegmentTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tssLabelCurFile.Name" xml:space="preserve">
     <value>tssLabelCurFile</value>
   </data>
@@ -2206,10 +2218,10 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;codeSegmentTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>codeSegmentTestToolStripMenuItem</value>
+  <data name="&gt;&gt;globalTextToolStripMenuItem.Name" xml:space="preserve">
+    <value>globalTextToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;codeSegmentTestToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;globalTextToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
