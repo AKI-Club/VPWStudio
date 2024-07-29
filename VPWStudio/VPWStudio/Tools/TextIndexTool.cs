@@ -153,11 +153,14 @@ namespace VPWStudio.Tools
 
 		protected int TargetIndex;
 
+		protected bool CurIndexIsGlobalText;
+
 		public TextIndexTool()
 		{
 			InitializeComponent();
 			AkiTextFileID = 0;
 			TargetIndex = 0;
+			CurIndexIsGlobalText = false;
 
 			if (Program.CurrentProject != null)
 			{
@@ -203,7 +206,9 @@ namespace VPWStudio.Tools
 			{
 				lblRegionValue.Text = "Global Text";
 				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, VPW2_POINTERS_START_RUNTIME + (outValue * 4));
-				btnLaunchTextEditor.Enabled = false;
+				btnLaunchTextEditor.Enabled = true;
+				CurIndexIsGlobalText = true;
+				TargetIndex = (int)outValue;
 				return true;
 			}
 			else
@@ -217,6 +222,7 @@ namespace VPWStudio.Tools
 						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
 						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
 						btnLaunchTextEditor.Enabled = true;
+						CurIndexIsGlobalText = false;
 						return true;
 					}
 				}
@@ -239,7 +245,9 @@ namespace VPWStudio.Tools
 			{
 				lblRegionValue.Text = "Global Text";
 				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at 0x{1:X})", outValue, NOMERCY_POINTERS_START_RUNTIME + (outValue * 4));
-				btnLaunchTextEditor.Enabled = false;
+				btnLaunchTextEditor.Enabled = true;
+				CurIndexIsGlobalText = true;
+				TargetIndex = (int)outValue;
 				return true;
 			}
 			else
@@ -253,6 +261,7 @@ namespace VPWStudio.Tools
 						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
 						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
 						btnLaunchTextEditor.Enabled = true;
+						CurIndexIsGlobalText = false;
 						return true;
 					}
 				}
@@ -275,7 +284,9 @@ namespace VPWStudio.Tools
 			{
 				lblRegionValue.Text = "Global Text";
 				tbOutputValue.Text = String.Format("0x{0:X} ({0}; pointer at {1:X})", outValue, RuntimePointers_WM2K[variant] + (outValue * 4));
-				btnLaunchTextEditor.Enabled = false;
+				btnLaunchTextEditor.Enabled = true;
+				CurIndexIsGlobalText = true;
+				TargetIndex = (int)outValue;
 				return true;
 			}
 			else
@@ -289,6 +300,7 @@ namespace VPWStudio.Tools
 						lblRegionValue.Text = String.Format("File ID {0:X4} ({1})", tvr.FileID, tvr.Description);
 						tbOutputValue.Text = String.Format("0x{0:X} ({0})", TargetIndex);
 						btnLaunchTextEditor.Enabled = true;
+						CurIndexIsGlobalText = false;
 						return true;
 					}
 				}
@@ -402,21 +414,32 @@ namespace VPWStudio.Tools
 		{
 			// warning: still doesn't save changes
 
-			AkiTextEditor ate;
-			if (Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].HasReplacementFile())
+			if (CurIndexIsGlobalText)
 			{
-				// from external file
-				ate = new AkiTextEditor(Program.ConvertRelativePath(Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].ReplaceFilePath), TargetIndex);
+				GlobalTextEditor gte = new GlobalTextEditor(TargetIndex);
+				if (gte.ShowDialog() == DialogResult.OK)
+				{
+					MessageBox.Show("writing back Global Text changes doesn't work yet");
+				}
 			}
 			else
 			{
-				// from ROM
-				ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
-			}
+				AkiTextEditor ate;
+				if (Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].HasReplacementFile())
+				{
+					// from external file
+					ate = new AkiTextEditor(Program.ConvertRelativePath(Program.CurrentProject.ProjectFileTable.Entries[AkiTextFileID].ReplaceFilePath), TargetIndex);
+				}
+				else
+				{
+					// from ROM
+					ate = new AkiTextEditor(AkiTextFileID, TargetIndex);
+				}
 
-			if (ate.ShowDialog() == DialogResult.OK)
-			{
-				MessageBox.Show("i have to write code to write back the changes. this is why i hate akitext stuff");
+				if (ate.ShowDialog() == DialogResult.OK)
+				{
+					MessageBox.Show("i have to write code to write back the changes. this is why i hate akitext stuff");
+				}
 			}
 		}
 
