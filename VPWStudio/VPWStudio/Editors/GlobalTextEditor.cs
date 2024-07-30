@@ -138,6 +138,8 @@ namespace VPWStudio
 
 			br.Close();
 
+			lblDataLength.Text = String.Format("Data must not exceed {0} (0x{0:X}) bytes!", gtTotalLength);
+
 			// populate dropdown list
 			cbEntriesTemp.BeginUpdate();
 			for (int i = 0; i < Pointers.Count; i++)

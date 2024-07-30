@@ -33,6 +33,7 @@
 			this.tbOutputTemp = new System.Windows.Forms.TextBox();
 			this.cbEntriesTemp = new System.Windows.Forms.ComboBox();
 			this.lblEntry = new System.Windows.Forms.Label();
+			this.lblDataLength = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnOK
@@ -93,6 +94,15 @@
 			this.lblEntry.TabIndex = 0;
 			this.lblEntry.Text = "&Entry";
 			// 
+			// lblDataLength
+			// 
+			this.lblDataLength.AutoSize = true;
+			this.lblDataLength.Location = new System.Drawing.Point(12, 171);
+			this.lblDataLength.Name = "lblDataLength";
+			this.lblDataLength.Size = new System.Drawing.Size(36, 13);
+			this.lblDataLength.TabIndex = 5;
+			this.lblDataLength.Text = "(temp)";
+			// 
 			// GlobalTextEditor
 			// 
 			this.AcceptButton = this.btnOK;
@@ -100,6 +110,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(496, 201);
+			this.Controls.Add(this.lblDataLength);
 			this.Controls.Add(this.lblEntry);
 			this.Controls.Add(this.cbEntriesTemp);
 			this.Controls.Add(this.tbOutputTemp);
@@ -124,5 +135,6 @@
 		private System.Windows.Forms.TextBox tbOutputTemp;
 		private System.Windows.Forms.ComboBox cbEntriesTemp;
 		private System.Windows.Forms.Label lblEntry;
+		private System.Windows.Forms.Label lblDataLength;
 	}
 }
