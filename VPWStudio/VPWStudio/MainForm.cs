@@ -2952,5 +2952,11 @@ namespace VPWStudio
 				projectPropertiesToolStripMenuItem_Click(sender, e);
 			}
 		}
+
+		private void splitModelTestToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SplitModelTest smt = new SplitModelTest();
+			smt.ShowDialog();
+		}
 	}
 }

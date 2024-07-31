@@ -534,6 +534,12 @@
   <data name="codeSegmentTestToolStripMenuItem.Text" xml:space="preserve">
     <value>code segment test</value>
   </data>
+  <data name="splitModelTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 22</value>
+  </data>
+  <data name="splitModelTestToolStripMenuItem.Text" xml:space="preserve">
+    <value>split model test</value>
+  </data>
   <data name="dangerZoneToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
@@ -1918,6 +1924,12 @@
   <data name="&gt;&gt;gameIntroductionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;globalTextToolStripMenuItem.Name" xml:space="preserve">
+    <value>globalTextToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;globalTextToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;matchRulesetsToolStripMenuItem.Name" xml:space="preserve">
     <value>matchRulesetsToolStripMenuItem</value>
   </data>
@@ -2218,10 +2230,10 @@
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;globalTextToolStripMenuItem.Name" xml:space="preserve">
-    <value>globalTextToolStripMenuItem</value>
+  <data name="&gt;&gt;splitModelTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>splitModelTestToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;globalTextToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;splitModelTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
