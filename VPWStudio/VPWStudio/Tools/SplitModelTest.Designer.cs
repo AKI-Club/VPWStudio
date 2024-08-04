@@ -48,6 +48,8 @@
 			// 
 			// tbVertexFile
 			// 
+			this.tbVertexFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbVertexFile.Location = new System.Drawing.Point(74, 12);
 			this.tbVertexFile.Name = "tbVertexFile";
 			this.tbVertexFile.Size = new System.Drawing.Size(329, 20);
@@ -64,6 +66,8 @@
 			// 
 			// tbFaceFile
 			// 
+			this.tbFaceFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbFaceFile.Location = new System.Drawing.Point(74, 44);
 			this.tbFaceFile.Name = "tbFaceFile";
 			this.tbFaceFile.Size = new System.Drawing.Size(329, 20);
@@ -71,6 +75,7 @@
 			// 
 			// btnVertexFile
 			// 
+			this.btnVertexFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnVertexFile.Location = new System.Drawing.Point(409, 12);
 			this.btnVertexFile.Name = "btnVertexFile";
 			this.btnVertexFile.Size = new System.Drawing.Size(75, 23);
@@ -81,6 +86,7 @@
 			// 
 			// btnFaceFile
 			// 
+			this.btnFaceFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnFaceFile.Location = new System.Drawing.Point(409, 41);
 			this.btnFaceFile.Name = "btnFaceFile";
 			this.btnFaceFile.Size = new System.Drawing.Size(75, 23);
@@ -91,6 +97,8 @@
 			// 
 			// btnConvert
 			// 
+			this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConvert.Location = new System.Drawing.Point(12, 70);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(472, 23);

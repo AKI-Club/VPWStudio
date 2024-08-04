@@ -40,6 +40,18 @@ namespace VPWStudio
 		private void btnConvert_Click(object sender, EventArgs e)
 		{
 			// validate file entries
+			if (tbVertexFile.Text.Equals(String.Empty))
+			{
+				Program.ErrorMessageBox("Must specify a vertex file");
+				return;
+			}
+
+			if (tbFaceFile.Text.Equals(String.Empty))
+			{
+				Program.ErrorMessageBox("Must specify a faces file");
+				return;
+			}
+
 			if (!File.Exists(tbVertexFile.Text))
 			{
 				Program.ErrorMessageBox("Vertex file must exist");
@@ -61,6 +73,7 @@ namespace VPWStudio
 				StreamWriter sw = new StreamWriter(sfd.FileName);
 				model.WriteWavefrontObj(sw);
 				sw.Close();
+				Program.InfoMessageBox(String.Format("Saved file {0}.",sfd.FileName));
 			}
 		}
 	}
