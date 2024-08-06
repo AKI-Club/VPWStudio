@@ -1,4 +1,6 @@
 # FileTable database for WWF No Mercy (June 2000 E3 prototype)
+0001=AkiLargeFont;Default large font
+0002=AkiSmallFont;Default small font
 0003=AkiFontChars;font characters
 0004=Binary;kanji.txt
 0005=AkiText;(Edit Mode strings)
