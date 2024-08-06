@@ -100,10 +100,25 @@ namespace VPWStudio.Editors
 
 			fontStream.Seek(0, SeekOrigin.Begin);
 			BinaryReader fontReader = new BinaryReader(fontStream);
-			CurFont = new AkiFont(
-				(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont,
-				Program.CurrentProject.Settings.BaseGame
-			);
+
+			// xxx: hack for No Mercy June 2000 prototype
+			if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_June2000)
+			{
+				// NM June 2000 proto is VPW2 under the hood
+				CurFont = new AkiFont(
+					(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont,
+					VPWGames.VPW2
+				);
+			}
+			else
+			{
+				CurFont = new AkiFont(
+					(Program.CurrentProject.ProjectFileTable.Entries[fileID].FileType == FileTypes.AkiLargeFont) ? AkiFontType.AkiLargeFont : AkiFontType.AkiSmallFont,
+					Program.CurrentProject.Settings.BaseGame
+				);
+			}
+
+			
 			CurFont.ReadData(fontReader);
 			fontReader.Close();
 			romReader.Close();
@@ -121,7 +136,15 @@ namespace VPWStudio.Editors
 			{
 				using (BinaryReader br = new BinaryReader(fs))
 				{
-					CurFont = new AkiFont(fontType, Program.CurrentProject.Settings.BaseGame);
+					// xxx: hack for No Mercy June 2000 prototyp
+					if (Program.CurrentProject.Settings.GameType == SpecificGame.NoMercy_Proto_NTSC_June2000)
+					{
+						CurFont = new AkiFont(fontType, VPWGames.VPW2);
+					}
+					else
+					{
+						CurFont = new AkiFont(fontType, Program.CurrentProject.Settings.BaseGame);
+					}
 					CurFont.ReadData(br);
 					UpdateValues();
 				}
