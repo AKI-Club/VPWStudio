@@ -419,8 +419,12 @@ namespace VPWStudio
 			// color per line
 			for (int i = 0; i < numColors; i++)
 			{
-				string[] colorDef = sr.ReadLine().Split(' ');
-				Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+				string line = sr.ReadLine();
+				if (!line.Equals(string.Empty))
+				{
+					string[] colorDef = line.Split(' ');
+					Entries[i] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+				}
 			}
 
 			// subpalettes
@@ -432,8 +436,12 @@ namespace VPWStudio
 					Ci4Palette sub = new Ci4Palette();
 					for (int j = 0; j < numColors; j++)
 					{
-						string[] colorDef = sr.ReadLine().Split(' ');
-						sub.Entries[j] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+						string line = sr.ReadLine();
+						if (!line.Equals(string.Empty))
+						{
+							string[] colorDef = line.Split(' ');
+							sub.Entries[j] = N64Colors.ColorToValue5551(Color.FromArgb(int.Parse(colorDef[3]), int.Parse(colorDef[0]), int.Parse(colorDef[1]), int.Parse(colorDef[2])));
+						}
 					}
 					SubPalettes.Add(sub);
 				}
