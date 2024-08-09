@@ -66,6 +66,10 @@ namespace VPWStudio
 		#endregion
 
 		#endregion
+
+		// "split model" format found in AkiArchive files.
+		SplitModel_Faces,    // list of faces
+		SplitModel_Vertices, // list of vertices
 	}
 
 	public class FileTypeInfo
@@ -99,6 +103,8 @@ namespace VPWStudio
 			//{ FileTypes.MenuItems_Costume, ".nmitem1" },
 			{ FileTypes.MenuItems_Moves, ".nmitem2" },
 			{ FileTypes.MenuItems_Shop, ".nmitem3" },
+			{ FileTypes.SplitModel_Faces, ".splitfaces" },
+			{ FileTypes.SplitModel_Vertices, ".splitverts" },
 		};
 
 		/// <summary>
@@ -146,6 +152,13 @@ namespace VPWStudio
 			foreach (FileTypes ft in Enum.GetValues(typeof(FileTypes)))
 			{
 				outTypes.Add(ft);
+			}
+
+			// FileTypes only found in Revenge and later
+			if (gameType <= VPWGames.VPW64)
+			{
+				outTypes.Remove(FileTypes.SplitModel_Faces);
+				outTypes.Remove(FileTypes.SplitModel_Vertices);
 			}
 
 			// FileTypes only found in WM2K and later
