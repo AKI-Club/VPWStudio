@@ -229,6 +229,8 @@ namespace VPWStudio
 					int numFaces = (int)(faceFS.Length / SPLIT_FACE_SIZE);
 					for (int i = 0; i < numFaces; i++)
 					{
+						// todo: determine if this is an 0xFF entry
+						// sometimes the vertices are all 0xFF, including the padding byte
 						Faces.Add(new AkiFace(faceBR));
 						faceBR.ReadByte(); // dummy byte after every entry
 					}
@@ -255,7 +257,6 @@ namespace VPWStudio
 			sw.WriteLine(string.Format("# Faces: {0}", Faces.Count));
 			foreach (AkiFace f in Faces)
 			{
-				//sw.WriteLine(String.Format("f {0} {1} {2}", f.Vertex1+1, f.Vertex2+1, f.Vertex3+1));
 				sw.WriteLine(string.Format("f {0}/{0} {1}/{1} {2}/{2}", f.Vertex1 + 1, f.Vertex2 + 1, f.Vertex3 + 1));
 			}
 			sw.WriteLine();
