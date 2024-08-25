@@ -60,6 +60,8 @@ FTID:1609,1;FirstAnimationFileID
 FTID:19DB,1;FirstMoveAnimationID
 FTID:0435,1;Toki1FileID
 FTID:03AD,1;MoveDamageFileID
+FTID:03AE,1;MoveAnimationFileID
+FTID:03AF,1;MovePropertiesFileID
 FTID:0001,1;DefaultLargeFont
 FTID:0002,1;DefaultSmallFont
 FTID:10DE,1;FirstSkinColorPalette

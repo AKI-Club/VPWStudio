@@ -34,6 +34,8 @@ FTID:2DD9,1;FirstAnimationFileID
 FTID:3322,1;FirstMoveAnimationID
 FTID:02BF,1;Toki1FileID
 FTID:01EF,1;MoveDamageFileID
+FTID:01F0,1;MoveAnimationFileID
+FTID:01F1,1;MovePropertiesFileID
 FTID:0001,1;WrestlerDefaultCostumeData
 FTID:0002,1;DefaultNameData
 FTID:1D72,1;FirstFaceTexture

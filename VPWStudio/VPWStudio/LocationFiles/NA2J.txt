@@ -116,6 +116,8 @@ FTID:1A90,1;FirstAnimationFileID
 FTID:2056,1;FirstMoveAnimationID
 FTID:034B,1;Toki1FileID
 FTID:0277,1;MoveDamageFileID
+FTID:0278,1;MoveAnimationFileID
+FTID:0279,1;MovePropertiesFileID
 FTID:006B,1;WrestlerDefaultCostumeData
 FTID:006C,1;DefaultNameData
 FTID:0001,1;DefaultLargeFont
