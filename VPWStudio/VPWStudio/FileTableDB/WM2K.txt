@@ -940,8 +940,8 @@
 03AB=AkiTexture;[Titantron] Mark Henry frame x
 03AC=Binary;Weapon damage values
 03AD=Binary;Move damage values
-03AE=Binary;Move properties values
-03AF=Binary;Move animation values
+03AE=Binary;Move animation values
+03AF=Binary;Move properties values
 03B0=Binary;Reversals - Heavyweight
 03B1=Binary;Reversals - Heavy Special
 03B2=Binary;Reversals - Junior

@@ -992,7 +992,10 @@
 03E3=AkiTexture;[Japanese]
 03E4=AkiTexture;[Japanese]
 03E5=AkiTexture;[Japanese]
+03E6=Binary;Weapon damage values
 03E7=Binary;Move damage values
+03E8=Binary;Move animation values
+03E9=Binary;Move properties values
 03EA=Binary;Reversals - Heavyweight
 03EB=Binary;Reversals - Heavy Special
 03EC=Binary;Reversals - Junior
