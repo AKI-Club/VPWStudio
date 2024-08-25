@@ -659,6 +659,12 @@
     <Compile Include="Tools\ModelTool2.Designer.cs">
       <DependentUpon>ModelTool2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\MoveAnimPropTestDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\MoveAnimPropTestDialog.Designer.cs">
+      <DependentUpon>MoveAnimPropTestDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\MoveDamageTestDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -991,6 +997,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ModelTool2.resx">
       <DependentUpon>ModelTool2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\MoveAnimPropTestDialog.resx">
+      <DependentUpon>MoveAnimPropTestDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\MoveDamageTestDialog.resx">
       <DependentUpon>MoveDamageTestDialog.cs</DependentUpon>

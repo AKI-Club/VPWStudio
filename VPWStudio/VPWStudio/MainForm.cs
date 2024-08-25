@@ -181,6 +181,8 @@ namespace VPWStudio
 
 		public MoveDamageTestDialog MoveDamageTest = null;
 
+		public MoveAnimPropTestDialog MoveAnimPropTest = null;
+
 		public TestScene3D Test3dDialog = null;
 
 		public StringRenderTest RenderStringTest = null;
@@ -2826,7 +2828,29 @@ namespace VPWStudio
 			MoveDamageTest.Show();
 		}
 
-		private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
+        private void moveAnimpropTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.CurrentProject == null)
+            {
+                Program.ErrorMessageBox("Move Animation & Properties Test requires open project file");
+                return;
+            }
+
+            if (Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K)
+            {
+                Program.ErrorMessageBox("Move Animation & Properties Test only works for wm2k and later");
+                return;
+            }
+
+            if (MoveAnimPropTest == null || MoveAnimPropTest.IsDisposed)
+            {
+                MoveAnimPropTest = new MoveAnimPropTestDialog();
+            }
+            MoveAnimPropTest.MdiParent = this;
+            MoveAnimPropTest.Show();
+        }
+
+        private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			TimTester t = new TimTester();
 			t.ShowDialog();
@@ -2881,7 +2905,7 @@ namespace VPWStudio
 		{
 			if (Program.CurrentProject == null)
 			{
-				Program.ErrorMessageBox("Requires an open VPW64 project to use.");
+				Program.ErrorMessageBox("Requires an open VPW64 or Revenge project to use.");
 				return;
 			}
 
@@ -2958,5 +2982,7 @@ namespace VPWStudio
 			SplitModelTest smt = new SplitModelTest();
 			smt.ShowDialog();
 		}
-	}
+
+       
+    }
 }
