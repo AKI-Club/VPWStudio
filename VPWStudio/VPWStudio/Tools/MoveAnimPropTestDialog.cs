@@ -78,10 +78,10 @@ namespace VPWStudio
         private void PopulateEntries()
         {
             cbMoves.BeginUpdate();
-            foreach (short v in Animations)
+            for (int i = 0; i < Animations.Count; i++)
             {
-                cbMoves.Items.Add(string.Format("{0:X4}",v));
-            }
+				cbMoves.Items.Add(string.Format("[0x{1:X4}] {0:X4}", Animations[i], i));
+			}
             cbMoves.EndUpdate();
             cbMoves.SelectedIndex = 0;
         }
