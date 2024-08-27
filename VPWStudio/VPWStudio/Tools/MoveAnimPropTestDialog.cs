@@ -95,10 +95,13 @@ namespace VPWStudio
 
             tbOutput.Clear();
             int i = cbMoves.SelectedIndex;
-            tbOutput.Text = string.Format("anim 0x{0:X4} (0x{1:X4}) | prop 0x{2:X4}",
+            int firstMoveAnim = DefaultGameData.DefaultFileTableIDs["FirstMoveAnimationID"][Program.CurrentProject.Settings.GameType];
+			tbOutput.Text = string.Format("anim 0x{0:X4} (0x{1:X4}) | prop 0x{2:X4}"+Environment.NewLine+"{3}",
                 Animations[i],
-                Animations[i] + DefaultGameData.DefaultFileTableIDs["FirstMoveAnimationID"][Program.CurrentProject.Settings.GameType],
-                Properties[i]);
+                Animations[i] + firstMoveAnim,
+                Properties[i],
+                Program.CurrentProject.ProjectFileTable.Entries[firstMoveAnim + Animations[i]].Comment
+            );
         }
     }
 }
