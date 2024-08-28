@@ -262,6 +262,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3CD38, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3D378, 1050) },
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3D8A4, 258) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3D9A8, 3272) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3E670, 516) },
+
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x47168, 52) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x4719C, 52) },
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x473A0, 32) },
@@ -302,6 +307,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3A6F8, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3AD38, 1050) },
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3B264, 258) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3B368, 3272) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3C030, 516) },
+
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x44C08, 52) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x44C3C, 52) },
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x44E40, 32) },
@@ -341,6 +351,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3C700, 1590) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3CD38, 1600) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3D378, 1050) },
+
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3D8A4, 258) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3D9A8, 3272) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3E670, 516) },
 
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x47168, 52) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x4719C, 52) },
