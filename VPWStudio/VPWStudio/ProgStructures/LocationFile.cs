@@ -213,7 +213,9 @@ namespace VPWStudio
 			// $TITANTRON_FRAMES_START // ROM location of first Titantron script
 
 			// move-related items
+			{ "MasterMoveMods_FirstEntries", "$MASTER_MOVE_MODS_FIRST_ENTRIES" },
 			{ "MasterMoveMods", "$MASTER_MOVE_MODS" },
+			{ "MasterMoveModPointers", "$MASTER_MOVE_MOD_POINTERS" },
 
 			// tables for bit packing (WM2K and later)
 			{ "BitPacking_MainTable", "$BITPACKING_MAINTABLE" }, // ROM location of "menu item to number of bits" table
