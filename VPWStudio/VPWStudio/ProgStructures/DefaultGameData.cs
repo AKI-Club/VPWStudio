@@ -441,6 +441,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x45098, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x451B0, 4080) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x461A0, 552) },
+
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x703B0, 2304) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70CB0, 1012) },
 
@@ -473,6 +478,11 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44EE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44270, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4489C, 1600) },
+
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x44FF8, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x45110, 4080) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x46100, 552) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x70340, 2304) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70C40, 1012) },
@@ -507,6 +517,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44310, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4493C, 1600) },
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x45098, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x451B0, 4080) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x461A0, 552) },
+
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x703B0, 2304) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70CB0, 1012) },
 
@@ -539,6 +554,11 @@ namespace VPWStudio
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x44DE4, 278) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x44170, 1580) },
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x4479C, 1600) },
+
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x44EF8, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x45010, 4080) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x46000, 552) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x70240, 2304) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x70B40, 1012) },
