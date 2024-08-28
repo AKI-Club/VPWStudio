@@ -2330,8 +2330,8 @@
 0919=Ci4Palette;Billy Gunn ass taunt censor 2
 091A=Ci4Texture;Billy Gunn ass taunt censor 2|p:0919
 091B=AkiModel;Billy Gunn ass taunt censor
-091C=Ci4Texture;
-091D=Ci8Palette;
+091C=Ci4Texture;Wrestler Shadow texture
+091D=Ci8Palette;Wrestler Shadow palette
 091E=AkiModel;
 091F=AkiModel;
 0920=AkiModel;
