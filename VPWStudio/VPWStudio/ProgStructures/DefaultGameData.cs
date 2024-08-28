@@ -598,6 +598,11 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x3E8F0, 144)},
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3A720, 266) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3A82C, 4048) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3B7FC, 532) },
+
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x5BF40, 3688) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x5CDA8, 1252) },
 
@@ -616,6 +621,11 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
+
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3F6C8, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3F7E0, 4040) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x407A8, 552) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69CC0, 3768) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6AB78, 1296) },
@@ -636,6 +646,11 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x4B820, 180)},
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3F6C8, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3F7E0, 4040) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x407A8, 552) },
+
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69CC0, 3768) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6AB78, 1296) },
 
@@ -654,6 +669,11 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x53AB0, 180)},
+
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x450D8, 276) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x451F0, 4080) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x461E0, 552) },
 
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x46698, 0) },
