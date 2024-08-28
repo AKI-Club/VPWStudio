@@ -384,6 +384,11 @@ namespace VPWStudio
 					{ "BitPacking_MoveGroup_Combo", new DefaultLocationDataEntry(0x3DADC, 1550) },
 					{ "BitPacking_MoveGroup_Shoot", new DefaultLocationDataEntry(0x3E0EC, 1080) },
 
+					// "master move mods"
+					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3E63C, 266) },
+					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3E748, 3908) },
+					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3F68C, 532) },
+
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x469B8, 110) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46A28, 110) },
 					{ "FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x46C58, 32) },
