@@ -103,5 +103,20 @@ namespace VPWStudio
                 Program.CurrentProject.ProjectFileTable.Entries[firstMoveAnim + Animations[i]].Comment
             );
         }
-    }
+
+		private void goToToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            int curItem = cbMoves.SelectedIndex;
+            if (curItem < 0)
+            {
+                curItem = 0;
+            }
+
+			GoToDialog gtd = new GoToDialog(curItem, cbMoves.Items.Count, true);
+            if (gtd.ShowDialog() == DialogResult.OK)
+            {
+                cbMoves.SelectedIndex = gtd.TargetEntry;
+            }
+		}
+	}
 }
