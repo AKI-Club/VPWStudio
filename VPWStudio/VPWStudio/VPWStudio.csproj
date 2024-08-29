@@ -128,6 +128,12 @@
     <Compile Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.Designer.cs">
       <DependentUpon>FileTable_SearchFileTypeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GoToDialog.Designer.cs">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SelectFileTableIdDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -787,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FileTable\FileTable_SearchFileTypeDialog.resx">
       <DependentUpon>FileTable_SearchFileTypeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\GoToDialog.resx">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ITexturePreviewDialog.resx">
       <DependentUpon>ITexturePreviewDialog.cs</DependentUpon>
