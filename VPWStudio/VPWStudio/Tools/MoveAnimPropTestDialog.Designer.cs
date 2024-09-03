@@ -33,6 +33,7 @@
 			this.tbOutput = new System.Windows.Forms.TextBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -73,7 +74,8 @@
 			// 
 			this.menuStrip1.AllowMerge = false;
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.goToToolStripMenuItem});
+            this.goToToolStripMenuItem,
+            this.searchToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(496, 24);
@@ -87,6 +89,14 @@
 			this.goToToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
 			this.goToToolStripMenuItem.Text = "&Go To...";
 			this.goToToolStripMenuItem.Click += new System.EventHandler(this.goToToolStripMenuItem_Click);
+			// 
+			// searchToolStripMenuItem
+			// 
+			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+			this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+			this.searchToolStripMenuItem.Text = "&Search...";
+			this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
 			// 
 			// MoveAnimPropTestDialog
 			// 
@@ -119,5 +129,6 @@
         private System.Windows.Forms.TextBox tbOutput;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem goToToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
 	}
 }

@@ -116,6 +116,12 @@
     <Compile Include="Dialogs\DangerZone\ClientTest_PortNumber.Designer.cs">
       <DependentUpon>ClientTest_PortNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DangerZone\MoveAnimProp_SearchDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DangerZone\MoveAnimProp_SearchDialog.Designer.cs">
+      <DependentUpon>MoveAnimProp_SearchDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -769,6 +775,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DangerZone\ClientTest_PortNumber.resx">
       <DependentUpon>ClientTest_PortNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DangerZone\MoveAnimProp_SearchDialog.resx">
+      <DependentUpon>MoveAnimProp_SearchDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DangerZone\TestScene3D_AddEditDialog.resx">
       <DependentUpon>TestScene3D_AddEditDialog.cs</DependentUpon>

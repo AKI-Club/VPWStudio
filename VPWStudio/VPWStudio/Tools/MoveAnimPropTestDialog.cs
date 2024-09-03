@@ -118,5 +118,55 @@ namespace VPWStudio
                 cbMoves.SelectedIndex = gtd.TargetEntry;
             }
 		}
+
+		private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            MoveAnimProp_SearchDialog sd = new MoveAnimProp_SearchDialog();
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                switch (sd.SearchType)
+                {
+                    case MoveAnimProp_SearchDialog.MoveAnimPropSearchType.FileID:
+                        {
+							// search Animations for (sd.SearchValue - first_anim_id)
+							int firstMoveAnim = DefaultGameData.DefaultFileTableIDs["FirstMoveAnimationID"][Program.CurrentProject.Settings.GameType];
+
+							if (sd.SearchValue < firstMoveAnim)
+							{
+								return;
+							}
+
+							int result = Animations.IndexOf((short)(sd.SearchValue - firstMoveAnim));
+							if (result != -1)
+							{
+								cbMoves.SelectedIndex = result;
+							}
+						}
+						break;
+
+                    case MoveAnimProp_SearchDialog.MoveAnimPropSearchType.AnimOffset:
+                        {
+							// search Animations for sd.SearchValue
+							int result = Animations.IndexOf(sd.SearchValue);
+							if (result != -1)
+							{
+                                cbMoves.SelectedIndex = result;
+							}
+						}
+						break;
+
+                    case MoveAnimProp_SearchDialog.MoveAnimPropSearchType.DamageIndex:
+                        {
+							// search Properties for sd.SearchValue
+							int result = Properties.IndexOf(sd.SearchValue);
+							if (result != -1)
+							{
+								cbMoves.SelectedIndex = result;
+							}
+						}
+						break;
+                }
+            }
+		}
 	}
 }
