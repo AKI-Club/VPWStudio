@@ -62,6 +62,8 @@ FTID:0A63,1;CostumeColorPalette
 FTID:1609,1;FirstAnimationFileID
 FTID:19DB,1;FirstMoveAnimationID
 FTID:0435,1;Toki1FileID
+FTID:0093,1;EditModeMoveAnimFileID
+FTID:0094,1;EditModeMoveDamageFileID
 FTID:03AD,1;MoveDamageFileID
 FTID:03AE,1;MoveAnimationFileID
 FTID:03AF,1;MovePropertiesFileID

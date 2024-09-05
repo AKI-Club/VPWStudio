@@ -1137,6 +1137,36 @@ namespace VPWStudio
 			},
 
 			{
+				"EditModeMoveAnimFileID",
+				new Dictionary<SpecificGame, int>()
+				{
+					// these files only appear in WM2K and VPW2
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0093 },
+					{ SpecificGame.WM2K_PAL, 0x0093 },
+					{ SpecificGame.WM2K_NTSC_J, 0x0093 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0061 },
+				}
+			},
+
+			{
+				"EditModeMoveDamageFileID",
+				new Dictionary<SpecificGame, int>()
+				{
+					// these files only appear in WM2K and VPW2
+					#region WWF WrestleMania 2000
+					{ SpecificGame.WM2K_NTSC_U, 0x0094 },
+					{ SpecificGame.WM2K_PAL, 0x0094 },
+					{ SpecificGame.WM2K_NTSC_J, 0x0094 },
+					#endregion
+
+					{ SpecificGame.VPW2_NTSC_J, 0x0062 },
+				}
+			},
+
+			{
 				"MoveDamageFileID",
 				new Dictionary<SpecificGame, int>()
 				{
@@ -1167,43 +1197,43 @@ namespace VPWStudio
 				{
 					#region WWF WrestleMania 2000
 					{ SpecificGame.WM2K_NTSC_U, 0x03AE },
-                    { SpecificGame.WM2K_PAL, 0x03AE },
-                    { SpecificGame.WM2K_NTSC_J, 0x03E8 },
+					{ SpecificGame.WM2K_PAL, 0x03AE },
+					{ SpecificGame.WM2K_NTSC_J, 0x03E8 },
 					#endregion
 
 					{ SpecificGame.VPW2_NTSC_J, 0x0278 },
 
 					#region WWF No Mercy
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x01F0 },
-                    { SpecificGame.NoMercy_NTSC_U_11, 0x01F0 },
-                    { SpecificGame.NoMercy_PAL_10, 0x01F0 },
-                    { SpecificGame.NoMercy_PAL_11, 0x01F0 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x01F0 },
+					{ SpecificGame.NoMercy_PAL_10, 0x01F0 },
+					{ SpecificGame.NoMercy_PAL_11, 0x01F0 },
 					#endregion
 				}
-            },
+			},
 
-            {
-                "MovePropertiesFileID",
-                new Dictionary<SpecificGame, int>()
-                {
+			{
+				"MovePropertiesFileID",
+				new Dictionary<SpecificGame, int>()
+				{
 					#region WWF WrestleMania 2000
 					{ SpecificGame.WM2K_NTSC_U, 0x03AF },
-                    { SpecificGame.WM2K_PAL, 0x03AF },
-                    { SpecificGame.WM2K_NTSC_J, 0x03E9 },
+					{ SpecificGame.WM2K_PAL, 0x03AF },
+					{ SpecificGame.WM2K_NTSC_J, 0x03E9 },
 					#endregion
 
 					{ SpecificGame.VPW2_NTSC_J, 0x0279 },
 
 					#region WWF No Mercy
 					{ SpecificGame.NoMercy_NTSC_U_10, 0x01F1 },
-                    { SpecificGame.NoMercy_NTSC_U_11, 0x01F1 },
-                    { SpecificGame.NoMercy_PAL_10, 0x01F1 },
-                    { SpecificGame.NoMercy_PAL_11, 0x01F1 },
+					{ SpecificGame.NoMercy_NTSC_U_11, 0x01F1 },
+					{ SpecificGame.NoMercy_PAL_10, 0x01F1 },
+					{ SpecificGame.NoMercy_PAL_11, 0x01F1 },
 					#endregion
 				}
-            },
+			},
 
-            {
+			{
 				"WrestlerDefaultCostumeData",
 				new Dictionary<SpecificGame, int>()
 				{
