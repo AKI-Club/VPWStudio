@@ -2850,7 +2850,29 @@ namespace VPWStudio
             MoveAnimPropTest.Show();
         }
 
-        private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
+		private void moveAnimpropTesteditModeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Program.CurrentProject == null)
+			{
+				Program.ErrorMessageBox("Move Animation & Properties Test requires open project file");
+				return;
+			}
+
+			if (Program.CurrentProject.Settings.BaseGame < VPWGames.WM2K || Program.CurrentProject.Settings.BaseGame > VPWGames.VPW2)
+			{
+				Program.ErrorMessageBox("Move Animation & Properties Test only works for wm2k and vpw2");
+				return;
+			}
+
+			if (MoveAnimPropTest == null || MoveAnimPropTest.IsDisposed)
+			{
+				MoveAnimPropTest = new MoveAnimPropTestDialog(true);
+			}
+			MoveAnimPropTest.MdiParent = this;
+			MoveAnimPropTest.Show();
+		}
+
+		private void timTestToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			TimTester t = new TimTester();
 			t.ShowDialog();
@@ -2983,6 +3005,6 @@ namespace VPWStudio
 			smt.ShowDialog();
 		}
 
-       
-    }
+		
+	}
 }

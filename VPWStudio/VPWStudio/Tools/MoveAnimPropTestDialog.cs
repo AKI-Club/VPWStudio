@@ -22,10 +22,26 @@ namespace VPWStudio
         /// </summary>
         private List<short> Properties;
 
-        public MoveAnimPropTestDialog()
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool UsingEditModeFiles = false;
+
+        public MoveAnimPropTestDialog(bool _editModeFiles = false)
         {
             InitializeComponent();
-            LoadData();
+
+            UsingEditModeFiles = _editModeFiles;
+
+			if (UsingEditModeFiles)
+            {
+                LoadData_Edit();
+			}
+            else
+            {
+				LoadData();
+			}
+
             PopulateEntries();
         }
 
@@ -75,6 +91,52 @@ namespace VPWStudio
             romStream.Dispose();
         }
 
+        private void LoadData_Edit()
+        {
+			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
+			BinaryReader romReader = new BinaryReader(romStream);
+
+			MemoryStream animStream = new MemoryStream();
+			BinaryWriter animWriter = new BinaryWriter(animStream);
+
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, animWriter, DefaultGameData.DefaultFileTableIDs["EditModeMoveAnimFileID"][Program.CurrentProject.Settings.GameType]);
+			int animFileSize = (int)animStream.Position;
+			animStream.Seek(0, SeekOrigin.Begin);
+
+			BinaryReader animBr = new BinaryReader(animStream);
+			Animations = new List<short>();
+			for (int i = 0; i < animFileSize / 2; i++)
+			{
+				byte[] val = animBr.ReadBytes(2);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(val);
+				}
+				Animations.Add(BitConverter.ToInt16(val, 0));
+			}
+			animStream.Dispose();
+
+			MemoryStream propStream = new MemoryStream();
+			BinaryWriter propWriter = new BinaryWriter(propStream);
+			Program.CurrentProject.ProjectFileTable.ExtractFile(romReader, propWriter, DefaultGameData.DefaultFileTableIDs["EditModeMoveDamageFileID"][Program.CurrentProject.Settings.GameType]);
+			int propFileSize = (int)propStream.Position;
+			propStream.Seek(0, SeekOrigin.Begin);
+
+			BinaryReader propBr = new BinaryReader(propStream);
+			Properties = new List<short>();
+			for (int i = 0; i < propFileSize / 2; i++)
+			{
+				byte[] val = propBr.ReadBytes(2);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(val);
+				}
+				Properties.Add(BitConverter.ToInt16(val, 0));
+			}
+			propStream.Dispose();
+			romStream.Dispose();
+		}
+
         private void PopulateEntries()
         {
             cbMoves.BeginUpdate();
@@ -96,12 +158,21 @@ namespace VPWStudio
             tbOutput.Clear();
             int i = cbMoves.SelectedIndex;
             int firstMoveAnim = DefaultGameData.DefaultFileTableIDs["FirstMoveAnimationID"][Program.CurrentProject.Settings.GameType];
-			tbOutput.Text = string.Format("anim 0x{0:X4} (0x{1:X4}) | prop 0x{2:X4}"+Environment.NewLine+"{3}",
-                Animations[i],
-                Animations[i] + firstMoveAnim,
-                Properties[i],
-                Program.CurrentProject.ProjectFileTable.Entries[firstMoveAnim + Animations[i]].Comment
-            );
+
+            if (UsingEditModeFiles)
+            {
+				tbOutput.Text = string.Format("anim? value 0x{0:X4} | prop 0x{1:X4}",Animations[i],Properties[i]);
+			}
+            else
+            {
+				tbOutput.Text = string.Format("anim 0x{0:X4} (0x{1:X4}) | prop 0x{2:X4}" + Environment.NewLine + "{3}",
+				    Animations[i],
+				    Animations[i] + firstMoveAnim,
+				    Properties[i],
+				    Program.CurrentProject.ProjectFileTable.Entries[firstMoveAnim + Animations[i]].Comment
+			    );
+			}
+			
         }
 
 		private void goToToolStripMenuItem_Click(object sender, EventArgs e)

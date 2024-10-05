@@ -424,124 +424,130 @@
     <value>Danger Zone</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="asmikLzssTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;compress test</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="lzssDecompressTestToolStripMenuItem.Text" xml:space="preserve">
     <value>lzss &amp;decompress test</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 6</value>
+    <value>228, 6</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="nameEncoderdecoderToolStripMenuItem.Text" xml:space="preserve">
     <value>name e&amp;ncoder/decoder</value>
   </data>
   <data name="toki1TestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="toki1TestToolStripMenuItem.Text" xml:space="preserve">
     <value>toki &amp;1 test</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="vpw2FaceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw2/wm2k &amp;face test</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="stableParseTestToolStripMenuItem.Text" xml:space="preserve">
     <value>s&amp;table parse test</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="romSliceTestToolStripMenuItem.Text" xml:space="preserve">
     <value>rom &amp;slice test</value>
   </data>
   <data name="openFileInHexViewerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="openFileInHexViewerToolStripMenuItem.Text" xml:space="preserve">
     <value>open file in hex viewer...</value>
   </data>
   <data name="moveDamageTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="moveDamageTestToolStripMenuItem.Text" xml:space="preserve">
     <value>m&amp;ove damage test</value>
   </data>
   <data name="moveAnimpropTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="moveAnimpropTestToolStripMenuItem.Text" xml:space="preserve">
     <value>move anim/prop test</value>
   </data>
+  <data name="moveAnimpropTesteditModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 22</value>
+  </data>
+  <data name="moveAnimpropTesteditModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>move anim/prop test (edit mode)</value>
+  </data>
   <data name="vpw2TextIndexToolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="vpw2TextIndexToolToolStripMenuItem.Text" xml:space="preserve">
     <value>text index tool</value>
   </data>
   <data name="vpw64CostumeTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="vpw64CostumeTestToolStripMenuItem.Text" xml:space="preserve">
     <value>vpw64/revenge costume test</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 6</value>
+    <value>228, 6</value>
   </data>
   <data name="timTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="timTestToolStripMenuItem.Text" xml:space="preserve">
     <value>tim test</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 6</value>
+    <value>228, 6</value>
   </data>
   <data name="testScene3dToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="testScene3dToolStripMenuItem.Text" xml:space="preserve">
     <value>test scene 3d</value>
   </data>
   <data name="paramUnpackTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="paramUnpackTestToolStripMenuItem.Text" xml:space="preserve">
     <value>param unpack test</value>
   </data>
   <data name="stringRenderTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="stringRenderTestToolStripMenuItem.Text" xml:space="preserve">
     <value>string render test</value>
   </data>
   <data name="clientTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="clientTestToolStripMenuItem.Text" xml:space="preserve">
     <value>client test</value>
   </data>
   <data name="codeSegmentTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="codeSegmentTestToolStripMenuItem.Text" xml:space="preserve">
     <value>code segment test</value>
   </data>
   <data name="splitModelTestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>231, 22</value>
   </data>
   <data name="splitModelTestToolStripMenuItem.Text" xml:space="preserve">
     <value>split model test</value>
@@ -2164,6 +2170,18 @@
   <data name="&gt;&gt;moveDamageTestToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;moveAnimpropTestToolStripMenuItem.Name" xml:space="preserve">
+    <value>moveAnimpropTestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;moveAnimpropTestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;moveAnimpropTesteditModeToolStripMenuItem.Name" xml:space="preserve">
+    <value>moveAnimpropTesteditModeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;moveAnimpropTesteditModeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;vpw2TextIndexToolToolStripMenuItem.Name" xml:space="preserve">
     <value>vpw2TextIndexToolToolStripMenuItem</value>
   </data>
@@ -2241,12 +2259,6 @@
   </data>
   <data name="&gt;&gt;tssLabelGameType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;moveAnimpropTestToolStripMenuItem.Name" xml:space="preserve">
-    <value>moveAnimpropTestToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;moveAnimpropTestToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
