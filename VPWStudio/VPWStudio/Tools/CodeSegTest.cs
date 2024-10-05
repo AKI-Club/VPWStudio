@@ -25,7 +25,31 @@ namespace VPWStudio
 				return;
 			}
 
+			// todo: move romstream and romreader here
+
 			// todo: load code segment defs properly
+			/*
+			if (Program.CurLocationFile != null)
+			{
+				LocationFileEntry codeSegDefsEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["CodeSegDefs"]);
+				int segCount = 0;
+				if (codeSegDefsEntry != null)
+				{
+					//romStream.Seek(codeSegDefsEntry.Address, SeekOrigin.Begin);
+					//segCount = (codeSegDefsEntry.Length / 36);
+				}
+				else
+				{
+					// fallback to hardcoded data
+				}
+			}
+			else
+			{
+				Program.InfoMessageBox("Location data not found; using hardcoded offsets and lengths instead.");
+				// fallback to hardcoded data
+			}
+			*/
+
 			cbCodeSegs.BeginUpdate();
 			using (MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data))
 			{
@@ -87,10 +111,36 @@ namespace VPWStudio
 
 			CodeSegDef curSeg = CodeSegmentDefs[cbCodeSegs.SelectedIndex];
 
-			// todo: check if pointer is within this segment?
+			// todo: checks here need to be a bit smarter
+			// - anything within a BSS segment has no inherent ROM address
+			// - check if pointer is in active segment; if not, it may be a part of the always-loaded segment
 
-			UInt32 offset = inValue - curSeg.SegmentTextStart;
-			tbPtrOut.Text = String.Format("{0:X}", curSeg.SegmentRomStart+offset);
+			if (inValue >= curSeg.SegmentBssStart && inValue <= curSeg.SegmentBssEnd)
+			{
+				// defines in BSS have no inherent ROM address
+				tbPtrOut.Text = "(BSS; no ROM address)";
+			}
+			else
+			{
+				if (curSeg.IsAddressInSeg(inValue))
+				{
+					// pointer is within the currently selected segment
+					UInt32 offset = inValue - curSeg.SegmentTextStart;
+					tbPtrOut.Text = String.Format("{0:X}", curSeg.SegmentRomStart + offset);
+				}
+				else if (inValue < CodeSegmentDefs[0].SegmentStart)
+				{
+					// any pointers before the first segment are in the global area.
+					// HOWEVER, I still need to deal with the bss bullshit
+					tbPtrOut.Text = String.Format("{0:X}", Z64Rom.PointerToRom(inValue));
+				}
+				else
+				{
+					// this pointer is in a different code segment than the one selected
+					// pointer values can also clash between segments
+					tbPtrOut.Text = "(not in cur segment)";
+				}
+			}
 		}
 	}
 }

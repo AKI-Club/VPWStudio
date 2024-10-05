@@ -75,7 +75,7 @@ namespace VPWStudio
 			// 
 			// btnConvert
 			// 
-			this.btnConvert.Location = new System.Drawing.Point(226, 199);
+			this.btnConvert.Location = new System.Drawing.Point(195, 199);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(55, 23);
 			this.btnConvert.TabIndex = 5;
@@ -89,11 +89,11 @@ namespace VPWStudio
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbPtrOut.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbPtrOut.Location = new System.Drawing.Point(287, 201);
+			this.tbPtrOut.Location = new System.Drawing.Point(256, 201);
 			this.tbPtrOut.MaxLength = 8;
 			this.tbPtrOut.Name = "tbPtrOut";
 			this.tbPtrOut.ReadOnly = true;
-			this.tbPtrOut.Size = new System.Drawing.Size(135, 23);
+			this.tbPtrOut.Size = new System.Drawing.Size(166, 23);
 			this.tbPtrOut.TabIndex = 6;
 			this.toolTip1.SetToolTip(this.tbPtrOut, "Output ROM location (Z64 format)");
 			// 
@@ -103,7 +103,7 @@ namespace VPWStudio
 			this.tbPtrIn.Location = new System.Drawing.Point(101, 201);
 			this.tbPtrIn.MaxLength = 8;
 			this.tbPtrIn.Name = "tbPtrIn";
-			this.tbPtrIn.Size = new System.Drawing.Size(119, 23);
+			this.tbPtrIn.Size = new System.Drawing.Size(88, 23);
 			this.tbPtrIn.TabIndex = 4;
 			this.toolTip1.SetToolTip(this.tbPtrIn, "Input pointer value (80XXXXXX)");
 			// 
@@ -125,6 +125,7 @@ namespace VPWStudio
 			// 
 			// CodeSegTest
 			// 
+			this.AcceptButton = this.btnConvert;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(434, 234);

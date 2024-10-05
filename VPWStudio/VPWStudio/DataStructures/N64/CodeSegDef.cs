@@ -106,6 +106,21 @@ namespace VPWStudio
 		#endregion
 
 		/// <summary>
+		/// Check if a virtual address is within this segment.
+		/// </summary>
+		/// <param name="_addr">Virtual address to check.</param>
+		/// <param name="_bss">Should the BSS region be checked as well?</param>
+		/// <returns>True if this address is in this segment; false otherwise.</returns>
+		public bool IsAddressInSeg(UInt32 _addr, bool _bss = false)
+		{
+			if (_bss)
+			{
+				return _addr >= SegmentStart && _addr <= SegmentBssEnd;
+			}
+			return _addr >= SegmentStart && _addr <= SegmentDataEnd;
+		}
+
+		/// <summary>
 		/// Read CodeSegDef values using a BinaryReader.
 		/// </summary>
 		/// <param name="br">BinaryReader instance to use.</param>
