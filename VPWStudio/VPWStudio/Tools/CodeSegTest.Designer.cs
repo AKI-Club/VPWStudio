@@ -38,6 +38,7 @@ namespace VPWStudio
 			this.tbPtrIn = new System.Windows.Forms.TextBox();
 			this.lblPtrToRom = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.lblMainBssInfo = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lblCodeSeg
@@ -123,12 +124,23 @@ namespace VPWStudio
 			this.toolTip1.InitialDelay = 300;
 			this.toolTip1.ReshowDelay = 30;
 			// 
+			// lblMainBssInfo
+			// 
+			this.lblMainBssInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblMainBssInfo.AutoSize = true;
+			this.lblMainBssInfo.Location = new System.Drawing.Point(12, 229);
+			this.lblMainBssInfo.Name = "lblMainBssInfo";
+			this.lblMainBssInfo.Size = new System.Drawing.Size(46, 13);
+			this.lblMainBssInfo.TabIndex = 7;
+			this.lblMainBssInfo.Text = "mainseg";
+			// 
 			// CodeSegTest
 			// 
 			this.AcceptButton = this.btnConvert;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(434, 234);
+			this.ClientSize = new System.Drawing.Size(434, 251);
+			this.Controls.Add(this.lblMainBssInfo);
 			this.Controls.Add(this.lblPtrToRom);
 			this.Controls.Add(this.tbPtrIn);
 			this.Controls.Add(this.tbPtrOut);
@@ -158,5 +170,6 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbPtrIn;
 		private System.Windows.Forms.Label lblPtrToRom;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.Label lblMainBssInfo;
 	}
 }
