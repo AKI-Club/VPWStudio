@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.35 (July 5th, 2024)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.35 (October 6th, 2024)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -27,7 +27,7 @@
 <li><a href="#MainInterface">Main Interface</a></li>
 <li><a href="#ProgramOptions">Program Options</a></li>
 <li><a href="#ProjectFiles">Project Files</a></li>
-<li><a href="#WhichGameToHack">Which Game To Hack?</a></li>
+<li><a href="#WhichGameToHack"><strong>Which Game To Hack?</strong></a></li>
 <li><a href="#CommonDataFormats">Common Data Formats</a></li>
 <li><a href="#TextureWorkflow"><strong>Texture and Palette Workflow</strong></a>
 <ol>
@@ -718,9 +718,17 @@ games, you may have trouble picking a base game to start your project. Some feat
 only exist in certain games, and if you are banking on the presence of one of those
 features, you need to pick your game wisely.</p>
 
+<p>Some games are easier to work with than others. Realistically, I expect most
+people will want to choose WWF WrestleMania 2000 or WWF No Mercy, as creating
+movesets in those games is easier than Revenge and earlier. VPW2 is less likely
+to be picked, due to needing to be translated from Japanese to English.</p>
+
 <p>The <a href="#GameSpecificDocs">Game-Specific documentation</a> can also give you
 insights into what game to pick, as well as issues you might run into. It also
 goes into more detail into some of the points mentioned below.</p>
+
+<p>Regardless of which game you pick, be prepared to put in a decent amount
+of work.</p>
 
 <h3>WCW vs. nWo World Tour</h3>
 <p>Largely superseded by <em>Virtual Pro-Wrestling 64</em>, though the fact that it's in
@@ -799,7 +807,7 @@ two sequenced theme songs (assigned by the game based on entrance order).</li>
 <li>Pre-match introduction sequence now includes Titantron "videos" and streamed theme songs,
 along with the on-stage and in-ring portions of the introduction sequence from Revenge.</li>
 <li>Neither Boxing nor Kickboxing styles are available.</li>
-<li>Combo fighting style not available.</li>
+<li>Combo fighting style not available (without hacking).</li>
 <li>Moveset and Parameters formats are largely unknown. This is somewhat mitigated
 by being able to create a character, then putting them in a match and dumping
 their data.</li>
@@ -810,6 +818,7 @@ messages, but they are implemented as textures.</li>
 <li>Wrestler face textures only take up the facial area.</li>
 <li>Wrestler CPU Logic editor only available via GameShark code.</li>
 <li>Cage match introduced in this game.</li>
+<li>Multiple streamed theme music slots at lower quality.</li>
 </ul>
 
 <h3>Virtual Pro-Wrestling 2</h3>
@@ -843,6 +852,7 @@ in the "Global" text area.</li>
 found in WM2000.</li>
 <li>Cage match not available.</li>
 <li>Only game in the series with second-level Special grapples.</li>
+<li>Less streamed theme music slots at higher quality.</li>
 </ul>
 
 <h3>WWF No Mercy</h3>
@@ -855,7 +865,8 @@ No Mercy is slightly harder, due to a number of internal changes made.</p>
 <li>The only game in the series where dropped weapons don't disappear and can be picked up.</li>
 <li>Pre-match introduction sequence still includes Titantron "videos" and streamed theme songs,
 along with the on-stage introduction portion. The in-ring section has been removed, though
-it was included in earlier development versions of the game.</li>
+it was included in earlier development versions of the game. Full entrances must be hacked in,
+which is non-trivial.</li>
 <li>The only game in the series with post-match celebration scenes (for certain wrestlers).</li>
 <li>Combo fighting style not available.</li>
 <li>Women available as first-class wrestler slots.</li>
@@ -878,6 +889,7 @@ areas.</li>
 <li>Only game in the series with ground grapple Specials.</li>
 <li>Only game in the series with breakable tables.</li>
 <li>Introduced "Losing It" downed-but-not-TKO'd state.</li>
+<li>Multiple streamed theme music slots at lower quality.</li>
 </ul>
 
 <hr />
@@ -2298,9 +2310,58 @@ the terminally curious.</li>
 <li><strong>param unpack test</strong> &ndash; attempt to test wrestler parameter unpacking. only works properly with vpw2, wm2k, and no mercy. all other N64 AKI games use unpacked parameters.</li>
 <li><strong>string render test</strong> &ndash; eventually this will be used to test string rendering using the available game fonts.</li>
 <li><strong>client test</strong> &ndash; don't use this unless your name is "freem". seriously, it requires other moving parts that I haven't finalized yet.</li>
-<li><strong>code segment test</strong> &ndash; displays code segment information and also provides a "pointer to ROM" address calculator that takes the code sections into account.</li>
-<li><strong>split model test</strong> &ndash; attempt to convert split model files (as found in AkiArchive files) to Wavefront OBJ format.</li>
+<li><strong>code segment test</strong> &ndash; displays code segment information and also provides a "pointer to ROM" address calculator that takes the code sections into account. Explained further below.</li>
+<li><strong>split model test</strong> &ndash; attempt to convert split model files (as found in AkiArchive files) to Wavefront OBJ format. (key word "attempt"; there are still some issues.)</li>
 </ul>
+
+<h3>code segment test</h3>
+<p>This tool shows code segment information for the current game.
+The combo box at the top of the form contains the available code segments.
+(Global/"main" segment not included.)</p>
+
+<p>Explanations for each displayed item:</p>
+<ul>
+<li><strong>ROM start address</strong> &ndash; Starting address of this segment in the ROM file.</li>
+<li><strong>ROM end address</strong> &ndash; Ending address of this segment in the ROM file.</li>
+<li><strong>Segment RAM start address</strong> &ndash; Starting address where this segment is loaded into RAM.</li>
+<li><strong>Segment RAM code start address</strong> &ndash; Starting address of the code portion of this segment.</li>
+<li><strong>Segment RAM code end address</strong> &ndash; Ending address of the code portion of this segment.</li>
+<li><strong>Segment RAM data start address</strong> &ndash; Starting address of the data portion of this segment.</li>
+<li><strong>Segment RAM data end address</strong> &ndash; Ending address of the data portion of this segment.</li>
+<li><strong>Segment BSS vars start address</strong> &ndash; Starting address of any uninitialized RAM variables used in this segment.</li>
+<li><strong>Segment BSS vars end address</strong> &ndash; Ending address for the aforementioned uninitialized RAM variables.</li>
+</ul>
+
+<p>It is important to note that data in BSS areas can not be found in the ROM.</p>
+
+<p>The arguably more useful function of this tool is the "Pointer to ROM"
+conversion. This attempts to convert a RAM pointer (an address of the form
+<code>80xxxxxx</code>) to its location in ROM. However, some care must be taken
+in order to enure the conversion will work properly.</p>
+
+<p>First, you must determine where the pointer "lives". This is typically either
+the main segment, or one of the other code segments. If searching for a main
+segment pointer, you do not need to worry about the current segment selection.
+For the other code segments, you must select the segment that the pointer exists in.
+If the pointer falls between the "Segment RAM start address" and "Segment RAM data
+end address" values mentioned above, you're good to go. Keep in mind, though, that
+multiple segments can be loaded to the same location (not at the same time, obviously).</p>
+
+<p>Once you have determined the location of the pointer you want to convert,
+type the address into the textbox, then press the Convert button or Enter key.
+If the conversion was successful, the ROM address will appear on the other
+side of the Convert button. Otherwise, it will display an error message.</p>
+
+<p>Error messages include:</p>
+<ul>
+<li>"(BSS; no ROM address)" &ndash; The address is in the BSS area of this segment. There is no ROM address available.</li>
+<li>"(main BSS; no ROM address)" &ndash; Like the previous message, but for the main segment.</li>
+<li>"(not in cur segment)" &ndash; This pointer is in a different code segment than the one selected.</li>
+</ul>
+
+<p>It is still possible to get false positives, as not every memory location is
+easily "findable" per-game. (Examples include the <code>malloc</code> area and
+any framebuffers).</p>
 
 <hr class="chapterSplit" />
 <div class="chapter">Chapter 3: "No, seriously, how do I..."</div>
@@ -2963,6 +3024,10 @@ a single pixel in an image.</dd>
 <dt>Broad Action</dt>
 <dd>The general action the wrestler is performing. A Broad Action can have several
 "Sub-Actions" (or "action states", if you prefer).</dd>
+
+<dt>BSS</dt>
+<dd>Short for "block starting symbol", the area dedicated to variables that
+are declared but undefined. These values are not in the ROM.</dd>
 
 <dt>CI4</dt>
 <dd>16 color (4bpp) texture format used on Nintendo 64.</dd>
