@@ -25,6 +25,8 @@ namespace VPWStudio
 		/// </summary>
 		public UInt32 MainSegBssLength = 0;
 
+		private StringBuilder SegInfoStrBuilder;
+
 		public CodeSegTest()
 		{
 			InitializeComponent();
@@ -34,6 +36,8 @@ namespace VPWStudio
 				// you shouldn't have been able to get in here anyways.
 				return;
 			}
+
+			SegInfoStrBuilder = new StringBuilder();
 
 			// todo: move romstream and romreader here
 
@@ -206,17 +210,17 @@ namespace VPWStudio
 
 			tbCodeSegInfo.Clear();
 			CodeSegDef curSeg = CodeSegmentDefs[cbCodeSegs.SelectedIndex];
-			StringBuilder sb = new StringBuilder();
-			sb.AppendLine(String.Format("ROM start address:              0x{0:X}", curSeg.SegmentRomStart));
-			sb.AppendLine(String.Format("ROM end address:                0x{0:X}", curSeg.SegmentRomEnd));
-			sb.AppendLine(String.Format("Segment RAM start address:      0x{0:X}", curSeg.SegmentStart));
-			sb.AppendLine(String.Format("Segment RAM code start address: 0x{0:X}", curSeg.SegmentTextStart));
-			sb.AppendLine(String.Format("Segment RAM code end address:   0x{0:X}", curSeg.SegmentTextEnd));
-			sb.AppendLine(String.Format("Segment RAM data start address: 0x{0:X}", curSeg.SegmentDataStart));
-			sb.AppendLine(String.Format("Segment RAM data end address:   0x{0:X}", curSeg.SegmentDataEnd));
-			sb.AppendLine(String.Format("Segment BSS vars start address: 0x{0:X}", curSeg.SegmentBssStart));
-			sb.Append(String.Format("Segment BSS vars end address:   0x{0:X}", curSeg.SegmentBssEnd));
-			tbCodeSegInfo.Text = sb.ToString();
+			SegInfoStrBuilder.Clear();
+			SegInfoStrBuilder.AppendLine(String.Format("ROM start address:              0x{0:X}", curSeg.SegmentRomStart));
+			SegInfoStrBuilder.AppendLine(String.Format("ROM end address:                0x{0:X}", curSeg.SegmentRomEnd));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment RAM start address:      0x{0:X}", curSeg.SegmentStart));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment RAM code start address: 0x{0:X}", curSeg.SegmentTextStart));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment RAM code end address:   0x{0:X}", curSeg.SegmentTextEnd));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment RAM data start address: 0x{0:X}", curSeg.SegmentDataStart));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment RAM data end address:   0x{0:X}", curSeg.SegmentDataEnd));
+			SegInfoStrBuilder.AppendLine(String.Format("Segment BSS vars start address: 0x{0:X}", curSeg.SegmentBssStart));
+			SegInfoStrBuilder.Append(String.Format("Segment BSS vars end address:   0x{0:X}", curSeg.SegmentBssEnd));
+			tbCodeSegInfo.Text = SegInfoStrBuilder.ToString();
 		}
 
 		private void btnConvert_Click(object sender, EventArgs e)
