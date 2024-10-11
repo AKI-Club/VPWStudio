@@ -2,9 +2,43 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 36 (202x/yy/zz)
+Pre-Alpha Preview 37 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 36 (2024/10/10)
+---------------------------------
+- [Toki 1 Test Dialog] Now displays address of the Toki 1 data inside of the file.
+
+- [Code Segment Test] Added support for WWF No Mercy pre-release versions.
+
+- Added Global Text viewer for WrestleMania 2000 and later.
+
+- [Font Dialog] Added support for WWF No Mercy June 2000 prototype.
+
+- [Ci*Palette] Ignore empty lines when trying to import palettes from .vpwspal files.
+
+- [Danger Zone] Added Move Animation and Properties Test Dialog (WM2K and later).
+
+- [Code Segment Test] Some changes to the "Pointer to ROM" functionality:
+ - Address is now checked if it's in the range of the current selected segment.
+   Since the same virtual address can point to different ROM locations depending
+   on which segment is loaded, this should (hopefully) remove false positives.
+ - Addresses in BSS regions will now notify you that there are no ROM addresses
+   for values in the BSS region.
+ - Addresses found before the start of the first segment will be converted
+   properly now.
+
+- [FileTableDB] Updates to multiple FileTableDBs.
+ - World Tour has some small updates.
+ - VPW64 had some arena-related files marked, and a palette error fixed.
+ - Revenge is now 100% marked. Labeling is still ongoing.
+ - WM2K has more files labeled in both NTSC-U/PAL and NTSC-J versions.
+ - VPW2 has been updated in my quest to get everything labeled for the decomp.
+ - No Mercy's move animations have been filled out courtesy of Randy.
+
+  To update your project, open the File Table dialog, then choose
+  Database → Reload File Table Database.
 
 Pre-Alpha Preview 35 (2024/07/05)
 ---------------------------------
