@@ -37,6 +37,21 @@ namespace VPWStudio
 		/// Current output ROM file.
 		/// </summary>
 		public static Z64Rom CurrentOutputROM = null;
+
+		/// <summary>
+		/// Current code segment definitions.
+		/// </summary>
+		public static List<CodeSegDef> CurrentCodeSegDefs = null;
+
+		/// <summary>
+		/// Starting location of main segment BSS section.
+		/// </summary>
+		public static UInt32 MainSegBssStart = 0;
+
+		/// <summary>
+		/// Length of main segment BSS section.
+		/// </summary>
+		public static UInt32 MainSegBssLength = 0;
 		#endregion
 
 		#region Project Sub-Files
