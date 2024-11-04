@@ -8,26 +8,30 @@ namespace VPWStudio.GameSpecific
 {
 	public class TitantronSequence
 	{
-		// note: some of these values only make sense in WM2K because of course they changed EVERYTHING in no mercy
-
+		#region Class Members
 		/// <summary>
 		/// Pointer to Titantron frames.
 		/// </summary>
-		/// (arguably the only thing common between the two formats)
+		/// (arguably the only thing common between WM2K and No Mercy formats)
 		public UInt32 Pointer;
 
 		/// <summary>
 		/// Music associated with this TitantronSequence.
+		/// This may or may not have the same meaning in No Mercy.
 		/// </summary>
+		/// WM2K uses 0xFFFF to mean "no music".
+		/// No Mercy appears to use 0x0016 for that purpose.
 		public ushort Music;
 
 		/// <summary>
 		/// Text associated with this TitantronSequence.
+		/// Unused in No Mercy, since names are handled differently there.
 		/// </summary>
 		public ushort Text;
 
 		/// <summary>
 		/// Lighting and delay values.
+		/// This may or may not have the same meaning in No Mercy.
 		/// </summary>
 		public ushort LightingDelay;
 
@@ -36,20 +40,30 @@ namespace VPWStudio.GameSpecific
 		/// </summary>
 		/// (program-specific)
 		public List<TitantronFrame> TronFrames;
+		#endregion
 
+		#region Constructors
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
 		public TitantronSequence()
 		{
 			Pointer = 0;
-			Music = 0xFFFF; // "none"
+			Music = 0xFFFF; // "none" in WM2K
 			Text = 0;
 			LightingDelay = 0;
 			TronFrames = new List<TitantronFrame>();
 		}
 
+		/// <summary>
+		/// Constructor using a BinaryReader.
+		/// </summary>
+		/// <param name="br">BinaryReader instance to use.</param>
 		public TitantronSequence(BinaryReader br)
 		{
 			ReadData(br);
 		}
+		#endregion
 
 		#region Binary Read/Write
 		/// <summary>
