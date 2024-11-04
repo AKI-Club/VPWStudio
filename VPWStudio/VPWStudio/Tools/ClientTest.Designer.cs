@@ -43,6 +43,7 @@ namespace VPWStudio
 			this.btnSendCommand = new System.Windows.Forms.Button();
 			this.lblCommand = new System.Windows.Forms.Label();
 			this.tbCommand = new System.Windows.Forms.TextBox();
+			this.bgWorkerConnection = new System.ComponentModel.BackgroundWorker();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.gbOutput.SuspendLayout();
@@ -175,6 +176,12 @@ namespace VPWStudio
 			this.tbCommand.Size = new System.Drawing.Size(316, 23);
 			this.tbCommand.TabIndex = 1;
 			// 
+			// bgWorkerConnection
+			// 
+			this.bgWorkerConnection.WorkerSupportsCancellation = true;
+			this.bgWorkerConnection.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerConnection_DoWork);
+			this.bgWorkerConnection.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerConnection_RunWorkerCompleted);
+			// 
 			// ClientTest
 			// 
 			this.AcceptButton = this.btnSendCommand;
@@ -225,5 +232,6 @@ namespace VPWStudio
 		private System.Windows.Forms.TextBox tbCommand;
 		private System.Windows.Forms.ToolStripMenuItem whatToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem portNumberToolStripMenuItem;
+		private System.ComponentModel.BackgroundWorker bgWorkerConnection;
 	}
 }

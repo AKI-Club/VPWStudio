@@ -38,7 +38,6 @@ namespace VPWStudio
 		private Timer MessageTimer;
 
 		// todo: add some check to make sure the server hasn't disconnected us
-		// todo2: convert this code to use async methods so we don't block the main thread
 
 		public ClientTest()
 		{
@@ -51,6 +50,29 @@ namespace VPWStudio
 			MessageTimer.Interval = 1000;
 		}
 
+		private void bgWorkerConnection_DoWork(object sender, DoWorkEventArgs e)
+		{
+			Connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+			Connection.Connect("localhost", PortNumber);
+			NetStream = new NetworkStream(Connection);
+		}
+
+		private void bgWorkerConnection_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			if (Connection.Connected)
+			{
+				IsConnected = true;
+				connectToolStripMenuItem.Text = "Disconnect";
+				tsslblConStatus.Text = String.Format("Connected on port {0}", PortNumber);
+			}
+			else
+			{
+				IsConnected = false;
+				connectToolStripMenuItem.Text = "Connect";
+				tsslblConStatus.Text = "Unable to connect to server.";
+			}
+		}
+
 		#region Menu Items
 		private void connectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -61,9 +83,7 @@ namespace VPWStudio
 
 				try
 				{
-					Connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					Connection.Connect("localhost", PortNumber);
-					NetStream = new NetworkStream(Connection);
+					bgWorkerConnection.RunWorkerAsync();
 				}
 				catch (Exception ex)
 				{
@@ -73,13 +93,6 @@ namespace VPWStudio
 
 					Program.ErrorMessageBox(string.Format("Could not connect to server:\n{0}", ex.Message));
 					return;
-				}
-
-				if (Connection.Connected)
-				{
-					IsConnected = true;
-					connectToolStripMenuItem.Text = "Disconnect";
-					tsslblConStatus.Text = String.Format("Connected on port {0}", PortNumber);
 				}
 			}
 			else
