@@ -383,15 +383,46 @@ namespace VPWStudio.Controls
 						case 15: nudHairType.Value = value; break;
 						case 18:
 							// used for two purposes; fill both (hopefully causes no issues)
-							nudMaskAccessory1.Value = value;
-							nudFrontHair.Value = value;
+							if (value <= nudMaskAccessory1.Maximum)
+							{
+								nudMaskAccessory1.Value = value;
+							}
+							else
+							{
+								nudMaskAccessory1.Value = nudMaskAccessory1.Maximum;
+							}
+
+							if (value <= nudFrontHair.Maximum)
+							{
+								nudFrontHair.Value = value;
+							}
+							else
+							{
+								nudFrontHair.Value = nudFrontHair.Maximum;
+							}
+							
 							break;
 						case 19: cccMaskColor1.SetColorNum(value); break;
 						case 20: cccMaskColor2.SetColorNum(value); break;
 						case 21:
 							// like 18, used for two purposes; fill both
-							nudMaskAccessory2.Value = value;
-							nudFacialHair.Value = value;
+							if (value <= nudMaskAccessory2.Maximum)
+							{
+								nudMaskAccessory2.Value = value;
+							}
+							else
+							{
+								nudMaskAccessory2.Value = nudMaskAccessory2.Maximum;
+							}
+
+							if (value <= nudFacialHair.Maximum)
+							{
+								nudFacialHair.Value = value;
+							}
+							else
+							{
+								nudFacialHair.Value = nudFacialHair.Maximum;
+							}
 							break;
 						case 22: cccMaskColor3.SetColorNum(value); break;
 						case 23: cccMaskColor4.SetColorNum(value); break;
