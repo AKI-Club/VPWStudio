@@ -428,6 +428,20 @@ not exactly a program bug. It's merely a reminder that the program is incomplete
 There is no need to report these items on the Issues page, unless there is no
 "incomplete" message given when using them.</p>
 
+<h3>"Will this work on/Can you port this to (Mac and/or mobile)?"</h3>
+<p>Short answer: No.</p>
+<p>Long answer depends on each requested platform:</p>
+<ul>
+<li>Mac OS: I would need to buy expensive hardware, pay the developer fee,
+and be forced to use non-portable technologies (i.e. having to write the program
+twice for no reason other than supporting Apple's need to be different).
+Furthermore, Mac users typically have specific expectations about user interfaces,
+and VPW Studio's use of a multi-document interface clashes with Apple's UI design
+guidelines.</li>
+<li>Mobile: Phones are <em>not</em> a suitable environment for developing hacks.
+This is a non-starter.</li>
+</ul>
+
 <hr />
 <h2><a name="HackingWorkflow">Hacking Workflow</a></h2>
 <p>VPW Studio's usage conventions are largely dictated by external factors.
@@ -1502,8 +1516,8 @@ replacement.</p>
 <p>The Navigation menu contains various functions to help you find entries in the File Table.</p>
 
 <h4>Go To</h4>
-<p>The "Go To" option (keyboard shortcut <kbd>Ctrl</kbd>+<kbd>G</kbd>) allows you to jump to a specific file number.
-The value is in hexadecimal, so be aware of that.</p>
+<p>The "Go To" option (keyboard shortcut <kbd>Ctrl</kbd>+<kbd>G</kbd>) allows you
+to jump to a specific file number. The value is in hexadecimal, so be aware of that.</p>
 
 <h4>Search and Find Next</h4>
 <p>You can search for a file based off of its comment text using the Search function
@@ -1683,7 +1697,7 @@ the loaded texture makes it hard to click on the close window button.</p>
 <p>Target Filetype: <code>AkiText</code></p>
 
 <p>The AKIText editor is used for text archives. These archives were first used
-<em>in WWF WrestleMania 2000</em>, and are also found in <em>Virtual Pro-Wrestling 2</em>
+in <em>WWF WrestleMania 2000</em>, and are also found in <em>Virtual Pro-Wrestling 2</em>
 and <em>WWF No Mercy</em>.</p>
 
 <h4>Import/Export</h4>
@@ -2268,8 +2282,8 @@ via the File Table, sometimes you need to generate target files separately from
 the build process.</p>
 <ul>
 <li><strong>PNG to AKI TEX</strong> &ndash; Converts a PNG to TEX format. PNG must be 16 or 256 colors.</li>
-<li><strong>PNG to CI4Texture</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors.</li>
-<li><strong>PNG to CI8Texture</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors.</li>
+<li><strong>PNG to CI4Texture</strong> &ndash; Converts a PNG to CI4 format. PNG must be 16 colors. The image's palette is not exported.</li>
+<li><strong>PNG to CI8Texture</strong> &ndash; Converts a PNG to CI8 format. PNG must be 256 colors. The image's palette is not exported.</li>
 <li><strong>PNG to Menu Background</strong> &ndash; Converts a 320x240 PNG to binary menu background chunks.</li>
 </ul>
 
