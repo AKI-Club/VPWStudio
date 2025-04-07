@@ -234,6 +234,32 @@ namespace VPWStudio
 			return dbFilePath;
 		}
 
+		public static UInt32 PointerToRomAddr(UInt32 vAddr, int segNum)
+		{
+			// error out if this is called without loaded code seg defs
+			if (Program.CurrentCodeSegDefs == null)
+			{
+				return 0xFFFFFFFF;
+			}
+
+			if (segNum < 0)
+			{
+				// treat all negative values as "global" section
+				return vAddr - 0x80000400;
+			}
+			else
+			{
+				// error out if the segment number is out of range of the segment list
+				if (segNum > Program.CurrentCodeSegDefs.Count)
+				{
+					return 0xFFFFFFFE;
+				}
+				return Program.CurrentCodeSegDefs[segNum].SegmentRomStart + (vAddr - Program.CurrentCodeSegDefs[segNum].SegmentStart);
+			}
+
+			return 0;
+		}
+
 		#region MessageBoxes
 		/// <summary>
 		/// Show an information message dialog.
