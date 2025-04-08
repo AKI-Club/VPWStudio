@@ -226,6 +226,12 @@ namespace VPWStudio
 			// "global text", used in various menus
 			{ "GlobalText_Start", "$GLOBAL_TEXT_START" },
 			{ "GlobalText_Pointers", "$GLOBAL_TEXT_POINTERS" },
+
+			// 1bpp blood texture masks
+			{ "BloodTexture_Face", "$BLOODTEXTURE_FACE" },
+			{ "BloodTexture_Neck", "$BLOODTEXTURE_NECK" },
+			{ "BloodTexture_Chest1", "$BLOODTEXTURE_CHEST1" },
+			{ "BloodTexture_Chest2", "$BLOODTEXTURE_CHEST2" },
 			#endregion
 
 			#region CodeChange
