@@ -62,6 +62,12 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x337A0, 72) },
 
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x2E630, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x2E730, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x2E830, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x2E930, 256) },
+
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F100, 176) },
 					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x2F1B0, 20) },
@@ -90,6 +96,12 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x33810, 72) },
 
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x2E6A0, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x2E7A0, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x2E8A0, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x2E9A0, 256) },
+
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F170, 176) },
 					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x2F220, 20) },
@@ -117,6 +129,12 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x337F0, 72) },
+
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x2E680, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x2E780, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x2E880, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x2E980, 256) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2F150, 176) },
@@ -147,6 +165,12 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x3FAC0, 72) },
+
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x2F214, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x2F314, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x2F414, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x2F514, 256) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FCE4, 176) },
@@ -193,6 +217,12 @@ namespace VPWStudio
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x37A30, 72) },
 
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x3150C, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x3160C, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x3170C, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x3180C, 256) },
+
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x323F0, 208) },
 					{ "WrestlerHeightTable", new DefaultLocationDataEntry(0x324C0, 32) },
@@ -220,6 +250,12 @@ namespace VPWStudio
 
 					// code seg defs
 					{ "CodeSegDefs", new DefaultLocationDataEntry(0x35180, 72) },
+
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x2EC5C, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x2ED5C, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x2EE5C, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x2EF5C, 256) },
 
 					// data defs
 					{ "BodyTypeDefs", new DefaultLocationDataEntry(0x2FB40, 208) },
@@ -255,6 +291,12 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
+
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x421C0, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x422C0, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x423C0, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x424C0, 256) },
 
 					// bit packing related
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3D7A0, 258) },
@@ -301,6 +343,12 @@ namespace VPWStudio
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x3F850, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x3F980, 132) },
 
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x3FC50, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x3FD50, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x3FE50, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x3FF50, 256) },
+
 					// bit packing related
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3B160, 258) },
 					{ "BitPacking_MoveGroup_Wrestling", new DefaultLocationDataEntry(0x3A0C0, 1590) },
@@ -345,6 +393,12 @@ namespace VPWStudio
 					// data defs
 					{ "WrestlerDefs", new DefaultLocationDataEntry(0x41DB0, 0) },
 					{ "StableDefs", new DefaultLocationDataEntry(0x41EE0, 132) },
+
+					// blood 1bpp masks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x421B0, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x422B0, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x423B0, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x424B0, 256) },
 
 					// bit packing related
 					{ "BitPacking_MainTable", new DefaultLocationDataEntry(0x3D7A0, 258) },
@@ -403,6 +457,12 @@ namespace VPWStudio
 					{ "MasterMoveMods_FirstEntries", new DefaultLocationDataEntry(0x3E63C, 266) },
 					{ "MasterMoveMods", new DefaultLocationDataEntry(0x3E748, 3908) },
 					{ "MasterMoveMod_Pointers", new DefaultLocationDataEntry(0x3F68C, 532) },
+
+					// blood 1bpp maks
+					{ "BloodTexture_Face", new DefaultLocationDataEntry(0x40BB0, 256) },
+					{ "BloodTexture_Neck", new DefaultLocationDataEntry(0x40CB0, 256) },
+					{ "BloodTexture_Chest1", new DefaultLocationDataEntry(0x40DB0, 256) },
+					{ "BloodTexture_Chest2", new DefaultLocationDataEntry(0x40EB0, 256) },
 
 					{ "DefaultFace_FacialHair_VertDisplacement", new DefaultLocationDataEntry(0x469B8, 110) },
 					{ "DefaultFace_PaintAccessories_VertDisplacement", new DefaultLocationDataEntry(0x46A28, 110) },
