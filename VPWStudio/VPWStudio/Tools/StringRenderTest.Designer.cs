@@ -32,15 +32,24 @@ namespace VPWStudio
 			this.pbStringPreview = new System.Windows.Forms.PictureBox();
 			this.gbText = new System.Windows.Forms.GroupBox();
 			this.tbPreviewText = new System.Windows.Forms.TextBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.largeFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.smallFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadedFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			((System.ComponentModel.ISupportInitialize)(this.pbStringPreview)).BeginInit();
 			this.gbText.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pbStringPreview
 			// 
 			this.pbStringPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbStringPreview.Location = new System.Drawing.Point(12, 149);
+			this.pbStringPreview.BackColor = System.Drawing.Color.Black;
+			this.pbStringPreview.Location = new System.Drawing.Point(12, 168);
 			this.pbStringPreview.MaximumSize = new System.Drawing.Size(480, 240);
 			this.pbStringPreview.MinimumSize = new System.Drawing.Size(480, 240);
 			this.pbStringPreview.Name = "pbStringPreview";
@@ -53,7 +62,7 @@ namespace VPWStudio
 			this.gbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbText.Controls.Add(this.tbPreviewText);
-			this.gbText.Location = new System.Drawing.Point(12, 12);
+			this.gbText.Location = new System.Drawing.Point(12, 27);
 			this.gbText.Name = "gbText";
 			this.gbText.Size = new System.Drawing.Size(480, 131);
 			this.gbText.TabIndex = 2;
@@ -72,15 +81,72 @@ namespace VPWStudio
 			this.tbPreviewText.TabIndex = 0;
 			this.tbPreviewText.TextChanged += new System.EventHandler(this.tbPreviewText_TextChanged);
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(504, 24);
+			this.menuStrip1.TabIndex = 3;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// fontToolStripMenuItem
+			// 
+			this.fontToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.largeFontToolStripMenuItem,
+            this.smallFontToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.openFontToolStripMenuItem,
+            this.loadedFontToolStripMenuItem});
+			this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+			this.fontToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.fontToolStripMenuItem.Text = "&Font";
+			// 
+			// largeFontToolStripMenuItem
+			// 
+			this.largeFontToolStripMenuItem.Name = "largeFontToolStripMenuItem";
+			this.largeFontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.largeFontToolStripMenuItem.Text = "&Large Font";
+			this.largeFontToolStripMenuItem.Click += new System.EventHandler(this.largeFontToolStripMenuItem_Click);
+			// 
+			// smallFontToolStripMenuItem
+			// 
+			this.smallFontToolStripMenuItem.Name = "smallFontToolStripMenuItem";
+			this.smallFontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.smallFontToolStripMenuItem.Text = "&Small Font";
+			this.smallFontToolStripMenuItem.Click += new System.EventHandler(this.smallFontToolStripMenuItem_Click);
+			// 
+			// openFontToolStripMenuItem
+			// 
+			this.openFontToolStripMenuItem.Name = "openFontToolStripMenuItem";
+			this.openFontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openFontToolStripMenuItem.Text = "&Open Font...";
+			this.openFontToolStripMenuItem.Click += new System.EventHandler(this.openFontToolStripMenuItem_Click);
+			// 
+			// loadedFontToolStripMenuItem
+			// 
+			this.loadedFontToolStripMenuItem.Name = "loadedFontToolStripMenuItem";
+			this.loadedFontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadedFontToolStripMenuItem.Text = "Lo&aded Font";
+			this.loadedFontToolStripMenuItem.Click += new System.EventHandler(this.loadedFontToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
 			// StringRenderTest
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(504, 401);
+			this.ClientSize = new System.Drawing.Size(504, 420);
 			this.Controls.Add(this.gbText);
 			this.Controls.Add(this.pbStringPreview);
+			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.KeyPreview = true;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(520, 414);
@@ -91,7 +157,10 @@ namespace VPWStudio
 			((System.ComponentModel.ISupportInitialize)(this.pbStringPreview)).EndInit();
 			this.gbText.ResumeLayout(false);
 			this.gbText.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -100,5 +169,12 @@ namespace VPWStudio
 		private System.Windows.Forms.PictureBox pbStringPreview;
 		private System.Windows.Forms.GroupBox gbText;
 		private System.Windows.Forms.TextBox tbPreviewText;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem largeFontToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem smallFontToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem openFontToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem loadedFontToolStripMenuItem;
 	}
 }

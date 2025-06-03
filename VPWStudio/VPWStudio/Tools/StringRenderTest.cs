@@ -18,10 +18,42 @@ namespace VPWStudio
 		/// </summary>
 		public Bitmap StringPreview = new Bitmap(480, 240);
 
+		/// <summary>
+		/// Default large font from the currently opened project.
+		/// </summary>
+		public AkiFont DefaultLargeFont;
+
+		/// <summary>
+		/// Default small font from the currently opened project.
+		/// </summary>
+		public AkiFont DefaultSmallFont;
+
+		/// <summary>
+		/// Externally loaded font.
+		/// </summary>
+		public AkiFont ExternalFont;
+
+		private bool DefaultFontsAvailable;
+
 		public StringRenderTest()
 		{
 			InitializeComponent();
 			pbStringPreview.Image = StringPreview;
+
+			// todo: font situation
+			if (Program.CurrentProject == null)
+			{
+				// open file dialog (must be different from regular open file; if canceled, close form)
+				DefaultFontsAvailable = false;
+			}
+			else
+			{
+				// load default large and small fonts
+				DefaultLargeFont = new AkiFont(AkiFontType.AkiLargeFont, Program.CurrentProject.Settings.BaseGame);
+				DefaultSmallFont = new AkiFont(AkiFontType.AkiSmallFont, Program.CurrentProject.Settings.BaseGame);
+				ExternalFont = null;
+				DefaultFontsAvailable = true;
+			}
 		}
 
 		/// <summary>
@@ -55,6 +87,42 @@ namespace VPWStudio
 			{
 				Close();
 			}
+		}
+
+		private void largeFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//AkiLargeFont
+			if (!largeFontToolStripMenuItem.Checked)
+			{
+				largeFontToolStripMenuItem.Checked = true;
+				smallFontToolStripMenuItem.Checked = false;
+				// reload font
+				// re-render
+			}
+		}
+
+		private void smallFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//AkiSmallFont
+			if (!smallFontToolStripMenuItem.Checked)
+			{
+				smallFontToolStripMenuItem.Checked = true;
+				largeFontToolStripMenuItem.Checked = false;
+				// reload font
+				// re-render
+			}
+		}
+
+		private void openFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Title = "Select Font File";
+		}
+
+		private void loadedFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// if a font has been load it, use it
+			// otherwise show the open dialog
 		}
 	}
 }
