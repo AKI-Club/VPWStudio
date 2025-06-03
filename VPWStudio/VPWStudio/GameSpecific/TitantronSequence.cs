@@ -107,6 +107,7 @@ namespace VPWStudio.GameSpecific
 
 			// pointer values are going to be different for WM2K and No Mercy, aren't they... shit.
 			// I guess I could just throw the shit in the location file
+			Console.WriteLine(String.Format("{0:X}", Program.PointerToRomAddr(Pointer, -1)));
 			//br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 
 			// stop reading when the TronFrame.ReadData(br) returns false
