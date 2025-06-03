@@ -566,9 +566,14 @@ namespace VPWStudio
 			{
 				foreach (AkiVertex v in Vertices)
 				{
+					// references to "0.5" in the below formulas are for the 10.5 fixed point system.
+					// apparently you just add 8.
+					// u = (v.U + OffsetX + 0.5)/TextureSizeX
+					// v = 1.0 - ((v.V + OffsetY + 0.5)/TextureSizeY)
+
 					sw.WriteLine(string.Format("vt {0} {1}",
-						(float)v.U / TextureSizeX,
-						(float)(TextureSizeY - v.V) / TextureSizeY
+						(float)(v.U + OffsetX + 0.5) / TextureSizeX,
+						(float)1.0 - ((v.V + OffsetY + 0.5) / TextureSizeY)
 						)
 					);
 				}
