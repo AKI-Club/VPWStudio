@@ -420,7 +420,7 @@ namespace VPWStudio.Controls
                             }
 							else
 							{
-                                // non-masked wrestlers can have nonsense values here
+                                // non-masked wrestlers can have nonsense values here, part 2 (comments for part 3 and 4 omitted)
                                 cccMaskColor2.SetColorNum(value & 31);
                             }
 							break;
@@ -444,8 +444,26 @@ namespace VPWStudio.Controls
 								nudFacialHair.Value = nudFacialHair.Maximum;
 							}
 							break;
-						case 22: cccMaskColor3.SetColorNum(value); break;
-						case 23: cccMaskColor4.SetColorNum(value); break;
+						case 22:
+							if (cbUsingMask.Checked)
+							{
+                                cccMaskColor3.SetColorNum(value);
+                            }
+							else
+							{
+                                cccMaskColor3.SetColorNum(value & 31);
+                            }
+							break;
+						case 23:
+							if (cbUsingMask.Checked)
+							{
+								cccMaskColor4.SetColorNum(value);
+							}
+							else
+							{
+                                cccMaskColor4.SetColorNum(value & 31);
+                            }
+							break;
 						case 24: nudFacepaint.Value = value; break;
 						case 27: nudAccessory.Value = value; break;
 						case 30: nudGloves.Value = value; break;
