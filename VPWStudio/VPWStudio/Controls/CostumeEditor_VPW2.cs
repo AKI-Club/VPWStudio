@@ -402,8 +402,28 @@ namespace VPWStudio.Controls
 							}
 							
 							break;
-						case 19: cccMaskColor1.SetColorNum(value); break;
-						case 20: cccMaskColor2.SetColorNum(value); break;
+						case 19:
+							if (cbUsingMask.Checked)
+							{
+                                cccMaskColor1.SetColorNum(value);
+                            }
+							else
+							{
+								// non-masked wrestlers can have nonsense values here
+                                cccMaskColor1.SetColorNum(value & 31);
+                            }
+							break;
+						case 20:
+							if (cbUsingMask.Checked)
+							{
+                                cccMaskColor2.SetColorNum(value);
+                            }
+							else
+							{
+                                // non-masked wrestlers can have nonsense values here
+                                cccMaskColor2.SetColorNum(value & 31);
+                            }
+							break;
 						case 21:
 							// like 18, used for two purposes; fill both
 							if (value <= nudMaskAccessory2.Maximum)
