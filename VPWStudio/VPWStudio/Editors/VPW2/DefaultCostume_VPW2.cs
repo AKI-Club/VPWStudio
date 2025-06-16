@@ -142,7 +142,9 @@ namespace VPWStudio.Editors.VPW2
 		{
 			if (!CostumeEditors[tcCostumes.SelectedIndex].FromString(Clipboard.GetText()))
 			{
-				// was not able to paste.
+				// was not able to paste. todo: give a better error message
+				Program.ErrorMessageBox("Unable to paste costume data.");
+				return;
 			}
 		}
 	}
