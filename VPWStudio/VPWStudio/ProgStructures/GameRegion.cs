@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace VPWStudio
 {
-	// todo: restructure this to handle N64 and PS1 games; currently only handles N64
+    // todo: restructure this to handle N64 and PS1 games; currently only handles N64
 
-	/// <summary>
-	/// Possible Nintendo 64 game regions, and their codes.
-	/// </summary>
-	public enum GameRegion
+    #region Nintendo 64 regions
+    /// <summary>
+    /// Possible Nintendo 64 game regions, and their codes.
+    /// </summary>
+    public enum GameRegion
 	{
 		Japan = 'J',
 		NorthAmerica = 'E',
@@ -129,4 +130,22 @@ namespace VPWStudio
 			{ GameRegion.Custom, "(custom)" }
 		};
 	}
+    #endregion
+
+    #region PlayStation regions
+    // Sony's product code scheme is a bit trickier:
+    // SCxx is used for first-party games
+    // SLxx is used for licensed games
+
+    // SCPS, SLPS - Japan
+    // SCUS, SLUS - North America
+    // SCES, SLES - Europe
+    // SCKA, SLKA - Korean
+
+    // supposedly {SCPM, SLPM} exists for Japanese games/demos
+
+    // SLPS-00449: Virtual Pro Wrestling
+    // SLUS-00455: WCW vs. The World
+    // SLES-00763: WCW vs. The World
+    #endregion
 }
