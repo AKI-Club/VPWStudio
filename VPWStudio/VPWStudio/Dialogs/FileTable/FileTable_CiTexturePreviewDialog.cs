@@ -86,6 +86,11 @@ namespace VPWStudio
 						fr.Close();
 
 						CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
+						textureStatusLabel.Text = string.Format("Size: {0}x{1}px {2}{3}",
+							CurCI4Texture.Width,CurCI4Texture.Height,
+							CurCI4Texture.HorizMirror != 0 ? "H" : "",
+                            CurCI4Texture.VertMirror != 0 ? "V" : ""
+                        );
 					}
 					break;
 
@@ -106,7 +111,12 @@ namespace VPWStudio
 						fr.Close();
 
 						CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
-					}
+                        textureStatusLabel.Text = string.Format("Size: {0}x{1}px {2}{3}",
+                            CurCI8Texture.Width, CurCI8Texture.Height,
+                            CurCI8Texture.HorizMirror != 0 ? "H" : "",
+                            CurCI8Texture.VertMirror != 0 ? "V" : ""
+                        );
+                    }
 					break;
 
 				case FileTypes.Ci4Background:
@@ -127,7 +137,12 @@ namespace VPWStudio
 						fr.Close();
 
 						CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
-					}
+                        textureStatusLabel.Text = string.Format("Size: {0}x{1}px {2}{3}",
+                            CurCI4Texture.Width, CurCI4Texture.Height,
+                            CurCI4Texture.HorizMirror != 0 ? "H" : "",
+                            CurCI4Texture.VertMirror != 0 ? "V" : ""
+                        );
+                    }
 					break;
 
 				case FileTypes.RawCi8Texture:
@@ -164,7 +179,12 @@ namespace VPWStudio
 						fr.Close();
 
 						CurBitmap = new Bitmap(CurCI8Texture.Width, CurCI8Texture.Height, PixelFormat.Format8bppIndexed);
-					}
+                        textureStatusLabel.Text = string.Format("Size: {0}x{1}px {2}{3}",
+                            CurCI8Texture.Width, CurCI8Texture.Height,
+                            CurCI8Texture.HorizMirror != 0 ? "H" : "",
+                            CurCI8Texture.VertMirror != 0 ? "V" : ""
+                        );
+                    }
 					break;
 
 				case FileTypes.RawCi4TexPal:
@@ -203,7 +223,12 @@ namespace VPWStudio
 
 						CurBitmap = new Bitmap(CurCI4Texture.Width, CurCI4Texture.Height, PixelFormat.Format4bppIndexed);
 						LockedPalette = true;
-					}
+                        textureStatusLabel.Text = string.Format("Size: {0}x{1}px {2}{3}",
+                            CurCI4Texture.Width, CurCI4Texture.Height,
+                            CurCI4Texture.HorizMirror != 0 ? "H" : "",
+                            CurCI4Texture.VertMirror != 0 ? "V" : ""
+                        );
+                    }
 					break;
 			}
 
