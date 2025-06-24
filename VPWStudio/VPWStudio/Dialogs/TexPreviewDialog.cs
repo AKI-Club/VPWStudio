@@ -66,7 +66,6 @@ namespace VPWStudio
 		private void LoadFileID(int fileID)
 		{
 			FileID = fileID;
-			Text = String.Format("Preview [0x{0:X4}]", FileID);
 
 			MemoryStream romStream = new MemoryStream(Program.CurrentInputROM.Data);
 			BinaryReader romReader = new BinaryReader(romStream);
@@ -90,6 +89,9 @@ namespace VPWStudio
 
 			outReader.Close();
 			outWriter.Close();
+
+            Text = String.Format("Preview [0x{0:X4}; {2}x{3}px {1}]", FileID, CurrentTEX.ImageFormat.ToString(), CurrentTEX.Width, CurrentTEX.Height);
+			toolTip1.SetToolTip(pbPreview, string.Format("Format: {0}" + Environment.NewLine + "Size: {1}x{2}px", CurrentTEX.ImageFormat.ToString(), CurrentTEX.Width, CurrentTEX.Height));
 		}
 
 		/// <summary>
