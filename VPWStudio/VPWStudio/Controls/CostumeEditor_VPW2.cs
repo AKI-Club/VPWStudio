@@ -379,7 +379,13 @@ namespace VPWStudio.Controls
 						case 9: nudHeadShape.Value = value; break;
 						case 10: cccHairColor.SetColorNum(value); break;
 						case 11: cbUsingMask.Checked = (value == 1); break;
-						case 12: nudFaceNumber.Value = value; break;
+						case 12:
+							nudFaceNumber.Value = value;
+							if (cbUsingMask.Checked)
+							{
+								nudMaskNumber.Value = value;
+							}
+							break;
 						case 15: nudHairType.Value = value; break;
 						case 18:
 							// used for two purposes; fill both (hopefully causes no issues)
