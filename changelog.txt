@@ -2,9 +2,38 @@ VPW Studio Changelog
 ====================
 All dates are year/month/day format.
 
-Pre-Alpha Preview 37 (202x/yy/zz)
+Pre-Alpha Preview 38 (202x/yy/zz)
 ---------------------------------
 Currently being worked on...
+
+Pre-Alpha Preview 37 (2025/07/06)
+---------------------------------
+- [VPW2 Default Costume Editor] Added range check when pasting items.
+
+- [LocationFile, DefaultGameData] Added entries for blood texture 1bpp masks.
+  (A few of the WWF No Mercy protypes still need entries for these,
+  but they're gone by the September build.)
+
+- [VPW2 Default Costume Editor] Now displays error message if pasting failed,
+  instead of failing silently.
+
+- [VPW2 Default Costume Editor] Fixed issue with non-masked wrestlers having
+  mask color values greater than the maximum.
+
+- [File Table Editor] Added Control+E keyboard shortcut for file exporting.
+
+- [CI Texture Preview] Added status bar with size and mirroring settings.
+
+- [AkiTexture Preview] Added image information (format and size) to the title bar
+  and as a tooltip.
+
+- [VPW2 Default Costume Editor] Fix Mask Number not being set on paste.
+
+- [FileTableDB] Updates to VPW2 and WM2K's FileTableDB.
+  The WM2K updates come from hammerglenn; thanks!
+
+  To update your project, open the File Table dialog, then choose
+  Database → Reload File Table Database.
 
 Pre-Alpha Preview 36 (2024/10/10)
 ---------------------------------

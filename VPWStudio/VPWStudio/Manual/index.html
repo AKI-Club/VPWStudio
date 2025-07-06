@@ -10,7 +10,7 @@
 <div id="header">
 <h1><img class="logoimg" src="./img/logo.png" alt="The VPW Studio program logo consists of a yellow rectangular tower, rotated at an angle. The left side has a red swirl, and the right side has a blue swirl." /> VPW Studio</h1>
 <h2>Program Manual</h2>
-<p>Version 0.0.0.36 (October 10th, 2024)<br />Program and Manual by freem<br /><br />
+<p>Version 0.0.0.37 (July 6th, 2025)<br />Program and Manual by freem<br /><br />
 <a href="https://vpw.ajworld.net/">https://vpw.ajworld.net/</a><br /><a href="https://github.com/AKI-Club/VPWStudio">https://github.com/AKI-Club/VPWStudio</a></p>
 </div>
 
@@ -127,6 +127,7 @@ are external (i.e. separate from the main manual).)</p>
 
 <h3>External Resources/Tutorials</h3>
 <ul>
+<li>Various tutorials on <a href="https://aki.guide/">aki.guide</a></li>
 <li>gmspectre's No Mercy CI4 Tutorial <a href="http://maximoff.alreadyread.net/Tutorial1/">Part 1</a> and <a href="http://maximoff.alreadyread.net/Tutorial2/">Part 2</a></li>
 <li><a href="http://maximoff.alreadyread.net/Tutorial-Faces/">gmspectre's No Mercy Face Tutorial</a></li>
 <li><a href="http://oldskoolreunion.com/forum/threads/multi-games-how-to-replace-bg-images.42019/">KWG's Menu Background Replacement Tutorial</a></li>
@@ -1657,6 +1658,9 @@ the CI4 palette has any sub-palettes.</p>
 palette is being used. <code>CI4Texture</code>s additionally support sub-palettes,
 which are alternate sets of 16 colors.</p>
 
+<p>The status bar shows the texture size, and if any Horizontal ("H")
+and/or Vertical ("V") mirroring is used on the original texture.</p>
+
 <h3><a name="I4TexturePreview">I4 Textures</a></h3>
 <img src="./img/i4texture_preview.png" title="I4Texture Previewer" />
 <p>Target Filetype: <code>I4Texture</code></p>
@@ -1688,6 +1692,9 @@ brings up a context menu with two options:</p>
 <li><strong>Save PNG</strong> &ndash; Exports the texture as a 32-bit (RGBA) PNG.</li>
 <li><strong>Background Color</strong> &ndash; Change the background color, useful for images with transparency.</li>
 </ul>
+
+<p>Hovering the mouse cursor over the texture for a few seconds will bring up
+a tooltip with the image type and size.</p>
 
 <p>The <kbd>Esc</kbd> button can be used to close the TEX previewer, in case the size of
 the loaded texture makes it hard to click on the close window button.</p>
@@ -2719,21 +2726,20 @@ megabytes, it probably won't work on the real N64 hardware.</p>
 </ul>
 
 <h3>Patch Creation</h3>
-<p>todo: certain versions of xdelta force a secondary compression type that won't
-work with Web Patcher JS; not sure how to handle this with xdelta UI</p>
-
-<p>On Windows, "<a href="https://www.romhacking.net/utilities/598/">xdelta UI</a>"
-is recommended. Open xdeltaUI, then switch to the "Create Patch" tab, and follow these
-steps:</p>
+<p>On Windows, "<a href="https://github.com/marco-calautti/DeltaPatcher">Delta Patcher</a>"
+is recommended. Open Delta Patcher, then switch to patch creation mode by clicking
+the button with two arrows, and follow these steps:</p>
 
 <ol>
-<li>Click "Open..." next to the "Original File" textbox, and select the <em>unmodified
+<li>Click "Open..." next to the "Original file" textbox, and select the <em>unmodified
 original</em> ROM (in Z64 format) for the game you're editing.</li>
-<li>Click "Open..." next to the "Modified File" textbox, and select the <em>built</em>
+<li>Click "Open..." next to the "Modified file" textbox, and select the <em>built</em>
 ROM from your project.</li>
-<li>Click "..." next to the "Patch Destination" textbox, and enter a relevant name
+<li>Click "..." next to the "XDelta patch" textbox, and enter a relevant name
 for your patch.</li>
-<li>Finally, click the "Patch" button to create the patch.</li>
+<li>Click the gear icon and set "Secondary compression" to "none". This step
+is necessary because some patchers do not implement secondary compression.</li>
+<li>Finally, click the "Create patch" button to create the patch.</li>
 </ol>
 
 <p>For command line/terminal users: <code>xdelta3 -e -S none -s old_file new_file delta_file</code></p>
