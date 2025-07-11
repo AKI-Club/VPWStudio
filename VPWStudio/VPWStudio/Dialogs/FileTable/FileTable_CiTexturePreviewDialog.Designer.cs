@@ -100,20 +100,22 @@
             this.savePNGToolStripMenuItem,
             this.backgroundColorToolStripMenuItem});
             this.cmsImage.Name = "cmsImage";
-            this.cmsImage.Size = new System.Drawing.Size(180, 48);
+            this.cmsImage.Size = new System.Drawing.Size(221, 48);
             // 
             // savePNGToolStripMenuItem
             // 
             this.savePNGToolStripMenuItem.Image = global::VPWStudio.Properties.Resources.MenuIcon16_Save;
             this.savePNGToolStripMenuItem.Name = "savePNGToolStripMenuItem";
-            this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.savePNGToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.savePNGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.savePNGToolStripMenuItem.Text = "Save PNG...";
             this.savePNGToolStripMenuItem.Click += new System.EventHandler(this.savePNGToolStripMenuItem_Click);
             // 
             // backgroundColorToolStripMenuItem
             // 
             this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
-            this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.backgroundColorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.backgroundColorToolStripMenuItem.Text = "&Background Color...";
             this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
             // 
