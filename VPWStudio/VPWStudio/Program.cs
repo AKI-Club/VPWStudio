@@ -234,6 +234,12 @@ namespace VPWStudio
 			return dbFilePath;
 		}
 
+		/// <summary>
+		/// Convert a virtual address (80xxxxxx) to a ROM address, depending on the segment it's in.
+		/// </summary>
+		/// <param name="vAddr">Virtual address to convert</param>
+		/// <param name="segNum">Segment number (-1 = global segment)</param>
+		/// <returns></returns>
 		public static UInt32 PointerToRomAddr(UInt32 vAddr, int segNum)
 		{
 			// error out if this is called without loaded code seg defs
