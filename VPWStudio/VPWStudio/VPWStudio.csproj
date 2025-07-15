@@ -284,6 +284,7 @@
     <Compile Include="Editors\WM2K\DefaultCostume_WM2K.Designer.cs">
       <DependentUpon>DefaultCostume_WM2K.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameSpecific\CameraDef.cs" />
     <Compile Include="GameSpecific\CameraValuePair.cs" />
     <Compile Include="GameSpecific\IntroSequence_Later.cs" />
     <Compile Include="DataStructures\AKI\MenuBackground.cs" />
