@@ -284,6 +284,7 @@
     <Compile Include="Editors\WM2K\DefaultCostume_WM2K.Designer.cs">
       <DependentUpon>DefaultCostume_WM2K.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameSpecific\CameraValuePair.cs" />
     <Compile Include="GameSpecific\IntroSequence_Later.cs" />
     <Compile Include="DataStructures\AKI\MenuBackground.cs" />
     <Compile Include="DataStructures\AKI\AkiArchive.cs" />
@@ -647,6 +648,12 @@
     <Compile Include="Tools\CodeSegTest.Designer.cs">
       <DependentUpon>CodeSegTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ConvertToAkiTexture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\ConvertToAkiTexture.Designer.cs">
+      <DependentUpon>ConvertToAkiTexture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\FaceTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1003,6 +1010,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\CodeSegTest.resx">
       <DependentUpon>CodeSegTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\ConvertToAkiTexture.resx">
+      <DependentUpon>ConvertToAkiTexture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\FaceTester.resx">
       <DependentUpon>FaceTester.cs</DependentUpon>
