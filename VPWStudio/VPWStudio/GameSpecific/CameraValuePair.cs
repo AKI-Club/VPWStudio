@@ -21,6 +21,7 @@ namespace VPWStudio
         /// </summary>
         public short FrameNumber;
 
+        #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -40,6 +41,16 @@ namespace VPWStudio
             Value = v;
             FrameNumber = frame;
         }
+
+        /// <summary>
+        /// Constructor using a BinaryReader.
+        /// </summary>
+        /// <param name="br">BinaryReader instance to use.</param>
+        public CameraValuePair(BinaryReader br)
+        {
+            ReadData(br);
+        }
+        #endregion
 
         /// <summary>
         /// Read CameraValuePair data using a BinaryReader.
