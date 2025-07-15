@@ -174,6 +174,7 @@ namespace VPWStudio
 			{ "IntroDefs_Later_Anims", "$INTRODEFS_LATER_ANIMS" },
 			{ "IntroDefs_Later_Images", "$INTRODEFS_LATER_IMAGES" },
 			{ "IntroDefs_Later_Sequence", "$INTRODEFS_LATER_SEQUENCE" },
+			{ "IntroDefs_Later_CameraMotion", "$INTRODEFS_LATER_CAMERAMOTION" },
 			// todo: game ending sequences use same formats
 
 			// might be shared between WM2K, VPW2, No Mercy
