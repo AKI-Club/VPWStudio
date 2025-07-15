@@ -319,8 +319,9 @@ namespace VPWStudio
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7927C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B16C, 96) },
+                    { "IntroDefs_Later_CameraMotion", new DefaultLocationDataEntry(0x7FA68, 800) },
 
-					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA04, 396) },
+                    { "TagTeamDefs", new DefaultLocationDataEntry(0x6CA04, 396) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69550, 3080) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A158, 1416) },
@@ -370,8 +371,9 @@ namespace VPWStudio
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x73FDC, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x75ECC, 96) },
+                    { "IntroDefs_Later_CameraMotion", new DefaultLocationDataEntry(0x7A7C8, 800) },
 
-					{ "TagTeamDefs", new DefaultLocationDataEntry(0x67794, 396) },
+                    { "TagTeamDefs", new DefaultLocationDataEntry(0x67794, 396) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x63CA0, 3064) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x64898, 1416) },
@@ -421,8 +423,9 @@ namespace VPWStudio
 
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7929C, 7920) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7B18C, 96) },
+                    { "IntroDefs_Later_CameraMotion", new DefaultLocationDataEntry(0x7FA88, 800) },
 
-					{ "TagTeamDefs", new DefaultLocationDataEntry(0x6CA24, 396) },
+                    { "TagTeamDefs", new DefaultLocationDataEntry(0x6CA24, 396) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69570, 3080) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A178, 1416) },
@@ -487,6 +490,7 @@ namespace VPWStudio
 					{ "IntroDefs_Later_Anims", new DefaultLocationDataEntry(0x7C710, 4360) },
 					{ "IntroDefs_Later_Images", new DefaultLocationDataEntry(0x7DEA8, 192) },
 					{ "IntroDefs_Later_Sequence", new DefaultLocationDataEntry(0x7E098, 2292) },
+					{ "IntroDefs_Later_CameraMotion", new DefaultLocationDataEntry(0x828C0, 1152) },
 
 					{ "GlobalText_Start", new DefaultLocationDataEntry(0x69650, 3728) },
 					{ "GlobalText_Pointers", new DefaultLocationDataEntry(0x6A4E0, 1240) },
