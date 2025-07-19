@@ -32,6 +32,11 @@ namespace VPWStudio
 		/// </summary>
 		public List<IntroSequence_Later> IntroSequenceItems;
 
+		/// <summary>
+		/// Camera motion entries
+		/// </summary>
+		public List<CameraDef> CameraMotionDefs;
+
 		public bool AnyChangesSubmitted = false;
 
 		/// <summary>
@@ -49,6 +54,13 @@ namespace VPWStudio
 		/// </summary>
 		private uint SeqStartLocation;
 
+		/// <summary>
+		/// Starting ROM address of the camera motion data.
+		/// </summary>
+		private uint CameraMotionStartLocation;
+
+		private StringBuilder StrBuilder;
+
 		public GameIntroEditor_Later()
 		{
 			InitializeComponent();
@@ -56,6 +68,8 @@ namespace VPWStudio
 			IntroAnimations = new List<IntroSequenceAnimation_Later>();
 			IntroImages = new List<IntroSequenceGraphic_Later>();
 			IntroSequenceItems = new List<IntroSequence_Later>();
+			CameraMotionDefs = new List<CameraDef>();
+			StrBuilder = new StringBuilder();
 
 			LoadIntroData();
 		}
@@ -69,6 +83,7 @@ namespace VPWStudio
 			bool hasAnimLocation = false;
 			bool hasImageLocation = false;
 			bool hasSeqLocation = false;
+			bool hasCameraMotionLocation = false;
 
 			AnimStartLocation = 0;
 			int numAnims = 0;
@@ -78,6 +93,9 @@ namespace VPWStudio
 
 			SeqStartLocation = 0;
 			int numSeqEntries = 0;
+
+			CameraMotionStartLocation = 0;
+			int numCameraMotionDefs = 0;
 
 			// xxx: non-image values don't take the credits sequence into account
 			if (Program.CurLocationFile != null)
@@ -104,6 +122,14 @@ namespace VPWStudio
 					SeqStartLocation = seqEntry.Address;
 					numSeqEntries = seqEntry.Length / 28;
 					hasSeqLocation = true;
+				}
+
+				LocationFileEntry camEntry = Program.CurLocationFile.GetEntryFromComment(LocationFile.SpecialEntryStrings["IntroDefs_Later_CameraMotion"]);
+				if (camEntry != null)
+				{
+					CameraMotionStartLocation = camEntry.Address;
+					numCameraMotionDefs = camEntry.Length / 8;
+					hasCameraMotionLocation = true;
 				}
 			}
 
@@ -141,6 +167,17 @@ namespace VPWStudio
 				}
 			}
 
+			if (!hasCameraMotionLocation)
+			{
+                DefaultGameData.DefaultLocationDataEntry cams = DefaultGameData.GetEntry(Program.CurrentProject.Settings.GameType, "IntroDefs_Later_CameraMotion");
+				if (cams != null)
+				{
+					CameraMotionStartLocation = cams.Offset;
+					numCameraMotionDefs = (int)(cams.Length / 8);
+					hasCameraMotionLocation = true;
+				}
+            }
+
 			// FINALLY get to reading the damned data
 			if (hasAnimLocation)
 			{
@@ -168,6 +205,17 @@ namespace VPWStudio
 					IntroSequenceItems.Add(new IntroSequence_Later(br));
 				}
 			}
+
+			if (hasCameraMotionLocation)
+			{
+                ms.Seek(CameraMotionStartLocation, SeekOrigin.Begin);
+				for (int i = 0; i < numCameraMotionDefs; i++)
+				{
+					CameraMotionDefs.Add(new CameraDef(br));
+					cbCameraMotionList.Items.Add(string.Format("Entry {0}",i));
+				}
+            }
+
 
 			br.Close();
 			PopulateRows(hasAnimLocation, hasImageLocation, hasSeqLocation);
@@ -375,5 +423,65 @@ namespace VPWStudio
 				tsslblCurAddressSeq.Text = String.Format("Seq. ROM Address: 0x{0:X})", SeqStartLocation+offset);
 			}
 		}
-	}
+
+        private void cbCameraMotionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			if (cbCameraMotionList.SelectedIndex < 0)
+			{
+				return;
+			}
+
+			int index = cbCameraMotionList.SelectedIndex;
+			StrBuilder.Clear();
+			StrBuilder.AppendLine(string.Format("Camera Motion Entry #{0} (Z64 ROM addr 0x{1:X})", index, CameraMotionStartLocation + (8*index)));
+
+			StrBuilder.AppendLine(string.Format("Data Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].DataPointer, Program.PointerToRomAddr(CameraMotionDefs[index].DataPointer, 1)));
+            StrBuilder.AppendLine(string.Format("Unknown Value: 0x{0:X4}", CameraMotionDefs[index].UnknownValue));
+            StrBuilder.AppendLine(string.Format("Camera Motion ID: 0x{0:X4}", CameraMotionDefs[index].ID));
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("X Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerX, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerX, 1)));
+			foreach (CameraValuePair cvp in CameraMotionDefs[index].X)
+			{
+				StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+			}
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("Y Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerY, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerY, 1)));
+            foreach (CameraValuePair cvp in CameraMotionDefs[index].Y)
+            {
+                StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+            }
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("Z Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerZ, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerZ, 1)));
+            foreach (CameraValuePair cvp in CameraMotionDefs[index].Z)
+            {
+                StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+            }
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("Pitch Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerPitch, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerPitch, 1)));
+            foreach (CameraValuePair cvp in CameraMotionDefs[index].Pitch)
+            {
+                StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+            }
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("Pan Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerPan, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerPan, 1)));
+            foreach (CameraValuePair cvp in CameraMotionDefs[index].Pan)
+            {
+                StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+            }
+            StrBuilder.AppendLine();
+
+            StrBuilder.AppendLine(string.Format("Roll Values Pointer: 0x{0:X} (Z64 ROM addr 0x{1:X})", CameraMotionDefs[index].ValuePointerRoll, Program.PointerToRomAddr(CameraMotionDefs[index].ValuePointerRoll, 1)));
+            foreach (CameraValuePair cvp in CameraMotionDefs[index].Roll)
+            {
+                StrBuilder.AppendLine(string.Format("value 0x{0:X2} ({0}) at frame 0x{1:X2} ({1})", cvp.Value, cvp.FrameNumber));
+            }
+
+            tbCameraMotion.Text = StrBuilder.ToString();
+        }
+    }
 }
